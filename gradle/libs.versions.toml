@@ -1,0 +1,13 @@
+[versions]
+kotlin = "2.0.0"
+modb-core = "13.0.1"
+modb-test = "1.6.14"
+
+[libraries]
+kotlin-stdlib = { module = "org.jetbrains.kotlin:kotlin-stdlib", version.ref = "kotlin" }
+modb-core = { module = "io.github.manamiproject:modb-core", version.ref = "modb-core" }
+modb-test = { module = "io.github.manamiproject:modb-test", version.ref = "modb-test" }
+
+
+[plugins]
+kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }

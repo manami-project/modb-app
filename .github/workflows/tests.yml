@@ -1,0 +1,55 @@
+name: 'Tests'
+
+on:
+  push:
+    branches:
+      - 'main'
+  pull_request:
+    branches:
+      - '**'
+  merge_group:
+    branches:
+      - 'main'
+    paths-ignore:
+      - 'README.md'
+      - '.gitignore'
+      - '.gitattributes'
+      - '.github/workflows/**'
+      - '!.github/workflows/tests.yml'
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        java: [ 21, x ]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Set up JDK ${{ matrix.java }}
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'zulu'
+          java-version: ${{ matrix.java }}
+      - name: Set executable flag on gradlew
+        run: chmod +x gradlew
+      - name: Execute tests
+        env:
+          GH_PACKAGES_READ_TOKEN: ${{ secrets.PACKAGES_READ_TOKEN }}
+        run: ./gradlew test
+      - name: Publish Test Results
+        uses: EnricoMi/publish-unit-test-result-action@v2
+        if: github.ref != 'refs/heads/main'
+        with:
+          check_name: Test results JDK ${{ matrix.java }}
+          comment_title: Test results JDK ${{ matrix.java }}
+          files: |
+            /github/workspace/**/build/test-results/**/*.xml
+      - name: Generate coverage
+        if: ${{ matrix.java == 21 }}
+        run: ./gradlew jacocoTestReport
+      - name: Upload coverage
+        uses: codecov/codecov-action@v4.5.0
+        if: ${{ matrix.java == 21 }}
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
