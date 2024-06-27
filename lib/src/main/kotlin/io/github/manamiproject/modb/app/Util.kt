@@ -10,7 +10,7 @@ import kotlin.math.pow
  * @param number2 Any number `>= 0`
  * @return Integer showing the difference between the two parameters.
  */
-internal fun difference(number1: Int, number2: Int): Int {
+fun difference(number1: Int, number2: Int): Int {
     require(number1 >= 0 && number2 >= 0) { "Passed numbers must be positive or 0" }
 
     val higherToLower = if (number1 > number2) number1 to number2 else number2 to number1
@@ -32,7 +32,7 @@ internal fun difference(number1: Int, number2: Int): Int {
  * @param factor The higher this factor is, the lower the probability of two numbers which have a difference mean the same thing. The factor must be `>1`
  * @return A value that indicates how likely it is that [number1] and [number2] are equal.
  */
-internal fun weightedProbabilityOfTwoNumbersBeingEqual(number1: Int, number2: Int, factor: Int): Double {
+fun weightedProbabilityOfTwoNumbersBeingEqual(number1: Int, number2: Int, factor: Int): Double {
     require(factor > 1) { "Factor must be > 1" }
 
     if (number1 == number2) {
