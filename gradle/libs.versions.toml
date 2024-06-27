@@ -1,7 +1,7 @@
 [versions]
 kotlin = "2.0.0"
 modb-core = "13.0.1"
-modb-test = "1.6.14"
+modb-test = "1.6.15"
 
 [libraries]
 kotlin-stdlib = { module = "org.jetbrains.kotlin:kotlin-stdlib", version.ref = "kotlin" }
