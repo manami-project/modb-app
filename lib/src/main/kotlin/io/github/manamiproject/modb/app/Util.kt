@@ -30,7 +30,7 @@ fun difference(number1: Int, number2: Int): Int {
  * @param number1 Any number `>=0`
  * @param number2 Any number `>=0`
  * @param factor The higher this factor is, the lower the probability of two numbers which have a difference mean the same thing. The factor must be `>1`
- * @return A value that indicates how likely it is that [number1] and [number2] are equal.
+ * @return A value in a percentage representation (0.0 to 1.0) that indicates how likely it is that [number1] and [number2] are equal.
  */
 fun weightedProbabilityOfTwoNumbersBeingEqual(number1: Int, number2: Int, factor: Int): Double {
     require(factor > 1) { "Factor must be > 1" }
@@ -42,9 +42,5 @@ fun weightedProbabilityOfTwoNumbersBeingEqual(number1: Int, number2: Int, factor
     val difference = difference(number1, number2)
     val probability = 1.0 - (factor.toDouble().pow(difference) / 100.0)
 
-    return if (probability > 0.0) {
-        probability
-    } else {
-        0.0
-    }
+    return probability.takeIf { it > 0.0 } ?: 0.0
 }
