@@ -2,9 +2,9 @@ import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
     alias(libs.plugins.kotlin.jvm)
+    alias(libs.plugins.kover)
     `maven-publish`
     `java-library`
-    jacoco
 }
 
 group = "io.github.manamiproject"
@@ -57,15 +57,6 @@ tasks.withType<Test> {
     reports.html.required.set(false)
     reports.junitXml.required.set(true)
     maxParallelForks = Runtime.getRuntime().availableProcessors()
-}
-
-tasks.jacocoTestReport {
-    reports {
-        html.required.set(false)
-        xml.required.set(true)
-        xml.outputLocation.set(file("${layout.buildDirectory.get()}/reports/jacoco/test/jacocoFullReport.xml"))
-    }
-    dependsOn(allprojects.map { it.tasks.named<Test>("test") })
 }
 
 val sourcesJar by tasks.registering(Jar::class) {
