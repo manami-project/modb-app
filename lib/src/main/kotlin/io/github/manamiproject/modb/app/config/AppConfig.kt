@@ -1,0 +1,110 @@
+package io.github.manamiproject.modb.app.config
+
+import io.github.manamiproject.modb.anidb.AnidbConfig
+import io.github.manamiproject.modb.anilist.AnilistConfig
+import io.github.manamiproject.modb.animeplanet.AnimePlanetConfig
+import io.github.manamiproject.modb.anisearch.AnisearchConfig
+import io.github.manamiproject.modb.anisearch.AnisearchRelationsConfig
+import io.github.manamiproject.modb.app.weekOfYear
+import io.github.manamiproject.modb.core.config.ConfigRegistry
+import io.github.manamiproject.modb.core.config.DefaultConfigRegistry
+import io.github.manamiproject.modb.core.config.MetaDataProviderConfig
+import io.github.manamiproject.modb.core.config.StringPropertyDelegate
+import io.github.manamiproject.modb.core.extensions.Directory
+import io.github.manamiproject.modb.core.extensions.directoryExists
+import io.github.manamiproject.modb.core.extensions.regularFileExists
+import io.github.manamiproject.modb.kitsu.KitsuConfig
+import io.github.manamiproject.modb.kitsu.KitsuRelationsConfig
+import io.github.manamiproject.modb.kitsu.KitsuTagsConfig
+import io.github.manamiproject.modb.livechart.LivechartConfig
+import io.github.manamiproject.modb.myanimelist.MyanimelistConfig
+import io.github.manamiproject.modb.notify.NotifyConfig
+import io.github.manamiproject.modb.notify.NotifyRelationsConfig
+import java.time.LocalDate
+import kotlin.io.path.Path
+import kotlin.io.path.createDirectories
+
+/**
+ * Implementation of [Config] which contains all necessary properties and all derivative configurations.
+ * @since 1.0.0
+ * @param configRegistry Implementation of [ConfigRegistry] used for populating properties. Uses [DefaultConfigRegistry] by default.
+ */
+class AppConfig(
+    configRegistry: ConfigRegistry = DefaultConfigRegistry,
+): Config {
+
+    private val weekOfYear = LocalDate.now(clock()).weekOfYear()
+
+    private val downloadsDirectory: String by StringPropertyDelegate(
+        namespace = CONFIG_NAMESPACE,
+        configRegistry = configRegistry,
+    )
+
+    private val offlineDatabaseDirectory: String by StringPropertyDelegate(
+        namespace = CONFIG_NAMESPACE,
+        configRegistry = configRegistry,
+    )
+
+    private val downloadControlStateDirectory: String by StringPropertyDelegate(
+        namespace = CONFIG_NAMESPACE,
+        configRegistry = configRegistry,
+    )
+
+    override fun downloadsDirectory(): Directory {
+        val dir = Path(downloadsDirectory)
+        check(dir.directoryExists()) { "Download directory set by 'downloadsDirectory' to [$downloadsDirectory] doesn't exist or is not a directory." }
+        return dir
+    }
+
+    override fun currentWeekWorkingDir(): Directory {
+        val zeroBasedWeek = if (weekOfYear.week < 10) "0${weekOfYear.week}" else weekOfYear.week.toString()
+        return downloadsDirectory().resolve("${weekOfYear.year}-$zeroBasedWeek")
+    }
+
+    override fun workingDir(metaDataProviderConfig: MetaDataProviderConfig): Directory {
+        val hostname = metaDataProviderConfig.hostname()
+        val workingDir = when(metaDataProviderConfig) {
+            AnidbConfig,
+            AnilistConfig,
+            AnimePlanetConfig,
+            AnisearchConfig,
+            KitsuConfig,
+            LivechartConfig,
+            MyanimelistConfig,
+            NotifyConfig -> currentWeekWorkingDir().resolve(hostname)
+            AnisearchRelationsConfig, KitsuRelationsConfig, NotifyRelationsConfig -> currentWeekWorkingDir().resolve("$hostname-relations")
+            KitsuTagsConfig -> currentWeekWorkingDir().resolve("$hostname-tags")
+            else -> throw IllegalStateException("No working directory mapping for [${metaDataProviderConfig::class.simpleName}]")
+        }
+
+        check(!workingDir.regularFileExists()) { "Working directory must not be a regular file." }
+
+        if (!workingDir.directoryExists()) {
+            workingDir.createDirectories()
+        }
+
+        return workingDir
+    }
+
+    override fun offlineDatabaseDirectory(): Directory {
+        val dir = Path(offlineDatabaseDirectory)
+        check(dir.directoryExists()) { "Output directory set by 'offlineDatabaseDirectory' to [$offlineDatabaseDirectory] doesn't exist or is not a directory." }
+        return dir
+    }
+
+    override fun downloadControlStateDirectory(): Directory {
+        val dir = Path(downloadControlStateDirectory)
+        check(dir.directoryExists()) { "Output directory set by 'downloadControlStateDirectory' to [$downloadControlStateDirectory] doesn't exist or is not a directory." }
+        return dir
+    }
+
+    companion object {
+        private const val CONFIG_NAMESPACE = "modb.app"
+
+        /**
+         * Singleton of [AppConfig]
+         * @since 1.0.0
+         */
+        val instance = AppConfig()
+    }
+}
