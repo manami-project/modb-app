@@ -76,7 +76,7 @@ interface Config: ContextAware {
      * @since 1.0.0
      * @return The directory in which the JSON files and the `README.md` are saved..
      */
-    fun offlineDatabaseDirectory(): Directory
+    fun outputDirectory(): Directory
 
     /**
      * Root directory of download control state files.

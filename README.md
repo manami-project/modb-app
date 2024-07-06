@@ -6,5 +6,5 @@
 | parameter                                | type     | default | description                                                           |
 |------------------------------------------|----------|---------|-----------------------------------------------------------------------|
 | `modb.app.downloadsDirectory`            | `String` | -       | Root directory in which the raw files and converted files are stored. |
-| `modb.app.offlineDatabaseDirectory`      | `String` | -       | Target output direcotry.                                              |
+| `modb.app.outputDirectory`               | `String` | -       | Target output directory.                                              |
 | `modb.app.downloadControlStateDirectory` | `String` | -       | Root directory of download control state files.                       |

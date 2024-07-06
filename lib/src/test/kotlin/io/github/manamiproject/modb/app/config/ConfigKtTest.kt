@@ -60,7 +60,7 @@ internal class ConfigTest {
                 override fun downloadsDirectory(): Directory = shouldNotBeInvoked()
                 override fun currentWeekWorkingDir(): Directory = shouldNotBeInvoked()
                 override fun workingDir(metaDataProviderConfig: MetaDataProviderConfig): Directory = shouldNotBeInvoked()
-                override fun offlineDatabaseDirectory(): Directory = shouldNotBeInvoked()
+                override fun outputDirectory(): Directory = shouldNotBeInvoked()
                 override fun downloadControlStateDirectory(): Directory = shouldNotBeInvoked()
             }
 
@@ -84,7 +84,7 @@ internal class ConfigTest {
                 override fun downloadsDirectory(): Directory = shouldNotBeInvoked()
                 override fun currentWeekWorkingDir(): Directory = shouldNotBeInvoked()
                 override fun workingDir(metaDataProviderConfig: MetaDataProviderConfig): Directory = shouldNotBeInvoked()
-                override fun offlineDatabaseDirectory(): Directory = shouldNotBeInvoked()
+                override fun outputDirectory(): Directory = shouldNotBeInvoked()
                 override fun downloadControlStateDirectory(): Directory = shouldNotBeInvoked()
             }
 
@@ -106,7 +106,7 @@ internal class ConfigTest {
                 override fun downloadsDirectory(): Directory = shouldNotBeInvoked()
                 override fun currentWeekWorkingDir(): Directory = shouldNotBeInvoked()
                 override fun workingDir(metaDataProviderConfig: MetaDataProviderConfig): Directory = shouldNotBeInvoked()
-                override fun offlineDatabaseDirectory(): Directory = shouldNotBeInvoked()
+                override fun outputDirectory(): Directory = shouldNotBeInvoked()
                 override fun downloadControlStateDirectory(): Directory = shouldNotBeInvoked()
             }
 
@@ -129,7 +129,7 @@ internal class ConfigTest {
                 override fun downloadsDirectory(): Directory = shouldNotBeInvoked()
                 override fun currentWeekWorkingDir(): Directory = shouldNotBeInvoked()
                 override fun workingDir(metaDataProviderConfig: MetaDataProviderConfig): Directory = shouldNotBeInvoked()
-                override fun offlineDatabaseDirectory(): Directory = shouldNotBeInvoked()
+                override fun outputDirectory(): Directory = shouldNotBeInvoked()
                 override fun downloadControlStateDirectory(): Directory = shouldNotBeInvoked()
             }
 
