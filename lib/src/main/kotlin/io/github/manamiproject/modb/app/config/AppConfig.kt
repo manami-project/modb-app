@@ -40,7 +40,7 @@ class AppConfig(
         configRegistry = configRegistry,
     )
 
-    private val offlineDatabaseDirectory: String by StringPropertyDelegate(
+    private val outputDirectory: String by StringPropertyDelegate(
         namespace = CONFIG_NAMESPACE,
         configRegistry = configRegistry,
     )
@@ -86,9 +86,9 @@ class AppConfig(
         return workingDir
     }
 
-    override fun offlineDatabaseDirectory(): Directory {
-        val dir = Path(offlineDatabaseDirectory)
-        check(dir.directoryExists()) { "Output directory set by 'offlineDatabaseDirectory' to [$offlineDatabaseDirectory] doesn't exist or is not a directory." }
+    override fun outputDirectory(): Directory {
+        val dir = Path(outputDirectory)
+        check(dir.directoryExists()) { "Output directory set by 'outputDirectory' to [$outputDirectory] doesn't exist or is not a directory." }
         return dir
     }
 

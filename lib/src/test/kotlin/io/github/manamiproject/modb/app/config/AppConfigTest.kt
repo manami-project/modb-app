@@ -459,26 +459,7 @@ internal class AppConfigTest {
     }
 
     @Nested
-    inner class CompanionObjectTests {
-
-        @Test
-        fun `throws exception if workingdir is an existing regular file`() {
-            tempDirectory {
-                // given
-                val previous = AppConfig.instance
-
-                // when
-                val result = AppConfig.instance
-
-                // then
-                assertThat(result).isExactlyInstanceOf(AppConfig::class.java)
-                assertThat(result===previous).isTrue()
-            }
-        }
-    }
-
-    @Nested
-    inner class OfflineDatabaseDirectoryTests {
+    inner class OutputDirectoryTests {
 
         @Test
         fun `throws an exception if config property directs to a path which doesn't exist`() {
@@ -493,11 +474,11 @@ internal class AppConfigTest {
 
             // when
             val result = exceptionExpected<IllegalStateException> {
-                appConfig.offlineDatabaseDirectory()
+                appConfig.outputDirectory()
             }
 
             // then
-            assertThat(result).hasMessage("Output directory set by 'offlineDatabaseDirectory' to [non-existent] doesn't exist or is not a directory.")
+            assertThat(result).hasMessage("Output directory set by 'outputDirectory' to [non-existent] doesn't exist or is not a directory.")
         }
 
         @Test
@@ -516,11 +497,11 @@ internal class AppConfigTest {
 
                 // when
                 val result = exceptionExpected<IllegalStateException> {
-                    appConfig.offlineDatabaseDirectory()
+                    appConfig.outputDirectory()
                 }
 
                 // then
-                assertThat(result).hasMessageStartingWith("Output directory set by 'offlineDatabaseDirectory' to [")
+                assertThat(result).hasMessageStartingWith("Output directory set by 'outputDirectory' to [")
                 assertThat(result).hasMessageEndingWith("test.txt] doesn't exist or is not a directory.")
             }
         }
@@ -540,7 +521,7 @@ internal class AppConfigTest {
                 )
 
                 // when
-                val result = appConfig.offlineDatabaseDirectory()
+                val result = appConfig.outputDirectory()
 
                 // then
                 assertThat(result).exists()
@@ -617,6 +598,25 @@ internal class AppConfigTest {
                 // then
                 assertThat(result).exists()
                 assertThat(result).isDirectory()
+            }
+        }
+    }
+
+    @Nested
+    inner class CompanionObjectTests {
+
+        @Test
+        fun `throws exception if workingdir is an existing regular file`() {
+            tempDirectory {
+                // given
+                val previous = AppConfig.instance
+
+                // when
+                val result = AppConfig.instance
+
+                // then
+                assertThat(result).isExactlyInstanceOf(AppConfig::class.java)
+                assertThat(result===previous).isTrue()
             }
         }
     }
