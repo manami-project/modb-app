@@ -30,7 +30,7 @@ import kotlin.io.path.createDirectories
  * @param configRegistry Implementation of [ConfigRegistry] used for populating properties. Uses [DefaultConfigRegistry] by default.
  */
 class AppConfig(
-    configRegistry: ConfigRegistry = DefaultConfigRegistry,
+    configRegistry: ConfigRegistry = DefaultConfigRegistry.instance,
 ): Config {
 
     private val weekOfYear = LocalDate.now(clock()).weekOfYear()
