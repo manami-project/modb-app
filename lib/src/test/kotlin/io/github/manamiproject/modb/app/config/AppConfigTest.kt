@@ -606,7 +606,7 @@ internal class AppConfigTest {
     inner class CompanionObjectTests {
 
         @Test
-        fun `throws exception if workingdir is an existing regular file`() {
+        fun `instance property always returns same instance`() {
             tempDirectory {
                 // given
                 val previous = AppConfig.instance
