@@ -11,6 +11,7 @@ modb-myanimelist = "6.1.0"
 modb-notify = "5.1.0"
 modb-test = "1.6.17"
 kover = "0.8.2"
+logback-classic = "1.5.6"
 
 [libraries]
 kotlin-stdlib = { module = "org.jetbrains.kotlin:kotlin-stdlib", version.ref = "kotlin" }
@@ -24,6 +25,7 @@ modb-livechart = { module = "io.github.manamiproject:modb-livechart", version.re
 modb-myanimelist = { module = "io.github.manamiproject:modb-myanimelist", version.ref = "modb-myanimelist" }
 modb-notify = { module = "io.github.manamiproject:modb-notify", version.ref = "modb-notify" }
 modb-test = { module = "io.github.manamiproject:modb-test", version.ref = "modb-test" }
+logback-classic = { module = "ch.qos.logback:logback-classic", version.ref = "logback-classic" }
 
 
 [plugins]

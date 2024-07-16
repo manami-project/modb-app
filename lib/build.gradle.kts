@@ -100,6 +100,7 @@ repositories {
 dependencies {
     implementation(libs.kotlin.stdlib)
     implementation(libs.bundles.modb)
+    implementation(libs.logback.classic)
 
     testImplementation(libs.modb.test)
 }
