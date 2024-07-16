@@ -1,8 +1,11 @@
 package io.github.manamiproject.modb.app
 
+import io.github.manamiproject.modb.app.config.Config
 import io.github.manamiproject.modb.core.config.*
+import io.github.manamiproject.modb.core.extensions.Directory
 import io.github.manamiproject.modb.test.shouldNotBeInvoked
 import java.net.URI
+import java.time.Clock
 import java.time.LocalDate
 import java.time.LocalDateTime
 import java.time.OffsetDateTime
@@ -25,4 +28,15 @@ internal object TestMetaDataProviderConfig: MetaDataProviderConfig {
     override fun buildDataDownloadLink(id: String): URI = shouldNotBeInvoked()
     override fun extractAnimeId(uri: URI): AnimeId = shouldNotBeInvoked()
     override fun fileSuffix(): FileSuffix = shouldNotBeInvoked()
+}
+
+internal object TestAppConfig: Config {
+    override fun isTestContext(): Boolean = true
+    override fun currentWeekWorkingDir(): Directory = shouldNotBeInvoked()
+    override fun workingDir(metaDataProviderConfig: MetaDataProviderConfig): Directory = shouldNotBeInvoked()
+    override fun outputDirectory(): Directory = shouldNotBeInvoked()
+    override fun downloadControlStateDirectory(): Directory = shouldNotBeInvoked()
+    override fun downloadsDirectory(): Directory = shouldNotBeInvoked()
+    override fun metaDataProviderConfigurations(): Set<MetaDataProviderConfig> = shouldNotBeInvoked()
+    override fun clock(): Clock = shouldNotBeInvoked()
 }
