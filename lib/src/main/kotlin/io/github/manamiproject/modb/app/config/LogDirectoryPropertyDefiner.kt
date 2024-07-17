@@ -9,7 +9,7 @@ import io.github.manamiproject.modb.core.config.StringPropertyDelegate
  * Specifies the log directory for logback implementation.
  * Uses a property which can be set using key `modb.app.logFileDirectory`.
  * @since 1.0.0
- * @param appConfig Application specific configuration. Usses [AppConfig] by default.
+ * @param appConfig Application specific configuration. Uses [AppConfig] by default.
  * @param configRegistry Implementation of [ConfigRegistry] used for populating properties. Uses [DefaultConfigRegistry] by default.
  */
 internal class LogDirectoryPropertyDefiner(

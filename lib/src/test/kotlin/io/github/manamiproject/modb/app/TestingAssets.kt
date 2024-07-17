@@ -2,9 +2,12 @@ package io.github.manamiproject.modb.app
 
 import io.github.manamiproject.modb.app.config.Config
 import io.github.manamiproject.modb.core.config.*
+import io.github.manamiproject.modb.core.converter.PathAnimeConverter
 import io.github.manamiproject.modb.core.extensions.Directory
+import io.github.manamiproject.modb.core.models.Anime
 import io.github.manamiproject.modb.test.shouldNotBeInvoked
 import java.net.URI
+import java.nio.file.Path
 import java.time.Clock
 import java.time.LocalDate
 import java.time.LocalDateTime
@@ -39,4 +42,8 @@ internal object TestAppConfig: Config {
     override fun downloadsDirectory(): Directory = shouldNotBeInvoked()
     override fun metaDataProviderConfigurations(): Set<MetaDataProviderConfig> = shouldNotBeInvoked()
     override fun clock(): Clock = shouldNotBeInvoked()
+}
+
+internal object TestPathAnimeConverter: PathAnimeConverter {
+    override suspend fun convert(path: Path): Collection<Anime> = shouldNotBeInvoked()
 }
