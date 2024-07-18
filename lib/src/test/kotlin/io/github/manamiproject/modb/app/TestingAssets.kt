@@ -4,9 +4,14 @@ import io.github.manamiproject.modb.app.config.Config
 import io.github.manamiproject.modb.core.config.*
 import io.github.manamiproject.modb.core.converter.PathAnimeConverter
 import io.github.manamiproject.modb.core.extensions.Directory
+import io.github.manamiproject.modb.core.extensions.RegularFile
 import io.github.manamiproject.modb.core.models.Anime
+import io.github.manamiproject.modb.serde.json.ExternalResourceJsonDeserializer
+import io.github.manamiproject.modb.serde.json.JsonSerializer
+import io.github.manamiproject.modb.serde.json.models.Dataset
 import io.github.manamiproject.modb.test.shouldNotBeInvoked
 import java.net.URI
+import java.net.URL
 import java.nio.file.Path
 import java.time.Clock
 import java.time.LocalDate
@@ -46,4 +51,13 @@ internal object TestAppConfig: Config {
 
 internal object TestPathAnimeConverter: PathAnimeConverter {
     override suspend fun convert(path: Path): Collection<Anime> = shouldNotBeInvoked()
+}
+
+internal object TestExternalResourceJsonDeserializerDataset: ExternalResourceJsonDeserializer<Dataset> {
+    override suspend fun deserialize(url: URL): Dataset = shouldNotBeInvoked()
+    override suspend fun deserialize(file: RegularFile): Dataset = shouldNotBeInvoked()
+}
+
+internal object TestJsonSerializerCollectionAnime: JsonSerializer<Collection<Anime>> {
+    override suspend fun serialize(obj: Collection<Anime>, minify: Boolean): String = shouldNotBeInvoked()
 }
