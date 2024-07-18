@@ -1,6 +1,7 @@
 [versions]
 kotlin = "2.0.0"
 modb-core = "15.0.1"
+modb-serde = "5.2.0"
 modb-anidb = "5.2.0"
 modb-anilist = "6.1.0"
 modb-animeplanet = "5.1.0"
@@ -16,6 +17,7 @@ logback-classic = "1.5.6"
 [libraries]
 kotlin-stdlib = { module = "org.jetbrains.kotlin:kotlin-stdlib", version.ref = "kotlin" }
 modb-core = { module = "io.github.manamiproject:modb-core", version.ref = "modb-core" }
+modb-serde = { module = "io.github.manamiproject:modb-serde", version.ref = "modb-serde" }
 modb-anidb = { module = "io.github.manamiproject:modb-anidb", version.ref = "modb-anidb" }
 modb-anilist = { module = "io.github.manamiproject:modb-anilist", version.ref = "modb-anilist" }
 modb-animeplanet = { module = "io.github.manamiproject:modb-anime-planet", version.ref = "modb-animeplanet" }
@@ -35,6 +37,7 @@ kover = { id = "org.jetbrains.kotlinx.kover", version.ref = "kover" }
 [bundles]
 modb = [
     "modb-core",
+    "modb-serde",
     "modb-anidb",
     "modb-anilist",
     "modb-animeplanet",
