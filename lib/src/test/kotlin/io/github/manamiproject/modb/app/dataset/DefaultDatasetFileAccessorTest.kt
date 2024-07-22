@@ -112,10 +112,10 @@ internal class DefaultDatasetFileAccessorTest {
                 )
 
                 // when
-                val parent = databaseAccess.offlineDatabaseFile(JSON).parent
+                val result = databaseAccess.offlineDatabaseFile(JSON).parent
 
                 // then
-                assertThat(parent).isEqualTo(testAppConfig.outputDirectory())
+                assertThat(result).isEqualTo(testAppConfig.outputDirectory())
             }
         }
 
@@ -134,10 +134,10 @@ internal class DefaultDatasetFileAccessorTest {
                 )
 
                 // when
-                val parent = databaseAccess.offlineDatabaseFile(JSON_MINIFIED).parent
+                val result = databaseAccess.offlineDatabaseFile(JSON_MINIFIED).parent
 
                 // then
-                assertThat(parent).isEqualTo(testAppConfig.outputDirectory())
+                assertThat(result).isEqualTo(testAppConfig.outputDirectory())
             }
         }
 
@@ -156,10 +156,10 @@ internal class DefaultDatasetFileAccessorTest {
                 )
 
                 // when
-                val parent = databaseAccess.offlineDatabaseFile(ZIP).parent
+                val result = databaseAccess.offlineDatabaseFile(ZIP).parent
 
                 // then
-                assertThat(parent).isEqualTo(testAppConfig.outputDirectory())
+                assertThat(result).isEqualTo(testAppConfig.outputDirectory())
             }
         }
 
