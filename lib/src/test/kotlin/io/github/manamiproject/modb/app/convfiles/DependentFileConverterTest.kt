@@ -11,6 +11,7 @@ import io.github.manamiproject.modb.core.converter.PathAnimeConverter
 import io.github.manamiproject.modb.core.extensions.Directory
 import io.github.manamiproject.modb.core.extensions.fileName
 import io.github.manamiproject.modb.core.models.Anime
+import io.github.manamiproject.modb.test.exceptionExpected
 import io.github.manamiproject.modb.test.shouldNotBeInvoked
 import io.github.manamiproject.modb.test.tempDirectory
 import org.assertj.core.api.Assertions.assertThat
@@ -24,6 +25,43 @@ import kotlin.test.Test
 internal class DependentFileConverterTest {
 
     @Nested
+    inner class ConstructorTests {
+
+        @Test
+        fun `throws exception if configurations represent different meta data providers`() {
+            tempDirectory {
+                // given
+                val mainTestConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun fileSuffix(): FileSuffix = "html"
+                    override fun hostname(): Hostname = "main.example.org"
+                }
+
+                val dependentTestConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun fileSuffix(): FileSuffix = "json"
+                    override fun hostname(): Hostname = "dependent.example.org"
+                }
+
+                val testAppConfig = object: Config by TestAppConfig {
+                    override fun workingDir(metaDataProviderConfig: MetaDataProviderConfig): Directory = tempDir
+                }
+
+                // when
+                val result = exceptionExpected<IllegalArgumentException> {
+                    DependentFileConverter(
+                        appConfig = testAppConfig,
+                        dependentMetaDataProciderConfigs = listOf(dependentTestConfig),
+                        metaDataProviderConfig = mainTestConfig,
+                        converter = TestPathAnimeConverter,
+                    )
+                }
+
+                // then
+                assertThat(result).hasMessage("All configs must be from the same meta data provider.")
+            }
+        }
+    }
+
+    @Nested
     inner class ConvertUnconvertedFilesTests {
 
         @Test
@@ -32,7 +70,7 @@ internal class DependentFileConverterTest {
                 // given
                 val mainTestConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun fileSuffix(): FileSuffix = "html"
-                    override fun hostname(): Hostname = "main.example.org"
+                    override fun hostname(): Hostname = "example.org"
                 }
 
                 val mainWorkingDir = tempDir.resolve("main").createDirectory()
@@ -46,7 +84,7 @@ internal class DependentFileConverterTest {
 
                 val dependentTestConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun fileSuffix(): FileSuffix = "json"
-                    override fun hostname(): Hostname = "dependent.example.org"
+                    override fun hostname(): Hostname = "example.org"
                 }
 
                 val dependentWorkingDir = tempDir.resolve("dependent").createDirectory()
@@ -59,9 +97,9 @@ internal class DependentFileConverterTest {
 
                 val testAppConfig = object: Config by TestAppConfig {
                     override fun workingDir(metaDataProviderConfig: MetaDataProviderConfig): Directory {
-                        return when(metaDataProviderConfig.hostname()) {
-                            "main.example.org" -> mainWorkingDir
-                            "dependent.example.org" -> dependentWorkingDir
+                        return when(metaDataProviderConfig.identityHashCode()) {
+                            mainTestConfig.identityHashCode() -> mainWorkingDir
+                            dependentTestConfig.identityHashCode() -> dependentWorkingDir
                             else -> shouldNotBeInvoked()
                         }
                     }
@@ -100,7 +138,7 @@ internal class DependentFileConverterTest {
                 // given
                 val mainTestConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun fileSuffix(): FileSuffix = "html"
-                    override fun hostname(): Hostname = "main.example.org"
+                    override fun hostname(): Hostname = "example.org"
                 }
 
                 val mainWorkingDir = tempDir.resolve("main").createDirectory()
@@ -109,7 +147,7 @@ internal class DependentFileConverterTest {
 
                 val dependentTestConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun fileSuffix(): FileSuffix = "json"
-                    override fun hostname(): Hostname = "dependent.example.org"
+                    override fun hostname(): Hostname = "example.org"
                 }
 
                 val dependentWorkingDir = tempDir.resolve("dependent").createDirectory()
@@ -118,9 +156,9 @@ internal class DependentFileConverterTest {
 
                 val testAppConfig = object: Config by TestAppConfig {
                     override fun workingDir(metaDataProviderConfig: MetaDataProviderConfig): Directory {
-                        return when(metaDataProviderConfig.hostname()) {
-                            "main.example.org" -> mainWorkingDir
-                            "dependent.example.org" -> dependentWorkingDir
+                        return when(metaDataProviderConfig.identityHashCode()) {
+                            mainTestConfig.identityHashCode() -> mainWorkingDir
+                            dependentTestConfig.identityHashCode() -> dependentWorkingDir
                             else -> shouldNotBeInvoked()
                         }
                     }
@@ -152,7 +190,7 @@ internal class DependentFileConverterTest {
                 // given
                 val mainTestConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun fileSuffix(): FileSuffix = "html"
-                    override fun hostname(): Hostname = "main.example.org"
+                    override fun hostname(): Hostname = "example.org"
                 }
 
                 val mainWorkingDir = tempDir.resolve("main").createDirectory()
@@ -161,16 +199,16 @@ internal class DependentFileConverterTest {
 
                 val dependentTestConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun fileSuffix(): FileSuffix = "json"
-                    override fun hostname(): Hostname = "dependent.example.org"
+                    override fun hostname(): Hostname = "example.org"
                 }
 
                 val dependentWorkingDir = tempDir.resolve("dependent").createDirectory()
 
                 val testAppConfig = object: Config by TestAppConfig {
                     override fun workingDir(metaDataProviderConfig: MetaDataProviderConfig): Directory {
-                        return when(metaDataProviderConfig.hostname()) {
-                            "main.example.org" -> mainWorkingDir
-                            "dependent.example.org" -> dependentWorkingDir
+                        return when(metaDataProviderConfig.identityHashCode()) {
+                            mainTestConfig.identityHashCode() -> mainWorkingDir
+                            dependentTestConfig.identityHashCode() -> dependentWorkingDir
                             else -> shouldNotBeInvoked()
                         }
                     }
@@ -198,7 +236,7 @@ internal class DependentFileConverterTest {
                 // given
                 val mainTestConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun fileSuffix(): FileSuffix = "html"
-                    override fun hostname(): Hostname = "main.example.org"
+                    override fun hostname(): Hostname = "example.org"
                 }
 
                 val mainWorkingDir = tempDir.resolve("main").createDirectory()
@@ -207,7 +245,7 @@ internal class DependentFileConverterTest {
 
                 val dependentTestConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun fileSuffix(): FileSuffix = "json"
-                    override fun hostname(): Hostname = "dependent.example.org"
+                    override fun hostname(): Hostname = "example.org"
                 }
 
                 val dependentWorkingDir = tempDir.resolve("dependent").createDirectory()
@@ -216,9 +254,9 @@ internal class DependentFileConverterTest {
 
                 val testAppConfig = object: Config by TestAppConfig {
                     override fun workingDir(metaDataProviderConfig: MetaDataProviderConfig): Directory {
-                        return when(metaDataProviderConfig.hostname()) {
-                            "main.example.org" -> mainWorkingDir
-                            "dependent.example.org" -> dependentWorkingDir
+                        return when(metaDataProviderConfig.identityHashCode()) {
+                            mainTestConfig.identityHashCode() -> mainWorkingDir
+                            dependentTestConfig.identityHashCode() -> dependentWorkingDir
                             else -> shouldNotBeInvoked()
                         }
                     }
