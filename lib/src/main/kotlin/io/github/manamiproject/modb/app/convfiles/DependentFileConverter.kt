@@ -41,10 +41,13 @@ class DependentFileConverter(
     private val workingDirs = mutableMapOf<String, Directory>()
 
     init {
-        setOf(metaDataProviderConfig).union(dependentMetaDataProciderConfigs).forEach {
-            metaDataConfigs[it.id()] = it
-            watchServices[it.id()] = FileSystems.getDefault().newWatchService()
-            workingDirs[it.id()] = appConfig.workingDir(it)
+        val allConfigs = setOf(metaDataProviderConfig).union(dependentMetaDataProciderConfigs)
+        require(allConfigs.map { it.hostname() }.toSet().size == 1) { "All configs must be from the same meta data provider." }
+
+        allConfigs.forEach {
+            metaDataConfigs[it.identityHashCode()] = it
+            watchServices[it.identityHashCode()] = FileSystems.getDefault().newWatchService()
+            workingDirs[it.identityHashCode()] = appConfig.workingDir(it)
         }
     }
 
@@ -102,5 +105,3 @@ class DependentFileConverter(
         private val log by LoggerDelegate()
     }
 }
-
-private fun MetaDataProviderConfig.id() = System.identityHashCode(this).toString()

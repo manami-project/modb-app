@@ -10,13 +10,24 @@ import io.github.manamiproject.modb.serde.json.ExternalResourceJsonDeserializer
 import io.github.manamiproject.modb.serde.json.JsonSerializer
 import io.github.manamiproject.modb.serde.json.models.Dataset
 import io.github.manamiproject.modb.test.shouldNotBeInvoked
+import kotlinx.coroutines.Dispatchers.Unconfined
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.isActive
+import kotlinx.coroutines.withContext
+import kotlinx.coroutines.withTimeout
 import java.net.URI
 import java.net.URL
 import java.nio.file.Path
+import java.nio.file.WatchEvent
+import java.nio.file.WatchKey
+import java.nio.file.Watchable
 import java.time.Clock
 import java.time.LocalDate
 import java.time.LocalDateTime
 import java.time.OffsetDateTime
+import java.util.concurrent.TimeUnit
+import kotlin.time.Duration
+import java.nio.file.WatchService as JavaWatchService
 
 internal object TestConfigRegistry: ConfigRegistry {
     override fun boolean(key: String): Boolean = shouldNotBeInvoked()
@@ -60,4 +71,19 @@ internal object TestExternalResourceJsonDeserializerDataset: ExternalResourceJso
 
 internal object TestJsonSerializerCollectionAnime: JsonSerializer<Collection<Anime>> {
     override suspend fun serialize(obj: Collection<Anime>, minify: Boolean): String = shouldNotBeInvoked()
+}
+
+internal object TestJavaWatchService: JavaWatchService {
+    override fun close() = shouldNotBeInvoked()
+    override fun poll(): WatchKey = shouldNotBeInvoked()
+    override fun poll(timeout: Long, unit: TimeUnit?): WatchKey = shouldNotBeInvoked()
+    override fun take(): WatchKey = shouldNotBeInvoked()
+}
+
+internal object TestWatchKey: WatchKey {
+    override fun isValid(): Boolean = shouldNotBeInvoked()
+    override fun pollEvents(): MutableList<WatchEvent<*>> = shouldNotBeInvoked()
+    override fun reset(): Boolean = shouldNotBeInvoked()
+    override fun cancel() = shouldNotBeInvoked()
+    override fun watchable(): Watchable = shouldNotBeInvoked()
 }
