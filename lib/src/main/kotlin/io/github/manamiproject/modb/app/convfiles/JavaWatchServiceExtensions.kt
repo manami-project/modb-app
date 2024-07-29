@@ -27,7 +27,7 @@ suspend fun JavaWatchService.longPoll(): WatchKey? {
             while (key == null && isActive) {
                 if (delay < 500.toDuration(MILLISECONDS)) delay = delay.plus(100.toDuration(MILLISECONDS))
                 delay(delay)
-                key = watchService.take()
+                key = watchService.poll()
             }
             key
         } catch (e: ClosedWatchServiceException) {

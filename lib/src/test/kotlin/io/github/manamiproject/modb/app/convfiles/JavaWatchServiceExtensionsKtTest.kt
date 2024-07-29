@@ -20,7 +20,7 @@ internal class JavaWatchServiceExtensionsKtTest {
         fun `returns null if ClosedWatchServiceException if thrown`() {
             // given
             val watchService = object: JavaWatchService by TestJavaWatchService {
-                override fun take(): WatchKey = throw ClosedWatchServiceException()
+                override fun poll(): WatchKey = throw ClosedWatchServiceException()
             }
 
             // when
@@ -36,7 +36,7 @@ internal class JavaWatchServiceExtensionsKtTest {
         fun `correctly returns item`() {
             // given
             val watchService = object: JavaWatchService by TestJavaWatchService {
-                override fun take(): WatchKey = TestWatchKey
+                override fun poll(): WatchKey = TestWatchKey
             }
 
             // when
@@ -52,7 +52,7 @@ internal class JavaWatchServiceExtensionsKtTest {
         fun `increases suspension time when waiting for non-null items`() {
             // given
             val noWaitingWatchService = object: JavaWatchService by TestJavaWatchService {
-                override fun take(): WatchKey = TestWatchKey
+                override fun poll(): WatchKey = TestWatchKey
             }
             val timeNoWaiting = runBlocking {
                 measureTimeMillis {
@@ -62,7 +62,7 @@ internal class JavaWatchServiceExtensionsKtTest {
 
             var invocation = 0
             val watchService = object: JavaWatchService by TestJavaWatchService {
-                override fun take(): WatchKey? {
+                override fun poll(): WatchKey? {
                     invocation++
 
                     return if (invocation < 8) {
