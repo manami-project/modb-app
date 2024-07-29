@@ -1,6 +1,6 @@
 [versions]
 kotlin = "2.0.0"
-modb-core = "16.0.0"
+modb-core = "16.0.1"
 modb-serde = "5.2.1"
 modb-anidb = "5.2.1"
 modb-anilist = "6.1.2"
