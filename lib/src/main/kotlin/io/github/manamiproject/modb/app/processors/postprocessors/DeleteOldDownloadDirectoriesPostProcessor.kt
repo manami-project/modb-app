@@ -22,7 +22,7 @@ class DeleteOldDownloadDirectoriesPostProcessor(
         namespace = CONFIG_NAMESPACE,
     )
 
-    override fun process() {
+    override suspend fun process() {
         log.info { "Deleting old download directories." }
 
         val downloadDirectory = appConfig.downloadsDirectory()
