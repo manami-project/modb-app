@@ -104,7 +104,7 @@ internal class AppConfigTest {
     inner class CurrentWeekWorkingDirTests {
 
         @Test
-        fun `correctly generates folder name`() {
+        fun `correctly generates directory name`() {
             tempDirectory {
                 // given
                 val testConfigRegistry = object: ConfigRegistry by TestConfigRegistry {

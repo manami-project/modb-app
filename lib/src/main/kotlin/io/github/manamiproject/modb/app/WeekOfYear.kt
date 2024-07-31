@@ -93,6 +93,11 @@ data class WeekOfYear(
         }
     }
 
+    override fun toString(): String {
+        val zeroBasedWeek = week.takeIf { it > 9 }?.toString() ?: "0$week"
+        return "$year-$zeroBasedWeek"
+    }
+
     companion object {
 
         /**
