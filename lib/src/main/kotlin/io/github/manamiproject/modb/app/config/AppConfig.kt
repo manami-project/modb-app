@@ -99,7 +99,11 @@ class AppConfig(
     }
 
     companion object {
-        private const val CONFIG_NAMESPACE = "modb.app"
+        /**
+         * Namespace under which configuration properties are being placed.
+         * @since 1.0.0
+         */
+        const val CONFIG_NAMESPACE = "modb.app"
 
         /**
          * Singleton of [AppConfig]

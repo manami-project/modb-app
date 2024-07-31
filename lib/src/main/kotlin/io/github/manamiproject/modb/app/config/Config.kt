@@ -81,7 +81,7 @@ interface Config: ContextAware {
     /**
      * Root directory of download control state files.
      * @since 1.0.0
-     * @return Directory which contains folders for all download control state files.
+     * @return Directory which contains subdirectories for all download control state files.
      */
     fun downloadControlStateDirectory(): Directory
 

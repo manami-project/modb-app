@@ -436,6 +436,40 @@ internal class WeekOfYearTest {
     }
 
     @Nested
+    inner class ToStringTests {
+
+        @Test
+        fun `correctly create zero based string`() {
+            // given
+            val weekOfYear = WeekOfYear(
+                year = 2019,
+                week = 2,
+            )
+
+            // when
+            val result = weekOfYear.toString()
+
+            // then
+            assertThat(result).isEqualTo("2019-02")
+        }
+
+        @Test
+        fun `correctly create string with week greater 9`() {
+            // given
+            val weekOfYear = WeekOfYear(
+                year = 2019,
+                week = 12,
+            )
+
+            // when
+            val result = weekOfYear.toString()
+
+            // then
+            assertThat(result).isEqualTo("2019-12")
+        }
+    }
+
+    @Nested
     inner class WeekOfYearExtensionTests {
 
         @Test

@@ -80,7 +80,7 @@ internal class DependentFileConverterTest {
                 mainWorkingDir.resolve("369.${mainTestConfig.fileSuffix()}").createFile()
                 mainWorkingDir.resolve("369.${CONVERTED_FILE_SUFFIX}").createFile()
                 mainWorkingDir.resolve("456.BAK").createFile()
-                mainWorkingDir.resolve("folder").createDirectory()
+                mainWorkingDir.resolve("directory").createDirectory()
 
                 val dependentTestConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun fileSuffix(): FileSuffix = "json"
@@ -93,7 +93,7 @@ internal class DependentFileConverterTest {
                 dependentWorkingDir.resolve("369.${dependentTestConfig.fileSuffix()}").createFile()
                 dependentWorkingDir.resolve("411.${dependentTestConfig.fileSuffix()}").createFile()
                 dependentWorkingDir.resolve("456.BAK").createFile()
-                dependentWorkingDir.resolve("another_folder").createDirectory()
+                dependentWorkingDir.resolve("another_directory").createDirectory()
 
                 val testAppConfig = object: Config by TestAppConfig {
                     override fun workingDir(metaDataProviderConfig: MetaDataProviderConfig): Directory {
