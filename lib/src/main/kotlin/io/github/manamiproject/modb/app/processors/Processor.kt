@@ -10,5 +10,5 @@ interface Processor {
      * Execute processor.
      * @since 1.0.0
      */
-    fun process()
+    suspend fun process()
 }
