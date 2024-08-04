@@ -1,4 +1,4 @@
-package io.github.manamiproject.modb.app
+package io.github.manamiproject.modb.app.downloadcontrolstate
 
 import io.github.manamiproject.modb.core.models.YEAR_OF_THE_FIRST_ANIME
 import io.github.manamiproject.modb.core.models.Year
@@ -23,7 +23,7 @@ typealias Week = Int
 fun LocalDate.weekOfYear(): WeekOfYear = WeekOfYear(this)
 
 /**
- * Represents the
+ * Represents the week of a year.
  * @since 1.0.0
  * @param year Year
  * @param week Week of the year.

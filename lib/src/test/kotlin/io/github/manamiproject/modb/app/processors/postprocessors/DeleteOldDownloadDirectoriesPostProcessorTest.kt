@@ -3,14 +3,17 @@ package io.github.manamiproject.modb.app.processors.postprocessors
 import io.github.manamiproject.modb.app.TestAppConfig
 import io.github.manamiproject.modb.app.TestConfigRegistry
 import io.github.manamiproject.modb.app.config.Config
-import io.github.manamiproject.modb.app.weekOfYear
+import io.github.manamiproject.modb.app.downloadcontrolstate.weekOfYear
 import io.github.manamiproject.modb.core.config.ConfigRegistry
 import io.github.manamiproject.modb.core.extensions.Directory
 import io.github.manamiproject.modb.core.extensions.fileName
 import io.github.manamiproject.modb.core.extensions.writeToFile
+import io.github.manamiproject.modb.test.exceptionExpected
 import io.github.manamiproject.modb.test.tempDirectory
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Nested
+import org.junit.jupiter.params.ParameterizedTest
+import org.junit.jupiter.params.provider.ValueSource
 import java.time.Clock
 import java.time.Instant
 import java.time.LocalDate
@@ -21,6 +24,32 @@ import kotlin.io.path.listDirectoryEntries
 import kotlin.test.Test
 
 internal class DeleteOldDownloadDirectoriesPostProcessorTest {
+
+    @Nested
+    inner class ConstructorTests {
+
+        @ParameterizedTest
+        @ValueSource(longs = [0, -1])
+        fun `throws exception if keepDownloadDirectories is less than 1`(value: Long) {
+            tempDirectory {
+                // given
+                val testConfigRegistry = object: ConfigRegistry by TestConfigRegistry {
+                    override fun long(key: String): Long = value
+                }
+
+                // when
+                val result = exceptionExpected<IllegalArgumentException> {
+                    DeleteOldDownloadDirectoriesPostProcessor(
+                        appConfig = TestAppConfig,
+                        configRegistry = testConfigRegistry,
+                    )
+                }
+
+                // then
+                assertThat(result).hasMessage("Property modb.app.keepDownloadDirectories cannot be less than 1.")
+            }
+        }
+    }
 
     @Nested
     inner class ProcessTests {

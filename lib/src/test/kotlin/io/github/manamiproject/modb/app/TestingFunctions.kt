@@ -1,5 +1,7 @@
 package io.github.manamiproject.modb.app
 
+import io.github.manamiproject.modb.app.downloadcontrolstate.WeekOfYear
+import io.github.manamiproject.modb.app.downloadcontrolstate.weekOfYear
 import kotlinx.coroutines.Dispatchers.Unconfined
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.isActive
@@ -13,4 +15,14 @@ internal suspend fun waitFor(timeout: Duration, action: () -> Boolean) = withCon
             delay(100)
         }
     }
+}
+
+internal fun WeekOfYear.minusWeeks(value: Int): WeekOfYear {
+    val dateOfCurrentWeek = toLocalDate()
+    val newValue = dateOfCurrentWeek.minusWeeks(value.toLong())
+
+    return WeekOfYear(
+        year = newValue.year,
+        week = newValue.weekOfYear().week,
+    )
 }

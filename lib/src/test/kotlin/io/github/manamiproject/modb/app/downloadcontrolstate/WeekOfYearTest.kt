@@ -1,4 +1,4 @@
-package io.github.manamiproject.modb.app
+package io.github.manamiproject.modb.app.downloadcontrolstate
 
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Nested

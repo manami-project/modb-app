@@ -57,6 +57,6 @@ class DefaultDatasetFileAccessor(
          * Singleton of [DefaultDatasetFileAccessor]
          * @since 1.0.0
          */
-        val instance = DefaultDatasetFileAccessor()
+        val instance: DefaultDatasetFileAccessor by lazy { DefaultDatasetFileAccessor() }
     }
 }

@@ -7,7 +7,7 @@ import io.github.manamiproject.modb.anisearch.AnisearchConfig
 import io.github.manamiproject.modb.anisearch.AnisearchRelationsConfig
 import io.github.manamiproject.modb.app.TestConfigRegistry
 import io.github.manamiproject.modb.app.TestMetaDataProviderConfig
-import io.github.manamiproject.modb.app.WeekOfYear
+import io.github.manamiproject.modb.app.downloadcontrolstate.WeekOfYear
 import io.github.manamiproject.modb.core.config.ConfigRegistry
 import io.github.manamiproject.modb.core.config.Hostname
 import io.github.manamiproject.modb.core.config.MetaDataProviderConfig
