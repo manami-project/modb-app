@@ -11,6 +11,14 @@ import io.github.manamiproject.modb.core.extensions.fileName
 import io.github.manamiproject.modb.core.logging.LoggerDelegate
 import kotlin.io.path.listDirectoryEntries
 
+/**
+ * Removes download directories from previous weeks.
+ * The number of directories to keep can be configured using `modb.app.keepDownloadDirectories`. Default is `1` which
+ * means that only the directory from the current week is kept.
+ * @since 1.0.0
+ * @param configRegistry Implementation of [ConfigRegistry] used for populating properties. Uses [DefaultConfigRegistry] by default.
+ * @param appConfig Application specific configuration. Uses [AppConfig] by default.
+ */
 class DeleteOldDownloadDirectoriesPostProcessor(
     configRegistry: ConfigRegistry = DefaultConfigRegistry.instance,
     private val appConfig: Config = AppConfig.instance,
@@ -21,6 +29,10 @@ class DeleteOldDownloadDirectoriesPostProcessor(
         default = 1L,
         namespace = CONFIG_NAMESPACE,
     )
+
+    init {
+        require(keepDownloadDirectories.toInt() >= 1) { "Property modb.app.keepDownloadDirectories cannot be less than 1." }
+    }
 
     override suspend fun process() {
         log.info { "Deleting old download directories." }
@@ -40,7 +52,7 @@ class DeleteOldDownloadDirectoriesPostProcessor(
         val directoriesToRemain = downloadDirectory.takeLast(keepDownloadDirectories.toInt())
 
         downloadDirectory.filterNot { directoriesToRemain.contains(it) }.forEach {
-            log.info { "Deleting [${it.toAbsolutePath()}]" }
+            log.debug { "Deleting [${it.toAbsolutePath()}]" }
             it.toFile().deleteRecursively()
         }
     }
@@ -52,6 +64,6 @@ class DeleteOldDownloadDirectoriesPostProcessor(
          * Singleton of [DeleteOldDownloadDirectoriesPostProcessor]
          * @since 1.0.0
          */
-        val instance = DeleteOldDownloadDirectoriesPostProcessor()
+        val instance: DeleteOldDownloadDirectoriesPostProcessor by lazy { DeleteOldDownloadDirectoriesPostProcessor() }
     }
 }

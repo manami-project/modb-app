@@ -5,7 +5,7 @@ import io.github.manamiproject.modb.anilist.AnilistConfig
 import io.github.manamiproject.modb.animeplanet.AnimePlanetConfig
 import io.github.manamiproject.modb.anisearch.AnisearchConfig
 import io.github.manamiproject.modb.anisearch.AnisearchRelationsConfig
-import io.github.manamiproject.modb.app.weekOfYear
+import io.github.manamiproject.modb.app.downloadcontrolstate.weekOfYear
 import io.github.manamiproject.modb.core.config.ConfigRegistry
 import io.github.manamiproject.modb.core.config.DefaultConfigRegistry
 import io.github.manamiproject.modb.core.config.MetaDataProviderConfig
@@ -109,6 +109,6 @@ class AppConfig(
          * Singleton of [AppConfig]
          * @since 1.0.0
          */
-        val instance = AppConfig()
+        val instance: AppConfig by lazy { AppConfig() }
     }
 }

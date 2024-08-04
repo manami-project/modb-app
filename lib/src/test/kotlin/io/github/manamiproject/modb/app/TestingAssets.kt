@@ -1,6 +1,8 @@
 package io.github.manamiproject.modb.app
 
 import io.github.manamiproject.modb.app.config.Config
+import io.github.manamiproject.modb.app.downloadcontrolstate.DownloadControlStateAccessor
+import io.github.manamiproject.modb.app.downloadcontrolstate.DownloadControlStateEntry
 import io.github.manamiproject.modb.core.config.*
 import io.github.manamiproject.modb.core.converter.PathAnimeConverter
 import io.github.manamiproject.modb.core.extensions.Directory
@@ -86,4 +88,10 @@ internal object TestWatchKey: WatchKey {
     override fun reset(): Boolean = shouldNotBeInvoked()
     override fun cancel() = shouldNotBeInvoked()
     override fun watchable(): Watchable = shouldNotBeInvoked()
+}
+
+internal object TestDownloadControlStateAccessor: DownloadControlStateAccessor {
+    override fun downloadControlStateDirectory(metaDataProviderConfig: MetaDataProviderConfig): Directory = shouldNotBeInvoked()
+    override suspend fun allAnime(): List<Anime> = shouldNotBeInvoked()
+    override suspend fun allDcsEntries(): List<DownloadControlStateEntry> = shouldNotBeInvoked()
 }

@@ -1,0 +1,44 @@
+{
+    "_weeksWihoutChange": 0,
+    "_lastDownloaded": {
+        "year": 2021,
+        "week": 44
+    },
+    "_nextDownload": {
+        "year": 2021,
+        "week": 45
+    },
+    "_anime": {
+        "title": "Shin Seiki Evangelion Movie: THE END OF EVANGELION",
+        "type": "MOVIE",
+        "episodes": 1,
+        "picture": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/32-7YrdcGEX1FP3.png",
+        "thumbnail": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/default.jpg",
+        "status": "FINISHED",
+        "duration": {
+          "value": 87,
+          "unit": "MINUTES"
+        },
+        "animeSeason": {
+          "year": 1997,
+          "season": "UNDEFINED"
+        },
+        "sources": [
+          "https://anilist.co/anime/32"
+        ],
+        "synonyms": [
+          "Neon Genesis Evangelion: The End of Evangelion",
+          "新世紀エヴァンゲリオン劇場版 THE END OF EVANGELION"
+        ],
+        "relatedAnime": [
+          "https://anilist.co/anime/30"
+        ],
+        "tags": [
+          "action",
+          "drama",
+          "mecha",
+          "psychological",
+          "sci-fi"
+        ]
+  }
+}

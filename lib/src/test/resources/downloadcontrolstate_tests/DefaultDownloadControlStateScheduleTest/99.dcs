@@ -1,0 +1,38 @@
+{
+    "_weeksWihoutChange": 0,
+    "_lastDownloaded": {
+        "year": 2021,
+        "week": 2
+    },
+    "_nextDownload": {
+        "year": 2021,
+        "week": 5
+    },
+    "_anime": {
+      "title": "Fruits Basket",
+      "type": "TV",
+      "episodes": 26,
+      "picture": "https://media.kitsu.io/anime/poster_images/99/small.jpg?1474922066",
+      "thumbnail": "https://media.kitsu.io/anime/poster_images/99/tiny.jpg?1474922066",
+      "status": "FINISHED",
+      "duration": {
+        "value": 24,
+        "unit": "MINUTES"
+      },
+      "animeSeason": {
+        "year": 2001,
+        "season": "UNDEFINED"
+      },
+      "sources": [
+        "https://example.org/anime/99"
+      ],
+      "synonyms": [
+        "Furuba",
+        "フルーツバスケット"
+      ],
+      "relatedAnime": [
+        "https://kitsu.io/anime/41995"
+      ],
+      "tags": []
+    }
+}
