@@ -26,32 +26,6 @@ import kotlin.test.Test
 internal class DeleteOldDownloadDirectoriesPostProcessorTest {
 
     @Nested
-    inner class ConstructorTests {
-
-        @ParameterizedTest
-        @ValueSource(longs = [0, -1])
-        fun `throws exception if keepDownloadDirectories is less than 1`(value: Long) {
-            tempDirectory {
-                // given
-                val testConfigRegistry = object: ConfigRegistry by TestConfigRegistry {
-                    override fun long(key: String): Long = value
-                }
-
-                // when
-                val result = exceptionExpected<IllegalArgumentException> {
-                    DeleteOldDownloadDirectoriesPostProcessor(
-                        appConfig = TestAppConfig,
-                        configRegistry = testConfigRegistry,
-                    )
-                }
-
-                // then
-                assertThat(result).hasMessage("Property modb.app.keepDownloadDirectories cannot be less than 1.")
-            }
-        }
-    }
-
-    @Nested
     inner class ProcessTests {
 
         @Test
@@ -80,7 +54,7 @@ internal class DeleteOldDownloadDirectoriesPostProcessorTest {
                 }
 
                 val testConfigRegistry = object: ConfigRegistry by TestConfigRegistry {
-                    override fun long(key: String): Long = 1
+                    override fun int(key: String): Int = 1
                 }
 
                 val preProcessor = DeleteOldDownloadDirectoriesPostProcessor(
@@ -131,7 +105,7 @@ internal class DeleteOldDownloadDirectoriesPostProcessorTest {
                 }
 
                 val testConfigRegistry = object: ConfigRegistry by TestConfigRegistry {
-                    override fun long(key: String): Long = 1
+                    override fun int(key: String): Int = 1
                 }
 
                 val preProcessor = DeleteOldDownloadDirectoriesPostProcessor(
@@ -182,7 +156,7 @@ internal class DeleteOldDownloadDirectoriesPostProcessorTest {
                 }
 
                 val testConfigRegistry = object: ConfigRegistry by TestConfigRegistry {
-                    override fun long(key: String): Long = 3
+                    override fun int(key: String): Int = 3
                 }
 
                 val preProcessor = DeleteOldDownloadDirectoriesPostProcessor(
@@ -203,6 +177,34 @@ internal class DeleteOldDownloadDirectoriesPostProcessorTest {
                     "2019-44",
                     "2019-43",
                 )
+            }
+        }
+
+        @ParameterizedTest
+        @ValueSource(ints = [0, -1])
+        fun `throws exception if keepDownloadDirectories is less than 1`(value: Int) {
+            tempDirectory {
+                // given
+                val testAppConfig = object: Config by TestAppConfig {
+                    override fun downloadsDirectory(): Directory = tempDir
+                }
+
+                val testConfigRegistry = object: ConfigRegistry by TestConfigRegistry {
+                    override fun int(key: String): Int = value
+                }
+
+                val deleteOldDownloadDirectoriesPostProcessor = DeleteOldDownloadDirectoriesPostProcessor(
+                    appConfig = testAppConfig,
+                    configRegistry = testConfigRegistry,
+                )
+
+                // when
+                val result = exceptionExpected<IllegalStateException> {
+                    deleteOldDownloadDirectoriesPostProcessor.process()
+                }
+
+                // then
+                assertThat(result).hasMessage("Value [$value] for property [modb.app.keepDownloadDirectories] is invalid.")
             }
         }
     }

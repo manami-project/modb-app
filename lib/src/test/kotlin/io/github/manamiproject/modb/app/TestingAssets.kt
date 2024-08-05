@@ -3,7 +3,10 @@ package io.github.manamiproject.modb.app
 import io.github.manamiproject.modb.app.config.Config
 import io.github.manamiproject.modb.app.downloadcontrolstate.DownloadControlStateAccessor
 import io.github.manamiproject.modb.app.downloadcontrolstate.DownloadControlStateEntry
-import io.github.manamiproject.modb.core.config.*
+import io.github.manamiproject.modb.core.config.AnimeId
+import io.github.manamiproject.modb.core.config.ConfigRegistry
+import io.github.manamiproject.modb.core.config.FileSuffix
+import io.github.manamiproject.modb.core.config.MetaDataProviderConfig
 import io.github.manamiproject.modb.core.converter.PathAnimeConverter
 import io.github.manamiproject.modb.core.extensions.Directory
 import io.github.manamiproject.modb.core.extensions.RegularFile
@@ -12,11 +15,6 @@ import io.github.manamiproject.modb.serde.json.ExternalResourceJsonDeserializer
 import io.github.manamiproject.modb.serde.json.JsonSerializer
 import io.github.manamiproject.modb.serde.json.models.Dataset
 import io.github.manamiproject.modb.test.shouldNotBeInvoked
-import kotlinx.coroutines.Dispatchers.Unconfined
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.isActive
-import kotlinx.coroutines.withContext
-import kotlinx.coroutines.withTimeout
 import java.net.URI
 import java.net.URL
 import java.nio.file.Path
@@ -28,12 +26,12 @@ import java.time.LocalDate
 import java.time.LocalDateTime
 import java.time.OffsetDateTime
 import java.util.concurrent.TimeUnit
-import kotlin.time.Duration
 import java.nio.file.WatchService as JavaWatchService
 
 internal object TestConfigRegistry: ConfigRegistry {
     override fun boolean(key: String): Boolean = shouldNotBeInvoked()
     override fun double(key: String): Double = shouldNotBeInvoked()
+    override fun int(key: String): Int? = shouldNotBeInvoked()
     override fun <T : Any> list(key: String): List<T> = shouldNotBeInvoked()
     override fun localDate(key: String): LocalDate = shouldNotBeInvoked()
     override fun localDateTime(key: String): LocalDateTime = shouldNotBeInvoked()
