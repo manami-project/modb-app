@@ -5,7 +5,7 @@ import io.github.manamiproject.modb.app.config.AppConfig.Companion.CONFIG_NAMESP
 import io.github.manamiproject.modb.app.config.Config
 import io.github.manamiproject.modb.core.config.ConfigRegistry
 import io.github.manamiproject.modb.core.config.DefaultConfigRegistry
-import io.github.manamiproject.modb.core.config.LongPropertyDelegate
+import io.github.manamiproject.modb.core.config.IntPropertyDelegate
 import io.github.manamiproject.modb.core.extensions.directoryExists
 import io.github.manamiproject.modb.core.extensions.fileName
 import io.github.manamiproject.modb.core.logging.LoggerDelegate
@@ -24,15 +24,12 @@ class DeleteOldDownloadDirectoriesPostProcessor(
     private val appConfig: Config = AppConfig.instance,
 ): PostProcessor {
 
-    private val keepDownloadDirectories: Long by LongPropertyDelegate(
+    private val keepDownloadDirectories: Int by IntPropertyDelegate(
         configRegistry = configRegistry,
-        default = 1L,
+        default = 1,
         namespace = CONFIG_NAMESPACE,
+        validator = { value -> value >= 1 }
     )
-
-    init {
-        require(keepDownloadDirectories.toInt() >= 1) { "Property modb.app.keepDownloadDirectories cannot be less than 1." }
-    }
 
     override suspend fun process() {
         log.info { "Deleting old download directories." }
@@ -44,12 +41,12 @@ class DeleteOldDownloadDirectoriesPostProcessor(
             .sorted()
             .toList()
 
-        if (downloadDirectory.size == keepDownloadDirectories.toInt()) {
+        if (downloadDirectory.size == keepDownloadDirectories) {
             log.info { "Skipping download directories removal, because there are only [${downloadDirectory.size}] directories." }
             return
         }
 
-        val directoriesToRemain = downloadDirectory.takeLast(keepDownloadDirectories.toInt())
+        val directoriesToRemain = downloadDirectory.takeLast(keepDownloadDirectories)
 
         downloadDirectory.filterNot { directoriesToRemain.contains(it) }.forEach {
             log.debug { "Deleting [${it.toAbsolutePath()}]" }
