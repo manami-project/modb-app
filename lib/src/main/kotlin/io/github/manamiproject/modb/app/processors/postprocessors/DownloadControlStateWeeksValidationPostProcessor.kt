@@ -14,7 +14,7 @@ import io.github.manamiproject.modb.core.logging.LoggerDelegate
  * @since 1.0.0
  * @property downloadControlStateAccessor
  */
-class DownloadControlStateWeeksValidator(
+class DownloadControlStateWeeksValidationPostProcessor(
     private val downloadControlStateAccessor: DownloadControlStateAccessor = DefaultDownloadControlStateAccessor.instance,
 ): PostProcessor {
 
@@ -31,9 +31,9 @@ class DownloadControlStateWeeksValidator(
         private val log by LoggerDelegate()
 
         /**
-         * Singleton of [DownloadControlStateWeeksValidator]
+         * Singleton of [DownloadControlStateWeeksValidationPostProcessor]
          * @since 1.0.0
          */
-        val instance: DownloadControlStateWeeksValidator by lazy { DownloadControlStateWeeksValidator() }
+        val instance: DownloadControlStateWeeksValidationPostProcessor by lazy { DownloadControlStateWeeksValidationPostProcessor() }
     }
 }
