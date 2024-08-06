@@ -16,7 +16,7 @@ import org.junit.jupiter.params.provider.ValueSource
 import java.net.URI
 import kotlin.test.Test
 
-internal class DownloadControlStateWeeksValidatorTest {
+internal class DownloadControlStateWeeksValidationPostProcessorTest {
 
     @Nested
     inner class ProcessTests {
@@ -41,7 +41,7 @@ internal class DownloadControlStateWeeksValidatorTest {
                 override suspend fun allDcsEntries(): List<DownloadControlStateEntry> = list
             }
 
-            val downloadControlStateWeeksValidator = DownloadControlStateWeeksValidator(
+            val downloadControlStateWeeksValidator = DownloadControlStateWeeksValidationPostProcessor(
                 downloadControlStateAccessor = testDownloadControlStateAccessor
             )
 
@@ -73,7 +73,7 @@ internal class DownloadControlStateWeeksValidatorTest {
                 override suspend fun allDcsEntries(): List<DownloadControlStateEntry> = list
             }
 
-            val downloadControlStateWeeksValidator = DownloadControlStateWeeksValidator(
+            val downloadControlStateWeeksValidator = DownloadControlStateWeeksValidationPostProcessor(
                 downloadControlStateAccessor = testDownloadControlStateAccessor
             )
 
@@ -107,7 +107,7 @@ internal class DownloadControlStateWeeksValidatorTest {
                     override suspend fun allDcsEntries(): List<DownloadControlStateEntry> = list
                 }
 
-                val downloadControlStateWeeksValidator = DownloadControlStateWeeksValidator(
+                val downloadControlStateWeeksValidator = DownloadControlStateWeeksValidationPostProcessor(
                     downloadControlStateAccessor = testDownloadControlStateAccessor
                 )
 
@@ -127,13 +127,13 @@ internal class DownloadControlStateWeeksValidatorTest {
         fun `instance property always returns same instance`() {
             tempDirectory {
                 // given
-                val previous = DownloadControlStateWeeksValidator.instance
+                val previous = DownloadControlStateWeeksValidationPostProcessor.instance
 
                 // when
-                val result = DownloadControlStateWeeksValidator.instance
+                val result = DownloadControlStateWeeksValidationPostProcessor.instance
 
                 // then
-                assertThat(result).isExactlyInstanceOf(DownloadControlStateWeeksValidator::class.java)
+                assertThat(result).isExactlyInstanceOf(DownloadControlStateWeeksValidationPostProcessor::class.java)
                 assertThat(result===previous).isTrue()
             }
         }
