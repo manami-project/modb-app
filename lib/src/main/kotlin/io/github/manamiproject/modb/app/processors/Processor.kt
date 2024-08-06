@@ -9,6 +9,7 @@ interface Processor {
     /**
      * Execute processor.
      * @since 1.0.0
+     * @return `true` if execution ended successfully.
      */
-    suspend fun process()
+    suspend fun process(): Boolean
 }

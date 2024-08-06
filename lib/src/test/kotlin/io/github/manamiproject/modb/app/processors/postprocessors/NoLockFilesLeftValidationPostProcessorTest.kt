@@ -93,7 +93,7 @@ internal class NoLockFilesLeftValidationPostProcessorTest {
         }
 
         @Test
-        fun `does nothing if there are no lock files`() {
+        fun `returns true if there are no lock files`() {
             tempDirectory {
                 // given
                 val testMetaDataProviderConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
@@ -115,7 +115,10 @@ internal class NoLockFilesLeftValidationPostProcessorTest {
                 )
 
                 // when
-                noLockFilesLeftValidationPostProcessor.process()
+                val result = noLockFilesLeftValidationPostProcessor.process()
+
+                // then
+                assertThat(result).isTrue()
             }
         }
     }

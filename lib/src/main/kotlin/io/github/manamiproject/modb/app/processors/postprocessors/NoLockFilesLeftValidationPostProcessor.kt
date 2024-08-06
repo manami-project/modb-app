@@ -22,7 +22,7 @@ class NoLockFilesLeftValidationPostProcessor(
     private val downloadControlStateAccessor: DownloadControlStateAccessor = DefaultDownloadControlStateAccessor.instance,
 ): PostProcessor {
 
-    override suspend fun process() = withContext(LIMITED_FS) {
+    override suspend fun process(): Boolean = withContext(LIMITED_FS) {
         log.info { "Checking that there are no lock files left." }
 
         val numberOfLockFilesInWorkingDir = appConfig.metaDataProviderConfigurations().map { config ->
@@ -35,6 +35,8 @@ class NoLockFilesLeftValidationPostProcessor(
 
         check(numberOfLockFilesInWorkingDir.none { it > 0 }) { "Lock file found in workingdir." }
         check(numberOfLockFilesInDcsDir.none { it > 0 }) { "Lock file found in dcs dir." }
+
+        return@withContext true
     }
 
     companion object {

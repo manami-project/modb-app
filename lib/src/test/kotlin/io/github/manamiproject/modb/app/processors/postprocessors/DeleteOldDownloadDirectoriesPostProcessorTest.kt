@@ -57,13 +57,13 @@ internal class DeleteOldDownloadDirectoriesPostProcessorTest {
                     override fun int(key: String): Int = 1
                 }
 
-                val preProcessor = DeleteOldDownloadDirectoriesPostProcessor(
+                val deleteOldDownloadDirectoriesPostProcessor = DeleteOldDownloadDirectoriesPostProcessor(
                     appConfig = testAppConfig,
                     configRegistry = testConfigRegistry,
                 )
 
                 // when
-                preProcessor.process()
+                val result = deleteOldDownloadDirectoriesPostProcessor.process()
 
                 // then
                 val files = testAppConfig.downloadsDirectory()
@@ -73,6 +73,7 @@ internal class DeleteOldDownloadDirectoriesPostProcessorTest {
                 assertThat(files).containsExactlyInAnyOrder(
                     "2019-01",
                 )
+                assertThat(result).isTrue()
             }
         }
 
@@ -108,13 +109,13 @@ internal class DeleteOldDownloadDirectoriesPostProcessorTest {
                     override fun int(key: String): Int = 1
                 }
 
-                val preProcessor = DeleteOldDownloadDirectoriesPostProcessor(
+                val deleteOldDownloadDirectoriesPostProcessor = DeleteOldDownloadDirectoriesPostProcessor(
                     appConfig = testAppConfig,
                     configRegistry = testConfigRegistry,
                 )
 
                 // when
-                preProcessor.process()
+                val result = deleteOldDownloadDirectoriesPostProcessor.process()
 
                 // then
                 val files = testAppConfig.downloadsDirectory()
@@ -126,6 +127,7 @@ internal class DeleteOldDownloadDirectoriesPostProcessorTest {
                     "somethingElse",
                     "testfile.txt",
                 )
+                assertThat(result).isTrue()
             }
         }
 
@@ -159,13 +161,13 @@ internal class DeleteOldDownloadDirectoriesPostProcessorTest {
                     override fun int(key: String): Int = 3
                 }
 
-                val preProcessor = DeleteOldDownloadDirectoriesPostProcessor(
+                val deleteOldDownloadDirectoriesPostProcessor = DeleteOldDownloadDirectoriesPostProcessor(
                     appConfig = testAppConfig,
                     configRegistry = testConfigRegistry,
                 )
 
                 // when
-                preProcessor.process()
+                val result = deleteOldDownloadDirectoriesPostProcessor.process()
 
                 // then
                 val files = testAppConfig.downloadsDirectory()
@@ -177,6 +179,7 @@ internal class DeleteOldDownloadDirectoriesPostProcessorTest {
                     "2019-44",
                     "2019-43",
                 )
+                assertThat(result).isTrue()
             }
         }
 
