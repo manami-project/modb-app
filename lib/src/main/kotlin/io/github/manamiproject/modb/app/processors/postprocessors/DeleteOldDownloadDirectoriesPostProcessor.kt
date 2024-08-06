@@ -31,7 +31,7 @@ class DeleteOldDownloadDirectoriesPostProcessor(
         validator = { value -> value >= 1 }
     )
 
-    override suspend fun process() {
+    override suspend fun process(): Boolean {
         log.info { "Deleting old download directories." }
 
         val downloadDirectory = appConfig.downloadsDirectory()
@@ -43,7 +43,7 @@ class DeleteOldDownloadDirectoriesPostProcessor(
 
         if (downloadDirectory.size == keepDownloadDirectories) {
             log.info { "Skipping download directories removal, because there are only [${downloadDirectory.size}] directories." }
-            return
+            return true
         }
 
         val directoriesToRemain = downloadDirectory.takeLast(keepDownloadDirectories)
@@ -52,6 +52,8 @@ class DeleteOldDownloadDirectoriesPostProcessor(
             log.debug { "Deleting [${it.toAbsolutePath()}]" }
             it.toFile().deleteRecursively()
         }
+
+        return true
     }
 
     companion object {

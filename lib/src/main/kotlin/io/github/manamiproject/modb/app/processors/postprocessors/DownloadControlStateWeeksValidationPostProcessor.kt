@@ -12,19 +12,21 @@ import io.github.manamiproject.modb.core.logging.LoggerDelegate
  * [DownloadControlStateEntry._lastDownloaded] is either set to the current week or a week in the past.
  * Supposed to run after updating all DCS entries.
  * @since 1.0.0
- * @property downloadControlStateAccessor
+ * @property downloadControlStateAccessor Access to DCS files.
  */
 class DownloadControlStateWeeksValidationPostProcessor(
     private val downloadControlStateAccessor: DownloadControlStateAccessor = DefaultDownloadControlStateAccessor.instance,
 ): PostProcessor {
 
-    override suspend fun process() {
+    override suspend fun process(): Boolean {
         log.info { "Validating weeks in DCS entries." }
 
         downloadControlStateAccessor.allDcsEntries().forEach {
             check(it.nextDownload > WeekOfYear.currentWeek()) { "Week for next download of [${it.anime.sources.first()}] is not set in the future." }
             check(it.lastDownloaded <= WeekOfYear.currentWeek()) { "Week for last download of [${it.anime.sources.first()}] is neither current week nor a week of the past." }
         }
+
+        return true
     }
 
     companion object {

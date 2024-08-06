@@ -1,6 +1,8 @@
 package io.github.manamiproject.modb.app
 
 import io.github.manamiproject.modb.app.config.Config
+import io.github.manamiproject.modb.app.dataset.DatasetFileAccessor
+import io.github.manamiproject.modb.app.dataset.DatasetFileType
 import io.github.manamiproject.modb.app.downloadcontrolstate.DownloadControlStateAccessor
 import io.github.manamiproject.modb.app.downloadcontrolstate.DownloadControlStateEntry
 import io.github.manamiproject.modb.core.config.AnimeId
@@ -92,4 +94,10 @@ internal object TestDownloadControlStateAccessor: DownloadControlStateAccessor {
     override fun downloadControlStateDirectory(metaDataProviderConfig: MetaDataProviderConfig): Directory = shouldNotBeInvoked()
     override suspend fun allAnime(): List<Anime> = shouldNotBeInvoked()
     override suspend fun allDcsEntries(): List<DownloadControlStateEntry> = shouldNotBeInvoked()
+}
+
+internal object TestDatasetFileAccessor: DatasetFileAccessor {
+    override suspend fun fetchEntries(): List<Anime> = shouldNotBeInvoked()
+    override suspend fun saveEntries(anime: List<Anime>) = shouldNotBeInvoked()
+    override fun offlineDatabaseFile(type: DatasetFileType): RegularFile = shouldNotBeInvoked()
 }

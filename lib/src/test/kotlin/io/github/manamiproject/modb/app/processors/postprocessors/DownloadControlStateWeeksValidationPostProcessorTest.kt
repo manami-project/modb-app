@@ -88,7 +88,7 @@ internal class DownloadControlStateWeeksValidationPostProcessorTest {
 
         @ParameterizedTest
         @ValueSource(ints = [0, 1])
-        fun `does nothing if everything is valid`(numberOfWeeks: Int) {
+        fun `returns true if everything is valid`(numberOfWeeks: Int) {
             runBlocking {
                 // given
                 val list = listOf(
@@ -115,7 +115,7 @@ internal class DownloadControlStateWeeksValidationPostProcessorTest {
                 val result = downloadControlStateWeeksValidator.process()
 
                 // then
-                assertThat(result).isEqualTo(Unit)
+                assertThat(result).isTrue()
             }
         }
     }
