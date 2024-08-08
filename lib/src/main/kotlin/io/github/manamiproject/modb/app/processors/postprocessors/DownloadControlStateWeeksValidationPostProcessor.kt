@@ -13,6 +13,7 @@ import io.github.manamiproject.modb.core.logging.LoggerDelegate
  * Supposed to run after updating all DCS entries.
  * @since 1.0.0
  * @property downloadControlStateAccessor Access to DCS files.
+ * @throws IllegalStateException if there are entries that violate the constraint.
  */
 class DownloadControlStateWeeksValidationPostProcessor(
     private val downloadControlStateAccessor: DownloadControlStateAccessor = DefaultDownloadControlStateAccessor.instance,

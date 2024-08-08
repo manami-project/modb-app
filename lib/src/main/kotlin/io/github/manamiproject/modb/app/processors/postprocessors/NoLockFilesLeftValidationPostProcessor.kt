@@ -16,6 +16,7 @@ import kotlinx.coroutines.withContext
  * @since 1.0.0
  * @property appConfig Application specific configuration. Uses [AppConfig] by default.
  * @property downloadControlStateAccessor Access to DCS files.
+ * @throws IllegalStateException if lock files still exist.
  */
 class NoLockFilesLeftValidationPostProcessor(
     private val appConfig: Config = AppConfig.instance,

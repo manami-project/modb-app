@@ -10,9 +10,11 @@ import io.github.manamiproject.modb.core.logging.LoggerDelegate
 
 /**
  * Checks DCS files and dataset for duplicates.
+ * The class checks whole entries on the level of a whole object as well as sources.
  * @since 1.0.0
  * @property downloadControlStateAccessor Access to DCS files.
  * @property datasetFileAccessor Access to dataset files.
+ * @throws IllegalStateException if duplicates are found.
  */
 class DuplicatesValidationPostProcessor(
     private val downloadControlStateAccessor: DownloadControlStateAccessor = DefaultDownloadControlStateAccessor.instance,
