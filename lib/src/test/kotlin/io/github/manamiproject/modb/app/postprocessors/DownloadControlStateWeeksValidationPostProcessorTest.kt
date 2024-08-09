@@ -1,10 +1,11 @@
-package io.github.manamiproject.modb.app.processors.postprocessors
+package io.github.manamiproject.modb.app.postprocessors
 
 import io.github.manamiproject.modb.app.TestDownloadControlStateAccessor
 import io.github.manamiproject.modb.app.downloadcontrolstate.DownloadControlStateAccessor
 import io.github.manamiproject.modb.app.downloadcontrolstate.DownloadControlStateEntry
 import io.github.manamiproject.modb.app.downloadcontrolstate.WeekOfYear
 import io.github.manamiproject.modb.app.minusWeeks
+import io.github.manamiproject.modb.app.postprocessors.DownloadControlStateWeeksValidationPostProcessor
 import io.github.manamiproject.modb.core.models.Anime
 import io.github.manamiproject.modb.test.exceptionExpected
 import io.github.manamiproject.modb.test.tempDirectory

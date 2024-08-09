@@ -1,9 +1,10 @@
-package io.github.manamiproject.modb.app.processors.postprocessors
+package io.github.manamiproject.modb.app.postprocessors
 
 import io.github.manamiproject.modb.app.TestAppConfig
 import io.github.manamiproject.modb.app.TestConfigRegistry
 import io.github.manamiproject.modb.app.config.Config
 import io.github.manamiproject.modb.app.downloadcontrolstate.weekOfYear
+import io.github.manamiproject.modb.app.postprocessors.DeleteOldDownloadDirectoriesPostProcessor
 import io.github.manamiproject.modb.core.config.ConfigRegistry
 import io.github.manamiproject.modb.core.extensions.Directory
 import io.github.manamiproject.modb.core.extensions.fileName
