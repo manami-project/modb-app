@@ -1,4 +1,4 @@
-package io.github.manamiproject.modb.app.processors.postprocessors
+package io.github.manamiproject.modb.app.postprocessors
 
 import io.github.manamiproject.modb.app.dataset.DatasetFileAccessor
 import io.github.manamiproject.modb.app.dataset.DatasetFileType.*

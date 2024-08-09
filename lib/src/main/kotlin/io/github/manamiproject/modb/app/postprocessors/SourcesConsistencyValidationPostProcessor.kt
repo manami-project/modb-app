@@ -1,4 +1,4 @@
-package io.github.manamiproject.modb.app.processors.postprocessors
+package io.github.manamiproject.modb.app.postprocessors
 
 import io.github.manamiproject.modb.app.config.AppConfig
 import io.github.manamiproject.modb.app.config.Config
