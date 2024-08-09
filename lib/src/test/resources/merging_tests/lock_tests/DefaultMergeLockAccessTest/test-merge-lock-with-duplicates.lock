@@ -1,0 +1,20 @@
+{
+    "mergeLocks":[
+        [
+            "https://anilist.co/anime/15487",
+            "https://kitsu.io/anime/7262",
+            "https://myanimelist.net/anime/15487",
+            "https://notify.moe/anime/WPjdpKiiR"
+        ],
+        [
+            "https://anilist.co/anime/98703",
+            "https://kitsu.io/anime/8717",
+            "https://myanimelist.net/anime/22673",
+            "https://notify.moe/anime/7-PJpFmmR"
+        ],
+        [
+            "https://kitsu.io/anime/7262",
+            "https://myanimelist.net/anime/15487"
+        ]
+    ]
+}
