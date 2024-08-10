@@ -8,7 +8,7 @@
 + Downloading anime with frequent or recent changes more and other anime less reduces the number of downloads per week
 + Every anime is updated at least once per quarter
 
-# What is DCS and how does it work?
+## What is DCS and how does it work?
 
 Download Control State (DCS) is a meta data provider specific tracker for each anime.
 It basically tracks each anime on each meta data provider over time. Based on the changes it orchestrates which
