@@ -1,18 +1,18 @@
 package io.github.manamiproject.modb.app.downloadcontrolstate
 
 import io.github.manamiproject.modb.anilist.AnilistConfig
+import io.github.manamiproject.modb.animeplanet.AnimePlanetConfig
 import io.github.manamiproject.modb.app.TestAppConfig
 import io.github.manamiproject.modb.app.TestMergeLockAccess
 import io.github.manamiproject.modb.app.TestMetaDataProviderConfig
 import io.github.manamiproject.modb.app.config.Config
+import io.github.manamiproject.modb.app.convfiles.CONVERTED_FILE_SUFFIX
 import io.github.manamiproject.modb.app.merging.lock.MergeLockAccess
 import io.github.manamiproject.modb.core.config.AnimeId
+import io.github.manamiproject.modb.core.config.FileSuffix
 import io.github.manamiproject.modb.core.config.Hostname
 import io.github.manamiproject.modb.core.config.MetaDataProviderConfig
-import io.github.manamiproject.modb.core.extensions.Directory
-import io.github.manamiproject.modb.core.extensions.copyTo
-import io.github.manamiproject.modb.core.extensions.fileName
-import io.github.manamiproject.modb.core.extensions.regularFileExists
+import io.github.manamiproject.modb.core.extensions.*
 import io.github.manamiproject.modb.core.models.Anime
 import io.github.manamiproject.modb.core.models.Anime.Status.FINISHED
 import io.github.manamiproject.modb.core.models.Anime.Type.MOVIE
@@ -479,6 +479,242 @@ internal class DefaultDownloadControlStateAccessorTest {
 
                 // then
                 assertThat(hasMergeLockEntryRemovalBeingInvoked).isFalse()
+            }
+        }
+    }
+
+    @Nested
+    inner class ChangeIdTests {
+
+        @Test
+        fun `throws exception if meta data provider is not supported`() {
+            tempDirectory {
+                // given
+                val testMetaDataProviderConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = "example.org"
+                }
+
+                val testAppConfig = object: Config by TestAppConfig {
+                    override fun downloadControlStateDirectory(): Directory = tempDir
+                    override fun canChangeAnimeIds(metaDataProviderConfig: MetaDataProviderConfig): Boolean = false
+                }
+
+                val defaultDownloadControlStateAccessor = DefaultDownloadControlStateAccessor(
+                    appConfig = testAppConfig,
+                    mergeLockAccess = TestMergeLockAccess,
+                )
+
+                // when
+                val result = exceptionExpected<IllegalArgumentException> {
+                    defaultDownloadControlStateAccessor.changeId("test", "newTest", testMetaDataProviderConfig)
+                }
+
+                // then
+                assertThat(result).hasMessage("Called changedId for [example.org] which is not configured as a meta data provider that changes IDs.")
+            }
+        }
+
+        @Test
+        fun `throws exception if the dcs file doesn't exist`() {
+            tempDirectory {
+                // given
+                val testMetaDataProviderConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = "example.org"
+                }
+
+                val testAppConfig = object: Config by TestAppConfig {
+                    override fun downloadControlStateDirectory(): Directory = tempDir
+                    override fun canChangeAnimeIds(metaDataProviderConfig: MetaDataProviderConfig): Boolean = true
+                }
+
+                val defaultDownloadControlStateAccessor = DefaultDownloadControlStateAccessor(
+                    appConfig = testAppConfig,
+                    mergeLockAccess = TestMergeLockAccess,
+                )
+
+                // when
+                val result = exceptionExpected<IllegalStateException> {
+                    defaultDownloadControlStateAccessor.changeId("test", "newTest", testMetaDataProviderConfig)
+                }
+
+                // then
+                assertThat(result).hasMessage("[example.org] file [${tempDir.resolve("test.dcs").fileName()}] doesn't exist.")
+            }
+        }
+
+        @Test
+        fun `successfully renames dcs file`() {
+            tempDirectory {
+                // given
+                val testMetaDataProviderConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = "example.org"
+                    override fun buildAnimeLink(id: AnimeId): URI = super.buildAnimeLink(id)
+                    override fun fileSuffix(): FileSuffix = "html"
+                }
+
+                val workingDir = tempDir.resolve("workingDir").createDirectory()
+
+                val testAppConfig = object: Config by TestAppConfig {
+                    override fun downloadControlStateDirectory(): Directory = tempDir
+                    override fun workingDir(metaDataProviderConfig: MetaDataProviderConfig): Directory = workingDir
+                    override fun canChangeAnimeIds(metaDataProviderConfig: MetaDataProviderConfig): Boolean = true
+                }
+
+                val testMergeLockAccess = object : MergeLockAccess by TestMergeLockAccess {
+                    override suspend fun isPartOfMergeLock(uri: URI): Boolean = false
+                }
+
+                val dcsSubFolder = tempDir.resolve(testMetaDataProviderConfig.hostname()).createDirectory()
+                val oldFile = dcsSubFolder.resolve("previous-id.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
+                val newFile = dcsSubFolder.resolve("new-id.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX")
+
+                val downloadControlStateAccessor = DefaultDownloadControlStateAccessor(
+                    appConfig = testAppConfig,
+                    mergeLockAccess = testMergeLockAccess,
+                )
+
+                // when
+                downloadControlStateAccessor.changeId("previous-id", "new-id", testMetaDataProviderConfig)
+
+                // then
+                assertThat(oldFile.regularFileExists()).isFalse()
+                assertThat(newFile.regularFileExists()).isTrue()
+            }
+        }
+
+        @Test
+        fun `overwrites existing dcs files`() {
+            tempDirectory {
+                // given
+                val testMetaDataProviderConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = "example.org"
+                    override fun buildAnimeLink(id: AnimeId): URI = super.buildAnimeLink(id)
+                    override fun fileSuffix(): FileSuffix = "html"
+                }
+
+                val workingDir = tempDir.resolve("workingDir").createDirectory()
+
+                val testAppConfig = object: Config by TestAppConfig {
+                    override fun downloadControlStateDirectory(): Directory = tempDir
+                    override fun workingDir(metaDataProviderConfig: MetaDataProviderConfig): Directory = workingDir
+                    override fun canChangeAnimeIds(metaDataProviderConfig: MetaDataProviderConfig): Boolean = true
+                }
+
+                val testMergeLockAccess = object : MergeLockAccess by TestMergeLockAccess {
+                    override suspend fun isPartOfMergeLock(uri: URI): Boolean = false
+                }
+
+                val dcsSubFolder = tempDir.resolve(testMetaDataProviderConfig.hostname()).createDirectory()
+                val oldFile = dcsSubFolder.resolve("previous-id.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
+                "override with this".writeToFile(oldFile)
+                val newFile = dcsSubFolder.resolve("new-id.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
+                "to be overwritten".writeToFile(newFile)
+
+                val downloadControlStateAccessor = DefaultDownloadControlStateAccessor(
+                    appConfig = testAppConfig,
+                    mergeLockAccess = testMergeLockAccess,
+                )
+
+                // when
+                downloadControlStateAccessor.changeId("previous-id", "new-id", testMetaDataProviderConfig)
+
+                // then
+                assertThat(oldFile.regularFileExists()).isFalse()
+                assertThat(newFile.regularFileExists()).isTrue()
+                assertThat(newFile.readFile()).isEqualTo("override with this")
+            }
+        }
+
+        @Test
+        fun `calls MergeLockAccess to replace ID in merge lock file`() {
+            tempDirectory {
+                // given
+                val testMetaDataProviderConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = "example.org"
+                    override fun buildAnimeLink(id: AnimeId): URI = super.buildAnimeLink(id)
+                    override fun fileSuffix(): FileSuffix = "html"
+                }
+
+                val workingDir = tempDir.resolve("workingDir").createDirectory()
+
+                val testAppConfig = object: Config by TestAppConfig {
+                    override fun downloadControlStateDirectory(): Directory = tempDir
+                    override fun workingDir(metaDataProviderConfig: MetaDataProviderConfig): Directory = workingDir
+                    override fun canChangeAnimeIds(metaDataProviderConfig: MetaDataProviderConfig): Boolean = true
+                }
+
+                var hasBeenInvoked = false
+                val testMergeLockAccess = object : MergeLockAccess by TestMergeLockAccess {
+                    override suspend fun isPartOfMergeLock(uri: URI): Boolean = true
+                    override suspend fun replaceUri(oldUri: URI, newUri: URI) {
+                        hasBeenInvoked = true
+                    }
+                }
+
+                val dcsSubFolder = tempDir.resolve(testMetaDataProviderConfig.hostname()).createDirectory()
+                dcsSubFolder.resolve("previous-id.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
+                val newFile = dcsSubFolder.resolve("new-id.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX")
+
+                val downloadControlStateAccessor = DefaultDownloadControlStateAccessor(
+                    appConfig = testAppConfig,
+                    mergeLockAccess = testMergeLockAccess,
+                )
+
+                // when
+                downloadControlStateAccessor.changeId("previous-id", "new-id", testMetaDataProviderConfig)
+
+                // then
+                assertThat(newFile.regularFileExists()).isTrue()
+                assertThat(hasBeenInvoked).isTrue()
+            }
+        }
+
+        @Test
+        fun `removes conv file and html source file with old id`() {
+            tempDirectory {
+                // given
+                val testMetaDataProviderConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = "example.org"
+                    override fun buildAnimeLink(id: AnimeId): URI = super.buildAnimeLink(id)
+                    override fun fileSuffix(): FileSuffix = "html"
+                }
+
+                val previousId = "previous-id"
+                val newId = "new-id"
+
+                val workingDir = tempDir.resolve("workingDir").createDirectory()
+                val previousIdConvFile = workingDir.resolve("$previousId.$CONVERTED_FILE_SUFFIX").createFile()
+                val newIdConvFile = workingDir.resolve("$newId.$CONVERTED_FILE_SUFFIX").createFile()
+                val previousIdHtmlFile = workingDir.resolve("$previousId.${testMetaDataProviderConfig.fileSuffix()}").createFile()
+                val newIdHtmlFile = workingDir.resolve("$newId.${testMetaDataProviderConfig.fileSuffix()}").createFile()
+
+                val testAppConfig = object: Config by TestAppConfig {
+                    override fun downloadControlStateDirectory(): Directory = tempDir
+                    override fun workingDir(metaDataProviderConfig: MetaDataProviderConfig): Directory = workingDir
+                    override fun canChangeAnimeIds(metaDataProviderConfig: MetaDataProviderConfig): Boolean = true
+                }
+
+                val testMergeLockAccess = object : MergeLockAccess by TestMergeLockAccess {
+                    override suspend fun isPartOfMergeLock(uri: URI): Boolean = false
+                }
+
+                val dcsSubFolder = tempDir.resolve(testMetaDataProviderConfig.hostname()).createDirectory()
+                dcsSubFolder.resolve("$previousId.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
+                dcsSubFolder.resolve("$newId.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX")
+
+                val downloadControlStateAccessor = DefaultDownloadControlStateAccessor(
+                    appConfig = testAppConfig,
+                    mergeLockAccess = testMergeLockAccess,
+                )
+
+                // when
+                downloadControlStateAccessor.changeId(previousId, newId, testMetaDataProviderConfig)
+
+                // then
+                assertThat(previousIdConvFile.regularFileExists()).isFalse()
+                assertThat(newIdConvFile.regularFileExists()).isTrue()
+                assertThat(previousIdHtmlFile.regularFileExists()).isFalse()
+                assertThat(newIdHtmlFile.regularFileExists()).isTrue()
             }
         }
     }

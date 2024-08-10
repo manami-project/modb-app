@@ -62,6 +62,7 @@ internal object TestAppConfig: Config {
     override fun downloadsDirectory(): Directory = shouldNotBeInvoked()
     override fun metaDataProviderConfigurations(): Set<MetaDataProviderConfig> = shouldNotBeInvoked()
     override fun clock(): Clock = shouldNotBeInvoked()
+    override fun canChangeAnimeIds(metaDataProviderConfig: MetaDataProviderConfig): Boolean = shouldNotBeInvoked()
 }
 
 internal object TestPathAnimeConverter: PathAnimeConverter {
@@ -97,6 +98,7 @@ internal object TestDownloadControlStateAccessor: DownloadControlStateAccessor {
     override suspend fun allAnime(): List<Anime> = shouldNotBeInvoked()
     override suspend fun allDcsEntries(): List<DownloadControlStateEntry> = shouldNotBeInvoked()
     override suspend fun removeDeadEntry(id: AnimeId, metaDataProviderConfig: MetaDataProviderConfig) = shouldNotBeInvoked()
+    override suspend fun changeId(oldId: AnimeId, newId: AnimeId, metaDataProviderConfig: MetaDataProviderConfig): RegularFile = shouldNotBeInvoked()
 }
 
 internal object TestDatasetFileAccessor: DatasetFileAccessor {

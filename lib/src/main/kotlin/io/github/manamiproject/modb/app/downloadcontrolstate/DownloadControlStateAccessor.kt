@@ -2,7 +2,10 @@ package io.github.manamiproject.modb.app.downloadcontrolstate
 
 import io.github.manamiproject.modb.core.config.AnimeId
 import io.github.manamiproject.modb.core.config.MetaDataProviderConfig
+import io.github.manamiproject.modb.app.config.Config
+import io.github.manamiproject.modb.app.merging.lock.MergeLockAccess
 import io.github.manamiproject.modb.core.extensions.Directory
+import io.github.manamiproject.modb.core.extensions.RegularFile
 import io.github.manamiproject.modb.core.models.Anime
 
 /**
@@ -20,7 +23,7 @@ interface DownloadControlStateAccessor {
     /**
      * Retrieve the meta data provider specific DCS file directory.
      * @since 1.0.0
-     * @param metaDataProviderConfig
+     * @param metaDataProviderConfig Configuration for a specific meta data provider.
      * @return Direcory in which the DCS files are stored for the given [metaDataProviderConfig].
      */
     fun downloadControlStateDirectory(metaDataProviderConfig: MetaDataProviderConfig): Directory
@@ -44,6 +47,19 @@ interface DownloadControlStateAccessor {
      * @since 1.0.0
      * @param id Id of the anime as defined by the meta data provider.
      * @param metaDataProviderConfig Configuration for a specific meta data provider.
+     * @see MergeLockAccess.removeEntry
      */
     suspend fun removeDeadEntry(id: AnimeId, metaDataProviderConfig: MetaDataProviderConfig)
+
+    /**
+     * Handles everything that needs to be done if an anime has changed its ID.
+     * @since 1.0.0
+     * @param oldId ID which has been used so far to identify the anime.
+     * @param newId New ID which is used by the meta data provider.
+     * @param metaDataProviderConfig Configuration for a specific meta data provider.
+     * @return Instance of the DCS file with the new ID.
+     * @see Config.canChangeAnimeIds
+     * @see MergeLockAccess.replaceUri
+     */
+    suspend fun changeId(oldId: AnimeId, newId: AnimeId, metaDataProviderConfig: MetaDataProviderConfig): RegularFile
 }
