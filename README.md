@@ -3,7 +3,10 @@
 
 ## Documentation
 
-+ [Download Control State (DCS)](docs/dcs.md)
+* Downloading
+  * [Download Control State (DCS)](docs/dcs.md)
+* Merging
+  * [Merge locks](docs/merge_locks.md) 
 
 ## Configuration
 
