@@ -50,7 +50,7 @@ internal class DefaultMergeLockAccessTest {
                     override fun downloadControlStateDirectory(): Directory = tempDir
                 }
 
-                testResource("merging_tests/lock_tests/DefaultMergeLockAccessTest/empty-merge.lock")
+                testResource("merging/lock/DefaultMergeLockAccessTest/empty-merge.lock")
                     .copyTo(testAppConfig.downloadControlStateDirectory().resolve("merge.lock"))
 
                 val mergeLockLookup = URI("https://myanimelist.net/anime/1535")
@@ -76,7 +76,7 @@ internal class DefaultMergeLockAccessTest {
                     override fun downloadControlStateDirectory(): Directory = tempDir
                 }
 
-                testResource("merging_tests/lock_tests/DefaultMergeLockAccessTest/test-merge.lock")
+                testResource("merging/lock/DefaultMergeLockAccessTest/test-merge.lock")
                     .copyTo(testAppConfig.downloadControlStateDirectory().resolve("merge.lock"))
 
                 val mergeLockLookup = URI("https://myanimelist.net/anime/15487")
@@ -103,7 +103,7 @@ internal class DefaultMergeLockAccessTest {
                     override fun downloadControlStateDirectory(): Directory = tempDir
                 }
 
-                testResource("merging_tests/lock_tests/DefaultMergeLockAccessTest/test-merge.lock")
+                testResource("merging/lock/DefaultMergeLockAccessTest/test-merge.lock")
                     .copyTo(testAppConfig.downloadControlStateDirectory().resolve("merge.lock"))
 
                 val mergeLockLookup = URI("https://myanimelist.net/anime/1535")
@@ -182,7 +182,7 @@ internal class DefaultMergeLockAccessTest {
                     override fun downloadControlStateDirectory(): Directory = tempDir
                 }
 
-                testResource("merging_tests/lock_tests/DefaultMergeLockAccessTest/empty-merge.lock")
+                testResource("merging/lock/DefaultMergeLockAccessTest/empty-merge.lock")
                     .copyTo(testAppConfig.downloadControlStateDirectory().resolve("merge.lock"))
 
                 val defaultMergeLockAccess = DefaultMergeLockAccess(
@@ -233,7 +233,7 @@ internal class DefaultMergeLockAccessTest {
                     override fun downloadControlStateDirectory(): Directory = tempDir
                 }
 
-                testResource("merging_tests/lock_tests/DefaultMergeLockAccessTest/test-merge.lock")
+                testResource("merging/lock/DefaultMergeLockAccessTest/test-merge.lock")
                     .copyTo(testAppConfig.downloadControlStateDirectory().resolve("merge.lock"))
 
                 val expectedMergeLock1 = listOf(
@@ -311,7 +311,7 @@ internal class DefaultMergeLockAccessTest {
                     override fun downloadControlStateDirectory(): Directory = tempDir
                 }
 
-                testResource("merging_tests/lock_tests/DefaultMergeLockAccessTest/empty-merge.lock")
+                testResource("merging/lock/DefaultMergeLockAccessTest/empty-merge.lock")
                     .copyTo(testAppConfig.downloadControlStateDirectory().resolve("merge.lock"))
 
                 val defaultMergeLockAccess = DefaultMergeLockAccess(
@@ -363,7 +363,7 @@ internal class DefaultMergeLockAccessTest {
                     override fun downloadControlStateDirectory(): Directory = tempDir
                 }
 
-                testResource("merging_tests/lock_tests/DefaultMergeLockAccessTest/test-merge.lock")
+                testResource("merging/lock/DefaultMergeLockAccessTest/test-merge.lock")
                     .copyTo(testAppConfig.downloadControlStateDirectory().resolve("merge.lock"))
 
                 val defaultMergeLockAccess = DefaultMergeLockAccess(
@@ -422,7 +422,7 @@ internal class DefaultMergeLockAccessTest {
                     override fun downloadControlStateDirectory(): Directory = tempDir
                 }
 
-                testResource("merging_tests/lock_tests/DefaultMergeLockAccessTest/empty-merge.lock")
+                testResource("merging/lock/DefaultMergeLockAccessTest/empty-merge.lock")
                     .copyTo(testAppConfig.downloadControlStateDirectory().resolve("merge.lock"))
 
                 val mergeLockLookup = setOf(URI("https://myanimelist.net/anime/1535"))
@@ -448,7 +448,7 @@ internal class DefaultMergeLockAccessTest {
                     override fun downloadControlStateDirectory(): Directory = tempDir
                 }
 
-                testResource("merging_tests/lock_tests/DefaultMergeLockAccessTest/test-merge.lock")
+                testResource("merging/lock/DefaultMergeLockAccessTest/test-merge.lock")
                     .copyTo(testAppConfig.downloadControlStateDirectory().resolve("merge.lock"))
 
                 val mergeLockLookup = setOf(URI("https://myanimelist.net/anime/15487"))
@@ -473,7 +473,7 @@ internal class DefaultMergeLockAccessTest {
                     override fun downloadControlStateDirectory(): Directory = tempDir
                 }
 
-                testResource("merging_tests/lock_tests/DefaultMergeLockAccessTest/test-merge.lock")
+                testResource("merging/lock/DefaultMergeLockAccessTest/test-merge.lock")
                     .copyTo(testAppConfig.downloadControlStateDirectory().resolve("merge.lock"))
 
                 val mergeLockLookup = setOf(URI("https://myanimelist.net/anime/1535"))
@@ -527,7 +527,7 @@ internal class DefaultMergeLockAccessTest {
                     override fun downloadControlStateDirectory(): Directory = tempDir
                 }
 
-                testResource("merging_tests/lock_tests/DefaultMergeLockAccessTest/empty-merge.lock")
+                testResource("merging/lock/DefaultMergeLockAccessTest/empty-merge.lock")
                     .copyTo(testAppConfig.downloadControlStateDirectory().resolve("merge.lock"))
 
                 val defaultMergeLockAccess = DefaultMergeLockAccess(
@@ -559,7 +559,7 @@ internal class DefaultMergeLockAccessTest {
                     override fun downloadControlStateDirectory(): Directory = tempDir
                 }
 
-                testResource("merging_tests/lock_tests/DefaultMergeLockAccessTest/test-merge.lock")
+                testResource("merging/lock/DefaultMergeLockAccessTest/test-merge.lock")
                     .copyTo(testAppConfig.downloadControlStateDirectory().resolve("merge.lock"))
 
                 val mergeLockLookup = setOf(
@@ -589,7 +589,7 @@ internal class DefaultMergeLockAccessTest {
                     override fun downloadControlStateDirectory(): Directory = tempDir
                 }
 
-                testResource("merging_tests/lock_tests/DefaultMergeLockAccessTest/test-merge.lock")
+                testResource("merging/lock/DefaultMergeLockAccessTest/test-merge.lock")
                     .copyTo(testAppConfig.downloadControlStateDirectory().resolve("merge.lock"))
 
                 val mergeLockLookup = setOf(
@@ -617,7 +617,7 @@ internal class DefaultMergeLockAccessTest {
                     override fun downloadControlStateDirectory(): Directory = tempDir
                 }
 
-                testResource("merging_tests/lock_tests/DefaultMergeLockAccessTest/test-merge.lock")
+                testResource("merging/lock/DefaultMergeLockAccessTest/test-merge.lock")
                     .copyTo(testAppConfig.downloadControlStateDirectory().resolve("merge.lock"))
 
                 val mergeLockLookup = setOf(
@@ -681,7 +681,7 @@ internal class DefaultMergeLockAccessTest {
                     override fun downloadControlStateDirectory(): Directory = tempDir
                 }
 
-                val testMergeLockFile = testResource("merging_tests/lock_tests/DefaultMergeLockAccessTest/test-merge.lock")
+                val testMergeLockFile = testResource("merging/lock/DefaultMergeLockAccessTest/test-merge.lock")
                     .copyTo(testAppConfig.downloadControlStateDirectory().resolve("merge.lock"))
 
                 val defaultMergeLockAccess = DefaultMergeLockAccess(
@@ -692,7 +692,7 @@ internal class DefaultMergeLockAccessTest {
                 defaultMergeLockAccess.addMergeLock(emptySet())
 
                 // then
-                val expectedFile = loadTestResource<String>("merging_tests/lock_tests/DefaultMergeLockAccessTest/test-merge.lock")
+                val expectedFile = loadTestResource<String>("merging/lock/DefaultMergeLockAccessTest/test-merge.lock")
 
                 assertThat(testMergeLockFile.readFile()).isEqualTo(expectedFile)
             }
@@ -706,7 +706,7 @@ internal class DefaultMergeLockAccessTest {
                     override fun downloadControlStateDirectory(): Directory = tempDir
                 }
 
-                val testMergeLockFile = testResource("merging_tests/lock_tests/DefaultMergeLockAccessTest/test-merge.lock")
+                val testMergeLockFile = testResource("merging/lock/DefaultMergeLockAccessTest/test-merge.lock")
                     .copyTo(testAppConfig.downloadControlStateDirectory().resolve("merge.lock"))
 
                 val defaultMergeLockAccess = DefaultMergeLockAccess(
@@ -725,7 +725,7 @@ internal class DefaultMergeLockAccessTest {
                 defaultMergeLockAccess.addMergeLock(newMergeLockEntry)
 
                 // then
-                val expectedFile = loadTestResource<String>("merging_tests/lock_tests/DefaultMergeLockAccessTest/expected_file_after_adding_an_entry.lock")
+                val expectedFile = loadTestResource<String>("merging/lock/DefaultMergeLockAccessTest/expected_file_after_adding_an_entry.lock")
 
                 assertThat(defaultMergeLockAccess.hasMergeLock(newMergeLockEntry)).isTrue()
                 assertThat(testMergeLockFile.readFile()).isEqualTo(expectedFile)
@@ -740,7 +740,7 @@ internal class DefaultMergeLockAccessTest {
                     override fun downloadControlStateDirectory(): Directory = tempDir
                 }
 
-                val testMergeLockFile = testResource("merging_tests/lock_tests/DefaultMergeLockAccessTest/test-merge.lock")
+                val testMergeLockFile = testResource("merging/lock/DefaultMergeLockAccessTest/test-merge.lock")
                     .copyTo(testAppConfig.downloadControlStateDirectory().resolve("merge.lock"))
 
                 val defaultMergeLockAccess = DefaultMergeLockAccess(
@@ -760,7 +760,7 @@ internal class DefaultMergeLockAccessTest {
                 defaultMergeLockAccess.addMergeLock(newMergeLockEntry)
 
                 // then
-                val expectedFile = loadTestResource<String>("merging_tests/lock_tests/DefaultMergeLockAccessTest/expected_file_after_adding_an_entry.lock")
+                val expectedFile = loadTestResource<String>("merging/lock/DefaultMergeLockAccessTest/expected_file_after_adding_an_entry.lock")
 
                 assertThat(testMergeLockFile.readFile()).isEqualTo(expectedFile)
             }
@@ -774,7 +774,7 @@ internal class DefaultMergeLockAccessTest {
                     override fun downloadControlStateDirectory(): Directory = tempDir
                 }
 
-                testResource("merging_tests/lock_tests/DefaultMergeLockAccessTest/test-merge.lock")
+                testResource("merging/lock/DefaultMergeLockAccessTest/test-merge.lock")
                     .copyTo(testAppConfig.downloadControlStateDirectory().resolve("merge.lock"))
 
                 val defaultMergeLockAccess = DefaultMergeLockAccess(
@@ -836,7 +836,7 @@ internal class DefaultMergeLockAccessTest {
                 defaultMergeLockAccess.addMergeLock(three)
 
                 // then
-                val expectedFile = loadTestResource<String>("merging_tests/lock_tests/DefaultMergeLockAccessTest/expected_file_after_adding_an_entry.lock")
+                val expectedFile = loadTestResource<String>("merging/lock/DefaultMergeLockAccessTest/expected_file_after_adding_an_entry.lock")
                 assertThat(testAppConfig.downloadControlStateDirectory().resolve("merge.lock").readFile()).isEqualTo(expectedFile)
             }
         }
@@ -882,7 +882,7 @@ internal class DefaultMergeLockAccessTest {
                     override fun downloadControlStateDirectory(): Directory = tempDir
                 }
 
-                val testMergeLockFile = testResource("merging_tests/lock_tests/DefaultMergeLockAccessTest/test-merge.lock")
+                val testMergeLockFile = testResource("merging/lock/DefaultMergeLockAccessTest/test-merge.lock")
                     .copyTo(testAppConfig.downloadControlStateDirectory().resolve("merge.lock"))
 
                 val defaultMergeLockAccess = DefaultMergeLockAccess(
@@ -896,7 +896,7 @@ internal class DefaultMergeLockAccessTest {
                 defaultMergeLockAccess.replaceUri(oldUri, newUri)
 
                 // then
-                val expectedFile = loadTestResource<String>("merging_tests/lock_tests/DefaultMergeLockAccessTest/test-merge.lock")
+                val expectedFile = loadTestResource<String>("merging/lock/DefaultMergeLockAccessTest/test-merge.lock")
 
                 assertThat(testMergeLockFile.readFile()).isEqualTo(expectedFile)
             }
@@ -1030,7 +1030,7 @@ internal class DefaultMergeLockAccessTest {
                     override fun downloadControlStateDirectory(): Directory = tempDir
                 }
 
-                val testMergeLockFile = testResource("merging_tests/lock_tests/DefaultMergeLockAccessTest/test-merge.lock")
+                val testMergeLockFile = testResource("merging/lock/DefaultMergeLockAccessTest/test-merge.lock")
                     .copyTo(testAppConfig.downloadControlStateDirectory().resolve("merge.lock"))
 
                 val defaultMergeLockAccess = DefaultMergeLockAccess(
@@ -1043,7 +1043,7 @@ internal class DefaultMergeLockAccessTest {
                 defaultMergeLockAccess.removeEntry(testEntry)
 
                 // then
-                val expectedFile = loadTestResource<String>("merging_tests/lock_tests/DefaultMergeLockAccessTest/test-merge.lock")
+                val expectedFile = loadTestResource<String>("merging/lock/DefaultMergeLockAccessTest/test-merge.lock")
 
                 assertThat(testMergeLockFile.readFile()).isEqualTo(expectedFile)
             }
@@ -1172,7 +1172,7 @@ internal class DefaultMergeLockAccessTest {
                     override fun downloadControlStateDirectory(): Directory = tempDir
                 }
 
-                testResource("merging_tests/lock_tests/DefaultMergeLockAccessTest/test-merge-lock-with-duplicates.lock")
+                testResource("merging/lock/DefaultMergeLockAccessTest/test-merge-lock-with-duplicates.lock")
                     .copyTo(testAppConfig.downloadControlStateDirectory().resolve("merge.lock"))
 
                 val defaultMergeLockAccess = DefaultMergeLockAccess(

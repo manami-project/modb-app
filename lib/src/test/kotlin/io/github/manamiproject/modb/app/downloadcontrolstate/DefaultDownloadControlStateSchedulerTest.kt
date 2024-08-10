@@ -41,10 +41,10 @@ internal class DefaultDownloadControlStateSchedulerTest {
                 }
 
                 val metaDataProviderDir = tempDir.resolve(testConfig.hostname()).createDirectory()
-                testResource("downloadcontrolstate_tests/DefaultDownloadControlStateScheduleTest/32.dcs").copyTo(
+                testResource("downloadcontrolstate/DefaultDownloadControlStateScheduleTest/32.dcs").copyTo(
                     tempDir.resolve(testConfig.hostname()).resolve("32.dcs")
                 )
-                testResource("downloadcontrolstate_tests/DefaultDownloadControlStateScheduleTest/99.dcs").copyTo(
+                testResource("downloadcontrolstate/DefaultDownloadControlStateScheduleTest/99.dcs").copyTo(
                     tempDir.resolve(testConfig.hostname()).resolve("99.dcs")
                 )
 
@@ -85,10 +85,10 @@ internal class DefaultDownloadControlStateSchedulerTest {
                 }
 
                 val metaDataProviderDir = tempDir.resolve(testConfig.hostname()).createDirectory()
-                testResource("downloadcontrolstate_tests/DefaultDownloadControlStateScheduleTest/32.dcs").copyTo(
+                testResource("downloadcontrolstate/DefaultDownloadControlStateScheduleTest/32.dcs").copyTo(
                     tempDir.resolve(testConfig.hostname()).resolve("32.dcs")
                 )
-                testResource("downloadcontrolstate_tests/DefaultDownloadControlStateScheduleTest/99.dcs").copyTo(
+                testResource("downloadcontrolstate/DefaultDownloadControlStateScheduleTest/99.dcs").copyTo(
                     tempDir.resolve(testConfig.hostname()).resolve("99.dcs")
                 )
 
