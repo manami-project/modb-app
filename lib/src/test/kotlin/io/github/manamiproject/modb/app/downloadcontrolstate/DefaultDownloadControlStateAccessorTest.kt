@@ -107,7 +107,7 @@ internal class DefaultDownloadControlStateAccessorTest {
             tempDirectory {
                 // given
                 val dir = tempDir.resolve(AnilistConfig.hostname()).createDirectory()
-                testResource("downloadcontrolstate_tests/DefaultDownloadControlStateAccessorTest/ids_dont_match/10294.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").copyTo(dir)
+                testResource("downloadcontrolstate/DefaultDownloadControlStateAccessorTest/ids_dont_match/10294.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").copyTo(dir)
 
                 val testAppConfig = object: Config by TestAppConfig {
                     override fun metaDataProviderConfigurations(): Set<MetaDataProviderConfig> = setOf(AnilistConfig)
@@ -133,10 +133,10 @@ internal class DefaultDownloadControlStateAccessorTest {
             tempDirectory {
                 // given
                 val dir1 = tempDir.resolve(AnilistConfig.hostname()).createDirectory()
-                testResource("downloadcontrolstate_tests/DefaultDownloadControlStateAccessorTest/success/32.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").copyTo(dir1)
+                testResource("downloadcontrolstate/DefaultDownloadControlStateAccessorTest/success/32.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").copyTo(dir1)
 
                 val dir2 = tempDir.resolve(KitsuConfig.hostname()).createDirectory()
-                testResource("downloadcontrolstate_tests/DefaultDownloadControlStateAccessorTest/success/99.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").copyTo(dir2)
+                testResource("downloadcontrolstate/DefaultDownloadControlStateAccessorTest/success/99.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").copyTo(dir2)
 
                 val testAppConfig = object: Config by TestAppConfig {
                     override fun metaDataProviderConfigurations(): Set<MetaDataProviderConfig> = setOf(AnilistConfig, KitsuConfig)
@@ -224,7 +224,7 @@ internal class DefaultDownloadControlStateAccessorTest {
             tempDirectory {
                 // given
                 val dir = tempDir.resolve(AnilistConfig.hostname()).createDirectory()
-                testResource("downloadcontrolstate_tests/DefaultDownloadControlStateAccessorTest/ids_dont_match/10294.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").copyTo(dir)
+                testResource("downloadcontrolstate/DefaultDownloadControlStateAccessorTest/ids_dont_match/10294.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").copyTo(dir)
 
                 val testAppConfig = object: Config by TestAppConfig {
                     override fun metaDataProviderConfigurations(): Set<MetaDataProviderConfig> = setOf(AnilistConfig)
@@ -250,11 +250,11 @@ internal class DefaultDownloadControlStateAccessorTest {
             tempDirectory {
                 // given
                 val dir1 = tempDir.resolve(AnilistConfig.hostname()).createDirectory()
-                testResource("downloadcontrolstate_tests/DefaultDownloadControlStateAccessorTest/success/32.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").copyTo(dir1)
+                testResource("downloadcontrolstate/DefaultDownloadControlStateAccessorTest/success/32.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").copyTo(dir1)
 
 
                 val dir2 = tempDir.resolve(KitsuConfig.hostname()).createDirectory()
-                testResource("downloadcontrolstate_tests/DefaultDownloadControlStateAccessorTest/success/99.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").copyTo(dir2)
+                testResource("downloadcontrolstate/DefaultDownloadControlStateAccessorTest/success/99.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").copyTo(dir2)
 
                 val testAppConfig = object: Config by TestAppConfig {
                     override fun metaDataProviderConfigurations(): Set<MetaDataProviderConfig> = setOf(AnilistConfig, KitsuConfig)
