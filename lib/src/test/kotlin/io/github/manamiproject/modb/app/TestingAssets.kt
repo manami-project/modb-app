@@ -5,6 +5,8 @@ import io.github.manamiproject.modb.app.dataset.DatasetFileAccessor
 import io.github.manamiproject.modb.app.dataset.DatasetFileType
 import io.github.manamiproject.modb.app.downloadcontrolstate.DownloadControlStateAccessor
 import io.github.manamiproject.modb.app.downloadcontrolstate.DownloadControlStateEntry
+import io.github.manamiproject.modb.app.merging.lock.MergeLock
+import io.github.manamiproject.modb.app.merging.lock.MergeLockAccess
 import io.github.manamiproject.modb.core.config.AnimeId
 import io.github.manamiproject.modb.core.config.ConfigRegistry
 import io.github.manamiproject.modb.core.config.FileSuffix
@@ -94,10 +96,21 @@ internal object TestDownloadControlStateAccessor: DownloadControlStateAccessor {
     override fun downloadControlStateDirectory(metaDataProviderConfig: MetaDataProviderConfig): Directory = shouldNotBeInvoked()
     override suspend fun allAnime(): List<Anime> = shouldNotBeInvoked()
     override suspend fun allDcsEntries(): List<DownloadControlStateEntry> = shouldNotBeInvoked()
+    override suspend fun removeDeadEntry(id: AnimeId, metaDataProviderConfig: MetaDataProviderConfig) = shouldNotBeInvoked()
 }
 
 internal object TestDatasetFileAccessor: DatasetFileAccessor {
     override suspend fun fetchEntries(): List<Anime> = shouldNotBeInvoked()
     override suspend fun saveEntries(anime: List<Anime>) = shouldNotBeInvoked()
     override fun offlineDatabaseFile(type: DatasetFileType): RegularFile = shouldNotBeInvoked()
+}
+
+internal object TestMergeLockAccess: MergeLockAccess {
+    override suspend fun hasMergeLock(uris: Set<URI>): Boolean = shouldNotBeInvoked()
+    override suspend fun isPartOfMergeLock(uri: URI): Boolean = shouldNotBeInvoked()
+    override suspend fun getMergeLock(uri: URI): MergeLock = shouldNotBeInvoked()
+    override suspend fun addMergeLock(mergeLock: MergeLock) = shouldNotBeInvoked()
+    override suspend fun replaceUri(oldUri: URI, newUri: URI) = shouldNotBeInvoked()
+    override suspend fun removeEntry(uri: URI) = shouldNotBeInvoked()
+    override suspend fun allSourcesInAllMergeLockEntries(): Set<URI> = shouldNotBeInvoked()
 }
