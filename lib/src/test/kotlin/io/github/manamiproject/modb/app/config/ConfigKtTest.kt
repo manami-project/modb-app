@@ -4,6 +4,7 @@ import io.github.manamiproject.modb.anidb.AnidbConfig
 import io.github.manamiproject.modb.anilist.AnilistConfig
 import io.github.manamiproject.modb.animeplanet.AnimePlanetConfig
 import io.github.manamiproject.modb.anisearch.AnisearchConfig
+import io.github.manamiproject.modb.app.TestMetaDataProviderConfig
 import io.github.manamiproject.modb.core.config.FileSuffix
 import io.github.manamiproject.modb.core.config.Hostname
 import io.github.manamiproject.modb.core.config.MetaDataProviderConfig
@@ -139,5 +140,50 @@ internal class ConfigTest {
             // then
             assertThat(result).isEqualTo(systemDefaultZone)
         }
+    }
+
+    @Nested
+    inner class CanChangeAnimeIdsTests {
+
+        @Test
+        fun `returns true if IDs of a meta data provider can change`() {
+            // given
+            val testConfig = object: Config {
+                override fun downloadsDirectory(): Directory = shouldNotBeInvoked()
+                override fun currentWeekWorkingDir(): Directory = shouldNotBeInvoked()
+                override fun workingDir(metaDataProviderConfig: MetaDataProviderConfig): Directory = shouldNotBeInvoked()
+                override fun outputDirectory(): Directory = shouldNotBeInvoked()
+                override fun downloadControlStateDirectory(): Directory = shouldNotBeInvoked()
+            }
+
+            // when
+            val result = testConfig.canChangeAnimeIds(AnimePlanetConfig)
+
+            // then
+            assertThat(result).isTrue()
+        }
+
+        @Test
+        fun `returns false if IDs of a meta data provider cannot change`() {
+            // given
+            val testMetaDataProviderConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
+                override fun hostname(): Hostname = "example.org"
+            }
+
+            val testConfig = object: Config {
+                override fun downloadsDirectory(): Directory = shouldNotBeInvoked()
+                override fun currentWeekWorkingDir(): Directory = shouldNotBeInvoked()
+                override fun workingDir(metaDataProviderConfig: MetaDataProviderConfig): Directory = shouldNotBeInvoked()
+                override fun outputDirectory(): Directory = shouldNotBeInvoked()
+                override fun downloadControlStateDirectory(): Directory = shouldNotBeInvoked()
+            }
+
+            // when
+            val result = testConfig.canChangeAnimeIds(testMetaDataProviderConfig)
+
+            // then
+            assertThat(result).isFalse()
+        }
+
     }
 }

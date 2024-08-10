@@ -86,9 +86,10 @@ class DefaultMergeLockAccess(
             init()
         }
 
+        val currentEntry = mergeLocks[oldUri.toString()] ?: return
+
         log.debug { "Replacing merge lock entry [$oldUri] with [$newUri]" }
 
-        val currentEntry = mergeLocks[oldUri.toString()] ?: return
         val updatedEntry = currentEntry.toMutableSet().apply {
             remove(oldUri)
             add(newUri)
@@ -106,9 +107,10 @@ class DefaultMergeLockAccess(
             init()
         }
 
+        val currentEntry = mergeLocks[uri.toString()] ?: return
+
         log.debug { "Removing [$uri] from merge.locks" }
 
-        val currentEntry = mergeLocks[uri.toString()] ?: return
         val updatedEntry = currentEntry.toMutableSet().apply {
             remove(uri)
         }

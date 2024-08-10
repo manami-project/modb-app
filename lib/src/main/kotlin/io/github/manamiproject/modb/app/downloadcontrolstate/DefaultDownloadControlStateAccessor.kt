@@ -2,6 +2,7 @@ package io.github.manamiproject.modb.app.downloadcontrolstate
 
 import io.github.manamiproject.modb.app.config.AppConfig
 import io.github.manamiproject.modb.app.config.Config
+import io.github.manamiproject.modb.app.convfiles.CONVERTED_FILE_SUFFIX
 import io.github.manamiproject.modb.app.merging.lock.DefaultMergeLockAccess
 import io.github.manamiproject.modb.app.merging.lock.MergeLockAccess
 import io.github.manamiproject.modb.core.config.AnimeId
@@ -16,6 +17,7 @@ import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.withContext
 import kotlin.io.path.createDirectories
 import kotlin.io.path.deleteIfExists
+import kotlin.io.path.moveTo
 
 /**
  * Default implemenation that allows access to DCS files.
@@ -85,6 +87,32 @@ class DefaultDownloadControlStateAccessor(
         }
 
         return dcsEntry
+    }
+
+    override suspend fun changeId(oldId: AnimeId, newId: AnimeId, metaDataProviderConfig: MetaDataProviderConfig): RegularFile {
+        require(appConfig.canChangeAnimeIds(metaDataProviderConfig)) { "Called changedId for [${metaDataProviderConfig.hostname()}] which is not configured as a meta data provider that changes IDs." }
+
+        log.debug { "Updating [$oldId] to [$newId] of [${metaDataProviderConfig.hostname()}]." }
+        log.debug { "Renaming [*.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX] file from [$oldId.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX] to [$newId.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX]." }
+
+        val file = downloadControlStateDirectory(metaDataProviderConfig).resolve("$oldId.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX")
+        check(file.regularFileExists()) { "[${metaDataProviderConfig.hostname()}] file [${file.fileName()}] doesn't exist." }
+
+        val newFile = file.parent.resolve("$newId.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX")
+        file.moveTo(newFile, true)
+
+        val oldUri = metaDataProviderConfig.buildAnimeLink(oldId)
+        if (mergeLockAccess.isPartOfMergeLock(oldUri)) {
+            mergeLockAccess.replaceUri(oldUri, metaDataProviderConfig.buildAnimeLink(newId))
+        }
+
+        log.debug { "Removing [*.$CONVERTED_FILE_SUFFIX] file." }
+        appConfig.workingDir(metaDataProviderConfig).resolve("$oldId.$CONVERTED_FILE_SUFFIX").deleteIfExists()
+
+        log.debug { "Removing [${metaDataProviderConfig.fileSuffix()}] file." }
+        appConfig.workingDir(metaDataProviderConfig).resolve("$oldId.${metaDataProviderConfig.fileSuffix()}").deleteIfExists()
+
+        return newFile
     }
 
     companion object {

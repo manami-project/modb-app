@@ -92,4 +92,15 @@ interface Config: ContextAware {
      * @return Instance of [Clock] as basis for any type of date instances.
      */
     fun clock(): Clock = Clock.systemDefaultZone()
+
+    /**
+     * Determines if anime of a specific meta data provider can change their Ids.
+     * This is most likely to happen if the ID is a SEO optimized title.
+     * @since 1.0.0
+     * @param metaDataProviderConfig Configuration for a specific meta data provider.
+     * @return `true` if the anime ids can change for the given meta data provider.
+     */
+    fun canChangeAnimeIds(metaDataProviderConfig: MetaDataProviderConfig): Boolean = setOf(
+        AnimePlanetConfig
+    ).contains(metaDataProviderConfig)
 }
