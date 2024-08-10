@@ -2,6 +2,9 @@ package io.github.manamiproject.modb.app.downloadcontrolstate
 
 import io.github.manamiproject.modb.app.config.AppConfig
 import io.github.manamiproject.modb.app.config.Config
+import io.github.manamiproject.modb.app.merging.lock.DefaultMergeLockAccess
+import io.github.manamiproject.modb.app.merging.lock.MergeLockAccess
+import io.github.manamiproject.modb.core.config.AnimeId
 import io.github.manamiproject.modb.core.config.MetaDataProviderConfig
 import io.github.manamiproject.modb.core.coroutines.ModbDispatchers.LIMITED_FS
 import io.github.manamiproject.modb.core.extensions.*
@@ -12,6 +15,7 @@ import kotlinx.coroutines.async
 import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.withContext
 import kotlin.io.path.createDirectories
+import kotlin.io.path.deleteIfExists
 
 /**
  * Default implemenation that allows access to DCS files.
@@ -19,9 +23,11 @@ import kotlin.io.path.createDirectories
  * Files are parsed each time you call functions.
  * @since 1.0.0
  * @property appConfig Application specific configuration. Uses [AppConfig] by default.
+ * @property mergeLockAccess Access to merge locks.
  */
 class DefaultDownloadControlStateAccessor(
     private val appConfig: Config = AppConfig.instance,
+    private val mergeLockAccess: MergeLockAccess = DefaultMergeLockAccess.instance,
 ): DownloadControlStateAccessor {
 
     override fun downloadControlStateDirectory(metaDataProviderConfig: MetaDataProviderConfig): Directory {
@@ -50,6 +56,23 @@ class DefaultDownloadControlStateAccessor(
             }.flatten()
 
         return@withContext awaitAll(*jobs.toTypedArray())
+    }
+
+    override suspend fun removeDeadEntry(id: AnimeId, metaDataProviderConfig: MetaDataProviderConfig) {
+        val hasBeenDeleted = downloadControlStateDirectory(metaDataProviderConfig)
+            .resolve("$id.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX")
+            .deleteIfExists()
+
+        if (hasBeenDeleted) {
+            log.debug { "Removed [${metaDataProviderConfig.hostname()}] DCS file for [$id]" }
+        }
+
+        val uri = metaDataProviderConfig.buildAnimeLink(id)
+
+        if (mergeLockAccess.isPartOfMergeLock(uri)) {
+            log.debug { "Removing merge.lock entry [$id] of [${metaDataProviderConfig.hostname()}]" }
+            mergeLockAccess.removeEntry(uri)
+        }
     }
 
     private suspend fun checkAndExtractEntry(config: MetaDataProviderConfig, file: RegularFile): DownloadControlStateEntry {

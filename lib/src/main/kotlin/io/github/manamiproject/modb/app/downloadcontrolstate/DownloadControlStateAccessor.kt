@@ -1,5 +1,6 @@
 package io.github.manamiproject.modb.app.downloadcontrolstate
 
+import io.github.manamiproject.modb.core.config.AnimeId
 import io.github.manamiproject.modb.core.config.MetaDataProviderConfig
 import io.github.manamiproject.modb.core.extensions.Directory
 import io.github.manamiproject.modb.core.models.Anime
@@ -37,4 +38,12 @@ interface DownloadControlStateAccessor {
      * @return All DCS entries from all meta data providers.
      */
     suspend fun allDcsEntries(): List<DownloadControlStateEntry>
+
+    /**
+     * Removed the DCS file for a dead entry.
+     * @since 1.0.0
+     * @param id Id of the anime as defined by the meta data provider.
+     * @param metaDataProviderConfig Configuration for a specific meta data provider.
+     */
+    suspend fun removeDeadEntry(id: AnimeId, metaDataProviderConfig: MetaDataProviderConfig)
 }

@@ -2,11 +2,17 @@ package io.github.manamiproject.modb.app.downloadcontrolstate
 
 import io.github.manamiproject.modb.anilist.AnilistConfig
 import io.github.manamiproject.modb.app.TestAppConfig
+import io.github.manamiproject.modb.app.TestMergeLockAccess
+import io.github.manamiproject.modb.app.TestMetaDataProviderConfig
 import io.github.manamiproject.modb.app.config.Config
+import io.github.manamiproject.modb.app.merging.lock.MergeLockAccess
+import io.github.manamiproject.modb.core.config.AnimeId
+import io.github.manamiproject.modb.core.config.Hostname
 import io.github.manamiproject.modb.core.config.MetaDataProviderConfig
 import io.github.manamiproject.modb.core.extensions.Directory
 import io.github.manamiproject.modb.core.extensions.copyTo
 import io.github.manamiproject.modb.core.extensions.fileName
+import io.github.manamiproject.modb.core.extensions.regularFileExists
 import io.github.manamiproject.modb.core.models.Anime
 import io.github.manamiproject.modb.core.models.Anime.Status.FINISHED
 import io.github.manamiproject.modb.core.models.Anime.Type.MOVIE
@@ -24,6 +30,7 @@ import org.junit.jupiter.api.Nested
 import java.net.URI
 import kotlin.io.path.createDirectories
 import kotlin.io.path.createDirectory
+import kotlin.io.path.createFile
 import kotlin.test.Test
 
 internal class DefaultDownloadControlStateAccessorTest {
@@ -320,6 +327,158 @@ internal class DefaultDownloadControlStateAccessorTest {
 
                 // then
                 assertThat(result).containsAll(expectedAnime)
+            }
+        }
+    }
+
+    @Nested
+    inner class RemoveDeadEntryTests {
+
+        @Test
+        fun `successfully removes file`() {
+            tempDirectory {
+                // given
+                val testMetaDataProviderConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = "example.org"
+                    override fun buildAnimeLink(id: AnimeId): URI = super.buildAnimeLink(id)
+                    override fun extractAnimeId(uri: URI): AnimeId = super.extractAnimeId(uri)
+                }
+
+                val testAppConfig = object: Config by TestAppConfig {
+                    override fun downloadControlStateDirectory(): Directory = tempDir
+                }
+
+                val testMergeLockAccess = object: MergeLockAccess by TestMergeLockAccess {
+                    override suspend fun isPartOfMergeLock(uri: URI): Boolean = false
+                }
+
+                tempDir.resolve(testMetaDataProviderConfig.hostname()).createDirectory()
+                val file = tempDir.resolve(testMetaDataProviderConfig.hostname()).resolve("99.dcs").createFile()
+                val fileExistedPreviously = file.regularFileExists()
+
+                val defaultDownloadControlStateAccessor = DefaultDownloadControlStateAccessor(
+                    appConfig = testAppConfig,
+                    mergeLockAccess = testMergeLockAccess,
+                )
+
+                // when
+                defaultDownloadControlStateAccessor.removeDeadEntry("99", testMetaDataProviderConfig)
+
+                // then
+                assertThat(fileExistedPreviously).isTrue()
+                assertThat(file.regularFileExists()).isFalse()
+            }
+        }
+
+        @Test
+        fun `handles removal of the same entry in merge lock`() {
+            tempDirectory {
+                // given
+                val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = "example.org"
+                    override fun buildAnimeLink(id: AnimeId): URI = super.buildAnimeLink(id)
+                    override fun extractAnimeId(uri: URI): AnimeId = super.extractAnimeId(uri)
+                }
+
+                val testAppConfig = object: Config by TestAppConfig {
+                    override fun downloadControlStateDirectory(): Directory = tempDir
+                }
+
+                var hasMergeLockEntryRemovalBeingInvoked = false
+                val testMergeLockAccess = object: MergeLockAccess by TestMergeLockAccess {
+                    override suspend fun isPartOfMergeLock(uri: URI): Boolean = true
+                    override suspend fun removeEntry(uri: URI) {
+                        hasMergeLockEntryRemovalBeingInvoked = true
+                    }
+                }
+
+                tempDir.resolve(testConfig.hostname()).createDirectory()
+                tempDir.resolve(testConfig.hostname()).resolve("99.dcs").createFile()
+
+                val defaultDownloadControlStateAccessor = DefaultDownloadControlStateAccessor(
+                    appConfig = testAppConfig,
+                    mergeLockAccess = testMergeLockAccess,
+                )
+
+                // when
+                defaultDownloadControlStateAccessor.removeDeadEntry("99", testConfig)
+
+                // then
+                assertThat(hasMergeLockEntryRemovalBeingInvoked).isTrue()
+            }
+        }
+
+        @Test
+        fun `checks merge locks even if dcs file doesn't exist`() {
+            tempDirectory {
+                // given
+                val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = "example.org"
+                    override fun buildAnimeLink(id: AnimeId): URI = super.buildAnimeLink(id)
+                    override fun extractAnimeId(uri: URI): AnimeId = super.extractAnimeId(uri)
+                }
+
+                val testAppConfig = object: Config by TestAppConfig {
+                    override fun downloadControlStateDirectory(): Directory = tempDir
+                }
+
+                var hasMergeLockEntryRemovalBeingInvoked = false
+                val testMergeLockAccess = object: MergeLockAccess by TestMergeLockAccess {
+                    override suspend fun isPartOfMergeLock(uri: URI): Boolean = true
+                    override suspend fun removeEntry(uri: URI) {
+                        hasMergeLockEntryRemovalBeingInvoked = true
+                    }
+                }
+
+                tempDir.resolve(testConfig.hostname()).createDirectory()
+
+                val defaultDownloadControlStateAccessor = DefaultDownloadControlStateAccessor(
+                    appConfig = testAppConfig,
+                    mergeLockAccess = testMergeLockAccess,
+                )
+
+                // when
+                defaultDownloadControlStateAccessor.removeDeadEntry("99", testConfig)
+
+                // then
+                assertThat(hasMergeLockEntryRemovalBeingInvoked).isTrue()
+            }
+        }
+
+        @Test
+        fun `doesn't do anything if neither dcs file nor merge lock exist`() {
+            tempDirectory {
+                // given
+                val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = "example.org"
+                    override fun buildAnimeLink(id: AnimeId): URI = super.buildAnimeLink(id)
+                    override fun extractAnimeId(uri: URI): AnimeId = super.extractAnimeId(uri)
+                }
+
+                val testAppConfig = object: Config by TestAppConfig {
+                    override fun downloadControlStateDirectory(): Directory = tempDir
+                }
+
+                var hasMergeLockEntryRemovalBeingInvoked = false
+                val testMergeLockAccess = object: MergeLockAccess by TestMergeLockAccess {
+                    override suspend fun isPartOfMergeLock(uri: URI): Boolean = false
+                    override suspend fun removeEntry(uri: URI) {
+                        hasMergeLockEntryRemovalBeingInvoked = true
+                    }
+                }
+
+                tempDir.resolve(testConfig.hostname()).createDirectory()
+
+                val defaultDownloadControlStateAccessor = DefaultDownloadControlStateAccessor(
+                    appConfig = testAppConfig,
+                    mergeLockAccess = testMergeLockAccess,
+                )
+
+                // when
+                defaultDownloadControlStateAccessor.removeDeadEntry("99", testConfig)
+
+                // then
+                assertThat(hasMergeLockEntryRemovalBeingInvoked).isFalse()
             }
         }
     }
