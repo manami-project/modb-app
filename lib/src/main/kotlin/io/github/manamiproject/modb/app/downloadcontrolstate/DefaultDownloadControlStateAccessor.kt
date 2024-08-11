@@ -77,13 +77,13 @@ class DefaultDownloadControlStateAccessor(
         }
     }
 
-    private suspend fun checkAndExtractEntry(config: MetaDataProviderConfig, file: RegularFile): DownloadControlStateEntry {
-        log.debug { "Parsing and checking DCS file [${file.fileName()}] of [${config.hostname()}]" }
+    private suspend fun checkAndExtractEntry(metaDataProviderConfig: MetaDataProviderConfig, file: RegularFile): DownloadControlStateEntry {
+        log.debug { "Parsing and checking DCS file [${file.fileName()}] of [${metaDataProviderConfig.hostname()}]" }
 
         val dcsEntry = Json.parseJson<DownloadControlStateEntry>(file.readFile())!!
 
-        check(config.extractAnimeId(dcsEntry.anime.sources.first()) == file.fileName().substringBefore('.')) {
-            "Filename and id don't match for [${file.fileName}] of [${config.hostname()}]."
+        check(metaDataProviderConfig.extractAnimeId(dcsEntry.anime.sources.first()) == file.fileName().substringBefore('.')) {
+            "Filename and id don't match for [${file.fileName}] of [${metaDataProviderConfig.hostname()}]."
         }
 
         return dcsEntry
