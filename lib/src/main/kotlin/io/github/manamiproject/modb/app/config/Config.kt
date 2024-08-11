@@ -14,6 +14,10 @@ import io.github.manamiproject.modb.myanimelist.MyanimelistConfig
 import io.github.manamiproject.modb.notify.NotifyConfig
 import java.time.Clock
 
+/**
+ * Configuration options that are specifc for the application.
+ * @since 1.0.0
+ */
 interface Config: ContextAware {
 
     /**
