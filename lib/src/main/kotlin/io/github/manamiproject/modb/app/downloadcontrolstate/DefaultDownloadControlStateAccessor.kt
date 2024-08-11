@@ -60,19 +60,19 @@ class DefaultDownloadControlStateAccessor(
         return@withContext awaitAll(*jobs.toTypedArray())
     }
 
-    override suspend fun removeDeadEntry(id: AnimeId, metaDataProviderConfig: MetaDataProviderConfig) {
+    override suspend fun removeDeadEntry(animeId: AnimeId, metaDataProviderConfig: MetaDataProviderConfig) {
         val hasBeenDeleted = downloadControlStateDirectory(metaDataProviderConfig)
-            .resolve("$id.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX")
+            .resolve("$animeId.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX")
             .deleteIfExists()
 
         if (hasBeenDeleted) {
-            log.debug { "Removed [${metaDataProviderConfig.hostname()}] DCS file for [$id]" }
+            log.debug { "Removed [${metaDataProviderConfig.hostname()}] DCS file for [$animeId]" }
         }
 
-        val uri = metaDataProviderConfig.buildAnimeLink(id)
+        val uri = metaDataProviderConfig.buildAnimeLink(animeId)
 
         if (mergeLockAccess.isPartOfMergeLock(uri)) {
-            log.debug { "Removing merge.lock entry [$id] of [${metaDataProviderConfig.hostname()}]" }
+            log.debug { "Removing merge.lock entry [$animeId] of [${metaDataProviderConfig.hostname()}]" }
             mergeLockAccess.removeEntry(uri)
         }
     }

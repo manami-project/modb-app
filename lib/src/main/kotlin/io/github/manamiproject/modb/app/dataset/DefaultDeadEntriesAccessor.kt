@@ -54,20 +54,20 @@ class DefaultDeadEntriesAccessor(
         }
     }
 
-    override suspend fun addDeadEntry(id: AnimeId, metaDataProviderConfig: MetaDataProviderConfig) {
+    override suspend fun addDeadEntry(animeId: AnimeId, metaDataProviderConfig: MetaDataProviderConfig) {
         if (!isInitialized) {
             init()
         }
 
-        log.info { "Adding [$id] from [${metaDataProviderConfig.hostname()}] to dead entries list" }
+        log.info { "Adding [$animeId] from [${metaDataProviderConfig.hostname()}] to dead entries list" }
 
         if (supportedMetaDataProviders.contains(metaDataProviderConfig)) {
             Mutex().withLock {
-                writeFileAndUpdateInMemoryData(id, metaDataProviderConfig)
+                writeFileAndUpdateInMemoryData(animeId, metaDataProviderConfig)
             }
         }
 
-        downloadControlStateAccessor.removeDeadEntry(id, metaDataProviderConfig)
+        downloadControlStateAccessor.removeDeadEntry(animeId, metaDataProviderConfig)
     }
 
     override suspend fun determineDeadEntries(sources: Collection<URI>): Set<URI> {
@@ -131,22 +131,22 @@ class DefaultDeadEntriesAccessor(
         }
     }
 
-    private suspend fun writeFileAndUpdateInMemoryData(id: AnimeId, metaDataProviderConfig: MetaDataProviderConfig) {
+    private suspend fun writeFileAndUpdateInMemoryData(animeId: AnimeId, metaDataProviderConfig: MetaDataProviderConfig) {
         val deadEntries: HashSet<AnimeId> = when(metaDataProviderConfig.hostname()) {
             AnidbConfig.hostname() -> {
-                deadEntries.anidb.add(id)
+                deadEntries.anidb.add(animeId)
                 deadEntries.anidb
             }
             AnilistConfig.hostname() -> {
-                deadEntries.anilist.add(id)
+                deadEntries.anilist.add(animeId)
                 deadEntries.anilist
             }
             KitsuConfig.hostname() -> {
-                deadEntries.kitsu.add(id)
+                deadEntries.kitsu.add(animeId)
                 deadEntries.kitsu
             }
             MyanimelistConfig.hostname() -> {
-                deadEntries.mal.add(id)
+                deadEntries.mal.add(animeId)
                 deadEntries.mal
             }
             else -> throw IllegalStateException("Meta data provider [${metaDataProviderConfig.hostname()}] is not supported.")
