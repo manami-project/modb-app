@@ -212,7 +212,7 @@ internal class DefaultDeadEntriesAccessorTest {
                 }
 
                 val testDownloadControlStateAccessor = object: DownloadControlStateAccessor by TestDownloadControlStateAccessor {
-                    override suspend fun removeDeadEntry(id: AnimeId, metaDataProviderConfig: MetaDataProviderConfig) { }
+                    override suspend fun removeDeadEntry(animeId: AnimeId, metaDataProviderConfig: MetaDataProviderConfig) { }
                 }
 
                 val deadEntriesAccessor = DefaultDeadEntriesAccessor(
@@ -254,7 +254,7 @@ internal class DefaultDeadEntriesAccessorTest {
                 }
 
                 val testDownloadControlStateAccessor = object: DownloadControlStateAccessor by TestDownloadControlStateAccessor {
-                    override suspend fun removeDeadEntry(id: AnimeId, metaDataProviderConfig: MetaDataProviderConfig) { }
+                    override suspend fun removeDeadEntry(animeId: AnimeId, metaDataProviderConfig: MetaDataProviderConfig) { }
                 }
 
                 DeadEntriesJsonSerializer.instance.serialize(listOf(
@@ -300,7 +300,7 @@ internal class DefaultDeadEntriesAccessorTest {
                 }
 
                 val testDownloadControlStateAccessor = object: DownloadControlStateAccessor by TestDownloadControlStateAccessor {
-                    override suspend fun removeDeadEntry(id: AnimeId, metaDataProviderConfig: MetaDataProviderConfig) { }
+                    override suspend fun removeDeadEntry(animeId: AnimeId, metaDataProviderConfig: MetaDataProviderConfig) { }
                 }
 
                 val content = DeadEntriesJsonSerializer.instance.serialize(listOf(
@@ -350,7 +350,7 @@ internal class DefaultDeadEntriesAccessorTest {
                 }
 
                 val testDownloadControlStateAccessor = object: DownloadControlStateAccessor by TestDownloadControlStateAccessor {
-                    override suspend fun removeDeadEntry(id: AnimeId, metaDataProviderConfig: MetaDataProviderConfig) { }
+                    override suspend fun removeDeadEntry(animeId: AnimeId, metaDataProviderConfig: MetaDataProviderConfig) { }
                 }
 
                 val deadEntriesAccessor = DefaultDeadEntriesAccessor(
@@ -384,7 +384,7 @@ internal class DefaultDeadEntriesAccessorTest {
 
                 var hasBeenInvoked = false
                 val testDownloadControlStateAccessor = object: DownloadControlStateAccessor by TestDownloadControlStateAccessor {
-                    override suspend fun removeDeadEntry(id: AnimeId, metaDataProviderConfig: MetaDataProviderConfig) {
+                    override suspend fun removeDeadEntry(animeId: AnimeId, metaDataProviderConfig: MetaDataProviderConfig) {
                         hasBeenInvoked = true
                     }
                 }
@@ -417,7 +417,7 @@ internal class DefaultDeadEntriesAccessorTest {
                 }
 
                 val testDownloadControlStateAccessor = object: DownloadControlStateAccessor by TestDownloadControlStateAccessor {
-                    override suspend fun removeDeadEntry(id: AnimeId, metaDataProviderConfig: MetaDataProviderConfig) { }
+                    override suspend fun removeDeadEntry(animeId: AnimeId, metaDataProviderConfig: MetaDataProviderConfig) { }
                 }
 
                 val deadEntriesAccessor = DefaultDeadEntriesAccessor(
@@ -450,9 +450,9 @@ internal class DefaultDeadEntriesAccessorTest {
                 var removingDcsEntryHasBeenInvoked = false
                 var invokedId = EMPTY
                 val testDownloadControlStateAccessor = object: DownloadControlStateAccessor by TestDownloadControlStateAccessor {
-                    override suspend fun removeDeadEntry(id: AnimeId, metaDataProviderConfig: MetaDataProviderConfig) {
+                    override suspend fun removeDeadEntry(animeId: AnimeId, metaDataProviderConfig: MetaDataProviderConfig) {
                         removingDcsEntryHasBeenInvoked = true
-                        invokedId = id
+                        invokedId = animeId
                     }
                 }
 
@@ -489,7 +489,7 @@ internal class DefaultDeadEntriesAccessorTest {
                 }
 
                 val testDownloadControlStateAccessor = object: DownloadControlStateAccessor by TestDownloadControlStateAccessor {
-                    override suspend fun removeDeadEntry(id: AnimeId, metaDataProviderConfig: MetaDataProviderConfig) { }
+                    override suspend fun removeDeadEntry(animeId: AnimeId, metaDataProviderConfig: MetaDataProviderConfig) { }
                 }
 
                 val deadEntriesAccessor = DefaultDeadEntriesAccessor(
@@ -524,7 +524,7 @@ internal class DefaultDeadEntriesAccessorTest {
                 }
 
                 val testDownloadControlStateAccessor = object: DownloadControlStateAccessor by TestDownloadControlStateAccessor {
-                    override suspend fun removeDeadEntry(id: AnimeId, metaDataProviderConfig: MetaDataProviderConfig) { }
+                    override suspend fun removeDeadEntry(animeId: AnimeId, metaDataProviderConfig: MetaDataProviderConfig) { }
                 }
 
                 val deadEntriesAccessor = DefaultDeadEntriesAccessor(
@@ -682,7 +682,7 @@ internal class DefaultDeadEntriesAccessorTest {
 
                 val testDownloadControlStateAccessor = object: DownloadControlStateAccessor by TestDownloadControlStateAccessor {
                     override fun downloadControlStateDirectory(metaDataProviderConfig: MetaDataProviderConfig): Directory = tempDir
-                    override suspend fun removeDeadEntry(id: AnimeId, metaDataProviderConfig: MetaDataProviderConfig) { }
+                    override suspend fun removeDeadEntry(animeId: AnimeId, metaDataProviderConfig: MetaDataProviderConfig) { }
                 }
 
                 val deadEntriesAccessor = DefaultDeadEntriesAccessor(
@@ -721,7 +721,7 @@ internal class DefaultDeadEntriesAccessorTest {
                 }
 
                 val testDownloadControlStateAccessor = object: DownloadControlStateAccessor by TestDownloadControlStateAccessor {
-                    override suspend fun removeDeadEntry(id: AnimeId, metaDataProviderConfig: MetaDataProviderConfig) { }
+                    override suspend fun removeDeadEntry(animeId: AnimeId, metaDataProviderConfig: MetaDataProviderConfig) { }
                     override fun downloadControlStateDirectory(metaDataProviderConfig: MetaDataProviderConfig): Directory = tempDir
                 }
 
@@ -833,7 +833,7 @@ internal class DefaultDeadEntriesAccessorTest {
                 }
 
                 val testDownloadControlStateAccessor = object: DownloadControlStateAccessor by TestDownloadControlStateAccessor {
-                    override suspend fun removeDeadEntry(id: AnimeId, metaDataProviderConfig: MetaDataProviderConfig) { }
+                    override suspend fun removeDeadEntry(animeId: AnimeId, metaDataProviderConfig: MetaDataProviderConfig) { }
                 }
 
                 val deadEntriesAccessor = DefaultDeadEntriesAccessor(
@@ -868,7 +868,7 @@ internal class DefaultDeadEntriesAccessorTest {
                 }
 
                 val testDownloadControlStateAccessor = object: DownloadControlStateAccessor by TestDownloadControlStateAccessor {
-                    override suspend fun removeDeadEntry(id: AnimeId, metaDataProviderConfig: MetaDataProviderConfig) { }
+                    override suspend fun removeDeadEntry(animeId: AnimeId, metaDataProviderConfig: MetaDataProviderConfig) { }
                 }
 
                 val deadEntriesAccessor = DefaultDeadEntriesAccessor(

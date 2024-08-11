@@ -45,11 +45,11 @@ interface DownloadControlStateAccessor {
     /**
      * Removed the DCS file for a dead entry.
      * @since 1.0.0
-     * @param id Id of the anime as defined by the meta data provider.
+     * @param animeId Id of the anime as defined by the meta data provider.
      * @param metaDataProviderConfig Configuration for a specific meta data provider.
      * @see MergeLockAccess.removeEntry
      */
-    suspend fun removeDeadEntry(id: AnimeId, metaDataProviderConfig: MetaDataProviderConfig)
+    suspend fun removeDeadEntry(animeId: AnimeId, metaDataProviderConfig: MetaDataProviderConfig)
 
     /**
      * Handles everything that needs to be done if an anime has changed its ID.

@@ -98,7 +98,7 @@ internal object TestDownloadControlStateAccessor: DownloadControlStateAccessor {
     override fun downloadControlStateDirectory(metaDataProviderConfig: MetaDataProviderConfig): Directory = shouldNotBeInvoked()
     override suspend fun allAnime(): List<Anime> = shouldNotBeInvoked()
     override suspend fun allDcsEntries(): List<DownloadControlStateEntry> = shouldNotBeInvoked()
-    override suspend fun removeDeadEntry(id: AnimeId, metaDataProviderConfig: MetaDataProviderConfig) = shouldNotBeInvoked()
+    override suspend fun removeDeadEntry(animeId: AnimeId, metaDataProviderConfig: MetaDataProviderConfig) = shouldNotBeInvoked()
     override suspend fun changeId(oldId: AnimeId, newId: AnimeId, metaDataProviderConfig: MetaDataProviderConfig): RegularFile = shouldNotBeInvoked()
 }
 

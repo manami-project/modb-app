@@ -23,10 +23,10 @@ interface DeadEntriesAccessor {
     /**
      * Add entry to dead entries file of a specific meta data provider.
      * @since 1.0.0
-     * @param id Id of the anime as defined by the meta data provider.
+     * @param animeId Id of the anime as defined by the meta data provider.
      * @param metaDataProviderConfig Configuration for a specific meta data provider.
      */
-    suspend fun addDeadEntry(id: AnimeId, metaDataProviderConfig: MetaDataProviderConfig)
+    suspend fun addDeadEntry(animeId: AnimeId, metaDataProviderConfig: MetaDataProviderConfig)
 
     /**
      * Find dead entries in a list of [URI].
