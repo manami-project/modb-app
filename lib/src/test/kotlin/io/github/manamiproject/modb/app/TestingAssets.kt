@@ -3,6 +3,7 @@ package io.github.manamiproject.modb.app
 import io.github.manamiproject.modb.app.config.Config
 import io.github.manamiproject.modb.app.dataset.DatasetFileAccessor
 import io.github.manamiproject.modb.app.dataset.DatasetFileType
+import io.github.manamiproject.modb.app.dataset.DeadEntriesAccessor
 import io.github.manamiproject.modb.app.downloadcontrolstate.DownloadControlStateAccessor
 import io.github.manamiproject.modb.app.downloadcontrolstate.DownloadControlStateEntry
 import io.github.manamiproject.modb.app.merging.lock.MergeLock
@@ -125,4 +126,11 @@ internal object TestExternalResourceJsonDeserializerDeadEntries: ExternalResourc
 
 internal object TestJsonSerializerCollectionAnimeId: JsonSerializer<Collection<AnimeId>> {
     override suspend fun serialize(obj: Collection<AnimeId>, minify: Boolean): String = shouldNotBeInvoked()
+}
+
+internal object TestDeadEntriesAccessor: DeadEntriesAccessor {
+    override fun deadEntriesFile(metaDataProviderConfig: MetaDataProviderConfig, type: DatasetFileType): RegularFile = shouldNotBeInvoked()
+    override suspend fun addDeadEntry(animeId: AnimeId, metaDataProviderConfig: MetaDataProviderConfig) = shouldNotBeInvoked()
+    override suspend fun determineDeadEntries(sources: Collection<URI>): Set<URI> = shouldNotBeInvoked()
+    override suspend fun fetchDeadEntries(metaDataProviderConfig: MetaDataProviderConfig): Set<AnimeId> = shouldNotBeInvoked()
 }
