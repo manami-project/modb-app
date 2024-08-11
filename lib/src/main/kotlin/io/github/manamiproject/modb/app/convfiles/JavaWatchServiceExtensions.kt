@@ -20,6 +20,7 @@ import java.nio.file.WatchService as JavaWatchService
  */
 suspend fun JavaWatchService.longPoll(): WatchKey? {
     val watchService = this
+
     return withContext(LIMITED_FS) {
         try {
             var key: WatchKey? = null

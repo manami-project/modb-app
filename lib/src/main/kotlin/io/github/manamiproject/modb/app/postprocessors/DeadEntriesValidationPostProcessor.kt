@@ -12,6 +12,15 @@ import io.github.manamiproject.modb.app.merging.lock.MergeLockAccess
 import io.github.manamiproject.modb.core.logging.LoggerDelegate
 import java.net.URI
 
+/**
+ * Checks dataset, dcs files and merge locks for dead entries.
+ * @since 1.0.0
+ * @property datasetFileAccessor Access to dataset files.
+ * @property deadEntriesAccessor Access to dead entries files.
+ * @property downloadControlStateAccessor Access to DCS files.
+ * @property mergeLockAccess Access to merge locks.
+ * @throws IllegalStateException if dead entries are found.
+ */
 class DeadEntriesValidationPostProcessor(
     private val datasetFileAccessor: DatasetFileAccessor = DefaultDatasetFileAccessor.instance,
     private val deadEntriesAccessor: DeadEntriesAccessor = DefaultDeadEntriesAccessor.instance,

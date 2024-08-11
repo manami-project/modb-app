@@ -25,6 +25,19 @@ import kotlinx.coroutines.sync.withLock
 import java.net.URI
 import kotlin.io.path.createDirectories
 
+/**
+ * Handles the access to dead entries files.
+ * Each supported meta data provider has its own dead entries file.
+ * Not every meta data provider supports dead entries.
+ * For some all IDs are loaded upfront and for some pagination is used. Those meta data providers are not supported for
+ * most functions. Based on the existence of a DCS file they can howver return a value
+ * for [DeadEntriesAccessor.determineDeadEntries].
+ * @since 1.0.0
+ * @property appConfig Application specific configuration. Uses [AppConfig] by default.
+ * @property downloadControlStateAccessor Access to DCS files.
+ * @property jsonSerializer Serializer that creates the json files.
+ * @property jsonDeserializer Deserializer for the json files.
+ */
 class DefaultDeadEntriesAccessor(
     private val appConfig: Config = AppConfig.instance,
     private val downloadControlStateAccessor: DownloadControlStateAccessor = DefaultDownloadControlStateAccessor.instance,
