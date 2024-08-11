@@ -16,6 +16,7 @@ logback-classic = "1.5.6"
 
 [libraries]
 kotlin-stdlib = { module = "org.jetbrains.kotlin:kotlin-stdlib", version.ref = "kotlin" }
+kotlin-reflect = { module = "org.jetbrains.kotlin:kotlin-reflect", version.ref = "kotlin" }
 modb-core = { module = "io.github.manamiproject:modb-core", version.ref = "modb-core" }
 modb-serde = { module = "io.github.manamiproject:modb-serde", version.ref = "modb-serde" }
 modb-anidb = { module = "io.github.manamiproject:modb-anidb", version.ref = "modb-anidb" }

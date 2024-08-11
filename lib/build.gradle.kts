@@ -102,6 +102,7 @@ dependencies {
     implementation(libs.bundles.modb)
     implementation(libs.logback.classic)
 
+    testImplementation(libs.kotlin.reflect)
     testImplementation(libs.modb.test)
 }
 

@@ -9,6 +9,8 @@ import io.github.manamiproject.modb.core.extensions.writeToFile
 import io.github.manamiproject.modb.core.json.Json
 import io.github.manamiproject.modb.core.logging.LoggerDelegate
 import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.sync.Mutex
+import kotlinx.coroutines.sync.withLock
 import java.net.URI
 
 /**
@@ -24,9 +26,10 @@ class DefaultMergeLockAccess(
 
     private val mergeLockFile by lazy { appConfig.downloadControlStateDirectory().resolve("merge.lock") }
     private val mergeLocks: MutableMap<String, MergeLock> = mutableMapOf()
+    private var isInitialized = false
 
     override suspend fun isPartOfMergeLock(uri: URI): Boolean {
-        if (mergeLocks.isEmpty()) {
+        if (!isInitialized) {
             init()
         }
 
@@ -34,7 +37,7 @@ class DefaultMergeLockAccess(
     }
 
     override suspend fun getMergeLock(uri: URI): MergeLock {
-        if (mergeLocks.isEmpty()) {
+        if (!isInitialized) {
             init()
         }
 
@@ -42,7 +45,7 @@ class DefaultMergeLockAccess(
     }
 
     override suspend fun allSourcesInAllMergeLockEntries(): Set<URI> {
-        if (mergeLocks.isEmpty()) {
+        if (!isInitialized) {
             init()
         }
 
@@ -50,7 +53,7 @@ class DefaultMergeLockAccess(
     }
 
     override suspend fun hasMergeLock(uris: Set<URI>): Boolean {
-        if (mergeLocks.isEmpty()) {
+        if (!isInitialized) {
             init()
         }
 
@@ -64,25 +67,27 @@ class DefaultMergeLockAccess(
             return
         }
 
-        if (mergeLocks.isEmpty()) {
+        if (!isInitialized) {
             init()
         }
 
         log.debug { "Adding merge lock entry $mergeLock" }
 
-        mergeLock.map { it.toString() }.forEach { uri ->
-            mergeLocks[uri] = mergeLock
-        }
+        Mutex().withLock {
+            mergeLock.map { it.toString() }.forEach { uri ->
+                mergeLocks[uri] = mergeLock
+            }
 
-        mergeLock.forEach { source ->
-            check(mergeLocks.values.filter { it.contains(source) }.distinct().size <= 1) { "You were about to add a duplicate to the merge.lock file for [$source]" }
-        }
+            mergeLock.forEach { source ->
+                check(mergeLocks.values.filter { it.contains(source) }.distinct().size <= 1) { "You were about to add a duplicate to the merge.lock file for [$source]" }
+            }
 
-        saveToFile()
+            saveToFile()
+        }
     }
 
     override suspend fun replaceUri(oldUri: URI, newUri: URI) {
-        if (mergeLocks.isEmpty()) {
+        if (!isInitialized) {
             init()
         }
 
@@ -95,15 +100,17 @@ class DefaultMergeLockAccess(
             add(newUri)
         }
 
-        currentEntry.forEach {
-            mergeLocks.remove(it.toString())
-        }
+        Mutex().withLock {
+            currentEntry.forEach {
+                mergeLocks.remove(it.toString())
+            }
 
-        addMergeLock(updatedEntry)
+            addMergeLock(updatedEntry)
+        }
     }
 
     override suspend fun removeEntry(uri: URI) {
-        if (mergeLocks.isEmpty()) {
+        if (!isInitialized) {
             init()
         }
 
@@ -115,20 +122,27 @@ class DefaultMergeLockAccess(
             remove(uri)
         }
 
-        currentEntry.forEach {
-            mergeLocks.remove(it.toString())
-        }
+        Mutex().withLock {
+            currentEntry.forEach {
+                mergeLocks.remove(it.toString())
+            }
 
-        addMergeLock(updatedEntry)
+            addMergeLock(updatedEntry)
+        }
     }
 
     private suspend fun init() {
-        if (mergeLockFile.regularFileExists()) {
-            val parsedMergeLocks = runBlocking { parseJsonFile() }
-            checkForDuplicates(parsedMergeLocks)
-            convertMergeLocksToInMemoryRepresentation(parsedMergeLocks)
-        } else {
-            log.warn { "Merge lock file does not exists." }
+        Mutex().withLock {
+            if (!isInitialized) {
+                if (mergeLockFile.regularFileExists()) {
+                    val parsedMergeLocks = runBlocking { parseJsonFile() }
+                    checkForDuplicates(parsedMergeLocks)
+                    convertMergeLocksToInMemoryRepresentation(parsedMergeLocks)
+                } else {
+                    log.warn { "Merge lock file does not exists." }
+                }
+            }
+            isInitialized = true
         }
     }
 

@@ -18,6 +18,7 @@ import io.github.manamiproject.modb.core.models.Anime
 import io.github.manamiproject.modb.serde.json.ExternalResourceJsonDeserializer
 import io.github.manamiproject.modb.serde.json.JsonSerializer
 import io.github.manamiproject.modb.serde.json.models.Dataset
+import io.github.manamiproject.modb.serde.json.models.DeadEntries
 import io.github.manamiproject.modb.test.shouldNotBeInvoked
 import java.net.URI
 import java.net.URL
@@ -115,4 +116,13 @@ internal object TestMergeLockAccess: MergeLockAccess {
     override suspend fun replaceUri(oldUri: URI, newUri: URI) = shouldNotBeInvoked()
     override suspend fun removeEntry(uri: URI) = shouldNotBeInvoked()
     override suspend fun allSourcesInAllMergeLockEntries(): Set<URI> = shouldNotBeInvoked()
+}
+
+internal object TestExternalResourceJsonDeserializerDeadEntries: ExternalResourceJsonDeserializer<DeadEntries> {
+    override suspend fun deserialize(url: URL): DeadEntries = shouldNotBeInvoked()
+    override suspend fun deserialize(file: RegularFile): DeadEntries = shouldNotBeInvoked()
+}
+
+internal object TestJsonSerializerCollectionAnimeId: JsonSerializer<Collection<AnimeId>> {
+    override suspend fun serialize(obj: Collection<AnimeId>, minify: Boolean): String = shouldNotBeInvoked()
 }
