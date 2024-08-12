@@ -327,7 +327,7 @@ internal class AppConfigTest {
 
                 // then
                 assertThat(result).exists()
-                assertThat(result.fileName.toString()).isEqualTo("kitsu.io")
+                assertThat(result.fileName.toString()).isEqualTo("kitsu.app")
             }
         }
 
@@ -348,7 +348,7 @@ internal class AppConfigTest {
 
                 // then
                 assertThat(result).exists()
-                assertThat(result.fileName.toString()).isEqualTo("kitsu.io-relations")
+                assertThat(result.fileName.toString()).isEqualTo("kitsu.app-relations")
             }
         }
 
@@ -369,7 +369,7 @@ internal class AppConfigTest {
 
                 // then
                 assertThat(result).exists()
-                assertThat(result.fileName.toString()).isEqualTo("kitsu.io-tags")
+                assertThat(result.fileName.toString()).isEqualTo("kitsu.app-tags")
             }
         }
 

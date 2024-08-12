@@ -12,8 +12,8 @@
       "title": "Fruits Basket",
       "type": "TV",
       "episodes": 26,
-      "picture": "https://media.kitsu.io/anime/poster_images/99/small.jpg?1474922066",
-      "thumbnail": "https://media.kitsu.io/anime/poster_images/99/tiny.jpg?1474922066",
+      "picture": "https://media.kitsu.app/anime/poster_images/99/small.jpg?1474922066",
+      "thumbnail": "https://media.kitsu.app/anime/poster_images/99/tiny.jpg?1474922066",
       "status": "FINISHED",
       "duration": {
         "value": 24,
@@ -31,7 +31,7 @@
         "フルーツバスケット"
       ],
       "relatedAnime": [
-        "https://kitsu.io/anime/41995"
+        "https://kitsu.app/anime/41995"
       ],
       "tags": []
     }
