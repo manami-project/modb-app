@@ -7,7 +7,7 @@ import kotlinx.coroutines.TimeoutCancellationException
  * Raw files are converted into an intermediate format with file suffix [CONVERTED_FILE_SUFFIX].
  * @since 1.0.0
  */
-interface RawFileConversionStatusChecker {
+interface RawFileConversionService {
 
     /**
      * Checks if all raw files have been converted.
@@ -22,4 +22,16 @@ interface RawFileConversionStatusChecker {
      * @throws TimeoutCancellationException if files have not been converted within a waiting time of 10 seconds.
      */
     suspend fun waitForAllRawFilesToBeConverted()
+
+    /**
+     * Start conversion of raw files.
+     * @since 1.0.0
+     */
+    suspend fun start(): Boolean
+
+    /**
+     * Shutdown service and free resources.
+     * @since 1.0.0
+     */
+    suspend fun shutdown()
 }
