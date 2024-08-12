@@ -197,6 +197,7 @@ internal class FileSizePlausibilityValidationPostProcessorTest {
 
                 val testAppConfig = object: Config by TestAppConfig {
                     override fun metaDataProviderConfigurations(): Set<MetaDataProviderConfig> = setOf(testMetaDataProviderConfig)
+                    override fun deadEntriesSupported(metaDataProviderConfig: MetaDataProviderConfig): Boolean = true
                 }
 
                 val json = tempDir.resolve("json.txt").createFile()
@@ -259,6 +260,7 @@ internal class FileSizePlausibilityValidationPostProcessorTest {
 
                 val testAppConfig = object: Config by TestAppConfig {
                     override fun metaDataProviderConfigurations(): Set<MetaDataProviderConfig> = setOf(testMetaDataProviderConfig)
+                    override fun deadEntriesSupported(metaDataProviderConfig: MetaDataProviderConfig): Boolean = true
                 }
 
                 val json = tempDir.resolve("json.txt").createFile()
@@ -321,6 +323,7 @@ internal class FileSizePlausibilityValidationPostProcessorTest {
 
                 val testAppConfig = object: Config by TestAppConfig {
                     override fun metaDataProviderConfigurations(): Set<MetaDataProviderConfig> = setOf(testMetaDataProviderConfig)
+                    override fun deadEntriesSupported(metaDataProviderConfig: MetaDataProviderConfig): Boolean = true
                 }
 
                 val json = tempDir.resolve("json.txt").createFile()
@@ -383,6 +386,7 @@ internal class FileSizePlausibilityValidationPostProcessorTest {
 
                 val testAppConfig = object: Config by TestAppConfig {
                     override fun metaDataProviderConfigurations(): Set<MetaDataProviderConfig> = setOf(testMetaDataProviderConfig)
+                    override fun deadEntriesSupported(metaDataProviderConfig: MetaDataProviderConfig): Boolean = true
                 }
 
                 val json = tempDir.resolve("json.txt").createFile()
@@ -434,7 +438,7 @@ internal class FileSizePlausibilityValidationPostProcessorTest {
         }
 
         @Test
-        fun `ignores files which don't exist`() {
+        fun `ignores dead entries files which don't exist`() {
             tempDirectory {
                 // given
                 val testMetaDataProviderConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
@@ -443,6 +447,7 @@ internal class FileSizePlausibilityValidationPostProcessorTest {
 
                 val testAppConfig = object: Config by TestAppConfig {
                     override fun metaDataProviderConfigurations(): Set<MetaDataProviderConfig> = setOf(testMetaDataProviderConfig)
+                    override fun deadEntriesSupported(metaDataProviderConfig: MetaDataProviderConfig): Boolean = true
                 }
 
                 val json = tempDir.resolve("json.txt").createFile()
@@ -465,6 +470,67 @@ internal class FileSizePlausibilityValidationPostProcessorTest {
                 val deadEntriesJson = tempDir.resolve("dead-entries-json.txt")
                 val deadEntriesJsonMinified = tempDir.resolve("dead-entries-jsonMinified.txt")
                 val deadEntriesZip = tempDir.resolve("dead-entries-zip.txt")
+
+                val testDeadEntriesAccessor = object: DeadEntriesAccessor by TestDeadEntriesAccessor {
+                    override fun deadEntriesFile(metaDataProviderConfig: MetaDataProviderConfig, type: DatasetFileType): RegularFile = when(type) {
+                        DatasetFileType.JSON -> deadEntriesJson
+                        DatasetFileType.JSON_MINIFIED -> deadEntriesJsonMinified
+                        DatasetFileType.ZIP -> deadEntriesZip
+                    }
+                }
+
+                val fileSizePlausibilityValidationPostProcessor = FileSizePlausibilityValidationPostProcessor(
+                    appConfig = testAppConfig,
+                    datasetFileAccessor = testDatasetFileAccessor,
+                    deadEntriesAccessor = testDeadEntriesAccessor,
+                )
+
+                // when
+                val result = fileSizePlausibilityValidationPostProcessor.process()
+
+                // then
+                assertThat(result).isTrue()
+            }
+        }
+
+        @Test
+        fun `ignores meta data providers which don't support dead entries`() {
+            tempDirectory {
+                // given
+                val testMetaDataProviderConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = "example.org"
+                }
+
+                val testAppConfig = object: Config by TestAppConfig {
+                    override fun metaDataProviderConfigurations(): Set<MetaDataProviderConfig> = setOf(testMetaDataProviderConfig)
+                    override fun deadEntriesSupported(metaDataProviderConfig: MetaDataProviderConfig): Boolean = false
+                }
+
+                val json = tempDir.resolve("json.txt").createFile()
+                "text\n".repeat(1000).writeToFile(json)
+
+                val jsonMinified = tempDir.resolve("jsonMinified.txt").createFile()
+                "text\n".repeat(100).writeToFile(jsonMinified)
+
+                val zip = tempDir.resolve("zip.txt").createFile()
+                "text\n".repeat(1).writeToFile(zip)
+
+                val testDatasetFileAccessor = object: DatasetFileAccessor by TestDatasetFileAccessor {
+                    override fun offlineDatabaseFile(type: DatasetFileType): RegularFile = when(type) {
+                        DatasetFileType.JSON -> json
+                        DatasetFileType.JSON_MINIFIED -> jsonMinified
+                        DatasetFileType.ZIP -> zip
+                    }
+                }
+
+                val deadEntriesJson = tempDir.resolve("dead-entries-json.txt").createFile()
+                "text\n".repeat(100).writeToFile(deadEntriesJson)
+
+                val deadEntriesJsonMinified = tempDir.resolve("dead-entries-jsonMinified.txt").createFile()
+                "text\n".repeat(1000).writeToFile(deadEntriesJsonMinified)
+
+                val deadEntriesZip = tempDir.resolve("dead-entries-zip.txt").createFile()
+                "text\n".repeat(1).writeToFile(deadEntriesZip)
 
                 val testDeadEntriesAccessor = object: DeadEntriesAccessor by TestDeadEntriesAccessor {
                     override fun deadEntriesFile(metaDataProviderConfig: MetaDataProviderConfig, type: DatasetFileType): RegularFile = when(type) {

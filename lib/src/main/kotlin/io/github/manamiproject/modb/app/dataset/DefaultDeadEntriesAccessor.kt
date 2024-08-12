@@ -51,7 +51,7 @@ class DefaultDeadEntriesAccessor(
     private var isInitialized = false
 
     override fun deadEntriesFile(metaDataProviderConfig: MetaDataProviderConfig, type: DatasetFileType): RegularFile {
-        require(supportedMetaDataProviders.contains(metaDataProviderConfig)) { "Meta data provider [${metaDataProviderConfig.hostname()}] doesn't support dead entry files." }
+        require(appConfig.deadEntriesSupported(metaDataProviderConfig)) { "Meta data provider [${metaDataProviderConfig.hostname()}] doesn't support dead entry files." }
 
         val hostnameWithoutTld = metaDataProviderConfig.hostname().split('.').first()
         val deadEntriesFolder = appConfig.outputDirectory().resolve("dead-entries")
@@ -74,7 +74,7 @@ class DefaultDeadEntriesAccessor(
 
         log.info { "Adding [$animeId] from [${metaDataProviderConfig.hostname()}] to dead entries list" }
 
-        if (supportedMetaDataProviders.contains(metaDataProviderConfig)) {
+        if (appConfig.deadEntriesSupported(metaDataProviderConfig)) {
             Mutex().withLock {
                 writeFileAndUpdateInMemoryData(animeId, metaDataProviderConfig)
             }
@@ -121,7 +121,7 @@ class DefaultDeadEntriesAccessor(
         Mutex().withLock {
             if (!isInitialized) {
                 appConfig.metaDataProviderConfigurations()
-                    .filter { supportedMetaDataProviders.contains(it) }
+                    .filter { appConfig.deadEntriesSupported(it) }
                     .forEach { metaDataProviderConfig ->
                         val file = deadEntriesFile(metaDataProviderConfig, JSON_MINIFIED)
 
@@ -193,7 +193,6 @@ class DefaultDeadEntriesAccessor(
 
     companion object {
         private val log by LoggerDelegate()
-        private val supportedMetaDataProviders = setOf(AnidbConfig, AnilistConfig, KitsuConfig, MyanimelistConfig)
 
         /**
          * Singleton of [DefaultDeadEntriesAccessor]
