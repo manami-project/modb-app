@@ -2,7 +2,6 @@ package io.github.manamiproject.modb.app.convfiles
 
 import io.github.manamiproject.modb.app.TestAppConfig
 import io.github.manamiproject.modb.app.TestMetaDataProviderConfig
-import io.github.manamiproject.modb.app.config.AppConfig
 import io.github.manamiproject.modb.app.config.Config
 import io.github.manamiproject.modb.core.config.FileSuffix
 import io.github.manamiproject.modb.core.config.Hostname
@@ -24,7 +23,7 @@ import kotlin.test.Test
 import kotlin.time.DurationUnit.SECONDS
 import kotlin.time.toDuration
 
-internal class DefaultRawFileConversionStatusCheckerTest {
+internal class DefaultRawFileConversionServiceTest {
 
     @Nested
     inner class UnconvertedFilesExistTests {
@@ -62,7 +61,7 @@ internal class DefaultRawFileConversionStatusCheckerTest {
                     }
                 }
 
-                val defaultRawFileConversionStatusChecker = DefaultRawFileConversionStatusChecker(
+                val defaultRawFileConversionStatusChecker = DefaultRawFileConversionService(
                     appConfig = testAppConfig,
                 )
 
@@ -109,7 +108,7 @@ internal class DefaultRawFileConversionStatusCheckerTest {
                     }
                 }
 
-                val defaultRawFileConversionStatusChecker = DefaultRawFileConversionStatusChecker(
+                val defaultRawFileConversionStatusChecker = DefaultRawFileConversionService(
                     appConfig = testAppConfig,
                 )
 
@@ -158,7 +157,7 @@ internal class DefaultRawFileConversionStatusCheckerTest {
                     }
                 }
 
-                val defaultRawFileConversionStatusChecker = DefaultRawFileConversionStatusChecker(
+                val defaultRawFileConversionStatusChecker = DefaultRawFileConversionService(
                     appConfig = testAppConfig,
                 )
 
@@ -219,7 +218,7 @@ internal class DefaultRawFileConversionStatusCheckerTest {
                     }
                 }
 
-                val defaultRawFileConversionStatusChecker = DefaultRawFileConversionStatusChecker(
+                val defaultRawFileConversionStatusChecker = DefaultRawFileConversionService(
                     appConfig = testAppConfig,
                 )
 
@@ -235,19 +234,47 @@ internal class DefaultRawFileConversionStatusCheckerTest {
     }
 
     @Nested
+    inner class StartTests {
+
+        @Test
+        fun `returns false if you try to start it twice`() {
+            tempDirectory {
+                // given
+                val testAppConfig = object: Config by TestAppConfig {
+                    override fun workingDir(metaDataProviderConfig: MetaDataProviderConfig): Directory = tempDir
+                }
+
+                val defaultRawFileConversionService = DefaultRawFileConversionService(
+                    appConfig = testAppConfig,
+                )
+
+                val initallyStarted = defaultRawFileConversionService.start()
+
+                // when
+                val result = defaultRawFileConversionService.start()
+
+                // then
+                defaultRawFileConversionService.shutdown()
+                assertThat(initallyStarted).isTrue()
+                assertThat(result).isFalse()
+            }
+        }
+    }
+
+    @Nested
     inner class CompanionObjectTests {
 
         @Test
         fun `instance property always returns same instance`() {
             tempDirectory {
                 // given
-                val previous = DefaultRawFileConversionStatusChecker.instance
+                val previous = DefaultRawFileConversionService.instance
 
                 // when
-                val result = DefaultRawFileConversionStatusChecker.instance
+                val result = DefaultRawFileConversionService.instance
 
                 // then
-                assertThat(result).isExactlyInstanceOf(DefaultRawFileConversionStatusChecker::class.java)
+                assertThat(result).isExactlyInstanceOf(DefaultRawFileConversionService::class.java)
                 assertThat(result===previous).isTrue()
             }
         }

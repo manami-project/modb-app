@@ -6,6 +6,7 @@ import io.github.manamiproject.modb.core.config.FileSuffix
 import io.github.manamiproject.modb.core.config.MetaDataProviderConfig
 import io.github.manamiproject.modb.core.converter.PathAnimeConverter
 import io.github.manamiproject.modb.core.coroutines.ModbDispatchers.LIMITED_FS
+import io.github.manamiproject.modb.core.excludeFromTestContext
 import io.github.manamiproject.modb.core.extensions.*
 import io.github.manamiproject.modb.core.logging.LoggerDelegate
 import io.github.manamiproject.modb.core.models.Anime
@@ -13,6 +14,7 @@ import kotlinx.coroutines.*
 import java.nio.file.FileSystems
 import java.nio.file.Path
 import java.nio.file.StandardWatchEventKinds.ENTRY_CREATE
+import java.util.concurrent.CopyOnWriteArrayList
 import kotlin.io.path.deleteIfExists
 import java.nio.file.WatchService as JavaWatchService
 
@@ -40,7 +42,7 @@ class DependentConversionWatchService(
     private val metaDataConfigs = mutableMapOf<IdentityHashCode, MetaDataProviderConfig>()
     private val workingDirs = mutableMapOf<IdentityHashCode, Directory>()
     private val validFileSuffixes = mutableSetOf<FileSuffix>()
-    private val jobs = mutableListOf<Job>()
+    private val jobs = CopyOnWriteArrayList(mutableListOf<Job>())
 
     private val dependentFileConverter = DependentFileConverter(
         appConfig = appConfig,
@@ -139,7 +141,9 @@ class DependentConversionWatchService(
     private suspend fun waitWhileFileIsBeingWrittenAsync(file: RegularFile) = withContext(LIMITED_FS) {
         val expectedFile = file.changeSuffix(LOCK_FILE_SUFFIX)
         while (expectedFile.regularFileExists() && isActive) {
-            delay(1)
+            excludeFromTestContext(appConfig) {
+                delay(100)
+            }
         }
     }
 
