@@ -90,14 +90,6 @@ interface Config: ContextAware {
     fun downloadControlStateDirectory(): Directory
 
     /**
-     * Clock being used whenever dates and timestamps are created.
-     * Default is system default zone.
-     * @since 1.0.0
-     * @return Instance of [Clock] as basis for any type of date instances.
-     */
-    fun clock(): Clock = Clock.systemDefaultZone()
-
-    /**
      * Determines if anime of a specific meta data provider can change their Ids.
      * This is most likely to happen if the ID is a SEO optimized title.
      * @since 1.0.0
@@ -107,4 +99,25 @@ interface Config: ContextAware {
     fun canChangeAnimeIds(metaDataProviderConfig: MetaDataProviderConfig): Boolean = setOf(
         AnimePlanetConfig
     ).contains(metaDataProviderConfig)
+
+    /**
+     * Checks if tracking IDs for anime which cannot be downloaded is supported for a specific meta data provider.
+     * @since 1.0.0
+     * @param metaDataProviderConfig Configuration for a specific meta data provider.
+     * @return `true` if the meta data provider has its own dead entries file.
+     */
+    fun deadEntriesSupported(metaDataProviderConfig: MetaDataProviderConfig): Boolean = setOf(
+        AnidbConfig,
+        AnilistConfig,
+        KitsuConfig,
+        MyanimelistConfig,
+    ).contains(metaDataProviderConfig)
+
+    /**
+     * Clock being used whenever dates and timestamps are created.
+     * Default is system default zone.
+     * @since 1.0.0
+     * @return Instance of [Clock] as basis for any type of date instances.
+     */
+    fun clock(): Clock = Clock.systemDefaultZone()
 }

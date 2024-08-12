@@ -37,19 +37,21 @@ class FileSizePlausibilityValidationPostProcessor(
 
         log.info { "Checking that sizes of the dead entries files are plausible." }
 
-        appConfig.metaDataProviderConfigurations().forEach { currentConfig ->
-            if (!deadEntriesAccessor.deadEntriesFile(currentConfig, JSON).exists()) {
-                return@forEach
-            }
+        appConfig.metaDataProviderConfigurations()
+            .filter { appConfig.deadEntriesSupported(it) }
+            .forEach { currentConfig ->
+                if (!deadEntriesAccessor.deadEntriesFile(currentConfig, JSON).exists()) {
+                    return@forEach
+                }
 
-            val deadEntriesJson = deadEntriesAccessor.deadEntriesFile(currentConfig, JSON).fileSize()
-            val deadEntriesJsonMinified = deadEntriesAccessor.deadEntriesFile(currentConfig, JSON_MINIFIED).fileSize()
-            val deadEntriesZip = deadEntriesAccessor.deadEntriesFile(currentConfig, ZIP).fileSize()
+                val deadEntriesJson = deadEntriesAccessor.deadEntriesFile(currentConfig, JSON).fileSize()
+                val deadEntriesJsonMinified = deadEntriesAccessor.deadEntriesFile(currentConfig, JSON_MINIFIED).fileSize()
+                val deadEntriesZip = deadEntriesAccessor.deadEntriesFile(currentConfig, ZIP).fileSize()
 
-            check(deadEntriesJsonMinified in (deadEntriesZip + 1)..<deadEntriesJson) {
-                "File sizes for dead entry files of [${currentConfig.hostname()}] are not plausible: [json=$deadEntriesJson, jsonMinified=$deadEntriesJsonMinified, zip=$deadEntriesZip]"
+                check(deadEntriesJsonMinified in (deadEntriesZip + 1)..<deadEntriesJson) {
+                    "File sizes for dead entry files of [${currentConfig.hostname()}] are not plausible: [json=$deadEntriesJson, jsonMinified=$deadEntriesJsonMinified, zip=$deadEntriesZip]"
+                }
             }
-        }
 
         return true
     }
