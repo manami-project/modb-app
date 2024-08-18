@@ -22,6 +22,8 @@ import io.github.manamiproject.modb.notify.NotifyConfig
 import io.github.manamiproject.modb.serde.json.DeadEntriesJsonSerializer
 import io.github.manamiproject.modb.serde.json.DeadEntriesJsonStringDeserializer
 import io.github.manamiproject.modb.serde.json.DefaultExternalResourceJsonDeserializer
+import io.github.manamiproject.modb.serde.json.ExternalResourceJsonDeserializer
+import io.github.manamiproject.modb.serde.json.models.DeadEntries
 import io.github.manamiproject.modb.test.exceptionExpected
 import io.github.manamiproject.modb.test.tempDirectory
 import org.assertj.core.api.Assertions.assertThat
@@ -215,9 +217,16 @@ internal class DefaultDeadEntriesAccessorTest {
                     override suspend fun removeDeadEntry(animeId: AnimeId, metaDataProviderConfig: MetaDataProviderConfig) { }
                 }
 
+                val testExternalResourceJsonDeserializerDeadEntries = object: ExternalResourceJsonDeserializer<DeadEntries> by TestExternalResourceJsonDeserializerDeadEntries {
+                    override suspend fun deserialize(file: RegularFile): DeadEntries = DeadEntries(
+                        lastUpdate = "2024-08-01",
+                        deadEntries = emptyList(),
+                    )
+                }
+
                 val deadEntriesAccessor = DefaultDeadEntriesAccessor(
                     appConfig = testAppConfig,
-                    jsonDeserializer = TestExternalResourceJsonDeserializerDeadEntries,
+                    jsonDeserializer = testExternalResourceJsonDeserializerDeadEntries,
                     downloadControlStateAccessor = testDownloadControlStateAccessor,
                 )
 
@@ -353,8 +362,15 @@ internal class DefaultDeadEntriesAccessorTest {
                     override suspend fun removeDeadEntry(animeId: AnimeId, metaDataProviderConfig: MetaDataProviderConfig) { }
                 }
 
+                val testExternalResourceJsonDeserializerDeadEntries = object: ExternalResourceJsonDeserializer<DeadEntries> by TestExternalResourceJsonDeserializerDeadEntries {
+                    override suspend fun deserialize(file: RegularFile): DeadEntries = DeadEntries(
+                        lastUpdate = "2024-08-01",
+                        deadEntries = emptyList(),
+                    )
+                }
+
                 val deadEntriesAccessor = DefaultDeadEntriesAccessor(
-                    jsonDeserializer = TestExternalResourceJsonDeserializerDeadEntries,
+                    jsonDeserializer = testExternalResourceJsonDeserializerDeadEntries,
                     appConfig = testAppConfig,
                     downloadControlStateAccessor = testDownloadControlStateAccessor,
                 )
@@ -389,8 +405,15 @@ internal class DefaultDeadEntriesAccessorTest {
                     }
                 }
 
+                val testExternalResourceJsonDeserializerDeadEntries = object: ExternalResourceJsonDeserializer<DeadEntries> by TestExternalResourceJsonDeserializerDeadEntries {
+                    override suspend fun deserialize(file: RegularFile): DeadEntries = DeadEntries(
+                        lastUpdate = "2024-08-01",
+                        deadEntries = emptyList(),
+                    )
+                }
+
                 val deadEntriesAccessor = DefaultDeadEntriesAccessor(
-                    jsonDeserializer = TestExternalResourceJsonDeserializerDeadEntries,
+                    jsonDeserializer = testExternalResourceJsonDeserializerDeadEntries,
                     appConfig = testAppConfig,
                     downloadControlStateAccessor = testDownloadControlStateAccessor,
                 )
@@ -492,9 +515,16 @@ internal class DefaultDeadEntriesAccessorTest {
                     override suspend fun removeDeadEntry(animeId: AnimeId, metaDataProviderConfig: MetaDataProviderConfig) { }
                 }
 
+                val testExternalResourceJsonDeserializerDeadEntries = object: ExternalResourceJsonDeserializer<DeadEntries> by TestExternalResourceJsonDeserializerDeadEntries {
+                    override suspend fun deserialize(file: RegularFile): DeadEntries = DeadEntries(
+                        lastUpdate = "2024-08-01",
+                        deadEntries = emptyList(),
+                    )
+                }
+
                 val deadEntriesAccessor = DefaultDeadEntriesAccessor(
                     appConfig = testAppConfig,
-                    jsonDeserializer = TestExternalResourceJsonDeserializerDeadEntries,
+                    jsonDeserializer = testExternalResourceJsonDeserializerDeadEntries,
                     downloadControlStateAccessor = testDownloadControlStateAccessor,
                 )
 
@@ -527,9 +557,16 @@ internal class DefaultDeadEntriesAccessorTest {
                     override suspend fun removeDeadEntry(animeId: AnimeId, metaDataProviderConfig: MetaDataProviderConfig) { }
                 }
 
+                val testExternalResourceJsonDeserializerDeadEntries = object: ExternalResourceJsonDeserializer<DeadEntries> by TestExternalResourceJsonDeserializerDeadEntries {
+                    override suspend fun deserialize(file: RegularFile): DeadEntries = DeadEntries(
+                        lastUpdate = "2024-08-01",
+                        deadEntries = emptyList(),
+                    )
+                }
+
                 val deadEntriesAccessor = DefaultDeadEntriesAccessor(
                     appConfig = testAppConfig,
-                    jsonDeserializer = TestExternalResourceJsonDeserializerDeadEntries,
+                    jsonDeserializer = testExternalResourceJsonDeserializerDeadEntries,
                     downloadControlStateAccessor = testDownloadControlStateAccessor,
                 )
 
@@ -685,9 +722,16 @@ internal class DefaultDeadEntriesAccessorTest {
                     override suspend fun removeDeadEntry(animeId: AnimeId, metaDataProviderConfig: MetaDataProviderConfig) { }
                 }
 
+                val testExternalResourceJsonDeserializerDeadEntries = object: ExternalResourceJsonDeserializer<DeadEntries> by TestExternalResourceJsonDeserializerDeadEntries {
+                    override suspend fun deserialize(file: RegularFile): DeadEntries = DeadEntries(
+                        lastUpdate = "2024-08-01",
+                        deadEntries = emptyList(),
+                    )
+                }
+
                 val deadEntriesAccessor = DefaultDeadEntriesAccessor(
                     appConfig = testAppConfig,
-                    jsonDeserializer = TestExternalResourceJsonDeserializerDeadEntries,
+                    jsonDeserializer = testExternalResourceJsonDeserializerDeadEntries,
                     downloadControlStateAccessor = testDownloadControlStateAccessor,
                     jsonSerializer = TestJsonSerializerCollectionAnimeId,
                 )
@@ -725,9 +769,16 @@ internal class DefaultDeadEntriesAccessorTest {
                     override fun downloadControlStateDirectory(metaDataProviderConfig: MetaDataProviderConfig): Directory = tempDir
                 }
 
+                val testExternalResourceJsonDeserializerDeadEntries = object: ExternalResourceJsonDeserializer<DeadEntries> by TestExternalResourceJsonDeserializerDeadEntries {
+                    override suspend fun deserialize(file: RegularFile): DeadEntries = DeadEntries(
+                        lastUpdate = "2024-08-01",
+                        deadEntries = emptyList(),
+                    )
+                }
+
                 val deadEntriesAccessor = DefaultDeadEntriesAccessor(
                     appConfig = testAppConfig,
-                    jsonDeserializer = TestExternalResourceJsonDeserializerDeadEntries,
+                    jsonDeserializer = testExternalResourceJsonDeserializerDeadEntries,
                     downloadControlStateAccessor = testDownloadControlStateAccessor,
                     jsonSerializer = TestJsonSerializerCollectionAnimeId,
                 )
@@ -836,9 +887,16 @@ internal class DefaultDeadEntriesAccessorTest {
                     override suspend fun removeDeadEntry(animeId: AnimeId, metaDataProviderConfig: MetaDataProviderConfig) { }
                 }
 
+                val testExternalResourceJsonDeserializerDeadEntries = object: ExternalResourceJsonDeserializer<DeadEntries> by TestExternalResourceJsonDeserializerDeadEntries {
+                    override suspend fun deserialize(file: RegularFile): DeadEntries = DeadEntries(
+                        lastUpdate = "2024-08-01",
+                        deadEntries = emptyList(),
+                    )
+                }
+
                 val deadEntriesAccessor = DefaultDeadEntriesAccessor(
                     appConfig = testAppConfig,
-                    jsonDeserializer = TestExternalResourceJsonDeserializerDeadEntries,
+                    jsonDeserializer = testExternalResourceJsonDeserializerDeadEntries,
                     downloadControlStateAccessor = testDownloadControlStateAccessor,
                     jsonSerializer = TestJsonSerializerCollectionAnimeId,
                 )
@@ -871,9 +929,16 @@ internal class DefaultDeadEntriesAccessorTest {
                     override suspend fun removeDeadEntry(animeId: AnimeId, metaDataProviderConfig: MetaDataProviderConfig) { }
                 }
 
+                val testExternalResourceJsonDeserializerDeadEntries = object: ExternalResourceJsonDeserializer<DeadEntries> by TestExternalResourceJsonDeserializerDeadEntries {
+                    override suspend fun deserialize(file: RegularFile): DeadEntries = DeadEntries(
+                        lastUpdate = "2024-08-01",
+                        deadEntries = emptyList(),
+                    )
+                }
+
                 val deadEntriesAccessor = DefaultDeadEntriesAccessor(
                     appConfig = testAppConfig,
-                    jsonDeserializer = TestExternalResourceJsonDeserializerDeadEntries,
+                    jsonDeserializer = testExternalResourceJsonDeserializerDeadEntries,
                     downloadControlStateAccessor = testDownloadControlStateAccessor,
                     jsonSerializer = TestJsonSerializerCollectionAnimeId,
                 )

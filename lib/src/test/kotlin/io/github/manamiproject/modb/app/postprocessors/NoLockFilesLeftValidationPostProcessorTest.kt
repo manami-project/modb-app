@@ -5,7 +5,6 @@ import io.github.manamiproject.modb.app.TestDownloadControlStateAccessor
 import io.github.manamiproject.modb.app.TestMetaDataProviderConfig
 import io.github.manamiproject.modb.app.config.Config
 import io.github.manamiproject.modb.app.downloadcontrolstate.DownloadControlStateAccessor
-import io.github.manamiproject.modb.app.postprocessors.NoLockFilesLeftValidationPostProcessor
 import io.github.manamiproject.modb.core.config.Hostname
 import io.github.manamiproject.modb.core.config.MetaDataProviderConfig
 import io.github.manamiproject.modb.core.extensions.Directory

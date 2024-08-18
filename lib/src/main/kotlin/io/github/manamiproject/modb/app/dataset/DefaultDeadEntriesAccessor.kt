@@ -124,11 +124,6 @@ class DefaultDeadEntriesAccessor(
                     .filter { appConfig.deadEntriesSupported(it) }
                     .forEach { metaDataProviderConfig ->
                         val file = deadEntriesFile(metaDataProviderConfig, JSON_MINIFIED)
-
-                        if (!file.regularFileExists()) {
-                            return@forEach
-                        }
-
                         val parsedEntries = jsonDeserializer.deserialize(file)
 
                         when(metaDataProviderConfig.hostname()) {
