@@ -10,7 +10,7 @@ modb-kitsu = "5.1.4"
 modb-livechart = "3.1.3"
 modb-myanimelist = "6.1.3"
 modb-notify = "5.1.3"
-modb-test = "1.6.19"
+modb-test = "1.6.20"
 kover = "0.8.3"
 logback-classic = "1.5.7"
 
