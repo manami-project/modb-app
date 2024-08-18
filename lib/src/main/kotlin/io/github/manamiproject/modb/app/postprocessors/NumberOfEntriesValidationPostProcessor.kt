@@ -12,6 +12,13 @@ import io.github.manamiproject.modb.serde.json.AnimeListJsonStringDeserializer
 import io.github.manamiproject.modb.serde.json.DeadEntriesJsonStringDeserializer
 import io.github.manamiproject.modb.serde.json.DefaultExternalResourceJsonDeserializer
 
+/**
+ * Verifies that the number of entries across dataset files as well as dead entries files are equal.
+ * @since 1.0.0
+ * @property appConfig Application specific configuration. Uses [AppConfig] by default.
+ * @property deadEntriesAccessor Access to dead entries files.
+ * @property datasetFileAccessor Access to dataset files.
+ */
 class NumberOfEntriesValidationPostProcessor(
     private val appConfig: Config = AppConfig.instance,
     private val deadEntriesAccessor: DeadEntriesAccessor = DefaultDeadEntriesAccessor.instance,
