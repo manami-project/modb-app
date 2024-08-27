@@ -43,13 +43,43 @@ interface DownloadControlStateAccessor {
     suspend fun allDcsEntries(): List<DownloadControlStateEntry>
 
     /**
+     * Checks if a [DownloadControlStateEntry] already exists.
+     * @since 1.0.0
+     * @param metaDataProviderConfig Configuration for a specific meta data provider.
+     * @param animeId Id of the anime as defined by the meta data provider.
+     * @return `true` if a DCS file already exists for this id and meta data provider.
+     * @see dcsEntry
+     */
+    suspend fun dcsEntryExists(metaDataProviderConfig: MetaDataProviderConfig, animeId: AnimeId): Boolean
+
+    /**
+     * Retrieve a specific DCS entry. In order to prevent an exception check if the entry exists using [dcsEntryExists].
+     * @since 1.0.0
+     * @param metaDataProviderConfig Configuration for a specific meta data provider.
+     * @param animeId Id of the anime as defined by the meta data provider.
+     * @return The requested DCS entry.
+     * @throws IllegalStateException if the requested DCS entry doesn't exist.
+     * @see dcsEntryExists
+     */
+    suspend fun dcsEntry(metaDataProviderConfig: MetaDataProviderConfig, animeId: AnimeId): DownloadControlStateEntry
+
+    /**
+     * Either creates a new DCS entry or updates an existing one.
+     * @since 1.0.0
+     * @param metaDataProviderConfig Configuration for a specific meta data provider.
+     * @param animeId Id of the anime as defined by the meta data provider.
+     * @param downloadControlStateEntry Entry to be created or updated.
+     */
+    suspend fun createOrUpdate(metaDataProviderConfig: MetaDataProviderConfig, animeId: AnimeId, downloadControlStateEntry: DownloadControlStateEntry)
+
+    /**
      * Removed the DCS file for a dead entry.
      * @since 1.0.0
-     * @param animeId Id of the anime as defined by the meta data provider.
      * @param metaDataProviderConfig Configuration for a specific meta data provider.
+     * @param animeId Id of the anime as defined by the meta data provider.
      * @see MergeLockAccess.removeEntry
      */
-    suspend fun removeDeadEntry(animeId: AnimeId, metaDataProviderConfig: MetaDataProviderConfig)
+    suspend fun removeDeadEntry(metaDataProviderConfig: MetaDataProviderConfig, animeId: AnimeId)
 
     /**
      * Handles everything that needs to be done if an anime has changed its ID.

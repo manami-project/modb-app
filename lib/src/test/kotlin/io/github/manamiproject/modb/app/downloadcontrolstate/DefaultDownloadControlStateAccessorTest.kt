@@ -1,7 +1,6 @@
 package io.github.manamiproject.modb.app.downloadcontrolstate
 
 import io.github.manamiproject.modb.anilist.AnilistConfig
-import io.github.manamiproject.modb.animeplanet.AnimePlanetConfig
 import io.github.manamiproject.modb.app.TestAppConfig
 import io.github.manamiproject.modb.app.TestMergeLockAccess
 import io.github.manamiproject.modb.app.TestMetaDataProviderConfig
@@ -23,6 +22,7 @@ import io.github.manamiproject.modb.core.models.Duration.TimeUnit.MINUTES
 import io.github.manamiproject.modb.kitsu.KitsuConfig
 import io.github.manamiproject.modb.myanimelist.MyanimelistConfig
 import io.github.manamiproject.modb.test.exceptionExpected
+import io.github.manamiproject.modb.test.loadTestResource
 import io.github.manamiproject.modb.test.tempDirectory
 import io.github.manamiproject.modb.test.testResource
 import org.assertj.core.api.Assertions.assertThat
@@ -123,6 +123,7 @@ internal class DefaultDownloadControlStateAccessorTest {
 
                 val defaultDownloadControlStateAccessor = DefaultDownloadControlStateAccessor(
                     appConfig = testAppConfig,
+                    mergeLockAccess = TestMergeLockAccess,
                 )
 
                 // when
@@ -148,6 +149,7 @@ internal class DefaultDownloadControlStateAccessorTest {
                 val testAppConfig = object: Config by TestAppConfig {
                     override fun metaDataProviderConfigurations(): Set<MetaDataProviderConfig> = setOf(AnilistConfig, KitsuConfig)
                     override fun downloadControlStateDirectory(): Directory = tempDir
+                    override fun findMetaDataProviderConfig(host: Hostname): MetaDataProviderConfig = super.findMetaDataProviderConfig(host)
                 }
 
                 val expectedDcsEntries = setOf(
@@ -212,6 +214,7 @@ internal class DefaultDownloadControlStateAccessorTest {
 
                 val defaultDownloadControlStateAccessor = DefaultDownloadControlStateAccessor(
                     appConfig = testAppConfig,
+                    mergeLockAccess = TestMergeLockAccess,
                 )
 
                 // when
@@ -219,6 +222,60 @@ internal class DefaultDownloadControlStateAccessorTest {
 
                 // then
                 assertThat(result).containsAll(expectedDcsEntries)
+            }
+        }
+
+        @Test
+        fun `triggers initialization if necessary`() {
+            tempDirectory {
+                // given
+                var initHasBeenInvoked = false
+                val testAppConfig = object: Config by TestAppConfig {
+                    override fun metaDataProviderConfigurations(): Set<MetaDataProviderConfig> {
+                        check(!initHasBeenInvoked)
+                        initHasBeenInvoked = true
+                        return emptySet()
+                    }
+                    override fun downloadControlStateDirectory(): Directory = tempDir
+                }
+
+                val defaultDownloadControlStateAccessor = DefaultDownloadControlStateAccessor(
+                    appConfig = testAppConfig,
+                    mergeLockAccess = TestMergeLockAccess,
+                )
+
+                // when
+                defaultDownloadControlStateAccessor.allDcsEntries()
+
+                // then
+                assertThat(initHasBeenInvoked).isTrue()
+            }
+        }
+
+        @Test
+        fun `doesn't trigger init if it has already been triggered`() {
+            tempDirectory {
+                // given
+                var initHasBeenInvoked = 0
+                val testAppConfig = object: Config by TestAppConfig {
+                    override fun metaDataProviderConfigurations(): Set<MetaDataProviderConfig> {
+                        initHasBeenInvoked++
+                        return emptySet()
+                    }
+                    override fun downloadControlStateDirectory(): Directory = tempDir
+                }
+
+                val defaultDownloadControlStateAccessor = DefaultDownloadControlStateAccessor(
+                    appConfig = testAppConfig,
+                    mergeLockAccess = TestMergeLockAccess,
+                )
+                defaultDownloadControlStateAccessor.allDcsEntries()
+
+                // when
+                defaultDownloadControlStateAccessor.allDcsEntries()
+
+                // then
+                assertThat(initHasBeenInvoked).isOne()
             }
         }
     }
@@ -266,6 +323,7 @@ internal class DefaultDownloadControlStateAccessorTest {
                 val testAppConfig = object: Config by TestAppConfig {
                     override fun metaDataProviderConfigurations(): Set<MetaDataProviderConfig> = setOf(AnilistConfig, KitsuConfig)
                     override fun downloadControlStateDirectory(): Directory = tempDir
+                    override fun findMetaDataProviderConfig(host: Hostname): MetaDataProviderConfig = super.findMetaDataProviderConfig(host)
                 }
 
                 val expectedAnime = setOf(
@@ -329,6 +387,687 @@ internal class DefaultDownloadControlStateAccessorTest {
                 assertThat(result).containsAll(expectedAnime)
             }
         }
+
+        @Test
+        fun `triggers initialization if necessary`() {
+            tempDirectory {
+                // given
+                var initHasBeenInvoked = false
+                val testAppConfig = object: Config by TestAppConfig {
+                    override fun metaDataProviderConfigurations(): Set<MetaDataProviderConfig> {
+                        check(!initHasBeenInvoked)
+                        initHasBeenInvoked = true
+                        return emptySet()
+                    }
+                    override fun downloadControlStateDirectory(): Directory = tempDir
+                }
+
+                val defaultDownloadControlStateAccessor = DefaultDownloadControlStateAccessor(
+                    appConfig = testAppConfig,
+                    mergeLockAccess = TestMergeLockAccess,
+                )
+
+                // when
+                defaultDownloadControlStateAccessor.allAnime()
+
+                // then
+                assertThat(initHasBeenInvoked).isTrue()
+            }
+        }
+
+        @Test
+        fun `doesn't trigger init if it has already been triggered`() {
+            tempDirectory {
+                // given
+                var initHasBeenInvoked = 0
+                val testAppConfig = object: Config by TestAppConfig {
+                    override fun metaDataProviderConfigurations(): Set<MetaDataProviderConfig> {
+                        initHasBeenInvoked++
+                        return emptySet()
+                    }
+                    override fun downloadControlStateDirectory(): Directory = tempDir
+                }
+
+                val defaultDownloadControlStateAccessor = DefaultDownloadControlStateAccessor(
+                    appConfig = testAppConfig,
+                    mergeLockAccess = TestMergeLockAccess,
+                )
+                defaultDownloadControlStateAccessor.allAnime()
+
+                // when
+                defaultDownloadControlStateAccessor.allAnime()
+
+                // then
+                assertThat(initHasBeenInvoked).isOne()
+            }
+        }
+    }
+
+    @Nested
+    inner class DcsEntryExistsTests {
+
+        @Test
+        fun `returns true if an entry exists`() {
+            tempDirectory {
+                // given
+                val dir = tempDir.resolve(AnilistConfig.hostname()).createDirectory()
+                testResource("downloadcontrolstate/DefaultDownloadControlStateAccessorTest/success/32.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").copyTo(dir)
+
+                val testAppConfig = object: Config by TestAppConfig {
+                    override fun metaDataProviderConfigurations(): Set<MetaDataProviderConfig> = setOf(AnilistConfig, KitsuConfig)
+                    override fun downloadControlStateDirectory(): Directory = tempDir
+                    override fun findMetaDataProviderConfig(host: Hostname): MetaDataProviderConfig = super.findMetaDataProviderConfig(host)
+                }
+
+                val defaultDownloadControlStateAccessor = DefaultDownloadControlStateAccessor(
+                    appConfig = testAppConfig,
+                    mergeLockAccess = TestMergeLockAccess,
+                )
+
+                // when
+                val result = defaultDownloadControlStateAccessor.dcsEntryExists(AnilistConfig, "32")
+
+                // then
+                assertThat(result).isTrue()
+            }
+        }
+
+        @Test
+        fun `returns false if an entry doesn't exists`() {
+            tempDirectory {
+                // given
+                val dir = tempDir.resolve(AnilistConfig.hostname()).createDirectory()
+                testResource("downloadcontrolstate/DefaultDownloadControlStateAccessorTest/success/32.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").copyTo(dir)
+
+                val testAppConfig = object: Config by TestAppConfig {
+                    override fun metaDataProviderConfigurations(): Set<MetaDataProviderConfig> = setOf(AnilistConfig, KitsuConfig)
+                    override fun downloadControlStateDirectory(): Directory = tempDir
+                    override fun findMetaDataProviderConfig(host: Hostname): MetaDataProviderConfig = super.findMetaDataProviderConfig(host)
+                }
+
+                val defaultDownloadControlStateAccessor = DefaultDownloadControlStateAccessor(
+                    appConfig = testAppConfig,
+                    mergeLockAccess = TestMergeLockAccess,
+                )
+
+                // when
+                val result = defaultDownloadControlStateAccessor.dcsEntryExists(KitsuConfig, "99")
+
+                // then
+                assertThat(result).isFalse()
+            }
+        }
+
+        @Test
+        fun `triggers initialization if necessary`() {
+            tempDirectory {
+                // given
+                var initHasBeenInvoked = false
+                val testAppConfig = object: Config by TestAppConfig {
+                    override fun metaDataProviderConfigurations(): Set<MetaDataProviderConfig> {
+                        check(!initHasBeenInvoked)
+                        initHasBeenInvoked = true
+                        return emptySet()
+                    }
+                    override fun downloadControlStateDirectory(): Directory = tempDir
+                }
+
+                val defaultDownloadControlStateAccessor = DefaultDownloadControlStateAccessor(
+                    appConfig = testAppConfig,
+                    mergeLockAccess = TestMergeLockAccess,
+                )
+
+                // when
+                val result = defaultDownloadControlStateAccessor.dcsEntryExists(KitsuConfig, "99")
+
+                // then
+                assertThat(result).isFalse()
+                assertThat(initHasBeenInvoked).isTrue()
+            }
+        }
+
+        @Test
+        fun `doesn't trigger init if it has already been triggered`() {
+            tempDirectory {
+                // given
+                var initHasBeenInvoked = 0
+                val testAppConfig = object: Config by TestAppConfig {
+                    override fun metaDataProviderConfigurations(): Set<MetaDataProviderConfig> {
+                        initHasBeenInvoked++
+                        return emptySet()
+                    }
+                    override fun downloadControlStateDirectory(): Directory = tempDir
+                }
+
+                val defaultDownloadControlStateAccessor = DefaultDownloadControlStateAccessor(
+                    appConfig = testAppConfig,
+                    mergeLockAccess = TestMergeLockAccess,
+                )
+                defaultDownloadControlStateAccessor.dcsEntryExists(KitsuConfig, "99")
+
+                // when
+                val result = defaultDownloadControlStateAccessor.dcsEntryExists(KitsuConfig, "99")
+
+                // then
+                assertThat(result).isFalse()
+                assertThat(initHasBeenInvoked).isOne()
+            }
+        }
+    }
+
+    @Nested
+    inner class DcsEntryTests {
+
+        @Test
+        fun `correctly returns an existing DCS entry`() {
+            tempDirectory {
+                // given
+                val dir = tempDir.resolve(AnilistConfig.hostname()).createDirectory()
+                testResource("downloadcontrolstate/DefaultDownloadControlStateAccessorTest/success/32.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").copyTo(dir)
+
+                val testAppConfig = object: Config by TestAppConfig {
+                    override fun metaDataProviderConfigurations(): Set<MetaDataProviderConfig> = setOf(AnilistConfig, KitsuConfig)
+                    override fun downloadControlStateDirectory(): Directory = tempDir
+                    override fun findMetaDataProviderConfig(host: Hostname): MetaDataProviderConfig = super.findMetaDataProviderConfig(host)
+                }
+
+                val expectedDcsEntry = DownloadControlStateEntry(
+                    _weeksWihoutChange = 0,
+                    _lastDownloaded = WeekOfYear(2021, 44),
+                    _nextDownload = WeekOfYear(2021, 45),
+                    _anime = Anime(
+                        _title = "Shin Seiki Evangelion Movie: THE END OF EVANGELION",
+                        type = MOVIE,
+                        episodes = 1,
+                        picture = URI("https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/32-7YrdcGEX1FP3.png"),
+                        thumbnail = URI("https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/default.jpg"),
+                        status = FINISHED,
+                        duration = Duration(87, MINUTES),
+                        animeSeason = AnimeSeason(
+                            year = 1997,
+                        ),
+                        sources = hashSetOf(URI("https://anilist.co/anime/32")),
+                        synonyms = hashSetOf(
+                            "Neon Genesis Evangelion: The End of Evangelion",
+                            "新世紀エヴァンゲリオン劇場版 THE END OF EVANGELION",
+                        ),
+                        relatedAnime = hashSetOf(
+                            URI("https://anilist.co/anime/30"),
+                        ),
+                        tags = hashSetOf(
+                            "action",
+                            "drama",
+                            "mecha",
+                            "psychological",
+                            "sci-fi",
+                        )
+                    ),
+                )
+
+                val defaultDownloadControlStateAccessor = DefaultDownloadControlStateAccessor(
+                    appConfig = testAppConfig,
+                    mergeLockAccess = TestMergeLockAccess,
+                )
+
+                // when
+                val result = defaultDownloadControlStateAccessor.dcsEntry(AnilistConfig, "32")
+
+                // then
+                assertThat(result).isEqualTo(expectedDcsEntry)
+            }
+        }
+
+        @Test
+        fun `throws an exception if the requested entry doesn't exist`() {
+            tempDirectory {
+                // given
+                val dir = tempDir.resolve(AnilistConfig.hostname()).createDirectory()
+                testResource("downloadcontrolstate/DefaultDownloadControlStateAccessorTest/success/32.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").copyTo(dir)
+
+                val testAppConfig = object: Config by TestAppConfig {
+                    override fun metaDataProviderConfigurations(): Set<MetaDataProviderConfig> = setOf(AnilistConfig, KitsuConfig)
+                    override fun downloadControlStateDirectory(): Directory = tempDir
+                    override fun findMetaDataProviderConfig(host: Hostname): MetaDataProviderConfig = super.findMetaDataProviderConfig(host)
+                }
+
+                val defaultDownloadControlStateAccessor = DefaultDownloadControlStateAccessor(
+                    appConfig = testAppConfig,
+                    mergeLockAccess = TestMergeLockAccess,
+                )
+
+                // when
+                val result = exceptionExpected<IllegalStateException> {
+                    defaultDownloadControlStateAccessor.dcsEntry(KitsuConfig, "99")
+                }
+
+                // then
+                assertThat(result).hasMessage("Requested DCS entry with internal id [kitsu.app-99] doesnt exist.")
+            }
+        }
+
+        @Test
+        fun `triggers initialization if necessary`() {
+            tempDirectory {
+                // given
+                val dir = tempDir.resolve(AnilistConfig.hostname()).createDirectory()
+                testResource("downloadcontrolstate/DefaultDownloadControlStateAccessorTest/success/32.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").copyTo(dir)
+
+                var initHasBeenInvoked = false
+                val testAppConfig = object: Config by TestAppConfig {
+                    override fun metaDataProviderConfigurations(): Set<MetaDataProviderConfig> {
+                        check(!initHasBeenInvoked)
+                        initHasBeenInvoked = true
+                        return setOf(AnilistConfig)
+                    }
+                    override fun downloadControlStateDirectory(): Directory = tempDir
+                    override fun findMetaDataProviderConfig(host: Hostname): MetaDataProviderConfig = AnilistConfig
+                }
+
+                val defaultDownloadControlStateAccessor = DefaultDownloadControlStateAccessor(
+                    appConfig = testAppConfig,
+                    mergeLockAccess = TestMergeLockAccess,
+                )
+
+                // when
+                defaultDownloadControlStateAccessor.dcsEntry(AnilistConfig, "32")
+
+                // then
+                assertThat(initHasBeenInvoked).isTrue()
+            }
+        }
+
+        @Test
+        fun `doesn't trigger init if it has already been triggered`() {
+            tempDirectory {
+                // given
+                val dir = tempDir.resolve(AnilistConfig.hostname()).createDirectory()
+                testResource("downloadcontrolstate/DefaultDownloadControlStateAccessorTest/success/32.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").copyTo(dir)
+
+                var initHasBeenInvoked = 0
+                val testAppConfig = object: Config by TestAppConfig {
+                    override fun metaDataProviderConfigurations(): Set<MetaDataProviderConfig> {
+                        initHasBeenInvoked++
+                        return setOf(AnilistConfig)
+                    }
+                    override fun downloadControlStateDirectory(): Directory = tempDir
+                    override fun findMetaDataProviderConfig(host: Hostname): MetaDataProviderConfig = AnilistConfig
+                }
+
+                val defaultDownloadControlStateAccessor = DefaultDownloadControlStateAccessor(
+                    appConfig = testAppConfig,
+                    mergeLockAccess = TestMergeLockAccess,
+                )
+                defaultDownloadControlStateAccessor.dcsEntry(AnilistConfig, "32")
+
+                // when
+                defaultDownloadControlStateAccessor.dcsEntry(AnilistConfig, "32")
+
+                // then
+                assertThat(initHasBeenInvoked).isOne()
+            }
+        }
+    }
+
+    @Nested
+    inner class CreateOrUpdateTests {
+
+        @Test
+        fun `successfully create a new DCS entry`() {
+            tempDirectory {
+                // given
+                val testAppConfig = object: Config by TestAppConfig {
+                    override fun metaDataProviderConfigurations(): Set<MetaDataProviderConfig> = setOf(AnilistConfig)
+                    override fun downloadControlStateDirectory(): Directory = tempDir
+                }
+
+                val dcsEntry = DownloadControlStateEntry(
+                    _weeksWihoutChange = 0,
+                    _lastDownloaded = WeekOfYear(2021, 44),
+                    _nextDownload = WeekOfYear(2021, 45),
+                    _anime = Anime(
+                        _title = "Shin Seiki Evangelion Movie: THE END OF EVANGELION",
+                        type = MOVIE,
+                        episodes = 1,
+                        picture = URI("https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/32-7YrdcGEX1FP3.png"),
+                        thumbnail = URI("https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/default.jpg"),
+                        status = FINISHED,
+                        duration = Duration(87, MINUTES),
+                        animeSeason = AnimeSeason(
+                            year = 1997,
+                        ),
+                        sources = hashSetOf(URI("https://anilist.co/anime/32")),
+                        synonyms = hashSetOf(
+                            "Neon Genesis Evangelion: The End of Evangelion",
+                            "新世紀エヴァンゲリオン劇場版 THE END OF EVANGELION",
+                        ),
+                        relatedAnime = hashSetOf(
+                            URI("https://anilist.co/anime/30"),
+                        ),
+                        tags = hashSetOf(
+                            "action",
+                            "drama",
+                            "mecha",
+                            "psychological",
+                            "sci-fi",
+                        )
+                    ),
+                )
+
+                val expectedFile = loadTestResource<String>("downloadcontrolstate/DefaultDownloadControlStateAccessorTest/success/32.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX")
+                val outputDir = tempDir.resolve(AnilistConfig.hostname()).createDirectory()
+
+                val defaultDownloadControlStateAccessor = DefaultDownloadControlStateAccessor(
+                    appConfig = testAppConfig,
+                    mergeLockAccess = TestMergeLockAccess,
+                )
+
+                // when
+                defaultDownloadControlStateAccessor.createOrUpdate(AnilistConfig, "32", dcsEntry)
+
+                // then
+                val fileContent = outputDir.resolve("32.dcs").readFile()
+                assertThat(fileContent).isEqualTo(expectedFile)
+            }
+        }
+
+        @Test
+        fun `successfully update an existing DCS entry`() {
+            tempDirectory {
+                // given
+                val testAppConfig = object: Config by TestAppConfig {
+                    override fun metaDataProviderConfigurations(): Set<MetaDataProviderConfig> = setOf(AnilistConfig)
+                    override fun downloadControlStateDirectory(): Directory = tempDir
+                }
+
+                val previousEntry = DownloadControlStateEntry(
+                    _weeksWihoutChange = 2,
+                    _lastDownloaded = WeekOfYear(2021, 39),
+                    _nextDownload = WeekOfYear(2021, 44),
+                    _anime = Anime(
+                        _title = "Shin Seiki Evangelion Movie",
+                        type = MOVIE,
+                        episodes = 1,
+                        picture = URI("https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/32-7YrdcGEX1FP3.png"),
+                        thumbnail = URI("https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/default.jpg"),
+                        status = FINISHED,
+                        duration = Duration.UNKNOWN,
+                        animeSeason = AnimeSeason(
+                            year = AnimeSeason.UNKNOWN_YEAR,
+                        ),
+                        sources = hashSetOf(URI("https://anilist.co/anime/32")),
+                        synonyms = hashSetOf(
+                            "Neon Genesis Evangelion: The End of Evangelion",
+                            "新世紀エヴァンゲリオン劇場版 THE END OF EVANGELION",
+                        ),
+                        relatedAnime = hashSetOf(
+                            URI("https://anilist.co/anime/30"),
+                        ),
+                        tags = hashSetOf(
+                            "action",
+                            "mecha",
+                            "sci-fi",
+                        )
+                    ),
+                )
+
+                val dcsEntry = DownloadControlStateEntry(
+                    _weeksWihoutChange = 0,
+                    _lastDownloaded = WeekOfYear(2021, 44),
+                    _nextDownload = WeekOfYear(2021, 45),
+                    _anime = Anime(
+                        _title = "Shin Seiki Evangelion Movie: THE END OF EVANGELION",
+                        type = MOVIE,
+                        episodes = 1,
+                        picture = URI("https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/32-7YrdcGEX1FP3.png"),
+                        thumbnail = URI("https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/default.jpg"),
+                        status = FINISHED,
+                        duration = Duration(87, MINUTES),
+                        animeSeason = AnimeSeason(
+                            year = 1997,
+                        ),
+                        sources = hashSetOf(URI("https://anilist.co/anime/32")),
+                        synonyms = hashSetOf(
+                            "Neon Genesis Evangelion: The End of Evangelion",
+                            "新世紀エヴァンゲリオン劇場版 THE END OF EVANGELION",
+                        ),
+                        relatedAnime = hashSetOf(
+                            URI("https://anilist.co/anime/30"),
+                        ),
+                        tags = hashSetOf(
+                            "action",
+                            "drama",
+                            "mecha",
+                            "psychological",
+                            "sci-fi",
+                        )
+                    ),
+                )
+
+                val expectedFile = loadTestResource<String>("downloadcontrolstate/DefaultDownloadControlStateAccessorTest/success/32.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX")
+                val outputDir = tempDir.resolve(AnilistConfig.hostname()).createDirectory()
+
+                val defaultDownloadControlStateAccessor = DefaultDownloadControlStateAccessor(
+                    appConfig = testAppConfig,
+                    mergeLockAccess = TestMergeLockAccess,
+                )
+                defaultDownloadControlStateAccessor.createOrUpdate(AnilistConfig, "32", previousEntry)
+                val correctForPreviousVersion = defaultDownloadControlStateAccessor.dcsEntry(AnilistConfig, "32")
+
+                // when
+                defaultDownloadControlStateAccessor.createOrUpdate(AnilistConfig, "32", dcsEntry)
+
+                // then
+                assertThat(correctForPreviousVersion).isEqualTo(previousEntry)
+                val fileContent = outputDir.resolve("32.dcs").readFile()
+                assertThat(fileContent).isEqualTo(expectedFile)
+                assertThat(defaultDownloadControlStateAccessor.dcsEntry(AnilistConfig, "32")).isEqualTo(dcsEntry)
+            }
+        }
+
+        @Test
+        fun `creates meta data provider based subdirectory if it doesn't exist`() {
+            tempDirectory {
+                // given
+                val testAppConfig = object: Config by TestAppConfig {
+                    override fun metaDataProviderConfigurations(): Set<MetaDataProviderConfig> = setOf(AnilistConfig)
+                    override fun downloadControlStateDirectory(): Directory = tempDir
+                }
+
+                val dcsEntry = DownloadControlStateEntry(
+                    _weeksWihoutChange = 0,
+                    _lastDownloaded = WeekOfYear(2021, 44),
+                    _nextDownload = WeekOfYear(2021, 45),
+                    _anime = Anime(
+                        _title = "Shin Seiki Evangelion Movie: THE END OF EVANGELION",
+                        type = MOVIE,
+                        episodes = 1,
+                        picture = URI("https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/32-7YrdcGEX1FP3.png"),
+                        thumbnail = URI("https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/default.jpg"),
+                        status = FINISHED,
+                        duration = Duration(87, MINUTES),
+                        animeSeason = AnimeSeason(
+                            year = 1997,
+                        ),
+                        sources = hashSetOf(URI("https://anilist.co/anime/32")),
+                        synonyms = hashSetOf(
+                            "Neon Genesis Evangelion: The End of Evangelion",
+                            "新世紀エヴァンゲリオン劇場版 THE END OF EVANGELION",
+                        ),
+                        relatedAnime = hashSetOf(
+                            URI("https://anilist.co/anime/30"),
+                        ),
+                        tags = hashSetOf(
+                            "action",
+                            "drama",
+                            "mecha",
+                            "psychological",
+                            "sci-fi",
+                        )
+                    ),
+                )
+
+                val defaultDownloadControlStateAccessor = DefaultDownloadControlStateAccessor(
+                    appConfig = testAppConfig,
+                    mergeLockAccess = TestMergeLockAccess,
+                )
+
+                // when
+                defaultDownloadControlStateAccessor.createOrUpdate(AnilistConfig, "32", dcsEntry)
+
+                // then
+                assertThat(tempDir.resolve(AnilistConfig.hostname()).directoryExists()).isTrue()
+            }
+        }
+
+        @Test
+        fun `triggers initialization if necessary`() {
+            tempDirectory {
+                // given
+                var initHasBeenInvoked = false
+                val testAppConfig = object: Config by TestAppConfig {
+                    override fun metaDataProviderConfigurations(): Set<MetaDataProviderConfig> {
+                        check(!initHasBeenInvoked)
+                        initHasBeenInvoked = true
+                        return setOf(AnilistConfig)
+                    }
+                    override fun downloadControlStateDirectory(): Directory = tempDir
+                    override fun findMetaDataProviderConfig(host: Hostname): MetaDataProviderConfig = AnilistConfig
+                }
+
+                val dcsEntry = DownloadControlStateEntry(
+                    _weeksWihoutChange = 0,
+                    _lastDownloaded = WeekOfYear(2021, 44),
+                    _nextDownload = WeekOfYear(2021, 45),
+                    _anime = Anime(
+                        _title = "Shin Seiki Evangelion Movie: THE END OF EVANGELION",
+                        type = MOVIE,
+                        episodes = 1,
+                        picture = URI("https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/32-7YrdcGEX1FP3.png"),
+                        thumbnail = URI("https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/default.jpg"),
+                        status = FINISHED,
+                        duration = Duration(87, MINUTES),
+                        animeSeason = AnimeSeason(
+                            year = 1997,
+                        ),
+                        sources = hashSetOf(URI("https://anilist.co/anime/32")),
+                        synonyms = hashSetOf(
+                            "Neon Genesis Evangelion: The End of Evangelion",
+                            "新世紀エヴァンゲリオン劇場版 THE END OF EVANGELION",
+                        ),
+                        relatedAnime = hashSetOf(
+                            URI("https://anilist.co/anime/30"),
+                        ),
+                        tags = hashSetOf(
+                            "action",
+                            "drama",
+                            "mecha",
+                            "psychological",
+                            "sci-fi",
+                        )
+                    ),
+                )
+
+                val defaultDownloadControlStateAccessor = DefaultDownloadControlStateAccessor(
+                    appConfig = testAppConfig,
+                    mergeLockAccess = TestMergeLockAccess,
+                )
+
+                // when
+                defaultDownloadControlStateAccessor.createOrUpdate(AnilistConfig, "32", dcsEntry)
+
+                // then
+                assertThat(initHasBeenInvoked).isTrue()
+            }
+        }
+
+        @Test
+        fun `doesn't trigger init if it has already been triggered`() {
+            tempDirectory {
+                // given
+                var initHasBeenInvoked = 0
+                val testAppConfig = object: Config by TestAppConfig {
+                    override fun metaDataProviderConfigurations(): Set<MetaDataProviderConfig> {
+                        initHasBeenInvoked++
+                        return setOf(AnilistConfig, KitsuConfig)
+                    }
+                    override fun downloadControlStateDirectory(): Directory = tempDir
+                    override fun findMetaDataProviderConfig(host: Hostname): MetaDataProviderConfig = super.findMetaDataProviderConfig(host)
+                }
+
+                val dcsEntry = DownloadControlStateEntry(
+                    _weeksWihoutChange = 0,
+                    _lastDownloaded = WeekOfYear(2021, 44),
+                    _nextDownload = WeekOfYear(2021, 45),
+                    _anime = Anime(
+                        _title = "Shin Seiki Evangelion Movie: THE END OF EVANGELION",
+                        type = MOVIE,
+                        episodes = 1,
+                        picture = URI("https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/32-7YrdcGEX1FP3.png"),
+                        thumbnail = URI("https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/default.jpg"),
+                        status = FINISHED,
+                        duration = Duration(87, MINUTES),
+                        animeSeason = AnimeSeason(
+                            year = 1997,
+                        ),
+                        sources = hashSetOf(URI("https://anilist.co/anime/32")),
+                        synonyms = hashSetOf(
+                            "Neon Genesis Evangelion: The End of Evangelion",
+                            "新世紀エヴァンゲリオン劇場版 THE END OF EVANGELION",
+                        ),
+                        relatedAnime = hashSetOf(
+                            URI("https://anilist.co/anime/30"),
+                        ),
+                        tags = hashSetOf(
+                            "action",
+                            "drama",
+                            "mecha",
+                            "psychological",
+                            "sci-fi",
+                        )
+                    ),
+                )
+
+                val defaultDownloadControlStateAccessor = DefaultDownloadControlStateAccessor(
+                    appConfig = testAppConfig,
+                    mergeLockAccess = TestMergeLockAccess,
+                )
+                defaultDownloadControlStateAccessor.createOrUpdate(
+                    metaDataProviderConfig = KitsuConfig,
+                    animeId = "99",
+                    downloadControlStateEntry = DownloadControlStateEntry(
+                        _weeksWihoutChange = 0,
+                        _lastDownloaded = WeekOfYear(2021, 44),
+                        _nextDownload = WeekOfYear(2021, 45),
+                        _anime = Anime(
+                            _title = "Fruits Basket",
+                            type = TV,
+                            episodes = 26,
+                            picture = URI("https://media.kitsu.app/anime/poster_images/99/small.jpg?1474922066"),
+                            thumbnail = URI("https://media.kitsu.app/anime/poster_images/99/tiny.jpg?1474922066"),
+                            status = FINISHED,
+                            duration = Duration(24, MINUTES),
+                            animeSeason = AnimeSeason(
+                                year = 2001,
+                            ),
+                            sources = hashSetOf(URI("https://kitsu.app/anime/99")),
+                            synonyms = hashSetOf(
+                                "Furuba",
+                                "フルーツバスケット",
+                            ),
+                            relatedAnime = hashSetOf(
+                                URI("https://kitsu.app/anime/41995"),
+                            ),
+                        ),
+                    )
+                )
+
+                // when
+                defaultDownloadControlStateAccessor.createOrUpdate(AnilistConfig, "32", dcsEntry)
+
+                // then
+                assertThat(initHasBeenInvoked).isOne()
+            }
+        }
     }
 
     @Nested
@@ -346,6 +1085,7 @@ internal class DefaultDownloadControlStateAccessorTest {
 
                 val testAppConfig = object: Config by TestAppConfig {
                     override fun downloadControlStateDirectory(): Directory = tempDir
+                    override fun metaDataProviderConfigurations(): Set<MetaDataProviderConfig> = emptySet()
                 }
 
                 val testMergeLockAccess = object: MergeLockAccess by TestMergeLockAccess {
@@ -362,7 +1102,7 @@ internal class DefaultDownloadControlStateAccessorTest {
                 )
 
                 // when
-                defaultDownloadControlStateAccessor.removeDeadEntry("99", testMetaDataProviderConfig)
+                defaultDownloadControlStateAccessor.removeDeadEntry(testMetaDataProviderConfig, "99")
 
                 // then
                 assertThat(fileExistedPreviously).isTrue()
@@ -382,6 +1122,7 @@ internal class DefaultDownloadControlStateAccessorTest {
 
                 val testAppConfig = object: Config by TestAppConfig {
                     override fun downloadControlStateDirectory(): Directory = tempDir
+                    override fun metaDataProviderConfigurations(): Set<MetaDataProviderConfig> = emptySet()
                 }
 
                 var hasMergeLockEntryRemovalBeingInvoked = false
@@ -401,7 +1142,7 @@ internal class DefaultDownloadControlStateAccessorTest {
                 )
 
                 // when
-                defaultDownloadControlStateAccessor.removeDeadEntry("99", testConfig)
+                defaultDownloadControlStateAccessor.removeDeadEntry(testConfig, "99")
 
                 // then
                 assertThat(hasMergeLockEntryRemovalBeingInvoked).isTrue()
@@ -420,6 +1161,7 @@ internal class DefaultDownloadControlStateAccessorTest {
 
                 val testAppConfig = object: Config by TestAppConfig {
                     override fun downloadControlStateDirectory(): Directory = tempDir
+                    override fun metaDataProviderConfigurations(): Set<MetaDataProviderConfig> = emptySet()
                 }
 
                 var hasMergeLockEntryRemovalBeingInvoked = false
@@ -438,7 +1180,7 @@ internal class DefaultDownloadControlStateAccessorTest {
                 )
 
                 // when
-                defaultDownloadControlStateAccessor.removeDeadEntry("99", testConfig)
+                defaultDownloadControlStateAccessor.removeDeadEntry(testConfig, "99")
 
                 // then
                 assertThat(hasMergeLockEntryRemovalBeingInvoked).isTrue()
@@ -457,6 +1199,7 @@ internal class DefaultDownloadControlStateAccessorTest {
 
                 val testAppConfig = object: Config by TestAppConfig {
                     override fun downloadControlStateDirectory(): Directory = tempDir
+                    override fun metaDataProviderConfigurations(): Set<MetaDataProviderConfig> = emptySet()
                 }
 
                 var hasMergeLockEntryRemovalBeingInvoked = false
@@ -475,10 +1218,90 @@ internal class DefaultDownloadControlStateAccessorTest {
                 )
 
                 // when
-                defaultDownloadControlStateAccessor.removeDeadEntry("99", testConfig)
+                defaultDownloadControlStateAccessor.removeDeadEntry(testConfig, "99")
 
                 // then
                 assertThat(hasMergeLockEntryRemovalBeingInvoked).isFalse()
+            }
+        }
+
+        @Test
+        fun `triggers initialization if necessary`() {
+            tempDirectory {
+                // given
+                val testMetaDataProviderConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = "example.org"
+                    override fun buildAnimeLink(id: AnimeId): URI = super.buildAnimeLink(id)
+                    override fun extractAnimeId(uri: URI): AnimeId = super.extractAnimeId(uri)
+                }
+
+                var initHasBeenInvoked = false
+                val testAppConfig = object: Config by TestAppConfig {
+                    override fun metaDataProviderConfigurations(): Set<MetaDataProviderConfig> {
+                        check(!initHasBeenInvoked)
+                        initHasBeenInvoked = true
+                        return emptySet()
+                    }
+                    override fun downloadControlStateDirectory(): Directory = tempDir
+                }
+
+                val testMergeLockAccess = object: MergeLockAccess by TestMergeLockAccess {
+                    override suspend fun isPartOfMergeLock(uri: URI): Boolean = false
+                }
+
+                tempDir.resolve(testMetaDataProviderConfig.hostname()).createDirectory()
+                tempDir.resolve(testMetaDataProviderConfig.hostname()).resolve("99.dcs").createFile()
+
+                val defaultDownloadControlStateAccessor = DefaultDownloadControlStateAccessor(
+                    appConfig = testAppConfig,
+                    mergeLockAccess = testMergeLockAccess,
+                )
+
+                // when
+                defaultDownloadControlStateAccessor.removeDeadEntry(testMetaDataProviderConfig, "99")
+
+                // then
+                assertThat(initHasBeenInvoked).isTrue()
+            }
+        }
+
+        @Test
+        fun `doesn't trigger init if it has already been triggered`() {
+            tempDirectory {
+                // given
+                val testMetaDataProviderConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = "example.org"
+                    override fun buildAnimeLink(id: AnimeId): URI = super.buildAnimeLink(id)
+                    override fun extractAnimeId(uri: URI): AnimeId = super.extractAnimeId(uri)
+                }
+
+                var initHasBeenInvoked = 0
+                val testAppConfig = object: Config by TestAppConfig {
+                    override fun metaDataProviderConfigurations(): Set<MetaDataProviderConfig> {
+                        initHasBeenInvoked++
+                        return emptySet()
+                    }
+                    override fun downloadControlStateDirectory(): Directory = tempDir
+                }
+
+                val testMergeLockAccess = object: MergeLockAccess by TestMergeLockAccess {
+                    override suspend fun isPartOfMergeLock(uri: URI): Boolean = false
+                }
+
+                tempDir.resolve(testMetaDataProviderConfig.hostname()).createDirectory()
+                tempDir.resolve(testMetaDataProviderConfig.hostname()).resolve("99.dcs").createFile()
+
+                val defaultDownloadControlStateAccessor = DefaultDownloadControlStateAccessor(
+                    appConfig = testAppConfig,
+                    mergeLockAccess = testMergeLockAccess,
+                )
+                defaultDownloadControlStateAccessor.removeDeadEntry(testMetaDataProviderConfig, "99")
+
+                // when
+                defaultDownloadControlStateAccessor.removeDeadEntry(testMetaDataProviderConfig, "99")
+
+                // then
+                assertThat(initHasBeenInvoked).isOne()
             }
         }
     }
@@ -497,6 +1320,7 @@ internal class DefaultDownloadControlStateAccessorTest {
                 val testAppConfig = object: Config by TestAppConfig {
                     override fun downloadControlStateDirectory(): Directory = tempDir
                     override fun canChangeAnimeIds(metaDataProviderConfig: MetaDataProviderConfig): Boolean = false
+                    override fun metaDataProviderConfigurations(): Set<MetaDataProviderConfig> = emptySet()
                 }
 
                 val defaultDownloadControlStateAccessor = DefaultDownloadControlStateAccessor(
@@ -510,7 +1334,7 @@ internal class DefaultDownloadControlStateAccessorTest {
                 }
 
                 // then
-                assertThat(result).hasMessage("Called changedId for [example.org] which is not configured as a meta data provider that changes IDs.")
+                assertThat(result).hasMessage("Called changeId for [example.org] which is not configured as a meta data provider that changes IDs.")
             }
         }
 
@@ -525,6 +1349,7 @@ internal class DefaultDownloadControlStateAccessorTest {
                 val testAppConfig = object: Config by TestAppConfig {
                     override fun downloadControlStateDirectory(): Directory = tempDir
                     override fun canChangeAnimeIds(metaDataProviderConfig: MetaDataProviderConfig): Boolean = true
+                    override fun metaDataProviderConfigurations(): Set<MetaDataProviderConfig> = emptySet()
                 }
 
                 val defaultDownloadControlStateAccessor = DefaultDownloadControlStateAccessor(
@@ -558,6 +1383,7 @@ internal class DefaultDownloadControlStateAccessorTest {
                     override fun downloadControlStateDirectory(): Directory = tempDir
                     override fun workingDir(metaDataProviderConfig: MetaDataProviderConfig): Directory = workingDir
                     override fun canChangeAnimeIds(metaDataProviderConfig: MetaDataProviderConfig): Boolean = true
+                    override fun metaDataProviderConfigurations(): Set<MetaDataProviderConfig> = emptySet()
                 }
 
                 val testMergeLockAccess = object : MergeLockAccess by TestMergeLockAccess {
@@ -598,6 +1424,7 @@ internal class DefaultDownloadControlStateAccessorTest {
                     override fun downloadControlStateDirectory(): Directory = tempDir
                     override fun workingDir(metaDataProviderConfig: MetaDataProviderConfig): Directory = workingDir
                     override fun canChangeAnimeIds(metaDataProviderConfig: MetaDataProviderConfig): Boolean = true
+                    override fun metaDataProviderConfigurations(): Set<MetaDataProviderConfig> = emptySet()
                 }
 
                 val testMergeLockAccess = object : MergeLockAccess by TestMergeLockAccess {
@@ -641,6 +1468,7 @@ internal class DefaultDownloadControlStateAccessorTest {
                     override fun downloadControlStateDirectory(): Directory = tempDir
                     override fun workingDir(metaDataProviderConfig: MetaDataProviderConfig): Directory = workingDir
                     override fun canChangeAnimeIds(metaDataProviderConfig: MetaDataProviderConfig): Boolean = true
+                    override fun metaDataProviderConfigurations(): Set<MetaDataProviderConfig> = emptySet()
                 }
 
                 var hasBeenInvoked = false
@@ -692,6 +1520,7 @@ internal class DefaultDownloadControlStateAccessorTest {
                     override fun downloadControlStateDirectory(): Directory = tempDir
                     override fun workingDir(metaDataProviderConfig: MetaDataProviderConfig): Directory = workingDir
                     override fun canChangeAnimeIds(metaDataProviderConfig: MetaDataProviderConfig): Boolean = true
+                    override fun metaDataProviderConfigurations(): Set<MetaDataProviderConfig> = emptySet()
                 }
 
                 val testMergeLockAccess = object : MergeLockAccess by TestMergeLockAccess {
@@ -715,6 +1544,95 @@ internal class DefaultDownloadControlStateAccessorTest {
                 assertThat(newIdConvFile.regularFileExists()).isTrue()
                 assertThat(previousIdHtmlFile.regularFileExists()).isFalse()
                 assertThat(newIdHtmlFile.regularFileExists()).isTrue()
+            }
+        }
+
+        @Test
+        fun `triggers initialization if necessary`() {
+            tempDirectory {
+                // given
+                val testMetaDataProviderConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = "example.org"
+                    override fun buildAnimeLink(id: AnimeId): URI = super.buildAnimeLink(id)
+                    override fun fileSuffix(): FileSuffix = "html"
+                }
+
+                val workingDir = tempDir.resolve("workingDir").createDirectory()
+
+                var initHasBeenInvoked = false
+                val testAppConfig = object: Config by TestAppConfig {
+                    override fun downloadControlStateDirectory(): Directory = tempDir
+                    override fun workingDir(metaDataProviderConfig: MetaDataProviderConfig): Directory = workingDir
+                    override fun canChangeAnimeIds(metaDataProviderConfig: MetaDataProviderConfig): Boolean = true
+                    override fun metaDataProviderConfigurations(): Set<MetaDataProviderConfig> {
+                        check(!initHasBeenInvoked)
+                        initHasBeenInvoked = true
+                        return emptySet()
+                    }
+                }
+
+                val testMergeLockAccess = object : MergeLockAccess by TestMergeLockAccess {
+                    override suspend fun isPartOfMergeLock(uri: URI): Boolean = false
+                }
+
+                val dcsSubFolder = tempDir.resolve(testMetaDataProviderConfig.hostname()).createDirectory()
+                dcsSubFolder.resolve("previous-id.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
+
+                val downloadControlStateAccessor = DefaultDownloadControlStateAccessor(
+                    appConfig = testAppConfig,
+                    mergeLockAccess = testMergeLockAccess,
+                )
+
+                // when
+                downloadControlStateAccessor.changeId("previous-id", "new-id", testMetaDataProviderConfig)
+
+                // then
+                assertThat(initHasBeenInvoked).isTrue()
+            }
+        }
+
+        @Test
+        fun `doesn't trigger init if it has already been triggered`() {
+            tempDirectory {
+                // given
+                val testMetaDataProviderConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = "example.org"
+                    override fun buildAnimeLink(id: AnimeId): URI = super.buildAnimeLink(id)
+                    override fun fileSuffix(): FileSuffix = "html"
+                }
+
+                val workingDir = tempDir.resolve("workingDir").createDirectory()
+
+                var initHasBeenInvoked = 0
+                val testAppConfig = object: Config by TestAppConfig {
+                    override fun downloadControlStateDirectory(): Directory = tempDir
+                    override fun workingDir(metaDataProviderConfig: MetaDataProviderConfig): Directory = workingDir
+                    override fun canChangeAnimeIds(metaDataProviderConfig: MetaDataProviderConfig): Boolean = true
+                    override fun metaDataProviderConfigurations(): Set<MetaDataProviderConfig> {
+                        initHasBeenInvoked++
+                        return emptySet()
+                    }
+                }
+
+                val testMergeLockAccess = object : MergeLockAccess by TestMergeLockAccess {
+                    override suspend fun isPartOfMergeLock(uri: URI): Boolean = false
+                }
+
+                val dcsSubFolder = tempDir.resolve(testMetaDataProviderConfig.hostname()).createDirectory()
+                dcsSubFolder.resolve("previous-id1.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
+                dcsSubFolder.resolve("previous-id2.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
+
+                val downloadControlStateAccessor = DefaultDownloadControlStateAccessor(
+                    appConfig = testAppConfig,
+                    mergeLockAccess = testMergeLockAccess,
+                )
+                downloadControlStateAccessor.changeId("previous-id1", "new-id1", testMetaDataProviderConfig)
+
+                // when
+                downloadControlStateAccessor.changeId("previous-id2", "new-id2", testMetaDataProviderConfig)
+
+                // then
+                assertThat(initHasBeenInvoked).isOne()
             }
         }
     }

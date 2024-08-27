@@ -1,38 +1,38 @@
 {
-    "_weeksWihoutChange": 0,
-    "_lastDownloaded": {
-        "year": 2021,
-        "week": 44
+  "_weeksWihoutChange": 0,
+  "_lastDownloaded": {
+    "year": 2021,
+    "week": 44
+  },
+  "_nextDownload": {
+    "year": 2021,
+    "week": 45
+  },
+  "_anime": {
+    "sources": [
+      "https://kitsu.app/anime/99"
+    ],
+    "title": "Fruits Basket",
+    "type": "TV",
+    "episodes": 26,
+    "status": "FINISHED",
+    "animeSeason": {
+      "season": "UNDEFINED",
+      "year": 2001
     },
-    "_nextDownload": {
-        "year": 2021,
-        "week": 45
+    "picture": "https://media.kitsu.app/anime/poster_images/99/small.jpg?1474922066",
+    "thumbnail": "https://media.kitsu.app/anime/poster_images/99/tiny.jpg?1474922066",
+    "duration": {
+      "value": 1440,
+      "unit": "SECONDS"
     },
-    "_anime": {
-      "title": "Fruits Basket",
-      "type": "TV",
-      "episodes": 26,
-      "picture": "https://media.kitsu.app/anime/poster_images/99/small.jpg?1474922066",
-      "thumbnail": "https://media.kitsu.app/anime/poster_images/99/tiny.jpg?1474922066",
-      "status": "FINISHED",
-      "duration": {
-        "value": 24,
-        "unit": "MINUTES"
-      },
-      "animeSeason": {
-        "year": 2001,
-        "season": "UNDEFINED"
-      },
-      "sources": [
-        "https://kitsu.app/anime/99"
-      ],
-      "synonyms": [
-        "Furuba",
-        "フルーツバスケット"
-      ],
-      "relatedAnime": [
-        "https://kitsu.app/anime/41995"
-      ],
-      "tags": []
-    }
+    "synonyms": [
+      "Furuba",
+      "フルーツバスケット"
+    ],
+    "relatedAnime": [
+      "https://kitsu.app/anime/41995"
+    ],
+    "tags": []
+  }
 }
