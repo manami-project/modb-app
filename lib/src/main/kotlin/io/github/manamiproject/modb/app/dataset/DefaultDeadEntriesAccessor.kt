@@ -48,6 +48,8 @@ class DefaultDeadEntriesAccessor(
 ): DeadEntriesAccessor {
 
     private val deadEntries = DeadEntriesInMemory()
+    private val initializationMutex = Mutex()
+    private val writeAccess = Mutex()
     private var isInitialized = false
 
     override fun deadEntriesFile(metaDataProviderConfig: MetaDataProviderConfig, type: DatasetFileType): RegularFile {
@@ -75,12 +77,12 @@ class DefaultDeadEntriesAccessor(
         log.info { "Adding [$animeId] from [${metaDataProviderConfig.hostname()}] to dead entries list" }
 
         if (appConfig.deadEntriesSupported(metaDataProviderConfig)) {
-            Mutex().withLock {
+            writeAccess.withLock {
                 writeFileAndUpdateInMemoryData(animeId, metaDataProviderConfig)
             }
         }
 
-        downloadControlStateAccessor.removeDeadEntry(animeId, metaDataProviderConfig)
+        downloadControlStateAccessor.removeDeadEntry(metaDataProviderConfig, animeId)
     }
 
     override suspend fun determineDeadEntries(sources: Collection<URI>): Set<URI> {
@@ -118,7 +120,7 @@ class DefaultDeadEntriesAccessor(
     }
 
     private suspend fun init() {
-        Mutex().withLock {
+        initializationMutex.withLock {
             if (!isInitialized) {
                 appConfig.metaDataProviderConfigurations()
                     .filter { appConfig.deadEntriesSupported(it) }
