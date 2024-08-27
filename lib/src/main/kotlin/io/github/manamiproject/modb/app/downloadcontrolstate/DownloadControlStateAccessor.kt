@@ -70,7 +70,7 @@ interface DownloadControlStateAccessor {
      * @param animeId Id of the anime as defined by the meta data provider.
      * @param downloadControlStateEntry Entry to be created or updated.
      */
-    suspend fun createOrUpdate(metaDataProviderConfig: MetaDataProviderConfig, animeId: AnimeId, downloadControlStateEntry: DownloadControlStateEntry)
+    suspend fun createOrUpdate(metaDataProviderConfig: MetaDataProviderConfig, animeId: AnimeId, downloadControlStateEntry: DownloadControlStateEntry): Boolean
 
     /**
      * Removed the DCS file for a dead entry.

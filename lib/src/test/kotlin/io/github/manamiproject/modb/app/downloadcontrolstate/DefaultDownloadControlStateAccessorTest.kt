@@ -182,7 +182,7 @@ internal class DefaultDownloadControlStateAccessorTest {
                                 "mecha",
                                 "psychological",
                                 "sci-fi",
-                            )
+                            ),
                         ),
                     ),
                     DownloadControlStateEntry(
@@ -352,7 +352,7 @@ internal class DefaultDownloadControlStateAccessorTest {
                             "mecha",
                             "psychological",
                             "sci-fi",
-                        )
+                        ),
                     ),
                     Anime(
                         _title = "Fruits Basket",
@@ -600,7 +600,7 @@ internal class DefaultDownloadControlStateAccessorTest {
                             "mecha",
                             "psychological",
                             "sci-fi",
-                        )
+                        ),
                     ),
                 )
 
@@ -749,7 +749,7 @@ internal class DefaultDownloadControlStateAccessorTest {
                             "mecha",
                             "psychological",
                             "sci-fi",
-                        )
+                        ),
                     ),
                 )
 
@@ -762,9 +762,10 @@ internal class DefaultDownloadControlStateAccessorTest {
                 )
 
                 // when
-                defaultDownloadControlStateAccessor.createOrUpdate(AnilistConfig, "32", dcsEntry)
+                val result = defaultDownloadControlStateAccessor.createOrUpdate(AnilistConfig, "32", dcsEntry)
 
                 // then
+                assertThat(result).isTrue()
                 val fileContent = outputDir.resolve("32.dcs").readFile()
                 assertThat(fileContent).isEqualTo(expectedFile)
             }
@@ -806,7 +807,7 @@ internal class DefaultDownloadControlStateAccessorTest {
                             "action",
                             "mecha",
                             "sci-fi",
-                        )
+                        ),
                     ),
                 )
 
@@ -839,7 +840,7 @@ internal class DefaultDownloadControlStateAccessorTest {
                             "mecha",
                             "psychological",
                             "sci-fi",
-                        )
+                        ),
                     ),
                 )
 
@@ -854,9 +855,10 @@ internal class DefaultDownloadControlStateAccessorTest {
                 val correctForPreviousVersion = defaultDownloadControlStateAccessor.dcsEntry(AnilistConfig, "32")
 
                 // when
-                defaultDownloadControlStateAccessor.createOrUpdate(AnilistConfig, "32", dcsEntry)
+                val result = defaultDownloadControlStateAccessor.createOrUpdate(AnilistConfig, "32", dcsEntry)
 
                 // then
+                assertThat(result).isTrue()
                 assertThat(correctForPreviousVersion).isEqualTo(previousEntry)
                 val fileContent = outputDir.resolve("32.dcs").readFile()
                 assertThat(fileContent).isEqualTo(expectedFile)
@@ -865,7 +867,7 @@ internal class DefaultDownloadControlStateAccessorTest {
         }
 
         @Test
-        fun `creates meta data provider based subdirectory if it doesn't exist`() {
+        fun `don't do anything if the DCS entry has already been updated`() {
             tempDirectory {
                 // given
                 val testAppConfig = object: Config by TestAppConfig {
@@ -875,8 +877,8 @@ internal class DefaultDownloadControlStateAccessorTest {
 
                 val dcsEntry = DownloadControlStateEntry(
                     _weeksWihoutChange = 0,
-                    _lastDownloaded = WeekOfYear(2021, 44),
-                    _nextDownload = WeekOfYear(2021, 45),
+                    _lastDownloaded = WeekOfYear.currentWeek(),
+                    _nextDownload = WeekOfYear.currentWeek().plusWeeks(1),
                     _anime = Anime(
                         _title = "Shin Seiki Evangelion Movie: THE END OF EVANGELION",
                         type = MOVIE,
@@ -902,7 +904,7 @@ internal class DefaultDownloadControlStateAccessorTest {
                             "mecha",
                             "psychological",
                             "sci-fi",
-                        )
+                        ),
                     ),
                 )
 
@@ -910,12 +912,13 @@ internal class DefaultDownloadControlStateAccessorTest {
                     appConfig = testAppConfig,
                     mergeLockAccess = TestMergeLockAccess,
                 )
-
-                // when
                 defaultDownloadControlStateAccessor.createOrUpdate(AnilistConfig, "32", dcsEntry)
 
+                // when
+                val result = defaultDownloadControlStateAccessor.createOrUpdate(AnilistConfig, "32", dcsEntry)
+
                 // then
-                assertThat(tempDir.resolve(AnilistConfig.hostname()).directoryExists()).isTrue()
+                assertThat(result).isFalse()
             }
         }
 
@@ -963,7 +966,7 @@ internal class DefaultDownloadControlStateAccessorTest {
                             "mecha",
                             "psychological",
                             "sci-fi",
-                        )
+                        ),
                     ),
                 )
 
@@ -1023,7 +1026,7 @@ internal class DefaultDownloadControlStateAccessorTest {
                             "mecha",
                             "psychological",
                             "sci-fi",
-                        )
+                        ),
                     ),
                 )
 
