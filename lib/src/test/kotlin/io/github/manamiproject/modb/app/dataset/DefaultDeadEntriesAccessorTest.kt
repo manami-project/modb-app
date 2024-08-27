@@ -716,7 +716,7 @@ internal class DefaultDeadEntriesAccessorTest {
                         initHasBeenInvoked = true
                         return setOf(testMetaDataProviderConfig)
                     }
-                    override fun findMetaDataProviderConfig(host: Hostname): MetaDataProviderConfig = super.findMetaDataProviderConfig(host)
+                    override fun findMetaDataProviderConfig(host: Hostname): MetaDataProviderConfig = testMetaDataProviderConfig
                 }
 
                 val testDownloadControlStateAccessor = object: DownloadControlStateAccessor by TestDownloadControlStateAccessor {
