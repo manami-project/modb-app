@@ -86,37 +86,34 @@ class DefaultDownloadControlStateAccessor(
         return downloadControlStateEntries[internalKey]!!
     }
 
-    override suspend fun createOrUpdate(metaDataProviderConfig: MetaDataProviderConfig, animeId: AnimeId, downloadControlStateEntry: DownloadControlStateEntry) {
+    override suspend fun createOrUpdate(metaDataProviderConfig: MetaDataProviderConfig, animeId: AnimeId, downloadControlStateEntry: DownloadControlStateEntry): Boolean {
         if (!isInitialized) {
             init()
         }
 
         writeAccess.withLock {
-            val subFolder = downloadControlStateDirectory(metaDataProviderConfig)
-            if (!subFolder.directoryExists()) {
-                subFolder.createDirectory()
-            }
-
-            val downloadControlStateFile = subFolder.resolve("$animeId.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX")
+            val subDir = downloadControlStateDirectory(metaDataProviderConfig)
+            val downloadControlStateFile = subDir.resolve("$animeId.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX")
 
             if (!dcsEntryExists(metaDataProviderConfig, animeId)) {
                 log.debug { "Creating new DCS entry for [$animeId] of [${metaDataProviderConfig.hostname()}]." }
                 Json.toJson(downloadControlStateEntry).writeToFile(downloadControlStateFile, true)
                 downloadControlStateEntries[internalKey(metaDataProviderConfig, animeId)] = downloadControlStateEntry
-                return
+                return true
             }
 
             val currentDownloadControlStateEntry = dcsEntry(metaDataProviderConfig, animeId)
 
             if (currentDownloadControlStateEntry.lastDownloaded == WeekOfYear.currentWeek()) {
                 log.debug { "Not updating DCS file for [${animeId}] of [${metaDataProviderConfig.hostname()}], because it has been updated already." }
-                return
+                return false
             }
 
             log.info { "Updating DCS entry for [$animeId] of [${metaDataProviderConfig.hostname()}]." }
 
             Json.toJson(downloadControlStateEntry).writeToFile(downloadControlStateFile, true)
             downloadControlStateEntries[internalKey(metaDataProviderConfig, animeId)] = downloadControlStateEntry
+            return true
         }
     }
 

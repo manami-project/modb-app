@@ -450,13 +450,18 @@ internal class DownloadControlStateEntryTest {
                 _nextDownload = WeekOfYear.currentWeek(),
                 _anime = Anime(
                     _title = "Test",
-                    tags = hashSetOf("abcd", "efgh"),
+                    tags = hashSetOf(
+                        "abcd",
+                        "efgh",
+                    ),
                 ),
             )
 
             val anime = Anime(
                 _title = "Test",
-                tags = hashSetOf("efgh"),
+                tags = hashSetOf(
+                    "efgh",
+                ),
             )
 
             // when
