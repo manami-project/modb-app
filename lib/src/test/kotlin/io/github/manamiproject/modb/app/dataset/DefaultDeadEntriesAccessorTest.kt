@@ -214,7 +214,7 @@ internal class DefaultDeadEntriesAccessorTest {
                 }
 
                 val testDownloadControlStateAccessor = object: DownloadControlStateAccessor by TestDownloadControlStateAccessor {
-                    override suspend fun removeDeadEntry(animeId: AnimeId, metaDataProviderConfig: MetaDataProviderConfig) { }
+                    override suspend fun removeDeadEntry(metaDataProviderConfig: MetaDataProviderConfig, animeId: AnimeId) { }
                 }
 
                 val testExternalResourceJsonDeserializerDeadEntries = object: ExternalResourceJsonDeserializer<DeadEntries> by TestExternalResourceJsonDeserializerDeadEntries {
@@ -263,7 +263,7 @@ internal class DefaultDeadEntriesAccessorTest {
                 }
 
                 val testDownloadControlStateAccessor = object: DownloadControlStateAccessor by TestDownloadControlStateAccessor {
-                    override suspend fun removeDeadEntry(animeId: AnimeId, metaDataProviderConfig: MetaDataProviderConfig) { }
+                    override suspend fun removeDeadEntry(metaDataProviderConfig: MetaDataProviderConfig, animeId: AnimeId) { }
                 }
 
                 DeadEntriesJsonSerializer.instance.serialize(listOf(
@@ -309,7 +309,7 @@ internal class DefaultDeadEntriesAccessorTest {
                 }
 
                 val testDownloadControlStateAccessor = object: DownloadControlStateAccessor by TestDownloadControlStateAccessor {
-                    override suspend fun removeDeadEntry(animeId: AnimeId, metaDataProviderConfig: MetaDataProviderConfig) { }
+                    override suspend fun removeDeadEntry(metaDataProviderConfig: MetaDataProviderConfig, animeId: AnimeId) { }
                 }
 
                 val content = DeadEntriesJsonSerializer.instance.serialize(listOf(
@@ -359,7 +359,7 @@ internal class DefaultDeadEntriesAccessorTest {
                 }
 
                 val testDownloadControlStateAccessor = object: DownloadControlStateAccessor by TestDownloadControlStateAccessor {
-                    override suspend fun removeDeadEntry(animeId: AnimeId, metaDataProviderConfig: MetaDataProviderConfig) { }
+                    override suspend fun removeDeadEntry(metaDataProviderConfig: MetaDataProviderConfig, animeId: AnimeId) { }
                 }
 
                 val testExternalResourceJsonDeserializerDeadEntries = object: ExternalResourceJsonDeserializer<DeadEntries> by TestExternalResourceJsonDeserializerDeadEntries {
@@ -400,7 +400,7 @@ internal class DefaultDeadEntriesAccessorTest {
 
                 var hasBeenInvoked = false
                 val testDownloadControlStateAccessor = object: DownloadControlStateAccessor by TestDownloadControlStateAccessor {
-                    override suspend fun removeDeadEntry(animeId: AnimeId, metaDataProviderConfig: MetaDataProviderConfig) {
+                    override suspend fun removeDeadEntry(metaDataProviderConfig: MetaDataProviderConfig, animeId: AnimeId) {
                         hasBeenInvoked = true
                     }
                 }
@@ -440,7 +440,7 @@ internal class DefaultDeadEntriesAccessorTest {
                 }
 
                 val testDownloadControlStateAccessor = object: DownloadControlStateAccessor by TestDownloadControlStateAccessor {
-                    override suspend fun removeDeadEntry(animeId: AnimeId, metaDataProviderConfig: MetaDataProviderConfig) { }
+                    override suspend fun removeDeadEntry(metaDataProviderConfig: MetaDataProviderConfig, animeId: AnimeId) { }
                 }
 
                 val deadEntriesAccessor = DefaultDeadEntriesAccessor(
@@ -473,7 +473,7 @@ internal class DefaultDeadEntriesAccessorTest {
                 var removingDcsEntryHasBeenInvoked = false
                 var invokedId = EMPTY
                 val testDownloadControlStateAccessor = object: DownloadControlStateAccessor by TestDownloadControlStateAccessor {
-                    override suspend fun removeDeadEntry(animeId: AnimeId, metaDataProviderConfig: MetaDataProviderConfig) {
+                    override suspend fun removeDeadEntry(metaDataProviderConfig: MetaDataProviderConfig, animeId: AnimeId) {
                         removingDcsEntryHasBeenInvoked = true
                         invokedId = animeId
                     }
@@ -502,17 +502,18 @@ internal class DefaultDeadEntriesAccessorTest {
                 val id = "123456789"
                 val testMetaDataProviderConfig = configClass.kotlin.objectInstance as MetaDataProviderConfig
 
-                var initHasBeentriggered = false
+                var initHasBeenInvoked = false
                 val testAppConfig = object: Config by TestAppConfig {
                     override fun outputDirectory(): Directory = tempDir
                     override fun metaDataProviderConfigurations(): Set<MetaDataProviderConfig> {
-                        initHasBeentriggered = true
+                        check(!initHasBeenInvoked)
+                        initHasBeenInvoked = true
                         return setOf(testMetaDataProviderConfig)
                     }
                 }
 
                 val testDownloadControlStateAccessor = object: DownloadControlStateAccessor by TestDownloadControlStateAccessor {
-                    override suspend fun removeDeadEntry(animeId: AnimeId, metaDataProviderConfig: MetaDataProviderConfig) { }
+                    override suspend fun removeDeadEntry(metaDataProviderConfig: MetaDataProviderConfig, animeId: AnimeId) { }
                 }
 
                 val testExternalResourceJsonDeserializerDeadEntries = object: ExternalResourceJsonDeserializer<DeadEntries> by TestExternalResourceJsonDeserializerDeadEntries {
@@ -532,7 +533,7 @@ internal class DefaultDeadEntriesAccessorTest {
                 deadEntriesAccessor.addDeadEntry(id, testMetaDataProviderConfig)
 
                 // then
-                assertThat(initHasBeentriggered).isTrue()
+                assertThat(initHasBeenInvoked).isTrue()
             }
         }
 
@@ -544,17 +545,17 @@ internal class DefaultDeadEntriesAccessorTest {
                 val id = "123456789"
                 val testMetaDataProviderConfig = configClass.kotlin.objectInstance as MetaDataProviderConfig
 
-                var initHasBeentriggered = 0
+                var initHasBeenInvoked = 0
                 val testAppConfig = object: Config by TestAppConfig {
                     override fun outputDirectory(): Directory = tempDir
                     override fun metaDataProviderConfigurations(): Set<MetaDataProviderConfig> {
-                        initHasBeentriggered++
+                        initHasBeenInvoked++
                         return setOf(testMetaDataProviderConfig)
                     }
                 }
 
                 val testDownloadControlStateAccessor = object: DownloadControlStateAccessor by TestDownloadControlStateAccessor {
-                    override suspend fun removeDeadEntry(animeId: AnimeId, metaDataProviderConfig: MetaDataProviderConfig) { }
+                    override suspend fun removeDeadEntry(metaDataProviderConfig: MetaDataProviderConfig, animeId: AnimeId) { }
                 }
 
                 val testExternalResourceJsonDeserializerDeadEntries = object: ExternalResourceJsonDeserializer<DeadEntries> by TestExternalResourceJsonDeserializerDeadEntries {
@@ -571,14 +572,14 @@ internal class DefaultDeadEntriesAccessorTest {
                 )
 
                 deadEntriesAccessor.addDeadEntry(id, testMetaDataProviderConfig)
-                val valueBefore = initHasBeentriggered
+                val valueBefore = initHasBeenInvoked
 
                 // when
                 deadEntriesAccessor.addDeadEntry(id, testMetaDataProviderConfig)
 
                 // then
                 assertThat(valueBefore).isOne()
-                assertThat(initHasBeentriggered).isOne()
+                assertThat(initHasBeenInvoked).isOne()
             }
         }
     }
@@ -707,11 +708,12 @@ internal class DefaultDeadEntriesAccessorTest {
                 // given
                 val testMetaDataProviderConfig = configClass.kotlin.objectInstance as MetaDataProviderConfig
 
-                var initHasBeentriggered = false
+                var initHasBeenInvoked = false
                 val testAppConfig = object: Config by TestAppConfig {
                     override fun outputDirectory(): Directory = tempDir
                     override fun metaDataProviderConfigurations(): Set<MetaDataProviderConfig> {
-                        initHasBeentriggered = true
+                        check(!initHasBeenInvoked)
+                        initHasBeenInvoked = true
                         return setOf(testMetaDataProviderConfig)
                     }
                     override fun findMetaDataProviderConfig(host: Hostname): MetaDataProviderConfig = super.findMetaDataProviderConfig(host)
@@ -719,7 +721,7 @@ internal class DefaultDeadEntriesAccessorTest {
 
                 val testDownloadControlStateAccessor = object: DownloadControlStateAccessor by TestDownloadControlStateAccessor {
                     override fun downloadControlStateDirectory(metaDataProviderConfig: MetaDataProviderConfig): Directory = tempDir
-                    override suspend fun removeDeadEntry(animeId: AnimeId, metaDataProviderConfig: MetaDataProviderConfig) { }
+                    override suspend fun removeDeadEntry(metaDataProviderConfig: MetaDataProviderConfig, animeId: AnimeId) { }
                 }
 
                 val testExternalResourceJsonDeserializerDeadEntries = object: ExternalResourceJsonDeserializer<DeadEntries> by TestExternalResourceJsonDeserializerDeadEntries {
@@ -740,7 +742,7 @@ internal class DefaultDeadEntriesAccessorTest {
                 deadEntriesAccessor.determineDeadEntries(setOf(testMetaDataProviderConfig.buildAnimeLink("1535")))
 
                 // then
-                assertThat(initHasBeentriggered).isTrue()
+                assertThat(initHasBeenInvoked).isTrue()
             }
         }
 
@@ -754,18 +756,18 @@ internal class DefaultDeadEntriesAccessorTest {
                 // given
                 val testMetaDataProviderConfig = configClass.kotlin.objectInstance as MetaDataProviderConfig
 
-                var initHasBeentriggered = 0
+                var initHasBeenInvoked = 0
                 val testAppConfig = object: Config by TestAppConfig {
                     override fun outputDirectory(): Directory = tempDir
                     override fun metaDataProviderConfigurations(): Set<MetaDataProviderConfig> {
-                        initHasBeentriggered++
+                        initHasBeenInvoked++
                         return setOf(testMetaDataProviderConfig)
                     }
                     override fun findMetaDataProviderConfig(host: Hostname): MetaDataProviderConfig = testMetaDataProviderConfig
                 }
 
                 val testDownloadControlStateAccessor = object: DownloadControlStateAccessor by TestDownloadControlStateAccessor {
-                    override suspend fun removeDeadEntry(animeId: AnimeId, metaDataProviderConfig: MetaDataProviderConfig) { }
+                    override suspend fun removeDeadEntry(metaDataProviderConfig: MetaDataProviderConfig, animeId: AnimeId) { }
                     override fun downloadControlStateDirectory(metaDataProviderConfig: MetaDataProviderConfig): Directory = tempDir
                 }
 
@@ -786,14 +788,14 @@ internal class DefaultDeadEntriesAccessorTest {
                 val sources = setOf(testMetaDataProviderConfig.buildAnimeLink("1535"))
 
                 deadEntriesAccessor.determineDeadEntries(sources)
-                val valueBefore = initHasBeentriggered
+                val valueBefore = initHasBeenInvoked
 
                 // when
                 deadEntriesAccessor.determineDeadEntries(sources)
 
                 // then
                 assertThat(valueBefore).isOne()
-                assertThat(initHasBeentriggered).isOne()
+                assertThat(initHasBeenInvoked).isOne()
             }
         }
     }
@@ -874,17 +876,18 @@ internal class DefaultDeadEntriesAccessorTest {
                 // given
                 val testMetaDataProviderConfig = configClass.kotlin.objectInstance as MetaDataProviderConfig
 
-                var initHasBeentriggered = false
+                var initHasBeenInvoked = false
                 val testAppConfig = object: Config by TestAppConfig {
                     override fun outputDirectory(): Directory = tempDir
                     override fun metaDataProviderConfigurations(): Set<MetaDataProviderConfig> {
-                        initHasBeentriggered = true
+                        check(!initHasBeenInvoked)
+                        initHasBeenInvoked = true
                         return setOf(testMetaDataProviderConfig)
                     }
                 }
 
                 val testDownloadControlStateAccessor = object: DownloadControlStateAccessor by TestDownloadControlStateAccessor {
-                    override suspend fun removeDeadEntry(animeId: AnimeId, metaDataProviderConfig: MetaDataProviderConfig) { }
+                    override suspend fun removeDeadEntry(metaDataProviderConfig: MetaDataProviderConfig, animeId: AnimeId) { }
                 }
 
                 val testExternalResourceJsonDeserializerDeadEntries = object: ExternalResourceJsonDeserializer<DeadEntries> by TestExternalResourceJsonDeserializerDeadEntries {
@@ -905,7 +908,7 @@ internal class DefaultDeadEntriesAccessorTest {
                 deadEntriesAccessor.fetchDeadEntries(testMetaDataProviderConfig)
 
                 // then
-                assertThat(initHasBeentriggered).isTrue()
+                assertThat(initHasBeenInvoked).isTrue()
             }
         }
 
@@ -916,17 +919,17 @@ internal class DefaultDeadEntriesAccessorTest {
                 // given
                 val testMetaDataProviderConfig = configClass.kotlin.objectInstance as MetaDataProviderConfig
 
-                var initHasBeentriggered = 0
+                var initHasBeenInvoked = 0
                 val testAppConfig = object: Config by TestAppConfig {
                     override fun outputDirectory(): Directory = tempDir
                     override fun metaDataProviderConfigurations(): Set<MetaDataProviderConfig> {
-                        initHasBeentriggered++
+                        initHasBeenInvoked++
                         return setOf(testMetaDataProviderConfig)
                     }
                 }
 
                 val testDownloadControlStateAccessor = object: DownloadControlStateAccessor by TestDownloadControlStateAccessor {
-                    override suspend fun removeDeadEntry(animeId: AnimeId, metaDataProviderConfig: MetaDataProviderConfig) { }
+                    override suspend fun removeDeadEntry(metaDataProviderConfig: MetaDataProviderConfig, animeId: AnimeId) { }
                 }
 
                 val testExternalResourceJsonDeserializerDeadEntries = object: ExternalResourceJsonDeserializer<DeadEntries> by TestExternalResourceJsonDeserializerDeadEntries {
@@ -944,14 +947,14 @@ internal class DefaultDeadEntriesAccessorTest {
                 )
 
                 deadEntriesAccessor.fetchDeadEntries(testMetaDataProviderConfig)
-                val valueBefore = initHasBeentriggered
+                val valueBefore = initHasBeenInvoked
 
                 // when
                 deadEntriesAccessor.fetchDeadEntries(testMetaDataProviderConfig)
 
                 // then
                 assertThat(valueBefore).isOne()
-                assertThat(initHasBeentriggered).isOne()
+                assertThat(initHasBeenInvoked).isOne()
             }
         }
     }
