@@ -1,12 +1,12 @@
 {
   "_weeksWihoutChange": 0,
   "_lastDownloaded": {
-      "year": 2021,
-      "week": 44
+    "year": 2021,
+    "week": 44
   },
   "_nextDownload": {
-      "year": 2021,
-      "week": 45
+    "year": 2021,
+    "week": 45
   },
   "_anime": {
     "sources": [
@@ -17,14 +17,14 @@
     "episodes": 1,
     "status": "FINISHED",
     "animeSeason": {
-      "year": 1997,
-      "season": "UNDEFINED"
+      "season": "UNDEFINED",
+      "year": 1997
     },
     "picture": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/32-7YrdcGEX1FP3.png",
     "thumbnail": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/default.jpg",
     "duration": {
-      "value": 87,
-      "unit": "MINUTES"
+      "value": 5220,
+      "unit": "SECONDS"
     },
     "synonyms": [
       "Neon Genesis Evangelion: The End of Evangelion",
