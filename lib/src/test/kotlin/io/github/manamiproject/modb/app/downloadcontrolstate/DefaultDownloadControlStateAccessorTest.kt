@@ -1374,11 +1374,7 @@ internal class DefaultDownloadControlStateAccessorTest {
         fun `successfully renames dcs file`() {
             tempDirectory {
                 // given
-                val testMetaDataProviderConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
-                    override fun hostname(): Hostname = "example.org"
-                    override fun buildAnimeLink(id: AnimeId): URI = super.buildAnimeLink(id)
-                    override fun fileSuffix(): FileSuffix = "html"
-                }
+                val testMetaDataProviderConfig = AnilistConfig
 
                 val workingDir = tempDir.resolve("workingDir").createDirectory()
 
@@ -1386,7 +1382,8 @@ internal class DefaultDownloadControlStateAccessorTest {
                     override fun downloadControlStateDirectory(): Directory = tempDir
                     override fun workingDir(metaDataProviderConfig: MetaDataProviderConfig): Directory = workingDir
                     override fun canChangeAnimeIds(metaDataProviderConfig: MetaDataProviderConfig): Boolean = true
-                    override fun metaDataProviderConfigurations(): Set<MetaDataProviderConfig> = emptySet()
+                    override fun metaDataProviderConfigurations(): Set<MetaDataProviderConfig> = setOf(testMetaDataProviderConfig)
+                    override fun findMetaDataProviderConfig(host: Hostname): MetaDataProviderConfig = testMetaDataProviderConfig
                 }
 
                 val testMergeLockAccess = object : MergeLockAccess by TestMergeLockAccess {
@@ -1394,10 +1391,10 @@ internal class DefaultDownloadControlStateAccessorTest {
                 }
 
                 val dcsSubFolder = tempDir.resolve(testMetaDataProviderConfig.hostname()).createDirectory()
-                val oldFile = dcsSubFolder.resolve("previous-id.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
-                "old-file".writeToFile(oldFile)
-                val newFile = dcsSubFolder.resolve("new-id.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
-                "new-file".writeToFile(newFile)
+                val oldFile = dcsSubFolder.resolve("32.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX")
+                testResource("downloadcontrolstate/DefaultDownloadControlStateAccessorTest/success/32.dcs")
+                    .copyTo(oldFile)
+                val newFile = dcsSubFolder.resolve("new-id.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX")
 
                 val downloadControlStateAccessor = DefaultDownloadControlStateAccessor(
                     appConfig = testAppConfig,
@@ -1405,12 +1402,14 @@ internal class DefaultDownloadControlStateAccessorTest {
                 )
 
                 // when
-                downloadControlStateAccessor.changeId("previous-id", "new-id", testMetaDataProviderConfig)
+                downloadControlStateAccessor.changeId("32", "new-id", testMetaDataProviderConfig)
 
                 // then
                 assertThat(oldFile.regularFileExists()).isFalse()
                 assertThat(newFile.regularFileExists()).isTrue()
-                assertThat(newFile.readFile()).isEqualTo("old-file")
+                assertThat(downloadControlStateAccessor.allDcsEntries()).hasSize(1)
+                assertThat(downloadControlStateAccessor.dcsEntryExists(testMetaDataProviderConfig, "32")).isFalse()
+                assertThat(downloadControlStateAccessor.dcsEntryExists(testMetaDataProviderConfig, "new-id")).isTrue()
             }
         }
 

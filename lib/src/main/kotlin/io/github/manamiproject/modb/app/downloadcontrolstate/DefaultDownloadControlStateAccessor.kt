@@ -162,6 +162,11 @@ class DefaultDownloadControlStateAccessor(
             val newFile = file.parent.resolve("$newId.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX")
             file.moveTo(newFile, true)
 
+            downloadControlStateEntries[internalKey(metaDataProviderConfig, oldId)]?.apply {
+                downloadControlStateEntries[internalKey(metaDataProviderConfig, newId)] = this
+                downloadControlStateEntries.remove(internalKey(metaDataProviderConfig, oldId))
+            }
+
             val oldUri = metaDataProviderConfig.buildAnimeLink(oldId)
             if (mergeLockAccess.isPartOfMergeLock(oldUri)) {
                 mergeLockAccess.replaceUri(oldUri, metaDataProviderConfig.buildAnimeLink(newId))
