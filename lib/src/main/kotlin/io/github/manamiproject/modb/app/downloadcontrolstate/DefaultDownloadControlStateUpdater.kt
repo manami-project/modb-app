@@ -38,7 +38,7 @@ class DefaultDownloadControlStateUpdater(
 
     override suspend fun updateAll() = withContext(LIMITED_FS) {
         val convFileAnimeToFilename = fetchAnimeFromConvFiles()
-        val animeToProvider = convFileAnimeToFilename.keys.associateWith { appConfig.findMetaDataProviderConfig(it.sources.first().host) }
+        val animeToProvider = convFileAnimeToFilename.map { it.first to appConfig.findMetaDataProviderConfig(it.first.sources.first().host) }
 
         checkForExtractionProblems(animeToProvider)
         updateChangedIds(convFileAnimeToFilename)
@@ -48,7 +48,7 @@ class DefaultDownloadControlStateUpdater(
         }
     }
 
-    private suspend fun fetchAnimeFromConvFiles(): Map<Anime, String> = withContext(LIMITED_FS) {
+    private suspend fun fetchAnimeFromConvFiles(): List<Pair<Anime, String>> = withContext(LIMITED_FS) {
         log.info { "Loading [*.$CONVERTED_FILE_SUFFIX] files." }
 
         val jobs = appConfig.metaDataProviderConfigurations()
@@ -63,10 +63,10 @@ class DefaultDownloadControlStateUpdater(
                 }
             }.flatten()
 
-        return@withContext awaitAll(*jobs.toTypedArray()).toMap()
+        return@withContext awaitAll(*jobs.toTypedArray())
     }
 
-    private suspend fun checkForExtractionProblems(convFileAnime: Map<Anime, MetaDataProviderConfig>) {
+    private suspend fun checkForExtractionProblems(convFileAnime: List<Pair<Anime, MetaDataProviderConfig>>) {
         log.info { "Checking for possible extraction problems in the converter classes." }
 
         val counter = mutableMapOf<MetaDataProviderConfig, UInt>()
@@ -109,7 +109,7 @@ class DefaultDownloadControlStateUpdater(
         }
     }
 
-    private suspend fun updateChangedIds(convFileAnimeToFilename: Map<Anime, String>) {
+    private suspend fun updateChangedIds(convFileAnimeToFilename: List<Pair<Anime, String>>) {
         log.info { "Checking if IDs have changed." }
 
         convFileAnimeToFilename.forEach { (anime, fileName) ->

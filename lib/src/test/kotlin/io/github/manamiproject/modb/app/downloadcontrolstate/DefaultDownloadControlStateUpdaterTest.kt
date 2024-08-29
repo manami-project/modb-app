@@ -533,6 +533,85 @@ internal class DefaultDownloadControlStateUpdaterTest {
                 assertThat(receivedDcsEntry).isEqualTo(updatedDcsEntry)
             }
         }
+
+        @Test
+        fun `can handle same entries with different IDs - the case in which the anime id has changed`() {
+            tempDirectory {
+                // given
+                val rawdata = tempDir.resolve("rawdata").createDirectory()
+                val dcs = tempDir.resolve("dcs").createDirectory()
+
+                val anime = Anime(
+                    _title = "Shin Seiki Evangelion Movie: THE END OF EVANGELION",
+                    type = MOVIE,
+                    episodes = 1,
+                    picture = URI("https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/32-7YrdcGEX1FP3.png"),
+                    thumbnail = URI("https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/default.jpg"),
+                    status = FINISHED,
+                    duration = Duration(87, MINUTES),
+                    animeSeason = AnimeSeason(
+                        year = 1997,
+                    ),
+                    sources = hashSetOf(URI("https://anilist.co/anime/32")),
+                    synonyms = hashSetOf(
+                        "Neon Genesis Evangelion: The End of Evangelion",
+                        "新世紀エヴァンゲリオン劇場版 THE END OF EVANGELION",
+                    ),
+                    relatedAnime = hashSetOf(
+                        URI("https://anilist.co/anime/30"),
+                    ),
+                    tags = hashSetOf(
+                        "action",
+                        "drama",
+                        "mecha",
+                        "psychological",
+                        "sci-fi",
+                    ),
+                )
+
+                val file1 = rawdata.resolve("32.$CONVERTED_FILE_SUFFIX").createFile()
+                Json.toJson(anime).writeToFile(file1)
+
+                val file2 = rawdata.resolve("64.$CONVERTED_FILE_SUFFIX").createFile()
+                Json.toJson(anime).writeToFile(file2)
+
+                val testAppConfig = object: Config by TestAppConfig {
+                    override fun downloadControlStateDirectory(): Directory = dcs
+                    override fun metaDataProviderConfigurations(): Set<MetaDataProviderConfig> = setOf(AnilistConfig)
+                    override fun workingDir(metaDataProviderConfig: MetaDataProviderConfig): Directory = rawdata
+                    override fun findMetaDataProviderConfig(host: Hostname): MetaDataProviderConfig = AnilistConfig
+                    override fun canChangeAnimeIds(metaDataProviderConfig: MetaDataProviderConfig): Boolean = true
+                    override fun clock(): Clock = Clock.fixed(Instant.parse("2021-11-02T17:55:43.035Z"), ZoneId.systemDefault())
+                }
+
+                var invocations = 0
+                var hasBeenInvoked = false
+                val testDownloadControlStateAccessor = object: DownloadControlStateAccessor by TestDownloadControlStateAccessor {
+                    override fun downloadControlStateDirectory(metaDataProviderConfig: MetaDataProviderConfig): Directory = tempDir
+                    override suspend fun changeId(oldId: AnimeId, newId: AnimeId, metaDataProviderConfig: MetaDataProviderConfig): RegularFile {
+                        hasBeenInvoked = true
+                        return file1
+                    }
+                    override suspend fun dcsEntryExists(metaDataProviderConfig: MetaDataProviderConfig, animeId: AnimeId): Boolean = false
+                    override suspend fun createOrUpdate(metaDataProviderConfig: MetaDataProviderConfig, animeId: AnimeId, downloadControlStateEntry: DownloadControlStateEntry): Boolean {
+                        invocations++
+                        return true
+                    }
+                }
+
+                val downloadControlStateUpdater = DefaultDownloadControlStateUpdater(
+                    appConfig = testAppConfig,
+                    downloadControlStateAccessor = testDownloadControlStateAccessor,
+                )
+
+                // when
+                downloadControlStateUpdater.updateAll()
+
+                // then
+                assertThat(invocations).isEqualTo(2)
+                assertThat(hasBeenInvoked).isTrue()
+            }
+        }
     }
 
     @Nested
