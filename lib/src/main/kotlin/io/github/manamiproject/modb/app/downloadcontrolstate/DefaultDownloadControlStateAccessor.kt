@@ -18,7 +18,6 @@ import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 import kotlinx.coroutines.withContext
 import kotlin.io.path.createDirectories
-import kotlin.io.path.createDirectory
 import kotlin.io.path.deleteIfExists
 import kotlin.io.path.moveTo
 
@@ -83,7 +82,7 @@ class DefaultDownloadControlStateAccessor(
 
         val internalKey = internalKey(metaDataProviderConfig, animeId)
         check(dcsEntryExists(metaDataProviderConfig, animeId)) { "Requested DCS entry with internal id [$internalKey] doesnt exist." }
-        return downloadControlStateEntries[internalKey]!!
+        return downloadControlStateEntries[internalKey]!!.copy()
     }
 
     override suspend fun createOrUpdate(metaDataProviderConfig: MetaDataProviderConfig, animeId: AnimeId, downloadControlStateEntry: DownloadControlStateEntry): Boolean {
@@ -97,7 +96,7 @@ class DefaultDownloadControlStateAccessor(
 
             if (!dcsEntryExists(metaDataProviderConfig, animeId)) {
                 log.debug { "Creating new DCS entry for [$animeId] of [${metaDataProviderConfig.hostname()}]." }
-                Json.toJson(downloadControlStateEntry).writeToFile(downloadControlStateFile, true)
+                Json.toJson(downloadControlStateEntry).writeToFile(downloadControlStateFile)
                 downloadControlStateEntries[internalKey(metaDataProviderConfig, animeId)] = downloadControlStateEntry
                 return true
             }
@@ -111,7 +110,7 @@ class DefaultDownloadControlStateAccessor(
 
             log.info { "Updating DCS entry for [$animeId] of [${metaDataProviderConfig.hostname()}]." }
 
-            Json.toJson(downloadControlStateEntry).writeToFile(downloadControlStateFile, true)
+            Json.toJson(downloadControlStateEntry).writeToFile(downloadControlStateFile)
             downloadControlStateEntries[internalKey(metaDataProviderConfig, animeId)] = downloadControlStateEntry
             return true
         }
