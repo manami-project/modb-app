@@ -1395,7 +1395,9 @@ internal class DefaultDownloadControlStateAccessorTest {
 
                 val dcsSubFolder = tempDir.resolve(testMetaDataProviderConfig.hostname()).createDirectory()
                 val oldFile = dcsSubFolder.resolve("previous-id.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
-                val newFile = dcsSubFolder.resolve("new-id.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX")
+                "old-file".writeToFile(oldFile)
+                val newFile = dcsSubFolder.resolve("new-id.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
+                "new-file".writeToFile(newFile)
 
                 val downloadControlStateAccessor = DefaultDownloadControlStateAccessor(
                     appConfig = testAppConfig,
@@ -1408,6 +1410,7 @@ internal class DefaultDownloadControlStateAccessorTest {
                 // then
                 assertThat(oldFile.regularFileExists()).isFalse()
                 assertThat(newFile.regularFileExists()).isTrue()
+                assertThat(newFile.readFile()).isEqualTo("old-file")
             }
         }
 
