@@ -50,5 +50,4 @@ internal class ListExtensionsKtTest {
             assertThat(result).isEmpty()
         }
     }
-
 }
