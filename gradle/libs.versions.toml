@@ -13,6 +13,8 @@ modb-notify = "5.1.4"
 modb-test = "1.6.21"
 kover = "0.8.3"
 logback-classic = "1.5.7"
+commons-text = "1.12.0"
+
 
 [libraries]
 kotlin-stdlib = { module = "org.jetbrains.kotlin:kotlin-stdlib", version.ref = "kotlin" }
@@ -29,6 +31,7 @@ modb-myanimelist = { module = "io.github.manamiproject:modb-myanimelist", versio
 modb-notify = { module = "io.github.manamiproject:modb-notify", version.ref = "modb-notify" }
 modb-test = { module = "io.github.manamiproject:modb-test", version.ref = "modb-test" }
 logback-classic = { module = "ch.qos.logback:logback-classic", version.ref = "logback-classic" }
+commons-text = { module = "org.apache.commons:commons-text", version.ref = "commons-text" }
 
 
 [plugins]
