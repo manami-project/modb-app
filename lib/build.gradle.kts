@@ -98,9 +98,11 @@ repositories {
 }
 
 dependencies {
-    implementation(libs.kotlin.stdlib)
-    implementation(libs.bundles.modb)
+    api(libs.kotlin.stdlib)
+    api(libs.bundles.modb)
+
     implementation(libs.logback.classic)
+    implementation(libs.commons.text)
 
     testImplementation(libs.kotlin.reflect)
     testImplementation(libs.modb.test)
