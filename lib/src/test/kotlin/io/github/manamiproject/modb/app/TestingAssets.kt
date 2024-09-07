@@ -7,7 +7,7 @@ import io.github.manamiproject.modb.app.dataset.DeadEntriesAccessor
 import io.github.manamiproject.modb.app.downloadcontrolstate.DownloadControlStateAccessor
 import io.github.manamiproject.modb.app.downloadcontrolstate.DownloadControlStateEntry
 import io.github.manamiproject.modb.app.merging.lock.MergeLock
-import io.github.manamiproject.modb.app.merging.lock.MergeLockAccess
+import io.github.manamiproject.modb.app.merging.lock.MergeLockAccessor
 import io.github.manamiproject.modb.core.config.AnimeId
 import io.github.manamiproject.modb.core.config.ConfigRegistry
 import io.github.manamiproject.modb.core.config.FileSuffix
@@ -112,7 +112,7 @@ internal object TestDatasetFileAccessor: DatasetFileAccessor {
     override fun offlineDatabaseFile(type: DatasetFileType): RegularFile = shouldNotBeInvoked()
 }
 
-internal object TestMergeLockAccess: MergeLockAccess {
+internal object TestMergeLockAccessor: MergeLockAccessor {
     override suspend fun hasMergeLock(uris: Set<URI>): Boolean = shouldNotBeInvoked()
     override suspend fun isPartOfMergeLock(uri: URI): Boolean = shouldNotBeInvoked()
     override suspend fun getMergeLock(uri: URI): MergeLock = shouldNotBeInvoked()

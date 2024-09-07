@@ -7,8 +7,8 @@ import io.github.manamiproject.modb.app.dataset.DefaultDeadEntriesAccessor
 import io.github.manamiproject.modb.app.downloadcontrolstate.DOWNLOAD_CONTROL_STATE_FILE_SUFFIX
 import io.github.manamiproject.modb.app.downloadcontrolstate.DefaultDownloadControlStateAccessor
 import io.github.manamiproject.modb.app.downloadcontrolstate.DownloadControlStateAccessor
-import io.github.manamiproject.modb.app.merging.lock.DefaultMergeLockAccess
-import io.github.manamiproject.modb.app.merging.lock.MergeLockAccess
+import io.github.manamiproject.modb.app.merging.lock.DefaultMergeLockAccessor
+import io.github.manamiproject.modb.app.merging.lock.MergeLockAccessor
 import io.github.manamiproject.modb.core.logging.LoggerDelegate
 import java.net.URI
 
@@ -25,7 +25,7 @@ class DeadEntriesValidationPostProcessor(
     private val datasetFileAccessor: DatasetFileAccessor = DefaultDatasetFileAccessor.instance,
     private val deadEntriesAccessor: DeadEntriesAccessor = DefaultDeadEntriesAccessor.instance,
     private val downloadControlStateAccessor: DownloadControlStateAccessor = DefaultDownloadControlStateAccessor.instance,
-    private val mergeLockAccess: MergeLockAccess = DefaultMergeLockAccess.instance,
+    private val mergeLockAccess: MergeLockAccessor = DefaultMergeLockAccessor.instance,
 ): PostProcessor {
 
     override suspend fun process(): Boolean {

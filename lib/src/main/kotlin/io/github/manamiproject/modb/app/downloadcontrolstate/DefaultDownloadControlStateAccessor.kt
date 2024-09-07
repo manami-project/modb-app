@@ -3,8 +3,8 @@ package io.github.manamiproject.modb.app.downloadcontrolstate
 import io.github.manamiproject.modb.app.config.AppConfig
 import io.github.manamiproject.modb.app.config.Config
 import io.github.manamiproject.modb.app.convfiles.CONVERTED_FILE_SUFFIX
-import io.github.manamiproject.modb.app.merging.lock.DefaultMergeLockAccess
-import io.github.manamiproject.modb.app.merging.lock.MergeLockAccess
+import io.github.manamiproject.modb.app.merging.lock.DefaultMergeLockAccessor
+import io.github.manamiproject.modb.app.merging.lock.MergeLockAccessor
 import io.github.manamiproject.modb.core.config.AnimeId
 import io.github.manamiproject.modb.core.config.MetaDataProviderConfig
 import io.github.manamiproject.modb.core.coroutines.ModbDispatchers.LIMITED_FS
@@ -33,7 +33,7 @@ private typealias InternalKey = String
  */
 class DefaultDownloadControlStateAccessor(
     private val appConfig: Config = AppConfig.instance,
-    private val mergeLockAccess: MergeLockAccess = DefaultMergeLockAccess.instance,
+    private val mergeLockAccess: MergeLockAccessor = DefaultMergeLockAccessor.instance,
 ): DownloadControlStateAccessor {
 
     private val downloadControlStateEntries = HashMap<InternalKey, DownloadControlStateEntry>()

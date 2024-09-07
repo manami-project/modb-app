@@ -20,9 +20,9 @@ import java.net.URI
  * @since 1.0.0
  * @param appConfig Application specific configuration. Uses [AppConfig] by default.
  */
-class DefaultMergeLockAccess(
+class DefaultMergeLockAccessor(
     appConfig: Config = AppConfig.instance,
-): MergeLockAccess {
+): MergeLockAccessor {
 
     private val mergeLockFile by lazy { appConfig.downloadControlStateDirectory().resolve("merge.lock") }
     private val mergeLocks: MutableMap<String, MergeLock> = mutableMapOf()
@@ -182,10 +182,10 @@ class DefaultMergeLockAccess(
         private val log by LoggerDelegate()
 
         /**
-         * Singleton of [DefaultMergeLockAccess]
+         * Singleton of [DefaultMergeLockAccessor]
          * @since 1.0.0
          */
-        val instance: DefaultMergeLockAccess by lazy { DefaultMergeLockAccess() }
+        val instance: DefaultMergeLockAccessor by lazy { DefaultMergeLockAccessor() }
     }
 }
 

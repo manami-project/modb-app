@@ -16,7 +16,7 @@ typealias MergeLock = Set<URI>
  * It takes influence on the merge process.
  * @since 1.0.0
  */
-interface MergeLockAccess {
+interface MergeLockAccessor {
 
     /**
      * Checks if this exact combination of URIs exists in a merge lock or is part of a merge lock.

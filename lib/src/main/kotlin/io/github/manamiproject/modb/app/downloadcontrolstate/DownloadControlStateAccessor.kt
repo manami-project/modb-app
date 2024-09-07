@@ -3,7 +3,7 @@ package io.github.manamiproject.modb.app.downloadcontrolstate
 import io.github.manamiproject.modb.core.config.AnimeId
 import io.github.manamiproject.modb.core.config.MetaDataProviderConfig
 import io.github.manamiproject.modb.app.config.Config
-import io.github.manamiproject.modb.app.merging.lock.MergeLockAccess
+import io.github.manamiproject.modb.app.merging.lock.MergeLockAccessor
 import io.github.manamiproject.modb.core.extensions.Directory
 import io.github.manamiproject.modb.core.extensions.RegularFile
 import io.github.manamiproject.modb.core.models.Anime
@@ -77,7 +77,7 @@ interface DownloadControlStateAccessor {
      * @since 1.0.0
      * @param metaDataProviderConfig Configuration for a specific meta data provider.
      * @param animeId Id of the anime as defined by the meta data provider.
-     * @see MergeLockAccess.removeEntry
+     * @see MergeLockAccessor.removeEntry
      */
     suspend fun removeDeadEntry(metaDataProviderConfig: MetaDataProviderConfig, animeId: AnimeId)
 
@@ -89,7 +89,7 @@ interface DownloadControlStateAccessor {
      * @param metaDataProviderConfig Configuration for a specific meta data provider.
      * @return Instance of the DCS file with the new ID.
      * @see Config.canChangeAnimeIds
-     * @see MergeLockAccess.replaceUri
+     * @see MergeLockAccessor.replaceUri
      */
     suspend fun changeId(oldId: AnimeId, newId: AnimeId, metaDataProviderConfig: MetaDataProviderConfig): RegularFile
 }

@@ -13,7 +13,7 @@ import kotlin.collections.HashSet
  * There is no check for duplicates here.
  * @since 1.0.0
  */
-class DefaultGoldenRecordAccessor : GoldenRecordAccessor {
+class DefaultGoldenRecordAccessor: GoldenRecordAccessor {
 
     /** key = lower case, cleaned-up title */
     private val titleCluster: HashMap<Title, HashSet<UUID>>  = hashMapOf()
