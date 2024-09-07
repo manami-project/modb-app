@@ -12,7 +12,7 @@ import kotlin.reflect.KClass
  * @receiver Any non-null [HttpResponse].
  * @throws IllegalStateException if one of the checks fails. The response code must be 200 and the body musn't be blank.
  */
-internal fun HttpResponse.checkedBody(thisRef: KClass<*>): String {
+fun HttpResponse.checkedBody(thisRef: KClass<*>): String {
     check(isOk()) { "${thisRef.simpleName}: Response code [${code}] is not 200." }
     check(bodyAsText.neitherNullNorBlank()) { "${thisRef.simpleName}: Response body was blank." }
     return bodyAsText
