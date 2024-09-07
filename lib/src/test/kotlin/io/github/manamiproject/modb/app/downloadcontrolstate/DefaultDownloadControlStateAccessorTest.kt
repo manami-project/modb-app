@@ -2,11 +2,11 @@ package io.github.manamiproject.modb.app.downloadcontrolstate
 
 import io.github.manamiproject.modb.anilist.AnilistConfig
 import io.github.manamiproject.modb.app.TestAppConfig
-import io.github.manamiproject.modb.app.TestMergeLockAccess
+import io.github.manamiproject.modb.app.TestMergeLockAccessor
 import io.github.manamiproject.modb.app.TestMetaDataProviderConfig
 import io.github.manamiproject.modb.app.config.Config
 import io.github.manamiproject.modb.app.convfiles.CONVERTED_FILE_SUFFIX
-import io.github.manamiproject.modb.app.merging.lock.MergeLockAccess
+import io.github.manamiproject.modb.app.merging.lock.MergeLockAccessor
 import io.github.manamiproject.modb.core.config.AnimeId
 import io.github.manamiproject.modb.core.config.FileSuffix
 import io.github.manamiproject.modb.core.config.Hostname
@@ -123,7 +123,7 @@ internal class DefaultDownloadControlStateAccessorTest {
 
                 val defaultDownloadControlStateAccessor = DefaultDownloadControlStateAccessor(
                     appConfig = testAppConfig,
-                    mergeLockAccess = TestMergeLockAccess,
+                    mergeLockAccess = TestMergeLockAccessor,
                 )
 
                 // when
@@ -214,7 +214,7 @@ internal class DefaultDownloadControlStateAccessorTest {
 
                 val defaultDownloadControlStateAccessor = DefaultDownloadControlStateAccessor(
                     appConfig = testAppConfig,
-                    mergeLockAccess = TestMergeLockAccess,
+                    mergeLockAccess = TestMergeLockAccessor,
                 )
 
                 // when
@@ -241,7 +241,7 @@ internal class DefaultDownloadControlStateAccessorTest {
 
                 val defaultDownloadControlStateAccessor = DefaultDownloadControlStateAccessor(
                     appConfig = testAppConfig,
-                    mergeLockAccess = TestMergeLockAccess,
+                    mergeLockAccess = TestMergeLockAccessor,
                 )
 
                 // when
@@ -267,7 +267,7 @@ internal class DefaultDownloadControlStateAccessorTest {
 
                 val defaultDownloadControlStateAccessor = DefaultDownloadControlStateAccessor(
                     appConfig = testAppConfig,
-                    mergeLockAccess = TestMergeLockAccess,
+                    mergeLockAccess = TestMergeLockAccessor,
                 )
                 defaultDownloadControlStateAccessor.allDcsEntries()
 
@@ -404,7 +404,7 @@ internal class DefaultDownloadControlStateAccessorTest {
 
                 val defaultDownloadControlStateAccessor = DefaultDownloadControlStateAccessor(
                     appConfig = testAppConfig,
-                    mergeLockAccess = TestMergeLockAccess,
+                    mergeLockAccess = TestMergeLockAccessor,
                 )
 
                 // when
@@ -430,7 +430,7 @@ internal class DefaultDownloadControlStateAccessorTest {
 
                 val defaultDownloadControlStateAccessor = DefaultDownloadControlStateAccessor(
                     appConfig = testAppConfig,
-                    mergeLockAccess = TestMergeLockAccess,
+                    mergeLockAccess = TestMergeLockAccessor,
                 )
                 defaultDownloadControlStateAccessor.allAnime()
 
@@ -461,7 +461,7 @@ internal class DefaultDownloadControlStateAccessorTest {
 
                 val defaultDownloadControlStateAccessor = DefaultDownloadControlStateAccessor(
                     appConfig = testAppConfig,
-                    mergeLockAccess = TestMergeLockAccess,
+                    mergeLockAccess = TestMergeLockAccessor,
                 )
 
                 // when
@@ -487,7 +487,7 @@ internal class DefaultDownloadControlStateAccessorTest {
 
                 val defaultDownloadControlStateAccessor = DefaultDownloadControlStateAccessor(
                     appConfig = testAppConfig,
-                    mergeLockAccess = TestMergeLockAccess,
+                    mergeLockAccess = TestMergeLockAccessor,
                 )
 
                 // when
@@ -514,7 +514,7 @@ internal class DefaultDownloadControlStateAccessorTest {
 
                 val defaultDownloadControlStateAccessor = DefaultDownloadControlStateAccessor(
                     appConfig = testAppConfig,
-                    mergeLockAccess = TestMergeLockAccess,
+                    mergeLockAccess = TestMergeLockAccessor,
                 )
 
                 // when
@@ -541,7 +541,7 @@ internal class DefaultDownloadControlStateAccessorTest {
 
                 val defaultDownloadControlStateAccessor = DefaultDownloadControlStateAccessor(
                     appConfig = testAppConfig,
-                    mergeLockAccess = TestMergeLockAccess,
+                    mergeLockAccess = TestMergeLockAccessor,
                 )
                 defaultDownloadControlStateAccessor.dcsEntryExists(KitsuConfig, "99")
 
@@ -606,7 +606,7 @@ internal class DefaultDownloadControlStateAccessorTest {
 
                 val defaultDownloadControlStateAccessor = DefaultDownloadControlStateAccessor(
                     appConfig = testAppConfig,
-                    mergeLockAccess = TestMergeLockAccess,
+                    mergeLockAccess = TestMergeLockAccessor,
                 )
 
                 // when
@@ -632,7 +632,7 @@ internal class DefaultDownloadControlStateAccessorTest {
 
                 val defaultDownloadControlStateAccessor = DefaultDownloadControlStateAccessor(
                     appConfig = testAppConfig,
-                    mergeLockAccess = TestMergeLockAccess,
+                    mergeLockAccess = TestMergeLockAccessor,
                 )
 
                 // when
@@ -665,7 +665,7 @@ internal class DefaultDownloadControlStateAccessorTest {
 
                 val defaultDownloadControlStateAccessor = DefaultDownloadControlStateAccessor(
                     appConfig = testAppConfig,
-                    mergeLockAccess = TestMergeLockAccess,
+                    mergeLockAccess = TestMergeLockAccessor,
                 )
 
                 // when
@@ -695,7 +695,7 @@ internal class DefaultDownloadControlStateAccessorTest {
 
                 val defaultDownloadControlStateAccessor = DefaultDownloadControlStateAccessor(
                     appConfig = testAppConfig,
-                    mergeLockAccess = TestMergeLockAccess,
+                    mergeLockAccess = TestMergeLockAccessor,
                 )
                 defaultDownloadControlStateAccessor.dcsEntry(AnilistConfig, "32")
 
@@ -758,7 +758,7 @@ internal class DefaultDownloadControlStateAccessorTest {
 
                 val defaultDownloadControlStateAccessor = DefaultDownloadControlStateAccessor(
                     appConfig = testAppConfig,
-                    mergeLockAccess = TestMergeLockAccess,
+                    mergeLockAccess = TestMergeLockAccessor,
                 )
 
                 // when
@@ -849,7 +849,7 @@ internal class DefaultDownloadControlStateAccessorTest {
 
                 val defaultDownloadControlStateAccessor = DefaultDownloadControlStateAccessor(
                     appConfig = testAppConfig,
-                    mergeLockAccess = TestMergeLockAccess,
+                    mergeLockAccess = TestMergeLockAccessor,
                 )
                 defaultDownloadControlStateAccessor.createOrUpdate(AnilistConfig, "32", previousEntry)
                 val correctForPreviousVersion = defaultDownloadControlStateAccessor.dcsEntry(AnilistConfig, "32")
@@ -910,7 +910,7 @@ internal class DefaultDownloadControlStateAccessorTest {
 
                 val defaultDownloadControlStateAccessor = DefaultDownloadControlStateAccessor(
                     appConfig = testAppConfig,
-                    mergeLockAccess = TestMergeLockAccess,
+                    mergeLockAccess = TestMergeLockAccessor,
                 )
                 defaultDownloadControlStateAccessor.createOrUpdate(AnilistConfig, "32", dcsEntry)
 
@@ -972,7 +972,7 @@ internal class DefaultDownloadControlStateAccessorTest {
 
                 val defaultDownloadControlStateAccessor = DefaultDownloadControlStateAccessor(
                     appConfig = testAppConfig,
-                    mergeLockAccess = TestMergeLockAccess,
+                    mergeLockAccess = TestMergeLockAccessor,
                 )
 
                 // when
@@ -1032,7 +1032,7 @@ internal class DefaultDownloadControlStateAccessorTest {
 
                 val defaultDownloadControlStateAccessor = DefaultDownloadControlStateAccessor(
                     appConfig = testAppConfig,
-                    mergeLockAccess = TestMergeLockAccess,
+                    mergeLockAccess = TestMergeLockAccessor,
                 )
                 defaultDownloadControlStateAccessor.createOrUpdate(
                     metaDataProviderConfig = KitsuConfig,
@@ -1091,7 +1091,7 @@ internal class DefaultDownloadControlStateAccessorTest {
                     override fun metaDataProviderConfigurations(): Set<MetaDataProviderConfig> = emptySet()
                 }
 
-                val testMergeLockAccess = object: MergeLockAccess by TestMergeLockAccess {
+                val testMergeLockAccess = object: MergeLockAccessor by TestMergeLockAccessor {
                     override suspend fun isPartOfMergeLock(uri: URI): Boolean = false
                 }
 
@@ -1129,7 +1129,7 @@ internal class DefaultDownloadControlStateAccessorTest {
                 }
 
                 var hasMergeLockEntryRemovalBeingInvoked = false
-                val testMergeLockAccess = object: MergeLockAccess by TestMergeLockAccess {
+                val testMergeLockAccess = object: MergeLockAccessor by TestMergeLockAccessor {
                     override suspend fun isPartOfMergeLock(uri: URI): Boolean = true
                     override suspend fun removeEntry(uri: URI) {
                         hasMergeLockEntryRemovalBeingInvoked = true
@@ -1168,7 +1168,7 @@ internal class DefaultDownloadControlStateAccessorTest {
                 }
 
                 var hasMergeLockEntryRemovalBeingInvoked = false
-                val testMergeLockAccess = object: MergeLockAccess by TestMergeLockAccess {
+                val testMergeLockAccess = object: MergeLockAccessor by TestMergeLockAccessor {
                     override suspend fun isPartOfMergeLock(uri: URI): Boolean = true
                     override suspend fun removeEntry(uri: URI) {
                         hasMergeLockEntryRemovalBeingInvoked = true
@@ -1206,7 +1206,7 @@ internal class DefaultDownloadControlStateAccessorTest {
                 }
 
                 var hasMergeLockEntryRemovalBeingInvoked = false
-                val testMergeLockAccess = object: MergeLockAccess by TestMergeLockAccess {
+                val testMergeLockAccess = object: MergeLockAccessor by TestMergeLockAccessor {
                     override suspend fun isPartOfMergeLock(uri: URI): Boolean = false
                     override suspend fun removeEntry(uri: URI) {
                         hasMergeLockEntryRemovalBeingInvoked = true
@@ -1248,7 +1248,7 @@ internal class DefaultDownloadControlStateAccessorTest {
                     override fun downloadControlStateDirectory(): Directory = tempDir
                 }
 
-                val testMergeLockAccess = object: MergeLockAccess by TestMergeLockAccess {
+                val testMergeLockAccess = object: MergeLockAccessor by TestMergeLockAccessor {
                     override suspend fun isPartOfMergeLock(uri: URI): Boolean = false
                 }
 
@@ -1287,7 +1287,7 @@ internal class DefaultDownloadControlStateAccessorTest {
                     override fun downloadControlStateDirectory(): Directory = tempDir
                 }
 
-                val testMergeLockAccess = object: MergeLockAccess by TestMergeLockAccess {
+                val testMergeLockAccess = object: MergeLockAccessor by TestMergeLockAccessor {
                     override suspend fun isPartOfMergeLock(uri: URI): Boolean = false
                 }
 
@@ -1328,7 +1328,7 @@ internal class DefaultDownloadControlStateAccessorTest {
 
                 val defaultDownloadControlStateAccessor = DefaultDownloadControlStateAccessor(
                     appConfig = testAppConfig,
-                    mergeLockAccess = TestMergeLockAccess,
+                    mergeLockAccess = TestMergeLockAccessor,
                 )
 
                 // when
@@ -1357,7 +1357,7 @@ internal class DefaultDownloadControlStateAccessorTest {
 
                 val defaultDownloadControlStateAccessor = DefaultDownloadControlStateAccessor(
                     appConfig = testAppConfig,
-                    mergeLockAccess = TestMergeLockAccess,
+                    mergeLockAccess = TestMergeLockAccessor,
                 )
 
                 // when
@@ -1386,7 +1386,7 @@ internal class DefaultDownloadControlStateAccessorTest {
                     override fun findMetaDataProviderConfig(host: Hostname): MetaDataProviderConfig = testMetaDataProviderConfig
                 }
 
-                val testMergeLockAccess = object : MergeLockAccess by TestMergeLockAccess {
+                val testMergeLockAccess = object : MergeLockAccessor by TestMergeLockAccessor {
                     override suspend fun isPartOfMergeLock(uri: URI): Boolean = false
                 }
 
@@ -1432,7 +1432,7 @@ internal class DefaultDownloadControlStateAccessorTest {
                     override fun metaDataProviderConfigurations(): Set<MetaDataProviderConfig> = emptySet()
                 }
 
-                val testMergeLockAccess = object : MergeLockAccess by TestMergeLockAccess {
+                val testMergeLockAccess = object : MergeLockAccessor by TestMergeLockAccessor {
                     override suspend fun isPartOfMergeLock(uri: URI): Boolean = false
                 }
 
@@ -1477,7 +1477,7 @@ internal class DefaultDownloadControlStateAccessorTest {
                 }
 
                 var hasBeenInvoked = false
-                val testMergeLockAccess = object : MergeLockAccess by TestMergeLockAccess {
+                val testMergeLockAccess = object : MergeLockAccessor by TestMergeLockAccessor {
                     override suspend fun isPartOfMergeLock(uri: URI): Boolean = true
                     override suspend fun replaceUri(oldUri: URI, newUri: URI) {
                         hasBeenInvoked = true
@@ -1528,7 +1528,7 @@ internal class DefaultDownloadControlStateAccessorTest {
                     override fun metaDataProviderConfigurations(): Set<MetaDataProviderConfig> = emptySet()
                 }
 
-                val testMergeLockAccess = object : MergeLockAccess by TestMergeLockAccess {
+                val testMergeLockAccess = object : MergeLockAccessor by TestMergeLockAccessor {
                     override suspend fun isPartOfMergeLock(uri: URI): Boolean = false
                 }
 
@@ -1576,7 +1576,7 @@ internal class DefaultDownloadControlStateAccessorTest {
                     }
                 }
 
-                val testMergeLockAccess = object : MergeLockAccess by TestMergeLockAccess {
+                val testMergeLockAccess = object : MergeLockAccessor by TestMergeLockAccessor {
                     override suspend fun isPartOfMergeLock(uri: URI): Boolean = false
                 }
 
@@ -1619,7 +1619,7 @@ internal class DefaultDownloadControlStateAccessorTest {
                     }
                 }
 
-                val testMergeLockAccess = object : MergeLockAccess by TestMergeLockAccess {
+                val testMergeLockAccess = object : MergeLockAccessor by TestMergeLockAccessor {
                     override suspend fun isPartOfMergeLock(uri: URI): Boolean = false
                 }
 

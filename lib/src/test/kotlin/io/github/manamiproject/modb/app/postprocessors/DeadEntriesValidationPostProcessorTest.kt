@@ -3,11 +3,11 @@ package io.github.manamiproject.modb.app.postprocessors
 import io.github.manamiproject.modb.app.TestDatasetFileAccessor
 import io.github.manamiproject.modb.app.TestDeadEntriesAccessor
 import io.github.manamiproject.modb.app.TestDownloadControlStateAccessor
-import io.github.manamiproject.modb.app.TestMergeLockAccess
+import io.github.manamiproject.modb.app.TestMergeLockAccessor
 import io.github.manamiproject.modb.app.dataset.DatasetFileAccessor
 import io.github.manamiproject.modb.app.dataset.DeadEntriesAccessor
 import io.github.manamiproject.modb.app.downloadcontrolstate.DownloadControlStateAccessor
-import io.github.manamiproject.modb.app.merging.lock.MergeLockAccess
+import io.github.manamiproject.modb.app.merging.lock.MergeLockAccessor
 import io.github.manamiproject.modb.core.models.Anime
 import io.github.manamiproject.modb.test.exceptionExpected
 import io.github.manamiproject.modb.test.tempDirectory
@@ -43,7 +43,7 @@ internal class DeadEntriesValidationPostProcessorTest {
                     override suspend fun allAnime(): List<Anime> = listOf(testAnime)
                 }
 
-                val testMergeLockAccess = object: MergeLockAccess by TestMergeLockAccess {
+                val testMergeLockAccess = object: MergeLockAccessor by TestMergeLockAccessor {
                     override suspend fun allSourcesInAllMergeLockEntries(): Set<URI> = setOf(testAnime.sources.first())
                 }
 
@@ -91,7 +91,7 @@ internal class DeadEntriesValidationPostProcessorTest {
                     )
                 }
 
-                val testMergeLockAccess = object: MergeLockAccess by TestMergeLockAccess {
+                val testMergeLockAccess = object: MergeLockAccessor by TestMergeLockAccessor {
                     override suspend fun allSourcesInAllMergeLockEntries(): Set<URI> = setOf(testAnime.sources.first())
                 }
 
@@ -138,7 +138,7 @@ internal class DeadEntriesValidationPostProcessorTest {
                     override suspend fun allAnime(): List<Anime> = listOf(testAnime)
                 }
 
-                val testMergeLockAccess = object: MergeLockAccess by TestMergeLockAccess {
+                val testMergeLockAccess = object: MergeLockAccessor by TestMergeLockAccessor {
                     override suspend fun allSourcesInAllMergeLockEntries(): Set<URI> = setOf(
                         testAnime.sources.first(),
                         testDeadEntry.sources.first(),
@@ -191,7 +191,7 @@ internal class DeadEntriesValidationPostProcessorTest {
                     override suspend fun allAnime(): List<Anime> = listOf(testAnime)
                 }
 
-                val testMergeLockAccess = object: MergeLockAccess by TestMergeLockAccess {
+                val testMergeLockAccess = object: MergeLockAccessor by TestMergeLockAccessor {
                     override suspend fun allSourcesInAllMergeLockEntries(): Set<URI> = setOf(testAnime.sources.first())
                 }
 
