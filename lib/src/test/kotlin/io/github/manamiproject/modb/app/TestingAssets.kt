@@ -6,6 +6,7 @@ import io.github.manamiproject.modb.app.dataset.DatasetFileType
 import io.github.manamiproject.modb.app.dataset.DeadEntriesAccessor
 import io.github.manamiproject.modb.app.downloadcontrolstate.DownloadControlStateAccessor
 import io.github.manamiproject.modb.app.downloadcontrolstate.DownloadControlStateEntry
+import io.github.manamiproject.modb.app.merging.ReviewedIsolatedEntriesAccessor
 import io.github.manamiproject.modb.app.merging.lock.MergeLock
 import io.github.manamiproject.modb.app.merging.lock.MergeLockAccessor
 import io.github.manamiproject.modb.core.config.AnimeId
@@ -136,4 +137,9 @@ internal object TestDeadEntriesAccessor: DeadEntriesAccessor {
     override suspend fun addDeadEntry(animeId: AnimeId, metaDataProviderConfig: MetaDataProviderConfig) = shouldNotBeInvoked()
     override suspend fun determineDeadEntries(sources: Collection<URI>): Set<URI> = shouldNotBeInvoked()
     override suspend fun fetchDeadEntries(metaDataProviderConfig: MetaDataProviderConfig): Set<AnimeId> = shouldNotBeInvoked()
+}
+
+internal object TestReviewedIsolatedEntriesAccessor: ReviewedIsolatedEntriesAccessor {
+    override fun contains(uri: URI): Boolean = shouldNotBeInvoked()
+    override suspend fun addCheckedEntry(uri: URI) = shouldNotBeInvoked()
 }
