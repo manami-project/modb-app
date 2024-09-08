@@ -6,6 +6,7 @@
 + Ongoing and upcoming anime have a higher tendency to change and therefore will be updated every week
 + Changes for finished anime are less likely
 + Downloading anime with frequent or recent changes more and other anime less reduces the number of downloads per week
++ This also reduces load on the meta data providers
 + Every anime is updated at least once per quarter
 
 ## What is DCS and how does it work?
