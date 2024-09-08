@@ -31,9 +31,9 @@ import kotlin.math.floor
  *
  * ## type
  *
- * Check for not binary. It's either equal (`1.0`) or not (`0.0`). But because the data from different sources varies a
- * lot, there is another case. If the type is any combination of `SPECIAL` and `ONA`. The value is `0.4` to indicate a
- * that it somewhat possible that these could be the same.
+ * A type is either equal (`1.0`) or not (`0.0`). But because the data from different sources varies a lot, there is
+ * another case. Based on experience there is another case for any combination of `SPECIAL` and `ONA`. For this case the
+ * value is `0.4` to indicate that it's somewhat possible that these could be the same.
  *
  * ## episodes
  *

@@ -22,7 +22,7 @@ import io.github.manamiproject.modb.core.models.Anime
  * This initially populates the golden records list. Next run-throughs check anime per meta data provider sorted by
  * the number of anime in descending order.
  *
- * Either a merge lock exists which eans that the merging logic is skipped or a list of potential golden records is
+ * Either a merge lock exists which means that the merging logic is skipped or a list of potential golden records is
  * retrieved based on the title. Doing a lookup based on titles scales a lot better than calculating the matching
  * probability for all entries. This means that the matching probability is calculated for all the potential golden
  * records retrieved based on the title. If the probability is higher than 80% then the anime is merged. If not then the

@@ -21,11 +21,12 @@ fun difference(number1: Int, number2: Int): Int {
 /**
  * This function allows to compare two numbers and make an assumption on how likely it is that they mean the same thing
  * although being different.
- * **Background:** In anime there are often differences in episodes and years. Although they should be the same, because
- * they describe the same anime, those can differ between meta data providers.
- * An example for episodes is if the number of episodes include a recap episode on one meta data provider whereas it's
+ * **Background:** For anime there are often differences in episodes and years. Although they should be the
+ * same, because they describe the same anime, those can differ between meta data providers.
+ * An example for episodes is if the number of episodes includes a recap episode on one meta data provider whereas it's
  * not part of the entry on the other meta data provider.
- * For years this can especially happen for the winter season overlapping years.
+ * For years this can especially happen for the winter season overlapping in years or if they use release dates from
+ * different countries.
  * @since 1.0.0
  * @param number1 Any number `>=0`
  * @param number2 Any number `>=0`

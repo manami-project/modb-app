@@ -6,7 +6,9 @@
 * Downloading
   * [Download Control State (DCS)](docs/dcs.md)
 * Merging
+  * [Merging](docs/merging.md)
   * [Merge locks](docs/merge_locks.md) 
+  * [Reviewed isolated entries](docs/reviewed-isolated-entries.md) 
 
 ## Configuration
 
