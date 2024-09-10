@@ -1,0 +1,44 @@
+eth0: Link encap:Ethernet  HWaddr 00:0B:CD:1C:18:5A
+    inet addr:192.168.1.2  Bcast:192.168.1.255  Mask:255.255.255.0
+    inet6 addr: fe80::20b:cdff:fe1c:185a/64 Scope:Link
+    UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+    RX packets:2341604 errors:0 dropped:0 overruns:0 frame:0
+    TX packets:2217673 errors:0 dropped:0 overruns:0 carrier:0
+    collisions:0 txqueuelen:1000
+    RX bytes:293460932 (279.8 MiB)  TX bytes:1042006549 (993.7 MiB)
+    Interrupt:185 Memory:f7fe0000-f7ff0000
+    status: active
+lo0: Link encap:Local Loopback
+    inet addr:127.0.0.1  Mask:255.0.0.0
+    inet6 addr: ::1/128 Scope:Host
+    UP LOOPBACK RUNNING  MTU:16436  Metric:1
+    RX packets:5019066 errors:0 dropped:0 overruns:0 frame:0
+    TX packets:5019066 errors:0 dropped:0 overruns:0 carrier:0
+    collisions:0 txqueuelen:0
+    RX bytes:2174522634 (2.0 GiB)  TX bytes:2174522634 (2.0 GiB)
+    status: inactive
+en1: Link encap:Ethernet  HWaddr 00:1A:2B:3C:4D:5E
+    inet addr:192.168.1.3  Bcast:192.168.1.255  Mask:255.255.255.0
+    inet6 addr: fe80::21a:2bff:fe3c:4d5e/64 Scope:Link
+    inet6 addr: 2001:db8::1a2b:3c4d:5e6f/64 Scope:Global temporary
+    inet6 addr: 2001:db8::1a2b:3c4d:5e6f/64 Scope:Global secured
+    UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+    RX packets:123456 errors:0 dropped:0 overruns:0 frame:0
+    TX packets:654321 errors:0 dropped:0 overruns:0 carrier:0
+    collisions:0 txqueuelen:1000
+    RX bytes:987654321 (941.2 MiB)  TX bytes:123456789 (117.7 MiB)
+    status: active
+en0: Link encap:Ethernet  HWaddr 00:1B:2C:3D:4E:5F
+    inet addr:192.168.1.4  Bcast:192.168.1.255  Mask:255.255.255.0
+    inet6 addr: fe80::21b:2cff:fe3d:4e5f/64 Scope:Link
+    flags=8863<UP,BROADCAST,SMART,RUNNING,SIMPLEX,MULTICAST>
+    options=6460<TSO4,TSO6,CHANNEL_IO,PARTIAL_CSUM,ZEROINVERT_CSUM>
+    ether 00:1B:2C:3D:4E:5F
+    nd6 options=201<PERFORMNUD,DAD>
+    media: autoselect
+    status: active
+    RX packets:789012 errors:0 dropped:0 overruns:0 frame:0
+    TX packets:210987 errors:0 dropped:0 overruns:0 carrier:0
+    collisions:0 txqueuelen:1000
+    RX bytes:654321098 (624.0 MiB)  TX bytes:987654321 (941.2 MiB)
+    status: active

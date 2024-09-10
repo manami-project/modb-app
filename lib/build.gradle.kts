@@ -101,6 +101,7 @@ dependencies {
     api(libs.kotlin.stdlib)
     api(libs.bundles.modb)
 
+    implementation(libs.kommand)
     implementation(libs.logback.classic)
     implementation(libs.commons.text)
 

@@ -1,0 +1,11 @@
+en1: Link encap:Ethernet  HWaddr 00:1A:2B:3C:4D:5E
+	inet addr:192.168.1.3  Bcast:192.168.1.255  Mask:255.255.255.0
+	inet6 addr: fe80::21a:2bff:fe3c:4d5e/64 Scope:Link
+	inet6 addr: 2001:db8::1a2b:3c4d:5e6f/64 Scope:Global temporary
+	inet6 addr: 2001:db8::1a2b:3c4d:5e6f/64 Scope:Global secured
+	UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+	RX packets:123456 errors:0 dropped:0 overruns:0 frame:0
+	TX packets:654321 errors:0 dropped:0 overruns:0 carrier:0
+	collisions:0 txqueuelen:1000
+	RX bytes:987654321 (941.2 MiB)  TX bytes:123456789 (117.7 MiB)
+	status: active
