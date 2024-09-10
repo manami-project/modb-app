@@ -1,5 +1,6 @@
 [versions]
 kotlin = "2.0.20"
+kommand = "1.4.1"
 modb-core = "16.2.1"
 modb-serde = "5.2.4"
 modb-anidb = "5.2.4"
@@ -19,6 +20,7 @@ commons-text = "1.12.0"
 [libraries]
 kotlin-stdlib = { module = "org.jetbrains.kotlin:kotlin-stdlib", version.ref = "kotlin" }
 kotlin-reflect = { module = "org.jetbrains.kotlin:kotlin-reflect", version.ref = "kotlin" }
+kommand = { module = "io.github.manamiproject:kommand", version.ref = "kommand" }
 modb-core = { module = "io.github.manamiproject:modb-core", version.ref = "modb-core" }
 modb-serde = { module = "io.github.manamiproject:modb-serde", version.ref = "modb-serde" }
 modb-anidb = { module = "io.github.manamiproject:modb-anidb", version.ref = "modb-anidb" }
