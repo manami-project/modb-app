@@ -75,6 +75,12 @@ class DefaultGoldenRecordAccessor: GoldenRecordAccessor {
 
     override fun allEntries(): List<Anime> = goldenRecords.values.toList()
 
+    override fun clear() {
+        titleCluster.clear()
+        sourceCluster.clear()
+        goldenRecords.clear()
+    }
+
     private fun updateTitleCluster(goldenRecordId: UUID, anime: Anime) {
         extractAllTitles(anime).forEach { title ->
             val titleClusterEntry = titleCluster[title]

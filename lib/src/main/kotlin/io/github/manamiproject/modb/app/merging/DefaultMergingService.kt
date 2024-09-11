@@ -53,6 +53,7 @@ class DefaultMergingService(
 
     override suspend fun merge(unmergedAnime: List<Anime>): List<Anime> {
         runThrough = 1
+        goldenRecordAccessor.clear()
         reCheck.clear()
 
         val metaDataProvidersSortedByNumberOfAnime = sortMetaDataProvidersByNumberOfAnime(unmergedAnime)
