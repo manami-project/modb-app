@@ -58,4 +58,10 @@ interface GoldenRecordAccessor {
      * @return All golden records presented as [List] of [Anime].
      */
     fun allEntries(): List<Anime>
+
+    /**
+     * Clears the current golden record list.
+     * @since 1.0.0
+     */
+    fun clear()
 }

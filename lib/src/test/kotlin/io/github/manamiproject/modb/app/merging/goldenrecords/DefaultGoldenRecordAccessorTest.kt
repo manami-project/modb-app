@@ -741,6 +741,25 @@ internal class DefaultGoldenRecordAccessorTest {
     }
 
     @Nested
+    inner class ClearTests {
+
+        @Test
+        fun `clears the list`() {
+            // given
+            val goldenRecordList = DefaultGoldenRecordAccessor()
+
+            val anime = Anime("Death Note")
+            goldenRecordList.createGoldenRecord(anime)
+
+            // when
+            goldenRecordList.clear()
+
+            // then
+            assertThat(goldenRecordList.allEntries()).isEmpty()
+        }
+    }
+
+    @Nested
     inner class CompanionObjectTests {
 
         @Test
