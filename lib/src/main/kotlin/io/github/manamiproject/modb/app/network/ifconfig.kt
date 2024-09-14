@@ -5,8 +5,8 @@ import io.github.manamiproject.kommand.JavaProcessBuilder
 import io.github.manamiproject.modb.core.extensions.EMPTY
 import io.github.manamiproject.modb.core.extensions.neitherNullNorBlank
 
-private typealias Device = String
-private typealias Lines = List<String>
+internal typealias Device = String
+internal typealias Lines = List<String>
 
 /**
  * Configuration for [ifconfig].
@@ -82,7 +82,7 @@ private fun parseOutput(output: String): IfconfigOutput {
 
     output.lines().forEach { line ->
         when {
-            !line.startsWith("\t") && !line.startsWith(" ") -> {
+            !line.startsWith("\t") && !line.startsWith(" ") && line != EMPTY -> {
                 if (currentDevice.neitherNullNorBlank() && currentLines.isNotEmpty()) {
                     parsedOutput[currentDevice] = currentLines.toList()
                     currentLines.clear()

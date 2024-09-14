@@ -1,5 +1,7 @@
 package io.github.manamiproject.modb.app
 
+import io.github.manamiproject.kommand.CommandExecutor
+import io.github.manamiproject.kommand.CommandLineConfig
 import io.github.manamiproject.modb.app.config.Config
 import io.github.manamiproject.modb.app.dataset.DatasetFileAccessor
 import io.github.manamiproject.modb.app.dataset.DatasetFileType
@@ -142,4 +144,11 @@ internal object TestDeadEntriesAccessor: DeadEntriesAccessor {
 internal object TestReviewedIsolatedEntriesAccessor: ReviewedIsolatedEntriesAccessor {
     override fun contains(uri: URI): Boolean = shouldNotBeInvoked()
     override suspend fun addCheckedEntry(uri: URI) = shouldNotBeInvoked()
+}
+
+internal object TestCommandExecutor: CommandExecutor {
+    override var config: CommandLineConfig
+        get() = shouldNotBeInvoked()
+        set(_) = shouldNotBeInvoked()
+    override fun executeCmd(command: List<String>): String = shouldNotBeInvoked()
 }
