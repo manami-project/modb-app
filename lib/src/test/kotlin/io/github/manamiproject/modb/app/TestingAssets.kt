@@ -18,6 +18,9 @@ import io.github.manamiproject.modb.core.config.MetaDataProviderConfig
 import io.github.manamiproject.modb.core.converter.PathAnimeConverter
 import io.github.manamiproject.modb.core.extensions.Directory
 import io.github.manamiproject.modb.core.extensions.RegularFile
+import io.github.manamiproject.modb.core.httpclient.HttpClient
+import io.github.manamiproject.modb.core.httpclient.HttpResponse
+import io.github.manamiproject.modb.core.httpclient.RequestBody
 import io.github.manamiproject.modb.core.models.Anime
 import io.github.manamiproject.modb.serde.json.ExternalResourceJsonDeserializer
 import io.github.manamiproject.modb.serde.json.JsonSerializer
@@ -151,4 +154,9 @@ internal object TestCommandExecutor: CommandExecutor {
         get() = shouldNotBeInvoked()
         set(_) = shouldNotBeInvoked()
     override fun executeCmd(command: List<String>): String = shouldNotBeInvoked()
+}
+
+internal object TestHttpClient: HttpClient {
+    override suspend fun get(url: URL, headers: Map<String, Collection<String>>): HttpResponse = shouldNotBeInvoked()
+    override suspend fun post(url: URL, requestBody: RequestBody, headers: Map<String, Collection<String>>): HttpResponse = shouldNotBeInvoked()
 }
