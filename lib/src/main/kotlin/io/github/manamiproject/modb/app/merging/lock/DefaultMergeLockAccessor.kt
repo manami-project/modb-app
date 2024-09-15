@@ -8,7 +8,6 @@ import io.github.manamiproject.modb.core.extensions.regularFileExists
 import io.github.manamiproject.modb.core.extensions.writeToFile
 import io.github.manamiproject.modb.core.json.Json
 import io.github.manamiproject.modb.core.logging.LoggerDelegate
-import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 import java.net.URI
@@ -135,7 +134,7 @@ class DefaultMergeLockAccessor(
         Mutex().withLock {
             if (!isInitialized) {
                 if (mergeLockFile.regularFileExists()) {
-                    val parsedMergeLocks = runBlocking { parseJsonFile() }
+                    val parsedMergeLocks = parseJsonFile()
                     checkForDuplicates(parsedMergeLocks)
                     convertMergeLocksToInMemoryRepresentation(parsedMergeLocks)
                 } else {

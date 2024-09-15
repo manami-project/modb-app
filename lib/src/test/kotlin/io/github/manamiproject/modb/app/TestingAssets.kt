@@ -43,7 +43,7 @@ import java.nio.file.WatchService as JavaWatchService
 internal object TestConfigRegistry: ConfigRegistry {
     override fun boolean(key: String): Boolean = shouldNotBeInvoked()
     override fun double(key: String): Double = shouldNotBeInvoked()
-    override fun int(key: String): Int? = shouldNotBeInvoked()
+    override fun int(key: String): Int = shouldNotBeInvoked()
     override fun <T : Any> list(key: String): List<T> = shouldNotBeInvoked()
     override fun localDate(key: String): LocalDate = shouldNotBeInvoked()
     override fun localDateTime(key: String): LocalDateTime = shouldNotBeInvoked()

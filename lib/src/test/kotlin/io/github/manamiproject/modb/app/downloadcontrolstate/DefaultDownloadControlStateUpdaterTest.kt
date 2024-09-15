@@ -197,9 +197,9 @@ internal class DefaultDownloadControlStateUpdaterTest {
                     val testDownloadControlStateAccessor = object: DownloadControlStateAccessor by TestDownloadControlStateAccessor {
                         override fun downloadControlStateDirectory(metaDataProviderConfig: MetaDataProviderConfig): Directory = tempDir
                         override suspend fun dcsEntryExists(metaDataProviderConfig: MetaDataProviderConfig, animeId: AnimeId): Boolean = true
-                        override suspend fun dcsEntry(metaDataProviderConfig: MetaDataProviderConfig, animeId: AnimeId): DownloadControlStateEntry = when {
-                            animeId == "100" -> dcsUnchangedAnime
-                            animeId == "200" -> dcsChangedAnime
+                        override suspend fun dcsEntry(metaDataProviderConfig: MetaDataProviderConfig, animeId: AnimeId): DownloadControlStateEntry = when (animeId) {
+                            "100" -> dcsUnchangedAnime
+                            "200" -> dcsChangedAnime
                             else -> shouldNotBeInvoked()
                         }
                         override suspend fun createOrUpdate(metaDataProviderConfig: MetaDataProviderConfig, animeId: AnimeId, downloadControlStateEntry: DownloadControlStateEntry): Boolean = false
