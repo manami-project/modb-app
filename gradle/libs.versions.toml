@@ -2,7 +2,7 @@
 kotlin = "2.0.20"
 kommand = "1.4.1"
 modb-core = "16.2.2"
-modb-serde = "5.2.4"
+modb-serde = "5.2.5"
 modb-anidb = "5.2.5"
 modb-anilist = "6.1.6"
 modb-animeplanet = "5.1.5"
