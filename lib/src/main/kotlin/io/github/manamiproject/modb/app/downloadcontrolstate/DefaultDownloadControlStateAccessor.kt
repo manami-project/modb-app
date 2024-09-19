@@ -59,12 +59,28 @@ class DefaultDownloadControlStateAccessor(
         return downloadControlStateEntries.values.toList()
     }
 
+    override suspend fun allDcsEntries(metaDataProviderConfig: MetaDataProviderConfig): List<DownloadControlStateEntry> {
+        if (!isInitialized) {
+            init()
+        }
+
+        return allDcsEntries().filter { it.anime.sources.first().host == metaDataProviderConfig.hostname() }
+    }
+
     override suspend fun allAnime(): List<Anime> {
         if (!isInitialized) {
             init()
         }
 
         return allDcsEntries().map { it.anime }
+    }
+
+    override suspend fun allAnime(metaDataProviderConfig: MetaDataProviderConfig): List<Anime> {
+        if (!isInitialized) {
+            init()
+        }
+
+        return allAnime().filter { it.sources.first().host == metaDataProviderConfig.hostname() }
     }
 
     override suspend fun dcsEntryExists(metaDataProviderConfig: MetaDataProviderConfig, animeId: AnimeId): Boolean {

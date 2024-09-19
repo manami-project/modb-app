@@ -137,7 +137,7 @@ internal class DefaultDownloadControlStateAccessorTest {
         }
 
         @Test
-        fun `correctly parses dcs files`() {
+        fun `correctly returns content all dcs entries`() {
             tempDirectory {
                 // given
                 val dir1 = tempDir.resolve(AnilistConfig.hostname()).createDirectory()
@@ -152,62 +152,60 @@ internal class DefaultDownloadControlStateAccessorTest {
                     override fun findMetaDataProviderConfig(host: Hostname): MetaDataProviderConfig = super.findMetaDataProviderConfig(host)
                 }
 
-                val expectedDcsEntries = setOf(
-                    DownloadControlStateEntry(
-                        _weeksWihoutChange = 0,
-                        _lastDownloaded = WeekOfYear(2021, 44),
-                        _nextDownload = WeekOfYear(2021, 45),
-                        _anime = Anime(
-                            _title = "Shin Seiki Evangelion Movie: THE END OF EVANGELION",
-                            type = MOVIE,
-                            episodes = 1,
-                            picture = URI("https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/32-7YrdcGEX1FP3.png"),
-                            thumbnail = URI("https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/default.jpg"),
-                            status = FINISHED,
-                            duration = Duration(87, MINUTES),
-                            animeSeason = AnimeSeason(
-                                year = 1997,
-                            ),
-                            sources = hashSetOf(URI("https://anilist.co/anime/32")),
-                            synonyms = hashSetOf(
-                                "Neon Genesis Evangelion: The End of Evangelion",
-                                "新世紀エヴァンゲリオン劇場版 THE END OF EVANGELION",
-                            ),
-                            relatedAnime = hashSetOf(
-                                URI("https://anilist.co/anime/30"),
-                            ),
-                            tags = hashSetOf(
-                                "action",
-                                "drama",
-                                "mecha",
-                                "psychological",
-                                "sci-fi",
-                            ),
+                val expectedEntry1 = DownloadControlStateEntry(
+                    _weeksWihoutChange = 0,
+                    _lastDownloaded = WeekOfYear(2021, 44),
+                    _nextDownload = WeekOfYear(2021, 45),
+                    _anime = Anime(
+                        _title = "Shin Seiki Evangelion Movie: THE END OF EVANGELION",
+                        type = MOVIE,
+                        episodes = 1,
+                        picture = URI("https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/32-7YrdcGEX1FP3.png"),
+                        thumbnail = URI("https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/default.jpg"),
+                        status = FINISHED,
+                        duration = Duration(87, MINUTES),
+                        animeSeason = AnimeSeason(
+                            year = 1997,
                         ),
-                    ),
-                    DownloadControlStateEntry(
-                        _weeksWihoutChange = 0,
-                        _lastDownloaded = WeekOfYear(2021, 44),
-                        _nextDownload = WeekOfYear(2021, 45),
-                        _anime = Anime(
-                            _title = "Fruits Basket",
-                            type = TV,
-                            episodes = 26,
-                            picture = URI("https://media.kitsu.app/anime/poster_images/99/small.jpg?1474922066"),
-                            thumbnail = URI("https://media.kitsu.app/anime/poster_images/99/tiny.jpg?1474922066"),
-                            status = FINISHED,
-                            duration = Duration(24, MINUTES),
-                            animeSeason = AnimeSeason(
-                                year = 2001,
-                            ),
-                            sources = hashSetOf(URI("https://kitsu.app/anime/99")),
-                            synonyms = hashSetOf(
-                                "Furuba",
-                                "フルーツバスケット",
-                            ),
-                            relatedAnime = hashSetOf(
-                                URI("https://kitsu.app/anime/41995"),
-                            ),
+                        sources = hashSetOf(URI("https://anilist.co/anime/32")),
+                        synonyms = hashSetOf(
+                            "Neon Genesis Evangelion: The End of Evangelion",
+                            "新世紀エヴァンゲリオン劇場版 THE END OF EVANGELION",
+                        ),
+                        relatedAnime = hashSetOf(
+                            URI("https://anilist.co/anime/30"),
+                        ),
+                        tags = hashSetOf(
+                            "action",
+                            "drama",
+                            "mecha",
+                            "psychological",
+                            "sci-fi",
+                        ),
+                    )
+                )
+                val expectedEntry2 = DownloadControlStateEntry(
+                    _weeksWihoutChange = 0,
+                    _lastDownloaded = WeekOfYear(2021, 44),
+                    _nextDownload = WeekOfYear(2021, 45),
+                    _anime = Anime(
+                        _title = "Fruits Basket",
+                        type = TV,
+                        episodes = 26,
+                        picture = URI("https://media.kitsu.app/anime/poster_images/99/small.jpg?1474922066"),
+                        thumbnail = URI("https://media.kitsu.app/anime/poster_images/99/tiny.jpg?1474922066"),
+                        status = FINISHED,
+                        duration = Duration(24, MINUTES),
+                        animeSeason = AnimeSeason(
+                            year = 2001,
+                        ),
+                        sources = hashSetOf(URI("https://kitsu.app/anime/99")),
+                        synonyms = hashSetOf(
+                            "Furuba",
+                            "フルーツバスケット",
+                        ),
+                        relatedAnime = hashSetOf(
+                            URI("https://kitsu.app/anime/41995"),
                         ),
                     ),
                 )
@@ -221,7 +219,10 @@ internal class DefaultDownloadControlStateAccessorTest {
                 val result = defaultDownloadControlStateAccessor.allDcsEntries()
 
                 // then
-                assertThat(result).containsAll(expectedDcsEntries)
+                assertThat(result).containsExactlyInAnyOrder(
+                    expectedEntry1,
+                    expectedEntry2,
+                )
             }
         }
 
@@ -281,6 +282,153 @@ internal class DefaultDownloadControlStateAccessorTest {
     }
 
     @Nested
+    inner class AllDcsEntriesForSpecificMetaDataProviderTests {
+
+        @Test
+        fun `throws exception if the file name and the actual id from the source link don't match`() {
+            tempDirectory {
+                // given
+                val dir = tempDir.resolve(AnilistConfig.hostname()).createDirectory()
+                testResource("downloadcontrolstate/DefaultDownloadControlStateAccessorTest/ids_dont_match/10294.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").copyTo(dir)
+
+                val testAppConfig = object: Config by TestAppConfig {
+                    override fun metaDataProviderConfigurations(): Set<MetaDataProviderConfig> = setOf(AnilistConfig)
+                    override fun downloadControlStateDirectory(): Directory = tempDir
+                }
+
+                val defaultDownloadControlStateAccessor = DefaultDownloadControlStateAccessor(
+                    appConfig = testAppConfig,
+                    mergeLockAccess = TestMergeLockAccessor,
+                )
+
+                // when
+                val result = exceptionExpected<IllegalStateException> {
+                    defaultDownloadControlStateAccessor.allDcsEntries(AnilistConfig)
+                }
+
+                // then
+                assertThat(result).hasMessage("Filename and id don't match for [10294.dcs] of [anilist.co].")
+            }
+        }
+
+        @Test
+        fun `correctly returns only dcs entries for the requested meta data provider`() {
+            tempDirectory {
+                // given
+                val dir1 = tempDir.resolve(AnilistConfig.hostname()).createDirectory()
+                testResource("downloadcontrolstate/DefaultDownloadControlStateAccessorTest/success/32.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").copyTo(dir1)
+
+                val dir2 = tempDir.resolve(KitsuConfig.hostname()).createDirectory()
+                testResource("downloadcontrolstate/DefaultDownloadControlStateAccessorTest/success/99.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").copyTo(dir2)
+
+                val testAppConfig = object: Config by TestAppConfig {
+                    override fun metaDataProviderConfigurations(): Set<MetaDataProviderConfig> = setOf(AnilistConfig, KitsuConfig)
+                    override fun downloadControlStateDirectory(): Directory = tempDir
+                    override fun findMetaDataProviderConfig(host: Hostname): MetaDataProviderConfig = super.findMetaDataProviderConfig(host)
+                }
+
+                val expectedDcsEntry = DownloadControlStateEntry(
+                    _weeksWihoutChange = 0,
+                    _lastDownloaded = WeekOfYear(2021, 44),
+                    _nextDownload = WeekOfYear(2021, 45),
+                    _anime = Anime(
+                        _title = "Shin Seiki Evangelion Movie: THE END OF EVANGELION",
+                        type = MOVIE,
+                        episodes = 1,
+                        picture = URI("https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/32-7YrdcGEX1FP3.png"),
+                        thumbnail = URI("https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/default.jpg"),
+                        status = FINISHED,
+                        duration = Duration(87, MINUTES),
+                        animeSeason = AnimeSeason(
+                            year = 1997,
+                        ),
+                        sources = hashSetOf(URI("https://anilist.co/anime/32")),
+                        synonyms = hashSetOf(
+                            "Neon Genesis Evangelion: The End of Evangelion",
+                            "新世紀エヴァンゲリオン劇場版 THE END OF EVANGELION",
+                        ),
+                        relatedAnime = hashSetOf(
+                            URI("https://anilist.co/anime/30"),
+                        ),
+                        tags = hashSetOf(
+                            "action",
+                            "drama",
+                            "mecha",
+                            "psychological",
+                            "sci-fi",
+                        ),
+                    ),
+                )
+
+                val defaultDownloadControlStateAccessor = DefaultDownloadControlStateAccessor(
+                    appConfig = testAppConfig,
+                    mergeLockAccess = TestMergeLockAccessor,
+                )
+
+                // when
+                val result = defaultDownloadControlStateAccessor.allDcsEntries(AnilistConfig)
+
+                // then
+                assertThat(result).containsExactly(expectedDcsEntry)
+            }
+        }
+
+        @Test
+        fun `triggers initialization if necessary`() {
+            tempDirectory {
+                // given
+                var initHasBeenInvoked = false
+                val testAppConfig = object: Config by TestAppConfig {
+                    override fun metaDataProviderConfigurations(): Set<MetaDataProviderConfig> {
+                        check(!initHasBeenInvoked)
+                        initHasBeenInvoked = true
+                        return emptySet()
+                    }
+                    override fun downloadControlStateDirectory(): Directory = tempDir
+                }
+
+                val defaultDownloadControlStateAccessor = DefaultDownloadControlStateAccessor(
+                    appConfig = testAppConfig,
+                    mergeLockAccess = TestMergeLockAccessor,
+                )
+
+                // when
+                defaultDownloadControlStateAccessor.allDcsEntries(AnilistConfig)
+
+                // then
+                assertThat(initHasBeenInvoked).isTrue()
+            }
+        }
+
+        @Test
+        fun `doesn't trigger init if it has already been triggered`() {
+            tempDirectory {
+                // given
+                var initHasBeenInvoked = 0
+                val testAppConfig = object: Config by TestAppConfig {
+                    override fun metaDataProviderConfigurations(): Set<MetaDataProviderConfig> {
+                        initHasBeenInvoked++
+                        return emptySet()
+                    }
+                    override fun downloadControlStateDirectory(): Directory = tempDir
+                }
+
+                val defaultDownloadControlStateAccessor = DefaultDownloadControlStateAccessor(
+                    appConfig = testAppConfig,
+                    mergeLockAccess = TestMergeLockAccessor,
+                )
+                defaultDownloadControlStateAccessor.allDcsEntries(AnilistConfig)
+
+                // when
+                defaultDownloadControlStateAccessor.allDcsEntries(AnilistConfig)
+
+                // then
+                assertThat(initHasBeenInvoked).isOne()
+            }
+        }
+    }
+
+    @Nested
     inner class AllAnimeTests {
 
         @Test
@@ -310,7 +458,7 @@ internal class DefaultDownloadControlStateAccessorTest {
         }
 
         @Test
-        fun `correctly parses dcs files`() {
+        fun `correctly returns all anime`() {
             tempDirectory {
                 // given
                 val dir1 = tempDir.resolve(AnilistConfig.hostname()).createDirectory()
@@ -326,53 +474,51 @@ internal class DefaultDownloadControlStateAccessorTest {
                     override fun findMetaDataProviderConfig(host: Hostname): MetaDataProviderConfig = super.findMetaDataProviderConfig(host)
                 }
 
-                val expectedAnime = setOf(
-                    Anime(
-                        _title = "Shin Seiki Evangelion Movie: THE END OF EVANGELION",
-                        type = MOVIE,
-                        episodes = 1,
-                        picture = URI("https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/32-7YrdcGEX1FP3.png"),
-                        thumbnail = URI("https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/default.jpg"),
-                        status = FINISHED,
-                        duration = Duration(87, MINUTES),
-                        animeSeason = AnimeSeason(
-                            year = 1997,
-                        ),
-                        sources = hashSetOf(URI("https://anilist.co/anime/32")),
-                        synonyms = hashSetOf(
-                            "Neon Genesis Evangelion: The End of Evangelion",
-                            "新世紀エヴァンゲリオン劇場版 THE END OF EVANGELION",
-                        ),
-                        relatedAnime = hashSetOf(
-                            URI("https://anilist.co/anime/30"),
-                        ),
-                        tags = hashSetOf(
-                            "action",
-                            "drama",
-                            "mecha",
-                            "psychological",
-                            "sci-fi",
-                        ),
+                val expectedAnime1 = Anime(
+                    _title = "Shin Seiki Evangelion Movie: THE END OF EVANGELION",
+                    type = MOVIE,
+                    episodes = 1,
+                    picture = URI("https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/32-7YrdcGEX1FP3.png"),
+                    thumbnail = URI("https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/default.jpg"),
+                    status = FINISHED,
+                    duration = Duration(87, MINUTES),
+                    animeSeason = AnimeSeason(
+                        year = 1997,
                     ),
-                    Anime(
-                        _title = "Fruits Basket",
-                        type = TV,
-                        episodes = 26,
-                        picture = URI("https://media.kitsu.app/anime/poster_images/99/small.jpg?1474922066"),
-                        thumbnail = URI("https://media.kitsu.app/anime/poster_images/99/tiny.jpg?1474922066"),
-                        status = FINISHED,
-                        duration = Duration(24, MINUTES),
-                        animeSeason = AnimeSeason(
-                            year = 2001,
-                        ),
-                        sources = hashSetOf(URI("https://kitsu.app/anime/99")),
-                        synonyms = hashSetOf(
-                            "Furuba",
-                            "フルーツバスケット",
-                        ),
-                        relatedAnime = hashSetOf(
-                            URI("https://kitsu.app/anime/41995"),
-                        ),
+                    sources = hashSetOf(URI("https://anilist.co/anime/32")),
+                    synonyms = hashSetOf(
+                        "Neon Genesis Evangelion: The End of Evangelion",
+                        "新世紀エヴァンゲリオン劇場版 THE END OF EVANGELION",
+                    ),
+                    relatedAnime = hashSetOf(
+                        URI("https://anilist.co/anime/30"),
+                    ),
+                    tags = hashSetOf(
+                        "action",
+                        "drama",
+                        "mecha",
+                        "psychological",
+                        "sci-fi",
+                    ),
+                )
+                val expectedAnime2 = Anime(
+                    _title = "Fruits Basket",
+                    type = TV,
+                    episodes = 26,
+                    picture = URI("https://media.kitsu.app/anime/poster_images/99/small.jpg?1474922066"),
+                    thumbnail = URI("https://media.kitsu.app/anime/poster_images/99/tiny.jpg?1474922066"),
+                    status = FINISHED,
+                    duration = Duration(24, MINUTES),
+                    animeSeason = AnimeSeason(
+                        year = 2001,
+                    ),
+                    sources = hashSetOf(URI("https://kitsu.app/anime/99")),
+                    synonyms = hashSetOf(
+                        "Furuba",
+                        "フルーツバスケット",
+                    ),
+                    relatedAnime = hashSetOf(
+                        URI("https://kitsu.app/anime/41995"),
                     ),
                 )
 
@@ -384,7 +530,10 @@ internal class DefaultDownloadControlStateAccessorTest {
                 val result = defaultDownloadControlStateAccessor.allAnime()
 
                 // then
-                assertThat(result).containsAll(expectedAnime)
+                assertThat(result).containsExactlyInAnyOrder(
+                    expectedAnime1,
+                    expectedAnime2,
+                )
             }
         }
 
@@ -436,6 +585,149 @@ internal class DefaultDownloadControlStateAccessorTest {
 
                 // when
                 defaultDownloadControlStateAccessor.allAnime()
+
+                // then
+                assertThat(initHasBeenInvoked).isOne()
+            }
+        }
+    }
+
+    @Nested
+    inner class AllAnimeForSpecificMetaDataProviderTests {
+
+        @Test
+        fun `throws exception if the file name and the actual id from the source link don't match`() {
+            tempDirectory {
+                // given
+                val dir = tempDir.resolve(AnilistConfig.hostname()).createDirectory()
+                testResource("downloadcontrolstate/DefaultDownloadControlStateAccessorTest/ids_dont_match/10294.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").copyTo(dir)
+
+                val testAppConfig = object: Config by TestAppConfig {
+                    override fun metaDataProviderConfigurations(): Set<MetaDataProviderConfig> = setOf(AnilistConfig)
+                    override fun downloadControlStateDirectory(): Directory = tempDir
+                }
+
+                val defaultDownloadControlStateAccessor = DefaultDownloadControlStateAccessor(
+                    appConfig = testAppConfig,
+                )
+
+                // when
+                val result = exceptionExpected<IllegalStateException> {
+                    defaultDownloadControlStateAccessor.allAnime(AnilistConfig)
+                }
+
+                // then
+                assertThat(result).hasMessage("Filename and id don't match for [10294.dcs] of [anilist.co].")
+            }
+        }
+
+        @Test
+        fun `correctly returns only anime for the requested meta data provider`() {
+            tempDirectory {
+                // given
+                val dir1 = tempDir.resolve(AnilistConfig.hostname()).createDirectory()
+                testResource("downloadcontrolstate/DefaultDownloadControlStateAccessorTest/success/32.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").copyTo(dir1)
+
+
+                val dir2 = tempDir.resolve(KitsuConfig.hostname()).createDirectory()
+                testResource("downloadcontrolstate/DefaultDownloadControlStateAccessorTest/success/99.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").copyTo(dir2)
+
+                val testAppConfig = object: Config by TestAppConfig {
+                    override fun metaDataProviderConfigurations(): Set<MetaDataProviderConfig> = setOf(AnilistConfig, KitsuConfig)
+                    override fun downloadControlStateDirectory(): Directory = tempDir
+                    override fun findMetaDataProviderConfig(host: Hostname): MetaDataProviderConfig = super.findMetaDataProviderConfig(host)
+                }
+
+                val expectedAnime = Anime(
+                    _title = "Shin Seiki Evangelion Movie: THE END OF EVANGELION",
+                    type = MOVIE,
+                    episodes = 1,
+                    picture = URI("https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/32-7YrdcGEX1FP3.png"),
+                    thumbnail = URI("https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/default.jpg"),
+                    status = FINISHED,
+                    duration = Duration(87, MINUTES),
+                    animeSeason = AnimeSeason(
+                        year = 1997,
+                    ),
+                    sources = hashSetOf(URI("https://anilist.co/anime/32")),
+                    synonyms = hashSetOf(
+                        "Neon Genesis Evangelion: The End of Evangelion",
+                        "新世紀エヴァンゲリオン劇場版 THE END OF EVANGELION",
+                    ),
+                    relatedAnime = hashSetOf(
+                        URI("https://anilist.co/anime/30"),
+                    ),
+                    tags = hashSetOf(
+                        "action",
+                        "drama",
+                        "mecha",
+                        "psychological",
+                        "sci-fi",
+                    ),
+                )
+
+                val defaultDownloadControlStateAccessor = DefaultDownloadControlStateAccessor(
+                    appConfig = testAppConfig,
+                )
+
+                // when
+                val result = defaultDownloadControlStateAccessor.allAnime(AnilistConfig)
+
+                // then
+                assertThat(result).containsExactlyInAnyOrder(
+                    expectedAnime,
+                )
+            }
+        }
+
+        @Test
+        fun `triggers initialization if necessary`() {
+            tempDirectory {
+                // given
+                var initHasBeenInvoked = false
+                val testAppConfig = object: Config by TestAppConfig {
+                    override fun metaDataProviderConfigurations(): Set<MetaDataProviderConfig> {
+                        check(!initHasBeenInvoked)
+                        initHasBeenInvoked = true
+                        return emptySet()
+                    }
+                    override fun downloadControlStateDirectory(): Directory = tempDir
+                }
+
+                val defaultDownloadControlStateAccessor = DefaultDownloadControlStateAccessor(
+                    appConfig = testAppConfig,
+                    mergeLockAccess = TestMergeLockAccessor,
+                )
+
+                // when
+                defaultDownloadControlStateAccessor.allAnime(AnilistConfig)
+
+                // then
+                assertThat(initHasBeenInvoked).isTrue()
+            }
+        }
+
+        @Test
+        fun `doesn't trigger init if it has already been triggered`() {
+            tempDirectory {
+                // given
+                var initHasBeenInvoked = 0
+                val testAppConfig = object: Config by TestAppConfig {
+                    override fun metaDataProviderConfigurations(): Set<MetaDataProviderConfig> {
+                        initHasBeenInvoked++
+                        return emptySet()
+                    }
+                    override fun downloadControlStateDirectory(): Directory = tempDir
+                }
+
+                val defaultDownloadControlStateAccessor = DefaultDownloadControlStateAccessor(
+                    appConfig = testAppConfig,
+                    mergeLockAccess = TestMergeLockAccessor,
+                )
+                defaultDownloadControlStateAccessor.allAnime(AnilistConfig)
+
+                // when
+                defaultDownloadControlStateAccessor.allAnime(AnilistConfig)
 
                 // then
                 assertThat(initHasBeenInvoked).isOne()

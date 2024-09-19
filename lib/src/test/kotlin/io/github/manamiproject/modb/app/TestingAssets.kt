@@ -104,7 +104,9 @@ internal object TestWatchKey: WatchKey {
 internal object TestDownloadControlStateAccessor: DownloadControlStateAccessor {
     override fun downloadControlStateDirectory(metaDataProviderConfig: MetaDataProviderConfig): Directory = shouldNotBeInvoked()
     override suspend fun allAnime(): List<Anime> = shouldNotBeInvoked()
+    override suspend fun allAnime(metaDataProviderConfig: MetaDataProviderConfig): List<Anime> = shouldNotBeInvoked()
     override suspend fun allDcsEntries(): List<DownloadControlStateEntry> = shouldNotBeInvoked()
+    override suspend fun allDcsEntries(metaDataProviderConfig: MetaDataProviderConfig): List<DownloadControlStateEntry> = shouldNotBeInvoked()
     override suspend fun dcsEntryExists(metaDataProviderConfig: MetaDataProviderConfig, animeId: AnimeId): Boolean = shouldNotBeInvoked()
     override suspend fun dcsEntry(metaDataProviderConfig: MetaDataProviderConfig, animeId: AnimeId): DownloadControlStateEntry = shouldNotBeInvoked()
     override suspend fun createOrUpdate(metaDataProviderConfig: MetaDataProviderConfig, animeId: AnimeId, downloadControlStateEntry: DownloadControlStateEntry) = shouldNotBeInvoked()

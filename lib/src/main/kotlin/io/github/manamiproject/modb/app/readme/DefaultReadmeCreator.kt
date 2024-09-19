@@ -2,7 +2,6 @@ package io.github.manamiproject.modb.app.readme
 
 import io.github.manamiproject.modb.app.config.AppConfig
 import io.github.manamiproject.modb.app.config.Config
-import io.github.manamiproject.modb.app.downloadcontrolstate.DOWNLOAD_CONTROL_STATE_FILE_SUFFIX
 import io.github.manamiproject.modb.app.downloadcontrolstate.DefaultDownloadControlStateAccessor
 import io.github.manamiproject.modb.app.downloadcontrolstate.DownloadControlStateAccessor
 import io.github.manamiproject.modb.app.downloadcontrolstate.weekOfYear
@@ -12,7 +11,6 @@ import io.github.manamiproject.modb.app.merging.lock.DefaultMergeLockAccessor
 import io.github.manamiproject.modb.app.merging.lock.MergeLockAccessor
 import io.github.manamiproject.modb.core.config.Hostname
 import io.github.manamiproject.modb.core.config.MetaDataProviderConfig
-import io.github.manamiproject.modb.core.extensions.listRegularFiles
 import io.github.manamiproject.modb.core.extensions.writeToFile
 import io.github.manamiproject.modb.core.models.Anime
 import io.github.manamiproject.modb.core.models.Year
@@ -353,8 +351,7 @@ class DefaultReadmeCreator(
     }
 
     private suspend fun getNumberForMetaDataProvider(metaDataProviderConfig: MetaDataProviderConfig): Pair<Hostname, Int> {
-        val dcsDir = downloadControlStateAccessor.downloadControlStateDirectory(metaDataProviderConfig)
-        val numberOfEntries = dcsDir.listRegularFiles("*.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").count()
+        val numberOfEntries = downloadControlStateAccessor.allAnime(metaDataProviderConfig).count()
         return Pair(metaDataProviderConfig.hostname(), numberOfEntries)
     }
 
