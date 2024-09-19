@@ -46,7 +46,7 @@ interface DownloadControlStateAccessor {
      * Return all [Anime] from DCS files of a specific meta data provicer..
      * @since 1.0.0
      * @param metaDataProviderConfig Configuration for a specific meta data provider.
-     * @return All anime of a specific meta data providers.
+     * @return All anime of a specific meta data provider.
      */
     suspend fun allAnime(metaDataProviderConfig: MetaDataProviderConfig): List<Anime>
 
@@ -54,7 +54,7 @@ interface DownloadControlStateAccessor {
      * Retrieve all DCS entries of a specific meta data provider.
      * @since 1.0.0
      * @param metaDataProviderConfig Configuration for a specific meta data provider.
-     * @return All DCS entries of a specific meta data providers.
+     * @return All DCS entries of a specific meta data provider.
      */
     suspend fun allDcsEntries(metaDataProviderConfig: MetaDataProviderConfig): List<DownloadControlStateEntry>
 

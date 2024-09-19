@@ -137,7 +137,7 @@ internal class DefaultDownloadControlStateAccessorTest {
         }
 
         @Test
-        fun `correctly returns content all dcs entries`() {
+        fun `correctly returns all dcs entries`() {
             tempDirectory {
                 // given
                 val dir1 = tempDir.resolve(AnilistConfig.hostname()).createDirectory()
