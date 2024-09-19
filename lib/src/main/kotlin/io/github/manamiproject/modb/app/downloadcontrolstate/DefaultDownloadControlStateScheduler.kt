@@ -4,9 +4,6 @@ import io.github.manamiproject.modb.app.config.AppConfig
 import io.github.manamiproject.modb.app.config.Config
 import io.github.manamiproject.modb.core.config.AnimeId
 import io.github.manamiproject.modb.core.config.MetaDataProviderConfig
-import io.github.manamiproject.modb.core.extensions.listRegularFiles
-import io.github.manamiproject.modb.core.extensions.readFile
-import io.github.manamiproject.modb.core.json.Json
 import io.github.manamiproject.modb.core.logging.LoggerDelegate
 import java.time.LocalDate
 
@@ -25,9 +22,7 @@ class DefaultDownloadControlStateScheduler(
     override suspend fun findEntriesNotScheduledForCurrentWeek(metaDataProviderConfig: MetaDataProviderConfig): Set<AnimeId> {
         log.info { "Finding all anime which are not scheduled to download this week." }
 
-        return downloadControlStateAccessor.downloadControlStateDirectory(metaDataProviderConfig)
-            .listRegularFiles("*.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX")
-            .map { Json.parseJson<DownloadControlStateEntry>(it.readFile())!! }
+        return downloadControlStateAccessor.allDcsEntries(metaDataProviderConfig)
             .filter { isNotCurrentWeek(it.nextDownload) }
             .map { metaDataProviderConfig.extractAnimeId(it.anime.sources.first()) }
             .toSet()
@@ -36,9 +31,7 @@ class DefaultDownloadControlStateScheduler(
     override suspend fun findEntriesScheduledForCurrentWeek(metaDataProviderConfig: MetaDataProviderConfig): Set<AnimeId> {
         log.info { "Finding all anime which are scheduled to download this week." }
 
-        return downloadControlStateAccessor.downloadControlStateDirectory(metaDataProviderConfig)
-            .listRegularFiles("*.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX")
-            .map { Json.parseJson<DownloadControlStateEntry>(it.readFile())!! }
+        return downloadControlStateAccessor.allDcsEntries(metaDataProviderConfig)
             .filter { isCurrentWeek(it.nextDownload) }
             .map { metaDataProviderConfig.extractAnimeId(it.anime.sources.first()) }
             .toSet()

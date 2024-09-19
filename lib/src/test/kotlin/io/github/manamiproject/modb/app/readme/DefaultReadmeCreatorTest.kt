@@ -9,13 +9,11 @@ import io.github.manamiproject.modb.app.TestDownloadControlStateAccessor
 import io.github.manamiproject.modb.app.TestMergeLockAccessor
 import io.github.manamiproject.modb.app.TestReviewedIsolatedEntriesAccessor
 import io.github.manamiproject.modb.app.config.Config
-import io.github.manamiproject.modb.app.downloadcontrolstate.DOWNLOAD_CONTROL_STATE_FILE_SUFFIX
 import io.github.manamiproject.modb.app.downloadcontrolstate.DownloadControlStateAccessor
 import io.github.manamiproject.modb.app.merging.ReviewedIsolatedEntriesAccessor
 import io.github.manamiproject.modb.app.merging.lock.MergeLockAccessor
 import io.github.manamiproject.modb.core.config.Hostname
 import io.github.manamiproject.modb.core.config.MetaDataProviderConfig
-import io.github.manamiproject.modb.core.extensions.Directory
 import io.github.manamiproject.modb.core.extensions.readFile
 import io.github.manamiproject.modb.core.models.Anime
 import io.github.manamiproject.modb.kitsu.KitsuConfig
@@ -31,8 +29,6 @@ import java.net.URI
 import java.time.Clock
 import java.time.Instant
 import java.time.ZoneOffset.UTC
-import kotlin.io.path.createDirectory
-import kotlin.io.path.createFile
 import kotlin.test.Test
 
 class DefaultReadmeCreatorTest {
@@ -49,86 +45,86 @@ class DefaultReadmeCreatorTest {
                 val testMyanimelistConfig = object: MetaDataProviderConfig by MyanimelistConfig {
                     override fun isTestContext(): Boolean = true
                 }
-                val malDcsDir = tempDir.resolve(testMyanimelistConfig.hostname()).createDirectory()
-
-                malDcsDir.resolve("mal_1.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
-                malDcsDir.resolve("mal_2.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
-                malDcsDir.resolve("mal_3.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
-                malDcsDir.resolve("mal_4.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
-                malDcsDir.resolve("mal_5.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
-                malDcsDir.resolve("mal_6.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
-                malDcsDir.resolve("mal_7.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
-                malDcsDir.resolve("mal_8.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
+                val myanimelistTestEntries = listOf(
+                    Anime("myanimelist 1"),
+                    Anime("myanimelist 2"),
+                    Anime("myanimelist 3"),
+                    Anime("myanimelist 4"),
+                    Anime("myanimelist 5"),
+                    Anime("myanimelist 6"),
+                    Anime("myanimelist 7"),
+                    Anime("myanimelist 8"),
+                )
 
                 val testAnimePlanetConfig = object: MetaDataProviderConfig by AnimePlanetConfig {
                     override fun isTestContext(): Boolean = true
                 }
-                val animePlanetDcsDir = tempDir.resolve(testAnimePlanetConfig.hostname()).createDirectory()
-
-                animePlanetDcsDir.resolve("anime-planet_1.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
-                animePlanetDcsDir.resolve("anime-planet_2.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
-                animePlanetDcsDir.resolve("anime-planet_3.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
-                animePlanetDcsDir.resolve("anime-planet_4.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
-                animePlanetDcsDir.resolve("anime-planet_5.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
-                animePlanetDcsDir.resolve("anime-planet_6.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
-                animePlanetDcsDir.resolve("anime-planet_7.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
+                val animePlanetTestEntries = listOf(
+                    Anime("animePlanet 1"),
+                    Anime("animePlanet 2"),
+                    Anime("animePlanet 3"),
+                    Anime("animePlanet 4"),
+                    Anime("animePlanet 5"),
+                    Anime("animePlanet 6"),
+                    Anime("animePlanet 7"),
+                )
 
                 val testKitsuConfig = object: MetaDataProviderConfig by KitsuConfig {
                     override fun isTestContext(): Boolean = true
                 }
-                val kitsuDcsDir = tempDir.resolve(testKitsuConfig.hostname()).createDirectory()
-
-                kitsuDcsDir.resolve("kitsu_1.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
-                kitsuDcsDir.resolve("kitsu_2.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
-                kitsuDcsDir.resolve("kitsu_3.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
-                kitsuDcsDir.resolve("kitsu_4.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
-                kitsuDcsDir.resolve("kitsu_5.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
-                kitsuDcsDir.resolve("kitsu_6.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
+                val kitsuTestEntries = listOf(
+                    Anime("kitsu 1"),
+                    Anime("kitsu 2"),
+                    Anime("kitsu 3"),
+                    Anime("kitsu 4"),
+                    Anime("kitsu 5"),
+                    Anime("kitsu 6"),
+                )
 
                 val testAnisearchConfig = object: MetaDataProviderConfig by AnisearchConfig {
                     override fun isTestContext(): Boolean = true
                 }
-                val anisearchDcsDir = tempDir.resolve(testAnisearchConfig.hostname()).createDirectory()
-
-                anisearchDcsDir.resolve("anisearch_1.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
-                anisearchDcsDir.resolve("anisearch_2.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
-                anisearchDcsDir.resolve("anisearch_3.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
-                anisearchDcsDir.resolve("anisearch_4.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
-                anisearchDcsDir.resolve("anisearch_5.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
+                val anisearchTestEntries = listOf(
+                    Anime("anisearch 1"),
+                    Anime("anisearch 2"),
+                    Anime("anisearch 3"),
+                    Anime("anisearch 4"),
+                    Anime("anisearch 5"),
+                )
 
                 val testNotifyConfig = object: MetaDataProviderConfig by NotifyConfig {
                     override fun isTestContext(): Boolean = true
                 }
-                val notifyDcsDir = tempDir.resolve(testNotifyConfig.hostname()).createDirectory()
-
-                notifyDcsDir.resolve("notify_1.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
-                notifyDcsDir.resolve("notify_2.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
-                notifyDcsDir.resolve("notify_3.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
-                notifyDcsDir.resolve("notify_4.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
+                val notifyTestEntries = listOf(
+                    Anime("notify 1"),
+                    Anime("notify 2"),
+                    Anime("notify 3"),
+                    Anime("notify 4"),
+                )
 
                 val testAnilistConfig = object: MetaDataProviderConfig by AnilistConfig {
                     override fun isTestContext(): Boolean = true
                 }
-                val anilistDcsDir = tempDir.resolve(testAnilistConfig.hostname()).createDirectory()
-
-                anilistDcsDir.resolve("anilist_1.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
-                anilistDcsDir.resolve("anilist_2.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
-                anilistDcsDir.resolve("anilist_3.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
+                val anilistTestEntries = listOf(
+                    Anime("anilist 1"),
+                    Anime("anilist 2"),
+                    Anime("anilist 3"),
+                )
 
                 val testAnidbConfig = object: MetaDataProviderConfig by AnidbConfig {
                     override fun isTestContext(): Boolean = true
                 }
-                val anidbDcsDir = tempDir.resolve(testAnidbConfig.hostname()).createDirectory()
-
-                anidbDcsDir.resolve("anidb_1.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
-                anidbDcsDir.resolve("anidb_2.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
+                val anidbTestEntries = listOf(
+                    Anime("anidb 1"),
+                    Anime("anidb 2"),
+                )
 
                 val testLivechartConfig = object: MetaDataProviderConfig by LivechartConfig {
                     override fun isTestContext(): Boolean = true
                 }
-                val livechartDcsDir = tempDir.resolve(testLivechartConfig.hostname()).createDirectory()
-
-                livechartDcsDir.resolve("livechart_1.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
+                val livechartTestEntries = listOf(
+                    Anime("livechart 1"),
+                )
 
                 val testAppConfig = object: Config by TestAppConfig {
                     override fun findMetaDataProviderConfig(host: Hostname): MetaDataProviderConfig = super.findMetaDataProviderConfig(host)
@@ -144,7 +140,6 @@ class DefaultReadmeCreatorTest {
                         testLivechartConfig,
                     )
                     override fun clock() = Clock.fixed(Instant.parse("2020-05-01T16:02:42.00Z"), UTC)
-                    override fun downloadControlStateDirectory(): Directory = tempDir
                 }
 
                 val testReviewedIsolatedEntriesAccessor = object: ReviewedIsolatedEntriesAccessor by TestReviewedIsolatedEntriesAccessor {
@@ -156,15 +151,15 @@ class DefaultReadmeCreatorTest {
                 }
 
                 val testDownloadControlStateAccessor = object: DownloadControlStateAccessor by TestDownloadControlStateAccessor {
-                    override fun downloadControlStateDirectory(metaDataProviderConfig: MetaDataProviderConfig): Directory = when(metaDataProviderConfig.hostname()) {
-                        testMyanimelistConfig.hostname() -> malDcsDir
-                        testAnimePlanetConfig.hostname() -> animePlanetDcsDir
-                        testKitsuConfig.hostname() -> kitsuDcsDir
-                        testAnisearchConfig.hostname() -> anisearchDcsDir
-                        testNotifyConfig.hostname() -> notifyDcsDir
-                        testAnilistConfig.hostname() -> anilistDcsDir
-                        testAnidbConfig.hostname() -> anidbDcsDir
-                        testLivechartConfig.hostname() -> livechartDcsDir
+                    override suspend fun allAnime(metaDataProviderConfig: MetaDataProviderConfig): List<Anime> = when(metaDataProviderConfig.hostname()) {
+                        testMyanimelistConfig.hostname() -> myanimelistTestEntries
+                        testAnimePlanetConfig.hostname() -> animePlanetTestEntries
+                        testKitsuConfig.hostname() -> kitsuTestEntries
+                        testAnisearchConfig.hostname() -> anisearchTestEntries
+                        testNotifyConfig.hostname() -> notifyTestEntries
+                        testAnilistConfig.hostname() -> anilistTestEntries
+                        testAnidbConfig.hostname() -> anidbTestEntries
+                        testLivechartConfig.hostname() -> livechartTestEntries
                         else -> shouldNotBeInvoked()
                     }
                 }
@@ -198,86 +193,86 @@ class DefaultReadmeCreatorTest {
                 val testMyanimelistConfig = object: MetaDataProviderConfig by MyanimelistConfig {
                     override fun isTestContext(): Boolean = true
                 }
-                val malDcsDir = tempDir.resolve(testMyanimelistConfig.hostname()).createDirectory()
-
-                malDcsDir.resolve("mal_1.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
-                malDcsDir.resolve("mal_2.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
-                malDcsDir.resolve("mal_3.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
-                malDcsDir.resolve("mal_4.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
-                malDcsDir.resolve("mal_5.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
-                malDcsDir.resolve("mal_6.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
-                malDcsDir.resolve("mal_7.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
-                malDcsDir.resolve("mal_8.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
+                val myanimelistTestEntries = listOf(
+                    Anime("myanimelist 1"),
+                    Anime("myanimelist 2"),
+                    Anime("myanimelist 3"),
+                    Anime("myanimelist 4"),
+                    Anime("myanimelist 5"),
+                    Anime("myanimelist 6"),
+                    Anime("myanimelist 7"),
+                    Anime("myanimelist 8"),
+                )
 
                 val testAnimePlanetConfig = object: MetaDataProviderConfig by AnimePlanetConfig {
                     override fun isTestContext(): Boolean = true
                 }
-                val animePlanetDcsDir = tempDir.resolve(testAnimePlanetConfig.hostname()).createDirectory()
-
-                animePlanetDcsDir.resolve("anime-planet_1.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
-                animePlanetDcsDir.resolve("anime-planet_2.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
-                animePlanetDcsDir.resolve("anime-planet_3.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
-                animePlanetDcsDir.resolve("anime-planet_4.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
-                animePlanetDcsDir.resolve("anime-planet_5.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
-                animePlanetDcsDir.resolve("anime-planet_6.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
-                animePlanetDcsDir.resolve("anime-planet_7.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
+                val animePlanetTestEntries = listOf(
+                    Anime("animePlanet 1"),
+                    Anime("animePlanet 2"),
+                    Anime("animePlanet 3"),
+                    Anime("animePlanet 4"),
+                    Anime("animePlanet 5"),
+                    Anime("animePlanet 6"),
+                    Anime("animePlanet 7"),
+                )
 
                 val testKitsuConfig = object: MetaDataProviderConfig by KitsuConfig {
                     override fun isTestContext(): Boolean = true
                 }
-                val kitsuDcsDir = tempDir.resolve(testKitsuConfig.hostname()).createDirectory()
-
-                kitsuDcsDir.resolve("kitsu_1.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
-                kitsuDcsDir.resolve("kitsu_2.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
-                kitsuDcsDir.resolve("kitsu_3.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
-                kitsuDcsDir.resolve("kitsu_4.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
-                kitsuDcsDir.resolve("kitsu_5.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
-                kitsuDcsDir.resolve("kitsu_6.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
+                val kitsuTestEntries = listOf(
+                    Anime("kitsu 1"),
+                    Anime("kitsu 2"),
+                    Anime("kitsu 3"),
+                    Anime("kitsu 4"),
+                    Anime("kitsu 5"),
+                    Anime("kitsu 6"),
+                )
 
                 val testAnisearchConfig = object: MetaDataProviderConfig by AnisearchConfig {
                     override fun isTestContext(): Boolean = true
                 }
-                val anisearchDcsDir = tempDir.resolve(testAnisearchConfig.hostname()).createDirectory()
-
-                anisearchDcsDir.resolve("anisearch_1.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
-                anisearchDcsDir.resolve("anisearch_2.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
-                anisearchDcsDir.resolve("anisearch_3.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
-                anisearchDcsDir.resolve("anisearch_4.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
-                anisearchDcsDir.resolve("anisearch_5.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
+                val anisearchTestEntries = listOf(
+                    Anime("anisearch 1"),
+                    Anime("anisearch 2"),
+                    Anime("anisearch 3"),
+                    Anime("anisearch 4"),
+                    Anime("anisearch 5"),
+                )
 
                 val testNotifyConfig = object: MetaDataProviderConfig by NotifyConfig {
                     override fun isTestContext(): Boolean = true
                 }
-                val notifyDcsDir = tempDir.resolve(testNotifyConfig.hostname()).createDirectory()
-
-                notifyDcsDir.resolve("notify_1.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
-                notifyDcsDir.resolve("notify_2.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
-                notifyDcsDir.resolve("notify_3.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
-                notifyDcsDir.resolve("notify_4.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
+                val notifyTestEntries = listOf(
+                    Anime("notify 1"),
+                    Anime("notify 2"),
+                    Anime("notify 3"),
+                    Anime("notify 4"),
+                )
 
                 val testAnilistConfig = object: MetaDataProviderConfig by AnilistConfig {
                     override fun isTestContext(): Boolean = true
                 }
-                val anilistDcsDir = tempDir.resolve(testAnilistConfig.hostname()).createDirectory()
-
-                anilistDcsDir.resolve("anilist_1.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
-                anilistDcsDir.resolve("anilist_2.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
-                anilistDcsDir.resolve("anilist_3.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
+                val anilistTestEntries = listOf(
+                    Anime("anilist 1"),
+                    Anime("anilist 2"),
+                    Anime("anilist 3"),
+                )
 
                 val testAnidbConfig = object: MetaDataProviderConfig by AnidbConfig {
                     override fun isTestContext(): Boolean = true
                 }
-                val anidbDcsDir = tempDir.resolve(testAnidbConfig.hostname()).createDirectory()
-
-                anidbDcsDir.resolve("anidb_1.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
-                anidbDcsDir.resolve("anidb_2.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
+                val anidbTestEntries = listOf(
+                    Anime("anidb 1"),
+                    Anime("anidb 2"),
+                )
 
                 val testLivechartConfig = object: MetaDataProviderConfig by LivechartConfig {
                     override fun isTestContext(): Boolean = true
                 }
-                val livechartDcsDir = tempDir.resolve(testLivechartConfig.hostname()).createDirectory()
-
-                livechartDcsDir.resolve("livechart_1.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
+                val livechartTestEntries = listOf(
+                    Anime("livechart 1"),
+                )
 
                 val testAppConfig = object: Config by TestAppConfig {
                     override fun findMetaDataProviderConfig(host: Hostname): MetaDataProviderConfig = super.findMetaDataProviderConfig(host)
@@ -293,7 +288,6 @@ class DefaultReadmeCreatorTest {
                         testLivechartConfig,
                     )
                     override fun clock() = Clock.fixed(Instant.parse("2020-01-08T16:02:42.00Z"), UTC)
-                    override fun downloadControlStateDirectory(): Directory = tempDir
                 }
 
                 val testReviewedIsolatedEntriesAccessor = object: ReviewedIsolatedEntriesAccessor by TestReviewedIsolatedEntriesAccessor {
@@ -305,15 +299,15 @@ class DefaultReadmeCreatorTest {
                 }
 
                 val testDownloadControlStateAccessor = object: DownloadControlStateAccessor by TestDownloadControlStateAccessor {
-                    override fun downloadControlStateDirectory(metaDataProviderConfig: MetaDataProviderConfig): Directory = when(metaDataProviderConfig.hostname()) {
-                        testMyanimelistConfig.hostname() -> malDcsDir
-                        testAnimePlanetConfig.hostname() -> animePlanetDcsDir
-                        testKitsuConfig.hostname() -> kitsuDcsDir
-                        testAnisearchConfig.hostname() -> anisearchDcsDir
-                        testNotifyConfig.hostname() -> notifyDcsDir
-                        testAnilistConfig.hostname() -> anilistDcsDir
-                        testAnidbConfig.hostname() -> anidbDcsDir
-                        testLivechartConfig.hostname() -> livechartDcsDir
+                    override suspend fun allAnime(metaDataProviderConfig: MetaDataProviderConfig): List<Anime> = when(metaDataProviderConfig.hostname()) {
+                        testMyanimelistConfig.hostname() -> myanimelistTestEntries
+                        testAnimePlanetConfig.hostname() -> animePlanetTestEntries
+                        testKitsuConfig.hostname() -> kitsuTestEntries
+                        testAnisearchConfig.hostname() -> anisearchTestEntries
+                        testNotifyConfig.hostname() -> notifyTestEntries
+                        testAnilistConfig.hostname() -> anilistTestEntries
+                        testAnidbConfig.hostname() -> anidbTestEntries
+                        testLivechartConfig.hostname() -> livechartTestEntries
                         else -> shouldNotBeInvoked()
                     }
                 }
@@ -327,7 +321,7 @@ class DefaultReadmeCreatorTest {
 
                 val mergedAnime = listOf(
                     Anime("Death Note"),
-                    Anime("Made in Abyss")
+                    Anime("Made in Abyss"),
                 )
 
                 // when
@@ -347,86 +341,86 @@ class DefaultReadmeCreatorTest {
                 val testMyanimelistConfig = object: MetaDataProviderConfig by MyanimelistConfig {
                     override fun isTestContext(): Boolean = true
                 }
-                val malDcsDir = tempDir.resolve(testMyanimelistConfig.hostname()).createDirectory()
-
-                malDcsDir.resolve("mal_1.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
-                malDcsDir.resolve("mal_2.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
-                malDcsDir.resolve("mal_3.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
-                malDcsDir.resolve("mal_4.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
-                malDcsDir.resolve("mal_5.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
-                malDcsDir.resolve("mal_6.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
-                malDcsDir.resolve("mal_7.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
-                malDcsDir.resolve("mal_8.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
+                val myanimelistTestEntries = listOf(
+                    Anime("myanimelist 1"),
+                    Anime("myanimelist 2"),
+                    Anime("myanimelist 3"),
+                    Anime("myanimelist 4"),
+                    Anime("myanimelist 5"),
+                    Anime("myanimelist 6"),
+                    Anime("myanimelist 7"),
+                    Anime("myanimelist 8"),
+                )
 
                 val testAnimePlanetConfig = object: MetaDataProviderConfig by AnimePlanetConfig {
                     override fun isTestContext(): Boolean = true
                 }
-                val animePlanetDcsDir = tempDir.resolve(testAnimePlanetConfig.hostname()).createDirectory()
-
-                animePlanetDcsDir.resolve("anime-planet_1.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
-                animePlanetDcsDir.resolve("anime-planet_2.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
-                animePlanetDcsDir.resolve("anime-planet_3.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
-                animePlanetDcsDir.resolve("anime-planet_4.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
-                animePlanetDcsDir.resolve("anime-planet_5.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
-                animePlanetDcsDir.resolve("anime-planet_6.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
-                animePlanetDcsDir.resolve("anime-planet_7.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
+                val animePlanetTestEntries = listOf(
+                    Anime("animePlanet 1"),
+                    Anime("animePlanet 2"),
+                    Anime("animePlanet 3"),
+                    Anime("animePlanet 4"),
+                    Anime("animePlanet 5"),
+                    Anime("animePlanet 6"),
+                    Anime("animePlanet 7"),
+                )
 
                 val testKitsuConfig = object: MetaDataProviderConfig by KitsuConfig {
                     override fun isTestContext(): Boolean = true
                 }
-                val kitsuDcsDir = tempDir.resolve(testKitsuConfig.hostname()).createDirectory()
-
-                kitsuDcsDir.resolve("kitsu_1.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
-                kitsuDcsDir.resolve("kitsu_2.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
-                kitsuDcsDir.resolve("kitsu_3.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
-                kitsuDcsDir.resolve("kitsu_4.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
-                kitsuDcsDir.resolve("kitsu_5.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
-                kitsuDcsDir.resolve("kitsu_6.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
+                val kitsuTestEntries = listOf(
+                    Anime("kitsu 1"),
+                    Anime("kitsu 2"),
+                    Anime("kitsu 3"),
+                    Anime("kitsu 4"),
+                    Anime("kitsu 5"),
+                    Anime("kitsu 6"),
+                )
 
                 val testAnisearchConfig = object: MetaDataProviderConfig by AnisearchConfig {
                     override fun isTestContext(): Boolean = true
                 }
-                val anisearchDcsDir = tempDir.resolve(testAnisearchConfig.hostname()).createDirectory()
-
-                anisearchDcsDir.resolve("anisearch_1.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
-                anisearchDcsDir.resolve("anisearch_2.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
-                anisearchDcsDir.resolve("anisearch_3.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
-                anisearchDcsDir.resolve("anisearch_4.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
-                anisearchDcsDir.resolve("anisearch_5.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
+                val anisearchTestEntries = listOf(
+                    Anime("anisearch 1"),
+                    Anime("anisearch 2"),
+                    Anime("anisearch 3"),
+                    Anime("anisearch 4"),
+                    Anime("anisearch 5"),
+                )
 
                 val testNotifyConfig = object: MetaDataProviderConfig by NotifyConfig {
                     override fun isTestContext(): Boolean = true
                 }
-                val notifyDcsDir = tempDir.resolve(testNotifyConfig.hostname()).createDirectory()
-
-                notifyDcsDir.resolve("notify_1.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
-                notifyDcsDir.resolve("notify_2.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
-                notifyDcsDir.resolve("notify_3.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
-                notifyDcsDir.resolve("notify_4.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
+                val notifyTestEntries = listOf(
+                    Anime("notify 1"),
+                    Anime("notify 2"),
+                    Anime("notify 3"),
+                    Anime("notify 4"),
+                )
 
                 val testAnilistConfig = object: MetaDataProviderConfig by AnilistConfig {
                     override fun isTestContext(): Boolean = true
                 }
-                val anilistDcsDir = tempDir.resolve(testAnilistConfig.hostname()).createDirectory()
-
-                anilistDcsDir.resolve("anilist_1.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
-                anilistDcsDir.resolve("anilist_2.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
-                anilistDcsDir.resolve("anilist_3.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
+                val anilistTestEntries = listOf(
+                    Anime("anilist 1"),
+                    Anime("anilist 2"),
+                    Anime("anilist 3"),
+                )
 
                 val testAnidbConfig = object: MetaDataProviderConfig by AnidbConfig {
                     override fun isTestContext(): Boolean = true
                 }
-                val anidbDcsDir = tempDir.resolve(testAnidbConfig.hostname()).createDirectory()
-
-                anidbDcsDir.resolve("anidb_1.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
-                anidbDcsDir.resolve("anidb_2.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
+                val anidbTestEntries = listOf(
+                    Anime("anidb 1"),
+                    Anime("anidb 2"),
+                )
 
                 val testLivechartConfig = object: MetaDataProviderConfig by LivechartConfig {
                     override fun isTestContext(): Boolean = true
                 }
-                val livechartDcsDir = tempDir.resolve(testLivechartConfig.hostname()).createDirectory()
-
-                livechartDcsDir.resolve("livechart_1.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
+                val livechartTestEntries = listOf(
+                    Anime("livechart 1"),
+                )
 
                 val testAppConfig = object: Config by TestAppConfig {
                     override fun findMetaDataProviderConfig(host: Hostname): MetaDataProviderConfig = super.findMetaDataProviderConfig(host)
@@ -442,7 +436,6 @@ class DefaultReadmeCreatorTest {
                         testLivechartConfig,
                     )
                     override fun clock() = Clock.fixed(Instant.parse("2020-05-01T16:02:42.00Z"), UTC)
-                    override fun downloadControlStateDirectory(): Directory = tempDir
                 }
 
                 val testReviewedIsolatedEntriesAccessor = object: ReviewedIsolatedEntriesAccessor by TestReviewedIsolatedEntriesAccessor {
@@ -459,15 +452,15 @@ class DefaultReadmeCreatorTest {
                 }
 
                 val testDownloadControlStateAccessor = object: DownloadControlStateAccessor by TestDownloadControlStateAccessor {
-                    override fun downloadControlStateDirectory(metaDataProviderConfig: MetaDataProviderConfig): Directory = when(metaDataProviderConfig.hostname()) {
-                        testMyanimelistConfig.hostname() -> malDcsDir
-                        testAnimePlanetConfig.hostname() -> animePlanetDcsDir
-                        testKitsuConfig.hostname() -> kitsuDcsDir
-                        testAnisearchConfig.hostname() -> anisearchDcsDir
-                        testNotifyConfig.hostname() -> notifyDcsDir
-                        testAnilistConfig.hostname() -> anilistDcsDir
-                        testAnidbConfig.hostname() -> anidbDcsDir
-                        testLivechartConfig.hostname() -> livechartDcsDir
+                    override suspend fun allAnime(metaDataProviderConfig: MetaDataProviderConfig): List<Anime> = when(metaDataProviderConfig.hostname()) {
+                        testMyanimelistConfig.hostname() -> myanimelistTestEntries
+                        testAnimePlanetConfig.hostname() -> animePlanetTestEntries
+                        testKitsuConfig.hostname() -> kitsuTestEntries
+                        testAnisearchConfig.hostname() -> anisearchTestEntries
+                        testNotifyConfig.hostname() -> notifyTestEntries
+                        testAnilistConfig.hostname() -> anilistTestEntries
+                        testAnidbConfig.hostname() -> anidbTestEntries
+                        testLivechartConfig.hostname() -> livechartTestEntries
                         else -> shouldNotBeInvoked()
                     }
                 }
@@ -501,86 +494,86 @@ class DefaultReadmeCreatorTest {
                 val testMyanimelistConfig = object: MetaDataProviderConfig by MyanimelistConfig {
                     override fun isTestContext(): Boolean = true
                 }
-                val malDcsDir = tempDir.resolve(testMyanimelistConfig.hostname()).createDirectory()
-
-                malDcsDir.resolve("mal_1.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
-                malDcsDir.resolve("mal_2.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
-                malDcsDir.resolve("mal_3.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
-                malDcsDir.resolve("mal_4.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
-                malDcsDir.resolve("mal_5.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
-                malDcsDir.resolve("mal_6.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
-                malDcsDir.resolve("mal_7.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
-                malDcsDir.resolve("mal_8.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
+                val myanimelistTestEntries = listOf(
+                    Anime("myanimelist 1"),
+                    Anime("myanimelist 2"),
+                    Anime("myanimelist 3"),
+                    Anime("myanimelist 4"),
+                    Anime("myanimelist 5"),
+                    Anime("myanimelist 6"),
+                    Anime("myanimelist 7"),
+                    Anime("myanimelist 8"),
+                )
 
                 val testAnimePlanetConfig = object: MetaDataProviderConfig by AnimePlanetConfig {
                     override fun isTestContext(): Boolean = true
                 }
-                val animePlanetDcsDir = tempDir.resolve(testAnimePlanetConfig.hostname()).createDirectory()
-
-                animePlanetDcsDir.resolve("anime-planet_1.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
-                animePlanetDcsDir.resolve("anime-planet_2.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
-                animePlanetDcsDir.resolve("anime-planet_3.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
-                animePlanetDcsDir.resolve("anime-planet_4.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
-                animePlanetDcsDir.resolve("anime-planet_5.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
-                animePlanetDcsDir.resolve("anime-planet_6.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
-                animePlanetDcsDir.resolve("anime-planet_7.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
+                val animePlanetTestEntries = listOf(
+                    Anime("animePlanet 1"),
+                    Anime("animePlanet 2"),
+                    Anime("animePlanet 3"),
+                    Anime("animePlanet 4"),
+                    Anime("animePlanet 5"),
+                    Anime("animePlanet 6"),
+                    Anime("animePlanet 7"),
+                )
 
                 val testKitsuConfig = object: MetaDataProviderConfig by KitsuConfig {
                     override fun isTestContext(): Boolean = true
                 }
-                val kitsuDcsDir = tempDir.resolve(testKitsuConfig.hostname()).createDirectory()
-
-                kitsuDcsDir.resolve("kitsu_1.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
-                kitsuDcsDir.resolve("kitsu_2.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
-                kitsuDcsDir.resolve("kitsu_3.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
-                kitsuDcsDir.resolve("kitsu_4.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
-                kitsuDcsDir.resolve("kitsu_5.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
-                kitsuDcsDir.resolve("kitsu_6.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
+                val kitsuTestEntries = listOf(
+                    Anime("kitsu 1"),
+                    Anime("kitsu 2"),
+                    Anime("kitsu 3"),
+                    Anime("kitsu 4"),
+                    Anime("kitsu 5"),
+                    Anime("kitsu 6"),
+                )
 
                 val testAnisearchConfig = object: MetaDataProviderConfig by AnisearchConfig {
                     override fun isTestContext(): Boolean = true
                 }
-                val anisearchDcsDir = tempDir.resolve(testAnisearchConfig.hostname()).createDirectory()
-
-                anisearchDcsDir.resolve("anisearch_1.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
-                anisearchDcsDir.resolve("anisearch_2.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
-                anisearchDcsDir.resolve("anisearch_3.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
-                anisearchDcsDir.resolve("anisearch_4.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
-                anisearchDcsDir.resolve("anisearch_5.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
+                val anisearchTestEntries = listOf(
+                    Anime("anisearch 1"),
+                    Anime("anisearch 2"),
+                    Anime("anisearch 3"),
+                    Anime("anisearch 4"),
+                    Anime("anisearch 5"),
+                )
 
                 val testNotifyConfig = object: MetaDataProviderConfig by NotifyConfig {
                     override fun isTestContext(): Boolean = true
                 }
-                val notifyDcsDir = tempDir.resolve(testNotifyConfig.hostname()).createDirectory()
-
-                notifyDcsDir.resolve("notify_1.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
-                notifyDcsDir.resolve("notify_2.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
-                notifyDcsDir.resolve("notify_3.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
-                notifyDcsDir.resolve("notify_4.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
+                val notifyTestEntries = listOf(
+                    Anime("notify 1"),
+                    Anime("notify 2"),
+                    Anime("notify 3"),
+                    Anime("notify 4"),
+                )
 
                 val testAnilistConfig = object: MetaDataProviderConfig by AnilistConfig {
                     override fun isTestContext(): Boolean = true
                 }
-                val anilistDcsDir = tempDir.resolve(testAnilistConfig.hostname()).createDirectory()
-
-                anilistDcsDir.resolve("anilist_1.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
-                anilistDcsDir.resolve("anilist_2.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
-                anilistDcsDir.resolve("anilist_3.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
+                val anilistTestEntries = listOf(
+                    Anime("anilist 1"),
+                    Anime("anilist 2"),
+                    Anime("anilist 3"),
+                )
 
                 val testAnidbConfig = object: MetaDataProviderConfig by AnidbConfig {
                     override fun isTestContext(): Boolean = true
                 }
-                val anidbDcsDir = tempDir.resolve(testAnidbConfig.hostname()).createDirectory()
-
-                anidbDcsDir.resolve("anidb_1.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
-                anidbDcsDir.resolve("anidb_2.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
+                val anidbTestEntries = listOf(
+                    Anime("anidb 1"),
+                    Anime("anidb 2"),
+                )
 
                 val testLivechartConfig = object: MetaDataProviderConfig by LivechartConfig {
                     override fun isTestContext(): Boolean = true
                 }
-                val livechartDcsDir = tempDir.resolve(testLivechartConfig.hostname()).createDirectory()
-
-                livechartDcsDir.resolve("livechart_1.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
+                val livechartTestEntries = listOf(
+                    Anime("livechart 1"),
+                )
 
                 val testAppConfig = object: Config by TestAppConfig {
                     override fun findMetaDataProviderConfig(host: Hostname): MetaDataProviderConfig = super.findMetaDataProviderConfig(host)
@@ -596,7 +589,6 @@ class DefaultReadmeCreatorTest {
                         testLivechartConfig,
                     )
                     override fun clock() = Clock.fixed(Instant.parse("2020-05-01T16:02:42.00Z"), UTC)
-                    override fun downloadControlStateDirectory(): Directory = tempDir
                 }
 
                 val testReviewedIsolatedEntriesAccessor = object: ReviewedIsolatedEntriesAccessor by TestReviewedIsolatedEntriesAccessor {
@@ -608,15 +600,15 @@ class DefaultReadmeCreatorTest {
                 }
 
                 val testDownloadControlStateAccessor = object: DownloadControlStateAccessor by TestDownloadControlStateAccessor {
-                    override fun downloadControlStateDirectory(metaDataProviderConfig: MetaDataProviderConfig): Directory = when(metaDataProviderConfig.hostname()) {
-                        testMyanimelistConfig.hostname() -> malDcsDir
-                        testAnimePlanetConfig.hostname() -> animePlanetDcsDir
-                        testKitsuConfig.hostname() -> kitsuDcsDir
-                        testAnisearchConfig.hostname() -> anisearchDcsDir
-                        testNotifyConfig.hostname() -> notifyDcsDir
-                        testAnilistConfig.hostname() -> anilistDcsDir
-                        testAnidbConfig.hostname() -> anidbDcsDir
-                        testLivechartConfig.hostname() -> livechartDcsDir
+                    override suspend fun allAnime(metaDataProviderConfig: MetaDataProviderConfig): List<Anime> = when(metaDataProviderConfig.hostname()) {
+                        testMyanimelistConfig.hostname() -> myanimelistTestEntries
+                        testAnimePlanetConfig.hostname() -> animePlanetTestEntries
+                        testKitsuConfig.hostname() -> kitsuTestEntries
+                        testAnisearchConfig.hostname() -> anisearchTestEntries
+                        testNotifyConfig.hostname() -> notifyTestEntries
+                        testAnilistConfig.hostname() -> anilistTestEntries
+                        testAnidbConfig.hostname() -> anidbTestEntries
+                        testLivechartConfig.hostname() -> livechartTestEntries
                         else -> shouldNotBeInvoked()
                     }
                 }
