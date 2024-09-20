@@ -6,12 +6,12 @@ import org.assertj.core.api.Assertions.assertThat
 import java.net.URI
 import kotlin.test.Test
 
-internal class AnisearchHighestIdDetectorConfigTest {
+internal class AnisearchLastPageDetectorConfigTest {
 
     @Test
     fun `isTestContext is false`() {
         // when
-        val result = AnisearchHighestIdDetectorConfig.isTestContext()
+        val result = AnisearchLastPageDetectorConfig.isTestContext()
 
         // then
         assertThat(result).isFalse()
@@ -20,7 +20,7 @@ internal class AnisearchHighestIdDetectorConfigTest {
     @Test
     fun `hostname must be correct`() {
         // when
-        val result = AnisearchHighestIdDetectorConfig.hostname()
+        val result = AnisearchLastPageDetectorConfig.hostname()
 
         // then
         assertThat(result).isEqualTo(AnisearchConfig.hostname())
@@ -32,7 +32,7 @@ internal class AnisearchHighestIdDetectorConfigTest {
         val id = "1535"
 
         // when
-        val result = AnisearchHighestIdDetectorConfig.buildAnimeLink(id)
+        val result = AnisearchLastPageDetectorConfig.buildAnimeLink(id)
 
         // then
         assertThat(result).isEqualTo(URI("https://${AnisearchConfig.hostname()}/anime/$id"))
@@ -41,7 +41,7 @@ internal class AnisearchHighestIdDetectorConfigTest {
     @Test
     fun `build data download link correctly`() {
         // when
-        val result = AnisearchHighestIdDetectorConfig.buildDataDownloadLink(EMPTY)
+        val result = AnisearchLastPageDetectorConfig.buildDataDownloadLink(EMPTY)
 
         // then
         assertThat(result).isEqualTo(AnisearchIdRangeSelectorConfig.buildDataDownloadLink("1"))
@@ -50,7 +50,7 @@ internal class AnisearchHighestIdDetectorConfigTest {
     @Test
     fun `file suffix must be html`() {
         // when
-        val result = AnisearchHighestIdDetectorConfig.fileSuffix()
+        val result = AnisearchLastPageDetectorConfig.fileSuffix()
 
         // then
         assertThat(result).isEqualTo("html")

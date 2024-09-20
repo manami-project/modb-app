@@ -1,0 +1,979 @@
+{
+  "data": [
+    {
+      "id": "49212",
+      "type": "anime",
+      "links": {
+        "self": "https://kitsu.app/api/edge/anime/49212"
+      },
+      "attributes": {
+        "slug": "one-piece-dai-tokushuu-momonosuke-no-mei-shougun-e-no-michi",
+        "canonicalTitle": "One Piece: Dai Tokushuu! Momonosuke no Mei Shougun e no Michi",
+        "titles": {
+          "en": "One Piece: A Very Special Feature! Momonosuke's Road to Becoming a Great Shogun",
+          "en_jp": "One Piece: Dai Tokushuu! Momonosuke no Mei Shougun e no Michi",
+          "ja_jp": "大特集！モモの助の名将軍への道"
+        },
+        "posterImage": {
+          "tiny": "https://media.kitsu.app/anime/49212/poster_image/tiny-b5def5d073f425be1c64d6963da53607.jpeg",
+          "large": "https://media.kitsu.app/anime/49212/poster_image/large-bbd4c34f3d97fb932928763d3c3a374b.jpeg",
+          "small": "https://media.kitsu.app/anime/49212/poster_image/small-a45bd7c8f1a0d0803df8858040c01b92.jpeg",
+          "medium": "https://media.kitsu.app/anime/49212/poster_image/medium-df949349e771db35710dd63e29c719d5.jpeg",
+          "original": "https://media.kitsu.app/anime/49212/poster_image/7003b8b76b6653aeaa1621c3cc941224.jpg",
+          "meta": {
+            "dimensions": {
+              "tiny": {
+                "width": 110,
+                "height": 156
+              },
+              "large": {
+                "width": 550,
+                "height": 780
+              },
+              "small": {
+                "width": 284,
+                "height": 402
+              },
+              "medium": {
+                "width": 390,
+                "height": 554
+              }
+            }
+          }
+        },
+        "description": "This is the 11th recap special of the Wano arc.",
+        "averageRating": null,
+        "startDate": "2024-12-24",
+        "popularityRank": 21588,
+        "ratingRank": null,
+        "youtubeVideoId": null
+      }
+    },
+    {
+      "id": "49211",
+      "type": "anime",
+      "links": {
+        "self": "https://kitsu.app/api/edge/anime/49211"
+      },
+      "attributes": {
+        "slug": "transformers-one",
+        "canonicalTitle": "Transformers One",
+        "titles": {
+          "en_us": "Transformers One",
+          "ja_jp": "トランスフォーマー/ONE"
+        },
+        "posterImage": {
+          "tiny": "https://media.kitsu.app/anime/49211/poster_image/tiny-b21c978533566d3f83d552fdd3a9e1b1.jpeg",
+          "large": "https://media.kitsu.app/anime/49211/poster_image/large-9d3e43e6a5d958188995e27841caa952.jpeg",
+          "small": "https://media.kitsu.app/anime/49211/poster_image/small-5e5d1c19e470a707578590aafbd1d181.jpeg",
+          "medium": "https://media.kitsu.app/anime/49211/poster_image/medium-104d8e58318d2d0a6e86a6f23408d2c0.jpeg",
+          "original": "https://media.kitsu.app/anime/49211/poster_image/b786196d3fd1a01cf47e082050cbb0d5.jpg",
+          "meta": {
+            "dimensions": {
+              "tiny": {
+                "width": 110,
+                "height": 156
+              },
+              "large": {
+                "width": 550,
+                "height": 780
+              },
+              "small": {
+                "width": 284,
+                "height": 402
+              },
+              "medium": {
+                "width": 390,
+                "height": 554
+              }
+            }
+          }
+        },
+        "description": "The untold origin story of Optimus Prime and Megatron, better known as sworn enemies, but once were friends bonded like brothers who changed the fate of Cybertron forever.\n\n(Source: IMDB)",
+        "averageRating": null,
+        "startDate": "2024-09-20",
+        "popularityRank": 22277,
+        "ratingRank": null,
+        "youtubeVideoId": "u2NuUWuwPCM"
+      }
+    },
+    {
+      "id": "49210",
+      "type": "anime",
+      "links": {
+        "self": "https://kitsu.app/api/edge/anime/49210"
+      },
+      "attributes": {
+        "slug": "ruri-no-houseki",
+        "canonicalTitle": "Ruri no Houseki",
+        "titles": {
+          "en_jp": "Ruri no Houseki",
+          "ja_jp": "瑠璃の宝石"
+        },
+        "posterImage": {
+          "tiny": "https://media.kitsu.app/anime/49210/poster_image/tiny-7155708506613e71e3cf5abbccbb7b48.jpeg",
+          "large": "https://media.kitsu.app/anime/49210/poster_image/large-0eed43316dcd2f28926a97b7e68e9df5.jpeg",
+          "small": "https://media.kitsu.app/anime/49210/poster_image/small-b49b5ba7e964554fce58c4d1fd1a9c4d.jpeg",
+          "medium": "https://media.kitsu.app/anime/49210/poster_image/medium-96a63126d1c765ddf6b8582818fdd77d.jpeg",
+          "original": "https://media.kitsu.app/anime/49210/poster_image/78826c1b9a0732f6c869a8a61c01d6ca.jpg",
+          "meta": {
+            "dimensions": {
+              "tiny": {
+                "width": 110,
+                "height": 156
+              },
+              "large": {
+                "width": 550,
+                "height": 780
+              },
+              "small": {
+                "width": 284,
+                "height": 402
+              },
+              "medium": {
+                "width": 390,
+                "height": 554
+              }
+            }
+          }
+        },
+        "description": "Mineral collecting is like a modern-day treasure hunt!\n\nRuri, a high school girl who loves jewelry and accessories, gets into the world of mineral collecting, venturing into mountains, rivers, and caves. The first volume features numerous minerals, including quartz, garnet, pyrite, gold sand, and fluorite. The manga is full of fascinating scenes focusing on specialized tools such as a panning dish, hammer, and topographical maps. An authentic scientific adventure based on the author's solid knowledge of mineralogy!\n\n(Source: Harta, translated)",
+        "averageRating": null,
+        "startDate": "2025-12-31",
+        "popularityRank": 21966,
+        "ratingRank": null,
+        "youtubeVideoId": null
+      }
+    },
+    {
+      "id": "49209",
+      "type": "anime",
+      "links": {
+        "self": "https://kitsu.app/api/edge/anime/49209"
+      },
+      "attributes": {
+        "slug": "aldnoah-zero-ame-no-danshou-the-penultimate-truth",
+        "canonicalTitle": "Aldnoah.Zero: Ame no Danshou - The Penultimate Truth",
+        "titles": {
+          "en_jp": "Aldnoah.Zero: Ame no Danshou - The Penultimate Truth",
+          "ja_jp": "アルドノア・ゼロ 雨の断章 -The Penultimate Truth-"
+        },
+        "posterImage": {
+          "tiny": "https://media.kitsu.app/anime/49209/poster_image/tiny-07225bd78c4e3b8668fa568895c380ee.jpeg",
+          "large": "https://media.kitsu.app/anime/49209/poster_image/large-6ab65f5d952717116450067bdc80ca9f.jpeg",
+          "small": "https://media.kitsu.app/anime/49209/poster_image/small-aceb2be06628b37f2477fe115590089d.jpeg",
+          "medium": "https://media.kitsu.app/anime/49209/poster_image/medium-07acdab44824037c73f8569a3597c654.jpeg",
+          "original": "https://media.kitsu.app/anime/49209/poster_image/e37fde51ba5105194427b36b1a0864c8.jpg",
+          "meta": {
+            "dimensions": {
+              "tiny": {
+                "width": 110,
+                "height": 156
+              },
+              "large": {
+                "width": 550,
+                "height": 780
+              },
+              "small": {
+                "width": 284,
+                "height": 402
+              },
+              "medium": {
+                "width": 390,
+                "height": 554
+              }
+            }
+          }
+        },
+        "description": "An epilogue OVA bundled with the Aldnoah.Zero Blu-ray Disc BOX.",
+        "averageRating": null,
+        "startDate": "2025-03-26",
+        "popularityRank": 22129,
+        "ratingRank": null,
+        "youtubeVideoId": null
+      }
+    },
+    {
+      "id": "49208",
+      "type": "anime",
+      "links": {
+        "self": "https://kitsu.app/api/edge/anime/49208"
+      },
+      "attributes": {
+        "slug": "heartbeat",
+        "canonicalTitle": "Heartbeat",
+        "titles": {
+          "en_jp": "Heartbeat"
+        },
+        "posterImage": {
+          "tiny": "https://media.kitsu.app/anime/49208/poster_image/tiny-33fa8f5b8a30578b74ad548256ee2214.jpeg",
+          "large": "https://media.kitsu.app/anime/49208/poster_image/large-8430aa7c2c8dd3f8a0d66b826aeb10cf.jpeg",
+          "small": "https://media.kitsu.app/anime/49208/poster_image/small-07dd10fb40bf97008e4f6ffd65039b41.jpeg",
+          "medium": "https://media.kitsu.app/anime/49208/poster_image/medium-ad409e07006d4871b188dc998b1ac8c3.jpeg",
+          "original": "https://media.kitsu.app/anime/49208/poster_image/b6639fa4b026937beea1e466bfe92cc8.png",
+          "meta": {
+            "dimensions": {
+              "tiny": {
+                "width": 110,
+                "height": 156
+              },
+              "large": {
+                "width": 550,
+                "height": 780
+              },
+              "small": {
+                "width": 284,
+                "height": 402
+              },
+              "medium": {
+                "width": 390,
+                "height": 554
+              }
+            }
+          }
+        },
+        "description": "Music video for the song Heartbeat by Marvellous.",
+        "averageRating": null,
+        "startDate": "2022-06-23",
+        "popularityRank": 22259,
+        "ratingRank": null,
+        "youtubeVideoId": "XgZlgVPf6Rc"
+      }
+    },
+    {
+      "id": "49207",
+      "type": "anime",
+      "links": {
+        "self": "https://kitsu.app/api/edge/anime/49207"
+      },
+      "attributes": {
+        "slug": "virgin-punk",
+        "canonicalTitle": "Virgin Punk",
+        "titles": {
+          "en_jp": "Virgin Punk",
+          "ja_jp": "ヴァージン・パンク"
+        },
+        "posterImage": {
+          "tiny": "https://media.kitsu.app/anime/49207/poster_image/tiny-709d39672ab50697737b5d375829173b.jpeg",
+          "large": "https://media.kitsu.app/anime/49207/poster_image/large-271498ccc3fdaa517109dce595538c6d.jpeg",
+          "small": "https://media.kitsu.app/anime/49207/poster_image/small-545b9645e59e495f9d4b7b580b36a119.jpeg",
+          "medium": "https://media.kitsu.app/anime/49207/poster_image/medium-bfa01d4282d28eb6e52fad6a2f4f0b3f.jpeg",
+          "original": "https://media.kitsu.app/anime/49207/poster_image/090e469de5825ba07d0d6e269b52528f.jpg",
+          "meta": {
+            "dimensions": {
+              "tiny": {
+                "width": 110,
+                "height": 156
+              },
+              "large": {
+                "width": 550,
+                "height": 780
+              },
+              "small": {
+                "width": 284,
+                "height": 402
+              },
+              "medium": {
+                "width": 390,
+                "height": 554
+              }
+            }
+          }
+        },
+        "description": null,
+        "averageRating": null,
+        "startDate": "2025-07-31",
+        "popularityRank": 19075,
+        "ratingRank": null,
+        "youtubeVideoId": "sXS_K_H5q9s"
+      }
+    },
+    {
+      "id": "49206",
+      "type": "anime",
+      "links": {
+        "self": "https://kitsu.app/api/edge/anime/49206"
+      },
+      "attributes": {
+        "slug": "saigo-ni-hitotsu-dake-onegai-shite-mo-yoroshii-deshou-ka",
+        "canonicalTitle": "Saigo ni Hitotsu dake Onegai Shite mo Yoroshii Deshou ka",
+        "titles": {
+          "en": "May I Ask for One Final Thing?",
+          "en_jp": "Saigo ni Hitotsu dake Onegai Shite mo Yoroshii Deshou ka",
+          "ja_jp": "最後にひとつだけお願いしてもよろしいでしょうか"
+        },
+        "posterImage": {
+          "tiny": "https://media.kitsu.app/anime/49206/poster_image/tiny-e51230cc5ee7c8049633e3afdf4d188a.jpeg",
+          "large": "https://media.kitsu.app/anime/49206/poster_image/large-e2fb15b2bb97b7ff5b7c27e78c53c0e1.jpeg",
+          "small": "https://media.kitsu.app/anime/49206/poster_image/small-2396d1b76434c7d8a99d32f358ca258c.jpeg",
+          "medium": "https://media.kitsu.app/anime/49206/poster_image/medium-679394b7efdb278b84cd5370675d89b6.jpeg",
+          "original": "https://media.kitsu.app/anime/49206/poster_image/d6117f1af7f62db79f0d56ae5861cbdf.jpg",
+          "meta": {
+            "dimensions": {
+              "tiny": {
+                "width": 110,
+                "height": 156
+              },
+              "large": {
+                "width": 550,
+                "height": 780
+              },
+              "small": {
+                "width": 284,
+                "height": 402
+              },
+              "medium": {
+                "width": 390,
+                "height": 554
+              }
+            }
+          }
+        },
+        "description": "In the middle of a ball, Scarlet's fiancé, Kyle, suddenly calls off their engagement. She's falsely accused of being a bully and people unfairly call her a \"Villainess.\" The aristocrats and noble families all denounce her. For years, she had to put up with his abuse and idiocy, but she can't take anymore of it! At her wit's end, she asks for one last favor; to give him a good fist in the face. So begins Scarlet's story of revenge against Kyle and his cronies! A fantasy about an elegant yet rebellious fighter, who doesn't let anyone take advantage of her!!\n\n(Source: Alpha Manga)",
+        "averageRating": null,
+        "startDate": "2024-12-31",
+        "popularityRank": 21829,
+        "ratingRank": null,
+        "youtubeVideoId": null
+      }
+    },
+    {
+      "id": "49205",
+      "type": "anime",
+      "links": {
+        "self": "https://kitsu.app/api/edge/anime/49205"
+      },
+      "attributes": {
+        "slug": "kaoru-hana-wa-rin-to-saku",
+        "canonicalTitle": "Kaoru Hana wa Rin to Saku",
+        "titles": {
+          "en": "The Fragrant Flower Blooms With Dignity",
+          "en_jp": "Kaoru Hana wa Rin to Saku",
+          "ja_jp": "薫る花は凛と咲く"
+        },
+        "posterImage": {
+          "tiny": "https://media.kitsu.app/anime/49205/poster_image/tiny-5a8ccfa6d9e9e848439c41a70c518878.jpeg",
+          "large": "https://media.kitsu.app/anime/49205/poster_image/large-ad0137741c4de1707f94854c704f41d6.jpeg",
+          "small": "https://media.kitsu.app/anime/49205/poster_image/small-20ed32cb820fd32582f253c95df3287c.jpeg",
+          "medium": "https://media.kitsu.app/anime/49205/poster_image/medium-aaabae16cd1fd3a6895476e6e205e43e.jpeg",
+          "original": "https://media.kitsu.app/anime/49205/poster_image/2ef51e9b7f9e246be46587ef6a792279.jpg",
+          "meta": {
+            "dimensions": {
+              "tiny": {
+                "width": 110,
+                "height": 156
+              },
+              "large": {
+                "width": 550,
+                "height": 780
+              },
+              "small": {
+                "width": 284,
+                "height": 402
+              },
+              "medium": {
+                "width": 390,
+                "height": 554
+              }
+            }
+          }
+        },
+        "description": "Chidori High is a boys’ school that takes in the dregs of society with the lowest grades. Next door stands Kikyo Girls’ High, where the wealthy, high-class families send their precious daughters. Chidori second-year Rintaro, who has a fierce face but a gentle heart, is helping at his family’s patisserie when he meets a girl named Kaoruko. The two hit it off right away…but this blissful peace is quickly disturbed when Rintaro discovers that Kaoruko is actually a student at Kikyo. Worse, she doesn’t seem to realize what a huge problem this really is! Will these two be able to forge a path for themselves, and sidestep the traps (metaphorical and literal) laid by their classmates?\n\n(Source: Kodansha USA)",
+        "averageRating": null,
+        "startDate": "2025-12-31",
+        "popularityRank": 14888,
+        "ratingRank": null,
+        "youtubeVideoId": "X2YvvntQTls"
+      }
+    },
+    {
+      "id": "49204",
+      "type": "anime",
+      "links": {
+        "self": "https://kitsu.app/api/edge/anime/49204"
+      },
+      "attributes": {
+        "slug": "girls-band-cry-movie",
+        "canonicalTitle": "Girls Band Cry Movie",
+        "titles": {
+          "en_jp": "Girls Band Cry Movie",
+          "ja_jp": "ガールズバンドクライ 劇場版総集編"
+        },
+        "posterImage": {
+          "tiny": "https://media.kitsu.app/anime/49204/poster_image/tiny-14529858e6318fc274c00c5b9637aadf.jpeg",
+          "large": "https://media.kitsu.app/anime/49204/poster_image/large-639f7a5339e5087cbbfec9ed117625ae.jpeg",
+          "small": "https://media.kitsu.app/anime/49204/poster_image/small-af451ecd035ace2fceb118b8eba70392.jpeg",
+          "medium": "https://media.kitsu.app/anime/49204/poster_image/medium-c50b49338327a05926494dd725b84881.jpeg",
+          "original": "https://media.kitsu.app/anime/49204/poster_image/08b13f80fcd5f09db91713e36f914dc2.jpg",
+          "meta": {
+            "dimensions": {
+              "tiny": {
+                "width": 110,
+                "height": 156
+              },
+              "large": {
+                "width": 550,
+                "height": 780
+              },
+              "small": {
+                "width": 284,
+                "height": 402
+              },
+              "medium": {
+                "width": 390,
+                "height": 554
+              }
+            }
+          }
+        },
+        "description": "Theatrical compilation of Girls Band Cry.",
+        "averageRating": null,
+        "startDate": null,
+        "popularityRank": 22137,
+        "ratingRank": null,
+        "youtubeVideoId": null
+      }
+    },
+    {
+      "id": "49203",
+      "type": "anime",
+      "links": {
+        "self": "https://kitsu.app/api/edge/anime/49203"
+      },
+      "attributes": {
+        "slug": "kono-subarashii-sekai-ni-shukufuku-wo-3-ova",
+        "canonicalTitle": "Kono Subarashii Sekai ni Shukufuku wo! 3 OVA",
+        "titles": {
+          "en": "KONOSUBA -God's blessing on this wonderful world! 3 OVA",
+          "en_jp": "Kono Subarashii Sekai ni Shukufuku wo! 3 OVA",
+          "ja_jp": "この素晴らしい世界に祝福を！３ OVA"
+        },
+        "posterImage": {
+          "tiny": "https://media.kitsu.app/anime/49203/poster_image/tiny-c2a860d417e0cc84473f6dc64907d25e.jpeg",
+          "large": "https://media.kitsu.app/anime/49203/poster_image/large-dc168a979e8eaf191438ede1ef42291b.jpeg",
+          "small": "https://media.kitsu.app/anime/49203/poster_image/small-0c9d9e8e3b0ac6d07b24ea67b343255a.jpeg",
+          "medium": "https://media.kitsu.app/anime/49203/poster_image/medium-94c3d0bcf04fa9bff6bd9f993e7656f9.jpeg",
+          "original": "https://media.kitsu.app/anime/49203/poster_image/0b7b1a37c092ea726a5847eb673f63ad.jpg",
+          "meta": {
+            "dimensions": {
+              "tiny": {
+                "width": 110,
+                "height": 156
+              },
+              "large": {
+                "width": 550,
+                "height": 780
+              },
+              "small": {
+                "width": 284,
+                "height": 402
+              },
+              "medium": {
+                "width": 390,
+                "height": 554
+              }
+            }
+          }
+        },
+        "description": "Announced during the Konosuba Radio public recording special: an OVA for the third season of Kono Subarashii Sekai ni Shukufuku wo!",
+        "averageRating": null,
+        "startDate": null,
+        "popularityRank": 19220,
+        "ratingRank": null,
+        "youtubeVideoId": null
+      }
+    },
+    {
+      "id": "49202",
+      "type": "anime",
+      "links": {
+        "self": "https://kitsu.app/api/edge/anime/49202"
+      },
+      "attributes": {
+        "slug": "paipai-kamen-de-doukashiran",
+        "canonicalTitle": "Paipai Kamen de Doukashiran?",
+        "titles": {
+          "en": "How about Paipai Mask?",
+          "en_jp": "Paipai Kamen de Doukashiran?",
+          "ja_jp": "パイパイ仮面でどうかしらん？"
+        },
+        "posterImage": {
+          "tiny": "https://media.kitsu.app/anime/49202/poster_image/tiny-533997685aa5f4db9448a6972bebd70f.jpeg",
+          "large": "https://media.kitsu.app/anime/49202/poster_image/large-a6a811f1ed580d2fb07f29d0d9a15baa.jpeg",
+          "small": "https://media.kitsu.app/anime/49202/poster_image/small-f06b16e6bd1667f75b9bae617de9a935.jpeg",
+          "medium": "https://media.kitsu.app/anime/49202/poster_image/medium-84cf42da889d39fc33ddbd65317dba9d.jpeg",
+          "original": "https://media.kitsu.app/anime/49202/poster_image/3e897341d851d1aa8dabb67c77985acd.png",
+          "meta": {
+            "dimensions": {
+              "tiny": {
+                "width": 110,
+                "height": 156
+              },
+              "large": {
+                "width": 550,
+                "height": 780
+              },
+              "small": {
+                "width": 284,
+                "height": 402
+              },
+              "medium": {
+                "width": 390,
+                "height": 554
+              }
+            }
+          }
+        },
+        "description": "Music video directed by Tomemi Umetsu for the song Paipai Kamen de Doukashiran? by Houshou Marine.",
+        "averageRating": null,
+        "startDate": "2024-09-15",
+        "popularityRank": 21677,
+        "ratingRank": null,
+        "youtubeVideoId": "hv2vo94FOF4"
+      }
+    },
+    {
+      "id": "49201",
+      "type": "anime",
+      "links": {
+        "self": "https://kitsu.app/api/edge/anime/49201"
+      },
+      "attributes": {
+        "slug": "shoushimin-series-2nd-season",
+        "canonicalTitle": "Shoushimin Series 2nd Season",
+        "titles": {
+          "en": "Shoshimin: How to Become Ordinary Season 2",
+          "en_jp": "Shoushimin Series 2nd Season",
+          "ja_jp": "小市民シリーズ 第2期"
+        },
+        "posterImage": {
+          "tiny": "https://media.kitsu.app/anime/49201/poster_image/tiny-139358cc1fe35fe6b464e05770ce1157.jpeg",
+          "large": "https://media.kitsu.app/anime/49201/poster_image/large-08857071167d47f2bb0b9559d1e114dc.jpeg",
+          "small": "https://media.kitsu.app/anime/49201/poster_image/small-7ddd39cde38aa8b28b45c7f3bbe55c83.jpeg",
+          "medium": "https://media.kitsu.app/anime/49201/poster_image/medium-719c5fa728feb273f5b918f54edf4131.jpeg",
+          "original": "https://media.kitsu.app/anime/49201/poster_image/d892e0060e7d1bcb62d5f933ade139cf.jpg",
+          "meta": {
+            "dimensions": {
+              "tiny": {
+                "width": 110,
+                "height": 156
+              },
+              "large": {
+                "width": 550,
+                "height": 780
+              },
+              "small": {
+                "width": 284,
+                "height": 402
+              },
+              "medium": {
+                "width": 390,
+                "height": 554
+              }
+            }
+          }
+        },
+        "description": "The second season of Shoushimin Series.\n\nThe second season will focus on two new cases from the novel series, adapting the two-part third volume Shuuki Gentei Kuri Kinton Jiken (The Autumn-Exclusive Kuri Kinton Case) and the fifth volume Touki Gentei Bonbon Chocolat Jiken (The Winter-Exclusive Chocolate Bonbons Case).\n\n(Source: MyAnimeList)",
+        "averageRating": null,
+        "startDate": "2025-04-30",
+        "popularityRank": 18478,
+        "ratingRank": null,
+        "youtubeVideoId": null
+      }
+    },
+    {
+      "id": "49200",
+      "type": "anime",
+      "links": {
+        "self": "https://kitsu.app/api/edge/anime/49200"
+      },
+      "attributes": {
+        "slug": "hibike-euphonium-chikai-no-da-capo",
+        "canonicalTitle": "Hibike! Euphonium ~Chikai no Da Capo~",
+        "titles": {
+          "en_jp": "Hibike! Euphonium ~Chikai no Da Capo~",
+          "ja_jp": "響け!ユーフォニアム ~誓いのダ・カーポ〜"
+        },
+        "posterImage": {
+          "tiny": "https://media.kitsu.app/anime/49200/poster_image/tiny-c8b61ab1e8727df806651ebadb4fe956.jpeg",
+          "large": "https://media.kitsu.app/anime/49200/poster_image/large-65bbb48aaf2126ee40cf592b47976d1e.jpeg",
+          "small": "https://media.kitsu.app/anime/49200/poster_image/small-2ef26b0f53f538aa27dcd6edc77d4d53.jpeg",
+          "medium": "https://media.kitsu.app/anime/49200/poster_image/medium-300ec4e00e93ce8357348c32ac05f101.jpeg",
+          "original": "https://media.kitsu.app/anime/49200/poster_image/d980e52d6985dd717bc06dc60d434b2e.png",
+          "meta": {
+            "dimensions": {
+              "tiny": {
+                "width": 110,
+                "height": 156
+              },
+              "large": {
+                "width": 550,
+                "height": 780
+              },
+              "small": {
+                "width": 284,
+                "height": 402
+              },
+              "medium": {
+                "width": 390,
+                "height": 554
+              }
+            }
+          }
+        },
+        "description": "Kumiko faces the reality of not having studied as she should.\n\n(April Fools originally published on YouTube)",
+        "averageRating": null,
+        "startDate": "2024-04-01",
+        "popularityRank": 22015,
+        "ratingRank": null,
+        "youtubeVideoId": null
+      }
+    },
+    {
+      "id": "49199",
+      "type": "anime",
+      "links": {
+        "self": "https://kitsu.app/api/edge/anime/49199"
+      },
+      "attributes": {
+        "slug": "transformers-40th-anniversary-special-movie",
+        "canonicalTitle": "Transformers 40th Anniversary Special Movie",
+        "titles": {
+          "en_jp": "Transformers 40th Anniversary Special Movie",
+          "ja_jp": "トランスフォーマー40周年記念　スペシャルムービー"
+        },
+        "posterImage": {
+          "tiny": "https://media.kitsu.app/anime/49199/poster_image/tiny-04c609b6326ddee79e1f21e10b4cdede.jpeg",
+          "large": "https://media.kitsu.app/anime/49199/poster_image/large-4371329015d72e876dccb5a35615cba1.jpeg",
+          "small": "https://media.kitsu.app/anime/49199/poster_image/small-89f6c4d6152ba4048b5569e71d7294ee.jpeg",
+          "medium": "https://media.kitsu.app/anime/49199/poster_image/medium-773502b09c8d1be266c06a7283fe465f.jpeg",
+          "original": "https://media.kitsu.app/anime/49199/poster_image/ae901c4cf983953da9d9b2cecfedc555.jpg",
+          "meta": {
+            "dimensions": {
+              "tiny": {
+                "width": 110,
+                "height": 156
+              },
+              "large": {
+                "width": 550,
+                "height": 780
+              },
+              "small": {
+                "width": 284,
+                "height": 402
+              },
+              "medium": {
+                "width": 390,
+                "height": 554
+              }
+            }
+          }
+        },
+        "description": "A video uploaded to the Takara Tomy YouTube channel in order to celebrate the 40th anniversary of the franchise.",
+        "averageRating": null,
+        "startDate": "2024-09-12",
+        "popularityRank": 20912,
+        "ratingRank": null,
+        "youtubeVideoId": null
+      }
+    },
+    {
+      "id": "49198",
+      "type": "anime",
+      "links": {
+        "self": "https://kitsu.app/api/edge/anime/49198"
+      },
+      "attributes": {
+        "slug": "bye-bye-earth-2nd-season",
+        "canonicalTitle": "Bye Bye, Earth 2nd Season",
+        "titles": {
+          "en_jp": "Bye Bye, Earth 2nd Season",
+          "ja_jp": "ばいばい、アース 第2シーズン"
+        },
+        "posterImage": {
+          "tiny": "https://media.kitsu.app/anime/49198/poster_image/tiny-79669f93388ecbd7e355225aeaf19ec0.jpeg",
+          "large": "https://media.kitsu.app/anime/49198/poster_image/large-b900944fbf7a95a72efa360aa5e44f72.jpeg",
+          "small": "https://media.kitsu.app/anime/49198/poster_image/small-80bc8106946178bb60a0b65bdc9df31c.jpeg",
+          "medium": "https://media.kitsu.app/anime/49198/poster_image/medium-2093642a26c4ad72b7fa9a35d6549864.jpeg",
+          "original": "https://media.kitsu.app/anime/49198/poster_image/7b13919c6669efc25c3f2f51594aff12.jpg",
+          "meta": {
+            "dimensions": {
+              "tiny": {
+                "width": 110,
+                "height": 156
+              },
+              "large": {
+                "width": 550,
+                "height": 780
+              },
+              "small": {
+                "width": 284,
+                "height": 402
+              },
+              "medium": {
+                "width": 390,
+                "height": 554
+              }
+            }
+          }
+        },
+        "description": "Second season of Bye Bye, Earth.",
+        "averageRating": null,
+        "startDate": "2025-12-31",
+        "popularityRank": 20367,
+        "ratingRank": null,
+        "youtubeVideoId": null
+      }
+    },
+    {
+      "id": "49197",
+      "type": "anime",
+      "links": {
+        "self": "https://kitsu.app/api/edge/anime/49197"
+      },
+      "attributes": {
+        "slug": "badawiui-byeol",
+        "canonicalTitle": "Badawiui Byeol",
+        "titles": {
+          "en": "Stars on the Sea",
+          "en_cn": "Badawiui Byeol",
+          "zh_cn": "바다위의 별"
+        },
+        "posterImage": {
+          "tiny": "https://media.kitsu.app/anime/49197/poster_image/tiny-bcbc498ee862ebbe4ead72f21bc86b84.jpeg",
+          "large": "https://media.kitsu.app/anime/49197/poster_image/large-525accff73d0c4583921fcf421a3a9d6.jpeg",
+          "small": "https://media.kitsu.app/anime/49197/poster_image/small-2d7f241ee24118fb74a7dbdf526de862.jpeg",
+          "medium": "https://media.kitsu.app/anime/49197/poster_image/medium-145b040f3683fac460c18cc789d9fb14.jpeg",
+          "original": "https://media.kitsu.app/anime/49197/poster_image/06cb434cecf791e77672a4faff406142.jpg",
+          "meta": {
+            "dimensions": {
+              "tiny": {
+                "width": 110,
+                "height": 156
+              },
+              "large": {
+                "width": 550,
+                "height": 780
+              },
+              "small": {
+                "width": 284,
+                "height": 402
+              },
+              "medium": {
+                "width": 390,
+                "height": 554
+              }
+            }
+          }
+        },
+        "description": "It is just another ordinary day — until the house begins filling up with water.\n\n(Source: seungwookjang.com)",
+        "averageRating": null,
+        "startDate": "2021-01-01",
+        "popularityRank": 22261,
+        "ratingRank": null,
+        "youtubeVideoId": null
+      }
+    },
+    {
+      "id": "49196",
+      "type": "anime",
+      "links": {
+        "self": "https://kitsu.app/api/edge/anime/49196"
+      },
+      "attributes": {
+        "slug": "romeria-senki-maou-wo-taoshita-nochi-mo-jinrui-yabasou-dakara-guntai-soshiki-shita",
+        "canonicalTitle": "Romeria Senki: Maou wo Taoshita nochi mo Jinrui Yabasou dakara Guntai Soshiki Shita",
+        "titles": {
+          "en_jp": "Romeria Senki: Maou wo Taoshita nochi mo Jinrui Yabasou dakara Guntai Soshiki Shita",
+          "ja_jp": "ロメリア戦記 〜魔王を倒した後も人類やばそうだから軍隊組織した〜"
+        },
+        "posterImage": {
+          "tiny": "https://media.kitsu.app/anime/49196/poster_image/tiny-20cfb1ea68afbcb4c0a528967287a28e.jpeg",
+          "large": "https://media.kitsu.app/anime/49196/poster_image/large-72bc5fbe20478fd9539a7574b6d6c92c.jpeg",
+          "small": "https://media.kitsu.app/anime/49196/poster_image/small-38a29559698837dc60be017f234ee085.jpeg",
+          "medium": "https://media.kitsu.app/anime/49196/poster_image/medium-9c006bb5d92f2f6c0f9bd97e44da583e.jpeg",
+          "original": "https://media.kitsu.app/anime/49196/poster_image/c1e0c948d2de32575d292f06b035e719.jpg",
+          "meta": {
+            "dimensions": {
+              "tiny": {
+                "width": 110,
+                "height": 156
+              },
+              "large": {
+                "width": 550,
+                "height": 780
+              },
+              "small": {
+                "width": 284,
+                "height": 402
+              },
+              "medium": {
+                "width": 390,
+                "height": 554
+              }
+            }
+          }
+        },
+        "description": null,
+        "averageRating": null,
+        "startDate": null,
+        "popularityRank": 22209,
+        "ratingRank": null,
+        "youtubeVideoId": null
+      }
+    },
+    {
+      "id": "49195",
+      "type": "anime",
+      "links": {
+        "self": "https://kitsu.app/api/edge/anime/49195"
+      },
+      "attributes": {
+        "slug": "feeling-gradation",
+        "canonicalTitle": "Feeling Gradation",
+        "titles": {
+          "en_jp": "Feeling Gradation",
+          "ja_jp": "フィーリングラデーション"
+        },
+        "posterImage": {
+          "tiny": "https://media.kitsu.app/anime/49195/poster_image/tiny-dbaa7c0cd367f5352b0d8e057c9d82d2.jpeg",
+          "large": "https://media.kitsu.app/anime/49195/poster_image/large-7316ff8b3559147ac244ece76ad365c0.jpeg",
+          "small": "https://media.kitsu.app/anime/49195/poster_image/small-ce02d722c02e787ce89ca9093fd3c492.jpeg",
+          "medium": "https://media.kitsu.app/anime/49195/poster_image/medium-edba27e881f1bcedcbbda5cd70844ec6.jpeg",
+          "original": "https://media.kitsu.app/anime/49195/poster_image/1876e802576029cc9ba070f973559d46.jpg",
+          "meta": {
+            "dimensions": {
+              "tiny": {
+                "width": 110,
+                "height": 156
+              },
+              "large": {
+                "width": 550,
+                "height": 780
+              },
+              "small": {
+                "width": 284,
+                "height": 402
+              },
+              "medium": {
+                "width": 390,
+                "height": 554
+              }
+            }
+          }
+        },
+        "description": "Music video for the song Feeling Gradation by ReGLOSS.",
+        "averageRating": null,
+        "startDate": "2024-09-10",
+        "popularityRank": 22083,
+        "ratingRank": null,
+        "youtubeVideoId": "u4uDiV3u-do"
+      }
+    },
+    {
+      "id": "49194",
+      "type": "anime",
+      "links": {
+        "self": "https://kitsu.app/api/edge/anime/49194"
+      },
+      "attributes": {
+        "slug": "youkoso-jitsuryoku-shijou-shugi-no-kyoushitsu-e-4th-season-2-nensei-hen-1-gakki",
+        "canonicalTitle": "Youkoso Jitsuryoku Shijou Shugi no Kyoushitsu e 4th Season: 2-nensei-hen 1 Gakki",
+        "titles": {
+          "en_jp": "Youkoso Jitsuryoku Shijou Shugi no Kyoushitsu e 4th Season: 2-nensei-hen 1 Gakki",
+          "ja_jp": "ようこそ実力至上主義の教室へ 4th Season 2年生編1学期"
+        },
+        "posterImage": {
+          "tiny": "https://media.kitsu.app/anime/49194/poster_image/tiny-1283c3880281b87e100e217145910822.jpeg",
+          "large": "https://media.kitsu.app/anime/49194/poster_image/large-8a62c36e9f3d80bbcf0c97ea478b8ee3.jpeg",
+          "small": "https://media.kitsu.app/anime/49194/poster_image/small-20165d41cb8bd40c910c49231588068a.jpeg",
+          "medium": "https://media.kitsu.app/anime/49194/poster_image/medium-1e65a2530955d9f5b672c876a72f08b4.jpeg",
+          "original": "https://media.kitsu.app/anime/49194/poster_image/6545faa1167fc7e9ab74b758c3d89440.jpg",
+          "meta": {
+            "dimensions": {
+              "tiny": {
+                "width": 110,
+                "height": 156
+              },
+              "large": {
+                "width": 550,
+                "height": 780
+              },
+              "small": {
+                "width": 284,
+                "height": 402
+              },
+              "medium": {
+                "width": 390,
+                "height": 554
+              }
+            }
+          }
+        },
+        "description": "As Ayanokouji and his classmates begin their second year at the Advanced Nurturing High School, they're greeted by a fresh gauntlet of exams and a fresh batch of rather unique first-year students. They'll have to get to know each other quickly, because the first special exam pairs the first-years with the second-years on a written test—with only the second-years facing expulsion if their team performs poorly! Worse yet? It seems one of the new first-years is also from the White Room. Can Ayanokouji avoid expulsion while sussing out the identity of this hidden foe?\n\n(Source: Crunchyroll)",
+        "averageRating": null,
+        "startDate": null,
+        "popularityRank": 17601,
+        "ratingRank": null,
+        "youtubeVideoId": null
+      }
+    },
+    {
+      "id": "49193",
+      "type": "anime",
+      "links": {
+        "self": "https://kitsu.app/api/edge/anime/49193"
+      },
+      "attributes": {
+        "slug": "kankin-kuiki-level-x",
+        "canonicalTitle": "Kankin Kuiki Level X",
+        "titles": {
+          "en": "Lockdown Zone: Lv. X",
+          "en_jp": "Kankin Kuiki Level X",
+          "ja_jp": "監禁区域レベルX"
+        },
+        "posterImage": {
+          "tiny": "https://media.kitsu.app/anime/49193/poster_image/tiny-c40c820216766c08d3081574a7f26759.jpeg",
+          "large": "https://media.kitsu.app/anime/49193/poster_image/large-8bb8cc3c1b2f37c9e6ca6c8c145e8280.jpeg",
+          "small": "https://media.kitsu.app/anime/49193/poster_image/small-9e463a156e23316cfa378186afc9ef5f.jpeg",
+          "medium": "https://media.kitsu.app/anime/49193/poster_image/medium-15673a4a8c8db9737b81a34ecf3e57af.jpeg",
+          "original": "https://media.kitsu.app/anime/49193/poster_image/7e36f922ceb0a48b101dd43733b5c5d1.jpg",
+          "meta": {
+            "dimensions": {
+              "tiny": {
+                "width": 110,
+                "height": 156
+              },
+              "large": {
+                "width": 550,
+                "height": 780
+              },
+              "small": {
+                "width": 284,
+                "height": 402
+              },
+              "medium": {
+                "width": 390,
+                "height": 554
+              }
+            }
+          }
+        },
+        "description": "Ryoka is awakened by flurry of text messages from her mother! Panicked and rushed, Mom is clearly concerned for Ryoka's safety, but she is not too keen on letting her daughter know why. Her reasoning being that nothing could really properly describe what is happening!\n\nThe world might be ending! And there might be a massive new life-form on the roof of their apartment building!\n\n(Source: Denpa)",
+        "averageRating": null,
+        "startDate": "2024-09-07",
+        "popularityRank": 20942,
+        "ratingRank": null,
+        "youtubeVideoId": null
+      }
+    }
+  ],
+  "meta": {
+    "count": 20745
+  },
+  "links": {
+    "first": "https://kitsu.app/api/edge/anime?fields%5Banime%5D=slug%2CcanonicalTitle%2Ctitles%2CposterImage%2Cdescription%2CaverageRating%2CstartDate%2CpopularityRank%2CratingRank%2CyoutubeVideoId&page%5Blimit%5D=20&page%5Boffset%5D=0&sort=-created_at",
+    "next": "https://kitsu.app/api/edge/anime?fields%5Banime%5D=slug%2CcanonicalTitle%2Ctitles%2CposterImage%2Cdescription%2CaverageRating%2CstartDate%2CpopularityRank%2CratingRank%2CyoutubeVideoId&page%5Blimit%5D=20&page%5Boffset%5D=20&sort=-created_at",
+    "last": "https://kitsu.app/api/edge/anime?fields%5Banime%5D=slug%2CcanonicalTitle%2Ctitles%2CposterImage%2Cdescription%2CaverageRating%2CstartDate%2CpopularityRank%2CratingRank%2CyoutubeVideoId&page%5Blimit%5D=20&page%5Boffset%5D=20725&sort=-created_at"
+  }
+}
