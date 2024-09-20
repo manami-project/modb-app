@@ -11,6 +11,7 @@ import io.github.manamiproject.modb.app.downloadcontrolstate.DownloadControlStat
 import io.github.manamiproject.modb.app.merging.ReviewedIsolatedEntriesAccessor
 import io.github.manamiproject.modb.app.merging.lock.MergeLock
 import io.github.manamiproject.modb.app.merging.lock.MergeLockAccessor
+import io.github.manamiproject.modb.app.network.NetworkController
 import io.github.manamiproject.modb.core.config.AnimeId
 import io.github.manamiproject.modb.core.config.ConfigRegistry
 import io.github.manamiproject.modb.core.config.FileSuffix
@@ -27,6 +28,9 @@ import io.github.manamiproject.modb.serde.json.JsonSerializer
 import io.github.manamiproject.modb.serde.json.models.Dataset
 import io.github.manamiproject.modb.serde.json.models.DeadEntries
 import io.github.manamiproject.modb.test.shouldNotBeInvoked
+import kotlinx.coroutines.*
+import kotlinx.coroutines.selects.SelectClause0
+import kotlinx.coroutines.selects.SelectClause1
 import java.net.URI
 import java.net.URL
 import java.nio.file.Path
@@ -38,6 +42,7 @@ import java.time.LocalDate
 import java.time.LocalDateTime
 import java.time.OffsetDateTime
 import java.util.concurrent.TimeUnit
+import kotlin.coroutines.CoroutineContext
 import java.nio.file.WatchService as JavaWatchService
 
 internal object TestConfigRegistry: ConfigRegistry {
@@ -161,4 +166,9 @@ internal object TestCommandExecutor: CommandExecutor {
 internal object TestHttpClient: HttpClient {
     override suspend fun get(url: URL, headers: Map<String, Collection<String>>): HttpResponse = shouldNotBeInvoked()
     override suspend fun post(url: URL, requestBody: RequestBody, headers: Map<String, Collection<String>>): HttpResponse = shouldNotBeInvoked()
+}
+
+internal object TestNetworkController: NetworkController {
+    override suspend fun restartAsync(): Deferred<Boolean> = shouldNotBeInvoked()
+    override fun isNetworkActive(): Boolean = shouldNotBeInvoked()
 }

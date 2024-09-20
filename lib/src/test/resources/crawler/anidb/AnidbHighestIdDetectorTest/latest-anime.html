@@ -1,0 +1,966 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns#">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Latest - AniDB</title>
+    <meta property="og:description" name="description" content="Looking for information about Latest? AniDB is the right place for you. AniDB is a not-for-profit anime database providing you with all information re..."/>
+    <meta name="robots" content="index, follow"/>
+    <link rel="stylesheet" href="https://cdn-eu.anidb.net/css/anidbstyle3/anidbstyle3.css?v=2024-09-10T14-53-20" type="text/css" title="Style"/>
+    <link rel="apple-touch-icon" sizes="180x180" href="https://cdn-eu.anidb.net/css/assets/images/touch/apple-touch-icon.png?v=2024-09-10T14-53-20"/>
+    <link rel="icon" type="image/png" sizes="32x32" href="https://cdn-eu.anidb.net/css/assets/images/touch/favicon-32x32.png?v=2024-09-10T14-53-20"/>
+    <link rel="icon" type="image/png" sizes="16x16" href="https://cdn-eu.anidb.net/css/assets/images/touch/favicon-16x16.png?v=2024-09-10T14-53-20"/>
+    <link rel="manifest" href="https://cdn-eu.anidb.net/css/assets/images/touch/site.webmanifest?v=2024-09-10T14-53-20"/>
+    <link rel="mask-icon" href="https://cdn-eu.anidb.net/css/assets/images/touch/safari-pinned-tab.svg?v=2024-09-10T14-53-20" color="#e18e3c"/>
+    <link rel="shortcut icon" href="https://cdn-eu.anidb.net/css/assets/images/touch/favicon.ico?v=2024-09-10T14-53-20"/>
+    <link property="og:url" rel="canonical" href="https://anidb.net/latest/anime"/>
+    <link rel="search" type="application/opensearchdescription+xml" href="https://anidb.net/opensearch.xml" title="AniDB"/>
+    <link rel="alternate" type="application/atom+xml" title="AniDB Latest Files" href="https://anidb.net/feeds/files.atom"/>
+    <link rel="alternate" type="application/atom+xml" title="AniDB Latest News" href="https://anidb.net/feeds/news.atom"/>
+    <meta name="anidb-url" content="" id="anidb-url" data-anidb-url="https://anidb.net/perl-bin/animedb.pl?show=latest2&amp;do=anime"/>
+    <meta name="apple-mobile-web-app-title" content="AniDB"/>
+    <meta name="application-name" content="AniDB"/>
+    <meta name="msapplication-TileColor" content="#da532c"/>
+    <meta name="msapplication-config" content="https://cdn-eu.anidb.net/css/assets/images/touch/browserconfig.xml?v=2024-09-10T14-53-20"/>
+    <meta name="theme-color" content="#ffffff"/>
+    <meta name="twitter:card" content="summary"/>
+    <meta name="twitter:site" content="@anidbstatus"/>
+    <meta name="twitter:creator" content="@anidbstatus"/>
+    <meta property="og:title" content="Latest - AniDB"/>
+    <script defer src="https://cdn-eu.anidb.net/js/libs/js.cookie.min.js?v=2022-12-03T23-47-26"></script>
+    <script defer src="https://cdn-eu.anidb.net/js/libs/jquery.min.js?v=2022-12-03T23-47-26"></script>
+    <script defer src="https://cdn-eu.anidb.net/js/libs/jquery.form.min.js?v=2022-12-03T23-47-26"></script>
+    <script defer src="https://cdn-eu.anidb.net/js/libs/jquery.fancybox.min.js?v=2022-12-03T23-47-26"></script>
+    <script defer src="https://cdn-eu.anidb.net/js/libs/jquery.sortable.min.js?v=2022-12-03T23-47-26"></script>
+    <script defer src="https://cdn-eu.anidb.net/js/libs/jquery.tablesorter.min.js?v=2022-12-03T23-47-26"></script>
+    <script defer src="https://cdn-eu.anidb.net/js/libs/jquery.toastr.min.js?v=2022-12-03T23-47-26"></script>
+    <script defer src="https://cdn-eu.anidb.net/js/libs/jquery.uploadfile.min.js?v=2022-12-03T23-47-26"></script>
+    <script defer src="https://cdn-eu.anidb.net/js/libs/jquery.wysibb.min.js?v=2022-12-03T23-47-26"></script>
+    <script defer src="https://cdn-eu.anidb.net/js/libs/jqueryui.position.min.js?v=2022-12-03T23-47-26"></script>
+    <script defer src="https://cdn-eu.anidb.net/js/libs/select2.min.js?v=2022-12-03T23-47-26"></script>
+    <script defer src="https://cdn-eu.anidb.net/js/libs/highcharts.min.js?v=2022-12-03T23-47-26"></script>
+    <script defer src="https://cdn-eu.anidb.net/js/legacy/legacy.min.js?v=2022-12-03T23-47-26"></script>
+    <script defer src="https://cdn-eu.anidb.net/js/WordSuggest.min.js?v=2022-12-03T23-47-26"></script>
+    <script defer src="https://cdn-eu.anidb.net/js/global.min.js?v=2022-12-03T23-47-26"></script>
+</head>
+<body id="anidb" class="latest2">
+<div id="layout-hint" class="hint">
+    <span class="head">HINT:</span>
+    <span class="msg">Found an incorrect entry? Something is missing? Registered users can edit all entries. Why not <a href="/user/register">sign up now</a>? It's free!</span>
+</div>
+<div id="layout-nav" class="latest2_nav">
+    <ul id="layout-menu" class="latest2_menu">
+        <li class="sub-menu main" title="Menu">
+            <span class="tab">Menu</span>
+            <ul id="menu-main">
+                <li class="main"><a title="Main" href="/"><span class="text">main</span></a></li>
+                <li class="search"><a title="Advanced search" href="/search/anime"><span class="text">search</span></a></li>
+                <li class="calendar"><a title="Anime calendar" href="/anime/season"><span class="text">season chart</span></a></li>
+                <li class="schedule"><a title="Episode schedule" href="/anime/schedule"><span class="text">schedule</span></a></li>
+                <li class="random"><a title="Random anime" href="/anime/random"><span class="text">random</span></a></li>
+            </ul>
+            <span></span>
+        </li>
+        <li class="sub-menu listings" title="Content">
+            <span class="tab">Content</span>
+            <ul id="menu-lists">
+                <li class="latest"><a title="Latest additions" href="/latest"><span class="text">latest</span></a></li>
+                <li class="anime"><a title="Anime list" href="/anime"><span class="text">anime</span></a></li>
+                <li class="character"><a title="Character list" href="/character"><span class="text">characters</span></a></li>
+                <li class="club"><a title="Club list" href="/club"><span class="text">clubs</span></a></li>
+                <li class="creator"><a title="Creator list" href="/creator"><span class="text">creators</span></a></li>
+                <li class="collection"><a title="Collection list" href="/collection"><span class="text">collections</span></a></li>
+                <li class="group"><a title="Group list" href="/group"><span class="text">groups</span></a></li>
+                <li class="song"><a title="Song list" href="/song"><span class="text">songs</span></a></li>
+                <li class="tags"><a title="Tag list" href="/tag"><span class="text">tags</span></a></li>
+            </ul>
+            <span></span>
+        </li>
+        <li class="sub-menu support" title="Support">
+            <span class="tab">Support</span>
+            <ul id="menu-support">
+
+                <li class="forum"><a title="Help @ forum" href="/forum"><span class="text">forum</span></a></li>
+                <li class="help"><a title="Help @ wiki" href="https://wiki.anidb.net/Main_Page" data-anidb-rel="anidb::wiki"><span>help</span></a></li>
+                <li class="irc"><a title="Help @ IRC" href="/irc"><span class="text">IRC</span></a></li>
+
+                <li class="report"><a title="Report a mistake" href="https://wiki.anidb.net/Report_mistake" data-anidb-rel="anidb::wiki"><span>report error</span></a></li>
+                <li class="software"><a title="Software to interact with AniDB" href="/software"><span class="text">software</span></a></li>
+                <li class="staff"><a title="AniDB staff" href="/admin/staff"><span class="text">staff</span></a></li>
+            </ul>
+            <span></span>
+        </li>
+        <li class="sub-menu terms" title="Terms &amp; Licenses">
+            <span class="tab">Terms &amp; Licenses</span>
+            <ul id="menu-terms">
+                <li class="donate"><a title="Accounting, Patreon" href="/donation"><span class="text">donate</span></a></li>
+                <li class="credits"><a title="Credits, Software Licenses" href="https://wiki.anidb.net/Credits" data-anidb-rel="anidb::wiki"><span>credits</span></a></li>
+                <li class="policies"><a title="Terms of Service, Privacy Policy, Licenses" href="/policy"><span class="text">policies</span></a></li>
+            </ul>
+            <span></span>
+        </li>
+        <li class="sub-menu login" title="Register or login">
+            <span class="tab">Register or login</span>
+            <form action="/perl-bin/animedb.pl" method="post">
+                <div>
+                    <fieldset><input type="hidden" name="show" value="latest2"/><input type="hidden" name="do" value="anime"/>
+                    </fieldset>
+                    <ul id="menu-login">
+                        <li id="user-login" class="user-login"><a title="Show login page" href="/user/login"><span class="text">login</span></a></li>
+                        <li id="user-signup" class="user-signup"><a title="Register now" href="/user/register"><span class="text">register</span></a></li>
+                        <li id="user-xname" class="user-xname" title="User name"><span><input name="xuser" class="text" maxlength="16" type="text" value=""/></span></li>
+                        <li id="user-xpass" class="user-xpass" title="Password"><span><input name="xpass" class="text" maxlength="64" type="password"/></span></li>
+                        <li id="user-xkeep" class="user-xkeep" title="Remember login data"><span><label><input name="xdoautologin" type="checkbox" checked="checked"/> <span>stay logged in</span></label></span></li>
+                        <li id="user-xauth" class="user-xauth" title="Login"><span><button class="login" name="do.auth" type="submit" value="login"><span>Login</span></button></span></li>
+                    </ul>
+                    <span></span>
+                </div>
+            </form>
+        </li>
+    </ul>
+    <div class="menu_hr"></div>
+    <div id="layout-search" class="latest2_search">
+        <div class="search container" itemscope itemtype="https://schema.org/WebSite">
+            <span class="hide" itemprop="name">AniDB</span>
+            <a class="hide" rel="canonical" href="https://anidb.net" itemprop="url"></a>
+            <form action="/perl-bin/animedb.pl" method="get" itemprop="potentialAction" itemscope itemtype="https://schema.org/SearchAction">
+                <div itemprop="target" content="https://anidb.net/search/anime/?adb.search={adb.search}&amp;do.search=1">
+                    <input itemprop="query-input" id="layout-searchbox" accesskey="s" type="text" name="adb.search" value="" class="text"/>
+                    <select name="show" id="layout-searchselect" size="1"><option value="search">all</option><option value="animelist" selected="selected">anime</option><option value="characterlist">character</option><option value="clublist">club</option><option value="collectionlist">collections</option><option value="creatorlist">creator</option><option value="eplist">episodes</option><option value="grouplist">group</option><option value="mylist">mylist</option><option value="songlist">songs</option><option value="taglist">tags</option><option value="userlist">user</option>
+                    </select>
+                    <button type="submit" name="do.search" value="1" class="submit search">Search</button>
+                    <fieldset><input type="hidden" name="cleanurl" value="1"/></fieldset>
+                </div>
+            </form>
+            <form class="random" action="/perl-bin/animedb.pl" method="get">
+                <fieldset>
+                    <input type="hidden" name="do.random" value="1"/>
+                    <input type="hidden" name="show" value="anime"/>
+                </fieldset>
+                <button type="submit" value="lucky" class="submit random">I'm Feeling Lucky</button>
+            </form>
+            <a class="advsearch" title="advsearch" href="/search/anime"><span class="text">advanced search</span></a>
+        </div>
+    </div>
+</div>
+<div id="layout-content">
+    <div id="layout-tabs">
+        <ul class="main-tabs">
+            <li class="g_odd file"><span><a href="/latest/anime/release"><span class="text">files</span></a></span></li>
+            <li class="completed"><span><a href="/latest/anime/release/complete"><span class="text">completed</span></a></span></li>
+            <li class="g_odd hotanime"><span><a href="/latest/anime/popular"><span class="text">hot anime</span></a></span></li>
+            <li class="anime selected"><span><a href="/latest/anime"><span class="text">anime</span></a></span></li>
+            <li class="g_odd sequel"><span><a href="/latest/anime/relation"><span class="text">related anime</span></a></span></li>
+            <li class="recs"><span><a href="/latest/anime/recommendation"><span class="text">recommendations</span></a></span></li>
+            <li class="g_odd reviews"><span><a href="/latest/anime/review"><span class="text">reviews</span></a></span></li>
+            <li class="similaranime"><span><a href="/latest/anime/similar"><span class="text">similar anime</span></a></span></li>
+            <li class="g_odd customise"><span><a href="/latest/customise"><span class="text">customise</span></a></span></li>
+        </ul>
+    </div><!--layout-tabs-->
+    <div id="layout-main">
+        <h1 class="latest2">Latest Additions</h1>
+
+        <div class="g_content latest2_all">
+            <a href="/perl-bin/animedb.pl?show=ddadolvrnzthkz" style="display:none;">Download (Do <b>NOT</b> click!)</a>
+            <div class="g_section latest_anime">
+                <div class="g_bubblewrap nowrap">
+                    <div class="hide right g_filter">
+                        <div class="g_bubble flap hide" title="click to show the filter menu">Filter</div>
+                        <div class="content">
+                            <span title="Hide Filter" class="fancybox-item fancybox-close"></span>
+                            <form action="/perl-bin/animedb.pl" method="get">
+                                <div class="g_section g_bubble">
+                                    <button class="filter" type="submit" name="do.update" value="1">Apply Filter</button>
+                                    <button class="reset" type="submit" name="do.reset" value="1">Reset</button>
+                                </div>
+                                <fieldset>
+                                    <input type="hidden" name="cleanurl" value="1"/>
+                                    <input type="hidden" name="cleanurl" value="1"/>
+                                    <input type="hidden" name="show" value="latest2"/>
+                                    <input type="hidden" name="do" value="anime"/>
+                                </fieldset>
+                                <div class="g_section filters">
+                                    <h2><span>Filter</span></h2>
+                                    <ul class="g_bubblewrap">
+                                        <li class="g_odd g_bubble"><h3>Airing Status</h3><label class="ignore"><input type="radio" name="airing" value="0" checked="checked"> <span>ignore</span></label><label><input type="radio" name="airing" value="1"> <span>still airing</span></label><label><input type="radio" name="airing" value="2"> <span>finished</span></label><label><input type="radio" name="airing" value="3"> <span>unaired/unknown</span></label></li>
+                                        <li class="g_bubble"><h3>Anime Type</h3><label><input type="checkbox"  value="1" name="movie"  checked="checked"> <span>Movie</span></label><label><input type="checkbox"  value="1" name="musicvideo"  checked="checked"> <span>Music Video</span></label><label><input type="checkbox"  value="1" name="other"  checked="checked"> <span>Other</span></label><label><input type="checkbox"  value="1" name="ova"  checked="checked"> <span>OVA</span></label><label><input type="checkbox"  value="1" name="tvseries"  checked="checked"> <span>TV Series</span></label><label><input type="checkbox"  value="1" name="tvspecial"  checked="checked"> <span>TV Special</span></label><label><input type="checkbox"  value="1" name="unknown"  checked="checked"> <span>unknown</span></label><label><input type="checkbox"  value="1" name="web"  checked="checked"> <span>Web</span></label></li>
+                                        <li class="g_odd g_bubble"><h3>Misc</h3>
+                                            <label>
+
+                                                <select name="epp" size="1"><option value="10">10</option><option value="20">20</option><option value="30">30</option><option value="50" selected="selected">50</option><option value="100">100</option>
+                                                </select> # to show</label></li>
+                                    </ul>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="content">
+                        <table class="animelist">
+                            <thead>
+                            <tr class="header">
+                                <th class="date">Date</th>
+                                <th class="image" data-sorter="false">Image</th>
+                                <th class="name">Name</th>
+                                <th class="type">Type</th>
+                                <th class="eps">Eps</th>
+                                <th class="year">Year</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr class="g_odd">
+                                <td rowspan="1" class="date added">20.09.2024</td>
+                                <td class="thumb anime">
+                                    <a href="/anime/18871"><picture>
+                                        <img loading="lazy" alt="Wanmei Shijie: Juchang Ban" src="https://cdn-eu.anidb.net/images/65/307973.jpg-thumb.jpg" height="91" width="65" class="g_image g_bubble thumb"/>
+                                    </picture></a>
+                                </td>
+                                <td class="name anime">
+                                    <a href="/anime/18871">Wanmei Shijie: Juchang Ban</a>
+                                </td>
+                                <td class="type anime">Movie</td>
+                                <td class="count eps">3</td>
+                                <td class="date year">2024
+                                </td>
+                            </tr>
+                            <tr>
+                                <td rowspan="1" class="date added">18.09.2024</td>
+                                <td class="thumb anime">
+                                    <a href="/anime/18872"><picture>
+                                        <img loading="lazy" alt="Tokidoki Bosotto Rossiya-go de Dereru Tonari no Alya-san Season 2" src="https://cdn-eu.anidb.net/images/65/307998.jpg-thumb.jpg" height="92" width="65" class="g_image g_bubble thumb"/>
+                                    </picture></a>
+                                </td>
+                                <td class="name anime">
+                                    <a href="/anime/18872">Tokidoki Bosotto Rossiya-go de Dereru Tonari no Alya-san Season 2</a>
+                                </td>
+                                <td class="type anime">TV Series</td>
+                                <td class="count eps"><span class="g_italic" title="to be confirmed">TBC</span></td>
+                                <td class="date year">-
+                                </td>
+                            </tr>
+                            <tr class="g_odd">
+                                <td rowspan="4" class="date added">16.09.2024</td>
+                                <td class="thumb anime">
+                                    <a href="/anime/18867"><picture>
+                                        <img loading="lazy" alt="Kaoru Hana wa Rin to Saku" src="https://cdn-eu.anidb.net/images/65/307924.jpg-thumb.jpg" height="57" width="65" class="g_image g_bubble thumb"/>
+                                    </picture></a>
+                                </td>
+                                <td class="name anime">
+                                    <a href="/anime/18867">Kaoru Hana wa Rin to Saku</a>
+                                </td>
+                                <td class="type anime">TV Series</td>
+                                <td class="count eps"><span class="g_italic" title="to be confirmed">TBC</span></td>
+                                <td class="date year">2025
+                                </td>
+                            </tr>
+                            <tr  class="rowspan">
+                                <td class="thumb anime">
+                                    <a href="/anime/18869"><picture>
+                                        <img loading="lazy" alt="Kuro no Tsuki: Tsuki no Saidan" src="https://cdn-eu.anidb.net/images/65/307953.jpg-thumb.jpg" height="46" width="65" class="g_image g_bubble thumb"/>
+                                    </picture></a>
+                                </td>
+                                <td class="name anime">
+                                    <a href="/anime/18869">Kuro no Tsuki: Tsuki no Saidan</a>
+                                </td>
+                                <td class="type anime">unknown</td>
+                                <td class="count eps"><span class="g_italic" title="to be confirmed">TBC</span></td>
+                                <td class="date year">-
+                                </td>
+                            </tr>
+                            <tr  class="g_odd rowspan">
+                                <td class="thumb anime">
+                                    <a href="/anime/18868"><picture>
+                                        <img loading="lazy" alt="Saigo ni Hitotsu dake Onegai Shite mo Yoroshii Deshou ka" src="https://cdn-eu.anidb.net/images/65/307926.jpg-thumb.jpg" height="92" width="65" class="g_image g_bubble thumb"/>
+                                    </picture></a>
+                                </td>
+                                <td class="name anime">
+                                    <a href="/anime/18868">Saigo ni Hitotsu dake Onegai Shite mo Yoroshii Deshou ka</a>
+                                </td>
+                                <td class="type anime">TV Series</td>
+                                <td class="count eps"><span class="g_italic" title="to be confirmed">TBC</span></td>
+                                <td class="date year">2025
+                                </td>
+                            </tr>
+                            <tr  class="rowspan">
+                                <td class="thumb anime">
+                                    <a href="/anime/18866"><picture>
+                                        <img loading="lazy" alt="Virgin Punk" src="https://cdn-eu.anidb.net/images/65/307921.jpg-thumb.jpg" height="92" width="65" class="g_image g_bubble thumb"/>
+                                    </picture></a>
+                                </td>
+                                <td class="name anime">
+                                    <a href="/anime/18866">Virgin Punk</a>
+                                </td>
+                                <td class="type anime">Movie</td>
+                                <td class="count eps"><span class="g_italic" title="to be confirmed">TBC</span></td>
+                                <td class="date year">2025
+                                </td>
+                            </tr>
+                            <tr>
+                                <td rowspan="1" class="date added">15.09.2024</td>
+                                <td class="thumb anime">
+                                    <a href="/anime/18865"><picture>
+                                        <img loading="lazy" alt="Kono Subarashii Sekai ni Shukufuku o! 3 OVA" src="https://cdn-eu.anidb.net/images/65/307898.jpg-thumb.jpg" height="37" width="65" class="g_image g_bubble thumb"/>
+                                    </picture></a>
+                                </td>
+                                <td class="name anime">
+                                    <a href="/anime/18865">Kono Subarashii Sekai ni Shukufuku o! 3 OVA</a>
+                                </td>
+                                <td class="type anime">OVA</td>
+                                <td class="count eps">1</td>
+                                <td class="date year">-
+                                </td>
+                            </tr>
+                            <tr class="g_odd">
+                                <td rowspan="1" class="date added">14.09.2024</td>
+                                <td class="thumb anime">
+                                    <a href="/anime/18864"><picture>
+                                        <img loading="lazy" alt="Shoushimin Series (2025)" src="https://cdn-eu.anidb.net/images/65/298412.jpg-thumb.jpg" height="89" width="65" class="g_image g_bubble thumb"/>
+                                    </picture></a>
+                                </td>
+                                <td class="name anime">
+                                    <a href="/anime/18864">Shoushimin Series (2025)</a>
+                                </td>
+                                <td class="type anime">TV Series</td>
+                                <td class="count eps"><span class="g_italic" title="to be confirmed">TBC</span></td>
+                                <td class="date year">2025
+                                </td>
+                            </tr>
+                            <tr>
+                                <td rowspan="1" class="date added">13.09.2024</td>
+                                <td class="thumb anime">
+                                    <a href="/anime/18862"><picture>
+                                        <img loading="lazy" alt="Bye Bye, Earth (2025)" src="https://cdn-eu.anidb.net/images/65/307861.jpg-thumb.jpg" height="65" width="65" class="g_image g_bubble thumb"/>
+                                    </picture></a>
+                                </td>
+                                <td class="name anime">
+                                    <a href="/anime/18862">Bye Bye, Earth (2025)</a>
+                                </td>
+                                <td class="type anime">TV Series</td>
+                                <td class="count eps"><span class="g_italic" title="to be confirmed">TBC</span></td>
+                                <td class="date year">2025
+                                </td>
+                            </tr>
+                            <tr class="g_odd">
+                                <td rowspan="1" class="date added">10.09.2024</td>
+                                <td class="thumb anime">
+                                    <a href="/anime/18859"><picture>
+                                        <img loading="lazy" alt="Ruri no Houseki" src="https://cdn-eu.anidb.net/images/65/307804.jpg-thumb.jpg" height="92" width="65" class="g_image g_bubble thumb"/>
+                                    </picture></a>
+                                </td>
+                                <td class="name anime">
+                                    <a href="/anime/18859">Ruri no Houseki</a>
+                                </td>
+                                <td class="type anime">TV Series</td>
+                                <td class="count eps"><span class="g_italic" title="to be confirmed">TBC</span></td>
+                                <td class="date year">2025
+                                </td>
+                            </tr>
+                            <tr>
+                                <td rowspan="1" class="date added">09.09.2024</td>
+                                <td class="thumb anime">
+                                    <a href="/anime/18858"><picture>
+                                        <img loading="lazy" alt="Romelia Senki" src="https://cdn-eu.anidb.net/images/65/307773.jpg-thumb.jpg" height="70" width="65" class="g_image g_bubble thumb"/>
+                                    </picture></a>
+                                </td>
+                                <td class="name anime">
+                                    <a href="/anime/18858">Romelia Senki</a>
+                                </td>
+                                <td class="type anime">unknown</td>
+                                <td class="count eps"><span class="g_italic" title="to be confirmed">TBC</span></td>
+                                <td class="date year">-
+                                </td>
+                            </tr>
+                            <tr class="g_odd">
+                                <td rowspan="1" class="date added">06.09.2024</td>
+                                <td class="thumb anime">
+                                    <a href="/anime/18814"><picture>
+                                        <img loading="lazy" alt="Hamidashi Creative" src="https://cdn-eu.anidb.net/images/65/307044.jpg-thumb.jpg" height="71" width="65" class="g_image g_bubble thumb"/>
+                                    </picture></a>
+                                </td>
+                                <td class="name anime">
+                                    <a href="/anime/18814">Hamidashi Creative</a>
+                                </td>
+                                <td class="type anime">TV Series</td>
+                                <td class="count eps">12</td>
+                                <td class="date year">2024
+                                </td>
+                            </tr>
+                            <tr>
+                                <td rowspan="3" class="date added">05.09.2024</td>
+                                <td class="thumb anime">
+                                    <a href="/anime/18856"><picture>
+                                        <img loading="lazy" alt="Chotto dake Ai ga Omoi Dark Elf ga Isekai kara Oikakete Kita" src="https://cdn-eu.anidb.net/images/65/307688.jpg-thumb.jpg" height="37" width="65" class="g_image g_bubble thumb"/>
+                                    </picture></a>
+                                </td>
+                                <td class="name anime">
+                                    <a href="/anime/18856">Chotto dake Ai ga Omoi Dark Elf ga Isekai kara Oikakete Kita</a>
+                                </td>
+                                <td class="type anime">TV Series</td>
+                                <td class="count eps"><span class="g_italic" title="to be confirmed">TBC</span></td>
+                                <td class="date year">2025
+                                </td>
+                            </tr>
+                            <tr  class="g_odd rowspan">
+                                <td class="thumb anime">
+                                    <a href="/anime/18855"><picture>
+                                        <img loading="lazy" alt="Maebashi Witches" src="https://cdn-eu.anidb.net/images/65/307677.jpg-thumb.jpg" height="92" width="65" class="g_image g_bubble thumb"/>
+                                    </picture></a>
+                                </td>
+                                <td class="name anime">
+                                    <a href="/anime/18855">Maebashi Witches</a>
+                                </td>
+                                <td class="type anime">TV Series</td>
+                                <td class="count eps"><span class="g_italic" title="to be confirmed">TBC</span></td>
+                                <td class="date year">2025
+                                </td>
+                            </tr>
+                            <tr  class="rowspan">
+                                <td class="thumb anime">
+                                    <a href="/anime/18854"><picture>
+                                        <img loading="lazy" alt="Tsuihou Sareta Tensei Juu Kishi wa Game Chishiki de Musou Suru" src="https://cdn-eu.anidb.net/images/65/307676.jpg-thumb.jpg" height="92" width="65" class="g_image g_bubble thumb"/>
+                                    </picture></a>
+                                </td>
+                                <td class="name anime">
+                                    <a href="/anime/18854">Tsuihou Sareta Tensei Juu Kishi wa Game Chishiki de Musou Suru</a>
+                                </td>
+                                <td class="type anime">TV Series</td>
+                                <td class="count eps"><span class="g_italic" title="to be confirmed">TBC</span></td>
+                                <td class="date year">-
+                                </td>
+                            </tr>
+                            <tr class="g_odd">
+                                <td rowspan="2" class="date added">04.09.2024</td>
+                                <td class="thumb anime">
+                                    <a href="/anime/18852"><picture>
+                                        <img loading="lazy" alt="A Rank Party o Ridatsu Shita Ore wa, Moto Oshiego-tachi to Meikyuu Shinbu o Mezasu." src="https://cdn-eu.anidb.net/images/65/307657.jpg-thumb.jpg" height="93" width="65" class="g_image g_bubble thumb"/>
+                                    </picture></a>
+                                </td>
+                                <td class="name anime">
+                                    <a href="/anime/18852">A Rank Party o Ridatsu Shita Ore wa, Moto Oshiego-tachi to Meikyuu Shinbu o Mezasu.</a>
+                                </td>
+                                <td class="type anime">TV Series</td>
+                                <td class="count eps"><span class="g_italic" title="to be confirmed">TBC</span></td>
+                                <td class="date year">2025
+                                </td>
+                            </tr>
+                            <tr  class="rowspan">
+                                <td class="thumb anime">
+                                    <a href="/anime/18853"><picture>
+                                        <img loading="lazy" alt="Xijing Sushe" src="https://cdn-eu.anidb.net/images/65/307667.jpg-thumb.jpg" height="91" width="65" class="g_image g_bubble thumb"/>
+                                    </picture></a>
+                                </td>
+                                <td class="name anime">
+                                    <a href="/anime/18853">Xijing Sushe</a>
+                                </td>
+                                <td class="type anime">Web</td>
+                                <td class="count eps">12</td>
+                                <td class="date year">2024
+                                </td>
+                            </tr>
+                            <tr>
+                                <td rowspan="2" class="date added">02.09.2024</td>
+                                <td class="thumb anime">
+                                    <a href="/anime/18850"><picture>
+                                        <img loading="lazy" alt="Ling Wu Dalu" src="https://cdn-eu.anidb.net/images/65/307602.jpg-thumb.jpg" height="87" width="65" class="g_image g_bubble thumb"/>
+                                    </picture></a>
+                                </td>
+                                <td class="name anime">
+                                    <a href="/anime/18850">Ling Wu Dalu</a>
+                                </td>
+                                <td class="type anime">Web</td>
+                                <td class="count eps">60</td>
+                                <td class="date year">2024
+                                </td>
+                            </tr>
+                            <tr  class="g_odd rowspan">
+                                <td class="thumb anime">
+                                    <a href="/anime/18851"><picture>
+                                        <img loading="lazy" alt="Wujin Shenyu" src="https://cdn-eu.anidb.net/images/65/307603.jpg-thumb.jpg" height="87" width="65" class="g_image g_bubble thumb"/>
+                                    </picture></a>
+                                </td>
+                                <td class="name anime">
+                                    <a href="/anime/18851">Wujin Shenyu</a>
+                                </td>
+                                <td class="type anime">Web</td>
+                                <td class="count eps">60</td>
+                                <td class="date year">2024
+                                </td>
+                            </tr>
+                            <tr class="g_odd">
+                                <td rowspan="6" class="date added">01.09.2024</td>
+                                <td class="thumb anime">
+                                    <a href="/anime/18848"><picture>
+                                        <img loading="lazy" alt="Eiga Inazuma Eleven Soushuuhen: Densetsu no Kickoff" src="https://cdn-eu.anidb.net/images/65/307581.jpg-thumb.jpg" height="92" width="65" class="g_image g_bubble thumb"/>
+                                    </picture></a>
+                                </td>
+                                <td class="name anime">
+                                    <a href="/anime/18848">Eiga Inazuma Eleven Soushuuhen: Densetsu no Kickoff</a>
+                                </td>
+                                <td class="type anime">Movie</td>
+                                <td class="count eps">1</td>
+                                <td class="date year">2024
+                                </td>
+                            </tr>
+                            <tr  class="rowspan">
+                                <td class="thumb anime">
+                                    <a href="/anime/18849"><picture>
+                                        <img loading="lazy" alt="Gekijouban Inazuma Eleven: Aratanaru Eiyuu-tachi no Joshou" src="https://cdn-eu.anidb.net/images/65/307582.jpg-thumb.jpg" height="92" width="65" class="g_image g_bubble thumb"/>
+                                    </picture></a>
+                                </td>
+                                <td class="name anime">
+                                    <a href="/anime/18849">Gekijouban Inazuma Eleven: Aratanaru Eiyuu-tachi no Joshou</a>
+                                </td>
+                                <td class="type anime">Movie</td>
+                                <td class="count eps">1</td>
+                                <td class="date year">2024
+                                </td>
+                            </tr>
+                            <tr  class="g_odd rowspan">
+                                <td class="thumb anime">
+                                    <a href="/anime/18846"><picture>
+                                        <img loading="lazy" alt="Nian Wushuang" src="https://cdn-eu.anidb.net/images/65/307576.jpg-thumb.jpg" height="98" width="65" class="g_image g_bubble thumb"/>
+                                    </picture></a>
+                                </td>
+                                <td class="name anime">
+                                    <a href="/anime/18846">Nian Wushuang</a>
+                                </td>
+                                <td class="type anime">Web</td>
+                                <td class="count eps">14</td>
+                                <td class="date year">2024
+                                </td>
+                            </tr>
+                            <tr  class="rowspan">
+                                <td class="thumb anime">
+                                    <a href="/anime/18847"><picture>
+                                        <img loading="lazy" alt="Shen Mu 2" src="https://cdn-eu.anidb.net/images/65/307577.jpg-thumb.jpg" height="100" width="65" class="g_image g_bubble thumb"/>
+                                    </picture></a>
+                                </td>
+                                <td class="name anime">
+                                    <a href="/anime/18847">Shen Mu 2</a>
+                                </td>
+                                <td class="type anime">Web</td>
+                                <td class="count eps">27</td>
+                                <td class="date year">2024
+                                </td>
+                            </tr>
+                            <tr  class="g_odd rowspan">
+                                <td class="thumb anime">
+                                    <a href="/anime/18845"><picture>
+                                        <img loading="lazy" alt="Shibou Yuugi de Meshi o Kuu." src="https://cdn-eu.anidb.net/images/65/307573.jpg-thumb.jpg" height="37" width="65" class="g_image g_bubble thumb"/>
+                                    </picture></a>
+                                </td>
+                                <td class="name anime">
+                                    <a href="/anime/18845">Shibou Yuugi de Meshi o Kuu.</a>
+                                </td>
+                                <td class="type anime">TV Series</td>
+                                <td class="count eps"><span class="g_italic" title="to be confirmed">TBC</span></td>
+                                <td class="date year">-
+                                </td>
+                            </tr>
+                            <tr  class="rowspan">
+                                <td class="thumb anime">
+                                    <a href="/anime/18844"><picture>
+                                        <img loading="lazy" alt="Youkoso Jitsuryoku Shijou Shugi no Kyoushitsu e 4th Season" src="https://cdn-eu.anidb.net/images/65/307564.jpg-thumb.jpg" height="92" width="65" class="g_image g_bubble thumb"/>
+                                    </picture></a>
+                                </td>
+                                <td class="name anime">
+                                    <a href="/anime/18844">Youkoso Jitsuryoku Shijou Shugi no Kyoushitsu e 4th Season</a>
+                                </td>
+                                <td class="type anime">TV Series</td>
+                                <td class="count eps"><span class="g_italic" title="to be confirmed">TBC</span></td>
+                                <td class="date year">-
+                                </td>
+                            </tr>
+                            <tr>
+                                <td rowspan="1" class="date added">30.08.2024</td>
+                                <td class="thumb anime">
+                                    <a href="/anime/18842"><picture>
+                                        <img loading="lazy" alt="San Shaonu" src="https://cdn-eu.anidb.net/images/65/307520.jpg-thumb.jpg" height="91" width="65" class="g_image g_bubble thumb"/>
+                                    </picture></a>
+                                </td>
+                                <td class="name anime">
+                                    <a href="/anime/18842">San Shaonu</a>
+                                </td>
+                                <td class="type anime">Movie</td>
+                                <td class="count eps">1</td>
+                                <td class="date year">2024
+                                </td>
+                            </tr>
+                            <tr class="g_odd">
+                                <td rowspan="2" class="date added">29.08.2024</td>
+                                <td class="thumb anime">
+                                    <a href="/anime/18839"><picture>
+                                        <img loading="lazy" alt="Geesen Shoujo to Ibunka Kouryuu" src="https://cdn-eu.anidb.net/images/65/307498.jpg-thumb.jpg" height="92" width="65" class="g_image g_bubble thumb"/>
+                                    </picture></a>
+                                </td>
+                                <td class="name anime">
+                                    <a href="/anime/18839">Geesen Shoujo to Ibunka Kouryuu</a>
+                                </td>
+                                <td class="type anime">unknown</td>
+                                <td class="count eps"><span class="g_italic" title="to be confirmed">TBC</span></td>
+                                <td class="date year">-
+                                </td>
+                            </tr>
+                            <tr  class="rowspan">
+                                <td class="thumb anime">
+                                    <a href="/anime/18840"><picture>
+                                        <img loading="lazy" alt="Nyaaaanvy" src="https://cdn-eu.anidb.net/images/65/307504.jpg-thumb.jpg" height="37" width="65" class="g_image g_bubble thumb"/>
+                                    </picture></a>
+                                </td>
+                                <td class="name anime">
+                                    <a href="/anime/18840">Nyaaaanvy</a>
+                                </td>
+                                <td class="type anime">TV Series</td>
+                                <td class="count eps">6</td>
+                                <td class="date year">2024
+                                </td>
+                            </tr>
+                            <tr>
+                                <td rowspan="1" class="date added">28.08.2024</td>
+                                <td class="thumb anime">
+                                    <a href="/anime/18838"><picture>
+                                        <img loading="lazy" alt="Apocalypse Hotel" src="https://cdn-eu.anidb.net/images/65/307479.jpg-thumb.jpg" height="98" width="65" class="g_image g_bubble thumb"/>
+                                    </picture></a>
+                                </td>
+                                <td class="name anime">
+                                    <a href="/anime/18838">Apocalypse Hotel</a>
+                                </td>
+                                <td class="type anime">TV Series</td>
+                                <td class="count eps"><span class="g_italic" title="to be confirmed">TBC</span></td>
+                                <td class="date year">2025
+                                </td>
+                            </tr>
+                            <tr class="g_odd">
+                                <td rowspan="2" class="date added">27.08.2024</td>
+                                <td class="thumb anime">
+                                    <a href="/anime/18837"><picture>
+                                        <img loading="lazy" alt="Bananya: Around the World" src="https://cdn-eu.anidb.net/images/65/307469.jpg-thumb.jpg" height="92" width="65" class="g_image g_bubble thumb"/>
+                                    </picture></a>
+                                </td>
+                                <td class="name anime">
+                                    <a href="/anime/18837">Bananya: Around the World</a>
+                                </td>
+                                <td class="type anime">Web</td>
+                                <td class="count eps"><span class="g_italic" title="to be confirmed">TBC</span></td>
+                                <td class="date year">2024
+                                </td>
+                            </tr>
+                            <tr  class="rowspan">
+                                <td class="thumb anime">
+                                    <a href="/anime/18836"><picture>
+                                        <img loading="lazy" alt="Chi Yan Jinyiwei" src="https://cdn-eu.anidb.net/images/65/307468.jpg-thumb.jpg" height="98" width="65" class="g_image g_bubble thumb"/>
+                                    </picture></a>
+                                </td>
+                                <td class="name anime">
+                                    <a href="/anime/18836">Chi Yan Jinyiwei</a>
+                                </td>
+                                <td class="type anime">Web</td>
+                                <td class="count eps">24</td>
+                                <td class="date year">2022-2023
+                                </td>
+                            </tr>
+                            <tr>
+                                <td rowspan="1" class="date added">25.08.2024</td>
+                                <td class="thumb anime">
+                                    <a href="/anime/18835"><picture>
+                                        <img loading="lazy" alt="Jujutsu Kaisen: Kaigyoku / Gyokusetsu" src="https://cdn-eu.anidb.net/images/65/307418.jpg-thumb.jpg" height="92" width="65" class="g_image g_bubble thumb"/>
+                                    </picture></a>
+                                </td>
+                                <td class="name anime">
+                                    <a href="/anime/18835">Jujutsu Kaisen: Kaigyoku / Gyokusetsu</a>
+                                </td>
+                                <td class="type anime">Movie</td>
+                                <td class="count eps">1</td>
+                                <td class="date year">2025
+                                </td>
+                            </tr>
+                            <tr class="g_odd">
+                                <td rowspan="1" class="date added">24.08.2024</td>
+                                <td class="thumb anime">
+                                    <a href="/anime/18831"><picture>
+                                        <img loading="lazy" alt="Yasei no Last Boss ga Arawareta!" src="https://cdn-eu.anidb.net/images/65/307374.jpg-thumb.jpg" height="88" width="65" class="g_image g_bubble thumb"/>
+                                    </picture></a>
+                                </td>
+                                <td class="name anime">
+                                    <a href="/anime/18831">Yasei no Last Boss ga Arawareta!</a>
+                                </td>
+                                <td class="type anime">TV Series</td>
+                                <td class="count eps"><span class="g_italic" title="to be confirmed">TBC</span></td>
+                                <td class="date year">-
+                                </td>
+                            </tr>
+                            <tr>
+                                <td rowspan="3" class="date added">23.08.2024</td>
+                                <td class="thumb anime">
+                                    <a href="/anime/18828"><picture>
+                                        <img loading="lazy" alt="Jian Lai" src="https://cdn-eu.anidb.net/images/65/307354.jpg-thumb.jpg" height="91" width="65" class="g_image g_bubble thumb"/>
+                                    </picture></a>
+                                </td>
+                                <td class="name anime">
+                                    <a href="/anime/18828">Jian Lai</a>
+                                </td>
+                                <td class="type anime">Web</td>
+                                <td class="count eps">26</td>
+                                <td class="date year">2024-2025
+                                </td>
+                            </tr>
+                            <tr  class="g_odd rowspan">
+                                <td class="thumb anime">
+                                    <a href="/anime/18830"><picture>
+                                        <img loading="lazy" alt="Ni De Rensheng Shi Wo Lai Chi Le" src="https://cdn-eu.anidb.net/images/65/307357.jpg-thumb.jpg" height="98" width="65" class="g_image g_bubble thumb"/>
+                                    </picture></a>
+                                </td>
+                                <td class="name anime">
+                                    <a href="/anime/18830">Ni De Rensheng Shi Wo Lai Chi Le</a>
+                                </td>
+                                <td class="type anime">Web</td>
+                                <td class="count eps">16</td>
+                                <td class="date year">2023-2024
+                                </td>
+                            </tr>
+                            <tr  class="rowspan">
+                                <td class="thumb anime">
+                                    <a href="/anime/18829"><picture>
+                                        <img loading="lazy" alt="Uma Musume: Cinderella Gray" src="https://cdn-eu.anidb.net/images/65/307355.jpg-thumb.jpg" height="92" width="65" class="g_image g_bubble thumb"/>
+                                    </picture></a>
+                                </td>
+                                <td class="name anime">
+                                    <a href="/anime/18829">Uma Musume: Cinderella Gray</a>
+                                </td>
+                                <td class="type anime">TV Series</td>
+                                <td class="count eps"><span class="g_italic" title="to be confirmed">TBC</span></td>
+                                <td class="date year">2025
+                                </td>
+                            </tr>
+                            <tr class="g_odd">
+                                <td rowspan="1" class="date added">22.08.2024</td>
+                                <td class="thumb anime">
+                                    <a href="/anime/18827"><picture>
+                                        <img loading="lazy" alt="Mattaku Saikin no Tantei to Kitara" src="https://cdn-eu.anidb.net/images/65/307333.jpg-thumb.jpg" height="88" width="65" class="g_image g_bubble thumb"/>
+                                    </picture></a>
+                                </td>
+                                <td class="name anime">
+                                    <a href="/anime/18827">Mattaku Saikin no Tantei to Kitara</a>
+                                </td>
+                                <td class="type anime">TV Series</td>
+                                <td class="count eps"><span class="g_italic" title="to be confirmed">TBC</span></td>
+                                <td class="date year">2025
+                                </td>
+                            </tr>
+                            <tr>
+                                <td rowspan="2" class="date added">21.08.2024</td>
+                                <td class="thumb anime">
+                                    <a href="/anime/18824"><picture>
+                                        <img loading="lazy" alt="Ame to Kimi to" src="https://cdn-eu.anidb.net/images/65/307295.jpg-thumb.jpg" height="92" width="65" class="g_image g_bubble thumb"/>
+                                    </picture></a>
+                                </td>
+                                <td class="name anime">
+                                    <a href="/anime/18824">Ame to Kimi to</a>
+                                </td>
+                                <td class="type anime">TV Series</td>
+                                <td class="count eps"><span class="g_italic" title="to be confirmed">TBC</span></td>
+                                <td class="date year">2025
+                                </td>
+                            </tr>
+                            <tr  class="g_odd rowspan">
+                                <td class="thumb anime">
+                                    <a href="/anime/18826"><picture>
+                                        <img loading="lazy" alt="Shanhai Jihui" src="https://cdn-eu.anidb.net/images/65/307322.jpg-thumb.jpg" height="98" width="65" class="g_image g_bubble thumb"/>
+                                    </picture></a>
+                                </td>
+                                <td class="name anime">
+                                    <a href="/anime/18826">Shanhai Jihui</a>
+                                </td>
+                                <td class="type anime">Web</td>
+                                <td class="count eps">25</td>
+                                <td class="date year">2023
+                                </td>
+                            </tr>
+                            <tr class="g_odd">
+                                <td rowspan="1" class="date added">20.08.2024</td>
+                                <td class="thumb anime">
+                                    <a href="/anime/18823"><picture>
+                                        <img loading="lazy" alt="Wondance" src="https://cdn-eu.anidb.net/images/65/307300.jpg-thumb.jpg" height="91" width="65" class="g_image g_bubble thumb"/>
+                                    </picture></a>
+                                </td>
+                                <td class="name anime">
+                                    <a href="/anime/18823">Wondance</a>
+                                </td>
+                                <td class="type anime">TV Series</td>
+                                <td class="count eps"><span class="g_italic" title="to be confirmed">TBC</span></td>
+                                <td class="date year">2025
+                                </td>
+                            </tr>
+                            <tr>
+                                <td rowspan="3" class="date added">18.08.2024</td>
+                                <td class="thumb anime">
+                                    <a href="/anime/18821"><picture>
+                                        <img loading="lazy" alt="30-sai made Doutei da to Mahou Tsukai ni Nareru Rashii Tokubetsu Henshuuban" src="https://cdn-eu.anidb.net/images/65/307206.jpg-thumb.jpg" height="92" width="65" class="g_image g_bubble thumb"/>
+                                    </picture></a>
+                                </td>
+                                <td class="name anime">
+                                    <a href="/anime/18821">30-sai made Doutei da to Mahou Tsukai ni Nareru Rashii Tokubetsu Henshuuban</a>
+                                </td>
+                                <td class="type anime">Movie</td>
+                                <td class="count eps">1</td>
+                                <td class="date year">2024
+                                </td>
+                            </tr>
+                            <tr  class="g_odd rowspan">
+                                <td class="thumb anime">
+                                    <a href="/anime/18275"><picture>
+                                        <img loading="lazy" alt="Terminator 0" src="https://cdn-eu.anidb.net/images/65/306938.jpg-thumb.jpg" height="81" width="65" class="g_image g_bubble thumb"/>
+                                    </picture></a>
+                                </td>
+                                <td class="name anime">
+                                    <a href="/anime/18275">Terminator 0</a>
+                                </td>
+                                <td class="type anime">Web</td>
+                                <td class="count eps">8</td>
+                                <td class="date year">2024
+                                </td>
+                            </tr>
+                            <tr  class="rowspan">
+                                <td class="thumb anime">
+                                    <a href="/anime/18787"><picture>
+                                        <img loading="lazy" alt="Yuurei Sensen" src="https://cdn-eu.anidb.net/images/65/75598.png-thumb.jpg" height="37" width="65" class="g_image g_bubble thumb"/>
+                                    </picture></a>
+                                </td>
+                                <td class="name anime">
+                                    <a href="/anime/18787">Yuurei Sensen</a>
+                                </td>
+                                <td class="type anime">Music Video</td>
+                                <td class="count eps">1</td>
+                                <td class="date year">2024
+                                </td>
+                            </tr>
+                            <tr class="g_odd">
+                                <td rowspan="2" class="date added">17.08.2024</td>
+                                <td class="thumb anime">
+                                    <a href="/anime/15583"><picture>
+                                        <img loading="lazy" alt="Fang Kai Nage Nuwu" src="https://cdn-eu.anidb.net/images/65/306963.jpg-thumb.jpg" height="96" width="65" class="g_image g_bubble thumb"/>
+                                    </picture></a>
+                                </td>
+                                <td class="name anime">
+                                    <a href="/anime/15583">Fang Kai Nage Nuwu</a>
+                                </td>
+                                <td class="type anime">Web</td>
+                                <td class="count eps">24</td>
+                                <td class="date year">2023
+                                </td>
+                            </tr>
+                            <tr  class="rowspan">
+                                <td class="thumb anime">
+                                    <a href="/anime/18820"><picture>
+                                        <img loading="lazy" alt="Shingeki no Kyojin: The Last Attack" src="https://cdn-eu.anidb.net/images/65/307182.jpg-thumb.jpg" height="91" width="65" class="g_image g_bubble thumb"/>
+                                    </picture></a>
+                                </td>
+                                <td class="name anime">
+                                    <a href="/anime/18820">Shingeki no Kyojin: The Last Attack</a>
+                                </td>
+                                <td class="type anime">Movie</td>
+                                <td class="count eps">1</td>
+                                <td class="date year">2024
+                                </td>
+                            </tr>
+                            <tr>
+                                <td rowspan="2" class="date added">16.08.2024</td>
+                                <td class="thumb anime">
+                                    <a href="/anime/18818"><picture>
+                                        <img loading="lazy" alt="Arafou Otoko no Isekai Tsuuhan" src="https://cdn-eu.anidb.net/images/65/307155.jpg-thumb.jpg" height="91" width="65" class="g_image g_bubble thumb"/>
+                                    </picture></a>
+                                </td>
+                                <td class="name anime">
+                                    <a href="/anime/18818">Arafou Otoko no Isekai Tsuuhan</a>
+                                </td>
+                                <td class="type anime">TV Series</td>
+                                <td class="count eps"><span class="g_italic" title="to be confirmed">TBC</span></td>
+                                <td class="date year">2025
+                                </td>
+                            </tr>
+                            <tr  class="g_odd rowspan">
+                                <td class="thumb anime">
+                                    <a href="/anime/18816"><picture>
+                                        <img loading="lazy" alt="Witch Watch" src="https://cdn-eu.anidb.net/images/65/307221.jpg-thumb.jpg" height="93" width="65" class="g_image g_bubble thumb"/>
+                                    </picture></a>
+                                </td>
+                                <td class="name anime">
+                                    <a href="/anime/18816">Witch Watch</a>
+                                </td>
+                                <td class="type anime">TV Series</td>
+                                <td class="count eps"><span class="g_italic" title="to be confirmed">TBC</span></td>
+                                <td class="date year">2025
+                                </td>
+                            </tr>
+                            <tr class="g_odd">
+                                <td rowspan="1" class="date added">15.08.2024</td>
+                                <td class="thumb anime">
+                                    <a href="/anime/18815"><picture>
+                                        <img loading="lazy" alt="Ganbare! Nakamura-kun!!" src="https://cdn-eu.anidb.net/images/65/307138.jpg-thumb.jpg" height="91" width="65" class="g_image g_bubble thumb"/>
+                                    </picture></a>
+                                </td>
+                                <td class="name anime">
+                                    <a href="/anime/18815">Ganbare! Nakamura-kun!!</a>
+                                </td>
+                                <td class="type anime">TV Series</td>
+                                <td class="count eps"><span class="g_italic" title="to be confirmed">TBC</span></td>
+                                <td class="date year">-
+                                </td>
+                            </tr>
+                            <tr>
+                                <td rowspan="2" class="date added">12.08.2024</td>
+                                <td class="thumb anime">
+                                    <a href="/anime/18736"><picture>
+                                        <img loading="lazy" alt="0-saiji Start Dash Monogatari" src="https://cdn-eu.anidb.net/images/65/307053.jpg-thumb.jpg" height="92" width="65" class="g_image g_bubble thumb"/>
+                                    </picture></a>
+                                </td>
+                                <td class="name anime">
+                                    <a href="/anime/18736">0-saiji Start Dash Monogatari</a>
+                                </td>
+                                <td class="type anime">TV Series</td>
+                                <td class="count eps">12</td>
+                                <td class="date year">2024
+                                </td>
+                            </tr>
+                            <tr  class="g_odd rowspan">
+                                <td class="thumb anime">
+                                    <a href="/anime/18813"><picture>
+                                        <img loading="lazy" alt="Guai Xiang Shou" src="https://cdn-eu.anidb.net/images/65/307021.jpg-thumb.jpg" height="87" width="65" class="g_image g_bubble thumb"/>
+                                    </picture></a>
+                                </td>
+                                <td class="name anime">
+                                    <a href="/anime/18813">Guai Xiang Shou</a>
+                                </td>
+                                <td class="type anime">Web</td>
+                                <td class="count eps">8</td>
+                                <td class="date year">2024
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <ul class="g_list links">
+                <li class="g_odd back"><span><a href="/"><span class="text">back</span></a></span></li>
+            </ul>
+        </div><!--g_content-->
+        <div class="g_end"></div>
+    </div><!--layout-main-->
+</div><!--layout-content-->
+
+<div id="layout-footer">
+    <p><a href="https://anidb.net" property="cc:attributionName">AniDB</a> is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.</p>
+    <p>v 2022-04, &copy; 2002-2022 by AniDB; all rights reserved. [0s] - <span title="generated at">20.09.2024 18:27:26</span></p>
+    <div itemscope itemtype="https://schema.org/Organization">
+        <a class="hide" itemprop="url" href="https://anidb.net">Home</a>
+        <img loading="lazy" class="hide" alt="AniDB" itemprop="logo" src="https://cdn-eu.anidb.net/css/assets/images/touch/android-chrome-512x512.png"/>
+        <span class="hide" itemprop="name">AniDB</span>
+        <div class="links">
+            <a class="i_icon brand i_resource_twitter" itemprop="sameAs" title="Stay up2date with AniDB on Twitter!" href="https://twitter.com/AniDBStatus" data-anidb-rel="anidb::extern"><span class="text">Twitter</span></a>
+            <a class="i_icon brand i_resource_patreon" itemprop="sameAs" title="Become a patron for AniDB!" href="https://www.patreon.com/AniDB" data-anidb-rel="anidb::extern"><span class="text">Become a patron!</span></a>
+        </div>
+    </div>
+    <a href="/perl-bin/animedb.pl?show=ddadolvrnzthkz" style="display:none;">Download (Do <b>NOT</b> click!)</a>
+</div>
+</body>
+</html>
