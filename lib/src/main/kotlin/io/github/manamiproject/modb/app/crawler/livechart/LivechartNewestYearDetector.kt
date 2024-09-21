@@ -18,7 +18,7 @@ import kotlin.time.toDuration
  * Detects the furthest future year for which anime releases are scheduled.
  * @since 1.0.0
  * @property metaDataProviderConfig Configuration for a specific meta data provider.
- * @property httpClient Implementation of [HttpClient] which acts as delegate.
+ * @property httpClient Implementation of [HttpClient] which is used to download the site containing an overview of available years.
  * @property extractor Extractor which retrieves the data from raw data.
  */
 class LivechartNewestYearDetector(

@@ -2,6 +2,7 @@ package io.github.manamiproject.modb.app.downloadcontrolstate
 
 import io.github.manamiproject.modb.anilist.AnilistConfig
 import io.github.manamiproject.modb.app.TestAppConfig
+import io.github.manamiproject.modb.app.TestDownloadControlStateAccessor
 import io.github.manamiproject.modb.app.TestMergeLockAccessor
 import io.github.manamiproject.modb.app.TestMetaDataProviderConfig
 import io.github.manamiproject.modb.app.config.Config
@@ -21,10 +22,12 @@ import io.github.manamiproject.modb.core.models.Duration
 import io.github.manamiproject.modb.core.models.Duration.TimeUnit.MINUTES
 import io.github.manamiproject.modb.kitsu.KitsuConfig
 import io.github.manamiproject.modb.myanimelist.MyanimelistConfig
+import io.github.manamiproject.modb.notify.NotifyConfig
 import io.github.manamiproject.modb.test.exceptionExpected
 import io.github.manamiproject.modb.test.loadTestResource
 import io.github.manamiproject.modb.test.tempDirectory
 import io.github.manamiproject.modb.test.testResource
+import kotlinx.coroutines.runBlocking
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Nested
 import java.net.URI
@@ -1930,6 +1933,128 @@ internal class DefaultDownloadControlStateAccessorTest {
 
                 // then
                 assertThat(initHasBeenInvoked).isOne()
+            }
+        }
+    }
+
+    @Nested
+    inner class HighestIdAlreadyInDatasetTests {
+
+        @Test
+        fun `return zero if there are no anime`() {
+            tempDirectory {
+                // given
+                val testAppConfig = object: Config by TestAppConfig {
+                    override fun metaDataProviderConfigurations(): Set<MetaDataProviderConfig> = setOf(AnilistConfig)
+                    override fun downloadControlStateDirectory(): Directory = tempDir
+                    override fun findMetaDataProviderConfig(host: Hostname): MetaDataProviderConfig = super.findMetaDataProviderConfig(host)
+                }
+
+                val testMetaDataProviderConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = "example.org"
+                }
+
+                val defaultDownloadControlStateAccessor = DefaultDownloadControlStateAccessor(
+                    appConfig = testAppConfig,
+                    mergeLockAccess = TestMergeLockAccessor,
+                )
+
+                // when
+                val result = defaultDownloadControlStateAccessor.highestIdAlreadyInDataset(testMetaDataProviderConfig)
+
+                // then
+                assertThat(result).isZero()
+            }
+        }
+
+        @Test
+        fun `return zero if the meta data provider doesn't use integer for anime IDs`() {
+            tempDirectory {
+                // given
+                val testAppConfig = object: Config by TestAppConfig {
+                    override fun metaDataProviderConfigurations(): Set<MetaDataProviderConfig> = setOf(NotifyConfig)
+                    override fun downloadControlStateDirectory(): Directory = tempDir
+                    override fun findMetaDataProviderConfig(host: Hostname): MetaDataProviderConfig = super.findMetaDataProviderConfig(host)
+                }
+
+                val defaultDownloadControlStateAccessor = DefaultDownloadControlStateAccessor(
+                    appConfig = testAppConfig,
+                    mergeLockAccess = TestMergeLockAccessor,
+                )
+
+                val downloadControlStateEntry = DownloadControlStateEntry(
+                    _lastDownloaded = WeekOfYear.currentWeek(),
+                    _nextDownload = WeekOfYear.currentWeek().plusWeeks(1),
+                    _weeksWihoutChange = 0,
+                    _anime = Anime(
+                        _title = "test1",
+                        sources = hashSetOf(NotifyConfig.buildAnimeLink("3g6kj9l26")),
+                    ),
+                )
+                defaultDownloadControlStateAccessor.createOrUpdate(NotifyConfig, "3g6kj9l26", downloadControlStateEntry)
+
+                // when
+                val result = defaultDownloadControlStateAccessor.highestIdAlreadyInDataset(NotifyConfig)
+
+                // then
+                assertThat(result).isZero()
+            }
+        }
+
+        @Test
+        fun `correctly returns highest ID`() {
+            tempDirectory {
+                // given
+                val testAppConfig = object: Config by TestAppConfig {
+                    override fun metaDataProviderConfigurations(): Set<MetaDataProviderConfig> = setOf(AnilistConfig)
+                    override fun downloadControlStateDirectory(): Directory = tempDir
+                    override fun findMetaDataProviderConfig(host: Hostname): MetaDataProviderConfig = super.findMetaDataProviderConfig(host)
+                }
+
+                val defaultDownloadControlStateAccessor = DefaultDownloadControlStateAccessor(
+                    appConfig = testAppConfig,
+                    mergeLockAccess = TestMergeLockAccessor,
+                )
+
+                val downloadControlStateEntry1 = DownloadControlStateEntry(
+                    _lastDownloaded = WeekOfYear.currentWeek(),
+                    _nextDownload = WeekOfYear.currentWeek().plusWeeks(1),
+                    _weeksWihoutChange = 0,
+                    _anime = Anime(
+                        _title = "test1",
+                        sources = hashSetOf(AnilistConfig.buildAnimeLink("4")),
+                    ),
+                )
+                defaultDownloadControlStateAccessor.createOrUpdate(AnilistConfig, "4", downloadControlStateEntry1)
+
+                val downloadControlStateEntry2 = DownloadControlStateEntry(
+                    _lastDownloaded = WeekOfYear.currentWeek(),
+                    _nextDownload = WeekOfYear.currentWeek().plusWeeks(1),
+                    _weeksWihoutChange = 0,
+                    _anime = Anime(
+                        _title = "test3",
+                        sources = hashSetOf(AnilistConfig.buildAnimeLink("179")),
+                    ),
+                )
+                defaultDownloadControlStateAccessor.createOrUpdate(AnilistConfig, "179", downloadControlStateEntry2)
+
+                val downloadControlStateEntry3 = DownloadControlStateEntry(
+                    _lastDownloaded = WeekOfYear.currentWeek(),
+                    _nextDownload = WeekOfYear.currentWeek().plusWeeks(1),
+                    _weeksWihoutChange = 0,
+                    _anime = Anime(
+                        _title = "test2",
+                        sources = hashSetOf(AnilistConfig.buildAnimeLink("25")),
+                    ),
+                )
+                defaultDownloadControlStateAccessor.createOrUpdate(AnilistConfig, "25", downloadControlStateEntry3)
+
+
+                // when
+                val result = defaultDownloadControlStateAccessor.highestIdAlreadyInDataset(AnilistConfig)
+
+                // then
+                assertThat(result).isEqualTo(179)
             }
         }
     }

@@ -197,6 +197,20 @@ class DefaultDownloadControlStateAccessor(
         }
     }
 
+    override suspend fun highestIdAlreadyInDataset(metaDataProviderConfig: MetaDataProviderConfig): Int {
+        log.info { "Finding the highest ID already in dataset for [${metaDataProviderConfig.hostname()}]." }
+
+        val list = allAnime(metaDataProviderConfig)
+            .map { it.sources.first() }
+            .map { metaDataProviderConfig.extractAnimeId(it) }
+
+        return if (list.isEmpty()) {
+            0
+        } else {
+            list.maxOf { it.toIntOrNull() ?: 0 }
+        }
+    }
+
     private suspend fun init() = withContext(LIMITED_FS) {
         initializationMutex.withLock {
             if (!isInitialized) {
