@@ -44,7 +44,7 @@ internal class AnilistHighestIdDetectorTest {
                 val result = anilistHighestIdDetector.detectHighestId()
 
                 // then
-                assertThat(result).isEqualTo(181642)
+                assertThat(result).isEqualTo(181776)
             }
         }
     }
