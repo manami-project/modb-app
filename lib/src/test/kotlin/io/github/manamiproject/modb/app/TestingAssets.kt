@@ -3,11 +3,13 @@ package io.github.manamiproject.modb.app
 import io.github.manamiproject.kommand.CommandExecutor
 import io.github.manamiproject.kommand.CommandLineConfig
 import io.github.manamiproject.modb.app.config.Config
+import io.github.manamiproject.modb.app.convfiles.AlreadyDownloadedIdsFinder
 import io.github.manamiproject.modb.app.dataset.DatasetFileAccessor
 import io.github.manamiproject.modb.app.dataset.DatasetFileType
 import io.github.manamiproject.modb.app.dataset.DeadEntriesAccessor
 import io.github.manamiproject.modb.app.downloadcontrolstate.DownloadControlStateAccessor
 import io.github.manamiproject.modb.app.downloadcontrolstate.DownloadControlStateEntry
+import io.github.manamiproject.modb.app.downloadcontrolstate.DownloadControlStateScheduler
 import io.github.manamiproject.modb.app.merging.ReviewedIsolatedEntriesAccessor
 import io.github.manamiproject.modb.app.merging.lock.MergeLock
 import io.github.manamiproject.modb.app.merging.lock.MergeLockAccessor
@@ -28,9 +30,7 @@ import io.github.manamiproject.modb.serde.json.JsonSerializer
 import io.github.manamiproject.modb.serde.json.models.Dataset
 import io.github.manamiproject.modb.serde.json.models.DeadEntries
 import io.github.manamiproject.modb.test.shouldNotBeInvoked
-import kotlinx.coroutines.*
-import kotlinx.coroutines.selects.SelectClause0
-import kotlinx.coroutines.selects.SelectClause1
+import kotlinx.coroutines.Deferred
 import java.net.URI
 import java.net.URL
 import java.nio.file.Path
@@ -42,7 +42,6 @@ import java.time.LocalDate
 import java.time.LocalDateTime
 import java.time.OffsetDateTime
 import java.util.concurrent.TimeUnit
-import kotlin.coroutines.CoroutineContext
 import java.nio.file.WatchService as JavaWatchService
 
 internal object TestConfigRegistry: ConfigRegistry {
@@ -117,6 +116,7 @@ internal object TestDownloadControlStateAccessor: DownloadControlStateAccessor {
     override suspend fun createOrUpdate(metaDataProviderConfig: MetaDataProviderConfig, animeId: AnimeId, downloadControlStateEntry: DownloadControlStateEntry) = shouldNotBeInvoked()
     override suspend fun removeDeadEntry(metaDataProviderConfig: MetaDataProviderConfig, animeId: AnimeId) = shouldNotBeInvoked()
     override suspend fun changeId(oldId: AnimeId, newId: AnimeId, metaDataProviderConfig: MetaDataProviderConfig): RegularFile = shouldNotBeInvoked()
+    override suspend fun highestIdAlreadyInDataset(metaDataProviderConfig: MetaDataProviderConfig): Int = shouldNotBeInvoked()
 }
 
 internal object TestDatasetFileAccessor: DatasetFileAccessor {
@@ -171,4 +171,13 @@ internal object TestHttpClient: HttpClient {
 internal object TestNetworkController: NetworkController {
     override suspend fun restartAsync(): Deferred<Boolean> = shouldNotBeInvoked()
     override fun isNetworkActive(): Boolean = shouldNotBeInvoked()
+}
+
+internal object TestDownloadControlStateScheduler: DownloadControlStateScheduler {
+    override suspend fun findEntriesNotScheduledForCurrentWeek(metaDataProviderConfig: MetaDataProviderConfig): Set<AnimeId> = shouldNotBeInvoked()
+    override suspend fun findEntriesScheduledForCurrentWeek(metaDataProviderConfig: MetaDataProviderConfig): Set<AnimeId> = shouldNotBeInvoked()
+}
+
+internal object TestAlreadyDownloadedIdsFinder: AlreadyDownloadedIdsFinder {
+    override suspend fun alreadyDownloadedIds(metaDataProviderConfig: MetaDataProviderConfig): Set<AnimeId> = shouldNotBeInvoked()
 }

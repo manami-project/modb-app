@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head><title>Anime Notifier</title>
+    <meta name='viewport' content='width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes'>
+    <link rel='chrome-webstore-item' href='https://chrome.google.com/webstore/detail/hajchfikckiofgilinkpifobdbiajfch'>
+    <link rel='manifest' href='/manifest.json'>
+    <link rel='preconnect' href='//fonts.gstatic.com'>
+    <link href='//media.notify.moe' rel='preconnect'>
+    <link rel='dns-prefetch' href='//arn.sfo2.cdn.digitaloceanspaces.com'>
+    <link rel='icon' type='image/webp' sizes='64x64' href='//media.notify.moe/images/brand/64.webp'>
+    <link rel='icon' type='image/webp' sizes='128x128' href='//media.notify.moe/images/brand/128.webp'>
+    <link rel='icon' type='image/webp' sizes='512x512' href='//media.notify.moe/images/brand/512.webp'>
+    <link rel='icon' type='image/png' sizes='64x64' href='//media.notify.moe/images/brand/64.png'>
+    <link href='//media.notify.moe/images/brand/128.png' rel='icon' type='image/png' sizes='128x128'>
+    <link rel='icon' type='image/png' sizes='512x512' href='//media.notify.moe/images/brand/512.png'>
+    <link rel='apple-touch-icon' sizes='180x180' type='image/png' href='//media.notify.moe/images/brand/180.png'>
+    <link rel='stylesheet' href='/styles' importance='high'>
+    <meta name='theme-color' content='#ef371f'>
+    <meta name='google-site-verification' content='1U-E2pDaYbFHyOSWl6AX3DvixQuDc4kfem9Kde_jZ8A'>
+</head>
+<body>
+<div id='container' class=''>
+    <div id='columns'>
+        <aside id='sidebar'>
+            <div class='user-image-container'><a href='/' aria-label='Anime Notifier'><img src=''
+                                                                                           data-src='/images/brand/64.png'
+                                                                                           data-webp='true'
+                                                                                           alt='Anime Notifier'
+                                                                                           class='user-image lazy'></a>
+            </div>
+            <div aria-label='Search'>
+                <div class='sidebar-button'>
+                    <svg-icon name='search' class='padded-icon icon-search'></svg-icon>
+                    <input spellcheck='false' title='Shortcut: F' maxlength='100' value='' id='search' type='search'
+                           autocorrect='off' autocapitalize='none' class='action' data-action='search'
+                           data-trigger='input' autocomplete='off' placeholder='Search...'>
+                    <div title='Speech input' class='speech-input action' data-action='searchBySpeech'
+                         data-trigger='click'>
+                        <svg-icon class='icon-microphone' name='microphone'></svg-icon>
+                    </div>
+                </div>
+            </div>
+            <a href='/' aria-label='Home' data-bubble='true' class='sidebar-link'>
+                <div class='sidebar-button'>
+                    <svg-icon name='home' class='padded-icon icon-home'></svg-icon>
+                    <span class='sidebar-text'>Home</span></div>
+            </a><a href='/activity' aria-label='Activity' data-bubble='true' class='sidebar-link'>
+            <div class='sidebar-button'>
+                <svg-icon name='rss' class='padded-icon icon-rss'></svg-icon>
+                <span class='sidebar-text'>Activity</span></div>
+        </a><a href='/forum' aria-label='Forum' data-bubble='true' class='sidebar-link'>
+            <div class='sidebar-button'>
+                <svg-icon name='comment' class='padded-icon icon-comment'></svg-icon>
+                <span class='sidebar-text'>Forum</span></div>
+        </a><a href='/explore' aria-label='Explore' data-bubble='true' class='sidebar-link'>
+            <div class='sidebar-button'>
+                <svg-icon name='th' class='padded-icon icon-th'></svg-icon>
+                <span class='sidebar-text'>Explore</span></div>
+        </a><a href='/amvs' aria-label='AMVs' data-bubble='true' class='sidebar-link'>
+            <div class='sidebar-button'>
+                <svg-icon name='video-camera' class='padded-icon icon-video-camera'></svg-icon>
+                <span class='sidebar-text'>AMVs</span></div>
+        </a><a href='/soundtracks' aria-label='Soundtracks' data-bubble='true' class='sidebar-link'>
+            <div class='sidebar-button'>
+                <svg-icon name='headphones' class='padded-icon icon-headphones'></svg-icon>
+                <span class='sidebar-text'>Soundtracks</span></div>
+        </a><a href='/quotes' aria-label='Quotes' data-bubble='true' class='sidebar-link'>
+            <div class='sidebar-button'>
+                <svg-icon name='quote-left' class='padded-icon icon-quote-left'></svg-icon>
+                <span class='sidebar-text'>Quotes</span></div>
+        </a><a href='/groups' aria-label='Groups' data-bubble='true' class='sidebar-link'>
+            <div class='sidebar-button'>
+                <svg-icon name='users' class='padded-icon icon-users'></svg-icon>
+                <span class='sidebar-text'>Groups</span></div>
+        </a><a href='/users' aria-label='Users' data-bubble='true' class='sidebar-link'>
+            <div class='sidebar-button'>
+                <svg-icon name='globe' class='padded-icon icon-globe'></svg-icon>
+                <span class='sidebar-text'>Users</span></div>
+        </a>
+            <div class='spacer'></div>
+            <div id='audio-player'>
+                <div id='audio-player-anime-info' class='hidden'><a id='audio-player-anime-link' href='' title=''
+                                                                    aria-label='Anime image'><img
+                        id='audio-player-anime-image' data-src='' data-webp='true' alt='Anime cover'
+                        class='lazy hidden'></a></div>
+                <a id='audio-player-track-title' href='' aria-label='Track title'></a>
+                <div id='audio-player-controls'>
+                    <button data-action='playPreviousTrack' data-trigger='click' aria-label='Previous track'
+                            class='audio-player-side-button action' id='audio-player-prev'>
+                        <svg-icon class='icon-step-backward' name='step-backward'></svg-icon>
+                    </button>
+                    <div class='audio-player-play-pause-container'>
+                        <button data-action='resumeAudio' data-trigger='click' aria-label='Play' class='action'
+                                id='audio-player-play'>
+                            <svg-icon class='icon-play' name='play'></svg-icon>
+                        </button>
+                        <button id='audio-player-pause' data-action='pauseAudio' data-trigger='click' aria-label='Pause'
+                                class='fade-out action'>
+                            <svg-icon class='icon-pause' name='pause'></svg-icon>
+                        </button>
+                    </div>
+                    <button aria-label='Next track' class='audio-player-side-button action' id='audio-player-next'
+                            data-action='playNextTrack' data-trigger='click'>
+                        <svg-icon class='icon-step-forward' name='step-forward'></svg-icon>
+                    </button>
+                </div>
+                <input type='range' min='0' value='50' class='action' id='audio-player-volume' data-trigger='input'
+                       aria-label='Change volume' data-action='setVolume' max='100'></div>
+            <a href='#' data-action='nextTheme' data-trigger='click' class='sidebar-link action'>
+                <div class='sidebar-button'>
+                    <svg-icon name='paint-brush' class='padded-icon icon-paint-brush'></svg-icon>
+                    <span class='sidebar-text'>Theme</span></div>
+            </a><a href='/thread/I3MMiOtzR' aria-label='Help' data-bubble='true' class='sidebar-link'>
+            <div class='sidebar-button'>
+                <svg-icon name='question-circle' class='padded-icon icon-question-circle'></svg-icon>
+                <span class='sidebar-text'>Help</span></div>
+        </a><a href='/login' aria-label='Login' data-bubble='true' class='sidebar-link'>
+            <div class='sidebar-button'>
+                <svg-icon name='sign-in' class='padded-icon icon-sign-in'></svg-icon>
+                <span class='sidebar-text'>Login</span></div>
+        </a>
+            <div class='sidebar-social-media'><a rel='noopener' class='social-media-button circle-1'
+                                                 href='https://discord.gg/0kimAmMCeXGXuzNF' title='Discord'
+                                                 target='_blank'>
+                <svg-icon class='icon-discord' name='discord'></svg-icon>
+            </a><a rel='noopener' class='social-media-button circle-2' href='https://www.facebook.com/animenotifier'
+                   title='Facebook' target='_blank'>
+                <svg-icon class='icon-facebook-square' name='facebook-square'></svg-icon>
+            </a><a href='https://twitter.com/animenotifier' title='Twitter' target='_blank' rel='noopener'
+                   class='social-media-button circle-3'>
+                <svg-icon class='icon-twitter-square' name='twitter-square'></svg-icon>
+            </a><a target='_blank' rel='noopener' class='social-media-button circle-4'
+                   href='https://patreon.com/eduardurbach' title='Patreon'>
+                <svg-icon class='icon-patreon' name='patreon'></svg-icon>
+            </a><a href='https://github.com/animenotifier/notify.moe' title='GitHub' target='_blank' rel='noopener'
+                   class='social-media-button circle-5'>
+                <svg-icon class='icon-github' name='github'></svg-icon>
+            </a></div>
+        </aside>
+        <div id='content-container'>
+            <main id='content' class='fade'>
+                <div id='filter-root' data-url='/explore/anime'></div>
+                <div class='explore-filters'>
+                    <div class='filter-select-container'><select id='filter-year' value='2020' data-action='filterAnime'
+                                                                 data-trigger='change' class='filter-select action'>
+                        <option value='2021'>2021</option>
+                        <option value='2020'>2020</option>
+                        <option value='2019'>2019</option>
+                        <option value='2018'>2018</option>
+                        <option value='2017'>2017</option>
+                        <option value='2016'>2016</option>
+                        <option value='2015'>2015</option>
+                        <option value='2014'>2014</option>
+                        <option value='2013'>2013</option>
+                        <option value='2012'>2012</option>
+                        <option value='2011'>2011</option>
+                        <option value='2010'>2010</option>
+                        <option value='2009'>2009</option>
+                        <option value='2008'>2008</option>
+                        <option value='2007'>2007</option>
+                        <option value='2006'>2006</option>
+                        <option value='2005'>2005</option>
+                        <option value='2004'>2004</option>
+                        <option value='2003'>2003</option>
+                        <option value='2002'>2002</option>
+                        <option value='2001'>2001</option>
+                        <option value='2000'>2000</option>
+                        <option value='1999'>1999</option>
+                        <option value='1998'>1998</option>
+                        <option value='1997'>1997</option>
+                        <option value='1996'>1996</option>
+                        <option value='1995'>1995</option>
+                        <option value='1994'>1994</option>
+                        <option value='1993'>1993</option>
+                        <option value='1992'>1992</option>
+                        <option value='1991'>1991</option>
+                        <option value='1990'>1990</option>
+                        <option value='1989'>1989</option>
+                        <option value='1988'>1988</option>
+                        <option value='1987'>1987</option>
+                        <option value='1986'>1986</option>
+                        <option value='1985'>1985</option>
+                        <option value='1984'>1984</option>
+                        <option value='1983'>1983</option>
+                        <option value='1982'>1982</option>
+                        <option value='1981'>1981</option>
+                        <option value='1980'>1980</option>
+                        <option value='1979'>1979</option>
+                        <option value='1978'>1978</option>
+                        <option value='1977'>1977</option>
+                        <option value='1976'>1976</option>
+                        <option value='1975'>1975</option>
+                        <option value='1974'>1974</option>
+                        <option value='1973'>1973</option>
+                        <option value='1972'>1972</option>
+                        <option value='1971'>1971</option>
+                        <option value='1970'>1970</option>
+                        <option value='1969'>1969</option>
+                        <option value='1968'>1968</option>
+                        <option value='1967'>1967</option>
+                        <option value='1966'>1966</option>
+                        <option value='1965'>1965</option>
+                        <option value='1964'>1964</option>
+                        <option value='1963'>1963</option>
+                        <option value='1962'>1962</option>
+                        <option value='1961'>1961</option>
+                        <option value='1960'>1960</option>
+                        <option value='1959'>1959</option>
+                        <option value='1958'>1958</option>
+                        <option value='1957'>1957</option>
+                        <option value='1956'>1956</option>
+                        <option value='1955'>1955</option>
+                        <option value='1954'>1954</option>
+                        <option value='1953'>1953</option>
+                        <option value='1952'>1952</option>
+                        <option value='1951'>1951</option>
+                    </select>
+                        <div class='filter-label'>Year</div>
+                    </div>
+                    <div class='filter-select-container'><select data-action='filterAnime' data-trigger='change'
+                                                                 class='filter-select action' id='filter-season'
+                                                                 value=''>
+                        <option value='' class='option-any'>Any</option>
+                        <option value='winter'>Winter</option>
+                        <option value='spring'>Spring</option>
+                        <option value='summer'>Summer</option>
+                        <option value='autumn'>Autumn</option>
+                    </select>
+                        <div class='filter-label'>Season</div>
+                    </div>
+                    <div class='filter-select-container'><select id='filter-status' value='' data-action='filterAnime'
+                                                                 data-trigger='change' class='filter-select action'>
+                        <option value='' class='option-any'>Any</option>
+                        <option value='current'>Current</option>
+                        <option value='upcoming'>Upcoming</option>
+                        <option value='finished'>Finished</option>
+                    </select>
+                        <div class='filter-label'>Status</div>
+                    </div>
+                    <div class='filter-select-container'><select class='filter-select action' id='filter-type'
+                                                                 value='music' data-action='filterAnime'
+                                                                 data-trigger='change'>
+                        <option class='option-any' value=''>Any</option>
+                        <option value='tv'>TV</option>
+                        <option value='movie'>Movie</option>
+                        <option value='ova'>OVA</option>
+                        <option value='ona'>ONA</option>
+                        <option value='special'>Special</option>
+                    </select>
+                        <div class='filter-label'>Type</div>
+                    </div>
+                </div>
+                <div class='corner-buttons-hide-on-mobile'><a href='/calendar' title='Calendar' class='button'>
+                    <svg-icon class='icon-calendar' name='calendar'></svg-icon>
+                </a><a href='/companies' title='Companies' class='button'>
+                    <svg-icon class='icon-building' name='building'></svg-icon>
+                </a><a href='/halloffame' title='Hall of Fame' class='button'>
+                    <svg-icon class='icon-trophy' name='trophy'></svg-icon>
+                </a><a href='/genres' title='View genres' class='button'>
+                    <svg-icon class='icon-clone' name='clone'></svg-icon>
+                </a><a class='button' href='/explore/color/any/anime' title='View colors'>
+                    <svg-icon class='icon-paint-brush' name='paint-brush'></svg-icon>
+                </a></div>
+                <h1 class='page-title'>Explore</h1>
+                <div class='explore-anime'>
+                    <div class='anime-grid' id='load-more-target'>
+                        <div data-added='false' class='anime-grid-cell'><a href='/anime/9h8IHNjWR'><img
+                                class='anime-grid-image lazy'
+                                data-src='//media.notify.moe/images/anime/medium/9h8IHNjWR.jpg?1586101242'
+                                data-webp='true' data-color='hsl(31.8, 33.7%, 74.4%)' alt='Re-raise'>
+                            <div class='image-title'>
+                                <div class='image-title-text'>Re-raise</div>
+                            </div>
+                        </a></div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+    <div id='loading' class='sk-cube-grid fade'>
+        <div class='sk-cube hide'></div>
+        <div class='sk-cube'></div>
+        <div class='sk-cube hide'></div>
+        <div class='sk-cube'></div>
+        <div class='sk-cube sk-cube-center'></div>
+        <div class='sk-cube'></div>
+        <div class='sk-cube hide'></div>
+        <div class='sk-cube'></div>
+        <div class='sk-cube hide'></div>
+    </div>
+    <div id='status-message' class='fade fade-out'>
+        <div id='status-message-text'></div>
+        <a href='#' data-trigger='click' data-action='closeStatusMessage' aria-label='Close status message'
+           class='status-message-action action'>
+            <svg-icon class='icon-close' name='close'></svg-icon>
+        </a></div>
+    <nav class='extension-navigation'>
+        <button data-trigger='click' data-action='toggleSidebar' class='action'>
+            <svg-icon class='icon-bars' name='bars'></svg-icon>
+        </button>
+    </nav>
+</div>
+<script src='/scripts' importance='high' crossorigin='anonymous'></script>
+<script type='application/ld+json'>{
+    "@context": "http://schema.org",
+    "@type": "Organization",
+    "name": "Anime Notifier",
+    "description": "Anime list, tracker, database and notifier for new anime episodes. Create your own anime list and keep track of your progress as you watch.",
+    "url": "https://notify.moe",
+    "email": "animenotifierofficial@gmail.com",
+    "logo": "https://media.notify.moe/images/brand/512.png",
+    "sameAs": [
+        "https://www.facebook.com/animenotifier",
+        "https://twitter.com/animenotifier",
+        "https://discord.gg/0kimAmMCeXGXuzNF",
+        "https://github.com/animenotifier/notify.moe"
+    ],
+    "founder": {
+        "@type": "Person",
+        "name": "Eduard Urbach"
+    }
+}</script>
+</body>
+</html>

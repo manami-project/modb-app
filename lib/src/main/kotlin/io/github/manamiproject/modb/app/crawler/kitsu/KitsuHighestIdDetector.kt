@@ -12,7 +12,7 @@ import io.github.manamiproject.modb.core.logging.LoggerDelegate
  * Detects the highest anime id based on the page showing latest additions.
  * @since 1.0.0
  * @property metaDataProviderConfig Configuration for a specific meta data provider.
- * @property httpClient Implementation of [HttpClient] which acts as delegate.
+ * @property httpClient Implementation of [HttpClient] which is used to retrieve the highest id.
  */
 class KitsuHighestIdDetector(
     private val metaDataProviderConfig: MetaDataProviderConfig = KitsuHighestIdDetectorConfig,
