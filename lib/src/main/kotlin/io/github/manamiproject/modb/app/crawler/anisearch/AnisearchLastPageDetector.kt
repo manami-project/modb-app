@@ -33,14 +33,14 @@ class AnisearchLastPageDetector(
         log.info { "Fetching max number of pages for [${metaDataProviderConfig.hostname()}]." }
 
         val response = try {
-            downloadPage()
+            download()
         } catch (e: Throwable) {
             when(e) {
                 is ConnectException,
                 is UnknownHostException,
                 is NoRouteToHostException -> {
                     networkController.restartAsync().await()
-                    downloadPage()
+                    download()
                 }
                 else -> throw e
             }
@@ -59,7 +59,7 @@ class AnisearchLastPageDetector(
         return Regex("[0-9]+").find(lastPageNavEntry)!!.value.toInt()
     }
 
-    private suspend fun downloadPage(): String {
+    private suspend fun download(): String {
         return httpClient.get(
             url = metaDataProviderConfig.buildDataDownloadLink().toURL(),
             headers = mapOf("host" to listOf("www.${metaDataProviderConfig.hostname()}"))

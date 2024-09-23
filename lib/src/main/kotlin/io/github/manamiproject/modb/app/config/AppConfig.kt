@@ -5,6 +5,8 @@ import io.github.manamiproject.modb.anilist.AnilistConfig
 import io.github.manamiproject.modb.animeplanet.AnimePlanetConfig
 import io.github.manamiproject.modb.anisearch.AnisearchConfig
 import io.github.manamiproject.modb.anisearch.AnisearchRelationsConfig
+import io.github.manamiproject.modb.app.crawler.animeplanet.AnimePlanetPaginationIdRangeSelectorConfig
+import io.github.manamiproject.modb.app.crawler.livechart.LivechartPaginationIdRangeSelectorConfig
 import io.github.manamiproject.modb.app.downloadcontrolstate.weekOfYear
 import io.github.manamiproject.modb.core.config.ConfigRegistry
 import io.github.manamiproject.modb.core.config.DefaultConfigRegistry
@@ -67,9 +69,11 @@ class AppConfig(
             AnidbConfig,
             AnilistConfig,
             AnimePlanetConfig,
+            AnimePlanetPaginationIdRangeSelectorConfig,
             AnisearchConfig,
             KitsuConfig,
             LivechartConfig,
+            LivechartPaginationIdRangeSelectorConfig,
             MyanimelistConfig,
             NotifyConfig -> currentWeekWorkingDir().resolve(hostname)
             AnisearchRelationsConfig, KitsuRelationsConfig, NotifyRelationsConfig -> currentWeekWorkingDir().resolve("$hostname-relations")

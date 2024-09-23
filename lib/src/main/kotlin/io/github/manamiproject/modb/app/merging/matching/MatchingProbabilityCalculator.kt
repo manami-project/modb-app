@@ -1,7 +1,7 @@
 package io.github.manamiproject.modb.app.merging.matching
 
-import io.github.manamiproject.modb.app.merging.goldenrecords.PotentialGoldenRecord
 import io.github.manamiproject.modb.app.merging.goldenrecords.GoldenRecordAccessor
+import io.github.manamiproject.modb.app.merging.goldenrecords.PotentialGoldenRecord
 import io.github.manamiproject.modb.core.models.Anime
 
 /**

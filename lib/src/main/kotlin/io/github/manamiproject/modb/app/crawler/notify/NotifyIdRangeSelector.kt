@@ -29,7 +29,7 @@ import io.github.manamiproject.modb.core.logging.LoggerDelegate
  * @property httpClient Implementation of [HttpClient] used to retrieve the overview sites for types 'any' and 'music'.
  * @property extractor Extractor which retrieves the data from raw data.
  * @property downloadControlStateScheduler Allows to check which anime are scheduled for re-download and which are not.
- * @property alreadyDownloadedIdsFinder Fetch all IDs which have already been downloaded.
+ * @property alreadyDownloadedIdsFinder Fetches all IDs which have already been downloaded.
  */
 class NotifyIdRangeSelector(
     private val metaDataProviderConfig: MetaDataProviderConfig,

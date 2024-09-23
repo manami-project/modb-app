@@ -1,10 +1,6 @@
 package io.github.manamiproject.modb.app.postprocessors
 
-import io.github.manamiproject.modb.app.downloadcontrolstate.DefaultDownloadControlStateAccessor
-import io.github.manamiproject.modb.app.downloadcontrolstate.DownloadControlStateAccessor
-import io.github.manamiproject.modb.app.downloadcontrolstate.WeekOfYear
-import io.github.manamiproject.modb.app.downloadcontrolstate.compareTo
-import io.github.manamiproject.modb.app.downloadcontrolstate.DownloadControlStateEntry
+import io.github.manamiproject.modb.app.downloadcontrolstate.*
 import io.github.manamiproject.modb.core.logging.LoggerDelegate
 
 /**

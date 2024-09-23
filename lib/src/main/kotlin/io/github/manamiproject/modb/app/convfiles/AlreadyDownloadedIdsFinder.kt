@@ -4,7 +4,7 @@ import io.github.manamiproject.modb.core.config.AnimeId
 import io.github.manamiproject.modb.core.config.MetaDataProviderConfig
 
 /**
- * Checks conv files to see which IDs have already been downloaded so far.
+ * Checks raw files to see which IDs have already been downloaded so far.
  * @since 1.0.0
  */
 interface AlreadyDownloadedIdsFinder {

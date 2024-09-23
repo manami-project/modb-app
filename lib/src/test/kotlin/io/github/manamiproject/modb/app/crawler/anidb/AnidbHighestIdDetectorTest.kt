@@ -30,7 +30,7 @@ internal class AnidbHighestIdDetectorTest {
                 val testHttpClient = object : HttpClient by TestHttpClient {
                     override suspend fun get(url: URL, headers: Map<String, Collection<String>>): HttpResponse = HttpResponse(
                         code = 200,
-                        body = loadTestResource<String>("crawler/anidb/AnidbHighestIdDetectorTest/latest-anime.html").toByteArray(),
+                        body = loadTestResource("crawler/anidb/AnidbHighestIdDetectorTest/latest-anime.html"),
                     )
                 }
 

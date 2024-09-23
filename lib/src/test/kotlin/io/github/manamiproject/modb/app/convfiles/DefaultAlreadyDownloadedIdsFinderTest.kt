@@ -35,9 +35,12 @@ internal class DefaultAlreadyDownloadedIdsFinderTest {
                 )
 
                 tempDir.resolve("3.html").createFile()
+                tempDir.resolve("3.conv").createFile()
                 tempDir.resolve("754.html").createFile()
+                tempDir.resolve("754.conv").createFile()
                 tempDir.resolve("19643.html").createFile()
                 tempDir.resolve("anime-title.html").createFile()
+                tempDir.resolve("anime-title.conv").createFile()
                 tempDir.resolve("200.json").createFile()
                 tempDir.resolve("something-else.txt").createFile()
                 tempDir.resolve("folder").createDirectory()

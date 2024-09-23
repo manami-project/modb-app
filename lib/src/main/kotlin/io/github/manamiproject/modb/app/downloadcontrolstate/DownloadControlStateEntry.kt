@@ -1,13 +1,11 @@
 package io.github.manamiproject.modb.app.downloadcontrolstate
 
+import io.github.manamiproject.modb.core.converter.AnimeConverter
 import io.github.manamiproject.modb.core.extensions.pickRandom
 import io.github.manamiproject.modb.core.models.Anime
 import io.github.manamiproject.modb.core.models.Anime.Companion.NO_PICTURE
 import io.github.manamiproject.modb.core.models.Anime.Companion.NO_PICTURE_THUMBNAIL
-import io.github.manamiproject.modb.core.models.Anime.Status.ONGOING
-import io.github.manamiproject.modb.core.models.Anime.Status.UPCOMING
-import io.github.manamiproject.modb.core.models.Anime.Status.FINISHED
-import io.github.manamiproject.modb.core.converter.AnimeConverter
+import io.github.manamiproject.modb.core.models.Anime.Status.*
 import io.github.manamiproject.modb.core.models.AnimeSeason
 
 /**

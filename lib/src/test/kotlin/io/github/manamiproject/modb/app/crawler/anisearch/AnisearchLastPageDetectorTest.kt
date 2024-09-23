@@ -34,7 +34,7 @@ internal class AnisearchLastPageDetectorTest {
                 val testHttpClient = object : HttpClient by TestHttpClient {
                     override suspend fun get(url: URL, headers: Map<String, Collection<String>>): HttpResponse = HttpResponse(
                         code = 200,
-                        body = loadTestResource<String>("crawler/anisearch/AnisearchLastPageDetectorTest/page-1.html").toByteArray(),
+                        body = loadTestResource("crawler/anisearch/AnisearchLastPageDetectorTest/page-1.html"),
                     )
                 }
 
@@ -111,7 +111,7 @@ internal class AnisearchLastPageDetectorTest {
                         return if (hasBeenInvoked) {
                             HttpResponse(
                                 code = 200,
-                                body = loadTestResource<String>("crawler/anisearch/AnisearchLastPageDetectorTest/page-1.html").toByteArray(),
+                                body = loadTestResource("crawler/anisearch/AnisearchLastPageDetectorTest/page-1.html"),
                             )
                         } else {
                             throw ConnectException()
@@ -155,7 +155,7 @@ internal class AnisearchLastPageDetectorTest {
                         return if (hasBeenInvoked) {
                             HttpResponse(
                                 code = 200,
-                                body = loadTestResource<String>("crawler/anisearch/AnisearchLastPageDetectorTest/page-1.html").toByteArray(),
+                                body = loadTestResource("crawler/anisearch/AnisearchLastPageDetectorTest/page-1.html"),
                             )
                         } else {
                             throw UnknownHostException()
@@ -199,7 +199,7 @@ internal class AnisearchLastPageDetectorTest {
                         return if (hasBeenInvoked) {
                             HttpResponse(
                                 code = 200,
-                                body = loadTestResource<String>("crawler/anisearch/AnisearchLastPageDetectorTest/page-1.html").toByteArray(),
+                                body = loadTestResource("crawler/anisearch/AnisearchLastPageDetectorTest/page-1.html"),
                             )
                         } else {
                             throw NoRouteToHostException()

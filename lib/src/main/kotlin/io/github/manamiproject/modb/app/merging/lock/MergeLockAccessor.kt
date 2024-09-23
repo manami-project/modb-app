@@ -1,7 +1,7 @@
 package io.github.manamiproject.modb.app.merging.lock
 
-import java.net.URI
 import io.github.manamiproject.modb.core.models.Anime
+import java.net.URI
 
 /**
  * Represents a single entry within the `merge.lock` file.

@@ -10,5 +10,5 @@ import java.net.URI
  */
 object AnisearchLastPageDetectorConfig: MetaDataProviderConfig by AnisearchConfig {
 
-    override fun buildDataDownloadLink(id: String): URI = AnisearchIdRangeSelectorConfig.buildDataDownloadLink("1")
+    override fun buildDataDownloadLink(id: String): URI = AnisearchPaginationIdRangeSelectorConfig.buildDataDownloadLink("1")
 }

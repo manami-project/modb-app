@@ -5,12 +5,12 @@ import org.assertj.core.api.Assertions.assertThat
 import java.net.URI
 import kotlin.test.Test
 
-internal class AnisearchIdRangeSelectorConfigTest {
+internal class AnisearchPaginationIdRangeSelectorConfigTest {
 
     @Test
     fun `isTestContext is false`() {
         // when
-        val result = AnisearchIdRangeSelectorConfig.isTestContext()
+        val result = AnisearchPaginationIdRangeSelectorConfig.isTestContext()
 
         // then
         assertThat(result).isFalse()
@@ -19,7 +19,7 @@ internal class AnisearchIdRangeSelectorConfigTest {
     @Test
     fun `hostname must be correct`() {
         // when
-        val result = AnisearchIdRangeSelectorConfig.hostname()
+        val result = AnisearchPaginationIdRangeSelectorConfig.hostname()
 
         // then
         assertThat(result).isEqualTo(AnisearchConfig.hostname())
@@ -31,7 +31,7 @@ internal class AnisearchIdRangeSelectorConfigTest {
         val id = "1535"
 
         // when
-        val result = AnisearchIdRangeSelectorConfig.buildAnimeLink(id)
+        val result = AnisearchPaginationIdRangeSelectorConfig.buildAnimeLink(id)
 
         // then
         assertThat(result).isEqualTo(URI("https://${AnisearchConfig.hostname()}/anime/$id"))
@@ -43,7 +43,7 @@ internal class AnisearchIdRangeSelectorConfigTest {
         val id = "1535"
 
         // when
-        val result = AnisearchIdRangeSelectorConfig.buildDataDownloadLink(id)
+        val result = AnisearchPaginationIdRangeSelectorConfig.buildDataDownloadLink(id)
 
         // then
         assertThat(result).isEqualTo(URI("https://${AnisearchConfig.hostname()}/anime/index/page-1535?char=all&sort=title&order=asc&view=2&limit=100&title=&titlex="))
@@ -52,7 +52,7 @@ internal class AnisearchIdRangeSelectorConfigTest {
     @Test
     fun `file suffix must be html`() {
         // when
-        val result = AnisearchIdRangeSelectorConfig.fileSuffix()
+        val result = AnisearchPaginationIdRangeSelectorConfig.fileSuffix()
 
         // then
         assertThat(result).isEqualTo("html")

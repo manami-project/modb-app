@@ -4,14 +4,14 @@ import io.github.manamiproject.modb.app.merging.goldenrecords.PotentialGoldenRec
 import io.github.manamiproject.modb.app.weightedProbabilityOfTwoNumbersBeingEqual
 import io.github.manamiproject.modb.core.models.Anime
 import io.github.manamiproject.modb.core.models.Anime.Status
-import io.github.manamiproject.modb.core.models.Anime.Status.UNKNOWN as UNKNOWN_STATUS
 import io.github.manamiproject.modb.core.models.Anime.Type
 import io.github.manamiproject.modb.core.models.Anime.Type.ONA
 import io.github.manamiproject.modb.core.models.Anime.Type.SPECIAL
 import io.github.manamiproject.modb.core.models.Duration
-import io.github.manamiproject.modb.core.models.Duration.Companion.UNKNOWN as UNKNOWN_DURATION
 import org.apache.commons.text.similarity.JaroWinklerSimilarity
 import kotlin.math.floor
+import io.github.manamiproject.modb.core.models.Anime.Status.UNKNOWN as UNKNOWN_STATUS
+import io.github.manamiproject.modb.core.models.Duration.Companion.UNKNOWN as UNKNOWN_DURATION
 
 /**
  * This implementation of [MatchingProbabilityCalculator] tries to calculate how likely it is that an [Anime] should

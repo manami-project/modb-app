@@ -1,9 +1,9 @@
 package io.github.manamiproject.modb.app.downloadcontrolstate
 
-import io.github.manamiproject.modb.core.config.AnimeId
-import io.github.manamiproject.modb.core.config.MetaDataProviderConfig
 import io.github.manamiproject.modb.app.config.Config
 import io.github.manamiproject.modb.app.merging.lock.MergeLockAccessor
+import io.github.manamiproject.modb.core.config.AnimeId
+import io.github.manamiproject.modb.core.config.MetaDataProviderConfig
 import io.github.manamiproject.modb.core.extensions.Directory
 import io.github.manamiproject.modb.core.extensions.RegularFile
 import io.github.manamiproject.modb.core.models.Anime

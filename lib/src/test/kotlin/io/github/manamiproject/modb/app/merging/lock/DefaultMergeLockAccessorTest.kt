@@ -837,6 +837,7 @@ internal class DefaultMergeLockAccessorTest {
 
                 // then
                 val expectedFile = loadTestResource<String>("merging/lock/DefaultMergeLockAccessTest/expected_file_after_adding_an_entry-merge.lock")
+
                 assertThat(testAppConfig.downloadControlStateDirectory().resolve("merge.lock").readFile()).isEqualTo(expectedFile)
             }
         }
