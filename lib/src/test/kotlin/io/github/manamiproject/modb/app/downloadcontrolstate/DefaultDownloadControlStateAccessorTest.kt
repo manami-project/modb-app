@@ -2,7 +2,6 @@ package io.github.manamiproject.modb.app.downloadcontrolstate
 
 import io.github.manamiproject.modb.anilist.AnilistConfig
 import io.github.manamiproject.modb.app.TestAppConfig
-import io.github.manamiproject.modb.app.TestDownloadControlStateAccessor
 import io.github.manamiproject.modb.app.TestMergeLockAccessor
 import io.github.manamiproject.modb.app.TestMetaDataProviderConfig
 import io.github.manamiproject.modb.app.config.Config
@@ -27,7 +26,6 @@ import io.github.manamiproject.modb.test.exceptionExpected
 import io.github.manamiproject.modb.test.loadTestResource
 import io.github.manamiproject.modb.test.tempDirectory
 import io.github.manamiproject.modb.test.testResource
-import kotlinx.coroutines.runBlocking
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Nested
 import java.net.URI

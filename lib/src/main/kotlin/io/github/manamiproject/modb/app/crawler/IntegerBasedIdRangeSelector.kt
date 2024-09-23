@@ -24,7 +24,7 @@ import io.github.manamiproject.modb.core.logging.LoggerDelegate
  * @property deadEntriesAccessor Access to dead entries files.
  * @property downloadControlStateAccessor Access to DCS files.
  * @property downloadControlStateScheduler Allows to check which anime are scheduled for re-download and which are not.
- * @property alreadyDownloadedIdsFinder Fetch all IDs which have already been downloaded.
+ * @property alreadyDownloadedIdsFinder Fetches all IDs which have already been downloaded.
  */
 class IntegerBasedIdRangeSelector(
     private val metaDataProviderConfig: MetaDataProviderConfig,

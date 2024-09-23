@@ -4,7 +4,8 @@ import io.github.manamiproject.modb.app.merging.goldenrecords.PotentialGoldenRec
 import io.github.manamiproject.modb.core.models.Anime
 import io.github.manamiproject.modb.core.models.Anime.Status.FINISHED
 import io.github.manamiproject.modb.core.models.Anime.Status.UPCOMING
-import io.github.manamiproject.modb.core.models.Anime.Type.*
+import io.github.manamiproject.modb.core.models.Anime.Type.MOVIE
+import io.github.manamiproject.modb.core.models.Anime.Type.TV
 import io.github.manamiproject.modb.core.models.AnimeSeason
 import io.github.manamiproject.modb.core.models.AnimeSeason.Season.FALL
 import io.github.manamiproject.modb.core.models.AnimeSeason.Season.SPRING

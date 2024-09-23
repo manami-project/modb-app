@@ -5,12 +5,12 @@ import org.assertj.core.api.Assertions.assertThat
 import java.net.URI
 import kotlin.test.Test
 
-internal class AnimePlanetIdRangeSelectorConfigTest {
+internal class AnimePlanetPaginationIdRangeSelectorConfigTest {
 
     @Test
     fun `isTestContext is false`() {
         // when
-        val result = AnimePlanetIdRangeSelectorConfig.isTestContext()
+        val result = AnimePlanetPaginationIdRangeSelectorConfig.isTestContext()
 
         // then
         assertThat(result).isFalse()
@@ -19,7 +19,7 @@ internal class AnimePlanetIdRangeSelectorConfigTest {
     @Test
     fun `hostname must be correct`() {
         // when
-        val result = AnimePlanetIdRangeSelectorConfig.hostname()
+        val result = AnimePlanetPaginationIdRangeSelectorConfig.hostname()
 
         // then
         assertThat(result).isEqualTo(AnimePlanetConfig.hostname())
@@ -31,10 +31,10 @@ internal class AnimePlanetIdRangeSelectorConfigTest {
         val id = "black-clover"
 
         // when
-        val result = AnimePlanetIdRangeSelectorConfig.buildAnimeLink(id)
+        val result = AnimePlanetPaginationIdRangeSelectorConfig.buildAnimeLink(id)
 
         // then
-        assertThat(result).isEqualTo(URI("https://${AnimePlanetIdRangeSelectorConfig.hostname()}/anime/$id"))
+        assertThat(result).isEqualTo(URI("https://${AnimePlanetPaginationIdRangeSelectorConfig.hostname()}/anime/$id"))
     }
 
     @Test
@@ -43,16 +43,16 @@ internal class AnimePlanetIdRangeSelectorConfigTest {
         val id = "black-clover"
 
         // when
-        val result = AnimePlanetIdRangeSelectorConfig.buildDataDownloadLink(id)
+        val result = AnimePlanetPaginationIdRangeSelectorConfig.buildDataDownloadLink(id)
 
         // then
-        assertThat(result).isEqualTo(URI("https://${AnimePlanetIdRangeSelectorConfig.hostname()}/anime/all?sort=title&order=asc&page=black-clover&bvm=list"))
+        assertThat(result).isEqualTo(URI("https://${AnimePlanetPaginationIdRangeSelectorConfig.hostname()}/anime/all?sort=title&order=asc&page=black-clover&bvm=list"))
     }
 
     @Test
     fun `file suffix must be json`() {
         // when
-        val result = AnimePlanetIdRangeSelectorConfig.fileSuffix()
+        val result = AnimePlanetPaginationIdRangeSelectorConfig.fileSuffix()
 
         // then
         assertThat(result).isEqualTo("html")

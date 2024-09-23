@@ -31,7 +31,7 @@ internal class KitsuHighestIdDetectorTest {
                 val testHttpClient = object : HttpClient by TestHttpClient {
                     override suspend fun get(url: URL, headers: Map<String, Collection<String>>): HttpResponse = HttpResponse(
                         code = 200,
-                        body = loadTestResource<String>("crawler/kitsu/KitsuHighestIdDetectorTest/just_added.json").toByteArray(),
+                        body = loadTestResource("crawler/kitsu/KitsuHighestIdDetectorTest/just_added.json"),
                     )
                 }
 

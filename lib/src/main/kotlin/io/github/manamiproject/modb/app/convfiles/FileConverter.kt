@@ -1,7 +1,7 @@
 package io.github.manamiproject.modb.app.convfiles
 
-import io.github.manamiproject.modb.core.models.Anime
 import io.github.manamiproject.modb.core.extensions.RegularFile
+import io.github.manamiproject.modb.core.models.Anime
 
 /**
  * File suffix used for the files containing the serialized [Anime] object as intermediate format.

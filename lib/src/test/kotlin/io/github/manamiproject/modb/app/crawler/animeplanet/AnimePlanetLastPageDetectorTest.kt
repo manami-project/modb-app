@@ -31,7 +31,7 @@ internal class AnimePlanetLastPageDetectorTest {
                 val testHttpClient = object : HttpClient by TestHttpClient {
                     override suspend fun get(url: URL, headers: Map<String, Collection<String>>): HttpResponse = HttpResponse(
                         code = 200,
-                        body = loadTestResource<String>("crawler/animeplanet/AnimePlanetLastPageDetectorTest/all.html").toByteArray(),
+                        body = loadTestResource("crawler/animeplanet/AnimePlanetLastPageDetectorTest/all.html"),
                     )
                 }
 

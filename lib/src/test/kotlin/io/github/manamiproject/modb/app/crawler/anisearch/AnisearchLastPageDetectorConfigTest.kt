@@ -44,7 +44,7 @@ internal class AnisearchLastPageDetectorConfigTest {
         val result = AnisearchLastPageDetectorConfig.buildDataDownloadLink(EMPTY)
 
         // then
-        assertThat(result).isEqualTo(AnisearchIdRangeSelectorConfig.buildDataDownloadLink("1"))
+        assertThat(result).isEqualTo(AnisearchPaginationIdRangeSelectorConfig.buildDataDownloadLink("1"))
     }
 
     @Test

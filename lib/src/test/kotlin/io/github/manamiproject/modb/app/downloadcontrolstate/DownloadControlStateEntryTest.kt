@@ -6,11 +6,11 @@ import io.github.manamiproject.modb.core.models.AnimeSeason
 import io.github.manamiproject.modb.core.models.Duration
 import io.github.manamiproject.modb.test.exceptionExpected
 import org.assertj.core.api.Assertions.assertThat
-import org.junit.jupiter.params.provider.EnumSource.Mode.EXCLUDE
-import org.junit.jupiter.params.provider.EnumSource.Mode.INCLUDE
 import org.junit.jupiter.api.Nested
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.EnumSource
+import org.junit.jupiter.params.provider.EnumSource.Mode.EXCLUDE
+import org.junit.jupiter.params.provider.EnumSource.Mode.INCLUDE
 import java.net.URI
 import kotlin.test.Test
 

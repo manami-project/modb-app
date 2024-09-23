@@ -30,7 +30,7 @@ internal class MyanimelistHighestIdDetectorTest {
                 val testHttpClient = object : HttpClient by TestHttpClient {
                     override suspend fun get(url: URL, headers: Map<String, Collection<String>>): HttpResponse = HttpResponse(
                         code = 200,
-                        body = loadTestResource<String>("crawler/myanimelist/MyanimelistHighestIdDetectorTest/just_added.html").toByteArray(),
+                        body = loadTestResource("crawler/myanimelist/MyanimelistHighestIdDetectorTest/just_added.html"),
                     )
                 }
 

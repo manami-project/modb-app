@@ -7,6 +7,8 @@ import io.github.manamiproject.modb.anisearch.AnisearchConfig
 import io.github.manamiproject.modb.anisearch.AnisearchRelationsConfig
 import io.github.manamiproject.modb.app.TestConfigRegistry
 import io.github.manamiproject.modb.app.TestMetaDataProviderConfig
+import io.github.manamiproject.modb.app.crawler.animeplanet.AnimePlanetPaginationIdRangeSelectorConfig
+import io.github.manamiproject.modb.app.crawler.livechart.LivechartPaginationIdRangeSelectorConfig
 import io.github.manamiproject.modb.app.downloadcontrolstate.WeekOfYear
 import io.github.manamiproject.modb.core.config.ConfigRegistry
 import io.github.manamiproject.modb.core.config.Hostname
@@ -128,7 +130,7 @@ internal class AppConfigTest {
     }
 
     @Nested
-    inner class WorkignDirTests {
+    inner class WorkingDirTests {
 
         @Test
         fun `throws exception if workingdir is an existing regular file`() {
@@ -269,6 +271,27 @@ internal class AppConfigTest {
         }
 
         @Test
+        fun `check that name of working directory for AnimePlanetPaginationIdRangeSelectorConfig is correct`() {
+            tempDirectory {
+                // given
+                val testConfigRegistry = object: ConfigRegistry by TestConfigRegistry {
+                    override fun string(key: String): String = tempDir.toAbsolutePath().toString()
+                }
+
+                val appConfig = AppConfig(
+                    configRegistry = testConfigRegistry,
+                )
+
+                // when
+                val result = appConfig.workingDir(AnimePlanetPaginationIdRangeSelectorConfig)
+
+                // then
+                assertThat(result).exists()
+                assertThat(result.fileName.toString()).isEqualTo("anime-planet.com")
+            }
+        }
+
+        @Test
         fun `check that name of working directory for AnisearchConfig is correct`() {
             tempDirectory {
                 // given
@@ -387,6 +410,27 @@ internal class AppConfigTest {
 
                 // when
                 val result = appConfig.workingDir(LivechartConfig)
+
+                // then
+                assertThat(result).exists()
+                assertThat(result.fileName.toString()).isEqualTo("livechart.me")
+            }
+        }
+
+        @Test
+        fun `check that name of working directory for LivechartPaginationIdRangeSelectorConfig is correct`() {
+            tempDirectory {
+                // given
+                val testConfigRegistry = object: ConfigRegistry by TestConfigRegistry {
+                    override fun string(key: String): String = tempDir.toAbsolutePath().toString()
+                }
+
+                val appConfig = AppConfig(
+                    configRegistry = testConfigRegistry,
+                )
+
+                // when
+                val result = appConfig.workingDir(LivechartPaginationIdRangeSelectorConfig)
 
                 // then
                 assertThat(result).exists()

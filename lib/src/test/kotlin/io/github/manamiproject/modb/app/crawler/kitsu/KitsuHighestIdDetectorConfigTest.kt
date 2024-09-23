@@ -1,6 +1,5 @@
 package io.github.manamiproject.modb.app.crawler.kitsu
 
-import io.github.manamiproject.modb.app.crawler.kitsu.KitsuHighestIdDetectorConfig.hostname
 import io.github.manamiproject.modb.kitsu.KitsuConfig
 import org.assertj.core.api.Assertions.assertThat
 import java.net.URI

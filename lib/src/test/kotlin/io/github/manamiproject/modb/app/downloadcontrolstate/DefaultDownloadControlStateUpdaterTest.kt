@@ -10,7 +10,9 @@ import io.github.manamiproject.modb.app.minusWeeks
 import io.github.manamiproject.modb.core.config.AnimeId
 import io.github.manamiproject.modb.core.config.Hostname
 import io.github.manamiproject.modb.core.config.MetaDataProviderConfig
-import io.github.manamiproject.modb.core.extensions.*
+import io.github.manamiproject.modb.core.extensions.Directory
+import io.github.manamiproject.modb.core.extensions.RegularFile
+import io.github.manamiproject.modb.core.extensions.writeToFile
 import io.github.manamiproject.modb.core.json.Json
 import io.github.manamiproject.modb.core.models.Anime
 import io.github.manamiproject.modb.core.models.Anime.Status.FINISHED

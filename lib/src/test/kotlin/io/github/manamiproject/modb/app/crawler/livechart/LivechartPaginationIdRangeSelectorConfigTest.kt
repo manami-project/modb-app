@@ -5,12 +5,12 @@ import org.assertj.core.api.Assertions.assertThat
 import java.net.URI
 import kotlin.test.Test
 
-internal class LivechartIdRangeSelectorConfigTest {
+internal class LivechartPaginationIdRangeSelectorConfigTest {
 
     @Test
     fun `isTestContext is false`() {
         // when
-        val result = LivechartIdRangeSelectorConfig.isTestContext()
+        val result = LivechartPaginationIdRangeSelectorConfig.isTestContext()
 
         // then
         assertThat(result).isFalse()
@@ -19,7 +19,7 @@ internal class LivechartIdRangeSelectorConfigTest {
     @Test
     fun `hostname must be correct`() {
         // when
-        val result = LivechartIdRangeSelectorConfig.hostname()
+        val result = LivechartPaginationIdRangeSelectorConfig.hostname()
 
         // then
         assertThat(result).isEqualTo(LivechartConfig.hostname())
@@ -31,10 +31,10 @@ internal class LivechartIdRangeSelectorConfigTest {
         val id = "1535"
 
         // when
-        val result = LivechartIdRangeSelectorConfig.buildAnimeLink(id)
+        val result = LivechartPaginationIdRangeSelectorConfig.buildAnimeLink(id)
 
         // then
-        assertThat(result).isEqualTo(URI("https://${LivechartIdRangeSelectorConfig.hostname()}/anime/$id"))
+        assertThat(result).isEqualTo(URI("https://${LivechartPaginationIdRangeSelectorConfig.hostname()}/anime/$id"))
     }
 
     @Test
@@ -43,16 +43,16 @@ internal class LivechartIdRangeSelectorConfigTest {
         val id = "1535"
 
         // when
-        val result = LivechartIdRangeSelectorConfig.buildDataDownloadLink(id)
+        val result = LivechartPaginationIdRangeSelectorConfig.buildDataDownloadLink(id)
 
         // then
-        assertThat(result).isEqualTo(URI("https://${LivechartIdRangeSelectorConfig.hostname()}/1535/all"))
+        assertThat(result).isEqualTo(URI("https://${LivechartPaginationIdRangeSelectorConfig.hostname()}/1535/all"))
     }
 
     @Test
     fun `file suffix must be html`() {
         // when
-        val result = LivechartIdRangeSelectorConfig.fileSuffix()
+        val result = LivechartPaginationIdRangeSelectorConfig.fileSuffix()
 
         // then
         assertThat(result).isEqualTo("html")

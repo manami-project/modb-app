@@ -31,12 +31,12 @@ class NotifyIdRangeSelectorTest {
                 val testHttpClient = object: HttpClient by TestHttpClient {
                     override suspend fun get(url: URL, headers: Map<String, Collection<String>>): HttpResponse {
                         val responseBody = when {
-                            url.toString().substringAfterLast('/') == "any" -> loadTestResource<String>("crawler/notify/NotifyIdRangeSelectorTest/ids_for_any.html")
-                            url.toString().substringAfterLast('/') == "music" -> loadTestResource<String>("crawler/notify/NotifyIdRangeSelectorTest/ids_for_music.html")
+                            url.toString().substringAfterLast('/') == "any" -> loadTestResource<ByteArray>("crawler/notify/NotifyIdRangeSelectorTest/ids_for_any.html")
+                            url.toString().substringAfterLast('/') == "music" -> loadTestResource<ByteArray>("crawler/notify/NotifyIdRangeSelectorTest/ids_for_music.html")
                             else -> shouldNotBeInvoked()
                         }
 
-                        return HttpResponse(200, responseBody.toByteArray())
+                        return HttpResponse(200, responseBody)
                     }
                 }
 
@@ -76,12 +76,12 @@ class NotifyIdRangeSelectorTest {
                 val testHttpClient = object: HttpClient by TestHttpClient {
                     override suspend fun get(url: URL, headers: Map<String, Collection<String>>): HttpResponse {
                         val responseBody = when {
-                            url.toString().substringAfterLast('/') == "any" -> loadTestResource<String>("crawler/notify/NotifyIdRangeSelectorTest/ids_for_any.html")
-                            url.toString().substringAfterLast('/') == "music" -> loadTestResource<String>("crawler/notify/NotifyIdRangeSelectorTest/ids_for_music.html")
+                            url.toString().substringAfterLast('/') == "any" -> loadTestResource<ByteArray>("crawler/notify/NotifyIdRangeSelectorTest/ids_for_any.html")
+                            url.toString().substringAfterLast('/') == "music" -> loadTestResource<ByteArray>("crawler/notify/NotifyIdRangeSelectorTest/ids_for_music.html")
                             else -> shouldNotBeInvoked()
                         }
 
-                        return HttpResponse(200, responseBody.toByteArray())
+                        return HttpResponse(200, responseBody)
                     }
                 }
 
@@ -123,12 +123,12 @@ class NotifyIdRangeSelectorTest {
                 val testHttpClient = object: HttpClient by TestHttpClient {
                     override suspend fun get(url: URL, headers: Map<String, Collection<String>>): HttpResponse {
                         val responseBody = when {
-                            url.toString().substringAfterLast('/') == "any" -> loadTestResource<String>("crawler/notify/NotifyIdRangeSelectorTest/ids_for_any.html")
-                            url.toString().substringAfterLast('/') == "music" -> loadTestResource<String>("crawler/notify/NotifyIdRangeSelectorTest/ids_for_music.html")
+                            url.toString().substringAfterLast('/') == "any" -> loadTestResource<ByteArray>("crawler/notify/NotifyIdRangeSelectorTest/ids_for_any.html")
+                            url.toString().substringAfterLast('/') == "music" -> loadTestResource<ByteArray>("crawler/notify/NotifyIdRangeSelectorTest/ids_for_music.html")
                             else -> shouldNotBeInvoked()
                         }
 
-                        return HttpResponse(200, responseBody.toByteArray())
+                        return HttpResponse(200, responseBody)
                     }
                 }
 
@@ -169,12 +169,12 @@ class NotifyIdRangeSelectorTest {
                 val testHttpClient = object: HttpClient by TestHttpClient {
                     override suspend fun get(url: URL, headers: Map<String, Collection<String>>): HttpResponse {
                         val responseBody = when {
-                            url.toString().substringAfterLast('/') == "any" -> loadTestResource<String>("crawler/notify/NotifyIdRangeSelectorTest/ids_for_any.html")
-                            url.toString().substringAfterLast('/') == "music" -> loadTestResource<String>("crawler/notify/NotifyIdRangeSelectorTest/ids_for_music.html")
+                            url.toString().substringAfterLast('/') == "any" -> loadTestResource<ByteArray>("crawler/notify/NotifyIdRangeSelectorTest/ids_for_any.html")
+                            url.toString().substringAfterLast('/') == "music" -> loadTestResource<ByteArray>("crawler/notify/NotifyIdRangeSelectorTest/ids_for_music.html")
                             else -> shouldNotBeInvoked()
                         }
 
-                        return HttpResponse(200, responseBody.toByteArray())
+                        return HttpResponse(200, responseBody)
                     }
                 }
 
@@ -215,12 +215,12 @@ class NotifyIdRangeSelectorTest {
                 val testHttpClient = object: HttpClient by TestHttpClient {
                     override suspend fun get(url: URL, headers: Map<String, Collection<String>>): HttpResponse {
                         val responseBody = when {
-                            url.toString().substringAfterLast('/') == "any" -> loadTestResource<String>("crawler/notify/NotifyIdRangeSelectorTest/ids_for_any.html")
-                            url.toString().substringAfterLast('/') == "music" -> loadTestResource<String>("crawler/notify/NotifyIdRangeSelectorTest/ids_for_music.html")
+                            url.toString().substringAfterLast('/') == "any" -> loadTestResource<ByteArray>("crawler/notify/NotifyIdRangeSelectorTest/ids_for_any.html")
+                            url.toString().substringAfterLast('/') == "music" -> loadTestResource<ByteArray>("crawler/notify/NotifyIdRangeSelectorTest/ids_for_music.html")
                             else -> shouldNotBeInvoked()
                         }
 
-                        return HttpResponse(200, responseBody.toByteArray())
+                        return HttpResponse(200, responseBody)
                     }
                 }
 
@@ -261,12 +261,12 @@ class NotifyIdRangeSelectorTest {
                 val testHttpClient = object: HttpClient by TestHttpClient {
                     override suspend fun get(url: URL, headers: Map<String, Collection<String>>): HttpResponse {
                         val responseBody = when {
-                            url.toString().substringAfterLast('/') == "any" -> "<html></head></body></html>"
-                            url.toString().substringAfterLast('/') == "music" -> loadTestResource<String>("crawler/notify/NotifyIdRangeSelectorTest/ids_for_music.html")
+                            url.toString().substringAfterLast('/') == "any" -> "<html></head></body></html>".toByteArray()
+                            url.toString().substringAfterLast('/') == "music" -> loadTestResource<ByteArray>("crawler/notify/NotifyIdRangeSelectorTest/ids_for_music.html")
                             else -> shouldNotBeInvoked()
                         }
 
-                        return HttpResponse(200, responseBody.toByteArray())
+                        return HttpResponse(200, responseBody)
                     }
                 }
 
@@ -299,12 +299,12 @@ class NotifyIdRangeSelectorTest {
                 val testHttpClient = object: HttpClient by TestHttpClient {
                     override suspend fun get(url: URL, headers: Map<String, Collection<String>>): HttpResponse {
                         val responseBody = when {
-                            url.toString().substringAfterLast('/') == "any" -> loadTestResource<String>("crawler/notify/NotifyIdRangeSelectorTest/ids_for_any.html")
-                            url.toString().substringAfterLast('/') == "music" -> "<html></head></body></html>"
+                            url.toString().substringAfterLast('/') == "any" -> loadTestResource<ByteArray>("crawler/notify/NotifyIdRangeSelectorTest/ids_for_any.html")
+                            url.toString().substringAfterLast('/') == "music" -> "<html></head></body></html>".toByteArray()
                             else -> shouldNotBeInvoked()
                         }
 
-                        return HttpResponse(200, responseBody.toByteArray())
+                        return HttpResponse(200, responseBody)
                     }
                 }
 

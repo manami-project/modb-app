@@ -31,7 +31,7 @@ internal class LivechartNewestYearDetectorTest {
                     override suspend fun get(url: URL, headers: Map<String, Collection<String>>): HttpResponse {
                         return HttpResponse(
                             code = 200,
-                            body = loadTestResource<String>("crawler/livechart/LivechartNewestYearDetectorTest/charts.html").toByteArray(),
+                            body = loadTestResource("crawler/livechart/LivechartNewestYearDetectorTest/charts.html"),
                         )
                     }
                 }

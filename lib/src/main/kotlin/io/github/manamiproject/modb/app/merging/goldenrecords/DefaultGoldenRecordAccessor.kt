@@ -6,7 +6,6 @@ import io.github.manamiproject.modb.core.models.Anime
 import io.github.manamiproject.modb.core.models.Title
 import java.net.URI
 import java.util.*
-import kotlin.collections.HashSet
 
 /**
  * Manages the golden record list in-memory.
