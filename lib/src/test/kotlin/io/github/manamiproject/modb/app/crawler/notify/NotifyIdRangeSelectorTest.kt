@@ -9,10 +9,10 @@ import io.github.manamiproject.modb.core.config.AnimeId
 import io.github.manamiproject.modb.core.config.MetaDataProviderConfig
 import io.github.manamiproject.modb.core.httpclient.HttpClient
 import io.github.manamiproject.modb.core.httpclient.HttpResponse
+import io.github.manamiproject.modb.notify.NotifyConfig
 import io.github.manamiproject.modb.test.exceptionExpected
 import io.github.manamiproject.modb.test.loadTestResource
 import io.github.manamiproject.modb.test.shouldNotBeInvoked
-import io.github.manamiproject.modb.test.tempDirectory
 import kotlinx.coroutines.runBlocking
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Nested
@@ -50,6 +50,7 @@ class NotifyIdRangeSelectorTest {
                 }
 
                 val notifyIdRangeSelector = NotifyIdRangeSelector(
+                    metaDataProviderConfig = NotifyConfig,
                     httpClient = testHttpClient,
                     downloadControlStateScheduler = testDowloadControlStateScheduler,
                     alreadyDownloadedIdsFinder = testAlreadyDownloadedIdsFinder,
@@ -94,6 +95,7 @@ class NotifyIdRangeSelectorTest {
                 }
 
                 val notifyIdRangeSelector = NotifyIdRangeSelector(
+                    metaDataProviderConfig = NotifyConfig,
                     httpClient = testHttpClient,
                     downloadControlStateScheduler = testDowloadControlStateScheduler,
                     alreadyDownloadedIdsFinder = testAlreadyDownloadedIdsFinder,
@@ -140,6 +142,7 @@ class NotifyIdRangeSelectorTest {
                 }
 
                 val notifyIdRangeSelector = NotifyIdRangeSelector(
+                    metaDataProviderConfig = NotifyConfig,
                     httpClient = testHttpClient,
                     downloadControlStateScheduler = testDowloadControlStateScheduler,
                     alreadyDownloadedIdsFinder = testAlreadyDownloadedIdsFinder,
@@ -188,6 +191,7 @@ class NotifyIdRangeSelectorTest {
                 }
 
                 val notifyIdRangeSelector = NotifyIdRangeSelector(
+                    metaDataProviderConfig = NotifyConfig,
                     httpClient = testHttpClient,
                     downloadControlStateScheduler = testDowloadControlStateScheduler,
                     alreadyDownloadedIdsFinder = testAlreadyDownloadedIdsFinder,
@@ -233,6 +237,7 @@ class NotifyIdRangeSelectorTest {
                 }
 
                 val notifyIdRangeSelector = NotifyIdRangeSelector(
+                    metaDataProviderConfig = NotifyConfig,
                     httpClient = testHttpClient,
                     downloadControlStateScheduler = testDowloadControlStateScheduler,
                     alreadyDownloadedIdsFinder = testAlreadyDownloadedIdsFinder,
@@ -271,6 +276,7 @@ class NotifyIdRangeSelectorTest {
                 }
 
                 val notifyIdRangeSelector = NotifyIdRangeSelector(
+                    metaDataProviderConfig = NotifyConfig,
                     httpClient = testHttpClient,
                     downloadControlStateScheduler = testDowloadControlStateScheduler,
                     alreadyDownloadedIdsFinder = TestAlreadyDownloadedIdsFinder,
@@ -308,6 +314,7 @@ class NotifyIdRangeSelectorTest {
                 }
 
                 val notifyIdRangeSelector = NotifyIdRangeSelector(
+                    metaDataProviderConfig = NotifyConfig,
                     httpClient = testHttpClient,
                     downloadControlStateScheduler = testDowloadControlStateScheduler,
                     alreadyDownloadedIdsFinder = TestAlreadyDownloadedIdsFinder,
@@ -320,25 +327,6 @@ class NotifyIdRangeSelectorTest {
 
                 // then
                 assertThat(result).hasMessage("Unable to extract idRange.")
-            }
-        }
-    }
-
-    @Nested
-    inner class CompanionObjectTests {
-
-        @Test
-        fun `instance property always returns same instance`() {
-            tempDirectory {
-                // given
-                val previous = NotifyIdRangeSelector.instance
-
-                // when
-                val result = NotifyIdRangeSelector.instance
-
-                // then
-                assertThat(result).isExactlyInstanceOf(NotifyIdRangeSelector::class.java)
-                assertThat(result===previous).isTrue()
             }
         }
     }
