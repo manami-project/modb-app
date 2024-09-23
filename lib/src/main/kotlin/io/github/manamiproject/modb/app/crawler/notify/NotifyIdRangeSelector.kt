@@ -32,7 +32,8 @@ import io.github.manamiproject.modb.core.logging.LoggerDelegate
  * @property alreadyDownloadedIdsFinder Fetch all IDs which have already been downloaded.
  */
 class NotifyIdRangeSelector(
-    private val metaDataProviderConfig: MetaDataProviderConfig = NotifyIdRangeSelectorConfig,
+    private val metaDataProviderConfig: MetaDataProviderConfig,
+    private val idRangeSelectorConfig: MetaDataProviderConfig = NotifyIdRangeSelectorConfig,
     private val httpClient: HttpClient = SuspendableHttpClient(),
     private val extractor: DataExtractor = XmlDataExtractor,
     private val downloadControlStateScheduler: DownloadControlStateScheduler = DefaultDownloadControlStateScheduler.instance,
@@ -64,7 +65,7 @@ class NotifyIdRangeSelector(
     }
 
     private suspend fun identifyIds(type: String): List<String> {
-        val response = httpClient.get(metaDataProviderConfig.buildDataDownloadLink(type).toURL())
+        val response = httpClient.get(idRangeSelectorConfig.buildDataDownloadLink(type).toURL())
             .checkedBody(this::class)
 
         val data = extractor.extract(response, mapOf(
@@ -78,13 +79,7 @@ class NotifyIdRangeSelector(
         return data.listNotNull<String>("idRange").map { it.replace("/anime/", EMPTY) }
     }
 
-    companion object {
+    private companion object {
         private val log by LoggerDelegate()
-
-        /**
-         * Singleton of [NotifyIdRangeSelector]
-         * @since 1.0.0
-         */
-        val instance: NotifyIdRangeSelector by lazy { NotifyIdRangeSelector() }
     }
 }
