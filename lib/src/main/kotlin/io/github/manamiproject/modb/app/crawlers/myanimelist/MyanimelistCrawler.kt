@@ -1,0 +1,91 @@
+package io.github.manamiproject.modb.app.crawlers.myanimelist
+
+import io.github.manamiproject.modb.app.config.AppConfig
+import io.github.manamiproject.modb.app.config.Config
+import io.github.manamiproject.modb.app.crawlers.Crawler
+import io.github.manamiproject.modb.app.crawlers.IdRangeSelector
+import io.github.manamiproject.modb.app.crawlers.IntegerBasedIdRangeSelector
+import io.github.manamiproject.modb.app.dataset.DeadEntriesAccessor
+import io.github.manamiproject.modb.app.dataset.DefaultDeadEntriesAccessor
+import io.github.manamiproject.modb.app.network.SuspendableHttpClient
+import io.github.manamiproject.modb.core.config.MetaDataProviderConfig
+import io.github.manamiproject.modb.core.coverage.KoverIgnore
+import io.github.manamiproject.modb.core.downloader.Downloader
+import io.github.manamiproject.modb.core.excludeFromTestContext
+import io.github.manamiproject.modb.core.extensions.neitherNullNorBlank
+import io.github.manamiproject.modb.core.extensions.writeToFile
+import io.github.manamiproject.modb.core.logging.LoggerDelegate
+import io.github.manamiproject.modb.core.random
+import io.github.manamiproject.modb.myanimelist.MyanimelistConfig
+import io.github.manamiproject.modb.myanimelist.MyanimelistDownloader
+import kotlinx.coroutines.delay
+import kotlin.time.DurationUnit.MILLISECONDS
+import kotlin.time.toDuration
+
+/**
+ * Implementation of [Crawler] for myanimelist.
+ * Uses [IntegerBasedIdRangeSelector] to determine which data to download.
+ * Includes a hard coded random waiting time to reduce pressure on the meta data provider.
+ * @since 1.0.0
+ */
+class MyanimelistCrawler(
+    private val appConfig: Config = AppConfig.instance,
+    private val metaDataProviderConfig: MetaDataProviderConfig = MyanimelistConfig,
+    private val deadEntriesAccess: DeadEntriesAccessor = DefaultDeadEntriesAccessor.instance,
+    private val idRangeSelector: IdRangeSelector<Int> = IntegerBasedIdRangeSelector(
+        metaDataProviderConfig = metaDataProviderConfig,
+        highestIdDetector = MyanimelistHighestIdDetector.instance,
+    ),
+    private val downloader: Downloader = MyanimelistDownloader(
+        metaDataProviderConfig = metaDataProviderConfig,
+        httpClient = SuspendableHttpClient(),
+    ),
+): Crawler {
+
+    override suspend fun start() {
+        log.info { "Starting crawler for [${metaDataProviderConfig.hostname()}]." }
+
+        val idDownloadList = idRangeSelector.idDownloadList()
+
+        when {
+            idDownloadList.isEmpty() -> log.info { "No IDs left for [${metaDataProviderConfig.hostname()}] crawler to download." }
+            else -> startDownload(idDownloadList)
+        }
+
+        log.info { "Finished crawling data for [${metaDataProviderConfig.hostname()}]." }
+    }
+
+    private suspend fun startDownload(idDownloadList: List<Int>) = repeat(idDownloadList.size) { index ->
+        val animeId = idDownloadList[index]
+        val file = appConfig.workingDir(metaDataProviderConfig).resolve("$animeId.${metaDataProviderConfig.fileSuffix()}")
+
+        wait()
+
+        log.debug { "Downloading ${index+1}/${idDownloadList.size}: [myanimelistId=$animeId]" }
+
+        val response = downloader.download(animeId.toString()) {
+            deadEntriesAccess.addDeadEntry(it, metaDataProviderConfig)
+        }
+
+        if (response.neitherNullNorBlank()) {
+            response.writeToFile(file, true)
+        }
+    }
+
+    @KoverIgnore
+    private suspend fun wait() {
+        excludeFromTestContext(metaDataProviderConfig) {
+            delay(random(1500, 2500).toDuration(MILLISECONDS))
+        }
+    }
+
+    companion object {
+        private val log by LoggerDelegate()
+
+        /**
+         * Singleton of [MyanimelistCrawler]
+         * @since 1.0.0
+         */
+        val instance: MyanimelistCrawler by lazy { MyanimelistCrawler() }
+    }
+}

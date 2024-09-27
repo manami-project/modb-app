@@ -19,6 +19,7 @@ import io.github.manamiproject.modb.core.config.ConfigRegistry
 import io.github.manamiproject.modb.core.config.FileSuffix
 import io.github.manamiproject.modb.core.config.MetaDataProviderConfig
 import io.github.manamiproject.modb.core.converter.PathAnimeConverter
+import io.github.manamiproject.modb.core.downloader.Downloader
 import io.github.manamiproject.modb.core.extensions.Directory
 import io.github.manamiproject.modb.core.extensions.RegularFile
 import io.github.manamiproject.modb.core.httpclient.HttpClient
@@ -180,4 +181,8 @@ internal object TestDownloadControlStateScheduler: DownloadControlStateScheduler
 
 internal object TestAlreadyDownloadedIdsFinder: AlreadyDownloadedIdsFinder {
     override suspend fun alreadyDownloadedIds(metaDataProviderConfig: MetaDataProviderConfig): Set<AnimeId> = shouldNotBeInvoked()
+}
+
+internal object TestDownloader: Downloader {
+    override suspend fun download(id: AnimeId, onDeadEntry: suspend (AnimeId) -> Unit): String = shouldNotBeInvoked()
 }

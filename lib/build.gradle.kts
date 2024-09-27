@@ -113,6 +113,16 @@ kotlin {
     jvmToolchain(JavaVersion.VERSION_21.toString().toInt())
 }
 
+kover {
+    reports {
+        filters {
+            excludes {
+                annotatedBy("io.github.manamiproject.modb.core.coverage.KoverIgnore")
+            }
+        }
+    }
+}
+
 tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach {
     compilerOptions {
         jvmTarget.set(JvmTarget.JVM_21)
