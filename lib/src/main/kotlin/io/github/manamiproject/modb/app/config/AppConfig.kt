@@ -5,8 +5,8 @@ import io.github.manamiproject.modb.anilist.AnilistConfig
 import io.github.manamiproject.modb.animeplanet.AnimePlanetConfig
 import io.github.manamiproject.modb.anisearch.AnisearchConfig
 import io.github.manamiproject.modb.anisearch.AnisearchRelationsConfig
-import io.github.manamiproject.modb.app.crawler.animeplanet.AnimePlanetPaginationIdRangeSelectorConfig
-import io.github.manamiproject.modb.app.crawler.livechart.LivechartPaginationIdRangeSelectorConfig
+import io.github.manamiproject.modb.app.crawlers.animeplanet.AnimePlanetPaginationIdRangeSelectorConfig
+import io.github.manamiproject.modb.app.crawlers.livechart.LivechartPaginationIdRangeSelectorConfig
 import io.github.manamiproject.modb.app.downloadcontrolstate.weekOfYear
 import io.github.manamiproject.modb.core.config.ConfigRegistry
 import io.github.manamiproject.modb.core.config.DefaultConfigRegistry
