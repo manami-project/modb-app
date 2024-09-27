@@ -27,6 +27,10 @@ internal class LivechartPaginationIdRangeSelectorTest {
         fun `correctly extracts page content`() {
             runBlocking {
                 // given
+                val testMetaDataProviderConfig = object: MetaDataProviderConfig by LivechartPaginationIdRangeSelectorConfig {
+                    override fun isTestContext(): Boolean = true
+                }
+
                 val testHttpClient = object: HttpClient by TestHttpClient {
                     override suspend fun get(url: URL, headers: Map<String, Collection<String>>): HttpResponse = HttpResponse(
                         code = 200,
@@ -43,6 +47,7 @@ internal class LivechartPaginationIdRangeSelectorTest {
                 }
 
                 val livechartPaginationIdRangeSelector = LivechartPaginationIdRangeSelector(
+                    metaDataProviderConfig = testMetaDataProviderConfig,
                     httpClient = testHttpClient,
                     downloadControlStateScheduler = testDownloadControlStateScheduler,
                     alreadyDownloadedIdsFinder = testAlreadyDownloadedIdsFinder,
@@ -76,6 +81,10 @@ internal class LivechartPaginationIdRangeSelectorTest {
         fun `removes anime not scheduled for the current week`() {
             runBlocking {
                 // given
+                val testMetaDataProviderConfig = object: MetaDataProviderConfig by LivechartPaginationIdRangeSelectorConfig {
+                    override fun isTestContext(): Boolean = true
+                }
+
                 val testHttpClient = object: HttpClient by TestHttpClient {
                     override suspend fun get(url: URL, headers: Map<String, Collection<String>>): HttpResponse = HttpResponse(
                         code = 200,
@@ -97,6 +106,7 @@ internal class LivechartPaginationIdRangeSelectorTest {
                 }
 
                 val livechartPaginationIdRangeSelector = LivechartPaginationIdRangeSelector(
+                    metaDataProviderConfig = testMetaDataProviderConfig,
                     httpClient = testHttpClient,
                     downloadControlStateScheduler = testDownloadControlStateScheduler,
                     alreadyDownloadedIdsFinder = testAlreadyDownloadedIdsFinder,
@@ -126,6 +136,10 @@ internal class LivechartPaginationIdRangeSelectorTest {
         fun `removes anime have already been downloaded`() {
             runBlocking {
                 // given
+                val testMetaDataProviderConfig = object: MetaDataProviderConfig by LivechartPaginationIdRangeSelectorConfig {
+                    override fun isTestContext(): Boolean = true
+                }
+
                 val testHttpClient = object: HttpClient by TestHttpClient {
                     override suspend fun get(url: URL, headers: Map<String, Collection<String>>): HttpResponse = HttpResponse(
                         code = 200,
@@ -148,6 +162,7 @@ internal class LivechartPaginationIdRangeSelectorTest {
                 }
 
                 val livechartPaginationIdRangeSelector = LivechartPaginationIdRangeSelector(
+                    metaDataProviderConfig = testMetaDataProviderConfig,
                     httpClient = testHttpClient,
                     downloadControlStateScheduler = testDownloadControlStateScheduler,
                     alreadyDownloadedIdsFinder = testAlreadyDownloadedIdsFinder,
@@ -176,6 +191,10 @@ internal class LivechartPaginationIdRangeSelectorTest {
         fun `retrieves anime IDs which are not scheduled for redownload this week only once`() {
             runBlocking {
                 // given
+                val testMetaDataProviderConfig = object: MetaDataProviderConfig by LivechartPaginationIdRangeSelectorConfig {
+                    override fun isTestContext(): Boolean = true
+                }
+
                 val testHttpClient = object: HttpClient by TestHttpClient {
                     override suspend fun get(url: URL, headers: Map<String, Collection<String>>): HttpResponse = HttpResponse(
                         code = 200,
@@ -196,6 +215,7 @@ internal class LivechartPaginationIdRangeSelectorTest {
                 }
 
                 val livechartPaginationIdRangeSelector = LivechartPaginationIdRangeSelector(
+                    metaDataProviderConfig = testMetaDataProviderConfig,
                     httpClient = testHttpClient,
                     downloadControlStateScheduler = testDownloadControlStateScheduler,
                     alreadyDownloadedIdsFinder = testAlreadyDownloadedIdsFinder,
@@ -214,6 +234,10 @@ internal class LivechartPaginationIdRangeSelectorTest {
         fun `throws exception if entries on the page cannot be extracted`() {
             runBlocking {
                 // given
+                val testMetaDataProviderConfig = object: MetaDataProviderConfig by LivechartPaginationIdRangeSelectorConfig {
+                    override fun isTestContext(): Boolean = true
+                }
+
                 val testHttpClient = object: HttpClient by TestHttpClient {
                     override suspend fun get(url: URL, headers: Map<String, Collection<String>>): HttpResponse = HttpResponse(
                         code = 200,
@@ -226,6 +250,7 @@ internal class LivechartPaginationIdRangeSelectorTest {
                 }
 
                 val livechartPaginationIdRangeSelector = LivechartPaginationIdRangeSelector(
+                    metaDataProviderConfig = testMetaDataProviderConfig,
                     httpClient = testHttpClient,
                     downloadControlStateScheduler = testDownloadControlStateScheduler,
                     alreadyDownloadedIdsFinder = TestAlreadyDownloadedIdsFinder,
@@ -245,6 +270,10 @@ internal class LivechartPaginationIdRangeSelectorTest {
         fun `returns empty list if http response code is 404`() {
             runBlocking {
                 // given
+                val testMetaDataProviderConfig = object: MetaDataProviderConfig by LivechartPaginationIdRangeSelectorConfig {
+                    override fun isTestContext(): Boolean = true
+                }
+
                 val testHttpClient = object: HttpClient by TestHttpClient {
                     override suspend fun get(url: URL, headers: Map<String, Collection<String>>): HttpResponse = HttpResponse(
                         code = 404,
@@ -261,6 +290,7 @@ internal class LivechartPaginationIdRangeSelectorTest {
                 }
 
                 val livechartPaginationIdRangeSelector = LivechartPaginationIdRangeSelector(
+                    metaDataProviderConfig = testMetaDataProviderConfig,
                     httpClient = testHttpClient,
                     downloadControlStateScheduler = testDownloadControlStateScheduler,
                     alreadyDownloadedIdsFinder = testAlreadyDownloadedIdsFinder,
