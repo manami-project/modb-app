@@ -25,6 +25,7 @@ class DefaultMergeLockAccessor(
 
     private val mergeLockFile by lazy { appConfig.downloadControlStateDirectory().resolve("merge.lock") }
     private val mergeLocks: MutableMap<String, MergeLock> = mutableMapOf()
+    private val writeAccess = Mutex()
     private var isInitialized = false
 
     override suspend fun isPartOfMergeLock(uri: URI): Boolean {
@@ -72,7 +73,7 @@ class DefaultMergeLockAccessor(
 
         log.debug { "Adding merge lock entry $mergeLock" }
 
-        Mutex().withLock {
+        writeAccess.withLock {
             mergeLock.map { it.toString() }.forEach { uri ->
                 mergeLocks[uri] = mergeLock
             }
@@ -99,13 +100,11 @@ class DefaultMergeLockAccessor(
             add(newUri)
         }
 
-        Mutex().withLock {
-            currentEntry.forEach {
-                mergeLocks.remove(it.toString())
-            }
-
-            addMergeLock(updatedEntry)
+        currentEntry.forEach {
+            removeEntry(it)
         }
+
+        addMergeLock(updatedEntry)
     }
 
     override suspend fun removeEntry(uri: URI) {
@@ -121,17 +120,17 @@ class DefaultMergeLockAccessor(
             remove(uri)
         }
 
-        Mutex().withLock {
+        writeAccess.withLock {
             currentEntry.forEach {
                 mergeLocks.remove(it.toString())
             }
-
-            addMergeLock(updatedEntry)
         }
+
+        addMergeLock(updatedEntry)
     }
 
     private suspend fun init() {
-        Mutex().withLock {
+        writeAccess.withLock {
             if (!isInitialized) {
                 if (mergeLockFile.regularFileExists()) {
                     val parsedMergeLocks = parseJsonFile()
