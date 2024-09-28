@@ -33,7 +33,7 @@ import kotlin.time.toDuration
  * @property idRangeSelector Delivers the IDs to download.
  * @property downloader Downloader for a specific meta data provider.
  */
-class KitsuCrawler(
+class KitsuCrawler @KoverIgnore constructor(
     private val appConfig: Config = AppConfig.instance,
     private val metaDataProviderConfig: MetaDataProviderConfig,
     private val deadEntriesAccess: DeadEntriesAccessor = DefaultDeadEntriesAccessor.instance,

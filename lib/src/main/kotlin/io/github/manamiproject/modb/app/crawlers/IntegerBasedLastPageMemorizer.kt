@@ -3,6 +3,7 @@ package io.github.manamiproject.modb.app.crawlers
 import io.github.manamiproject.modb.app.config.AppConfig
 import io.github.manamiproject.modb.app.config.Config
 import io.github.manamiproject.modb.core.config.MetaDataProviderConfig
+import io.github.manamiproject.modb.core.coverage.KoverIgnore
 import io.github.manamiproject.modb.core.extensions.neitherNullNorBlank
 
 /**
@@ -11,7 +12,7 @@ import io.github.manamiproject.modb.core.extensions.neitherNullNorBlank
  * @param appConfig Application specific configuration. Uses [AppConfig] by default.
  * @property metaDataProviderConfig Configuration for a specific meta data provider.
  */
-class IntegerBasedLastPageMemorizer(
+class IntegerBasedLastPageMemorizer @KoverIgnore constructor(
     appConfig: Config = AppConfig.instance,
     private val metaDataProviderConfig: MetaDataProviderConfig,
 ): LastPageMemorizer<Int> {
