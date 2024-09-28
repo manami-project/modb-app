@@ -25,6 +25,11 @@ import kotlin.time.toDuration
  * Uses [NotifyIdRangeSelector] to determine which data to download.
  * Includes a hard coded random waiting time to reduce pressure on the meta data provider.
  * @since 1.0.0
+ * @property appConfig Application specific configuration. Uses [AppConfig] by default.
+ * @property metaDataProviderConfig Configuration for a specific meta data provider.
+ * @property idRangeSelector Delivers the IDs to download.
+ * @property downloader Downloader for a specific meta data provider.
+ * @property downloadControlStateAccessor Access to DCS files.
  */
 class NotifyCrawler(
     private val appConfig: Config = AppConfig.instance,
