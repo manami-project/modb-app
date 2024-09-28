@@ -4,6 +4,7 @@ import io.github.manamiproject.modb.app.crawlers.HighestIdDetector
 import io.github.manamiproject.modb.app.extensions.checkedBody
 import io.github.manamiproject.modb.app.network.SuspendableHttpClient
 import io.github.manamiproject.modb.core.config.MetaDataProviderConfig
+import io.github.manamiproject.modb.core.coverage.KoverIgnore
 import io.github.manamiproject.modb.core.excludeFromTestContext
 import io.github.manamiproject.modb.core.extractor.DataExtractor
 import io.github.manamiproject.modb.core.extractor.XmlDataExtractor
@@ -30,9 +31,7 @@ class LivechartNewestYearDetector(
     override suspend fun detectHighestId(): Int {
         log.info { "Fetching highest id for [${metaDataProviderConfig.hostname()}]." }
 
-        excludeFromTestContext(metaDataProviderConfig) {
-            delay(random(2000, 3500).toDuration(MILLISECONDS))
-        }
+        wait()
 
         val response = httpClient.get(
             url = metaDataProviderConfig.buildDataDownloadLink().toURL(),
@@ -50,6 +49,13 @@ class LivechartNewestYearDetector(
         val headers = data.listNotNull<String>("headers")
 
         return headers[1].trim().toInt()
+    }
+
+    @KoverIgnore
+    private suspend fun wait() {
+        excludeFromTestContext(metaDataProviderConfig) {
+            delay(random(2000, 3500).toDuration(MILLISECONDS))
+        }
     }
 
     companion object {

@@ -4,6 +4,7 @@ import io.github.manamiproject.modb.app.crawlers.HighestIdDetector
 import io.github.manamiproject.modb.app.extensions.checkedBody
 import io.github.manamiproject.modb.app.network.SuspendableHttpClient
 import io.github.manamiproject.modb.core.config.MetaDataProviderConfig
+import io.github.manamiproject.modb.core.coverage.KoverIgnore
 import io.github.manamiproject.modb.core.excludeFromTestContext
 import io.github.manamiproject.modb.core.extractor.DataExtractor
 import io.github.manamiproject.modb.core.extractor.XmlDataExtractor
@@ -30,9 +31,7 @@ class AnimePlanetLastPageDetector(
     override suspend fun detectHighestId(): Int {
         log.info { "Fetching max number of pages for [${metaDataProviderConfig.hostname()}]." }
 
-        excludeFromTestContext(metaDataProviderConfig) {
-            delay(random(1000, 1200).toDuration(MILLISECONDS))
-        }
+        wait()
 
         val response = httpClient.get(
             url = metaDataProviderConfig.buildDataDownloadLink().toURL(),
@@ -50,6 +49,13 @@ class AnimePlanetLastPageDetector(
         return data.listNotNull<String>("lastPage")
             .mapNotNull { it.toIntOrNull() }
             .maxOrNull() ?: throw IllegalStateException("Couldn't extract the last page.")
+    }
+
+    @KoverIgnore
+    private suspend fun wait() {
+        excludeFromTestContext(metaDataProviderConfig) {
+            delay(random(1000, 1200).toDuration(MILLISECONDS))
+        }
     }
 
     companion object {
