@@ -5,6 +5,7 @@ import io.github.manamiproject.modb.app.config.Config
 import io.github.manamiproject.modb.core.config.MetaDataProviderConfig
 import io.github.manamiproject.modb.core.converter.PathAnimeConverter
 import io.github.manamiproject.modb.core.coroutines.ModbDispatchers.LIMITED_FS
+import io.github.manamiproject.modb.core.coverage.KoverIgnore
 import io.github.manamiproject.modb.core.extensions.*
 import io.github.manamiproject.modb.core.logging.LoggerDelegate
 import io.github.manamiproject.modb.core.models.Anime
@@ -27,7 +28,7 @@ import kotlin.io.path.isRegularFile
  * @param converter Instance used to convert multiple files into the intermediate format which represents an [Anime].
  * @property metaDataProviderConfig Configuration for a specific meta data provider.
  */
-class SimpleConversionWatchService(
+class SimpleConversionWatchService @KoverIgnore constructor(
     appConfig: Config = AppConfig.instance,
     converter: PathAnimeConverter,
     private val metaDataProviderConfig: MetaDataProviderConfig

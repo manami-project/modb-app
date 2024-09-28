@@ -5,6 +5,7 @@ import io.github.manamiproject.modb.app.config.Config
 import io.github.manamiproject.modb.core.config.MetaDataProviderConfig
 import io.github.manamiproject.modb.core.converter.PathAnimeConverter
 import io.github.manamiproject.modb.core.coroutines.ModbDispatchers.LIMITED_FS
+import io.github.manamiproject.modb.core.coverage.KoverIgnore
 import io.github.manamiproject.modb.core.extensions.*
 import io.github.manamiproject.modb.core.json.Json
 import io.github.manamiproject.modb.core.logging.LoggerDelegate
@@ -28,7 +29,7 @@ import kotlin.io.path.notExists
  * @property metaDataProviderConfig Configuration for a specific meta data provider. This is the "main" config.
  * @property converter Converts a [Path] to instances of [Anime]. Must match [metaDataProviderConfig].
  */
-class DependentFileConverter(
+class DependentFileConverter @KoverIgnore constructor(
     appConfig: Config = AppConfig.instance,
     dependentMetaDataProciderConfigs: List<MetaDataProviderConfig>,
     private val metaDataProviderConfig: MetaDataProviderConfig,
