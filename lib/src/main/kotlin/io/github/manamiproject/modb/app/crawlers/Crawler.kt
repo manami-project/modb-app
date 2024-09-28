@@ -5,7 +5,7 @@ package io.github.manamiproject.modb.app.crawlers
  * meta data provider.
  * @since 1.0.0
  */
-internal interface Crawler {
+interface Crawler {
 
     /**
      * Starts the crawler.
