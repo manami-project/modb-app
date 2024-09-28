@@ -27,18 +27,23 @@ import kotlin.time.toDuration
  * Uses [IntegerBasedIdRangeSelector] to determine which data to download.
  * Includes a hard coded random waiting time to reduce pressure on the meta data provider.
  * @since 1.0.0
+ * @property appConfig Application specific configuration. Uses [AppConfig] by default.
+ * @property metaDataProviderConfig Configuration for a specific meta data provider.
+ * @property deadEntriesAccess Access to dead entries files.
+ * @property idRangeSelector Delivers the IDs to download.
+ * @property downloader Downloader for a specific meta data provider.
  */
 class KitsuCrawler(
     private val appConfig: Config = AppConfig.instance,
     private val metaDataProviderConfig: MetaDataProviderConfig,
     private val deadEntriesAccess: DeadEntriesAccessor = DefaultDeadEntriesAccessor.instance,
-    private val downloader: Downloader = KitsuDownloader(
-        metaDataProviderConfig = metaDataProviderConfig,
-        httpClient = SuspendableHttpClient(),
-    ),
     private val idRangeSelector: IdRangeSelector<Int> = IntegerBasedIdRangeSelector(
         metaDataProviderConfig = metaDataProviderConfig,
         highestIdDetector = KitsuHighestIdDetector.instance,
+    ),
+    private val downloader: Downloader = KitsuDownloader(
+        metaDataProviderConfig = metaDataProviderConfig,
+        httpClient = SuspendableHttpClient(),
     ),
 ): Crawler {
 
