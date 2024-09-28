@@ -18,6 +18,7 @@ import kotlinx.coroutines.runBlocking
 import org.assertj.core.api.Assertions.assertThat
 import org.assertj.core.api.Assertions.assertThatNoException
 import org.junit.jupiter.api.Nested
+import kotlin.io.path.listDirectoryEntries
 import kotlin.test.Test
 
 internal class AnilistCrawlerTest {
@@ -129,6 +130,7 @@ internal class AnilistCrawlerTest {
                 crawler.start()
 
                 // then
+                assertThat(tempDir.listDirectoryEntries()).isEmpty()
                 assertThat(invocations).containsExactlyInAnyOrder(
                     "1000",
                 )

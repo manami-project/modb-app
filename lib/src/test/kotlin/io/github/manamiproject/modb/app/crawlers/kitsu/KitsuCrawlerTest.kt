@@ -1,17 +1,19 @@
-package io.github.manamiproject.modb.app.crawlers.notify
+package io.github.manamiproject.modb.app.crawlers.kitsu
 
 import io.github.manamiproject.modb.app.TestAppConfig
-import io.github.manamiproject.modb.app.TestDownloadControlStateAccessor
+import io.github.manamiproject.modb.app.TestDeadEntriesAccessor
 import io.github.manamiproject.modb.app.TestDownloader
 import io.github.manamiproject.modb.app.config.Config
 import io.github.manamiproject.modb.app.crawlers.IdRangeSelector
-import io.github.manamiproject.modb.app.downloadcontrolstate.DownloadControlStateAccessor
+import io.github.manamiproject.modb.app.dataset.DeadEntriesAccessor
 import io.github.manamiproject.modb.core.config.AnimeId
 import io.github.manamiproject.modb.core.config.MetaDataProviderConfig
 import io.github.manamiproject.modb.core.downloader.Downloader
 import io.github.manamiproject.modb.core.extensions.Directory
 import io.github.manamiproject.modb.core.extensions.EMPTY
 import io.github.manamiproject.modb.core.extensions.readFile
+import io.github.manamiproject.modb.kitsu.KitsuConfig
+import io.github.manamiproject.modb.kitsu.KitsuRelationsConfig
 import io.github.manamiproject.modb.notify.NotifyConfig
 import io.github.manamiproject.modb.test.tempDirectory
 import kotlinx.coroutines.runBlocking
@@ -21,7 +23,7 @@ import org.junit.jupiter.api.Nested
 import kotlin.io.path.listDirectoryEntries
 import kotlin.test.Test
 
-internal class NotifyCrawlerTest {
+internal class KitsuCrawlerTest {
 
     @Nested
     inner class StartTests {
@@ -33,16 +35,16 @@ internal class NotifyCrawlerTest {
                 override fun isTestContext(): Boolean = true
             }
 
-            val testIdRangeSelector = object : IdRangeSelector<AnimeId> {
-                override suspend fun idDownloadList(): List<AnimeId> = emptyList()
+            val testIdRangeSelector = object : IdRangeSelector<Int> {
+                override suspend fun idDownloadList(): List<Int> = emptyList()
             }
 
-            val crawler = NotifyCrawler(
+            val crawler = KitsuCrawler(
                 appConfig = TestAppConfig,
                 metaDataProviderConfig = testMetaDataProviderConfig,
-                idRangeSelector = testIdRangeSelector,
                 downloader = TestDownloader,
-                downloadControlStateAccessor = TestDownloadControlStateAccessor,
+                deadEntriesAccess = TestDeadEntriesAccessor,
+                idRangeSelector = testIdRangeSelector
             )
 
             // when
@@ -55,7 +57,7 @@ internal class NotifyCrawlerTest {
         fun `successfully loads multiple entries`() {
             tempDirectory {
                 // given
-                val testMetaDataProviderConfig = object: MetaDataProviderConfig by NotifyConfig {
+                val testMetaDataProviderConfig = object: MetaDataProviderConfig by KitsuConfig {
                     override fun isTestContext(): Boolean = true
                 }
 
@@ -63,8 +65,8 @@ internal class NotifyCrawlerTest {
                     override fun workingDir(metaDataProviderConfig: MetaDataProviderConfig): Directory = tempDir
                 }
 
-                val testIdRangeSelector = object: IdRangeSelector<AnimeId> {
-                    override suspend fun idDownloadList(): List<AnimeId> = listOf("hq344hw-2", "2gu35z2z5", "90f3f--03f3", "h-2j3t2h")
+                val testIdRangeSelector = object: IdRangeSelector<Int> {
+                    override suspend fun idDownloadList(): List<Int> = listOf(1535, 23, 1254, 424)
                 }
 
                 val successfulEntry = "successfully loaded content for"
@@ -74,12 +76,12 @@ internal class NotifyCrawlerTest {
                     }
                 }
 
-                val crawler = NotifyCrawler(
+                val crawler = KitsuCrawler(
                     appConfig = testAppConfig,
                     metaDataProviderConfig = testMetaDataProviderConfig,
-                    idRangeSelector = testIdRangeSelector,
                     downloader = testAnimeDownloader,
-                    downloadControlStateAccessor = TestDownloadControlStateAccessor,
+                    deadEntriesAccess = TestDeadEntriesAccessor,
+                    idRangeSelector = testIdRangeSelector
                 )
 
                 // when
@@ -94,19 +96,15 @@ internal class NotifyCrawlerTest {
         }
 
         @Test
-        fun `triggers removal of the DCS file if the downloader triggers a dead entry`() {
+        fun `passes the animeId to dead entries accessor if downloader triggers a dead entry and metaDataProviderConfig is KitsuConfig, because only mian crawler must trigger it`() {
             tempDirectory {
                 // given
-                val testMetaDataProviderConfig = object: MetaDataProviderConfig by NotifyConfig {
-                    override fun isTestContext(): Boolean = true
-                }
-
                 val testAppConfig = object : Config by TestAppConfig {
                     override fun workingDir(metaDataProviderConfig: MetaDataProviderConfig): Directory = tempDir
                 }
 
-                val testIdRangeSelector = object: IdRangeSelector<AnimeId> {
-                    override suspend fun idDownloadList(): List<AnimeId> = listOf("hq344hw-2")
+                val testIdRangeSelector = object: IdRangeSelector<Int> {
+                    override suspend fun idDownloadList(): List<Int> = listOf(1000)
                 }
 
                 val testAnimeDownloader = object: Downloader by TestDownloader {
@@ -117,18 +115,18 @@ internal class NotifyCrawlerTest {
                 }
 
                 val invocations = mutableListOf<AnimeId>()
-                val testDownloadControlStateAccessor = object: DownloadControlStateAccessor by TestDownloadControlStateAccessor {
-                    override suspend fun removeDeadEntry(metaDataProviderConfig: MetaDataProviderConfig, animeId: AnimeId) {
+                val testDeadEntriesAccessor = object: DeadEntriesAccessor by TestDeadEntriesAccessor {
+                    override suspend fun addDeadEntry(animeId: AnimeId, metaDataProviderConfig: MetaDataProviderConfig) {
                         invocations.add(animeId)
                     }
                 }
 
-                val crawler = NotifyCrawler(
+                val crawler = KitsuCrawler(
                     appConfig = testAppConfig,
-                    metaDataProviderConfig = testMetaDataProviderConfig,
-                    idRangeSelector = testIdRangeSelector,
+                    metaDataProviderConfig = KitsuConfig,
                     downloader = testAnimeDownloader,
-                    downloadControlStateAccessor = testDownloadControlStateAccessor,
+                    deadEntriesAccess = testDeadEntriesAccessor,
+                    idRangeSelector = testIdRangeSelector
                 )
 
                 // when
@@ -137,8 +135,47 @@ internal class NotifyCrawlerTest {
                 // then
                 assertThat(tempDir.listDirectoryEntries()).isEmpty()
                 assertThat(invocations).containsExactlyInAnyOrder(
-                    "hq344hw-2",
+                    "1000",
                 )
+            }
+        }
+
+        @Test
+        fun `doesn't do anything if dead entry is triggered and metaDataProviderConfig is not KitsuConfig`() {
+            tempDirectory {
+                // given
+                val testMetaDataProviderConfig = object: MetaDataProviderConfig by KitsuRelationsConfig {
+                    override fun isTestContext(): Boolean = true
+                }
+
+                val testAppConfig = object : Config by TestAppConfig {
+                    override fun workingDir(metaDataProviderConfig: MetaDataProviderConfig): Directory = tempDir
+                }
+
+                val testIdRangeSelector = object: IdRangeSelector<Int> {
+                    override suspend fun idDownloadList(): List<Int> = listOf(1000)
+                }
+
+                val testAnimeDownloader = object: Downloader by TestDownloader {
+                    override suspend fun download(id: AnimeId, onDeadEntry: suspend (AnimeId) -> Unit): String {
+                        onDeadEntry.invoke(id)
+                        return EMPTY
+                    }
+                }
+
+                val crawler = KitsuCrawler(
+                    appConfig = testAppConfig,
+                    metaDataProviderConfig = testMetaDataProviderConfig,
+                    downloader = testAnimeDownloader,
+                    deadEntriesAccess = TestDeadEntriesAccessor,
+                    idRangeSelector = testIdRangeSelector
+                )
+
+                // when
+                crawler.start()
+
+                // then
+                assertThat(tempDir.listDirectoryEntries()).isEmpty()
             }
         }
     }
