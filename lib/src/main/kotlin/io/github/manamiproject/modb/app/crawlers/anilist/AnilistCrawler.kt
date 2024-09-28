@@ -23,6 +23,12 @@ import kotlinx.coroutines.delay
 import kotlin.time.DurationUnit.MILLISECONDS
 import kotlin.time.toDuration
 
+/**
+ * Implementation of [Crawler] for `anilist.co`.
+ * Uses [IntegerBasedIdRangeSelector] to determine which data to download.
+ * Includes a hard coded random waiting time to reduce pressure on the meta data provider.
+ * @since 1.0.0
+ */
 class AnilistCrawler(
     private val appConfig: Config = AppConfig.instance,
     private val metaDataProviderConfig: MetaDataProviderConfig = AnilistConfig,
