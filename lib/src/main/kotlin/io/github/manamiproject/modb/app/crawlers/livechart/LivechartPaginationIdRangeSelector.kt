@@ -9,6 +9,7 @@ import io.github.manamiproject.modb.app.extensions.checkedBody
 import io.github.manamiproject.modb.app.network.SuspendableHttpClient
 import io.github.manamiproject.modb.core.config.AnimeId
 import io.github.manamiproject.modb.core.config.MetaDataProviderConfig
+import io.github.manamiproject.modb.core.coverage.KoverIgnore
 import io.github.manamiproject.modb.core.excludeFromTestContext
 import io.github.manamiproject.modb.core.extensions.createShuffledList
 import io.github.manamiproject.modb.core.extractor.DataExtractor
@@ -49,9 +50,7 @@ class LivechartPaginationIdRangeSelector(
             entriesNotScheduledForCurrentWeek.addAll(downloadControlStateScheduler.findEntriesNotScheduledForCurrentWeek(metaDataProviderConfig))
         }
 
-        excludeFromTestContext(metaDataProviderConfig) {
-            delay(random(2000, 3500).toDuration(MILLISECONDS))
-        }
+        wait()
 
         val response = httpClient.get(
             url = metaDataProviderConfig.buildDataDownloadLink(page).toURL(),
@@ -77,6 +76,13 @@ class LivechartPaginationIdRangeSelector(
         entriesOnThePage.removeAll(entriesNotScheduledForCurrentWeek)
         entriesOnThePage.removeAll(alreadyDownloadedIdsFinder.alreadyDownloadedIds(metaDataProviderConfig))
         return entriesOnThePage.toList().createShuffledList()
+    }
+
+    @KoverIgnore
+    private suspend fun wait() {
+        excludeFromTestContext(metaDataProviderConfig) {
+            delay(random(2000, 3500).toDuration(MILLISECONDS))
+        }
     }
 
     companion object {

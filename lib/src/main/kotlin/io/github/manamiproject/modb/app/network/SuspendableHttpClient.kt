@@ -2,6 +2,7 @@ package io.github.manamiproject.modb.app.network
 
 import io.github.manamiproject.modb.app.config.AppConfig
 import io.github.manamiproject.modb.app.config.Config
+import io.github.manamiproject.modb.core.coverage.KoverIgnore
 import io.github.manamiproject.modb.core.excludeFromTestContext
 import io.github.manamiproject.modb.core.httpclient.DefaultHttpClient
 import io.github.manamiproject.modb.core.httpclient.HttpClient
@@ -34,11 +35,7 @@ class SuspendableHttpClient(
         return httpClient.get(url, headers)
     }
 
-    override suspend fun post(
-        url: URL,
-        requestBody: RequestBody,
-        headers: Map<String, Collection<String>>,
-    ): HttpResponse {
+    override suspend fun post(url: URL, requestBody: RequestBody, headers: Map<String, Collection<String>>): HttpResponse {
         suspendIfNecessary()
         return httpClient.post(url, requestBody, headers)
     }
@@ -46,7 +43,14 @@ class SuspendableHttpClient(
     private suspend fun suspendIfNecessary() = withContext(Default) {
         while(!networkController.isNetworkActive() && isActive) {
             log.info { "Waiting for network to be active again." }
-            excludeFromTestContext(appConfig) { delay(10.toDuration(SECONDS)) }
+            wait()
+        }
+    }
+
+    @KoverIgnore
+    private suspend fun wait() {
+        excludeFromTestContext(appConfig) {
+            delay(10.toDuration(SECONDS))
         }
     }
 
