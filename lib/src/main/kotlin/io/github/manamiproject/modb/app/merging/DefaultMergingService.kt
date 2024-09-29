@@ -98,7 +98,7 @@ class DefaultMergingService(
             cluster[currentConfig] = numberOfAnime
         }
 
-        return cluster.toList().sortedBy { (_, value) -> value }.map { it.first }
+        return cluster.toList().sortedByDescending { (_, value) -> value }.map { it.first }
     }
 
     private suspend fun mergeEntry(anime: Anime) {
