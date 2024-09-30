@@ -8,7 +8,7 @@ import io.github.manamiproject.modb.core.config.AnimeId
  * The identifiers for the pages can be of any type.
  * @since 1.0.0
  */
-interface PaginationIdRangeSelector<PAGETYPE> {
+interface PaginationIdRangeSelector<in PAGETYPE> {
 
     /**
      * Returns a list of anime IDs which appeard on the given page and need to be downloaded.
