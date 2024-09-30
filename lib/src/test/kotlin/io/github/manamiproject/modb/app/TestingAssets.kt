@@ -4,6 +4,9 @@ import io.github.manamiproject.kommand.CommandExecutor
 import io.github.manamiproject.kommand.CommandLineConfig
 import io.github.manamiproject.modb.app.config.Config
 import io.github.manamiproject.modb.app.convfiles.AlreadyDownloadedIdsFinder
+import io.github.manamiproject.modb.app.crawlers.HighestIdDetector
+import io.github.manamiproject.modb.app.crawlers.LastPageMemorizer
+import io.github.manamiproject.modb.app.crawlers.PaginationIdRangeSelector
 import io.github.manamiproject.modb.app.dataset.DatasetFileAccessor
 import io.github.manamiproject.modb.app.dataset.DatasetFileType
 import io.github.manamiproject.modb.app.dataset.DeadEntriesAccessor
@@ -185,4 +188,17 @@ internal object TestAlreadyDownloadedIdsFinder: AlreadyDownloadedIdsFinder {
 
 internal object TestDownloader: Downloader {
     override suspend fun download(id: AnimeId, onDeadEntry: suspend (AnimeId) -> Unit): String = shouldNotBeInvoked()
+}
+
+internal object TestLastPageMemorizerInt: LastPageMemorizer<Int> {
+    override suspend fun memorizeLastPage(page: Int) = shouldNotBeInvoked()
+    override suspend fun retrieveLastPage(): Int = shouldNotBeInvoked()
+}
+
+internal object TestHighestIdDetector: HighestIdDetector {
+    override suspend fun detectHighestId(): Int = shouldNotBeInvoked()
+}
+
+internal object TestPaginationIdRangeSelectorInt: PaginationIdRangeSelector<Int> {
+    override suspend fun idDownloadList(page: Int): List<AnimeId> = shouldNotBeInvoked()
 }
