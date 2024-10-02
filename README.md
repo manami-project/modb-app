@@ -12,7 +12,7 @@
 
 ## Requirements
 
-* JDK/JVM 21
+* JDK/JVM 21 (LTS) or higher
 * Linux/Unix system supporting `ifconfig`
 * ipv6 based internet connection
 
