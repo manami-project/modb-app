@@ -195,10 +195,19 @@ internal object TestLastPageMemorizerInt: LastPageMemorizer<Int> {
     override suspend fun retrieveLastPage(): Int = shouldNotBeInvoked()
 }
 
+internal object TestLastPageMemorizerString: LastPageMemorizer<String> {
+    override suspend fun memorizeLastPage(page: String) = shouldNotBeInvoked()
+    override suspend fun retrieveLastPage(): String = shouldNotBeInvoked()
+}
+
 internal object TestHighestIdDetector: HighestIdDetector {
     override suspend fun detectHighestId(): Int = shouldNotBeInvoked()
 }
 
 internal object TestPaginationIdRangeSelectorInt: PaginationIdRangeSelector<Int> {
     override suspend fun idDownloadList(page: Int): List<AnimeId> = shouldNotBeInvoked()
+}
+
+internal object TestPaginationIdRangeSelectorString: PaginationIdRangeSelector<String> {
+    override suspend fun idDownloadList(page: String): List<AnimeId> = shouldNotBeInvoked()
 }
