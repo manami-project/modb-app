@@ -42,7 +42,6 @@ class MyanimelistCrawler(
         highestIdDetector = MyanimelistHighestIdDetector.instance,
     ),
     private val downloader: Downloader = MyanimelistDownloader(
-        metaDataProviderConfig = metaDataProviderConfig,
         httpClient = SuspendableHttpClient(),
     ),
 ): Crawler {
