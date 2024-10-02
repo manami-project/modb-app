@@ -8,7 +8,24 @@
 * Merging
   * [Merging](docs/merging.md)
   * [Merge locks](docs/merge_locks.md) 
-  * [Reviewed isolated entries](docs/reviewed-isolated-entries.md) 
+  * [Reviewed isolated entries](docs/reviewed-isolated-entries.md)
+
+## Requirements
+
+* JDK/JVM 21
+* Linux/Unix system supporting `ifconfig`
+* ipv6 based internet connection
+
+## Getting started
+
+### Setup configuration
+
+Configurations can either be set:
+* by adding a `config.toml` file to the classpath
+* setting `modb.core.config.location` environment variable containing the path to a local `*.toml` file
+* by setting environment variables with the given keys
+
+Set all the properties from the "Configuration" section down below which don't offer a default value.
 
 ## Configuration
 
