@@ -1,15 +1,13 @@
-package io.github.manamiproject.modb.app.crawlers.animeplanet
+package io.github.manamiproject.modb.app.crawlers.livechart
 
-import io.github.manamiproject.modb.animeplanet.AnimePlanetConfig
-import io.github.manamiproject.modb.animeplanet.AnimePlanetDownloader
 import io.github.manamiproject.modb.app.config.AppConfig
 import io.github.manamiproject.modb.app.config.Config
 import io.github.manamiproject.modb.app.convfiles.AlreadyDownloadedIdsFinder
 import io.github.manamiproject.modb.app.convfiles.DefaultAlreadyDownloadedIdsFinder
 import io.github.manamiproject.modb.app.crawlers.*
-import io.github.manamiproject.modb.app.downloadcontrolstate.DefaultDownloadControlStateAccessor
+import io.github.manamiproject.modb.app.dataset.DeadEntriesAccessor
+import io.github.manamiproject.modb.app.dataset.DefaultDeadEntriesAccessor
 import io.github.manamiproject.modb.app.downloadcontrolstate.DefaultDownloadControlStateScheduler
-import io.github.manamiproject.modb.app.downloadcontrolstate.DownloadControlStateAccessor
 import io.github.manamiproject.modb.app.downloadcontrolstate.DownloadControlStateScheduler
 import io.github.manamiproject.modb.app.network.SuspendableHttpClient
 import io.github.manamiproject.modb.core.config.MetaDataProviderConfig
@@ -20,13 +18,19 @@ import io.github.manamiproject.modb.core.extensions.createShuffledList
 import io.github.manamiproject.modb.core.extensions.neitherNullNorBlank
 import io.github.manamiproject.modb.core.extensions.writeToFile
 import io.github.manamiproject.modb.core.logging.LoggerDelegate
+import io.github.manamiproject.modb.core.models.AnimeSeason
+import io.github.manamiproject.modb.core.models.AnimeSeason.Season.UNDEFINED
+import io.github.manamiproject.modb.core.models.YEAR_OF_THE_FIRST_ANIME
+import io.github.manamiproject.modb.core.models.Year
 import io.github.manamiproject.modb.core.random
+import io.github.manamiproject.modb.livechart.LivechartConfig
+import io.github.manamiproject.modb.livechart.LivechartDownloader
 import kotlinx.coroutines.delay
 import kotlin.time.DurationUnit.MILLISECONDS
 import kotlin.time.toDuration
 
 /**
- * Implementation of [Crawler] for `anime-planet.com`.
+ * Implementation of [Crawler] for `livechart.me`.
  * Uses [DownloadControlStateScheduler] to to download all anime scheduled for re-download and
  * [PaginationIdRangeSelector] for downloading new entries.
  * Includes a hard coded random waiting time to reduce pressure on the meta data provider.
@@ -34,23 +38,23 @@ import kotlin.time.toDuration
  * @property appConfig Application specific configuration. Uses [AppConfig] by default.
  * @property metaDataProviderConfig Configuration for a specific meta data provider.
  * @property downloadControlStateScheduler Allows to check which anime are scheduled for re-download and which are not.
- * @property downloadControlStateAccessor Access to DCS files.
+ * @property deadEntriesAccessor Access to dead entries files.
  * @property lastPageMemorizer Access to the last which has been crawled.
- * @property lastPageDetector Allows to identify the last page of a meta data provider.
+ * @property newestYearDetector Allows to find the newest year available.
  * @property paginationIdRangeSelector Creates a list of anime IDs found on pages of the meta data provider.
  * @property alreadyDownloadedIdsFinder Fetches all IDs which have already been downloaded.
  * @property downloader Downloader for a specific meta data provider.
  */
-class AnimePlanetCrawler(
+class LivechartCrawler(
     private val appConfig: Config = AppConfig.instance,
-    private val metaDataProviderConfig: MetaDataProviderConfig = AnimePlanetConfig,
+    private val metaDataProviderConfig: MetaDataProviderConfig = LivechartConfig,
     private val downloadControlStateScheduler: DownloadControlStateScheduler = DefaultDownloadControlStateScheduler.instance,
-    private val downloadControlStateAccessor: DownloadControlStateAccessor = DefaultDownloadControlStateAccessor.instance,
-    private val lastPageMemorizer: LastPageMemorizer<Int> = IntegerBasedLastPageMemorizer(metaDataProviderConfig = metaDataProviderConfig),
-    private val lastPageDetector: HighestIdDetector = AnimePlanetLastPageDetector.instance,
-    private val paginationIdRangeSelector: PaginationIdRangeSelector<Int> = AnimePlanetPaginationIdRangeSelector.instance,
+    private val deadEntriesAccessor: DeadEntriesAccessor = DefaultDeadEntriesAccessor.instance,
+    private val lastPageMemorizer: LastPageMemorizer<String> = StringBasedLastPageMemorizer(metaDataProviderConfig = metaDataProviderConfig),
+    private val newestYearDetector: HighestIdDetector = LivechartNewestYearDetector.instance,
+    private val paginationIdRangeSelector: PaginationIdRangeSelector<String> = LivechartPaginationIdRangeSelector.instance,
     private val alreadyDownloadedIdsFinder: AlreadyDownloadedIdsFinder = DefaultAlreadyDownloadedIdsFinder.instance,
-    private val downloader: Downloader = AnimePlanetDownloader(httpClient = SuspendableHttpClient()),
+    private val downloader: Downloader = LivechartDownloader(httpClient = SuspendableHttpClient()),
 ): Crawler {
 
     override suspend fun start() {
@@ -75,19 +79,36 @@ class AnimePlanetCrawler(
     private suspend fun downloadEntriesUsingPagination() {
         log.info { "Downloading [${metaDataProviderConfig.hostname()}] entries using pagination." }
 
-        val firstPage = lastPageMemorizer.retrieveLastPage()
-        val lastPage = lastPageDetector.detectHighestId()
+        val newestYear = newestYearDetector.detectHighestId()
+        val lastPage = lastPageMemorizer.retrieveLastPage()
         val entriesNotScheduledForCurrentWeek = downloadControlStateScheduler.findEntriesNotScheduledForCurrentWeek(metaDataProviderConfig)
+        var pages = createListOfPages(newestYear)
+
+        if (lastPage.neitherNullNorBlank()) {
+            pages = pages.dropWhile { it != lastPage }.drop(1)
+        }
 
         wait()
 
-        for (currentPage in firstPage..lastPage) {
-            val currentList = paginationIdRangeSelector.idDownloadList(currentPage) - entriesNotScheduledForCurrentWeek - alreadyDownloadedIdsFinder.alreadyDownloadedIds(metaDataProviderConfig)
+        pages.forEach { page ->
+            val currentList = paginationIdRangeSelector.idDownloadList(page) - entriesNotScheduledForCurrentWeek - alreadyDownloadedIdsFinder.alreadyDownloadedIds(metaDataProviderConfig)
             startDownload(currentList)
-            lastPageMemorizer.memorizeLastPage(currentPage)
+            lastPageMemorizer.memorizeLastPage(page)
         }
 
         log.info { "Finished downloading [${metaDataProviderConfig.hostname()}] entries using pagination." }
+    }
+
+    private fun createListOfPages(newestYear: Year): List<String> {
+        return (YEAR_OF_THE_FIRST_ANIME..newestYear).flatMap { year ->
+            AnimeSeason.Season.entries
+                .filterNot { season -> season == UNDEFINED }
+                .map { season -> season.toString().lowercase() }
+                .map { season -> "$season-$year" }
+        }
+            .toMutableList()
+            .apply { add("tba") }
+            .sorted()
     }
 
     private suspend fun startDownload(idDownloadList: List<String>) = repeat(idDownloadList.size) { index ->
@@ -96,10 +117,10 @@ class AnimePlanetCrawler(
 
         wait()
 
-        log.debug { "Downloading ${index+1}/${idDownloadList.size}: [animePlanetId=$animeId]" }
+        log.debug { "Downloading ${index+1}/${idDownloadList.size}: [livechartId=$animeId]" }
 
         val response = downloader.download(animeId) {
-            downloadControlStateAccessor.removeDeadEntry(metaDataProviderConfig, animeId)
+            deadEntriesAccessor.addDeadEntry(it, metaDataProviderConfig)
         }
 
         if (response.neitherNullNorBlank()) {
@@ -110,7 +131,7 @@ class AnimePlanetCrawler(
     @KoverIgnore
     private suspend fun wait() {
         excludeFromTestContext(metaDataProviderConfig) {
-            delay(random(1000, 1200).toDuration(MILLISECONDS))
+            delay(random(2000, 3500).toDuration(MILLISECONDS))
         }
     }
 
@@ -118,9 +139,9 @@ class AnimePlanetCrawler(
         private val log by LoggerDelegate()
 
         /**
-         * Singleton of [AnimePlanetCrawler]
+         * Singleton of [LivechartCrawler]
          * @since 1.0.0
          */
-        val instance: AnimePlanetCrawler by lazy { AnimePlanetCrawler() }
+        val instance: LivechartCrawler by lazy { LivechartCrawler() }
     }
 }
