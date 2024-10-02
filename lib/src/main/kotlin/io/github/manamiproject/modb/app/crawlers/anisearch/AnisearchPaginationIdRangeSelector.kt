@@ -32,7 +32,7 @@ import java.net.UnknownHostException
  * @property metaDataProviderConfig Configuration for a specific meta data provider.
  * @property paginationIdRangeSelectorConfig Configuration which allows to download a specific page of a meta data provider.
  * @property httpClient Implementation of [HttpClient] which is used to download the selected pages.
- * @property networkController Access to the network controller which allows perform a restart.
+ * @property networkController Access to the network controller which allows to perform a restart.
  * @property extractor Extractor which retrieves the data from raw data.
  * @property downloadControlStateScheduler Allows to check which anime are scheduled for re-download and which are not.
  * @property alreadyDownloadedIdsFinder Fetches all IDs which have already been downloaded.
