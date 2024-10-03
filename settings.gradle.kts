@@ -5,3 +5,4 @@ plugins {
 
 rootProject.name = "modb-app"
 include("lib")
+include("app")

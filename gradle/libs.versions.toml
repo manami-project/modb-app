@@ -39,6 +39,7 @@ commons-text = { module = "org.apache.commons:commons-text", version.ref = "comm
 [plugins]
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 kover = { id = "org.jetbrains.kotlinx.kover", version.ref = "kover" }
+shadow = { id = "com.github.johnrengelman.shadow", version = "8.1.1" }
 
 [bundles]
 modb = [
