@@ -1,0 +1,43 @@
+<configuration>
+    <define name="LOG_DIR" class="io.github.manamiproject.modb.app.config.LogDirectoryPropertyDefiner" />
+    <property name="MSG_PATTERN" value="%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n" />
+    <timestamp key="timestamp" datePattern="yyyy-MM-dd_-_HHmmss"/>
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>${MSG_PATTERN}</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="ASYNC_STDOUT" class="ch.qos.logback.classic.AsyncAppender">
+        <appender-ref ref="STDOUT" />
+    </appender>
+
+    <appender name="FILE" class="ch.qos.logback.core.FileAppender">
+        <file>${LOG_DIR}/${timestamp}.log</file>
+        <encoder>
+            <pattern>${MSG_PATTERN}</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="ASYNC_FILE" class="ch.qos.logback.classic.AsyncAppender">
+        <appender-ref ref="FILE" />
+    </appender>
+
+    <appender name="ERROR_FILE" class="ch.qos.logback.core.FileAppender">
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>WARN</level>
+        </filter>
+
+        <file>${LOG_DIR}/errors.log</file>
+        <encoder>
+            <pattern>${MSG_PATTERN}</pattern>
+        </encoder>
+    </appender>
+
+    <root level="debug" additivity="true">
+        <appender-ref ref="ASYNC_STDOUT" />
+        <appender-ref ref="ASYNC_FILE" />
+        <appender-ref ref="ERROR_FILE" />
+    </root>
+</configuration>

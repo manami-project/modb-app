@@ -20,12 +20,22 @@
 
 ### Setup configuration
 
-Configurations can either be set:
-* by adding a `config.toml` file to the classpath
-* setting `modb.core.config.location` environment variable containing the path to a local `*.toml` file
-* by setting environment variables with the given keys
-
+Create a [configuration file](https://github.com/manami-project/modb-core#configuration-management).
 Set all the properties from the "Configuration" section down below which don't offer a default value.
+
+### Optional: Logback configuration
+
+Optionally you can create a [logback configuration](https://logback.qos.ch/manual/configuration.html) to override the default setup.
+
+### Start using IDE
+
+Run `main()` in `io/github/manamiproject/modb/app/App.kt` of the `app` module with the following VM parameter:
+* `-Djava.net.preferIPv6Addresses=true`
+* `-Djava.net.preferIPv4Stack=false`
+
+### Start using *.jar file
+
+Run `java -Djava.net.preferIPv6Addresses=true -Djava.net.preferIPv4Stack=false -jar modb-app.jar`
 
 ## Configuration
 
