@@ -2,6 +2,7 @@ package io.github.manamiproject.modb.app.crawlers.anidb
 
 import io.github.manamiproject.modb.anidb.AnidbConfig
 import io.github.manamiproject.modb.anidb.AnidbDownloader
+import io.github.manamiproject.modb.anidb.CrawlerDetectedException
 import io.github.manamiproject.modb.app.config.AppConfig
 import io.github.manamiproject.modb.app.config.Config
 import io.github.manamiproject.modb.app.crawlers.Crawler
@@ -9,6 +10,8 @@ import io.github.manamiproject.modb.app.crawlers.IdRangeSelector
 import io.github.manamiproject.modb.app.crawlers.IntegerBasedIdRangeSelector
 import io.github.manamiproject.modb.app.dataset.DeadEntriesAccessor
 import io.github.manamiproject.modb.app.dataset.DefaultDeadEntriesAccessor
+import io.github.manamiproject.modb.app.network.LinuxNetworkController
+import io.github.manamiproject.modb.app.network.NetworkController
 import io.github.manamiproject.modb.app.network.SuspendableHttpClient
 import io.github.manamiproject.modb.core.config.MetaDataProviderConfig
 import io.github.manamiproject.modb.core.coverage.KoverIgnore
@@ -19,6 +22,9 @@ import io.github.manamiproject.modb.core.extensions.writeToFile
 import io.github.manamiproject.modb.core.logging.LoggerDelegate
 import io.github.manamiproject.modb.core.random
 import kotlinx.coroutines.delay
+import java.net.ConnectException
+import java.net.NoRouteToHostException
+import java.net.UnknownHostException
 import kotlin.time.DurationUnit.MILLISECONDS
 import kotlin.time.toDuration
 
@@ -45,6 +51,7 @@ class AnidbCrawler(
         metaDataProviderConfig = metaDataProviderConfig,
         httpClient = SuspendableHttpClient(),
     ),
+    private val networkController: NetworkController = LinuxNetworkController.instance,
 ): Crawler {
 
     override suspend fun start() {
@@ -68,8 +75,24 @@ class AnidbCrawler(
 
         log.debug { "Downloading ${index+1}/${idDownloadList.size}: [anidbId=$animeId]" }
 
-        val response = downloader.download(animeId.toString()) {
-            deadEntriesAccess.addDeadEntry(it, metaDataProviderConfig)
+        val response = try {
+            downloader.download(animeId.toString()) {
+                deadEntriesAccess.addDeadEntry(it, metaDataProviderConfig)
+            }
+        } catch (e: Throwable) {
+            when(e) {
+                is ConnectException,
+                is UnknownHostException,
+                is NoRouteToHostException,
+                is CrawlerDetectedException
+                    -> {
+                    networkController.restartAsync().await()
+                    downloader.download(animeId.toString()) {
+                        deadEntriesAccess.addDeadEntry(it, metaDataProviderConfig)
+                    }
+                }
+                else -> throw e
+            }
         }
 
         if (response.neitherNullNorBlank()) {

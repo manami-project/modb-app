@@ -230,8 +230,10 @@ internal class AnisearchLastPageDetectorTest {
                     override fun buildDataDownloadLink(id: String): URI = URI("http://localhost:8080/highest-id")
                 }
 
+                var hasBeenInvoked = false
                 val testNetworkController = object: NetworkController by TestNetworkController {
                     override suspend fun restartAsync(): Deferred<Boolean> {
+                        hasBeenInvoked = true
                         return async { true }
                     }
                 }
@@ -254,6 +256,7 @@ internal class AnisearchLastPageDetectorTest {
                 }
 
                 // then
+                assertThat(hasBeenInvoked).isTrue()
                 assertThat(result).hasMessage("junit test")
             }
         }
@@ -266,14 +269,6 @@ internal class AnisearchLastPageDetectorTest {
                     override fun buildDataDownloadLink(id: String): URI = URI("http://localhost:8080/highest-id")
                 }
 
-                var hasBeenInvoked = false
-                val testNetworkController = object: NetworkController by TestNetworkController {
-                    override suspend fun restartAsync(): Deferred<Boolean> {
-                        hasBeenInvoked = true
-                        return async { true }
-                    }
-                }
-
                 val testHttpClient = object : HttpClient by TestHttpClient {
                     override suspend fun get(url: URL, headers: Map<String, Collection<String>>): HttpResponse {
                         throw NullPointerException("junit test")
@@ -283,7 +278,7 @@ internal class AnisearchLastPageDetectorTest {
                 val anisearchLastPageDetector = AnisearchLastPageDetector(
                     metaDataProviderConfig = testMetaDataProviderConfig,
                     httpClient = testHttpClient,
-                    networkController = testNetworkController,
+                    networkController = TestNetworkController,
                 )
 
                 // when
@@ -292,7 +287,6 @@ internal class AnisearchLastPageDetectorTest {
                 }
 
                 // then
-                assertThat(hasBeenInvoked).isFalse()
                 assertThat(result).hasMessage("junit test")
             }
         }

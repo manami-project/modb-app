@@ -672,8 +672,10 @@ internal class AnisearchPaginationIdRangeSelectorTest {
                     override suspend fun alreadyDownloadedIds(metaDataProviderConfig: MetaDataProviderConfig): Set<AnimeId> = emptySet()
                 }
 
+                var hasBeenInvoked = false
                 val testNetworkController = object: NetworkController by TestNetworkController {
                     override suspend fun restartAsync(): Deferred<Boolean> {
+                        hasBeenInvoked = true
                         return async { true }
                     }
                 }
@@ -698,6 +700,7 @@ internal class AnisearchPaginationIdRangeSelectorTest {
                 }
 
                 // then
+                assertThat(hasBeenInvoked).isTrue()
                 assertThat(result).hasMessage("junit test")
             }
         }
@@ -714,12 +717,6 @@ internal class AnisearchPaginationIdRangeSelectorTest {
                     override suspend fun alreadyDownloadedIds(metaDataProviderConfig: MetaDataProviderConfig): Set<AnimeId> = emptySet()
                 }
 
-                val testNetworkController = object: NetworkController by TestNetworkController {
-                    override suspend fun restartAsync(): Deferred<Boolean> {
-                        return async { true }
-                    }
-                }
-
                 val testHttpClient = object: HttpClient by TestHttpClient {
                     override suspend fun get(url: URL, headers: Map<String, Collection<String>>): HttpResponse {
                         throw NullPointerException("junit test")
@@ -731,7 +728,7 @@ internal class AnisearchPaginationIdRangeSelectorTest {
                     httpClient = testHttpClient,
                     downloadControlStateScheduler = testDownloadControlStateScheduler,
                     alreadyDownloadedIdsFinder = testAlreadyDownloadedIdsFinder,
-                    networkController = testNetworkController,
+                    networkController = TestNetworkController,
                 )
 
                 // when
