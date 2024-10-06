@@ -14,7 +14,7 @@
 
 * JDK/JVM 21 (LTS) or higher
 * Linux/Unix system supporting `ifconfig`
-* ipv6 based internet connection
+* ipv6 based internet connection with SLAAC enabled
 
 ## Getting started
 
