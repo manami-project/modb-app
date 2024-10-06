@@ -26,8 +26,7 @@ repositories {
 }
 
 dependencies {
-    api(libs.kotlin.stdlib)
-
+    implementation(libs.kotlin.stdlib)
     implementation(project(":lib"))
     implementation(libs.logback.classic)
 
