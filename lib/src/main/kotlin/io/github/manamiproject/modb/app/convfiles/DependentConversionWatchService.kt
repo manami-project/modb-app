@@ -6,6 +6,7 @@ import io.github.manamiproject.modb.core.config.FileSuffix
 import io.github.manamiproject.modb.core.config.MetaDataProviderConfig
 import io.github.manamiproject.modb.core.converter.PathAnimeConverter
 import io.github.manamiproject.modb.core.coroutines.ModbDispatchers.LIMITED_FS
+import io.github.manamiproject.modb.core.coverage.KoverIgnore
 import io.github.manamiproject.modb.core.excludeFromTestContext
 import io.github.manamiproject.modb.core.extensions.*
 import io.github.manamiproject.modb.core.logging.LoggerDelegate
@@ -141,9 +142,14 @@ class DependentConversionWatchService(
     private suspend fun waitWhileFileIsBeingWrittenAsync(file: RegularFile) = withContext(LIMITED_FS) {
         val expectedFile = file.changeSuffix(LOCK_FILE_SUFFIX)
         while (expectedFile.regularFileExists() && isActive) {
-            excludeFromTestContext(appConfig) {
-                delay(100)
-            }
+            wait()
+        }
+    }
+
+    @KoverIgnore
+    private suspend fun wait() {
+        excludeFromTestContext(appConfig) {
+            delay(100)
         }
     }
 

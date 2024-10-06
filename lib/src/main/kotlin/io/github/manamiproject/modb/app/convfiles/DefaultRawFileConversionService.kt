@@ -13,6 +13,7 @@ import io.github.manamiproject.modb.app.config.AppConfig
 import io.github.manamiproject.modb.app.config.Config
 import io.github.manamiproject.modb.core.converter.DefaultPathAnimeConverter
 import io.github.manamiproject.modb.core.coroutines.ModbDispatchers.LIMITED_CPU
+import io.github.manamiproject.modb.core.coverage.KoverIgnore
 import io.github.manamiproject.modb.core.excludeFromTestContext
 import io.github.manamiproject.modb.core.extensions.fileSuffix
 import io.github.manamiproject.modb.core.extensions.listRegularFiles
@@ -68,10 +69,15 @@ class DefaultRawFileConversionService(
     override suspend fun waitForAllRawFilesToBeConverted() {
         withTimeout(10.toDuration(SECONDS)) {
             while (unconvertedFilesExist()) {
-                excludeFromTestContext(appConfig) {
-                    delay(2.toDuration(SECONDS))
-                }
+                wait()
             }
+        }
+    }
+
+    @KoverIgnore
+    private suspend fun wait() {
+        excludeFromTestContext(appConfig) {
+            delay(2.toDuration(SECONDS))
         }
     }
 
