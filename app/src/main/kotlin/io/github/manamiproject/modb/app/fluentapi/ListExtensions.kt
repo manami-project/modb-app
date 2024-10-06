@@ -1,4 +1,4 @@
-package io.github.manamiproject.modb.app.extensions
+package io.github.manamiproject.modb.app.fluentapi
 
 import io.github.manamiproject.modb.app.dataset.DefaultDatasetFileAccessor
 import io.github.manamiproject.modb.app.merging.DefaultMergingService

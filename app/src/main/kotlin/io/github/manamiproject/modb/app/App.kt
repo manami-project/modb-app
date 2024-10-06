@@ -13,7 +13,11 @@ import io.github.manamiproject.modb.app.crawlers.myanimelist.MyanimelistCrawler
 import io.github.manamiproject.modb.app.crawlers.notify.NotifyCrawler
 import io.github.manamiproject.modb.app.downloadcontrolstate.DefaultDownloadControlStateAccessor
 import io.github.manamiproject.modb.app.downloadcontrolstate.DefaultDownloadControlStateUpdater
-import io.github.manamiproject.modb.app.extensions.*
+import io.github.manamiproject.modb.app.extensions.alertDeletedAnimeByTitle
+import io.github.manamiproject.modb.app.fluentapi.mergeAnime
+import io.github.manamiproject.modb.app.fluentapi.removeUnknownEntriesFromRelatedAnime
+import io.github.manamiproject.modb.app.fluentapi.saveToDatabase
+import io.github.manamiproject.modb.app.fluentapi.updateStatistics
 import io.github.manamiproject.modb.app.network.LinuxNetworkController
 import io.github.manamiproject.modb.app.postprocessors.*
 import io.github.manamiproject.modb.core.coroutines.CoroutineManager.runCoroutine
