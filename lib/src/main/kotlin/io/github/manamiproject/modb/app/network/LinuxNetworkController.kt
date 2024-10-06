@@ -5,6 +5,7 @@ import io.github.manamiproject.kommand.JavaProcessBuilder
 import io.github.manamiproject.modb.app.config.AppConfig
 import io.github.manamiproject.modb.app.config.Config
 import io.github.manamiproject.modb.core.coroutines.ModbDispatchers.LIMITED_NETWORK
+import io.github.manamiproject.modb.core.coverage.KoverIgnore
 import io.github.manamiproject.modb.core.excludeFromTestContext
 import io.github.manamiproject.modb.core.extensions.EMPTY
 import io.github.manamiproject.modb.core.logging.LoggerDelegate
@@ -152,16 +153,23 @@ class LinuxNetworkController(
             }.findActive().contains(device)
         }
 
-        val wait = when(status) {
+        val isWaitCondition = when(status) {
             DeviceStatus.ACTIVE -> { isDeviceInListOfActiveDevices: Boolean -> !isDeviceInListOfActiveDevices }
             DeviceStatus.INACTIVE -> { isDeviceInListOfActiveDevices: Boolean -> isDeviceInListOfActiveDevices }
         }
 
         withTimeoutOrNull(timeout.toDuration(SECONDS)) {
-            while (wait(deviceStatus())) {
-                excludeFromTestContext(appConfig) { delay(2.toDuration(SECONDS)) }
+            while (isWaitCondition(deviceStatus())) {
+                wait()
             }
         } ?: throw TimeoutException("Timed out waiting waiting for device to change status.")
+    }
+
+    @KoverIgnore
+    private suspend fun wait() {
+        excludeFromTestContext(appConfig) {
+            delay(2.toDuration(SECONDS))
+        }
     }
 
     companion object {
