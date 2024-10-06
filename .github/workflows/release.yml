@@ -53,11 +53,11 @@ jobs:
         run: |
           version=$(git tag --sort=creatordate | tail -2 | head -1)
           echo "PREVIOUS_VERSION=$version" >> $GITHUB_OUTPUT
-      - name: Delete outdated release assets
-        uses: mknejp/delete-release-assets@v1
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          tag: ${{ steps.fetch-latest-release.outputs.PREVIOUS_VERSION }}
-          assets: modb-app.jar
-          fail-if-no-release: false
-          fail-if-no-assets: false
+#      - name: Delete outdated release assets
+#        uses: mknejp/delete-release-assets@v1
+#        with:
+#          token: ${{ secrets.GITHUB_TOKEN }}
+#          tag: ${{ steps.fetch-latest-release.outputs.PREVIOUS_VERSION }}
+#          assets: modb-app.jar
+#          fail-if-no-release: false
+#          fail-if-no-assets: false
