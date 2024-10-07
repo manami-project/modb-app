@@ -41,7 +41,7 @@ data class WeekOfYear(
      * @param zoneId Id of the time zone used for the date.
      */
     constructor(localDate: LocalDate, zoneId: ZoneId = ZoneId.systemDefault()): this(
-        year = localDate.year,
+        year = determineYear(localDate, zoneId),
         week = GregorianCalendar.from(localDate.atStartOfDay(zoneId)).get(WEEK_OF_YEAR)
     )
 
@@ -130,4 +130,14 @@ private fun localDateOfFirstWeekOfYear(year: Year): LocalDate {
     }
 
     return currentDate
+}
+
+private fun determineYear(localDate: LocalDate, zoneId: ZoneId): Int {
+    val week = GregorianCalendar.from(localDate.atStartOfDay(zoneId)).get(WEEK_OF_YEAR)
+
+    return if (week <= 2 && localDate.monthValue == 12) {
+        localDate.year + 1
+    } else {
+        localDate.year
+    }
 }

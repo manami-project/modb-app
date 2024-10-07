@@ -94,6 +94,21 @@ internal class WeekOfYearTest {
             // then
             assertThat(result).isEqualTo(expected)
         }
+
+        @Test
+        fun `create correct transition in case first week of the new year is still on a date of the last year`() {
+            // given
+            val expected = WeekOfYear(
+                year = 2025,
+                week = 1,
+            )
+
+            // when
+            val result = WeekOfYear(LocalDate.of(2024, 12, 30))
+
+            // then
+            assertThat(result).isEqualTo(expected)
+        }
     }
 
     @Nested
