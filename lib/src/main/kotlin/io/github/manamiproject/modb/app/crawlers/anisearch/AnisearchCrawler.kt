@@ -90,6 +90,7 @@ class AnisearchCrawler(
 
         for (currentPage in firstPage..lastPage) {
             val currentList = paginationIdRangeSelector.idDownloadList(currentPage) - entriesNotScheduledForCurrentWeek - alreadyDownloadedIdsFinder.alreadyDownloadedIds(metaDataProviderConfig)
+            wait()
             startDownload(currentList)
             lastPageMemorizer.memorizeLastPage(currentPage)
         }

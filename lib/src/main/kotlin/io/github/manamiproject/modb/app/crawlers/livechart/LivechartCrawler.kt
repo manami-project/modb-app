@@ -92,6 +92,7 @@ class LivechartCrawler(
 
         pages.forEach { page ->
             val currentList = paginationIdRangeSelector.idDownloadList(page) - entriesNotScheduledForCurrentWeek - alreadyDownloadedIdsFinder.alreadyDownloadedIds(metaDataProviderConfig)
+            wait()
             startDownload(currentList)
             lastPageMemorizer.memorizeLastPage(page)
         }
