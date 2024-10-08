@@ -37,6 +37,7 @@ class DefaultDatasetFileAccessor(
         val sortedList = anime.sortedWith(
             compareBy<Anime> { it.title }
                 .thenBy { it.animeSeason.year }
+                .thenBy { it.sources.first() }
         )
 
         log.info { "Writing json to file." }
