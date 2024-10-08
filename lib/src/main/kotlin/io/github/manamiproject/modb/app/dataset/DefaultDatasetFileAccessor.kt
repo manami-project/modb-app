@@ -34,11 +34,16 @@ class DefaultDatasetFileAccessor(
     }
 
     override suspend fun saveEntries(anime: List<Anime>) {
+        val sortedList = anime.sortedWith(
+            compareBy<Anime> { it.title }
+                .thenBy { it.animeSeason.year }
+        )
+
         log.info { "Writing json to file." }
-        jsonSerializer.serialize(anime, minify = false).writeToFile(offlineDatabaseFile(JSON))
+        jsonSerializer.serialize(sortedList, minify = false).writeToFile(offlineDatabaseFile(JSON))
 
         log.info { "Creating minified json." }
-        jsonSerializer.serialize(anime, minify = true).writeToFile(offlineDatabaseFile(JSON_MINIFIED))
+        jsonSerializer.serialize(sortedList, minify = true).writeToFile(offlineDatabaseFile(JSON_MINIFIED))
 
         log.info { "Creating zip file." }
         offlineDatabaseFile(ZIP).createZipOf(offlineDatabaseFile(JSON_MINIFIED))
