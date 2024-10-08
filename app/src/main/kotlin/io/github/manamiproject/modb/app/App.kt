@@ -16,7 +16,7 @@ import io.github.manamiproject.modb.app.downloadcontrolstate.DefaultDownloadCont
 import io.github.manamiproject.modb.app.extensions.alertDeletedAnimeByTitle
 import io.github.manamiproject.modb.app.fluentapi.mergeAnime
 import io.github.manamiproject.modb.app.fluentapi.removeUnknownEntriesFromRelatedAnime
-import io.github.manamiproject.modb.app.fluentapi.saveToDatabase
+import io.github.manamiproject.modb.app.fluentapi.saveToDataset
 import io.github.manamiproject.modb.app.fluentapi.updateStatistics
 import io.github.manamiproject.modb.app.network.LinuxNetworkController
 import io.github.manamiproject.modb.app.postprocessors.*
@@ -65,7 +65,7 @@ fun main() = runCoroutine {
         .alertDeletedAnimeByTitle()
         .mergeAnime()
         .removeUnknownEntriesFromRelatedAnime()
-        .saveToDatabase()
+        .saveToDataset()
         .updateStatistics()
 
     listOf(

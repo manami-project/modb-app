@@ -14,7 +14,7 @@ internal suspend fun List<Anime>.updateStatistics(): List<Anime> {
 }
 
 @KoverIgnore
-internal suspend fun List<Anime>.saveToDatabase(): List<Anime> {
+internal suspend fun List<Anime>.saveToDataset(): List<Anime> {
     DefaultDatasetFileAccessor.instance.saveEntries(this)
     return this
 }
