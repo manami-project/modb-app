@@ -45,7 +45,9 @@ jobs:
       - name: Upload file to release
         uses: softprops/action-gh-release@v2
         with:
-          files: app/build/libs/modb-app.jar
+          files: |
+            app/build/libs/modb-app.jar
+            analyzer/build/libs/modb-analyzer.jar
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - id: fetch-latest-release
@@ -58,6 +60,8 @@ jobs:
 #        with:
 #          token: ${{ secrets.GITHUB_TOKEN }}
 #          tag: ${{ steps.fetch-latest-release.outputs.PREVIOUS_VERSION }}
-#          assets: modb-app.jar
+#          assets: |
+#            modb-app.jar
+#            modb-analyzer.jar
 #          fail-if-no-release: false
 #          fail-if-no-assets: false

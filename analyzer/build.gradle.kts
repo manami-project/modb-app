@@ -62,14 +62,14 @@ tasks.withType<Test> {
     maxParallelForks = Runtime.getRuntime().availableProcessors()
 }
 
-val mainClassPath = "io.github.manamiproject.modb.app.AppKt"
+val mainClassPath = "io.github.manamiproject.modb.analyzer.AnalyzerKt"
 application {
     mainClass.set(mainClassPath)
 }
 
 tasks {
     named<ShadowJar>("shadowJar") {
-        archiveBaseName.set("modb-app")
+        archiveBaseName.set("modb-analyzer")
         archiveClassifier.set("")
         archiveVersion.set("")
         manifest {

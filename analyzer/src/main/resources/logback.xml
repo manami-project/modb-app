@@ -1,0 +1,14 @@
+<configuration>
+    <property name="MSG_PATTERN" value="%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n" />
+    <timestamp key="timestamp" datePattern="yyyy-MM-dd_-_HHmmss"/>
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>${MSG_PATTERN}</pattern>
+        </encoder>
+    </appender>
+
+    <root level="error" additivity="true">
+        <appender-ref ref="STDOUT" />
+    </root>
+</configuration>
