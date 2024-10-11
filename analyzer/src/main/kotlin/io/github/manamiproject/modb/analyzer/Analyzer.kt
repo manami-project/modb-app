@@ -157,7 +157,7 @@ object Analyzer {
         val urisToOpenInBrowser = OpenInBrowserHelper.determineUrisToOpenInBrowser(currentEntry)
 
         if (openUrls) {
-            openUrls(urisToOpenInBrowser.sorted())
+            openUrls(urisToOpenInBrowser)
         }
 
         print("\nOption: ")
