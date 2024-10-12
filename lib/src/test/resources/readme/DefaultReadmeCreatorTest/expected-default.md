@@ -3,8 +3,6 @@
 # anime-offline-database
 The purpose of this repository is to create a dataset containing anime meta data aggregated by different anime meta data providers (such as myanimelist.net, anidb.net, kitsu.app and more) and allow cross references between those meta data providers. This dataset is supposed to be used by and created for [manami](https://github.com/manami-project/manami).
 
-**The goal is to deliver at least weekly updates.**
-
 ## Statistics
 Update **week 18 [2020]**
 
@@ -21,14 +19,6 @@ The dataset consists of **2** entries _(0% reviewed)_ composed of:
 | 2 | [anidb.net](https://anidb.net) |
 | 1 | [livechart.me](https://livechart.me) |
 
-Missed updates:
-+ **2024:** 0 _(so far)_
-+ **2023:** 0
-+ **2022:** 0
-+ **2021:** 0
-+ **2020:** 0
-+ **2019:** 2
-+ **2018:** 1
 
 ## Files
 
