@@ -46,8 +46,6 @@ class DefaultReadmeCreator(
             
             # anime-offline-database
             The purpose of this repository is to create a dataset containing anime meta data aggregated by different anime meta data providers (such as myanimelist.net, anidb.net, kitsu.app and more) and allow cross references between those meta data providers. This dataset is supposed to be used by and created for [manami](https://github.com/manami-project/manami).
-            
-            **The goal is to deliver at least weekly updates.**
         """.trimIndent()
     }
 
@@ -75,18 +73,6 @@ class DefaultReadmeCreator(
                 block.append("| ${it.second} | [${it.first}](https://${it.first}) |")
                     .append("\n")
             }
-
-        block.append("""
-            
-            Missed updates:
-            + **2024:** 0 _(so far)_
-            + **2023:** 0
-            + **2022:** 0
-            + **2021:** 0
-            + **2020:** 0
-            + **2019:** 2
-            + **2018:** 1
-        """.trimIndent())
 
         return block.toString()
     }
