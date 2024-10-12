@@ -1,6 +1,12 @@
 [![Tests](https://github.com/manami-project/modb-app/actions/workflows/tests.yml/badge.svg)](https://github.com/manami-project/modb-app/actions/workflows/tests.yml) [![codecov](https://codecov.io/gh/manami-project/modb-app/graph/badge.svg?token=66LR8JA8KE)](https://codecov.io/gh/manami-project/modb-app)
 # modb-app
 
+This repository consists of three parts.
+
+* **lib**: A library that drives drives the applications.
+* **app:** The application that runs the crawlers, merges anime and updates the repository.
+* **analyzer:** Allows to review the entries of the dataset and create merge locks.
+
 ## Documentation
 
 * Downloading
@@ -18,6 +24,8 @@
 
 ## Getting started
 
+Setup is identical for app and analyzer.
+
 ### Setup configuration
 
 Create a [configuration file](https://github.com/manami-project/modb-core#configuration-management).
@@ -29,13 +37,15 @@ Optionally you can create a [logback configuration](https://logback.qos.ch/manua
 
 ### Start using IDE
 
-Run `main()` in `io/github/manamiproject/modb/app/App.kt` of the `app` module with the following VM parameter:
+Run `main()` in `io/github/manamiproject/modb/app/App.kt` of the `app` module or `io/github/manamiproject/modb/analyzer/Analyzer.kt` of the `analyzer` module with the following VM parameter:
 * `-Djava.net.preferIPv6Addresses=true`
 * `-Djava.net.preferIPv4Stack=false`
 
 ### Start using *.jar file
 
-Run `java -Djava.net.preferIPv6Addresses=true -Djava.net.preferIPv4Stack=false -jar modb-app.jar`
+Run
+* either `java -Djava.net.preferIPv6Addresses=true -Djava.net.preferIPv4Stack=false -jar modb-app.jar`
+* or `java -Djava.net.preferIPv6Addresses=true -Djava.net.preferIPv4Stack=false -jar modb-analyzer.jar`
 
 ## Configuration
 
