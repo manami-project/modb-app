@@ -162,7 +162,7 @@ publishing {
     publications {
         create<MavenPublication>("maven") {
             groupId = project.group.toString()
-            artifactId = "$projectName-lib"
+            artifactId = projectName
             version = project.version.toString()
 
             from(components["java"])
@@ -171,7 +171,7 @@ publishing {
 
             pom {
                 packaging = "jar"
-                name.set("$projectName-lib")
+                name.set(projectName)
                 description.set("This lib is the base for the appplication which creates the anime-offline-database.")
                 url.set("https://github.com/$githubUsername/$projectName")
 
