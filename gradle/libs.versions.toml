@@ -13,7 +13,7 @@ modb-myanimelist = "7.0.4"
 modb-notify = "6.0.4"
 modb-test = "1.6.25"
 kover = "0.8.3"
-logback-classic = "1.5.10"
+logback-classic = "1.5.11"
 commons-text = "1.12.0"
 
 
