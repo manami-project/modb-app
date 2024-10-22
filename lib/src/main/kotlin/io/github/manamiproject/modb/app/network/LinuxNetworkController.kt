@@ -60,6 +60,7 @@ class LinuxNetworkController(
 
             async {
                 val device = identifyNetworkDevice()
+                waitForLastCallsToSucceed()
                 log.info { "Restarting internet connection by restarting network device [$device]." }
                 changeDeviceStatus(device, DeviceStatus.INACTIVE)
                 changeDeviceStatus(device, DeviceStatus.ACTIVE)
@@ -169,6 +170,13 @@ class LinuxNetworkController(
     private suspend fun wait() {
         excludeFromTestContext(appConfig) {
             delay(2.toDuration(SECONDS))
+        }
+    }
+
+    @KoverIgnore
+    private suspend fun waitForLastCallsToSucceed() {
+        excludeFromTestContext(appConfig) {
+            delay(5.toDuration(SECONDS))
         }
     }
 
