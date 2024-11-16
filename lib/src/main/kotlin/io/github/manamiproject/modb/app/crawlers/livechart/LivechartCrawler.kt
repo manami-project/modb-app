@@ -81,7 +81,6 @@ class LivechartCrawler(
 
         val newestYear = newestYearDetector.detectHighestId()
         val lastPage = lastPageMemorizer.retrieveLastPage()
-        val entriesNotScheduledForCurrentWeek = downloadControlStateScheduler.findEntriesNotScheduledForCurrentWeek(metaDataProviderConfig)
         var pages = createListOfPages(newestYear)
 
         if (lastPage.neitherNullNorBlank()) {
@@ -91,7 +90,7 @@ class LivechartCrawler(
         wait()
 
         pages.forEach { page ->
-            val currentList = paginationIdRangeSelector.idDownloadList(page) - entriesNotScheduledForCurrentWeek - alreadyDownloadedIdsFinder.alreadyDownloadedIds(metaDataProviderConfig)
+            val currentList = paginationIdRangeSelector.idDownloadList(page)
             wait()
             startDownload(currentList)
             lastPageMemorizer.memorizeLastPage(page)
