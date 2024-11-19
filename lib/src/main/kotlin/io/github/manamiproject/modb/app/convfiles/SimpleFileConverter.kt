@@ -34,13 +34,15 @@ class SimpleFileConverter(
         val unconvertedFiles = workingDir.listRegularFiles("*.${metaDataProviderConfig.fileSuffix()}")
             .filterNot { it.changeSuffix(CONVERTED_FILE_SUFFIX).regularFileExists() }
 
-        val jobs = unconvertedFiles.map {
-            async {
-                convertFileToConvFile(it)
+        unconvertedFiles.chunked(250).forEach {
+            val jobs = it.map {
+                async {
+                    convertFileToConvFile(it)
+                }
             }
-        }
 
-        awaitAll(*jobs.toTypedArray())
+            awaitAll(*jobs.toTypedArray())
+        }
 
         log.info { "Finished converting unconverted files for [${metaDataProviderConfig.hostname()}]." }
     }

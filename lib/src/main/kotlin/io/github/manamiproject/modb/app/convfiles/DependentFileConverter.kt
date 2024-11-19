@@ -67,14 +67,16 @@ class DependentFileConverter @KoverIgnore constructor(
             .filter { fileName -> hasNotBeenConvertedYet(fileName) }
             .filter { fileName -> allRawFilesRequiredForConversionExist(fileName) }
             .map { fileName -> outputDirectory.resolve("$fileName.${metaDataProviderConfig.fileSuffix()}") }
-            .map {
-                async {
-                    convertFileToConvFile(it)
+            .chunked(250)
+            .forEach {
+                val jobs = it.map {
+                    async {
+                        convertFileToConvFile(it)
+                    }
                 }
-            }
-            .toList()
 
-        awaitAll(*jobs.toTypedArray())
+                awaitAll(*jobs.toTypedArray())
+            }
 
         log.info { "Finished converting unconverted files for [${metaDataProviderConfig.hostname()}]." }
     }
