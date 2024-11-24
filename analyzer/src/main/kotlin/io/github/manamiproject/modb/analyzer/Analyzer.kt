@@ -130,8 +130,8 @@ object Analyzer {
                 DefaultMergeLockAccessor.instance.addMergeLock(mergeLock)
             }
         }
-
-        println("Done checking merge locks")
+        println("Done checking merge locks. Currently reprocessing merging.")
+        reprocessMerging()
     }
 
     private suspend fun markAsDeadEntry() {
