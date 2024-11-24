@@ -74,6 +74,8 @@ object Analyzer {
             }
         }
 
+        println("\n")
+
         mainMenu()
     }
 
