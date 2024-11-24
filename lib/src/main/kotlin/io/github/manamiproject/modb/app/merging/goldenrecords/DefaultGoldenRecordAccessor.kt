@@ -2,6 +2,7 @@ package io.github.manamiproject.modb.app.merging.goldenrecords
 
 import io.github.manamiproject.modb.animeplanet.AnimePlanetConfig
 import io.github.manamiproject.modb.app.extensions.firstNotNullResult
+import io.github.manamiproject.modb.core.extensions.EMPTY
 import io.github.manamiproject.modb.core.models.Anime
 import io.github.manamiproject.modb.core.models.Title
 import java.net.URI
@@ -153,7 +154,7 @@ class DefaultGoldenRecordAccessor: GoldenRecordAccessor {
             .replace(Regex("？"), "?")
 
             // normalize whitespaces
-            .replace(Regex(" {2,}"), " ")
+            .replace(" ", EMPTY) // test for 2024-48
             .trim()
             .lowercase()
     }
