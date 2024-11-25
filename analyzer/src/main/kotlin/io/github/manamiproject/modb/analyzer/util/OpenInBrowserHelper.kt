@@ -51,7 +51,7 @@ internal object OpenInBrowserHelper {
                 searchLink.add(URI("https://www.${AnimePlanetConfig.hostname()}/anime/all?name=$urlEncodedTitle"))
             }
             if (!this.contains(AnisearchConfig.hostname())) {
-                //searchLink.add(URI("https://www.${AnisearchConfig.hostname()}.com/anime/index/?char=all&text=$urlEncodedTitle&q=true&$anisearchDataKey"))
+                searchLink.add(URI("https://www.${AnisearchConfig.hostname()}.com")) // direct links to the search result page are not supported by anisearch
             }
             if (!this.contains(KitsuConfig.hostname())) {
                 searchLink.add(URI("https://${KitsuConfig.hostname()}/anime?text=$urlEncodedTitle"))
