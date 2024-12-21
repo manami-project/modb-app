@@ -32,7 +32,9 @@ internal class DownloadControlStateWeeksValidationPostProcessorTest {
                     _nextDownload = WeekOfYear.currentWeek().minusWeeks(numberOfWeeks),
                     _anime = Anime(
                         _title = "test1",
-                        sources = hashSetOf(URI("https://example.org/anime/1")),
+                        sources = hashSetOf(
+                            URI("https://example.org/anime/1"),
+                        ),
                     )
                 ),
             )
@@ -55,7 +57,7 @@ internal class DownloadControlStateWeeksValidationPostProcessorTest {
         }
 
         @Test
-        fun `throws exception if an entry contains a value for lastDownload which lies in the future`() {
+        fun `throws exception if an entry contains a value for lastDownload which is set in the future`() {
             // given
             val list = listOf(
                 DownloadControlStateEntry(
@@ -64,7 +66,9 @@ internal class DownloadControlStateWeeksValidationPostProcessorTest {
                     _nextDownload = WeekOfYear.currentWeek().plusWeeks(1),
                     _anime = Anime(
                         _title = "test1",
-                        sources = hashSetOf(URI("https://example.org/anime/1")),
+                        sources = hashSetOf(
+                            URI("https://example.org/anime/1"),
+                        ),
                     )
                 ),
             )
