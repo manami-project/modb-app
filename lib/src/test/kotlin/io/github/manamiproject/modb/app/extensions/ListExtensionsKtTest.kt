@@ -76,7 +76,7 @@ internal class ListExtensionsKtTest {
             }
 
             // then
-            assertThat(result).hasMessage("Probably found a dead entry: [title=${value}, source=https://example.org/anime/1]")
+            assertThat(result).hasMessage("Probably found a dead entry: [title=${value}, sources=[https://example.org/anime/1]]")
         }
 
         @Test

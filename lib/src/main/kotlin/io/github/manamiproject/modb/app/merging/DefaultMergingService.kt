@@ -57,11 +57,11 @@ class DefaultMergingService(
         reCheck.clear()
 
         val metaDataProvidersSortedByNumberOfAnime = sortMetaDataProvidersByNumberOfAnime(unmergedAnime)
-        val iterateAnime: suspend (MetaDataProviderConfig) -> Unit = { metaDataProviderConfig->
+        val iterateAnime: suspend (MetaDataProviderConfig) -> Unit = { metaDataProviderConfig ->
             log.info { "Merging [${metaDataProviderConfig.hostname()}] entries" }
 
             unmergedAnime.filter { anime ->
-                anime.sources.first().toString().contains(metaDataProviderConfig.hostname())
+                anime.sources.first().host == metaDataProviderConfig.hostname()
             }
             .sortedBy { it.title }
             .map { mergeEntry(it) }
@@ -77,7 +77,7 @@ class DefaultMergingService(
         }
 
         while (runThrough <= MAX_RUNS) {
-            log.info { "Run: $runThrough/$MAX_RUNS - merging [${reCheck.size}] entries" }
+            log.info { "Run: [$runThrough/$MAX_RUNS] - merging [${reCheck.size}] entries" }
 
             val currentRun = reCheck.toList()
             reCheck.clear()
@@ -94,7 +94,7 @@ class DefaultMergingService(
         val cluster: MutableMap<MetaDataProviderConfig, Int> = mutableMapOf()
 
         appConfig.metaDataProviderConfigurations().forEach { currentConfig ->
-            val numberOfAnime = unmergedAnime.count { it.sources.first().toString().contains(currentConfig.hostname()) }
+            val numberOfAnime = unmergedAnime.count { it.sources.first().host == currentConfig.hostname() }
             cluster[currentConfig] = numberOfAnime
         }
 
@@ -125,7 +125,7 @@ class DefaultMergingService(
     private suspend fun handleMergeLock(anime: Anime) {
         val mergeLock = mergeLockAccessor.getMergeLock(anime.sources.first())
 
-        log.info { "Found merge lock [$mergeLock] for [${anime.sources}]" }
+        log.info { "Found merge lock $mergeLock for ${anime.sources}" }
 
         val goldenRecord = goldenRecordAccessor.findGoldenRecordBySource(mergeLock)
 

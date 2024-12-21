@@ -107,7 +107,7 @@ class DefaultMatchingProbabilityCalculator: MatchingProbabilityCalculator {
     }
 
     private fun calculateProbabilityOfYearOfPremiere(recordYearOfPremiere: Int, potentialGoldenRecordYearOfPremiere: Int): Double {
-        return weightedProbabilityOfTwoNumbersBeingEqual(recordYearOfPremiere, potentialGoldenRecordYearOfPremiere, 3)
+        return weightedProbabilityOfTwoNumbersBeingEqual(recordYearOfPremiere, potentialGoldenRecordYearOfPremiere, 4)
     }
 
     private fun calculateProbabilityOfStatus(recordStatus: Status, potentialGoldenRecordStatus: Status): Double = when (recordStatus) {

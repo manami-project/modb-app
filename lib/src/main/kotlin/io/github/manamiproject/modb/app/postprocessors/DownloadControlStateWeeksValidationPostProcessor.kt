@@ -19,8 +19,8 @@ class DownloadControlStateWeeksValidationPostProcessor(
         log.info { "Validating weeks in DCS entries." }
 
         downloadControlStateAccessor.allDcsEntries().forEach {
-            check(it.nextDownload > WeekOfYear.currentWeek()) { "Week for next download of [${it.anime.sources.first()}] is not set in the future." }
-            check(it.lastDownloaded <= WeekOfYear.currentWeek()) { "Week for last download of [${it.anime.sources.first()}] is neither current week nor a week of the past." }
+            check(it.nextDownload > WeekOfYear.currentWeek()) { "Week for next download of ${it.anime.sources} is not set in the future." }
+            check(it.lastDownloaded <= WeekOfYear.currentWeek()) { "Week for last download of ${it.anime.sources} is neither current week nor a week of the past." }
         }
 
         return true

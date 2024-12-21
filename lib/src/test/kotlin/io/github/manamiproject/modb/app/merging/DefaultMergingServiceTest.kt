@@ -473,7 +473,7 @@ internal class DefaultMergingServiceTest {
 
                 val anilDaydream = Anime(
                     sources = hashSetOf(
-                        URI("https://anilist.com/anime/10001"),
+                        URI("https://anilist.co/anime/10001"),
                     ),
                     _title = "Daydream",
                     episodes = 1,

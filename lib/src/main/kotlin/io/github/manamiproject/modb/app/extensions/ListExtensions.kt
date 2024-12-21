@@ -21,7 +21,7 @@ fun List<Anime>.alertDeletedAnimeByTitle(): List<Anime> {
     val deletedMarker = setOf("delete", "deleted")
     forEach {
         check(it.title.lowercase() !in deletedMarker) {
-            "Probably found a dead entry: [title=${it.title}, source=${it.sources.first()}]"
+            "Probably found a dead entry: [title=${it.title}, sources=${it.sources}]"
         }
     }
     return this

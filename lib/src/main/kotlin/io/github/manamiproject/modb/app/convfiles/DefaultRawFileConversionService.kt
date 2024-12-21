@@ -113,11 +113,11 @@ class DefaultRawFileConversionService(
 
     private fun buildWatchServices() {
         mapOf(
-            AnidbConfig to AnidbAnimeConverter(),
-            AnilistConfig to AnilistAnimeConverter(),
-            AnimePlanetConfig to AnimePlanetAnimeConverter(),
-            LivechartConfig to LivechartAnimeConverter(),
-            MyanimelistConfig to MyanimelistAnimeConverter(),
+            AnidbConfig to AnidbAnimeConverter.instance,
+            AnilistConfig to AnilistAnimeConverter.instance,
+            AnimePlanetConfig to AnimePlanetAnimeConverter.instance,
+            LivechartConfig to LivechartAnimeConverter.instance,
+            MyanimelistConfig to MyanimelistAnimeConverter.instance,
         ).map { entry ->
             SimpleConversionWatchService(
                 appConfig = appConfig,
