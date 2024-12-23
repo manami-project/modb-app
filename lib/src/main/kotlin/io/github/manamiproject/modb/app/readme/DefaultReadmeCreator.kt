@@ -99,7 +99,7 @@ class DefaultReadmeCreator(
             
             ## Type reference
             
-            Here is description of the types in the JSON files.
+            Here is a description of the types in the JSON files.
             
             ### Database root
             

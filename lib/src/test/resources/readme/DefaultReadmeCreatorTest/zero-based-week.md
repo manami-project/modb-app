@@ -38,7 +38,7 @@ This repository contains various JSON and zip files. The dataset file itself as 
 
 ## Type reference
 
-Here is description of the types in the JSON files.
+Here is a description of the types in the JSON files.
 
 ### Database root
 
