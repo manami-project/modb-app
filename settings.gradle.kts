@@ -7,5 +7,6 @@ rootProject.name = "modb-app"
 include("analyzer")
 include("anidb")
 include("anilist")
+include("anisearch")
 include("app")
 include("lib")
