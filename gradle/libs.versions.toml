@@ -3,7 +3,6 @@ kotlin = "2.1.0"
 kommand = "1.4.4"
 modb-core = "16.5.1"
 modb-serde = "5.2.15"
-modb-anidb = "6.0.10"
 modb-anilist = "7.0.10"
 modb-animeplanet = "6.1.5"
 modb-anisearch = "4.0.10"
@@ -23,7 +22,6 @@ kotlin-reflect = { module = "org.jetbrains.kotlin:kotlin-reflect", version.ref =
 kommand = { module = "io.github.manamiproject:kommand", version.ref = "kommand" }
 modb-core = { module = "io.github.manamiproject:modb-core", version.ref = "modb-core" }
 modb-serde = { module = "io.github.manamiproject:modb-serde", version.ref = "modb-serde" }
-modb-anidb = { module = "io.github.manamiproject:modb-anidb", version.ref = "modb-anidb" }
 modb-anilist = { module = "io.github.manamiproject:modb-anilist", version.ref = "modb-anilist" }
 modb-animeplanet = { module = "io.github.manamiproject:modb-anime-planet", version.ref = "modb-animeplanet" }
 modb-anisearch = { module = "io.github.manamiproject:modb-anisearch", version.ref = "modb-anisearch" }
@@ -45,7 +43,6 @@ shadow = { id = "com.github.johnrengelman.shadow", version = "8.1.1" }
 modb = [
     "modb-core",
     "modb-serde",
-    "modb-anidb",
     "modb-anilist",
     "modb-animeplanet",
     "modb-anisearch",
