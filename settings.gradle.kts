@@ -6,5 +6,6 @@ plugins {
 rootProject.name = "modb-app"
 include("analyzer")
 include("anidb")
+include("anisearch")
 include("app")
 include("lib")

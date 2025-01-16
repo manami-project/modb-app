@@ -5,7 +5,6 @@ modb-core = "16.5.1"
 modb-serde = "5.2.15"
 modb-anilist = "7.0.10"
 modb-animeplanet = "6.1.5"
-modb-anisearch = "4.0.10"
 modb-kitsu = "6.0.10"
 modb-livechart = "4.0.10"
 modb-myanimelist = "7.0.10"
@@ -24,7 +23,6 @@ modb-core = { module = "io.github.manamiproject:modb-core", version.ref = "modb-
 modb-serde = { module = "io.github.manamiproject:modb-serde", version.ref = "modb-serde" }
 modb-anilist = { module = "io.github.manamiproject:modb-anilist", version.ref = "modb-anilist" }
 modb-animeplanet = { module = "io.github.manamiproject:modb-anime-planet", version.ref = "modb-animeplanet" }
-modb-anisearch = { module = "io.github.manamiproject:modb-anisearch", version.ref = "modb-anisearch" }
 modb-kitsu = { module = "io.github.manamiproject:modb-kitsu", version.ref = "modb-kitsu" }
 modb-livechart = { module = "io.github.manamiproject:modb-livechart", version.ref = "modb-livechart" }
 modb-myanimelist = { module = "io.github.manamiproject:modb-myanimelist", version.ref = "modb-myanimelist" }
@@ -45,7 +43,6 @@ modb = [
     "modb-serde",
     "modb-anilist",
     "modb-animeplanet",
-    "modb-anisearch",
     "modb-kitsu",
     "modb-livechart",
     "modb-myanimelist",
