@@ -10,7 +10,7 @@ plugins {
 group = "io.github.manamiproject"
 version = project.findProperty("release.version") as String? ?: ""
 
-val projectName = "modb-app"
+val projectName = "modb-anilist"
 val githubUsername = "manami-project"
 
 repositories {
@@ -18,54 +18,6 @@ repositories {
     maven {
         name = "modb-core"
         url = uri("https://maven.pkg.github.com/$githubUsername/modb-core")
-        credentials {
-            username = parameter("GH_USERNAME", githubUsername)
-            password = parameter("GH_PACKAGES_READ_TOKEN")
-        }
-    }
-    maven {
-        name = "modb-anime-planet"
-        url = uri("https://maven.pkg.github.com/$githubUsername/modb-anime-planet")
-        credentials {
-            username = parameter("GH_USERNAME", githubUsername)
-            password = parameter("GH_PACKAGES_READ_TOKEN")
-        }
-    }
-    maven {
-        name = "modb-kitsu"
-        url = uri("https://maven.pkg.github.com/$githubUsername/modb-kitsu")
-        credentials {
-            username = parameter("GH_USERNAME", githubUsername)
-            password = parameter("GH_PACKAGES_READ_TOKEN")
-        }
-    }
-    maven {
-        name = "modb-livechart"
-        url = uri("https://maven.pkg.github.com/$githubUsername/modb-livechart")
-        credentials {
-            username = parameter("GH_USERNAME", githubUsername)
-            password = parameter("GH_PACKAGES_READ_TOKEN")
-        }
-    }
-    maven {
-        name = "modb-myanimelist"
-        url = uri("https://maven.pkg.github.com/$githubUsername/modb-myanimelist")
-        credentials {
-            username = parameter("GH_USERNAME", githubUsername)
-            password = parameter("GH_PACKAGES_READ_TOKEN")
-        }
-    }
-    maven {
-        name = "modb-notify"
-        url = uri("https://maven.pkg.github.com/$githubUsername/modb-notify")
-        credentials {
-            username = parameter("GH_USERNAME", githubUsername)
-            password = parameter("GH_PACKAGES_READ_TOKEN")
-        }
-    }
-    maven {
-        name = "modb-anisearch"
-        url = uri("https://maven.pkg.github.com/$githubUsername/modb-anisearch")
         credentials {
             username = parameter("GH_USERNAME", githubUsername)
             password = parameter("GH_PACKAGES_READ_TOKEN")
@@ -83,30 +35,15 @@ repositories {
 
 dependencies {
     api(libs.kotlin.stdlib)
-    api(libs.bundles.modb)
-    api(project(":anidb"))
-    api(project(":anilist"))
+    api(libs.modb.core)
 
-    implementation(libs.kommand)
-    implementation(libs.logback.classic)
-    implementation(libs.commons.text)
-
-    testImplementation(libs.kotlin.reflect)
+    testImplementation(libs.logback.classic)
     testImplementation(libs.modb.test)
 }
 
 kotlin {
+    explicitApi()
     jvmToolchain(JavaVersion.VERSION_21.toString().toInt())
-}
-
-kover {
-    reports {
-        filters {
-            excludes {
-                annotatedBy("io.github.manamiproject.modb.core.coverage.KoverIgnore")
-            }
-        }
-    }
 }
 
 tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach {
@@ -158,7 +95,7 @@ publishing {
             pom {
                 packaging = "jar"
                 name.set(projectName)
-                description.set("This lib is the base for the appplication which creates the anime-offline-database.")
+                description.set("This lib contains downloader and converter for downloading raw data from anilist.co and convert it to an anime object.")
                 url.set("https://github.com/$githubUsername/$projectName")
 
                 licenses {
