@@ -22,7 +22,6 @@ kotlin-reflect = { module = "org.jetbrains.kotlin:kotlin-reflect", version.ref =
 kommand = { module = "io.github.manamiproject:kommand", version.ref = "kommand" }
 modb-core = { module = "io.github.manamiproject:modb-core", version.ref = "modb-core" }
 modb-serde = { module = "io.github.manamiproject:modb-serde", version.ref = "modb-serde" }
-modb-anilist = { module = "io.github.manamiproject:modb-anilist", version.ref = "modb-anilist" }
 modb-animeplanet = { module = "io.github.manamiproject:modb-anime-planet", version.ref = "modb-animeplanet" }
 modb-anisearch = { module = "io.github.manamiproject:modb-anisearch", version.ref = "modb-anisearch" }
 modb-kitsu = { module = "io.github.manamiproject:modb-kitsu", version.ref = "modb-kitsu" }
@@ -43,7 +42,6 @@ shadow = { id = "com.github.johnrengelman.shadow", version = "8.1.1" }
 modb = [
     "modb-core",
     "modb-serde",
-    "modb-anilist",
     "modb-animeplanet",
     "modb-anisearch",
     "modb-kitsu",
