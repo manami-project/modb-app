@@ -10,7 +10,7 @@ plugins {
 group = "io.github.manamiproject"
 version = project.findProperty("release.version") as String? ?: ""
 
-val projectName = "modb-livechart"
+val projectName = "modb-test"
 val githubUsername = "manami-project"
 
 repositories {
@@ -19,12 +19,13 @@ repositories {
 
 dependencies {
     api(libs.kotlin.stdlib)
-    api(project(":core"))
-
-    implementation(libs.commons.text)
-
-    testImplementation(libs.logback.classic)
-    testImplementation(project(":test"))
+    api(libs.kotlin.test.junit5)
+    api(libs.junit.jupiter.engine)
+    api(libs.junit.jupiter.params)
+    api(libs.junit.platform.launcher)
+    api(libs.assertj.core)
+    api(libs.wiremock)
+    api(libs.kotlinx.coroutines.core.jvm)
 }
 
 kotlin {
@@ -81,7 +82,7 @@ publishing {
             pom {
                 packaging = "jar"
                 name.set(projectName)
-                description.set("This lib contains downloader and converter for downloading raw data from livechart.me and convert it to an anime object.")
+                description.set("This lib contains all essential dependencies as well as some convenience functions and classes for creating tests in modb prefixed kotlin projects.")
                 url.set("https://github.com/$githubUsername/$projectName")
 
                 licenses {
