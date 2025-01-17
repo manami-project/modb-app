@@ -10,7 +10,7 @@ plugins {
 group = "io.github.manamiproject"
 version = project.findProperty("release.version") as String? ?: ""
 
-val projectName = "modb-app"
+val projectName = "modb-notify"
 val githubUsername = "manami-project"
 
 repositories {
@@ -35,36 +35,15 @@ repositories {
 
 dependencies {
     api(libs.kotlin.stdlib)
-    api(libs.bundles.modb)
-    api(project(":anidb"))
-    api(project(":anilist"))
-    api(project(":anisearch"))
-    api(project(":anime-planet"))
-    api(project(":kitsu"))
-    api(project(":livechart"))
-    api(project(":myanimelist"))
-    api(project(":notify"))
+    api(libs.modb.core)
 
-    implementation(libs.kommand)
-    implementation(libs.logback.classic)
-    implementation(libs.commons.text)
-
-    testImplementation(libs.kotlin.reflect)
+    testImplementation(libs.logback.classic)
     testImplementation(libs.modb.test)
 }
 
 kotlin {
+    explicitApi()
     jvmToolchain(JavaVersion.VERSION_21.toString().toInt())
-}
-
-kover {
-    reports {
-        filters {
-            excludes {
-                annotatedBy("io.github.manamiproject.modb.core.coverage.KoverIgnore")
-            }
-        }
-    }
 }
 
 tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach {
@@ -116,7 +95,7 @@ publishing {
             pom {
                 packaging = "jar"
                 name.set(projectName)
-                description.set("This lib is the base for the appplication which creates the anime-offline-database.")
+                description.set("This lib contains downloader and converter for downloading raw data from notify.moe and convert it to an anime object.")
                 url.set("https://github.com/$githubUsername/$projectName")
 
                 licenses {
