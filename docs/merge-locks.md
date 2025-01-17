@@ -6,7 +6,6 @@
 + A merge lock is a fixation letting the application know which anime must be merged together
 + It is nothing more than a list of `source` URIs
 
-
 ## What are merge locks?
 
 The application merges anime automatically. There are three cases resulting from merging in an automated process:
