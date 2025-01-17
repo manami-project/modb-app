@@ -1,0 +1,4 @@
+[localDate]
+valid.value = 2022-10-31
+different.type = "2023-12-06"
+null.on.wrong.format = "error"
