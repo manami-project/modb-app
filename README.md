@@ -11,10 +11,13 @@ This repository consists of three parts.
 
 * Downloading
   * [Download Control State (DCS)](docs/dcs.md)
+  * [Data lifecycle](docs/data-lifecycle.md)
 * Merging
   * [Merging](docs/merging.md)
-  * [Merge locks](docs/merge_locks.md) 
+  * [Merge locks](docs/merge-locks) 
   * [Reviewed isolated entries](docs/reviewed-isolated-entries.md)
+* Terminology
+  * [Terminology](docs/terminology.md)
 
 ## Requirements
 
