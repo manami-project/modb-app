@@ -1,0 +1,10 @@
+string.valid.value = "other value"
+long.valid.value = 0
+int.valid.value = 0
+boolean.valid.value = false
+localDate.valid.value = 1900-01-01
+localDateTime.valid.value = 1900-01-01T01:00:00
+offsetDateTime.valid.value = 1900-01-01T01:00:00Z
+list.valid.value = ["other"]
+[[map]]
+valid.value = { other=0 }

@@ -1,0 +1,7 @@
+[list]
+valid.value = [
+    "one",
+    "two",
+    "three",
+]
+single.element = 5

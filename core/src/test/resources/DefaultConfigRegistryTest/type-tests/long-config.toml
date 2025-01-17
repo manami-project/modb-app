@@ -1,0 +1,4 @@
+[long]
+valid.value = 21
+different.type = "5"
+null.on.wrong.type = "error"
