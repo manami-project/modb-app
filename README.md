@@ -1,11 +1,22 @@
 [![Tests](https://github.com/manami-project/modb-app/actions/workflows/tests.yml/badge.svg)](https://github.com/manami-project/modb-app/actions/workflows/tests.yml) [![codecov](https://codecov.io/gh/manami-project/modb-app/graph/badge.svg?token=66LR8JA8KE)](https://codecov.io/gh/manami-project/modb-app)
 # modb-app
 
-This repository consists of three parts.
+_[modb](https://github.com/manami-project?tab=repositories&q=modb&type=source)_ stands for _**M**anami **O**ffline **D**ata**B**ase_. The applications and libraries of this repository are used to create the [manami-project/anime-offline-database](https://github.com/manami-project/anime-offline-database).
 
-* **lib**: A library that drives drives the applications.
-* **app:** The application that runs the crawlers, merges anime and updates the repository.
 * **analyzer:** Allows to review the entries of the dataset and create merge locks.
+* **anidb:** Config, downloader and converter for anidb.net
+* **anilist:** Config, downloader and converter for anilist.co
+* **anime-planet:** Config, downloader and converter for anime-planet.com
+* **anisearch:** Config, downloader and converter for anisearch.com
+* **app:** The application that runs the crawlers, merges anime and updates the repository.
+* **core:** Core functionality used by all other modules.
+* **kitsu:** Config, downloader and converter for kitsu.app
+* **lib:** A library that drives drives the applications "app" and "analyzer".
+* **livechart:** Config, downloader and converter for livechart.me
+* **myanimelist:** Config, downloader and converter for myanimelist.net
+* **notify:** Config, downloader and converter for notify.moe
+* **serde:** Serialization and deserialization of the finalized dataset files.
+* **test:** All essential dependencies as well as some convenience functions and classes for creating tests.
 
 ## Documentation
 
@@ -28,7 +39,7 @@ Setup is identical for app and analyzer.
 
 ### Setup configuration
 
-Create a [configuration file](https://github.com/manami-project/modb-core#configuration-management).
+Create a [configuration file](core/README.md#configuration-management).
 Set all the properties from the "Configuration" section down below which don't offer a default value.
 
 ### Optional: Logback configuration
@@ -48,6 +59,8 @@ Run
 * or `java -Djava.net.preferIPv6Addresses=true -Djava.net.preferIPv4Stack=false -jar modb-analyzer.jar`
 
 ## Configuration
+
+For more configuration options see the `README.md` files of the respective modules.
 
 | parameter                                | type     | default                                                                     | description                                                                                                                                                                                               |
 |------------------------------------------|----------|-----------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
