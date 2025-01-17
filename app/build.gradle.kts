@@ -36,7 +36,6 @@ repositories {
 dependencies {
     implementation(libs.kotlin.stdlib)
     implementation(project(":lib"))
-    implementation(libs.modb.serde)
     implementation(libs.logback.classic)
 
     testImplementation(libs.modb.test)
