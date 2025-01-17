@@ -1,0 +1,3 @@
+[string]
+custom.location.exclusive = "exists only in custom location config set by system property"
+override.test = "custom location by system property"

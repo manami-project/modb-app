@@ -1,0 +1,5 @@
+[boolean]
+valid.value = true
+different.type = "false"
+null.on.wrong.type = "error"
+null.on.not.strictly.boolean = "True"
