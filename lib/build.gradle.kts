@@ -16,8 +16,8 @@ val githubUsername = "manami-project"
 repositories {
     mavenCentral()
     maven {
-        name = "modb-test"
-        url = uri("https://maven.pkg.github.com/$githubUsername/modb-test")
+        name = "kommand"
+        url = uri("https://maven.pkg.github.com/$githubUsername/kommand")
         credentials {
             username = parameter("GH_USERNAME", githubUsername)
             password = parameter("GH_PACKAGES_READ_TOKEN")
@@ -43,7 +43,7 @@ dependencies {
     implementation(libs.commons.text)
 
     testImplementation(libs.kotlin.reflect)
-    testImplementation(libs.modb.test)
+    testImplementation(project(":test"))
 }
 
 kotlin {
