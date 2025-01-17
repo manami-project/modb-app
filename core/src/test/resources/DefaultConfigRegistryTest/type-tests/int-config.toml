@@ -1,0 +1,4 @@
+[int]
+valid.value = 42
+different.type = "7"
+null.on.wrong.type = "error"
