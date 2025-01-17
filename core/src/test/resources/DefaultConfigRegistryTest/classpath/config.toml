@@ -1,0 +1,3 @@
+[string]
+classpath.exclusive = "exists only in classpath"
+override.test = "classpath"

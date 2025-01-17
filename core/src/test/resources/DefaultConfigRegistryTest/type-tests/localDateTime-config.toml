@@ -1,0 +1,4 @@
+[localDateTime]
+valid.value = 2023-10-31T06:32:09
+different.type = "2024-12-06T09:55:37"
+null.on.wrong.format = "error"
