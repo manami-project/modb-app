@@ -3,7 +3,6 @@ kotlin = "2.1.10"
 kommand = "1.4.4"
 modb-core = "16.5.1"
 modb-serde = "5.2.15"
-modb-notify = "6.0.9"
 modb-test = "1.6.31"
 kover = "0.9.1"
 logback-classic = "1.5.16"
@@ -16,7 +15,6 @@ kotlin-reflect = { module = "org.jetbrains.kotlin:kotlin-reflect", version.ref =
 kommand = { module = "io.github.manamiproject:kommand", version.ref = "kommand" }
 modb-core = { module = "io.github.manamiproject:modb-core", version.ref = "modb-core" }
 modb-serde = { module = "io.github.manamiproject:modb-serde", version.ref = "modb-serde" }
-modb-notify = { module = "io.github.manamiproject:modb-notify", version.ref = "modb-notify" }
 modb-test = { module = "io.github.manamiproject:modb-test", version.ref = "modb-test" }
 logback-classic = { module = "ch.qos.logback:logback-classic", version.ref = "logback-classic" }
 commons-text = { module = "org.apache.commons:commons-text", version.ref = "commons-text" }
@@ -31,5 +29,4 @@ shadow = { id = "com.github.johnrengelman.shadow", version = "8.1.1" }
 modb = [
     "modb-core",
     "modb-serde",
-    "modb-notify",
 ]
