@@ -53,4 +53,4 @@ jobs:
         if: ${{ matrix.java == 21 }}
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
-          files: lib/build/reports/kover/reportJvm.xml
+          files: "**/build/reports/kover/reportJvm.xml"
