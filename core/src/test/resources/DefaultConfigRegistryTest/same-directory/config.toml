@@ -1,0 +1,3 @@
+[string]
+same.directory.exclusive = "exists only in same directory file"
+override.test = "same directory"
