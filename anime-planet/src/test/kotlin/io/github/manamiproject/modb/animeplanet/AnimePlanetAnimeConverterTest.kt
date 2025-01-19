@@ -37,7 +37,7 @@ internal class AnimePlanetAnimeConverterTest {
                     override fun buildAnimeLink(id: AnimeId): URI = AnimePlanetConfig.buildAnimeLink(id)
                 }
 
-                val testFileContent = loadTestResource<String>("file_converter_tests/title/special_chars.html")
+                val testFileContent = loadTestResource<String>("AnimePlanetAnimeConverterTest/title/special_chars.html")
 
                 val converter = AnimePlanetAnimeConverter(testAnimePlanetConfig)
 
@@ -59,7 +59,7 @@ internal class AnimePlanetAnimeConverterTest {
                 }
 
                 val testFileContent =
-                    loadTestResource<String>("file_converter_tests/title/title_replaced_by_email_protected.html")
+                    loadTestResource<String>("AnimePlanetAnimeConverterTest/title/title_replaced_by_email_protected.html")
 
                 val converter = AnimePlanetAnimeConverter(testAnimePlanetConfig)
 
@@ -81,7 +81,7 @@ internal class AnimePlanetAnimeConverterTest {
                 }
 
                 val testFileContent =
-                    loadTestResource<String>("file_converter_tests/title/title_replaced_by_email_protected_no_jsonld.html")
+                    loadTestResource<String>("AnimePlanetAnimeConverterTest/title/title_replaced_by_email_protected_no_jsonld.html")
 
                 val converter = AnimePlanetAnimeConverter(testAnimePlanetConfig)
 
@@ -106,7 +106,7 @@ internal class AnimePlanetAnimeConverterTest {
                     override fun buildAnimeLink(id: AnimeId): URI = AnimePlanetConfig.buildAnimeLink(id)
                 }
 
-                val testFileContent = loadTestResource<String>("file_converter_tests/episodes/1_ep.html")
+                val testFileContent = loadTestResource<String>("AnimePlanetAnimeConverterTest/episodes/1_ep.html")
 
                 val converter = AnimePlanetAnimeConverter(testAnimePlanetConfig)
 
@@ -127,7 +127,7 @@ internal class AnimePlanetAnimeConverterTest {
                     override fun buildAnimeLink(id: AnimeId): URI = AnimePlanetConfig.buildAnimeLink(id)
                 }
 
-                val testFileContent = loadTestResource<String>("file_converter_tests/episodes/1081+_eps.html")
+                val testFileContent = loadTestResource<String>("AnimePlanetAnimeConverterTest/episodes/1081+_eps.html")
 
                 val converter = AnimePlanetAnimeConverter(testAnimePlanetConfig)
 
@@ -148,7 +148,7 @@ internal class AnimePlanetAnimeConverterTest {
                     override fun buildAnimeLink(id: AnimeId): URI = AnimePlanetConfig.buildAnimeLink(id)
                 }
 
-                val testFileContent = loadTestResource<String>("file_converter_tests/episodes/25_eps.html")
+                val testFileContent = loadTestResource<String>("AnimePlanetAnimeConverterTest/episodes/25_eps.html")
 
                 val converter = AnimePlanetAnimeConverter(testAnimePlanetConfig)
 
@@ -169,7 +169,7 @@ internal class AnimePlanetAnimeConverterTest {
                     override fun buildAnimeLink(id: AnimeId): URI = AnimePlanetConfig.buildAnimeLink(id)
                 }
 
-                val testFileContent = loadTestResource<String>("file_converter_tests/episodes/no_episodes.html")
+                val testFileContent = loadTestResource<String>("AnimePlanetAnimeConverterTest/episodes/no_episodes.html")
 
                 val converter = AnimePlanetAnimeConverter(testAnimePlanetConfig)
 
@@ -194,7 +194,7 @@ internal class AnimePlanetAnimeConverterTest {
                     override fun buildAnimeLink(id: AnimeId): URI = AnimePlanetConfig.buildAnimeLink(id)
                 }
 
-                val testFileContent = loadTestResource<String>("file_converter_tests/type/web.html")
+                val testFileContent = loadTestResource<String>("AnimePlanetAnimeConverterTest/type/web.html")
 
                 val converter = AnimePlanetAnimeConverter(testAnimePlanetConfig)
 
@@ -215,7 +215,7 @@ internal class AnimePlanetAnimeConverterTest {
                     override fun buildAnimeLink(id: AnimeId): URI = AnimePlanetConfig.buildAnimeLink(id)
                 }
 
-                val testFileContent = loadTestResource<String>("file_converter_tests/type/tv_special.html")
+                val testFileContent = loadTestResource<String>("AnimePlanetAnimeConverterTest/type/tv_special.html")
 
                 val converter = AnimePlanetAnimeConverter(testAnimePlanetConfig)
 
@@ -236,7 +236,7 @@ internal class AnimePlanetAnimeConverterTest {
                     override fun buildAnimeLink(id: AnimeId): URI = AnimePlanetConfig.buildAnimeLink(id)
                 }
 
-                val testFileContent = loadTestResource<String>("file_converter_tests/type/tv.html")
+                val testFileContent = loadTestResource<String>("AnimePlanetAnimeConverterTest/type/tv.html")
 
                 val converter = AnimePlanetAnimeConverter(testAnimePlanetConfig)
 
@@ -257,7 +257,7 @@ internal class AnimePlanetAnimeConverterTest {
                     override fun buildAnimeLink(id: AnimeId): URI = AnimePlanetConfig.buildAnimeLink(id)
                 }
 
-                val testFileContent = loadTestResource<String>("file_converter_tests/type/ova.html")
+                val testFileContent = loadTestResource<String>("AnimePlanetAnimeConverterTest/type/ova.html")
 
                 val converter = AnimePlanetAnimeConverter(testAnimePlanetConfig)
 
@@ -278,7 +278,7 @@ internal class AnimePlanetAnimeConverterTest {
                     override fun buildAnimeLink(id: AnimeId): URI = AnimePlanetConfig.buildAnimeLink(id)
                 }
 
-                val testFileContent = loadTestResource<String>("file_converter_tests/type/other.html")
+                val testFileContent = loadTestResource<String>("AnimePlanetAnimeConverterTest/type/other.html")
 
                 val converter = AnimePlanetAnimeConverter(testAnimePlanetConfig)
 
@@ -299,7 +299,7 @@ internal class AnimePlanetAnimeConverterTest {
                     override fun buildAnimeLink(id: AnimeId): URI = AnimePlanetConfig.buildAnimeLink(id)
                 }
 
-                val testFileContent = loadTestResource<String>("file_converter_tests/type/music_video.html")
+                val testFileContent = loadTestResource<String>("AnimePlanetAnimeConverterTest/type/music_video.html")
 
                 val converter = AnimePlanetAnimeConverter(testAnimePlanetConfig)
 
@@ -320,7 +320,7 @@ internal class AnimePlanetAnimeConverterTest {
                     override fun buildAnimeLink(id: AnimeId): URI = AnimePlanetConfig.buildAnimeLink(id)
                 }
 
-                val testFileContent = loadTestResource<String>("file_converter_tests/type/movie.html")
+                val testFileContent = loadTestResource<String>("AnimePlanetAnimeConverterTest/type/movie.html")
 
                 val converter = AnimePlanetAnimeConverter(testAnimePlanetConfig)
 
@@ -341,7 +341,7 @@ internal class AnimePlanetAnimeConverterTest {
                     override fun buildAnimeLink(id: AnimeId): URI = AnimePlanetConfig.buildAnimeLink(id)
                 }
 
-                val testFileContent = loadTestResource<String>("file_converter_tests/type/dvd_special.html")
+                val testFileContent = loadTestResource<String>("AnimePlanetAnimeConverterTest/type/dvd_special.html")
 
                 val converter = AnimePlanetAnimeConverter(testAnimePlanetConfig)
 
@@ -362,7 +362,7 @@ internal class AnimePlanetAnimeConverterTest {
                     override fun buildAnimeLink(id: AnimeId): URI = AnimePlanetConfig.buildAnimeLink(id)
                 }
 
-                val testFileContent = loadTestResource<String>("file_converter_tests/type/no_braces.html")
+                val testFileContent = loadTestResource<String>("AnimePlanetAnimeConverterTest/type/no_braces.html")
 
                 val converter = AnimePlanetAnimeConverter(testAnimePlanetConfig)
 
@@ -388,7 +388,7 @@ internal class AnimePlanetAnimeConverterTest {
                 }
 
                 val testFileContent =
-                    loadTestResource<String>("file_converter_tests/picture_and_thumbnail/picture_and_thumbnail_available.html")
+                    loadTestResource<String>("AnimePlanetAnimeConverterTest/picture_and_thumbnail/picture_and_thumbnail_available.html")
 
                 val converter = AnimePlanetAnimeConverter(testAnimePlanetConfig)
 
@@ -411,7 +411,7 @@ internal class AnimePlanetAnimeConverterTest {
                 }
 
                 val testFileContent =
-                    loadTestResource<String>("file_converter_tests/picture_and_thumbnail/neither_picture_nor_thumbnail.html")
+                    loadTestResource<String>("AnimePlanetAnimeConverterTest/picture_and_thumbnail/neither_picture_nor_thumbnail.html")
 
                 val converter = AnimePlanetAnimeConverter(testAnimePlanetConfig)
 
@@ -434,7 +434,7 @@ internal class AnimePlanetAnimeConverterTest {
                 }
 
                 val testFileContent =
-                    loadTestResource<String>("file_converter_tests/picture_and_thumbnail/ensure_primary_screenshot_as_picture.html")
+                    loadTestResource<String>("AnimePlanetAnimeConverterTest/picture_and_thumbnail/ensure_primary_screenshot_as_picture.html")
 
                 val converter = AnimePlanetAnimeConverter(testAnimePlanetConfig)
 
@@ -460,7 +460,7 @@ internal class AnimePlanetAnimeConverterTest {
                     override fun buildAnimeLink(id: AnimeId): URI = AnimePlanetConfig.buildAnimeLink(id)
                 }
 
-                val testFileContent = loadTestResource<String>("file_converter_tests/status/tba.html")
+                val testFileContent = loadTestResource<String>("AnimePlanetAnimeConverterTest/status/tba.html")
 
                 val converter = AnimePlanetAnimeConverter(testAnimePlanetConfig)
 
@@ -481,7 +481,7 @@ internal class AnimePlanetAnimeConverterTest {
                     override fun buildAnimeLink(id: AnimeId): URI = AnimePlanetConfig.buildAnimeLink(id)
                 }
 
-                val testFileContent = loadTestResource<String>("file_converter_tests/status/year_is_current_year.html")
+                val testFileContent = loadTestResource<String>("AnimePlanetAnimeConverterTest/status/year_is_current_year.html")
 
                 val converter = AnimePlanetAnimeConverter(
                     metaDataProviderConfig = testAnimePlanetConfig,
@@ -505,7 +505,7 @@ internal class AnimePlanetAnimeConverterTest {
                     override fun buildAnimeLink(id: AnimeId): URI = AnimePlanetConfig.buildAnimeLink(id)
                 }
 
-                val testFileContent = loadTestResource<String>("file_converter_tests/status/year_in_the_future.html")
+                val testFileContent = loadTestResource<String>("AnimePlanetAnimeConverterTest/status/year_in_the_future.html")
 
                 val converter = AnimePlanetAnimeConverter(
                     metaDataProviderConfig = testAnimePlanetConfig,
@@ -529,7 +529,7 @@ internal class AnimePlanetAnimeConverterTest {
                     override fun buildAnimeLink(id: AnimeId): URI = AnimePlanetConfig.buildAnimeLink(id)
                 }
 
-                val testFileContent = loadTestResource<String>("file_converter_tests/status/year_in_the_past.html")
+                val testFileContent = loadTestResource<String>("AnimePlanetAnimeConverterTest/status/year_in_the_past.html")
 
                 val converter = AnimePlanetAnimeConverter(
                     metaDataProviderConfig = testAnimePlanetConfig,
@@ -554,7 +554,7 @@ internal class AnimePlanetAnimeConverterTest {
                 }
 
                 val testFileContent =
-                    loadTestResource<String>("file_converter_tests/status/range_to_unknown_-_starts_in_the_past.html")
+                    loadTestResource<String>("AnimePlanetAnimeConverterTest/status/range_to_unknown_-_starts_in_the_past.html")
 
                 val converter = AnimePlanetAnimeConverter(
                     metaDataProviderConfig = testAnimePlanetConfig,
@@ -579,7 +579,7 @@ internal class AnimePlanetAnimeConverterTest {
                 }
 
                 val testFileContent =
-                    loadTestResource<String>("file_converter_tests/status/range_to_unknown_-_starts_same_year.html")
+                    loadTestResource<String>("AnimePlanetAnimeConverterTest/status/range_to_unknown_-_starts_same_year.html")
 
                 val converter = AnimePlanetAnimeConverter(
                     metaDataProviderConfig = testAnimePlanetConfig,
@@ -603,7 +603,7 @@ internal class AnimePlanetAnimeConverterTest {
                     override fun buildAnimeLink(id: AnimeId): URI = AnimePlanetConfig.buildAnimeLink(id)
                 }
 
-                val testFileContent = loadTestResource<String>("file_converter_tests/status/range_-_ends_in_the_past.html")
+                val testFileContent = loadTestResource<String>("AnimePlanetAnimeConverterTest/status/range_-_ends_in_the_past.html")
 
                 val converter = AnimePlanetAnimeConverter(
                     metaDataProviderConfig = testAnimePlanetConfig,
@@ -627,7 +627,7 @@ internal class AnimePlanetAnimeConverterTest {
                     override fun buildAnimeLink(id: AnimeId): URI = AnimePlanetConfig.buildAnimeLink(id)
                 }
 
-                val testFileContent = loadTestResource<String>("file_converter_tests/status/range_-_ends_same_year.html")
+                val testFileContent = loadTestResource<String>("AnimePlanetAnimeConverterTest/status/range_-_ends_same_year.html")
 
                 val converter = AnimePlanetAnimeConverter(
                     metaDataProviderConfig = testAnimePlanetConfig,
@@ -655,7 +655,7 @@ internal class AnimePlanetAnimeConverterTest {
                     override fun buildAnimeLink(id: AnimeId): URI = AnimePlanetConfig.buildAnimeLink(id)
                 }
 
-                val testFileContent = loadTestResource<String>("file_converter_tests/duration/1_hour.html")
+                val testFileContent = loadTestResource<String>("AnimePlanetAnimeConverterTest/duration/1_hour.html")
 
                 val converter = AnimePlanetAnimeConverter(testAnimePlanetConfig)
 
@@ -676,7 +676,7 @@ internal class AnimePlanetAnimeConverterTest {
                     override fun buildAnimeLink(id: AnimeId): URI = AnimePlanetConfig.buildAnimeLink(id)
                 }
 
-                val testFileContent = loadTestResource<String>("file_converter_tests/duration/1_min.html")
+                val testFileContent = loadTestResource<String>("AnimePlanetAnimeConverterTest/duration/1_min.html")
 
                 val converter = AnimePlanetAnimeConverter(testAnimePlanetConfig)
 
@@ -697,7 +697,7 @@ internal class AnimePlanetAnimeConverterTest {
                     override fun buildAnimeLink(id: AnimeId): URI = AnimePlanetConfig.buildAnimeLink(id)
                 }
 
-                val testFileContent = loadTestResource<String>("file_converter_tests/duration/2_hours.html")
+                val testFileContent = loadTestResource<String>("AnimePlanetAnimeConverterTest/duration/2_hours.html")
 
                 val converter = AnimePlanetAnimeConverter(testAnimePlanetConfig)
 
@@ -718,7 +718,7 @@ internal class AnimePlanetAnimeConverterTest {
                     override fun buildAnimeLink(id: AnimeId): URI = AnimePlanetConfig.buildAnimeLink(id)
                 }
 
-                val testFileContent = loadTestResource<String>("file_converter_tests/duration/2_hours_15_min.html")
+                val testFileContent = loadTestResource<String>("AnimePlanetAnimeConverterTest/duration/2_hours_15_min.html")
 
                 val converter = AnimePlanetAnimeConverter(testAnimePlanetConfig)
 
@@ -739,7 +739,7 @@ internal class AnimePlanetAnimeConverterTest {
                     override fun buildAnimeLink(id: AnimeId): URI = AnimePlanetConfig.buildAnimeLink(id)
                 }
 
-                val testFileContent = loadTestResource<String>("file_converter_tests/duration/10_min.html")
+                val testFileContent = loadTestResource<String>("AnimePlanetAnimeConverterTest/duration/10_min.html")
 
                 val converter = AnimePlanetAnimeConverter(testAnimePlanetConfig)
 
@@ -764,7 +764,7 @@ internal class AnimePlanetAnimeConverterTest {
                     override fun buildAnimeLink(id: AnimeId): URI = AnimePlanetConfig.buildAnimeLink(id)
                 }
 
-                val testFileContent = loadTestResource<String>("file_converter_tests/anime_season/year_only.html")
+                val testFileContent = loadTestResource<String>("AnimePlanetAnimeConverterTest/anime_season/year_only.html")
 
                 val converter = AnimePlanetAnimeConverter(testAnimePlanetConfig)
 
@@ -785,7 +785,7 @@ internal class AnimePlanetAnimeConverterTest {
                     override fun buildAnimeLink(id: AnimeId): URI = AnimePlanetConfig.buildAnimeLink(id)
                 }
 
-                val testFileContent = loadTestResource<String>("file_converter_tests/anime_season/summer.html")
+                val testFileContent = loadTestResource<String>("AnimePlanetAnimeConverterTest/anime_season/summer.html")
 
                 val converter = AnimePlanetAnimeConverter(testAnimePlanetConfig)
 
@@ -806,7 +806,7 @@ internal class AnimePlanetAnimeConverterTest {
                     override fun buildAnimeLink(id: AnimeId): URI = AnimePlanetConfig.buildAnimeLink(id)
                 }
 
-                val testFileContent = loadTestResource<String>("file_converter_tests/anime_season/spring.html")
+                val testFileContent = loadTestResource<String>("AnimePlanetAnimeConverterTest/anime_season/spring.html")
 
                 val converter = AnimePlanetAnimeConverter(testAnimePlanetConfig)
 
@@ -827,7 +827,7 @@ internal class AnimePlanetAnimeConverterTest {
                     override fun buildAnimeLink(id: AnimeId): URI = AnimePlanetConfig.buildAnimeLink(id)
                 }
 
-                val testFileContent = loadTestResource<String>("file_converter_tests/anime_season/winter.html")
+                val testFileContent = loadTestResource<String>("AnimePlanetAnimeConverterTest/anime_season/winter.html")
 
                 val converter = AnimePlanetAnimeConverter(testAnimePlanetConfig)
 
@@ -848,7 +848,7 @@ internal class AnimePlanetAnimeConverterTest {
                     override fun buildAnimeLink(id: AnimeId): URI = AnimePlanetConfig.buildAnimeLink(id)
                 }
 
-                val testFileContent = loadTestResource<String>("file_converter_tests/anime_season/fall.html")
+                val testFileContent = loadTestResource<String>("AnimePlanetAnimeConverterTest/anime_season/fall.html")
 
                 val converter = AnimePlanetAnimeConverter(testAnimePlanetConfig)
 
@@ -869,7 +869,7 @@ internal class AnimePlanetAnimeConverterTest {
                     override fun buildAnimeLink(id: AnimeId): URI = AnimePlanetConfig.buildAnimeLink(id)
                 }
 
-                val testFileContent = loadTestResource<String>("file_converter_tests/anime_season/tba.html")
+                val testFileContent = loadTestResource<String>("AnimePlanetAnimeConverterTest/anime_season/tba.html")
 
                 val converter = AnimePlanetAnimeConverter(testAnimePlanetConfig)
 
@@ -894,7 +894,7 @@ internal class AnimePlanetAnimeConverterTest {
                     override fun buildAnimeLink(id: AnimeId): URI = AnimePlanetConfig.buildAnimeLink(id)
                 }
 
-                val testFileContent = loadTestResource<String>("file_converter_tests/sources/id.html")
+                val testFileContent = loadTestResource<String>("AnimePlanetAnimeConverterTest/sources/id.html")
 
                 val converter = AnimePlanetAnimeConverter(testAnimePlanetConfig)
 
@@ -919,7 +919,7 @@ internal class AnimePlanetAnimeConverterTest {
                     override fun buildAnimeLink(id: AnimeId): URI = AnimePlanetConfig.buildAnimeLink(id)
                 }
 
-                val testFileContent = loadTestResource<String>("file_converter_tests/synonyms/synonyms_available.html")
+                val testFileContent = loadTestResource<String>("AnimePlanetAnimeConverterTest/synonyms/synonyms_available.html")
 
                 val converter = AnimePlanetAnimeConverter(testAnimePlanetConfig)
 
@@ -940,7 +940,7 @@ internal class AnimePlanetAnimeConverterTest {
                     override fun buildAnimeLink(id: AnimeId): URI = AnimePlanetConfig.buildAnimeLink(id)
                 }
 
-                val testFileContent = loadTestResource<String>("file_converter_tests/synonyms/synonyms_not_available.html")
+                val testFileContent = loadTestResource<String>("AnimePlanetAnimeConverterTest/synonyms/synonyms_not_available.html")
 
                 val converter = AnimePlanetAnimeConverter(testAnimePlanetConfig)
 
@@ -962,7 +962,7 @@ internal class AnimePlanetAnimeConverterTest {
                 }
 
                 val testFileContent =
-                    loadTestResource<String>("file_converter_tests/synonyms/synonyms_replaced_by_email_protected.html")
+                    loadTestResource<String>("AnimePlanetAnimeConverterTest/synonyms/synonyms_replaced_by_email_protected.html")
 
                 val converter = AnimePlanetAnimeConverter(testAnimePlanetConfig)
 
@@ -983,7 +983,7 @@ internal class AnimePlanetAnimeConverterTest {
                     override fun buildAnimeLink(id: AnimeId): URI = AnimePlanetConfig.buildAnimeLink(id)
                 }
 
-                val testFileContent = loadTestResource<String>("file_converter_tests/synonyms/multiple_synonyms.html")
+                val testFileContent = loadTestResource<String>("AnimePlanetAnimeConverterTest/synonyms/multiple_synonyms.html")
 
                 val converter = AnimePlanetAnimeConverter(testAnimePlanetConfig)
 
@@ -1012,7 +1012,7 @@ internal class AnimePlanetAnimeConverterTest {
                 }
 
                 val testFileContent =
-                    loadTestResource<String>("file_converter_tests/related_anime/same_franchise_and_other_franchise.html")
+                    loadTestResource<String>("AnimePlanetAnimeConverterTest/related_anime/same_franchise_and_other_franchise.html")
 
                 val converter = AnimePlanetAnimeConverter(testAnimePlanetConfig)
 
@@ -1041,7 +1041,7 @@ internal class AnimePlanetAnimeConverterTest {
                     override fun buildAnimeLink(id: AnimeId): URI = AnimePlanetConfig.buildAnimeLink(id)
                 }
 
-                val testFileContent = loadTestResource<String>("file_converter_tests/related_anime/same_franchise_only.html")
+                val testFileContent = loadTestResource<String>("AnimePlanetAnimeConverterTest/related_anime/same_franchise_only.html")
 
                 val converter = AnimePlanetAnimeConverter(testAnimePlanetConfig)
 
@@ -1069,7 +1069,7 @@ internal class AnimePlanetAnimeConverterTest {
                     override fun buildAnimeLink(id: AnimeId): URI = AnimePlanetConfig.buildAnimeLink(id)
                 }
 
-                val testFileContent = loadTestResource<String>("file_converter_tests/related_anime/no_related_anime.html")
+                val testFileContent = loadTestResource<String>("AnimePlanetAnimeConverterTest/related_anime/no_related_anime.html")
 
                 val converter = AnimePlanetAnimeConverter(testAnimePlanetConfig)
 
@@ -1094,7 +1094,7 @@ internal class AnimePlanetAnimeConverterTest {
                     override fun buildAnimeLink(id: AnimeId): URI = AnimePlanetConfig.buildAnimeLink(id)
                 }
 
-                val testFileContent = loadTestResource<String>("file_converter_tests/tags/various_tags.html")
+                val testFileContent = loadTestResource<String>("AnimePlanetAnimeConverterTest/tags/various_tags.html")
 
                 val converter = AnimePlanetAnimeConverter(testAnimePlanetConfig)
 
@@ -1135,7 +1135,7 @@ internal class AnimePlanetAnimeConverterTest {
                     override fun buildAnimeLink(id: AnimeId): URI = AnimePlanetConfig.buildAnimeLink(id)
                 }
 
-                val testFileContent = loadTestResource<String>("file_converter_tests/tags/no_tags.html")
+                val testFileContent = loadTestResource<String>("AnimePlanetAnimeConverterTest/tags/no_tags.html")
 
                 val converter = AnimePlanetAnimeConverter(testAnimePlanetConfig)
 
