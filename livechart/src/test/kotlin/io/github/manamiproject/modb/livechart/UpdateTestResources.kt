@@ -2,6 +2,7 @@ package io.github.manamiproject.modb.livechart
 
 import io.github.manamiproject.modb.core.coroutines.CoroutineManager.runCoroutine
 import io.github.manamiproject.modb.core.extensions.fileSuffix
+import io.github.manamiproject.modb.core.extensions.neitherNullNorBlank
 import io.github.manamiproject.modb.core.extensions.writeToFile
 import io.github.manamiproject.modb.core.random
 import io.github.manamiproject.modb.test.testResource
@@ -114,5 +115,6 @@ internal class UpdateTestResourcesTest {
 
         // then
         assertThat(filesInTestResources.sorted()).isEqualTo(filesInList.sorted())
+        assertThat(files.values.all { it.neitherNullNorBlank() }).isTrue()
     }
 }
