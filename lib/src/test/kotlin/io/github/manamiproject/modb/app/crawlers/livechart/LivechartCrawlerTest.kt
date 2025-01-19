@@ -78,6 +78,8 @@ internal class LivechartCrawlerTest {
                 assertThatNoException().isThrownBy {
                     runBlocking { animePlanetCrawler.start() }
                 }
+
+                // then
                 assertThat(tempDir).isEmptyDirectory()
             }
         }
