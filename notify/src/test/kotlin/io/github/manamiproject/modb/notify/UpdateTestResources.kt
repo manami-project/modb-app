@@ -16,54 +16,54 @@ import kotlin.test.Test
 
 
 private val mainConfigFiles = mapOf(
-    "file_converter_tests/anime_season/1989.json" to "w1khcFmig",
-    "file_converter_tests/anime_season/fall.json" to "5Vd6nwsiR",
-    "file_converter_tests/anime_season/no_year.json" to "_SZLtKimR",
-    "file_converter_tests/anime_season/spring.json" to "5K5MBjvmR",
-    "file_converter_tests/anime_season/summer.json" to "TNo6W6vmR",
-    "file_converter_tests/anime_season/undefined.json" to "_SZLtKimR",
-    "file_converter_tests/anime_season/winter.json" to "ohndcHvmg",
+    "NotifyAnimeConverterTest/anime_season/1989.json" to "w1khcFmig",
+    "NotifyAnimeConverterTest/anime_season/fall.json" to "5Vd6nwsiR",
+    "NotifyAnimeConverterTest/anime_season/no_year.json" to "_SZLtKimR",
+    "NotifyAnimeConverterTest/anime_season/spring.json" to "5K5MBjvmR",
+    "NotifyAnimeConverterTest/anime_season/summer.json" to "TNo6W6vmR",
+    "NotifyAnimeConverterTest/anime_season/undefined.json" to "_SZLtKimR",
+    "NotifyAnimeConverterTest/anime_season/winter.json" to "ohndcHvmg",
 
-    "file_converter_tests/duration/0.json" to "UrvVnSpng",
-    "file_converter_tests/duration/120.json" to "tMrEpKiig",
-    "file_converter_tests/duration/24.json" to "gLmp5FimR",
+    "NotifyAnimeConverterTest/duration/0.json" to "UrvVnSpng",
+    "NotifyAnimeConverterTest/duration/120.json" to "tMrEpKiig",
+    "NotifyAnimeConverterTest/duration/24.json" to "gLmp5FimR",
 
-    "file_converter_tests/episodes/39.json" to "d_0bcKmmR",
+    "NotifyAnimeConverterTest/episodes/39.json" to "d_0bcKmmR",
 
-    "file_converter_tests/picture_and_thumbnail/picture_and_thumbnail_available.json" to "IkCdhKimR",
+    "NotifyAnimeConverterTest/picture_and_thumbnail/picture_and_thumbnail_available.json" to "IkCdhKimR",
 
-    "file_converter_tests/sources/0-A-5Fimg.json" to "0-A-5Fimg",
+    "NotifyAnimeConverterTest/sources/0-A-5Fimg.json" to "0-A-5Fimg",
 
-    "file_converter_tests/status/current.json" to "CqN9Rja7R",
-    "file_converter_tests/status/finished.json" to "Ml2V2KiiR",
-    "file_converter_tests/status/tba.json" to "DCzg6xMnR",
-    "file_converter_tests/status/upcoming.json" to "xnKYKwHVg",
+    "NotifyAnimeConverterTest/status/current.json" to "CqN9Rja7R",
+    "NotifyAnimeConverterTest/status/finished.json" to "Ml2V2KiiR",
+    "NotifyAnimeConverterTest/status/tba.json" to "DCzg6xMnR",
+    "NotifyAnimeConverterTest/status/upcoming.json" to "xnKYKwHVg",
 
-    "file_converter_tests/synonyms/combine_non_canonical_title_and_synonyms.json" to "DtwM2Kmig",
-    "file_converter_tests/synonyms/synonyms_is_null.json" to "rTgwpFmmg",
+    "NotifyAnimeConverterTest/synonyms/combine_non_canonical_title_and_synonyms.json" to "DtwM2Kmig",
+    "NotifyAnimeConverterTest/synonyms/synonyms_is_null.json" to "rTgwpFmmg",
 
-    "file_converter_tests/tags/genres_is_null.json" to "rTgwpFmmg",
-    "file_converter_tests/tags/tags_from_genres.json" to "q9yku_3ig",
+    "NotifyAnimeConverterTest/tags/genres_is_null.json" to "rTgwpFmmg",
+    "NotifyAnimeConverterTest/tags/tags_from_genres.json" to "q9yku_3ig",
 
-    "file_converter_tests/title/special_chars.json" to "MkGrtKmmR",
+    "NotifyAnimeConverterTest/title/special_chars.json" to "MkGrtKmmR",
 
-    "file_converter_tests/type/movie.json" to "FL0V2Kmmg",
-    "file_converter_tests/type/music.json" to "Ff1bpKmmR",
-    "file_converter_tests/type/ona.json" to "OamVhFmmR",
-    "file_converter_tests/type/ova.json" to "MYsOvq7ig",
-    "file_converter_tests/type/special.json" to "a8RVhKmmR",
-    "file_converter_tests/type/tv.json" to "Ml2V2KiiR",
+    "NotifyAnimeConverterTest/type/movie.json" to "FL0V2Kmmg",
+    "NotifyAnimeConverterTest/type/music.json" to "Ff1bpKmmR",
+    "NotifyAnimeConverterTest/type/ona.json" to "OamVhFmmR",
+    "NotifyAnimeConverterTest/type/ova.json" to "MYsOvq7ig",
+    "NotifyAnimeConverterTest/type/special.json" to "a8RVhKmmR",
+    "NotifyAnimeConverterTest/type/tv.json" to "Ml2V2KiiR",
 
-    "file_converter_tests/related_anime/items_in_relations_file_is_null/anime.json" to "--eZhFiig",
-    "file_converter_tests/related_anime/multiple_relations/anime.json" to "uLs5tKiig",
-    "file_converter_tests/related_anime/no_relations/anime.json" to "5Vd6nwsiR",
-    "file_converter_tests/related_anime/no_relations_file/anime.json" to "5Vd6nwsiR",
+    "NotifyAnimeConverterTest/related_anime/items_in_relations_file_is_null/anime.json" to "--eZhFiig",
+    "NotifyAnimeConverterTest/related_anime/multiple_relations/anime.json" to "uLs5tKiig",
+    "NotifyAnimeConverterTest/related_anime/no_relations/anime.json" to "5Vd6nwsiR",
+    "NotifyAnimeConverterTest/related_anime/no_relations_file/anime.json" to "5Vd6nwsiR",
 )
 
 private val relationsConfigFiles = mapOf(
-    "file_converter_tests/related_anime/items_in_relations_file_is_null/relations.json" to "--eZhFiig",
-    "file_converter_tests/related_anime/multiple_relations/relations.json" to "uLs5tKiig",
-    "file_converter_tests/related_anime/no_relations/relations.json" to "5Vd6nwsiR",
+    "NotifyAnimeConverterTest/related_anime/items_in_relations_file_is_null/relations.json" to "--eZhFiig",
+    "NotifyAnimeConverterTest/related_anime/multiple_relations/relations.json" to "uLs5tKiig",
+    "NotifyAnimeConverterTest/related_anime/no_relations/relations.json" to "5Vd6nwsiR",
 )
 
 internal fun main(): Unit = runCoroutine {
@@ -96,7 +96,7 @@ internal class UpdateTestResourcesTest {
     @Test
     fun `verify that all test resources a part of the update sequence`() {
         // given
-        val testResourcesFolder = "file_converter_tests"
+        val testResourcesFolder = "NotifyAnimeConverterTest"
 
         val filesInTestResources = Files.walk(testResource(testResourcesFolder))
             .filter { it.isRegularFile() }
