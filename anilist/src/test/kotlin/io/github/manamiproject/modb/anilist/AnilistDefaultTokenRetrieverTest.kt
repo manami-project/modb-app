@@ -99,7 +99,7 @@ internal class AnilistDefaultTokenRetrieverTest : MockServerTestCase<WireMockSer
 
         val anilistTokenRetriever = AnilistDefaultTokenRetriever(testAnilistConfig)
 
-        val responseBody = loadTestResource<String>("token_retriever_tests/page_containing_token.html")
+        val responseBody = loadTestResource<String>("AnilistDefaultTokenRetrieverTest/page_containing_token.html")
 
         serverInstance.stubFor(
             get(urlPathEqualTo("/")).willReturn(
@@ -131,7 +131,7 @@ internal class AnilistDefaultTokenRetrieverTest : MockServerTestCase<WireMockSer
 
             val anilistTokenRetriever = AnilistDefaultTokenRetriever(testAnilistConfig)
 
-            val responseBody = loadTestResource<String>("token_retriever_tests/page_containing_token.html")
+            val responseBody = loadTestResource<String>("AnilistDefaultTokenRetrieverTest/page_containing_token.html")
 
             serverInstance.stubFor(
                 get(urlPathEqualTo("/")).willReturn(
