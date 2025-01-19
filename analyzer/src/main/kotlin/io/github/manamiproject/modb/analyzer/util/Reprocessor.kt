@@ -1,9 +1,8 @@
 package io.github.manamiproject.modb.analyzer.util
 
+import io.github.manamiproject.modb.analyzer.fluentapi.*
 import io.github.manamiproject.modb.analyzer.fluentapi.mergeAnime
 import io.github.manamiproject.modb.analyzer.fluentapi.removeUnknownEntriesFromRelatedAnime
-import io.github.manamiproject.modb.analyzer.fluentapi.saveToDataset
-import io.github.manamiproject.modb.analyzer.fluentapi.updateStatistics
 import io.github.manamiproject.modb.app.downloadcontrolstate.DefaultDownloadControlStateAccessor
 import io.github.manamiproject.modb.app.extensions.alertDeletedAnimeByTitle
 import io.github.manamiproject.modb.app.postprocessors.*
@@ -17,6 +16,7 @@ internal object Reprocessor {
             .alertDeletedAnimeByTitle()
             .mergeAnime()
             .removeUnknownEntriesFromRelatedAnime()
+            .addAnimeCountdown()
             .saveToDataset()
             .updateStatistics()
 

@@ -1232,6 +1232,48 @@ internal class AnimeKtTest {
                 assertThat(anime.relatedAnime).isEmpty()
             }
         }
+
+        @Nested
+        inner class RemoveSourceIfTests {
+
+            @Test
+            fun `successfully remove source`() {
+                // given
+                val source = URI("https://myanimelist.net/anime/2994")
+                val anime = Anime(
+                    _title =  "Death Note",
+                    sources = hashSetOf(
+                        source,
+                    ),
+                )
+
+                // when
+                anime.removeSourceIf { it.toString() == "https://myanimelist.net/anime/2994" }
+
+                // then
+                assertThat(anime.sources).isEmpty()
+            }
+
+            @Test
+            fun `don't remove anything if the condition doesn't match`() {
+                // given
+                val source = URI("https://myanimelist.net/anime/2994")
+                val anime = Anime(
+                    _title =  "Death Note",
+                    sources = hashSetOf(
+                        source,
+                    ),
+                )
+
+                // when
+                anime.removeSourceIf { it.toString().contains("anidb.net") }
+
+                // then
+                assertThat(anime.sources).containsExactly(
+                    source,
+                )
+            }
+        }
     }
 
     @Nested
@@ -1469,7 +1511,7 @@ internal class AnimeKtTest {
             }
 
             @Test
-            fun `don't remove anything if predicate doesn't match anything`() {
+            fun `don't remove anything if condition doesn't match`() {
                 // given
                 val relatedAnime = URI("https://myanimelist.net/anime/2994")
                 val anime = Anime(

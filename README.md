@@ -16,6 +16,7 @@ _[modb](https://github.com/manami-project?tab=repositories&q=modb&type=source)_ 
 * **myanimelist:** Config, downloader and converter for myanimelist.net
 * **notify:** Config, downloader and converter for notify.moe
 * **serde:** Serialization and deserialization of the finalized dataset files.
+* **simkl:** Config, downloader and converter for simkl.com as well as config for animecountdown.com.
 * **test:** All essential dependencies as well as some convenience functions and classes for creating tests.
 
 ## Documentation
