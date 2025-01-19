@@ -11,13 +11,13 @@ import io.github.manamiproject.modb.app.crawlers.kitsu.KitsuCrawler
 import io.github.manamiproject.modb.app.crawlers.livechart.LivechartCrawler
 import io.github.manamiproject.modb.app.crawlers.myanimelist.MyanimelistCrawler
 import io.github.manamiproject.modb.app.crawlers.notify.NotifyCrawler
+import io.github.manamiproject.modb.app.crawlers.simkl.SimklCrawler
 import io.github.manamiproject.modb.app.downloadcontrolstate.DefaultDownloadControlStateAccessor
 import io.github.manamiproject.modb.app.downloadcontrolstate.DefaultDownloadControlStateUpdater
 import io.github.manamiproject.modb.app.extensions.alertDeletedAnimeByTitle
+import io.github.manamiproject.modb.app.fluentapi.*
 import io.github.manamiproject.modb.app.fluentapi.mergeAnime
 import io.github.manamiproject.modb.app.fluentapi.removeUnknownEntriesFromRelatedAnime
-import io.github.manamiproject.modb.app.fluentapi.saveToDataset
-import io.github.manamiproject.modb.app.fluentapi.updateStatistics
 import io.github.manamiproject.modb.app.network.LinuxNetworkController
 import io.github.manamiproject.modb.app.postprocessors.*
 import io.github.manamiproject.modb.core.coroutines.CoroutineManager.runCoroutine
@@ -55,6 +55,7 @@ fun main() = runCoroutine {
         launch { MyanimelistCrawler.instance.start() }
         launch { NotifyCrawler(metaDataProviderConfig = NotifyConfig).start() }
         launch { NotifyCrawler(metaDataProviderConfig = NotifyRelationsConfig).start() }
+        launch { SimklCrawler.instance.start() }
     }.join()
 
     rawFileConversionService.waitForAllRawFilesToBeConverted()
@@ -65,6 +66,7 @@ fun main() = runCoroutine {
         .alertDeletedAnimeByTitle()
         .mergeAnime()
         .removeUnknownEntriesFromRelatedAnime()
+        .addAnimeCountdown()
         .saveToDataset()
         .updateStatistics()
 

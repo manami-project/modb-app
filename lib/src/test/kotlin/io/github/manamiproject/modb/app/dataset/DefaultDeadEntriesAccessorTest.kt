@@ -24,6 +24,7 @@ import io.github.manamiproject.modb.serde.json.DeadEntriesJsonStringDeserializer
 import io.github.manamiproject.modb.serde.json.DefaultExternalResourceJsonDeserializer
 import io.github.manamiproject.modb.serde.json.ExternalResourceJsonDeserializer
 import io.github.manamiproject.modb.serde.json.models.DeadEntries
+import io.github.manamiproject.modb.simkl.SimklConfig
 import io.github.manamiproject.modb.test.exceptionExpected
 import io.github.manamiproject.modb.test.tempDirectory
 import org.assertj.core.api.Assertions.assertThat
@@ -428,7 +429,13 @@ internal class DefaultDeadEntriesAccessorTest {
         }
 
         @ParameterizedTest
-        @ValueSource(classes = [AnimePlanetConfig::class, AnisearchConfig::class, LivechartConfig::class, NotifyConfig::class])
+        @ValueSource(classes = [
+            AnimePlanetConfig::class,
+            AnisearchConfig::class,
+            LivechartConfig::class,
+            NotifyConfig::class,
+            SimklConfig::class,
+        ])
         fun `doesn't create a dead entry for unsupported meta data provider, because either all IDs are collected upfront or download is done via pagination`(configClass: Class<*>) {
             tempDirectory {
                 // given
@@ -459,7 +466,13 @@ internal class DefaultDeadEntriesAccessorTest {
         }
 
         @ParameterizedTest
-        @ValueSource(classes = [AnimePlanetConfig::class, AnisearchConfig::class, LivechartConfig::class, NotifyConfig::class])
+        @ValueSource(classes = [
+            AnimePlanetConfig::class,
+            AnisearchConfig::class,
+            LivechartConfig::class,
+            NotifyConfig::class,
+            SimklConfig::class,
+        ])
         fun `invokes removal of dcs file for unsupported meta data provider`(configClass: Class<*>) {
             tempDirectory {
                 // given
@@ -651,7 +664,13 @@ internal class DefaultDeadEntriesAccessorTest {
         }
 
         @ParameterizedTest
-        @ValueSource(classes = [AnimePlanetConfig::class, AnisearchConfig::class, LivechartConfig::class, NotifyConfig::class])
+        @ValueSource(classes = [
+            AnimePlanetConfig::class,
+            AnisearchConfig::class,
+            LivechartConfig::class,
+            NotifyConfig::class,
+            SimklConfig::class,
+        ])
         fun `marks an URI as dead entry for unsupported meta data providers if the corresponding DCS file doesn't exist`(configClass: Class<*>)   {
             tempDirectory {
                 // given
@@ -700,8 +719,15 @@ internal class DefaultDeadEntriesAccessorTest {
 
         @ParameterizedTest
         @ValueSource(classes = [
-            AnidbConfig::class, AnilistConfig::class, KitsuConfig::class, MyanimelistConfig::class, // supportd
-            AnimePlanetConfig::class, AnisearchConfig::class, LivechartConfig::class, NotifyConfig::class, // unsupported
+            AnidbConfig::class, // supportd
+            AnilistConfig::class, // supportd
+            KitsuConfig::class, // supportd
+            MyanimelistConfig::class, // supportd
+            AnimePlanetConfig::class, // unsupported
+            AnisearchConfig::class, // unsupported
+            LivechartConfig::class, // unsupported
+            NotifyConfig::class, // unsupported
+            SimklConfig::class, // unsupported
         ])
         fun `triggers initialization if necessary`(configClass: Class<*>) {
             tempDirectory {
@@ -748,8 +774,15 @@ internal class DefaultDeadEntriesAccessorTest {
 
         @ParameterizedTest
         @ValueSource(classes = [
-            AnidbConfig::class, AnilistConfig::class, KitsuConfig::class, MyanimelistConfig::class, // supportd
-            AnimePlanetConfig::class, AnisearchConfig::class, LivechartConfig::class, NotifyConfig::class, // unsupported
+            AnidbConfig::class, // supportd
+            AnilistConfig::class, // supportd
+            KitsuConfig::class, // supportd
+            MyanimelistConfig::class, // supportd
+            AnimePlanetConfig::class, // unsupported
+            AnisearchConfig::class, // unsupported
+            LivechartConfig::class, // unsupported
+            NotifyConfig::class, // unsupported
+            SimklConfig::class, // unsupported
         ])
         fun `doesn't trigger init if it has already been triggered`(configClass: Class<*>) {
             tempDirectory {
@@ -804,7 +837,13 @@ internal class DefaultDeadEntriesAccessorTest {
     inner class FetchDeadEntriesTests {
 
         @ParameterizedTest
-        @ValueSource(classes = [AnimePlanetConfig::class, AnisearchConfig::class, LivechartConfig::class, NotifyConfig::class])
+        @ValueSource(classes = [
+            AnimePlanetConfig::class,
+            AnisearchConfig::class,
+            LivechartConfig::class,
+            NotifyConfig::class,
+            SimklConfig::class,
+        ])
         fun `throws exception for unsupported meta data provider`(configClass: Class<*>) {
             tempDirectory {
                 // given

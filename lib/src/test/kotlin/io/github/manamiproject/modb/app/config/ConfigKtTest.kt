@@ -13,6 +13,7 @@ import io.github.manamiproject.modb.kitsu.KitsuConfig
 import io.github.manamiproject.modb.livechart.LivechartConfig
 import io.github.manamiproject.modb.myanimelist.MyanimelistConfig
 import io.github.manamiproject.modb.notify.NotifyConfig
+import io.github.manamiproject.modb.simkl.SimklConfig
 import io.github.manamiproject.modb.test.shouldNotBeInvoked
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Nested
@@ -58,6 +59,7 @@ internal class ConfigTest {
                 LivechartConfig,
                 MyanimelistConfig,
                 NotifyConfig,
+                SimklConfig,
             )
             val config = object : Config {
                 override fun downloadsDirectory(): Directory = shouldNotBeInvoked()
@@ -191,7 +193,13 @@ internal class ConfigTest {
         }
 
         @ParameterizedTest
-        @ValueSource(classes = [AnisearchConfig::class, AnimePlanetConfig::class, LivechartConfig::class, NotifyConfig::class])
+        @ValueSource(classes = [
+            AnisearchConfig::class,
+            AnimePlanetConfig::class,
+            LivechartConfig::class,
+            NotifyConfig::class,
+            SimklConfig::class,
+        ])
         fun `returns false for all meta data provider which are not supported`(configClass: Class<*>) {
             // given
             val testMetaDataProviderConfig = configClass.kotlin.objectInstance as MetaDataProviderConfig

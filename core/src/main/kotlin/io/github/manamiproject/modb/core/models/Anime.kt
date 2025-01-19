@@ -120,6 +120,17 @@ public data class Anime(
     }
 
     /**
+     * Removes an [URI] from [sources] if the given condition matches.
+     * @since 11.0.0
+     * @param condition If an entry in [sources] matches this condition, then the [URI] will be removed from [sources].
+     * @return Same instance.
+     */
+    public fun removeSourceIf(condition: (URI) -> Boolean): Anime {
+        sources.removeIf { condition.invoke(it) }
+        return this
+    }
+
+    /**
      * Add additional related anime to the existing list. This will **not** override [relatedAnime].
      * Duplicates are being ignored.
      * @since 11.0.0
@@ -146,7 +157,7 @@ public data class Anime(
     /**
      * Removes an [URI] from [relatedAnime] if the given condition matches.
      * @since 11.0.0
-     * @param condition If the this condition applied to a related anime uri matches, then the [URI] will be removed from [relatedAnime].
+     * @param condition If an entry in [relatedAnime] matches this condition, then the [URI] will be removed from [relatedAnime].
      * @return Same instance.
      */
     public fun removeRelatedAnimeIf(condition: (URI) -> Boolean): Anime {

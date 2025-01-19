@@ -9,6 +9,7 @@ import io.github.manamiproject.modb.app.TestConfigRegistry
 import io.github.manamiproject.modb.app.TestMetaDataProviderConfig
 import io.github.manamiproject.modb.app.crawlers.animeplanet.AnimePlanetPaginationIdRangeSelectorConfig
 import io.github.manamiproject.modb.app.crawlers.livechart.LivechartPaginationIdRangeSelectorConfig
+import io.github.manamiproject.modb.app.crawlers.simkl.SimklPaginationIdRangeSelectorConfig
 import io.github.manamiproject.modb.app.downloadcontrolstate.WeekOfYear
 import io.github.manamiproject.modb.core.config.ConfigRegistry
 import io.github.manamiproject.modb.core.config.Hostname
@@ -20,6 +21,7 @@ import io.github.manamiproject.modb.livechart.LivechartConfig
 import io.github.manamiproject.modb.myanimelist.MyanimelistConfig
 import io.github.manamiproject.modb.notify.NotifyConfig
 import io.github.manamiproject.modb.notify.NotifyRelationsConfig
+import io.github.manamiproject.modb.simkl.SimklConfig
 import io.github.manamiproject.modb.test.exceptionExpected
 import io.github.manamiproject.modb.test.tempDirectory
 import org.assertj.core.api.Assertions.assertThat
@@ -498,6 +500,48 @@ internal class AppConfigTest {
                 // then
                 assertThat(result).exists()
                 assertThat(result.fileName.toString()).isEqualTo("notify.moe-relations")
+            }
+        }
+
+        @Test
+        fun `check that name of working directory for SimklConfig is correct`() {
+            tempDirectory {
+                // given
+                val testConfigRegistry = object: ConfigRegistry by TestConfigRegistry {
+                    override fun string(key: String): String = tempDir.toAbsolutePath().toString()
+                }
+
+                val appConfig = AppConfig(
+                    configRegistry = testConfigRegistry,
+                )
+
+                // when
+                val result = appConfig.workingDir(SimklConfig)
+
+                // then
+                assertThat(result).exists()
+                assertThat(result.fileName.toString()).isEqualTo("simkl.com")
+            }
+        }
+
+        @Test
+        fun `check that name of working directory for SimklPaginationIdRangeSelectorConfig is correct`() {
+            tempDirectory {
+                // given
+                val testConfigRegistry = object: ConfigRegistry by TestConfigRegistry {
+                    override fun string(key: String): String = tempDir.toAbsolutePath().toString()
+                }
+
+                val appConfig = AppConfig(
+                    configRegistry = testConfigRegistry,
+                )
+
+                // when
+                val result = appConfig.workingDir(SimklPaginationIdRangeSelectorConfig)
+
+                // then
+                assertThat(result).exists()
+                assertThat(result.fileName.toString()).isEqualTo("simkl.com")
             }
         }
     }

@@ -1,0 +1,32 @@
+{
+  "_weeksWihoutChange": 0,
+  "_lastDownloaded": {
+    "year": 2021,
+    "week": 44
+  },
+  "_nextDownload": {
+    "year": 2021,
+    "week": 45
+  },
+  "_anime": {
+    "sources": [
+      "https://anilist.co/anime/32"
+    ],
+    "title": "Shin Seiki Evangelion Movie: THE END OF EVANGELION",
+    "type": "UNKNOWN",
+    "episodes": 0,
+    "status": "UNKNOWN",
+    "animeSeason": {
+      "season": "UNDEFINED",
+      "year": null
+    },
+    "picture": "https://raw.githubusercontent.com/manami-project/anime-offline-database/master/pics/no_pic.png",
+    "thumbnail": "https://raw.githubusercontent.com/manami-project/anime-offline-database/master/pics/no_pic_thumbnail.png",
+    "duration": null,
+    "synonyms": [],
+    "relatedAnime": [
+      "https://anilist.co/anime/30"
+    ],
+    "tags": []
+  }
+}

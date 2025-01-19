@@ -54,7 +54,7 @@ internal class SourcesConsistencyValidationPostProcessorTest {
                 }
 
                 // then
-                assertThat(result).hasMessage("No sources in [*.conv] files found.")
+                assertThat(result).hasMessage("No sources in [*.conv] files.")
             }
         }
 
@@ -94,7 +94,7 @@ internal class SourcesConsistencyValidationPostProcessorTest {
                 }
 
                 // then
-                assertThat(result).hasMessage("No sources in [*.dcs] files found.")
+                assertThat(result).hasMessage("No sources in [*.dcs] files.")
             }
         }
 
@@ -141,7 +141,7 @@ internal class SourcesConsistencyValidationPostProcessorTest {
                 }
 
                 // then
-                assertThat(result).hasMessage("There are entries existing in [*.conv] files, but not in [*.dcs] files: [htps://myanimelist.net/anime/28851]")
+                assertThat(result).hasMessage("There are entries existing in [*.conv] files, but not in [*.dcs]. Affected sources: [htps://myanimelist.net/anime/28851]")
             }
         }
 
@@ -299,6 +299,128 @@ internal class SourcesConsistencyValidationPostProcessorTest {
 
                 // then
                 assertThat(result).hasMessage("Sources in dataset and sources in DCS entries differ: [htps://myanimelist.net/anime/28851]")
+            }
+        }
+
+        @Test
+        fun `throws exception if dataset contains multiple sources in one entry of which one doesn't exist in dcs entries`() {
+            tempDirectory {
+                val testMetaDataProviderConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = "example.org"
+                }
+
+                val otherMetaDataProviderConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = "otherexample.com"
+                }
+
+                // given
+                val deathNote = Anime(
+                    _title = "Death Note",
+                    sources = hashSetOf(
+                        URI("https://${testMetaDataProviderConfig.hostname()}/anime/1535"),
+                        URI("https://${otherMetaDataProviderConfig.hostname()}/anime/40190"),
+                    ),
+                )
+
+                Json.toJson(deathNote).writeToFile(tempDir.resolve("1535.conv"))
+
+                val testAppConfig = object: Config by TestAppConfig {
+                    override fun metaDataProviderConfigurations(): Set<MetaDataProviderConfig> = setOf(
+                        testMetaDataProviderConfig,
+                        otherMetaDataProviderConfig,
+                    )
+                    override fun workingDir(metaDataProviderConfig: MetaDataProviderConfig): Directory = tempDir
+                }
+
+                val testDownloadControlStateAccessor = object: DownloadControlStateAccessor by TestDownloadControlStateAccessor {
+                    override suspend fun allAnime(): List<Anime> = listOf(
+                        Anime(
+                            _title = "Death Note",
+                            sources = hashSetOf(
+                                URI("https://${testMetaDataProviderConfig.hostname()}/anime/1535"),
+                            ),
+                        )
+                    )
+                }
+
+                val testDatasetFileAccessor = object: DatasetFileAccessor by TestDatasetFileAccessor {
+                    override suspend fun fetchEntries(): List<Anime> = listOf(
+                        deathNote,
+                    )
+                }
+
+                val sourcesConsistencyValidationPostProcessor = SourcesConsistencyValidationPostProcessor(
+                    appConfig = testAppConfig,
+                    datasetFileAccessor = testDatasetFileAccessor,
+                    downloadControlStateAccessor = testDownloadControlStateAccessor,
+                )
+
+                // when
+                val result = exceptionExpected<IllegalStateException> {
+                    sourcesConsistencyValidationPostProcessor.process()
+                }
+
+                // then
+                assertThat(result).hasMessage("There are entries existing in [*.conv] files, but not in [*.dcs]. Affected sources: [https://otherexample.com/anime/40190]")
+            }
+        }
+
+        @Test
+        fun `returns true if dataset contains multiple sources in one entry of which one doesn't exist in dcs entries in case the hostname is to be ignored`() {
+            tempDirectory {
+                // given
+                val testMetaDataProviderConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = "example.org"
+                }
+
+                val metaDataProviderConfigToBeIgnored = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = "otherexample.com"
+                }
+
+                val deathNoteDataset = Anime(
+                    _title = "Death Note",
+                    sources = hashSetOf(
+                        URI("https://${testMetaDataProviderConfig.hostname()}/anime/1535"),
+                        URI("https://${metaDataProviderConfigToBeIgnored.hostname()}/anime/40190"),
+                    ),
+                )
+
+                val deathNoteDcsEntry = Anime(
+                    _title = "Death Note",
+                    sources = hashSetOf(
+                        URI("https://${testMetaDataProviderConfig.hostname()}/anime/1535"),
+                    ),
+                )
+
+                Json.toJson(deathNoteDcsEntry).writeToFile(tempDir.resolve("1535.conv"))
+
+                val testAppConfig = object: Config by TestAppConfig {
+                    override fun metaDataProviderConfigurations(): Set<MetaDataProviderConfig> = setOf(testMetaDataProviderConfig)
+                    override fun workingDir(metaDataProviderConfig: MetaDataProviderConfig): Directory = tempDir
+                }
+
+                val testDownloadControlStateAccessor = object: DownloadControlStateAccessor by TestDownloadControlStateAccessor {
+                    override suspend fun allAnime(): List<Anime> = listOf(deathNoteDcsEntry)
+                }
+
+                val testDatasetFileAccessor = object: DatasetFileAccessor by TestDatasetFileAccessor {
+                    override suspend fun fetchEntries(): List<Anime> = listOf(
+                        deathNoteDataset,
+                    )
+                }
+
+                val sourcesConsistencyValidationPostProcessor = SourcesConsistencyValidationPostProcessor(
+                    appConfig = testAppConfig,
+                    datasetFileAccessor = testDatasetFileAccessor,
+                    downloadControlStateAccessor = testDownloadControlStateAccessor,
+                    ignoreMetaDataConfiguration = setOf(metaDataProviderConfigToBeIgnored),
+                )
+
+                // when
+                val result = sourcesConsistencyValidationPostProcessor.process()
+
+                // then
+                assertThat(result).isTrue()
             }
         }
 

@@ -12,6 +12,7 @@ import io.github.manamiproject.modb.kitsu.KitsuConfig
 import io.github.manamiproject.modb.livechart.LivechartConfig
 import io.github.manamiproject.modb.myanimelist.MyanimelistConfig
 import io.github.manamiproject.modb.notify.NotifyConfig
+import io.github.manamiproject.modb.simkl.SimklConfig
 import java.time.Clock
 
 /**
@@ -63,6 +64,7 @@ interface Config: ContextAware {
         LivechartConfig,
         MyanimelistConfig,
         NotifyConfig,
+        SimklConfig,
     )
 
     /**

@@ -3,10 +3,7 @@ package io.github.manamiproject.modb.analyzer
 import io.github.manamiproject.modb.analyzer.Analyzer.Options.*
 import io.github.manamiproject.modb.analyzer.cluster.ClusterService
 import io.github.manamiproject.modb.analyzer.util.*
-import io.github.manamiproject.modb.analyzer.util.AnimeLoader
-import io.github.manamiproject.modb.analyzer.util.DcsStatistics
-import io.github.manamiproject.modb.analyzer.util.Duplicates
-import io.github.manamiproject.modb.analyzer.util.Reprocessor
+import io.github.manamiproject.modb.animecountdown.AnimeCountdownConfig
 import io.github.manamiproject.modb.app.config.AppConfig
 import io.github.manamiproject.modb.app.dataset.DefaultDatasetFileAccessor
 import io.github.manamiproject.modb.app.merging.DefaultReviewedIsolatedEntriesAccessor
@@ -31,7 +28,7 @@ object Analyzer {
     private val datasetEntries = mutableListOf<Anime>()
 
     suspend fun start() {
-        datasetEntries.addAll(DefaultDatasetFileAccessor.instance.fetchEntries())
+        populateInMemoryDataset()
         mainMenu()
     }
 
@@ -266,7 +263,17 @@ object Analyzer {
     private suspend fun reprocessMerging() {
         Reprocessor.reprocess()
         datasetEntries.clear()
-        datasetEntries.addAll(DefaultDatasetFileAccessor.instance.fetchEntries())
+        populateInMemoryDataset()
+    }
+
+    private suspend fun populateInMemoryDataset() {
+        datasetEntries.addAll(
+            DefaultDatasetFileAccessor.instance
+                .fetchEntries()
+                .map { anime ->
+                    anime.removeSourceIf { it.host == AnimeCountdownConfig.hostname() }
+                }
+        )
     }
 
     private fun isValidUrl(value: String): Boolean {
