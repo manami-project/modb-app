@@ -7,6 +7,7 @@ import io.github.manamiproject.modb.anisearch.AnisearchConfig
 import io.github.manamiproject.modb.anisearch.AnisearchRelationsConfig
 import io.github.manamiproject.modb.app.crawlers.animeplanet.AnimePlanetPaginationIdRangeSelectorConfig
 import io.github.manamiproject.modb.app.crawlers.livechart.LivechartPaginationIdRangeSelectorConfig
+import io.github.manamiproject.modb.app.crawlers.simkl.SimklPaginationIdRangeSelectorConfig
 import io.github.manamiproject.modb.app.downloadcontrolstate.weekOfYear
 import io.github.manamiproject.modb.core.config.ConfigRegistry
 import io.github.manamiproject.modb.core.config.DefaultConfigRegistry
@@ -22,6 +23,7 @@ import io.github.manamiproject.modb.livechart.LivechartConfig
 import io.github.manamiproject.modb.myanimelist.MyanimelistConfig
 import io.github.manamiproject.modb.notify.NotifyConfig
 import io.github.manamiproject.modb.notify.NotifyRelationsConfig
+import io.github.manamiproject.modb.simkl.SimklConfig
 import java.time.LocalDate
 import kotlin.io.path.Path
 import kotlin.io.path.createDirectories
@@ -75,7 +77,9 @@ class AppConfig(
             LivechartConfig,
             LivechartPaginationIdRangeSelectorConfig,
             MyanimelistConfig,
-            NotifyConfig -> currentWeekWorkingDir().resolve(hostname)
+            NotifyConfig,
+            SimklConfig,
+            SimklPaginationIdRangeSelectorConfig -> currentWeekWorkingDir().resolve(hostname)
             AnisearchRelationsConfig, KitsuRelationsConfig, NotifyRelationsConfig -> currentWeekWorkingDir().resolve("$hostname-relations")
             KitsuTagsConfig -> currentWeekWorkingDir().resolve("$hostname-tags")
             else -> throw IllegalStateException("No working directory mapping for [${metaDataProviderConfig::class.simpleName}]")

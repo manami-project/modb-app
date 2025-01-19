@@ -1,5 +1,6 @@
 package io.github.manamiproject.modb.app.postprocessors
 
+import io.github.manamiproject.modb.animecountdown.AnimeCountdownConfig
 import io.github.manamiproject.modb.app.dataset.DatasetFileAccessor
 import io.github.manamiproject.modb.app.dataset.DeadEntriesAccessor
 import io.github.manamiproject.modb.app.dataset.DefaultDatasetFileAccessor
@@ -9,6 +10,7 @@ import io.github.manamiproject.modb.app.downloadcontrolstate.DefaultDownloadCont
 import io.github.manamiproject.modb.app.downloadcontrolstate.DownloadControlStateAccessor
 import io.github.manamiproject.modb.app.merging.lock.DefaultMergeLockAccessor
 import io.github.manamiproject.modb.app.merging.lock.MergeLockAccessor
+import io.github.manamiproject.modb.core.config.MetaDataProviderConfig
 import io.github.manamiproject.modb.core.logging.LoggerDelegate
 import java.net.URI
 
@@ -26,17 +28,24 @@ class DeadEntriesValidationPostProcessor(
     private val deadEntriesAccessor: DeadEntriesAccessor = DefaultDeadEntriesAccessor.instance,
     private val downloadControlStateAccessor: DownloadControlStateAccessor = DefaultDownloadControlStateAccessor.instance,
     private val mergeLockAccess: MergeLockAccessor = DefaultMergeLockAccessor.instance,
+    private val ignoreMetaDataConfiguration: Set<MetaDataProviderConfig> = setOf(AnimeCountdownConfig),
 ): PostProcessor {
 
     override suspend fun process(): Boolean {
         log.info { "Checking if [*.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX] files contain dead entries." }
-        checkForDeadEntries(downloadControlStateAccessor.allAnime().flatMap { it.sources })
+        checkForDeadEntries(downloadControlStateAccessor.allAnime()
+            .flatMap { it.sources }
+            .filterNot { source -> ignoreMetaDataConfiguration.any { it.hostname() == source.host } }
+        )
 
         log.info { "Checking if a merge lock contains dead entries." }
         checkForDeadEntries(mergeLockAccess.allSourcesInAllMergeLockEntries())
 
         log.info { "Checking if dataset contains dead entries." }
-        checkForDeadEntries(datasetFileAccessor.fetchEntries().flatMap { it.sources })
+        checkForDeadEntries(datasetFileAccessor.fetchEntries()
+            .flatMap { it.sources }
+            .filterNot { source -> ignoreMetaDataConfiguration.any { it.hostname() == source.host } }
+        )
 
         return true
     }

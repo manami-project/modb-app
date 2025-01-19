@@ -1,5 +1,6 @@
 package io.github.manamiproject.modb.app.postprocessors
 
+import io.github.manamiproject.modb.animecountdown.AnimeCountdownConfig
 import io.github.manamiproject.modb.app.config.AppConfig
 import io.github.manamiproject.modb.app.config.Config
 import io.github.manamiproject.modb.app.convfiles.CONVERTED_FILE_SUFFIX
@@ -8,6 +9,7 @@ import io.github.manamiproject.modb.app.dataset.DefaultDatasetFileAccessor
 import io.github.manamiproject.modb.app.downloadcontrolstate.DOWNLOAD_CONTROL_STATE_FILE_SUFFIX
 import io.github.manamiproject.modb.app.downloadcontrolstate.DefaultDownloadControlStateAccessor
 import io.github.manamiproject.modb.app.downloadcontrolstate.DownloadControlStateAccessor
+import io.github.manamiproject.modb.core.config.MetaDataProviderConfig
 import io.github.manamiproject.modb.core.coroutines.ModbDispatchers.LIMITED_FS
 import io.github.manamiproject.modb.core.extensions.listRegularFiles
 import io.github.manamiproject.modb.core.extensions.readFile
@@ -32,22 +34,27 @@ class SourcesConsistencyValidationPostProcessor(
     private val appConfig: Config = AppConfig.instance,
     private val datasetFileAccessor: DatasetFileAccessor = DefaultDatasetFileAccessor.instance,
     private val downloadControlStateAccessor: DownloadControlStateAccessor = DefaultDownloadControlStateAccessor.instance,
+    private val ignoreMetaDataConfiguration: Set<MetaDataProviderConfig> = setOf(AnimeCountdownConfig),
 ): PostProcessor {
 
     override suspend fun process(): Boolean {
         log.info { "Checking if all downloaded sources in [*.$CONVERTED_FILE_SUFFIX] exist in [*.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX] files." }
 
         val sourcesInConvFiles = sourcesInConvFiles()
-        val sourcesInDcsEntries = downloadControlStateAccessor.allAnime().map { it.sources.first() }.toSet()
+        val sourcesInDcsEntries = downloadControlStateAccessor.allAnime().map { it.sources }.flatten().toSet()
         var result = sourcesInConvFiles - sourcesInDcsEntries
 
-        check(sourcesInConvFiles.isNotEmpty()) { "No sources in [*.$CONVERTED_FILE_SUFFIX] files found." }
-        check(sourcesInDcsEntries.isNotEmpty()) { "No sources in [*.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX] files found." }
-        check(result.isEmpty()) { "There are entries existing in [*.$CONVERTED_FILE_SUFFIX] files, but not in [*.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX] files: [${result.joinToString(", ")}]" }
+        check(sourcesInConvFiles.isNotEmpty()) { "No sources in [*.$CONVERTED_FILE_SUFFIX] files." }
+        check(sourcesInDcsEntries.isNotEmpty()) { "No sources in [*.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX] files." }
+        check(result.isEmpty()) { "There are entries existing in [*.$CONVERTED_FILE_SUFFIX] files, but not in [*.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX]. Affected sources: [${result.joinToString(", ")}]" }
 
         log.info { "Checking if all sources in [*.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX] files exist in dataset and the other way round." }
 
-        val sourcesInDataset = datasetFileAccessor.fetchEntries().map { it.sources }.flatten().toSet()
+        val sourcesInDataset = datasetFileAccessor.fetchEntries()
+            .map { it.sources }
+            .flatten()
+            .filterNot { source -> ignoreMetaDataConfiguration.any { it.hostname() == source.host } }
+            .toSet()
         check(sourcesInDataset.isNotEmpty()) { "No sources in dataset found." }
 
         result = (sourcesInDataset - sourcesInDcsEntries).union(sourcesInDcsEntries - sourcesInDataset)
@@ -63,12 +70,12 @@ class SourcesConsistencyValidationPostProcessor(
             .map { directory ->
                 directory.listRegularFiles("*.$CONVERTED_FILE_SUFFIX").map {
                     async {
-                        Json.parseJson<Anime>(it.readFile())!!.sources.first()
+                        Json.parseJson<Anime>(it.readFile())!!.sources
                     }
                 }
             }.flatten()
 
-        return@withContext awaitAll(*jobs.toTypedArray()).toSet()
+        return@withContext awaitAll(*jobs.toTypedArray()).flatten().toSet()
     }
 
     companion object {
