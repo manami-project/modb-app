@@ -22,7 +22,7 @@ internal class AnilistAnimeConverterTest {
         fun `title containing special chars`() {
             runBlocking {
                 // given
-                val testFileContent = loadTestResource<String>("file_converter_tests/title/special_chars.json")
+                val testFileContent = loadTestResource<String>("AnilistAnimeConverterTest/title/special_chars.json")
 
                 val converter = AnilistAnimeConverter()
 
@@ -42,7 +42,7 @@ internal class AnilistAnimeConverterTest {
         fun `type is tv`() {
             runBlocking {
                 // given
-                val testFileContent = loadTestResource<String>("file_converter_tests/type/tv.json")
+                val testFileContent = loadTestResource<String>("AnilistAnimeConverterTest/type/tv.json")
 
                 val converter = AnilistAnimeConverter()
 
@@ -58,7 +58,7 @@ internal class AnilistAnimeConverterTest {
         fun `type is tv_short and is mapped to tv`() {
             runBlocking {
                 // given
-                val testFileContent = loadTestResource<String>("file_converter_tests/type/tv_short.json")
+                val testFileContent = loadTestResource<String>("AnilistAnimeConverterTest/type/tv_short.json")
 
                 val converter = AnilistAnimeConverter()
 
@@ -74,7 +74,7 @@ internal class AnilistAnimeConverterTest {
         fun `type is special`() {
             runBlocking {
                 // given
-                val testFileContent = loadTestResource<String>("file_converter_tests/type/special.json")
+                val testFileContent = loadTestResource<String>("AnilistAnimeConverterTest/type/special.json")
 
                 val converter = AnilistAnimeConverter()
 
@@ -90,7 +90,7 @@ internal class AnilistAnimeConverterTest {
         fun `type is ova`() {
             runBlocking {
                 // given
-                val testFileContent = loadTestResource<String>("file_converter_tests/type/ova.json")
+                val testFileContent = loadTestResource<String>("AnilistAnimeConverterTest/type/ova.json")
 
                 val converter = AnilistAnimeConverter()
 
@@ -106,7 +106,7 @@ internal class AnilistAnimeConverterTest {
         fun `type is ona`() {
             runBlocking {
                 // given
-                val testFileContent = loadTestResource<String>("file_converter_tests/type/ona.json")
+                val testFileContent = loadTestResource<String>("AnilistAnimeConverterTest/type/ona.json")
 
                 val converter = AnilistAnimeConverter()
 
@@ -122,7 +122,7 @@ internal class AnilistAnimeConverterTest {
         fun `type is movie`() {
             runBlocking {
                 // given
-                val testFileContent = loadTestResource<String>("file_converter_tests/type/movie.json")
+                val testFileContent = loadTestResource<String>("AnilistAnimeConverterTest/type/movie.json")
 
                 val converter = AnilistAnimeConverter()
 
@@ -138,7 +138,7 @@ internal class AnilistAnimeConverterTest {
         fun `type is music is mapped to special`() {
             runBlocking {
                 // given
-                val testFileContent = loadTestResource<String>("file_converter_tests/type/music.json")
+                val testFileContent = loadTestResource<String>("AnilistAnimeConverterTest/type/music.json")
 
                 val converter = AnilistAnimeConverter()
 
@@ -154,7 +154,7 @@ internal class AnilistAnimeConverterTest {
         fun `type is null and is mapped to UNKNOWN`() {
             runBlocking {
                 // given
-                val testFileContent = loadTestResource<String>("file_converter_tests/type/null.json")
+                val testFileContent = loadTestResource<String>("AnilistAnimeConverterTest/type/null.json")
 
                 val converter = AnilistAnimeConverter()
 
@@ -174,7 +174,7 @@ internal class AnilistAnimeConverterTest {
         fun `fixed number of episodes`() {
             runBlocking {
                 // given
-                val testFileContent = loadTestResource<String>("file_converter_tests/episodes/39.json")
+                val testFileContent = loadTestResource<String>("AnilistAnimeConverterTest/episodes/39.json")
 
                 val converter = AnilistAnimeConverter()
 
@@ -191,7 +191,7 @@ internal class AnilistAnimeConverterTest {
             runBlocking {
                 // given
                 val testFileContent =
-                    loadTestResource<String>("file_converter_tests/episodes/neither_episodes_nor_nextairingepisode_is_set.json")
+                    loadTestResource<String>("AnilistAnimeConverterTest/episodes/neither_episodes_nor_nextairingepisode_is_set.json")
 
                 val converter = AnilistAnimeConverter()
 
@@ -207,7 +207,7 @@ internal class AnilistAnimeConverterTest {
         fun `ongoing series for which the value has to be taken from nextairingepisode`() {
             runBlocking {
                 // given
-                val testFileContent = loadTestResource<String>("file_converter_tests/episodes/ongoing.json")
+                val testFileContent = loadTestResource<String>("AnilistAnimeConverterTest/episodes/ongoing.json")
 
                 val converter = AnilistAnimeConverter()
 
@@ -228,7 +228,7 @@ internal class AnilistAnimeConverterTest {
             runBlocking {
                 // given
                 val testFileContent =
-                    loadTestResource<String>("file_converter_tests/picture_and_thumbnail/picture_available.json")
+                    loadTestResource<String>("AnilistAnimeConverterTest/picture_and_thumbnail/picture_available.json")
 
                 val converter = AnilistAnimeConverter()
 
@@ -246,7 +246,7 @@ internal class AnilistAnimeConverterTest {
             runBlocking {
                 // given
                 val testFileContent =
-                    loadTestResource<String>("file_converter_tests/picture_and_thumbnail/picture_unavailable.json")
+                    loadTestResource<String>("AnilistAnimeConverterTest/picture_and_thumbnail/picture_unavailable.json")
 
                 val converter = AnilistAnimeConverter()
 
@@ -268,7 +268,7 @@ internal class AnilistAnimeConverterTest {
             runBlocking {
                 // given
                 val testFileContent =
-                    loadTestResource<String>("file_converter_tests/synonyms/synonyms_from_titles_and_synonyms.json")
+                    loadTestResource<String>("AnilistAnimeConverterTest/synonyms/synonyms_from_titles_and_synonyms.json")
 
                 val converter = AnilistAnimeConverter()
 
@@ -293,7 +293,7 @@ internal class AnilistAnimeConverterTest {
         fun `extract correct id and build anime link correctly`() {
             runBlocking {
                 // given
-                val testFileContent = loadTestResource<String>("file_converter_tests/sources/15689.json")
+                val testFileContent = loadTestResource<String>("AnilistAnimeConverterTest/sources/15689.json")
 
                 val converter = AnilistAnimeConverter()
 
@@ -314,7 +314,7 @@ internal class AnilistAnimeConverterTest {
             runBlocking {
                 // given
                 val testFileContent =
-                    loadTestResource<String>("file_converter_tests/related_anime/no_adaption_no_relations.json")
+                    loadTestResource<String>("AnilistAnimeConverterTest/related_anime/no_adaption_no_relations.json")
 
                 val converter = AnilistAnimeConverter()
 
@@ -331,7 +331,7 @@ internal class AnilistAnimeConverterTest {
             runBlocking {
                 // given
                 val testFileContent =
-                    loadTestResource<String>("file_converter_tests/related_anime/no_adaption_multiple_relations.json")
+                    loadTestResource<String>("AnilistAnimeConverterTest/related_anime/no_adaption_multiple_relations.json")
 
                 val converter = AnilistAnimeConverter()
 
@@ -352,7 +352,7 @@ internal class AnilistAnimeConverterTest {
             runBlocking {
                 // given
                 val testFileContent =
-                    loadTestResource<String>("file_converter_tests/related_anime/has_one_adaption_and_one_relation.json")
+                    loadTestResource<String>("AnilistAnimeConverterTest/related_anime/has_one_adaption_and_one_relation.json")
 
                 val converter = AnilistAnimeConverter()
 
@@ -371,7 +371,7 @@ internal class AnilistAnimeConverterTest {
             runBlocking {
                 // given
                 val testFileContent =
-                    loadTestResource<String>("file_converter_tests/related_anime/has_adaption_and_multiple_relations.json")
+                    loadTestResource<String>("AnilistAnimeConverterTest/related_anime/has_adaption_and_multiple_relations.json")
 
                 val converter = AnilistAnimeConverter()
 
@@ -401,7 +401,7 @@ internal class AnilistAnimeConverterTest {
             runBlocking {
                 // given
                 val testFileContent =
-                    loadTestResource<String>("file_converter_tests/related_anime/has_adaption_but_no_relation.json")
+                    loadTestResource<String>("AnilistAnimeConverterTest/related_anime/has_adaption_but_no_relation.json")
 
                 val converter = AnilistAnimeConverter()
 
@@ -421,7 +421,7 @@ internal class AnilistAnimeConverterTest {
         fun `'FINISHED' is mapped to 'FINISHED'`() {
             runBlocking {
                 // given
-                val testFileContent = loadTestResource<String>("file_converter_tests/status/finished.json")
+                val testFileContent = loadTestResource<String>("AnilistAnimeConverterTest/status/finished.json")
 
                 val converter = AnilistAnimeConverter()
 
@@ -437,7 +437,7 @@ internal class AnilistAnimeConverterTest {
         fun `'RELEASING' is mapped to 'ONGOING'`() {
             runBlocking {
                 // given
-                val testFileContent = loadTestResource<String>("file_converter_tests/status/releasing.json")
+                val testFileContent = loadTestResource<String>("AnilistAnimeConverterTest/status/releasing.json")
 
                 val converter = AnilistAnimeConverter()
 
@@ -453,7 +453,7 @@ internal class AnilistAnimeConverterTest {
         fun `'NOT_YET_RELEASED' is mapped to 'UPCOMING'`() {
             runBlocking {
                 // given
-                val testFileContent = loadTestResource<String>("file_converter_tests/status/not_yet_released.json")
+                val testFileContent = loadTestResource<String>("AnilistAnimeConverterTest/status/not_yet_released.json")
 
                 val converter = AnilistAnimeConverter()
 
@@ -469,7 +469,7 @@ internal class AnilistAnimeConverterTest {
         fun `'CANCELLED' is mapped to 'UNKNOWN'`() {
             runBlocking {
                 // given
-                val testFileContent = loadTestResource<String>("file_converter_tests/status/cancelled.json")
+                val testFileContent = loadTestResource<String>("AnilistAnimeConverterTest/status/cancelled.json")
 
                 val converter = AnilistAnimeConverter()
 
@@ -485,7 +485,7 @@ internal class AnilistAnimeConverterTest {
         fun `null is mapped to 'UNKNOWN'`() {
             runBlocking {
                 // given
-                val testFileContent = loadTestResource<String>("file_converter_tests/status/null.json")
+                val testFileContent = loadTestResource<String>("AnilistAnimeConverterTest/status/null.json")
 
                 val converter = AnilistAnimeConverter()
 
@@ -505,7 +505,7 @@ internal class AnilistAnimeConverterTest {
         fun `put names of genres and tags as distinct list into the anime's tags`() {
             runBlocking {
                 // given
-                val testFileContent = loadTestResource<String>("file_converter_tests/tags/tags.json")
+                val testFileContent = loadTestResource<String>("AnilistAnimeConverterTest/tags/tags.json")
 
                 val converter = AnilistAnimeConverter()
 
@@ -555,7 +555,7 @@ internal class AnilistAnimeConverterTest {
         fun `duration is not set and therefore 0`() {
             runBlocking {
                 // given
-                val testFileContent = loadTestResource<String>("file_converter_tests/duration/null.json")
+                val testFileContent = loadTestResource<String>("AnilistAnimeConverterTest/duration/null.json")
 
                 val converter = AnilistAnimeConverter()
 
@@ -571,7 +571,7 @@ internal class AnilistAnimeConverterTest {
         fun `duration is set to 0`() {
             runBlocking {
                 // given
-                val testFileContent = loadTestResource<String>("file_converter_tests/duration/0.json")
+                val testFileContent = loadTestResource<String>("AnilistAnimeConverterTest/duration/0.json")
 
                 val converter = AnilistAnimeConverter()
 
@@ -587,7 +587,7 @@ internal class AnilistAnimeConverterTest {
         fun `anilist only uses minutes for duration - so this entry although 15 seconds long is set to 1 min`() {
             runBlocking {
                 // given
-                val testFileContent = loadTestResource<String>("file_converter_tests/duration/min_duration.json")
+                val testFileContent = loadTestResource<String>("AnilistAnimeConverterTest/duration/min_duration.json")
 
                 val converter = AnilistAnimeConverter()
 
@@ -603,7 +603,7 @@ internal class AnilistAnimeConverterTest {
         fun `duration of 24 minutes`() {
             runBlocking {
                 // given
-                val testFileContent = loadTestResource<String>("file_converter_tests/duration/24.json")
+                val testFileContent = loadTestResource<String>("AnilistAnimeConverterTest/duration/24.json")
 
                 val converter = AnilistAnimeConverter()
 
@@ -619,7 +619,7 @@ internal class AnilistAnimeConverterTest {
         fun `duration of 2 hours`() {
             runBlocking {
                 // given
-                val testFileContent = loadTestResource<String>("file_converter_tests/duration/120.json")
+                val testFileContent = loadTestResource<String>("AnilistAnimeConverterTest/duration/120.json")
 
                 val converter = AnilistAnimeConverter()
 
@@ -643,7 +643,7 @@ internal class AnilistAnimeConverterTest {
                 runBlocking {
                     // given
                     val testFileContent =
-                        loadTestResource<String>("file_converter_tests/anime_season/season_is_null_and_start_date_is_null.json")
+                        loadTestResource<String>("AnilistAnimeConverterTest/anime_season/season_is_null_and_start_date_is_null.json")
 
                     val converter = AnilistAnimeConverter()
 
@@ -659,7 +659,7 @@ internal class AnilistAnimeConverterTest {
             fun `season is 'spring'`() {
                 runBlocking {
                     // given
-                    val testFileContent = loadTestResource<String>("file_converter_tests/anime_season/spring.json")
+                    val testFileContent = loadTestResource<String>("AnilistAnimeConverterTest/anime_season/spring.json")
 
                     val converter = AnilistAnimeConverter()
 
@@ -675,7 +675,7 @@ internal class AnilistAnimeConverterTest {
             fun `season is 'summer'`() {
                 runBlocking {
                     // given
-                    val testFileContent = loadTestResource<String>("file_converter_tests/anime_season/summer.json")
+                    val testFileContent = loadTestResource<String>("AnilistAnimeConverterTest/anime_season/summer.json")
 
                     val converter = AnilistAnimeConverter()
 
@@ -691,7 +691,7 @@ internal class AnilistAnimeConverterTest {
             fun `season is 'fall'`() {
                 runBlocking {
                     // given
-                    val testFileContent = loadTestResource<String>("file_converter_tests/anime_season/fall.json")
+                    val testFileContent = loadTestResource<String>("AnilistAnimeConverterTest/anime_season/fall.json")
 
                     val converter = AnilistAnimeConverter()
 
@@ -707,7 +707,7 @@ internal class AnilistAnimeConverterTest {
             fun `season is 'wimter'`() {
                 runBlocking {
                     // given
-                    val testFileContent = loadTestResource<String>("file_converter_tests/anime_season/winter.json")
+                    val testFileContent = loadTestResource<String>("AnilistAnimeConverterTest/anime_season/winter.json")
 
                     val converter = AnilistAnimeConverter()
 
@@ -728,7 +728,7 @@ internal class AnilistAnimeConverterTest {
                 runBlocking {
                     // given
                     val testFileContent =
-                        loadTestResource<String>("file_converter_tests/anime_season/seasonyear_set.json")
+                        loadTestResource<String>("AnilistAnimeConverterTest/anime_season/seasonyear_set.json")
 
                     val converter = AnilistAnimeConverter()
 
@@ -745,7 +745,7 @@ internal class AnilistAnimeConverterTest {
                 runBlocking {
                     // given
                     val testFileContent =
-                        loadTestResource<String>("file_converter_tests/anime_season/season_is_null_and_start_date_is_null.json")
+                        loadTestResource<String>("AnilistAnimeConverterTest/anime_season/season_is_null_and_start_date_is_null.json")
 
                     val converter = AnilistAnimeConverter()
 
@@ -761,7 +761,7 @@ internal class AnilistAnimeConverterTest {
             fun `year is 2006 - seasonYear is null but start date is set`() {
                 runBlocking {
                     // given
-                    val testFileContent = loadTestResource<String>("file_converter_tests/anime_season/season_is_null_and_start_date_is_2006.json")
+                    val testFileContent = loadTestResource<String>("AnilistAnimeConverterTest/anime_season/season_is_null_and_start_date_is_2006.json")
 
                     val converter = AnilistAnimeConverter()
 
