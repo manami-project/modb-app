@@ -31,7 +31,7 @@ internal class LivechartAnimeConverterTest {
                     override fun fileSuffix(): FileSuffix = LivechartConfig.fileSuffix()
                 }
 
-                val testFile = loadTestResource<String>("file_converter_tests/title/special_chars.html")
+                val testFile = loadTestResource<String>("LivechartAnimeConverterTest/title/special_chars.html")
 
                 val converter = LivechartAnimeConverter(
                     metaDataProviderConfig = testLivechartConfig,
@@ -55,7 +55,7 @@ internal class LivechartAnimeConverterTest {
                     override fun fileSuffix(): FileSuffix = LivechartConfig.fileSuffix()
                 }
 
-                val testFile = loadTestResource<String>("file_converter_tests/title/encoded_special_char.html")
+                val testFile = loadTestResource<String>("LivechartAnimeConverterTest/title/encoded_special_char.html")
 
                 val converter = LivechartAnimeConverter(
                     metaDataProviderConfig = testLivechartConfig,
@@ -83,7 +83,7 @@ internal class LivechartAnimeConverterTest {
                     override fun fileSuffix(): FileSuffix = LivechartConfig.fileSuffix()
                 }
 
-                val testFile = loadTestResource<String>("file_converter_tests/synonyms/no_synonyms.html")
+                val testFile = loadTestResource<String>("LivechartAnimeConverterTest/synonyms/no_synonyms.html")
 
                 val converter = LivechartAnimeConverter(
                     metaDataProviderConfig = testLivechartConfig,
@@ -107,7 +107,7 @@ internal class LivechartAnimeConverterTest {
                     override fun fileSuffix(): FileSuffix = LivechartConfig.fileSuffix()
                 }
 
-                val testFile = loadTestResource<String>("file_converter_tests/synonyms/one_synonym.html")
+                val testFile = loadTestResource<String>("LivechartAnimeConverterTest/synonyms/one_synonym.html")
 
                 val converter = LivechartAnimeConverter(
                     metaDataProviderConfig = testLivechartConfig,
@@ -131,7 +131,7 @@ internal class LivechartAnimeConverterTest {
                     override fun fileSuffix(): FileSuffix = LivechartConfig.fileSuffix()
                 }
 
-                val testFile = loadTestResource<String>("file_converter_tests/synonyms/multiple_synonyms.html")
+                val testFile = loadTestResource<String>("LivechartAnimeConverterTest/synonyms/multiple_synonyms.html")
 
                 val converter = LivechartAnimeConverter(
                     metaDataProviderConfig = testLivechartConfig,
@@ -158,7 +158,7 @@ internal class LivechartAnimeConverterTest {
                     override fun fileSuffix(): FileSuffix = LivechartConfig.fileSuffix()
                 }
 
-                val testFile = loadTestResource<String>("file_converter_tests/synonyms/encoded_special_chars.html")
+                val testFile = loadTestResource<String>("LivechartAnimeConverterTest/synonyms/encoded_special_chars.html")
 
                 val converter = LivechartAnimeConverter(
                     metaDataProviderConfig = testLivechartConfig,
@@ -186,7 +186,7 @@ internal class LivechartAnimeConverterTest {
                     override fun fileSuffix(): FileSuffix = LivechartConfig.fileSuffix()
                 }
 
-                val testFile = loadTestResource<String>("file_converter_tests/episodes/unknown.html")
+                val testFile = loadTestResource<String>("LivechartAnimeConverterTest/episodes/unknown.html")
 
                 val converter = LivechartAnimeConverter(
                     metaDataProviderConfig = testLivechartConfig,
@@ -210,7 +210,7 @@ internal class LivechartAnimeConverterTest {
                     override fun fileSuffix(): FileSuffix = LivechartConfig.fileSuffix()
                 }
 
-                val testFile = loadTestResource<String>("file_converter_tests/episodes/1.html")
+                val testFile = loadTestResource<String>("LivechartAnimeConverterTest/episodes/1.html")
 
                 val converter = LivechartAnimeConverter(
                     metaDataProviderConfig = testLivechartConfig,
@@ -234,7 +234,7 @@ internal class LivechartAnimeConverterTest {
                     override fun fileSuffix(): FileSuffix = LivechartConfig.fileSuffix()
                 }
 
-                val testFile = loadTestResource<String>("file_converter_tests/episodes/10.html")
+                val testFile = loadTestResource<String>("LivechartAnimeConverterTest/episodes/10.html")
 
                 val converter = LivechartAnimeConverter(
                     metaDataProviderConfig = testLivechartConfig,
@@ -258,7 +258,7 @@ internal class LivechartAnimeConverterTest {
                     override fun fileSuffix(): FileSuffix = LivechartConfig.fileSuffix()
                 }
 
-                val testFile = loadTestResource<String>("file_converter_tests/episodes/100.html")
+                val testFile = loadTestResource<String>("LivechartAnimeConverterTest/episodes/100.html")
 
                 val converter = LivechartAnimeConverter(
                     metaDataProviderConfig = testLivechartConfig,
@@ -282,7 +282,7 @@ internal class LivechartAnimeConverterTest {
                     override fun fileSuffix(): FileSuffix = LivechartConfig.fileSuffix()
                 }
 
-                val testFile = loadTestResource<String>("file_converter_tests/episodes/number_of_episodes_unknown_but_currently_running.html")
+                val testFile = loadTestResource<String>("LivechartAnimeConverterTest/episodes/number_of_episodes_unknown_but_currently_running.html")
 
                 val converter = LivechartAnimeConverter(
                     metaDataProviderConfig = testLivechartConfig,
@@ -306,7 +306,7 @@ internal class LivechartAnimeConverterTest {
                     override fun fileSuffix(): FileSuffix = LivechartConfig.fileSuffix()
                 }
 
-                val testFile = loadTestResource<String>("file_converter_tests/episodes/number_of_episodes_known_and_running.html")
+                val testFile = loadTestResource<String>("LivechartAnimeConverterTest/episodes/number_of_episodes_known_and_running.html")
 
                 val converter = LivechartAnimeConverter(
                     metaDataProviderConfig = testLivechartConfig,
@@ -334,7 +334,7 @@ internal class LivechartAnimeConverterTest {
                     override fun fileSuffix(): FileSuffix = LivechartConfig.fileSuffix()
                 }
 
-                val testFile = loadTestResource<String>("file_converter_tests/sources/3437.html")
+                val testFile = loadTestResource<String>("LivechartAnimeConverterTest/sources/3437.html")
 
                 val converter = LivechartAnimeConverter(
                     metaDataProviderConfig = testLivechartConfig,
@@ -363,7 +363,7 @@ internal class LivechartAnimeConverterTest {
                 }
 
                 val testFile =
-                    loadTestResource<String>("file_converter_tests/picture_and_thumbnail/neither_picture_nor_thumbnail.html")
+                    loadTestResource<String>("LivechartAnimeConverterTest/picture_and_thumbnail/neither_picture_nor_thumbnail.html")
 
 
                 val converter = LivechartAnimeConverter(
@@ -390,7 +390,7 @@ internal class LivechartAnimeConverterTest {
                 }
 
                 val testFile =
-                    loadTestResource<String>("file_converter_tests/picture_and_thumbnail/picture_and_thumbnail_available.html")
+                    loadTestResource<String>("LivechartAnimeConverterTest/picture_and_thumbnail/picture_and_thumbnail_available.html")
 
 
                 val converter = LivechartAnimeConverter(
@@ -420,7 +420,7 @@ internal class LivechartAnimeConverterTest {
                     override fun fileSuffix(): FileSuffix = LivechartConfig.fileSuffix()
                 }
 
-                val testFile = loadTestResource<String>("file_converter_tests/type/tv.html")
+                val testFile = loadTestResource<String>("LivechartAnimeConverterTest/type/tv.html")
 
                 val converter = LivechartAnimeConverter(
                     metaDataProviderConfig = testLivechartConfig,
@@ -444,7 +444,7 @@ internal class LivechartAnimeConverterTest {
                     override fun fileSuffix(): FileSuffix = LivechartConfig.fileSuffix()
                 }
 
-                val testFile = loadTestResource<String>("file_converter_tests/type/unknown.html")
+                val testFile = loadTestResource<String>("LivechartAnimeConverterTest/type/unknown.html")
 
                 val converter = LivechartAnimeConverter(
                     metaDataProviderConfig = testLivechartConfig,
@@ -468,7 +468,7 @@ internal class LivechartAnimeConverterTest {
                     override fun fileSuffix(): FileSuffix = LivechartConfig.fileSuffix()
                 }
 
-                val testFile = loadTestResource<String>("file_converter_tests/type/tv_short.html")
+                val testFile = loadTestResource<String>("LivechartAnimeConverterTest/type/tv_short.html")
 
                 val converter = LivechartAnimeConverter(
                     metaDataProviderConfig = testLivechartConfig,
@@ -492,7 +492,7 @@ internal class LivechartAnimeConverterTest {
                     override fun fileSuffix(): FileSuffix = LivechartConfig.fileSuffix()
                 }
 
-                val testFile = loadTestResource<String>("file_converter_tests/type/movie.html")
+                val testFile = loadTestResource<String>("LivechartAnimeConverterTest/type/movie.html")
 
                 val converter = LivechartAnimeConverter(
                     metaDataProviderConfig = testLivechartConfig,
@@ -516,7 +516,7 @@ internal class LivechartAnimeConverterTest {
                     override fun fileSuffix(): FileSuffix = LivechartConfig.fileSuffix()
                 }
 
-                val testFile = loadTestResource<String>("file_converter_tests/type/web_short.html")
+                val testFile = loadTestResource<String>("LivechartAnimeConverterTest/type/web_short.html")
 
                 val converter = LivechartAnimeConverter(
                     metaDataProviderConfig = testLivechartConfig,
@@ -540,7 +540,7 @@ internal class LivechartAnimeConverterTest {
                     override fun fileSuffix(): FileSuffix = LivechartConfig.fileSuffix()
                 }
 
-                val testFile = loadTestResource<String>("file_converter_tests/type/web.html")
+                val testFile = loadTestResource<String>("LivechartAnimeConverterTest/type/web.html")
 
                 val converter = LivechartAnimeConverter(
                     metaDataProviderConfig = testLivechartConfig,
@@ -564,7 +564,7 @@ internal class LivechartAnimeConverterTest {
                     override fun fileSuffix(): FileSuffix = LivechartConfig.fileSuffix()
                 }
 
-                val testFile = loadTestResource<String>("file_converter_tests/type/ova.html")
+                val testFile = loadTestResource<String>("LivechartAnimeConverterTest/type/ova.html")
 
                 val converter = LivechartAnimeConverter(
                     metaDataProviderConfig = testLivechartConfig,
@@ -588,7 +588,7 @@ internal class LivechartAnimeConverterTest {
                     override fun fileSuffix(): FileSuffix = LivechartConfig.fileSuffix()
                 }
 
-                val testFile = loadTestResource<String>("file_converter_tests/type/special.html")
+                val testFile = loadTestResource<String>("LivechartAnimeConverterTest/type/special.html")
 
                 val converter = LivechartAnimeConverter(
                     metaDataProviderConfig = testLivechartConfig,
@@ -616,7 +616,7 @@ internal class LivechartAnimeConverterTest {
                     override fun fileSuffix(): FileSuffix = LivechartConfig.fileSuffix()
                 }
 
-                val testFile = loadTestResource<String>("file_converter_tests/duration/1_hour.html")
+                val testFile = loadTestResource<String>("LivechartAnimeConverterTest/duration/1_hour.html")
 
                 val converter = LivechartAnimeConverter(
                     metaDataProviderConfig = testLivechartConfig,
@@ -640,7 +640,7 @@ internal class LivechartAnimeConverterTest {
                     override fun fileSuffix(): FileSuffix = LivechartConfig.fileSuffix()
                 }
 
-                val testFile = loadTestResource<String>("file_converter_tests/duration/1_hour_11_min.html")
+                val testFile = loadTestResource<String>("LivechartAnimeConverterTest/duration/1_hour_11_min.html")
 
                 val converter = LivechartAnimeConverter(
                     metaDataProviderConfig = testLivechartConfig,
@@ -664,7 +664,7 @@ internal class LivechartAnimeConverterTest {
                     override fun fileSuffix(): FileSuffix = LivechartConfig.fileSuffix()
                 }
 
-                val testFile = loadTestResource<String>("file_converter_tests/duration/2_hours.html")
+                val testFile = loadTestResource<String>("LivechartAnimeConverterTest/duration/2_hours.html")
 
                 val converter = LivechartAnimeConverter(
                     metaDataProviderConfig = testLivechartConfig,
@@ -688,7 +688,7 @@ internal class LivechartAnimeConverterTest {
                     override fun fileSuffix(): FileSuffix = LivechartConfig.fileSuffix()
                 }
 
-                val testFile = loadTestResource<String>("file_converter_tests/duration/2_hours_15_minutes.html")
+                val testFile = loadTestResource<String>("LivechartAnimeConverterTest/duration/2_hours_15_minutes.html")
 
                 val converter = LivechartAnimeConverter(
                     metaDataProviderConfig = testLivechartConfig,
@@ -712,7 +712,7 @@ internal class LivechartAnimeConverterTest {
                     override fun fileSuffix(): FileSuffix = LivechartConfig.fileSuffix()
                 }
 
-                val testFile = loadTestResource<String>("file_converter_tests/duration/10_min.html")
+                val testFile = loadTestResource<String>("LivechartAnimeConverterTest/duration/10_min.html")
 
                 val converter = LivechartAnimeConverter(
                     metaDataProviderConfig = testLivechartConfig,
@@ -736,7 +736,7 @@ internal class LivechartAnimeConverterTest {
                     override fun fileSuffix(): FileSuffix = LivechartConfig.fileSuffix()
                 }
 
-                val testFile = loadTestResource<String>("file_converter_tests/duration/30_sec.html")
+                val testFile = loadTestResource<String>("LivechartAnimeConverterTest/duration/30_sec.html")
 
                 val converter = LivechartAnimeConverter(
                     metaDataProviderConfig = testLivechartConfig,
@@ -760,7 +760,7 @@ internal class LivechartAnimeConverterTest {
                     override fun fileSuffix(): FileSuffix = LivechartConfig.fileSuffix()
                 }
 
-                val testFile = loadTestResource<String>("file_converter_tests/duration/unknown.html")
+                val testFile = loadTestResource<String>("LivechartAnimeConverterTest/duration/unknown.html")
 
                 val converter = LivechartAnimeConverter(
                     metaDataProviderConfig = testLivechartConfig,
@@ -788,7 +788,7 @@ internal class LivechartAnimeConverterTest {
                     override fun fileSuffix(): FileSuffix = LivechartConfig.fileSuffix()
                 }
 
-                val testFile = loadTestResource<String>("file_converter_tests/tags/multiple_tags.html")
+                val testFile = loadTestResource<String>("LivechartAnimeConverterTest/tags/multiple_tags.html")
 
                 val converter = LivechartAnimeConverter(
                     metaDataProviderConfig = testLivechartConfig,
@@ -820,7 +820,7 @@ internal class LivechartAnimeConverterTest {
                     override fun fileSuffix(): FileSuffix = LivechartConfig.fileSuffix()
                 }
 
-                val testFile = loadTestResource<String>("file_converter_tests/tags/one_tag.html")
+                val testFile = loadTestResource<String>("LivechartAnimeConverterTest/tags/one_tag.html")
 
                 val converter = LivechartAnimeConverter(
                     metaDataProviderConfig = testLivechartConfig,
@@ -844,7 +844,7 @@ internal class LivechartAnimeConverterTest {
                     override fun fileSuffix(): FileSuffix = LivechartConfig.fileSuffix()
                 }
 
-                val testFile = loadTestResource<String>("file_converter_tests/tags/no_tags.html")
+                val testFile = loadTestResource<String>("LivechartAnimeConverterTest/tags/no_tags.html")
 
                 val converter = LivechartAnimeConverter(
                     metaDataProviderConfig = testLivechartConfig,
@@ -875,7 +875,7 @@ internal class LivechartAnimeConverterTest {
                         override fun fileSuffix(): FileSuffix = LivechartConfig.fileSuffix()
                     }
 
-                    val testFile = loadTestResource<String>("file_converter_tests/anime_season/season/undefined.html")
+                    val testFile = loadTestResource<String>("LivechartAnimeConverterTest/anime_season/season/undefined.html")
 
                     val converter = LivechartAnimeConverter(
                         metaDataProviderConfig = testLivechartConfig,
@@ -899,7 +899,7 @@ internal class LivechartAnimeConverterTest {
                         override fun fileSuffix(): FileSuffix = LivechartConfig.fileSuffix()
                     }
 
-                    val testFile = loadTestResource<String>("file_converter_tests/anime_season/season/fall.html")
+                    val testFile = loadTestResource<String>("LivechartAnimeConverterTest/anime_season/season/fall.html")
 
                     val converter = LivechartAnimeConverter(
                         metaDataProviderConfig = testLivechartConfig,
@@ -923,7 +923,7 @@ internal class LivechartAnimeConverterTest {
                         override fun fileSuffix(): FileSuffix = LivechartConfig.fileSuffix()
                     }
 
-                    val testFile = loadTestResource<String>("file_converter_tests/anime_season/season/spring.html")
+                    val testFile = loadTestResource<String>("LivechartAnimeConverterTest/anime_season/season/spring.html")
 
                     val converter = LivechartAnimeConverter(
                         metaDataProviderConfig = testLivechartConfig,
@@ -947,7 +947,7 @@ internal class LivechartAnimeConverterTest {
                         override fun fileSuffix(): FileSuffix = LivechartConfig.fileSuffix()
                     }
 
-                    val testFile = loadTestResource<String>("file_converter_tests/anime_season/season/summer.html")
+                    val testFile = loadTestResource<String>("LivechartAnimeConverterTest/anime_season/season/summer.html")
 
                     val converter = LivechartAnimeConverter(
                         metaDataProviderConfig = testLivechartConfig,
@@ -971,7 +971,7 @@ internal class LivechartAnimeConverterTest {
                         override fun fileSuffix(): FileSuffix = LivechartConfig.fileSuffix()
                     }
 
-                    val testFile = loadTestResource<String>("file_converter_tests/anime_season/season/winter.html")
+                    val testFile = loadTestResource<String>("LivechartAnimeConverterTest/anime_season/season/winter.html")
 
                     val converter = LivechartAnimeConverter(
                         metaDataProviderConfig = testLivechartConfig,
@@ -995,7 +995,7 @@ internal class LivechartAnimeConverterTest {
                         override fun fileSuffix(): FileSuffix = LivechartConfig.fileSuffix()
                     }
 
-                    val testFile = loadTestResource<String>("file_converter_tests/anime_season/season/no_season_element.html")
+                    val testFile = loadTestResource<String>("LivechartAnimeConverterTest/anime_season/season/no_season_element.html")
 
                     val converter = LivechartAnimeConverter(
                         metaDataProviderConfig = testLivechartConfig,
@@ -1024,7 +1024,7 @@ internal class LivechartAnimeConverterTest {
                     }
 
                     val testFile =
-                        loadTestResource<String>("file_converter_tests/anime_season/year_of_premiere/season_set.html")
+                        loadTestResource<String>("LivechartAnimeConverterTest/anime_season/year_of_premiere/season_set.html")
 
                     val converter = LivechartAnimeConverter(
                         metaDataProviderConfig = testLivechartConfig,
@@ -1049,7 +1049,7 @@ internal class LivechartAnimeConverterTest {
                     }
 
                     val testFile =
-                        loadTestResource<String>("file_converter_tests/anime_season/year_of_premiere/season_tba_premiere_set.html")
+                        loadTestResource<String>("LivechartAnimeConverterTest/anime_season/year_of_premiere/season_tba_premiere_set.html")
 
                     val converter = LivechartAnimeConverter(
                         metaDataProviderConfig = testLivechartConfig,
@@ -1074,7 +1074,7 @@ internal class LivechartAnimeConverterTest {
                     }
 
                     val testFile =
-                        loadTestResource<String>("file_converter_tests/anime_season/year_of_premiere/season_tba_premiere_not_set.html")
+                        loadTestResource<String>("LivechartAnimeConverterTest/anime_season/year_of_premiere/season_tba_premiere_not_set.html")
 
                     val converter = LivechartAnimeConverter(
                         metaDataProviderConfig = testLivechartConfig,
@@ -1103,7 +1103,7 @@ internal class LivechartAnimeConverterTest {
                     override fun fileSuffix(): FileSuffix = LivechartConfig.fileSuffix()
                 }
 
-                val testFile = loadTestResource<String>("file_converter_tests/status/ongoing.html")
+                val testFile = loadTestResource<String>("LivechartAnimeConverterTest/status/ongoing.html")
 
                 val converter = LivechartAnimeConverter(
                     metaDataProviderConfig = testLivechartConfig,
@@ -1127,7 +1127,7 @@ internal class LivechartAnimeConverterTest {
                     override fun fileSuffix(): FileSuffix = LivechartConfig.fileSuffix()
                 }
 
-                val testFile = loadTestResource<String>("file_converter_tests/status/no_yet_released.html")
+                val testFile = loadTestResource<String>("LivechartAnimeConverterTest/status/no_yet_released.html")
 
                 val converter = LivechartAnimeConverter(
                     metaDataProviderConfig = testLivechartConfig,
@@ -1151,7 +1151,7 @@ internal class LivechartAnimeConverterTest {
                     override fun fileSuffix(): FileSuffix = LivechartConfig.fileSuffix()
                 }
 
-                val testFile = loadTestResource<String>("file_converter_tests/status/finished.html")
+                val testFile = loadTestResource<String>("LivechartAnimeConverterTest/status/finished.html")
 
                 val converter = LivechartAnimeConverter(
                     metaDataProviderConfig = testLivechartConfig,
@@ -1179,7 +1179,7 @@ internal class LivechartAnimeConverterTest {
                     override fun fileSuffix(): FileSuffix = LivechartConfig.fileSuffix()
                 }
 
-                val testFile = loadTestResource<String>("file_converter_tests/related_anime/no_relations.html")
+                val testFile = loadTestResource<String>("LivechartAnimeConverterTest/related_anime/no_relations.html")
 
                 val converter = LivechartAnimeConverter(
                     metaDataProviderConfig = testLivechartConfig,
@@ -1203,7 +1203,7 @@ internal class LivechartAnimeConverterTest {
                     override fun fileSuffix(): FileSuffix = LivechartConfig.fileSuffix()
                 }
 
-                val testFile = loadTestResource<String>("file_converter_tests/related_anime/one_relation.html")
+                val testFile = loadTestResource<String>("LivechartAnimeConverterTest/related_anime/one_relation.html")
 
                 val converter = LivechartAnimeConverter(
                     metaDataProviderConfig = testLivechartConfig,
@@ -1230,7 +1230,7 @@ internal class LivechartAnimeConverterTest {
                 }
 
                 val testFile =
-                    loadTestResource<String>("file_converter_tests/related_anime/multiple_relations_no_scrolling.html")
+                    loadTestResource<String>("LivechartAnimeConverterTest/related_anime/multiple_relations_no_scrolling.html")
 
                 val converter = LivechartAnimeConverter(
                     metaDataProviderConfig = testLivechartConfig,
@@ -1259,7 +1259,7 @@ internal class LivechartAnimeConverterTest {
                 }
 
                 val testFile =
-                    loadTestResource<String>("file_converter_tests/related_anime/multiple_relations_with_scrolling.html")
+                    loadTestResource<String>("LivechartAnimeConverterTest/related_anime/multiple_relations_with_scrolling.html")
 
                 val converter = LivechartAnimeConverter(
                     metaDataProviderConfig = testLivechartConfig,
