@@ -40,19 +40,19 @@ internal object AnimeLoader {
 
         val anime = when(uri.host) {
             AnidbConfig.hostname() -> {
-                val content = AnidbDownloader(config).download(animeId)
+                val content = AnidbDownloader.instance.download(animeId)
                 content.writeToFile(AppConfig.instance.workingDir(config).resolve("$animeId.${config.fileSuffix()}"))
-                AnidbAnimeConverter(config).convert(content)
+                AnidbAnimeConverter.instance.convert(content)
             }
             AnilistConfig.hostname() -> {
-                val content = AnilistDownloader(config).download(animeId)
+                val content = AnilistDownloader.instance.download(animeId)
                 content.writeToFile(AppConfig.instance.workingDir(config).resolve("$animeId.${config.fileSuffix()}"))
-                AnilistAnimeConverter(config).convert(content)
+                AnilistAnimeConverter.instance.convert(content)
             }
             AnimePlanetConfig.hostname() -> {
-                val content = AnimePlanetDownloader(config).download(animeId)
+                val content = AnimePlanetDownloader.instance.download(animeId)
                 content.writeToFile(AppConfig.instance.workingDir(config).resolve("$animeId.${config.fileSuffix()}"))
-                AnimePlanetAnimeConverter(config).convert(content)
+                AnimePlanetAnimeConverter.instance.convert(content)
             }
             AnisearchConfig.hostname() -> {
                 val relationsWorkingDir = AppConfig.instance.workingDir(AnisearchRelationsConfig)
@@ -81,9 +81,9 @@ internal object AnimeLoader {
                 LivechartAnimeConverter.instance.convert(content)
             }
             MyanimelistConfig.hostname() -> {
-                val content = MyanimelistDownloader(config).download(animeId)
+                val content = MyanimelistDownloader.instance.download(animeId)
                 content.writeToFile(AppConfig.instance.workingDir(config).resolve("$animeId.${config.fileSuffix()}"))
-                MyanimelistAnimeConverter(config).convert(content)
+                MyanimelistAnimeConverter.instance.convert(content)
             }
             NotifyConfig.hostname() -> {
                 val relationsWorkingDir = AppConfig.instance.workingDir(NotifyRelationsConfig)
