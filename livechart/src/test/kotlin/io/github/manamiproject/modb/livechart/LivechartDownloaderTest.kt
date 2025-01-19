@@ -107,7 +107,7 @@ internal class LivechartDownloaderTest : MockServerTestCase<WireMockServer> by W
                         aResponse()
                             .withHeader("Content-Type", "text/html")
                             .withStatus(200)
-                            .withBody(loadTestResource<String>("downloader_tests/excluded_from_database.html"))
+                            .withBody(loadTestResource<String>("LivechartDownloaderTest/excluded_from_database.html"))
                     )
             )
 

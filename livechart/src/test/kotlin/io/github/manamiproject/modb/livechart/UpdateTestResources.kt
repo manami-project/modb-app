@@ -16,66 +16,66 @@ import kotlin.test.Test
 
 
 private val files = mapOf(
-    "file_converter_tests/anime_season/season/fall.html" to "9818",
-    "file_converter_tests/anime_season/season/no_season_element.html" to "2685",
-    "file_converter_tests/anime_season/season/spring.html" to "9649",
-    "file_converter_tests/anime_season/season/summer.html" to "9627",
-    "file_converter_tests/anime_season/season/undefined.html" to "10449",
-    "file_converter_tests/anime_season/season/winter.html" to "8230",
+    "LivechartAnimeConverterTest/anime_season/season/fall.html" to "9818",
+    "LivechartAnimeConverterTest/anime_season/season/no_season_element.html" to "2685",
+    "LivechartAnimeConverterTest/anime_season/season/spring.html" to "9649",
+    "LivechartAnimeConverterTest/anime_season/season/summer.html" to "9627",
+    "LivechartAnimeConverterTest/anime_season/season/undefined.html" to "10449",
+    "LivechartAnimeConverterTest/anime_season/season/winter.html" to "8230",
 
-    "file_converter_tests/anime_season/year_of_premiere/season_set.html" to "11084",
-    "file_converter_tests/anime_season/year_of_premiere/season_tba_premiere_not_set.html" to "11988",
-    "file_converter_tests/anime_season/year_of_premiere/season_tba_premiere_set.html" to "11758",
+    "LivechartAnimeConverterTest/anime_season/year_of_premiere/season_set.html" to "11084",
+    "LivechartAnimeConverterTest/anime_season/year_of_premiere/season_tba_premiere_not_set.html" to "11988",
+    "LivechartAnimeConverterTest/anime_season/year_of_premiere/season_tba_premiere_set.html" to "11758",
 
-    "file_converter_tests/duration/10_min.html" to "6767",
-    "file_converter_tests/duration/1_hour.html" to "2026",
-    "file_converter_tests/duration/1_hour_11_min.html" to "5937",
-    "file_converter_tests/duration/2_hours.html" to "986",
-    "file_converter_tests/duration/2_hours_15_minutes.html" to "5926",
-    "file_converter_tests/duration/30_sec.html" to "10429",
-    "file_converter_tests/duration/unknown.html" to "11982",
+    "LivechartAnimeConverterTest/duration/10_min.html" to "6767",
+    "LivechartAnimeConverterTest/duration/1_hour.html" to "2026",
+    "LivechartAnimeConverterTest/duration/1_hour_11_min.html" to "5937",
+    "LivechartAnimeConverterTest/duration/2_hours.html" to "986",
+    "LivechartAnimeConverterTest/duration/2_hours_15_minutes.html" to "5926",
+    "LivechartAnimeConverterTest/duration/30_sec.html" to "10429",
+    "LivechartAnimeConverterTest/duration/unknown.html" to "11982",
 
-    "file_converter_tests/episodes/1.html" to "1855",
-    "file_converter_tests/episodes/10.html" to "6239",
-    "file_converter_tests/episodes/100.html" to "8817",
-    "file_converter_tests/episodes/number_of_episodes_known_and_running.html" to "11115",
-    "file_converter_tests/episodes/number_of_episodes_unknown_but_currently_running.html" to "319",
-    "file_converter_tests/episodes/unknown.html" to "11873",
+    "LivechartAnimeConverterTest/episodes/1.html" to "1855",
+    "LivechartAnimeConverterTest/episodes/10.html" to "6239",
+    "LivechartAnimeConverterTest/episodes/100.html" to "8817",
+    "LivechartAnimeConverterTest/episodes/number_of_episodes_known_and_running.html" to "11115",
+    "LivechartAnimeConverterTest/episodes/number_of_episodes_unknown_but_currently_running.html" to "319",
+    "LivechartAnimeConverterTest/episodes/unknown.html" to "11873",
 
-    "file_converter_tests/picture_and_thumbnail/neither_picture_nor_thumbnail.html" to "2301",
-    "file_converter_tests/picture_and_thumbnail/picture_and_thumbnail_available.html" to "3437",
+    "LivechartAnimeConverterTest/picture_and_thumbnail/neither_picture_nor_thumbnail.html" to "2301",
+    "LivechartAnimeConverterTest/picture_and_thumbnail/picture_and_thumbnail_available.html" to "3437",
 
-    "file_converter_tests/related_anime/multiple_relations_no_scrolling.html" to "3366",
-    "file_converter_tests/related_anime/multiple_relations_with_scrolling.html" to "3607",
-    "file_converter_tests/related_anime/no_relations.html" to "9741",
-    "file_converter_tests/related_anime/one_relation.html" to "3437",
+    "LivechartAnimeConverterTest/related_anime/multiple_relations_no_scrolling.html" to "3366",
+    "LivechartAnimeConverterTest/related_anime/multiple_relations_with_scrolling.html" to "3607",
+    "LivechartAnimeConverterTest/related_anime/no_relations.html" to "9741",
+    "LivechartAnimeConverterTest/related_anime/one_relation.html" to "3437",
 
-    "file_converter_tests/sources/3437.html" to "3437",
+    "LivechartAnimeConverterTest/sources/3437.html" to "3437",
 
-    "file_converter_tests/status/finished.html" to "9818",
-    "file_converter_tests/status/no_yet_released.html" to "10384",
-    "file_converter_tests/status/ongoing.html" to "321",
+    "LivechartAnimeConverterTest/status/finished.html" to "9818",
+    "LivechartAnimeConverterTest/status/no_yet_released.html" to "10384",
+    "LivechartAnimeConverterTest/status/ongoing.html" to "321",
 
-    "file_converter_tests/synonyms/encoded_special_chars.html" to "8081",
-    "file_converter_tests/synonyms/multiple_synonyms.html" to "2805",
-    "file_converter_tests/synonyms/no_synonyms.html" to "10484",
-    "file_converter_tests/synonyms/one_synonym.html" to "12289",
+    "LivechartAnimeConverterTest/synonyms/encoded_special_chars.html" to "8081",
+    "LivechartAnimeConverterTest/synonyms/multiple_synonyms.html" to "2805",
+    "LivechartAnimeConverterTest/synonyms/no_synonyms.html" to "10484",
+    "LivechartAnimeConverterTest/synonyms/one_synonym.html" to "12289",
 
-    "file_converter_tests/tags/multiple_tags.html" to "10450",
-    "file_converter_tests/tags/no_tags.html" to "10959",
-    "file_converter_tests/tags/one_tag.html" to "2388",
+    "LivechartAnimeConverterTest/tags/multiple_tags.html" to "10450",
+    "LivechartAnimeConverterTest/tags/no_tags.html" to "10959",
+    "LivechartAnimeConverterTest/tags/one_tag.html" to "2388",
 
-    "file_converter_tests/title/encoded_special_char.html" to "7907",
-    "file_converter_tests/title/special_chars.html" to "10186",
+    "LivechartAnimeConverterTest/title/encoded_special_char.html" to "7907",
+    "LivechartAnimeConverterTest/title/special_chars.html" to "10186",
 
-    "file_converter_tests/type/movie.html" to "1296",
-    "file_converter_tests/type/ova.html" to "3796",
-    "file_converter_tests/type/special.html" to "9548",
-    "file_converter_tests/type/tv.html" to "3437",
-    "file_converter_tests/type/tv_short.html" to "10429",
-    "file_converter_tests/type/unknown.html" to "11982",
-    "file_converter_tests/type/web.html" to "8110",
-    "file_converter_tests/type/web_short.html" to "8695",
+    "LivechartAnimeConverterTest/type/movie.html" to "1296",
+    "LivechartAnimeConverterTest/type/ova.html" to "3796",
+    "LivechartAnimeConverterTest/type/special.html" to "9548",
+    "LivechartAnimeConverterTest/type/tv.html" to "3437",
+    "LivechartAnimeConverterTest/type/tv_short.html" to "10429",
+    "LivechartAnimeConverterTest/type/unknown.html" to "11982",
+    "LivechartAnimeConverterTest/type/web.html" to "8110",
+    "LivechartAnimeConverterTest/type/web_short.html" to "8695",
 )
 
 internal fun main(): Unit = runCoroutine {
@@ -100,7 +100,7 @@ internal class UpdateTestResourcesTest {
     @Test
     fun `verify that all test resources a part of the update sequence`() {
         // given
-        val testResourcesFolder = "file_converter_tests"
+        val testResourcesFolder = "LivechartAnimeConverterTest"
 
         val filesInTestResources = Files.walk(testResource(testResourcesFolder))
             .filter { it.isRegularFile() }
