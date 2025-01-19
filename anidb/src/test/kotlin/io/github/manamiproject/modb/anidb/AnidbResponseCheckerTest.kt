@@ -15,7 +15,7 @@ internal class AnidbResponseCheckerTest {
         @Test
         fun `crawler is detected - anti leech page`() {
             // given
-            val responseBodyAntiLeech = loadTestResource<String>("downloader_tests/anti_leech_page.html")
+            val responseBodyAntiLeech = loadTestResource<String>("AnidbDownloaderTest/anti_leech_page.html")
 
             val responseChecker = AnidbResponseChecker(responseBodyAntiLeech)
 
@@ -31,7 +31,7 @@ internal class AnidbResponseCheckerTest {
         @Test
         fun `crawler is detected - nginx error page`() {
             // given
-            val responseBodyAntiLeech = loadTestResource<String>("downloader_tests/nginx_error_page.html")
+            val responseBodyAntiLeech = loadTestResource<String>("AnidbDownloaderTest/nginx_error_page.html")
 
             val responseChecker = AnidbResponseChecker(responseBodyAntiLeech)
 
@@ -52,7 +52,7 @@ internal class AnidbResponseCheckerTest {
         fun `isHentai returns false on regular entry`() {
             runBlocking {
                 // given
-                val responseBody = loadTestResource<String>("file_converter_tests/title/special_chars.html")
+                val responseBody = loadTestResource<String>("AnidbAnimeConverterTest/title/special_chars.html")
 
                 val responseChecker = AnidbResponseChecker(responseBody)
 
@@ -68,7 +68,7 @@ internal class AnidbResponseCheckerTest {
         fun `isHentai returns true`() {
             runBlocking {
                 // given
-                val responseBody = loadTestResource<String>("downloader_tests/hentai.html")
+                val responseBody = loadTestResource<String>("AnidbDownloaderTest/hentai.html")
 
                 val responseChecker = AnidbResponseChecker(responseBody)
 
@@ -88,7 +88,7 @@ internal class AnidbResponseCheckerTest {
         fun `isAdditionPending returns false on regular entry`() {
             runBlocking {
                 // given
-                val responseBody = loadTestResource<String>("file_converter_tests/title/special_chars.html")
+                val responseBody = loadTestResource<String>("AnidbAnimeConverterTest/title/special_chars.html")
 
                 val responseChecker = AnidbResponseChecker(responseBody)
 
@@ -104,7 +104,7 @@ internal class AnidbResponseCheckerTest {
         fun `isAdditionPending returns true`() {
             runBlocking {
                 // given
-                val responseBody = loadTestResource<String>("downloader_tests/addition_pending.html")
+                val responseBody = loadTestResource<String>("AnidbDownloaderTest/addition_pending.html")
 
                 val responseChecker = AnidbResponseChecker(responseBody)
 
@@ -124,7 +124,7 @@ internal class AnidbResponseCheckerTest {
         fun `isRemovedFromAnidb returns false on regular entry`() {
             runBlocking {
                 // given
-                val responseBody = loadTestResource<String>("file_converter_tests/title/special_chars.html")
+                val responseBody = loadTestResource<String>("AnidbAnimeConverterTest/title/special_chars.html")
 
                 val responseChecker = AnidbResponseChecker(responseBody)
 
@@ -140,7 +140,7 @@ internal class AnidbResponseCheckerTest {
         fun `isRemovedFromAnidb returns true`() {
             runBlocking {
                 // given
-                val responseBody = loadTestResource<String>("downloader_tests/deleted_entry.html")
+                val responseBody = loadTestResource<String>("AnidbDownloaderTest/deleted_entry.html")
 
                 val responseChecker = AnidbResponseChecker(responseBody)
 
