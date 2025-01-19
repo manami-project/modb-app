@@ -1,5 +1,6 @@
 package io.github.manamiproject.modb.app.fluentapi
 
+import io.github.manamiproject.modb.app.dataset.AnimeCountdownUrlAdder
 import io.github.manamiproject.modb.app.dataset.DefaultDatasetFileAccessor
 import io.github.manamiproject.modb.app.merging.DefaultMergingService
 import io.github.manamiproject.modb.app.readme.DefaultReadmeCreator
@@ -18,6 +19,9 @@ internal suspend fun List<Anime>.saveToDataset(): List<Anime> {
     DefaultDatasetFileAccessor.instance.saveEntries(this)
     return this
 }
+
+@KoverIgnore
+internal fun List<Anime>.addAnimeCountdown(): List<Anime> = AnimeCountdownUrlAdder.addAnimeCountdown(this)
 
 @KoverIgnore
 internal fun List<Anime>.removeUnknownEntriesFromRelatedAnime(): List<Anime> = DefaultUnknownRelatedAnimeRemover.instance.removeRelatedAnimeWhichHaveNoCorrespondingEntryInSources(this)

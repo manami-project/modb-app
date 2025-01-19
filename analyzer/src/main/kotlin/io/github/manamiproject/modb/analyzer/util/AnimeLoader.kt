@@ -29,6 +29,9 @@ import io.github.manamiproject.modb.notify.NotifyAnimeConverter
 import io.github.manamiproject.modb.notify.NotifyConfig
 import io.github.manamiproject.modb.notify.NotifyDownloader
 import io.github.manamiproject.modb.notify.NotifyRelationsConfig
+import io.github.manamiproject.modb.simkl.SimklAnimeConverter
+import io.github.manamiproject.modb.simkl.SimklConfig
+import io.github.manamiproject.modb.simkl.SimklDownloader
 import java.net.URI
 
 @KoverIgnore
@@ -59,9 +62,7 @@ internal object AnimeLoader {
                 AnisearchDownloader(AnisearchRelationsConfig).download(animeId).writeToFile(relationsWorkingDir.resolve("$animeId.${AnisearchRelationsConfig.fileSuffix()}"))
                 val raw = AnisearchDownloader(config).download(animeId)
                 raw.writeToFile(AppConfig.instance.workingDir(config).resolve("$animeId.${config.fileSuffix()}"))
-                AnisearchAnimeConverter(
-                    relationsDir = relationsWorkingDir,
-                ).convert(raw)
+                AnisearchAnimeConverter(relationsDir = relationsWorkingDir).convert(raw)
             }
             KitsuConfig.hostname() -> {
                 val relationsWorkingDir = AppConfig.instance.workingDir(KitsuRelationsConfig)
@@ -91,6 +92,11 @@ internal object AnimeLoader {
                 val raw = NotifyDownloader(metaDataProviderConfig = NotifyConfig).download(animeId)
                 raw.writeToFile(AppConfig.instance.workingDir(config).resolve("$animeId.${config.fileSuffix()}"))
                 NotifyAnimeConverter(relationsDir = relationsWorkingDir).convert(raw)
+            }
+            SimklConfig.hostname() -> {
+                val content = SimklDownloader.instance.download(animeId)
+                content.writeToFile(AppConfig.instance.workingDir(config).resolve("$animeId.${config.fileSuffix()}"))
+                SimklAnimeConverter.instance.convert(content)
             }
             else -> throw IllegalStateException("Unknown host [${uri.host}]")
         }

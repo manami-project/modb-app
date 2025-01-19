@@ -29,6 +29,8 @@ import io.github.manamiproject.modb.myanimelist.MyanimelistConfig
 import io.github.manamiproject.modb.notify.NotifyAnimeConverter
 import io.github.manamiproject.modb.notify.NotifyConfig
 import io.github.manamiproject.modb.notify.NotifyRelationsConfig
+import io.github.manamiproject.modb.simkl.SimklAnimeConverter
+import io.github.manamiproject.modb.simkl.SimklConfig
 import kotlinx.coroutines.*
 import java.util.concurrent.CopyOnWriteArrayList
 import kotlin.time.DurationUnit.SECONDS
@@ -63,7 +65,7 @@ class DefaultRawFileConversionService(
                 }
         }
 
-        return unconverted != converted
+        return unconverted > converted
     }
 
     override suspend fun waitForAllRawFilesToBeConverted() {
@@ -118,6 +120,7 @@ class DefaultRawFileConversionService(
             AnimePlanetConfig to AnimePlanetAnimeConverter.instance,
             LivechartConfig to LivechartAnimeConverter.instance,
             MyanimelistConfig to MyanimelistAnimeConverter.instance,
+            SimklConfig to SimklAnimeConverter.instance,
         ).map { entry ->
             SimpleConversionWatchService(
                 appConfig = appConfig,

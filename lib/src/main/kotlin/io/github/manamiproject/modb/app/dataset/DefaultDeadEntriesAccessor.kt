@@ -20,6 +20,7 @@ import io.github.manamiproject.modb.myanimelist.MyanimelistConfig
 import io.github.manamiproject.modb.notify.NotifyConfig
 import io.github.manamiproject.modb.serde.json.*
 import io.github.manamiproject.modb.serde.json.models.DeadEntries
+import io.github.manamiproject.modb.simkl.SimklConfig
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 import java.net.URI
@@ -100,6 +101,7 @@ class DefaultDeadEntriesAccessor(
                 LivechartConfig.hostname() -> entryNotExistsAsDcsFile(uri)
                 MyanimelistConfig.hostname() -> containsDeadEntry(uri)
                 NotifyConfig.hostname() -> entryNotExistsAsDcsFile(uri)
+                SimklConfig.hostname() -> entryNotExistsAsDcsFile(uri)
                 else -> throw IllegalArgumentException("Unable to fetch dead entries: No case defined for [${uri.host}].")
             }
         }.toSet()
