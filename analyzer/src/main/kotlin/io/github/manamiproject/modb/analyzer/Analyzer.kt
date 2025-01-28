@@ -48,6 +48,7 @@ object Analyzer {
         [${MARK_DEAD_ENTRY.value}] Mark as dead entry
         [${LOAD_ENTRY.value}] Load anime manually
         [${CREATE_NEW_MERGE_LOCK.value}] Create a merge lock from scratch
+        [${ADD_TO_EXISTING_MERGE_LOCK.value}] Add a URL to an existing merge lock
         ------------------------------------
         [${REPROCESS_MERGING.value}] Reprocess merging
         ------------------------------------
@@ -67,6 +68,7 @@ object Analyzer {
             MARK_DEAD_ENTRY -> markAsDeadEntry()
             LOAD_ENTRY -> loadAnime()
             CREATE_NEW_MERGE_LOCK -> createMergeLock()
+            ADD_TO_EXISTING_MERGE_LOCK -> extendExistingMergeLock()
             REPROCESS_MERGING -> reprocessMerging()
             QUIT -> exitProcess(0)
             else -> {
@@ -195,8 +197,57 @@ object Analyzer {
         }
     }
 
+    private suspend fun extendExistingMergeLock(urlToBeAdded: String? = null) {
+        println("[a valid URL] (= URL to be added to merge lock)    [exit] (= back to main menu)")
+        print("URL to be added: ")
+
+        val urlToBeAddedUserInput = urlToBeAdded ?: waitForUserInput()
+
+        when {
+            urlToBeAddedUserInput == "exit" -> mainMenu()
+            isValidUrl(urlToBeAddedUserInput) -> {
+                println("\n[a valid URL] (= Any URL of an existing merge lock)    [exit] (= back to main menu)")
+                print("Any URL from the existing merge lock: ")
+
+                val mergeLockUrlUserInput = urlToBeAdded ?: waitForUserInput()
+
+                when {
+                    mergeLockUrlUserInput == "exit" -> mainMenu()
+                    isValidUrl(mergeLockUrlUserInput) -> {
+                        val mergeLockUri = URI(mergeLockUrlUserInput)
+
+                        when {
+                            DefaultMergeLockAccessor.instance.isPartOfMergeLock(mergeLockUri) -> {
+                                val newMergeLock = DefaultMergeLockAccessor.instance.getMergeLock(mergeLockUri).toHashSet().apply {
+                                    add(URI(urlToBeAddedUserInput))
+                                }
+
+                                println("\n${Json.toJson(newMergeLock.toList().sorted())}")
+                                println("\n[keep] (= add merge lock as is)    [exit] (= back to main menu)")
+                                print("Select: ")
+
+                                val userInput = waitForUserInput()
+                                when (userInput) {
+                                    "keep" -> DefaultMergeLockAccessor.instance.addMergeLock(newMergeLock)
+                                    "exit" -> mainMenu()
+                                    else -> extendExistingMergeLock(urlToBeAddedUserInput)
+                                }
+                            }
+                            else -> {
+                                println("Merge lock doesn't exist for [$mergeLockUrlUserInput]")
+                                extendExistingMergeLock(urlToBeAddedUserInput)
+                            }
+                        }
+                    }
+                    else -> extendExistingMergeLock(urlToBeAddedUserInput)
+                }
+            }
+            else -> extendExistingMergeLock()
+        }
+    }
+
     private suspend fun createNewMergeLockFromScratch(sourcesOfCurrentEntry: Set<URI>): Set<URI> {
-        println("[keep] (= add merge lock as is),    [a valid URL] (= add URL to merge lock)    [exit] (= back to main menu)")
+        println("[keep] (= add merge lock as is)    [a valid URL] (= add URL to merge lock)    [exit] (= back to main menu)")
         println("\n${Json.toJson(sourcesOfCurrentEntry)}")
 
         print("\nSelect: ")
@@ -236,6 +287,7 @@ object Analyzer {
         MARK_DEAD_ENTRY("d"),
         LOAD_ENTRY("l"),
         CREATE_NEW_MERGE_LOCK("n"),
+        ADD_TO_EXISTING_MERGE_LOCK("a"),
         // ----------
         REPROCESS_MERGING("r"),
         // ----------
