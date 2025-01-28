@@ -209,7 +209,7 @@ object Analyzer {
                 println("\n[a valid URL] (= Any URL of an existing merge lock)    [exit] (= back to main menu)")
                 print("Any URL from the existing merge lock: ")
 
-                val mergeLockUrlUserInput = urlToBeAdded ?: waitForUserInput()
+                val mergeLockUrlUserInput = waitForUserInput()
 
                 when {
                     mergeLockUrlUserInput == "exit" -> mainMenu()
