@@ -47,6 +47,10 @@ kover {
     }
 }
 
+tasks.withType<JavaCompile> {
+    enabled = false
+}
+
 tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach {
     compilerOptions {
         jvmTarget.set(JvmTarget.JVM_21)
