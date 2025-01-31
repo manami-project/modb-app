@@ -4,19 +4,19 @@
 _[modb](https://github.com/manami-project?tab=repositories&q=modb&type=source)_ stands for _**M**anami **O**ffline **D**ata**B**ase_. The applications and libraries of this repository are used to create the [manami-project/anime-offline-database](https://github.com/manami-project/anime-offline-database).
 
 * **analyzer:** Allows to review the entries of the dataset and create merge locks.
-* **anidb:** Config, downloader and converter for anidb.net
-* **anilist:** Config, downloader and converter for anilist.co
-* **anime-planet:** Config, downloader and converter for anime-planet.com
-* **anisearch:** Config, downloader and converter for anisearch.com
+* **anidb:** Config, downloader and converter for [anidb.net](https://anidb.net)
+* **anilist:** Config, downloader and converter for [anilist.co](https://anilist.co)
+* **anime-planet:** Config, downloader and converter for [anime-planet.com](https://anime-planet.com)
+* **anisearch:** Config, downloader and converter for [anisearch.com](https://anisearch.com)
 * **app:** The application that runs the crawlers, merges anime and updates the repository.
 * **core:** Core functionality used by all other modules.
-* **kitsu:** Config, downloader and converter for kitsu.app
+* **kitsu:** Config, downloader and converter for [kitsu.app](https://kitsu.app)
 * **lib:** A library that drives drives the applications "app" and "analyzer".
-* **livechart:** Config, downloader and converter for livechart.me
-* **myanimelist:** Config, downloader and converter for myanimelist.net
-* **notify:** Config, downloader and converter for notify.moe
+* **livechart:** Config, downloader and converter for [livechart.me](https://livechart.me)
+* **myanimelist:** Config, downloader and converter for [myanimelist.net](https://myanimelist.net)
+* **notify:** Config, downloader and converter for [notify.moe](https://notify.moe)
 * **serde:** Serialization and deserialization of the finalized dataset files.
-* **simkl:** Config, downloader and converter for simkl.com as well as config for animecountdown.com.
+* **simkl:** Config, downloader and converter for [simkl.com](https://simkl.com/anime/) as well as config for [animecountdown.com](https://animecountdown.com).
 * **test:** All essential dependencies as well as some convenience functions and classes for creating tests.
 
 ## Documentation
