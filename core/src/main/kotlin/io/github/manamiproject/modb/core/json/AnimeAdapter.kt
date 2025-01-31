@@ -119,7 +119,7 @@ internal class AnimeAdapter: JsonAdapter<Anime>() {
 
         return Anime(
             _title = title,
-            sources = sources,
+            _sources = sources,
             synonyms = synonyms,
             type = type,
             episodes = episodes,

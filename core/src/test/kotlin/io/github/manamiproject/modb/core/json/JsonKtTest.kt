@@ -27,7 +27,7 @@ internal class JsonKtTest {
                 // given
                 val expectedAnime = Anime(
                     _title = "Clannad: After Story - Mou Hitotsu no Sekai, Kyou-hen",
-                    sources = hashSetOf(
+                    _sources = hashSetOf(
                         URI("https://myanimelist.net/anime/6351"),
                     ),
                     relatedAnime = hashSetOf(
@@ -70,7 +70,7 @@ internal class JsonKtTest {
                 // given
                 val expectedAnime = Anime(
                     _title = "Clannad: After Story - Mou Hitotsu no Sekai, Kyou-hen",
-                    sources = hashSetOf(
+                    _sources = hashSetOf(
                         URI("https://myanimelist.net/anime/6351"),
                     ),
                     relatedAnime = hashSetOf(
@@ -201,7 +201,7 @@ internal class JsonKtTest {
                     // given
                     val anime = Anime(
                         _title = "Clannad: After Story - Mou Hitotsu no Sekai, Kyou-hen",
-                        sources = hashSetOf(
+                        _sources = hashSetOf(
                             URI("https://livechart.me/anime/3681"),
                             URI("https://anisearch.com/anime/6826"),
                             URI("https://kitsu.io/anime/4529"),
@@ -423,7 +423,7 @@ internal class JsonKtTest {
                     // given
                     val anime = Anime(
                         _title = "Clannad: After Story - Mou Hitotsu no Sekai, Kyou-hen",
-                        sources = hashSetOf(
+                        _sources = hashSetOf(
                             URI("https://myanimelist.net/anime/6351"),
                         ),
                         relatedAnime = hashSetOf(
@@ -508,7 +508,7 @@ internal class JsonKtTest {
                     // given
                     val anime = Anime(
                         _title = "Clannad: After Story - Mou Hitotsu no Sekai, Kyou-hen",
-                        sources = hashSetOf(
+                        _sources = hashSetOf(
                             URI("https://myanimelist.net/anime/6351"),
                         ),
                         relatedAnime = hashSetOf(
@@ -583,7 +583,7 @@ internal class JsonKtTest {
                     // given
                     val anime = Anime(
                         _title = "Clannad: After Story - Mou Hitotsu no Sekai, Kyou-hen",
-                        sources = hashSetOf(
+                        _sources = hashSetOf(
                             URI("https://myanimelist.net/anime/6351"),
                         ),
                         relatedAnime = hashSetOf(
@@ -626,7 +626,7 @@ internal class JsonKtTest {
                     // given
                     val anime = Anime(
                         _title = "Clannad: After Story - Mou Hitotsu no Sekai, Kyou-hen",
-                        sources = hashSetOf(
+                        _sources = hashSetOf(
                             URI("https://myanimelist.net/anime/6351"),
                         ),
                         relatedAnime = hashSetOf(

@@ -50,7 +50,7 @@ internal class AnimeListJsonStringDeserializerTest {
             val expectedEntries = listOf(
                 Anime(
                     _title = "Seikai no Monshou",
-                    sources = hashSetOf(
+                    _sources = hashSetOf(
                         URI("https://anidb.net/anime/1"),
                     ),
                     relatedAnime = hashSetOf(
@@ -86,7 +86,7 @@ internal class AnimeListJsonStringDeserializerTest {
                 ),
                 Anime(
                     _title = "Cowboy Bebop",
-                    sources = hashSetOf(
+                    _sources = hashSetOf(
                         URI("https://myanimelist.net/anime/1"),
                     ),
                     relatedAnime = hashSetOf(
@@ -117,7 +117,7 @@ internal class AnimeListJsonStringDeserializerTest {
                 ),
                 Anime(
                     _title = "Cowboy Bebop: Tengoku no Tobira",
-                    sources = hashSetOf(
+                    _sources = hashSetOf(
                         URI("https://myanimelist.net/anime/5"),
                     ),
                     relatedAnime = hashSetOf(
@@ -146,7 +146,7 @@ internal class AnimeListJsonStringDeserializerTest {
                 ),
                 Anime(
                     _title = "11 Eyes",
-                    sources = hashSetOf(
+                    _sources = hashSetOf(
                         URI("https://anidb.net/anime/6751"),
                     ),
                     type = Anime.Type.TV,
@@ -185,7 +185,7 @@ internal class AnimeListJsonStringDeserializerTest {
                 ),
                 Anime(
                     _title = "11eyes",
-                    sources = hashSetOf(
+                    _sources = hashSetOf(
                         URI("https://anilist.co/anime/6682"),
                         URI("https://myanimelist.net/anime/6682"),
                     ),

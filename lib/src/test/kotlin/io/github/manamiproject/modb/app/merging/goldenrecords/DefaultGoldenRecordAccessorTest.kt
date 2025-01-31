@@ -72,7 +72,7 @@ internal class DefaultGoldenRecordAccessorTest {
             val goldenRecordList = DefaultGoldenRecordAccessor()
 
             val anime = Anime(
-                sources = hashSetOf(
+                _sources = hashSetOf(
                     URI("https://myanimelist.net/anime/37514"),
                 ),
                 _title = "Made in Abyss Movie 1: Tabidachi no Yoake",
@@ -106,7 +106,7 @@ internal class DefaultGoldenRecordAccessorTest {
             val goldenRecordList = DefaultGoldenRecordAccessor()
 
             val anime = Anime(
-                sources = hashSetOf(
+                _sources = hashSetOf(
                     URI("https://myanimelist.net/anime/37514"),
                 ),
                 _title = "Made in Abyss Movie 1: Tabidachi no Yoake",
@@ -172,7 +172,7 @@ internal class DefaultGoldenRecordAccessorTest {
         fun `find correct entry for matching main title`() {
             // given
             val madeInAbyss = Anime(
-                sources = hashSetOf(
+                _sources = hashSetOf(
                     URI("https://myanimelist.net/anime/34599"),
                 ),
                 _title = "Made in Abyss",
@@ -191,7 +191,7 @@ internal class DefaultGoldenRecordAccessorTest {
             )
 
             val madeInAbyssMovie = Anime(
-                sources = hashSetOf(
+                _sources = hashSetOf(
                     URI("https://myanimelist.net/anime/37514"),
                 ),
                 _title = "Made in Abyss Movie 1: Tabidachi no Yoake",
@@ -210,7 +210,7 @@ internal class DefaultGoldenRecordAccessorTest {
             )
 
             val soraYoriMoTooiBasho = Anime(
-                sources = hashSetOf(
+                _sources = hashSetOf(
                     URI("https://myanimelist.net/anime/35839"),
                 ),
                 _title = "Sora yori mo Tooi Basho",
@@ -231,7 +231,7 @@ internal class DefaultGoldenRecordAccessorTest {
             )
 
             val soraYoriMoTooiBashoSpecial = Anime(
-                sources = hashSetOf(
+                _sources = hashSetOf(
                     URI("https://myanimelist.net/anime/37123")
                 ),
                 _title = "Sora yori mo Tooi Basho: Yokoku",
@@ -249,7 +249,7 @@ internal class DefaultGoldenRecordAccessorTest {
             )
 
             val animeToFindGoldenRecordFor = Anime(
-                sources = hashSetOf(
+                _sources = hashSetOf(
                     URI("https://anilist.co/anime/97986"),
                 ),
                 _title = "Made in Abyss",
@@ -277,14 +277,14 @@ internal class DefaultGoldenRecordAccessorTest {
         fun `find correct entry for matching title which is shorter than the partition size`() {
             // given
             val animeWithTitleShorterThanPartitionSize = Anime(
-                sources = hashSetOf(
+                _sources = hashSetOf(
                     URI("https://example.org.net/anime/y"),
                 ),
                 _title = "Y",
             )
 
             val soraYoriMoTooiBasho = Anime(
-                sources = hashSetOf(
+                _sources = hashSetOf(
                     URI("https://myanimelist.net/anime/35839"),
                 ),
                 _title = "Sora yori mo Tooi Basho",
@@ -305,7 +305,7 @@ internal class DefaultGoldenRecordAccessorTest {
             )
 
             val animeToFindGoldenRecordFor = Anime(
-                sources = hashSetOf(
+                _sources = hashSetOf(
                     URI("https://otherexample.com/anime/994"),
                 ),
                 _title = "Y",
@@ -523,7 +523,7 @@ internal class DefaultGoldenRecordAccessorTest {
         fun `find title by ignoring special char`(specialChar: String) {
             // given
             val titleWithoutSpecialChar = Anime(
-                sources = hashSetOf(
+                _sources = hashSetOf(
                     URI("https://myanimelist.net/anime/37514"),
                 ),
                 _title = "Made in Abyss Movie Tabidachi no Yoake",
@@ -542,7 +542,7 @@ internal class DefaultGoldenRecordAccessorTest {
             )
 
             val titleWithSpecialChar = Anime(
-                sources = hashSetOf(
+                _sources = hashSetOf(
                     URI("https://example.org/anime/37514"),
                 ),
                 _title = "Made in Abyss Movie $specialChar Tabidachi no Yoake",
@@ -625,7 +625,7 @@ internal class DefaultGoldenRecordAccessorTest {
         fun `returns entry, because it correctly replaces special chars`(specialChar: String, replacement: String) {
             // given
             val titleWithoutSpecialChar = Anime(
-                sources = hashSetOf(
+                _sources = hashSetOf(
                     URI("https://myanimelist.net/anime/37514"),
                 ),
                 _title = "Made in Abyss Movie $replacement Tabidachi no Yoake",
@@ -644,7 +644,7 @@ internal class DefaultGoldenRecordAccessorTest {
             )
 
             val titleWithSpecialChar = Anime(
-                sources = hashSetOf(
+                _sources = hashSetOf(
                     URI("https://example.org/anime/37514"),
                 ),
                 _title = "Made in Abyss Movie $specialChar Tabidachi no Yoake",
@@ -669,7 +669,7 @@ internal class DefaultGoldenRecordAccessorTest {
         fun `returns multiple possible golden records, because the anime share the same synonym`() {
             // given
             val madeInAbyssMovie = Anime(
-                sources = hashSetOf(
+                _sources = hashSetOf(
                     URI("https://myanimelist.net/anime/37514"),
                 ),
                 _title = "Made in Abyss Movie 1: Tabidachi no Yoake",
@@ -689,7 +689,7 @@ internal class DefaultGoldenRecordAccessorTest {
             )
 
             val madeInAbyssMovie2 = Anime(
-                sources = hashSetOf(
+                _sources = hashSetOf(
                     URI("https://myanimelist.net/anime/37515"),
                 ),
                 _title = "Made in Abyss Movie 2: Hourou Suru Tasogare",
@@ -709,7 +709,7 @@ internal class DefaultGoldenRecordAccessorTest {
             )
 
             val soraYoriMoTooiBasho = Anime(
-                sources = hashSetOf(
+                _sources = hashSetOf(
                     URI("https://myanimelist.net/anime/35839"),
                 ),
                 _title = "Sora yori mo Tooi Basho",
@@ -730,7 +730,7 @@ internal class DefaultGoldenRecordAccessorTest {
             )
 
             val soraYoriMoTooiBashoSpecial = Anime(
-                sources = hashSetOf(
+                _sources = hashSetOf(
                     URI("https://myanimelist.net/anime/37123"),
                 ),
                 _title = "Sora yori mo Tooi Basho: Yokoku",
@@ -748,7 +748,7 @@ internal class DefaultGoldenRecordAccessorTest {
             )
 
             val animeToFindGoldenRecordFor = Anime(
-                sources = hashSetOf(
+                _sources = hashSetOf(
                     URI("https://anilist.co/anime/97986"),
                 ),
                 _title = "Made in Abyss Movie",
@@ -778,7 +778,7 @@ internal class DefaultGoldenRecordAccessorTest {
         fun `if nothing could be found for the title and the source is anime-planet then try the first synonym`() {
             // given
             val soraYoriMoTooiBasho = Anime(
-                sources = hashSetOf(
+                _sources = hashSetOf(
                     URI("https://myanimelist.net/anime/35839"),
                 ),
                 _title = "Sora yori mo Tooi Basho",
@@ -798,7 +798,7 @@ internal class DefaultGoldenRecordAccessorTest {
             )
 
             val animeToFindGoldenRecordFor = Anime(
-                sources = hashSetOf(
+                _sources = hashSetOf(
                     URI("https://anime-planet.com/anime/a-place-further-than-the-universe"),
                 ),
                 _title = "A Place Further Than the Universe",
@@ -890,7 +890,7 @@ internal class DefaultGoldenRecordAccessorTest {
             val goldenRecordList = DefaultGoldenRecordAccessor()
 
             val anime = Anime(
-                sources = hashSetOf(
+                _sources = hashSetOf(
                     URI("https://myanimelist.net/anime/1535"),
                 ),
                 _title = "Death Note",
@@ -903,7 +903,7 @@ internal class DefaultGoldenRecordAccessorTest {
             val uuid = goldenRecordList.findPossibleGoldenRecords(anime).first().id
 
             val otherAnime = Anime(
-                sources = hashSetOf(
+                _sources = hashSetOf(
                     URI("https://anidb.net/anime/4563"),
                 ),
                 _title = "Death Note",
@@ -934,7 +934,7 @@ internal class DefaultGoldenRecordAccessorTest {
             val goldenRecordList = DefaultGoldenRecordAccessor()
 
             val anime = Anime(
-                sources = hashSetOf(
+                _sources = hashSetOf(
                     URI("https://myanimelist.net/anime/1535"),
                 ),
                 _title = "Death Note",
@@ -947,7 +947,7 @@ internal class DefaultGoldenRecordAccessorTest {
             val uuid = goldenRecordList.findPossibleGoldenRecords(anime).first().id
 
             val otherAnime = Anime(
-                sources = hashSetOf(
+                _sources = hashSetOf(
                     URI("https://anidb.net/anime/4563"),
                 ),
                 _title = "Death Note",
@@ -977,7 +977,7 @@ internal class DefaultGoldenRecordAccessorTest {
             val goldenRecordList = DefaultGoldenRecordAccessor()
 
             val anime = Anime(
-                sources = hashSetOf(
+                _sources = hashSetOf(
                     URI("https://myanimelist.net/anime/1535"),
                 ),
                 _title = "Death Note",
@@ -987,7 +987,7 @@ internal class DefaultGoldenRecordAccessorTest {
             val uuid = goldenRecordList.findPossibleGoldenRecords(anime).first().id
 
             val otherAnime = Anime(
-                sources = hashSetOf(
+                _sources = hashSetOf(
                     URI("https://anidb.net/anime/4563"),
                 ),
                 _title = "Death Note",

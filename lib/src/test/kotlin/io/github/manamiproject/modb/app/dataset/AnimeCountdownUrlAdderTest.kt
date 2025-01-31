@@ -15,14 +15,14 @@ internal class AnimeCountdownUrlAdderTest {
         // given
         val testAnime = Anime(
             _title = "Test",
-            sources = hashSetOf(
+            _sources = hashSetOf(
                 SimklConfig.buildAnimeLink("1535"),
             ),
         )
 
         val expectedAnime = Anime(
             _title = "Test",
-            sources = hashSetOf(
+            _sources = hashSetOf(
                 AnimeCountdownConfig.buildAnimeLink("1535"),
                 SimklConfig.buildAnimeLink("1535"),
             ),
@@ -65,7 +65,7 @@ internal class AnimeCountdownUrlAdderTest {
         // given
         val testAnime = Anime(
             _title = "Test",
-            sources = hashSetOf(
+            _sources = hashSetOf(
                 MyanimelistConfig.buildAnimeLink("1535"),
                 AnilistConfig.buildAnimeLink("1535"),
             ),

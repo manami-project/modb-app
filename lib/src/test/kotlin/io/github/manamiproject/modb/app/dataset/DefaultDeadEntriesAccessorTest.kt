@@ -691,7 +691,7 @@ internal class DefaultDeadEntriesAccessorTest {
 
                 val anime = Anime(
                     _title = "Test",
-                    sources = hashSetOf(existingEntry),
+                    _sources = hashSetOf(existingEntry),
                 )
                 Json.toJson(anime).writeToFile(dcsFile)
 

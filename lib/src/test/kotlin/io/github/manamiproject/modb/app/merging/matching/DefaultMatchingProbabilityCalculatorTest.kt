@@ -282,7 +282,7 @@ internal class DefaultMatchingProbabilityCalculatorTest {
             fun `matches 100 percent with all properties, because the anime for is the same as in the potential golden record`() {
                 // given
                 val anime = Anime(
-                    sources = hashSetOf(
+                    _sources = hashSetOf(
                         URI("https://myanimelist.net/anime/1"),
                     ),
                     _title = "Cowboy Bebop",
@@ -327,7 +327,7 @@ internal class DefaultMatchingProbabilityCalculatorTest {
             fun `title differs - matches 96 percent`() {
                 // given
                 val anime = Anime(
-                    sources = hashSetOf(
+                    _sources = hashSetOf(
                         URI("https://myanimelist.net/anime/1"),
                     ),
                     _title = "Cowboy Bebop",
@@ -374,7 +374,7 @@ internal class DefaultMatchingProbabilityCalculatorTest {
             fun `type differs - matches 83 percent`() {
                 // given
                 val anime = Anime(
-                    sources = hashSetOf(
+                    _sources = hashSetOf(
                         URI("https://myanimelist.net/anime/1"),
                     ),
                     _title = "Cowboy Bebop",
@@ -425,7 +425,7 @@ internal class DefaultMatchingProbabilityCalculatorTest {
             fun `type within special and ona - matches 90 percent`(animeType: String, potentialGoldenRecordType: String) {
                 // given
                 val anime = Anime(
-                    sources = hashSetOf(
+                    _sources = hashSetOf(
                         URI("https://myanimelist.net/anime/1"),
                     ),
                     _title = "Cowboy Bebop",
@@ -472,7 +472,7 @@ internal class DefaultMatchingProbabilityCalculatorTest {
             fun `episodes differ - matches 99 percent`() {
                 // given
                 val anime = Anime(
-                    sources = hashSetOf(
+                    _sources = hashSetOf(
                         URI("https://myanimelist.net/anime/1"),
                     ),
                     _title = "Cowboy Bebop",
@@ -519,7 +519,7 @@ internal class DefaultMatchingProbabilityCalculatorTest {
             fun `status differs - matches 83 percent`() {
                 // given
                 val anime = Anime(
-                    sources = hashSetOf(
+                    _sources = hashSetOf(
                         URI("https://myanimelist.net/anime/1"),
                     ),
                     _title = "Cowboy Bebop",
@@ -566,7 +566,7 @@ internal class DefaultMatchingProbabilityCalculatorTest {
             fun `yearOfPremiere differs - matches 99 percent`() {
                 // given
                 val anime = Anime(
-                    sources = hashSetOf(
+                    _sources = hashSetOf(
                         URI("https://myanimelist.net/anime/1"),
                     ),
                     _title = "Cowboy Bebop",
@@ -615,7 +615,7 @@ internal class DefaultMatchingProbabilityCalculatorTest {
             fun `duration in minutes differs - matches 99 percent`() {
                 // given
                 val anime = Anime(
-                    sources = hashSetOf(
+                    _sources = hashSetOf(
                         URI("https://myanimelist.net/anime/1"),
                     ),
                     _title = "Cowboy Bebop",
@@ -665,7 +665,7 @@ internal class DefaultMatchingProbabilityCalculatorTest {
             fun `duration in seconds differs - matches 99 percent`() {
                 // given
                 val anime = Anime(
-                    sources = hashSetOf(
+                    _sources = hashSetOf(
                         URI("https://myanimelist.net/anime/1"),
                     ),
                     _title = "Cowboy Bebop",
@@ -715,7 +715,7 @@ internal class DefaultMatchingProbabilityCalculatorTest {
             fun `duration in hours differs - matches 99 percent`() {
                 // given
                 val anime = Anime(
-                    sources = hashSetOf(
+                    _sources = hashSetOf(
                         URI("https://myanimelist.net/anime/1"),
                     ),
                     _title = "Cowboy Bebop",

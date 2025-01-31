@@ -24,7 +24,7 @@ public typealias Title = String
 /**
  * @since 3.1.0
  * @property _title Main title. Must not be blank.
- * @property sources Duplicate-free list of sources from which this anime was created.
+ * @property _sources Duplicate-free list of sources from which this anime was created.
  * @property synonyms Duplicate-free list of alternative titles. Synonyms are case sensitive.
  * @property type Distribution type. **Default** is [Anime.Type.UNKNOWN].
  * @property episodes Number of episodes. **Default** is `0`.
@@ -40,7 +40,7 @@ public typealias Title = String
  */
 public data class Anime(
     private var _title: Title,
-    val sources: HashSet<URI> = HashSet(),
+    private val _sources: HashSet<URI> = HashSet(),
     val type: Type = Type.UNKNOWN,
     val episodes: Episodes = 0,
     val status: Status = Status.UNKNOWN,
@@ -60,6 +60,13 @@ public data class Anime(
      */
     val title: Title
         get() = _title
+
+    /**
+     * Duplicate-free list of sources from which this anime was created.
+     * @since 16.6.0
+     */
+    val sources: HashSet<URI>
+        get() = _sources
 
     init {
         if (activateChecks) {
