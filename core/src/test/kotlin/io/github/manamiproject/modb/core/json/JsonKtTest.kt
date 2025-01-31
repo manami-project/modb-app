@@ -48,7 +48,7 @@ internal class JsonKtTest {
                         "Clannad: After Story OVA",
                         "クラナド　アフターストーリー　もうひとつの世界　杏編",
                     ),
-                    tags = hashSetOf(
+                    _tags = hashSetOf(
                         "comedy",
                         "romance",
                     ),
@@ -91,7 +91,7 @@ internal class JsonKtTest {
                         "Clannad: After Story OVA",
                         "クラナド　アフターストーリー　もうひとつの世界　杏編",
                     ),
-                    tags = hashSetOf(
+                    _tags = hashSetOf(
                         "comedy",
                         "romance",
 
@@ -256,7 +256,7 @@ internal class JsonKtTest {
                             "くらなど",
                             "ＣＬＡＮＮＡＤ -クラナド-",
                         ),
-                        tags = hashSetOf(
+                        _tags = hashSetOf(
                             "baseball",
                             "based on a visual novel",
                             "basketball",
@@ -444,7 +444,7 @@ internal class JsonKtTest {
                             "Clannad: After Story OVA",
                             "クラナド　アフターストーリー　もうひとつの世界　杏編",
                         ),
-                        tags = hashSetOf(
+                        _tags = hashSetOf(
                             "comedy",
                             "romance",
                         ),
@@ -529,7 +529,7 @@ internal class JsonKtTest {
                             "Clannad: After Story OVA",
                             "クラナド　アフターストーリー　もうひとつの世界　杏編",
                         ),
-                        tags = hashSetOf(
+                        _tags = hashSetOf(
                             "comedy",
                             "romance",
                         ),
@@ -604,7 +604,7 @@ internal class JsonKtTest {
                             "Clannad: After Story OVA",
                             "クラナド　アフターストーリー　もうひとつの世界　杏編",
                         ),
-                        tags = hashSetOf(
+                        _tags = hashSetOf(
                             "comedy",
                             "romance",
                         ),
@@ -647,7 +647,7 @@ internal class JsonKtTest {
                             "Clannad: After Story OVA",
                             "クラナド　アフターストーリー　もうひとつの世界　杏編",
                         ),
-                        tags = hashSetOf(
+                        _tags = hashSetOf(
                             "comedy",
                             "romance",
                         ),

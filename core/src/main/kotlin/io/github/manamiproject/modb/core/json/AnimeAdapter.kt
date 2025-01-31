@@ -126,7 +126,7 @@ internal class AnimeAdapter: JsonAdapter<Anime>() {
             status = status,
             picture = picture,
             thumbnail = thumbnail,
-            tags = tags,
+            _tags = tags,
             _relatedAnime = relatedAnime,
             duration = duration,
             animeSeason = animeSeason,
