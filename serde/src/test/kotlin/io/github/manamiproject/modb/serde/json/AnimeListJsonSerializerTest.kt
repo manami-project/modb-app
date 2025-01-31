@@ -150,7 +150,7 @@ internal class AnimeListJsonSerializerTest {
 
                 val animeList = listOf(
                     Anime(
-                        sources = hashSetOf(
+                        _sources = hashSetOf(
                             URI("https://myanimelist.net/anime/6351"),
                         ),
                         _title = "Clannad: After Story - Mou Hitotsu no Sekai, Kyou-hen",

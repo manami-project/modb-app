@@ -261,11 +261,11 @@ internal class DuplicatesValidationPostProcessorTest {
             val dataSetEntries = listOf(
                 Anime(
                     _title = "example",
-                    sources = hashSetOf(URI("https://example.org/anime/1535"))
+                    _sources = hashSetOf(URI("https://example.org/anime/1535"))
                 ),
                 Anime(
                     _title = "Something else",
-                    sources = hashSetOf(URI("https://example.org/anime/1535"))
+                    _sources = hashSetOf(URI("https://example.org/anime/1535"))
                 ),
             )
 
@@ -297,11 +297,11 @@ internal class DuplicatesValidationPostProcessorTest {
                 // given
                 val animeA = Anime(
                     _title = "example",
-                    sources = hashSetOf(URI("https://example.org/anime/1234"))
+                    _sources = hashSetOf(URI("https://example.org/anime/1234"))
                 )
                 val animeB = Anime(
                     _title = "Something else",
-                    sources = hashSetOf(URI("https://example.org/anime/1535"))
+                    _sources = hashSetOf(URI("https://example.org/anime/1535"))
                 )
 
                 val dcsEntries = listOf(

@@ -21,55 +21,55 @@ internal class ClusterServiceTest {
             val databaseEntries = listOf(
                 Anime(
                     _title = "1 - one",
-                    sources = hashSetOf(URI("https://anidb.net/anime/24")),
+                    _sources = hashSetOf(URI("https://anidb.net/anime/24")),
                 ),
                 Anime(
                     _title = "1 - two",
-                    sources = hashSetOf(URI("https://anilist.co/anime/48")),
+                    _sources = hashSetOf(URI("https://anilist.co/anime/48")),
                 ),
                 Anime(
                     _title = "1 - three",
-                    sources = hashSetOf(URI("https://kitsu.app/anime/30")),
+                    _sources = hashSetOf(URI("https://kitsu.app/anime/30")),
                 ),
                 Anime(
                     _title = "1 - four",
-                    sources = hashSetOf(URI("https://myanimelist.net/anime/48")),
+                    _sources = hashSetOf(URI("https://myanimelist.net/anime/48")),
                 ),
                 Anime(
                     _title = "1 - five",
-                    sources = hashSetOf(URI("https://notify.moe/anime/xpIt5Fiig")),
+                    _sources = hashSetOf(URI("https://notify.moe/anime/xpIt5Fiig")),
                 ),
                 Anime(
                     _title = "2 - one",
-                    sources = hashSetOf(
+                    _sources = hashSetOf(
                         URI("https://anidb.net/anime/24"),
                         URI("https://anilist.co/anime/48"),
                     ),
                 ),
                 Anime(
                     _title = "2 - two",
-                    sources = hashSetOf(
+                    _sources = hashSetOf(
                         URI("https://kitsu.app/anime/30"),
                         URI("https://myanimelist.net/anime/48"),
                     ),
                 ),
                 Anime(
                     _title = "2 - three",
-                    sources = hashSetOf(
+                    _sources = hashSetOf(
                         URI("https://myanimelist.net/anime/48"),
                         URI("https://notify.moe/anime/xpIt5Fiig"),
                     ),
                 ),
                 Anime(
                     _title = "2 - four",
-                    sources = hashSetOf(
+                    _sources = hashSetOf(
                         URI("https://anidb.net/anime/24"),
                         URI("https://notify.moe/anime/xpIt5Fiig"),
                     ),
                 ),
                 Anime(
                     _title = "3 - one",
-                    sources = hashSetOf(
+                    _sources = hashSetOf(
                         URI("https://anidb.net/anime/24"),
                         URI("https://anilist.co/anime/48"),
                         URI("https://kitsu.app/anime/30"),
@@ -77,7 +77,7 @@ internal class ClusterServiceTest {
                 ),
                 Anime(
                     _title = "3 - two",
-                    sources = hashSetOf(
+                    _sources = hashSetOf(
                         URI("https://kitsu.app/anime/30"),
                         URI("https://myanimelist.net/anime/48"),
                         URI("https://notify.moe/anime/xpIt5Fiig"),
@@ -85,7 +85,7 @@ internal class ClusterServiceTest {
                 ),
                 Anime(
                     _title = "3 - three",
-                    sources = hashSetOf(
+                    _sources = hashSetOf(
                         URI("https://anidb.net/anime/24"),
                         URI("https://kitsu.app/anime/30"),
                         URI("https://notify.moe/anime/xpIt5Fiig"),
@@ -93,7 +93,7 @@ internal class ClusterServiceTest {
                 ),
                 Anime(
                     _title = "4 - one",
-                    sources = hashSetOf(
+                    _sources = hashSetOf(
                         URI("https://anilist.co/anime/48"),
                         URI("https://kitsu.app/anime/30"),
                         URI("https://myanimelist.net/anime/48"),
@@ -102,7 +102,7 @@ internal class ClusterServiceTest {
                 ),
                 Anime(
                     _title = "4 - two",
-                    sources = hashSetOf(
+                    _sources = hashSetOf(
                         URI("https://anidb.net/anime/24"),
                         URI("https://anilist.co/anime/48"),
                         URI("https://kitsu.app/anime/30"),
@@ -111,7 +111,7 @@ internal class ClusterServiceTest {
                 ),
                 Anime(
                     _title = "5",
-                    sources = hashSetOf(
+                    _sources = hashSetOf(
                         URI("https://anidb.net/anime/24"),
                         URI("https://anilist.co/anime/48"),
                         URI("https://kitsu.app/anime/30"),
@@ -155,23 +155,23 @@ internal class ClusterServiceTest {
             val databaseEntries = listOf(
                 Anime(
                     _title = "1 - one",
-                    sources = hashSetOf(URI("https://anidb.net/anime/24")),
+                    _sources = hashSetOf(URI("https://anidb.net/anime/24")),
                 ),
                 Anime(
                     _title = "1 - two",
-                    sources = hashSetOf(URI("https://anilist.co/anime/48")),
+                    _sources = hashSetOf(URI("https://anilist.co/anime/48")),
                 ),
                 Anime(
                     _title = "1 - three",
-                    sources = hashSetOf(URI("https://kitsu.app/anime/30")),
+                    _sources = hashSetOf(URI("https://kitsu.app/anime/30")),
                 ),
                 Anime(
                     _title = "1 - four",
-                    sources = hashSetOf(URI("https://myanimelist.net/anime/48")),
+                    _sources = hashSetOf(URI("https://myanimelist.net/anime/48")),
                 ),
                 Anime(
                     _title = "1 - five",
-                    sources = hashSetOf(URI("https://notify.moe/anime/xpIt5Fiig")),
+                    _sources = hashSetOf(URI("https://notify.moe/anime/xpIt5Fiig")),
                 ),
             )
 
@@ -208,28 +208,28 @@ internal class ClusterServiceTest {
             val databaseEntries = listOf(
                 Anime(
                     _title = "2 - one",
-                    sources = hashSetOf(
+                    _sources = hashSetOf(
                         URI("https://anidb.net/anime/24"),
                         URI("https://anilist.co/anime/48"),
                     ),
                 ),
                 Anime(
                     _title = "2 - two",
-                    sources = hashSetOf(
+                    _sources = hashSetOf(
                         URI("https://kitsu.app/anime/30"),
                         URI("https://myanimelist.net/anime/48"),
                     ),
                 ),
                 Anime(
                     _title = "2 - three",
-                    sources = hashSetOf(
+                    _sources = hashSetOf(
                         URI("https://myanimelist.net/anime/48"),
                         URI("https://notify.moe/anime/xpIt5Fiig"),
                     ),
                 ),
                 Anime(
                     _title = "2 - four",
-                    sources = hashSetOf(
+                    _sources = hashSetOf(
                         URI("https://anidb.net/anime/24"),
                         URI("https://notify.moe/anime/xpIt5Fiig"),
                     ),
@@ -271,23 +271,23 @@ internal class ClusterServiceTest {
             val databaseEntries = listOf(
                 Anime(
                     _title = "1 - one",
-                    sources = hashSetOf(URI("https://anidb.net/anime/24")),
+                    _sources = hashSetOf(URI("https://anidb.net/anime/24")),
                 ),
                 Anime(
                     _title = "1 - two",
-                    sources = hashSetOf(URI("https://anilist.co/anime/48")),
+                    _sources = hashSetOf(URI("https://anilist.co/anime/48")),
                 ),
                 Anime(
                     _title = "1 - three",
-                    sources = hashSetOf(URI("https://kitsu.app/anime/30")),
+                    _sources = hashSetOf(URI("https://kitsu.app/anime/30")),
                 ),
                 Anime(
                     _title = "1 - four",
-                    sources = hashSetOf(URI("https://myanimelist.net/anime/48")),
+                    _sources = hashSetOf(URI("https://myanimelist.net/anime/48")),
                 ),
                 Anime(
                     _title = "1 - five",
-                    sources = hashSetOf(URI("https://notify.moe/anime/xpIt5Fiig")),
+                    _sources = hashSetOf(URI("https://notify.moe/anime/xpIt5Fiig")),
                 ),
             )
 
@@ -341,7 +341,7 @@ internal class ClusterServiceTest {
             // given
             val expectedEntryOne = Anime(
                 _title = "4 - one",
-                sources = hashSetOf(
+                _sources = hashSetOf(
                     URI("https://anilist.co/anime/48"),
                     URI("https://kitsu.app/anime/30"),
                     URI("https://myanimelist.net/anime/48"),
@@ -351,7 +351,7 @@ internal class ClusterServiceTest {
 
             val expectedEntryTwo = Anime(
                 _title = "4 - two",
-                sources = hashSetOf(
+                _sources = hashSetOf(
                     URI("https://anidb.net/anime/24"),
                     URI("https://anilist.co/anime/48"),
                     URI("https://kitsu.app/anime/30"),
@@ -362,55 +362,55 @@ internal class ClusterServiceTest {
             val databaseEntries = listOf(
                 Anime(
                     _title = "1 - one",
-                    sources = hashSetOf(URI("https://anidb.net/anime/24")),
+                    _sources = hashSetOf(URI("https://anidb.net/anime/24")),
                 ),
                 Anime(
                     _title = "1 - two",
-                    sources = hashSetOf(URI("https://anilist.co/anime/48")),
+                    _sources = hashSetOf(URI("https://anilist.co/anime/48")),
                 ),
                 Anime(
                     _title = "1 - three",
-                    sources = hashSetOf(URI("https://kitsu.app/anime/30")),
+                    _sources = hashSetOf(URI("https://kitsu.app/anime/30")),
                 ),
                 Anime(
                     _title = "1 - four",
-                    sources = hashSetOf(URI("https://myanimelist.net/anime/48")),
+                    _sources = hashSetOf(URI("https://myanimelist.net/anime/48")),
                 ),
                 Anime(
                     _title = "1 - five",
-                    sources = hashSetOf(URI("https://notify.moe/anime/xpIt5Fiig")),
+                    _sources = hashSetOf(URI("https://notify.moe/anime/xpIt5Fiig")),
                 ),
                 Anime(
                     _title = "2 - one",
-                    sources = hashSetOf(
+                    _sources = hashSetOf(
                         URI("https://anidb.net/anime/24"),
                         URI("https://anilist.co/anime/48"),
                     ),
                 ),
                 Anime(
                     _title = "2 - two",
-                    sources = hashSetOf(
+                    _sources = hashSetOf(
                         URI("https://kitsu.app/anime/30"),
                         URI("https://myanimelist.net/anime/48"),
                     ),
                 ),
                 Anime(
                     _title = "2 - three",
-                    sources = hashSetOf(
+                    _sources = hashSetOf(
                         URI("https://myanimelist.net/anime/48"),
                         URI("https://notify.moe/anime/xpIt5Fiig"),
                     ),
                 ),
                 Anime(
                     _title = "2 - four",
-                    sources = hashSetOf(
+                    _sources = hashSetOf(
                         URI("https://anidb.net/anime/24"),
                         URI("https://notify.moe/anime/xpIt5Fiig"),
                     ),
                 ),
                 Anime(
                     _title = "3 - one",
-                    sources = hashSetOf(
+                    _sources = hashSetOf(
                         URI("https://anidb.net/anime/24"),
                         URI("https://anilist.co/anime/48"),
                         URI("https://kitsu.app/anime/30"),
@@ -418,7 +418,7 @@ internal class ClusterServiceTest {
                 ),
                 Anime(
                     _title = "3 - two",
-                    sources = hashSetOf(
+                    _sources = hashSetOf(
                         URI("https://kitsu.app/anime/30"),
                         URI("https://myanimelist.net/anime/48"),
                         URI("https://notify.moe/anime/xpIt5Fiig"),
@@ -426,7 +426,7 @@ internal class ClusterServiceTest {
                 ),
                 Anime(
                     _title = "3 - three",
-                    sources = hashSetOf(
+                    _sources = hashSetOf(
                         URI("https://anidb.net/anime/24"),
                         URI("https://kitsu.app/anime/30"),
                         URI("https://notify.moe/anime/xpIt5Fiig"),
@@ -436,7 +436,7 @@ internal class ClusterServiceTest {
                 expectedEntryTwo,
                 Anime(
                     _title = "5",
-                    sources = hashSetOf(
+                    _sources = hashSetOf(
                         URI("https://anidb.net/anime/24"),
                         URI("https://anilist.co/anime/48"),
                         URI("https://kitsu.app/anime/30"),
@@ -464,7 +464,7 @@ internal class ClusterServiceTest {
             val databaseEntries = listOf(
                 Anime(
                     _title = "1 - one",
-                    sources = hashSetOf(URI("https://anidb.net/anime/24")),
+                    _sources = hashSetOf(URI("https://anidb.net/anime/24")),
                 ),
             )
 

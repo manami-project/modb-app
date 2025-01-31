@@ -169,7 +169,7 @@ internal class DefaultDownloadControlStateAccessorTest {
                         animeSeason = AnimeSeason(
                             year = 1997,
                         ),
-                        sources = hashSetOf(URI("https://anilist.co/anime/32")),
+                        _sources = hashSetOf(URI("https://anilist.co/anime/32")),
                         synonyms = hashSetOf(
                             "Neon Genesis Evangelion: The End of Evangelion",
                             "新世紀エヴァンゲリオン劇場版 THE END OF EVANGELION",
@@ -201,7 +201,7 @@ internal class DefaultDownloadControlStateAccessorTest {
                         animeSeason = AnimeSeason(
                             year = 2001,
                         ),
-                        sources = hashSetOf(URI("https://kitsu.app/anime/99")),
+                        _sources = hashSetOf(URI("https://kitsu.app/anime/99")),
                         synonyms = hashSetOf(
                             "Furuba",
                             "フルーツバスケット",
@@ -257,7 +257,7 @@ internal class DefaultDownloadControlStateAccessorTest {
                             season = UNDEFINED,
                             year = AnimeSeason.UNKNOWN_YEAR,
                         ),
-                        sources = hashSetOf(URI("https://anilist.co/anime/32")),
+                        _sources = hashSetOf(URI("https://anilist.co/anime/32")),
                         synonyms = hashSetOf(),
                         relatedAnime = hashSetOf(
                             URI("https://anilist.co/anime/30"),
@@ -283,7 +283,7 @@ internal class DefaultDownloadControlStateAccessorTest {
                         season = SPRING,
                         year = 1997,
                     ),
-                    sources = hashSetOf(URI("https://myanimelist.net/anime/32")),
+                    _sources = hashSetOf(URI("https://myanimelist.net/anime/32")),
                     synonyms = hashSetOf(
                         "Neon Genesis Evangelion: The End of Evangelion",
                         "新世紀エヴァンゲリオン劇場版 THE END OF EVANGELION",
@@ -429,7 +429,7 @@ internal class DefaultDownloadControlStateAccessorTest {
                         animeSeason = AnimeSeason(
                             year = 1997,
                         ),
-                        sources = hashSetOf(URI("https://anilist.co/anime/32")),
+                        _sources = hashSetOf(URI("https://anilist.co/anime/32")),
                         synonyms = hashSetOf(
                             "Neon Genesis Evangelion: The End of Evangelion",
                             "新世紀エヴァンゲリオン劇場版 THE END OF EVANGELION",
@@ -572,7 +572,7 @@ internal class DefaultDownloadControlStateAccessorTest {
                     animeSeason = AnimeSeason(
                         year = 1997,
                     ),
-                    sources = hashSetOf(URI("https://anilist.co/anime/32")),
+                    _sources = hashSetOf(URI("https://anilist.co/anime/32")),
                     synonyms = hashSetOf(
                         "Neon Genesis Evangelion: The End of Evangelion",
                         "新世紀エヴァンゲリオン劇場版 THE END OF EVANGELION",
@@ -599,7 +599,7 @@ internal class DefaultDownloadControlStateAccessorTest {
                     animeSeason = AnimeSeason(
                         year = 2001,
                     ),
-                    sources = hashSetOf(URI("https://kitsu.app/anime/99")),
+                    _sources = hashSetOf(URI("https://kitsu.app/anime/99")),
                     synonyms = hashSetOf(
                         "Furuba",
                         "フルーツバスケット",
@@ -736,7 +736,7 @@ internal class DefaultDownloadControlStateAccessorTest {
                     animeSeason = AnimeSeason(
                         year = 1997,
                     ),
-                    sources = hashSetOf(URI("https://anilist.co/anime/32")),
+                    _sources = hashSetOf(URI("https://anilist.co/anime/32")),
                     synonyms = hashSetOf(
                         "Neon Genesis Evangelion: The End of Evangelion",
                         "新世紀エヴァンゲリオン劇場版 THE END OF EVANGELION",
@@ -965,7 +965,7 @@ internal class DefaultDownloadControlStateAccessorTest {
                         animeSeason = AnimeSeason(
                             year = 1997,
                         ),
-                        sources = hashSetOf(URI("https://anilist.co/anime/32")),
+                        _sources = hashSetOf(URI("https://anilist.co/anime/32")),
                         synonyms = hashSetOf(
                             "Neon Genesis Evangelion: The End of Evangelion",
                             "新世紀エヴァンゲリオン劇場版 THE END OF EVANGELION",
@@ -1114,7 +1114,7 @@ internal class DefaultDownloadControlStateAccessorTest {
                         animeSeason = AnimeSeason(
                             year = 1997,
                         ),
-                        sources = hashSetOf(URI("https://anilist.co/anime/32")),
+                        _sources = hashSetOf(URI("https://anilist.co/anime/32")),
                         synonyms = hashSetOf(
                             "Neon Genesis Evangelion: The End of Evangelion",
                             "新世紀エヴァンゲリオン劇場版 THE END OF EVANGELION",
@@ -1174,7 +1174,7 @@ internal class DefaultDownloadControlStateAccessorTest {
                         animeSeason = AnimeSeason(
                             year = AnimeSeason.UNKNOWN_YEAR,
                         ),
-                        sources = hashSetOf(URI("https://anilist.co/anime/32")),
+                        _sources = hashSetOf(URI("https://anilist.co/anime/32")),
                         synonyms = hashSetOf(
                             "Neon Genesis Evangelion: The End of Evangelion",
                             "新世紀エヴァンゲリオン劇場版 THE END OF EVANGELION",
@@ -1205,7 +1205,7 @@ internal class DefaultDownloadControlStateAccessorTest {
                         animeSeason = AnimeSeason(
                             year = 1997,
                         ),
-                        sources = hashSetOf(URI("https://anilist.co/anime/32")),
+                        _sources = hashSetOf(URI("https://anilist.co/anime/32")),
                         synonyms = hashSetOf(
                             "Neon Genesis Evangelion: The End of Evangelion",
                             "新世紀エヴァンゲリオン劇場版 THE END OF EVANGELION",
@@ -1269,7 +1269,7 @@ internal class DefaultDownloadControlStateAccessorTest {
                         animeSeason = AnimeSeason(
                             year = 1997,
                         ),
-                        sources = hashSetOf(URI("https://anilist.co/anime/32")),
+                        _sources = hashSetOf(URI("https://anilist.co/anime/32")),
                         synonyms = hashSetOf(
                             "Neon Genesis Evangelion: The End of Evangelion",
                             "新世紀エヴァンゲリオン劇場版 THE END OF EVANGELION",
@@ -1331,7 +1331,7 @@ internal class DefaultDownloadControlStateAccessorTest {
                         animeSeason = AnimeSeason(
                             year = 1997,
                         ),
-                        sources = hashSetOf(URI("https://anilist.co/anime/32")),
+                        _sources = hashSetOf(URI("https://anilist.co/anime/32")),
                         synonyms = hashSetOf(
                             "Neon Genesis Evangelion: The End of Evangelion",
                             "新世紀エヴァンゲリオン劇場版 THE END OF EVANGELION",
@@ -1391,7 +1391,7 @@ internal class DefaultDownloadControlStateAccessorTest {
                         animeSeason = AnimeSeason(
                             year = 1997,
                         ),
-                        sources = hashSetOf(URI("https://anilist.co/anime/32")),
+                        _sources = hashSetOf(URI("https://anilist.co/anime/32")),
                         synonyms = hashSetOf(
                             "Neon Genesis Evangelion: The End of Evangelion",
                             "新世紀エヴァンゲリオン劇場版 THE END OF EVANGELION",
@@ -1431,7 +1431,7 @@ internal class DefaultDownloadControlStateAccessorTest {
                             animeSeason = AnimeSeason(
                                 year = 2001,
                             ),
-                            sources = hashSetOf(URI("https://kitsu.app/anime/99")),
+                            _sources = hashSetOf(URI("https://kitsu.app/anime/99")),
                             synonyms = hashSetOf(
                                 "Furuba",
                                 "フルーツバスケット",
@@ -2072,7 +2072,7 @@ internal class DefaultDownloadControlStateAccessorTest {
                     _weeksWihoutChange = 0,
                     _anime = Anime(
                         _title = "test1",
-                        sources = hashSetOf(NotifyConfig.buildAnimeLink("3g6kj9l26")),
+                        _sources = hashSetOf(NotifyConfig.buildAnimeLink("3g6kj9l26")),
                     ),
                 )
                 defaultDownloadControlStateAccessor.createOrUpdate(NotifyConfig, "3g6kj9l26", downloadControlStateEntry)
@@ -2106,7 +2106,7 @@ internal class DefaultDownloadControlStateAccessorTest {
                     _weeksWihoutChange = 0,
                     _anime = Anime(
                         _title = "test1",
-                        sources = hashSetOf(AnilistConfig.buildAnimeLink("4")),
+                        _sources = hashSetOf(AnilistConfig.buildAnimeLink("4")),
                     ),
                 )
                 defaultDownloadControlStateAccessor.createOrUpdate(AnilistConfig, "4", downloadControlStateEntry1)
@@ -2117,7 +2117,7 @@ internal class DefaultDownloadControlStateAccessorTest {
                     _weeksWihoutChange = 0,
                     _anime = Anime(
                         _title = "test3",
-                        sources = hashSetOf(AnilistConfig.buildAnimeLink("179")),
+                        _sources = hashSetOf(AnilistConfig.buildAnimeLink("179")),
                     ),
                 )
                 defaultDownloadControlStateAccessor.createOrUpdate(AnilistConfig, "179", downloadControlStateEntry2)
@@ -2128,7 +2128,7 @@ internal class DefaultDownloadControlStateAccessorTest {
                     _weeksWihoutChange = 0,
                     _anime = Anime(
                         _title = "test2",
-                        sources = hashSetOf(AnilistConfig.buildAnimeLink("25")),
+                        _sources = hashSetOf(AnilistConfig.buildAnimeLink("25")),
                     ),
                 )
                 defaultDownloadControlStateAccessor.createOrUpdate(AnilistConfig, "25", downloadControlStateEntry3)

@@ -31,7 +31,7 @@ internal class DeadEntriesValidationPostProcessorTest {
                 // given
                 val testAnime = Anime(
                     _title = "Death Note",
-                    sources = hashSetOf(URI("https://myanimelist.net/anime/1535")),
+                    _sources = hashSetOf(URI("https://myanimelist.net/anime/1535")),
                 )
 
                 val testDatasetFileAccessor = object: DatasetFileAccessor by TestDatasetFileAccessor {
@@ -71,12 +71,12 @@ internal class DeadEntriesValidationPostProcessorTest {
                 // given
                 val testAnime = Anime(
                     _title = "Death Note",
-                    sources = hashSetOf(URI("https://myanimelist.net/anime/1535")),
+                    _sources = hashSetOf(URI("https://myanimelist.net/anime/1535")),
                 )
 
                 val testDeadEntry = Anime(
                     _title = "Death Note",
-                    sources = hashSetOf(URI("https://myanimelist.net/anime/9997")),
+                    _sources = hashSetOf(URI("https://myanimelist.net/anime/9997")),
                 )
 
                 val testDatasetFileAccessor = object: DatasetFileAccessor by TestDatasetFileAccessor {
@@ -121,12 +121,12 @@ internal class DeadEntriesValidationPostProcessorTest {
                 // given
                 val testAnime = Anime(
                     _title = "Death Note",
-                    sources = hashSetOf(URI("https://myanimelist.net/anime/1535")),
+                    _sources = hashSetOf(URI("https://myanimelist.net/anime/1535")),
                 )
 
                 val testDeadEntry = Anime(
                     _title = "Death Note",
-                    sources = hashSetOf(URI("https://myanimelist.net/anime/9997")),
+                    _sources = hashSetOf(URI("https://myanimelist.net/anime/9997")),
                 )
 
                 val testDatasetFileAccessor = object: DatasetFileAccessor by TestDatasetFileAccessor {
@@ -171,12 +171,12 @@ internal class DeadEntriesValidationPostProcessorTest {
                 // given
                 val testAnime = Anime(
                     _title = "Death Note",
-                    sources = hashSetOf(URI("https://myanimelist.net/anime/1535")),
+                    _sources = hashSetOf(URI("https://myanimelist.net/anime/1535")),
                 )
 
                 val testDeadEntry = Anime(
                     _title = "Death Note",
-                    sources = hashSetOf(URI("https://myanimelist.net/anime/9997")),
+                    _sources = hashSetOf(URI("https://myanimelist.net/anime/9997")),
                 )
 
                 val testDatasetFileAccessor = object: DatasetFileAccessor by TestDatasetFileAccessor {
@@ -221,12 +221,12 @@ internal class DeadEntriesValidationPostProcessorTest {
                 // given
                 val testAnime = Anime(
                     _title = "Death Note",
-                    sources = hashSetOf(URI("https://myanimelist.net/anime/1535")),
+                    _sources = hashSetOf(URI("https://myanimelist.net/anime/1535")),
                 )
 
                 val testDeadEntry = Anime(
                     _title = "Death Note",
-                    sources = hashSetOf(URI("https://animecountdown.com/9997")),
+                    _sources = hashSetOf(URI("https://animecountdown.com/9997")),
                 )
 
                 val testDatasetFileAccessor = object: DatasetFileAccessor by TestDatasetFileAccessor {
@@ -274,12 +274,12 @@ internal class DeadEntriesValidationPostProcessorTest {
                 // given
                 val testAnime = Anime(
                     _title = "Death Note",
-                    sources = hashSetOf(URI("https://myanimelist.net/anime/1535")),
+                    _sources = hashSetOf(URI("https://myanimelist.net/anime/1535")),
                 )
 
                 val testDeadEntry = Anime(
                     _title = "Death Note",
-                    sources = hashSetOf(URI("https://animecountdown.com/9997")),
+                    _sources = hashSetOf(URI("https://animecountdown.com/9997")),
                 )
 
                 val testDatasetFileAccessor = object: DatasetFileAccessor by TestDatasetFileAccessor {

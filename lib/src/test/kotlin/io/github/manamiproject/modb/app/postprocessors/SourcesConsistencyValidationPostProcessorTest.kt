@@ -64,7 +64,7 @@ internal class SourcesConsistencyValidationPostProcessorTest {
                 // given
                 val anime = Anime(
                     _title = "Death Note",
-                    sources = hashSetOf(URI("htps://myanimelist.net/anime/1535")),
+                    _sources = hashSetOf(URI("htps://myanimelist.net/anime/1535")),
                 )
 
                 Json.toJson(anime).writeToFile(tempDir.resolve("1535.conv"))
@@ -104,11 +104,11 @@ internal class SourcesConsistencyValidationPostProcessorTest {
                 // given
                 val deathNote = Anime(
                     _title = "Death Note",
-                    sources = hashSetOf(URI("htps://myanimelist.net/anime/1535")),
+                    _sources = hashSetOf(URI("htps://myanimelist.net/anime/1535")),
                 )
                 val koeNoKatachi = Anime(
                     _title = "Koe no Katachi",
-                    sources = hashSetOf(URI("htps://myanimelist.net/anime/28851")),
+                    _sources = hashSetOf(URI("htps://myanimelist.net/anime/28851")),
                 )
 
                 Json.toJson(deathNote).writeToFile(tempDir.resolve("1535.conv"))
@@ -151,11 +151,11 @@ internal class SourcesConsistencyValidationPostProcessorTest {
                 // given
                 val deathNote = Anime(
                     _title = "Death Note",
-                    sources = hashSetOf(URI("htps://myanimelist.net/anime/1535")),
+                    _sources = hashSetOf(URI("htps://myanimelist.net/anime/1535")),
                 )
                 val koeNoKatachi = Anime(
                     _title = "Koe no Katachi",
-                    sources = hashSetOf(URI("htps://myanimelist.net/anime/28851")),
+                    _sources = hashSetOf(URI("htps://myanimelist.net/anime/28851")),
                 )
 
                 Json.toJson(deathNote).writeToFile(tempDir.resolve("1535.conv"))
@@ -202,11 +202,11 @@ internal class SourcesConsistencyValidationPostProcessorTest {
                 // given
                 val deathNote = Anime(
                     _title = "Death Note",
-                    sources = hashSetOf(URI("htps://myanimelist.net/anime/1535")),
+                    _sources = hashSetOf(URI("htps://myanimelist.net/anime/1535")),
                 )
                 val koeNoKatachi = Anime(
                     _title = "Koe no Katachi",
-                    sources = hashSetOf(URI("htps://myanimelist.net/anime/28851")),
+                    _sources = hashSetOf(URI("htps://myanimelist.net/anime/28851")),
                 )
 
                 Json.toJson(deathNote).writeToFile(tempDir.resolve("1535.conv"))
@@ -255,11 +255,11 @@ internal class SourcesConsistencyValidationPostProcessorTest {
                 // given
                 val deathNote = Anime(
                     _title = "Death Note",
-                    sources = hashSetOf(URI("htps://myanimelist.net/anime/1535")),
+                    _sources = hashSetOf(URI("htps://myanimelist.net/anime/1535")),
                 )
                 val koeNoKatachi = Anime(
                     _title = "Koe no Katachi",
-                    sources = hashSetOf(URI("htps://myanimelist.net/anime/28851")),
+                    _sources = hashSetOf(URI("htps://myanimelist.net/anime/28851")),
                 )
 
                 Json.toJson(deathNote).writeToFile(tempDir.resolve("1535.conv"))
@@ -316,7 +316,7 @@ internal class SourcesConsistencyValidationPostProcessorTest {
                 // given
                 val deathNote = Anime(
                     _title = "Death Note",
-                    sources = hashSetOf(
+                    _sources = hashSetOf(
                         URI("https://${testMetaDataProviderConfig.hostname()}/anime/1535"),
                         URI("https://${otherMetaDataProviderConfig.hostname()}/anime/40190"),
                     ),
@@ -336,7 +336,7 @@ internal class SourcesConsistencyValidationPostProcessorTest {
                     override suspend fun allAnime(): List<Anime> = listOf(
                         Anime(
                             _title = "Death Note",
-                            sources = hashSetOf(
+                            _sources = hashSetOf(
                                 URI("https://${testMetaDataProviderConfig.hostname()}/anime/1535"),
                             ),
                         )
@@ -379,7 +379,7 @@ internal class SourcesConsistencyValidationPostProcessorTest {
 
                 val deathNoteDataset = Anime(
                     _title = "Death Note",
-                    sources = hashSetOf(
+                    _sources = hashSetOf(
                         URI("https://${testMetaDataProviderConfig.hostname()}/anime/1535"),
                         URI("https://${metaDataProviderConfigToBeIgnored.hostname()}/anime/40190"),
                     ),
@@ -387,7 +387,7 @@ internal class SourcesConsistencyValidationPostProcessorTest {
 
                 val deathNoteDcsEntry = Anime(
                     _title = "Death Note",
-                    sources = hashSetOf(
+                    _sources = hashSetOf(
                         URI("https://${testMetaDataProviderConfig.hostname()}/anime/1535"),
                     ),
                 )
@@ -430,11 +430,11 @@ internal class SourcesConsistencyValidationPostProcessorTest {
                 // given
                 val deathNote = Anime(
                     _title = "Death Note",
-                    sources = hashSetOf(URI("htps://myanimelist.net/anime/1535")),
+                    _sources = hashSetOf(URI("htps://myanimelist.net/anime/1535")),
                 )
                 val koeNoKatachi = Anime(
                     _title = "Koe no Katachi",
-                    sources = hashSetOf(URI("htps://myanimelist.net/anime/28851")),
+                    _sources = hashSetOf(URI("htps://myanimelist.net/anime/28851")),
                 )
 
                 Json.toJson(deathNote).writeToFile(tempDir.resolve("1535.conv"))

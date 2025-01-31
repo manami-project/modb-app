@@ -50,7 +50,7 @@ internal class DefaultDownloadControlStateSchedulerTest {
                         animeSeason = AnimeSeason(
                             year = 2001,
                         ),
-                        sources = hashSetOf(URI("https://kitsu.app/anime/99")),
+                        _sources = hashSetOf(URI("https://kitsu.app/anime/99")),
                         synonyms = hashSetOf(
                             "Furuba",
                             "フルーツバスケット",
@@ -66,7 +66,7 @@ internal class DefaultDownloadControlStateSchedulerTest {
                     _nextDownload = WeekOfYear(2021, 4),
                     _anime = Anime(
                         _title = "Unexpected",
-                        sources = hashSetOf(URI("https://kitsu.app/anime/19999999")),
+                        _sources = hashSetOf(URI("https://kitsu.app/anime/19999999")),
                     ),
                 )
 
@@ -117,7 +117,7 @@ internal class DefaultDownloadControlStateSchedulerTest {
                         animeSeason = AnimeSeason(
                             year = 1997,
                         ),
-                        sources = hashSetOf(URI("https://anilist.co/anime/32")),
+                        _sources = hashSetOf(URI("https://anilist.co/anime/32")),
                         synonyms = hashSetOf(
                             "Neon Genesis Evangelion: The End of Evangelion",
                             "新世紀エヴァンゲリオン劇場版 THE END OF EVANGELION",
@@ -141,7 +141,7 @@ internal class DefaultDownloadControlStateSchedulerTest {
                     _nextDownload = WeekOfYear(2021, 45),
                     _anime = Anime(
                         _title = "Unexpected Entry",
-                        sources = hashSetOf(URI("https://anilist.co/anime/19999999")),
+                        _sources = hashSetOf(URI("https://anilist.co/anime/19999999")),
                     )
                 )
 
