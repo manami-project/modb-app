@@ -302,7 +302,7 @@ internal class DefaultMatchingProbabilityCalculatorTest {
                     _synonyms = hashSetOf(
                         "カウボーイビバップ",
                     ),
-                    relatedAnime = hashSetOf(
+                    _relatedAnime = hashSetOf(
                         URI("https://myanimelist.net/anime/17205"),
                         URI("https://myanimelist.net/anime/4037"),
                         URI("https://myanimelist.net/anime/5"),
@@ -347,7 +347,7 @@ internal class DefaultMatchingProbabilityCalculatorTest {
                     _synonyms = hashSetOf(
                         "カウボーイビバップ",
                     ),
-                    relatedAnime = hashSetOf(
+                    _relatedAnime = hashSetOf(
                         URI("https://myanimelist.net/anime/17205"),
                         URI("https://myanimelist.net/anime/4037"),
                         URI("https://myanimelist.net/anime/5"),
@@ -394,7 +394,7 @@ internal class DefaultMatchingProbabilityCalculatorTest {
                     _synonyms = hashSetOf(
                         "カウボーイビバップ",
                     ),
-                    relatedAnime = hashSetOf(
+                    _relatedAnime = hashSetOf(
                         URI("https://myanimelist.net/anime/17205"),
                         URI("https://myanimelist.net/anime/4037"),
                         URI("https://myanimelist.net/anime/5"),
@@ -445,7 +445,7 @@ internal class DefaultMatchingProbabilityCalculatorTest {
                     _synonyms = hashSetOf(
                         "カウボーイビバップ",
                     ),
-                    relatedAnime = hashSetOf(
+                    _relatedAnime = hashSetOf(
                         URI("https://myanimelist.net/anime/17205"),
                         URI("https://myanimelist.net/anime/4037"),
                         URI("https://myanimelist.net/anime/5"),
@@ -492,7 +492,7 @@ internal class DefaultMatchingProbabilityCalculatorTest {
                     _synonyms = hashSetOf(
                         "カウボーイビバップ",
                     ),
-                    relatedAnime = hashSetOf(
+                    _relatedAnime = hashSetOf(
                         URI("https://myanimelist.net/anime/17205"),
                         URI("https://myanimelist.net/anime/4037"),
                         URI("https://myanimelist.net/anime/5"),
@@ -539,7 +539,7 @@ internal class DefaultMatchingProbabilityCalculatorTest {
                     _synonyms = hashSetOf(
                         "カウボーイビバップ",
                     ),
-                    relatedAnime = hashSetOf(
+                    _relatedAnime = hashSetOf(
                         URI("https://myanimelist.net/anime/17205"),
                         URI("https://myanimelist.net/anime/4037"),
                         URI("https://myanimelist.net/anime/5"),
@@ -586,7 +586,7 @@ internal class DefaultMatchingProbabilityCalculatorTest {
                     _synonyms = hashSetOf(
                         "カウボーイビバップ",
                     ),
-                    relatedAnime = hashSetOf(
+                    _relatedAnime = hashSetOf(
                         URI("https://myanimelist.net/anime/17205"),
                         URI("https://myanimelist.net/anime/4037"),
                         URI("https://myanimelist.net/anime/5"),
@@ -635,7 +635,7 @@ internal class DefaultMatchingProbabilityCalculatorTest {
                     _synonyms = hashSetOf(
                         "カウボーイビバップ",
                     ),
-                    relatedAnime = hashSetOf(
+                    _relatedAnime = hashSetOf(
                         URI("https://myanimelist.net/anime/17205"),
                         URI("https://myanimelist.net/anime/4037"),
                         URI("https://myanimelist.net/anime/5"),
@@ -685,7 +685,7 @@ internal class DefaultMatchingProbabilityCalculatorTest {
                     _synonyms = hashSetOf(
                         "カウボーイビバップ",
                     ),
-                    relatedAnime = hashSetOf(
+                    _relatedAnime = hashSetOf(
                         URI("https://myanimelist.net/anime/17205"),
                         URI("https://myanimelist.net/anime/4037"),
                         URI("https://myanimelist.net/anime/5"),
@@ -735,7 +735,7 @@ internal class DefaultMatchingProbabilityCalculatorTest {
                     _synonyms = hashSetOf(
                         "カウボーイビバップ",
                     ),
-                    relatedAnime = hashSetOf(
+                    _relatedAnime = hashSetOf(
                         URI("https://myanimelist.net/anime/17205"),
                         URI("https://myanimelist.net/anime/4037"),
                         URI("https://myanimelist.net/anime/5"),

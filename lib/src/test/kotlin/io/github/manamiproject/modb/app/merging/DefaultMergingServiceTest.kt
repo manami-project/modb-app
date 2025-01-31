@@ -47,7 +47,7 @@ internal class DefaultMergingServiceTest {
                         "11eyes -Tsumi to Batsu to Aganai no Shoujo-",
                         "イレブンアイズ",
                     ),
-                    relatedAnime = hashSetOf(
+                    _relatedAnime = hashSetOf(
                         URI("https://anilist.co/anime/110465"),
                         URI("https://anilist.co/anime/7739"),
                     ),
@@ -98,7 +98,7 @@ internal class DefaultMergingServiceTest {
                         "11eyes -Tsumi to Batsu to Aganai no Shoujo-",
                         "11eyes イレブンアイズ",
                     ),
-                    relatedAnime = hashSetOf(
+                    _relatedAnime = hashSetOf(
                         URI("https://myanimelist.net/anime/20557"),
                         URI("https://myanimelist.net/anime/7739"),
                     ),
@@ -163,7 +163,7 @@ internal class DefaultMergingServiceTest {
                         "星界の紋章",
                         "星界之纹章",
                     ),
-                    relatedAnime = hashSetOf(
+                    _relatedAnime = hashSetOf(
                         URI("https://anidb.net/anime/1623"),
                         URI("https://anidb.net/anime/4"),
                         URI("https://anidb.net/anime/6"),
@@ -186,7 +186,7 @@ internal class DefaultMergingServiceTest {
                     _synonyms = hashSetOf(
                         "カウボーイビバップ",
                     ),
-                    relatedAnime = hashSetOf(
+                    _relatedAnime = hashSetOf(
                         URI("https://myanimelist.net/anime/17205"),
                         URI("https://myanimelist.net/anime/4037"),
                         URI("https://myanimelist.net/anime/5"),
@@ -235,7 +235,7 @@ internal class DefaultMergingServiceTest {
                         "11eyes -Tsumi to Batsu to Aganai no Shoujo-",
                         "イレブンアイズ",
                     ),
-                    relatedAnime = hashSetOf(
+                    _relatedAnime = hashSetOf(
                         URI("https://anilist.co/anime/110465"),
                         URI("https://anilist.co/anime/7739"),
                     ),
@@ -259,7 +259,7 @@ internal class DefaultMergingServiceTest {
                         "げきじょうばんぶんがくしょうじょ",
                         "劇場版“文学少女”",
                     ),
-                    relatedAnime = hashSetOf(
+                    _relatedAnime = hashSetOf(
                         URI("https://kitsu.app/anime/5078"),
                         URI("https://kitsu.app/anime/5352"),
                         URI("https://myanimelist.net/anime/7669"),
@@ -422,7 +422,7 @@ internal class DefaultMergingServiceTest {
                     _synonyms = hashSetOf(
                         "カウボーイビバップ",
                     ),
-                    relatedAnime = hashSetOf(
+                    _relatedAnime = hashSetOf(
                         URI("https://myanimelist.net/anime/17205"),
                         URI("https://myanimelist.net/anime/4037"),
                         URI("https://myanimelist.net/anime/5"),

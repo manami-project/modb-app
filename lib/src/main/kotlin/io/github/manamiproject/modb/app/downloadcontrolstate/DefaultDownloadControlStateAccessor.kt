@@ -62,7 +62,7 @@ class DefaultDownloadControlStateAccessor(
             _anime = it.anime.copy(
                 _sources = it.anime.sources.toHashSet(),
                 _synonyms = it.anime.synonyms.toHashSet(),
-                relatedAnime = it.anime.relatedAnime.toHashSet(),
+                _relatedAnime = it.anime.relatedAnime.toHashSet(),
                 tags = it.anime.tags.toHashSet(),
             ),
         ) }.toList()

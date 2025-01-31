@@ -76,7 +76,7 @@ public class AnisearchAnimeConverter(
             animeSeason = extractAnimeSeason(jsonData),
             _sources = extractSourcesEntry(data),
             _synonyms = extractSynonyms(data),
-            relatedAnime = extractRelatedAnime(data),
+            _relatedAnime = extractRelatedAnime(data),
             tags = extractTags(data),
         )
     }

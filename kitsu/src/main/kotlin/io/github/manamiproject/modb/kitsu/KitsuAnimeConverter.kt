@@ -65,7 +65,7 @@ public class KitsuAnimeConverter(
             animeSeason = extractAnimeSeason(data),
             _sources = extractSourcesEntry(data),
             _synonyms = extractSynonyms(data),
-            relatedAnime = extractRelatedAnime(data),
+            _relatedAnime = extractRelatedAnime(data),
             tags = extractTags(data),
         )
     }

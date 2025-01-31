@@ -60,7 +60,7 @@ public class AnilistAnimeConverter(
             _sources = extractSourcesEntry(data),
             _synonyms = extractSynonyms(data),
             tags = extractTags(data),
-            relatedAnime = extractRelatedAnime(data),
+            _relatedAnime = extractRelatedAnime(data),
         )
     }
 

@@ -389,7 +389,7 @@ internal class DefaultDownloadControlStateUpdaterTest {
                         "Neon Genesis Evangelion: The End of Evangelion",
                         "新世紀エヴァンゲリオン劇場版 THE END OF EVANGELION",
                     ),
-                    relatedAnime = hashSetOf(
+                    _relatedAnime = hashSetOf(
                         URI("https://anilist.co/anime/30"),
                     ),
                     tags = hashSetOf(
@@ -465,7 +465,7 @@ internal class DefaultDownloadControlStateUpdaterTest {
                         "Neon Genesis Evangelion: The End of Evangelion",
                         "新世紀エヴァンゲリオン劇場版 THE END OF EVANGELION",
                     ),
-                    relatedAnime = hashSetOf(
+                    _relatedAnime = hashSetOf(
                         URI("https://anilist.co/anime/30"),
                     ),
                     tags = hashSetOf(
@@ -559,7 +559,7 @@ internal class DefaultDownloadControlStateUpdaterTest {
                         "Neon Genesis Evangelion: The End of Evangelion",
                         "新世紀エヴァンゲリオン劇場版 THE END OF EVANGELION",
                     ),
-                    relatedAnime = hashSetOf(
+                    _relatedAnime = hashSetOf(
                         URI("https://anilist.co/anime/30"),
                     ),
                     tags = hashSetOf(

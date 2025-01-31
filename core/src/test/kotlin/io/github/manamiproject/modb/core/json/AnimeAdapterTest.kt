@@ -24,7 +24,7 @@ internal class AnimeAdapterTest {
             val expected = Anime(
                 _title = "Clannad: After Story - Mou Hitotsu no Sekai, Kyou-hen",
                 _sources = hashSetOf(URI("https://myanimelist.net/anime/6351")),
-                relatedAnime = hashSetOf(URI("https://myanimelist.net/anime/2167")),
+                _relatedAnime = hashSetOf(URI("https://myanimelist.net/anime/2167")),
                 type = Anime.Type.TV,
                 episodes = 24,
                 status = Anime.Status.FINISHED,
@@ -1164,7 +1164,7 @@ internal class AnimeAdapterTest {
             val obj = Anime(
                 _title = "Clannad: After Story - Mou Hitotsu no Sekai, Kyou-hen",
                 _sources = hashSetOf(URI("https://myanimelist.net/anime/6351")),
-                relatedAnime = hashSetOf(URI("https://myanimelist.net/anime/2167")),
+                _relatedAnime = hashSetOf(URI("https://myanimelist.net/anime/2167")),
                 type = Anime.Type.TV,
                 episodes = 24,
                 status = Anime.Status.FINISHED,
@@ -1232,7 +1232,7 @@ internal class AnimeAdapterTest {
             val obj = Anime(
                 _title = "Clannad: After Story - Mou Hitotsu no Sekai, Kyou-hen",
                 _sources = hashSetOf(URI("https://myanimelist.net/anime/6351")),
-                relatedAnime = hashSetOf(URI("https://myanimelist.net/anime/2167")),
+                _relatedAnime = hashSetOf(URI("https://myanimelist.net/anime/2167")),
                 type = Anime.Type.TV,
                 episodes = 24,
                 status = Anime.Status.FINISHED,
@@ -1368,7 +1368,7 @@ internal class AnimeAdapterTest {
             val obj = Anime(
                 _title = "Clannad: After Story - Mou Hitotsu no Sekai, Kyou-hen",
                 _sources = hashSetOf(URI("https://myanimelist.net/anime/6351")),
-                relatedAnime = hashSetOf(
+                _relatedAnime = hashSetOf(
                     URI("https://myanimelist.net/anime/2167"),
                     URI("https://myanimelist.net/anime/6351"),
                 ),
@@ -1557,7 +1557,7 @@ internal class AnimeAdapterTest {
                     URI("https://notify.moe/anime/3L63cKimg"),
                     URI("https://myanimelist.net/anime/6351"),
                 ),
-                relatedAnime = hashSetOf(
+                _relatedAnime = hashSetOf(
                     URI("https://myanimelist.net/anime/4181"),
                     URI("https://anilist.co/anime/2167"),
                     URI("https://anime-planet.com/anime/clannad"),

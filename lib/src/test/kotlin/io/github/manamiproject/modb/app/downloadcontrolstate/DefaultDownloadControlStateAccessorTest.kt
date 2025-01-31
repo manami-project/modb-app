@@ -174,7 +174,7 @@ internal class DefaultDownloadControlStateAccessorTest {
                             "Neon Genesis Evangelion: The End of Evangelion",
                             "新世紀エヴァンゲリオン劇場版 THE END OF EVANGELION",
                         ),
-                        relatedAnime = hashSetOf(
+                        _relatedAnime = hashSetOf(
                             URI("https://anilist.co/anime/30"),
                         ),
                         tags = hashSetOf(
@@ -206,7 +206,7 @@ internal class DefaultDownloadControlStateAccessorTest {
                             "Furuba",
                             "フルーツバスケット",
                         ),
-                        relatedAnime = hashSetOf(
+                        _relatedAnime = hashSetOf(
                             URI("https://kitsu.app/anime/41995"),
                         ),
                     ),
@@ -259,7 +259,7 @@ internal class DefaultDownloadControlStateAccessorTest {
                         ),
                         _sources = hashSetOf(URI("https://anilist.co/anime/32")),
                         _synonyms = hashSetOf(),
-                        relatedAnime = hashSetOf(
+                        _relatedAnime = hashSetOf(
                             URI("https://anilist.co/anime/30"),
                         ),
                         tags = hashSetOf(),
@@ -288,7 +288,7 @@ internal class DefaultDownloadControlStateAccessorTest {
                         "Neon Genesis Evangelion: The End of Evangelion",
                         "新世紀エヴァンゲリオン劇場版 THE END OF EVANGELION",
                     ),
-                    relatedAnime = hashSetOf(
+                    _relatedAnime = hashSetOf(
                         URI("https://myanimelist.net/anime/30"),
                     ),
                     tags = hashSetOf(
@@ -434,7 +434,7 @@ internal class DefaultDownloadControlStateAccessorTest {
                             "Neon Genesis Evangelion: The End of Evangelion",
                             "新世紀エヴァンゲリオン劇場版 THE END OF EVANGELION",
                         ),
-                        relatedAnime = hashSetOf(
+                        _relatedAnime = hashSetOf(
                             URI("https://anilist.co/anime/30"),
                         ),
                         tags = hashSetOf(
@@ -577,7 +577,7 @@ internal class DefaultDownloadControlStateAccessorTest {
                         "Neon Genesis Evangelion: The End of Evangelion",
                         "新世紀エヴァンゲリオン劇場版 THE END OF EVANGELION",
                     ),
-                    relatedAnime = hashSetOf(
+                    _relatedAnime = hashSetOf(
                         URI("https://anilist.co/anime/30"),
                     ),
                     tags = hashSetOf(
@@ -604,7 +604,7 @@ internal class DefaultDownloadControlStateAccessorTest {
                         "Furuba",
                         "フルーツバスケット",
                     ),
-                    relatedAnime = hashSetOf(
+                    _relatedAnime = hashSetOf(
                         URI("https://kitsu.app/anime/41995"),
                     ),
                 )
@@ -741,7 +741,7 @@ internal class DefaultDownloadControlStateAccessorTest {
                         "Neon Genesis Evangelion: The End of Evangelion",
                         "新世紀エヴァンゲリオン劇場版 THE END OF EVANGELION",
                     ),
-                    relatedAnime = hashSetOf(
+                    _relatedAnime = hashSetOf(
                         URI("https://anilist.co/anime/30"),
                     ),
                     tags = hashSetOf(
@@ -970,7 +970,7 @@ internal class DefaultDownloadControlStateAccessorTest {
                             "Neon Genesis Evangelion: The End of Evangelion",
                             "新世紀エヴァンゲリオン劇場版 THE END OF EVANGELION",
                         ),
-                        relatedAnime = hashSetOf(
+                        _relatedAnime = hashSetOf(
                             URI("https://anilist.co/anime/30"),
                         ),
                         tags = hashSetOf(
@@ -1119,7 +1119,7 @@ internal class DefaultDownloadControlStateAccessorTest {
                             "Neon Genesis Evangelion: The End of Evangelion",
                             "新世紀エヴァンゲリオン劇場版 THE END OF EVANGELION",
                         ),
-                        relatedAnime = hashSetOf(
+                        _relatedAnime = hashSetOf(
                             URI("https://anilist.co/anime/30"),
                         ),
                         tags = hashSetOf(
@@ -1179,7 +1179,7 @@ internal class DefaultDownloadControlStateAccessorTest {
                             "Neon Genesis Evangelion: The End of Evangelion",
                             "新世紀エヴァンゲリオン劇場版 THE END OF EVANGELION",
                         ),
-                        relatedAnime = hashSetOf(
+                        _relatedAnime = hashSetOf(
                             URI("https://anilist.co/anime/30"),
                         ),
                         tags = hashSetOf(
@@ -1210,7 +1210,7 @@ internal class DefaultDownloadControlStateAccessorTest {
                             "Neon Genesis Evangelion: The End of Evangelion",
                             "新世紀エヴァンゲリオン劇場版 THE END OF EVANGELION",
                         ),
-                        relatedAnime = hashSetOf(
+                        _relatedAnime = hashSetOf(
                             URI("https://anilist.co/anime/30"),
                         ),
                         tags = hashSetOf(
@@ -1274,7 +1274,7 @@ internal class DefaultDownloadControlStateAccessorTest {
                             "Neon Genesis Evangelion: The End of Evangelion",
                             "新世紀エヴァンゲリオン劇場版 THE END OF EVANGELION",
                         ),
-                        relatedAnime = hashSetOf(
+                        _relatedAnime = hashSetOf(
                             URI("https://anilist.co/anime/30"),
                         ),
                         tags = hashSetOf(
@@ -1336,7 +1336,7 @@ internal class DefaultDownloadControlStateAccessorTest {
                             "Neon Genesis Evangelion: The End of Evangelion",
                             "新世紀エヴァンゲリオン劇場版 THE END OF EVANGELION",
                         ),
-                        relatedAnime = hashSetOf(
+                        _relatedAnime = hashSetOf(
                             URI("https://anilist.co/anime/30"),
                         ),
                         tags = hashSetOf(
@@ -1396,7 +1396,7 @@ internal class DefaultDownloadControlStateAccessorTest {
                             "Neon Genesis Evangelion: The End of Evangelion",
                             "新世紀エヴァンゲリオン劇場版 THE END OF EVANGELION",
                         ),
-                        relatedAnime = hashSetOf(
+                        _relatedAnime = hashSetOf(
                             URI("https://anilist.co/anime/30"),
                         ),
                         tags = hashSetOf(
@@ -1436,7 +1436,7 @@ internal class DefaultDownloadControlStateAccessorTest {
                                 "Furuba",
                                 "フルーツバスケット",
                             ),
-                            relatedAnime = hashSetOf(
+                            _relatedAnime = hashSetOf(
                                 URI("https://kitsu.app/anime/41995"),
                             ),
                         ),

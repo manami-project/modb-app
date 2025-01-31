@@ -53,7 +53,7 @@ internal class AnimeListJsonStringDeserializerTest {
                     _sources = hashSetOf(
                         URI("https://anidb.net/anime/1"),
                     ),
-                    relatedAnime = hashSetOf(
+                    _relatedAnime = hashSetOf(
                         URI("https://anidb.net/anime/1623"),
                         URI("https://anidb.net/anime/4"),
                         URI("https://anidb.net/anime/6"),
@@ -89,7 +89,7 @@ internal class AnimeListJsonStringDeserializerTest {
                     _sources = hashSetOf(
                         URI("https://myanimelist.net/anime/1"),
                     ),
-                    relatedAnime = hashSetOf(
+                    _relatedAnime = hashSetOf(
                         URI("https://myanimelist.net/anime/17205"),
                         URI("https://myanimelist.net/anime/4037"),
                         URI("https://myanimelist.net/anime/5"),
@@ -120,7 +120,7 @@ internal class AnimeListJsonStringDeserializerTest {
                     _sources = hashSetOf(
                         URI("https://myanimelist.net/anime/5"),
                     ),
-                    relatedAnime = hashSetOf(
+                    _relatedAnime = hashSetOf(
                         URI("https://myanimelist.net/anime/1"),
                     ),
                     type = Anime.Type.MOVIE,
@@ -189,7 +189,7 @@ internal class AnimeListJsonStringDeserializerTest {
                         URI("https://anilist.co/anime/6682"),
                         URI("https://myanimelist.net/anime/6682"),
                     ),
-                    relatedAnime = hashSetOf(
+                    _relatedAnime = hashSetOf(
                         URI("https://anilist.co/anime/110465"),
                         URI("https://anilist.co/anime/7739"),
                         URI("https://myanimelist.net/anime/20557"),
