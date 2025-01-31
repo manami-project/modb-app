@@ -1062,7 +1062,7 @@ internal class AnimeKtTest {
                     _sources = hashSetOf(
                         source,
                     ),
-                    relatedAnime = hashSetOf(
+                    _relatedAnime = hashSetOf(
                         source,
                     ),
                 )
@@ -1085,7 +1085,7 @@ internal class AnimeKtTest {
                     _sources = hashSetOf(
                         source,
                     ),
-                    relatedAnime = hashSetOf(
+                    _relatedAnime = hashSetOf(
                         source,
                     ),
                     activateChecks = false,
@@ -1151,7 +1151,7 @@ internal class AnimeKtTest {
                 val source = URI("https://myanimelist.net/anime/1535")
                 val anime = Anime(
                     _title =  "Death Note",
-                    relatedAnime = hashSetOf(
+                    _relatedAnime = hashSetOf(
                         source,
                     ),
                 )
@@ -1217,7 +1217,7 @@ internal class AnimeKtTest {
                 val source = URI("https://myanimelist.net/anime/1535")
                 val anime = Anime(
                     _title =  "Death Note",
-                    relatedAnime = hashSetOf(
+                    _relatedAnime = hashSetOf(
                         source,
                     ),
                 )
@@ -1290,7 +1290,7 @@ internal class AnimeKtTest {
                 // when
                 val result = Anime(
                     _title =  "Death Note",
-                    relatedAnime = hashSetOf(
+                    _relatedAnime = hashSetOf(
                         relatedAnime,
                     ),
                 )
@@ -1309,7 +1309,7 @@ internal class AnimeKtTest {
                 // when
                 val result = Anime(
                     _title =  "Death Note",
-                    relatedAnime = hashSetOf(
+                    _relatedAnime = hashSetOf(
                         relatedAnime,
                         relatedAnime,
                     ),
@@ -1332,7 +1332,7 @@ internal class AnimeKtTest {
                     _sources = hashSetOf(
                         link,
                     ),
-                    relatedAnime = hashSetOf(
+                    _relatedAnime = hashSetOf(
                         link,
                     ),
                 )
@@ -1349,7 +1349,7 @@ internal class AnimeKtTest {
                     _sources = hashSetOf(
                         URI("https://myanimelist.net/anime/6351"),
                     ),
-                    relatedAnime = hashSetOf(
+                    _relatedAnime = hashSetOf(
                         URI("https://myanimelist.net/anime/2167"),
                         URI("https://myanimelist.net/anime/6351"),
                     ),
@@ -1389,7 +1389,7 @@ internal class AnimeKtTest {
                 val relatedAnime = URI("https://myanimelist.net/anime/2994")
                 val anime = Anime(
                     _title =  "Death Note",
-                    relatedAnime = hashSetOf(
+                    _relatedAnime = hashSetOf(
                         relatedAnime,
                     ),
                 )
@@ -1454,7 +1454,7 @@ internal class AnimeKtTest {
                 val relatedAnime = URI("https://myanimelist.net/anime/2994")
                 val anime = Anime(
                     _title =  "Death Note",
-                    relatedAnime = hashSetOf(
+                    _relatedAnime = hashSetOf(
                         relatedAnime,
                     ),
                 )
@@ -1498,7 +1498,7 @@ internal class AnimeKtTest {
                 val relatedAnime = URI("https://myanimelist.net/anime/2994")
                 val anime = Anime(
                     _title =  "Death Note",
-                    relatedAnime = hashSetOf(
+                    _relatedAnime = hashSetOf(
                         relatedAnime,
                     ),
                 )
@@ -1516,7 +1516,7 @@ internal class AnimeKtTest {
                 val relatedAnime = URI("https://myanimelist.net/anime/2994")
                 val anime = Anime(
                     _title =  "Death Note",
-                    relatedAnime = hashSetOf(
+                    _relatedAnime = hashSetOf(
                         relatedAnime,
                     ),
                 )
@@ -2006,14 +2006,14 @@ internal class AnimeKtTest {
             val title  =  "Death Note"
             val a = Anime(
                 _title =  title,
-                relatedAnime = hashSetOf(
+                _relatedAnime = hashSetOf(
                     URI("https://myanimelist.net/anime/2994"),
                 ),
             )
 
             val b = Anime(
                 _title =  title,
-                relatedAnime = hashSetOf(
+                _relatedAnime = hashSetOf(
                     URI("https://myanimelist.net/anime/2994"),
                 ),
             )
@@ -2032,14 +2032,14 @@ internal class AnimeKtTest {
             val title  =  "Death Note"
             val a = Anime(
                 _title =  title,
-                relatedAnime = hashSetOf(
+                _relatedAnime = hashSetOf(
                     URI("https://myanimelist.net/anime/2994"),
                 ),
             )
 
             val b = Anime(
                 _title =  title,
-                relatedAnime = hashSetOf(
+                _relatedAnime = hashSetOf(
                     URI("https://myanimelist.net/anime/2994"),
                     URI("http://anilist.co/anime/2994"),
                 ),
@@ -2424,7 +2424,7 @@ internal class AnimeKtTest {
                 _sources = hashSetOf(
                     URI("https://myanimelist.net/anime/1535"),
                 ),
-                relatedAnime = hashSetOf(
+                _relatedAnime = hashSetOf(
                     URI("https://myanimelist.net/anime/2994"),
                 ),
             )
@@ -2434,7 +2434,7 @@ internal class AnimeKtTest {
                 _sources = hashSetOf(
                     URI("https://anidb.net/anime/4563"),
                 ),
-                relatedAnime = hashSetOf(
+                _relatedAnime = hashSetOf(
                     URI("https://anidb.net/anime/8146"),
                     URI("https://anidb.net/anime/8147"),
                 ),
@@ -3157,7 +3157,7 @@ internal class AnimeKtTest {
                 _sources = hashSetOf(
                     URI("https://myanimelist.net/anime/6351"),
                 ),
-                relatedAnime = hashSetOf(
+                _relatedAnime = hashSetOf(
                     URI("https://myanimelist.net/anime/2167"),
                 ),
                 type = SPECIAL,
@@ -3329,7 +3329,7 @@ internal class AnimeKtTest {
                     _sources = hashSetOf(
                         URI("https://myanimelist.net/anime/6351"),
                     ),
-                    relatedAnime = hashSetOf(
+                    _relatedAnime = hashSetOf(
                         URI("https://myanimelist.net/anime/2167"),
                         URI("https://myanimelist.net/anime/6351"),
                     ),
@@ -3488,7 +3488,7 @@ internal class AnimeKtTest {
                     _sources = hashSetOf(
                         source,
                     ),
-                    relatedAnime = hashSetOf(
+                    _relatedAnime = hashSetOf(
                         source,
                     ),
                     activateChecks = false,

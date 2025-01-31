@@ -65,7 +65,7 @@ public class SimklAnimeConverter(
             animeSeason = extractAnimeSeason(data),
             _sources = extractSourcesEntry(data),
             _synonyms = postProcessSynonyms(title, extractSynonyms(data)),
-            relatedAnime = extractRelatedAnime(data),
+            _relatedAnime = extractRelatedAnime(data),
             tags = extractTags(data),
         )
     }

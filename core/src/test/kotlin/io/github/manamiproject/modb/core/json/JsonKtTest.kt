@@ -30,7 +30,7 @@ internal class JsonKtTest {
                     _sources = hashSetOf(
                         URI("https://myanimelist.net/anime/6351"),
                     ),
-                    relatedAnime = hashSetOf(
+                    _relatedAnime = hashSetOf(
                         URI("https://myanimelist.net/anime/2167"),
                     ),
                     type = Anime.Type.TV,
@@ -73,7 +73,7 @@ internal class JsonKtTest {
                     _sources = hashSetOf(
                         URI("https://myanimelist.net/anime/6351"),
                     ),
-                    relatedAnime = hashSetOf(
+                    _relatedAnime = hashSetOf(
                         URI("https://myanimelist.net/anime/2167"),
                     ),
                     type = Anime.Type.TV,
@@ -210,7 +210,7 @@ internal class JsonKtTest {
                             URI("https://notify.moe/anime/3L63cKimg"),
                             URI("https://myanimelist.net/anime/6351"),
                         ),
-                        relatedAnime = hashSetOf(
+                        _relatedAnime = hashSetOf(
                             URI("https://myanimelist.net/anime/4181"),
                             URI("https://anilist.co/anime/2167"),
                             URI("https://anime-planet.com/anime/clannad"),
@@ -426,7 +426,7 @@ internal class JsonKtTest {
                         _sources = hashSetOf(
                             URI("https://myanimelist.net/anime/6351"),
                         ),
-                        relatedAnime = hashSetOf(
+                        _relatedAnime = hashSetOf(
                             URI("https://myanimelist.net/anime/2167")
                         ),
                         type = Anime.Type.TV,
@@ -511,7 +511,7 @@ internal class JsonKtTest {
                         _sources = hashSetOf(
                             URI("https://myanimelist.net/anime/6351"),
                         ),
-                        relatedAnime = hashSetOf(
+                        _relatedAnime = hashSetOf(
                             URI("https://myanimelist.net/anime/2167")
                         ),
                         type = Anime.Type.TV,
@@ -586,7 +586,7 @@ internal class JsonKtTest {
                         _sources = hashSetOf(
                             URI("https://myanimelist.net/anime/6351"),
                         ),
-                        relatedAnime = hashSetOf(
+                        _relatedAnime = hashSetOf(
                             URI("https://myanimelist.net/anime/2167")
                         ),
                         type = Anime.Type.TV,
@@ -629,7 +629,7 @@ internal class JsonKtTest {
                         _sources = hashSetOf(
                             URI("https://myanimelist.net/anime/6351"),
                         ),
-                        relatedAnime = hashSetOf(
+                        _relatedAnime = hashSetOf(
                             URI("https://myanimelist.net/anime/2167")
                         ),
                         type = Anime.Type.TV,

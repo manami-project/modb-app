@@ -55,7 +55,7 @@ internal class DefaultDownloadControlStateSchedulerTest {
                             "Furuba",
                             "フルーツバスケット",
                         ),
-                        relatedAnime = hashSetOf(
+                        _relatedAnime = hashSetOf(
                             URI("https://kitsu.app/anime/41995"),
                         ),
                     ),
@@ -122,7 +122,7 @@ internal class DefaultDownloadControlStateSchedulerTest {
                             "Neon Genesis Evangelion: The End of Evangelion",
                             "新世紀エヴァンゲリオン劇場版 THE END OF EVANGELION",
                         ),
-                        relatedAnime = hashSetOf(
+                        _relatedAnime = hashSetOf(
                             URI("https://anilist.co/anime/30"),
                         ),
                         tags = hashSetOf(

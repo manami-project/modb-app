@@ -426,7 +426,7 @@ internal class DownloadControlStateEntryTest {
                 _nextDownload = WeekOfYear.currentWeek(),
                 _anime = Anime(
                     _title = "Test",
-                    relatedAnime = hashSetOf(URI("https://example.org/real1"))
+                    _relatedAnime = hashSetOf(URI("https://example.org/real1"))
                 ),
             )
 
@@ -504,7 +504,7 @@ internal class DownloadControlStateEntryTest {
                         "Clannad: After Story OVA",
                         "クラナド　アフターストーリー　もうひとつの世界　杏編",
                     ),
-                    relatedAnime = hashSetOf(URI("https://myanimelist.net/anime/2167")),
+                    _relatedAnime = hashSetOf(URI("https://myanimelist.net/anime/2167")),
                     tags = hashSetOf(
                         "comedy",
                         "drama",
@@ -551,7 +551,7 @@ internal class DownloadControlStateEntryTest {
                         "Clannad: After Story OVA",
                         "クラナド　アフターストーリー　もうひとつの世界　杏編",
                     ),
-                    relatedAnime = hashSetOf(URI("https://myanimelist.net/anime/2167")),
+                    _relatedAnime = hashSetOf(URI("https://myanimelist.net/anime/2167")),
                     tags = hashSetOf(
                         "comedy",
                         "drama",
