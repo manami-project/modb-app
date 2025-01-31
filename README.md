@@ -14,7 +14,7 @@ This repository consists of three parts.
   * [Data lifecycle](docs/data-lifecycle.md)
 * Merging
   * [Merging](docs/merging.md)
-  * [Merge locks](docs/merge-locks) 
+  * [Merge locks](docs/merge-locks.md) 
   * [Reviewed isolated entries](docs/reviewed-isolated-entries.md)
 * Terminology
   * [Terminology](docs/terminology.md)
