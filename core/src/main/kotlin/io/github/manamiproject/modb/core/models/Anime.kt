@@ -34,7 +34,7 @@ public typealias Title = String
  * @property duration Duration of an anime having one episode or average duration of an episode if the anime has more than one episode.
  * @property _synonyms Duplicate-free list of alternative titles. Synonyms are case sensitive.
  * @property _relatedAnime Duplicate-free list of links to related anime.
- * @property tags Duplicate-free list of tags. All tags are lower case.
+ * @property _tags Duplicate-free list of tags. This contains both genres and tags from meta data providers. All tags are lower case.
  * @property activateChecks Disable any checks upon creating the object. This is only supposed to be used during safe deserialization. If created using `false` you can call [performChecks] manually.
  * @throws IllegalArgumentException if _title is blank or number of episodes is negative.
  */
@@ -50,7 +50,7 @@ public data class Anime(
     val duration: Duration = Duration.UNKNOWN,
     private val _synonyms: HashSet<Title> = HashSet(),
     private val _relatedAnime: HashSet<URI> = HashSet(),
-    val tags: HashSet<Tag> = HashSet(),
+    private val _tags: HashSet<Tag> = HashSet(),
     @Transient val activateChecks: Boolean = true,
 ) {
 
@@ -81,6 +81,14 @@ public data class Anime(
      */
     val relatedAnime: HashSet<URI>
         get() = _relatedAnime
+
+    /**
+     * Duplicate-free list of tags. This contains both genres and tags from meta data providers. All tags are lower case.
+     * @since 16.6.0
+     */
+    val tags: HashSet<Tag>
+        get() = _tags
+
 
     init {
         if (activateChecks) {

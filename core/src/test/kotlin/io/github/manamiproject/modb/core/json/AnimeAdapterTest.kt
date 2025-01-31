@@ -40,7 +40,7 @@ internal class AnimeAdapterTest {
                     "Clannad: After Story OVA",
                     "クラナド　アフターストーリー　もうひとつの世界　杏編",
                 ),
-                tags = hashSetOf(
+                _tags = hashSetOf(
                     "comedy",
                     "romance",
                 )
@@ -1180,7 +1180,7 @@ internal class AnimeAdapterTest {
                     "Clannad: After Story OVA",
                     "クラナド　アフターストーリー　もうひとつの世界　杏編",
                 ),
-                tags = hashSetOf(
+                _tags = hashSetOf(
                     "comedy",
                     "romance",
                 )
@@ -1248,7 +1248,7 @@ internal class AnimeAdapterTest {
                     "Clannad: After Story OVA",
                     "クラナド　アフターストーリー　もうひとつの世界　杏編",
                 ),
-                tags = hashSetOf(
+                _tags = hashSetOf(
                     "comedy",
                     "romance",
                 )
@@ -1479,7 +1479,7 @@ internal class AnimeAdapterTest {
             val adapter = AnimeAdapter().indent("  ")
             val obj = Anime(
                 _title = "デスノート",
-                tags = hashSetOf(value),
+                _tags = hashSetOf(value),
                 activateChecks = false,
             )
 
@@ -1515,7 +1515,7 @@ internal class AnimeAdapterTest {
             val adapter = AnimeAdapter().indent("  ")
             val obj = Anime(
                 _title = "デスノート",
-                tags = hashSetOf(value),
+                _tags = hashSetOf(value),
                 activateChecks = false,
             )
 
@@ -1603,7 +1603,7 @@ internal class AnimeAdapterTest {
                     "くらなど",
                     "ＣＬＡＮＮＡＤ -クラナド-",
                 ),
-                tags = hashSetOf(
+                _tags = hashSetOf(
                     "baseball",
                     "based on a visual novel",
                     "basketball",

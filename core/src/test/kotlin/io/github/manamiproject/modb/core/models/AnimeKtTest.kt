@@ -2059,7 +2059,7 @@ internal class AnimeKtTest {
             val title  =  "Death Note"
             val a = Anime(
                 _title =  title,
-                tags = hashSetOf(
+                _tags = hashSetOf(
                     "comedy",
                     "slice of life",
                 ),
@@ -2067,7 +2067,7 @@ internal class AnimeKtTest {
 
             val b = Anime(
                 _title =  title,
-                tags = hashSetOf(
+                _tags = hashSetOf(
                     "slice of life",
                     "comedy",
                 ),
@@ -2087,14 +2087,14 @@ internal class AnimeKtTest {
             val title  =  "Death Note"
             val a = Anime(
                 _title =  title,
-                tags = hashSetOf(
+                _tags = hashSetOf(
                     "slice of life",
                 ),
             )
 
             val b = Anime(
                 _title =  title,
-                tags = hashSetOf(
+                _tags = hashSetOf(
                     "slice of life",
                     "comedy",
                 ),
@@ -2114,7 +2114,7 @@ internal class AnimeKtTest {
             val title  =  "Death Note"
             val a = Anime(
                 _title =  title,
-                tags = hashSetOf(
+                _tags = hashSetOf(
                     "slice of life",
                 ),
             )
@@ -2460,7 +2460,7 @@ internal class AnimeKtTest {
             // given
             val anime = Anime(
                 _title =  "Death Note",
-                tags = hashSetOf(
+                _tags = hashSetOf(
                     "Psychological",
                     "Thriller",
                     "Shounen",
@@ -2469,7 +2469,7 @@ internal class AnimeKtTest {
 
             val other = Anime(
                 _title =  "Death Note",
-                tags = hashSetOf(
+                _tags = hashSetOf(
                     "Mystery",
                     "Police",
                     "Psychological",
@@ -2507,7 +2507,7 @@ internal class AnimeKtTest {
                 // when
                 val result = Anime(
                     _title = "Test",
-                    tags = hashSetOf(
+                    _tags = hashSetOf(
                         tag,
                     ),
                 )
@@ -2526,7 +2526,7 @@ internal class AnimeKtTest {
                 // when
                 val result = Anime(
                     _title = "Test",
-                    tags = hashSetOf(
+                    _tags = hashSetOf(
                         " $expectedTag",
                     ),
                 )
@@ -2545,7 +2545,7 @@ internal class AnimeKtTest {
                 // when
                 val result = Anime(
                     _title = "Test",
-                    tags = hashSetOf(
+                    _tags = hashSetOf(
                         "$expectedTag ",
                     ),
                 )
@@ -2564,7 +2564,7 @@ internal class AnimeKtTest {
                 // when
                 val result = Anime(
                     _title = "Test",
-                    tags = hashSetOf(
+                    _tags = hashSetOf(
                         "slice     of      life",
                     ),
                 )
@@ -2583,7 +2583,7 @@ internal class AnimeKtTest {
                 // when
                 val result = Anime(
                     _title = "Test",
-                    tags = hashSetOf(
+                    _tags = hashSetOf(
                         "slice\tof\tlife",
                     ),
                 )
@@ -2602,7 +2602,7 @@ internal class AnimeKtTest {
                 // when
                 val result = Anime(
                     _title = "Test",
-                    tags = hashSetOf(
+                    _tags = hashSetOf(
                         "slice\nof\nlife",
                     ),
                 )
@@ -2621,7 +2621,7 @@ internal class AnimeKtTest {
                 // when
                 val result = Anime(
                     _title = "Test",
-                    tags = hashSetOf(
+                    _tags = hashSetOf(
                         "slice\r\nof\r\nlife",
                     ),
                 )
@@ -2637,7 +2637,7 @@ internal class AnimeKtTest {
                 // when
                 val result = Anime(
                     _title = "Test",
-                    tags = hashSetOf(
+                    _tags = hashSetOf(
                         EMPTY,
                     ),
                 )
@@ -2651,7 +2651,7 @@ internal class AnimeKtTest {
                 // when
                 val result = Anime(
                     _title = "Test",
-                    tags = hashSetOf(
+                    _tags = hashSetOf(
                         "     ",
                     ),
                 )
@@ -2669,7 +2669,7 @@ internal class AnimeKtTest {
                 // when
                 val result = Anime(
                     _title = "Test",
-                    tags = hashSetOf(
+                    _tags = hashSetOf(
                         tag2,
                         tag1,
                         tag1,
@@ -2691,7 +2691,7 @@ internal class AnimeKtTest {
                 // when
                 val obj = Anime(
                     _title = "デスノート",
-                    tags = hashSetOf(
+                    _tags = hashSetOf(
                         value,
                     ),
                     activateChecks = false,
@@ -3175,7 +3175,7 @@ internal class AnimeKtTest {
                     "Clannad: After Story OVA",
                     "クラナド　アフターストーリー　もうひとつの世界　杏編",
                 ),
-                tags = hashSetOf(
+                _tags = hashSetOf(
                     "comedy",
                     "drama",
                     "romance",
@@ -3429,7 +3429,7 @@ internal class AnimeKtTest {
                 // given
                 val obj = Anime(
                     _title = "デスノート",
-                    tags = hashSetOf(
+                    _tags = hashSetOf(
                         value,
                     ),
                     activateChecks = false,
@@ -3437,7 +3437,7 @@ internal class AnimeKtTest {
 
                 val expected = Anime(
                     _title = "デスノート",
-                    tags = hashSetOf(
+                    _tags = hashSetOf(
                         "death note",
                     ),
                     activateChecks = false,
@@ -3456,7 +3456,7 @@ internal class AnimeKtTest {
                 // given
                 val obj = Anime(
                     _title = "デスノート",
-                    tags = hashSetOf(
+                    _tags = hashSetOf(
                         value,
                     ),
                     activateChecks = false,
@@ -3464,7 +3464,7 @@ internal class AnimeKtTest {
 
                 val expected = Anime(
                     _title = "デスノート",
-                    tags = HashSet(),
+                    _tags = HashSet(),
                     activateChecks = false,
                 )
 

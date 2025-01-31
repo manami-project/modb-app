@@ -450,7 +450,7 @@ internal class DownloadControlStateEntryTest {
                 _nextDownload = WeekOfYear.currentWeek(),
                 _anime = Anime(
                     _title = "Test",
-                    tags = hashSetOf(
+                    _tags = hashSetOf(
                         "abcd",
                         "efgh",
                     ),
@@ -459,7 +459,7 @@ internal class DownloadControlStateEntryTest {
 
             val anime = Anime(
                 _title = "Test",
-                tags = hashSetOf(
+                _tags = hashSetOf(
                     "efgh",
                 ),
             )
@@ -505,7 +505,7 @@ internal class DownloadControlStateEntryTest {
                         "クラナド　アフターストーリー　もうひとつの世界　杏編",
                     ),
                     _relatedAnime = hashSetOf(URI("https://myanimelist.net/anime/2167")),
-                    tags = hashSetOf(
+                    _tags = hashSetOf(
                         "comedy",
                         "drama",
                         "romance",
@@ -552,7 +552,7 @@ internal class DownloadControlStateEntryTest {
                         "クラナド　アフターストーリー　もうひとつの世界　杏編",
                     ),
                     _relatedAnime = hashSetOf(URI("https://myanimelist.net/anime/2167")),
-                    tags = hashSetOf(
+                    _tags = hashSetOf(
                         "comedy",
                         "drama",
                         "romance",

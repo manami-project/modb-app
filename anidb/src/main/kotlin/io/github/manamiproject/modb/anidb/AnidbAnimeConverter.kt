@@ -76,7 +76,7 @@ public class AnidbAnimeConverter(
             _sources = extractSourcesEntry(data),
             _synonyms = extractSynonyms(data),
             _relatedAnime = extractRelatedAnime(data),
-            tags = extractTags(data),
+            _tags = extractTags(data),
         )
     }
 
