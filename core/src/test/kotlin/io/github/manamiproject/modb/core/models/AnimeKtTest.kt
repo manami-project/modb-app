@@ -158,7 +158,7 @@ internal class AnimeKtTest {
                 // when
                 val result = Anime(
                     _title =  title,
-                    synonyms = hashSetOf(
+                    _synonyms = hashSetOf(
                         title,
                     ),
                 )
@@ -172,7 +172,7 @@ internal class AnimeKtTest {
                 // when
                 val result = Anime(
                     _title = "Death Note",
-                    synonyms = hashSetOf(
+                    _synonyms = hashSetOf(
                         "         ",
                     ),
                 )
@@ -186,7 +186,7 @@ internal class AnimeKtTest {
                 // when
                 val result = Anime(
                     _title = "Death Note",
-                    synonyms = hashSetOf(
+                    _synonyms = hashSetOf(
                         "\u200C",
                     ),
                 )
@@ -203,7 +203,7 @@ internal class AnimeKtTest {
                 // when
                 val result = Anime(
                     _title = "Death Note",
-                    synonyms = hashSetOf(
+                    _synonyms = hashSetOf(
                         synonym,
                     ),
                 )
@@ -222,7 +222,7 @@ internal class AnimeKtTest {
                 // when
                 val result = Anime(
                     _title = "Death Note",
-                    synonyms = hashSetOf(
+                    _synonyms = hashSetOf(
                         synonym,
                         synonym,
                     ),
@@ -242,7 +242,7 @@ internal class AnimeKtTest {
                 // when
                 val result = Anime(
                     _title = title,
-                    synonyms = hashSetOf(
+                    _synonyms = hashSetOf(
                         title.uppercase(),
                         title.lowercase(),
                     ),
@@ -263,7 +263,7 @@ internal class AnimeKtTest {
                 // when
                 val result = Anime(
                     _title = "デスノート",
-                    synonyms = hashSetOf(
+                    _synonyms = hashSetOf(
                         title,
                         title.lowercase(),
                         title.uppercase(),
@@ -287,7 +287,7 @@ internal class AnimeKtTest {
                 // when
                 val result = Anime(
                     _title = "Title",
-                    synonyms = hashSetOf(
+                    _synonyms = hashSetOf(
                         " $expectedTitleOne",
                         " $expectedTitleTwo",
                     ),
@@ -309,7 +309,7 @@ internal class AnimeKtTest {
                 // when
                 val result = Anime(
                     _title = "Title",
-                    synonyms = hashSetOf(
+                    _synonyms = hashSetOf(
                         "$expectedTitleOne ",
                         "$expectedTitleTwo ",
                     ),
@@ -331,7 +331,7 @@ internal class AnimeKtTest {
                 // when
                 val result = Anime(
                     _title = "Title",
-                    synonyms = hashSetOf(
+                    _synonyms = hashSetOf(
                         "Death        Note",
                         "Made      in        Abyss",
                     ),
@@ -353,7 +353,7 @@ internal class AnimeKtTest {
                 // when
                 val result = Anime(
                     _title = "Title",
-                    synonyms = hashSetOf(
+                    _synonyms = hashSetOf(
                         "Death\tNote",
                         "Made\tin\tAbyss",
                     ),
@@ -375,7 +375,7 @@ internal class AnimeKtTest {
                 // when
                 val result = Anime(
                     _title = "Title",
-                    synonyms = hashSetOf(
+                    _synonyms = hashSetOf(
                         "Death\nNote",
                         "Made\nin\nAbyss",
                     ),
@@ -397,7 +397,7 @@ internal class AnimeKtTest {
                 // when
                 val result = Anime(
                     _title = "Title",
-                    synonyms = hashSetOf(
+                    _synonyms = hashSetOf(
                         "Death\r\nNote",
                         "Made\r\nin\r\nAbyss",
                     ),
@@ -419,7 +419,7 @@ internal class AnimeKtTest {
                 // when
                 val result = Anime(
                     _title = "Title",
-                    synonyms = hashSetOf(
+                    _synonyms = hashSetOf(
                         "Death\u200CNote",
                         "Made\u200Cin\u200CAbyss",
                     ),
@@ -438,7 +438,7 @@ internal class AnimeKtTest {
                 // when
                 val obj = Anime(
                     _title = "デスノート",
-                    synonyms = hashSetOf(value),
+                    _synonyms = hashSetOf(value),
                     activateChecks = false,
                 )
 
@@ -529,7 +529,7 @@ internal class AnimeKtTest {
 
                 val anime = Anime(
                     _title = "Death Note",
-                    synonyms = hashSetOf(
+                    _synonyms = hashSetOf(
                         two,
                     ),
                 )
@@ -572,7 +572,7 @@ internal class AnimeKtTest {
                 val title  =  "Death Note"
                 val anime = Anime(
                     _title = "デスノート",
-                    synonyms = hashSetOf(
+                    _synonyms = hashSetOf(
                         title.lowercase(),
                         title.uppercase(),
                     ),
@@ -810,7 +810,7 @@ internal class AnimeKtTest {
 
                 val anime = Anime(
                     _title = "Death Note",
-                    synonyms = hashSetOf(
+                    _synonyms = hashSetOf(
                         two,
                     ),
                 )
@@ -1633,14 +1633,14 @@ internal class AnimeKtTest {
             val title  =  "Death Note"
             val a = Anime(
                 _title =  title,
-                synonyms = hashSetOf(
+                _synonyms = hashSetOf(
                     "Caderno da Morte",
                 ),
             )
 
             val b = Anime(
                 _title =  title,
-                synonyms = hashSetOf(
+                _synonyms = hashSetOf(
                     "Caderno da Morte",
                 ),
             )
@@ -1659,14 +1659,14 @@ internal class AnimeKtTest {
             val title  =  "Death Note"
             val a = Anime(
                 _title =  title,
-                synonyms = hashSetOf(
+                _synonyms = hashSetOf(
                     "Caderno da Morte",
                 ),
             )
 
             val b = Anime(
                 _title =  title,
-                synonyms = hashSetOf(
+                _synonyms = hashSetOf(
                     "Caderno da Morte",
                     "Quaderno della Morte",
                 ),
@@ -2391,14 +2391,14 @@ internal class AnimeKtTest {
             // given
             val anime = Anime(
                 _title =  "Death Note",
-                synonyms = hashSetOf(
+                _synonyms = hashSetOf(
                     "Caderno da Morte",
                 ),
             )
 
             val other = Anime(
                 _title =  "DEATH NOTE",
-                synonyms = hashSetOf(
+                _synonyms = hashSetOf(
                     "Caderno da Morte",
                     "Quaderno della Morte",
                 ),
@@ -3170,7 +3170,7 @@ internal class AnimeKtTest {
                 picture = URI("https://cdn.myanimelist.net/images/anime/10/19621.jpg"),
                 thumbnail = URI("https://cdn.myanimelist.net/images/anime/10/19621t.jpg"),
                 duration = Duration(2, MINUTES),
-                synonyms = hashSetOf(
+                _synonyms = hashSetOf(
                     "Clannad ~After Story~: Another World, Kyou Chapter",
                     "Clannad: After Story OVA",
                     "クラナド　アフターストーリー　もうひとつの世界　杏編",
@@ -3373,7 +3373,7 @@ internal class AnimeKtTest {
                 // given
                 val obj = Anime(
                     _title = "デスノート",
-                    synonyms = hashSetOf(
+                    _synonyms = hashSetOf(
                         value,
                     ),
                     activateChecks = false,
@@ -3381,7 +3381,7 @@ internal class AnimeKtTest {
 
                 val expected = Anime(
                     _title = "デスノート",
-                    synonyms = hashSetOf(
+                    _synonyms = hashSetOf(
                         "Death Note",
                     ),
                     activateChecks = false,
@@ -3400,7 +3400,7 @@ internal class AnimeKtTest {
                 // given
                 val obj = Anime(
                     _title = "デスノート",
-                    synonyms = hashSetOf(
+                    _synonyms = hashSetOf(
                         value,
                     ),
                     activateChecks = false,
@@ -3408,7 +3408,7 @@ internal class AnimeKtTest {
 
                 val expected = Anime(
                     _title = "デスノート",
-                    synonyms = HashSet(),
+                    _synonyms = HashSet(),
                     activateChecks = false,
                 )
 

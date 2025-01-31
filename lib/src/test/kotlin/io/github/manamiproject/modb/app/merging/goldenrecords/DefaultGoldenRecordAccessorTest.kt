@@ -80,7 +80,7 @@ internal class DefaultGoldenRecordAccessorTest {
                 episodes = 1,
                 picture = URI("https://cdn.myanimelist.net/images/anime/1173/95167.jpg"),
                 thumbnail = URI("https://cdn.myanimelist.net/images/anime/1173/95167t.jpg"),
-                synonyms = hashSetOf(
+                _synonyms = hashSetOf(
                     "Made in Abyss Movie",
                     "Made in Abyss Movie 1: Journey's Dawn",
                     "劇場版総集編【前編】メイドインアビス 旅立ちの夜明け",
@@ -114,7 +114,7 @@ internal class DefaultGoldenRecordAccessorTest {
                 episodes = 1,
                 picture = URI("https://cdn.myanimelist.net/images/anime/1173/95167.jpg"),
                 thumbnail = URI("https://cdn.myanimelist.net/images/anime/1173/95167t.jpg"),
-                synonyms = hashSetOf(
+                _synonyms = hashSetOf(
                     "Made in Abyss Movie",
                     "Made in Abyss Movie 1: Journey's Dawn",
                     "劇場版総集編【前編】メイドインアビス 旅立ちの夜明け",
@@ -180,7 +180,7 @@ internal class DefaultGoldenRecordAccessorTest {
                 episodes = 13,
                 picture = URI("https://cdn.myanimelist.net/images/anime/6/86733.jpg"),
                 thumbnail = URI("https://cdn.myanimelist.net/images/anime/6/86733t.jpg"),
-                synonyms = hashSetOf(
+                _synonyms = hashSetOf(
                     "メイドインアビス",
                 ),
                 relatedAnime = hashSetOf(
@@ -199,7 +199,7 @@ internal class DefaultGoldenRecordAccessorTest {
                 episodes = 1,
                 picture = URI("https://cdn.myanimelist.net/images/anime/1173/95167.jpg"),
                 thumbnail = URI("https://cdn.myanimelist.net/images/anime/1173/95167t.jpg"),
-                synonyms = hashSetOf(
+                _synonyms = hashSetOf(
                     "Made in Abyss Movie 1: Journey's Dawn",
                     "劇場版総集編【前編】メイドインアビス 旅立ちの夜明け",
                 ),
@@ -218,7 +218,7 @@ internal class DefaultGoldenRecordAccessorTest {
                 episodes = 13,
                 picture = URI("https://cdn.myanimelist.net/images/anime/6/89879.jpg"),
                 thumbnail = URI("https://cdn.myanimelist.net/images/anime/6/89879t.jpg"),
-                synonyms = hashSetOf(
+                _synonyms = hashSetOf(
                     "A Place Further Than The Universe",
                     "Uchuu yori mo Tooi Basho",
                     "A Story That Leads to the Antarctica",
@@ -239,7 +239,7 @@ internal class DefaultGoldenRecordAccessorTest {
                 episodes = 13,
                 picture = URI("https://cdn.myanimelist.net/images/anime/1897/98785.jpg"),
                 thumbnail = URI("https://cdn.myanimelist.net/images/anime/1897/98785t.jpg"),
-                synonyms = hashSetOf(
+                _synonyms = hashSetOf(
                     "Sora yori mo Tooi Basho next episode previews",
                     "宇宙よりも遠い場所 予告 WEB限定",
                 ),
@@ -292,7 +292,7 @@ internal class DefaultGoldenRecordAccessorTest {
                 episodes = 13,
                 picture = URI("https://cdn.myanimelist.net/images/anime/6/89879.jpg"),
                 thumbnail = URI("https://cdn.myanimelist.net/images/anime/6/89879t.jpg"),
-                synonyms = hashSetOf(
+                _synonyms = hashSetOf(
                     "A Place Further Than The Universe",
                     "Uchuu yori mo Tooi Basho",
                     "A Story That Leads to the Antarctica",
@@ -531,7 +531,7 @@ internal class DefaultGoldenRecordAccessorTest {
                 episodes = 1,
                 picture = URI("https://cdn.myanimelist.net/images/anime/1173/95167.jpg"),
                 thumbnail = URI("https://cdn.myanimelist.net/images/anime/1173/95167t.jpg"),
-                synonyms = hashSetOf(
+                _synonyms = hashSetOf(
                     "Made in Abyss Movie 1: Journey's Dawn",
                     "劇場版総集編【前編】メイドインアビス 旅立ちの夜明け",
                 ),
@@ -633,7 +633,7 @@ internal class DefaultGoldenRecordAccessorTest {
                 episodes = 1,
                 picture = URI("https://cdn.myanimelist.net/images/anime/1173/95167.jpg"),
                 thumbnail = URI("https://cdn.myanimelist.net/images/anime/1173/95167t.jpg"),
-                synonyms = hashSetOf(
+                _synonyms = hashSetOf(
                     "Made in Abyss Movie 1: Journey's Dawn",
                     "劇場版総集編【前編】メイドインアビス 旅立ちの夜明け",
                 ),
@@ -677,7 +677,7 @@ internal class DefaultGoldenRecordAccessorTest {
                 episodes = 1,
                 picture = URI("https://cdn.myanimelist.net/images/anime/1173/95167.jpg"),
                 thumbnail = URI("https://cdn.myanimelist.net/images/anime/1173/95167t.jpg"),
-                synonyms = hashSetOf(
+                _synonyms = hashSetOf(
                     "Made in Abyss Movie",
                     "Made in Abyss Movie 1: Journey's Dawn",
                     "劇場版総集編【前編】メイドインアビス 旅立ちの夜明け"
@@ -697,7 +697,7 @@ internal class DefaultGoldenRecordAccessorTest {
                 episodes = 1,
                 picture = URI("https://cdn.myanimelist.net/images/anime/1336/95168.jpg"),
                 thumbnail = URI("https://cdn.myanimelist.net/images/anime/1336/95168t.jpg"),
-                synonyms = hashSetOf(
+                _synonyms = hashSetOf(
                     "Made in Abyss Movie",
                     "Made in Abyss Movie 2: Wandering Twilight",
                     "劇場版総集編【後編】メイドインアビス 放浪する黄昏",
@@ -717,7 +717,7 @@ internal class DefaultGoldenRecordAccessorTest {
                 episodes = 13,
                 picture = URI("https://cdn.myanimelist.net/images/anime/6/89879.jpg"),
                 thumbnail = URI("https://cdn.myanimelist.net/images/anime/6/89879t.jpg"),
-                synonyms = hashSetOf(
+                _synonyms = hashSetOf(
                     "A Place Further Than The Universe",
                     "Uchuu yori mo Tooi Basho",
                     "A Story That Leads to the Antarctica",
@@ -738,7 +738,7 @@ internal class DefaultGoldenRecordAccessorTest {
                 episodes = 13,
                 picture = URI("https://cdn.myanimelist.net/images/anime/1897/98785.jpg"),
                 thumbnail = URI("https://cdn.myanimelist.net/images/anime/1897/98785t.jpg"),
-                synonyms = hashSetOf(
+                _synonyms = hashSetOf(
                     "Sora yori mo Tooi Basho next episode previews",
                     "宇宙よりも遠い場所 予告 WEB限定",
                 ),
@@ -786,7 +786,7 @@ internal class DefaultGoldenRecordAccessorTest {
                 episodes = 13,
                 picture = URI("https://cdn.myanimelist.net/images/anime/6/89879.jpg"),
                 thumbnail = URI("https://cdn.myanimelist.net/images/anime/6/89879t.jpg"),
-                synonyms = hashSetOf(
+                _synonyms = hashSetOf(
                     "Uchuu yori mo Tooi Basho",
                     "A Story That Leads to the Antarctica",
                     "Yorimoi",
@@ -804,7 +804,7 @@ internal class DefaultGoldenRecordAccessorTest {
                 _title = "A Place Further Than the Universe",
                 type = TV,
                 episodes = 13,
-                synonyms = hashSetOf(
+                _synonyms = hashSetOf(
                     "Sora yori mo Tooi Basho",
                 ),
             )
@@ -833,7 +833,7 @@ internal class DefaultGoldenRecordAccessorTest {
             val anime = Anime(
                 _title =  "Death Note",
                 duration = Duration(25, MINUTES),
-                synonyms = hashSetOf(
+                _synonyms = hashSetOf(
                     "Caderno da Morte",
                 ),
             )
@@ -855,7 +855,7 @@ internal class DefaultGoldenRecordAccessorTest {
             val goldenAnime = Anime(
                 _title =  "Death Note",
                 duration = Duration(25, MINUTES),
-                synonyms = hashSetOf(
+                _synonyms = hashSetOf(
                     "Caderno da Morte",
                 ),
             )
@@ -866,7 +866,7 @@ internal class DefaultGoldenRecordAccessorTest {
             val otherAnime = Anime(
                 _title =  "DEATH NOTE",
                 duration = Duration(25, MINUTES),
-                synonyms = hashSetOf(
+                _synonyms = hashSetOf(
                     "Caderno da Morte",
                     "Quaderno della Morte",
                 ),

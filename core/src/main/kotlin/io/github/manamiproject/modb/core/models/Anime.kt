@@ -25,7 +25,6 @@ public typealias Title = String
  * @since 3.1.0
  * @property _title Main title. Must not be blank.
  * @property _sources Duplicate-free list of sources from which this anime was created.
- * @property synonyms Duplicate-free list of alternative titles. Synonyms are case sensitive.
  * @property type Distribution type. **Default** is [Anime.Type.UNKNOWN].
  * @property episodes Number of episodes. **Default** is `0`.
  * @property status Publishing status. **Default** is [Anime.Status.UNKNOWN].
@@ -33,6 +32,7 @@ public typealias Title = String
  * @property picture [URI] to a (large) poster/cover. **Default** is a self created "not found" pic.
  * @property thumbnail [URI] to a thumbnail poster/cover. **Default** is a self created "not found" pic.
  * @property duration Duration of an anime having one episode or average duration of an episode if the anime has more than one episode.
+ * @property _synonyms Duplicate-free list of alternative titles. Synonyms are case sensitive.
  * @property relatedAnime Duplicate-free list of related anime.
  * @property tags Duplicate-free list of tags. All tags are lower case.
  * @property activateChecks Disable any checks upon creating the object. This is only supposed to be used during safe deserialization. If created using `false` you can call [performChecks] manually.
@@ -48,7 +48,7 @@ public data class Anime(
     val picture: URI = NO_PICTURE,
     val thumbnail: URI = NO_PICTURE_THUMBNAIL,
     val duration: Duration = Duration.UNKNOWN,
-    val synonyms: HashSet<Title> = HashSet(),
+    private val _synonyms: HashSet<Title> = HashSet(),
     val relatedAnime: HashSet<URI> = HashSet(),
     val tags: HashSet<Tag> = HashSet(),
     @Transient val activateChecks: Boolean = true,
@@ -67,6 +67,13 @@ public data class Anime(
      */
     val sources: HashSet<URI>
         get() = _sources
+
+    /**
+     * Duplicate-free list of alternative titles. Synonyms are case sensitive.
+     * @since 16.6.0
+     */
+    val synonyms: HashSet<Title>
+        get() = _synonyms
 
     init {
         if (activateChecks) {
