@@ -147,6 +147,24 @@ internal class AnimeKtTest {
     @Nested
     inner class SynonymsTests   {
 
+        @Test
+        fun `ensure that you cannot directly modify the internal hashset`() {
+            // given
+            val anime = Anime(
+                _title = "test",
+                _synonyms = hashSetOf(
+                    "other title1",
+                    "other title2",
+                ),
+            )
+
+            // when
+            anime.synonyms.clear()
+
+            // then
+            assertThat(anime.synonyms).isNotEmpty()
+        }
+
         @Nested
         inner class AddSynonymsConstructorTests {
 
@@ -1013,6 +1031,24 @@ internal class AnimeKtTest {
     @Nested
     inner class SourcesTests {
 
+        @Test
+        fun `ensure that you cannot directly modify the internal hashset`() {
+            // given
+            val anime = Anime(
+                _title = "test",
+                _sources = hashSetOf(
+                    URI("https://example.org/anime/1535"),
+                    URI("https://myanimelist.net/anime/1535"),
+                ),
+            )
+
+            // when
+            anime.sources.clear()
+
+            // then
+            assertThat(anime.sources).isNotEmpty()
+        }
+
         @Nested
         inner class AddSourcesConstructorTests {
 
@@ -1281,6 +1317,24 @@ internal class AnimeKtTest {
 
         @Nested
         inner class AddRelatedAnimeConstructorTests {
+
+            @Test
+            fun `ensure that you cannot directly modify the internal hashset`() {
+                // given
+                val anime = Anime(
+                    _title = "test",
+                    _relatedAnime = hashSetOf(
+                        URI("https://example.org/anime/1535"),
+                        URI("https://myanimelist.net/anime/1535"),
+                    ),
+                )
+
+                // when
+                anime.relatedAnime.clear()
+
+                // then
+                assertThat(anime.relatedAnime).isNotEmpty()
+            }
 
             @Test
             fun `add related anime`() {
@@ -2500,6 +2554,24 @@ internal class AnimeKtTest {
         inner class AddTagsConstructorTests {
 
             @Test
+            fun `ensure that you cannot directly modify the internal hashset`() {
+                // given
+                val anime = Anime(
+                    _title = "test",
+                    _tags = hashSetOf(
+                        "thriller",
+                        "acion",
+                    ),
+                )
+
+                // when
+                anime.tags.clear()
+
+                // then
+                assertThat(anime.tags).isNotEmpty()
+            }
+
+            @Test
             fun `tags added by constructor are set to lower case`() {
                 // given
                 val tag = "EXAMPLE"
@@ -3194,7 +3266,6 @@ internal class AnimeKtTest {
                     Anime(
                       sources = [https://myanimelist.net/anime/6351]
                       title = Clannad: After Story - Mou Hitotsu no Sekai, Kyou-hen
-                      synonyms = [Clannad ~After Story~: Another World, Kyou Chapter, Clannad: After Story OVA, クラナド　アフターストーリー　もうひとつの世界　杏編]
                       type = SPECIAL
                       episodes = 1
                       status = FINISHED
@@ -3202,6 +3273,7 @@ internal class AnimeKtTest {
                       picture = https://cdn.myanimelist.net/images/anime/10/19621.jpg
                       thumbnail = https://cdn.myanimelist.net/images/anime/10/19621t.jpg
                       duration = 120 seconds
+                      synonyms = [Clannad ~After Story~: Another World, Kyou Chapter, Clannad: After Story OVA, クラナド　アフターストーリー　もうひとつの世界　杏編]
                       relatedAnime = [https://myanimelist.net/anime/2167]
                       tags = [comedy, drama, romance, school, slice of life, supernatural]
                     )
