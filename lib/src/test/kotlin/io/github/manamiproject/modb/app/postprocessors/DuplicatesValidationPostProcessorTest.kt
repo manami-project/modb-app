@@ -78,7 +78,6 @@ internal class DuplicatesValidationPostProcessorTest {
             Found duplicates in DCS files: [DownloadControlStateEntry(_weeksWihoutChange=1, _lastDownloaded=2024-32, _nextDownload=2024-33, _anime=Anime(
               sources = []
               title = example
-              synonyms = []
               type = UNKNOWN
               episodes = 0
               status = UNKNOWN
@@ -86,6 +85,7 @@ internal class DuplicatesValidationPostProcessorTest {
               picture = https://raw.githubusercontent.com/manami-project/anime-offline-database/master/pics/no_pic.png
               thumbnail = https://raw.githubusercontent.com/manami-project/anime-offline-database/master/pics/no_pic_thumbnail.png
               duration = 0 seconds
+              synonyms = []
               relatedAnime = []
               tags = []
             ))]""".trimIndent())
@@ -128,7 +128,6 @@ internal class DuplicatesValidationPostProcessorTest {
             Found duplicates in anime entries of DCS files: [Anime(
               sources = []
               title = example
-              synonyms = []
               type = UNKNOWN
               episodes = 0
               status = UNKNOWN
@@ -136,6 +135,7 @@ internal class DuplicatesValidationPostProcessorTest {
               picture = https://raw.githubusercontent.com/manami-project/anime-offline-database/master/pics/no_pic.png
               thumbnail = https://raw.githubusercontent.com/manami-project/anime-offline-database/master/pics/no_pic_thumbnail.png
               duration = 0 seconds
+              synonyms = []
               relatedAnime = []
               tags = []
             )]""".trimIndent())
@@ -227,7 +227,6 @@ internal class DuplicatesValidationPostProcessorTest {
             Found duplicates in dataset entries: [Anime(
               sources = []
               title = example
-              synonyms = []
               type = UNKNOWN
               episodes = 0
               status = UNKNOWN
@@ -235,6 +234,7 @@ internal class DuplicatesValidationPostProcessorTest {
               picture = https://raw.githubusercontent.com/manami-project/anime-offline-database/master/pics/no_pic.png
               thumbnail = https://raw.githubusercontent.com/manami-project/anime-offline-database/master/pics/no_pic_thumbnail.png
               duration = 0 seconds
+              synonyms = []
               relatedAnime = []
               tags = []
             )]""".trimIndent())

@@ -66,28 +66,28 @@ public data class Anime(
      * @since 16.6.0
      */
     val sources: HashSet<URI>
-        get() = _sources
+        get() = _sources.toHashSet()
 
     /**
      * Duplicate-free list of alternative titles. Synonyms are case sensitive.
      * @since 16.6.0
      */
     val synonyms: HashSet<Title>
-        get() = _synonyms
+        get() = _synonyms.toHashSet()
 
     /**
      * Duplicate-free list of links to related anime.
      * @since 16.6.0
      */
     val relatedAnime: HashSet<URI>
-        get() = _relatedAnime
+        get() = _relatedAnime.toHashSet()
 
     /**
      * Duplicate-free list of tags. This contains both genres and tags from meta data providers. All tags are lower case.
      * @since 16.6.0
      */
     val tags: HashSet<Tag>
-        get() = _tags
+        get() = _tags.toHashSet()
 
 
     init {
@@ -119,7 +119,7 @@ public data class Anime(
             .map { it.normalize() }
             .filter { it.neitherNullNorBlank() }
             .filter { it != _title }
-            .forEach { this.synonyms.add(it) }
+            .forEach { _synonyms.add(it) }
 
         return this
     }
@@ -141,7 +141,7 @@ public data class Anime(
      * @return Same instance.
      */
     public fun addSources(sources: Collection<URI>): Anime {
-        this.sources.addAll(sources)
+        _sources.addAll(sources)
 
         removeRelatedAnimeIf { sources.contains(it) }
 
@@ -155,7 +155,7 @@ public data class Anime(
      * @return Same instance.
      */
     public fun removeSourceIf(condition: (URI) -> Boolean): Anime {
-        sources.removeIf { condition.invoke(it) }
+        _sources.removeIf { condition.invoke(it) }
         return this
     }
 
@@ -177,8 +177,8 @@ public data class Anime(
      */
     public fun addRelatedAnime(relatedAnime: Collection<URI>): Anime {
         relatedAnime.asSequence()
-            .filter { !sources.contains(it) }
-            .forEach { this.relatedAnime.add(it) }
+            .filter { !_sources.contains(it) }
+            .forEach { _relatedAnime.add(it) }
 
         return this
     }
@@ -190,7 +190,7 @@ public data class Anime(
      * @return Same instance.
      */
     public fun removeRelatedAnimeIf(condition: (URI) -> Boolean): Anime {
-        relatedAnime.removeIf { condition.invoke(it) }
+        _relatedAnime.removeIf { condition.invoke(it) }
         return this
     }
 
@@ -215,7 +215,7 @@ public data class Anime(
             .map { it.normalize() }
             .filter { it.neitherNullNorBlank() }
             .map { it.lowercase() }
-            .forEach { this.tags.add(it) }
+            .forEach { _tags.add(it) }
 
         return this
     }
@@ -286,12 +286,12 @@ public data class Anime(
             ),
         ).addSources(sources)
             .addSources(anime.sources)
-            .addSynonyms(synonyms)
+            .addSynonyms(_synonyms)
             .addSynonyms(anime.title)
             .addSynonyms(anime.synonyms)
-            .addRelatedAnime(relatedAnime)
+            .addRelatedAnime(_relatedAnime)
             .addRelatedAnime(anime.relatedAnime)
-            .addTags(tags)
+            .addTags(_tags)
             .addTags(anime.tags)
     }
 
@@ -307,20 +307,20 @@ public data class Anime(
 
         require(episodes >= 0) { "Episodes cannot have a negative value." }
 
-        val uncheckedSources: Collection<URI> = sources.toSet()
-        sources.clear()
+        val uncheckedSources: Collection<URI> = _sources.toSet()
+        _sources.clear()
         addSources(uncheckedSources)
 
-        val uncheckedSynonyms: Collection<Title> = synonyms.toSet()
-        synonyms.clear()
+        val uncheckedSynonyms: Collection<Title> = _synonyms.toSet()
+        _synonyms.clear()
         addSynonyms(uncheckedSynonyms)
 
-        val uncheckedRelatedAnime: Collection<URI> = relatedAnime.toSet()
-        relatedAnime.clear()
+        val uncheckedRelatedAnime: Collection<URI> = _relatedAnime.toSet()
+        _relatedAnime.clear()
         addRelatedAnime(uncheckedRelatedAnime)
 
-        val uncheckedTags: Collection<Tag> = tags.toList()
-        tags.clear()
+        val uncheckedTags: Collection<Tag> = _tags.toList()
+        _tags.clear()
         addTags(uncheckedTags)
 
         return this
@@ -333,8 +333,7 @@ public data class Anime(
         other as Anime
 
         if (_title != other._title) return false
-        if (sources != other.sources) return false
-        if (synonyms != other.synonyms) return false
+        if (_sources != other.sources) return false
         if (type != other.type) return false
         if (episodes != other.episodes) return false
         if (status != other.status) return false
@@ -342,16 +341,16 @@ public data class Anime(
         if (picture != other.picture) return false
         if (thumbnail != other.thumbnail) return false
         if (duration != other.duration) return false
-        if (relatedAnime != other.relatedAnime) return false
-        if (tags != other.tags) return false
+        if (_synonyms != other.synonyms) return false
+        if (_relatedAnime != other.relatedAnime) return false
+        if (_tags != other.tags) return false
 
         return true
     }
 
     override fun hashCode(): Int {
         var result = _title.hashCode()
-        result = 31 * result + sources.hashCode()
-        result = 31 * result + synonyms.hashCode()
+        result = 31 * result + _sources.hashCode()
         result = 31 * result + type.hashCode()
         result = 31 * result + episodes
         result = 31 * result + status.hashCode()
@@ -359,17 +358,17 @@ public data class Anime(
         result = 31 * result + picture.hashCode()
         result = 31 * result + thumbnail.hashCode()
         result = 31 * result + duration.hashCode()
-        result = 31 * result + relatedAnime.hashCode()
-        result = 31 * result + tags.hashCode()
+        result = 31 * result + _synonyms.hashCode()
+        result = 31 * result + _relatedAnime.hashCode()
+        result = 31 * result + _tags.hashCode()
         return result
     }
 
     override fun toString(): String {
         return """
             Anime(
-              sources = ${sources.sorted()}
+              sources = ${_sources.sorted()}
               title = $_title
-              synonyms = ${synonyms.sorted()}
               type = $type
               episodes = $episodes
               status = $status
@@ -377,8 +376,9 @@ public data class Anime(
               picture = $picture
               thumbnail = $thumbnail
               duration = $duration
-              relatedAnime = ${relatedAnime.sorted()}
-              tags = ${tags.sorted()}
+              synonyms = ${_synonyms.sorted()}
+              relatedAnime = ${_relatedAnime.sorted()}
+              tags = ${_tags.sorted()}
             )
         """.trimIndent()
     }
