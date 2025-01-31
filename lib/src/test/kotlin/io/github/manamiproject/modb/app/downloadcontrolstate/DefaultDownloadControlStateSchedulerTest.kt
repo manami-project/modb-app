@@ -125,7 +125,7 @@ internal class DefaultDownloadControlStateSchedulerTest {
                         _relatedAnime = hashSetOf(
                             URI("https://anilist.co/anime/30"),
                         ),
-                        tags = hashSetOf(
+                        _tags = hashSetOf(
                             "action",
                             "drama",
                             "mecha",

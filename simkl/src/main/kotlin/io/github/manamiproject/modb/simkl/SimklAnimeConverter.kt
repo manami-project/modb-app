@@ -66,7 +66,7 @@ public class SimklAnimeConverter(
             _sources = extractSourcesEntry(data),
             _synonyms = postProcessSynonyms(title, extractSynonyms(data)),
             _relatedAnime = extractRelatedAnime(data),
-            tags = extractTags(data),
+            _tags = extractTags(data),
         )
     }
 

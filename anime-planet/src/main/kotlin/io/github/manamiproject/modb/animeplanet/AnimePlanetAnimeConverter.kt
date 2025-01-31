@@ -76,7 +76,7 @@ public class AnimePlanetAnimeConverter(
             _sources = extractSourcesEntry(jsonldData, data),
             _synonyms = extractSynonyms(jsonldData, data),
             _relatedAnime = extractRelatedAnime(data),
-            tags = extractTags(jsonldData, data),
+            _tags = extractTags(jsonldData, data),
         )
     }
 

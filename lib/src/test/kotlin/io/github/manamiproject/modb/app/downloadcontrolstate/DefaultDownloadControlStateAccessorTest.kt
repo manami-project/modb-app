@@ -177,7 +177,7 @@ internal class DefaultDownloadControlStateAccessorTest {
                         _relatedAnime = hashSetOf(
                             URI("https://anilist.co/anime/30"),
                         ),
-                        tags = hashSetOf(
+                        _tags = hashSetOf(
                             "action",
                             "drama",
                             "mecha",
@@ -262,7 +262,7 @@ internal class DefaultDownloadControlStateAccessorTest {
                         _relatedAnime = hashSetOf(
                             URI("https://anilist.co/anime/30"),
                         ),
-                        tags = hashSetOf(),
+                        _tags = hashSetOf(),
                     )
                 )
 
@@ -291,7 +291,7 @@ internal class DefaultDownloadControlStateAccessorTest {
                     _relatedAnime = hashSetOf(
                         URI("https://myanimelist.net/anime/30"),
                     ),
-                    tags = hashSetOf(
+                    _tags = hashSetOf(
                         "action",
                         "drama",
                         "mecha",
@@ -437,7 +437,7 @@ internal class DefaultDownloadControlStateAccessorTest {
                         _relatedAnime = hashSetOf(
                             URI("https://anilist.co/anime/30"),
                         ),
-                        tags = hashSetOf(
+                        _tags = hashSetOf(
                             "action",
                             "drama",
                             "mecha",
@@ -580,7 +580,7 @@ internal class DefaultDownloadControlStateAccessorTest {
                     _relatedAnime = hashSetOf(
                         URI("https://anilist.co/anime/30"),
                     ),
-                    tags = hashSetOf(
+                    _tags = hashSetOf(
                         "action",
                         "drama",
                         "mecha",
@@ -744,7 +744,7 @@ internal class DefaultDownloadControlStateAccessorTest {
                     _relatedAnime = hashSetOf(
                         URI("https://anilist.co/anime/30"),
                     ),
-                    tags = hashSetOf(
+                    _tags = hashSetOf(
                         "action",
                         "drama",
                         "mecha",
@@ -973,7 +973,7 @@ internal class DefaultDownloadControlStateAccessorTest {
                         _relatedAnime = hashSetOf(
                             URI("https://anilist.co/anime/30"),
                         ),
-                        tags = hashSetOf(
+                        _tags = hashSetOf(
                             "action",
                             "drama",
                             "mecha",
@@ -1122,7 +1122,7 @@ internal class DefaultDownloadControlStateAccessorTest {
                         _relatedAnime = hashSetOf(
                             URI("https://anilist.co/anime/30"),
                         ),
-                        tags = hashSetOf(
+                        _tags = hashSetOf(
                             "action",
                             "drama",
                             "mecha",
@@ -1182,7 +1182,7 @@ internal class DefaultDownloadControlStateAccessorTest {
                         _relatedAnime = hashSetOf(
                             URI("https://anilist.co/anime/30"),
                         ),
-                        tags = hashSetOf(
+                        _tags = hashSetOf(
                             "action",
                             "mecha",
                             "sci-fi",
@@ -1213,7 +1213,7 @@ internal class DefaultDownloadControlStateAccessorTest {
                         _relatedAnime = hashSetOf(
                             URI("https://anilist.co/anime/30"),
                         ),
-                        tags = hashSetOf(
+                        _tags = hashSetOf(
                             "action",
                             "drama",
                             "mecha",
@@ -1277,7 +1277,7 @@ internal class DefaultDownloadControlStateAccessorTest {
                         _relatedAnime = hashSetOf(
                             URI("https://anilist.co/anime/30"),
                         ),
-                        tags = hashSetOf(
+                        _tags = hashSetOf(
                             "action",
                             "drama",
                             "mecha",
@@ -1339,7 +1339,7 @@ internal class DefaultDownloadControlStateAccessorTest {
                         _relatedAnime = hashSetOf(
                             URI("https://anilist.co/anime/30"),
                         ),
-                        tags = hashSetOf(
+                        _tags = hashSetOf(
                             "action",
                             "drama",
                             "mecha",
@@ -1399,7 +1399,7 @@ internal class DefaultDownloadControlStateAccessorTest {
                         _relatedAnime = hashSetOf(
                             URI("https://anilist.co/anime/30"),
                         ),
-                        tags = hashSetOf(
+                        _tags = hashSetOf(
                             "action",
                             "drama",
                             "mecha",

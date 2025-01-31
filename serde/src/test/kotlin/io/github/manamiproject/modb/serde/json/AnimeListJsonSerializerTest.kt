@@ -175,7 +175,7 @@ internal class AnimeListJsonSerializerTest {
                             "Clannad: After Story OVA",
                             "クラナド　アフターストーリー　もうひとつの世界　杏編",
                         ),
-                        tags = hashSetOf(
+                        _tags = hashSetOf(
                             "comedy",
                             "drama",
                             "romance",

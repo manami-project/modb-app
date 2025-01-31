@@ -75,7 +75,7 @@ internal class AnimeListJsonStringDeserializerTest {
                         "星界の紋章",
                         "星界之纹章",
                     ),
-                    tags = hashSetOf(
+                    _tags = hashSetOf(
                         "action",
                         "adventure",
                         "genetic modification",
@@ -106,7 +106,7 @@ internal class AnimeListJsonStringDeserializerTest {
                     _synonyms = hashSetOf(
                         "カウボーイビバップ",
                     ),
-                    tags = hashSetOf(
+                    _tags = hashSetOf(
                         "action",
                         "adventure",
                         "comedy",
@@ -136,7 +136,7 @@ internal class AnimeListJsonStringDeserializerTest {
                         "Cowboy Bebop: Knockin' on Heaven's Door",
                         "Cowboy Bebop: The Movie", "カウボーイビバップ 天国の扉",
                     ),
-                    tags = hashSetOf(
+                    _tags = hashSetOf(
                         "action",
                         "drama",
                         "mystery",
@@ -169,7 +169,7 @@ internal class AnimeListJsonStringDeserializerTest {
                         "イレブンアイズ",
                         "罪与罚与赎的少女",
                     ),
-                    tags = hashSetOf(
+                    _tags = hashSetOf(
                         "action",
                         "angst",
                         "contemporary fantasy",
@@ -209,7 +209,7 @@ internal class AnimeListJsonStringDeserializerTest {
                         "11eyes イレブンアイズ",
                         "イレブンアイズ",
                     ),
-                    tags = hashSetOf(
+                    _tags = hashSetOf(
                         "action",
                         "demons",
                         "ecchi",
