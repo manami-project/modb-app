@@ -85,7 +85,7 @@ internal class DefaultGoldenRecordAccessorTest {
                     "Made in Abyss Movie 1: Journey's Dawn",
                     "劇場版総集編【前編】メイドインアビス 旅立ちの夜明け",
                 ),
-                relatedAnime = hashSetOf(
+                _relatedAnime = hashSetOf(
                     URI("https://myanimelist.net/anime/34599"),
                     URI("https://myanimelist.net/anime/37515"),
                 )
@@ -119,7 +119,7 @@ internal class DefaultGoldenRecordAccessorTest {
                     "Made in Abyss Movie 1: Journey's Dawn",
                     "劇場版総集編【前編】メイドインアビス 旅立ちの夜明け",
                 ),
-                relatedAnime = hashSetOf(
+                _relatedAnime = hashSetOf(
                     URI("https://myanimelist.net/anime/34599"),
                     URI("https://myanimelist.net/anime/37515"),
                 )
@@ -183,7 +183,7 @@ internal class DefaultGoldenRecordAccessorTest {
                 _synonyms = hashSetOf(
                     "メイドインアビス",
                 ),
-                relatedAnime = hashSetOf(
+                _relatedAnime = hashSetOf(
                     URI("https://myanimelist.net/anime/36862"),
                     URI("https://myanimelist.net/anime/37514"),
                     URI("https://myanimelist.net/anime/37515"),
@@ -203,7 +203,7 @@ internal class DefaultGoldenRecordAccessorTest {
                     "Made in Abyss Movie 1: Journey's Dawn",
                     "劇場版総集編【前編】メイドインアビス 旅立ちの夜明け",
                 ),
-                relatedAnime = hashSetOf(
+                _relatedAnime = hashSetOf(
                     URI("https://myanimelist.net/anime/34599"),
                     URI("https://myanimelist.net/anime/37515"),
                 ),
@@ -225,7 +225,7 @@ internal class DefaultGoldenRecordAccessorTest {
                     "Yorimoi",
                     "宇宙よりも遠い場所",
                 ),
-                relatedAnime = hashSetOf(
+                _relatedAnime = hashSetOf(
                     URI("https://myanimelist.net/anime/37123"),
                 ),
             )
@@ -243,7 +243,7 @@ internal class DefaultGoldenRecordAccessorTest {
                     "Sora yori mo Tooi Basho next episode previews",
                     "宇宙よりも遠い場所 予告 WEB限定",
                 ),
-                relatedAnime = hashSetOf(
+                _relatedAnime = hashSetOf(
                     URI("https://myanimelist.net/anime/35839"),
                 ),
             )
@@ -299,7 +299,7 @@ internal class DefaultGoldenRecordAccessorTest {
                     "Yorimoi",
                     "宇宙よりも遠い場所",
                 ),
-                relatedAnime = hashSetOf(
+                _relatedAnime = hashSetOf(
                     URI("https://myanimelist.net/anime/37123"),
                 ),
             )
@@ -535,7 +535,7 @@ internal class DefaultGoldenRecordAccessorTest {
                     "Made in Abyss Movie 1: Journey's Dawn",
                     "劇場版総集編【前編】メイドインアビス 旅立ちの夜明け",
                 ),
-                relatedAnime = hashSetOf(
+                _relatedAnime = hashSetOf(
                     URI("https://myanimelist.net/anime/34599"),
                     URI("https://myanimelist.net/anime/37515"),
                 )
@@ -637,7 +637,7 @@ internal class DefaultGoldenRecordAccessorTest {
                     "Made in Abyss Movie 1: Journey's Dawn",
                     "劇場版総集編【前編】メイドインアビス 旅立ちの夜明け",
                 ),
-                relatedAnime = hashSetOf(
+                _relatedAnime = hashSetOf(
                     URI("https://myanimelist.net/anime/34599"),
                     URI("https://myanimelist.net/anime/37515"),
                 )
@@ -682,7 +682,7 @@ internal class DefaultGoldenRecordAccessorTest {
                     "Made in Abyss Movie 1: Journey's Dawn",
                     "劇場版総集編【前編】メイドインアビス 旅立ちの夜明け"
                 ),
-                relatedAnime = hashSetOf(
+                _relatedAnime = hashSetOf(
                     URI("https://myanimelist.net/anime/34599"),
                     URI("https://myanimelist.net/anime/37515"),
                 ),
@@ -702,7 +702,7 @@ internal class DefaultGoldenRecordAccessorTest {
                     "Made in Abyss Movie 2: Wandering Twilight",
                     "劇場版総集編【後編】メイドインアビス 放浪する黄昏",
                 ),
-                relatedAnime = hashSetOf(
+                _relatedAnime = hashSetOf(
                     URI("https://myanimelist.net/anime/34599"),
                     URI("https://myanimelist.net/anime/37515"),
                 )
@@ -724,7 +724,7 @@ internal class DefaultGoldenRecordAccessorTest {
                     "Yorimoi",
                     "宇宙よりも遠い場所",
                 ),
-                relatedAnime = hashSetOf(
+                _relatedAnime = hashSetOf(
                     URI("https://myanimelist.net/anime/37123"),
                 ),
             )
@@ -742,7 +742,7 @@ internal class DefaultGoldenRecordAccessorTest {
                     "Sora yori mo Tooi Basho next episode previews",
                     "宇宙よりも遠い場所 予告 WEB限定",
                 ),
-                relatedAnime = hashSetOf(
+                _relatedAnime = hashSetOf(
                     URI("https://myanimelist.net/anime/35839"),
                 )
             )
@@ -792,7 +792,7 @@ internal class DefaultGoldenRecordAccessorTest {
                     "Yorimoi",
                     "宇宙よりも遠い場所",
                 ),
-                relatedAnime = hashSetOf(
+                _relatedAnime = hashSetOf(
                     URI("https://myanimelist.net/anime/37123"),
                 ),
             )
@@ -894,7 +894,7 @@ internal class DefaultGoldenRecordAccessorTest {
                     URI("https://myanimelist.net/anime/1535"),
                 ),
                 _title = "Death Note",
-                relatedAnime = hashSetOf(
+                _relatedAnime = hashSetOf(
                     URI("https://myanimelist.net/anime/2994"),
                 ),
             )
@@ -907,7 +907,7 @@ internal class DefaultGoldenRecordAccessorTest {
                     URI("https://anidb.net/anime/4563"),
                 ),
                 _title = "Death Note",
-                relatedAnime = hashSetOf(
+                _relatedAnime = hashSetOf(
                     URI("https://anidb.net/anime/8146"),
                     URI("https://anidb.net/anime/8147"),
                 ),
@@ -938,7 +938,7 @@ internal class DefaultGoldenRecordAccessorTest {
                     URI("https://myanimelist.net/anime/1535"),
                 ),
                 _title = "Death Note",
-                relatedAnime = hashSetOf(
+                _relatedAnime = hashSetOf(
                     URI("https://myanimelist.net/anime/2994"),
                 ),
             )
@@ -951,7 +951,7 @@ internal class DefaultGoldenRecordAccessorTest {
                     URI("https://anidb.net/anime/4563"),
                 ),
                 _title = "Death Note",
-                relatedAnime = hashSetOf(
+                _relatedAnime = hashSetOf(
                     URI("https://myanimelist.net/anime/1535"),
                     URI("https://anidb.net/anime/8147"),
                 ),

@@ -75,7 +75,7 @@ public class LivechartAnimeConverter(
             animeSeason = extractAnimeSeason(data),
             _sources = extractSourcesEntry(jsonldData, data),
             _synonyms = extractSynonyms(jsonldData),
-            relatedAnime = extractRelatedAnime(data),
+            _relatedAnime = extractRelatedAnime(data),
             tags = extractTags(jsonldData, data),
         )
     }

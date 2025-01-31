@@ -167,7 +167,7 @@ internal class AnimeListJsonSerializerTest {
                             value = 1,
                             unit = Duration.TimeUnit.HOURS,
                         ),
-                        relatedAnime = hashSetOf(
+                        _relatedAnime = hashSetOf(
                             URI("https://myanimelist.net/anime/2167"),
                         ),
                         _synonyms = hashSetOf(
