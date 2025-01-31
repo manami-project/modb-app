@@ -35,7 +35,7 @@ internal class AnimeAdapterTest {
                 picture = URI("https://cdn.myanimelist.net/images/anime/10/19621.jpg"),
                 thumbnail = URI("https://cdn.myanimelist.net/images/anime/10/19621t.jpg"),
                 duration = Duration(24, Duration.TimeUnit.MINUTES),
-                synonyms = hashSetOf(
+                _synonyms = hashSetOf(
                     "Clannad ~After Story~: Another World, Kyou Chapter",
                     "Clannad: After Story OVA",
                     "クラナド　アフターストーリー　もうひとつの世界　杏編",
@@ -1175,7 +1175,7 @@ internal class AnimeAdapterTest {
                 picture = URI("https://cdn.myanimelist.net/images/anime/10/19621.jpg"),
                 thumbnail = URI("https://cdn.myanimelist.net/images/anime/10/19621t.jpg"),
                 duration = Duration(24, Duration.TimeUnit.MINUTES),
-                synonyms = hashSetOf(
+                _synonyms = hashSetOf(
                     "Clannad ~After Story~: Another World, Kyou Chapter",
                     "Clannad: After Story OVA",
                     "クラナド　アフターストーリー　もうひとつの世界　杏編",
@@ -1243,7 +1243,7 @@ internal class AnimeAdapterTest {
                 picture = URI("https://cdn.myanimelist.net/images/anime/10/19621.jpg"),
                 thumbnail = URI("https://cdn.myanimelist.net/images/anime/10/19621t.jpg"),
                 duration = Duration.UNKNOWN,
-                synonyms = hashSetOf(
+                _synonyms = hashSetOf(
                     "Clannad ~After Story~: Another World, Kyou Chapter",
                     "Clannad: After Story OVA",
                     "クラナド　アフターストーリー　もうひとつの世界　杏編",
@@ -1409,7 +1409,7 @@ internal class AnimeAdapterTest {
             val adapter = AnimeAdapter().indent("  ")
             val obj = Anime(
                 _title = "デスノート",
-                synonyms = hashSetOf(value),
+                _synonyms = hashSetOf(value),
                 activateChecks = false,
             )
 
@@ -1445,7 +1445,7 @@ internal class AnimeAdapterTest {
             val adapter = AnimeAdapter().indent("  ")
             val obj = Anime(
                 _title = "デスノート",
-                synonyms = hashSetOf(value),
+                _synonyms = hashSetOf(value),
                 activateChecks = false,
             )
 
@@ -1586,7 +1586,7 @@ internal class AnimeAdapterTest {
                 picture = URI("https://cdn.myanimelist.net/images/anime/10/19621.jpg"),
                 thumbnail = URI("https://cdn.myanimelist.net/images/anime/10/19621t.jpg"),
                 duration = Duration(24, Duration.TimeUnit.MINUTES),
-                synonyms = hashSetOf(
+                _synonyms = hashSetOf(
                     "Clannad (TV)",
                     "Kuranado",
                     "Clannad TV",

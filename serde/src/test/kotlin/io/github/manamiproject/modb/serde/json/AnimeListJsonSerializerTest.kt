@@ -170,7 +170,7 @@ internal class AnimeListJsonSerializerTest {
                         relatedAnime = hashSetOf(
                             URI("https://myanimelist.net/anime/2167"),
                         ),
-                        synonyms = hashSetOf(
+                        _synonyms = hashSetOf(
                             "Clannad ~After Story~: Another World, Kyou Chapter",
                             "Clannad: After Story OVA",
                             "クラナド　アフターストーリー　もうひとつの世界　杏編",

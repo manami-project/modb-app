@@ -63,7 +63,7 @@ public class MyanimelistAnimeConverter(
             duration = extractDuration(data),
             animeSeason = extractAnimeSeason(data),
             _sources = extractSourcesEntry(data),
-            synonyms = postProcessSynonyms(title, extractSynonyms(data)),
+            _synonyms = postProcessSynonyms(title, extractSynonyms(data)),
             relatedAnime = extractRelatedAnime(data),
             tags = extractTags(data),
         )

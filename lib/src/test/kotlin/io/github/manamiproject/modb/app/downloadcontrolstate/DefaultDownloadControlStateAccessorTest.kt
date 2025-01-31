@@ -170,7 +170,7 @@ internal class DefaultDownloadControlStateAccessorTest {
                             year = 1997,
                         ),
                         _sources = hashSetOf(URI("https://anilist.co/anime/32")),
-                        synonyms = hashSetOf(
+                        _synonyms = hashSetOf(
                             "Neon Genesis Evangelion: The End of Evangelion",
                             "新世紀エヴァンゲリオン劇場版 THE END OF EVANGELION",
                         ),
@@ -202,7 +202,7 @@ internal class DefaultDownloadControlStateAccessorTest {
                             year = 2001,
                         ),
                         _sources = hashSetOf(URI("https://kitsu.app/anime/99")),
-                        synonyms = hashSetOf(
+                        _synonyms = hashSetOf(
                             "Furuba",
                             "フルーツバスケット",
                         ),
@@ -258,7 +258,7 @@ internal class DefaultDownloadControlStateAccessorTest {
                             year = AnimeSeason.UNKNOWN_YEAR,
                         ),
                         _sources = hashSetOf(URI("https://anilist.co/anime/32")),
-                        synonyms = hashSetOf(),
+                        _synonyms = hashSetOf(),
                         relatedAnime = hashSetOf(
                             URI("https://anilist.co/anime/30"),
                         ),
@@ -284,7 +284,7 @@ internal class DefaultDownloadControlStateAccessorTest {
                         year = 1997,
                     ),
                     _sources = hashSetOf(URI("https://myanimelist.net/anime/32")),
-                    synonyms = hashSetOf(
+                    _synonyms = hashSetOf(
                         "Neon Genesis Evangelion: The End of Evangelion",
                         "新世紀エヴァンゲリオン劇場版 THE END OF EVANGELION",
                     ),
@@ -430,7 +430,7 @@ internal class DefaultDownloadControlStateAccessorTest {
                             year = 1997,
                         ),
                         _sources = hashSetOf(URI("https://anilist.co/anime/32")),
-                        synonyms = hashSetOf(
+                        _synonyms = hashSetOf(
                             "Neon Genesis Evangelion: The End of Evangelion",
                             "新世紀エヴァンゲリオン劇場版 THE END OF EVANGELION",
                         ),
@@ -573,7 +573,7 @@ internal class DefaultDownloadControlStateAccessorTest {
                         year = 1997,
                     ),
                     _sources = hashSetOf(URI("https://anilist.co/anime/32")),
-                    synonyms = hashSetOf(
+                    _synonyms = hashSetOf(
                         "Neon Genesis Evangelion: The End of Evangelion",
                         "新世紀エヴァンゲリオン劇場版 THE END OF EVANGELION",
                     ),
@@ -600,7 +600,7 @@ internal class DefaultDownloadControlStateAccessorTest {
                         year = 2001,
                     ),
                     _sources = hashSetOf(URI("https://kitsu.app/anime/99")),
-                    synonyms = hashSetOf(
+                    _synonyms = hashSetOf(
                         "Furuba",
                         "フルーツバスケット",
                     ),
@@ -737,7 +737,7 @@ internal class DefaultDownloadControlStateAccessorTest {
                         year = 1997,
                     ),
                     _sources = hashSetOf(URI("https://anilist.co/anime/32")),
-                    synonyms = hashSetOf(
+                    _synonyms = hashSetOf(
                         "Neon Genesis Evangelion: The End of Evangelion",
                         "新世紀エヴァンゲリオン劇場版 THE END OF EVANGELION",
                     ),
@@ -966,7 +966,7 @@ internal class DefaultDownloadControlStateAccessorTest {
                             year = 1997,
                         ),
                         _sources = hashSetOf(URI("https://anilist.co/anime/32")),
-                        synonyms = hashSetOf(
+                        _synonyms = hashSetOf(
                             "Neon Genesis Evangelion: The End of Evangelion",
                             "新世紀エヴァンゲリオン劇場版 THE END OF EVANGELION",
                         ),
@@ -1115,7 +1115,7 @@ internal class DefaultDownloadControlStateAccessorTest {
                             year = 1997,
                         ),
                         _sources = hashSetOf(URI("https://anilist.co/anime/32")),
-                        synonyms = hashSetOf(
+                        _synonyms = hashSetOf(
                             "Neon Genesis Evangelion: The End of Evangelion",
                             "新世紀エヴァンゲリオン劇場版 THE END OF EVANGELION",
                         ),
@@ -1175,7 +1175,7 @@ internal class DefaultDownloadControlStateAccessorTest {
                             year = AnimeSeason.UNKNOWN_YEAR,
                         ),
                         _sources = hashSetOf(URI("https://anilist.co/anime/32")),
-                        synonyms = hashSetOf(
+                        _synonyms = hashSetOf(
                             "Neon Genesis Evangelion: The End of Evangelion",
                             "新世紀エヴァンゲリオン劇場版 THE END OF EVANGELION",
                         ),
@@ -1206,7 +1206,7 @@ internal class DefaultDownloadControlStateAccessorTest {
                             year = 1997,
                         ),
                         _sources = hashSetOf(URI("https://anilist.co/anime/32")),
-                        synonyms = hashSetOf(
+                        _synonyms = hashSetOf(
                             "Neon Genesis Evangelion: The End of Evangelion",
                             "新世紀エヴァンゲリオン劇場版 THE END OF EVANGELION",
                         ),
@@ -1270,7 +1270,7 @@ internal class DefaultDownloadControlStateAccessorTest {
                             year = 1997,
                         ),
                         _sources = hashSetOf(URI("https://anilist.co/anime/32")),
-                        synonyms = hashSetOf(
+                        _synonyms = hashSetOf(
                             "Neon Genesis Evangelion: The End of Evangelion",
                             "新世紀エヴァンゲリオン劇場版 THE END OF EVANGELION",
                         ),
@@ -1332,7 +1332,7 @@ internal class DefaultDownloadControlStateAccessorTest {
                             year = 1997,
                         ),
                         _sources = hashSetOf(URI("https://anilist.co/anime/32")),
-                        synonyms = hashSetOf(
+                        _synonyms = hashSetOf(
                             "Neon Genesis Evangelion: The End of Evangelion",
                             "新世紀エヴァンゲリオン劇場版 THE END OF EVANGELION",
                         ),
@@ -1392,7 +1392,7 @@ internal class DefaultDownloadControlStateAccessorTest {
                             year = 1997,
                         ),
                         _sources = hashSetOf(URI("https://anilist.co/anime/32")),
-                        synonyms = hashSetOf(
+                        _synonyms = hashSetOf(
                             "Neon Genesis Evangelion: The End of Evangelion",
                             "新世紀エヴァンゲリオン劇場版 THE END OF EVANGELION",
                         ),
@@ -1432,7 +1432,7 @@ internal class DefaultDownloadControlStateAccessorTest {
                                 year = 2001,
                             ),
                             _sources = hashSetOf(URI("https://kitsu.app/anime/99")),
-                            synonyms = hashSetOf(
+                            _synonyms = hashSetOf(
                                 "Furuba",
                                 "フルーツバスケット",
                             ),

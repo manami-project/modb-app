@@ -189,13 +189,13 @@ internal class DownloadControlStateEntryTest {
                 _nextDownload = WeekOfYear.currentWeek(),
                 _anime = Anime(
                     _title = "Test",
-                    synonyms = hashSetOf("abcd", "efgh"),
+                    _synonyms = hashSetOf("abcd", "efgh"),
                 ),
             )
 
             val anime = Anime(
                 _title = "Test",
-                synonyms = hashSetOf("efgh"),
+                _synonyms = hashSetOf("efgh"),
             )
 
             // when
@@ -499,7 +499,7 @@ internal class DownloadControlStateEntryTest {
                         unit = Duration.TimeUnit.MINUTES,
                     ),
                     _sources = hashSetOf(URI("https://myanimelist.net/anime/6351")),
-                    synonyms = hashSetOf(
+                    _synonyms = hashSetOf(
                         "Clannad ~After Story~: Another World, Kyou Chapter",
                         "Clannad: After Story OVA",
                         "クラナド　アフターストーリー　もうひとつの世界　杏編",
@@ -546,7 +546,7 @@ internal class DownloadControlStateEntryTest {
                         unit = Duration.TimeUnit.MINUTES,
                     ),
                     _sources = hashSetOf(URI("https://myanimelist.net/anime/6351")),
-                    synonyms = hashSetOf(
+                    _synonyms = hashSetOf(
                         "Clannad ~After Story~: Another World, Kyou Chapter",
                         "Clannad: After Story OVA",
                         "クラナド　アフターストーリー　もうひとつの世界　杏編",

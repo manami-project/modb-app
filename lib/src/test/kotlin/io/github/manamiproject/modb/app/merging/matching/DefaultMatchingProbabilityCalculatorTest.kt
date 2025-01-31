@@ -299,7 +299,7 @@ internal class DefaultMatchingProbabilityCalculatorTest {
                         season = SPRING,
                         year = 1998,
                     ),
-                    synonyms = hashSetOf(
+                    _synonyms = hashSetOf(
                         "カウボーイビバップ",
                     ),
                     relatedAnime = hashSetOf(
@@ -344,7 +344,7 @@ internal class DefaultMatchingProbabilityCalculatorTest {
                         season = SPRING,
                         year = 1998,
                     ),
-                    synonyms = hashSetOf(
+                    _synonyms = hashSetOf(
                         "カウボーイビバップ",
                     ),
                     relatedAnime = hashSetOf(
@@ -391,7 +391,7 @@ internal class DefaultMatchingProbabilityCalculatorTest {
                         season = SPRING,
                         year = 1998,
                     ),
-                    synonyms = hashSetOf(
+                    _synonyms = hashSetOf(
                         "カウボーイビバップ",
                     ),
                     relatedAnime = hashSetOf(
@@ -442,7 +442,7 @@ internal class DefaultMatchingProbabilityCalculatorTest {
                         season = SPRING,
                         year = 1998,
                     ),
-                    synonyms = hashSetOf(
+                    _synonyms = hashSetOf(
                         "カウボーイビバップ",
                     ),
                     relatedAnime = hashSetOf(
@@ -489,7 +489,7 @@ internal class DefaultMatchingProbabilityCalculatorTest {
                         season = SPRING,
                         year = 1998,
                     ),
-                    synonyms = hashSetOf(
+                    _synonyms = hashSetOf(
                         "カウボーイビバップ",
                     ),
                     relatedAnime = hashSetOf(
@@ -536,7 +536,7 @@ internal class DefaultMatchingProbabilityCalculatorTest {
                         season = SPRING,
                         year = 1998,
                     ),
-                    synonyms = hashSetOf(
+                    _synonyms = hashSetOf(
                         "カウボーイビバップ",
                     ),
                     relatedAnime = hashSetOf(
@@ -583,7 +583,7 @@ internal class DefaultMatchingProbabilityCalculatorTest {
                         season = SPRING,
                         year = 1998,
                     ),
-                    synonyms = hashSetOf(
+                    _synonyms = hashSetOf(
                         "カウボーイビバップ",
                     ),
                     relatedAnime = hashSetOf(
@@ -632,7 +632,7 @@ internal class DefaultMatchingProbabilityCalculatorTest {
                         season = SPRING,
                         year = 1998,
                     ),
-                    synonyms = hashSetOf(
+                    _synonyms = hashSetOf(
                         "カウボーイビバップ",
                     ),
                     relatedAnime = hashSetOf(
@@ -682,7 +682,7 @@ internal class DefaultMatchingProbabilityCalculatorTest {
                         season = SPRING,
                         year = 1998,
                     ),
-                    synonyms = hashSetOf(
+                    _synonyms = hashSetOf(
                         "カウボーイビバップ",
                     ),
                     relatedAnime = hashSetOf(
@@ -732,7 +732,7 @@ internal class DefaultMatchingProbabilityCalculatorTest {
                         season = SPRING,
                         year = 1998,
                     ),
-                    synonyms = hashSetOf(
+                    _synonyms = hashSetOf(
                         "カウボーイビバップ",
                     ),
                     relatedAnime = hashSetOf(
