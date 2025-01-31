@@ -121,7 +121,7 @@ public data class Anime(
 
     /**
      * Removes an [URI] from [sources] if the given condition matches.
-     * @since 11.0.0
+     * @since 16.6.0
      * @param condition If an entry in [sources] matches this condition, then the [URI] will be removed from [sources].
      * @return Same instance.
      */

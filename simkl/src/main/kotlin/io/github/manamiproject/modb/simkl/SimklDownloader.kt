@@ -8,6 +8,12 @@ import io.github.manamiproject.modb.core.httpclient.DefaultHttpClient
 import io.github.manamiproject.modb.core.httpclient.HttpClient
 import io.github.manamiproject.modb.core.logging.LoggerDelegate
 
+/**
+ * Downloads anime data from animecountdown.com
+ * @since 1.0.0
+ * @param metaDataProviderConfig Configuration for downloading data.
+ * @param httpClient To actually download the anime data.
+ */
 public class SimklDownloader(
     private val metaDataProviderConfig: MetaDataProviderConfig = SimklConfig,
     private val httpClient: HttpClient = DefaultHttpClient(isTestContext = metaDataProviderConfig.isTestContext()),
