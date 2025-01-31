@@ -66,7 +66,7 @@ internal class ListExtensionsKtTest {
             val testList = listOf(
                 Anime(
                     _title = value,
-                    sources = hashSetOf(URI("https://example.org/anime/1")),
+                    _sources = hashSetOf(URI("https://example.org/anime/1")),
                 ),
             )
 
@@ -85,11 +85,11 @@ internal class ListExtensionsKtTest {
             val testList = listOf(
                 Anime(
                     _title = "entry",
-                    sources = hashSetOf(URI("https://example.org/anime/1")),
+                    _sources = hashSetOf(URI("https://example.org/anime/1")),
                 ),
                 Anime(
                     _title = "other",
-                    sources = hashSetOf(URI("https://example.org/anime/288")),
+                    _sources = hashSetOf(URI("https://example.org/anime/288")),
                 ),
             )
 

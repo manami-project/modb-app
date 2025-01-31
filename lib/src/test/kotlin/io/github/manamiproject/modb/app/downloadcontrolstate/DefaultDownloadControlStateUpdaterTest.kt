@@ -87,7 +87,7 @@ internal class DefaultDownloadControlStateUpdaterTest {
                     val rawdata = tempDir.resolve("rawdata").createDirectory()
                     val updatedAnime = Anime(
                         _title = "Test",
-                        sources = hashSetOf(testConfig.buildAnimeLink("100"))
+                        _sources = hashSetOf(testConfig.buildAnimeLink("100"))
                     )
                     val rawFile = rawdata.resolve("100.$CONVERTED_FILE_SUFFIX").createFile()
                     Json.toJson(updatedAnime).writeToFile(rawFile)
@@ -95,7 +95,7 @@ internal class DefaultDownloadControlStateUpdaterTest {
                     val dcs = tempDir.resolve("dcs").createDirectory()
                     val initialAnime = Anime(
                         _title = "Test",
-                        sources = hashSetOf(testConfig.buildAnimeLink("100"))
+                        _sources = hashSetOf(testConfig.buildAnimeLink("100"))
                     )
                     val downloadControlStateEntry = DownloadControlStateEntry(
                         _weeksWihoutChange = 2,
@@ -157,7 +157,7 @@ internal class DefaultDownloadControlStateUpdaterTest {
                     val unchangedAnimeId = "100"
                     val unchangedAnime = Anime(
                         _title = "Unchanged anime",
-                        sources = hashSetOf(testConfig.buildAnimeLink(unchangedAnimeId))
+                        _sources = hashSetOf(testConfig.buildAnimeLink(unchangedAnimeId))
                     )
                     val rawFileUnchangedAnime = rawdata.resolve("$unchangedAnimeId.$CONVERTED_FILE_SUFFIX").createFile()
                     Json.toJson(unchangedAnime).writeToFile(rawFileUnchangedAnime)
@@ -168,7 +168,7 @@ internal class DefaultDownloadControlStateUpdaterTest {
                         _nextDownload = WeekOfYear.currentWeek(),
                         _anime = Anime(
                             _title = "Unchanged anime",
-                            sources = hashSetOf(testConfig.buildAnimeLink(unchangedAnimeId)),
+                            _sources = hashSetOf(testConfig.buildAnimeLink(unchangedAnimeId)),
                         ),
                     )
                     val dcsFileUnchangedAnime = metaDataProviderDcsDir.resolve("$unchangedAnimeId.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
@@ -178,7 +178,7 @@ internal class DefaultDownloadControlStateUpdaterTest {
                     val changedAnimeId = "200"
                     val changedAnime = Anime(
                         _title = "Changed Anime",
-                        sources = hashSetOf(testConfig.buildAnimeLink(changedAnimeId))
+                        _sources = hashSetOf(testConfig.buildAnimeLink(changedAnimeId))
                     )
                     val rawFileChangedAnime = rawdata.resolve("$changedAnimeId.$CONVERTED_FILE_SUFFIX").createFile()
                     Json.toJson(changedAnime).writeToFile(rawFileChangedAnime)
@@ -190,7 +190,7 @@ internal class DefaultDownloadControlStateUpdaterTest {
                         _anime = Anime(
                             _title = "Changed Anime",
                             episodes = 12,
-                            sources = hashSetOf(testConfig.buildAnimeLink(changedAnimeId)),
+                            _sources = hashSetOf(testConfig.buildAnimeLink(changedAnimeId)),
                         ),
                     )
                     val dcsFileChangedAnime = metaDataProviderDcsDir.resolve("$changedAnimeId.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
@@ -243,7 +243,7 @@ internal class DefaultDownloadControlStateUpdaterTest {
                     val updatedAnime = Anime(
                         _title = "Test",
                         episodes = 12,
-                        sources = hashSetOf(testConfig.buildAnimeLink("new-test-id"))
+                        _sources = hashSetOf(testConfig.buildAnimeLink("new-test-id"))
                     )
                     val rawFile = rawdata.resolve("previous-test-id.$CONVERTED_FILE_SUFFIX").createFile()
                     Json.toJson(updatedAnime).writeToFile(rawFile)
@@ -251,7 +251,7 @@ internal class DefaultDownloadControlStateUpdaterTest {
                     val dcs = tempDir.resolve("dcs").createDirectory()
                     val initialAnime = Anime(
                         _title = "Test",
-                        sources = hashSetOf(testConfig.buildAnimeLink("previous-test-id"))
+                        _sources = hashSetOf(testConfig.buildAnimeLink("previous-test-id"))
                     )
 
                     val downloadControlStateEntry = DownloadControlStateEntry(
@@ -311,7 +311,7 @@ internal class DefaultDownloadControlStateUpdaterTest {
                     val updatedAnime = Anime(
                         _title = "Test",
                         episodes = 12,
-                        sources = hashSetOf(testConfig.buildAnimeLink("new-test-id"))
+                        _sources = hashSetOf(testConfig.buildAnimeLink("new-test-id"))
                     )
                     val rawFile = rawdata.resolve("previous-test-id.$CONVERTED_FILE_SUFFIX").createFile()
                     Json.toJson(updatedAnime).writeToFile(rawFile)
@@ -319,7 +319,7 @@ internal class DefaultDownloadControlStateUpdaterTest {
                     val dcs = tempDir.resolve("dcs").createDirectory()
                     val initialAnime = Anime(
                         _title = "Test",
-                        sources = hashSetOf(testConfig.buildAnimeLink("previous-test-id"))
+                        _sources = hashSetOf(testConfig.buildAnimeLink("previous-test-id"))
                     )
 
                     val downloadControlStateEntry = DownloadControlStateEntry(
@@ -384,7 +384,7 @@ internal class DefaultDownloadControlStateUpdaterTest {
                     animeSeason = AnimeSeason(
                         year = 1997,
                     ),
-                    sources = hashSetOf(URI("https://anilist.co/anime/32")),
+                    _sources = hashSetOf(URI("https://anilist.co/anime/32")),
                     synonyms = hashSetOf(
                         "Neon Genesis Evangelion: The End of Evangelion",
                         "新世紀エヴァンゲリオン劇場版 THE END OF EVANGELION",
@@ -460,7 +460,7 @@ internal class DefaultDownloadControlStateUpdaterTest {
                     animeSeason = AnimeSeason(
                         year = 1997,
                     ),
-                    sources = hashSetOf(URI("https://anilist.co/anime/32")),
+                    _sources = hashSetOf(URI("https://anilist.co/anime/32")),
                     synonyms = hashSetOf(
                         "Neon Genesis Evangelion: The End of Evangelion",
                         "新世紀エヴァンゲリオン劇場版 THE END OF EVANGELION",
@@ -554,7 +554,7 @@ internal class DefaultDownloadControlStateUpdaterTest {
                     animeSeason = AnimeSeason(
                         year = 1997,
                     ),
-                    sources = hashSetOf(URI("https://anilist.co/anime/32")),
+                    _sources = hashSetOf(URI("https://anilist.co/anime/32")),
                     synonyms = hashSetOf(
                         "Neon Genesis Evangelion: The End of Evangelion",
                         "新世紀エヴァンゲリオン劇場版 THE END OF EVANGELION",

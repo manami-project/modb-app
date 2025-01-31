@@ -60,7 +60,7 @@ class DefaultDownloadControlStateAccessor(
             _lastDownloaded = it.lastDownloaded.copy(),
             _nextDownload = it.nextDownload.copy(),
             _anime = it.anime.copy(
-                sources = it.anime.sources.toHashSet(),
+                _sources = it.anime.sources.toHashSet(),
                 synonyms = it.anime.synonyms.toHashSet(),
                 relatedAnime = it.anime.relatedAnime.toHashSet(),
                 tags = it.anime.tags.toHashSet(),

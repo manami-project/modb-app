@@ -622,13 +622,13 @@ class DefaultReadmeCreatorTest {
 
                 val mergedAnime = listOf(
                     Anime(
-                        sources = hashSetOf(
+                        _sources = hashSetOf(
                             URI("https://myanimelist.net/anime/1535"),
                         ),
                         _title =  "Death Note",
                     ),
                     Anime(
-                        sources = hashSetOf(
+                        _sources = hashSetOf(
                             URI("https://myanimelist.net/anime/34599"),
                         ),
                         _title = "Made in Abyss",

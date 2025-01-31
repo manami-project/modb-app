@@ -498,7 +498,7 @@ internal class DownloadControlStateEntryTest {
                         value = 24,
                         unit = Duration.TimeUnit.MINUTES,
                     ),
-                    sources = hashSetOf(URI("https://myanimelist.net/anime/6351")),
+                    _sources = hashSetOf(URI("https://myanimelist.net/anime/6351")),
                     synonyms = hashSetOf(
                         "Clannad ~After Story~: Another World, Kyou Chapter",
                         "Clannad: After Story OVA",
@@ -545,7 +545,7 @@ internal class DownloadControlStateEntryTest {
                         value = 24,
                         unit = Duration.TimeUnit.MINUTES,
                     ),
-                    sources = hashSetOf(URI("https://myanimelist.net/anime/6351")),
+                    _sources = hashSetOf(URI("https://myanimelist.net/anime/6351")),
                     synonyms = hashSetOf(
                         "Clannad ~After Story~: Another World, Kyou Chapter",
                         "Clannad: After Story OVA",

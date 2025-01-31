@@ -30,7 +30,7 @@ internal class DefaultMergingServiceTest {
             runBlocking {
                 // given
                 val aniList11Eyes = Anime(
-                    sources = hashSetOf(
+                    _sources = hashSetOf(
                         URI("https://anilist.co/anime/6682"),
                     ),
                     _title = "11eyes",
@@ -54,7 +54,7 @@ internal class DefaultMergingServiceTest {
                 )
 
                 val anidb11Eyes = Anime(
-                    sources = hashSetOf(
+                    _sources = hashSetOf(
                         URI("https://anidb.net/anime/6751"),
                     ),
                     _title = "11 Eyes",
@@ -81,7 +81,7 @@ internal class DefaultMergingServiceTest {
                 )
 
                 val mal11Eyes = Anime(
-                    sources = hashSetOf(
+                    _sources = hashSetOf(
                         URI("https://myanimelist.net/anime/6682"),
                     ),
                     _title = "11 - eyes",
@@ -143,7 +143,7 @@ internal class DefaultMergingServiceTest {
             runBlocking {
                 // given
                 val anidb = Anime(
-                    sources = hashSetOf(
+                    _sources = hashSetOf(
                         URI("https://anidb.net/anime/1"),
                     ),
                     _title = "Seikai no Monshou",
@@ -171,7 +171,7 @@ internal class DefaultMergingServiceTest {
                 )
 
                 val mal = Anime(
-                    sources = hashSetOf(
+                    _sources = hashSetOf(
                         URI("https://myanimelist.net/anime/1"),
                     ),
                     _title = "Cowboy Bebop",
@@ -222,7 +222,7 @@ internal class DefaultMergingServiceTest {
             runBlocking {
                 // given
                 val aniList11Eyes = Anime(
-                    sources = hashSetOf(
+                    _sources = hashSetOf(
                         URI("https://anilist.co/anime/6682"),
                     ),
                     _title = "11eyes",
@@ -242,7 +242,7 @@ internal class DefaultMergingServiceTest {
                 )
 
                 val bungakuShoujo = Anime(
-                    sources = hashSetOf(
+                    _sources = hashSetOf(
                         URI("https://kitsu.app/anime/4550"),
                         URI("https://myanimelist.net/anime/6408"),
                         URI("https://notify.moe/anime/UUie5KimR")
@@ -306,7 +306,7 @@ internal class DefaultMergingServiceTest {
             runBlocking {
                 // given
                 val entry1 = Anime(
-                    sources = hashSetOf(
+                    _sources = hashSetOf(
                         URI("https://myanimelist.net/anime/59110"),
                     ),
                     _title = "daydream",
@@ -327,7 +327,7 @@ internal class DefaultMergingServiceTest {
                 )
 
                 val entry2 = Anime(
-                    sources = hashSetOf(
+                    _sources = hashSetOf(
                         URI("https://myanimelist.net/anime/58364"),
                     ),
                     _title = "daydream",
@@ -351,7 +351,7 @@ internal class DefaultMergingServiceTest {
                 )
 
                 val entry3 = Anime(
-                    sources = hashSetOf(
+                    _sources = hashSetOf(
                         URI("https://anisearch.com/anime/19120"),
                     ),
                     _title = "Daydream",
@@ -407,7 +407,7 @@ internal class DefaultMergingServiceTest {
             runBlocking {
                 // given
                 val malCowboyBebop = Anime(
-                    sources = hashSetOf(
+                    _sources = hashSetOf(
                         URI("https://myanimelist.net/anime/1"),
                     ),
                     _title = "Cowboy Bebop",
@@ -430,7 +430,7 @@ internal class DefaultMergingServiceTest {
                 )
 
                 val malDaydream = Anime(
-                    sources = hashSetOf(
+                    _sources = hashSetOf(
                         URI("https://myanimelist.net/anime/59110"),
                     ),
                     _title = "daydream",
@@ -451,7 +451,7 @@ internal class DefaultMergingServiceTest {
                 )
 
                 val aniSearchDaydream = Anime(
-                    sources = hashSetOf(
+                    _sources = hashSetOf(
                         URI("https://anisearch.com/anime/19120"),
                     ),
                     _title = "Daydream",
@@ -472,7 +472,7 @@ internal class DefaultMergingServiceTest {
                 )
 
                 val anilDaydream = Anime(
-                    sources = hashSetOf(
+                    _sources = hashSetOf(
                         URI("https://anilist.co/anime/10001"),
                     ),
                     _title = "Daydream",

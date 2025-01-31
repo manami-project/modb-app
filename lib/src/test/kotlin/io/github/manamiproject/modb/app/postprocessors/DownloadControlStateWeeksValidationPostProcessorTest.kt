@@ -32,7 +32,7 @@ internal class DownloadControlStateWeeksValidationPostProcessorTest {
                     _nextDownload = WeekOfYear.currentWeek().minusWeeks(numberOfWeeks),
                     _anime = Anime(
                         _title = "test1",
-                        sources = hashSetOf(
+                        _sources = hashSetOf(
                             URI("https://example.org/anime/1"),
                         ),
                     )
@@ -66,7 +66,7 @@ internal class DownloadControlStateWeeksValidationPostProcessorTest {
                     _nextDownload = WeekOfYear.currentWeek().plusWeeks(1),
                     _anime = Anime(
                         _title = "test1",
-                        sources = hashSetOf(
+                        _sources = hashSetOf(
                             URI("https://example.org/anime/1"),
                         ),
                     )
@@ -102,7 +102,7 @@ internal class DownloadControlStateWeeksValidationPostProcessorTest {
                         _nextDownload = WeekOfYear.currentWeek().plusWeeks(1),
                         _anime = Anime(
                             _title = "test1",
-                            sources = hashSetOf(URI("https://example.org/anime/1")),
+                            _sources = hashSetOf(URI("https://example.org/anime/1")),
                         )
                     ),
                 )
