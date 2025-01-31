@@ -43,7 +43,7 @@ internal class DefaultMergingServiceTest {
                     animeSeason = AnimeSeason(
                         year = 2009,
                     ),
-                    synonyms = hashSetOf(
+                    _synonyms = hashSetOf(
                         "11eyes -Tsumi to Batsu to Aganai no Shoujo-",
                         "イレブンアイズ",
                     ),
@@ -67,7 +67,7 @@ internal class DefaultMergingServiceTest {
                     animeSeason = AnimeSeason(
                         year = 2009,
                     ),
-                    synonyms = hashSetOf(
+                    _synonyms = hashSetOf(
                         "11 akių",
                         "11 глаз",
                         "11 چشم",
@@ -94,7 +94,7 @@ internal class DefaultMergingServiceTest {
                     animeSeason = AnimeSeason(
                         year = 2009,
                     ),
-                    synonyms = hashSetOf(
+                    _synonyms = hashSetOf(
                         "11eyes -Tsumi to Batsu to Aganai no Shoujo-",
                         "11eyes イレブンアイズ",
                     ),
@@ -155,7 +155,7 @@ internal class DefaultMergingServiceTest {
                     animeSeason = AnimeSeason(
                         year = 1999,
                     ),
-                    synonyms = hashSetOf(
+                    _synonyms = hashSetOf(
                         "CotS",
                         "Crest of the Stars",
                         "Hvězdný erb",
@@ -183,7 +183,7 @@ internal class DefaultMergingServiceTest {
                     animeSeason = AnimeSeason(
                         year = 1998,
                     ),
-                    synonyms = hashSetOf(
+                    _synonyms = hashSetOf(
                         "カウボーイビバップ",
                     ),
                     relatedAnime = hashSetOf(
@@ -231,7 +231,7 @@ internal class DefaultMergingServiceTest {
                     picture = URI("https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx6682-ZptgLsCCNHjL.jpg"),
                     thumbnail = URI("https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/default.jpg"),
                     status = FINISHED,
-                    synonyms = hashSetOf(
+                    _synonyms = hashSetOf(
                         "11eyes -Tsumi to Batsu to Aganai no Shoujo-",
                         "イレブンアイズ",
                     ),
@@ -253,7 +253,7 @@ internal class DefaultMergingServiceTest {
                     status = FINISHED,
                     picture = URI("https://cdn.myanimelist.net/images/anime/8/81162.jpg"),
                     thumbnail = URI("https://cdn.myanimelist.net/images/anime/8/81162t.jpg"),
-                    synonyms = hashSetOf(
+                    _synonyms = hashSetOf(
                         "Book Girl",
                         "Literature Girl",
                         "げきじょうばんぶんがくしょうじょ",
@@ -321,7 +321,7 @@ internal class DefaultMergingServiceTest {
                         value = 120,
                         unit = SECONDS,
                     ),
-                    synonyms = hashSetOf(
+                    _synonyms = hashSetOf(
                         "白昼夢",
                     ),
                 )
@@ -342,7 +342,7 @@ internal class DefaultMergingServiceTest {
                         value = 120,
                         unit = SECONDS,
                     ),
-                    synonyms = hashSetOf(
+                    _synonyms = hashSetOf(
                         "崩壊学園9周年記念楽曲「白昼夢」",
                         "houkai gakuen 9th anniversary song daydream",
                         "houkai gakuen 9th anniversary song daydream",
@@ -366,7 +366,7 @@ internal class DefaultMergingServiceTest {
                         value = 240,
                         unit = SECONDS,
                     ),
-                    synonyms = hashSetOf(
+                    _synonyms = hashSetOf(
                         "春猿火 - daydream",
                     ),
                 )
@@ -419,7 +419,7 @@ internal class DefaultMergingServiceTest {
                     animeSeason = AnimeSeason(
                         year = 1998,
                     ),
-                    synonyms = hashSetOf(
+                    _synonyms = hashSetOf(
                         "カウボーイビバップ",
                     ),
                     relatedAnime = hashSetOf(
@@ -445,7 +445,7 @@ internal class DefaultMergingServiceTest {
                         value = 120,
                         unit = SECONDS,
                     ),
-                    synonyms = hashSetOf(
+                    _synonyms = hashSetOf(
                         "白昼夢",
                     ),
                 )
@@ -466,7 +466,7 @@ internal class DefaultMergingServiceTest {
                         value = 240,
                         unit = SECONDS,
                     ),
-                    synonyms = hashSetOf(
+                    _synonyms = hashSetOf(
                         "春猿火 - daydream",
                     ),
                 )

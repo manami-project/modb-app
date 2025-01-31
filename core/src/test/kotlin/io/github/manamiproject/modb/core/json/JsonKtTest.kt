@@ -43,7 +43,7 @@ internal class JsonKtTest {
                     picture = URI("https://cdn.myanimelist.net/images/anime/10/19621.jpg"),
                     thumbnail = URI("https://cdn.myanimelist.net/images/anime/10/19621t.jpg"),
                     duration = Duration(24, Duration.TimeUnit.MINUTES),
-                    synonyms = hashSetOf(
+                    _synonyms = hashSetOf(
                         "Clannad ~After Story~: Another World, Kyou Chapter",
                         "Clannad: After Story OVA",
                         "クラナド　アフターストーリー　もうひとつの世界　杏編",
@@ -86,7 +86,7 @@ internal class JsonKtTest {
                     picture = URI("https://cdn.myanimelist.net/images/anime/10/19621.jpg"),
                     thumbnail = URI("https://cdn.myanimelist.net/images/anime/10/19621t.jpg"),
                     duration = Duration(24, Duration.TimeUnit.MINUTES),
-                    synonyms = hashSetOf(
+                    _synonyms = hashSetOf(
                         "Clannad ~After Story~: Another World, Kyou Chapter",
                         "Clannad: After Story OVA",
                         "クラナド　アフターストーリー　もうひとつの世界　杏編",
@@ -239,7 +239,7 @@ internal class JsonKtTest {
                         picture = URI("https://cdn.myanimelist.net/images/anime/10/19621.jpg"),
                         thumbnail = URI("https://cdn.myanimelist.net/images/anime/10/19621t.jpg"),
                         duration = Duration(24, Duration.TimeUnit.MINUTES),
-                        synonyms = hashSetOf(
+                        _synonyms = hashSetOf(
                             "Clannad (TV)",
                             "Kuranado",
                             "Clannad TV",
@@ -439,7 +439,7 @@ internal class JsonKtTest {
                         picture = URI("https://cdn.myanimelist.net/images/anime/10/19621.jpg"),
                         thumbnail = URI("https://cdn.myanimelist.net/images/anime/10/19621t.jpg"),
                         duration = Duration(24, Duration.TimeUnit.MINUTES),
-                        synonyms = hashSetOf(
+                        _synonyms = hashSetOf(
                             "Clannad ~After Story~: Another World, Kyou Chapter",
                             "Clannad: After Story OVA",
                             "クラナド　アフターストーリー　もうひとつの世界　杏編",
@@ -524,7 +524,7 @@ internal class JsonKtTest {
                         picture = URI("https://cdn.myanimelist.net/images/anime/10/19621.jpg"),
                         thumbnail = URI("https://cdn.myanimelist.net/images/anime/10/19621t.jpg"),
                         duration = Duration(24, Duration.TimeUnit.MINUTES),
-                        synonyms = hashSetOf(
+                        _synonyms = hashSetOf(
                             "Clannad ~After Story~: Another World, Kyou Chapter",
                             "Clannad: After Story OVA",
                             "クラナド　アフターストーリー　もうひとつの世界　杏編",
@@ -599,7 +599,7 @@ internal class JsonKtTest {
                         picture = URI("https://cdn.myanimelist.net/images/anime/10/19621.jpg"),
                         thumbnail = URI("https://cdn.myanimelist.net/images/anime/10/19621t.jpg"),
                         duration = Duration(24, Duration.TimeUnit.MINUTES),
-                        synonyms = hashSetOf(
+                        _synonyms = hashSetOf(
                             "Clannad ~After Story~: Another World, Kyou Chapter",
                             "Clannad: After Story OVA",
                             "クラナド　アフターストーリー　もうひとつの世界　杏編",
@@ -642,7 +642,7 @@ internal class JsonKtTest {
                         picture = URI("https://cdn.myanimelist.net/images/anime/10/19621.jpg"),
                         thumbnail = URI("https://cdn.myanimelist.net/images/anime/10/19621t.jpg"),
                         duration = Duration(24, Duration.TimeUnit.MINUTES),
-                        synonyms = hashSetOf(
+                        _synonyms = hashSetOf(
                             "Clannad ~After Story~: Another World, Kyou Chapter",
                             "Clannad: After Story OVA",
                             "クラナド　アフターストーリー　もうひとつの世界　杏編",

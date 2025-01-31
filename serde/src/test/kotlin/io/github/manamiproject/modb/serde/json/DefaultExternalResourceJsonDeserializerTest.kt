@@ -158,7 +158,7 @@ internal class DefaultExternalResourceJsonDeserializerTest : MockServerTestCase<
                             season = AnimeSeason.Season.UNDEFINED,
                             year = 1999,
                         ),
-                        synonyms = hashSetOf(
+                        _synonyms = hashSetOf(
                             "CotS",
                             "Crest of the Stars",
                             "Hvězdný erb",
@@ -194,7 +194,7 @@ internal class DefaultExternalResourceJsonDeserializerTest : MockServerTestCase<
                             season = AnimeSeason.Season.SPRING,
                             year = 1998,
                         ),
-                        synonyms = hashSetOf(
+                        _synonyms = hashSetOf(
                             "カウボーイビバップ",
                         ),
                         tags = hashSetOf(
@@ -223,7 +223,7 @@ internal class DefaultExternalResourceJsonDeserializerTest : MockServerTestCase<
                             season = AnimeSeason.Season.SPRING,
                             year = 1998,
                         ),
-                        synonyms = hashSetOf(
+                        _synonyms = hashSetOf(
                             "Cowboy Bebop: Knockin' on Heaven's Door",
                             "Cowboy Bebop: The Movie", "カウボーイビバップ 天国の扉",
                         ),
@@ -249,7 +249,7 @@ internal class DefaultExternalResourceJsonDeserializerTest : MockServerTestCase<
                             season = AnimeSeason.Season.UNDEFINED,
                             year = 2009,
                         ),
-                        synonyms = hashSetOf(
+                        _synonyms = hashSetOf(
                             "11 akių",
                             "11 глаз",
                             "11 چشم",
@@ -295,7 +295,7 @@ internal class DefaultExternalResourceJsonDeserializerTest : MockServerTestCase<
                             season = AnimeSeason.Season.FALL,
                             year = 2009,
                         ),
-                        synonyms = hashSetOf(
+                        _synonyms = hashSetOf(
                             "11eyes -Tsumi to Batsu to Aganai no Shoujo-",
                             "11eyes イレブンアイズ",
                             "イレブンアイズ",
@@ -365,7 +365,7 @@ internal class DefaultExternalResourceJsonDeserializerTest : MockServerTestCase<
                             season = AnimeSeason.Season.UNDEFINED,
                             year = 1999,
                         ),
-                        synonyms = hashSetOf(
+                        _synonyms = hashSetOf(
                             "CotS",
                             "Crest of the Stars",
                             "Hvězdný erb",
@@ -401,7 +401,7 @@ internal class DefaultExternalResourceJsonDeserializerTest : MockServerTestCase<
                             season = AnimeSeason.Season.SPRING,
                             year = 1998,
                         ),
-                        synonyms = hashSetOf(
+                        _synonyms = hashSetOf(
                             "カウボーイビバップ",
                         ),
                         tags = hashSetOf(
@@ -430,7 +430,7 @@ internal class DefaultExternalResourceJsonDeserializerTest : MockServerTestCase<
                             season = AnimeSeason.Season.SPRING,
                             year = 1998,
                         ),
-                        synonyms = hashSetOf(
+                        _synonyms = hashSetOf(
                             "Cowboy Bebop: Knockin' on Heaven's Door",
                             "Cowboy Bebop: The Movie", "カウボーイビバップ 天国の扉",
                         ),
@@ -456,7 +456,7 @@ internal class DefaultExternalResourceJsonDeserializerTest : MockServerTestCase<
                             season = AnimeSeason.Season.UNDEFINED,
                             year = 2009,
                         ),
-                        synonyms = hashSetOf(
+                        _synonyms = hashSetOf(
                             "11 akių",
                             "11 глаз",
                             "11 چشم",
@@ -502,7 +502,7 @@ internal class DefaultExternalResourceJsonDeserializerTest : MockServerTestCase<
                             season = AnimeSeason.Season.FALL,
                             year = 2009,
                         ),
-                        synonyms = hashSetOf(
+                        _synonyms = hashSetOf(
                             "11eyes -Tsumi to Batsu to Aganai no Shoujo-",
                             "11eyes イレブンアイズ",
                             "イレブンアイズ",
@@ -681,7 +681,7 @@ internal class DefaultExternalResourceJsonDeserializerTest : MockServerTestCase<
                             season = AnimeSeason.Season.UNDEFINED,
                             year = 1999,
                         ),
-                        synonyms = hashSetOf(
+                        _synonyms = hashSetOf(
                             "CotS",
                             "Crest of the Stars",
                             "Hvězdný erb",
@@ -717,7 +717,7 @@ internal class DefaultExternalResourceJsonDeserializerTest : MockServerTestCase<
                             season = AnimeSeason.Season.SPRING,
                             year = 1998,
                         ),
-                        synonyms = hashSetOf(
+                        _synonyms = hashSetOf(
                             "カウボーイビバップ",
                         ),
                         tags = hashSetOf(
@@ -769,7 +769,7 @@ internal class DefaultExternalResourceJsonDeserializerTest : MockServerTestCase<
                             season = AnimeSeason.Season.UNDEFINED,
                             year = 2009,
                         ),
-                        synonyms = hashSetOf(
+                        _synonyms = hashSetOf(
                             "11 akių",
                             "11 глаз",
                             "11 چشم",
@@ -815,7 +815,7 @@ internal class DefaultExternalResourceJsonDeserializerTest : MockServerTestCase<
                             season = AnimeSeason.Season.FALL,
                             year = 2009,
                         ),
-                        synonyms = hashSetOf(
+                        _synonyms = hashSetOf(
                             "11eyes -Tsumi to Batsu to Aganai no Shoujo-",
                             "11eyes イレブンアイズ",
                             "イレブンアイズ",

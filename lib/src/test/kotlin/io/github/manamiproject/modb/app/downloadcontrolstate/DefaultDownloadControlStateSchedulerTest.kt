@@ -51,7 +51,7 @@ internal class DefaultDownloadControlStateSchedulerTest {
                             year = 2001,
                         ),
                         _sources = hashSetOf(URI("https://kitsu.app/anime/99")),
-                        synonyms = hashSetOf(
+                        _synonyms = hashSetOf(
                             "Furuba",
                             "フルーツバスケット",
                         ),
@@ -118,7 +118,7 @@ internal class DefaultDownloadControlStateSchedulerTest {
                             year = 1997,
                         ),
                         _sources = hashSetOf(URI("https://anilist.co/anime/32")),
-                        synonyms = hashSetOf(
+                        _synonyms = hashSetOf(
                             "Neon Genesis Evangelion: The End of Evangelion",
                             "新世紀エヴァンゲリオン劇場版 THE END OF EVANGELION",
                         ),
