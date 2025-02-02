@@ -1,0 +1,15 @@
+name: Release anime-planet
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - anime-planet/release.version
+
+jobs:
+  anime-planet:
+    uses: ./.github/workflows/reusable-release.yml
+    with:
+      module_name: anime-planet
+    secrets: inherit

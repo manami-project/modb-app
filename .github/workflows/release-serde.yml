@@ -1,0 +1,15 @@
+name: Release serde
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - serde/release.version
+
+jobs:
+  serde:
+    uses: ./.github/workflows/reusable-release.yml
+    with:
+      module_name: serde
+    secrets: inherit

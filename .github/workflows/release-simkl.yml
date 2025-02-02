@@ -1,0 +1,15 @@
+name: Release simkl
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - simkl/release.version
+
+jobs:
+  simkl:
+    uses: ./.github/workflows/reusable-release.yml
+    with:
+      module_name: simkl
+    secrets: inherit

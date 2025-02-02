@@ -1,0 +1,15 @@
+name: Release anilist
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - anilist/release.version
+
+jobs:
+  anilist:
+    uses: ./.github/workflows/reusable-release.yml
+    with:
+      module_name: anilist
+    secrets: inherit

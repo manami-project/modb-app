@@ -1,0 +1,15 @@
+name: Release anisearch
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - anisearch/release.version
+
+jobs:
+  anisearch:
+    uses: ./.github/workflows/reusable-release.yml
+    with:
+      module_name: anisearch
+    secrets: inherit
