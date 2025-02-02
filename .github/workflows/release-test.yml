@@ -1,0 +1,15 @@
+name: Release test
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - test/release.version
+
+jobs:
+  test:
+    uses: ./.github/workflows/reusable-release.yml
+    with:
+      module_name: test
+    secrets: inherit

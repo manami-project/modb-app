@@ -1,0 +1,15 @@
+name: Release kitsu
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - kitsu/release.version
+
+jobs:
+  kitsu:
+    uses: ./.github/workflows/reusable-release.yml
+    with:
+      module_name: kitsu
+    secrets: inherit

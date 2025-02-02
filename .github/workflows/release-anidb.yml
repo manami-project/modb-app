@@ -1,0 +1,15 @@
+name: Release anidb
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - anidb/release.version
+
+jobs:
+  anidb:
+    uses: ./.github/workflows/reusable-release.yml
+    with:
+      module_name: anidb
+    secrets: inherit

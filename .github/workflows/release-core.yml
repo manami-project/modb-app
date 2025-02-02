@@ -1,0 +1,15 @@
+name: Release core
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - core/release.version
+
+jobs:
+  core:
+    uses: ./.github/workflows/reusable-release.yml
+    with:
+      module_name: core
+    secrets: inherit

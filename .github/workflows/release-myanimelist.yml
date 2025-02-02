@@ -1,0 +1,15 @@
+name: Release myanimelist
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - myanimelist/release.version
+
+jobs:
+  myanimelist:
+    uses: ./.github/workflows/reusable-release.yml
+    with:
+      module_name: myanimelist
+    secrets: inherit
