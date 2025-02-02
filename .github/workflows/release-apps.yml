@@ -1,0 +1,79 @@
+name: Release apps
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - release.version
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - id: extract_release_version
+        name: Extract release version
+        run: |
+          echo "RELEASE_VERSION=$(cat ./release.version)" >> $GITHUB_OUTPUT
+
+      - name: Set up JDK
+        uses: actions/setup-java@v4
+        with:
+          distribution: zulu
+          java-version: 21
+
+      - name: Build executable fatJar
+        env:
+          GH_PACKAGES_READ_TOKEN: ${{ secrets.PACKAGES_READ_TOKEN }}
+        run: |
+          ./gradlew test
+          ./gradlew :analyzer:shadowJar -Prelease.version=${{ steps.extract_release_version.outputs.RELEASE_VERSION }}
+          ./gradlew :app:shadowJar -Prelease.version=${{ steps.extract_release_version.outputs.RELEASE_VERSION }}
+
+      - name: Remove outdated pre-releases
+        uses: actions/delete-package-versions@v5
+        with:
+          package-name: io.github.manamiproject.${{ github.event.repository.name }}
+          package-type: maven
+          min-versions-to-keep: 1
+          delete-only-pre-release-versions: true
+
+      - name: Remove outdated releases
+        uses: actions/delete-package-versions@v5
+        with:
+          package-name: io.github.manamiproject.${{ github.event.repository.name }}
+          package-type: maven
+          min-versions-to-keep: 10
+
+      - name: Create release
+        uses: softprops/action-gh-release@v2
+        with:
+          name: ${{ steps.extract_release_version.outputs.RELEASE_VERSION }}
+          tag_name: ${{ steps.extract_release_version.outputs.RELEASE_VERSION }}
+          generate_release_notes: true
+          make_latest: true
+          files: |
+            app/build/libs/modb-app.jar
+            analyzer/build/libs/modb-analyzer.jar
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - id: fetch_latest_release
+        name: Fetch latest release tag
+        run: |
+          version=$(git tag --sort=creatordate | tail -2 | head -1)
+          echo "PREVIOUS_VERSION=$version" >> $GITHUB_OUTPUT
+
+      - name: Delete outdated release assets
+        uses: mknejp/delete-release-assets@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          tag: ${{ steps.fetch_latest_release.outputs.PREVIOUS_VERSION }}
+          assets: |
+            modb-app.jar
+            modb-analyzer.jar
+          fail-if-no-release: false
+          fail-if-no-assets: false

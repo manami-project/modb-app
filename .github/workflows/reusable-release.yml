@@ -1,0 +1,39 @@
+on:
+  workflow_call:
+    inputs:
+      module_name:
+        required: true
+        type: string
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - id: extract_release_version
+        name: Extract release version
+        run: |
+          echo "RELEASE_VERSION=$(cat ${{ inputs.module_name }}/release.version)" >> $GITHUB_OUTPUT
+
+      - name: Set up JDK
+        uses: actions/setup-java@v4
+        with:
+          distribution: zulu
+          java-version: 21
+
+      - name: Execute tests and upload release
+        env:
+          GH_PACKAGES_RELEASE_TOKEN: ${{ secrets.PACKAGES_RELEASE_TOKEN }}
+        run: ./gradlew test ${{ inputs.module_name }}:publish -Prelease.version=${{ steps.extract_release_version.outputs.RELEASE_VERSION }}
+
+      - name: Create release
+        uses: softprops/action-gh-release@v2
+        with:
+          name: ${{ inputs.module_name }}/${{ steps.extract_release_version.outputs.RELEASE_VERSION }}
+          tag_name: ${{ inputs.module_name }}/${{ steps.extract_release_version.outputs.RELEASE_VERSION }}
+          generate_release_notes: true
+          make_latest: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
