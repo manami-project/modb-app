@@ -635,7 +635,7 @@ internal class NotifyAnimeConverterTest {
                 // when
                 val result = assertThrows<IllegalArgumentException> {
                     NotifyAnimeConverter(
-                        metaDataProviderConfig = MetaDataProviderTestConfig,
+                        metaDataProviderConfig = TestMetaDataProviderConfig,
                         relationsDir = relationsDir,
                     )
                 }
@@ -654,7 +654,7 @@ internal class NotifyAnimeConverterTest {
                 // when
                 val result = assertThrows<IllegalArgumentException> {
                     NotifyAnimeConverter(
-                        metaDataProviderConfig = MetaDataProviderTestConfig,
+                        metaDataProviderConfig = TestMetaDataProviderConfig,
                         relationsDir = relationsDir,
                     )
                 }

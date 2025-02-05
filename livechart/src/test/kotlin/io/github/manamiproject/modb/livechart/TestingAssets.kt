@@ -7,7 +7,7 @@ import io.github.manamiproject.modb.core.config.MetaDataProviderConfig
 import io.github.manamiproject.modb.test.shouldNotBeInvoked
 import java.net.URI
 
-internal object MetaDataProviderTestConfig : MetaDataProviderConfig {
+internal object TestMetaDataProviderConfig : MetaDataProviderConfig {
     override fun isTestContext(): Boolean = true
     override fun hostname(): Hostname = shouldNotBeInvoked()
     override fun buildAnimeLink(id: AnimeId): URI = shouldNotBeInvoked()

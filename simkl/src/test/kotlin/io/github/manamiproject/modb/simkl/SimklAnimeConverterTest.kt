@@ -25,7 +25,7 @@ internal class SimklAnimeConverterTest {
         fun `correctly extracts primary title`() {
             runBlocking {
                 // given
-                val testConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun extractAnimeId(uri: URI): AnimeId = SimklConfig.extractAnimeId(uri)
                     override fun buildAnimeLink(id: AnimeId): URI = SimklConfig.buildAnimeLink(id)
                     override fun fileSuffix(): FileSuffix = SimklConfig.fileSuffix()
@@ -47,7 +47,7 @@ internal class SimklAnimeConverterTest {
         fun `extract title from alt tag, because SimklLoginBgTitle may return other text than the title like 'Blue Box'`() {
             runBlocking {
                 // given
-                val testConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun extractAnimeId(uri: URI): AnimeId = SimklConfig.extractAnimeId(uri)
                     override fun buildAnimeLink(id: AnimeId): URI = SimklConfig.buildAnimeLink(id)
                     override fun fileSuffix(): FileSuffix = SimklConfig.fileSuffix()
@@ -69,7 +69,7 @@ internal class SimklAnimeConverterTest {
         fun `correctly extracts title including special chars`() {
             runBlocking {
                 // given
-                val testConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun extractAnimeId(uri: URI): AnimeId = SimklConfig.extractAnimeId(uri)
                     override fun buildAnimeLink(id: AnimeId): URI = SimklConfig.buildAnimeLink(id)
                     override fun fileSuffix(): FileSuffix = SimklConfig.fileSuffix()
@@ -95,7 +95,7 @@ internal class SimklAnimeConverterTest {
         fun `unknown number of episodes`() {
             runBlocking {
                 // given
-                val testConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun extractAnimeId(uri: URI): AnimeId = SimklConfig.extractAnimeId(uri)
                     override fun buildAnimeLink(id: AnimeId): URI = SimklConfig.buildAnimeLink(id)
                     override fun fileSuffix(): FileSuffix = SimklConfig.fileSuffix()
@@ -117,7 +117,7 @@ internal class SimklAnimeConverterTest {
         fun `1 episode`() {
             runBlocking {
                 // given
-                val testConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun extractAnimeId(uri: URI): AnimeId = SimklConfig.extractAnimeId(uri)
                     override fun buildAnimeLink(id: AnimeId): URI = SimklConfig.buildAnimeLink(id)
                     override fun fileSuffix(): FileSuffix = SimklConfig.fileSuffix()
@@ -139,7 +139,7 @@ internal class SimklAnimeConverterTest {
         fun `10 episodes`() {
             runBlocking {
                 // given
-                val testConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun extractAnimeId(uri: URI): AnimeId = SimklConfig.extractAnimeId(uri)
                     override fun buildAnimeLink(id: AnimeId): URI = SimklConfig.buildAnimeLink(id)
                     override fun fileSuffix(): FileSuffix = SimklConfig.fileSuffix()
@@ -161,7 +161,7 @@ internal class SimklAnimeConverterTest {
         fun `100 episodes`() {
             runBlocking {
                 // given
-                val testConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun extractAnimeId(uri: URI): AnimeId = SimklConfig.extractAnimeId(uri)
                     override fun buildAnimeLink(id: AnimeId): URI = SimklConfig.buildAnimeLink(id)
                     override fun fileSuffix(): FileSuffix = SimklConfig.fileSuffix()
@@ -183,7 +183,7 @@ internal class SimklAnimeConverterTest {
         fun `1818 episodes`() {
             runBlocking {
                 // given
-                val testConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun extractAnimeId(uri: URI): AnimeId = SimklConfig.extractAnimeId(uri)
                     override fun buildAnimeLink(id: AnimeId): URI = SimklConfig.buildAnimeLink(id)
                     override fun fileSuffix(): FileSuffix = SimklConfig.fileSuffix()
@@ -205,7 +205,7 @@ internal class SimklAnimeConverterTest {
         fun `2 episodes retrieved from fallback`() {
             runBlocking {
                 // given
-                val testConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun extractAnimeId(uri: URI): AnimeId = SimklConfig.extractAnimeId(uri)
                     override fun buildAnimeLink(id: AnimeId): URI = SimklConfig.buildAnimeLink(id)
                     override fun fileSuffix(): FileSuffix = SimklConfig.fileSuffix()
@@ -227,7 +227,7 @@ internal class SimklAnimeConverterTest {
         fun `correctly extracts 130 on an ongoing anime whose last episode was 107 and next is 108`() {
             runBlocking {
                 // given
-                val testConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun extractAnimeId(uri: URI): AnimeId = SimklConfig.extractAnimeId(uri)
                     override fun buildAnimeLink(id: AnimeId): URI = SimklConfig.buildAnimeLink(id)
                     override fun fileSuffix(): FileSuffix = SimklConfig.fileSuffix()
@@ -249,7 +249,7 @@ internal class SimklAnimeConverterTest {
         fun `correctly extracts episodes for a series that ended and is missing the info in the header`() {
             runBlocking {
                 // given
-                val testConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun extractAnimeId(uri: URI): AnimeId = SimklConfig.extractAnimeId(uri)
                     override fun buildAnimeLink(id: AnimeId): URI = SimklConfig.buildAnimeLink(id)
                     override fun fileSuffix(): FileSuffix = SimklConfig.fileSuffix()
@@ -275,7 +275,7 @@ internal class SimklAnimeConverterTest {
         fun `type is Movie`() {
             runBlocking {
                 // given
-                val testConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun extractAnimeId(uri: URI): AnimeId = SimklConfig.extractAnimeId(uri)
                     override fun buildAnimeLink(id: AnimeId): URI = SimklConfig.buildAnimeLink(id)
                     override fun fileSuffix(): FileSuffix = SimklConfig.fileSuffix()
@@ -297,7 +297,7 @@ internal class SimklAnimeConverterTest {
         fun `type is OVA`() {
             runBlocking {
                 // given
-                val testConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun extractAnimeId(uri: URI): AnimeId = SimklConfig.extractAnimeId(uri)
                     override fun buildAnimeLink(id: AnimeId): URI = SimklConfig.buildAnimeLink(id)
                     override fun fileSuffix(): FileSuffix = SimklConfig.fileSuffix()
@@ -319,7 +319,7 @@ internal class SimklAnimeConverterTest {
         fun `type is TV`() {
             runBlocking {
                 // given
-                val testConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun extractAnimeId(uri: URI): AnimeId = SimklConfig.extractAnimeId(uri)
                     override fun buildAnimeLink(id: AnimeId): URI = SimklConfig.buildAnimeLink(id)
                     override fun fileSuffix(): FileSuffix = SimklConfig.fileSuffix()
@@ -341,7 +341,7 @@ internal class SimklAnimeConverterTest {
         fun `type is ONA`() {
             runBlocking {
                 // given
-                val testConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun extractAnimeId(uri: URI): AnimeId = SimklConfig.extractAnimeId(uri)
                     override fun buildAnimeLink(id: AnimeId): URI = SimklConfig.buildAnimeLink(id)
                     override fun fileSuffix(): FileSuffix = SimklConfig.fileSuffix()
@@ -363,7 +363,7 @@ internal class SimklAnimeConverterTest {
         fun `type is SPECIAL`() {
             runBlocking {
                 // given
-                val testConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun extractAnimeId(uri: URI): AnimeId = SimklConfig.extractAnimeId(uri)
                     override fun buildAnimeLink(id: AnimeId): URI = SimklConfig.buildAnimeLink(id)
                     override fun fileSuffix(): FileSuffix = SimklConfig.fileSuffix()
@@ -385,7 +385,7 @@ internal class SimklAnimeConverterTest {
         fun `'Music Video' is mapped to SPECIAL`() {
             runBlocking {
                 // given
-                val testConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun extractAnimeId(uri: URI): AnimeId = SimklConfig.extractAnimeId(uri)
                     override fun buildAnimeLink(id: AnimeId): URI = SimklConfig.buildAnimeLink(id)
                     override fun fileSuffix(): FileSuffix = SimklConfig.fileSuffix()
@@ -411,7 +411,7 @@ internal class SimklAnimeConverterTest {
         fun `neither picture nor thumbnail available`() {
             runBlocking {
                 // given
-                val testConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun extractAnimeId(uri: URI): AnimeId = SimklConfig.extractAnimeId(uri)
                     override fun buildAnimeLink(id: AnimeId): URI = SimklConfig.buildAnimeLink(id)
                     override fun fileSuffix(): FileSuffix = SimklConfig.fileSuffix()
@@ -434,7 +434,7 @@ internal class SimklAnimeConverterTest {
         fun `picture and thumbnail`() {
             runBlocking {
                 // given
-                val testConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun extractAnimeId(uri: URI): AnimeId = SimklConfig.extractAnimeId(uri)
                     override fun buildAnimeLink(id: AnimeId): URI = SimklConfig.buildAnimeLink(id)
                     override fun fileSuffix(): FileSuffix = SimklConfig.fileSuffix()
@@ -461,7 +461,7 @@ internal class SimklAnimeConverterTest {
         fun `correctly extracts ONGOING anime`() {
             runBlocking {
                 // given
-                val testConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun extractAnimeId(uri: URI): AnimeId = SimklConfig.extractAnimeId(uri)
                     override fun buildAnimeLink(id: AnimeId): URI = SimklConfig.buildAnimeLink(id)
                     override fun fileSuffix(): FileSuffix = SimklConfig.fileSuffix()
@@ -483,7 +483,7 @@ internal class SimklAnimeConverterTest {
         fun `correctly extracts UPCOMING anime`() {
             runBlocking {
                 // given
-                val testConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun extractAnimeId(uri: URI): AnimeId = SimklConfig.extractAnimeId(uri)
                     override fun buildAnimeLink(id: AnimeId): URI = SimklConfig.buildAnimeLink(id)
                     override fun fileSuffix(): FileSuffix = SimklConfig.fileSuffix()
@@ -505,7 +505,7 @@ internal class SimklAnimeConverterTest {
         fun `correctly extracts FINISHED anime`() {
             runBlocking {
                 // given
-                val testConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun extractAnimeId(uri: URI): AnimeId = SimklConfig.extractAnimeId(uri)
                     override fun buildAnimeLink(id: AnimeId): URI = SimklConfig.buildAnimeLink(id)
                     override fun fileSuffix(): FileSuffix = SimklConfig.fileSuffix()
@@ -527,7 +527,7 @@ internal class SimklAnimeConverterTest {
         fun `airdate in the past is mapped to FINISHED`() {
             runBlocking {
                 // given
-                val testConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun extractAnimeId(uri: URI): AnimeId = SimklConfig.extractAnimeId(uri)
                     override fun buildAnimeLink(id: AnimeId): URI = SimklConfig.buildAnimeLink(id)
                     override fun fileSuffix(): FileSuffix = SimklConfig.fileSuffix()
@@ -557,7 +557,7 @@ internal class SimklAnimeConverterTest {
             fun `season is 'WINTER'`(value: Int) {
                 runBlocking {
                     // given
-                    val testConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                    val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                         override fun extractAnimeId(uri: URI): AnimeId = SimklConfig.extractAnimeId(uri)
                         override fun buildAnimeLink(id: AnimeId): URI = SimklConfig.buildAnimeLink(id)
                         override fun fileSuffix(): FileSuffix = SimklConfig.fileSuffix()
@@ -580,7 +580,7 @@ internal class SimklAnimeConverterTest {
             fun `season is 'SPRING'`(value: Int) {
                 runBlocking {
                     // given
-                    val testConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                    val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                         override fun extractAnimeId(uri: URI): AnimeId = SimklConfig.extractAnimeId(uri)
                         override fun buildAnimeLink(id: AnimeId): URI = SimklConfig.buildAnimeLink(id)
                         override fun fileSuffix(): FileSuffix = SimklConfig.fileSuffix()
@@ -603,7 +603,7 @@ internal class SimklAnimeConverterTest {
             fun `season is 'SUMMER'`(value: Int) {
                 runBlocking {
                     // given
-                    val testConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                    val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                         override fun extractAnimeId(uri: URI): AnimeId = SimklConfig.extractAnimeId(uri)
                         override fun buildAnimeLink(id: AnimeId): URI = SimklConfig.buildAnimeLink(id)
                         override fun fileSuffix(): FileSuffix = SimklConfig.fileSuffix()
@@ -626,7 +626,7 @@ internal class SimklAnimeConverterTest {
             fun `season is 'FALL'`(value: Int) {
                 runBlocking {
                     // given
-                    val testConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                    val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                         override fun extractAnimeId(uri: URI): AnimeId = SimklConfig.extractAnimeId(uri)
                         override fun buildAnimeLink(id: AnimeId): URI = SimklConfig.buildAnimeLink(id)
                         override fun fileSuffix(): FileSuffix = SimklConfig.fileSuffix()
@@ -652,7 +652,7 @@ internal class SimklAnimeConverterTest {
             fun `correctly extract the year of premiere if start and end year are the same`() {
                 runBlocking {
                     // given
-                    val testConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                    val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                         override fun extractAnimeId(uri: URI): AnimeId = SimklConfig.extractAnimeId(uri)
                         override fun buildAnimeLink(id: AnimeId): URI = SimklConfig.buildAnimeLink(id)
                         override fun fileSuffix(): FileSuffix = SimklConfig.fileSuffix()
@@ -674,7 +674,7 @@ internal class SimklAnimeConverterTest {
             fun `correctly extract the year of premiere`() {
                 runBlocking {
                     // given
-                    val testConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                    val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                         override fun extractAnimeId(uri: URI): AnimeId = SimklConfig.extractAnimeId(uri)
                         override fun buildAnimeLink(id: AnimeId): URI = SimklConfig.buildAnimeLink(id)
                         override fun fileSuffix(): FileSuffix = SimklConfig.fileSuffix()
@@ -696,7 +696,7 @@ internal class SimklAnimeConverterTest {
             fun `correctly adjusts the year of premiere of it is set in year before the first official anime release`() {
                 runBlocking {
                     // given
-                    val testConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                    val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                         override fun extractAnimeId(uri: URI): AnimeId = SimklConfig.extractAnimeId(uri)
                         override fun buildAnimeLink(id: AnimeId): URI = SimklConfig.buildAnimeLink(id)
                         override fun fileSuffix(): FileSuffix = SimklConfig.fileSuffix()
@@ -719,7 +719,7 @@ internal class SimklAnimeConverterTest {
         fun `both unknown`() {
             runBlocking {
                 // given
-                val testConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun extractAnimeId(uri: URI): AnimeId = SimklConfig.extractAnimeId(uri)
                     override fun buildAnimeLink(id: AnimeId): URI = SimklConfig.buildAnimeLink(id)
                     override fun fileSuffix(): FileSuffix = SimklConfig.fileSuffix()
@@ -746,7 +746,7 @@ internal class SimklAnimeConverterTest {
         fun `correctly extracts id 41586`() {
             runBlocking {
                 // given
-                val testConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun extractAnimeId(uri: URI): AnimeId = SimklConfig.extractAnimeId(uri)
                     override fun buildAnimeLink(id: AnimeId): URI = SimklConfig.buildAnimeLink(id)
                     override fun fileSuffix(): FileSuffix = SimklConfig.fileSuffix()
@@ -774,7 +774,7 @@ internal class SimklAnimeConverterTest {
         fun `correctly extracts both genres and subgenres`() {
             runBlocking {
                 // given
-                val testConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun extractAnimeId(uri: URI): AnimeId = SimklConfig.extractAnimeId(uri)
                     override fun buildAnimeLink(id: AnimeId): URI = SimklConfig.buildAnimeLink(id)
                     override fun fileSuffix(): FileSuffix = SimklConfig.fileSuffix()
@@ -812,7 +812,7 @@ internal class SimklAnimeConverterTest {
         fun `correctly extracts both directly and indirectly related anime`() {
             runBlocking {
                 // given
-                val testConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun extractAnimeId(uri: URI): AnimeId = SimklConfig.extractAnimeId(uri)
                     override fun buildAnimeLink(id: AnimeId): URI = SimklConfig.buildAnimeLink(id)
                     override fun fileSuffix(): FileSuffix = SimklConfig.fileSuffix()
@@ -842,7 +842,7 @@ internal class SimklAnimeConverterTest {
         fun `correctly extracts multiple synoynms`() {
             runBlocking {
                 // given
-                val testConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun extractAnimeId(uri: URI): AnimeId = SimklConfig.extractAnimeId(uri)
                     override fun buildAnimeLink(id: AnimeId): URI = SimklConfig.buildAnimeLink(id)
                     override fun fileSuffix(): FileSuffix = SimklConfig.fileSuffix()
@@ -868,7 +868,7 @@ internal class SimklAnimeConverterTest {
         fun `no synonyms`() {
             runBlocking {
                 // given
-                val testConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun extractAnimeId(uri: URI): AnimeId = SimklConfig.extractAnimeId(uri)
                     override fun buildAnimeLink(id: AnimeId): URI = SimklConfig.buildAnimeLink(id)
                     override fun fileSuffix(): FileSuffix = SimklConfig.fileSuffix()
@@ -894,7 +894,7 @@ internal class SimklAnimeConverterTest {
         fun `correctly extracts minutes`() {
             runBlocking {
                 // given
-                val testConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun extractAnimeId(uri: URI): AnimeId = SimklConfig.extractAnimeId(uri)
                     override fun buildAnimeLink(id: AnimeId): URI = SimklConfig.buildAnimeLink(id)
                     override fun fileSuffix(): FileSuffix = SimklConfig.fileSuffix()
@@ -919,7 +919,7 @@ internal class SimklAnimeConverterTest {
         fun `correctly extracts hours`() {
             runBlocking {
                 // given
-                val testConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun extractAnimeId(uri: URI): AnimeId = SimklConfig.extractAnimeId(uri)
                     override fun buildAnimeLink(id: AnimeId): URI = SimklConfig.buildAnimeLink(id)
                     override fun fileSuffix(): FileSuffix = SimklConfig.fileSuffix()

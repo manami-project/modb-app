@@ -32,7 +32,7 @@ internal class AnimePlanetAnimeConverterTest {
         fun `title containing special chars`() {
             runBlocking {
                 // given
-                val testAnimePlanetConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testAnimePlanetConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnimePlanetConfig.hostname()
                     override fun buildAnimeLink(id: AnimeId): URI = AnimePlanetConfig.buildAnimeLink(id)
                 }
@@ -53,7 +53,7 @@ internal class AnimePlanetAnimeConverterTest {
         fun `extract title from jsonld if it was replaces by 'email protected'`() {
             runBlocking {
                 // given
-                val testAnimePlanetConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testAnimePlanetConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnimePlanetConfig.hostname()
                     override fun buildAnimeLink(id: AnimeId): URI = AnimePlanetConfig.buildAnimeLink(id)
                 }
@@ -75,7 +75,7 @@ internal class AnimePlanetAnimeConverterTest {
         fun `extract title from meta tag if it was replaces by 'email protected' and jsonld does not exist`() {
             runBlocking {
                 // given
-                val testAnimePlanetConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testAnimePlanetConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnimePlanetConfig.hostname()
                     override fun buildAnimeLink(id: AnimeId): URI = AnimePlanetConfig.buildAnimeLink(id)
                 }
@@ -101,7 +101,7 @@ internal class AnimePlanetAnimeConverterTest {
         fun `1 episode`() {
             runBlocking {
                 // given
-                val testAnimePlanetConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testAnimePlanetConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnimePlanetConfig.hostname()
                     override fun buildAnimeLink(id: AnimeId): URI = AnimePlanetConfig.buildAnimeLink(id)
                 }
@@ -122,7 +122,7 @@ internal class AnimePlanetAnimeConverterTest {
         fun `1081 and more episodes`() {
             runBlocking {
                 // given
-                val testAnimePlanetConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testAnimePlanetConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnimePlanetConfig.hostname()
                     override fun buildAnimeLink(id: AnimeId): URI = AnimePlanetConfig.buildAnimeLink(id)
                 }
@@ -143,7 +143,7 @@ internal class AnimePlanetAnimeConverterTest {
         fun `25 episodes`() {
             runBlocking {
                 // given
-                val testAnimePlanetConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testAnimePlanetConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnimePlanetConfig.hostname()
                     override fun buildAnimeLink(id: AnimeId): URI = AnimePlanetConfig.buildAnimeLink(id)
                 }
@@ -164,7 +164,7 @@ internal class AnimePlanetAnimeConverterTest {
         fun `no episodes is mapped to 1 episode`() {
             runBlocking {
                 // given
-                val testAnimePlanetConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testAnimePlanetConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnimePlanetConfig.hostname()
                     override fun buildAnimeLink(id: AnimeId): URI = AnimePlanetConfig.buildAnimeLink(id)
                 }
@@ -189,7 +189,7 @@ internal class AnimePlanetAnimeConverterTest {
         fun `'web' is mapped to ONA`() {
             runBlocking {
                 // given
-                val testAnimePlanetConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testAnimePlanetConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnimePlanetConfig.hostname()
                     override fun buildAnimeLink(id: AnimeId): URI = AnimePlanetConfig.buildAnimeLink(id)
                 }
@@ -210,7 +210,7 @@ internal class AnimePlanetAnimeConverterTest {
         fun `'TV Special' is mapped to Special`() {
             runBlocking {
                 // given
-                val testAnimePlanetConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testAnimePlanetConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnimePlanetConfig.hostname()
                     override fun buildAnimeLink(id: AnimeId): URI = AnimePlanetConfig.buildAnimeLink(id)
                 }
@@ -231,7 +231,7 @@ internal class AnimePlanetAnimeConverterTest {
         fun `'TV' is mapped to TV`() {
             runBlocking {
                 // given
-                val testAnimePlanetConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testAnimePlanetConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnimePlanetConfig.hostname()
                     override fun buildAnimeLink(id: AnimeId): URI = AnimePlanetConfig.buildAnimeLink(id)
                 }
@@ -252,7 +252,7 @@ internal class AnimePlanetAnimeConverterTest {
         fun `'OVA' is mapped to OVA`() {
             runBlocking {
                 // given
-                val testAnimePlanetConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testAnimePlanetConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnimePlanetConfig.hostname()
                     override fun buildAnimeLink(id: AnimeId): URI = AnimePlanetConfig.buildAnimeLink(id)
                 }
@@ -273,7 +273,7 @@ internal class AnimePlanetAnimeConverterTest {
         fun `'other' is mapped to Special`() {
             runBlocking {
                 // given
-                val testAnimePlanetConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testAnimePlanetConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnimePlanetConfig.hostname()
                     override fun buildAnimeLink(id: AnimeId): URI = AnimePlanetConfig.buildAnimeLink(id)
                 }
@@ -294,7 +294,7 @@ internal class AnimePlanetAnimeConverterTest {
         fun `'music video' is mapped to Special`() {
             runBlocking {
                 // given
-                val testAnimePlanetConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testAnimePlanetConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnimePlanetConfig.hostname()
                     override fun buildAnimeLink(id: AnimeId): URI = AnimePlanetConfig.buildAnimeLink(id)
                 }
@@ -315,7 +315,7 @@ internal class AnimePlanetAnimeConverterTest {
         fun `'movie' is mapped to Movie`() {
             runBlocking {
                 // given
-                val testAnimePlanetConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testAnimePlanetConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnimePlanetConfig.hostname()
                     override fun buildAnimeLink(id: AnimeId): URI = AnimePlanetConfig.buildAnimeLink(id)
                 }
@@ -336,7 +336,7 @@ internal class AnimePlanetAnimeConverterTest {
         fun `'dvd special' is mapped to Special`() {
             runBlocking {
                 // given
-                val testAnimePlanetConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testAnimePlanetConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnimePlanetConfig.hostname()
                     override fun buildAnimeLink(id: AnimeId): URI = AnimePlanetConfig.buildAnimeLink(id)
                 }
@@ -357,7 +357,7 @@ internal class AnimePlanetAnimeConverterTest {
         fun `value without braces is extracted correctly`() {
             runBlocking {
                 // given
-                val testAnimePlanetConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testAnimePlanetConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnimePlanetConfig.hostname()
                     override fun buildAnimeLink(id: AnimeId): URI = AnimePlanetConfig.buildAnimeLink(id)
                 }
@@ -382,7 +382,7 @@ internal class AnimePlanetAnimeConverterTest {
         fun `correctly extract picture and thumbnail`() {
             runBlocking {
                 // given
-                val testAnimePlanetConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testAnimePlanetConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnimePlanetConfig.hostname()
                     override fun buildAnimeLink(id: AnimeId): URI = AnimePlanetConfig.buildAnimeLink(id)
                 }
@@ -405,7 +405,7 @@ internal class AnimePlanetAnimeConverterTest {
         fun `neither picture nor thumbnail`() {
             runBlocking {
                 // given
-                val testAnimePlanetConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testAnimePlanetConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnimePlanetConfig.hostname()
                     override fun buildAnimeLink(id: AnimeId): URI = AnimePlanetConfig.buildAnimeLink(id)
                 }
@@ -428,7 +428,7 @@ internal class AnimePlanetAnimeConverterTest {
         fun `ensure that the primary screenshot is extracted as picture`() {
             runBlocking {
                 // given
-                val testAnimePlanetConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testAnimePlanetConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnimePlanetConfig.hostname()
                     override fun buildAnimeLink(id: AnimeId): URI = AnimePlanetConfig.buildAnimeLink(id)
                 }
@@ -455,7 +455,7 @@ internal class AnimePlanetAnimeConverterTest {
         fun `'tba' is mapped to UPCOMING`() {
             runBlocking {
                 // given
-                val testAnimePlanetConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testAnimePlanetConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnimePlanetConfig.hostname()
                     override fun buildAnimeLink(id: AnimeId): URI = AnimePlanetConfig.buildAnimeLink(id)
                 }
@@ -476,7 +476,7 @@ internal class AnimePlanetAnimeConverterTest {
         fun `current year is mapped to UNKNOWN, because it is not possible to determine whether the anime has finished or is still running`() {
             runBlocking {
                 // given
-                val testAnimePlanetConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testAnimePlanetConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnimePlanetConfig.hostname()
                     override fun buildAnimeLink(id: AnimeId): URI = AnimePlanetConfig.buildAnimeLink(id)
                 }
@@ -500,7 +500,7 @@ internal class AnimePlanetAnimeConverterTest {
         fun `year in the future is mapped to UPCOMING`() {
             runBlocking {
                 // given
-                val testAnimePlanetConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testAnimePlanetConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnimePlanetConfig.hostname()
                     override fun buildAnimeLink(id: AnimeId): URI = AnimePlanetConfig.buildAnimeLink(id)
                 }
@@ -524,7 +524,7 @@ internal class AnimePlanetAnimeConverterTest {
         fun `year in the past is mapped to FINISHED`() {
             runBlocking {
                 // given
-                val testAnimePlanetConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testAnimePlanetConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnimePlanetConfig.hostname()
                     override fun buildAnimeLink(id: AnimeId): URI = AnimePlanetConfig.buildAnimeLink(id)
                 }
@@ -548,7 +548,7 @@ internal class AnimePlanetAnimeConverterTest {
         fun `range starting in the past is mapped to ONGOING`() {
             runBlocking {
                 // given
-                val testAnimePlanetConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testAnimePlanetConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnimePlanetConfig.hostname()
                     override fun buildAnimeLink(id: AnimeId): URI = AnimePlanetConfig.buildAnimeLink(id)
                 }
@@ -573,7 +573,7 @@ internal class AnimePlanetAnimeConverterTest {
         fun `range starting in the same year is mapped to UNKNOWN, because it is not possible to determine whether the anime has already started or not`() {
             runBlocking {
                 // given
-                val testAnimePlanetConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testAnimePlanetConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnimePlanetConfig.hostname()
                     override fun buildAnimeLink(id: AnimeId): URI = AnimePlanetConfig.buildAnimeLink(id)
                 }
@@ -598,7 +598,7 @@ internal class AnimePlanetAnimeConverterTest {
         fun `range ending in the past`() {
             runBlocking {
                 // given
-                val testAnimePlanetConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testAnimePlanetConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnimePlanetConfig.hostname()
                     override fun buildAnimeLink(id: AnimeId): URI = AnimePlanetConfig.buildAnimeLink(id)
                 }
@@ -622,7 +622,7 @@ internal class AnimePlanetAnimeConverterTest {
         fun `range ending same year`() {
             runBlocking {
                 // given
-                val testAnimePlanetConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testAnimePlanetConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnimePlanetConfig.hostname()
                     override fun buildAnimeLink(id: AnimeId): URI = AnimePlanetConfig.buildAnimeLink(id)
                 }
@@ -650,7 +650,7 @@ internal class AnimePlanetAnimeConverterTest {
         fun `1 hour`() {
             runBlocking {
                 // given
-                val testAnimePlanetConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testAnimePlanetConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnimePlanetConfig.hostname()
                     override fun buildAnimeLink(id: AnimeId): URI = AnimePlanetConfig.buildAnimeLink(id)
                 }
@@ -671,7 +671,7 @@ internal class AnimePlanetAnimeConverterTest {
         fun `1 min`() {
             runBlocking {
                 // given
-                val testAnimePlanetConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testAnimePlanetConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnimePlanetConfig.hostname()
                     override fun buildAnimeLink(id: AnimeId): URI = AnimePlanetConfig.buildAnimeLink(id)
                 }
@@ -692,7 +692,7 @@ internal class AnimePlanetAnimeConverterTest {
         fun `2 hours`() {
             runBlocking {
                 // given
-                val testAnimePlanetConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testAnimePlanetConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnimePlanetConfig.hostname()
                     override fun buildAnimeLink(id: AnimeId): URI = AnimePlanetConfig.buildAnimeLink(id)
                 }
@@ -713,7 +713,7 @@ internal class AnimePlanetAnimeConverterTest {
         fun `2 hours 15 minutes`() {
             runBlocking {
                 // given
-                val testAnimePlanetConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testAnimePlanetConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnimePlanetConfig.hostname()
                     override fun buildAnimeLink(id: AnimeId): URI = AnimePlanetConfig.buildAnimeLink(id)
                 }
@@ -734,7 +734,7 @@ internal class AnimePlanetAnimeConverterTest {
         fun `10 minutes`() {
             runBlocking {
                 // given
-                val testAnimePlanetConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testAnimePlanetConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnimePlanetConfig.hostname()
                     override fun buildAnimeLink(id: AnimeId): URI = AnimePlanetConfig.buildAnimeLink(id)
                 }
@@ -759,7 +759,7 @@ internal class AnimePlanetAnimeConverterTest {
         fun `season is undefined, but year is set`() {
             runBlocking {
                 // given
-                val testAnimePlanetConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testAnimePlanetConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnimePlanetConfig.hostname()
                     override fun buildAnimeLink(id: AnimeId): URI = AnimePlanetConfig.buildAnimeLink(id)
                 }
@@ -780,7 +780,7 @@ internal class AnimePlanetAnimeConverterTest {
         fun `season is summer`() {
             runBlocking {
                 // given
-                val testAnimePlanetConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testAnimePlanetConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnimePlanetConfig.hostname()
                     override fun buildAnimeLink(id: AnimeId): URI = AnimePlanetConfig.buildAnimeLink(id)
                 }
@@ -801,7 +801,7 @@ internal class AnimePlanetAnimeConverterTest {
         fun `season is spring`() {
             runBlocking {
                 // given
-                val testAnimePlanetConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testAnimePlanetConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnimePlanetConfig.hostname()
                     override fun buildAnimeLink(id: AnimeId): URI = AnimePlanetConfig.buildAnimeLink(id)
                 }
@@ -822,7 +822,7 @@ internal class AnimePlanetAnimeConverterTest {
         fun `season is winter`() {
             runBlocking {
                 // given
-                val testAnimePlanetConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testAnimePlanetConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnimePlanetConfig.hostname()
                     override fun buildAnimeLink(id: AnimeId): URI = AnimePlanetConfig.buildAnimeLink(id)
                 }
@@ -843,7 +843,7 @@ internal class AnimePlanetAnimeConverterTest {
         fun `season is fall`() {
             runBlocking {
                 // given
-                val testAnimePlanetConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testAnimePlanetConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnimePlanetConfig.hostname()
                     override fun buildAnimeLink(id: AnimeId): URI = AnimePlanetConfig.buildAnimeLink(id)
                 }
@@ -864,7 +864,7 @@ internal class AnimePlanetAnimeConverterTest {
         fun `tba - no year, no season`() {
             runBlocking {
                 // given
-                val testAnimePlanetConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testAnimePlanetConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnimePlanetConfig.hostname()
                     override fun buildAnimeLink(id: AnimeId): URI = AnimePlanetConfig.buildAnimeLink(id)
                 }
@@ -889,7 +889,7 @@ internal class AnimePlanetAnimeConverterTest {
         fun `extract url slug as id`() {
             runBlocking {
                 // given
-                val testAnimePlanetConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testAnimePlanetConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnimePlanetConfig.hostname()
                     override fun buildAnimeLink(id: AnimeId): URI = AnimePlanetConfig.buildAnimeLink(id)
                 }
@@ -914,7 +914,7 @@ internal class AnimePlanetAnimeConverterTest {
         fun `successfully extract the alternative title`() {
             runBlocking {
                 // given
-                val testAnimePlanetConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testAnimePlanetConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnimePlanetConfig.hostname()
                     override fun buildAnimeLink(id: AnimeId): URI = AnimePlanetConfig.buildAnimeLink(id)
                 }
@@ -935,7 +935,7 @@ internal class AnimePlanetAnimeConverterTest {
         fun `alternative title is not available`() {
             runBlocking {
                 // given
-                val testAnimePlanetConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testAnimePlanetConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnimePlanetConfig.hostname()
                     override fun buildAnimeLink(id: AnimeId): URI = AnimePlanetConfig.buildAnimeLink(id)
                 }
@@ -956,7 +956,7 @@ internal class AnimePlanetAnimeConverterTest {
         fun `extract synonym from jsonld if it was replaces by 'email protected'`() {
             runBlocking {
                 // given
-                val testAnimePlanetConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testAnimePlanetConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnimePlanetConfig.hostname()
                     override fun buildAnimeLink(id: AnimeId): URI = AnimePlanetConfig.buildAnimeLink(id)
                 }
@@ -978,7 +978,7 @@ internal class AnimePlanetAnimeConverterTest {
         fun `extract multiple synonyms`() {
             runBlocking {
                 // given
-                val testAnimePlanetConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testAnimePlanetConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnimePlanetConfig.hostname()
                     override fun buildAnimeLink(id: AnimeId): URI = AnimePlanetConfig.buildAnimeLink(id)
                 }
@@ -1006,7 +1006,7 @@ internal class AnimePlanetAnimeConverterTest {
         fun `extract same franchise and other franchise`() {
             runBlocking {
                 // given
-                val testAnimePlanetConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testAnimePlanetConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnimePlanetConfig.hostname()
                     override fun buildAnimeLink(id: AnimeId): URI = AnimePlanetConfig.buildAnimeLink(id)
                 }
@@ -1036,7 +1036,7 @@ internal class AnimePlanetAnimeConverterTest {
         fun `extract related anime if there are only same franchise entries`() {
             runBlocking {
                 // given
-                val testAnimePlanetConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testAnimePlanetConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnimePlanetConfig.hostname()
                     override fun buildAnimeLink(id: AnimeId): URI = AnimePlanetConfig.buildAnimeLink(id)
                 }
@@ -1064,7 +1064,7 @@ internal class AnimePlanetAnimeConverterTest {
         fun `no related anime`() {
             runBlocking {
                 // given
-                val testAnimePlanetConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testAnimePlanetConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnimePlanetConfig.hostname()
                     override fun buildAnimeLink(id: AnimeId): URI = AnimePlanetConfig.buildAnimeLink(id)
                 }
@@ -1089,7 +1089,7 @@ internal class AnimePlanetAnimeConverterTest {
         fun `successfully extract the tags`() {
             runBlocking {
                 // given
-                val testAnimePlanetConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testAnimePlanetConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnimePlanetConfig.hostname()
                     override fun buildAnimeLink(id: AnimeId): URI = AnimePlanetConfig.buildAnimeLink(id)
                 }
@@ -1130,7 +1130,7 @@ internal class AnimePlanetAnimeConverterTest {
         fun `tags not available`() {
             runBlocking {
                 // given
-                val testAnimePlanetConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testAnimePlanetConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnimePlanetConfig.hostname()
                     override fun buildAnimeLink(id: AnimeId): URI = AnimePlanetConfig.buildAnimeLink(id)
                 }
