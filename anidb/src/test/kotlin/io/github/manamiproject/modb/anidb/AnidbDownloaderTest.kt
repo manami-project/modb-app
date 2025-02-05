@@ -26,7 +26,7 @@ internal class AnidbDownloaderTest : MockServerTestCase<WireMockServer> by WireM
                 // given
                 val id = "11376"
 
-                val testConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = "localhost"
                     override fun buildAnimeLink(id: AnimeId): URI = AnidbConfig.buildAnimeLink(id)
                     override fun buildDataDownloadLink(id: String): URI = URI("http://${hostname()}:$port/anime/$id")
@@ -59,14 +59,14 @@ internal class AnidbDownloaderTest : MockServerTestCase<WireMockServer> by WireM
             // given
             val id  = "11376"
 
-            val testConfig = object: MetaDataProviderConfig by MetaDataProviderTestConfig {
+            val testConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
                 override fun hostname(): Hostname = "localhost"
                 override fun buildAnimeLink(id: AnimeId): URI = AnidbConfig.buildAnimeLink(id)
                 override fun buildDataDownloadLink(id: String): URI = URI("http://${hostname()}:$port/anime/$id")
                 override fun fileSuffix(): FileSuffix = AnidbConfig.fileSuffix()
             }
 
-            val responseBodyAntiLeech = loadTestResource<String>("AnidbDownloaderTest/anti_leech_page.html")
+            val responseBodyAntiLeech = loadTestResource<String>("AnidbDownloaderTest/anti-leech_page.html")
 
             serverInstance.stubFor(
                 get(urlPathEqualTo("/anime/$id")).willReturn(
@@ -93,7 +93,7 @@ internal class AnidbDownloaderTest : MockServerTestCase<WireMockServer> by WireM
             // given
             val id  = "11376"
 
-            val testConfig = object: MetaDataProviderConfig by MetaDataProviderTestConfig {
+            val testConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
                 override fun hostname(): Hostname = "localhost"
                 override fun buildAnimeLink(id: AnimeId): URI = AnidbConfig.buildAnimeLink(id)
                 override fun buildDataDownloadLink(id: String): URI = URI("http://${hostname()}:$port/anime/$id")
@@ -127,7 +127,7 @@ internal class AnidbDownloaderTest : MockServerTestCase<WireMockServer> by WireM
             // given
             val id = "11376"
 
-            val testConfig = object: MetaDataProviderConfig by MetaDataProviderTestConfig {
+            val testConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
                 override fun hostname(): Hostname = "localhost"
                 override fun buildAnimeLink(id: AnimeId): URI = AnidbConfig.buildAnimeLink(id)
                 override fun buildDataDownloadLink(id: String): URI = URI("http://${hostname()}:$port/anime/$id")
@@ -161,7 +161,7 @@ internal class AnidbDownloaderTest : MockServerTestCase<WireMockServer> by WireM
                 val id = "11376"
                 var deadEntry = EMPTY
 
-                val testConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = "localhost"
                     override fun buildAnimeLink(id: AnimeId): URI = AnidbConfig.buildAnimeLink(id)
                     override fun buildDataDownloadLink(id: String): URI = URI("http://${hostname()}:$port/anime/$id")
@@ -199,7 +199,7 @@ internal class AnidbDownloaderTest : MockServerTestCase<WireMockServer> by WireM
                 val id = "11376"
                 var deadEntry = EMPTY
 
-                val testConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = "localhost"
                     override fun buildAnimeLink(id: AnimeId): URI = AnidbConfig.buildAnimeLink(id)
                     override fun buildDataDownloadLink(id: String): URI = URI("http://${hostname()}:$port/anime/$id")
@@ -237,7 +237,7 @@ internal class AnidbDownloaderTest : MockServerTestCase<WireMockServer> by WireM
                 val id = "11376"
                 var deadEntry = EMPTY
 
-                val testConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = "localhost"
                     override fun buildAnimeLink(id: AnimeId): URI = AnidbConfig.buildAnimeLink(id)
                     override fun buildDataDownloadLink(id: String): URI = URI("http://${hostname()}:$port/anime/$id")
@@ -274,7 +274,7 @@ internal class AnidbDownloaderTest : MockServerTestCase<WireMockServer> by WireM
                 // given
                 val id = "11376"
 
-                val testConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = "localhost"
                     override fun buildAnimeLink(id: AnimeId): URI = AnidbConfig.buildAnimeLink(id)
                     override fun buildDataDownloadLink(id: String): URI = URI("http://${hostname()}:$port/anime/$id")
@@ -307,7 +307,7 @@ internal class AnidbDownloaderTest : MockServerTestCase<WireMockServer> by WireM
             // given
             val id = 1535
 
-            val testAnidbConfig = object: MetaDataProviderConfig by MetaDataProviderTestConfig {
+            val testAnidbConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
                 override fun hostname(): Hostname = "localhost"
                 override fun buildAnimeLink(id: AnimeId): URI = AnidbConfig.buildAnimeLink(id)
                 override fun buildDataDownloadLink(id: String): URI = URI("http://${hostname()}:$port/anime/$id")

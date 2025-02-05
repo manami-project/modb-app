@@ -1,5 +1,8 @@
 package io.github.manamiproject.modb.anidb
 
+import io.github.manamiproject.modb.core.config.ConfigRegistry
+import io.github.manamiproject.modb.core.config.Hostname
+import io.github.manamiproject.modb.core.config.MetaDataProviderConfig
 import io.github.manamiproject.modb.test.exceptionExpected
 import io.github.manamiproject.modb.test.loadTestResource
 import kotlinx.coroutines.runBlocking
@@ -13,11 +16,23 @@ internal class AnidbResponseCheckerTest {
     inner class CrawlerDetectedTests {
 
         @Test
-        fun `crawler is detected - anti leech page`() {
+        fun `crawler is detected - anti-leech page - config suppresses opening browser`() {
             // given
-            val responseBodyAntiLeech = loadTestResource<String>("AnidbDownloaderTest/anti_leech_page.html")
+            val responseBodyAntiLeech = loadTestResource<String>("AnidbDownloaderTest/anti-leech_page.html")
 
-            val responseChecker = AnidbResponseChecker(responseBodyAntiLeech)
+            val testMetaDataProviderConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
+                override fun isTestContext(): Boolean = true
+            }
+
+            val testConfigRegistry = object: ConfigRegistry by TestConfigRegistry {
+                override fun boolean(key: String): Boolean = false
+            }
+
+            val responseChecker = AnidbResponseChecker(
+                response = responseBodyAntiLeech,
+                configRegistry = testConfigRegistry,
+                metaDataProviderConfig = testMetaDataProviderConfig,
+            )
 
             // when
             val result = exceptionExpected<RuntimeException> {
@@ -29,11 +44,81 @@ internal class AnidbResponseCheckerTest {
         }
 
         @Test
-        fun `crawler is detected - nginx error page`() {
+        fun `crawler is detected - anti-leech page - config set to open browser`() {
+            // given
+            val responseBodyAntiLeech = loadTestResource<String>("AnidbDownloaderTest/anti-leech_page.html")
+
+            val testMetaDataProviderConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
+                override fun isTestContext(): Boolean = true
+                override fun hostname(): Hostname = "example.org"
+            }
+
+            val testConfigRegistry = object: ConfigRegistry by TestConfigRegistry {
+                override fun boolean(key: String): Boolean = true
+            }
+
+            val responseChecker = AnidbResponseChecker(
+                response = responseBodyAntiLeech,
+                configRegistry = testConfigRegistry,
+                metaDataProviderConfig = testMetaDataProviderConfig,
+            )
+
+            // when
+            val result = exceptionExpected<RuntimeException> {
+                responseChecker.checkIfCrawlerIsDetected()
+            }
+
+            // then
+            assertThat(result).hasMessage("Crawler has been detected")
+        }
+
+        @Test
+        fun `crawler is detected - nginx error page - config suppresses opening browser`() {
             // given
             val responseBodyAntiLeech = loadTestResource<String>("AnidbDownloaderTest/nginx_error_page.html")
 
-            val responseChecker = AnidbResponseChecker(responseBodyAntiLeech)
+            val testMetaDataProviderConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
+                override fun isTestContext(): Boolean = true
+            }
+
+            val testConfigRegistry = object: ConfigRegistry by TestConfigRegistry {
+                override fun boolean(key: String): Boolean = false
+            }
+
+            val responseChecker = AnidbResponseChecker(
+                response = responseBodyAntiLeech,
+                configRegistry = testConfigRegistry,
+                metaDataProviderConfig = testMetaDataProviderConfig,
+            )
+
+            // when
+            val result = exceptionExpected<RuntimeException> {
+                responseChecker.checkIfCrawlerIsDetected()
+            }
+
+            // then
+            assertThat(result).hasMessage("Crawler has been detected")
+        }
+
+        @Test
+        fun `crawler is detected - nginx error page - config set to open browser`() {
+            // given
+            val responseBodyAntiLeech = loadTestResource<String>("AnidbDownloaderTest/nginx_error_page.html")
+
+            val testMetaDataProviderConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
+                override fun isTestContext(): Boolean = true
+                override fun hostname(): Hostname = "example.org"
+            }
+
+            val testConfigRegistry = object: ConfigRegistry by TestConfigRegistry {
+                override fun boolean(key: String): Boolean = true
+            }
+
+            val responseChecker = AnidbResponseChecker(
+                response = responseBodyAntiLeech,
+                configRegistry = testConfigRegistry,
+                metaDataProviderConfig = testMetaDataProviderConfig,
+            )
 
             // when
             val result = exceptionExpected<RuntimeException> {
