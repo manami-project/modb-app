@@ -27,7 +27,7 @@ internal class MyanimelistDownloaderTest : MockServerTestCase<WireMockServer> by
                 // given
                 val id = 1535
 
-                val testConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = "localhost"
                     override fun buildAnimeLink(id: AnimeId): URI = URI("http://localhost:$port/anime/$id")
                     override fun buildDataDownloadLink(id: String): URI = buildAnimeLink(id)
@@ -77,7 +77,7 @@ internal class MyanimelistDownloaderTest : MockServerTestCase<WireMockServer> by
                 // given
                 val id = 1535
 
-                val testConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = "localhost"
                     override fun buildAnimeLink(id: AnimeId): URI = URI("http://localhost:$port/anime/$id")
                     override fun buildDataDownloadLink(id: String): URI = buildAnimeLink(id)
@@ -127,7 +127,7 @@ internal class MyanimelistDownloaderTest : MockServerTestCase<WireMockServer> by
                 // given
                 val id = 1535
 
-                val testConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = "localhost"
                     override fun buildAnimeLink(id: AnimeId): URI = URI("http://localhost:$port/anime/$id")
                     override fun buildDataDownloadLink(id: String): URI = buildAnimeLink(id)
@@ -177,7 +177,7 @@ internal class MyanimelistDownloaderTest : MockServerTestCase<WireMockServer> by
                 // given
                 val id = 1535
 
-                val testConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = "localhost"
                     override fun buildAnimeLink(id: AnimeId): URI = URI("http://localhost:$port/anime/$id")
                     override fun buildDataDownloadLink(id: String): URI = buildAnimeLink(id)
@@ -227,7 +227,7 @@ internal class MyanimelistDownloaderTest : MockServerTestCase<WireMockServer> by
                 // given
                 val id = 1535
 
-                val testConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = "localhost"
                     override fun buildAnimeLink(id: AnimeId): URI = URI("http://localhost:$port/anime/$id")
                     override fun buildDataDownloadLink(id: String): URI = buildAnimeLink(id)
@@ -280,7 +280,7 @@ internal class MyanimelistDownloaderTest : MockServerTestCase<WireMockServer> by
             // given
             val id = 1535
 
-            val testConfig = object: MetaDataProviderConfig by MetaDataProviderTestConfig {
+            val testConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
                 override fun hostname(): Hostname = "localhost"
                 override fun buildAnimeLink(id: AnimeId): URI = URI("http://localhost:$port/anime/$id")
                 override fun buildDataDownloadLink(id: String): URI = buildAnimeLink(id)
@@ -313,7 +313,7 @@ internal class MyanimelistDownloaderTest : MockServerTestCase<WireMockServer> by
             // given
             val id = 1535
 
-            val testConfig = object: MetaDataProviderConfig by MetaDataProviderTestConfig {
+            val testConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
                 override fun hostname(): Hostname = "localhost"
                 override fun buildAnimeLink(id: AnimeId): URI = URI("http://localhost:$port/anime/$id")
                 override fun buildDataDownloadLink(id: String): URI = buildAnimeLink(id)
@@ -348,7 +348,7 @@ internal class MyanimelistDownloaderTest : MockServerTestCase<WireMockServer> by
             // given
             val id = 1535
 
-            val testConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+            val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                 override fun hostname(): Hostname = "localhost"
                 override fun buildAnimeLink(id: AnimeId): URI = URI("http://localhost:$port/anime/$id")
                 override fun buildDataDownloadLink(id: String): URI = buildAnimeLink(id)
@@ -383,7 +383,7 @@ internal class MyanimelistDownloaderTest : MockServerTestCase<WireMockServer> by
             val id = 1535
             var hasDeadEntryBeenInvoked = false
 
-            val testConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+            val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                 override fun hostname(): Hostname = "localhost"
                 override fun buildAnimeLink(id: AnimeId): URI = URI("http://localhost:$port/anime/$id")
                 override fun buildDataDownloadLink(id: String): URI = buildAnimeLink(id)
@@ -416,7 +416,7 @@ internal class MyanimelistDownloaderTest : MockServerTestCase<WireMockServer> by
         // given
         val id = 1535
 
-        val testConfig = object: MetaDataProviderConfig by MetaDataProviderTestConfig {
+        val testConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
             override fun hostname(): Hostname = "localhost"
             override fun buildAnimeLink(id: AnimeId): URI = MyanimelistConfig.buildAnimeLink(id)
             override fun buildDataDownloadLink(id: String): URI = URI("http://${hostname()}:$port/anime/$id")

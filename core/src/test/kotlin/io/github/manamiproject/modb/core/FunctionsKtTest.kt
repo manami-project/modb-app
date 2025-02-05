@@ -282,7 +282,7 @@ internal class FunctionsKtTest {
                 // given
                 var hasBeenInvoked = false
 
-                val testConfig = object: MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun isTestContext(): Boolean = false
                 }
 
@@ -300,7 +300,7 @@ internal class FunctionsKtTest {
                 // given
                 var hasBeenInvoked = false
 
-                val testConfig = object: MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun isTestContext(): Boolean = true
                 }
 

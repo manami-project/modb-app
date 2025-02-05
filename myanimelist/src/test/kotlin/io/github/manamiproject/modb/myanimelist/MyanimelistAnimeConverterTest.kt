@@ -27,7 +27,7 @@ internal class MyanimelistAnimeConverterTest {
         fun `title containing special chars`() {
             runBlocking {
                 // given
-                val testConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun buildAnimeLink(id: AnimeId): URI = MyanimelistConfig.buildAnimeLink(id)
                     override fun buildDataDownloadLink(id: String): URI = MyanimelistConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = MyanimelistConfig.fileSuffix()
@@ -49,7 +49,7 @@ internal class MyanimelistAnimeConverterTest {
         fun `anime has original and english title in header`() {
             runBlocking {
                 // given
-                val testConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun buildAnimeLink(id: AnimeId): URI = MyanimelistConfig.buildAnimeLink(id)
                     override fun buildDataDownloadLink(id: String): URI = MyanimelistConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = MyanimelistConfig.fileSuffix()
@@ -75,7 +75,7 @@ internal class MyanimelistAnimeConverterTest {
         fun `type is TV`() {
             runBlocking {
                 // given
-                val testConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun buildAnimeLink(id: AnimeId): URI = MyanimelistConfig.buildAnimeLink(id)
                     override fun buildDataDownloadLink(id: String): URI = MyanimelistConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = MyanimelistConfig.fileSuffix()
@@ -97,7 +97,7 @@ internal class MyanimelistAnimeConverterTest {
         fun `'Unknown' is mapped to 'UNKNOWN'`() {
             runBlocking {
                 // given
-                val testConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun buildAnimeLink(id: AnimeId): URI = MyanimelistConfig.buildAnimeLink(id)
                     override fun buildDataDownloadLink(id: String): URI = MyanimelistConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = MyanimelistConfig.fileSuffix()
@@ -119,7 +119,7 @@ internal class MyanimelistAnimeConverterTest {
         fun `type is Movie`() {
             runBlocking {
                 // given
-                val testConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun buildAnimeLink(id: AnimeId): URI = MyanimelistConfig.buildAnimeLink(id)
                     override fun buildDataDownloadLink(id: String): URI = MyanimelistConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = MyanimelistConfig.fileSuffix()
@@ -141,7 +141,7 @@ internal class MyanimelistAnimeConverterTest {
         fun `type is music is mapped to special`() {
             runBlocking {
                 // given
-                val testConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun buildAnimeLink(id: AnimeId): URI = MyanimelistConfig.buildAnimeLink(id)
                     override fun buildDataDownloadLink(id: String): URI = MyanimelistConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = MyanimelistConfig.fileSuffix()
@@ -163,7 +163,7 @@ internal class MyanimelistAnimeConverterTest {
         fun `type is ONA`() {
             runBlocking {
                 // given
-                val testConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun buildAnimeLink(id: AnimeId): URI = MyanimelistConfig.buildAnimeLink(id)
                     override fun buildDataDownloadLink(id: String): URI = MyanimelistConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = MyanimelistConfig.fileSuffix()
@@ -185,7 +185,7 @@ internal class MyanimelistAnimeConverterTest {
         fun `type is OVA`() {
             runBlocking {
                 // given
-                val testConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun buildAnimeLink(id: AnimeId): URI = MyanimelistConfig.buildAnimeLink(id)
                     override fun buildDataDownloadLink(id: String): URI = MyanimelistConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = MyanimelistConfig.fileSuffix()
@@ -207,7 +207,7 @@ internal class MyanimelistAnimeConverterTest {
         fun `type is Special`() {
             runBlocking {
                 // given
-                val testConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun buildAnimeLink(id: AnimeId): URI = MyanimelistConfig.buildAnimeLink(id)
                     override fun buildDataDownloadLink(id: String): URI = MyanimelistConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = MyanimelistConfig.fileSuffix()
@@ -229,7 +229,7 @@ internal class MyanimelistAnimeConverterTest {
         fun `type PV is mapped to SPECIAL`() {
             runBlocking {
                 // given
-                val testConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun buildAnimeLink(id: AnimeId): URI = MyanimelistConfig.buildAnimeLink(id)
                     override fun buildDataDownloadLink(id: String): URI = MyanimelistConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = MyanimelistConfig.fileSuffix()
@@ -251,7 +251,7 @@ internal class MyanimelistAnimeConverterTest {
         fun `type CM is mapped to SPECIAL`() {
             runBlocking {
                 // given
-                val testConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun buildAnimeLink(id: AnimeId): URI = MyanimelistConfig.buildAnimeLink(id)
                     override fun buildDataDownloadLink(id: String): URI = MyanimelistConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = MyanimelistConfig.fileSuffix()
@@ -273,7 +273,7 @@ internal class MyanimelistAnimeConverterTest {
         fun `type 'TV Special' is mapped to SPECIAL`() {
             runBlocking {
                 // given
-                val testConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun buildAnimeLink(id: AnimeId): URI = MyanimelistConfig.buildAnimeLink(id)
                     override fun buildDataDownloadLink(id: String): URI = MyanimelistConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = MyanimelistConfig.fileSuffix()
@@ -295,7 +295,7 @@ internal class MyanimelistAnimeConverterTest {
         fun `type Music but without a link is mapped to SPECIAL`() {
             runBlocking {
                 // given
-                val testConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun buildAnimeLink(id: AnimeId): URI = MyanimelistConfig.buildAnimeLink(id)
                     override fun buildDataDownloadLink(id: String): URI = MyanimelistConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = MyanimelistConfig.fileSuffix()
@@ -317,7 +317,7 @@ internal class MyanimelistAnimeConverterTest {
         fun `movie case which resulted in containsOwn`() {
             runBlocking {
                 // given
-                val testConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun buildAnimeLink(id: AnimeId): URI = MyanimelistConfig.buildAnimeLink(id)
                     override fun buildDataDownloadLink(id: String): URI = MyanimelistConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = MyanimelistConfig.fileSuffix()
@@ -344,7 +344,7 @@ internal class MyanimelistAnimeConverterTest {
         fun `unknown number of episodes`() {
             runBlocking {
                 // given
-                val testConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun buildAnimeLink(id: AnimeId): URI = MyanimelistConfig.buildAnimeLink(id)
                     override fun buildDataDownloadLink(id: String): URI = MyanimelistConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = MyanimelistConfig.fileSuffix()
@@ -366,7 +366,7 @@ internal class MyanimelistAnimeConverterTest {
         fun `1 episode`() {
             runBlocking {
                 // given
-                val testConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun buildAnimeLink(id: AnimeId): URI = MyanimelistConfig.buildAnimeLink(id)
                     override fun buildDataDownloadLink(id: String): URI = MyanimelistConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = MyanimelistConfig.fileSuffix()
@@ -388,7 +388,7 @@ internal class MyanimelistAnimeConverterTest {
         fun `10 episodes`() {
             runBlocking {
                 // given
-                val testConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun buildAnimeLink(id: AnimeId): URI = MyanimelistConfig.buildAnimeLink(id)
                     override fun buildDataDownloadLink(id: String): URI = MyanimelistConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = MyanimelistConfig.fileSuffix()
@@ -410,7 +410,7 @@ internal class MyanimelistAnimeConverterTest {
         fun `100 episodes`() {
             runBlocking {
                 // given
-                val testConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun buildAnimeLink(id: AnimeId): URI = MyanimelistConfig.buildAnimeLink(id)
                     override fun buildDataDownloadLink(id: String): URI = MyanimelistConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = MyanimelistConfig.fileSuffix()
@@ -432,7 +432,7 @@ internal class MyanimelistAnimeConverterTest {
         fun `1818 episodes`() {
             runBlocking {
                 // given
-                val testConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun buildAnimeLink(id: AnimeId): URI = MyanimelistConfig.buildAnimeLink(id)
                     override fun buildDataDownloadLink(id: String): URI = MyanimelistConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = MyanimelistConfig.fileSuffix()
@@ -458,7 +458,7 @@ internal class MyanimelistAnimeConverterTest {
         fun `neither picture nor thumbnail`() {
             runBlocking {
                 // given
-                val testConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun buildAnimeLink(id: AnimeId): URI = MyanimelistConfig.buildAnimeLink(id)
                     override fun buildDataDownloadLink(id: String): URI = MyanimelistConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = MyanimelistConfig.fileSuffix()
@@ -482,7 +482,7 @@ internal class MyanimelistAnimeConverterTest {
         fun `picture and thumbnail`() {
             runBlocking {
                 // given
-                val testConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun buildAnimeLink(id: AnimeId): URI = MyanimelistConfig.buildAnimeLink(id)
                     override fun buildDataDownloadLink(id: String): URI = MyanimelistConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = MyanimelistConfig.fileSuffix()
@@ -510,7 +510,7 @@ internal class MyanimelistAnimeConverterTest {
         fun `no synonyms`() {
             runBlocking {
                 // given
-                val testConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun buildAnimeLink(id: AnimeId): URI = MyanimelistConfig.buildAnimeLink(id)
                     override fun buildDataDownloadLink(id: String): URI = MyanimelistConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = MyanimelistConfig.fileSuffix()
@@ -532,7 +532,7 @@ internal class MyanimelistAnimeConverterTest {
         fun `one synonym`() {
             runBlocking {
                 // given
-                val testConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun buildAnimeLink(id: AnimeId): URI = MyanimelistConfig.buildAnimeLink(id)
                     override fun buildDataDownloadLink(id: String): URI = MyanimelistConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = MyanimelistConfig.fileSuffix()
@@ -554,7 +554,7 @@ internal class MyanimelistAnimeConverterTest {
         fun `multiple languages, one synonym each`() {
             runBlocking {
                 // given
-                val testConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun buildAnimeLink(id: AnimeId): URI = MyanimelistConfig.buildAnimeLink(id)
                     override fun buildDataDownloadLink(id: String): URI = MyanimelistConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = MyanimelistConfig.fileSuffix()
@@ -581,7 +581,7 @@ internal class MyanimelistAnimeConverterTest {
         fun `synonym containing comma`() {
             runBlocking {
                 // given
-                val testConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun buildAnimeLink(id: AnimeId): URI = MyanimelistConfig.buildAnimeLink(id)
                     override fun buildDataDownloadLink(id: String): URI = MyanimelistConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = MyanimelistConfig.fileSuffix()
@@ -609,7 +609,7 @@ internal class MyanimelistAnimeConverterTest {
         fun `multiple synonyms for one language`() {
             runBlocking {
                 // given
-                val testConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun buildAnimeLink(id: AnimeId): URI = MyanimelistConfig.buildAnimeLink(id)
                     override fun buildDataDownloadLink(id: String): URI = MyanimelistConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = MyanimelistConfig.fileSuffix()
@@ -638,7 +638,7 @@ internal class MyanimelistAnimeConverterTest {
         fun `multiple synonyms with comma in one language section`() {
             runBlocking {
                 // given
-                val testConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun buildAnimeLink(id: AnimeId): URI = MyanimelistConfig.buildAnimeLink(id)
                     override fun fileSuffix(): FileSuffix = MyanimelistConfig.fileSuffix()
                 }
@@ -667,7 +667,7 @@ internal class MyanimelistAnimeConverterTest {
         fun `one synonym with multiple commas`() {
             runBlocking {
                 // given
-                val testConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun buildAnimeLink(id: AnimeId): URI = MyanimelistConfig.buildAnimeLink(id)
                     override fun fileSuffix(): FileSuffix = MyanimelistConfig.fileSuffix()
                 }
@@ -692,7 +692,7 @@ internal class MyanimelistAnimeConverterTest {
         fun `semicolon in synonym wihtout whitespaces`() {
             runBlocking {
                 // given
-                val testConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun buildAnimeLink(id: AnimeId): URI = MyanimelistConfig.buildAnimeLink(id)
                     override fun fileSuffix(): FileSuffix = MyanimelistConfig.fileSuffix()
                 }
@@ -722,7 +722,7 @@ internal class MyanimelistAnimeConverterTest {
         fun `semicolon in synonym with whitespace`() {
             runBlocking {
                 // given
-                val testConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun buildAnimeLink(id: AnimeId): URI = MyanimelistConfig.buildAnimeLink(id)
                     override fun fileSuffix(): FileSuffix = MyanimelistConfig.fileSuffix()
                 }
@@ -747,7 +747,7 @@ internal class MyanimelistAnimeConverterTest {
         fun `semicolon in title but not in synonyms`() {
             runBlocking {
                 // given
-                val testConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun buildAnimeLink(id: AnimeId): URI = MyanimelistConfig.buildAnimeLink(id)
                     override fun fileSuffix(): FileSuffix = MyanimelistConfig.fileSuffix()
                 }
@@ -778,7 +778,7 @@ internal class MyanimelistAnimeConverterTest {
         fun `extract id 16498`() {
             runBlocking {
                 // given
-                val testConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun buildAnimeLink(id: AnimeId): URI = MyanimelistConfig.buildAnimeLink(id)
                     override fun buildDataDownloadLink(id: String): URI = MyanimelistConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = MyanimelistConfig.fileSuffix()
@@ -804,7 +804,7 @@ internal class MyanimelistAnimeConverterTest {
         fun `no adaption, no relations`() {
             runBlocking {
                 // given
-                val testConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun buildAnimeLink(id: AnimeId): URI = MyanimelistConfig.buildAnimeLink(id)
                     override fun buildDataDownloadLink(id: String): URI = MyanimelistConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = MyanimelistConfig.fileSuffix()
@@ -826,7 +826,7 @@ internal class MyanimelistAnimeConverterTest {
         fun `no adaption, multiple relations`() {
             runBlocking {
                 // given
-                val testConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun buildAnimeLink(id: AnimeId): URI = MyanimelistConfig.buildAnimeLink(id)
                     override fun buildDataDownloadLink(id: String): URI = MyanimelistConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = MyanimelistConfig.fileSuffix()
@@ -855,7 +855,7 @@ internal class MyanimelistAnimeConverterTest {
         fun `one adaption, one relation`() {
             runBlocking {
                 // given
-                val testConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun buildAnimeLink(id: AnimeId): URI = MyanimelistConfig.buildAnimeLink(id)
                     override fun buildDataDownloadLink(id: String): URI = MyanimelistConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = MyanimelistConfig.fileSuffix()
@@ -880,7 +880,7 @@ internal class MyanimelistAnimeConverterTest {
         fun `has adaption, multiple relations`() {
             runBlocking {
                 // given
-                val testConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun buildAnimeLink(id: AnimeId): URI = MyanimelistConfig.buildAnimeLink(id)
                     override fun buildDataDownloadLink(id: String): URI = MyanimelistConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = MyanimelistConfig.fileSuffix()
@@ -921,7 +921,7 @@ internal class MyanimelistAnimeConverterTest {
         fun `has adaption, no relations`() {
             runBlocking {
                 // given
-                val testConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun buildAnimeLink(id: AnimeId): URI = MyanimelistConfig.buildAnimeLink(id)
                     override fun buildDataDownloadLink(id: String): URI = MyanimelistConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = MyanimelistConfig.fileSuffix()
@@ -947,7 +947,7 @@ internal class MyanimelistAnimeConverterTest {
         fun `'currently airing' is mapped to 'ONGOING'`() {
             runBlocking {
                 // given
-                val testConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun buildAnimeLink(id: AnimeId): URI = MyanimelistConfig.buildAnimeLink(id)
                     override fun buildDataDownloadLink(id: String): URI = MyanimelistConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = MyanimelistConfig.fileSuffix()
@@ -969,7 +969,7 @@ internal class MyanimelistAnimeConverterTest {
         fun `'Not yet aired' is mapped to 'UPCOMING'`() {
             runBlocking {
                 // given
-                val testConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun buildAnimeLink(id: AnimeId): URI = MyanimelistConfig.buildAnimeLink(id)
                     override fun buildDataDownloadLink(id: String): URI = MyanimelistConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = MyanimelistConfig.fileSuffix()
@@ -991,7 +991,7 @@ internal class MyanimelistAnimeConverterTest {
         fun `'Finished Airing' is mapped to 'FINISHED'`() {
             runBlocking {
                 // given
-                val testConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun buildAnimeLink(id: AnimeId): URI = MyanimelistConfig.buildAnimeLink(id)
                     override fun buildDataDownloadLink(id: String): URI = MyanimelistConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = MyanimelistConfig.fileSuffix()
@@ -1017,7 +1017,7 @@ internal class MyanimelistAnimeConverterTest {
         fun `extract multiple tags`() {
             runBlocking {
                 // given
-                val testConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun buildAnimeLink(id: AnimeId): URI = MyanimelistConfig.buildAnimeLink(id)
                     override fun buildDataDownloadLink(id: String): URI = MyanimelistConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = MyanimelistConfig.fileSuffix()
@@ -1046,7 +1046,7 @@ internal class MyanimelistAnimeConverterTest {
         fun `extract exactly one tag`() {
             runBlocking {
                 // given
-                val testConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun buildAnimeLink(id: AnimeId): URI = MyanimelistConfig.buildAnimeLink(id)
                     override fun buildDataDownloadLink(id: String): URI = MyanimelistConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = MyanimelistConfig.fileSuffix()
@@ -1068,7 +1068,7 @@ internal class MyanimelistAnimeConverterTest {
         fun `no tags available`() {
             runBlocking {
                 // given
-                val testConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun buildAnimeLink(id: AnimeId): URI = MyanimelistConfig.buildAnimeLink(id)
                     override fun buildDataDownloadLink(id: String): URI = MyanimelistConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = MyanimelistConfig.fileSuffix()
@@ -1094,7 +1094,7 @@ internal class MyanimelistAnimeConverterTest {
         fun `1 hr`() {
             runBlocking {
                 // given
-                val testConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun buildAnimeLink(id: AnimeId): URI = MyanimelistConfig.buildAnimeLink(id)
                     override fun buildDataDownloadLink(id: String): URI = MyanimelistConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = MyanimelistConfig.fileSuffix()
@@ -1116,7 +1116,7 @@ internal class MyanimelistAnimeConverterTest {
         fun `1 hr 11 min`() {
             runBlocking {
                 // given
-                val testConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun buildAnimeLink(id: AnimeId): URI = MyanimelistConfig.buildAnimeLink(id)
                     override fun buildDataDownloadLink(id: String): URI = MyanimelistConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = MyanimelistConfig.fileSuffix()
@@ -1138,7 +1138,7 @@ internal class MyanimelistAnimeConverterTest {
         fun `1 hr 11 min per ep`() {
             runBlocking {
                 // given
-                val testConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun buildAnimeLink(id: AnimeId): URI = MyanimelistConfig.buildAnimeLink(id)
                     override fun buildDataDownloadLink(id: String): URI = MyanimelistConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = MyanimelistConfig.fileSuffix()
@@ -1160,7 +1160,7 @@ internal class MyanimelistAnimeConverterTest {
         fun `2 hr`() {
             runBlocking {
                 // given
-                val testConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun buildAnimeLink(id: AnimeId): URI = MyanimelistConfig.buildAnimeLink(id)
                     override fun buildDataDownloadLink(id: String): URI = MyanimelistConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = MyanimelistConfig.fileSuffix()
@@ -1182,7 +1182,7 @@ internal class MyanimelistAnimeConverterTest {
         fun `2 hr 15 min`() {
             runBlocking {
                 // given
-                val testConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun buildAnimeLink(id: AnimeId): URI = MyanimelistConfig.buildAnimeLink(id)
                     override fun buildDataDownloadLink(id: String): URI = MyanimelistConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = MyanimelistConfig.fileSuffix()
@@ -1204,7 +1204,7 @@ internal class MyanimelistAnimeConverterTest {
         fun `10 min`() {
             runBlocking {
                 // given
-                val testConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun buildAnimeLink(id: AnimeId): URI = MyanimelistConfig.buildAnimeLink(id)
                     override fun buildDataDownloadLink(id: String): URI = MyanimelistConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = MyanimelistConfig.fileSuffix()
@@ -1226,7 +1226,7 @@ internal class MyanimelistAnimeConverterTest {
         fun `10 min per ep`() {
             runBlocking {
                 // given
-                val testConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun buildAnimeLink(id: AnimeId): URI = MyanimelistConfig.buildAnimeLink(id)
                     override fun buildDataDownloadLink(id: String): URI = MyanimelistConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = MyanimelistConfig.fileSuffix()
@@ -1248,7 +1248,7 @@ internal class MyanimelistAnimeConverterTest {
         fun `10 sec`() {
             runBlocking {
                 // given
-                val testConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun buildAnimeLink(id: AnimeId): URI = MyanimelistConfig.buildAnimeLink(id)
                     override fun buildDataDownloadLink(id: String): URI = MyanimelistConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = MyanimelistConfig.fileSuffix()
@@ -1270,7 +1270,7 @@ internal class MyanimelistAnimeConverterTest {
         fun `10 sec per ep`() {
             runBlocking {
                 // given
-                val testConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun buildAnimeLink(id: AnimeId): URI = MyanimelistConfig.buildAnimeLink(id)
                     override fun buildDataDownloadLink(id: String): URI = MyanimelistConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = MyanimelistConfig.fileSuffix()
@@ -1292,7 +1292,7 @@ internal class MyanimelistAnimeConverterTest {
         fun `unknown duration`() {
             runBlocking {
                 // given
-                val testConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun buildAnimeLink(id: AnimeId): URI = MyanimelistConfig.buildAnimeLink(id)
                     override fun buildDataDownloadLink(id: String): URI = MyanimelistConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = MyanimelistConfig.fileSuffix()
@@ -1321,7 +1321,7 @@ internal class MyanimelistAnimeConverterTest {
             fun `'UNDEFINED', because anime season link is not available`() {
                 runBlocking {
                     // given
-                    val testConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                    val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                         override fun buildAnimeLink(id: AnimeId): URI = MyanimelistConfig.buildAnimeLink(id)
                         override fun buildDataDownloadLink(id: String): URI = MyanimelistConfig.buildDataDownloadLink(id)
                         override fun fileSuffix(): FileSuffix = MyanimelistConfig.fileSuffix()
@@ -1343,7 +1343,7 @@ internal class MyanimelistAnimeConverterTest {
             fun `season is 'FALL'`() {
                 runBlocking {
                     // given
-                    val testConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                    val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                         override fun buildAnimeLink(id: AnimeId): URI = MyanimelistConfig.buildAnimeLink(id)
                         override fun buildDataDownloadLink(id: String): URI = MyanimelistConfig.buildDataDownloadLink(id)
                         override fun fileSuffix(): FileSuffix = MyanimelistConfig.fileSuffix()
@@ -1365,7 +1365,7 @@ internal class MyanimelistAnimeConverterTest {
             fun `season is 'SPRING'`() {
                 runBlocking {
                     // given
-                    val testConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                    val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                         override fun buildAnimeLink(id: AnimeId): URI = MyanimelistConfig.buildAnimeLink(id)
                         override fun buildDataDownloadLink(id: String): URI = MyanimelistConfig.buildDataDownloadLink(id)
                         override fun fileSuffix(): FileSuffix = MyanimelistConfig.fileSuffix()
@@ -1387,7 +1387,7 @@ internal class MyanimelistAnimeConverterTest {
             fun `season is 'SUMMER'`() {
                 runBlocking {
                     // given
-                    val testConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                    val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                         override fun buildAnimeLink(id: AnimeId): URI = MyanimelistConfig.buildAnimeLink(id)
                         override fun buildDataDownloadLink(id: String): URI = MyanimelistConfig.buildDataDownloadLink(id)
                         override fun fileSuffix(): FileSuffix = MyanimelistConfig.fileSuffix()
@@ -1409,7 +1409,7 @@ internal class MyanimelistAnimeConverterTest {
             fun `season is 'WINTER'`() {
                 runBlocking {
                     // given
-                    val testConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                    val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                         override fun buildAnimeLink(id: AnimeId): URI = MyanimelistConfig.buildAnimeLink(id)
                         override fun buildDataDownloadLink(id: String): URI = MyanimelistConfig.buildDataDownloadLink(id)
                         override fun fileSuffix(): FileSuffix = MyanimelistConfig.fileSuffix()
@@ -1432,7 +1432,7 @@ internal class MyanimelistAnimeConverterTest {
             fun `season is 'SPRING' by aired because premiered is not set`(value: String) {
                 runBlocking {
                     // given
-                    val testConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                    val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                         override fun buildAnimeLink(id: AnimeId): URI = MyanimelistConfig.buildAnimeLink(id)
                         override fun buildDataDownloadLink(id: String): URI = MyanimelistConfig.buildDataDownloadLink(id)
                         override fun fileSuffix(): FileSuffix = MyanimelistConfig.fileSuffix()
@@ -1455,7 +1455,7 @@ internal class MyanimelistAnimeConverterTest {
             fun `season is 'SUMMER' by aired because premiered is not set`(value: String) {
                 runBlocking {
                     // given
-                    val testConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                    val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                         override fun buildAnimeLink(id: AnimeId): URI = MyanimelistConfig.buildAnimeLink(id)
                         override fun buildDataDownloadLink(id: String): URI = MyanimelistConfig.buildDataDownloadLink(id)
                         override fun fileSuffix(): FileSuffix = MyanimelistConfig.fileSuffix()
@@ -1478,7 +1478,7 @@ internal class MyanimelistAnimeConverterTest {
             fun `season is 'FALL' by aired because premiered is not set`(value: String) {
                 runBlocking {
                     // given
-                    val testConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                    val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                         override fun buildAnimeLink(id: AnimeId): URI = MyanimelistConfig.buildAnimeLink(id)
                         override fun buildDataDownloadLink(id: String): URI = MyanimelistConfig.buildDataDownloadLink(id)
                         override fun fileSuffix(): FileSuffix = MyanimelistConfig.fileSuffix()
@@ -1501,7 +1501,7 @@ internal class MyanimelistAnimeConverterTest {
             fun `season is 'WINTER' by aired because premiered is not set`(value: String) {
                 runBlocking {
                     // given
-                    val testConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                    val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                         override fun buildAnimeLink(id: AnimeId): URI = MyanimelistConfig.buildAnimeLink(id)
                         override fun buildDataDownloadLink(id: String): URI = MyanimelistConfig.buildDataDownloadLink(id)
                         override fun fileSuffix(): FileSuffix = MyanimelistConfig.fileSuffix()
@@ -1527,7 +1527,7 @@ internal class MyanimelistAnimeConverterTest {
             fun `extract from 'aired', because anime season is not set - year only`() {
                 runBlocking {
                     // given
-                    val testConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                    val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                         override fun buildAnimeLink(id: AnimeId): URI = MyanimelistConfig.buildAnimeLink(id)
                         override fun buildDataDownloadLink(id: String): URI = MyanimelistConfig.buildDataDownloadLink(id)
                         override fun fileSuffix(): FileSuffix = MyanimelistConfig.fileSuffix()
@@ -1550,7 +1550,7 @@ internal class MyanimelistAnimeConverterTest {
             fun `extract from 'aired', because anime season is not set - year to unknown`() {
                 runBlocking {
                     // given
-                    val testConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                    val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                         override fun buildAnimeLink(id: AnimeId): URI = MyanimelistConfig.buildAnimeLink(id)
                         override fun buildDataDownloadLink(id: String): URI = MyanimelistConfig.buildDataDownloadLink(id)
                         override fun fileSuffix(): FileSuffix = MyanimelistConfig.fileSuffix()
@@ -1573,7 +1573,7 @@ internal class MyanimelistAnimeConverterTest {
             fun `extract from 'aired', because anime season is not set - unavailable`() {
                 runBlocking {
                     // given
-                    val testConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                    val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                         override fun buildAnimeLink(id: AnimeId): URI = MyanimelistConfig.buildAnimeLink(id)
                         override fun buildDataDownloadLink(id: String): URI = MyanimelistConfig.buildDataDownloadLink(id)
                         override fun fileSuffix(): FileSuffix = MyanimelistConfig.fileSuffix()
@@ -1596,7 +1596,7 @@ internal class MyanimelistAnimeConverterTest {
             fun `extract from 'aired', because anime season is not set - exact day to unknown`() {
                 runBlocking {
                     // given
-                    val testConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                    val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                         override fun buildAnimeLink(id: AnimeId): URI = MyanimelistConfig.buildAnimeLink(id)
                         override fun buildDataDownloadLink(id: String): URI = MyanimelistConfig.buildDataDownloadLink(id)
                         override fun fileSuffix(): FileSuffix = MyanimelistConfig.fileSuffix()
@@ -1619,7 +1619,7 @@ internal class MyanimelistAnimeConverterTest {
             fun `extract from 'aired', because anime season is not set - year to year`() {
                 runBlocking {
                     // given
-                    val testConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                    val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                         override fun buildAnimeLink(id: AnimeId): URI = MyanimelistConfig.buildAnimeLink(id)
                         override fun buildDataDownloadLink(id: String): URI = MyanimelistConfig.buildDataDownloadLink(id)
                         override fun fileSuffix(): FileSuffix = MyanimelistConfig.fileSuffix()
@@ -1642,7 +1642,7 @@ internal class MyanimelistAnimeConverterTest {
             fun `extract from 'aired', because anime season is not set - month of year to year`() {
                 runBlocking {
                     // given
-                    val testConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                    val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                         override fun buildAnimeLink(id: AnimeId): URI = MyanimelistConfig.buildAnimeLink(id)
                         override fun buildDataDownloadLink(id: String): URI = MyanimelistConfig.buildDataDownloadLink(id)
                         override fun fileSuffix(): FileSuffix = MyanimelistConfig.fileSuffix()
@@ -1665,7 +1665,7 @@ internal class MyanimelistAnimeConverterTest {
             fun `extract from 'aired', because anime season is not set - month of year to unknown`() {
                 runBlocking {
                     // given
-                    val testConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                    val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                         override fun buildAnimeLink(id: AnimeId): URI = MyanimelistConfig.buildAnimeLink(id)
                         override fun buildDataDownloadLink(id: String): URI = MyanimelistConfig.buildDataDownloadLink(id)
                         override fun fileSuffix(): FileSuffix = MyanimelistConfig.fileSuffix()
@@ -1688,7 +1688,7 @@ internal class MyanimelistAnimeConverterTest {
             fun `extract from 'aired', because anime season is not set - exact day`() {
                 runBlocking {
                     // given
-                    val testConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                    val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                         override fun buildAnimeLink(id: AnimeId): URI = MyanimelistConfig.buildAnimeLink(id)
                         override fun buildDataDownloadLink(id: String): URI = MyanimelistConfig.buildDataDownloadLink(id)
                         override fun fileSuffix(): FileSuffix = MyanimelistConfig.fileSuffix()
@@ -1711,7 +1711,7 @@ internal class MyanimelistAnimeConverterTest {
             fun `extract from 'aired', because anime season is not set - exact day to exact day`() {
                 runBlocking {
                     // given
-                    val testConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                    val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                         override fun buildAnimeLink(id: AnimeId): URI = MyanimelistConfig.buildAnimeLink(id)
                         override fun buildDataDownloadLink(id: String): URI = MyanimelistConfig.buildDataDownloadLink(id)
                         override fun fileSuffix(): FileSuffix = MyanimelistConfig.fileSuffix()
@@ -1735,7 +1735,7 @@ internal class MyanimelistAnimeConverterTest {
             fun `extract from 'aired', because anime season is not set - year to exact day`() {
                 runBlocking {
                     // given
-                    val testConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                    val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                         override fun buildAnimeLink(id: AnimeId): URI = MyanimelistConfig.buildAnimeLink(id)
                         override fun buildDataDownloadLink(id: String): URI = MyanimelistConfig.buildDataDownloadLink(id)
                         override fun fileSuffix(): FileSuffix = MyanimelistConfig.fileSuffix()
@@ -1758,7 +1758,7 @@ internal class MyanimelistAnimeConverterTest {
             fun `extract from 'aired', because anime season is not set - exact day to year`() {
                 runBlocking {
                     // given
-                    val testConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                    val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                         override fun buildAnimeLink(id: AnimeId): URI = MyanimelistConfig.buildAnimeLink(id)
                         override fun buildDataDownloadLink(id: String): URI = MyanimelistConfig.buildDataDownloadLink(id)
                         override fun fileSuffix(): FileSuffix = MyanimelistConfig.fileSuffix()
@@ -1781,7 +1781,7 @@ internal class MyanimelistAnimeConverterTest {
             fun `extract from anime season link which exists in mobile version, but not on desktop version`() {
                 runBlocking {
                     // given
-                    val testConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                    val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                         override fun buildAnimeLink(id: AnimeId): URI = MyanimelistConfig.buildAnimeLink(id)
                         override fun buildDataDownloadLink(id: String): URI = MyanimelistConfig.buildDataDownloadLink(id)
                         override fun fileSuffix(): FileSuffix = MyanimelistConfig.fileSuffix()

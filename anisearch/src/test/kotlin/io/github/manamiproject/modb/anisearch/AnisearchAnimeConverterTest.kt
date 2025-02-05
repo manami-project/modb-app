@@ -33,7 +33,7 @@ internal class AnisearchAnimeConverterTest {
         fun `title containing special chars`() {
             tempDirectory {
                 // given
-                val testAnisearchConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testAnisearchConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun buildAnimeLink(id: AnimeId): URI = AnisearchConfig.buildAnimeLink(id)
                     override fun buildDataDownloadLink(id: String): URI = AnisearchConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = AnisearchConfig.fileSuffix()
@@ -59,7 +59,7 @@ internal class AnisearchAnimeConverterTest {
         fun `no suffix for title`() {
             tempDirectory {
                 // given
-                val testAnisearchConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testAnisearchConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun buildAnimeLink(id: AnimeId): URI = AnisearchConfig.buildAnimeLink(id)
                     override fun buildDataDownloadLink(id: String): URI = AnisearchConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = AnisearchConfig.fileSuffix()
@@ -89,7 +89,7 @@ internal class AnisearchAnimeConverterTest {
         fun `neither picture nor thumbnail`() {
             tempDirectory {
                 // given
-                val testAnisearchConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testAnisearchConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun buildAnimeLink(id: AnimeId): URI = AnisearchConfig.buildAnimeLink(id)
                     override fun buildDataDownloadLink(id: String): URI = AnisearchConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = AnisearchConfig.fileSuffix()
@@ -116,7 +116,7 @@ internal class AnisearchAnimeConverterTest {
         fun `picture and thumbnail`() {
             tempDirectory {
                 // given
-                val testAnisearchConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testAnisearchConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun buildAnimeLink(id: AnimeId): URI = AnisearchConfig.buildAnimeLink(id)
                     override fun buildDataDownloadLink(id: String): URI = AnisearchConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = AnisearchConfig.fileSuffix()
@@ -147,7 +147,7 @@ internal class AnisearchAnimeConverterTest {
         fun `extract id 3633`() {
             tempDirectory {
                 // given
-                val testAnisearchConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testAnisearchConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun buildAnimeLink(id: AnimeId): URI = AnisearchConfig.buildAnimeLink(id)
                     override fun buildDataDownloadLink(id: String): URI = AnisearchConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = AnisearchConfig.fileSuffix()
@@ -177,7 +177,7 @@ internal class AnisearchAnimeConverterTest {
         fun `'bonus' is mapped to SPECIAL`() {
             tempDirectory {
                 // given
-                val testAnisearchConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testAnisearchConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun buildAnimeLink(id: AnimeId): URI = AnisearchConfig.buildAnimeLink(id)
                     override fun buildDataDownloadLink(id: String): URI = AnisearchConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = AnisearchConfig.fileSuffix()
@@ -203,7 +203,7 @@ internal class AnisearchAnimeConverterTest {
         fun `'cm' is mapped to 'SPECIAL'`() {
             tempDirectory {
                 // given
-                val testAnisearchConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testAnisearchConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun buildAnimeLink(id: AnimeId): URI = AnisearchConfig.buildAnimeLink(id)
                     override fun buildDataDownloadLink(id: String): URI = AnisearchConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = AnisearchConfig.fileSuffix()
@@ -229,7 +229,7 @@ internal class AnisearchAnimeConverterTest {
         fun `'movie' is mapped to Movie`() {
             tempDirectory {
                 // given
-                val testAnisearchConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testAnisearchConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun buildAnimeLink(id: AnimeId): URI = AnisearchConfig.buildAnimeLink(id)
                     override fun buildDataDownloadLink(id: String): URI = AnisearchConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = AnisearchConfig.fileSuffix()
@@ -255,7 +255,7 @@ internal class AnisearchAnimeConverterTest {
         fun `'music video' is mapped to SPECIAL`() {
             tempDirectory {
                 // given
-                val testAnisearchConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testAnisearchConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun buildAnimeLink(id: AnimeId): URI = AnisearchConfig.buildAnimeLink(id)
                     override fun buildDataDownloadLink(id: String): URI = AnisearchConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = AnisearchConfig.fileSuffix()
@@ -281,7 +281,7 @@ internal class AnisearchAnimeConverterTest {
         fun `other' is mapped to UNKNOWN`() {
             tempDirectory {
                 // given
-                val testAnisearchConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testAnisearchConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun buildAnimeLink(id: AnimeId): URI = AnisearchConfig.buildAnimeLink(id)
                     override fun buildDataDownloadLink(id: String): URI = AnisearchConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = AnisearchConfig.fileSuffix()
@@ -307,7 +307,7 @@ internal class AnisearchAnimeConverterTest {
         fun `'ova' is mapped to OVA`() {
             tempDirectory {
                 // given
-                val testAnisearchConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testAnisearchConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun buildAnimeLink(id: AnimeId): URI = AnisearchConfig.buildAnimeLink(id)
                     override fun buildDataDownloadLink(id: String): URI = AnisearchConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = AnisearchConfig.fileSuffix()
@@ -333,7 +333,7 @@ internal class AnisearchAnimeConverterTest {
         fun `tv-series' is mapped to TV`() {
             tempDirectory {
                 // given
-                val testAnisearchConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testAnisearchConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun buildAnimeLink(id: AnimeId): URI = AnisearchConfig.buildAnimeLink(id)
                     override fun buildDataDownloadLink(id: String): URI = AnisearchConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = AnisearchConfig.fileSuffix()
@@ -359,7 +359,7 @@ internal class AnisearchAnimeConverterTest {
         fun `tv-special' is mapped to TV`() {
             tempDirectory {
                 // given
-                val testAnisearchConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testAnisearchConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun buildAnimeLink(id: AnimeId): URI = AnisearchConfig.buildAnimeLink(id)
                     override fun buildDataDownloadLink(id: String): URI = AnisearchConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = AnisearchConfig.fileSuffix()
@@ -385,7 +385,7 @@ internal class AnisearchAnimeConverterTest {
         fun `unknown' is mapped to UNKNOWN`() {
             tempDirectory {
                 // given
-                val testAnisearchConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testAnisearchConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun buildAnimeLink(id: AnimeId): URI = AnisearchConfig.buildAnimeLink(id)
                     override fun buildDataDownloadLink(id: String): URI = AnisearchConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = AnisearchConfig.fileSuffix()
@@ -411,7 +411,7 @@ internal class AnisearchAnimeConverterTest {
         fun `web' is mapped to ONA`() {
             tempDirectory {
                 // given
-                val testAnisearchConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testAnisearchConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun buildAnimeLink(id: AnimeId): URI = AnisearchConfig.buildAnimeLink(id)
                     override fun buildDataDownloadLink(id: String): URI = AnisearchConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = AnisearchConfig.fileSuffix()
@@ -441,7 +441,7 @@ internal class AnisearchAnimeConverterTest {
         fun `extract multiple tags`() {
             tempDirectory {
                 // given
-                val testAnisearchConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testAnisearchConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun buildAnimeLink(id: AnimeId): URI = AnisearchConfig.buildAnimeLink(id)
                     override fun buildDataDownloadLink(id: String): URI = AnisearchConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = AnisearchConfig.fileSuffix()
@@ -484,7 +484,7 @@ internal class AnisearchAnimeConverterTest {
         fun `extract exactly one tag`() {
             tempDirectory {
                 // given
-                val testAnisearchConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testAnisearchConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun buildAnimeLink(id: AnimeId): URI = AnisearchConfig.buildAnimeLink(id)
                     override fun buildDataDownloadLink(id: String): URI = AnisearchConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = AnisearchConfig.fileSuffix()
@@ -510,7 +510,7 @@ internal class AnisearchAnimeConverterTest {
         fun `no tags available`() {
             tempDirectory {
                 // given
-                val testAnisearchConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testAnisearchConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun buildAnimeLink(id: AnimeId): URI = AnisearchConfig.buildAnimeLink(id)
                     override fun buildDataDownloadLink(id: String): URI = AnisearchConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = AnisearchConfig.fileSuffix()
@@ -540,7 +540,7 @@ internal class AnisearchAnimeConverterTest {
         fun `unknown number of episodes defaults to 1`() {
             tempDirectory {
                 // given
-                val testAnisearchConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testAnisearchConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun buildAnimeLink(id: AnimeId): URI = AnisearchConfig.buildAnimeLink(id)
                     override fun buildDataDownloadLink(id: String): URI = AnisearchConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = AnisearchConfig.fileSuffix()
@@ -566,7 +566,7 @@ internal class AnisearchAnimeConverterTest {
         fun `1 episode`() {
             tempDirectory {
                 // given
-                val testAnisearchConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testAnisearchConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun buildAnimeLink(id: AnimeId): URI = AnisearchConfig.buildAnimeLink(id)
                     override fun buildDataDownloadLink(id: String): URI = AnisearchConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = AnisearchConfig.fileSuffix()
@@ -592,7 +592,7 @@ internal class AnisearchAnimeConverterTest {
         fun `10 episodes`() {
             tempDirectory {
                 // given
-                val testAnisearchConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testAnisearchConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun buildAnimeLink(id: AnimeId): URI = AnisearchConfig.buildAnimeLink(id)
                     override fun buildDataDownloadLink(id: String): URI = AnisearchConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = AnisearchConfig.fileSuffix()
@@ -618,7 +618,7 @@ internal class AnisearchAnimeConverterTest {
         fun `100 episodes`() {
             tempDirectory {
                 // given
-                val testAnisearchConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testAnisearchConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun buildAnimeLink(id: AnimeId): URI = AnisearchConfig.buildAnimeLink(id)
                     override fun buildDataDownloadLink(id: String): URI = AnisearchConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = AnisearchConfig.fileSuffix()
@@ -644,7 +644,7 @@ internal class AnisearchAnimeConverterTest {
         fun `1818 episodes`() {
             tempDirectory {
                 // given
-                val testAnisearchConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testAnisearchConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun buildAnimeLink(id: AnimeId): URI = AnisearchConfig.buildAnimeLink(id)
                     override fun buildDataDownloadLink(id: String): URI = AnisearchConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = AnisearchConfig.fileSuffix()
@@ -670,7 +670,7 @@ internal class AnisearchAnimeConverterTest {
         fun `although not a double in json the number of episodes is deserialized to kotlin type double`() {
             tempDirectory {
                 // given
-                val testAnisearchConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testAnisearchConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun buildAnimeLink(id: AnimeId): URI = AnisearchConfig.buildAnimeLink(id)
                     override fun buildDataDownloadLink(id: String): URI = AnisearchConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = AnisearchConfig.fileSuffix()
@@ -700,7 +700,7 @@ internal class AnisearchAnimeConverterTest {
         fun `1 hour`() {
             tempDirectory {
                 // given
-                val testAnisearchConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testAnisearchConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun buildAnimeLink(id: AnimeId): URI = AnisearchConfig.buildAnimeLink(id)
                     override fun buildDataDownloadLink(id: String): URI = AnisearchConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = AnisearchConfig.fileSuffix()
@@ -726,7 +726,7 @@ internal class AnisearchAnimeConverterTest {
         fun `1 minute`() {
             tempDirectory {
                 // given
-                val testAnisearchConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testAnisearchConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun buildAnimeLink(id: AnimeId): URI = AnisearchConfig.buildAnimeLink(id)
                     override fun buildDataDownloadLink(id: String): URI = AnisearchConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = AnisearchConfig.fileSuffix()
@@ -752,7 +752,7 @@ internal class AnisearchAnimeConverterTest {
         fun `2 hours`() {
             tempDirectory {
                 // given
-                val testAnisearchConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testAnisearchConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun buildAnimeLink(id: AnimeId): URI = AnisearchConfig.buildAnimeLink(id)
                     override fun buildDataDownloadLink(id: String): URI = AnisearchConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = AnisearchConfig.fileSuffix()
@@ -778,7 +778,7 @@ internal class AnisearchAnimeConverterTest {
         fun `24 minutes per episode`() {
             tempDirectory {
                 // given
-                val testAnisearchConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testAnisearchConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun buildAnimeLink(id: AnimeId): URI = AnisearchConfig.buildAnimeLink(id)
                     override fun buildDataDownloadLink(id: String): URI = AnisearchConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = AnisearchConfig.fileSuffix()
@@ -804,7 +804,7 @@ internal class AnisearchAnimeConverterTest {
         fun `63 minutes`() {
             tempDirectory {
                 // given
-                val testAnisearchConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testAnisearchConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun buildAnimeLink(id: AnimeId): URI = AnisearchConfig.buildAnimeLink(id)
                     override fun buildDataDownloadLink(id: String): URI = AnisearchConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = AnisearchConfig.fileSuffix()
@@ -830,7 +830,7 @@ internal class AnisearchAnimeConverterTest {
         fun `70 minutes`() {
             tempDirectory {
                 // given
-                val testAnisearchConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testAnisearchConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun buildAnimeLink(id: AnimeId): URI = AnisearchConfig.buildAnimeLink(id)
                     override fun buildDataDownloadLink(id: String): URI = AnisearchConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = AnisearchConfig.fileSuffix()
@@ -856,7 +856,7 @@ internal class AnisearchAnimeConverterTest {
         fun `134 minutes`() {
             tempDirectory {
                 // given
-                val testAnisearchConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testAnisearchConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun buildAnimeLink(id: AnimeId): URI = AnisearchConfig.buildAnimeLink(id)
                     override fun buildDataDownloadLink(id: String): URI = AnisearchConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = AnisearchConfig.fileSuffix()
@@ -882,7 +882,7 @@ internal class AnisearchAnimeConverterTest {
         fun `episodes and duration unknown`() {
             tempDirectory {
                 // given
-                val testAnisearchConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testAnisearchConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun buildAnimeLink(id: AnimeId): URI = AnisearchConfig.buildAnimeLink(id)
                     override fun buildDataDownloadLink(id: String): URI = AnisearchConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = AnisearchConfig.fileSuffix()
@@ -908,7 +908,7 @@ internal class AnisearchAnimeConverterTest {
         fun `episodes known duration unknown`() {
             tempDirectory {
                 // given
-                val testAnisearchConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testAnisearchConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun buildAnimeLink(id: AnimeId): URI = AnisearchConfig.buildAnimeLink(id)
                     override fun buildDataDownloadLink(id: String): URI = AnisearchConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = AnisearchConfig.fileSuffix()
@@ -938,7 +938,7 @@ internal class AnisearchAnimeConverterTest {
         fun `multiple synonyms`() {
             tempDirectory {
                 // given
-                val testAnisearchConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testAnisearchConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun buildAnimeLink(id: AnimeId): URI = AnisearchConfig.buildAnimeLink(id)
                     override fun buildDataDownloadLink(id: String): URI = AnisearchConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = AnisearchConfig.fileSuffix()
@@ -973,7 +973,7 @@ internal class AnisearchAnimeConverterTest {
         fun `no synonyms`() {
             tempDirectory {
                 // given
-                val testAnisearchConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testAnisearchConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun buildAnimeLink(id: AnimeId): URI = AnisearchConfig.buildAnimeLink(id)
                     override fun buildDataDownloadLink(id: String): URI = AnisearchConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = AnisearchConfig.fileSuffix()
@@ -999,7 +999,7 @@ internal class AnisearchAnimeConverterTest {
         fun `single synonym`() {
             tempDirectory {
                 // given
-                val testAnisearchConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testAnisearchConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun buildAnimeLink(id: AnimeId): URI = AnisearchConfig.buildAnimeLink(id)
                     override fun buildDataDownloadLink(id: String): URI = AnisearchConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = AnisearchConfig.fileSuffix()
@@ -1027,7 +1027,7 @@ internal class AnisearchAnimeConverterTest {
         fun `single synonym and romanji alteration`() {
             tempDirectory {
                 // given
-                val testAnisearchConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testAnisearchConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun buildAnimeLink(id: AnimeId): URI = AnisearchConfig.buildAnimeLink(id)
                     override fun buildDataDownloadLink(id: String): URI = AnisearchConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = AnisearchConfig.fileSuffix()
@@ -1061,7 +1061,7 @@ internal class AnisearchAnimeConverterTest {
         fun `correctly separate hidden synonyms using 11197 as an example`() {
             tempDirectory {
                 // given
-                val testAnisearchConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testAnisearchConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun buildAnimeLink(id: AnimeId): URI = AnisearchConfig.buildAnimeLink(id)
                     override fun buildDataDownloadLink(id: String): URI = AnisearchConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = AnisearchConfig.fileSuffix()
@@ -1117,7 +1117,7 @@ internal class AnisearchAnimeConverterTest {
         fun `correctly separate hidden synonyms using 8724 as an example`() {
             tempDirectory {
                 // given
-                val testAnisearchConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testAnisearchConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun buildAnimeLink(id: AnimeId): URI = AnisearchConfig.buildAnimeLink(id)
                     override fun buildDataDownloadLink(id: String): URI = AnisearchConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = AnisearchConfig.fileSuffix()
@@ -1153,7 +1153,7 @@ internal class AnisearchAnimeConverterTest {
         fun `synonyms containing named parts are not split`() {
             tempDirectory {
                 // given
-                val testAnisearchConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testAnisearchConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun buildAnimeLink(id: AnimeId): URI = AnisearchConfig.buildAnimeLink(id)
                     override fun buildDataDownloadLink(id: String): URI = AnisearchConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = AnisearchConfig.fileSuffix()
@@ -1185,7 +1185,7 @@ internal class AnisearchAnimeConverterTest {
         fun `hidden synonyms and named parts`() {
             tempDirectory {
                 // given
-                val testAnisearchConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testAnisearchConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun buildAnimeLink(id: AnimeId): URI = AnisearchConfig.buildAnimeLink(id)
                     override fun buildDataDownloadLink(id: String): URI = AnisearchConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = AnisearchConfig.fileSuffix()
@@ -1223,7 +1223,7 @@ internal class AnisearchAnimeConverterTest {
         fun `correctly extract synonyms in italic`() {
             tempDirectory {
                 // given
-                val testAnisearchConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testAnisearchConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun buildAnimeLink(id: AnimeId): URI = AnisearchConfig.buildAnimeLink(id)
                     override fun buildDataDownloadLink(id: String): URI = AnisearchConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = AnisearchConfig.fileSuffix()
@@ -1257,7 +1257,7 @@ internal class AnisearchAnimeConverterTest {
         fun `'aborted' is mapped to 'UNKNOWN'`() {
             tempDirectory {
                 // given
-                val testAnisearchConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testAnisearchConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun buildAnimeLink(id: AnimeId): URI = AnisearchConfig.buildAnimeLink(id)
                     override fun buildDataDownloadLink(id: String): URI = AnisearchConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = AnisearchConfig.fileSuffix()
@@ -1283,7 +1283,7 @@ internal class AnisearchAnimeConverterTest {
         fun `'on hold' is mapped to 'UNKNOWN'`() {
             tempDirectory {
                 // given
-                val testAnisearchConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testAnisearchConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun buildAnimeLink(id: AnimeId): URI = AnisearchConfig.buildAnimeLink(id)
                     override fun buildDataDownloadLink(id: String): URI = AnisearchConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = AnisearchConfig.fileSuffix()
@@ -1309,7 +1309,7 @@ internal class AnisearchAnimeConverterTest {
         fun `no status is mapped to 'UNKNOWN'`() {
             tempDirectory {
                 // given
-                val testAnisearchConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testAnisearchConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun buildAnimeLink(id: AnimeId): URI = AnisearchConfig.buildAnimeLink(id)
                     override fun buildDataDownloadLink(id: String): URI = AnisearchConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = AnisearchConfig.fileSuffix()
@@ -1335,7 +1335,7 @@ internal class AnisearchAnimeConverterTest {
         fun `'completed' is mapped to 'FINISHED'`() {
             tempDirectory {
                 // given
-                val testAnisearchConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testAnisearchConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun buildAnimeLink(id: AnimeId): URI = AnisearchConfig.buildAnimeLink(id)
                     override fun buildDataDownloadLink(id: String): URI = AnisearchConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = AnisearchConfig.fileSuffix()
@@ -1361,7 +1361,7 @@ internal class AnisearchAnimeConverterTest {
         fun `completed is only based on the original release`() {
             tempDirectory {
                 // given
-                val testAnisearchConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testAnisearchConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun buildAnimeLink(id: AnimeId): URI = AnisearchConfig.buildAnimeLink(id)
                     override fun buildDataDownloadLink(id: String): URI = AnisearchConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = AnisearchConfig.fileSuffix()
@@ -1387,7 +1387,7 @@ internal class AnisearchAnimeConverterTest {
         fun `'ongoing' is mapped to ONGOING`() {
             tempDirectory {
                 // given
-                val testAnisearchConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testAnisearchConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun buildAnimeLink(id: AnimeId): URI = AnisearchConfig.buildAnimeLink(id)
                     override fun buildDataDownloadLink(id: String): URI = AnisearchConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = AnisearchConfig.fileSuffix()
@@ -1413,7 +1413,7 @@ internal class AnisearchAnimeConverterTest {
         fun `'upcoming' is mapped to UPCOMING`() {
             tempDirectory {
                 // given
-                val testAnisearchConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testAnisearchConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun buildAnimeLink(id: AnimeId): URI = AnisearchConfig.buildAnimeLink(id)
                     override fun buildDataDownloadLink(id: String): URI = AnisearchConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = AnisearchConfig.fileSuffix()
@@ -1451,7 +1451,7 @@ internal class AnisearchAnimeConverterTest {
             fun `'jan', 'feb', and 'mar' are mapped to WINTER`(fileName: String, animeId: AnimeId) {
                 tempDirectory {
                     // given
-                    val testAnisearchConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                    val testAnisearchConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                         override fun buildAnimeLink(id: AnimeId): URI = AnisearchConfig.buildAnimeLink(id)
                         override fun buildDataDownloadLink(id: String): URI = AnisearchConfig.buildDataDownloadLink(id)
                         override fun fileSuffix(): FileSuffix = AnisearchConfig.fileSuffix()
@@ -1482,7 +1482,7 @@ internal class AnisearchAnimeConverterTest {
             fun `'apr', 'may' and 'jul' are mapped to SPRING`(fileName: String, animeId: AnimeId) {
                 tempDirectory {
                     // given
-                    val testAnisearchConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                    val testAnisearchConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                         override fun buildAnimeLink(id: AnimeId): URI = AnisearchConfig.buildAnimeLink(id)
                         override fun buildDataDownloadLink(id: String): URI = AnisearchConfig.buildDataDownloadLink(id)
                         override fun fileSuffix(): FileSuffix = AnisearchConfig.fileSuffix()
@@ -1513,7 +1513,7 @@ internal class AnisearchAnimeConverterTest {
             fun `'jul', 'aug' and 'sep' are mapped to SUMMER`(fileName: String, animeId: AnimeId) {
                 tempDirectory {
                     // given
-                    val testAnisearchConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                    val testAnisearchConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                         override fun buildAnimeLink(id: AnimeId): URI = AnisearchConfig.buildAnimeLink(id)
                         override fun buildDataDownloadLink(id: String): URI = AnisearchConfig.buildDataDownloadLink(id)
                         override fun fileSuffix(): FileSuffix = AnisearchConfig.fileSuffix()
@@ -1544,7 +1544,7 @@ internal class AnisearchAnimeConverterTest {
             fun `'oct', 'nov' and 'dec' are mapped to SUMMER`(fileName: String, animeId: AnimeId) {
                 tempDirectory {
                     // given
-                    val testAnisearchConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                    val testAnisearchConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                         override fun buildAnimeLink(id: AnimeId): URI = AnisearchConfig.buildAnimeLink(id)
                         override fun buildDataDownloadLink(id: String): URI = AnisearchConfig.buildDataDownloadLink(id)
                         override fun fileSuffix(): FileSuffix = AnisearchConfig.fileSuffix()
@@ -1574,7 +1574,7 @@ internal class AnisearchAnimeConverterTest {
             fun `if the month cannot be determined use UNDEFINED`(fileName: String, animeId: AnimeId) {
                 tempDirectory {
                     // given
-                    val testAnisearchConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                    val testAnisearchConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                         override fun buildAnimeLink(id: AnimeId): URI = AnisearchConfig.buildAnimeLink(id)
                         override fun buildDataDownloadLink(id: String): URI = AnisearchConfig.buildDataDownloadLink(id)
                         override fun fileSuffix(): FileSuffix = AnisearchConfig.fileSuffix()
@@ -1604,7 +1604,7 @@ internal class AnisearchAnimeConverterTest {
             fun `2021-08-06`() {
                 tempDirectory {
                     // given
-                    val testAnisearchConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                    val testAnisearchConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                         override fun buildAnimeLink(id: AnimeId): URI = AnisearchConfig.buildAnimeLink(id)
                         override fun buildDataDownloadLink(id: String): URI = AnisearchConfig.buildDataDownloadLink(id)
                         override fun fileSuffix(): FileSuffix = AnisearchConfig.fileSuffix()
@@ -1630,7 +1630,7 @@ internal class AnisearchAnimeConverterTest {
             fun `1958-11`() {
                 tempDirectory {
                     // given
-                    val testAnisearchConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                    val testAnisearchConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                         override fun buildAnimeLink(id: AnimeId): URI = AnisearchConfig.buildAnimeLink(id)
                         override fun buildDataDownloadLink(id: String): URI = AnisearchConfig.buildDataDownloadLink(id)
                         override fun fileSuffix(): FileSuffix = AnisearchConfig.fileSuffix()
@@ -1656,7 +1656,7 @@ internal class AnisearchAnimeConverterTest {
             fun `1991`() {
                 tempDirectory {
                     // given
-                    val testAnisearchConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                    val testAnisearchConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                         override fun buildAnimeLink(id: AnimeId): URI = AnisearchConfig.buildAnimeLink(id)
                         override fun buildDataDownloadLink(id: String): URI = AnisearchConfig.buildDataDownloadLink(id)
                         override fun fileSuffix(): FileSuffix = AnisearchConfig.fileSuffix()
@@ -1682,7 +1682,7 @@ internal class AnisearchAnimeConverterTest {
             fun `unknown year`() {
                 tempDirectory {
                     // given
-                    val testAnisearchConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                    val testAnisearchConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                         override fun buildAnimeLink(id: AnimeId): URI = AnisearchConfig.buildAnimeLink(id)
                         override fun buildDataDownloadLink(id: String): URI = AnisearchConfig.buildDataDownloadLink(id)
                         override fun fileSuffix(): FileSuffix = AnisearchConfig.fileSuffix()
@@ -1713,7 +1713,7 @@ internal class AnisearchAnimeConverterTest {
         fun `no related anime but a single adaption`() {
             tempDirectory {
                 // given
-                val testAnisearchConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testAnisearchConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun buildAnimeLink(id: AnimeId): URI = AnisearchConfig.buildAnimeLink(id)
                     override fun buildDataDownloadLink(id: String): URI = AnisearchConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = AnisearchConfig.fileSuffix()
@@ -1740,7 +1740,7 @@ internal class AnisearchAnimeConverterTest {
         fun `no related anime`() {
             tempDirectory {
                 // given
-                val testAnisearchConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testAnisearchConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun buildAnimeLink(id: AnimeId): URI = AnisearchConfig.buildAnimeLink(id)
                     override fun buildDataDownloadLink(id: String): URI = AnisearchConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = AnisearchConfig.fileSuffix()
@@ -1767,7 +1767,7 @@ internal class AnisearchAnimeConverterTest {
         fun `single related anime`() {
             tempDirectory {
                 // given
-                val testAnisearchConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testAnisearchConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun buildAnimeLink(id: AnimeId): URI = AnisearchConfig.buildAnimeLink(id)
                     override fun buildDataDownloadLink(id: String): URI = AnisearchConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = AnisearchConfig.fileSuffix()
@@ -1796,7 +1796,7 @@ internal class AnisearchAnimeConverterTest {
         fun `multiple related anime`() {
             tempDirectory {
                 // given
-                val testAnisearchConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testAnisearchConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun buildAnimeLink(id: AnimeId): URI = AnisearchConfig.buildAnimeLink(id)
                     override fun buildDataDownloadLink(id: String): URI = AnisearchConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = AnisearchConfig.fileSuffix()
@@ -1826,7 +1826,7 @@ internal class AnisearchAnimeConverterTest {
         fun `throws exception if relations file is missing`() {
             tempDirectory {
                 // given
-                val testAnisearchConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testAnisearchConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun buildAnimeLink(id: AnimeId): URI = AnisearchConfig.buildAnimeLink(id)
                     override fun buildDataDownloadLink(id: String): URI = AnisearchConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = AnisearchConfig.fileSuffix()
@@ -1857,7 +1857,7 @@ internal class AnisearchAnimeConverterTest {
         fun `throws exception if relationsDir doesn't exist`() {
             tempDirectory {
                 // given
-                val testAnisearchConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testAnisearchConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun buildAnimeLink(id: AnimeId): URI = AnisearchConfig.buildAnimeLink(id)
                     override fun buildDataDownloadLink(id: String): URI = AnisearchConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = AnisearchConfig.fileSuffix()

@@ -123,7 +123,7 @@ internal class NotifyDownloaderTest : MockServerTestCase<WireMockServer> by Wire
         // given
         val id = 1535
 
-        val testAnidbConfig = object: MetaDataProviderConfig by MetaDataProviderTestConfig {
+        val testAnidbConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
             override fun hostname(): Hostname = "localhost"
             override fun buildAnimeLink(id: AnimeId): URI = NotifyConfig.buildAnimeLink(id)
             override fun buildDataDownloadLink(id: String): URI = URI("http://${hostname()}:$port/anime/$id")

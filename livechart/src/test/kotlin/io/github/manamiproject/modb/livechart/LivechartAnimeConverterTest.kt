@@ -25,7 +25,7 @@ internal class LivechartAnimeConverterTest {
         fun `title containing special chars`() {
             runBlocking {
                 // given
-                val testLivechartConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testLivechartConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun buildAnimeLink(id: AnimeId): URI = LivechartConfig.buildAnimeLink(id)
                     override fun buildDataDownloadLink(id: String): URI = LivechartConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = LivechartConfig.fileSuffix()
@@ -49,7 +49,7 @@ internal class LivechartAnimeConverterTest {
         fun `title containing encoded special chars`() {
             runBlocking {
                 // given
-                val testLivechartConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testLivechartConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun buildAnimeLink(id: AnimeId): URI = LivechartConfig.buildAnimeLink(id)
                     override fun buildDataDownloadLink(id: String): URI = LivechartConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = LivechartConfig.fileSuffix()
@@ -77,7 +77,7 @@ internal class LivechartAnimeConverterTest {
         fun `no synonyms`() {
             runBlocking {
                 // given
-                val testLivechartConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testLivechartConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun buildAnimeLink(id: AnimeId): URI = LivechartConfig.buildAnimeLink(id)
                     override fun buildDataDownloadLink(id: String): URI = LivechartConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = LivechartConfig.fileSuffix()
@@ -101,7 +101,7 @@ internal class LivechartAnimeConverterTest {
         fun `one synonym`() {
             runBlocking {
                 // given
-                val testLivechartConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testLivechartConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun buildAnimeLink(id: AnimeId): URI = LivechartConfig.buildAnimeLink(id)
                     override fun buildDataDownloadLink(id: String): URI = LivechartConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = LivechartConfig.fileSuffix()
@@ -125,7 +125,7 @@ internal class LivechartAnimeConverterTest {
         fun `multiple synonyms`() {
             runBlocking {
                 // given
-                val testLivechartConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testLivechartConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun buildAnimeLink(id: AnimeId): URI = LivechartConfig.buildAnimeLink(id)
                     override fun buildDataDownloadLink(id: String): URI = LivechartConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = LivechartConfig.fileSuffix()
@@ -152,7 +152,7 @@ internal class LivechartAnimeConverterTest {
         fun `synonym containing encoded special char`() {
             runBlocking {
                 // given
-                val testLivechartConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testLivechartConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun buildAnimeLink(id: AnimeId): URI = LivechartConfig.buildAnimeLink(id)
                     override fun buildDataDownloadLink(id: String): URI = LivechartConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = LivechartConfig.fileSuffix()
@@ -180,7 +180,7 @@ internal class LivechartAnimeConverterTest {
         fun `unknown number of episodes`() {
             runBlocking {
                 // given
-                val testLivechartConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testLivechartConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun buildAnimeLink(id: AnimeId): URI = LivechartConfig.buildAnimeLink(id)
                     override fun buildDataDownloadLink(id: String): URI = LivechartConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = LivechartConfig.fileSuffix()
@@ -204,7 +204,7 @@ internal class LivechartAnimeConverterTest {
         fun `1 episode`() {
             runBlocking {
                 // given
-                val testLivechartConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testLivechartConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun buildAnimeLink(id: AnimeId): URI = LivechartConfig.buildAnimeLink(id)
                     override fun buildDataDownloadLink(id: String): URI = LivechartConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = LivechartConfig.fileSuffix()
@@ -228,7 +228,7 @@ internal class LivechartAnimeConverterTest {
         fun `10 episodes`() {
             runBlocking {
                 // given
-                val testLivechartConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testLivechartConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun buildAnimeLink(id: AnimeId): URI = LivechartConfig.buildAnimeLink(id)
                     override fun buildDataDownloadLink(id: String): URI = LivechartConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = LivechartConfig.fileSuffix()
@@ -252,7 +252,7 @@ internal class LivechartAnimeConverterTest {
         fun `100 episodes`() {
             runBlocking {
                 // given
-                val testLivechartConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testLivechartConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun buildAnimeLink(id: AnimeId): URI = LivechartConfig.buildAnimeLink(id)
                     override fun buildDataDownloadLink(id: String): URI = LivechartConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = LivechartConfig.fileSuffix()
@@ -276,7 +276,7 @@ internal class LivechartAnimeConverterTest {
         fun `number episodes unknown, but currently running`() {
             runBlocking {
                 // given
-                val testLivechartConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testLivechartConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun buildAnimeLink(id: AnimeId): URI = LivechartConfig.buildAnimeLink(id)
                     override fun buildDataDownloadLink(id: String): URI = LivechartConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = LivechartConfig.fileSuffix()
@@ -300,7 +300,7 @@ internal class LivechartAnimeConverterTest {
         fun `number episodes known and currently running`() {
             runBlocking {
                 // given
-                val testLivechartConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testLivechartConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun buildAnimeLink(id: AnimeId): URI = LivechartConfig.buildAnimeLink(id)
                     override fun buildDataDownloadLink(id: String): URI = LivechartConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = LivechartConfig.fileSuffix()
@@ -328,7 +328,7 @@ internal class LivechartAnimeConverterTest {
         fun `extract id 3437`() {
             runBlocking {
                 // given
-                val testLivechartConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testLivechartConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun buildAnimeLink(id: AnimeId): URI = LivechartConfig.buildAnimeLink(id)
                     override fun buildDataDownloadLink(id: String): URI = LivechartConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = LivechartConfig.fileSuffix()
@@ -356,7 +356,7 @@ internal class LivechartAnimeConverterTest {
         fun `neither picture nor thumbnail`() {
             runBlocking {
                 // given
-                val testLivechartConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testLivechartConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun buildAnimeLink(id: AnimeId): URI = LivechartConfig.buildAnimeLink(id)
                     override fun buildDataDownloadLink(id: String): URI = LivechartConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = LivechartConfig.fileSuffix()
@@ -383,7 +383,7 @@ internal class LivechartAnimeConverterTest {
         fun `picture and thumbnail`() {
             runBlocking {
                 // given
-                val testLivechartConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testLivechartConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun buildAnimeLink(id: AnimeId): URI = LivechartConfig.buildAnimeLink(id)
                     override fun buildDataDownloadLink(id: String): URI = LivechartConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = LivechartConfig.fileSuffix()
@@ -414,7 +414,7 @@ internal class LivechartAnimeConverterTest {
         fun `type is TV`() {
             runBlocking {
                 // given
-                val testLivechartConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testLivechartConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun buildAnimeLink(id: AnimeId): URI = LivechartConfig.buildAnimeLink(id)
                     override fun buildDataDownloadLink(id: String): URI = LivechartConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = LivechartConfig.fileSuffix()
@@ -438,7 +438,7 @@ internal class LivechartAnimeConverterTest {
         fun `Unknown is mapped to 'UNKNOWN'`() {
             runBlocking {
                 // given
-                val testLivechartConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testLivechartConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun buildAnimeLink(id: AnimeId): URI = LivechartConfig.buildAnimeLink(id)
                     override fun buildDataDownloadLink(id: String): URI = LivechartConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = LivechartConfig.fileSuffix()
@@ -462,7 +462,7 @@ internal class LivechartAnimeConverterTest {
         fun `type 'tv short' is mapped to 'TV'`() {
             runBlocking {
                 // given
-                val testLivechartConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testLivechartConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun buildAnimeLink(id: AnimeId): URI = LivechartConfig.buildAnimeLink(id)
                     override fun buildDataDownloadLink(id: String): URI = LivechartConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = LivechartConfig.fileSuffix()
@@ -486,7 +486,7 @@ internal class LivechartAnimeConverterTest {
         fun `type is Movie`() {
             runBlocking {
                 // given
-                val testLivechartConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testLivechartConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun buildAnimeLink(id: AnimeId): URI = LivechartConfig.buildAnimeLink(id)
                     override fun buildDataDownloadLink(id: String): URI = LivechartConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = LivechartConfig.fileSuffix()
@@ -510,7 +510,7 @@ internal class LivechartAnimeConverterTest {
         fun `type 'web short' is mapped to 'ONA'`() {
             runBlocking {
                 // given
-                val testLivechartConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testLivechartConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun buildAnimeLink(id: AnimeId): URI = LivechartConfig.buildAnimeLink(id)
                     override fun buildDataDownloadLink(id: String): URI = LivechartConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = LivechartConfig.fileSuffix()
@@ -534,7 +534,7 @@ internal class LivechartAnimeConverterTest {
         fun `type 'web' is mapped to 'ONA'`() {
             runBlocking {
                 // given
-                val testLivechartConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testLivechartConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun buildAnimeLink(id: AnimeId): URI = LivechartConfig.buildAnimeLink(id)
                     override fun buildDataDownloadLink(id: String): URI = LivechartConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = LivechartConfig.fileSuffix()
@@ -558,7 +558,7 @@ internal class LivechartAnimeConverterTest {
         fun `type is OVA`() {
             runBlocking {
                 // given
-                val testLivechartConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testLivechartConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun buildAnimeLink(id: AnimeId): URI = LivechartConfig.buildAnimeLink(id)
                     override fun buildDataDownloadLink(id: String): URI = LivechartConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = LivechartConfig.fileSuffix()
@@ -582,7 +582,7 @@ internal class LivechartAnimeConverterTest {
         fun `type is Special`() {
             runBlocking {
                 // given
-                val testLivechartConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testLivechartConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun buildAnimeLink(id: AnimeId): URI = LivechartConfig.buildAnimeLink(id)
                     override fun buildDataDownloadLink(id: String): URI = LivechartConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = LivechartConfig.fileSuffix()
@@ -610,7 +610,7 @@ internal class LivechartAnimeConverterTest {
         fun `1 hr`() {
             runBlocking {
                 // given
-                val testLivechartConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testLivechartConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun buildAnimeLink(id: AnimeId): URI = LivechartConfig.buildAnimeLink(id)
                     override fun buildDataDownloadLink(id: String): URI = LivechartConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = LivechartConfig.fileSuffix()
@@ -634,7 +634,7 @@ internal class LivechartAnimeConverterTest {
         fun `1 hr 11 min`() {
             runBlocking {
                 // given
-                val testLivechartConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testLivechartConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun buildAnimeLink(id: AnimeId): URI = LivechartConfig.buildAnimeLink(id)
                     override fun buildDataDownloadLink(id: String): URI = LivechartConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = LivechartConfig.fileSuffix()
@@ -658,7 +658,7 @@ internal class LivechartAnimeConverterTest {
         fun `2 hr`() {
             runBlocking {
                 // given
-                val testLivechartConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testLivechartConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun buildAnimeLink(id: AnimeId): URI = LivechartConfig.buildAnimeLink(id)
                     override fun buildDataDownloadLink(id: String): URI = LivechartConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = LivechartConfig.fileSuffix()
@@ -682,7 +682,7 @@ internal class LivechartAnimeConverterTest {
         fun `2 hr 15 min`() {
             runBlocking {
                 // given
-                val testLivechartConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testLivechartConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun buildAnimeLink(id: AnimeId): URI = LivechartConfig.buildAnimeLink(id)
                     override fun buildDataDownloadLink(id: String): URI = LivechartConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = LivechartConfig.fileSuffix()
@@ -706,7 +706,7 @@ internal class LivechartAnimeConverterTest {
         fun `10 min`() {
             runBlocking {
                 // given
-                val testLivechartConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testLivechartConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun buildAnimeLink(id: AnimeId): URI = LivechartConfig.buildAnimeLink(id)
                     override fun buildDataDownloadLink(id: String): URI = LivechartConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = LivechartConfig.fileSuffix()
@@ -730,7 +730,7 @@ internal class LivechartAnimeConverterTest {
         fun `30 sec`() {
             runBlocking {
                 // given
-                val testLivechartConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testLivechartConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun buildAnimeLink(id: AnimeId): URI = LivechartConfig.buildAnimeLink(id)
                     override fun buildDataDownloadLink(id: String): URI = LivechartConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = LivechartConfig.fileSuffix()
@@ -754,7 +754,7 @@ internal class LivechartAnimeConverterTest {
         fun `unknown duration`() {
             runBlocking {
                 // given
-                val testLivechartConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testLivechartConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun buildAnimeLink(id: AnimeId): URI = LivechartConfig.buildAnimeLink(id)
                     override fun buildDataDownloadLink(id: String): URI = LivechartConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = LivechartConfig.fileSuffix()
@@ -782,7 +782,7 @@ internal class LivechartAnimeConverterTest {
         fun `extract multiple tags`() {
             runBlocking {
                 // given
-                val testLivechartConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testLivechartConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun buildAnimeLink(id: AnimeId): URI = LivechartConfig.buildAnimeLink(id)
                     override fun buildDataDownloadLink(id: String): URI = LivechartConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = LivechartConfig.fileSuffix()
@@ -814,7 +814,7 @@ internal class LivechartAnimeConverterTest {
         fun `extract exactly one tag`() {
             runBlocking {
                 // given
-                val testLivechartConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testLivechartConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun buildAnimeLink(id: AnimeId): URI = LivechartConfig.buildAnimeLink(id)
                     override fun buildDataDownloadLink(id: String): URI = LivechartConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = LivechartConfig.fileSuffix()
@@ -838,7 +838,7 @@ internal class LivechartAnimeConverterTest {
         fun `no tags available`() {
             runBlocking {
                 // given
-                val testLivechartConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testLivechartConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun buildAnimeLink(id: AnimeId): URI = LivechartConfig.buildAnimeLink(id)
                     override fun buildDataDownloadLink(id: String): URI = LivechartConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = LivechartConfig.fileSuffix()
@@ -869,7 +869,7 @@ internal class LivechartAnimeConverterTest {
             fun `season is 'UNDEFINED'`() {
                 runBlocking {
                     // given
-                    val testLivechartConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                    val testLivechartConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                         override fun buildAnimeLink(id: AnimeId): URI = LivechartConfig.buildAnimeLink(id)
                         override fun buildDataDownloadLink(id: String): URI = LivechartConfig.buildDataDownloadLink(id)
                         override fun fileSuffix(): FileSuffix = LivechartConfig.fileSuffix()
@@ -893,7 +893,7 @@ internal class LivechartAnimeConverterTest {
             fun `season is 'FALL'`() {
                 runBlocking {
                     // given
-                    val testLivechartConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                    val testLivechartConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                         override fun buildAnimeLink(id: AnimeId): URI = LivechartConfig.buildAnimeLink(id)
                         override fun buildDataDownloadLink(id: String): URI = LivechartConfig.buildDataDownloadLink(id)
                         override fun fileSuffix(): FileSuffix = LivechartConfig.fileSuffix()
@@ -917,7 +917,7 @@ internal class LivechartAnimeConverterTest {
             fun `season is 'SPRING'`() {
                 runBlocking {
                     // given
-                    val testLivechartConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                    val testLivechartConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                         override fun buildAnimeLink(id: AnimeId): URI = LivechartConfig.buildAnimeLink(id)
                         override fun buildDataDownloadLink(id: String): URI = LivechartConfig.buildDataDownloadLink(id)
                         override fun fileSuffix(): FileSuffix = LivechartConfig.fileSuffix()
@@ -941,7 +941,7 @@ internal class LivechartAnimeConverterTest {
             fun `season is 'SUMMER'`() {
                 runBlocking {
                     // given
-                    val testLivechartConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                    val testLivechartConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                         override fun buildAnimeLink(id: AnimeId): URI = LivechartConfig.buildAnimeLink(id)
                         override fun buildDataDownloadLink(id: String): URI = LivechartConfig.buildDataDownloadLink(id)
                         override fun fileSuffix(): FileSuffix = LivechartConfig.fileSuffix()
@@ -965,7 +965,7 @@ internal class LivechartAnimeConverterTest {
             fun `season is 'WINTER'`() {
                 runBlocking {
                     // given
-                    val testLivechartConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                    val testLivechartConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                         override fun buildAnimeLink(id: AnimeId): URI = LivechartConfig.buildAnimeLink(id)
                         override fun buildDataDownloadLink(id: String): URI = LivechartConfig.buildDataDownloadLink(id)
                         override fun fileSuffix(): FileSuffix = LivechartConfig.fileSuffix()
@@ -989,7 +989,7 @@ internal class LivechartAnimeConverterTest {
             fun `season is 'UNDEFINED' because there is no element containing season info`() {
                 runBlocking {
                     // given
-                    val testLivechartConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                    val testLivechartConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                         override fun buildAnimeLink(id: AnimeId): URI = LivechartConfig.buildAnimeLink(id)
                         override fun buildDataDownloadLink(id: String): URI = LivechartConfig.buildDataDownloadLink(id)
                         override fun fileSuffix(): FileSuffix = LivechartConfig.fileSuffix()
@@ -1017,7 +1017,7 @@ internal class LivechartAnimeConverterTest {
             fun `season set completely`() {
                 runBlocking {
                     // given
-                    val testLivechartConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                    val testLivechartConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                         override fun buildAnimeLink(id: AnimeId): URI = LivechartConfig.buildAnimeLink(id)
                         override fun buildDataDownloadLink(id: String): URI = LivechartConfig.buildDataDownloadLink(id)
                         override fun fileSuffix(): FileSuffix = LivechartConfig.fileSuffix()
@@ -1042,7 +1042,7 @@ internal class LivechartAnimeConverterTest {
             fun `season is not set, but premiere`() {
                 runBlocking {
                     // given
-                    val testLivechartConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                    val testLivechartConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                         override fun buildAnimeLink(id: AnimeId): URI = LivechartConfig.buildAnimeLink(id)
                         override fun buildDataDownloadLink(id: String): URI = LivechartConfig.buildDataDownloadLink(id)
                         override fun fileSuffix(): FileSuffix = LivechartConfig.fileSuffix()
@@ -1067,7 +1067,7 @@ internal class LivechartAnimeConverterTest {
             fun `both season and premiere are not set`() {
                 runBlocking {
                     // given
-                    val testLivechartConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                    val testLivechartConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                         override fun buildAnimeLink(id: AnimeId): URI = LivechartConfig.buildAnimeLink(id)
                         override fun buildDataDownloadLink(id: String): URI = LivechartConfig.buildDataDownloadLink(id)
                         override fun fileSuffix(): FileSuffix = LivechartConfig.fileSuffix()
@@ -1097,7 +1097,7 @@ internal class LivechartAnimeConverterTest {
         fun `status is ongoing`() {
             runBlocking {
                 // given
-                val testLivechartConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testLivechartConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun buildAnimeLink(id: AnimeId): URI = LivechartConfig.buildAnimeLink(id)
                     override fun buildDataDownloadLink(id: String): URI = LivechartConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = LivechartConfig.fileSuffix()
@@ -1121,7 +1121,7 @@ internal class LivechartAnimeConverterTest {
         fun `status is upcoming`() {
             runBlocking {
                 // given
-                val testLivechartConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testLivechartConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun buildAnimeLink(id: AnimeId): URI = LivechartConfig.buildAnimeLink(id)
                     override fun buildDataDownloadLink(id: String): URI = LivechartConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = LivechartConfig.fileSuffix()
@@ -1145,7 +1145,7 @@ internal class LivechartAnimeConverterTest {
         fun `status is finished`() {
             runBlocking {
                 // given
-                val testLivechartConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testLivechartConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun buildAnimeLink(id: AnimeId): URI = LivechartConfig.buildAnimeLink(id)
                     override fun buildDataDownloadLink(id: String): URI = LivechartConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = LivechartConfig.fileSuffix()
@@ -1173,7 +1173,7 @@ internal class LivechartAnimeConverterTest {
         fun `no related anime`() {
             runBlocking {
                 // given
-                val testLivechartConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testLivechartConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun buildAnimeLink(id: AnimeId): URI = LivechartConfig.buildAnimeLink(id)
                     override fun buildDataDownloadLink(id: String): URI = LivechartConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = LivechartConfig.fileSuffix()
@@ -1197,7 +1197,7 @@ internal class LivechartAnimeConverterTest {
         fun `one related anime`() {
             runBlocking {
                 // given
-                val testLivechartConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testLivechartConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun buildAnimeLink(id: AnimeId): URI = LivechartConfig.buildAnimeLink(id)
                     override fun buildDataDownloadLink(id: String): URI = LivechartConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = LivechartConfig.fileSuffix()
@@ -1223,7 +1223,7 @@ internal class LivechartAnimeConverterTest {
         fun `multiple related anime no scrolling`() {
             runBlocking {
                 // given
-                val testLivechartConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testLivechartConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun buildAnimeLink(id: AnimeId): URI = LivechartConfig.buildAnimeLink(id)
                     override fun buildDataDownloadLink(id: String): URI = LivechartConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = LivechartConfig.fileSuffix()
@@ -1252,7 +1252,7 @@ internal class LivechartAnimeConverterTest {
         fun `multiple related anime with scrolling`() {
             runBlocking {
                 // given
-                val testLivechartConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testLivechartConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun buildAnimeLink(id: AnimeId): URI = LivechartConfig.buildAnimeLink(id)
                     override fun buildDataDownloadLink(id: String): URI = LivechartConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = LivechartConfig.fileSuffix()

@@ -28,7 +28,7 @@ internal class AnimePlanetDownloaderTest : MockServerTestCase<WireMockServer> by
         fun `successfully download an anime`() {
             runBlocking {
                 // given
-                val testConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = "localhost"
                     override fun buildDataDownloadLink(id: String): URI = URI("http://localhost:$port/anime/$id")
                 }
@@ -59,7 +59,7 @@ internal class AnimePlanetDownloaderTest : MockServerTestCase<WireMockServer> by
         @Test
         fun `unhandled response code throws exception`() {
             // given
-            val testConfig = object: MetaDataProviderConfig by MetaDataProviderTestConfig {
+            val testConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
                 override fun hostname(): Hostname = "localhost"
                 override fun buildDataDownloadLink(id: String): URI = URI("http://localhost:$port/anime/$id")
                 override fun isTestContext(): Boolean = true
@@ -94,7 +94,7 @@ internal class AnimePlanetDownloaderTest : MockServerTestCase<WireMockServer> by
             // given
             val id = 1535
 
-            val testAnidbConfig = object: MetaDataProviderConfig by MetaDataProviderTestConfig {
+            val testAnidbConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
                 override fun hostname(): Hostname = "localhost"
                 override fun buildAnimeLink(id: AnimeId): URI = AnimePlanetConfig.buildAnimeLink(id)
                 override fun buildDataDownloadLink(id: String): URI = URI("http://${hostname()}:$port/anime/$id")
@@ -128,7 +128,7 @@ internal class AnimePlanetDownloaderTest : MockServerTestCase<WireMockServer> by
                 // given
                 val id = 1535
 
-                val testAnimePlanetConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testAnimePlanetConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = "localhost"
                     override fun buildAnimeLink(id: AnimeId): URI = AnimePlanetConfig.buildAnimeLink(id)
                     override fun buildDataDownloadLink(id: String): URI = URI("http://localhost:$port/anime/$id")
@@ -178,7 +178,7 @@ internal class AnimePlanetDownloaderTest : MockServerTestCase<WireMockServer> by
         fun `invoke lambda on finding a dead entry`() {
             runBlocking {
                 // given
-                val testConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = "localhost"
                     override fun buildDataDownloadLink(id: String): URI = URI("http://localhost:$port/anime/$id")
                 }

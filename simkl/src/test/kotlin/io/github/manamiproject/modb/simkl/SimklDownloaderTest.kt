@@ -90,7 +90,7 @@ internal class SimklDownloaderTest : MockServerTestCase<WireMockServer> by WireM
         // given
         val id = 1535
 
-        val testAnidbConfig = object: MetaDataProviderConfig by MetaDataProviderTestConfig {
+        val testAnidbConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
             override fun hostname(): Hostname = "localhost"
             override fun buildAnimeLink(id: AnimeId): URI = SimklConfig.buildAnimeLink(id)
             override fun buildDataDownloadLink(id: String): URI = URI("http://${hostname()}:$port/anime/$id")

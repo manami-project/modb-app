@@ -13,7 +13,7 @@ import java.time.LocalDateTime
 import java.time.OffsetDateTime
 import kotlin.reflect.*
 
-internal object MetaDataProviderTestConfig : MetaDataProviderConfig {
+internal object TestMetaDataProviderConfig : MetaDataProviderConfig {
     override fun isTestContext(): Boolean = true
     override fun hostname(): Hostname = shouldNotBeInvoked()
     override fun buildAnimeLink(id: AnimeId): URI = shouldNotBeInvoked()
