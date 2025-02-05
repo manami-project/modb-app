@@ -1,5 +1,6 @@
 package io.github.manamiproject.modb.app.readme
 
+import io.github.manamiproject.modb.animecountdown.AnimeCountdownConfig
 import io.github.manamiproject.modb.app.config.AppConfig
 import io.github.manamiproject.modb.app.config.Config
 import io.github.manamiproject.modb.app.downloadcontrolstate.DefaultDownloadControlStateAccessor
@@ -14,6 +15,7 @@ import io.github.manamiproject.modb.core.config.MetaDataProviderConfig
 import io.github.manamiproject.modb.core.extensions.writeToFile
 import io.github.manamiproject.modb.core.models.Anime
 import io.github.manamiproject.modb.core.models.Year
+import io.github.manamiproject.modb.simkl.SimklConfig
 import java.time.LocalDate
 
 /**
@@ -68,6 +70,10 @@ class DefaultReadmeCreator(
 
         appConfig.metaDataProviderConfigurations()
             .map { getNumberForMetaDataProvider(it) }
+            .toMutableList()
+            .apply {
+                add(Pair(AnimeCountdownConfig.hostname(), find { it.first == SimklConfig.hostname() }?.second ?: 0))
+            }
             .sortedByDescending { it.second }
             .forEach {
                 block.append("| ${it.second} | [${it.first}](https://${it.first}) |")

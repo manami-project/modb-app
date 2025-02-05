@@ -20,6 +20,7 @@ import io.github.manamiproject.modb.kitsu.KitsuConfig
 import io.github.manamiproject.modb.livechart.LivechartConfig
 import io.github.manamiproject.modb.myanimelist.MyanimelistConfig
 import io.github.manamiproject.modb.notify.NotifyConfig
+import io.github.manamiproject.modb.simkl.SimklConfig
 import io.github.manamiproject.modb.test.loadTestResource
 import io.github.manamiproject.modb.test.shouldNotBeInvoked
 import io.github.manamiproject.modb.test.tempDirectory
@@ -54,6 +55,7 @@ class DefaultReadmeCreatorTest {
                     Anime("myanimelist 6"),
                     Anime("myanimelist 7"),
                     Anime("myanimelist 8"),
+                    Anime("myanimelist 9"),
                 )
 
                 val testAnimePlanetConfig = object: MetaDataProviderConfig by AnimePlanetConfig {
@@ -67,6 +69,7 @@ class DefaultReadmeCreatorTest {
                     Anime("animePlanet 5"),
                     Anime("animePlanet 6"),
                     Anime("animePlanet 7"),
+                    Anime("animePlanet 8"),
                 )
 
                 val testKitsuConfig = object: MetaDataProviderConfig by KitsuConfig {
@@ -79,6 +82,7 @@ class DefaultReadmeCreatorTest {
                     Anime("kitsu 4"),
                     Anime("kitsu 5"),
                     Anime("kitsu 6"),
+                    Anime("kitsu 7"),
                 )
 
                 val testAnisearchConfig = object: MetaDataProviderConfig by AnisearchConfig {
@@ -90,6 +94,7 @@ class DefaultReadmeCreatorTest {
                     Anime("anisearch 3"),
                     Anime("anisearch 4"),
                     Anime("anisearch 5"),
+                    Anime("anisearch 6"),
                 )
 
                 val testNotifyConfig = object: MetaDataProviderConfig by NotifyConfig {
@@ -100,6 +105,7 @@ class DefaultReadmeCreatorTest {
                     Anime("notify 2"),
                     Anime("notify 3"),
                     Anime("notify 4"),
+                    Anime("notify 5"),
                 )
 
                 val testAnilistConfig = object: MetaDataProviderConfig by AnilistConfig {
@@ -109,6 +115,7 @@ class DefaultReadmeCreatorTest {
                     Anime("anilist 1"),
                     Anime("anilist 2"),
                     Anime("anilist 3"),
+                    Anime("anilist 4"),
                 )
 
                 val testAnidbConfig = object: MetaDataProviderConfig by AnidbConfig {
@@ -117,6 +124,7 @@ class DefaultReadmeCreatorTest {
                 val anidbTestEntries = listOf(
                     Anime("anidb 1"),
                     Anime("anidb 2"),
+                    Anime("anidb 3"),
                 )
 
                 val testLivechartConfig = object: MetaDataProviderConfig by LivechartConfig {
@@ -124,6 +132,14 @@ class DefaultReadmeCreatorTest {
                 }
                 val livechartTestEntries = listOf(
                     Anime("livechart 1"),
+                    Anime("livechart 2"),
+                )
+
+                val testSimklConfig = object: MetaDataProviderConfig by SimklConfig {
+                    override fun isTestContext(): Boolean = true
+                }
+                val simklTestEntries = listOf(
+                    Anime("simkl 1"),
                 )
 
                 val testAppConfig = object: Config by TestAppConfig {
@@ -138,6 +154,7 @@ class DefaultReadmeCreatorTest {
                         testAnilistConfig,
                         testAnidbConfig,
                         testLivechartConfig,
+                        testSimklConfig,
                     )
                     override fun clock() = Clock.fixed(Instant.parse("2020-05-01T16:02:42.00Z"), UTC)
                 }
@@ -160,6 +177,7 @@ class DefaultReadmeCreatorTest {
                         testAnilistConfig.hostname() -> anilistTestEntries
                         testAnidbConfig.hostname() -> anidbTestEntries
                         testLivechartConfig.hostname() -> livechartTestEntries
+                        testSimklConfig.hostname() -> simklTestEntries
                         else -> shouldNotBeInvoked()
                     }
                 }
@@ -202,6 +220,7 @@ class DefaultReadmeCreatorTest {
                     Anime("myanimelist 6"),
                     Anime("myanimelist 7"),
                     Anime("myanimelist 8"),
+                    Anime("myanimelist 9"),
                 )
 
                 val testAnimePlanetConfig = object: MetaDataProviderConfig by AnimePlanetConfig {
@@ -215,6 +234,7 @@ class DefaultReadmeCreatorTest {
                     Anime("animePlanet 5"),
                     Anime("animePlanet 6"),
                     Anime("animePlanet 7"),
+                    Anime("animePlanet 8"),
                 )
 
                 val testKitsuConfig = object: MetaDataProviderConfig by KitsuConfig {
@@ -227,6 +247,7 @@ class DefaultReadmeCreatorTest {
                     Anime("kitsu 4"),
                     Anime("kitsu 5"),
                     Anime("kitsu 6"),
+                    Anime("kitsu 7"),
                 )
 
                 val testAnisearchConfig = object: MetaDataProviderConfig by AnisearchConfig {
@@ -238,6 +259,7 @@ class DefaultReadmeCreatorTest {
                     Anime("anisearch 3"),
                     Anime("anisearch 4"),
                     Anime("anisearch 5"),
+                    Anime("anisearch 6"),
                 )
 
                 val testNotifyConfig = object: MetaDataProviderConfig by NotifyConfig {
@@ -248,6 +270,7 @@ class DefaultReadmeCreatorTest {
                     Anime("notify 2"),
                     Anime("notify 3"),
                     Anime("notify 4"),
+                    Anime("notify 5"),
                 )
 
                 val testAnilistConfig = object: MetaDataProviderConfig by AnilistConfig {
@@ -257,6 +280,7 @@ class DefaultReadmeCreatorTest {
                     Anime("anilist 1"),
                     Anime("anilist 2"),
                     Anime("anilist 3"),
+                    Anime("anilist 4"),
                 )
 
                 val testAnidbConfig = object: MetaDataProviderConfig by AnidbConfig {
@@ -265,6 +289,7 @@ class DefaultReadmeCreatorTest {
                 val anidbTestEntries = listOf(
                     Anime("anidb 1"),
                     Anime("anidb 2"),
+                    Anime("anidb 3"),
                 )
 
                 val testLivechartConfig = object: MetaDataProviderConfig by LivechartConfig {
@@ -272,6 +297,14 @@ class DefaultReadmeCreatorTest {
                 }
                 val livechartTestEntries = listOf(
                     Anime("livechart 1"),
+                    Anime("livechart 2"),
+                )
+
+                val testSimklConfig = object: MetaDataProviderConfig by SimklConfig {
+                    override fun isTestContext(): Boolean = true
+                }
+                val simklTestEntries = listOf(
+                    Anime("simkl 1"),
                 )
 
                 val testAppConfig = object: Config by TestAppConfig {
@@ -286,6 +319,7 @@ class DefaultReadmeCreatorTest {
                         testAnilistConfig,
                         testAnidbConfig,
                         testLivechartConfig,
+                        testSimklConfig,
                     )
                     override fun clock() = Clock.fixed(Instant.parse("2020-01-08T16:02:42.00Z"), UTC)
                 }
@@ -308,6 +342,7 @@ class DefaultReadmeCreatorTest {
                         testAnilistConfig.hostname() -> anilistTestEntries
                         testAnidbConfig.hostname() -> anidbTestEntries
                         testLivechartConfig.hostname() -> livechartTestEntries
+                        testSimklConfig.hostname() -> simklTestEntries
                         else -> shouldNotBeInvoked()
                     }
                 }
@@ -350,6 +385,7 @@ class DefaultReadmeCreatorTest {
                     Anime("myanimelist 6"),
                     Anime("myanimelist 7"),
                     Anime("myanimelist 8"),
+                    Anime("myanimelist 9"),
                 )
 
                 val testAnimePlanetConfig = object: MetaDataProviderConfig by AnimePlanetConfig {
@@ -363,6 +399,7 @@ class DefaultReadmeCreatorTest {
                     Anime("animePlanet 5"),
                     Anime("animePlanet 6"),
                     Anime("animePlanet 7"),
+                    Anime("animePlanet 8"),
                 )
 
                 val testKitsuConfig = object: MetaDataProviderConfig by KitsuConfig {
@@ -375,6 +412,7 @@ class DefaultReadmeCreatorTest {
                     Anime("kitsu 4"),
                     Anime("kitsu 5"),
                     Anime("kitsu 6"),
+                    Anime("kitsu 7"),
                 )
 
                 val testAnisearchConfig = object: MetaDataProviderConfig by AnisearchConfig {
@@ -386,6 +424,7 @@ class DefaultReadmeCreatorTest {
                     Anime("anisearch 3"),
                     Anime("anisearch 4"),
                     Anime("anisearch 5"),
+                    Anime("anisearch 6"),
                 )
 
                 val testNotifyConfig = object: MetaDataProviderConfig by NotifyConfig {
@@ -396,6 +435,7 @@ class DefaultReadmeCreatorTest {
                     Anime("notify 2"),
                     Anime("notify 3"),
                     Anime("notify 4"),
+                    Anime("notify 5"),
                 )
 
                 val testAnilistConfig = object: MetaDataProviderConfig by AnilistConfig {
@@ -405,6 +445,7 @@ class DefaultReadmeCreatorTest {
                     Anime("anilist 1"),
                     Anime("anilist 2"),
                     Anime("anilist 3"),
+                    Anime("anilist 4"),
                 )
 
                 val testAnidbConfig = object: MetaDataProviderConfig by AnidbConfig {
@@ -413,6 +454,7 @@ class DefaultReadmeCreatorTest {
                 val anidbTestEntries = listOf(
                     Anime("anidb 1"),
                     Anime("anidb 2"),
+                    Anime("anidb 3"),
                 )
 
                 val testLivechartConfig = object: MetaDataProviderConfig by LivechartConfig {
@@ -420,6 +462,14 @@ class DefaultReadmeCreatorTest {
                 }
                 val livechartTestEntries = listOf(
                     Anime("livechart 1"),
+                    Anime("livechart 2"),
+                )
+
+                val testSimklConfig = object: MetaDataProviderConfig by SimklConfig {
+                    override fun isTestContext(): Boolean = true
+                }
+                val simklTestEntries = listOf(
+                    Anime("simkl 1"),
                 )
 
                 val testAppConfig = object: Config by TestAppConfig {
@@ -434,6 +484,7 @@ class DefaultReadmeCreatorTest {
                         testAnilistConfig,
                         testAnidbConfig,
                         testLivechartConfig,
+                        testSimklConfig,
                     )
                     override fun clock() = Clock.fixed(Instant.parse("2020-05-01T16:02:42.00Z"), UTC)
                 }
@@ -461,6 +512,7 @@ class DefaultReadmeCreatorTest {
                         testAnilistConfig.hostname() -> anilistTestEntries
                         testAnidbConfig.hostname() -> anidbTestEntries
                         testLivechartConfig.hostname() -> livechartTestEntries
+                        testSimklConfig.hostname() -> simklTestEntries
                         else -> shouldNotBeInvoked()
                     }
                 }
@@ -503,6 +555,7 @@ class DefaultReadmeCreatorTest {
                     Anime("myanimelist 6"),
                     Anime("myanimelist 7"),
                     Anime("myanimelist 8"),
+                    Anime("myanimelist 9"),
                 )
 
                 val testAnimePlanetConfig = object: MetaDataProviderConfig by AnimePlanetConfig {
@@ -516,6 +569,7 @@ class DefaultReadmeCreatorTest {
                     Anime("animePlanet 5"),
                     Anime("animePlanet 6"),
                     Anime("animePlanet 7"),
+                    Anime("animePlanet 8"),
                 )
 
                 val testKitsuConfig = object: MetaDataProviderConfig by KitsuConfig {
@@ -528,6 +582,7 @@ class DefaultReadmeCreatorTest {
                     Anime("kitsu 4"),
                     Anime("kitsu 5"),
                     Anime("kitsu 6"),
+                    Anime("kitsu 7"),
                 )
 
                 val testAnisearchConfig = object: MetaDataProviderConfig by AnisearchConfig {
@@ -539,6 +594,7 @@ class DefaultReadmeCreatorTest {
                     Anime("anisearch 3"),
                     Anime("anisearch 4"),
                     Anime("anisearch 5"),
+                    Anime("anisearch 6"),
                 )
 
                 val testNotifyConfig = object: MetaDataProviderConfig by NotifyConfig {
@@ -549,6 +605,7 @@ class DefaultReadmeCreatorTest {
                     Anime("notify 2"),
                     Anime("notify 3"),
                     Anime("notify 4"),
+                    Anime("notify 5"),
                 )
 
                 val testAnilistConfig = object: MetaDataProviderConfig by AnilistConfig {
@@ -558,6 +615,7 @@ class DefaultReadmeCreatorTest {
                     Anime("anilist 1"),
                     Anime("anilist 2"),
                     Anime("anilist 3"),
+                    Anime("anilist 4"),
                 )
 
                 val testAnidbConfig = object: MetaDataProviderConfig by AnidbConfig {
@@ -566,6 +624,7 @@ class DefaultReadmeCreatorTest {
                 val anidbTestEntries = listOf(
                     Anime("anidb 1"),
                     Anime("anidb 2"),
+                    Anime("anidb 3"),
                 )
 
                 val testLivechartConfig = object: MetaDataProviderConfig by LivechartConfig {
@@ -573,6 +632,14 @@ class DefaultReadmeCreatorTest {
                 }
                 val livechartTestEntries = listOf(
                     Anime("livechart 1"),
+                    Anime("livechart 2"),
+                )
+
+                val testSimklConfig = object: MetaDataProviderConfig by SimklConfig {
+                    override fun isTestContext(): Boolean = true
+                }
+                val simklTestEntries = listOf(
+                    Anime("simkl 1"),
                 )
 
                 val testAppConfig = object: Config by TestAppConfig {
@@ -587,6 +654,7 @@ class DefaultReadmeCreatorTest {
                         testAnilistConfig,
                         testAnidbConfig,
                         testLivechartConfig,
+                        testSimklConfig,
                     )
                     override fun clock() = Clock.fixed(Instant.parse("2020-05-01T16:02:42.00Z"), UTC)
                 }
@@ -609,6 +677,7 @@ class DefaultReadmeCreatorTest {
                         testAnilistConfig.hostname() -> anilistTestEntries
                         testAnidbConfig.hostname() -> anidbTestEntries
                         testLivechartConfig.hostname() -> livechartTestEntries
+                        testSimklConfig.hostname() -> simklTestEntries
                         else -> shouldNotBeInvoked()
                     }
                 }
@@ -633,6 +702,64 @@ class DefaultReadmeCreatorTest {
                         ),
                         _title = "Made in Abyss",
                     )
+                )
+
+                // when
+                defaultReadmeCreator.updateWith(mergedAnime)
+
+                // then
+                assertThat(testAppConfig.outputDirectory().resolve("README.md").readFile()).isEqualTo(expectedFile)
+            }
+        }
+
+        @Test
+        fun `list animecountdown with 0 if simkl cannot be found`() {
+            tempDirectory {
+                // given
+                val expectedFile = loadTestResource<String>("readme/DefaultReadmeCreatorTest/animecountdown-with-zero-entries.md")
+
+                val testMyanimelistConfig = object: MetaDataProviderConfig by MyanimelistConfig {
+                    override fun isTestContext(): Boolean = true
+                }
+                val myanimelistTestEntries = listOf(
+                    Anime("myanimelist 1"),
+                    Anime("myanimelist 2"),
+                )
+
+                val testAppConfig = object: Config by TestAppConfig {
+                    override fun findMetaDataProviderConfig(host: Hostname): MetaDataProviderConfig = super.findMetaDataProviderConfig(host)
+                    override fun outputDirectory() = tempDir
+                    override fun metaDataProviderConfigurations() = setOf(
+                        testMyanimelistConfig,
+                    )
+                    override fun clock() = Clock.fixed(Instant.parse("2020-05-01T16:02:42.00Z"), UTC)
+                }
+
+                val testReviewedIsolatedEntriesAccessor = object: ReviewedIsolatedEntriesAccessor by TestReviewedIsolatedEntriesAccessor {
+                    override fun contains(uri: URI): Boolean = false
+                }
+
+                val testMergeLockService = object : MergeLockAccessor by TestMergeLockAccessor {
+                    override suspend fun hasMergeLock(uris: Set<URI>): Boolean = false
+                }
+
+                val testDownloadControlStateAccessor = object: DownloadControlStateAccessor by TestDownloadControlStateAccessor {
+                    override suspend fun allAnime(metaDataProviderConfig: MetaDataProviderConfig): List<Anime> = when(metaDataProviderConfig.hostname()) {
+                        testMyanimelistConfig.hostname() -> myanimelistTestEntries
+                        else -> shouldNotBeInvoked()
+                    }
+                }
+
+                val defaultReadmeCreator = DefaultReadmeCreator(
+                    appConfig = testAppConfig,
+                    mergeLockAccessor = testMergeLockService,
+                    downloadControlStateAccessor = testDownloadControlStateAccessor,
+                    reviewedIsolatedEntriesAccessor = testReviewedIsolatedEntriesAccessor,
+                )
+
+                val mergedAnime = listOf(
+                    Anime("Death Note"),
+                    Anime("Made in Abyss")
                 )
 
                 // when
