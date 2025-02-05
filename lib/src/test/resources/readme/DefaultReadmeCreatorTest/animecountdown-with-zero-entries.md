@@ -4,22 +4,14 @@
 The purpose of this repository is to create a dataset containing anime meta data aggregated by different anime meta data providers (such as myanimelist.net, anidb.net, kitsu.app and more) and allow cross references between those meta data providers. This dataset is supposed to be used by and created for [manami](https://github.com/manami-project/manami).
 
 ## Statistics
-Update **week 02 [2020]**
+Update **week 18 [2020]**
 
 The dataset consists of **2** entries _(0% reviewed)_ composed of:
 
 | Number of entries | Meta data provider |
 |-------------------|--------------------|
-| 9 | [myanimelist.net](https://myanimelist.net) |
-| 8 | [anime-planet.com](https://anime-planet.com) |
-| 7 | [kitsu.app](https://kitsu.app) |
-| 6 | [anisearch.com](https://anisearch.com) |
-| 5 | [notify.moe](https://notify.moe) |
-| 4 | [anilist.co](https://anilist.co) |
-| 3 | [anidb.net](https://anidb.net) |
-| 2 | [livechart.me](https://livechart.me) |
-| 1 | [simkl.com](https://simkl.com) |
-| 1 | [animecountdown.com](https://animecountdown.com) |
+| 2 | [myanimelist.net](https://myanimelist.net) |
+| 0 | [animecountdown.com](https://animecountdown.com) |
 
 
 ## Files

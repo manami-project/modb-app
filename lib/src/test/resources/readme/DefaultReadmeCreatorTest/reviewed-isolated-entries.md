@@ -10,14 +10,16 @@ The dataset consists of **2** entries _(100% reviewed)_ composed of:
 
 | Number of entries | Meta data provider |
 |-------------------|--------------------|
-| 8 | [myanimelist.net](https://myanimelist.net) |
-| 7 | [anime-planet.com](https://anime-planet.com) |
-| 6 | [kitsu.app](https://kitsu.app) |
-| 5 | [anisearch.com](https://anisearch.com) |
-| 4 | [notify.moe](https://notify.moe) |
-| 3 | [anilist.co](https://anilist.co) |
-| 2 | [anidb.net](https://anidb.net) |
-| 1 | [livechart.me](https://livechart.me) |
+| 9 | [myanimelist.net](https://myanimelist.net) |
+| 8 | [anime-planet.com](https://anime-planet.com) |
+| 7 | [kitsu.app](https://kitsu.app) |
+| 6 | [anisearch.com](https://anisearch.com) |
+| 5 | [notify.moe](https://notify.moe) |
+| 4 | [anilist.co](https://anilist.co) |
+| 3 | [anidb.net](https://anidb.net) |
+| 2 | [livechart.me](https://livechart.me) |
+| 1 | [simkl.com](https://simkl.com) |
+| 1 | [animecountdown.com](https://animecountdown.com) |
 
 
 ## Files
