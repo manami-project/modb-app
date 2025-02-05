@@ -24,7 +24,7 @@ internal class AnilistDownloaderTest {
         fun `throws exception if the repsonse body is blank`() {
             runBlocking {
                 // given
-                val testAnilistConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testAnilistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = "localhost"
                     override fun buildAnimeLink(id: AnimeId): URI = AnilistConfig.buildAnimeLink(id)
                     override fun buildDataDownloadLink(id: String): URI = URI("http://${hostname()}/graphql")
@@ -61,7 +61,7 @@ internal class AnilistDownloaderTest {
         fun `successfully return http response`() {
             runBlocking {
                 // given
-                val testAnilistConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testAnilistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = "localhost"
                     override fun buildAnimeLink(id: AnimeId): URI = AnilistConfig.buildAnimeLink(id)
                     override fun buildDataDownloadLink(id: String): URI = URI("http://${hostname()}/graphql")
@@ -96,7 +96,7 @@ internal class AnilistDownloaderTest {
         fun `creates dead entry on http response code 404`() {
             runBlocking {
                 // given
-                val testAnilistConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testAnilistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = "localhost"
                     override fun buildAnimeLink(id: AnimeId): URI = AnilistConfig.buildAnimeLink(id)
                     override fun buildDataDownloadLink(id: String): URI = URI("http://${hostname()}/graphql")
@@ -135,7 +135,7 @@ internal class AnilistDownloaderTest {
         fun `throws exception in case of an unhandled http response code`() {
             runBlocking {
                 // given
-                val testAnilistConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                val testAnilistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = "localhost"
                     override fun buildAnimeLink(id: AnimeId): URI = AnilistConfig.buildAnimeLink(id)
                     override fun buildDataDownloadLink(id: String): URI = URI("http://${hostname()}/graphql")

@@ -34,7 +34,7 @@ internal class KitsuAnimeConverterTest {
             fun `title containing special chars`() {
                 tempDirectory {
                     // given
-                    val testKitsuConfig = object: MetaDataProviderConfig by MetaDataProviderTestConfig {
+                    val testKitsuConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
                         override fun buildAnimeLink(id: AnimeId): URI = KitsuConfig.buildAnimeLink(id)
                         override fun buildDataDownloadLink(id: String): URI = KitsuConfig.buildDataDownloadLink(id)
                         override fun fileSuffix(): FileSuffix = KitsuConfig.fileSuffix()
@@ -73,7 +73,7 @@ internal class KitsuAnimeConverterTest {
             fun `episodes is null`() {
                 tempDirectory {
                     // given
-                    val testKitsuConfig = object: MetaDataProviderConfig by MetaDataProviderTestConfig {
+                    val testKitsuConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
                         override fun buildAnimeLink(id: AnimeId): URI = KitsuConfig.buildAnimeLink(id)
                         override fun buildDataDownloadLink(id: String): URI = KitsuConfig.buildDataDownloadLink(id)
                         override fun fileSuffix(): FileSuffix = KitsuConfig.fileSuffix()
@@ -110,7 +110,7 @@ internal class KitsuAnimeConverterTest {
             fun `39 episodes`() {
                 tempDirectory {
                     // given
-                    val testKitsuConfig = object: MetaDataProviderConfig by MetaDataProviderTestConfig {
+                    val testKitsuConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
                         override fun buildAnimeLink(id: AnimeId): URI = KitsuConfig.buildAnimeLink(id)
                         override fun buildDataDownloadLink(id: String): URI = KitsuConfig.buildDataDownloadLink(id)
                         override fun fileSuffix(): FileSuffix = KitsuConfig.fileSuffix()
@@ -149,7 +149,7 @@ internal class KitsuAnimeConverterTest {
             fun `type is tv`() {
                 tempDirectory {
                     // given
-                    val testKitsuConfig = object: MetaDataProviderConfig by MetaDataProviderTestConfig {
+                    val testKitsuConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
                         override fun buildAnimeLink(id: AnimeId): URI = KitsuConfig.buildAnimeLink(id)
                         override fun buildDataDownloadLink(id: String): URI = KitsuConfig.buildDataDownloadLink(id)
                         override fun fileSuffix(): FileSuffix = KitsuConfig.fileSuffix()
@@ -184,7 +184,7 @@ internal class KitsuAnimeConverterTest {
             fun `type is special`() {
                 tempDirectory {
                     // given
-                    val testKitsuConfig = object: MetaDataProviderConfig by MetaDataProviderTestConfig {
+                    val testKitsuConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
                         override fun buildAnimeLink(id: AnimeId): URI = KitsuConfig.buildAnimeLink(id)
                         override fun buildDataDownloadLink(id: String): URI = KitsuConfig.buildDataDownloadLink(id)
                         override fun fileSuffix(): FileSuffix = KitsuConfig.fileSuffix()
@@ -219,7 +219,7 @@ internal class KitsuAnimeConverterTest {
             fun `type is ona`() {
                 tempDirectory {
                     // given
-                    val testKitsuConfig = object: MetaDataProviderConfig by MetaDataProviderTestConfig {
+                    val testKitsuConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
                         override fun buildAnimeLink(id: AnimeId): URI = KitsuConfig.buildAnimeLink(id)
                         override fun buildDataDownloadLink(id: String): URI = KitsuConfig.buildDataDownloadLink(id)
                         override fun fileSuffix(): FileSuffix = KitsuConfig.fileSuffix()
@@ -254,7 +254,7 @@ internal class KitsuAnimeConverterTest {
             fun `type is ova`() {
                 tempDirectory {
                     // given
-                    val testKitsuConfig = object: MetaDataProviderConfig by MetaDataProviderTestConfig {
+                    val testKitsuConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
                         override fun buildAnimeLink(id: AnimeId): URI = KitsuConfig.buildAnimeLink(id)
                         override fun buildDataDownloadLink(id: String): URI = KitsuConfig.buildDataDownloadLink(id)
                         override fun fileSuffix(): FileSuffix = KitsuConfig.fileSuffix()
@@ -289,7 +289,7 @@ internal class KitsuAnimeConverterTest {
             fun `type is movie`() {
                 tempDirectory {
                     // given
-                    val testKitsuConfig = object: MetaDataProviderConfig by MetaDataProviderTestConfig {
+                    val testKitsuConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
                         override fun buildAnimeLink(id: AnimeId): URI = KitsuConfig.buildAnimeLink(id)
                         override fun buildDataDownloadLink(id: String): URI = KitsuConfig.buildDataDownloadLink(id)
                         override fun fileSuffix(): FileSuffix = KitsuConfig.fileSuffix()
@@ -324,7 +324,7 @@ internal class KitsuAnimeConverterTest {
             fun `type is music is mapped to special`() {
                 tempDirectory {
                     // given
-                    val testKitsuConfig = object: MetaDataProviderConfig by MetaDataProviderTestConfig {
+                    val testKitsuConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
                         override fun buildAnimeLink(id: AnimeId): URI = KitsuConfig.buildAnimeLink(id)
                         override fun buildDataDownloadLink(id: String): URI = KitsuConfig.buildDataDownloadLink(id)
                         override fun fileSuffix(): FileSuffix = KitsuConfig.fileSuffix()
@@ -363,7 +363,7 @@ internal class KitsuAnimeConverterTest {
             fun `posterImage is null`() {
                 tempDirectory {
                     // given
-                    val testKitsuConfig = object: MetaDataProviderConfig by MetaDataProviderTestConfig {
+                    val testKitsuConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
                         override fun buildAnimeLink(id: AnimeId): URI = KitsuConfig.buildAnimeLink(id)
                         override fun buildDataDownloadLink(id: String): URI = KitsuConfig.buildDataDownloadLink(id)
                         override fun fileSuffix(): FileSuffix = KitsuConfig.fileSuffix()
@@ -399,7 +399,7 @@ internal class KitsuAnimeConverterTest {
             fun `posterImage is set`() {
                 tempDirectory {
                     // given
-                    val testKitsuConfig = object: MetaDataProviderConfig by MetaDataProviderTestConfig {
+                    val testKitsuConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
                         override fun buildAnimeLink(id: AnimeId): URI = KitsuConfig.buildAnimeLink(id)
                         override fun buildDataDownloadLink(id: String): URI = KitsuConfig.buildDataDownloadLink(id)
                         override fun fileSuffix(): FileSuffix = KitsuConfig.fileSuffix()
@@ -439,7 +439,7 @@ internal class KitsuAnimeConverterTest {
             fun `all non main titles and the synonyms are combined`() {
                 tempDirectory {
                     // given
-                    val testKitsuConfig = object: MetaDataProviderConfig by MetaDataProviderTestConfig {
+                    val testKitsuConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
                         override fun buildAnimeLink(id: AnimeId): URI = KitsuConfig.buildAnimeLink(id)
                         override fun buildDataDownloadLink(id: String): URI =
                             KitsuConfig.buildDataDownloadLink(id)
@@ -484,7 +484,7 @@ internal class KitsuAnimeConverterTest {
             fun `abbreviatedTitles contains null`() {
                 tempDirectory {
                     // given
-                    val testKitsuConfig = object: MetaDataProviderConfig by MetaDataProviderTestConfig {
+                    val testKitsuConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
                         override fun buildAnimeLink(id: AnimeId): URI = KitsuConfig.buildAnimeLink(id)
                         override fun buildDataDownloadLink(id: String): URI = KitsuConfig.buildDataDownloadLink(id)
                         override fun fileSuffix(): FileSuffix = KitsuConfig.fileSuffix()
@@ -528,7 +528,7 @@ internal class KitsuAnimeConverterTest {
             fun `build correct source link`() {
                 tempDirectory {
                     // given
-                    val testKitsuConfig = object: MetaDataProviderConfig by MetaDataProviderTestConfig {
+                    val testKitsuConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
                         override fun buildAnimeLink(id: AnimeId): URI = KitsuConfig.buildAnimeLink(id)
                         override fun buildDataDownloadLink(id: String): URI = KitsuConfig.buildDataDownloadLink(id)
                         override fun fileSuffix(): FileSuffix = KitsuConfig.fileSuffix()
@@ -567,7 +567,7 @@ internal class KitsuAnimeConverterTest {
             fun `throws an exception, because the relations file doesn't exist`() {
                 tempDirectory {
                     // given
-                    val testKitsuConfig = object: MetaDataProviderConfig by MetaDataProviderTestConfig {
+                    val testKitsuConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
                         override fun buildAnimeLink(id: AnimeId): URI = KitsuConfig.buildAnimeLink(id)
                         override fun buildDataDownloadLink(id: String): URI = KitsuConfig.buildDataDownloadLink(id)
                         override fun fileSuffix(): FileSuffix = KitsuConfig.fileSuffix()
@@ -603,7 +603,7 @@ internal class KitsuAnimeConverterTest {
             fun `no adaption, no relations`() {
                 tempDirectory {
                     // given
-                    val testKitsuConfig = object: MetaDataProviderConfig by MetaDataProviderTestConfig {
+                    val testKitsuConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
                         override fun buildAnimeLink(id: AnimeId): URI = KitsuConfig.buildAnimeLink(id)
                         override fun buildDataDownloadLink(id: String): URI = KitsuConfig.buildDataDownloadLink(id)
                         override fun fileSuffix(): FileSuffix = KitsuConfig.fileSuffix()
@@ -637,7 +637,7 @@ internal class KitsuAnimeConverterTest {
             fun `no adaption, multiple relations`() {
                 tempDirectory {
                     // given
-                    val testKitsuConfig = object: MetaDataProviderConfig by MetaDataProviderTestConfig {
+                    val testKitsuConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
                         override fun buildAnimeLink(id: AnimeId): URI = KitsuConfig.buildAnimeLink(id)
                         override fun buildDataDownloadLink(id: String): URI = KitsuConfig.buildDataDownloadLink(id)
                         override fun fileSuffix(): FileSuffix = KitsuConfig.fileSuffix()
@@ -679,7 +679,7 @@ internal class KitsuAnimeConverterTest {
             fun `one adaption, one relation`() {
                 tempDirectory {
                     // given
-                    val testKitsuConfig = object: MetaDataProviderConfig by MetaDataProviderTestConfig {
+                    val testKitsuConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
                         override fun buildAnimeLink(id: AnimeId): URI = KitsuConfig.buildAnimeLink(id)
                         override fun buildDataDownloadLink(id: String): URI = KitsuConfig.buildDataDownloadLink(id)
                         override fun fileSuffix(): FileSuffix = KitsuConfig.fileSuffix()
@@ -716,7 +716,7 @@ internal class KitsuAnimeConverterTest {
             fun `has adaption, multiple relations`() {
                 tempDirectory {
                     // given
-                    val testKitsuConfig = object: MetaDataProviderConfig by MetaDataProviderTestConfig {
+                    val testKitsuConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
                         override fun buildAnimeLink(id: AnimeId): URI = KitsuConfig.buildAnimeLink(id)
                         override fun buildDataDownloadLink(id: String): URI = KitsuConfig.buildDataDownloadLink(id)
                         override fun fileSuffix(): FileSuffix = KitsuConfig.fileSuffix()
@@ -761,7 +761,7 @@ internal class KitsuAnimeConverterTest {
             fun `has adaption, no relations`() {
                 tempDirectory {
                     // given
-                    val testKitsuConfig = object: MetaDataProviderConfig by MetaDataProviderTestConfig {
+                    val testKitsuConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
                         override fun buildAnimeLink(id: AnimeId): URI = KitsuConfig.buildAnimeLink(id)
                         override fun buildDataDownloadLink(id: String): URI = KitsuConfig.buildDataDownloadLink(id)
                         override fun fileSuffix(): FileSuffix = KitsuConfig.fileSuffix()
@@ -800,7 +800,7 @@ internal class KitsuAnimeConverterTest {
             fun `'finished' is mapped to 'FINISHED_AIRING'`() {
                 tempDirectory {
                     // given
-                    val testKitsuConfig = object: MetaDataProviderConfig by MetaDataProviderTestConfig {
+                    val testKitsuConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
                         override fun buildAnimeLink(id: AnimeId): URI = KitsuConfig.buildAnimeLink(id)
                         override fun buildDataDownloadLink(id: String): URI = KitsuConfig.buildDataDownloadLink(id)
                         override fun fileSuffix(): FileSuffix = KitsuConfig.fileSuffix()
@@ -835,7 +835,7 @@ internal class KitsuAnimeConverterTest {
             fun `'current' is mapped to 'ONGOING'`() {
                 tempDirectory {
                     // given
-                    val testKitsuConfig = object: MetaDataProviderConfig by MetaDataProviderTestConfig {
+                    val testKitsuConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
                         override fun buildAnimeLink(id: AnimeId): URI = KitsuConfig.buildAnimeLink(id)
                         override fun buildDataDownloadLink(id: String): URI = KitsuConfig.buildDataDownloadLink(id)
                         override fun fileSuffix(): FileSuffix = KitsuConfig.fileSuffix()
@@ -872,7 +872,7 @@ internal class KitsuAnimeConverterTest {
             fun `'unreleased' is mapped to 'NOT_YET_AIRED'`() {
                 tempDirectory {
                     // given
-                    val testKitsuConfig = object: MetaDataProviderConfig by MetaDataProviderTestConfig {
+                    val testKitsuConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
                         override fun buildAnimeLink(id: AnimeId): URI = KitsuConfig.buildAnimeLink(id)
                         override fun buildDataDownloadLink(id: String): URI = KitsuConfig.buildDataDownloadLink(id)
                         override fun fileSuffix(): FileSuffix = KitsuConfig.fileSuffix()
@@ -909,7 +909,7 @@ internal class KitsuAnimeConverterTest {
             fun `'upcoming' is mapped to 'NOT_YET_AIRED'`() {
                 tempDirectory {
                     // given
-                    val testKitsuConfig = object: MetaDataProviderConfig by MetaDataProviderTestConfig {
+                    val testKitsuConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
                         override fun buildAnimeLink(id: AnimeId): URI = KitsuConfig.buildAnimeLink(id)
                         override fun buildDataDownloadLink(id: String): URI = KitsuConfig.buildDataDownloadLink(id)
                         override fun fileSuffix(): FileSuffix = KitsuConfig.fileSuffix()
@@ -946,7 +946,7 @@ internal class KitsuAnimeConverterTest {
             fun `'tba' is mapped to 'UNKNOWN'`() {
                 tempDirectory {
                     // given
-                    val testKitsuConfig = object: MetaDataProviderConfig by MetaDataProviderTestConfig {
+                    val testKitsuConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
                         override fun buildAnimeLink(id: AnimeId): URI = KitsuConfig.buildAnimeLink(id)
                         override fun buildDataDownloadLink(id: String): URI = KitsuConfig.buildDataDownloadLink(id)
                         override fun fileSuffix(): FileSuffix = KitsuConfig.fileSuffix()
@@ -983,7 +983,7 @@ internal class KitsuAnimeConverterTest {
             fun `null is mapped to 'UNKNOWN'`() {
                 tempDirectory {
                     // given
-                    val testKitsuConfig = object: MetaDataProviderConfig by MetaDataProviderTestConfig {
+                    val testKitsuConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
                         override fun buildAnimeLink(id: AnimeId): URI = KitsuConfig.buildAnimeLink(id)
                         override fun buildDataDownloadLink(id: String): URI = KitsuConfig.buildDataDownloadLink(id)
                         override fun fileSuffix(): FileSuffix = KitsuConfig.fileSuffix()
@@ -1022,7 +1022,7 @@ internal class KitsuAnimeConverterTest {
             fun `duration is not set and therefore 0`() {
                 tempDirectory {
                     // given
-                    val testKitsuConfig = object: MetaDataProviderConfig by MetaDataProviderTestConfig {
+                    val testKitsuConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
                         override fun buildAnimeLink(id: AnimeId): URI = KitsuConfig.buildAnimeLink(id)
                         override fun buildDataDownloadLink(id: String): URI = KitsuConfig.buildDataDownloadLink(id)
                         override fun fileSuffix(): FileSuffix = KitsuConfig.fileSuffix()
@@ -1057,7 +1057,7 @@ internal class KitsuAnimeConverterTest {
             fun `kitsu only uses minutes for duration - 0 implies a duration of less than a minute`() {
                 tempDirectory {
                     // given
-                    val testKitsuConfig = object: MetaDataProviderConfig by MetaDataProviderTestConfig {
+                    val testKitsuConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
                         override fun buildAnimeLink(id: AnimeId): URI = KitsuConfig.buildAnimeLink(id)
                         override fun buildDataDownloadLink(id: String): URI = KitsuConfig.buildDataDownloadLink(id)
                         override fun fileSuffix(): FileSuffix = KitsuConfig.fileSuffix()
@@ -1092,7 +1092,7 @@ internal class KitsuAnimeConverterTest {
             fun `duration of 24 minutes`() {
                 tempDirectory {
                     // given
-                    val testKitsuConfig = object: MetaDataProviderConfig by MetaDataProviderTestConfig {
+                    val testKitsuConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
                         override fun buildAnimeLink(id: AnimeId): URI = KitsuConfig.buildAnimeLink(id)
                         override fun buildDataDownloadLink(id: String): URI = KitsuConfig.buildDataDownloadLink(id)
                         override fun fileSuffix(): FileSuffix = KitsuConfig.fileSuffix()
@@ -1127,7 +1127,7 @@ internal class KitsuAnimeConverterTest {
             fun `duration of 2 hours`() {
                 tempDirectory {
                     // given
-                    val testKitsuConfig = object: MetaDataProviderConfig by MetaDataProviderTestConfig {
+                    val testKitsuConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
                         override fun buildAnimeLink(id: AnimeId): URI = KitsuConfig.buildAnimeLink(id)
                         override fun buildDataDownloadLink(id: String): URI = KitsuConfig.buildDataDownloadLink(id)
                         override fun fileSuffix(): FileSuffix = KitsuConfig.fileSuffix()
@@ -1166,7 +1166,7 @@ internal class KitsuAnimeConverterTest {
             fun `throws an exception, because the tags file doesn't exist`() {
                 tempDirectory {
                     // given
-                    val testKitsuConfig = object: MetaDataProviderConfig by MetaDataProviderTestConfig {
+                    val testKitsuConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
                         override fun buildAnimeLink(id: AnimeId): URI = KitsuConfig.buildAnimeLink(id)
                         override fun buildDataDownloadLink(id: String): URI = KitsuConfig.buildDataDownloadLink(id)
                         override fun fileSuffix(): FileSuffix = KitsuConfig.fileSuffix()
@@ -1202,7 +1202,7 @@ internal class KitsuAnimeConverterTest {
             fun `no tags`() {
                 tempDirectory {
                     // given
-                    val testKitsuConfig = object: MetaDataProviderConfig by MetaDataProviderTestConfig {
+                    val testKitsuConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
                         override fun buildAnimeLink(id: AnimeId): URI = KitsuConfig.buildAnimeLink(id)
                         override fun buildDataDownloadLink(id: String): URI = KitsuConfig.buildDataDownloadLink(id)
                         override fun fileSuffix(): FileSuffix = KitsuConfig.fileSuffix()
@@ -1237,7 +1237,7 @@ internal class KitsuAnimeConverterTest {
             fun `successfully extract tags`() {
                 tempDirectory {
                     // given
-                    val testKitsuConfig = object: MetaDataProviderConfig by MetaDataProviderTestConfig {
+                    val testKitsuConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
                         override fun buildAnimeLink(id: AnimeId): URI = KitsuConfig.buildAnimeLink(id)
                         override fun buildDataDownloadLink(id: String): URI = KitsuConfig.buildDataDownloadLink(id)
                         override fun fileSuffix(): FileSuffix = KitsuConfig.fileSuffix()
@@ -1290,7 +1290,7 @@ internal class KitsuAnimeConverterTest {
                 fun `startDate is null`() {
                     tempDirectory {
                         // given
-                        val testKitsuConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                        val testKitsuConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                             override fun buildAnimeLink(id: AnimeId): URI = KitsuConfig.buildAnimeLink(id)
                             override fun buildDataDownloadLink(id: String): URI = KitsuConfig.buildDataDownloadLink(id)
                             override fun fileSuffix(): FileSuffix = KitsuConfig.fileSuffix()
@@ -1327,7 +1327,7 @@ internal class KitsuAnimeConverterTest {
                 fun `year of premiere is 1989`() {
                     tempDirectory {
                         // given
-                        val testKitsuConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                        val testKitsuConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                             override fun buildAnimeLink(id: AnimeId): URI = KitsuConfig.buildAnimeLink(id)
                             override fun buildDataDownloadLink(id: String): URI = KitsuConfig.buildDataDownloadLink(id)
                             override fun fileSuffix(): FileSuffix = KitsuConfig.fileSuffix()
@@ -1362,7 +1362,7 @@ internal class KitsuAnimeConverterTest {
                 fun `year has a wrong format`() {
                     tempDirectory {
                         // given
-                        val testKitsuConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                        val testKitsuConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                             override fun buildAnimeLink(id: AnimeId): URI = KitsuConfig.buildAnimeLink(id)
                             override fun buildDataDownloadLink(id: String): URI = KitsuConfig.buildDataDownloadLink(id)
                             override fun fileSuffix(): FileSuffix = KitsuConfig.fileSuffix()
@@ -1402,7 +1402,7 @@ internal class KitsuAnimeConverterTest {
                 fun `season is 'undefined'`() {
                     tempDirectory {
                         // given
-                        val testKitsuConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                        val testKitsuConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                             override fun buildAnimeLink(id: AnimeId): URI = KitsuConfig.buildAnimeLink(id)
                             override fun buildDataDownloadLink(id: String): URI = KitsuConfig.buildDataDownloadLink(id)
                             override fun fileSuffix(): FileSuffix = KitsuConfig.fileSuffix()
@@ -1439,7 +1439,7 @@ internal class KitsuAnimeConverterTest {
                 fun `season is 'spring'`() {
                     tempDirectory {
                         // given
-                        val testKitsuConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                        val testKitsuConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                             override fun buildAnimeLink(id: AnimeId): URI = KitsuConfig.buildAnimeLink(id)
                             override fun buildDataDownloadLink(id: String): URI = KitsuConfig.buildDataDownloadLink(id)
                             override fun fileSuffix(): FileSuffix = KitsuConfig.fileSuffix()
@@ -1474,7 +1474,7 @@ internal class KitsuAnimeConverterTest {
                 fun `season is 'summer'`() {
                     tempDirectory {
                         // given
-                        val testKitsuConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                        val testKitsuConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                             override fun buildAnimeLink(id: AnimeId): URI = KitsuConfig.buildAnimeLink(id)
                             override fun buildDataDownloadLink(id: String): URI = KitsuConfig.buildDataDownloadLink(id)
                             override fun fileSuffix(): FileSuffix = KitsuConfig.fileSuffix()
@@ -1509,7 +1509,7 @@ internal class KitsuAnimeConverterTest {
                 fun `season is 'fall'`() {
                     tempDirectory {
                         // given
-                        val testKitsuConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                        val testKitsuConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                             override fun buildAnimeLink(id: AnimeId): URI = KitsuConfig.buildAnimeLink(id)
                             override fun buildDataDownloadLink(id: String): URI = KitsuConfig.buildDataDownloadLink(id)
                             override fun fileSuffix(): FileSuffix = KitsuConfig.fileSuffix()
@@ -1544,7 +1544,7 @@ internal class KitsuAnimeConverterTest {
                 fun `season is 'winter'`() {
                     tempDirectory {
                         // given
-                        val testKitsuConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+                        val testKitsuConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                             override fun buildAnimeLink(id: AnimeId): URI = KitsuConfig.buildAnimeLink(id)
                             override fun buildDataDownloadLink(id: String): URI = KitsuConfig.buildDataDownloadLink(id)
                             override fun fileSuffix(): FileSuffix = KitsuConfig.fileSuffix()
@@ -1591,7 +1591,7 @@ internal class KitsuAnimeConverterTest {
                 // when
                 val result = assertThrows<IllegalArgumentException> {
                     KitsuAnimeConverter(
-                        metaDataProviderConfig = MetaDataProviderTestConfig,
+                        metaDataProviderConfig = TestMetaDataProviderConfig,
                         relationsDir = relationsDir,
                         tagsDir = tagsDir,
                     )
@@ -1612,7 +1612,7 @@ internal class KitsuAnimeConverterTest {
                 // when
                 val result = assertThrows<IllegalArgumentException> {
                     KitsuAnimeConverter(
-                        metaDataProviderConfig = MetaDataProviderTestConfig,
+                        metaDataProviderConfig = TestMetaDataProviderConfig,
                         relationsDir = relationsDir,
                         tagsDir = tagsDir,
                     )
@@ -1633,7 +1633,7 @@ internal class KitsuAnimeConverterTest {
                 // when
                 val result = assertThrows<IllegalArgumentException> {
                     KitsuAnimeConverter(
-                        metaDataProviderConfig = MetaDataProviderTestConfig,
+                        metaDataProviderConfig = TestMetaDataProviderConfig,
                         relationsDir = relationsDir,
                         tagsDir = tagsDir,
                     )
@@ -1654,7 +1654,7 @@ internal class KitsuAnimeConverterTest {
                 // when
                 val result = assertThrows<IllegalArgumentException> {
                     KitsuAnimeConverter(
-                        metaDataProviderConfig = MetaDataProviderTestConfig,
+                        metaDataProviderConfig = TestMetaDataProviderConfig,
                         relationsDir = relationsDir,
                         tagsDir = tagsDir,
                     )

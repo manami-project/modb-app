@@ -24,7 +24,7 @@ internal class AnilistDefaultTokenRetrieverTest : MockServerTestCase<WireMockSer
     @ValueSource(strings = ["", "  "])
     fun `throws exception if the response body is blank`(value: String) {
         // given
-        val testAnilistConfig = object: MetaDataProviderConfig by MetaDataProviderTestConfig {
+        val testAnilistConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
             override fun hostname(): Hostname = "localhost"
             override fun buildDataDownloadLink(id: String): URI = URI("http://${hostname()}:$port/$id")
             override fun fileSuffix(): FileSuffix = AnilistConfig.fileSuffix()
@@ -58,7 +58,7 @@ internal class AnilistDefaultTokenRetrieverTest : MockServerTestCase<WireMockSer
     @Test
     fun `throws exception if the csrf token cannot be retrieved`() {
         // given
-        val testAnilistConfig = object: MetaDataProviderConfig by MetaDataProviderTestConfig {
+        val testAnilistConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
             override fun hostname(): Hostname = "localhost"
             override fun buildDataDownloadLink(id: String): URI = URI("http://${hostname()}:$port/$id")
             override fun fileSuffix(): FileSuffix = AnilistConfig.fileSuffix()
@@ -91,7 +91,7 @@ internal class AnilistDefaultTokenRetrieverTest : MockServerTestCase<WireMockSer
     @Test
     fun `throw exception if the cookie cannot be retrieved`() {
         // given
-        val testAnilistConfig = object: MetaDataProviderConfig by MetaDataProviderTestConfig {
+        val testAnilistConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
             override fun hostname(): Hostname = "localhost"
             override fun buildDataDownloadLink(id: String): URI = URI("http://${hostname()}:$port/$id")
             override fun fileSuffix(): FileSuffix = AnilistConfig.fileSuffix()
@@ -123,7 +123,7 @@ internal class AnilistDefaultTokenRetrieverTest : MockServerTestCase<WireMockSer
     fun `correctly retrieve token`() {
         runBlocking {
             // given
-            val testAnilistConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+            val testAnilistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                 override fun hostname(): Hostname = "localhost"
                 override fun buildDataDownloadLink(id: String): URI = URI("http://${hostname()}:$port/$id")
                 override fun fileSuffix(): FileSuffix = AnilistConfig.fileSuffix()

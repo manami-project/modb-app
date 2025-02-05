@@ -25,7 +25,7 @@ internal class AnisearchDownloaderTest : MockServerTestCase<WireMockServer> by W
             // given
             val id = 1535
 
-            val testAnisearchConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+            val testAnisearchConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                 override fun hostname(): Hostname = "localhost"
                 override fun buildAnimeLink(id: AnimeId): URI = URI("http://localhost:$port/anime/$id")
                 override fun buildDataDownloadLink(id: String): URI = buildAnimeLink(id)
@@ -61,7 +61,7 @@ internal class AnisearchDownloaderTest : MockServerTestCase<WireMockServer> by W
             // given
             val id = 1535
 
-            val testAnisearchConfig = object : MetaDataProviderConfig by MetaDataProviderTestConfig {
+            val testAnisearchConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                 override fun hostname(): Hostname = "localhost"
                 override fun buildAnimeLink(id: AnimeId): URI = URI("http://localhost:$port/anime/$id")
                 override fun buildDataDownloadLink(id: String): URI = buildAnimeLink(id)
@@ -99,7 +99,7 @@ internal class AnisearchDownloaderTest : MockServerTestCase<WireMockServer> by W
         // given
         val id = 1535
 
-        val testAnisearchConfig = object: MetaDataProviderConfig by MetaDataProviderTestConfig {
+        val testAnisearchConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
             override fun hostname(): Hostname = "localhost"
             override fun buildAnimeLink(id: AnimeId): URI = AnisearchConfig.buildAnimeLink(id)
             override fun buildDataDownloadLink(id: String): URI = URI("http://${hostname()}:$port/anime/$id")
@@ -133,7 +133,7 @@ internal class AnisearchDownloaderTest : MockServerTestCase<WireMockServer> by W
         // given
         val id = 1535
 
-        val testAnisearchConfig = object: MetaDataProviderConfig by MetaDataProviderTestConfig {
+        val testAnisearchConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
             override fun hostname(): Hostname = "localhost"
             override fun buildAnimeLink(id: AnimeId): URI = URI("http://localhost:$port/anime/$id")
             override fun buildDataDownloadLink(id: String): URI = buildAnimeLink(id)
