@@ -25,6 +25,7 @@ jobs:
 
       - name: Execute tests and upload release
         env:
+          GH_PACKAGES_READ_TOKEN: ${{ secrets.PACKAGES_READ_TOKEN }}
           GH_PACKAGES_RELEASE_TOKEN: ${{ secrets.PACKAGES_RELEASE_TOKEN }}
         run: ./gradlew test ${{ inputs.module_name }}:publish -Prelease.version=${{ steps.extract_release_version.outputs.RELEASE_VERSION }}
 
