@@ -10,7 +10,6 @@ plugins {
 group = "io.github.manamiproject"
 version = project.findProperty("release.version") as String? ?: ""
 
-val projectName = "modb-app"
 val githubUsername = "manami-project"
 
 repositories {
@@ -84,50 +83,6 @@ val sourcesJar by tasks.registering(Jar::class) {
 val javaDoc by tasks.registering(Jar::class) {
     archiveClassifier.set("javadoc")
     from(sourceSets.main.get().allSource)
-}
-
-publishing {
-    repositories {
-        maven {
-            name = projectName
-            url = uri("https://maven.pkg.github.com/$githubUsername/$projectName")
-            credentials {
-                username = parameter("GH_USERNAME", githubUsername)
-                password = parameter("GH_PACKAGES_RELEASE_TOKEN")
-            }
-        }
-    }
-    publications {
-        create<MavenPublication>("maven") {
-            groupId = project.group.toString()
-            artifactId = projectName
-            version = project.version.toString()
-
-            from(components["java"])
-            artifact(sourcesJar.get())
-            artifact(javaDoc.get())
-
-            pom {
-                packaging = "jar"
-                name.set(projectName)
-                description.set("This lib is the base for the appplication which creates the anime-offline-database.")
-                url.set("https://github.com/$githubUsername/$projectName")
-
-                licenses {
-                    license {
-                        name.set("AGPL-V3")
-                        url.set("https://www.gnu.org/licenses/agpl-3.0.txt")
-                    }
-                }
-
-                scm {
-                    connection.set("scm:git@github.com:$githubUsername/$projectName.git")
-                    developerConnection.set("scm:git:ssh://github.com:$githubUsername/$projectName.git")
-                    url.set("https://github.com/$githubUsername/$projectName")
-                }
-            }
-        }
-    }
 }
 
 fun parameter(name: String, default: String = ""): String {
