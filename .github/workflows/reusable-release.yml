@@ -1,3 +1,5 @@
+name: Library release (reusable)
+
 on:
   workflow_call:
     inputs:
