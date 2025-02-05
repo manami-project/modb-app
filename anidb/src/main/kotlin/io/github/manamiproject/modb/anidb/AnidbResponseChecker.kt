@@ -3,7 +3,9 @@ package io.github.manamiproject.modb.anidb
 import io.github.manamiproject.modb.core.config.BooleanPropertyDelegate
 import io.github.manamiproject.modb.core.config.ConfigRegistry
 import io.github.manamiproject.modb.core.config.DefaultConfigRegistry
+import io.github.manamiproject.modb.core.config.MetaDataProviderConfig
 import io.github.manamiproject.modb.core.coroutines.ModbDispatchers.LIMITED_CPU
+import io.github.manamiproject.modb.core.coverage.KoverIgnore
 import io.github.manamiproject.modb.core.extractor.DataExtractor
 import io.github.manamiproject.modb.core.extractor.XmlDataExtractor
 import kotlinx.coroutines.runBlocking
@@ -16,6 +18,8 @@ import java.net.URI
  * @since 2.1.0
  */
 public object CrawlerDetectedException : RuntimeException("Crawler has been detected") {
+
+    @KoverIgnore
     private fun readResolve(): Any = CrawlerDetectedException
 }
 
@@ -28,6 +32,7 @@ public class AnidbResponseChecker(
     response: String,
     extractor: DataExtractor = XmlDataExtractor,
     configRegistry: ConfigRegistry = DefaultConfigRegistry.instance,
+    private val metaDataProviderConfig: MetaDataProviderConfig = AnidbConfig,
 ) {
 
     private val openBrowserOnCrawlerDetected: Boolean by BooleanPropertyDelegate(
@@ -82,9 +87,16 @@ public class AnidbResponseChecker(
 
         if (isAntiLeechPage || isNginxPage) {
             if (openBrowserOnCrawlerDetected) {
-                Desktop.getDesktop().browse(URI("https://${AnidbConfig.hostname()}"))
+                openUri(URI("https://${metaDataProviderConfig.hostname()}"))
             }
             throw CrawlerDetectedException
+        }
+    }
+
+    @KoverIgnore
+    private fun openUri(uri: URI) {
+        if (!metaDataProviderConfig.isTestContext()) {
+            Desktop.getDesktop().browse(uri)
         }
     }
 }
