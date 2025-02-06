@@ -10,7 +10,8 @@ plugins {
 group = "io.github.manamiproject"
 version = project.findProperty("release.version") as String? ?: ""
 
-val projectName = "modb-test"
+val projectName = "modb-app"
+val moduleName = "modb-test"
 val githubUsername = "manami-project"
 
 repositories {
@@ -61,7 +62,7 @@ val javaDoc by tasks.registering(Jar::class) {
 publishing {
     repositories {
         maven {
-            name = projectName
+            name = moduleName
             url = uri("https://maven.pkg.github.com/$githubUsername/$projectName")
             credentials {
                 username = parameter("GH_USERNAME", githubUsername)
@@ -72,7 +73,7 @@ publishing {
     publications {
         create<MavenPublication>("maven") {
             groupId = project.group.toString()
-            artifactId = projectName
+            artifactId = moduleName
             version = project.version.toString()
 
             from(components["java"])
@@ -81,7 +82,7 @@ publishing {
 
             pom {
                 packaging = "jar"
-                name.set(projectName)
+                name.set(moduleName)
                 description.set("This lib contains all essential dependencies as well as some convenience functions and classes for creating tests in modb prefixed kotlin projects.")
                 url.set("https://github.com/$githubUsername/$projectName")
 
