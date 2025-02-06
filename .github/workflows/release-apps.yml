@@ -33,21 +33,6 @@ jobs:
           ./gradlew :analyzer:shadowJar -Prelease.version=${{ steps.extract_release_version.outputs.RELEASE_VERSION }}
           ./gradlew :app:shadowJar -Prelease.version=${{ steps.extract_release_version.outputs.RELEASE_VERSION }}
 
-      - name: Remove outdated pre-releases
-        uses: actions/delete-package-versions@v5
-        with:
-          package-name: io.github.manamiproject.${{ github.event.repository.name }}
-          package-type: maven
-          min-versions-to-keep: 1
-          delete-only-pre-release-versions: true
-
-      - name: Remove outdated releases
-        uses: actions/delete-package-versions@v5
-        with:
-          package-name: io.github.manamiproject.${{ github.event.repository.name }}
-          package-type: maven
-          min-versions-to-keep: 10
-
       - name: Create release
         uses: softprops/action-gh-release@v2
         with:
