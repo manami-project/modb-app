@@ -10,7 +10,8 @@ plugins {
 group = "io.github.manamiproject"
 version = project.findProperty("release.version") as String? ?: ""
 
-val projectName = "modb-kitsu"
+val projectName = "modb-app"
+val moduleName = "modb-kitsu"
 val githubUsername = "manami-project"
 
 repositories {
@@ -58,7 +59,7 @@ val javaDoc by tasks.registering(Jar::class) {
 publishing {
     repositories {
         maven {
-            name = projectName
+            name = moduleName
             url = uri("https://maven.pkg.github.com/$githubUsername/$projectName")
             credentials {
                 username = parameter("GH_USERNAME", githubUsername)
@@ -69,7 +70,7 @@ publishing {
     publications {
         create<MavenPublication>("maven") {
             groupId = project.group.toString()
-            artifactId = projectName
+            artifactId = moduleName
             version = project.version.toString()
 
             from(components["java"])
@@ -78,7 +79,7 @@ publishing {
 
             pom {
                 packaging = "jar"
-                name.set(projectName)
+                name.set(moduleName)
                 description.set("This lib contains downloader and converter for downloading raw data from kitsu.app and convert it to an anime object.")
                 url.set("https://github.com/$githubUsername/$projectName")
 
