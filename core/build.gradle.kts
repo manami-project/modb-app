@@ -10,7 +10,8 @@ plugins {
 group = "io.github.manamiproject"
 version = project.findProperty("release.version") as String? ?: ""
 
-val projectName = "modb-core"
+val projectName = "modb-app"
+val moduleName = "modb-core"
 val githubUsername = "manami-project"
 
 repositories {
@@ -75,7 +76,7 @@ val javaDoc by tasks.registering(Jar::class) {
 publishing {
     repositories {
         maven {
-            name = projectName
+            name = moduleName
             url = uri("https://maven.pkg.github.com/$githubUsername/$projectName")
             credentials {
                 username = parameter("GH_USERNAME", githubUsername)
@@ -86,7 +87,7 @@ publishing {
     publications {
         create<MavenPublication>("maven") {
             groupId = project.group.toString()
-            artifactId = projectName
+            artifactId = moduleName
             version = project.version.toString()
 
             from(components["java"])
@@ -95,7 +96,7 @@ publishing {
 
             pom {
                 packaging = "jar"
-                name.set(projectName)
+                name.set(moduleName)
                 description.set("This lib is the base for every specific meta data provider module. It contains the API for downloaders and converters, defines the anime model and provides basic functionality.")
                 url.set("https://github.com/$githubUsername/$projectName")
 
