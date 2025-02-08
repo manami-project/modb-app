@@ -23,7 +23,7 @@ class DefaultDownloadControlStateScheduler(
         log.info { "Finding all anime which are not scheduled to download this week." }
 
         return downloadControlStateAccessor.allDcsEntries(metaDataProviderConfig)
-            .filter { isNotCurrentWeek(it.nextDownload) }
+            .filter { isAfterCurrentWeek(it.nextDownload) }
             .map { metaDataProviderConfig.extractAnimeId(it.anime.sources.first()) }
             .toSet()
     }
@@ -32,16 +32,23 @@ class DefaultDownloadControlStateScheduler(
         log.info { "Finding all anime which are scheduled to download this week." }
 
         return downloadControlStateAccessor.allDcsEntries(metaDataProviderConfig)
-            .filter { isCurrentWeek(it.nextDownload) }
+            .filter { isCurrentWeekOrOlder(it.nextDownload) }
             .map { metaDataProviderConfig.extractAnimeId(it.anime.sources.first()) }
             .toSet()
     }
 
-    private fun isNotCurrentWeek(weekOfYear: WeekOfYear): Boolean = !isCurrentWeek(weekOfYear)
+    private fun isAfterCurrentWeek(weekOfYear: WeekOfYear): Boolean = !isCurrentWeekOrOlder(weekOfYear)
 
-    private fun isCurrentWeek(weekOfYear: WeekOfYear): Boolean {
+    private fun isCurrentWeekOrOlder(weekOfYear: WeekOfYear): Boolean {
         val now = LocalDate.now(appConfig.clock()).weekOfYear()
-        return weekOfYear.year == now.year && weekOfYear.week == now.week
+
+        return when {
+            weekOfYear.year < now.year -> true
+            weekOfYear.year > now.year -> false
+            else -> {
+                weekOfYear.week <= now.week
+            }
+        }
     }
 
     companion object {
