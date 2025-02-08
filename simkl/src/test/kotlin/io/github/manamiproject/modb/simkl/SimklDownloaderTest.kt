@@ -54,7 +54,7 @@ internal class SimklDownloaderTest : MockServerTestCase<WireMockServer> by WireM
     }
 
     @Test
-    fun `dead entry`() {
+    fun `correctly identify dead entries`() {
         runBlocking {
             // given
             val testConfig = object : MetaDataProviderConfig by SimklConfig {
