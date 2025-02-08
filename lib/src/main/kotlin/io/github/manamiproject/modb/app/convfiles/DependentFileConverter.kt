@@ -63,7 +63,7 @@ class DependentFileConverter @KoverIgnore constructor(
                 .forEach { file -> allPossibleUnconvertedFiles.add(file) }
         }
 
-        val jobs = allPossibleUnconvertedFiles.asSequence()
+        allPossibleUnconvertedFiles.asSequence()
             .filter { fileName -> hasNotBeenConvertedYet(fileName) }
             .filter { fileName -> allRawFilesRequiredForConversionExist(fileName) }
             .map { fileName -> outputDirectory.resolve("$fileName.${metaDataProviderConfig.fileSuffix()}") }

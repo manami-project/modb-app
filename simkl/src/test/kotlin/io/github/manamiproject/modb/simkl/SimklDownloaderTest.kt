@@ -54,6 +54,40 @@ internal class SimklDownloaderTest : MockServerTestCase<WireMockServer> by WireM
     }
 
     @Test
+    fun `dead entry`() {
+        runBlocking {
+            // given
+            val testConfig = object : MetaDataProviderConfig by SimklConfig {
+                override fun hostname(): Hostname = "localhost"
+                override fun buildDataDownloadLink(id: String): URI = URI("http://localhost:$port/anime/$id")
+            }
+
+            val id = "drmaMJIZg"
+
+            serverInstance.stubFor(
+                get(urlPathEqualTo("/anime/$id")).willReturn(
+                    aResponse()
+                        .withHeader("Content-Type", APPLICATION_JSON)
+                        .withStatus(200)
+                        .withBody("""<html><head><meta property="og:title" content="Simkl - Watch and Track Movies, Anime, TV Shows" /></head><body>success</body></html>""")
+                )
+            )
+
+            var success = false
+            val downloader = SimklDownloader(testConfig)
+
+            // when
+            val result = downloader.download(id)  {
+                success = true
+            }
+
+            // then
+            assertThat(success).isTrue()
+            assertThat(result).isEmpty()
+        }
+    }
+
+    @Test
     fun `unhandled response code throws exception`() {
         // given
         val testConfig = object: MetaDataProviderConfig by SimklConfig {
