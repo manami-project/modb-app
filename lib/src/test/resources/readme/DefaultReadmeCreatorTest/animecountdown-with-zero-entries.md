@@ -69,10 +69,10 @@ Here is a description of the types in the JSON files.
 
 ### AnimeSeason
 
-| Field  | Type                                                | Nullable | Description |
-|--------|-----------------------------------------------------|----------|-------------|
-| season | `Enum of [SPRING, SUMMER, FALL, WINTER, UNDEFINED]` | no       | Season.     |
-| year   | `Integer`                                           | yes      | Year.       |
+| Field  | Type                                                | Nullable | Description                                 |
+|--------|-----------------------------------------------------|----------|---------------------------------------------|
+| season | `Enum of [SPRING, SUMMER, FALL, WINTER, UNDEFINED]` | no       | Season in which the first release occurred. |
+| year   | `Integer`                                           | yes      | Year of first release.                      |
 
 ### Duration
 
