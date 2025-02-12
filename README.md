@@ -1,7 +1,7 @@
 [![Tests](https://github.com/manami-project/modb-app/actions/workflows/tests.yml/badge.svg)](https://github.com/manami-project/modb-app/actions/workflows/tests.yml) [![codecov](https://codecov.io/gh/manami-project/modb-app/graph/badge.svg?token=66LR8JA8KE)](https://codecov.io/gh/manami-project/modb-app) ![jdk21](https://img.shields.io/badge/jdk-21-informational)
 # modb-app
 
-_[modb](https://github.com/manami-project?tab=repositories&q=modb&type=source)_ stands for _**M**anami **O**ffline **D**ata**B**ase_. The applications and libraries of this repository are used to create the [manami-project/anime-offline-database](https://github.com/manami-project/anime-offline-database).
+_[modb](https://github.com/manami-project?tab=repositories&q=modb&type=source)_ stands for _**M**anami **O**ffline **D**ata**B**ase_. The applications and libraries of this repository are used to create the [manami-project/anime-offline-database](https://github.com/manami-project/anime-offline-database). Don't use these libraries and applications to crawl the websites entirely. Instead check whether the dataset already offers the data that you need.
 
 * **analyzer:** Allows to review the entries of the dataset and create merge locks.
 * **anidb:** Config, downloader and converter for [anidb.net](https://anidb.net)
@@ -11,7 +11,7 @@ _[modb](https://github.com/manami-project?tab=repositories&q=modb&type=source)_ 
 * **app:** The application that runs the crawlers, merges anime and updates the repository.
 * **core:** Core functionality used by all other modules.
 * **kitsu:** Config, downloader and converter for [kitsu.app](https://kitsu.app)
-* **lib:** A library that drives drives the applications "app" and "analyzer".
+* **lib:** A library that drives the applications "app" and "analyzer".
 * **livechart:** Config, downloader and converter for [livechart.me](https://livechart.me)
 * **myanimelist:** Config, downloader and converter for [myanimelist.net](https://myanimelist.net)
 * **notify:** Config, downloader and converter for [notify.moe](https://notify.moe)
