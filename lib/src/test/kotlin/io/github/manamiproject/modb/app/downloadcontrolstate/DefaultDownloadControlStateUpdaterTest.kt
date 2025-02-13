@@ -14,12 +14,10 @@ import io.github.manamiproject.modb.core.extensions.Directory
 import io.github.manamiproject.modb.core.extensions.RegularFile
 import io.github.manamiproject.modb.core.extensions.writeToFile
 import io.github.manamiproject.modb.core.json.Json
-import io.github.manamiproject.modb.core.models.Anime
-import io.github.manamiproject.modb.core.models.Anime.Status.FINISHED
-import io.github.manamiproject.modb.core.models.Anime.Type.MOVIE
-import io.github.manamiproject.modb.core.models.AnimeSeason
-import io.github.manamiproject.modb.core.models.Duration
-import io.github.manamiproject.modb.core.models.Duration.TimeUnit.MINUTES
+import io.github.manamiproject.modb.core.anime.*
+import io.github.manamiproject.modb.core.anime.AnimeStatus.FINISHED
+import io.github.manamiproject.modb.core.anime.AnimeType.MOVIE
+import io.github.manamiproject.modb.core.anime.Duration.TimeUnit.MINUTES
 import io.github.manamiproject.modb.test.exceptionExpected
 import io.github.manamiproject.modb.test.shouldNotBeInvoked
 import io.github.manamiproject.modb.test.tempDirectory
@@ -85,7 +83,7 @@ internal class DefaultDownloadControlStateUpdaterTest {
                     }
 
                     val rawdata = tempDir.resolve("rawdata").createDirectory()
-                    val updatedAnime = Anime(
+                    val updatedAnime = AnimeRaw(
                         _title = "Test",
                         _sources = hashSetOf(testConfig.buildAnimeLink("100"))
                     )
@@ -93,7 +91,7 @@ internal class DefaultDownloadControlStateUpdaterTest {
                     Json.toJson(updatedAnime).writeToFile(rawFile)
 
                     val dcs = tempDir.resolve("dcs").createDirectory()
-                    val initialAnime = Anime(
+                    val initialAnime = AnimeRaw(
                         _title = "Test",
                         _sources = hashSetOf(testConfig.buildAnimeLink("100"))
                     )
@@ -155,7 +153,7 @@ internal class DefaultDownloadControlStateUpdaterTest {
 
                     // Unchanged anime
                     val unchangedAnimeId = "100"
-                    val unchangedAnime = Anime(
+                    val unchangedAnime = AnimeRaw(
                         _title = "Unchanged anime",
                         _sources = hashSetOf(testConfig.buildAnimeLink(unchangedAnimeId))
                     )
@@ -166,7 +164,7 @@ internal class DefaultDownloadControlStateUpdaterTest {
                         _weeksWihoutChange = 2,
                         _lastDownloaded = WeekOfYear.currentWeek().minusWeeks(4),
                         _nextDownload = WeekOfYear.currentWeek(),
-                        _anime = Anime(
+                        _anime = AnimeRaw(
                             _title = "Unchanged anime",
                             _sources = hashSetOf(testConfig.buildAnimeLink(unchangedAnimeId)),
                         ),
@@ -176,7 +174,7 @@ internal class DefaultDownloadControlStateUpdaterTest {
 
                     // Changed anime
                     val changedAnimeId = "200"
-                    val changedAnime = Anime(
+                    val changedAnime = AnimeRaw(
                         _title = "Changed Anime",
                         _sources = hashSetOf(testConfig.buildAnimeLink(changedAnimeId))
                     )
@@ -187,7 +185,7 @@ internal class DefaultDownloadControlStateUpdaterTest {
                         _weeksWihoutChange = 2,
                         _lastDownloaded = WeekOfYear.currentWeek().minusWeeks(4),
                         _nextDownload = WeekOfYear.currentWeek(),
-                        _anime = Anime(
+                        _anime = AnimeRaw(
                             _title = "Changed Anime",
                             episodes = 12,
                             _sources = hashSetOf(testConfig.buildAnimeLink(changedAnimeId)),
@@ -240,7 +238,7 @@ internal class DefaultDownloadControlStateUpdaterTest {
                     }
 
                     val rawdata = tempDir.resolve("rawdata").createDirectory()
-                    val updatedAnime = Anime(
+                    val updatedAnime = AnimeRaw(
                         _title = "Test",
                         episodes = 12,
                         _sources = hashSetOf(testConfig.buildAnimeLink("new-test-id"))
@@ -249,7 +247,7 @@ internal class DefaultDownloadControlStateUpdaterTest {
                     Json.toJson(updatedAnime).writeToFile(rawFile)
 
                     val dcs = tempDir.resolve("dcs").createDirectory()
-                    val initialAnime = Anime(
+                    val initialAnime = AnimeRaw(
                         _title = "Test",
                         _sources = hashSetOf(testConfig.buildAnimeLink("previous-test-id"))
                     )
@@ -308,7 +306,7 @@ internal class DefaultDownloadControlStateUpdaterTest {
                     }
 
                     val rawdata = tempDir.resolve("rawdata").createDirectory()
-                    val updatedAnime = Anime(
+                    val updatedAnime = AnimeRaw(
                         _title = "Test",
                         episodes = 12,
                         _sources = hashSetOf(testConfig.buildAnimeLink("new-test-id"))
@@ -317,7 +315,7 @@ internal class DefaultDownloadControlStateUpdaterTest {
                     Json.toJson(updatedAnime).writeToFile(rawFile)
 
                     val dcs = tempDir.resolve("dcs").createDirectory()
-                    val initialAnime = Anime(
+                    val initialAnime = AnimeRaw(
                         _title = "Test",
                         _sources = hashSetOf(testConfig.buildAnimeLink("previous-test-id"))
                     )
@@ -373,7 +371,7 @@ internal class DefaultDownloadControlStateUpdaterTest {
                 val rawdata = tempDir.resolve("rawdata").createDirectory()
                 val dcs = tempDir.resolve("dcs").createDirectory()
 
-                val anime = Anime(
+                val anime = AnimeRaw(
                     _title = "Shin Seiki Evangelion Movie: THE END OF EVANGELION",
                     type = MOVIE,
                     episodes = 1,
@@ -449,7 +447,7 @@ internal class DefaultDownloadControlStateUpdaterTest {
                 val rawdata = tempDir.resolve("rawdata").createDirectory()
                 val dcs = tempDir.resolve("dcs").createDirectory()
 
-                val updatedAnime = Anime(
+                val updatedAnime = AnimeRaw(
                     _title = "Shin Seiki Evangelion Movie: THE END OF EVANGELION",
                     type = MOVIE,
                     episodes = 1,
@@ -543,7 +541,7 @@ internal class DefaultDownloadControlStateUpdaterTest {
                 val rawdata = tempDir.resolve("rawdata").createDirectory()
                 val dcs = tempDir.resolve("dcs").createDirectory()
 
-                val anime = Anime(
+                val anime = AnimeRaw(
                     _title = "Shin Seiki Evangelion Movie: THE END OF EVANGELION",
                     type = MOVIE,
                     episodes = 1,

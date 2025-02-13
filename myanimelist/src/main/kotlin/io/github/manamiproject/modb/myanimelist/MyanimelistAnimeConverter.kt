@@ -1,5 +1,12 @@
 package io.github.manamiproject.modb.myanimelist
 
+import io.github.manamiproject.modb.core.anime.*
+import io.github.manamiproject.modb.core.anime.AnimeRaw.Companion.NO_PICTURE
+import io.github.manamiproject.modb.core.anime.AnimeRaw.Companion.NO_PICTURE_THUMBNAIL
+import io.github.manamiproject.modb.core.anime.AnimeSeason.Season
+import io.github.manamiproject.modb.core.anime.AnimeStatus.*
+import io.github.manamiproject.modb.core.anime.AnimeType.*
+import io.github.manamiproject.modb.core.anime.Duration.TimeUnit.SECONDS
 import io.github.manamiproject.modb.core.config.MetaDataProviderConfig
 import io.github.manamiproject.modb.core.converter.AnimeConverter
 import io.github.manamiproject.modb.core.coroutines.ModbDispatchers.LIMITED_CPU
@@ -9,20 +16,13 @@ import io.github.manamiproject.modb.core.extractor.DataExtractor
 import io.github.manamiproject.modb.core.extractor.ExtractionResult
 import io.github.manamiproject.modb.core.extractor.XmlDataExtractor
 import io.github.manamiproject.modb.core.logging.LoggerDelegate
-import io.github.manamiproject.modb.core.models.*
-import io.github.manamiproject.modb.core.models.Anime.Companion.NO_PICTURE
-import io.github.manamiproject.modb.core.models.Anime.Companion.NO_PICTURE_THUMBNAIL
-import io.github.manamiproject.modb.core.models.Anime.Status
-import io.github.manamiproject.modb.core.models.Anime.Status.*
-import io.github.manamiproject.modb.core.models.Anime.Type
-import io.github.manamiproject.modb.core.models.Anime.Type.*
-import io.github.manamiproject.modb.core.models.AnimeSeason.Season
-import io.github.manamiproject.modb.core.models.Duration.TimeUnit.SECONDS
 import kotlinx.coroutines.withContext
 import java.net.URI
+import io.github.manamiproject.modb.core.anime.AnimeType.UNKNOWN as UNKNOWN_TYPE
+import io.github.manamiproject.modb.core.anime.Duration.Companion.UNKNOWN as UNKNOWN_DURATION
 
 /**
- * Converts raw data to an [Anime].
+ * Converts raw data to an [AnimeRaw].
  * Requires raw HTML from the mobile site version.
  * @since 1.0.0
  * @param metaDataProviderConfig Configuration for converting data.
@@ -33,7 +33,7 @@ public class MyanimelistAnimeConverter(
     private val extractor: DataExtractor = XmlDataExtractor,
 ) : AnimeConverter {
 
-    override suspend fun convert(rawContent: String): Anime = withContext(LIMITED_CPU) {
+    override suspend fun convert(rawContent: String): AnimeRaw = withContext(LIMITED_CPU) {
         val data = extractor.extract(rawContent, mapOf(
             "title" to "//meta[@property='og:title']/@content",
             "episodes" to "//td[contains(text(), 'Episodes')]/following-sibling::td/a/text()",
@@ -53,7 +53,7 @@ public class MyanimelistAnimeConverter(
         val picture = extractPicture(data)
         val title = extractTitle(data)
 
-        return@withContext Anime(
+        return@withContext AnimeRaw(
             _title = title,
             episodes = extractEpisodes(data),
             type = extractType(data),
@@ -103,10 +103,10 @@ public class MyanimelistAnimeConverter(
         }
     }
 
-    private fun extractType(data: ExtractionResult): Type {
+    private fun extractType(data: ExtractionResult): AnimeType {
         return when(data.string("type").trim().lowercase()) {
             "tv" -> TV
-            "unknown" -> Type.UNKNOWN
+            "unknown" -> UNKNOWN_TYPE
             "movie" -> MOVIE
             "ova" -> OVA
             "ona" -> ONA
@@ -177,7 +177,7 @@ public class MyanimelistAnimeConverter(
         return relatedAnime.union(relatedAnimeDetails).toHashSet()
     }
 
-    private fun extractStatus(data: ExtractionResult): Status {
+    private fun extractStatus(data: ExtractionResult): AnimeStatus {
         return when(data.string("status").trim().lowercase()) {
             "finished airing" -> FINISHED
             "currently airing" -> ONGOING
@@ -188,7 +188,7 @@ public class MyanimelistAnimeConverter(
 
     private fun extractDuration(data: ExtractionResult): Duration {
         if (data.notFound("duration")) {
-            return Duration.UNKNOWN
+            return UNKNOWN_DURATION
         }
 
         val text = data.string("duration").trim()

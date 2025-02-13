@@ -1,6 +1,6 @@
 package io.github.manamiproject.modb.app.merging
 
-import io.github.manamiproject.modb.core.models.Anime
+import io.github.manamiproject.modb.core.anime.AnimeRaw
 
 /**
  * Merges anime.
@@ -13,5 +13,5 @@ interface MergingService {
      * @param unmergedAnime List of unmerged anime.
      * @return List of merged anime.
      */
-    suspend fun merge(unmergedAnime: List<Anime>): List<Anime>
+    suspend fun merge(unmergedAnime: List<AnimeRaw>): List<AnimeRaw>
 }

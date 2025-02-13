@@ -25,7 +25,7 @@ internal class DefaultLogLevelRetrieverTest {
     fun `value from configRepository will be used when local override is not set`() {
         // given
         val testConfigRegistry = object: ConfigRegistry by TestConfigRegistry {
-            override fun string(key: String): String? = if (key == LOG_LEVEL_CONFIG_PROPERTY_NAME) {
+            override fun string(key: String): String = if (key == LOG_LEVEL_CONFIG_PROPERTY_NAME) {
                 "TRACE"
             } else {
                 shouldNotBeInvoked()

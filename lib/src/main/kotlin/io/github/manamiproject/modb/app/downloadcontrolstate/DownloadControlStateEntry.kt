@@ -1,12 +1,14 @@
 package io.github.manamiproject.modb.app.downloadcontrolstate
 
+import io.github.manamiproject.modb.core.anime.AnimeRaw
+import io.github.manamiproject.modb.core.anime.AnimeRaw.Companion.NO_PICTURE
+import io.github.manamiproject.modb.core.anime.AnimeRaw.Companion.NO_PICTURE_THUMBNAIL
+import io.github.manamiproject.modb.core.anime.AnimeSeason.Season.UNDEFINED
+import io.github.manamiproject.modb.core.anime.AnimeStatus.*
 import io.github.manamiproject.modb.core.converter.AnimeConverter
 import io.github.manamiproject.modb.core.extensions.pickRandom
-import io.github.manamiproject.modb.core.models.Anime
-import io.github.manamiproject.modb.core.models.Anime.Companion.NO_PICTURE
-import io.github.manamiproject.modb.core.models.Anime.Companion.NO_PICTURE_THUMBNAIL
-import io.github.manamiproject.modb.core.models.Anime.Status.*
-import io.github.manamiproject.modb.core.models.AnimeSeason
+import io.github.manamiproject.modb.core.anime.AnimeStatus.UNKNOWN as UNKNOWN_STATUS
+import io.github.manamiproject.modb.core.anime.AnimeType.UNKNOWN as UNKNOWN_TYPE
 
 /**
  * A download control state entry contains an anime as well as meta info about its download and update cycle.
@@ -30,7 +32,7 @@ data class DownloadControlStateEntry(
     private var _weeksWihoutChange: Int,
     private var _lastDownloaded: WeekOfYear,
     private var _nextDownload: WeekOfYear,
-    private var _anime: Anime,
+    private var _anime: AnimeRaw,
 ) {
 
     /**
@@ -71,7 +73,7 @@ data class DownloadControlStateEntry(
      * @param anime Newly downloaded anime to check against the [DownloadControlStateEntry.anime].
      * @return Same instance with updated properties.
      */
-    fun update(anime: Anime): DownloadControlStateEntry {
+    fun update(anime: AnimeRaw): DownloadControlStateEntry {
         when {
             _anime != anime || anime.status in setOf(ONGOING, UPCOMING) -> {
                 scheduleRedownloadForChangedAnime()
@@ -85,7 +87,7 @@ data class DownloadControlStateEntry(
     }
 
     /**
-     * Calculates a score between the [DownloadControlStateEntry.anime] and the [Anime] that has been created with the
+     * Calculates a score between the [DownloadControlStateEntry.anime] and the [AnimeRaw] that has been created with the
      * current run of the application. Using this score over all anime entries of the respective meta data provider it
      * is possible to detect problems in the [AnimeConverter].
      * @since 1.0.0
@@ -93,14 +95,14 @@ data class DownloadControlStateEntry(
      * @return A value that reflects a possible decrease in quality. The higher the value the more likely it is that
      * there is a problem with the respective [AnimeConverter]. Value cannot be negative.
      */
-    fun calculateQualityScore(currentAnime: Anime): UInt {
+    fun calculateQualityScore(currentAnime: AnimeRaw): UInt {
         var score = 0u
 
         if (currentAnime.synonyms.size < anime.synonyms.size) {
             score += 1u
         }
 
-        if (currentAnime.type == Anime.Type.UNKNOWN && anime.type != Anime.Type.UNKNOWN) {
+        if (currentAnime.type == UNKNOWN_TYPE && anime.type != UNKNOWN_TYPE) {
             score += 1u
         }
 
@@ -108,11 +110,11 @@ data class DownloadControlStateEntry(
             score += 1u
         }
 
-        if (currentAnime.status == Anime.Status.UNKNOWN && anime.status != Anime.Status.UNKNOWN) {
+        if (currentAnime.status == UNKNOWN_STATUS && anime.status != UNKNOWN_STATUS) {
             score += 1u
         }
 
-        if (currentAnime.animeSeason.season == AnimeSeason.Season.UNDEFINED && anime.animeSeason.season != AnimeSeason.Season.UNDEFINED) {
+        if (currentAnime.animeSeason.season == UNDEFINED && anime.animeSeason.season != UNDEFINED) {
             score += 1u
         }
 

@@ -1,6 +1,6 @@
 package io.github.manamiproject.modb.app.extensions
 
-import io.github.manamiproject.modb.core.models.Anime
+import io.github.manamiproject.modb.core.anime.AnimeRaw
 import io.github.manamiproject.modb.test.exceptionExpected
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Nested
@@ -64,7 +64,7 @@ internal class ListExtensionsKtTest {
         fun `throws exception if marker are within title`(value: String) {
             // given
             val testList = listOf(
-                Anime(
+                AnimeRaw(
                     _title = value,
                     _sources = hashSetOf(URI("https://example.org/anime/1")),
                 ),
@@ -83,11 +83,11 @@ internal class ListExtensionsKtTest {
         fun `returns input list as-is if marker wasn't found`() {
             // given
             val testList = listOf(
-                Anime(
+                AnimeRaw(
                     _title = "entry",
                     _sources = hashSetOf(URI("https://example.org/anime/1")),
                 ),
-                Anime(
+                AnimeRaw(
                     _title = "other",
                     _sources = hashSetOf(URI("https://example.org/anime/288")),
                 ),

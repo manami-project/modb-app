@@ -2,19 +2,19 @@ package io.github.manamiproject.modb.app.merging.matching
 
 import io.github.manamiproject.modb.app.merging.goldenrecords.PotentialGoldenRecord
 import io.github.manamiproject.modb.app.weightedProbabilityOfTwoNumbersBeingEqual
-import io.github.manamiproject.modb.core.models.Anime
-import io.github.manamiproject.modb.core.models.Anime.Status
-import io.github.manamiproject.modb.core.models.Anime.Type
-import io.github.manamiproject.modb.core.models.Anime.Type.ONA
-import io.github.manamiproject.modb.core.models.Anime.Type.SPECIAL
-import io.github.manamiproject.modb.core.models.Duration
+import io.github.manamiproject.modb.core.anime.AnimeRaw
+import io.github.manamiproject.modb.core.anime.AnimeStatus
+import io.github.manamiproject.modb.core.anime.AnimeType
+import io.github.manamiproject.modb.core.anime.AnimeType.ONA
+import io.github.manamiproject.modb.core.anime.AnimeType.SPECIAL
+import io.github.manamiproject.modb.core.anime.Duration
 import org.apache.commons.text.similarity.JaroWinklerSimilarity
 import kotlin.math.floor
-import io.github.manamiproject.modb.core.models.Anime.Status.UNKNOWN as UNKNOWN_STATUS
-import io.github.manamiproject.modb.core.models.Duration.Companion.UNKNOWN as UNKNOWN_DURATION
+import io.github.manamiproject.modb.core.anime.AnimeStatus.UNKNOWN as UNKNOWN_STATUS
+import io.github.manamiproject.modb.core.anime.Duration.Companion.UNKNOWN as UNKNOWN_DURATION
 
 /**
- * This implementation of [MatchingProbabilityCalculator] tries to calculate how likely it is that an [Anime] should
+ * This implementation of [MatchingProbabilityCalculator] tries to calculate how likely it is that an [AnimeRaw] should
  * be merged into an existing golden record.
  *
  * Each property taking into consideration has a span from `0.0` (not equal, very unlikely) up to `1.0` (value is
@@ -57,7 +57,7 @@ import io.github.manamiproject.modb.core.models.Duration.Companion.UNKNOWN as UN
  */
 class DefaultMatchingProbabilityCalculator: MatchingProbabilityCalculator {
 
-    override fun calculate(anime: Anime, potentialGoldenRecord: PotentialGoldenRecord): MatchingProbabilityResult {
+    override fun calculate(anime: AnimeRaw, potentialGoldenRecord: PotentialGoldenRecord): MatchingProbabilityResult {
         var maxProbability = 3.0
         var currentProbability = 0.0
 
@@ -98,7 +98,7 @@ class DefaultMatchingProbabilityCalculator: MatchingProbabilityCalculator {
         return weightedProbabilityOfTwoNumbersBeingEqual(recordEpisodes, potentialGoldenRecordEpisodes, 4)
     }
 
-    private fun calculateProbabilityOfType(animeType: Type, potentialGoldenRecordType: Type): Double {
+    private fun calculateProbabilityOfType(animeType: AnimeType, potentialGoldenRecordType: AnimeType): Double {
         return when {
             animeType == potentialGoldenRecordType -> 1.0
             specials.contains(animeType) && specials.contains(potentialGoldenRecordType) -> 0.4
@@ -110,7 +110,7 @@ class DefaultMatchingProbabilityCalculator: MatchingProbabilityCalculator {
         return weightedProbabilityOfTwoNumbersBeingEqual(recordYearOfPremiere, potentialGoldenRecordYearOfPremiere, 4)
     }
 
-    private fun calculateProbabilityOfStatus(recordStatus: Status, potentialGoldenRecordStatus: Status): Double = when (recordStatus) {
+    private fun calculateProbabilityOfStatus(recordStatus: AnimeStatus, potentialGoldenRecordStatus: AnimeStatus): Double = when (recordStatus) {
         potentialGoldenRecordStatus -> 1.0
         else -> 0.0
     }

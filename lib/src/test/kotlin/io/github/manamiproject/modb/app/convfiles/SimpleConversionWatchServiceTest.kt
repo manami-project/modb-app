@@ -13,7 +13,7 @@ import io.github.manamiproject.modb.core.coroutines.ModbDispatchers.LIMITED_FS
 import io.github.manamiproject.modb.core.extensions.Directory
 import io.github.manamiproject.modb.core.extensions.LOCK_FILE_SUFFIX
 import io.github.manamiproject.modb.core.extensions.fileName
-import io.github.manamiproject.modb.core.models.Anime
+import io.github.manamiproject.modb.core.anime.AnimeRaw
 import io.github.manamiproject.modb.test.tempDirectory
 import kotlinx.coroutines.cancelAndJoin
 import kotlinx.coroutines.delay
@@ -39,7 +39,7 @@ internal class SimpleConversionWatchServiceTest {
         fun `remove existing lock files when starting the watch service`() {
             tempDirectory {
                 // given
-                val anime = Anime("Death Note")
+                val anime = AnimeRaw("Death Note")
 
                 val testAppConfig = object: Config by TestAppConfig {
                     override fun workingDir(metaDataProviderConfig: MetaDataProviderConfig): Directory = tempDir
@@ -51,7 +51,7 @@ internal class SimpleConversionWatchServiceTest {
                 }
 
                 val testConverter = object: PathAnimeConverter by TestPathAnimeConverter {
-                    override suspend fun convert(path: Path): List<Anime> = listOf(anime)
+                    override suspend fun convert(path: Path): List<AnimeRaw> = listOf(anime)
                 }
 
                 tempDir.resolve("1535.$LOCK_FILE_SUFFIX").createFile()
@@ -82,7 +82,7 @@ internal class SimpleConversionWatchServiceTest {
         fun `convert all unconverted files at startup`() {
             tempDirectory {
                 // given
-                val anime = Anime("Death Note")
+                val anime = AnimeRaw("Death Note")
 
                 val testAppConfig = object: Config by TestAppConfig {
                     override fun workingDir(metaDataProviderConfig: MetaDataProviderConfig): Directory = tempDir
@@ -94,7 +94,7 @@ internal class SimpleConversionWatchServiceTest {
                 }
 
                 val testConverter = object: PathAnimeConverter by TestPathAnimeConverter {
-                    override suspend fun convert(path: Path): List<Anime> = listOf(anime)
+                    override suspend fun convert(path: Path): List<AnimeRaw> = listOf(anime)
                 }
 
                 tempDir.resolve("1535.${testConfig.fileSuffix()}").createFile()
@@ -139,10 +139,10 @@ internal class SimpleConversionWatchServiceTest {
                         override fun fileSuffix(): FileSuffix = "html"
                     }
 
-                    val anime = Anime("Death Note")
+                    val anime = AnimeRaw("Death Note")
 
                     val testConverter = object : PathAnimeConverter by TestPathAnimeConverter {
-                        override suspend fun convert(path: Path): List<Anime> {
+                        override suspend fun convert(path: Path): List<AnimeRaw> {
                             if (canBeInvoked) {
                                 converterHasBeenInvoked = true
                             }

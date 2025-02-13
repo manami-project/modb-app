@@ -1,13 +1,13 @@
-package io.github.manamiproject.modb.core.models
+package io.github.manamiproject.modb.core.anime
 
+import io.github.manamiproject.modb.core.anime.AnimeSeason.Companion.UNKNOWN_YEAR
+import io.github.manamiproject.modb.core.anime.AnimeSeason.Season.*
+import io.github.manamiproject.modb.core.anime.AnimeStatus.FINISHED
+import io.github.manamiproject.modb.core.anime.AnimeStatus.ONGOING
+import io.github.manamiproject.modb.core.anime.AnimeType.*
+import io.github.manamiproject.modb.core.anime.Duration.TimeUnit.*
 import io.github.manamiproject.modb.core.extensions.EMPTY
-import io.github.manamiproject.modb.core.json.AnimeAdapter
-import io.github.manamiproject.modb.core.models.Anime.Status.*
-import io.github.manamiproject.modb.core.models.Anime.Status.UNKNOWN
-import io.github.manamiproject.modb.core.models.Anime.Type.*
-import io.github.manamiproject.modb.core.models.AnimeSeason.Companion.UNKNOWN_YEAR
-import io.github.manamiproject.modb.core.models.AnimeSeason.Season.*
-import io.github.manamiproject.modb.core.models.Duration.TimeUnit.*
+import io.github.manamiproject.modb.core.json.AnimeRawAdapter
 import io.github.manamiproject.modb.test.exceptionExpected
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Nested
@@ -16,8 +16,11 @@ import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.ValueSource
 import java.net.URI
 import kotlin.test.Test
+import io.github.manamiproject.modb.core.anime.AnimeStatus.UNKNOWN as UNKNOWN_STATUS
+import io.github.manamiproject.modb.core.anime.AnimeType.UNKNOWN as UNKNOWN_TYPE
+import io.github.manamiproject.modb.core.anime.Duration.Companion.UNKNOWN as UNKNOWN_DURATION
 
-internal class AnimeKtTest {
+internal class AnimeRawTest {
 
     @Nested
     inner class TitleTests {
@@ -28,7 +31,7 @@ internal class AnimeKtTest {
             val expectedTitle = "Death Note"
 
             // when
-            val result = Anime(" $expectedTitle")
+            val result = AnimeRaw(" $expectedTitle")
 
             // then
             assertThat(result.title).isEqualTo(expectedTitle)
@@ -40,7 +43,7 @@ internal class AnimeKtTest {
             val expectedTitle = "Death Note"
 
             // when
-            val result = Anime("$expectedTitle ")
+            val result = AnimeRaw("$expectedTitle ")
 
             // then
             assertThat(result.title).isEqualTo(expectedTitle)
@@ -52,7 +55,7 @@ internal class AnimeKtTest {
             val expectedTitle = "Death Note"
 
             // when
-            val result = Anime("Death    Note")
+            val result = AnimeRaw("Death    Note")
 
             // then
             assertThat(result.title).isEqualTo(expectedTitle)
@@ -64,7 +67,7 @@ internal class AnimeKtTest {
             val expectedTitle = "Death Note"
 
             // when
-            val result = Anime("Death\tNote")
+            val result = AnimeRaw("Death\tNote")
 
             // then
             assertThat(result.title).isEqualTo(expectedTitle)
@@ -76,7 +79,7 @@ internal class AnimeKtTest {
             val expectedTitle = "Death Note"
 
             // when
-            val result = Anime("Death\nNote")
+            val result = AnimeRaw("Death\nNote")
 
             // then
             assertThat(result.title).isEqualTo(expectedTitle)
@@ -88,7 +91,7 @@ internal class AnimeKtTest {
             val expectedTitle = "Death Note"
 
             // when
-            val result = Anime("Death\r\nNote")
+            val result = AnimeRaw("Death\r\nNote")
 
             // then
             assertThat(result.title).isEqualTo(expectedTitle)
@@ -97,18 +100,48 @@ internal class AnimeKtTest {
         @Test
         fun `remove zero-width non-joiner`() {
             // when
-            val result = Anime("Ba\u200Cek")
+            val result = AnimeRaw("Ba\u200Cek")
 
             // then
             assertThat(result.title).isEqualTo("Baek")
         }
 
         @ParameterizedTest
-        @ValueSource(strings = ["", "   ", "\u200C\u200C"])
+        @ValueSource(strings = [
+            "",
+            "   ",
+            "\u00A0",
+            "\u202F",
+            "\u200A",
+            "\u205F",
+            "\u2000",
+            "\u2001",
+            "\u2002",
+            "\u2003",
+            "\u2004",
+            "\u2005",
+            "\u2006",
+            "\u2007",
+            "\u2008",
+            "\u2009",
+            "\uFEFF",
+            "\u180E",
+            "\u2060",
+            "\u200D",
+            "\u0090",
+            "\u200C",
+            "\u200B",
+            "\u00AD",
+            "\u000C",
+            "\u2028",
+            "\r",
+            "\n",
+            "\t",
+        ])
         fun `throws exception if title is empty or blank or zero-width non-joiner`(value: String) {
             // when
             val result = assertThrows<IllegalArgumentException> {
-                Anime(value)
+                AnimeRaw(value)
             }
 
             // then
@@ -121,7 +154,7 @@ internal class AnimeKtTest {
             val expectedTitle = " Death Note "
 
             // when
-            val result = Anime(
+            val result = AnimeRaw(
                 _title = expectedTitle,
                 activateChecks = false,
             )
@@ -131,16 +164,48 @@ internal class AnimeKtTest {
         }
 
         @ParameterizedTest
-        @ValueSource(strings = ["", "  "])
-        fun `doesn't throw an exception if title is blank and activateChecks is set to false`(value: String) {
+        @ValueSource(strings = [
+            "",
+            "   ",
+            "\u00A0",
+            "\u202F",
+            "\u200A",
+            "\u205F",
+            "\u2000",
+            "\u2001",
+            "\u2002",
+            "\u2003",
+            "\u2004",
+            "\u2005",
+            "\u2006",
+            "\u2007",
+            "\u2008",
+            "\u2009",
+            "\uFEFF",
+            "\u180E",
+            "\u2060",
+            "\u200D",
+            "\u0090",
+            "\u200C",
+            "\u200B",
+            "\u00AD",
+            "\u000C",
+            "\u2028",
+            "\r",
+            "\n",
+            "\t",
+        ])
+        fun `throws an exception if title is blank even if activateChecks is set to false`(value: String) {
             // when
-            val result = Anime(
-                _title = value,
-                activateChecks = false,
-            )
+            val result = exceptionExpected<IllegalArgumentException> {
+                AnimeRaw(
+                    _title = value,
+                    activateChecks = false,
+                )
+            }
 
             // then
-            assertThat(result.title).isEqualTo(value)
+            assertThat(result).hasMessage("Title cannot be blank.")
         }
     }
 
@@ -150,7 +215,7 @@ internal class AnimeKtTest {
         @Test
         fun `ensure that you cannot directly modify the internal hashset`() {
             // given
-            val anime = Anime(
+            val anime = AnimeRaw(
                 _title = "test",
                 _synonyms = hashSetOf(
                     "other title1",
@@ -174,7 +239,7 @@ internal class AnimeKtTest {
                 val title = "Death Note"
 
                 // when
-                val result = Anime(
+                val result = AnimeRaw(
                     _title =  title,
                     _synonyms = hashSetOf(
                         title,
@@ -188,7 +253,7 @@ internal class AnimeKtTest {
             @Test
             fun `must not add blank synonym`() {
                 // when
-                val result = Anime(
+                val result = AnimeRaw(
                     _title = "Death Note",
                     _synonyms = hashSetOf(
                         "         ",
@@ -202,7 +267,7 @@ internal class AnimeKtTest {
             @Test
             fun `must not add zero-width non-joiner synonym`() {
                 // when
-                val result = Anime(
+                val result = AnimeRaw(
                     _title = "Death Note",
                     _synonyms = hashSetOf(
                         "\u200C",
@@ -219,7 +284,7 @@ internal class AnimeKtTest {
                 val synonym = "Caderno da Morte"
 
                 // when
-                val result = Anime(
+                val result = AnimeRaw(
                     _title = "Death Note",
                     _synonyms = hashSetOf(
                         synonym,
@@ -238,7 +303,7 @@ internal class AnimeKtTest {
                 val synonym = "Caderno da Morte"
 
                 // when
-                val result = Anime(
+                val result = AnimeRaw(
                     _title = "Death Note",
                     _synonyms = hashSetOf(
                         synonym,
@@ -258,7 +323,7 @@ internal class AnimeKtTest {
                 val title  =  "Death Note"
 
                 // when
-                val result = Anime(
+                val result = AnimeRaw(
                     _title = title,
                     _synonyms = hashSetOf(
                         title.uppercase(),
@@ -279,7 +344,7 @@ internal class AnimeKtTest {
                 val title  =  "Death Note"
 
                 // when
-                val result = Anime(
+                val result = AnimeRaw(
                     _title = "デスノート",
                     _synonyms = hashSetOf(
                         title,
@@ -303,7 +368,7 @@ internal class AnimeKtTest {
                 val expectedTitleTwo = "Made in Abyss"
 
                 // when
-                val result = Anime(
+                val result = AnimeRaw(
                     _title = "Title",
                     _synonyms = hashSetOf(
                         " $expectedTitleOne",
@@ -325,7 +390,7 @@ internal class AnimeKtTest {
                 val expectedTitleTwo = "Made in Abyss"
 
                 // when
-                val result = Anime(
+                val result = AnimeRaw(
                     _title = "Title",
                     _synonyms = hashSetOf(
                         "$expectedTitleOne ",
@@ -347,7 +412,7 @@ internal class AnimeKtTest {
                 val expectedTitleTwo = "Made in Abyss"
 
                 // when
-                val result = Anime(
+                val result = AnimeRaw(
                     _title = "Title",
                     _synonyms = hashSetOf(
                         "Death        Note",
@@ -369,7 +434,7 @@ internal class AnimeKtTest {
                 val expectedTitleTwo = "Made in Abyss"
 
                 // when
-                val result = Anime(
+                val result = AnimeRaw(
                     _title = "Title",
                     _synonyms = hashSetOf(
                         "Death\tNote",
@@ -391,7 +456,7 @@ internal class AnimeKtTest {
                 val expectedTitleTwo = "Made in Abyss"
 
                 // when
-                val result = Anime(
+                val result = AnimeRaw(
                     _title = "Title",
                     _synonyms = hashSetOf(
                         "Death\nNote",
@@ -413,7 +478,7 @@ internal class AnimeKtTest {
                 val expectedTitleTwo = "Made in Abyss"
 
                 // when
-                val result = Anime(
+                val result = AnimeRaw(
                     _title = "Title",
                     _synonyms = hashSetOf(
                         "Death\r\nNote",
@@ -435,7 +500,7 @@ internal class AnimeKtTest {
                 val expectedTitleTwo = "MadeinAbyss"
 
                 // when
-                val result = Anime(
+                val result = AnimeRaw(
                     _title = "Title",
                     _synonyms = hashSetOf(
                         "Death\u200CNote",
@@ -454,7 +519,7 @@ internal class AnimeKtTest {
             @ValueSource(strings = [" Death Note", "Death Note ", "  Death   Note  ", "", " ", "    ", "\u200C"])
             fun `doesn't fix synonyms if activateChecks is false`(value: String) {
                 // when
-                val obj = Anime(
+                val obj = AnimeRaw(
                     _title = "デスノート",
                     _synonyms = hashSetOf(value),
                     activateChecks = false,
@@ -473,7 +538,7 @@ internal class AnimeKtTest {
             @Test
             fun `must not add a synonym if it equals the title`() {
                 // given
-                val anime = Anime("Death Note")
+                val anime = AnimeRaw("Death Note")
 
                 // when
                 anime.addSynonyms(listOf(
@@ -487,7 +552,7 @@ internal class AnimeKtTest {
             @Test
             fun `must not add blank synonym`() {
                 // given
-                val anime = Anime("Death Note")
+                val anime = AnimeRaw("Death Note")
 
                 // when
                 anime.addSynonyms(listOf(
@@ -501,7 +566,7 @@ internal class AnimeKtTest {
             @Test
             fun `must not add zero-width non-joiner synonym`() {
                 // given
-                val anime = Anime("Death Note")
+                val anime = AnimeRaw("Death Note")
 
                 // when
                 anime.addSynonyms(listOf(
@@ -520,7 +585,7 @@ internal class AnimeKtTest {
                 val three = "Quaderno della Morte"
                 val four = "Sveska Smrti"
 
-                val anime = Anime("Death Note")
+                val anime = AnimeRaw("Death Note")
 
                 // when
                 anime.addSynonyms(listOf(
@@ -545,7 +610,7 @@ internal class AnimeKtTest {
                 val one = "Caderno da Morte"
                 val two = "DN"
 
-                val anime = Anime(
+                val anime = AnimeRaw(
                     _title = "Death Note",
                     _synonyms = hashSetOf(
                         two,
@@ -569,7 +634,7 @@ internal class AnimeKtTest {
             fun `synonym comparison to title is not case sensitive`() {
                 // given
                 val title  =  "Death Note"
-                val anime = Anime(title)
+                val anime = AnimeRaw(title)
 
                 // when
                 anime.addSynonyms(listOf(
@@ -588,7 +653,7 @@ internal class AnimeKtTest {
             fun `synonym comparison is not case sensitive`() {
                 // given
                 val title  =  "Death Note"
-                val anime = Anime(
+                val anime = AnimeRaw(
                     _title = "デスノート",
                     _synonyms = hashSetOf(
                         title.lowercase(),
@@ -612,7 +677,7 @@ internal class AnimeKtTest {
                 // given
                 val expectedTitleOne = "Death Note"
                 val expectedTitleTwo = "Made in Abyss"
-                val anime = Anime("Title")
+                val anime = AnimeRaw("Title")
 
                 // when
                 anime.addSynonyms(listOf(
@@ -632,7 +697,7 @@ internal class AnimeKtTest {
                 // given
                 val expectedTitleOne = "Death Note"
                 val expectedTitleTwo = "Made in Abyss"
-                val anime = Anime("Title")
+                val anime = AnimeRaw("Title")
 
                 // when
                 anime.addSynonyms(listOf(
@@ -652,7 +717,7 @@ internal class AnimeKtTest {
                 // given
                 val expectedTitleOne = "Death Note"
                 val expectedTitleTwo = "Made in Abyss"
-                val anime = Anime("Title")
+                val anime = AnimeRaw("Title")
 
                 // when
                 anime.addSynonyms(listOf(
@@ -672,7 +737,7 @@ internal class AnimeKtTest {
                 // given
                 val expectedTitleOne = "Death Note"
                 val expectedTitleTwo = "Made in Abyss"
-                val anime = Anime("Title")
+                val anime = AnimeRaw("Title")
 
                 // when
                 anime.addSynonyms(listOf(
@@ -692,7 +757,7 @@ internal class AnimeKtTest {
                 // given
                 val expectedTitleOne = "Death Note"
                 val expectedTitleTwo = "Made in Abyss"
-                val anime = Anime("Title")
+                val anime = AnimeRaw("Title")
 
                 // when
                 anime.addSynonyms(listOf(
@@ -712,7 +777,7 @@ internal class AnimeKtTest {
                 // given
                 val expectedTitleOne = "Death Note"
                 val expectedTitleTwo = "Made in Abyss"
-                val anime = Anime("Title")
+                val anime = AnimeRaw("Title")
 
                 // when
                 anime.addSynonyms(listOf(
@@ -732,7 +797,7 @@ internal class AnimeKtTest {
                 // given
                 val expectedTitleOne = "DeathNote"
                 val expectedTitleTwo = "MadeinAbyss"
-                val anime = Anime("Title")
+                val anime = AnimeRaw("Title")
 
                 // when
                 anime.addSynonyms(listOf(
@@ -754,7 +819,7 @@ internal class AnimeKtTest {
             @Test
             fun `must not add a synonym if it equals the title`() {
                 // given
-                val anime = Anime("Death Note")
+                val anime = AnimeRaw("Death Note")
 
                 // when
                 anime.addSynonyms(
@@ -768,7 +833,7 @@ internal class AnimeKtTest {
             @Test
             fun `must not add blank synonym`() {
                 // given
-                val anime = Anime("Death Note")
+                val anime = AnimeRaw("Death Note")
 
                 // when
                 anime.addSynonyms(
@@ -782,7 +847,7 @@ internal class AnimeKtTest {
             @Test
             fun `must not add zero-width non-joiner synonym`() {
                 // given
-                val anime = Anime("Death Note")
+                val anime = AnimeRaw("Death Note")
 
                 // when
                 anime.addSynonyms(
@@ -801,7 +866,7 @@ internal class AnimeKtTest {
                 val three = "Quaderno della Morte"
                 val four = "Sveska Smrti"
 
-                val anime = Anime("Death Note")
+                val anime = AnimeRaw("Death Note")
 
                 // when
                 anime.addSynonyms(
@@ -826,7 +891,7 @@ internal class AnimeKtTest {
                 val one = "Caderno da Morte"
                 val two = "DN"
 
-                val anime = Anime(
+                val anime = AnimeRaw(
                     _title = "Death Note",
                     _synonyms = hashSetOf(
                         two,
@@ -850,7 +915,7 @@ internal class AnimeKtTest {
             fun `synonym comparison to title is case sensitive`() {
                 // given
                 val title  =  "Death Note"
-                val anime = Anime(title)
+                val anime = AnimeRaw(title)
 
                 // when
                 anime.addSynonyms(
@@ -869,7 +934,7 @@ internal class AnimeKtTest {
             fun `synonym comparison is not case sensitive`() {
                 // given
                 val title  =  "Death Note"
-                val anime = Anime("デスノート")
+                val anime = AnimeRaw("デスノート")
 
                 // when
                 anime.addSynonyms(
@@ -891,7 +956,7 @@ internal class AnimeKtTest {
                 // given
                 val expectedTitleOne = "Death Note"
                 val expectedTitleTwo = "Made in Abyss"
-                val anime = Anime("Title")
+                val anime = AnimeRaw("Title")
 
                 // when
                 anime.addSynonyms(
@@ -911,7 +976,7 @@ internal class AnimeKtTest {
                 // given
                 val expectedTitleOne = "Death Note"
                 val expectedTitleTwo = "Made in Abyss"
-                val anime = Anime("Title")
+                val anime = AnimeRaw("Title")
 
                 // when
                 anime.addSynonyms(
@@ -931,7 +996,7 @@ internal class AnimeKtTest {
                 // given
                 val expectedTitleOne = "Death Note"
                 val expectedTitleTwo = "Made in Abyss"
-                val anime = Anime("Title")
+                val anime = AnimeRaw("Title")
 
                 // when
                 anime.addSynonyms(
@@ -951,7 +1016,7 @@ internal class AnimeKtTest {
                 // given
                 val expectedTitleOne = "Death Note"
                 val expectedTitleTwo = "Made in Abyss"
-                val anime = Anime("Title")
+                val anime = AnimeRaw("Title")
 
                 // when
                 anime.addSynonyms(
@@ -971,7 +1036,7 @@ internal class AnimeKtTest {
                 // given
                 val expectedTitleOne = "Death Note"
                 val expectedTitleTwo = "Made in Abyss"
-                val anime = Anime("Title")
+                val anime = AnimeRaw("Title")
 
                 // when
                 anime.addSynonyms(
@@ -991,7 +1056,7 @@ internal class AnimeKtTest {
                 // given
                 val expectedTitleOne = "Death Note"
                 val expectedTitleTwo = "Made in Abyss"
-                val anime = Anime("Title")
+                val anime = AnimeRaw("Title")
 
                 // when
                 anime.addSynonyms(
@@ -1011,7 +1076,7 @@ internal class AnimeKtTest {
                 // given
                 val expectedTitleOne = "DeathNote"
                 val expectedTitleTwo = "MadeinAbyss"
-                val anime = Anime("Title")
+                val anime = AnimeRaw("Title")
 
                 // when
                 anime.addSynonyms(
@@ -1034,7 +1099,7 @@ internal class AnimeKtTest {
         @Test
         fun `ensure that you cannot directly modify the internal hashset`() {
             // given
-            val anime = Anime(
+            val anime = AnimeRaw(
                 _title = "test",
                 _sources = hashSetOf(
                     URI("https://example.org/anime/1535"),
@@ -1058,7 +1123,7 @@ internal class AnimeKtTest {
                 val source = URI("https://myanimelist.net/anime/1535")
 
                 // when
-                val anime = Anime(
+                val anime = AnimeRaw(
                     _title =  "Death Note",
                     _sources = hashSetOf(
                         source,
@@ -1075,7 +1140,7 @@ internal class AnimeKtTest {
                 val source = URI("https://myanimelist.net/anime/1535")
 
                 // when
-                val result = Anime(
+                val result = AnimeRaw(
                     _title =  "Death Note",
                     _sources = hashSetOf(
                         source,
@@ -1093,7 +1158,7 @@ internal class AnimeKtTest {
                 val source = URI("https://myanimelist.net/anime/1535")
 
                 // when
-                val result = Anime(
+                val result = AnimeRaw(
                     _title =  "Death Note",
                     _sources = hashSetOf(
                         source,
@@ -1116,7 +1181,7 @@ internal class AnimeKtTest {
                 val source = URI("https://myanimelist.net/anime/1535")
 
                 // when
-                val result = Anime(
+                val result = AnimeRaw(
                     _title =  "Death Note",
                     _sources = hashSetOf(
                         source,
@@ -1144,7 +1209,7 @@ internal class AnimeKtTest {
             fun `add source`() {
                 // given
                 val source = URI("https://myanimelist.net/anime/1535")
-                val anime = Anime(
+                val anime = AnimeRaw(
                     _title =  "Death Note",
                 )
 
@@ -1163,7 +1228,7 @@ internal class AnimeKtTest {
             fun `cannot add duplicated source link`() {
                 // given
                 val source = URI("https://myanimelist.net/anime/1535")
-                val anime = Anime(
+                val anime = AnimeRaw(
                     _title =  "Death Note",
                     _sources = hashSetOf(
                         source,
@@ -1185,7 +1250,7 @@ internal class AnimeKtTest {
             fun `remove related anime if the same uri has been added to sources`() {
                 // given
                 val source = URI("https://myanimelist.net/anime/1535")
-                val anime = Anime(
+                val anime = AnimeRaw(
                     _title =  "Death Note",
                     _relatedAnime = hashSetOf(
                         source,
@@ -1212,7 +1277,7 @@ internal class AnimeKtTest {
             fun `add source`() {
                 // given
                 val source = URI("https://myanimelist.net/anime/1535")
-                val anime = Anime(
+                val anime = AnimeRaw(
                     _title =  "Death Note",
                 )
 
@@ -1231,7 +1296,7 @@ internal class AnimeKtTest {
             fun `cannot add duplicated source link`() {
                 // given
                 val source = URI("https://myanimelist.net/anime/1535")
-                val anime = Anime(
+                val anime = AnimeRaw(
                     _title =  "Death Note",
                     _sources = hashSetOf(
                         source,
@@ -1251,7 +1316,7 @@ internal class AnimeKtTest {
             fun `remove related anime if the same uri has been added to sources`() {
                 // given
                 val source = URI("https://myanimelist.net/anime/1535")
-                val anime = Anime(
+                val anime = AnimeRaw(
                     _title =  "Death Note",
                     _relatedAnime = hashSetOf(
                         source,
@@ -1276,7 +1341,7 @@ internal class AnimeKtTest {
             fun `successfully remove source`() {
                 // given
                 val source = URI("https://myanimelist.net/anime/2994")
-                val anime = Anime(
+                val anime = AnimeRaw(
                     _title =  "Death Note",
                     _sources = hashSetOf(
                         source,
@@ -1294,7 +1359,7 @@ internal class AnimeKtTest {
             fun `don't remove anything if the condition doesn't match`() {
                 // given
                 val source = URI("https://myanimelist.net/anime/2994")
-                val anime = Anime(
+                val anime = AnimeRaw(
                     _title =  "Death Note",
                     _sources = hashSetOf(
                         source,
@@ -1321,7 +1386,7 @@ internal class AnimeKtTest {
             @Test
             fun `ensure that you cannot directly modify the internal hashset`() {
                 // given
-                val anime = Anime(
+                val anime = AnimeRaw(
                     _title = "test",
                     _relatedAnime = hashSetOf(
                         URI("https://example.org/anime/1535"),
@@ -1342,7 +1407,7 @@ internal class AnimeKtTest {
                 val relatedAnime = URI("https://myanimelist.net/anime/2994")
 
                 // when
-                val result = Anime(
+                val result = AnimeRaw(
                     _title =  "Death Note",
                     _relatedAnime = hashSetOf(
                         relatedAnime,
@@ -1361,7 +1426,7 @@ internal class AnimeKtTest {
                 val relatedAnime = URI("https://myanimelist.net/anime/2994")
 
                 // when
-                val result = Anime(
+                val result = AnimeRaw(
                     _title =  "Death Note",
                     _relatedAnime = hashSetOf(
                         relatedAnime,
@@ -1381,7 +1446,7 @@ internal class AnimeKtTest {
                 val link = URI("https://myanimelist.net/anime/1535")
 
                 // when
-                val result = Anime(
+                val result = AnimeRaw(
                     _title =  "Death Note",
                     _sources = hashSetOf(
                         link,
@@ -1398,7 +1463,7 @@ internal class AnimeKtTest {
             @Test
             fun `doesn't remove sources from relatedAnimeif activateChecks is false`() {
                 // when
-                val obj = Anime(
+                val obj = AnimeRaw(
                     _title = "Clannad: After Story - Mou Hitotsu no Sekai, Kyou-hen",
                     _sources = hashSetOf(
                         URI("https://myanimelist.net/anime/6351"),
@@ -1422,7 +1487,7 @@ internal class AnimeKtTest {
             fun `add related anime`() {
                 // given
                 val relatedAnime = URI("https://myanimelist.net/anime/2994")
-                val anime = Anime(
+                val anime = AnimeRaw(
                     _title =  "Death Note",
                 )
 
@@ -1441,7 +1506,7 @@ internal class AnimeKtTest {
             fun `cannot add duplicated link for related anime`() {
                 // given
                 val relatedAnime = URI("https://myanimelist.net/anime/2994")
-                val anime = Anime(
+                val anime = AnimeRaw(
                     _title =  "Death Note",
                     _relatedAnime = hashSetOf(
                         relatedAnime,
@@ -1463,7 +1528,7 @@ internal class AnimeKtTest {
             fun `cannot add a related anime if the links is already part of the sources`() {
                 // given
                 val link = URI("https://myanimelist.net/anime/1535")
-                val anime = Anime(
+                val anime = AnimeRaw(
                     _title =  "Death Note",
                     _sources = hashSetOf(
                         link,
@@ -1487,7 +1552,7 @@ internal class AnimeKtTest {
             fun `add related anime`() {
                 // given
                 val relatedAnime = URI("https://myanimelist.net/anime/2994")
-                val anime = Anime(
+                val anime = AnimeRaw(
                     _title =  "Death Note",
                 )
 
@@ -1506,7 +1571,7 @@ internal class AnimeKtTest {
             fun `cannot add duplicated link for related anime`() {
                 // given
                 val relatedAnime = URI("https://myanimelist.net/anime/2994")
-                val anime = Anime(
+                val anime = AnimeRaw(
                     _title =  "Death Note",
                     _relatedAnime = hashSetOf(
                         relatedAnime,
@@ -1528,7 +1593,7 @@ internal class AnimeKtTest {
             fun `cannot add a related anime if the links is already part of the sources`() {
                 // given
                 val link = URI("https://myanimelist.net/anime/1535")
-                val anime = Anime(
+                val anime = AnimeRaw(
                     _title =  "Death Note",
                     _sources = hashSetOf(
                         link,
@@ -1550,7 +1615,7 @@ internal class AnimeKtTest {
             fun `successfully remove related anime`() {
                 // given
                 val relatedAnime = URI("https://myanimelist.net/anime/2994")
-                val anime = Anime(
+                val anime = AnimeRaw(
                     _title =  "Death Note",
                     _relatedAnime = hashSetOf(
                         relatedAnime,
@@ -1568,7 +1633,7 @@ internal class AnimeKtTest {
             fun `don't remove anything if condition doesn't match`() {
                 // given
                 val relatedAnime = URI("https://myanimelist.net/anime/2994")
-                val anime = Anime(
+                val anime = AnimeRaw(
                     _title =  "Death Note",
                     _relatedAnime = hashSetOf(
                         relatedAnime,
@@ -1593,11 +1658,11 @@ internal class AnimeKtTest {
         fun `is equal if titles are the same`() {
             // given
             val title =  "Death Note"
-            val a = Anime(
+            val a = AnimeRaw(
                 _title = title,
             )
 
-            val b = Anime(
+            val b = AnimeRaw(
                 _title = title,
             )
 
@@ -1612,11 +1677,11 @@ internal class AnimeKtTest {
         @Test
         fun `is not equal if titles are different`() {
             // given
-            val a = Anime(
+            val a = AnimeRaw(
                 _title =  "Death Note",
             )
 
-            val b = Anime(
+            val b = AnimeRaw(
                 _title =  "デスノート",
             )
 
@@ -1632,14 +1697,14 @@ internal class AnimeKtTest {
         fun `is equal if source links are the same`() {
             // given
             val title =  "Death Note"
-            val a = Anime(
+            val a = AnimeRaw(
                 _title = title,
                 _sources = hashSetOf(
                     URI("https://myanimelist.net/anime/1535"),
                 ),
             )
 
-            val b = Anime(
+            val b = AnimeRaw(
                 _title = title,
                 _sources = hashSetOf(
                     URI("https://myanimelist.net/anime/1535"),
@@ -1658,14 +1723,14 @@ internal class AnimeKtTest {
         fun `is not equal if source links are different`() {
             // given
             val title  =  "Death Note"
-            val a = Anime(
+            val a = AnimeRaw(
                 _title =  title,
                 _sources = hashSetOf(
                     URI("https://myanimelist.net/anime/1535"),
                 ),
             )
 
-            val b = Anime(
+            val b = AnimeRaw(
                 _title =  title,
                 _sources = hashSetOf(
                     URI("https://myanimelist.net/anime/1535"),
@@ -1685,14 +1750,14 @@ internal class AnimeKtTest {
         fun `is equal if synonyms are the same`() {
             // given
             val title  =  "Death Note"
-            val a = Anime(
+            val a = AnimeRaw(
                 _title =  title,
                 _synonyms = hashSetOf(
                     "Caderno da Morte",
                 ),
             )
 
-            val b = Anime(
+            val b = AnimeRaw(
                 _title =  title,
                 _synonyms = hashSetOf(
                     "Caderno da Morte",
@@ -1711,14 +1776,14 @@ internal class AnimeKtTest {
         fun `is not equal if synonyms are different`() {
             // given
             val title  =  "Death Note"
-            val a = Anime(
+            val a = AnimeRaw(
                 _title =  title,
                 _synonyms = hashSetOf(
                     "Caderno da Morte",
                 ),
             )
 
-            val b = Anime(
+            val b = AnimeRaw(
                 _title =  title,
                 _synonyms = hashSetOf(
                     "Caderno da Morte",
@@ -1738,12 +1803,12 @@ internal class AnimeKtTest {
         fun `is equal if types are the same`() {
             // given
             val title =  "Death Note"
-            val a = Anime(
+            val a = AnimeRaw(
                 _title = title,
                 type = TV,
             )
 
-            val b = Anime(
+            val b = AnimeRaw(
                 _title = title,
                 type = TV,
             )
@@ -1760,12 +1825,12 @@ internal class AnimeKtTest {
         fun `is not equal if types are different`() {
             // given
             val title  =  "Death Note"
-            val a = Anime(
+            val a = AnimeRaw(
                 _title =  title,
                 type = TV,
             )
 
-            val b = Anime(
+            val b = AnimeRaw(
                 _title =  title,
                 type = MOVIE,
             )
@@ -1782,12 +1847,12 @@ internal class AnimeKtTest {
         fun `is equal if episodes are the same`() {
             // given
             val title =  "Death Note"
-            val a = Anime(
+            val a = AnimeRaw(
                 _title = title,
                 episodes = 37,
             )
 
-            val b = Anime(
+            val b = AnimeRaw(
                 _title = title,
                 episodes = 37,
             )
@@ -1804,12 +1869,12 @@ internal class AnimeKtTest {
         fun `is not equal if episodes are different`() {
             // given
             val title  =  "Death Note"
-            val a = Anime(
+            val a = AnimeRaw(
                 _title =  title,
                 episodes = 37,
             )
 
-            val b = Anime(
+            val b = AnimeRaw(
                 _title =  title,
                 episodes = 1,
             )
@@ -1826,12 +1891,12 @@ internal class AnimeKtTest {
         fun `is equal if status is the same`() {
             // given
             val title =  "Death Note"
-            val a = Anime(
+            val a = AnimeRaw(
                 _title = title,
                 status = FINISHED,
             )
 
-            val b = Anime(
+            val b = AnimeRaw(
                 _title = title,
                 status = FINISHED,
             )
@@ -1848,14 +1913,14 @@ internal class AnimeKtTest {
         fun `is not equal if status is different`() {
             // given
             val title  =  "Death Note"
-            val a = Anime(
+            val a = AnimeRaw(
                 _title =  title,
                 status = FINISHED,
             )
 
-            val b = Anime(
+            val b = AnimeRaw(
                 _title =  title,
-                status = UNKNOWN,
+                status = UNKNOWN_STATUS,
             )
 
             // when
@@ -1870,7 +1935,7 @@ internal class AnimeKtTest {
         fun `is equal if animeSeasons are the same`() {
             // given
             val title =  "Death Note"
-            val a = Anime(
+            val a = AnimeRaw(
                 _title = title,
                 animeSeason = AnimeSeason(
                     season = FALL,
@@ -1878,7 +1943,7 @@ internal class AnimeKtTest {
                 ),
             )
 
-            val b = Anime(
+            val b = AnimeRaw(
                 _title = title,
                 animeSeason = AnimeSeason(
                     season = FALL,
@@ -1898,7 +1963,7 @@ internal class AnimeKtTest {
         fun `is not equal if animeSeasons are different`() {
             // given
             val title  =  "Death Note"
-            val a = Anime(
+            val a = AnimeRaw(
                 _title =  title,
                 animeSeason = AnimeSeason(
                     season = UNDEFINED,
@@ -1906,7 +1971,7 @@ internal class AnimeKtTest {
                 ),
             )
 
-            val b = Anime(
+            val b = AnimeRaw(
                 _title =  title,
                 animeSeason = AnimeSeason(
                     season = FALL,
@@ -1926,12 +1991,12 @@ internal class AnimeKtTest {
         fun `is equal if pictures are the same`() {
             // given
             val title =  "Death Note"
-            val a = Anime(
+            val a = AnimeRaw(
                 _title = title,
                 picture = URI("https://example.org/pic/1.png"),
             )
 
-            val b = Anime(
+            val b = AnimeRaw(
                 _title = title,
                 picture = URI("https://example.org/pic/1.png"),
             )
@@ -1948,12 +2013,12 @@ internal class AnimeKtTest {
         fun `is not equal if pictures are different`() {
             // given
             val title  =  "Death Note"
-            val a = Anime(
+            val a = AnimeRaw(
                 _title =  title,
                 picture = URI("https://example.org/pictures/1.png"),
             )
 
-            val b = Anime(
+            val b = AnimeRaw(
                 _title =  title,
                 picture = URI("https://example.org/pic/1.png"),
             )
@@ -1970,12 +2035,12 @@ internal class AnimeKtTest {
         fun `is equal if thumbnail are the same`() {
             // given
             val title =  "Death Note"
-            val a = Anime(
+            val a = AnimeRaw(
                 _title = title,
                 thumbnail = URI("https://example.org/thumbnail/1.png"),
             )
 
-            val b = Anime(
+            val b = AnimeRaw(
                 _title = title,
                 thumbnail = URI("https://example.org/thumbnail/1.png"),
             )
@@ -1992,12 +2057,12 @@ internal class AnimeKtTest {
         fun `is not equal if thumbnail are different`() {
             // given
             val title  =  "Death Note"
-            val a = Anime(
+            val a = AnimeRaw(
                 _title =  title,
                 thumbnail = URI("https://example.org/thumbnails/1.png"),
             )
 
-            val b = Anime(
+            val b = AnimeRaw(
                 _title =  title,
                 thumbnail = URI("https://example.org/thumbnail/1.png"),
             )
@@ -2014,12 +2079,12 @@ internal class AnimeKtTest {
         fun `is equal if durations are the same`() {
             // given
             val title =  "Death Note"
-            val a = Anime(
+            val a = AnimeRaw(
                 _title = title,
                 duration = Duration(20, MINUTES),
             )
 
-            val b = Anime(
+            val b = AnimeRaw(
                 _title = title,
                 duration = Duration(20, MINUTES),
             )
@@ -2036,12 +2101,12 @@ internal class AnimeKtTest {
         fun `is not equal if durations are different`() {
             // given
             val title  =  "Death Note"
-            val a = Anime(
+            val a = AnimeRaw(
                 _title =  title,
                 duration = Duration(21, MINUTES),
             )
 
-            val b = Anime(
+            val b = AnimeRaw(
                 _title =  title,
                 duration = Duration(20, MINUTES),
             )
@@ -2058,14 +2123,14 @@ internal class AnimeKtTest {
         fun `is equal if related anime are the same`() {
             // given
             val title  =  "Death Note"
-            val a = Anime(
+            val a = AnimeRaw(
                 _title =  title,
                 _relatedAnime = hashSetOf(
                     URI("https://myanimelist.net/anime/2994"),
                 ),
             )
 
-            val b = Anime(
+            val b = AnimeRaw(
                 _title =  title,
                 _relatedAnime = hashSetOf(
                     URI("https://myanimelist.net/anime/2994"),
@@ -2084,14 +2149,14 @@ internal class AnimeKtTest {
         fun `is not equal if related anime are different`() {
             // given
             val title  =  "Death Note"
-            val a = Anime(
+            val a = AnimeRaw(
                 _title =  title,
                 _relatedAnime = hashSetOf(
                     URI("https://myanimelist.net/anime/2994"),
                 ),
             )
 
-            val b = Anime(
+            val b = AnimeRaw(
                 _title =  title,
                 _relatedAnime = hashSetOf(
                     URI("https://myanimelist.net/anime/2994"),
@@ -2111,7 +2176,7 @@ internal class AnimeKtTest {
         fun `is equal if tags are the same`() {
             // given
             val title  =  "Death Note"
-            val a = Anime(
+            val a = AnimeRaw(
                 _title =  title,
                 _tags = hashSetOf(
                     "comedy",
@@ -2119,7 +2184,7 @@ internal class AnimeKtTest {
                 ),
             )
 
-            val b = Anime(
+            val b = AnimeRaw(
                 _title =  title,
                 _tags = hashSetOf(
                     "slice of life",
@@ -2139,14 +2204,14 @@ internal class AnimeKtTest {
         fun `is not equal if tags are different`() {
             // given
             val title  =  "Death Note"
-            val a = Anime(
+            val a = AnimeRaw(
                 _title =  title,
                 _tags = hashSetOf(
                     "slice of life",
                 ),
             )
 
-            val b = Anime(
+            val b = AnimeRaw(
                 _title =  title,
                 _tags = hashSetOf(
                     "slice of life",
@@ -2166,7 +2231,7 @@ internal class AnimeKtTest {
         fun `is not equal if the other object is of a different type`() {
             // given
             val title  =  "Death Note"
-            val a = Anime(
+            val a = AnimeRaw(
                 _title =  title,
                 _tags = hashSetOf(
                     "slice of life",
@@ -2187,11 +2252,11 @@ internal class AnimeKtTest {
         @Test
         fun `use this number of episodes` () {
             // given
-            val anime = Anime(
+            val anime = AnimeRaw(
                 _title = "this",
                 episodes = 12,
             )
-            val other = Anime(
+            val other = AnimeRaw(
                 _title = "other",
                 episodes = 13,
             )
@@ -2206,11 +2271,11 @@ internal class AnimeKtTest {
         @Test
         fun `use other's number of episodes if this number of episodes is 0` () {
             // given
-            val anime = Anime(
+            val anime = AnimeRaw(
                 _title = "this",
                 episodes = 0,
             )
-            val other = Anime(
+            val other = AnimeRaw(
                 _title = "other",
                 episodes = 13,
             )
@@ -2225,11 +2290,11 @@ internal class AnimeKtTest {
         @Test
         fun `use this type` () {
             // given
-            val anime = Anime(
+            val anime = AnimeRaw(
                 _title = "this",
                 type = MOVIE,
             )
-            val other = Anime(
+            val other = AnimeRaw(
                 _title = "other",
                 type = SPECIAL,
             )
@@ -2244,11 +2309,11 @@ internal class AnimeKtTest {
         @Test
         fun `use other's type if this type is UNKNOWN` () {
             // given
-            val anime = Anime(
+            val anime = AnimeRaw(
                 _title = "this",
-                type = Anime.Type.UNKNOWN,
+                type = UNKNOWN_TYPE,
             )
-            val other = Anime(
+            val other = AnimeRaw(
                 _title = "other",
                 type = SPECIAL,
             )
@@ -2263,11 +2328,11 @@ internal class AnimeKtTest {
         @Test
         fun `use this status` () {
             // given
-            val anime = Anime(
+            val anime = AnimeRaw(
                 _title = "this",
                 status = FINISHED,
             )
-            val other = Anime(
+            val other = AnimeRaw(
                 _title = "other",
                 status = ONGOING,
             )
@@ -2282,11 +2347,11 @@ internal class AnimeKtTest {
         @Test
         fun `use other's status if this status is UNKNOWN` () {
             // given
-            val anime = Anime(
+            val anime = AnimeRaw(
                 _title = "this",
-                status = UNKNOWN,
+                status = UNKNOWN_STATUS,
             )
-            val other = Anime(
+            val other = AnimeRaw(
                 _title = "other",
                 status = ONGOING,
             )
@@ -2301,11 +2366,11 @@ internal class AnimeKtTest {
         @Test
         fun `use this duration` () {
             // given
-            val anime = Anime(
+            val anime = AnimeRaw(
                 _title = "this",
                 duration = Duration(120, MINUTES),
             )
-            val other = Anime(
+            val other = AnimeRaw(
                 _title = "other",
                 duration = Duration(125, MINUTES),
             )
@@ -2320,11 +2385,11 @@ internal class AnimeKtTest {
         @Test
         fun `use other's duration if this duration is UNKNOWN` () {
             // given
-            val anime = Anime(
+            val anime = AnimeRaw(
                 _title = "this",
-                duration = Duration.UNKNOWN,
+                duration = UNKNOWN_DURATION,
             )
-            val other = Anime(
+            val other = AnimeRaw(
                 _title = "other",
                 duration = Duration(125, MINUTES),
             )
@@ -2339,14 +2404,14 @@ internal class AnimeKtTest {
         @Test
         fun `use this season` () {
             // given
-            val anime = Anime(
+            val anime = AnimeRaw(
                 _title = "this",
                 animeSeason = AnimeSeason(
                     season = FALL,
                     year = 2010,
                 ),
             )
-            val other = Anime(
+            val other = AnimeRaw(
                 _title = "other",
                 animeSeason = AnimeSeason(
                     season = WINTER,
@@ -2365,14 +2430,14 @@ internal class AnimeKtTest {
         @Test
         fun `use other's season if this season is UNDEFINED` () {
             // given
-            val anime = Anime(
+            val anime = AnimeRaw(
                 _title = "this",
                 animeSeason = AnimeSeason(
                     season = UNDEFINED,
                     year = 2010,
                 ),
             )
-            val other = Anime(
+            val other = AnimeRaw(
                 _title = "other",
                 animeSeason = AnimeSeason(
                     season = WINTER,
@@ -2391,14 +2456,14 @@ internal class AnimeKtTest {
         @Test
         fun `use this year` () {
             // given
-            val anime = Anime(
+            val anime = AnimeRaw(
                 _title = "this",
                 animeSeason = AnimeSeason(
                     season = FALL,
                     year = 2010,
                 ),
             )
-            val other = Anime(
+            val other = AnimeRaw(
                 _title = "other",
                 animeSeason = AnimeSeason(
                     season = WINTER,
@@ -2417,14 +2482,14 @@ internal class AnimeKtTest {
         @Test
         fun `use other's year if this year is UNKNOWN` () {
             // given
-            val anime = Anime(
+            val anime = AnimeRaw(
                 _title = "this",
                 animeSeason = AnimeSeason(
                     season = FALL,
                     year = UNKNOWN_YEAR,
                 ),
             )
-            val other = Anime(
+            val other = AnimeRaw(
                 _title = "other",
                 animeSeason = AnimeSeason(
                     season = WINTER,
@@ -2443,14 +2508,14 @@ internal class AnimeKtTest {
         @Test
         fun `add title and synonyms of the other anime to this anime's synonyms`() {
             // given
-            val anime = Anime(
+            val anime = AnimeRaw(
                 _title =  "Death Note",
                 _synonyms = hashSetOf(
                     "Caderno da Morte",
                 ),
             )
 
-            val other = Anime(
+            val other = AnimeRaw(
                 _title =  "DEATH NOTE",
                 _synonyms = hashSetOf(
                     "Caderno da Morte",
@@ -2473,7 +2538,7 @@ internal class AnimeKtTest {
         @Test
         fun `merge related anime and source links`() {
             // given
-            val anime = Anime(
+            val anime = AnimeRaw(
                 _title =  "Death Note",
                 _sources = hashSetOf(
                     URI("https://myanimelist.net/anime/1535"),
@@ -2483,7 +2548,7 @@ internal class AnimeKtTest {
                 ),
             )
 
-            val other = Anime(
+            val other = AnimeRaw(
                 _title =  "Death Note",
                 _sources = hashSetOf(
                     URI("https://anidb.net/anime/4563"),
@@ -2512,7 +2577,7 @@ internal class AnimeKtTest {
         @Test
         fun `merge tags`() {
             // given
-            val anime = Anime(
+            val anime = AnimeRaw(
                 _title =  "Death Note",
                 _tags = hashSetOf(
                     "Psychological",
@@ -2521,7 +2586,7 @@ internal class AnimeKtTest {
                 ),
             )
 
-            val other = Anime(
+            val other = AnimeRaw(
                 _title =  "Death Note",
                 _tags = hashSetOf(
                     "Mystery",
@@ -2556,7 +2621,7 @@ internal class AnimeKtTest {
             @Test
             fun `ensure that you cannot directly modify the internal hashset`() {
                 // given
-                val anime = Anime(
+                val anime = AnimeRaw(
                     _title = "test",
                     _tags = hashSetOf(
                         "thriller",
@@ -2577,7 +2642,7 @@ internal class AnimeKtTest {
                 val tag = "EXAMPLE"
 
                 // when
-                val result = Anime(
+                val result = AnimeRaw(
                     _title = "Test",
                     _tags = hashSetOf(
                         tag,
@@ -2596,7 +2661,7 @@ internal class AnimeKtTest {
                 val expectedTag = "example"
 
                 // when
-                val result = Anime(
+                val result = AnimeRaw(
                     _title = "Test",
                     _tags = hashSetOf(
                         " $expectedTag",
@@ -2615,7 +2680,7 @@ internal class AnimeKtTest {
                 val expectedTag = "example"
 
                 // when
-                val result = Anime(
+                val result = AnimeRaw(
                     _title = "Test",
                     _tags = hashSetOf(
                         "$expectedTag ",
@@ -2634,7 +2699,7 @@ internal class AnimeKtTest {
                 val expectedTag = "slice of life"
 
                 // when
-                val result = Anime(
+                val result = AnimeRaw(
                     _title = "Test",
                     _tags = hashSetOf(
                         "slice     of      life",
@@ -2653,7 +2718,7 @@ internal class AnimeKtTest {
                 val expectedTag = "slice of life"
 
                 // when
-                val result = Anime(
+                val result = AnimeRaw(
                     _title = "Test",
                     _tags = hashSetOf(
                         "slice\tof\tlife",
@@ -2672,7 +2737,7 @@ internal class AnimeKtTest {
                 val expectedTag = "slice of life"
 
                 // when
-                val result = Anime(
+                val result = AnimeRaw(
                     _title = "Test",
                     _tags = hashSetOf(
                         "slice\nof\nlife",
@@ -2691,7 +2756,7 @@ internal class AnimeKtTest {
                 val expectedTag = "slice of life"
 
                 // when
-                val result = Anime(
+                val result = AnimeRaw(
                     _title = "Test",
                     _tags = hashSetOf(
                         "slice\r\nof\r\nlife",
@@ -2707,7 +2772,7 @@ internal class AnimeKtTest {
             @Test
             fun `don't add tag if it's an empty string`() {
                 // when
-                val result = Anime(
+                val result = AnimeRaw(
                     _title = "Test",
                     _tags = hashSetOf(
                         EMPTY,
@@ -2721,7 +2786,7 @@ internal class AnimeKtTest {
             @Test
             fun `don't add tag if it's a blank string`() {
                 // when
-                val result = Anime(
+                val result = AnimeRaw(
                     _title = "Test",
                     _tags = hashSetOf(
                         "     ",
@@ -2739,7 +2804,7 @@ internal class AnimeKtTest {
                 val tag2 = "before the other"
 
                 // when
-                val result = Anime(
+                val result = AnimeRaw(
                     _title = "Test",
                     _tags = hashSetOf(
                         tag2,
@@ -2761,7 +2826,7 @@ internal class AnimeKtTest {
             @ValueSource(strings = [" Death Note", "Death Note ", "  Death   Note  ", "DEATH NOTE", "", " ", "    ", "\u200C"])
             fun `doesn't fix tags if activateChecks is false`(value: String) {
                 // when
-                val obj = Anime(
+                val obj = AnimeRaw(
                     _title = "デスノート",
                     _tags = hashSetOf(
                         value,
@@ -2783,7 +2848,7 @@ internal class AnimeKtTest {
             fun `tags added are set to lower case`() {
                 // given
                 val tag = "EXAMPLE"
-                val anime = Anime("Test")
+                val anime = AnimeRaw("Test")
 
                 // when
                 anime.addTags(listOf(
@@ -2800,7 +2865,7 @@ internal class AnimeKtTest {
             fun `remove leading whitespace from title`() {
                 // given
                 val expectedTag = "example"
-                val anime = Anime("Test")
+                val anime = AnimeRaw("Test")
 
                 // when
                 anime.addTags(listOf(
@@ -2817,7 +2882,7 @@ internal class AnimeKtTest {
             fun `remove tailing whitespace from title`() {
                 // given
                 val expectedTag = "example"
-                val anime = Anime("Test")
+                val anime = AnimeRaw("Test")
 
                 // when
                 anime.addTags(listOf(
@@ -2834,7 +2899,7 @@ internal class AnimeKtTest {
             fun `replace multiple whitespaces with a single whitespace in title`() {
                 // given
                 val expectedTag = "slice of life"
-                val anime = Anime("Test")
+                val anime = AnimeRaw("Test")
 
                 // when
                 anime.addTags(listOf(
@@ -2851,7 +2916,7 @@ internal class AnimeKtTest {
             fun `replace tab character with whitespace in title`() {
                 // given
                 val expectedTag = "slice of life"
-                val anime = Anime("Test")
+                val anime = AnimeRaw("Test")
 
                 // when
                 anime.addTags(listOf(
@@ -2868,7 +2933,7 @@ internal class AnimeKtTest {
             fun `replace line feed character with whitespace in title`() {
                 // given
                 val expectedTag = "slice of life"
-                val anime = Anime("Test")
+                val anime = AnimeRaw("Test")
 
                 // when
                 anime.addTags(listOf(
@@ -2885,7 +2950,7 @@ internal class AnimeKtTest {
             fun `replace carriage return line feed with whitespace in title`() {
                 // given
                 val expectedTag = "slice of life"
-                val anime = Anime("Test")
+                val anime = AnimeRaw("Test")
 
                 // when
                 anime.addTags(listOf(
@@ -2901,7 +2966,7 @@ internal class AnimeKtTest {
             @Test
             fun `don't add tag if it's an empty string`() {
                 // given
-                val anime = Anime("Test")
+                val anime = AnimeRaw("Test")
 
                 // when
                 anime.addTags(listOf(
@@ -2915,7 +2980,7 @@ internal class AnimeKtTest {
             @Test
             fun `don't add tag if it's a blank string`() {
                 // given
-                val anime = Anime("Test")
+                val anime = AnimeRaw("Test")
 
                 // when
                 anime.addTags(listOf(
@@ -2931,7 +2996,7 @@ internal class AnimeKtTest {
                 // given
                 val tag1 = "a tag"
                 val tag2 = "before the other"
-                val anime = Anime("Test")
+                val anime = AnimeRaw("Test")
 
                 // when
                 anime.addTags(listOf(
@@ -2957,7 +3022,7 @@ internal class AnimeKtTest {
             fun `tags added are set to lower case`() {
                 // given
                 val tag = "EXAMPLE"
-                val anime = Anime("Test")
+                val anime = AnimeRaw("Test")
 
                 // when
                 anime.addTags(tag)
@@ -2972,7 +3037,7 @@ internal class AnimeKtTest {
             fun `remove leading whitespace from title`() {
                 // given
                 val expectedTag = "example"
-                val anime = Anime("Test")
+                val anime = AnimeRaw("Test")
 
                 // when
                 anime.addTags(
@@ -2989,7 +3054,7 @@ internal class AnimeKtTest {
             fun `remove tailing whitespace from title`() {
                 // given
                 val expectedTag = "example"
-                val anime = Anime("Test")
+                val anime = AnimeRaw("Test")
 
                 // when
                 anime.addTags(
@@ -3006,7 +3071,7 @@ internal class AnimeKtTest {
             fun `replace multiple whitespaces with a single whitespace in title`() {
                 // given
                 val expectedTag = "slice of life"
-                val anime = Anime("Test")
+                val anime = AnimeRaw("Test")
 
                 // when
                 anime.addTags(
@@ -3023,7 +3088,7 @@ internal class AnimeKtTest {
             fun `replace tab character with whitespace in title`() {
                 // given
                 val expectedTag = "slice of life"
-                val anime = Anime("Test")
+                val anime = AnimeRaw("Test")
 
                 // when
                 anime.addTags(
@@ -3040,7 +3105,7 @@ internal class AnimeKtTest {
             fun `replace line feed character with whitespace in title`() {
                 // given
                 val expectedTag = "slice of life"
-                val anime = Anime("Test")
+                val anime = AnimeRaw("Test")
 
                 // when
                 anime.addTags(
@@ -3057,7 +3122,7 @@ internal class AnimeKtTest {
             fun `replace carriage return line feed with whitespace in title`() {
                 // given
                 val expectedTag = "slice of life"
-                val anime = Anime("Test")
+                val anime = AnimeRaw("Test")
 
                 // when
                 anime.addTags(
@@ -3073,7 +3138,7 @@ internal class AnimeKtTest {
             @Test
             fun `don't add tag if it's an empty string`() {
                 // given
-                val anime = Anime("Test")
+                val anime = AnimeRaw("Test")
 
                 // when
                 anime.addTags(
@@ -3087,7 +3152,7 @@ internal class AnimeKtTest {
             @Test
             fun `don't add tag if it's a blank string`() {
                 // given
-                val anime = Anime("Test")
+                val anime = AnimeRaw("Test")
 
                 // when
                 anime.addTags(
@@ -3103,7 +3168,7 @@ internal class AnimeKtTest {
                 // given
                 val tag1 = "a tag"
                 val tag2 = "before the other"
-                val anime = Anime("Test")
+                val anime = AnimeRaw("Test")
 
                 // when
                 anime.addTags(
@@ -3132,7 +3197,7 @@ internal class AnimeKtTest {
             val expectedDuration = Duration(0, SECONDS)
 
             // when
-            val result = Anime("Death Note")
+            val result = AnimeRaw("Death Note")
 
             // then
             assertThat(result.duration).isEqualTo(expectedDuration)
@@ -3195,7 +3260,7 @@ internal class AnimeKtTest {
         @Test
         fun `default year is 0 indicating unknown and season is undefined`() {
             // when
-            val result = Anime("Death Note")
+            val result = AnimeRaw("Death Note")
 
             // then
             assertThat(result.animeSeason.year).isZero()
@@ -3210,7 +3275,7 @@ internal class AnimeKtTest {
         @Test
         fun `default season if nothing has been set`() {
             // when
-            val result = Anime("test")
+            val result = AnimeRaw("test")
 
             // then
             assertThat(result.animeSeason.season).isEqualTo(UNDEFINED)
@@ -3224,7 +3289,7 @@ internal class AnimeKtTest {
         @Test
         fun `create formatted string listing all properties`() {
             // given
-            val anime = Anime(
+            val anime = AnimeRaw(
                 _title = "Clannad: After Story - Mou Hitotsu no Sekai, Kyou-hen",
                 _sources = hashSetOf(
                     URI("https://myanimelist.net/anime/6351"),
@@ -3288,7 +3353,7 @@ internal class AnimeKtTest {
         @Test
         fun `default value is 0`() {
             // when
-            val result = Anime("test")
+            val result = AnimeRaw("test")
 
             // then
             assertThat(result.episodes).isZero()
@@ -3298,7 +3363,7 @@ internal class AnimeKtTest {
         fun `throws exception if number of episodes is negative`() {
             // when
             val result = assertThrows<IllegalArgumentException> {
-                Anime(
+                AnimeRaw(
                     _title = "test",
                     episodes = -1,
                 )
@@ -3311,7 +3376,7 @@ internal class AnimeKtTest {
         @Test
         fun `doesn't throw an exception if number of episodes is negative and activateChecks is false`() {
             // when
-            val result = Anime(
+            val result = AnimeRaw(
                 _title = "test",
                 episodes = -1,
                 activateChecks = false,
@@ -3329,33 +3394,15 @@ internal class AnimeKtTest {
         inner class TitleTests {
 
             @ParameterizedTest
-            @ValueSource(strings = ["", " ", "    ", "\u200C"])
-            fun `throws an exception if title is blank`(value: String) {
-                // given
-                val obj = Anime(
-                    _title = value,
-                    activateChecks = false,
-                )
-
-                // when
-                val result = exceptionExpected<IllegalArgumentException> {
-                    obj.performChecks()
-                }
-
-                // then
-                assertThat(result).hasMessage("Title cannot be blank.")
-            }
-
-            @ParameterizedTest
             @ValueSource(strings = [" Death Note", "Death Note ", "  Death   Note  "])
             fun `fixes title`(value: String) {
                 // given
-                val obj = Anime(
+                val obj = AnimeRaw(
                     _title = value,
                     activateChecks = false,
                 )
 
-                val expected = Anime(
+                val expected = AnimeRaw(
                     _title = "Death Note",
                     activateChecks = false,
                 )
@@ -3373,7 +3420,7 @@ internal class AnimeKtTest {
 
             @Test
             fun `throws exception if number of episodes is negative`() {
-                val anime = Anime(
+                val anime = AnimeRaw(
                     _title = "test",
                     episodes = -1,
                     activateChecks = false,
@@ -3395,8 +3442,8 @@ internal class AnimeKtTest {
             @Test
             fun `removes sources from relatedAnime`() {
                 // given
-                val adapter = AnimeAdapter().indent("  ")
-                val obj = Anime(
+                val adapter = AnimeRawAdapter().indent("  ")
+                val obj = AnimeRaw(
                     _title = "Clannad: After Story - Mou Hitotsu no Sekai, Kyou-hen",
                     _sources = hashSetOf(
                         URI("https://myanimelist.net/anime/6351"),
@@ -3443,7 +3490,7 @@ internal class AnimeKtTest {
             @ValueSource(strings = [" Death Note", "Death Note ", "  Death   Note  "])
             fun `fixes synonyms`(value: String) {
                 // given
-                val obj = Anime(
+                val obj = AnimeRaw(
                     _title = "デスノート",
                     _synonyms = hashSetOf(
                         value,
@@ -3451,7 +3498,7 @@ internal class AnimeKtTest {
                     activateChecks = false,
                 )
 
-                val expected = Anime(
+                val expected = AnimeRaw(
                     _title = "デスノート",
                     _synonyms = hashSetOf(
                         "Death Note",
@@ -3470,7 +3517,7 @@ internal class AnimeKtTest {
             @ValueSource(strings = ["", " ", "    ", "\u200C"])
             fun `removes blank entries from synonyms`(value: String) {
                 // given
-                val obj = Anime(
+                val obj = AnimeRaw(
                     _title = "デスノート",
                     _synonyms = hashSetOf(
                         value,
@@ -3478,7 +3525,7 @@ internal class AnimeKtTest {
                     activateChecks = false,
                 )
 
-                val expected = Anime(
+                val expected = AnimeRaw(
                     _title = "デスノート",
                     _synonyms = HashSet(),
                     activateChecks = false,
@@ -3499,7 +3546,7 @@ internal class AnimeKtTest {
             @ValueSource(strings = [" Death Note", "Death Note ", "  Death   Note  ", "DEATH NOTE"])
             fun `fixes tags`(value: String) {
                 // given
-                val obj = Anime(
+                val obj = AnimeRaw(
                     _title = "デスノート",
                     _tags = hashSetOf(
                         value,
@@ -3507,7 +3554,7 @@ internal class AnimeKtTest {
                     activateChecks = false,
                 )
 
-                val expected = Anime(
+                val expected = AnimeRaw(
                     _title = "デスノート",
                     _tags = hashSetOf(
                         "death note",
@@ -3526,7 +3573,7 @@ internal class AnimeKtTest {
             @ValueSource(strings = ["", " ", "    ", "\u200C"])
             fun `removes blank entries from tags`(value: String) {
                 // given
-                val obj = Anime(
+                val obj = AnimeRaw(
                     _title = "デスノート",
                     _tags = hashSetOf(
                         value,
@@ -3534,7 +3581,7 @@ internal class AnimeKtTest {
                     activateChecks = false,
                 )
 
-                val expected = Anime(
+                val expected = AnimeRaw(
                     _title = "デスノート",
                     _tags = HashSet(),
                     activateChecks = false,
@@ -3555,7 +3602,7 @@ internal class AnimeKtTest {
             fun `remove related anime if the same uri has been added to sources`() {
                 // given
                 val source = URI("https://myanimelist.net/anime/1535")
-                val anime = Anime(
+                val anime = AnimeRaw(
                     _title =  "Death Note",
                     _sources = hashSetOf(
                         source,
@@ -3573,138 +3620,6 @@ internal class AnimeKtTest {
                 assertThat(anime.sources).containsExactly(source)
                 assertThat(anime.relatedAnime).isEmpty()
             }
-        }
-    }
-
-    @Nested
-    inner class TypeTests {
-
-        @ParameterizedTest
-        @ValueSource(strings = ["TV", "Tv", " Tv", "Tv "])
-        fun `'TV' by string`(value: String) {
-            // when
-            val result = Anime.Type.of(value)
-
-            // then
-            assertThat(result).isEqualTo(TV)
-        }
-
-        @ParameterizedTest
-        @ValueSource(strings = ["MOVIE", "MoViE", " MoViE", "MoViE "])
-        fun `'MOVIE' by string`(value: String) {
-            // when
-            val result = Anime.Type.of(value)
-
-            // then
-            assertThat(result).isEqualTo(MOVIE)
-        }
-
-        @ParameterizedTest
-        @ValueSource(strings = ["OVA", "OvA", " OvA", "OvA "])
-        fun `'OVA' by string`(value: String) {
-            // when
-            val result = Anime.Type.of(value)
-
-            // then
-            assertThat(result).isEqualTo(OVA)
-        }
-
-        @ParameterizedTest
-        @ValueSource(strings = ["ONA", "OnA", " OnA", "OnA "])
-        fun `'ONA' by string`(value: String) {
-            // when
-            val result = Anime.Type.of(value)
-
-            // then
-            assertThat(result).isEqualTo(ONA)
-        }
-
-        @ParameterizedTest
-        @ValueSource(strings = ["SPECIAL", "SpEcIaL", " SpEcIaL", "SpEcIaL "])
-        fun `'SPECIAL' by string`(value: String) {
-            // when
-            val result = Anime.Type.of(value)
-
-            // then
-            assertThat(result).isEqualTo(SPECIAL)
-        }
-
-        @ParameterizedTest
-        @ValueSource(strings = ["UNKNOWN", "UnKnOwN", " UnKnOwN", "UnKnOwN "])
-        fun `'UNKNOWN' by string`(value: String) {
-            // when
-            val result = Anime.Type.of(value)
-
-            // then
-            assertThat(result).isEqualTo(Anime.Type.UNKNOWN)
-        }
-
-        @Test
-        fun `'UNKNOWN' as failover for any non-matching string`() {
-            // given
-            val value = "non-matching-string"
-
-            // when
-            val result = Anime.Type.of(value)
-
-            // then
-            assertThat(result).isEqualTo(Anime.Type.UNKNOWN)
-        }
-    }
-
-    @Nested
-    inner class StatusTests {
-
-        @ParameterizedTest
-        @ValueSource(strings = ["FINISHED", "FiNiShEd", " FiNiShEd", "FiNiShEd "])
-        fun `'FINISHED' by string`(value: String) {
-            // when
-            val result = Anime.Status.of(value)
-
-            // then
-            assertThat(result).isEqualTo(FINISHED)
-        }
-
-        @ParameterizedTest
-        @ValueSource(strings = ["ONGOING", "OnGoInG", " OnGoInG", "OnGoInG "])
-        fun `'ONGOING' by string`(value: String) {
-            // when
-            val result = Anime.Status.of(value)
-
-            // then
-            assertThat(result).isEqualTo(ONGOING)
-        }
-
-        @ParameterizedTest
-        @ValueSource(strings = ["UPCOMING", "UpCoMiNg", " UpCoMiNg", "UpCoMiNg "])
-        fun `'UPCOMING' by string`(value: String) {
-            // when
-            val result = Anime.Status.of(value)
-
-            // then
-            assertThat(result).isEqualTo(UPCOMING)
-        }
-
-        @ParameterizedTest
-        @ValueSource(strings = ["UNKNOWN", "UnKnOwN", " UnKnOwN", "UnKnOwN "])
-        fun `'UNKNOWN' by string`(value: String) {
-            // when
-            val result = Anime.Status.of(value)
-
-            // then
-            assertThat(result).isEqualTo(Anime.Status.UNKNOWN)
-        }
-
-        @Test
-        fun `'UNKNOWN' as failover for any non-matching string`() {
-            // given
-            val value = "non-matching-string"
-
-            // when
-            val result = Anime.Status.of(value)
-
-            // then
-            assertThat(result).isEqualTo(Anime.Status.UNKNOWN)
         }
     }
 }

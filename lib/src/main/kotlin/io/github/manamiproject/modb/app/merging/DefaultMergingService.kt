@@ -12,7 +12,7 @@ import io.github.manamiproject.modb.app.merging.matching.MatchingProbabilityCalc
 import io.github.manamiproject.modb.app.merging.matching.MatchingProbabilityResult
 import io.github.manamiproject.modb.core.config.MetaDataProviderConfig
 import io.github.manamiproject.modb.core.logging.LoggerDelegate
-import io.github.manamiproject.modb.core.models.Anime
+import io.github.manamiproject.modb.core.anime.AnimeRaw
 
 /**
  * Implementation of [MergingService].
@@ -39,7 +39,7 @@ import io.github.manamiproject.modb.core.models.Anime
  * @property appConfig Application specific configuration. Uses [AppConfig] by default.
  * @property goldenRecordAccessor Access to golden records.
  * @property mergeLockAccessor Access to merge locks.
- * @property matchingProbabilityCalculator Calculates matching probability between an [Anime] and a [PotentialGoldenRecord].
+ * @property matchingProbabilityCalculator Calculates matching probability between an [AnimeRaw] and a [PotentialGoldenRecord].
  */
 class DefaultMergingService(
     private val appConfig: Config = AppConfig.instance,
@@ -49,9 +49,9 @@ class DefaultMergingService(
 ): MergingService {
 
     private var runThrough = 1
-    private val reCheck = mutableListOf<Anime>()
+    private val reCheck = mutableListOf<AnimeRaw>()
 
-    override suspend fun merge(unmergedAnime: List<Anime>): List<Anime> {
+    override suspend fun merge(unmergedAnime: List<AnimeRaw>): List<AnimeRaw> {
         runThrough = 1
         goldenRecordAccessor.clear()
         reCheck.clear()
@@ -90,7 +90,7 @@ class DefaultMergingService(
         return goldenRecordAccessor.allEntries()
     }
 
-    private fun sortMetaDataProvidersByNumberOfAnime(unmergedAnime: List<Anime>): List<MetaDataProviderConfig> {
+    private fun sortMetaDataProvidersByNumberOfAnime(unmergedAnime: List<AnimeRaw>): List<MetaDataProviderConfig> {
         val cluster: MutableMap<MetaDataProviderConfig, Int> = mutableMapOf()
 
         appConfig.metaDataProviderConfigurations().forEach { currentConfig ->
@@ -101,7 +101,7 @@ class DefaultMergingService(
         return cluster.toList().sortedByDescending { (_, value) -> value }.map { it.first }
     }
 
-    private suspend fun mergeEntry(anime: Anime) {
+    private suspend fun mergeEntry(anime: AnimeRaw) {
         log.debug { "Merging [${anime.sources}]" }
 
         if (mergeLockAccessor.hasMergeLock(anime.sources)) {
@@ -122,7 +122,7 @@ class DefaultMergingService(
         }
     }
 
-    private suspend fun handleMergeLock(anime: Anime) {
+    private suspend fun handleMergeLock(anime: AnimeRaw) {
         val mergeLock = mergeLockAccessor.getMergeLock(anime.sources.first())
 
         log.info { "Found merge lock $mergeLock for ${anime.sources}" }
@@ -136,7 +136,7 @@ class DefaultMergingService(
         }
     }
 
-    private fun reCheckOrCreateGoldenRecordEntry(anime: Anime) {
+    private fun reCheckOrCreateGoldenRecordEntry(anime: AnimeRaw) {
         if (setOf(1, MAX_RUNS).contains(runThrough)) {
             log.debug { "Unable to identify golden record after analysis. Therefore creating a new one." }
             goldenRecordAccessor.createGoldenRecord(anime)

@@ -6,7 +6,8 @@ import io.github.manamiproject.modb.app.dataset.DatasetFileAccessor
 import io.github.manamiproject.modb.app.downloadcontrolstate.DownloadControlStateAccessor
 import io.github.manamiproject.modb.app.downloadcontrolstate.DownloadControlStateEntry
 import io.github.manamiproject.modb.app.downloadcontrolstate.WeekOfYear
-import io.github.manamiproject.modb.core.models.Anime
+import io.github.manamiproject.modb.core.anime.Anime
+import io.github.manamiproject.modb.core.anime.AnimeRaw
 import io.github.manamiproject.modb.test.exceptionExpected
 import io.github.manamiproject.modb.test.tempDirectory
 import kotlinx.coroutines.runBlocking
@@ -49,13 +50,13 @@ internal class DuplicatesValidationPostProcessorTest {
                     _weeksWihoutChange = 1,
                     _lastDownloaded = WeekOfYear(2024, 32),
                     _nextDownload = WeekOfYear(2024, 33),
-                    _anime =  Anime("example"),
+                    _anime = AnimeRaw("example"),
                 ),
                 DownloadControlStateEntry(
                     _weeksWihoutChange = 1,
                     _lastDownloaded = WeekOfYear(2024, 32),
                     _nextDownload = WeekOfYear(2024, 33),
-                    _anime =  Anime("example"),
+                    _anime =  AnimeRaw("example"),
                 ),
             )
 
@@ -99,13 +100,13 @@ internal class DuplicatesValidationPostProcessorTest {
                     _weeksWihoutChange = 8,
                     _lastDownloaded = WeekOfYear(2019, 5),
                     _nextDownload = WeekOfYear(2019, 11),
-                    _anime =  Anime("example"),
+                    _anime =  AnimeRaw("example"),
                 ),
                 DownloadControlStateEntry(
                     _weeksWihoutChange = 1,
                     _lastDownloaded = WeekOfYear(2024, 32),
                     _nextDownload = WeekOfYear(2024, 33),
-                    _anime =  Anime("example"),
+                    _anime =  AnimeRaw("example"),
                 ),
             )
 
@@ -149,13 +150,13 @@ internal class DuplicatesValidationPostProcessorTest {
                     _weeksWihoutChange = 8,
                     _lastDownloaded = WeekOfYear(2019, 5),
                     _nextDownload = WeekOfYear(2019, 11),
-                    _anime =  Anime("example"),
+                    _anime =  AnimeRaw("example"),
                 ),
                 DownloadControlStateEntry(
                     _weeksWihoutChange = 1,
                     _lastDownloaded = WeekOfYear(2024, 32),
                     _nextDownload = WeekOfYear(2024, 33),
-                    _anime =  Anime("Something else"),
+                    _anime =  AnimeRaw("Something else"),
                 ),
             )
 
@@ -189,13 +190,13 @@ internal class DuplicatesValidationPostProcessorTest {
                     _weeksWihoutChange = 8,
                     _lastDownloaded = WeekOfYear(2019, 5),
                     _nextDownload = WeekOfYear(2019, 11),
-                    _anime =  Anime("example"),
+                    _anime =  AnimeRaw("example"),
                 ),
                 DownloadControlStateEntry(
                     _weeksWihoutChange = 1,
                     _lastDownloaded = WeekOfYear(2024, 32),
                     _nextDownload = WeekOfYear(2024, 33),
-                    _anime =  Anime("Something else"),
+                    _anime =  AnimeRaw("Something else"),
                 ),
             )
 
@@ -248,24 +249,24 @@ internal class DuplicatesValidationPostProcessorTest {
                     _weeksWihoutChange = 8,
                     _lastDownloaded = WeekOfYear(2019, 5),
                     _nextDownload = WeekOfYear(2019, 11),
-                    _anime =  Anime("example"),
+                    _anime =  AnimeRaw("example"),
                 ),
                 DownloadControlStateEntry(
                     _weeksWihoutChange = 1,
                     _lastDownloaded = WeekOfYear(2024, 32),
                     _nextDownload = WeekOfYear(2024, 33),
-                    _anime =  Anime("Something else"),
+                    _anime =  AnimeRaw("Something else"),
                 ),
             )
 
             val dataSetEntries = listOf(
                 Anime(
-                    _title = "example",
-                    _sources = hashSetOf(URI("https://example.org/anime/1535"))
+                    title = "example",
+                    sources = hashSetOf(URI("https://example.org/anime/1535")),
                 ),
                 Anime(
-                    _title = "Something else",
-                    _sources = hashSetOf(URI("https://example.org/anime/1535"))
+                    title = "Something else",
+                    sources = hashSetOf(URI("https://example.org/anime/1535")),
                 ),
             )
 
@@ -295,13 +296,13 @@ internal class DuplicatesValidationPostProcessorTest {
         fun `returns true if everything is valid`() {
             runBlocking {
                 // given
-                val animeA = Anime(
+                val animeRawA = AnimeRaw(
                     _title = "example",
-                    _sources = hashSetOf(URI("https://example.org/anime/1234"))
+                    _sources = hashSetOf(URI("https://example.org/anime/1234")),
                 )
-                val animeB = Anime(
+                val animeRawB = AnimeRaw(
                     _title = "Something else",
-                    _sources = hashSetOf(URI("https://example.org/anime/1535"))
+                    _sources = hashSetOf(URI("https://example.org/anime/1535")),
                 )
 
                 val dcsEntries = listOf(
@@ -309,14 +310,23 @@ internal class DuplicatesValidationPostProcessorTest {
                         _weeksWihoutChange = 8,
                         _lastDownloaded = WeekOfYear(2019, 5),
                         _nextDownload = WeekOfYear(2019, 11),
-                        _anime =  animeA,
+                        _anime =  animeRawA,
                     ),
                     DownloadControlStateEntry(
                         _weeksWihoutChange = 1,
                         _lastDownloaded = WeekOfYear(2024, 32),
                         _nextDownload = WeekOfYear(2024, 33),
-                        _anime =  animeB,
+                        _anime =  animeRawB,
                     ),
+                )
+
+                val animeA = Anime(
+                    title = "example",
+                    sources = hashSetOf(URI("https://example.org/anime/1234")),
+                )
+                val animeB = Anime(
+                    title = "Something else",
+                    sources = hashSetOf(URI("https://example.org/anime/1535")),
                 )
 
                 val dataSetEntries = listOf(

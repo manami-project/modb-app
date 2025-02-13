@@ -8,7 +8,7 @@ import io.github.manamiproject.modb.core.coroutines.ModbDispatchers.LIMITED_FS
 import io.github.manamiproject.modb.core.extensions.*
 import io.github.manamiproject.modb.core.json.Json
 import io.github.manamiproject.modb.core.logging.LoggerDelegate
-import io.github.manamiproject.modb.core.models.Anime
+import io.github.manamiproject.modb.core.anime.AnimeRaw
 import kotlinx.coroutines.async
 import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.withContext
@@ -19,7 +19,7 @@ import java.nio.file.Path
  * @since 1.0.0
  * @property appConfig Application specific configuration. Uses [AppConfig] by default.
  * @property metaDataProviderConfig Configuration for a specific meta data provider.
- * @property converter Converts a [Path] to instances of [Anime]. Must match [metaDataProviderConfig].
+ * @property converter Converts a [Path] to instances of [AnimeRaw]. Must match [metaDataProviderConfig].
  */
 class SimpleFileConverter(
     private val appConfig: Config = AppConfig.instance,

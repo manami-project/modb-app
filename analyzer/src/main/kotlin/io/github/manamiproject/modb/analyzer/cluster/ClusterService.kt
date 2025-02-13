@@ -4,7 +4,7 @@ import io.github.manamiproject.modb.app.merging.DefaultReviewedIsolatedEntriesAc
 import io.github.manamiproject.modb.app.merging.ReviewedIsolatedEntriesAccessor
 import io.github.manamiproject.modb.app.merging.lock.DefaultMergeLockAccessor
 import io.github.manamiproject.modb.app.merging.lock.MergeLockAccessor
-import io.github.manamiproject.modb.core.models.Anime
+import io.github.manamiproject.modb.core.anime.Anime
 import kotlinx.coroutines.runBlocking
 
 /**

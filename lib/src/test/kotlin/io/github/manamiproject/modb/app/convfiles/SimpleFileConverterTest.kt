@@ -9,7 +9,7 @@ import io.github.manamiproject.modb.core.config.MetaDataProviderConfig
 import io.github.manamiproject.modb.core.converter.PathAnimeConverter
 import io.github.manamiproject.modb.core.extensions.Directory
 import io.github.manamiproject.modb.core.extensions.fileName
-import io.github.manamiproject.modb.core.models.Anime
+import io.github.manamiproject.modb.core.anime.AnimeRaw
 import io.github.manamiproject.modb.test.tempDirectory
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Nested
@@ -36,10 +36,10 @@ internal class SimpleFileConverterTest {
                     override fun hostname(): Hostname = "example.org"
                 }
 
-                val testAnime = Anime("Death Note")
+                val testAnime = AnimeRaw("Death Note")
 
                 val testConverter = object: PathAnimeConverter {
-                    override suspend fun convert(path: Path): Collection<Anime> = listOf(testAnime)
+                    override suspend fun convert(path: Path): Collection<AnimeRaw> = listOf(testAnime)
                 }
 
                 tempDir.resolve("123.${testConfig.fileSuffix()}").createFile()
@@ -80,10 +80,10 @@ internal class SimpleFileConverterTest {
                     override fun hostname(): Hostname = "example.org"
                 }
 
-                val testAnime = Anime("Death Note")
+                val testAnime = AnimeRaw("Death Note")
 
                 val testConverter = object: PathAnimeConverter {
-                    override suspend fun convert(path: Path): Collection<Anime> = listOf(testAnime)
+                    override suspend fun convert(path: Path): Collection<AnimeRaw> = listOf(testAnime)
                 }
 
                 val testFile = tempDir.resolve("1535.${testConfig.fileSuffix()}").createFile()

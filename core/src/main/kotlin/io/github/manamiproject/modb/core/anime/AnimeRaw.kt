@@ -1,33 +1,23 @@
-package io.github.manamiproject.modb.core.models
+package io.github.manamiproject.modb.core.anime
 
 import io.github.manamiproject.modb.core.extensions.neitherNullNorBlank
 import io.github.manamiproject.modb.core.extensions.normalize
-import io.github.manamiproject.modb.core.models.AnimeSeason.Season.UNDEFINED
+import io.github.manamiproject.modb.core.anime.AnimeSeason.Season.UNDEFINED
+import io.github.manamiproject.modb.core.anime.AnimeStatus.UNKNOWN as UNKNOWN_STATUS
+import io.github.manamiproject.modb.core.anime.AnimeType.UNKNOWN as UNKNOWN_TYPE
+import io.github.manamiproject.modb.core.anime.Duration.Companion.UNKNOWN as UNKNOWN_DURATION
 import java.net.URI
 
-/**
- * @since 1.0.0
- */
-public typealias Episodes = Int
 
 /**
- * @since 3.0.0
- */
-public typealias Tag = String
-
-/**
- * @since 3.0.0
- */
-public typealias Title = String
-
-
-/**
+ * This class represents an anime directly converted from raw data of a meta data provider.
+ * It is also the type used to merge multiple anime of different meta data providers.
  * @since 3.1.0
  * @property _title Main title. Must not be blank.
  * @property _sources Duplicate-free list of sources from which this anime was created.
- * @property type Distribution type. **Default** is [Anime.Type.UNKNOWN].
+ * @property type Distribution type. **Default** is [AnimeType.UNKNOWN].
  * @property episodes Number of episodes. **Default** is `0`.
- * @property status Publishing status. **Default** is [Anime.Status.UNKNOWN].
+ * @property status Publishing status. **Default** is [AnimeStatus.UNKNOWN].
  * @property animeSeason In which season did the anime premiere.
  * @property picture [URI] to a (large) poster/cover. **Default** is a self created "not found" pic.
  * @property thumbnail [URI] to a thumbnail poster/cover. **Default** is a self created "not found" pic.
@@ -38,16 +28,16 @@ public typealias Title = String
  * @property activateChecks Disable any checks upon creating the object. This is only supposed to be used during safe deserialization. If created using `false` you can call [performChecks] manually.
  * @throws IllegalArgumentException if _title is blank or number of episodes is negative.
  */
-public data class Anime(
+public data class AnimeRaw(
     private var _title: Title,
     private val _sources: HashSet<URI> = HashSet(),
-    val type: Type = Type.UNKNOWN,
+    val type: AnimeType = UNKNOWN_TYPE,
     val episodes: Episodes = 0,
-    val status: Status = Status.UNKNOWN,
+    val status: AnimeStatus = UNKNOWN_STATUS,
     val animeSeason: AnimeSeason = AnimeSeason(),
     val picture: URI = NO_PICTURE,
     val thumbnail: URI = NO_PICTURE_THUMBNAIL,
-    val duration: Duration = Duration.UNKNOWN,
+    val duration: Duration = UNKNOWN_DURATION,
     private val _synonyms: HashSet<Title> = HashSet(),
     private val _relatedAnime: HashSet<URI> = HashSet(),
     private val _tags: HashSet<Tag> = HashSet(),
@@ -91,6 +81,8 @@ public data class Anime(
 
 
     init {
+        require(title.neitherNullNorBlank()) { "Title cannot be blank." }
+
         if (activateChecks) {
             performChecks()
         }
@@ -104,7 +96,7 @@ public data class Anime(
      * @param synonym Synonyms to be added.
      * @return Same instance.
      */
-    public fun addSynonyms(vararg synonym: Title): Anime = addSynonyms(synonym.toHashSet())
+    public fun addSynonyms(vararg synonym: Title): AnimeRaw = addSynonyms(synonym.toHashSet())
 
     /**
      * Add additional synonyms to the existing list. Duplicates are being ignored.
@@ -114,7 +106,7 @@ public data class Anime(
      * @param synonyms List of synonyms.
      * @return Same instance.
      */
-    public fun addSynonyms(synonyms: Collection<Title>): Anime {
+    public fun addSynonyms(synonyms: Collection<Title>): AnimeRaw {
         synonyms.asSequence()
             .map { it.normalize() }
             .filter { it.neitherNullNorBlank() }
@@ -131,7 +123,7 @@ public data class Anime(
      * @param source Sources to be added.
      * @return Same instance.
      */
-    public fun addSources(vararg source: URI): Anime = addSources(source.toHashSet())
+    public fun addSources(vararg source: URI): AnimeRaw = addSources(source.toHashSet())
 
     /**
      * Add additional sources to the existing list. This will **not** override [sources].
@@ -140,7 +132,7 @@ public data class Anime(
      * @param sources List of sources.
      * @return Same instance.
      */
-    public fun addSources(sources: Collection<URI>): Anime {
+    public fun addSources(sources: Collection<URI>): AnimeRaw {
         _sources.addAll(sources)
 
         removeRelatedAnimeIf { sources.contains(it) }
@@ -154,7 +146,7 @@ public data class Anime(
      * @param condition If an entry in [sources] matches this condition, then the [URI] will be removed from [sources].
      * @return Same instance.
      */
-    public fun removeSourceIf(condition: (URI) -> Boolean): Anime {
+    public fun removeSourceIf(condition: (URI) -> Boolean): AnimeRaw {
         _sources.removeIf { condition.invoke(it) }
         return this
     }
@@ -166,7 +158,7 @@ public data class Anime(
      * @param relatedAnime List of related anime.
      * @return Same instance.
      */
-    public fun addRelatedAnime(vararg relatedAnime: URI): Anime = addRelatedAnime(relatedAnime.toHashSet())
+    public fun addRelatedAnime(vararg relatedAnime: URI): AnimeRaw = addRelatedAnime(relatedAnime.toHashSet())
 
     /**
      * Add additional related anime to the existing list. This will **not** override [relatedAnime].
@@ -175,7 +167,7 @@ public data class Anime(
      * @param relatedAnime List of related anime.
      * @return Same instance.
      */
-    public fun addRelatedAnime(relatedAnime: Collection<URI>): Anime {
+    public fun addRelatedAnime(relatedAnime: Collection<URI>): AnimeRaw {
         relatedAnime.asSequence()
             .filter { !_sources.contains(it) }
             .forEach { _relatedAnime.add(it) }
@@ -189,7 +181,7 @@ public data class Anime(
      * @param condition If an entry in [relatedAnime] matches this condition, then the [URI] will be removed from [relatedAnime].
      * @return Same instance.
      */
-    public fun removeRelatedAnimeIf(condition: (URI) -> Boolean): Anime {
+    public fun removeRelatedAnimeIf(condition: (URI) -> Boolean): AnimeRaw {
         _relatedAnime.removeIf { condition.invoke(it) }
         return this
     }
@@ -201,7 +193,7 @@ public data class Anime(
      * @param tag List of tags.
      * @return Same instance.
      */
-    public fun addTags(vararg tag: Tag): Anime = addTags(tag.toHashSet())
+    public fun addTags(vararg tag: Tag): AnimeRaw = addTags(tag.toHashSet())
 
     /**
      * Add additional tags to the existing list. This will **not** override [tags].
@@ -210,7 +202,7 @@ public data class Anime(
      * @param tags List of tags.
      * @return Same instance.
      */
-    public fun addTags(tags: Collection<Tag>): Anime {
+    public fun addTags(tags: Collection<Tag>): AnimeRaw {
         tags.asSequence()
             .map { it.normalize() }
             .filter { it.neitherNullNorBlank() }
@@ -221,40 +213,40 @@ public data class Anime(
     }
 
     /**
-     * + Title and synonyms of the given [Anime] will both be added to the [synonyms] of this instance.
-     * + All sources of the given [Anime] will be added to the [sources] of this instance.
-     * + All related anime of the given [Anime] will be added to the [relatedAnime] of this instance.
-     * + All tags of the given [Anime] will be added to the [tags] of this instance.
-     * + In case the number of episodes of this instance is 0, the value of the given [Anime] will be applied.
-     * + In case the type of this instance is [Type.UNKNOWN], the value of the given [Anime] will be applied.
-     * + In case the status of this instance is [Status.UNKNOWN], the value of the given [Anime] will be applied.
-     * + In case the duration of this instance is [Duration.UNKNOWN], the value of the given [Anime] will be applied.
-     * + In case the season of this instance's [animeSeason] is [UNDEFINED], the season of the given [Anime] will be applied.
-     * + In case the year of this instance's [animeSeason] is [AnimeSeason.UNKNOWN_YEAR], the year if the given [Anime] will be applied.
+     * + Title and synonyms of the given [AnimeRaw] will both be added to the [synonyms] of this instance.
+     * + All sources of the given [AnimeRaw] will be added to the [sources] of this instance.
+     * + All related anime of the given [AnimeRaw] will be added to the [relatedAnime] of this instance.
+     * + All tags of the given [AnimeRaw] will be added to the [tags] of this instance.
+     * + In case the number of episodes of this instance is 0, the value of the given [AnimeRaw] will be applied.
+     * + In case the type of this instance is [AnimeType.UNKNOWN], the value of the given [AnimeRaw] will be applied.
+     * + In case the status of this instance is [AnimeStatus.UNKNOWN], the value of the given [AnimeRaw] will be applied.
+     * + In case the duration of this instance is [Duration.UNKNOWN], the value of the given [AnimeRaw] will be applied.
+     * + In case the season of this instance's [animeSeason] is [UNDEFINED], the season of the given [AnimeRaw] will be applied.
+     * + In case the year of this instance's [animeSeason] is [AnimeSeason.UNKNOWN_YEAR], the year if the given [AnimeRaw] will be applied.
      * @since 1.0.0
-     * @param anime [Anime] which is being merged into the this instance.
+     * @param anime [AnimeRaw] which is being merged into the this instance.
      * @return New instance of the merged anime.
      */
-    public fun mergeWith(anime: Anime): Anime {
+    public fun mergeWith(anime: AnimeRaw): AnimeRaw {
         val mergedEpisodes = if (episodes == 0 && anime.episodes != 0) {
             anime.episodes
         } else {
             episodes
         }
 
-        val mergedType = if (type == Type.UNKNOWN && anime.type != Type.UNKNOWN) {
+        val mergedType = if (type == UNKNOWN_TYPE && anime.type != UNKNOWN_TYPE) {
             anime.type
         } else {
             type
         }
 
-        val mergedStatus = if (status == Status.UNKNOWN && anime.status != Status.UNKNOWN) {
+        val mergedStatus = if (status == UNKNOWN_STATUS && anime.status != UNKNOWN_STATUS) {
             anime.status
         } else {
             status
         }
 
-        val mergedDuration = if (duration == Duration.UNKNOWN && anime.duration != Duration.UNKNOWN) {
+        val mergedDuration = if (duration == UNKNOWN_DURATION && anime.duration != UNKNOWN_DURATION) {
             anime.duration
         } else {
             duration
@@ -272,7 +264,7 @@ public data class Anime(
             animeSeason.year
         }
 
-        return Anime(
+        return AnimeRaw(
             _title = title,
             type = mergedType,
             episodes = mergedEpisodes,
@@ -301,7 +293,7 @@ public data class Anime(
      * @return Same instance of the anime.
      * @throws IllegalArgumentException if _title is blank or number of episodes is negative.
      */
-    public fun performChecks(): Anime {
+    public fun performChecks(): AnimeRaw {
         _title = _title.normalize()
         require(_title.neitherNullNorBlank()) { "Title cannot be blank." }
 
@@ -330,7 +322,7 @@ public data class Anime(
         if (this === other) return true
         if (javaClass != other?.javaClass) return false
 
-        other as Anime
+        other as AnimeRaw
 
         if (_title != other._title) return false
         if (_sources != other.sources) return false
@@ -395,89 +387,5 @@ public data class Anime(
          * @since 11.0.0
          */
         public val NO_PICTURE_THUMBNAIL: URI = URI("https://raw.githubusercontent.com/manami-project/anime-offline-database/master/pics/no_pic_thumbnail.png")
-    }
-
-    /**
-     * Distribution type of an anime.
-     * @since 1.0.0
-     */
-    public enum class Type {
-        /**
-         * @since 1.0.0
-         */
-        TV,
-        /**
-         * @since 1.0.0
-         */
-        MOVIE,
-        /**
-         * Original Video Animation. See [Wikipedia](https://en.wikipedia.org/wiki/Original_video_animation).
-         * @since 1.0.0
-         */
-        OVA,
-        /**
-         * Original Net Animation. See [Wikipedia](https://en.wikipedia.org/wiki/Original_net_animation).
-         * @since 1.0.0
-         */
-        ONA,
-        /**
-         * Basically anything else. Could be music videos, advertisements, manner movies or actual speical episodes.
-         * @since 1.0.0
-         */
-        SPECIAL,
-        /**
-         * Type is unknown.
-         * @since 5.0.0
-         */
-        UNKNOWN;
-
-        public companion object {
-            /**
-             * Creates [Anime.Type] from a [String]. Tolerant by ignoreing leading and trailing whitespaces as well as case.
-             * @since 11.0.0
-             * @param value The value being mapped to a [Anime.Type].
-             */
-            public fun of(value: String): Type {
-                return Type.entries.find { it.toString().equals(value.trim(), ignoreCase = true) } ?: UNKNOWN
-            }
-        }
-    }
-
-    /**
-     * Distribution status of an anime.
-     * @since 1.0.0
-     */
-    public enum class Status {
-        /**
-         * Finished airing or has been released completely.
-         * @since 1.0.0
-         */
-        FINISHED,
-        /**
-         * Currently airing or releasing.
-         * @since 5.0.0
-         */
-        ONGOING,
-        /**
-         * Not yet released or aired.
-         * @since 1.0.0
-         */
-        UPCOMING,
-        /**
-         * Status is unknown.
-         * @since 1.0.0
-         */
-        UNKNOWN;
-
-        public companion object {
-            /**
-             * Creates [Anime.Status] from a [String]. Tolerant by ignoreing leading and trailing whitespaces as well as case.
-             * @since 11.0.0
-             * @param value The value being mapped to a [Anime.Status]
-             */
-            public fun of(value: String): Status {
-                return Status.entries.find { it.toString().equals(value.trim(), ignoreCase = true) } ?: UNKNOWN
-            }
-        }
     }
 }

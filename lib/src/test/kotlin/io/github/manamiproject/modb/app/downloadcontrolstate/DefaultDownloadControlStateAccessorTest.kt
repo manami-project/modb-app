@@ -7,19 +7,23 @@ import io.github.manamiproject.modb.app.TestMetaDataProviderConfig
 import io.github.manamiproject.modb.app.config.Config
 import io.github.manamiproject.modb.app.convfiles.CONVERTED_FILE_SUFFIX
 import io.github.manamiproject.modb.app.merging.lock.MergeLockAccessor
+import io.github.manamiproject.modb.core.anime.AnimeRaw
+import io.github.manamiproject.modb.core.anime.AnimeRaw.Companion.NO_PICTURE
+import io.github.manamiproject.modb.core.anime.AnimeRaw.Companion.NO_PICTURE_THUMBNAIL
+import io.github.manamiproject.modb.core.anime.AnimeSeason
+import io.github.manamiproject.modb.core.anime.AnimeSeason.Companion.UNKNOWN_YEAR
+import io.github.manamiproject.modb.core.anime.AnimeSeason.Season.SPRING
+import io.github.manamiproject.modb.core.anime.AnimeSeason.Season.UNDEFINED
+import io.github.manamiproject.modb.core.anime.AnimeStatus.FINISHED
+import io.github.manamiproject.modb.core.anime.AnimeType.MOVIE
+import io.github.manamiproject.modb.core.anime.AnimeType.TV
+import io.github.manamiproject.modb.core.anime.Duration
+import io.github.manamiproject.modb.core.anime.Duration.TimeUnit.MINUTES
 import io.github.manamiproject.modb.core.config.AnimeId
 import io.github.manamiproject.modb.core.config.FileSuffix
 import io.github.manamiproject.modb.core.config.Hostname
 import io.github.manamiproject.modb.core.config.MetaDataProviderConfig
 import io.github.manamiproject.modb.core.extensions.*
-import io.github.manamiproject.modb.core.models.Anime
-import io.github.manamiproject.modb.core.models.Anime.Status.FINISHED
-import io.github.manamiproject.modb.core.models.Anime.Type.*
-import io.github.manamiproject.modb.core.models.AnimeSeason
-import io.github.manamiproject.modb.core.models.AnimeSeason.Season.SPRING
-import io.github.manamiproject.modb.core.models.AnimeSeason.Season.UNDEFINED
-import io.github.manamiproject.modb.core.models.Duration
-import io.github.manamiproject.modb.core.models.Duration.TimeUnit.MINUTES
 import io.github.manamiproject.modb.kitsu.KitsuConfig
 import io.github.manamiproject.modb.myanimelist.MyanimelistConfig
 import io.github.manamiproject.modb.notify.NotifyConfig
@@ -34,6 +38,9 @@ import kotlin.io.path.createDirectories
 import kotlin.io.path.createDirectory
 import kotlin.io.path.createFile
 import kotlin.test.Test
+import io.github.manamiproject.modb.core.anime.AnimeStatus.UNKNOWN as UNKNOWN_STATUS
+import io.github.manamiproject.modb.core.anime.AnimeType.UNKNOWN as UNKNOWN_TYPE
+import io.github.manamiproject.modb.core.anime.Duration.Companion.UNKNOWN as UNKNOWN_DURATION
 
 internal class DefaultDownloadControlStateAccessorTest {
 
@@ -158,7 +165,7 @@ internal class DefaultDownloadControlStateAccessorTest {
                     _weeksWihoutChange = 0,
                     _lastDownloaded = WeekOfYear(2021, 44),
                     _nextDownload = WeekOfYear(2021, 45),
-                    _anime = Anime(
+                    _anime = AnimeRaw(
                         _title = "Shin Seiki Evangelion Movie: THE END OF EVANGELION",
                         type = MOVIE,
                         episodes = 1,
@@ -190,7 +197,7 @@ internal class DefaultDownloadControlStateAccessorTest {
                     _weeksWihoutChange = 0,
                     _lastDownloaded = WeekOfYear(2021, 44),
                     _nextDownload = WeekOfYear(2021, 45),
-                    _anime = Anime(
+                    _anime = AnimeRaw(
                         _title = "Fruits Basket",
                         type = TV,
                         episodes = 26,
@@ -245,17 +252,17 @@ internal class DefaultDownloadControlStateAccessorTest {
                     _weeksWihoutChange = 0,
                     _lastDownloaded = WeekOfYear(2021, 44),
                     _nextDownload = WeekOfYear(2021, 45),
-                    _anime = Anime(
+                    _anime = AnimeRaw(
                         _title = "Shin Seiki Evangelion Movie: THE END OF EVANGELION",
-                        type = UNKNOWN,
+                        type = UNKNOWN_TYPE,
                         episodes = 0,
-                        picture = Anime.NO_PICTURE,
-                        thumbnail = Anime.NO_PICTURE_THUMBNAIL,
-                        status = Anime.Status.UNKNOWN,
-                        duration = Duration.UNKNOWN,
+                        picture = NO_PICTURE,
+                        thumbnail = NO_PICTURE_THUMBNAIL,
+                        status = UNKNOWN_STATUS,
+                        duration = UNKNOWN_DURATION,
                         animeSeason = AnimeSeason(
                             season = UNDEFINED,
-                            year = AnimeSeason.UNKNOWN_YEAR,
+                            year = UNKNOWN_YEAR,
                         ),
                         _sources = hashSetOf(URI("https://anilist.co/anime/32")),
                         _synonyms = hashSetOf(),
@@ -271,7 +278,7 @@ internal class DefaultDownloadControlStateAccessorTest {
                     mergeLockAccess = TestMergeLockAccessor,
                 )
 
-                val otherAnime = Anime(
+                val otherAnime = AnimeRaw(
                     _title = "Shin Seiki Evangelion Movie: THE END OF EVANGELION",
                     type = MOVIE,
                     episodes = 1,
@@ -418,7 +425,7 @@ internal class DefaultDownloadControlStateAccessorTest {
                     _weeksWihoutChange = 0,
                     _lastDownloaded = WeekOfYear(2021, 44),
                     _nextDownload = WeekOfYear(2021, 45),
-                    _anime = Anime(
+                    _anime = AnimeRaw(
                         _title = "Shin Seiki Evangelion Movie: THE END OF EVANGELION",
                         type = MOVIE,
                         episodes = 1,
@@ -561,7 +568,7 @@ internal class DefaultDownloadControlStateAccessorTest {
                     override fun findMetaDataProviderConfig(host: Hostname): MetaDataProviderConfig = super.findMetaDataProviderConfig(host)
                 }
 
-                val expectedAnime1 = Anime(
+                val expectedAnime1 = AnimeRaw(
                     _title = "Shin Seiki Evangelion Movie: THE END OF EVANGELION",
                     type = MOVIE,
                     episodes = 1,
@@ -588,7 +595,7 @@ internal class DefaultDownloadControlStateAccessorTest {
                         "sci-fi",
                     ),
                 )
-                val expectedAnime2 = Anime(
+                val expectedAnime2 = AnimeRaw(
                     _title = "Fruits Basket",
                     type = TV,
                     episodes = 26,
@@ -725,7 +732,7 @@ internal class DefaultDownloadControlStateAccessorTest {
                     override fun findMetaDataProviderConfig(host: Hostname): MetaDataProviderConfig = super.findMetaDataProviderConfig(host)
                 }
 
-                val expectedAnime = Anime(
+                val expectedAnime = AnimeRaw(
                     _title = "Shin Seiki Evangelion Movie: THE END OF EVANGELION",
                     type = MOVIE,
                     episodes = 1,
@@ -954,7 +961,7 @@ internal class DefaultDownloadControlStateAccessorTest {
                     _weeksWihoutChange = 0,
                     _lastDownloaded = WeekOfYear(2021, 44),
                     _nextDownload = WeekOfYear(2021, 45),
-                    _anime = Anime(
+                    _anime = AnimeRaw(
                         _title = "Shin Seiki Evangelion Movie: THE END OF EVANGELION",
                         type = MOVIE,
                         episodes = 1,
@@ -1103,7 +1110,7 @@ internal class DefaultDownloadControlStateAccessorTest {
                     _weeksWihoutChange = 0,
                     _lastDownloaded = WeekOfYear(2021, 44),
                     _nextDownload = WeekOfYear(2021, 45),
-                    _anime = Anime(
+                    _anime = AnimeRaw(
                         _title = "Shin Seiki Evangelion Movie: THE END OF EVANGELION",
                         type = MOVIE,
                         episodes = 1,
@@ -1163,16 +1170,16 @@ internal class DefaultDownloadControlStateAccessorTest {
                     _weeksWihoutChange = 2,
                     _lastDownloaded = WeekOfYear(2021, 39),
                     _nextDownload = WeekOfYear(2021, 44),
-                    _anime = Anime(
+                    _anime = AnimeRaw(
                         _title = "Shin Seiki Evangelion Movie",
                         type = MOVIE,
                         episodes = 1,
                         picture = URI("https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/32-7YrdcGEX1FP3.png"),
                         thumbnail = URI("https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/default.jpg"),
                         status = FINISHED,
-                        duration = Duration.UNKNOWN,
+                        duration = UNKNOWN_DURATION,
                         animeSeason = AnimeSeason(
-                            year = AnimeSeason.UNKNOWN_YEAR,
+                            year = UNKNOWN_YEAR,
                         ),
                         _sources = hashSetOf(URI("https://anilist.co/anime/32")),
                         _synonyms = hashSetOf(
@@ -1194,7 +1201,7 @@ internal class DefaultDownloadControlStateAccessorTest {
                     _weeksWihoutChange = 0,
                     _lastDownloaded = WeekOfYear(2021, 44),
                     _nextDownload = WeekOfYear(2021, 45),
-                    _anime = Anime(
+                    _anime = AnimeRaw(
                         _title = "Shin Seiki Evangelion Movie: THE END OF EVANGELION",
                         type = MOVIE,
                         episodes = 1,
@@ -1258,7 +1265,7 @@ internal class DefaultDownloadControlStateAccessorTest {
                     _weeksWihoutChange = 0,
                     _lastDownloaded = WeekOfYear.currentWeek(),
                     _nextDownload = WeekOfYear.currentWeek().plusWeeks(1),
-                    _anime = Anime(
+                    _anime = AnimeRaw(
                         _title = "Shin Seiki Evangelion Movie: THE END OF EVANGELION",
                         type = MOVIE,
                         episodes = 1,
@@ -1320,7 +1327,7 @@ internal class DefaultDownloadControlStateAccessorTest {
                     _weeksWihoutChange = 0,
                     _lastDownloaded = WeekOfYear(2021, 44),
                     _nextDownload = WeekOfYear(2021, 45),
-                    _anime = Anime(
+                    _anime = AnimeRaw(
                         _title = "Shin Seiki Evangelion Movie: THE END OF EVANGELION",
                         type = MOVIE,
                         episodes = 1,
@@ -1380,7 +1387,7 @@ internal class DefaultDownloadControlStateAccessorTest {
                     _weeksWihoutChange = 0,
                     _lastDownloaded = WeekOfYear(2021, 44),
                     _nextDownload = WeekOfYear(2021, 45),
-                    _anime = Anime(
+                    _anime = AnimeRaw(
                         _title = "Shin Seiki Evangelion Movie: THE END OF EVANGELION",
                         type = MOVIE,
                         episodes = 1,
@@ -1420,7 +1427,7 @@ internal class DefaultDownloadControlStateAccessorTest {
                         _weeksWihoutChange = 0,
                         _lastDownloaded = WeekOfYear(2021, 44),
                         _nextDownload = WeekOfYear(2021, 45),
-                        _anime = Anime(
+                        _anime = AnimeRaw(
                             _title = "Fruits Basket",
                             type = TV,
                             episodes = 26,
@@ -2070,7 +2077,7 @@ internal class DefaultDownloadControlStateAccessorTest {
                     _lastDownloaded = WeekOfYear.currentWeek(),
                     _nextDownload = WeekOfYear.currentWeek().plusWeeks(1),
                     _weeksWihoutChange = 0,
-                    _anime = Anime(
+                    _anime = AnimeRaw(
                         _title = "test1",
                         _sources = hashSetOf(NotifyConfig.buildAnimeLink("3g6kj9l26")),
                     ),
@@ -2104,7 +2111,7 @@ internal class DefaultDownloadControlStateAccessorTest {
                     _lastDownloaded = WeekOfYear.currentWeek(),
                     _nextDownload = WeekOfYear.currentWeek().plusWeeks(1),
                     _weeksWihoutChange = 0,
-                    _anime = Anime(
+                    _anime = AnimeRaw(
                         _title = "test1",
                         _sources = hashSetOf(AnilistConfig.buildAnimeLink("4")),
                     ),
@@ -2115,7 +2122,7 @@ internal class DefaultDownloadControlStateAccessorTest {
                     _lastDownloaded = WeekOfYear.currentWeek(),
                     _nextDownload = WeekOfYear.currentWeek().plusWeeks(1),
                     _weeksWihoutChange = 0,
-                    _anime = Anime(
+                    _anime = AnimeRaw(
                         _title = "test3",
                         _sources = hashSetOf(AnilistConfig.buildAnimeLink("179")),
                     ),
@@ -2126,7 +2133,7 @@ internal class DefaultDownloadControlStateAccessorTest {
                     _lastDownloaded = WeekOfYear.currentWeek(),
                     _nextDownload = WeekOfYear.currentWeek().plusWeeks(1),
                     _weeksWihoutChange = 0,
-                    _anime = Anime(
+                    _anime = AnimeRaw(
                         _title = "test2",
                         _sources = hashSetOf(AnilistConfig.buildAnimeLink("25")),
                     ),

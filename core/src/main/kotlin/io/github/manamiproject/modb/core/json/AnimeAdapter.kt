@@ -1,11 +1,17 @@
 package io.github.manamiproject.modb.core.json
 
 import com.squareup.moshi.*
+import io.github.manamiproject.modb.core.anime.Anime
+import io.github.manamiproject.modb.core.anime.AnimeRaw.Companion.NO_PICTURE
+import io.github.manamiproject.modb.core.anime.AnimeRaw.Companion.NO_PICTURE_THUMBNAIL
+import io.github.manamiproject.modb.core.anime.AnimeSeason
+import io.github.manamiproject.modb.core.anime.Tag
+import io.github.manamiproject.modb.core.anime.Title
 import io.github.manamiproject.modb.core.extensions.EMPTY
-import io.github.manamiproject.modb.core.models.*
-import io.github.manamiproject.modb.core.models.Anime.Companion.NO_PICTURE
-import io.github.manamiproject.modb.core.models.Anime.Companion.NO_PICTURE_THUMBNAIL
 import java.net.URI
+import io.github.manamiproject.modb.core.anime.AnimeStatus.UNKNOWN as UNKNOWN_STATUS
+import io.github.manamiproject.modb.core.anime.AnimeType.UNKNOWN as UNKNOWN_TYPE
+import io.github.manamiproject.modb.core.anime.Duration.Companion.UNKNOWN as UNKNOWN_DURATION
 
 internal class AnimeAdapter: JsonAdapter<Anime>() {
 
@@ -19,28 +25,27 @@ internal class AnimeAdapter: JsonAdapter<Anime>() {
     private val durationAdapter = DurationAdapter()
     private val animeSeasonAdapter = AnimeSeasonAdapter()
 
-
     @FromJson
-    override fun fromJson(reader: JsonReader): Anime {
+    override fun fromJson(reader: JsonReader): Anime? {
         reader.beginObject()
 
         var title = EMPTY
         var titleDeserialized = false
         var sources = HashSet<URI>()
         var sourcesDeserialized = false
-        var type = Anime.Type.UNKNOWN
+        var type = UNKNOWN_TYPE
         var typeDeserialized = false
         var synonyms = HashSet<Title>()
         var synonymsDeserialized = false
         var episodes = 0
         var episodesDeserialized = false
-        var status = Anime.Status.UNKNOWN
+        var status = UNKNOWN_STATUS
         var statusDeserialized = false
         var picture = NO_PICTURE
         var pictureDeserialized = false
         var thumbnail = NO_PICTURE_THUMBNAIL
         var thumbnailDeserialized = false
-        var duration = Duration.UNKNOWN
+        var duration = UNKNOWN_DURATION
         var tags = HashSet<Tag>()
         var tagsDeserialized = false
         var relatedAnime = HashSet<URI>()
@@ -118,29 +123,24 @@ internal class AnimeAdapter: JsonAdapter<Anime>() {
         }
 
         return Anime(
-            _title = title,
-            _sources = sources,
-            _synonyms = synonyms,
+            title = title,
+            sources = sources,
+            synonyms = synonyms,
             type = type,
             episodes = episodes,
             status = status,
             picture = picture,
             thumbnail = thumbnail,
-            _tags = tags,
-            _relatedAnime = relatedAnime,
+            tags = tags,
+            relatedAnime = relatedAnime,
             duration = duration,
             animeSeason = animeSeason,
-            activateChecks = false,
         )
     }
 
     @ToJson
     override fun toJson(writer: JsonWriter, value: Anime?) {
-        requireNotNull(value) { "AnimeAdapter is non-nullable, but received null." }
-
-        if (!value.activateChecks) {
-            value.performChecks()
-        }
+        requireNotNull(value) { "AnimeAdapter expects non-nullable value, but received null." }
 
         writer.beginObject()
 

@@ -67,6 +67,7 @@ fun main() = runCoroutine {
         .mergeAnime()
         .removeUnknownEntriesFromRelatedAnime()
         .addAnimeCountdown()
+        .transformToDatasetEntries()
         .saveToDataset()
         .updateStatistics()
 

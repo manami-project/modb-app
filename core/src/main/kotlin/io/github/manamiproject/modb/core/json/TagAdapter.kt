@@ -1,7 +1,7 @@
 package io.github.manamiproject.modb.core.json
 
 import com.squareup.moshi.*
-import io.github.manamiproject.modb.core.models.Tag
+import io.github.manamiproject.modb.core.anime.Tag
 
 internal class TagAdapter: JsonAdapter<Tag>() {
 

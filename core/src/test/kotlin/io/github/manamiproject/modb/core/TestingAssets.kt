@@ -67,7 +67,7 @@ internal class TestKProperty<T>: KProperty<T> {
         get() = shouldNotBeInvoked()
     override val typeParameters: List<KTypeParameter>
         get() = shouldNotBeInvoked()
-    override val visibility: KVisibility?
+    override val visibility: KVisibility
         get() = shouldNotBeInvoked()
     override fun call(vararg args: Any?): T = shouldNotBeInvoked()
     override fun callBy(args: Map<KParameter, Any?>): T = shouldNotBeInvoked()

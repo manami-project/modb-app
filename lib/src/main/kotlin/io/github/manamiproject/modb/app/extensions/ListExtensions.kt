@@ -1,6 +1,6 @@
 package io.github.manamiproject.modb.app.extensions
 
-import io.github.manamiproject.modb.core.models.Anime
+import io.github.manamiproject.modb.core.anime.AnimeRaw
 
 /**
  * Finds duplicates in a [List].
@@ -15,9 +15,9 @@ inline fun <reified T> List<T>.findDuplicates(): Set<T> = groupBy { it }.filter 
  * This is often done by kitsu.
  * @since 1.0.0
  * @return The original list, no changes made.
- * @receiver Any non-nullable [List] of type [Anime].
+ * @receiver Any non-nullable [List] of type [AnimeRaw].
  */
-fun List<Anime>.alertDeletedAnimeByTitle(): List<Anime> {
+fun List<AnimeRaw>.alertDeletedAnimeByTitle(): List<AnimeRaw> {
     val deletedMarker = setOf("delete", "deleted")
     forEach {
         check(it.title.lowercase() !in deletedMarker) {

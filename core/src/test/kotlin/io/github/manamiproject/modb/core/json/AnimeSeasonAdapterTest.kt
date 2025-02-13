@@ -1,8 +1,8 @@
 package io.github.manamiproject.modb.core.json
 
 import com.squareup.moshi.JsonDataException
-import io.github.manamiproject.modb.core.models.AnimeSeason
-import io.github.manamiproject.modb.core.models.AnimeSeason.Companion.UNKNOWN_YEAR
+import io.github.manamiproject.modb.core.anime.AnimeSeason
+import io.github.manamiproject.modb.core.anime.AnimeSeason.Companion.UNKNOWN_YEAR
 import io.github.manamiproject.modb.test.exceptionExpected
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Nested

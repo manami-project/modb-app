@@ -8,7 +8,8 @@ import io.github.manamiproject.modb.core.coroutines.ModbDispatchers.LIMITED_CPU
 import io.github.manamiproject.modb.core.coroutines.ModbDispatchers.LIMITED_FS
 import io.github.manamiproject.modb.core.json.Json.SerializationOptions.DEACTIVATE_PRETTY_PRINT
 import io.github.manamiproject.modb.core.json.Json.SerializationOptions.DEACTIVATE_SERIALIZE_NULL
-import io.github.manamiproject.modb.core.models.Anime
+import io.github.manamiproject.modb.core.anime.AnimeRaw
+import io.github.manamiproject.modb.core.anime.Anime
 import kotlinx.coroutines.withContext
 import java.io.InputStream
 import com.squareup.moshi.JsonAdapter as MoshiAdapter
@@ -29,6 +30,7 @@ public object Json {
         .addAdapter(AnimeTypeAdapter())
         .addAdapter(AnimeStatusAdapter())
         .addAdapter(AnimeSeasonAdapter())
+        .addAdapter(AnimeRawAdapter())
         .addAdapter(AnimeAdapter())
         .addLast(KotlinJsonAdapterFactory())
         .build()
@@ -60,7 +62,7 @@ public object Json {
     }
 
     /**
-     * Serialize any object to JSON. Uses default set of custom adaoters for serializing [Anime].
+     * Serialize any object to JSON. Uses default set of custom adapters for serializing [AnimeRaw] and [Anime].
      * @since 8.0.0
      * @param obj Any object that is supposed to be serialized to JSON.
      * @param options Options that can change the default behavior of the JSON serialization.

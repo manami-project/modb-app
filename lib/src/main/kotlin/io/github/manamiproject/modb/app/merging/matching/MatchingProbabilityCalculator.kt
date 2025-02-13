@@ -2,10 +2,10 @@ package io.github.manamiproject.modb.app.merging.matching
 
 import io.github.manamiproject.modb.app.merging.goldenrecords.GoldenRecordAccessor
 import io.github.manamiproject.modb.app.merging.goldenrecords.PotentialGoldenRecord
-import io.github.manamiproject.modb.core.models.Anime
+import io.github.manamiproject.modb.core.anime.AnimeRaw
 
 /**
- * Checks if the instance of an [Anime] belongs to an existing golden record.
+ * Checks if the instance of an [AnimeRaw] belongs to an existing golden record.
  * @since 1.0.0
  */
 interface MatchingProbabilityCalculator {
@@ -18,5 +18,5 @@ interface MatchingProbabilityCalculator {
      * @return A probability how likely it is that this combination should be merged together. If you actually want
      * to perform the merge based on the result you must use [GoldenRecordAccessor.merge].
      */
-    fun calculate(anime: Anime, potentialGoldenRecord: PotentialGoldenRecord): MatchingProbabilityResult
+    fun calculate(anime: AnimeRaw, potentialGoldenRecord: PotentialGoldenRecord): MatchingProbabilityResult
 }

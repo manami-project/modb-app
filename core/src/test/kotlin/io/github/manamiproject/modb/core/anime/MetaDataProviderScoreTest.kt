@@ -1,4 +1,4 @@
-package io.github.manamiproject.modb.core.models
+package io.github.manamiproject.modb.core.anime
 
 import io.github.manamiproject.modb.test.exceptionExpected
 import org.assertj.core.api.Assertions.assertThat

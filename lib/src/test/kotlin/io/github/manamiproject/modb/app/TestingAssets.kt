@@ -28,7 +28,8 @@ import io.github.manamiproject.modb.core.extensions.RegularFile
 import io.github.manamiproject.modb.core.httpclient.HttpClient
 import io.github.manamiproject.modb.core.httpclient.HttpResponse
 import io.github.manamiproject.modb.core.httpclient.RequestBody
-import io.github.manamiproject.modb.core.models.Anime
+import io.github.manamiproject.modb.core.anime.Anime
+import io.github.manamiproject.modb.core.anime.AnimeRaw
 import io.github.manamiproject.modb.serde.json.ExternalResourceJsonDeserializer
 import io.github.manamiproject.modb.serde.json.JsonSerializer
 import io.github.manamiproject.modb.serde.json.models.Dataset
@@ -82,7 +83,7 @@ internal object TestAppConfig: Config {
 }
 
 internal object TestPathAnimeConverter: PathAnimeConverter {
-    override suspend fun convert(path: Path): Collection<Anime> = shouldNotBeInvoked()
+    override suspend fun convert(path: Path): Collection<AnimeRaw> = shouldNotBeInvoked()
 }
 
 internal object TestExternalResourceJsonDeserializerDataset: ExternalResourceJsonDeserializer<Dataset> {
@@ -111,8 +112,8 @@ internal object TestWatchKey: WatchKey {
 
 internal object TestDownloadControlStateAccessor: DownloadControlStateAccessor {
     override fun downloadControlStateDirectory(metaDataProviderConfig: MetaDataProviderConfig): Directory = shouldNotBeInvoked()
-    override suspend fun allAnime(): List<Anime> = shouldNotBeInvoked()
-    override suspend fun allAnime(metaDataProviderConfig: MetaDataProviderConfig): List<Anime> = shouldNotBeInvoked()
+    override suspend fun allAnime(): List<AnimeRaw> = shouldNotBeInvoked()
+    override suspend fun allAnime(metaDataProviderConfig: MetaDataProviderConfig): List<AnimeRaw> = shouldNotBeInvoked()
     override suspend fun allDcsEntries(): List<DownloadControlStateEntry> = shouldNotBeInvoked()
     override suspend fun allDcsEntries(metaDataProviderConfig: MetaDataProviderConfig): List<DownloadControlStateEntry> = shouldNotBeInvoked()
     override suspend fun dcsEntryExists(metaDataProviderConfig: MetaDataProviderConfig, animeId: AnimeId): Boolean = shouldNotBeInvoked()
