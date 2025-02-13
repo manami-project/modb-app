@@ -1,6 +1,6 @@
-package io.github.manamiproject.modb.core.models
+package io.github.manamiproject.modb.core.anime
 
-import io.github.manamiproject.modb.core.models.AnimeSeason.Season.UNDEFINED
+import io.github.manamiproject.modb.core.anime.AnimeSeason.Season.UNDEFINED
 import java.time.LocalDate
 
 /**

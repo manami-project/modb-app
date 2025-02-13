@@ -1,16 +1,14 @@
 package io.github.manamiproject.modb.app.merging.matching
 
 import io.github.manamiproject.modb.app.merging.goldenrecords.PotentialGoldenRecord
-import io.github.manamiproject.modb.core.models.Anime
-import io.github.manamiproject.modb.core.models.Anime.Status.FINISHED
-import io.github.manamiproject.modb.core.models.Anime.Status.UPCOMING
-import io.github.manamiproject.modb.core.models.Anime.Type.MOVIE
-import io.github.manamiproject.modb.core.models.Anime.Type.TV
-import io.github.manamiproject.modb.core.models.AnimeSeason
-import io.github.manamiproject.modb.core.models.AnimeSeason.Season.FALL
-import io.github.manamiproject.modb.core.models.AnimeSeason.Season.SPRING
-import io.github.manamiproject.modb.core.models.Duration
-import io.github.manamiproject.modb.core.models.Duration.TimeUnit.*
+import io.github.manamiproject.modb.core.anime.*
+import io.github.manamiproject.modb.core.anime.AnimeStatus.FINISHED
+import io.github.manamiproject.modb.core.anime.AnimeStatus.UPCOMING
+import io.github.manamiproject.modb.core.anime.AnimeType.MOVIE
+import io.github.manamiproject.modb.core.anime.AnimeType.TV
+import io.github.manamiproject.modb.core.anime.AnimeSeason.Season.FALL
+import io.github.manamiproject.modb.core.anime.AnimeSeason.Season.SPRING
+import io.github.manamiproject.modb.core.anime.Duration.TimeUnit.*
 import io.github.manamiproject.modb.test.tempDirectory
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Nested
@@ -31,7 +29,7 @@ internal class DefaultMatchingProbabilityCalculatorTest {
             @Test
             fun `matches 100 percent with basic properties, because the anime for is the same as in the potential golden record`() {
                 // given
-                val anime = Anime("Cowboy Bebop")
+                val anime = AnimeRaw("Cowboy Bebop")
 
                 val potentialGoldenRecord = PotentialGoldenRecord(
                     id = randomUUID(),
@@ -52,7 +50,7 @@ internal class DefaultMatchingProbabilityCalculatorTest {
             @Test
             fun `title differs - matches 93 percent`() {
                 // given
-                val anime = Anime("Cowboy Bebop")
+                val anime = AnimeRaw("Cowboy Bebop")
 
                 val potentialGoldenRecord = PotentialGoldenRecord(
                     id = randomUUID(),
@@ -73,7 +71,7 @@ internal class DefaultMatchingProbabilityCalculatorTest {
             @Test
             fun `type differs - matches 66 percent`() {
                 // given
-                val anime = Anime(
+                val anime = AnimeRaw(
                     _title = "Cowboy Bebop",
                     type = TV,
                 )
@@ -101,15 +99,15 @@ internal class DefaultMatchingProbabilityCalculatorTest {
             )
             fun `type within special and ona - matches 80 percent`(animeType: String, potentialGoldenRecordType: String) {
                 // given
-                val anime = Anime(
+                val anime = AnimeRaw(
                     _title = "Cowboy Bebop",
-                    type = Anime.Type.of(animeType),
+                    type = AnimeType.of(animeType),
                 )
 
                 val potentialGoldenRecord = PotentialGoldenRecord(
                     id = randomUUID(),
                     anime = anime.copy(
-                        type = Anime.Type.of(potentialGoldenRecordType),
+                        type = AnimeType.of(potentialGoldenRecordType),
                     )
                 )
 
@@ -125,7 +123,7 @@ internal class DefaultMatchingProbabilityCalculatorTest {
             @Test
             fun `episodes differ - matches 98 percent`() {
                 // given
-                val anime = Anime("Cowboy Bebop")
+                val anime = AnimeRaw("Cowboy Bebop")
 
                 val potentialGoldenRecord = PotentialGoldenRecord(
                     id = randomUUID(),
@@ -148,7 +146,7 @@ internal class DefaultMatchingProbabilityCalculatorTest {
             @Test
             fun `completely different - matches 0 percent`() {
                 // given
-                val anime = Anime(
+                val anime = AnimeRaw(
                     _title = "ABC",
                     episodes = 1,
                     type = MOVIE,
@@ -156,7 +154,7 @@ internal class DefaultMatchingProbabilityCalculatorTest {
 
                 val potentialGoldenRecord = PotentialGoldenRecord(
                     id = randomUUID(),
-                    anime = Anime(
+                    anime = AnimeRaw(
                         _title = "DEF",
                         episodes = 1500,
                         type = TV,
@@ -181,15 +179,15 @@ internal class DefaultMatchingProbabilityCalculatorTest {
             )
             fun `ignore status if one of one of the two is UNKNOWN`(animeStatus: String, potentialGoldenRecordStatus: String) {
                 // given
-                val anime = Anime(
+                val anime = AnimeRaw(
                     _title = "Cowboy Bebop",
-                    status = Anime.Status.of(animeStatus),
+                    status = AnimeStatus.of(animeStatus),
                 )
 
                 val potentialGoldenRecord = PotentialGoldenRecord(
                     id = randomUUID(),
                     anime = anime.copy(
-                        status = Anime.Status.of(potentialGoldenRecordStatus),
+                        status = AnimeStatus.of(potentialGoldenRecordStatus),
                     )
                 )
 
@@ -211,7 +209,7 @@ internal class DefaultMatchingProbabilityCalculatorTest {
             )
             fun `ignore yearOfPremiere if one of one of the two is UNKNOWN`(animeYear: String, potentialGoldenRecordYear: String) {
                 // given
-                val anime = Anime(
+                val anime = AnimeRaw(
                     _title = "Cowboy Bebop",
                     animeSeason = AnimeSeason(
                         year = animeYear.toInt(),
@@ -245,7 +243,7 @@ internal class DefaultMatchingProbabilityCalculatorTest {
             )
             fun `ignore duration if one of one of the two is UNKNOWN`(animeMinutes: String, potentialGoldenRecordMinutes: String) {
                 // given
-                val anime = Anime(
+                val anime = AnimeRaw(
                     _title = "Cowboy Bebop",
                     duration = Duration(
                         value = animeMinutes.toInt(),
@@ -281,7 +279,7 @@ internal class DefaultMatchingProbabilityCalculatorTest {
             @Test
             fun `matches 100 percent with all properties, because the anime for is the same as in the potential golden record`() {
                 // given
-                val anime = Anime(
+                val anime = AnimeRaw(
                     _sources = hashSetOf(
                         URI("https://myanimelist.net/anime/1"),
                     ),
@@ -326,7 +324,7 @@ internal class DefaultMatchingProbabilityCalculatorTest {
             @Test
             fun `title differs - matches 96 percent`() {
                 // given
-                val anime = Anime(
+                val anime = AnimeRaw(
                     _sources = hashSetOf(
                         URI("https://myanimelist.net/anime/1"),
                     ),
@@ -373,7 +371,7 @@ internal class DefaultMatchingProbabilityCalculatorTest {
             @Test
             fun `type differs - matches 83 percent`() {
                 // given
-                val anime = Anime(
+                val anime = AnimeRaw(
                     _sources = hashSetOf(
                         URI("https://myanimelist.net/anime/1"),
                     ),
@@ -424,12 +422,12 @@ internal class DefaultMatchingProbabilityCalculatorTest {
             )
             fun `type within special and ona - matches 90 percent`(animeType: String, potentialGoldenRecordType: String) {
                 // given
-                val anime = Anime(
+                val anime = AnimeRaw(
                     _sources = hashSetOf(
                         URI("https://myanimelist.net/anime/1"),
                     ),
                     _title = "Cowboy Bebop",
-                    type = Anime.Type.of(animeType),
+                    type = AnimeType.of(animeType),
                     episodes = 26,
                     picture = URI("https://cdn.myanimelist.net/images/anime/4/19644.jpg"),
                     thumbnail = URI("https://cdn.myanimelist.net/images/anime/4/19644t.jpg"),
@@ -455,7 +453,7 @@ internal class DefaultMatchingProbabilityCalculatorTest {
                 val potentialGoldenRecord = PotentialGoldenRecord(
                     id = randomUUID(),
                     anime = anime.copy(
-                        type = Anime.Type.of(potentialGoldenRecordType),
+                        type = AnimeType.of(potentialGoldenRecordType),
                     )
                 )
 
@@ -471,7 +469,7 @@ internal class DefaultMatchingProbabilityCalculatorTest {
             @Test
             fun `episodes differ - matches 99 percent`() {
                 // given
-                val anime = Anime(
+                val anime = AnimeRaw(
                     _sources = hashSetOf(
                         URI("https://myanimelist.net/anime/1"),
                     ),
@@ -518,7 +516,7 @@ internal class DefaultMatchingProbabilityCalculatorTest {
             @Test
             fun `status differs - matches 83 percent`() {
                 // given
-                val anime = Anime(
+                val anime = AnimeRaw(
                     _sources = hashSetOf(
                         URI("https://myanimelist.net/anime/1"),
                     ),
@@ -565,7 +563,7 @@ internal class DefaultMatchingProbabilityCalculatorTest {
             @Test
             fun `yearOfPremiere differs - matches 99 percent`() {
                 // given
-                val anime = Anime(
+                val anime = AnimeRaw(
                     _sources = hashSetOf(
                         URI("https://myanimelist.net/anime/1"),
                     ),
@@ -614,7 +612,7 @@ internal class DefaultMatchingProbabilityCalculatorTest {
             @Test
             fun `duration in minutes differs - matches 99 percent`() {
                 // given
-                val anime = Anime(
+                val anime = AnimeRaw(
                     _sources = hashSetOf(
                         URI("https://myanimelist.net/anime/1"),
                     ),
@@ -664,7 +662,7 @@ internal class DefaultMatchingProbabilityCalculatorTest {
             @Test
             fun `duration in seconds differs - matches 99 percent`() {
                 // given
-                val anime = Anime(
+                val anime = AnimeRaw(
                     _sources = hashSetOf(
                         URI("https://myanimelist.net/anime/1"),
                     ),
@@ -714,7 +712,7 @@ internal class DefaultMatchingProbabilityCalculatorTest {
             @Test
             fun `duration in hours differs - matches 99 percent`() {
                 // given
-                val anime = Anime(
+                val anime = AnimeRaw(
                     _sources = hashSetOf(
                         URI("https://myanimelist.net/anime/1"),
                     ),
@@ -764,7 +762,7 @@ internal class DefaultMatchingProbabilityCalculatorTest {
             @Test
             fun `completely different - matches 0 percent`() {
                 // given
-                val anime = Anime(
+                val anime = AnimeRaw(
                     _title = "ABC",
                     type = MOVIE,
                     episodes = 1,
@@ -781,7 +779,7 @@ internal class DefaultMatchingProbabilityCalculatorTest {
 
                 val potentialGoldenRecord = PotentialGoldenRecord(
                     id = randomUUID(),
-                    anime = Anime(
+                    anime = AnimeRaw(
                         _title = "DEF",
                         type = TV,
                         episodes = 1500,

@@ -3,10 +3,14 @@ package io.github.manamiproject.modb.simkl
 import io.github.manamiproject.modb.core.config.AnimeId
 import io.github.manamiproject.modb.core.config.FileSuffix
 import io.github.manamiproject.modb.core.config.MetaDataProviderConfig
-import io.github.manamiproject.modb.core.models.Anime
-import io.github.manamiproject.modb.core.models.AnimeSeason
-import io.github.manamiproject.modb.core.models.Duration
-import io.github.manamiproject.modb.core.models.YEAR_OF_THE_FIRST_ANIME
+import io.github.manamiproject.modb.core.anime.*
+import io.github.manamiproject.modb.core.anime.AnimeRaw.Companion.NO_PICTURE
+import io.github.manamiproject.modb.core.anime.AnimeRaw.Companion.NO_PICTURE_THUMBNAIL
+import io.github.manamiproject.modb.core.anime.AnimeSeason.Companion.UNKNOWN_YEAR
+import io.github.manamiproject.modb.core.anime.AnimeSeason.Season.*
+import io.github.manamiproject.modb.core.anime.AnimeStatus.*
+import io.github.manamiproject.modb.core.anime.AnimeType.*
+import io.github.manamiproject.modb.core.anime.Duration.TimeUnit.*
 import io.github.manamiproject.modb.test.loadTestResource
 import kotlinx.coroutines.runBlocking
 import org.assertj.core.api.Assertions.assertThat
@@ -289,7 +293,7 @@ internal class SimklAnimeConverterTest {
                 val result = converter.convert(testFile)
 
                 // then
-                assertThat(result.type).isEqualTo(Anime.Type.MOVIE)
+                assertThat(result.type).isEqualTo(MOVIE)
             }
         }
 
@@ -311,7 +315,7 @@ internal class SimklAnimeConverterTest {
                 val result = converter.convert(testFile)
 
                 // then
-                assertThat(result.type).isEqualTo(Anime.Type.OVA)
+                assertThat(result.type).isEqualTo(OVA)
             }
         }
 
@@ -333,7 +337,7 @@ internal class SimklAnimeConverterTest {
                 val result = converter.convert(testFile)
 
                 // then
-                assertThat(result.type).isEqualTo(Anime.Type.TV)
+                assertThat(result.type).isEqualTo(TV)
             }
         }
 
@@ -355,7 +359,7 @@ internal class SimklAnimeConverterTest {
                 val result = converter.convert(testFile)
 
                 // then
-                assertThat(result.type).isEqualTo(Anime.Type.ONA)
+                assertThat(result.type).isEqualTo(ONA)
             }
         }
 
@@ -377,7 +381,7 @@ internal class SimklAnimeConverterTest {
                 val result = converter.convert(testFile)
 
                 // then
-                assertThat(result.type).isEqualTo(Anime.Type.SPECIAL)
+                assertThat(result.type).isEqualTo(SPECIAL)
             }
         }
 
@@ -399,7 +403,7 @@ internal class SimklAnimeConverterTest {
                 val result = converter.convert(testFile)
 
                 // then
-                assertThat(result.type).isEqualTo(Anime.Type.SPECIAL)
+                assertThat(result.type).isEqualTo(SPECIAL)
             }
         }
     }
@@ -425,8 +429,8 @@ internal class SimklAnimeConverterTest {
                 val result = converter.convert(testFile)
 
                 // then
-                assertThat(result.picture).isEqualTo(Anime.NO_PICTURE)
-                assertThat(result.thumbnail).isEqualTo(Anime.NO_PICTURE_THUMBNAIL)
+                assertThat(result.picture).isEqualTo(NO_PICTURE)
+                assertThat(result.thumbnail).isEqualTo(NO_PICTURE_THUMBNAIL)
             }
         }
 
@@ -475,7 +479,7 @@ internal class SimklAnimeConverterTest {
                 val result = converter.convert(testFile)
 
                 // then
-                assertThat(result.status).isEqualTo(Anime.Status.ONGOING)
+                assertThat(result.status).isEqualTo(ONGOING)
             }
         }
 
@@ -497,7 +501,7 @@ internal class SimklAnimeConverterTest {
                 val result = converter.convert(testFile)
 
                 // then
-                assertThat(result.status).isEqualTo(Anime.Status.UPCOMING)
+                assertThat(result.status).isEqualTo(UPCOMING)
             }
         }
 
@@ -519,7 +523,7 @@ internal class SimklAnimeConverterTest {
                 val result = converter.convert(testFile)
 
                 // then
-                assertThat(result.status).isEqualTo(Anime.Status.FINISHED)
+                assertThat(result.status).isEqualTo(FINISHED)
             }
         }
 
@@ -541,7 +545,7 @@ internal class SimklAnimeConverterTest {
                 val result = converter.convert(testFile)
 
                 // then
-                assertThat(result.status).isEqualTo(Anime.Status.FINISHED)
+                assertThat(result.status).isEqualTo(FINISHED)
             }
         }
     }
@@ -571,7 +575,7 @@ internal class SimklAnimeConverterTest {
                     val result = converter.convert(testFile)
 
                     // then
-                    assertThat(result.animeSeason.season).isEqualTo(AnimeSeason.Season.WINTER)
+                    assertThat(result.animeSeason.season).isEqualTo(WINTER)
                 }
             }
 
@@ -594,7 +598,7 @@ internal class SimklAnimeConverterTest {
                     val result = converter.convert(testFile)
 
                     // then
-                    assertThat(result.animeSeason.season).isEqualTo(AnimeSeason.Season.SPRING)
+                    assertThat(result.animeSeason.season).isEqualTo(SPRING)
                 }
             }
 
@@ -617,7 +621,7 @@ internal class SimklAnimeConverterTest {
                     val result = converter.convert(testFile)
 
                     // then
-                    assertThat(result.animeSeason.season).isEqualTo(AnimeSeason.Season.SUMMER)
+                    assertThat(result.animeSeason.season).isEqualTo(SUMMER)
                 }
             }
 
@@ -640,7 +644,7 @@ internal class SimklAnimeConverterTest {
                     val result = converter.convert(testFile)
 
                     // then
-                    assertThat(result.animeSeason.season).isEqualTo(AnimeSeason.Season.FALL)
+                    assertThat(result.animeSeason.season).isEqualTo(FALL)
                 }
             }
         }
@@ -733,8 +737,8 @@ internal class SimklAnimeConverterTest {
                 val result = converter.convert(testFile)
 
                 // then
-                assertThat(result.animeSeason.season).isEqualTo(AnimeSeason.Season.UNDEFINED)
-                assertThat(result.animeSeason.year).isEqualTo(AnimeSeason.UNKNOWN_YEAR)
+                assertThat(result.animeSeason.season).isEqualTo(UNDEFINED)
+                assertThat(result.animeSeason.year).isEqualTo(UNKNOWN_YEAR)
             }
         }
     }
@@ -910,7 +914,7 @@ internal class SimklAnimeConverterTest {
                 // then
                 assertThat(result.duration).isEqualTo(Duration(
                     value = 26,
-                    Duration.TimeUnit.MINUTES,
+                    MINUTES,
                 ))
             }
         }
@@ -935,7 +939,7 @@ internal class SimklAnimeConverterTest {
                 // then
                 assertThat(result.duration).isEqualTo(Duration(
                     value = 7800,
-                    Duration.TimeUnit.SECONDS,
+                    SECONDS,
                 ))
             }
         }

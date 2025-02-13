@@ -6,7 +6,7 @@ import io.github.manamiproject.modb.core.config.AnimeId
 import io.github.manamiproject.modb.core.config.MetaDataProviderConfig
 import io.github.manamiproject.modb.core.extensions.Directory
 import io.github.manamiproject.modb.core.extensions.RegularFile
-import io.github.manamiproject.modb.core.models.Anime
+import io.github.manamiproject.modb.core.anime.AnimeRaw
 
 /**
  * File suffix used for the files containing the serialized [DownloadControlStateEntry] object.
@@ -29,11 +29,11 @@ interface DownloadControlStateAccessor {
     fun downloadControlStateDirectory(metaDataProviderConfig: MetaDataProviderConfig): Directory
 
     /**
-     * Return all [Anime] from DCS files.
+     * Return all [AnimeRaw] from DCS files.
      * @since 1.0.0
      * @return All anime from all meta data providers.
      */
-    suspend fun allAnime(): List<Anime>
+    suspend fun allAnime(): List<AnimeRaw>
 
     /**
      * Retrieve all DCS entries.
@@ -43,12 +43,12 @@ interface DownloadControlStateAccessor {
     suspend fun allDcsEntries(): List<DownloadControlStateEntry>
 
     /**
-     * Return all [Anime] from DCS files of a specific meta data provicer..
+     * Return all [AnimeRaw] from DCS files of a specific meta data provicer..
      * @since 1.0.0
      * @param metaDataProviderConfig Configuration for a specific meta data provider.
      * @return All anime of a specific meta data provider.
      */
-    suspend fun allAnime(metaDataProviderConfig: MetaDataProviderConfig): List<Anime>
+    suspend fun allAnime(metaDataProviderConfig: MetaDataProviderConfig): List<AnimeRaw>
 
     /**
      * Retrieve all DCS entries of a specific meta data provider.

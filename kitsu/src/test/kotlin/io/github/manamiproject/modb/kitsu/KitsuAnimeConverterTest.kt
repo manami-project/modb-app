@@ -1,15 +1,14 @@
 package io.github.manamiproject.modb.kitsu
 
+import io.github.manamiproject.modb.core.anime.AnimeSeason.Season.*
+import io.github.manamiproject.modb.core.anime.AnimeStatus.*
+import io.github.manamiproject.modb.core.anime.AnimeType.*
+import io.github.manamiproject.modb.core.anime.Duration
+import io.github.manamiproject.modb.core.anime.Duration.TimeUnit.*
 import io.github.manamiproject.modb.core.config.AnimeId
 import io.github.manamiproject.modb.core.config.FileSuffix
 import io.github.manamiproject.modb.core.config.MetaDataProviderConfig
 import io.github.manamiproject.modb.core.extensions.copyTo
-import io.github.manamiproject.modb.core.models.Anime
-import io.github.manamiproject.modb.core.models.Anime.Status.*
-import io.github.manamiproject.modb.core.models.Anime.Type.*
-import io.github.manamiproject.modb.core.models.AnimeSeason.Season.*
-import io.github.manamiproject.modb.core.models.Duration
-import io.github.manamiproject.modb.core.models.Duration.TimeUnit.*
 import io.github.manamiproject.modb.test.exceptionExpected
 import io.github.manamiproject.modb.test.loadTestResource
 import io.github.manamiproject.modb.test.tempDirectory
@@ -21,6 +20,7 @@ import java.net.URI
 import kotlin.io.path.createDirectory
 import kotlin.io.path.createFile
 import kotlin.test.Test
+import io.github.manamiproject.modb.core.anime.AnimeStatus.UNKNOWN as UNKNOWN_STATUS
 
 internal class KitsuAnimeConverterTest {
 
@@ -975,7 +975,7 @@ internal class KitsuAnimeConverterTest {
                     val result = converter.convert(testFileContent)
 
                     // then
-                    assertThat(result.status).isEqualTo(Anime.Status.UNKNOWN)
+                    assertThat(result.status).isEqualTo(UNKNOWN_STATUS)
                 }
             }
 
@@ -1010,7 +1010,7 @@ internal class KitsuAnimeConverterTest {
                     val result = converter.convert(testFileContent)
 
                     // then
-                    assertThat(result.status).isEqualTo(Anime.Status.UNKNOWN)
+                    assertThat(result.status).isEqualTo(UNKNOWN_STATUS)
                 }
             }
         }

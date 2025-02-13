@@ -1,6 +1,6 @@
 package io.github.manamiproject.modb.serde.json.models
 
-import io.github.manamiproject.modb.core.models.Anime
+import io.github.manamiproject.modb.core.anime.Anime
 
 /**
  * Contains the complete dataset.

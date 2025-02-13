@@ -1,6 +1,6 @@
 package io.github.manamiproject.modb.app.readme
 
-import io.github.manamiproject.modb.core.models.Anime
+import io.github.manamiproject.modb.core.anime.Anime
 
 /**
  * Updates the `README.md` of the dataset repo.

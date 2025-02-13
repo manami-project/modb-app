@@ -10,23 +10,23 @@ import io.github.manamiproject.modb.core.extensions.remove
 import io.github.manamiproject.modb.core.extractor.DataExtractor
 import io.github.manamiproject.modb.core.extractor.ExtractionResult
 import io.github.manamiproject.modb.core.extractor.XmlDataExtractor
-import io.github.manamiproject.modb.core.models.*
-import io.github.manamiproject.modb.core.models.Anime.Companion.NO_PICTURE
-import io.github.manamiproject.modb.core.models.Anime.Companion.NO_PICTURE_THUMBNAIL
-import io.github.manamiproject.modb.core.models.Anime.Status
-import io.github.manamiproject.modb.core.models.Anime.Status.*
-import io.github.manamiproject.modb.core.models.Anime.Type
-import io.github.manamiproject.modb.core.models.Anime.Type.*
-import io.github.manamiproject.modb.core.models.Anime.Type.UNKNOWN
-import io.github.manamiproject.modb.core.models.AnimeSeason.Season.*
-import io.github.manamiproject.modb.core.models.Duration.TimeUnit.MINUTES
+import io.github.manamiproject.modb.core.anime.*
+import io.github.manamiproject.modb.core.anime.AnimeRaw.Companion.NO_PICTURE
+import io.github.manamiproject.modb.core.anime.AnimeRaw.Companion.NO_PICTURE_THUMBNAIL
+import io.github.manamiproject.modb.core.anime.AnimeStatus.UNKNOWN as UNKNOWN_STATUS
+import io.github.manamiproject.modb.core.anime.AnimeStatus.*
+import io.github.manamiproject.modb.core.anime.AnimeType.UNKNOWN as UNKNOWN_TYPE
+import io.github.manamiproject.modb.core.anime.AnimeType.*
+import io.github.manamiproject.modb.core.anime.AnimeSeason.Season.*
+import io.github.manamiproject.modb.core.anime.Duration.Companion.UNKNOWN as UNKNOWN_DURATION
+import io.github.manamiproject.modb.core.anime.Duration.TimeUnit.MINUTES
 import kotlinx.coroutines.withContext
 import java.net.URI
 import java.time.Clock
 import java.time.LocalDate
 
 /**
- * Converts raw data to an [Anime]
+ * Converts raw data to an [AnimeRaw]
  * @since 1.0.0
  * @param metaDataProviderConfig Configuration for converting data.
  * @param clock Used to determine the current date. **Default:** `Clock.systemDefaultZone()`
@@ -39,7 +39,7 @@ public class AnidbAnimeConverter(
 
     private val currentDate = LocalDate.now(clock)
 
-    override suspend fun convert(rawContent: String): Anime = withContext(LIMITED_CPU) {
+    override suspend fun convert(rawContent: String): AnimeRaw = withContext(LIMITED_CPU) {
         val data = extractor.extract(rawContent, mapOf(
             "title" to "//h1[contains(@class, 'anime')]/text()",
             "episodesString" to "//span[contains(@itemprop, 'numberOfEpisodes')]/text()",
@@ -64,7 +64,7 @@ public class AnidbAnimeConverter(
 
         val picture = extractPicture(data)
 
-        return@withContext Anime(
+        return@withContext AnimeRaw(
             _title = extractTitle(data),
             episodes = extractEpisodes(data),
             type = extractType(data),
@@ -94,7 +94,7 @@ public class AnidbAnimeConverter(
         }
     }
 
-    private fun extractType(data: ExtractionResult): Type {
+    private fun extractType(data: ExtractionResult): AnimeType {
         val typeCellContent = data.stringOrDefault("type")
         val type = if (typeCellContent.contains(',')) {
             typeCellContent.split(',')[0].trim()
@@ -110,7 +110,7 @@ public class AnidbAnimeConverter(
             "music video" -> SPECIAL
             "other" -> SPECIAL
             "tv series" -> TV
-            "unknown" -> UNKNOWN
+            "unknown" -> UNKNOWN_TYPE
             else -> throw IllegalStateException("Unknown type [$type]")
         }
     }
@@ -181,7 +181,7 @@ public class AnidbAnimeConverter(
             .toHashSet()
     }
 
-    private fun extractStatus(data: ExtractionResult): Status {
+    private fun extractStatus(data: ExtractionResult): AnimeStatus {
         val startDateAttr = data.stringOrDefault("startDateAttr")
         val endDateAttr = data.stringOrDefault("endDateAttr")
         val isTimePeriod = data.stringOrDefault("isTimePeriod").contains("until")
@@ -221,10 +221,10 @@ public class AnidbAnimeConverter(
             return releaseDateToStatus(startDate)
         }
 
-        return Status.UNKNOWN
+        return UNKNOWN_STATUS
     }
 
-    private fun releaseDateToStatus(startDate: LocalDate, endDate: LocalDate = startDate): Status {
+    private fun releaseDateToStatus(startDate: LocalDate, endDate: LocalDate = startDate): AnimeStatus {
         if (startDate != endDate) {
             return when {
                 endDate.isBefore(currentDate) -> FINISHED
@@ -242,7 +242,7 @@ public class AnidbAnimeConverter(
 
     private fun extractDuration(data: ExtractionResult): Duration {
         if (data.notFound("duration")) {
-            return Duration.UNKNOWN
+            return UNKNOWN_DURATION
         }
 
         val duration = data.listNotNull<String>("duration")
@@ -256,7 +256,7 @@ public class AnidbAnimeConverter(
     private fun extractAnimeSeason(data: ExtractionResult): AnimeSeason {
         val seasonCell = data.stringOrDefault("season")
         var year = 0
-        var season = AnimeSeason.Season.UNDEFINED
+        var season = UNDEFINED
 
         if (seasonCell.neitherNullNorBlank()) {
             val seasonNameFormat = Regex("[aA-zZ]+")

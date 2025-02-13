@@ -10,7 +10,7 @@ import io.github.manamiproject.modb.core.extensions.listRegularFiles
 import io.github.manamiproject.modb.core.extensions.readFile
 import io.github.manamiproject.modb.core.json.Json
 import io.github.manamiproject.modb.core.logging.LoggerDelegate
-import io.github.manamiproject.modb.core.models.Anime
+import io.github.manamiproject.modb.core.anime.AnimeRaw
 import kotlinx.coroutines.async
 import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.withContext
@@ -50,7 +50,7 @@ class DefaultDownloadControlStateUpdater(
         }
     }
 
-    private suspend fun fetchAnimeFromConvFiles(): List<Pair<Anime, String>> = withContext(LIMITED_FS) {
+    private suspend fun fetchAnimeFromConvFiles(): List<Pair<AnimeRaw, String>> = withContext(LIMITED_FS) {
         log.info { "Loading [*.$CONVERTED_FILE_SUFFIX] files." }
 
         val jobs = appConfig.metaDataProviderConfigurations()
@@ -60,7 +60,7 @@ class DefaultDownloadControlStateUpdater(
             .map { workDir ->
                 workDir.listRegularFiles("*.$CONVERTED_FILE_SUFFIX").map { file ->
                     async {
-                        Json.parseJson<Anime>(file.readFile())!! to file.fileName()
+                        Json.parseJson<AnimeRaw>(file.readFile())!! to file.fileName()
                     }
                 }
             }.flatten()
@@ -68,7 +68,7 @@ class DefaultDownloadControlStateUpdater(
         return@withContext awaitAll(*jobs.toTypedArray())
     }
 
-    private suspend fun checkForExtractionProblems(convFileAnime: List<Pair<Anime, MetaDataProviderConfig>>) {
+    private suspend fun checkForExtractionProblems(convFileAnime: List<Pair<AnimeRaw, MetaDataProviderConfig>>) {
         log.info { "Checking for possible extraction problems in the converter classes." }
 
         val counter = mutableMapOf<MetaDataProviderConfig, UInt>()
@@ -111,7 +111,7 @@ class DefaultDownloadControlStateUpdater(
         }
     }
 
-    private suspend fun updateChangedIds(convFileAnimeToFilename: List<Pair<Anime, String>>) {
+    private suspend fun updateChangedIds(convFileAnimeToFilename: List<Pair<AnimeRaw, String>>) {
         log.info { "Checking if IDs have changed." }
 
         convFileAnimeToFilename.forEach { (anime, fileName) ->
@@ -126,7 +126,7 @@ class DefaultDownloadControlStateUpdater(
         }
     }
 
-    private suspend fun handleUpdate(anime: Anime, metaDataProviderConfig: MetaDataProviderConfig) {
+    private suspend fun handleUpdate(anime: AnimeRaw, metaDataProviderConfig: MetaDataProviderConfig) {
         val animeId = metaDataProviderConfig.extractAnimeId(anime.sources.first())
 
         val dcsEntry = when(downloadControlStateAccessor.dcsEntryExists(metaDataProviderConfig, animeId)) {

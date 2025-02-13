@@ -1,7 +1,7 @@
 package io.github.manamiproject.modb.app.downloadcontrolstate
 
-import io.github.manamiproject.modb.core.models.YEAR_OF_THE_FIRST_ANIME
-import io.github.manamiproject.modb.core.models.Year
+import io.github.manamiproject.modb.core.anime.YEAR_OF_THE_FIRST_ANIME
+import io.github.manamiproject.modb.core.anime.Year
 import java.time.LocalDate
 import java.time.ZoneId
 import java.time.temporal.ChronoUnit

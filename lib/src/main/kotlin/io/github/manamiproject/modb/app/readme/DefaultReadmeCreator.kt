@@ -13,8 +13,8 @@ import io.github.manamiproject.modb.app.merging.lock.MergeLockAccessor
 import io.github.manamiproject.modb.core.config.Hostname
 import io.github.manamiproject.modb.core.config.MetaDataProviderConfig
 import io.github.manamiproject.modb.core.extensions.writeToFile
-import io.github.manamiproject.modb.core.models.Anime
-import io.github.manamiproject.modb.core.models.Year
+import io.github.manamiproject.modb.core.anime.Anime
+import io.github.manamiproject.modb.core.anime.Year
 import io.github.manamiproject.modb.simkl.SimklConfig
 import java.time.LocalDate
 

@@ -7,13 +7,13 @@ import io.github.manamiproject.modb.core.extensions.*
 import io.github.manamiproject.modb.core.extractor.DataExtractor
 import io.github.manamiproject.modb.core.extractor.ExtractionResult
 import io.github.manamiproject.modb.core.extractor.JsonDataExtractor
-import io.github.manamiproject.modb.core.models.*
-import io.github.manamiproject.modb.core.models.Anime.Status
-import io.github.manamiproject.modb.core.models.Anime.Status.*
-import io.github.manamiproject.modb.core.models.Anime.Type
-import io.github.manamiproject.modb.core.models.Anime.Type.*
-import io.github.manamiproject.modb.core.models.AnimeSeason.Season.*
-import io.github.manamiproject.modb.core.models.Duration.TimeUnit.MINUTES
+import io.github.manamiproject.modb.core.anime.*
+import io.github.manamiproject.modb.core.anime.AnimeSeason.Companion.UNKNOWN_YEAR
+import io.github.manamiproject.modb.core.anime.AnimeStatus.UNKNOWN as UNKNOWN_STATUS
+import io.github.manamiproject.modb.core.anime.AnimeStatus.*
+import io.github.manamiproject.modb.core.anime.AnimeType.*
+import io.github.manamiproject.modb.core.anime.AnimeSeason.Season.*
+import io.github.manamiproject.modb.core.anime.Duration.TimeUnit.MINUTES
 import kotlinx.coroutines.withContext
 import java.net.URI
 
@@ -35,7 +35,7 @@ public class NotifyAnimeConverter(
         require(relationsDir.directoryExists()) { "Directory for relations [$relationsDir] does not exist or is not a directory." }
     }
 
-    override suspend fun convert(rawContent: String): Anime = withContext(LIMITED_CPU) {
+    override suspend fun convert(rawContent: String): AnimeRaw = withContext(LIMITED_CPU) {
         val data = extractor.extract(rawContent, mapOf(
             "title" to "$.title.canonical",
             "titles" to "$.title",
@@ -50,7 +50,7 @@ public class NotifyAnimeConverter(
             "genres" to "$.genres",
         ))
 
-        return@withContext Anime(
+        return@withContext AnimeRaw(
             _title = extractTitle(data),
             episodes = extractEpisodes(data),
             type = extractType(data),
@@ -70,7 +70,7 @@ public class NotifyAnimeConverter(
 
     private fun extractEpisodes(data: ExtractionResult) = data.int("episodes")
 
-    private fun extractType(data: ExtractionResult): Type {
+    private fun extractType(data: ExtractionResult): AnimeType {
         return when(data.string("type").trim().lowercase()) {
             "tv" -> TV
             "movie" -> MOVIE
@@ -124,12 +124,12 @@ public class NotifyAnimeConverter(
         }
     }
 
-    private fun extractStatus(data: ExtractionResult): Status {
+    private fun extractStatus(data: ExtractionResult): AnimeStatus {
         return when(data.string("status").trim().lowercase()) {
             "finished" -> FINISHED
             "current" -> ONGOING
             "upcoming" -> UPCOMING
-            "tba" -> Status.UNKNOWN
+            "tba" -> UNKNOWN_STATUS
             else -> throw IllegalStateException("Unknown status [${data.string("status")}]")
         }
     }
@@ -138,7 +138,7 @@ public class NotifyAnimeConverter(
 
     private fun extractAnimeSeason(data: ExtractionResult): AnimeSeason {
         val month = Regex("-[0-9]{2}-").findAll(data.string("startDate")).firstOrNull()?.value?.remove("-")?.toInt() ?: 0
-        val year = Regex("[0-9]{4}").findAll(data.string("startDate")).firstOrNull()?.value?.toInt() ?: AnimeSeason.UNKNOWN_YEAR
+        val year = Regex("[0-9]{4}").findAll(data.string("startDate")).firstOrNull()?.value?.toInt() ?: UNKNOWN_YEAR
 
         val season = when(month) {
             1, 2, 3 -> WINTER

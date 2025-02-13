@@ -15,7 +15,8 @@ import io.github.manamiproject.modb.app.merging.lock.MergeLockAccessor
 import io.github.manamiproject.modb.core.config.Hostname
 import io.github.manamiproject.modb.core.config.MetaDataProviderConfig
 import io.github.manamiproject.modb.core.extensions.readFile
-import io.github.manamiproject.modb.core.models.Anime
+import io.github.manamiproject.modb.core.anime.Anime
+import io.github.manamiproject.modb.core.anime.AnimeRaw
 import io.github.manamiproject.modb.kitsu.KitsuConfig
 import io.github.manamiproject.modb.livechart.LivechartConfig
 import io.github.manamiproject.modb.myanimelist.MyanimelistConfig
@@ -47,99 +48,99 @@ class DefaultReadmeCreatorTest {
                     override fun isTestContext(): Boolean = true
                 }
                 val myanimelistTestEntries = listOf(
-                    Anime("myanimelist 1"),
-                    Anime("myanimelist 2"),
-                    Anime("myanimelist 3"),
-                    Anime("myanimelist 4"),
-                    Anime("myanimelist 5"),
-                    Anime("myanimelist 6"),
-                    Anime("myanimelist 7"),
-                    Anime("myanimelist 8"),
-                    Anime("myanimelist 9"),
+                    AnimeRaw("myanimelist 1"),
+                    AnimeRaw("myanimelist 2"),
+                    AnimeRaw("myanimelist 3"),
+                    AnimeRaw("myanimelist 4"),
+                    AnimeRaw("myanimelist 5"),
+                    AnimeRaw("myanimelist 6"),
+                    AnimeRaw("myanimelist 7"),
+                    AnimeRaw("myanimelist 8"),
+                    AnimeRaw("myanimelist 9"),
                 )
 
                 val testAnimePlanetConfig = object: MetaDataProviderConfig by AnimePlanetConfig {
                     override fun isTestContext(): Boolean = true
                 }
                 val animePlanetTestEntries = listOf(
-                    Anime("animePlanet 1"),
-                    Anime("animePlanet 2"),
-                    Anime("animePlanet 3"),
-                    Anime("animePlanet 4"),
-                    Anime("animePlanet 5"),
-                    Anime("animePlanet 6"),
-                    Anime("animePlanet 7"),
-                    Anime("animePlanet 8"),
+                    AnimeRaw("animePlanet 1"),
+                    AnimeRaw("animePlanet 2"),
+                    AnimeRaw("animePlanet 3"),
+                    AnimeRaw("animePlanet 4"),
+                    AnimeRaw("animePlanet 5"),
+                    AnimeRaw("animePlanet 6"),
+                    AnimeRaw("animePlanet 7"),
+                    AnimeRaw("animePlanet 8"),
                 )
 
                 val testKitsuConfig = object: MetaDataProviderConfig by KitsuConfig {
                     override fun isTestContext(): Boolean = true
                 }
                 val kitsuTestEntries = listOf(
-                    Anime("kitsu 1"),
-                    Anime("kitsu 2"),
-                    Anime("kitsu 3"),
-                    Anime("kitsu 4"),
-                    Anime("kitsu 5"),
-                    Anime("kitsu 6"),
-                    Anime("kitsu 7"),
+                    AnimeRaw("kitsu 1"),
+                    AnimeRaw("kitsu 2"),
+                    AnimeRaw("kitsu 3"),
+                    AnimeRaw("kitsu 4"),
+                    AnimeRaw("kitsu 5"),
+                    AnimeRaw("kitsu 6"),
+                    AnimeRaw("kitsu 7"),
                 )
 
                 val testAnisearchConfig = object: MetaDataProviderConfig by AnisearchConfig {
                     override fun isTestContext(): Boolean = true
                 }
                 val anisearchTestEntries = listOf(
-                    Anime("anisearch 1"),
-                    Anime("anisearch 2"),
-                    Anime("anisearch 3"),
-                    Anime("anisearch 4"),
-                    Anime("anisearch 5"),
-                    Anime("anisearch 6"),
+                    AnimeRaw("anisearch 1"),
+                    AnimeRaw("anisearch 2"),
+                    AnimeRaw("anisearch 3"),
+                    AnimeRaw("anisearch 4"),
+                    AnimeRaw("anisearch 5"),
+                    AnimeRaw("anisearch 6"),
                 )
 
                 val testNotifyConfig = object: MetaDataProviderConfig by NotifyConfig {
                     override fun isTestContext(): Boolean = true
                 }
                 val notifyTestEntries = listOf(
-                    Anime("notify 1"),
-                    Anime("notify 2"),
-                    Anime("notify 3"),
-                    Anime("notify 4"),
-                    Anime("notify 5"),
+                    AnimeRaw("notify 1"),
+                    AnimeRaw("notify 2"),
+                    AnimeRaw("notify 3"),
+                    AnimeRaw("notify 4"),
+                    AnimeRaw("notify 5"),
                 )
 
                 val testAnilistConfig = object: MetaDataProviderConfig by AnilistConfig {
                     override fun isTestContext(): Boolean = true
                 }
                 val anilistTestEntries = listOf(
-                    Anime("anilist 1"),
-                    Anime("anilist 2"),
-                    Anime("anilist 3"),
-                    Anime("anilist 4"),
+                    AnimeRaw("anilist 1"),
+                    AnimeRaw("anilist 2"),
+                    AnimeRaw("anilist 3"),
+                    AnimeRaw("anilist 4"),
                 )
 
                 val testAnidbConfig = object: MetaDataProviderConfig by AnidbConfig {
                     override fun isTestContext(): Boolean = true
                 }
                 val anidbTestEntries = listOf(
-                    Anime("anidb 1"),
-                    Anime("anidb 2"),
-                    Anime("anidb 3"),
+                    AnimeRaw("anidb 1"),
+                    AnimeRaw("anidb 2"),
+                    AnimeRaw("anidb 3"),
                 )
 
                 val testLivechartConfig = object: MetaDataProviderConfig by LivechartConfig {
                     override fun isTestContext(): Boolean = true
                 }
                 val livechartTestEntries = listOf(
-                    Anime("livechart 1"),
-                    Anime("livechart 2"),
+                    AnimeRaw("livechart 1"),
+                    AnimeRaw("livechart 2"),
                 )
 
                 val testSimklConfig = object: MetaDataProviderConfig by SimklConfig {
                     override fun isTestContext(): Boolean = true
                 }
                 val simklTestEntries = listOf(
-                    Anime("simkl 1"),
+                    AnimeRaw("simkl 1"),
                 )
 
                 val testAppConfig = object: Config by TestAppConfig {
@@ -168,7 +169,7 @@ class DefaultReadmeCreatorTest {
                 }
 
                 val testDownloadControlStateAccessor = object: DownloadControlStateAccessor by TestDownloadControlStateAccessor {
-                    override suspend fun allAnime(metaDataProviderConfig: MetaDataProviderConfig): List<Anime> = when(metaDataProviderConfig.hostname()) {
+                    override suspend fun allAnime(metaDataProviderConfig: MetaDataProviderConfig): List<AnimeRaw> = when(metaDataProviderConfig.hostname()) {
                         testMyanimelistConfig.hostname() -> myanimelistTestEntries
                         testAnimePlanetConfig.hostname() -> animePlanetTestEntries
                         testKitsuConfig.hostname() -> kitsuTestEntries
@@ -212,99 +213,99 @@ class DefaultReadmeCreatorTest {
                     override fun isTestContext(): Boolean = true
                 }
                 val myanimelistTestEntries = listOf(
-                    Anime("myanimelist 1"),
-                    Anime("myanimelist 2"),
-                    Anime("myanimelist 3"),
-                    Anime("myanimelist 4"),
-                    Anime("myanimelist 5"),
-                    Anime("myanimelist 6"),
-                    Anime("myanimelist 7"),
-                    Anime("myanimelist 8"),
-                    Anime("myanimelist 9"),
+                    AnimeRaw("myanimelist 1"),
+                    AnimeRaw("myanimelist 2"),
+                    AnimeRaw("myanimelist 3"),
+                    AnimeRaw("myanimelist 4"),
+                    AnimeRaw("myanimelist 5"),
+                    AnimeRaw("myanimelist 6"),
+                    AnimeRaw("myanimelist 7"),
+                    AnimeRaw("myanimelist 8"),
+                    AnimeRaw("myanimelist 9"),
                 )
 
                 val testAnimePlanetConfig = object: MetaDataProviderConfig by AnimePlanetConfig {
                     override fun isTestContext(): Boolean = true
                 }
                 val animePlanetTestEntries = listOf(
-                    Anime("animePlanet 1"),
-                    Anime("animePlanet 2"),
-                    Anime("animePlanet 3"),
-                    Anime("animePlanet 4"),
-                    Anime("animePlanet 5"),
-                    Anime("animePlanet 6"),
-                    Anime("animePlanet 7"),
-                    Anime("animePlanet 8"),
+                    AnimeRaw("animePlanet 1"),
+                    AnimeRaw("animePlanet 2"),
+                    AnimeRaw("animePlanet 3"),
+                    AnimeRaw("animePlanet 4"),
+                    AnimeRaw("animePlanet 5"),
+                    AnimeRaw("animePlanet 6"),
+                    AnimeRaw("animePlanet 7"),
+                    AnimeRaw("animePlanet 8"),
                 )
 
                 val testKitsuConfig = object: MetaDataProviderConfig by KitsuConfig {
                     override fun isTestContext(): Boolean = true
                 }
                 val kitsuTestEntries = listOf(
-                    Anime("kitsu 1"),
-                    Anime("kitsu 2"),
-                    Anime("kitsu 3"),
-                    Anime("kitsu 4"),
-                    Anime("kitsu 5"),
-                    Anime("kitsu 6"),
-                    Anime("kitsu 7"),
+                    AnimeRaw("kitsu 1"),
+                    AnimeRaw("kitsu 2"),
+                    AnimeRaw("kitsu 3"),
+                    AnimeRaw("kitsu 4"),
+                    AnimeRaw("kitsu 5"),
+                    AnimeRaw("kitsu 6"),
+                    AnimeRaw("kitsu 7"),
                 )
 
                 val testAnisearchConfig = object: MetaDataProviderConfig by AnisearchConfig {
                     override fun isTestContext(): Boolean = true
                 }
                 val anisearchTestEntries = listOf(
-                    Anime("anisearch 1"),
-                    Anime("anisearch 2"),
-                    Anime("anisearch 3"),
-                    Anime("anisearch 4"),
-                    Anime("anisearch 5"),
-                    Anime("anisearch 6"),
+                    AnimeRaw("anisearch 1"),
+                    AnimeRaw("anisearch 2"),
+                    AnimeRaw("anisearch 3"),
+                    AnimeRaw("anisearch 4"),
+                    AnimeRaw("anisearch 5"),
+                    AnimeRaw("anisearch 6"),
                 )
 
                 val testNotifyConfig = object: MetaDataProviderConfig by NotifyConfig {
                     override fun isTestContext(): Boolean = true
                 }
                 val notifyTestEntries = listOf(
-                    Anime("notify 1"),
-                    Anime("notify 2"),
-                    Anime("notify 3"),
-                    Anime("notify 4"),
-                    Anime("notify 5"),
+                    AnimeRaw("notify 1"),
+                    AnimeRaw("notify 2"),
+                    AnimeRaw("notify 3"),
+                    AnimeRaw("notify 4"),
+                    AnimeRaw("notify 5"),
                 )
 
                 val testAnilistConfig = object: MetaDataProviderConfig by AnilistConfig {
                     override fun isTestContext(): Boolean = true
                 }
                 val anilistTestEntries = listOf(
-                    Anime("anilist 1"),
-                    Anime("anilist 2"),
-                    Anime("anilist 3"),
-                    Anime("anilist 4"),
+                    AnimeRaw("anilist 1"),
+                    AnimeRaw("anilist 2"),
+                    AnimeRaw("anilist 3"),
+                    AnimeRaw("anilist 4"),
                 )
 
                 val testAnidbConfig = object: MetaDataProviderConfig by AnidbConfig {
                     override fun isTestContext(): Boolean = true
                 }
                 val anidbTestEntries = listOf(
-                    Anime("anidb 1"),
-                    Anime("anidb 2"),
-                    Anime("anidb 3"),
+                    AnimeRaw("anidb 1"),
+                    AnimeRaw("anidb 2"),
+                    AnimeRaw("anidb 3"),
                 )
 
                 val testLivechartConfig = object: MetaDataProviderConfig by LivechartConfig {
                     override fun isTestContext(): Boolean = true
                 }
                 val livechartTestEntries = listOf(
-                    Anime("livechart 1"),
-                    Anime("livechart 2"),
+                    AnimeRaw("livechart 1"),
+                    AnimeRaw("livechart 2"),
                 )
 
                 val testSimklConfig = object: MetaDataProviderConfig by SimklConfig {
                     override fun isTestContext(): Boolean = true
                 }
                 val simklTestEntries = listOf(
-                    Anime("simkl 1"),
+                    AnimeRaw("simkl 1"),
                 )
 
                 val testAppConfig = object: Config by TestAppConfig {
@@ -333,7 +334,7 @@ class DefaultReadmeCreatorTest {
                 }
 
                 val testDownloadControlStateAccessor = object: DownloadControlStateAccessor by TestDownloadControlStateAccessor {
-                    override suspend fun allAnime(metaDataProviderConfig: MetaDataProviderConfig): List<Anime> = when(metaDataProviderConfig.hostname()) {
+                    override suspend fun allAnime(metaDataProviderConfig: MetaDataProviderConfig): List<AnimeRaw> = when(metaDataProviderConfig.hostname()) {
                         testMyanimelistConfig.hostname() -> myanimelistTestEntries
                         testAnimePlanetConfig.hostname() -> animePlanetTestEntries
                         testKitsuConfig.hostname() -> kitsuTestEntries
@@ -377,99 +378,99 @@ class DefaultReadmeCreatorTest {
                     override fun isTestContext(): Boolean = true
                 }
                 val myanimelistTestEntries = listOf(
-                    Anime("myanimelist 1"),
-                    Anime("myanimelist 2"),
-                    Anime("myanimelist 3"),
-                    Anime("myanimelist 4"),
-                    Anime("myanimelist 5"),
-                    Anime("myanimelist 6"),
-                    Anime("myanimelist 7"),
-                    Anime("myanimelist 8"),
-                    Anime("myanimelist 9"),
+                    AnimeRaw("myanimelist 1"),
+                    AnimeRaw("myanimelist 2"),
+                    AnimeRaw("myanimelist 3"),
+                    AnimeRaw("myanimelist 4"),
+                    AnimeRaw("myanimelist 5"),
+                    AnimeRaw("myanimelist 6"),
+                    AnimeRaw("myanimelist 7"),
+                    AnimeRaw("myanimelist 8"),
+                    AnimeRaw("myanimelist 9"),
                 )
 
                 val testAnimePlanetConfig = object: MetaDataProviderConfig by AnimePlanetConfig {
                     override fun isTestContext(): Boolean = true
                 }
                 val animePlanetTestEntries = listOf(
-                    Anime("animePlanet 1"),
-                    Anime("animePlanet 2"),
-                    Anime("animePlanet 3"),
-                    Anime("animePlanet 4"),
-                    Anime("animePlanet 5"),
-                    Anime("animePlanet 6"),
-                    Anime("animePlanet 7"),
-                    Anime("animePlanet 8"),
+                    AnimeRaw("animePlanet 1"),
+                    AnimeRaw("animePlanet 2"),
+                    AnimeRaw("animePlanet 3"),
+                    AnimeRaw("animePlanet 4"),
+                    AnimeRaw("animePlanet 5"),
+                    AnimeRaw("animePlanet 6"),
+                    AnimeRaw("animePlanet 7"),
+                    AnimeRaw("animePlanet 8"),
                 )
 
                 val testKitsuConfig = object: MetaDataProviderConfig by KitsuConfig {
                     override fun isTestContext(): Boolean = true
                 }
                 val kitsuTestEntries = listOf(
-                    Anime("kitsu 1"),
-                    Anime("kitsu 2"),
-                    Anime("kitsu 3"),
-                    Anime("kitsu 4"),
-                    Anime("kitsu 5"),
-                    Anime("kitsu 6"),
-                    Anime("kitsu 7"),
+                    AnimeRaw("kitsu 1"),
+                    AnimeRaw("kitsu 2"),
+                    AnimeRaw("kitsu 3"),
+                    AnimeRaw("kitsu 4"),
+                    AnimeRaw("kitsu 5"),
+                    AnimeRaw("kitsu 6"),
+                    AnimeRaw("kitsu 7"),
                 )
 
                 val testAnisearchConfig = object: MetaDataProviderConfig by AnisearchConfig {
                     override fun isTestContext(): Boolean = true
                 }
                 val anisearchTestEntries = listOf(
-                    Anime("anisearch 1"),
-                    Anime("anisearch 2"),
-                    Anime("anisearch 3"),
-                    Anime("anisearch 4"),
-                    Anime("anisearch 5"),
-                    Anime("anisearch 6"),
+                    AnimeRaw("anisearch 1"),
+                    AnimeRaw("anisearch 2"),
+                    AnimeRaw("anisearch 3"),
+                    AnimeRaw("anisearch 4"),
+                    AnimeRaw("anisearch 5"),
+                    AnimeRaw("anisearch 6"),
                 )
 
                 val testNotifyConfig = object: MetaDataProviderConfig by NotifyConfig {
                     override fun isTestContext(): Boolean = true
                 }
                 val notifyTestEntries = listOf(
-                    Anime("notify 1"),
-                    Anime("notify 2"),
-                    Anime("notify 3"),
-                    Anime("notify 4"),
-                    Anime("notify 5"),
+                    AnimeRaw("notify 1"),
+                    AnimeRaw("notify 2"),
+                    AnimeRaw("notify 3"),
+                    AnimeRaw("notify 4"),
+                    AnimeRaw("notify 5"),
                 )
 
                 val testAnilistConfig = object: MetaDataProviderConfig by AnilistConfig {
                     override fun isTestContext(): Boolean = true
                 }
                 val anilistTestEntries = listOf(
-                    Anime("anilist 1"),
-                    Anime("anilist 2"),
-                    Anime("anilist 3"),
-                    Anime("anilist 4"),
+                    AnimeRaw("anilist 1"),
+                    AnimeRaw("anilist 2"),
+                    AnimeRaw("anilist 3"),
+                    AnimeRaw("anilist 4"),
                 )
 
                 val testAnidbConfig = object: MetaDataProviderConfig by AnidbConfig {
                     override fun isTestContext(): Boolean = true
                 }
                 val anidbTestEntries = listOf(
-                    Anime("anidb 1"),
-                    Anime("anidb 2"),
-                    Anime("anidb 3"),
+                    AnimeRaw("anidb 1"),
+                    AnimeRaw("anidb 2"),
+                    AnimeRaw("anidb 3"),
                 )
 
                 val testLivechartConfig = object: MetaDataProviderConfig by LivechartConfig {
                     override fun isTestContext(): Boolean = true
                 }
                 val livechartTestEntries = listOf(
-                    Anime("livechart 1"),
-                    Anime("livechart 2"),
+                    AnimeRaw("livechart 1"),
+                    AnimeRaw("livechart 2"),
                 )
 
                 val testSimklConfig = object: MetaDataProviderConfig by SimklConfig {
                     override fun isTestContext(): Boolean = true
                 }
                 val simklTestEntries = listOf(
-                    Anime("simkl 1"),
+                    AnimeRaw("simkl 1"),
                 )
 
                 val testAppConfig = object: Config by TestAppConfig {
@@ -503,7 +504,7 @@ class DefaultReadmeCreatorTest {
                 }
 
                 val testDownloadControlStateAccessor = object: DownloadControlStateAccessor by TestDownloadControlStateAccessor {
-                    override suspend fun allAnime(metaDataProviderConfig: MetaDataProviderConfig): List<Anime> = when(metaDataProviderConfig.hostname()) {
+                    override suspend fun allAnime(metaDataProviderConfig: MetaDataProviderConfig): List<AnimeRaw> = when(metaDataProviderConfig.hostname()) {
                         testMyanimelistConfig.hostname() -> myanimelistTestEntries
                         testAnimePlanetConfig.hostname() -> animePlanetTestEntries
                         testKitsuConfig.hostname() -> kitsuTestEntries
@@ -547,99 +548,99 @@ class DefaultReadmeCreatorTest {
                     override fun isTestContext(): Boolean = true
                 }
                 val myanimelistTestEntries = listOf(
-                    Anime("myanimelist 1"),
-                    Anime("myanimelist 2"),
-                    Anime("myanimelist 3"),
-                    Anime("myanimelist 4"),
-                    Anime("myanimelist 5"),
-                    Anime("myanimelist 6"),
-                    Anime("myanimelist 7"),
-                    Anime("myanimelist 8"),
-                    Anime("myanimelist 9"),
+                    AnimeRaw("myanimelist 1"),
+                    AnimeRaw("myanimelist 2"),
+                    AnimeRaw("myanimelist 3"),
+                    AnimeRaw("myanimelist 4"),
+                    AnimeRaw("myanimelist 5"),
+                    AnimeRaw("myanimelist 6"),
+                    AnimeRaw("myanimelist 7"),
+                    AnimeRaw("myanimelist 8"),
+                    AnimeRaw("myanimelist 9"),
                 )
 
                 val testAnimePlanetConfig = object: MetaDataProviderConfig by AnimePlanetConfig {
                     override fun isTestContext(): Boolean = true
                 }
                 val animePlanetTestEntries = listOf(
-                    Anime("animePlanet 1"),
-                    Anime("animePlanet 2"),
-                    Anime("animePlanet 3"),
-                    Anime("animePlanet 4"),
-                    Anime("animePlanet 5"),
-                    Anime("animePlanet 6"),
-                    Anime("animePlanet 7"),
-                    Anime("animePlanet 8"),
+                    AnimeRaw("animePlanet 1"),
+                    AnimeRaw("animePlanet 2"),
+                    AnimeRaw("animePlanet 3"),
+                    AnimeRaw("animePlanet 4"),
+                    AnimeRaw("animePlanet 5"),
+                    AnimeRaw("animePlanet 6"),
+                    AnimeRaw("animePlanet 7"),
+                    AnimeRaw("animePlanet 8"),
                 )
 
                 val testKitsuConfig = object: MetaDataProviderConfig by KitsuConfig {
                     override fun isTestContext(): Boolean = true
                 }
                 val kitsuTestEntries = listOf(
-                    Anime("kitsu 1"),
-                    Anime("kitsu 2"),
-                    Anime("kitsu 3"),
-                    Anime("kitsu 4"),
-                    Anime("kitsu 5"),
-                    Anime("kitsu 6"),
-                    Anime("kitsu 7"),
+                    AnimeRaw("kitsu 1"),
+                    AnimeRaw("kitsu 2"),
+                    AnimeRaw("kitsu 3"),
+                    AnimeRaw("kitsu 4"),
+                    AnimeRaw("kitsu 5"),
+                    AnimeRaw("kitsu 6"),
+                    AnimeRaw("kitsu 7"),
                 )
 
                 val testAnisearchConfig = object: MetaDataProviderConfig by AnisearchConfig {
                     override fun isTestContext(): Boolean = true
                 }
                 val anisearchTestEntries = listOf(
-                    Anime("anisearch 1"),
-                    Anime("anisearch 2"),
-                    Anime("anisearch 3"),
-                    Anime("anisearch 4"),
-                    Anime("anisearch 5"),
-                    Anime("anisearch 6"),
+                    AnimeRaw("anisearch 1"),
+                    AnimeRaw("anisearch 2"),
+                    AnimeRaw("anisearch 3"),
+                    AnimeRaw("anisearch 4"),
+                    AnimeRaw("anisearch 5"),
+                    AnimeRaw("anisearch 6"),
                 )
 
                 val testNotifyConfig = object: MetaDataProviderConfig by NotifyConfig {
                     override fun isTestContext(): Boolean = true
                 }
                 val notifyTestEntries = listOf(
-                    Anime("notify 1"),
-                    Anime("notify 2"),
-                    Anime("notify 3"),
-                    Anime("notify 4"),
-                    Anime("notify 5"),
+                    AnimeRaw("notify 1"),
+                    AnimeRaw("notify 2"),
+                    AnimeRaw("notify 3"),
+                    AnimeRaw("notify 4"),
+                    AnimeRaw("notify 5"),
                 )
 
                 val testAnilistConfig = object: MetaDataProviderConfig by AnilistConfig {
                     override fun isTestContext(): Boolean = true
                 }
                 val anilistTestEntries = listOf(
-                    Anime("anilist 1"),
-                    Anime("anilist 2"),
-                    Anime("anilist 3"),
-                    Anime("anilist 4"),
+                    AnimeRaw("anilist 1"),
+                    AnimeRaw("anilist 2"),
+                    AnimeRaw("anilist 3"),
+                    AnimeRaw("anilist 4"),
                 )
 
                 val testAnidbConfig = object: MetaDataProviderConfig by AnidbConfig {
                     override fun isTestContext(): Boolean = true
                 }
                 val anidbTestEntries = listOf(
-                    Anime("anidb 1"),
-                    Anime("anidb 2"),
-                    Anime("anidb 3"),
+                    AnimeRaw("anidb 1"),
+                    AnimeRaw("anidb 2"),
+                    AnimeRaw("anidb 3"),
                 )
 
                 val testLivechartConfig = object: MetaDataProviderConfig by LivechartConfig {
                     override fun isTestContext(): Boolean = true
                 }
                 val livechartTestEntries = listOf(
-                    Anime("livechart 1"),
-                    Anime("livechart 2"),
+                    AnimeRaw("livechart 1"),
+                    AnimeRaw("livechart 2"),
                 )
 
                 val testSimklConfig = object: MetaDataProviderConfig by SimklConfig {
                     override fun isTestContext(): Boolean = true
                 }
                 val simklTestEntries = listOf(
-                    Anime("simkl 1"),
+                    AnimeRaw("simkl 1"),
                 )
 
                 val testAppConfig = object: Config by TestAppConfig {
@@ -668,7 +669,7 @@ class DefaultReadmeCreatorTest {
                 }
 
                 val testDownloadControlStateAccessor = object: DownloadControlStateAccessor by TestDownloadControlStateAccessor {
-                    override suspend fun allAnime(metaDataProviderConfig: MetaDataProviderConfig): List<Anime> = when(metaDataProviderConfig.hostname()) {
+                    override suspend fun allAnime(metaDataProviderConfig: MetaDataProviderConfig): List<AnimeRaw> = when(metaDataProviderConfig.hostname()) {
                         testMyanimelistConfig.hostname() -> myanimelistTestEntries
                         testAnimePlanetConfig.hostname() -> animePlanetTestEntries
                         testKitsuConfig.hostname() -> kitsuTestEntries
@@ -691,16 +692,16 @@ class DefaultReadmeCreatorTest {
 
                 val mergedAnime = listOf(
                     Anime(
-                        _sources = hashSetOf(
+                        sources = hashSetOf(
                             URI("https://myanimelist.net/anime/1535"),
                         ),
-                        _title =  "Death Note",
+                        title =  "Death Note",
                     ),
                     Anime(
-                        _sources = hashSetOf(
+                        sources = hashSetOf(
                             URI("https://myanimelist.net/anime/34599"),
                         ),
-                        _title = "Made in Abyss",
+                        title = "Made in Abyss",
                     )
                 )
 
@@ -722,8 +723,8 @@ class DefaultReadmeCreatorTest {
                     override fun isTestContext(): Boolean = true
                 }
                 val myanimelistTestEntries = listOf(
-                    Anime("myanimelist 1"),
-                    Anime("myanimelist 2"),
+                    AnimeRaw("myanimelist 1"),
+                    AnimeRaw("myanimelist 2"),
                 )
 
                 val testAppConfig = object: Config by TestAppConfig {
@@ -744,7 +745,7 @@ class DefaultReadmeCreatorTest {
                 }
 
                 val testDownloadControlStateAccessor = object: DownloadControlStateAccessor by TestDownloadControlStateAccessor {
-                    override suspend fun allAnime(metaDataProviderConfig: MetaDataProviderConfig): List<Anime> = when(metaDataProviderConfig.hostname()) {
+                    override suspend fun allAnime(metaDataProviderConfig: MetaDataProviderConfig): List<AnimeRaw> = when(metaDataProviderConfig.hostname()) {
                         testMyanimelistConfig.hostname() -> myanimelistTestEntries
                         else -> shouldNotBeInvoked()
                     }

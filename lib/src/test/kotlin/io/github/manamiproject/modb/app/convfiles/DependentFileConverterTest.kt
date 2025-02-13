@@ -10,7 +10,7 @@ import io.github.manamiproject.modb.core.config.MetaDataProviderConfig
 import io.github.manamiproject.modb.core.converter.PathAnimeConverter
 import io.github.manamiproject.modb.core.extensions.Directory
 import io.github.manamiproject.modb.core.extensions.fileName
-import io.github.manamiproject.modb.core.models.Anime
+import io.github.manamiproject.modb.core.anime.AnimeRaw
 import io.github.manamiproject.modb.test.exceptionExpected
 import io.github.manamiproject.modb.test.shouldNotBeInvoked
 import io.github.manamiproject.modb.test.tempDirectory
@@ -106,7 +106,7 @@ internal class DependentFileConverterTest {
                 }
 
                 val testConverter = object: PathAnimeConverter {
-                    override suspend fun convert(path: Path): Collection<Anime> = listOf(Anime(path.fileName()))
+                    override suspend fun convert(path: Path): Collection<AnimeRaw> = listOf(AnimeRaw(path.fileName()))
                 }
 
                 val testAbstractDependentFileConverter = DependentFileConverter(
@@ -165,7 +165,7 @@ internal class DependentFileConverterTest {
                 }
 
                 val testConverter = object: PathAnimeConverter {
-                    override suspend fun convert(path: Path): Collection<Anime> = listOf(Anime(path.fileName()))
+                    override suspend fun convert(path: Path): Collection<AnimeRaw> = listOf(AnimeRaw(path.fileName()))
                 }
 
                 val testAbstractDependentFileConverter = DependentFileConverter(
@@ -264,9 +264,9 @@ internal class DependentFileConverterTest {
 
                 var invocations = 0
                 val testConverter = object: PathAnimeConverter {
-                    override suspend fun convert(path: Path): Collection<Anime> {
+                    override suspend fun convert(path: Path): Collection<AnimeRaw> {
                         invocations++
-                        return listOf(Anime(path.fileName()))
+                        return listOf(AnimeRaw(path.fileName()))
                     }
                 }
 

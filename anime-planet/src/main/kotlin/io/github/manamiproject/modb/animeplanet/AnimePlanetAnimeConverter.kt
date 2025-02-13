@@ -11,22 +11,22 @@ import io.github.manamiproject.modb.core.extractor.DataExtractor
 import io.github.manamiproject.modb.core.extractor.ExtractionResult
 import io.github.manamiproject.modb.core.extractor.JsonDataExtractor
 import io.github.manamiproject.modb.core.extractor.XmlDataExtractor
-import io.github.manamiproject.modb.core.models.*
-import io.github.manamiproject.modb.core.models.Anime.Companion.NO_PICTURE
-import io.github.manamiproject.modb.core.models.Anime.Companion.NO_PICTURE_THUMBNAIL
-import io.github.manamiproject.modb.core.models.Anime.Status.*
-import io.github.manamiproject.modb.core.models.Anime.Status.UNKNOWN
-import io.github.manamiproject.modb.core.models.Anime.Type
-import io.github.manamiproject.modb.core.models.Anime.Type.*
-import io.github.manamiproject.modb.core.models.AnimeSeason.Season.UNDEFINED
-import io.github.manamiproject.modb.core.models.Duration.TimeUnit.MINUTES
+import io.github.manamiproject.modb.core.anime.*
+import io.github.manamiproject.modb.core.anime.AnimeRaw.Companion.NO_PICTURE
+import io.github.manamiproject.modb.core.anime.AnimeRaw.Companion.NO_PICTURE_THUMBNAIL
+import io.github.manamiproject.modb.core.anime.AnimeStatus.*
+import io.github.manamiproject.modb.core.anime.AnimeStatus.UNKNOWN as UNKNOWN_STATUS
+import io.github.manamiproject.modb.core.anime.AnimeType
+import io.github.manamiproject.modb.core.anime.AnimeType.*
+import io.github.manamiproject.modb.core.anime.AnimeSeason.Season.UNDEFINED
+import io.github.manamiproject.modb.core.anime.Duration.TimeUnit.MINUTES
 import kotlinx.coroutines.withContext
 import java.net.URI
 import java.time.Clock
 import java.time.LocalDate
 
 /**
- * Converts raw data to an [Anime].
+ * Converts raw data to an [AnimeRaw].
  * @since 1.0.0
  * @param metaDataProviderConfig Configuration for converting data.
  */
@@ -37,7 +37,7 @@ public class AnimePlanetAnimeConverter(
     private val clock: Clock = Clock.systemUTC(),
 ) : AnimeConverter {
 
-    override suspend fun convert(rawContent: String): Anime = withContext(LIMITED_CPU) {
+    override suspend fun convert(rawContent: String): AnimeRaw = withContext(LIMITED_CPU) {
         val data = xmlExtractor.extract(rawContent, mapOf(
             "titleH1" to "//h1[@itemprop='name']/text()",
             "jsonld" to "//script[@type='application/ld+json']/node()",
@@ -64,7 +64,7 @@ public class AnimePlanetAnimeConverter(
 
         val thumbnail = extractThumbnail(jsonldData, data)
 
-        return@withContext Anime(
+        return@withContext AnimeRaw(
             _title = extractTitle(jsonldData, data),
             episodes = extractEpisodes(data),
             type = extractType(data),
@@ -80,7 +80,7 @@ public class AnimePlanetAnimeConverter(
         )
     }
 
-    private fun extractStatus(data: ExtractionResult): Anime.Status {
+    private fun extractStatus(data: ExtractionResult): AnimeStatus {
         val value = data.stringOrDefault("iconYear")
         val currentYear = LocalDate.now(clock).year
 
@@ -90,7 +90,7 @@ public class AnimePlanetAnimeConverter(
             return when {
                 year > currentYear -> UPCOMING
                 year < currentYear -> FINISHED
-                else -> UNKNOWN
+                else -> UNKNOWN_STATUS
             }
         }
 
@@ -100,7 +100,7 @@ public class AnimePlanetAnimeConverter(
             return when {
                 year > currentYear -> UPCOMING
                 year < currentYear -> FINISHED
-                else -> UNKNOWN
+                else -> UNKNOWN_STATUS
             }
         }
 
@@ -110,7 +110,7 @@ public class AnimePlanetAnimeConverter(
             return when {
                 year > currentYear -> UPCOMING
                 year < currentYear -> ONGOING
-                else -> UNKNOWN
+                else -> UNKNOWN_STATUS
             }
         }
 
@@ -142,7 +142,7 @@ public class AnimePlanetAnimeConverter(
         }
     }
 
-    private fun extractType(data: ExtractionResult): Type {
+    private fun extractType(data: ExtractionResult): AnimeType {
         val textValue = data.string("typeEpisodesDuration").substringBefore('(').lowercase().let {
             Regex("([a-z]| )+").find(it)?.value?.trim() ?: EMPTY
         }

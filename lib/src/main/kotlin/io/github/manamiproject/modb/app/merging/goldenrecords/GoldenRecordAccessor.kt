@@ -1,7 +1,7 @@
 package io.github.manamiproject.modb.app.merging.goldenrecords
 
 import io.github.manamiproject.modb.app.merging.matching.MatchingProbabilityCalculator
-import io.github.manamiproject.modb.core.models.Anime
+import io.github.manamiproject.modb.core.anime.AnimeRaw
 import java.net.URI
 import java.util.*
 
@@ -25,12 +25,12 @@ interface GoldenRecordAccessor {
      * @since 1.0.0
      * @param anime Anime for which a new folden record will be created.
      */
-    fun createGoldenRecord(anime: Anime)
+    fun createGoldenRecord(anime: AnimeRaw)
 
     /**
      * Allows you to find a single golden record based on a [Set] of [URI].
      * @since 1.0.0
-     * @param sources Could be [Anime.sources].
+     * @param sources Could be [AnimeRaw.sources].
      * @return Either a [PotentialGoldenRecord] or null of no golden record was found for any of the given [URI].
      */
     fun findGoldenRecordBySource(sources: Set<URI>): PotentialGoldenRecord?
@@ -42,7 +42,7 @@ interface GoldenRecordAccessor {
      * @param anime Anime for which fitting golden records are searched.
      * @return A [Set] of potentially fitting golden records.
      */
-    fun findPossibleGoldenRecords(anime: Anime): Set<PotentialGoldenRecord>
+    fun findPossibleGoldenRecords(anime: AnimeRaw): Set<PotentialGoldenRecord>
 
     /**
      * Merge an anime with a golden record.
@@ -50,14 +50,14 @@ interface GoldenRecordAccessor {
      * @param goldenRecordId ID of the golden record. The ID is temporary and only valid for the current run of the app.
      * @param anime Anime which should be merged into an existing golden record.
      */
-    fun merge(goldenRecordId: UUID, anime: Anime): Anime
+    fun merge(goldenRecordId: UUID, anime: AnimeRaw): AnimeRaw
 
     /**
      * Retrieves the golden records as a list. This is the basis for the dataset.
      * @since 1.0.0
-     * @return All golden records presented as [List] of [Anime].
+     * @return All golden records presented as [List] of [AnimeRaw].
      */
-    fun allEntries(): List<Anime>
+    fun allEntries(): List<AnimeRaw>
 
     /**
      * Clears the current golden record list.

@@ -1,6 +1,6 @@
 package io.github.manamiproject.modb.app.network
 
-import io.github.manamiproject.modb.core.models.Seconds
+import io.github.manamiproject.modb.core.anime.Seconds
 
 /**
  * Exception which is thrown if too many restarts took place.

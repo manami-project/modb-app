@@ -8,7 +8,7 @@ import io.github.manamiproject.modb.core.coroutines.ModbDispatchers.LIMITED_FS
 import io.github.manamiproject.modb.core.coverage.KoverIgnore
 import io.github.manamiproject.modb.core.extensions.*
 import io.github.manamiproject.modb.core.logging.LoggerDelegate
-import io.github.manamiproject.modb.core.models.Anime
+import io.github.manamiproject.modb.core.anime.AnimeRaw
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
@@ -20,12 +20,12 @@ import kotlin.io.path.deleteIfExists
 import kotlin.io.path.isRegularFile
 
 /**
- * Used for meta data provider which only require a single file in order to convert raw data into an [Anime] object.
+ * Used for meta data provider which only require a single file in order to convert raw data into an [AnimeRaw] object.
  * Watches the directory of a [MetaDataProviderConfig] for changes and uses a [SimpleFileConverter] to convert the
  * raw data into the intermediate format.
  * @since 1.0.0
  * @param appConfig Application specific configuration. Uses [AppConfig] by default.
- * @param converter Instance used to convert multiple files into the intermediate format which represents an [Anime].
+ * @param converter Instance used to convert multiple files into the intermediate format which represents an [AnimeRaw].
  * @property metaDataProviderConfig Configuration for a specific meta data provider.
  */
 class SimpleConversionWatchService @KoverIgnore constructor(

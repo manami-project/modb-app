@@ -14,7 +14,7 @@ import io.github.manamiproject.modb.core.config.Hostname
 import io.github.manamiproject.modb.core.config.MetaDataProviderConfig
 import io.github.manamiproject.modb.core.extensions.*
 import io.github.manamiproject.modb.core.json.Json
-import io.github.manamiproject.modb.core.models.Anime
+import io.github.manamiproject.modb.core.anime.AnimeRaw
 import io.github.manamiproject.modb.kitsu.KitsuConfig
 import io.github.manamiproject.modb.livechart.LivechartConfig
 import io.github.manamiproject.modb.myanimelist.MyanimelistConfig
@@ -689,7 +689,7 @@ internal class DefaultDeadEntriesAccessorTest {
                 val dcsSubfolder = testAppConfig.downloadControlStateDirectory().resolve(existingEntry.host).createDirectory()
                 val dcsFile = dcsSubfolder.resolve("1535.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
 
-                val anime = Anime(
+                val anime = AnimeRaw(
                     _title = "Test",
                     _sources = hashSetOf(existingEntry),
                 )

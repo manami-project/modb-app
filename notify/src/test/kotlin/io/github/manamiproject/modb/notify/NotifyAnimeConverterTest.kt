@@ -1,12 +1,12 @@
 package io.github.manamiproject.modb.notify
 
 import io.github.manamiproject.modb.core.extensions.copyTo
-import io.github.manamiproject.modb.core.models.Anime
-import io.github.manamiproject.modb.core.models.Anime.Status.*
-import io.github.manamiproject.modb.core.models.Anime.Type.*
-import io.github.manamiproject.modb.core.models.AnimeSeason.Season.*
-import io.github.manamiproject.modb.core.models.Duration
-import io.github.manamiproject.modb.core.models.Duration.TimeUnit.*
+import io.github.manamiproject.modb.core.anime.AnimeStatus.*
+import io.github.manamiproject.modb.core.anime.AnimeType.*
+import io.github.manamiproject.modb.core.anime.AnimeSeason.Season.*
+import io.github.manamiproject.modb.core.anime.AnimeStatus.UNKNOWN as UNKNOWN_STATUS
+import io.github.manamiproject.modb.core.anime.Duration
+import io.github.manamiproject.modb.core.anime.Duration.TimeUnit.*
 import io.github.manamiproject.modb.test.loadTestResource
 import io.github.manamiproject.modb.test.tempDirectory
 import io.github.manamiproject.modb.test.testResource
@@ -404,7 +404,7 @@ internal class NotifyAnimeConverterTest {
                     val result = converter.convert(testFile)
 
                     // then
-                    assertThat(result.status).isEqualTo(Anime.Status.UNKNOWN)
+                    assertThat(result.status).isEqualTo(UNKNOWN_STATUS)
                 }
             }
         }

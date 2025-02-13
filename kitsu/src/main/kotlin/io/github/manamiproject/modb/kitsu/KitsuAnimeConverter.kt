@@ -1,5 +1,12 @@
 package io.github.manamiproject.modb.kitsu
 
+import io.github.manamiproject.modb.core.anime.*
+import io.github.manamiproject.modb.core.anime.AnimeRaw.Companion.NO_PICTURE
+import io.github.manamiproject.modb.core.anime.AnimeRaw.Companion.NO_PICTURE_THUMBNAIL
+import io.github.manamiproject.modb.core.anime.AnimeSeason.Season.*
+import io.github.manamiproject.modb.core.anime.AnimeStatus.*
+import io.github.manamiproject.modb.core.anime.AnimeType.*
+import io.github.manamiproject.modb.core.anime.Duration.TimeUnit.MINUTES
 import io.github.manamiproject.modb.core.config.MetaDataProviderConfig
 import io.github.manamiproject.modb.core.converter.AnimeConverter
 import io.github.manamiproject.modb.core.coroutines.ModbDispatchers.LIMITED_CPU
@@ -7,20 +14,12 @@ import io.github.manamiproject.modb.core.extensions.*
 import io.github.manamiproject.modb.core.extractor.DataExtractor
 import io.github.manamiproject.modb.core.extractor.ExtractionResult
 import io.github.manamiproject.modb.core.extractor.JsonDataExtractor
-import io.github.manamiproject.modb.core.models.*
-import io.github.manamiproject.modb.core.models.Anime.Companion.NO_PICTURE
-import io.github.manamiproject.modb.core.models.Anime.Companion.NO_PICTURE_THUMBNAIL
-import io.github.manamiproject.modb.core.models.Anime.Status
-import io.github.manamiproject.modb.core.models.Anime.Status.*
-import io.github.manamiproject.modb.core.models.Anime.Type
-import io.github.manamiproject.modb.core.models.Anime.Type.*
-import io.github.manamiproject.modb.core.models.AnimeSeason.Season.*
-import io.github.manamiproject.modb.core.models.Duration.TimeUnit.MINUTES
 import kotlinx.coroutines.withContext
 import java.net.URI
+import io.github.manamiproject.modb.core.anime.AnimeStatus.UNKNOWN as UNKNOWN_STATUS
 
 /**
- * Converts raw data to an [Anime].
+ * Converts raw data to an [AnimeRaw].
  * @since 1.0.0
  * @param metaDataProviderConfig Configuration for converting data.
  * @param relationsDir Directory containing the raw files for the related anime.
@@ -39,7 +38,7 @@ public class KitsuAnimeConverter(
         require(tagsDir.directoryExists()) { "Directory for tags [$tagsDir] does not exist or is not a directory." }
     }
 
-    override suspend fun convert(rawContent: String): Anime = withContext(LIMITED_CPU) {
+    override suspend fun convert(rawContent: String): AnimeRaw = withContext(LIMITED_CPU) {
         val data = extractor.extract(rawContent, mapOf(
             "title" to "$.data.attributes.canonicalTitle",
             "episodeCount" to "$.data.attributes.episodeCount",
@@ -54,7 +53,7 @@ public class KitsuAnimeConverter(
             "startDate" to "$.data.attributes.startDate",
         ))
 
-        return@withContext Anime(
+        return@withContext AnimeRaw(
             _title = extractTitle(data),
             episodes = extractEpisodes(data),
             type = extractType(data),
@@ -92,7 +91,7 @@ public class KitsuAnimeConverter(
 
     private fun extractSourcesEntry(data: ExtractionResult): HashSet<URI> = hashSetOf(metaDataProviderConfig.buildAnimeLink(data.string("id").trim()))
 
-    private fun extractType(data: ExtractionResult): Type {
+    private fun extractType(data: ExtractionResult): AnimeType {
         return when(data.string("subtype").trim().lowercase()) {
             "tv" -> TV
             "ona" -> ONA
@@ -129,9 +128,9 @@ public class KitsuAnimeConverter(
              .toHashSet()
     }
 
-    private fun extractStatus(data: ExtractionResult): Status {
+    private fun extractStatus(data: ExtractionResult): AnimeStatus {
         if (data.notFound("status")) {
-            return Status.UNKNOWN
+            return UNKNOWN_STATUS
         }
 
         return when(data.string("status").trim().lowercase()) {
@@ -139,7 +138,7 @@ public class KitsuAnimeConverter(
             "current" -> ONGOING
             "unreleased" -> UPCOMING
             "upcoming" -> UPCOMING
-            "tba" -> Status.UNKNOWN
+            "tba" -> UNKNOWN_STATUS
             else -> throw IllegalStateException("Unknown status [${data.string("status")}]")
         }
     }

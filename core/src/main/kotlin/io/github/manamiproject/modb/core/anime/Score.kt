@@ -1,23 +1,22 @@
-package io.github.manamiproject.modb.core.models
+package io.github.manamiproject.modb.core.anime
 
 import java.time.LocalDate
-import java.time.format.DateTimeFormatter.ISO_LOCAL_DATE
 
 /**
  * Generic return type for an anime score.
- * @since 16.7.0
+ * @since 17.0.0
  */
 public sealed class Score
 
 /**
  * Indicates that no score has been found.
- * @since 16.7.0
+ * @since 17.0.0
  */
 public data object NoScore: Score()
 
 /**
  * Aggregated score across all available meta data providers.
- * @since 16.7.0
+ * @since 17.0.0
  * @param arithmeticMean aithmetic mean
  * @param arithmeticGeometricMean arithmetic-geometric-mean
  * @param median median
