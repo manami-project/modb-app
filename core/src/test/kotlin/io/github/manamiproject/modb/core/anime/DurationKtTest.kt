@@ -1,6 +1,6 @@
-package io.github.manamiproject.modb.core.models
+package io.github.manamiproject.modb.core.anime
 
-import io.github.manamiproject.modb.core.models.Duration.TimeUnit.*
+import io.github.manamiproject.modb.core.anime.Duration.TimeUnit.*
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Nested
 import kotlin.test.Test

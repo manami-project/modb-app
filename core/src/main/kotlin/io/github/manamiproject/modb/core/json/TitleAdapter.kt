@@ -1,7 +1,7 @@
 package io.github.manamiproject.modb.core.json
 
 import com.squareup.moshi.*
-import io.github.manamiproject.modb.core.models.Title
+import io.github.manamiproject.modb.core.anime.Title
 
 internal class TitleAdapter: JsonAdapter<Title>() {
 

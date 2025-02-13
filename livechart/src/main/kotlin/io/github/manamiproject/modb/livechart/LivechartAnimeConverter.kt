@@ -1,5 +1,12 @@
 package io.github.manamiproject.modb.livechart
 
+import io.github.manamiproject.modb.core.anime.*
+import io.github.manamiproject.modb.core.anime.AnimeRaw.Companion.NO_PICTURE
+import io.github.manamiproject.modb.core.anime.AnimeRaw.Companion.NO_PICTURE_THUMBNAIL
+import io.github.manamiproject.modb.core.anime.AnimeSeason.Season.*
+import io.github.manamiproject.modb.core.anime.AnimeStatus.*
+import io.github.manamiproject.modb.core.anime.AnimeType.*
+import io.github.manamiproject.modb.core.anime.Duration.TimeUnit.SECONDS
 import io.github.manamiproject.modb.core.config.MetaDataProviderConfig
 import io.github.manamiproject.modb.core.converter.AnimeConverter
 import io.github.manamiproject.modb.core.coroutines.ModbDispatchers.LIMITED_CPU
@@ -9,20 +16,14 @@ import io.github.manamiproject.modb.core.extractor.DataExtractor
 import io.github.manamiproject.modb.core.extractor.ExtractionResult
 import io.github.manamiproject.modb.core.extractor.JsonDataExtractor
 import io.github.manamiproject.modb.core.extractor.XmlDataExtractor
-import io.github.manamiproject.modb.core.models.*
-import io.github.manamiproject.modb.core.models.Anime.Companion.NO_PICTURE
-import io.github.manamiproject.modb.core.models.Anime.Companion.NO_PICTURE_THUMBNAIL
-import io.github.manamiproject.modb.core.models.Anime.Status.*
-import io.github.manamiproject.modb.core.models.Anime.Type.*
-import io.github.manamiproject.modb.core.models.Anime.Type.UNKNOWN
-import io.github.manamiproject.modb.core.models.AnimeSeason.Season.*
-import io.github.manamiproject.modb.core.models.Duration.TimeUnit.SECONDS
 import kotlinx.coroutines.withContext
 import org.apache.commons.text.StringEscapeUtils
 import java.net.URI
+import io.github.manamiproject.modb.core.anime.AnimeStatus.UNKNOWN as UNKNOWN_STATUS
+import io.github.manamiproject.modb.core.anime.AnimeType.UNKNOWN as UNKNOWN_TYPE
 
 /**
- * Converts raw data to an [Anime].
+ * Converts raw data to an [AnimeRaw].
  * Requires raw HTML. -> test
  * @since 1.0.0
  * @param metaDataProviderConfig Configuration for converting data.
@@ -33,7 +34,7 @@ public class LivechartAnimeConverter(
     private val jsonExtractor: DataExtractor = JsonDataExtractor,
 ): AnimeConverter {
 
-    override suspend fun convert(rawContent: String): Anime = withContext(LIMITED_CPU) {
+    override suspend fun convert(rawContent: String): AnimeRaw = withContext(LIMITED_CPU) {
         val data = xmlExtractor.extract(rawContent, mapOf(
             "jsonld" to "//script[@type='application/ld+json']/node()",
             "title" to "//meta[@property='og:title']/@content",
@@ -64,7 +65,7 @@ public class LivechartAnimeConverter(
 
         val picture = extractPicture(jsonldData, data)
 
-        return@withContext Anime(
+        return@withContext AnimeRaw(
             _title = extractTitle(jsonldData, data),
             episodes = extractEpisodes(jsonldData, data),
             type = extractType(data),
@@ -126,7 +127,7 @@ public class LivechartAnimeConverter(
         }
     }
 
-    private fun extractType(data: ExtractionResult): Anime.Type {
+    private fun extractType(data: ExtractionResult): AnimeType {
         val value = data.string("type")
 
         return when(value.trim().lowercase()) {
@@ -138,8 +139,8 @@ public class LivechartAnimeConverter(
             "tv special" -> SPECIAL
             "web" -> ONA
             "web short" -> ONA
-            "?" -> UNKNOWN
-            "unknown" -> UNKNOWN
+            "?" -> UNKNOWN_TYPE
+            "unknown" -> UNKNOWN_TYPE
             else -> throw IllegalStateException("Unknown type [$value]")
         }
     }
@@ -164,14 +165,14 @@ public class LivechartAnimeConverter(
         }
     }
 
-    private fun extractStatus(data: ExtractionResult): Anime.Status {
+    private fun extractStatus(data: ExtractionResult): AnimeStatus {
         val statusString = data.stringOrDefault("status")
 
         return when (statusString.trim().lowercase()){
             "not yet released" -> UPCOMING
             "releasing" -> ONGOING
             "finished" -> FINISHED
-            else -> Anime.Status.UNKNOWN
+            else -> UNKNOWN_STATUS
         }
     }
 

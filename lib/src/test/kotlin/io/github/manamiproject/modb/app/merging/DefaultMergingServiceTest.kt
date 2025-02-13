@@ -7,12 +7,15 @@ import io.github.manamiproject.modb.app.config.Config
 import io.github.manamiproject.modb.app.merging.goldenrecords.DefaultGoldenRecordAccessor
 import io.github.manamiproject.modb.app.merging.lock.MergeLockAccessor
 import io.github.manamiproject.modb.core.config.MetaDataProviderConfig
-import io.github.manamiproject.modb.core.models.Anime
-import io.github.manamiproject.modb.core.models.Anime.Status.FINISHED
-import io.github.manamiproject.modb.core.models.Anime.Type.*
-import io.github.manamiproject.modb.core.models.AnimeSeason
-import io.github.manamiproject.modb.core.models.Duration
-import io.github.manamiproject.modb.core.models.Duration.TimeUnit.*
+import io.github.manamiproject.modb.core.anime.AnimeRaw
+import io.github.manamiproject.modb.core.anime.AnimeSeason
+import io.github.manamiproject.modb.core.anime.AnimeSeason.Season.SUMMER
+import io.github.manamiproject.modb.core.anime.AnimeSeason.Season.WINTER
+import io.github.manamiproject.modb.core.anime.AnimeStatus.FINISHED
+import io.github.manamiproject.modb.core.anime.AnimeStatus.UPCOMING
+import io.github.manamiproject.modb.core.anime.AnimeType.*
+import io.github.manamiproject.modb.core.anime.Duration
+import io.github.manamiproject.modb.core.anime.Duration.TimeUnit.*
 import io.github.manamiproject.modb.test.tempDirectory
 import kotlinx.coroutines.runBlocking
 import org.assertj.core.api.Assertions.assertThat
@@ -29,7 +32,7 @@ internal class DefaultMergingServiceTest {
         fun `merge three equal anime with slightly different titles`() {
             runBlocking {
                 // given
-                val aniList11Eyes = Anime(
+                val aniList11Eyes = AnimeRaw(
                     _sources = hashSetOf(
                         URI("https://anilist.co/anime/6682"),
                     ),
@@ -53,7 +56,7 @@ internal class DefaultMergingServiceTest {
                     ),
                 )
 
-                val anidb11Eyes = Anime(
+                val anidb11Eyes = AnimeRaw(
                     _sources = hashSetOf(
                         URI("https://anidb.net/anime/6751"),
                     ),
@@ -80,7 +83,7 @@ internal class DefaultMergingServiceTest {
                     ),
                 )
 
-                val mal11Eyes = Anime(
+                val mal11Eyes = AnimeRaw(
                     _sources = hashSetOf(
                         URI("https://myanimelist.net/anime/6682"),
                     ),
@@ -142,7 +145,7 @@ internal class DefaultMergingServiceTest {
         fun `don't merge two totally different anime`() {
             runBlocking {
                 // given
-                val anidb = Anime(
+                val anidb = AnimeRaw(
                     _sources = hashSetOf(
                         URI("https://anidb.net/anime/1"),
                     ),
@@ -170,7 +173,7 @@ internal class DefaultMergingServiceTest {
                     ),
                 )
 
-                val mal = Anime(
+                val mal = AnimeRaw(
                     _sources = hashSetOf(
                         URI("https://myanimelist.net/anime/1"),
                     ),
@@ -221,7 +224,7 @@ internal class DefaultMergingServiceTest {
         fun `merge two totally different anime, because they are part of a merge lock`() {
             runBlocking {
                 // given
-                val aniList11Eyes = Anime(
+                val aniList11Eyes = AnimeRaw(
                     _sources = hashSetOf(
                         URI("https://anilist.co/anime/6682"),
                     ),
@@ -241,7 +244,7 @@ internal class DefaultMergingServiceTest {
                     ),
                 )
 
-                val bungakuShoujo = Anime(
+                val bungakuShoujo = AnimeRaw(
                     _sources = hashSetOf(
                         URI("https://kitsu.app/anime/4550"),
                         URI("https://myanimelist.net/anime/6408"),
@@ -305,14 +308,14 @@ internal class DefaultMergingServiceTest {
         fun `multiple golden records`() {
             runBlocking {
                 // given
-                val entry1 = Anime(
+                val entry1 = AnimeRaw(
                     _sources = hashSetOf(
                         URI("https://myanimelist.net/anime/59110"),
                     ),
                     _title = "daydream",
                     episodes = 1,
                     animeSeason = AnimeSeason(
-                        season = AnimeSeason.Season.WINTER,
+                        season = WINTER,
                         year = 2024,
                     ),
                     status = FINISHED,
@@ -326,7 +329,7 @@ internal class DefaultMergingServiceTest {
                     ),
                 )
 
-                val entry2 = Anime(
+                val entry2 = AnimeRaw(
                     _sources = hashSetOf(
                         URI("https://myanimelist.net/anime/58364"),
                     ),
@@ -335,7 +338,7 @@ internal class DefaultMergingServiceTest {
                     type = SPECIAL,
                     status = FINISHED,
                     animeSeason = AnimeSeason(
-                        season = AnimeSeason.Season.WINTER,
+                        season = WINTER,
                         year = 2024,
                     ),
                     duration = Duration(
@@ -350,7 +353,7 @@ internal class DefaultMergingServiceTest {
                     ),
                 )
 
-                val entry3 = Anime(
+                val entry3 = AnimeRaw(
                     _sources = hashSetOf(
                         URI("https://anisearch.com/anime/19120"),
                     ),
@@ -359,7 +362,7 @@ internal class DefaultMergingServiceTest {
                     type = ONA,
                     status = FINISHED,
                     animeSeason = AnimeSeason(
-                        season = AnimeSeason.Season.SUMMER,
+                        season = SUMMER,
                         year = 2001,
                     ),
                     duration = Duration(
@@ -406,7 +409,7 @@ internal class DefaultMergingServiceTest {
         fun `found multiple potential golden records, but none returns sufficient probability and therefore the entries set for retry`() {
             runBlocking {
                 // given
-                val malCowboyBebop = Anime(
+                val malCowboyBebop = AnimeRaw(
                     _sources = hashSetOf(
                         URI("https://myanimelist.net/anime/1"),
                     ),
@@ -429,14 +432,14 @@ internal class DefaultMergingServiceTest {
                     ),
                 )
 
-                val malDaydream = Anime(
+                val malDaydream = AnimeRaw(
                     _sources = hashSetOf(
                         URI("https://myanimelist.net/anime/59110"),
                     ),
                     _title = "daydream",
                     episodes = 1,
                     animeSeason = AnimeSeason(
-                        season = AnimeSeason.Season.WINTER,
+                        season = WINTER,
                         year = 2024,
                     ),
                     status = FINISHED,
@@ -450,7 +453,7 @@ internal class DefaultMergingServiceTest {
                     ),
                 )
 
-                val aniSearchDaydream = Anime(
+                val aniSearchDaydream = AnimeRaw(
                     _sources = hashSetOf(
                         URI("https://anisearch.com/anime/19120"),
                     ),
@@ -459,7 +462,7 @@ internal class DefaultMergingServiceTest {
                     type = ONA,
                     status = FINISHED,
                     animeSeason = AnimeSeason(
-                        season = AnimeSeason.Season.SUMMER,
+                        season = SUMMER,
                         year = 2001,
                     ),
                     duration = Duration(
@@ -471,16 +474,16 @@ internal class DefaultMergingServiceTest {
                     ),
                 )
 
-                val anilDaydream = Anime(
+                val anilDaydream = AnimeRaw(
                     _sources = hashSetOf(
                         URI("https://anilist.co/anime/10001"),
                     ),
                     _title = "Daydream",
                     episodes = 1,
                     type = MOVIE,
-                    status = Anime.Status.UPCOMING,
+                    status = UPCOMING,
                     animeSeason = AnimeSeason(
-                        season = AnimeSeason.Season.SUMMER,
+                        season = SUMMER,
                         year = 2006,
                     ),
                     duration = Duration(

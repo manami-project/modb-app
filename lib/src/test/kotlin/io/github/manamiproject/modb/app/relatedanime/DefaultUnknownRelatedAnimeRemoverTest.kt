@@ -1,6 +1,6 @@
 package io.github.manamiproject.modb.app.relatedanime
 
-import io.github.manamiproject.modb.core.models.Anime
+import io.github.manamiproject.modb.core.anime.AnimeRaw
 import io.github.manamiproject.modb.test.tempDirectory
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Nested
@@ -16,55 +16,40 @@ internal class DefaultUnknownRelatedAnimeRemoverTest {
         fun `removes related anime listed which don't have a corresponding anime entry`() {
             // given
             val animeList = listOf(
-                Anime(
+                AnimeRaw(
                     _title = "1",
-                ).apply {
-                    addSources(
-                        listOf(
-                            URI("http://config1.example.org/anime/1"),
-                            URI("http://config2.example.org/anime/first-entry"),
-                        )
+                    _sources = hashSetOf(
+                        URI("http://config1.example.org/anime/1"),
+                        URI("http://config2.example.org/anime/first-entry"),
+                    ),
+                    _relatedAnime = hashSetOf(
+                        URI("http://config1.example.org/anime/2"),
+                        URI("http://config1.example.org/anime/25"),
+                        URI("http://config2.example.org/anime/second-entry"),
+                        URI("http://config2.example.org/anime/non-existent-entry"),
                     )
-                    addRelatedAnime(
-                        listOf(
-                            URI("http://config1.example.org/anime/2"),
-                            URI("http://config1.example.org/anime/25"),
-                            URI("http://config2.example.org/anime/second-entry"),
-                            URI("http://config2.example.org/anime/non-existent-entry"),
-                        )
-                    )
-                },
-                Anime(
+                ),
+                AnimeRaw(
                     _title = "2",
-                ).apply {
-                    addSources(
-                        listOf(
-                            URI("http://config1.example.org/anime/2"),
-                            URI("http://config2.example.org/anime/second-entry")
-                        )
-                    )
-                    addRelatedAnime(
-                        listOf(
-                            URI("http://config1.example.org/anime/1"),
-                            URI("http://config1.example.org/anime/25"),
-                            URI("http://config2.example.org/anime/first-entry")
-                        )
-                    )
-                },
-                Anime(
-                    _title = "3"
-                ).apply {
-                    addSources(
-                        listOf(
-                            URI("http://config2.example.org/anime/third-entry")
-                        )
-                    )
-                    addRelatedAnime(
-                        listOf(
-                            URI("http://config2.example.org/anime/non-existent-entry"),
-                        )
-                    )
-                }
+                    _sources = hashSetOf(
+                        URI("http://config1.example.org/anime/2"),
+                        URI("http://config2.example.org/anime/second-entry"),
+                    ),
+                    _relatedAnime = hashSetOf(
+                        URI("http://config1.example.org/anime/1"),
+                        URI("http://config1.example.org/anime/25"),
+                        URI("http://config2.example.org/anime/first-entry"),
+                    ),
+                ),
+                AnimeRaw(
+                    _title = "3",
+                    _sources = hashSetOf(
+                        URI("http://config2.example.org/anime/third-entry"),
+                    ),
+                    _relatedAnime = hashSetOf(
+                        URI("http://config2.example.org/anime/non-existent-entry"),
+                    ),
+                ),
             )
 
             val defaultUnknownRelatedAnimeRemover = DefaultUnknownRelatedAnimeRemover()

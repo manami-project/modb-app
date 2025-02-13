@@ -1,5 +1,12 @@
 package io.github.manamiproject.modb.anisearch
 
+import io.github.manamiproject.modb.core.anime.*
+import io.github.manamiproject.modb.core.anime.AnimeRaw.Companion.NO_PICTURE_THUMBNAIL
+import io.github.manamiproject.modb.core.anime.AnimeSeason.Season.*
+import io.github.manamiproject.modb.core.anime.AnimeStatus.*
+import io.github.manamiproject.modb.core.anime.AnimeType.*
+import io.github.manamiproject.modb.core.anime.Duration.TimeUnit.HOURS
+import io.github.manamiproject.modb.core.anime.Duration.TimeUnit.MINUTES
 import io.github.manamiproject.modb.core.config.MetaDataProviderConfig
 import io.github.manamiproject.modb.core.converter.AnimeConverter
 import io.github.manamiproject.modb.core.coroutines.ModbDispatchers.LIMITED_CPU
@@ -8,18 +15,13 @@ import io.github.manamiproject.modb.core.extractor.DataExtractor
 import io.github.manamiproject.modb.core.extractor.ExtractionResult
 import io.github.manamiproject.modb.core.extractor.JsonDataExtractor
 import io.github.manamiproject.modb.core.extractor.XmlDataExtractor
-import io.github.manamiproject.modb.core.models.*
-import io.github.manamiproject.modb.core.models.Anime.Companion.NO_PICTURE_THUMBNAIL
-import io.github.manamiproject.modb.core.models.Anime.Status.*
-import io.github.manamiproject.modb.core.models.Anime.Type.*
-import io.github.manamiproject.modb.core.models.AnimeSeason.Season.*
-import io.github.manamiproject.modb.core.models.Duration.TimeUnit.HOURS
-import io.github.manamiproject.modb.core.models.Duration.TimeUnit.MINUTES
 import kotlinx.coroutines.withContext
 import java.net.URI
+import io.github.manamiproject.modb.core.anime.AnimeStatus.UNKNOWN as UNKNOWN_STATUS
+import io.github.manamiproject.modb.core.anime.AnimeType.UNKNOWN as UNKNOWN_TYPE
 
 /**
- * Converts raw data to an [Anime].
+ * Converts raw data to an [AnimeRaw].
  * Requires raw HTML.
  * @since 1.0.0
  * @param metaDataProviderConfig Configuration for converting data.
@@ -37,7 +39,7 @@ public class AnisearchAnimeConverter(
         require(relationsDir.directoryExists()) { "Directory for relations [$relationsDir] does not exist or is not a directory." }
     }
 
-    override suspend fun convert(rawContent: String): Anime = withContext(LIMITED_CPU) {
+    override suspend fun convert(rawContent: String): AnimeRaw = withContext(LIMITED_CPU) {
         val data = xmlExtractor.extract(rawContent, mapOf(
             "jsonld" to "//script[@type='application/ld+json']/node()",
             "image" to "//meta[@property='og:image']/@content",
@@ -65,7 +67,7 @@ public class AnisearchAnimeConverter(
         
         val thumbnail = extractThumbnail(data)
 
-        return@withContext Anime(
+        return@withContext AnimeRaw(
             _title = extractTitle(jsonData, data),
             episodes = extractEpisodes(jsonData),
             type = extractType(data),
@@ -90,7 +92,7 @@ public class AnisearchAnimeConverter(
 
     private fun extractEpisodes(jsonldData: ExtractionResult): Episodes = jsonldData.intOrDefault("episodes", 1)
 
-    private fun extractType(data: ExtractionResult): Anime.Type {
+    private fun extractType(data: ExtractionResult): AnimeType {
         val type = data.string("type")
             .split(',')
             .first()
@@ -103,11 +105,11 @@ public class AnisearchAnimeConverter(
             "cm" -> SPECIAL
             "movie" -> MOVIE
             "music video" -> SPECIAL
-            "other" -> Anime.Type.UNKNOWN
+            "other" -> UNKNOWN_TYPE
             "ova" -> OVA
             "tv-series" -> TV
             "tv-special" -> TV
-            "unknown" -> Anime.Type.UNKNOWN
+            "unknown" -> UNKNOWN_TYPE
             "web" -> ONA
             else -> throw IllegalStateException("Unmapped type [$type]")
         }
@@ -129,7 +131,7 @@ public class AnisearchAnimeConverter(
         return URI(value)
     }
 
-    private fun extractStatus(data: ExtractionResult): Anime.Status {
+    private fun extractStatus(data: ExtractionResult): AnimeStatus {
         val value = if (data.notFound("status")) {
             EMPTY
         } else {
@@ -137,11 +139,11 @@ public class AnisearchAnimeConverter(
         }
 
         return when(value.trim().lowercase()) {
-            "aborted" -> Anime.Status.UNKNOWN
+            "aborted" -> UNKNOWN_STATUS
             "completed" -> FINISHED
             "ongoing" -> ONGOING
             "upcoming" -> UPCOMING
-            "on hold", EMPTY -> Anime.Status.UNKNOWN
+            "on hold", EMPTY -> UNKNOWN_STATUS
             else -> throw IllegalStateException("Unmapped status [$value]")
         }
     }

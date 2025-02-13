@@ -1,20 +1,20 @@
 package io.github.manamiproject.modb.livechart
 
+import io.github.manamiproject.modb.core.anime.AnimeSeason.Season.*
+import io.github.manamiproject.modb.core.anime.AnimeStatus.*
+import io.github.manamiproject.modb.core.anime.AnimeType.*
+import io.github.manamiproject.modb.core.anime.Duration
+import io.github.manamiproject.modb.core.anime.Duration.TimeUnit.*
 import io.github.manamiproject.modb.core.config.AnimeId
 import io.github.manamiproject.modb.core.config.FileSuffix
 import io.github.manamiproject.modb.core.config.MetaDataProviderConfig
-import io.github.manamiproject.modb.core.models.Anime.Status.*
-import io.github.manamiproject.modb.core.models.Anime.Type.*
-import io.github.manamiproject.modb.core.models.Anime.Type.UNKNOWN
-import io.github.manamiproject.modb.core.models.AnimeSeason.Season.*
-import io.github.manamiproject.modb.core.models.Duration
-import io.github.manamiproject.modb.core.models.Duration.TimeUnit.*
 import io.github.manamiproject.modb.test.loadTestResource
 import kotlinx.coroutines.runBlocking
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Nested
 import java.net.URI
 import kotlin.test.Test
+import io.github.manamiproject.modb.core.anime.AnimeType.UNKNOWN as UNKNOWN_TYPE
 
 internal class LivechartAnimeConverterTest {
 
@@ -454,7 +454,7 @@ internal class LivechartAnimeConverterTest {
                 val result = converter.convert(testFile)
 
                 // then
-                assertThat(result.type).isEqualTo(UNKNOWN)
+                assertThat(result.type).isEqualTo(UNKNOWN_TYPE)
             }
         }
         

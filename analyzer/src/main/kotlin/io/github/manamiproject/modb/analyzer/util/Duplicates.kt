@@ -3,7 +3,7 @@ package io.github.manamiproject.modb.analyzer.util
 import io.github.manamiproject.modb.app.config.AppConfig
 import io.github.manamiproject.modb.app.merging.lock.DefaultMergeLockAccessor
 import io.github.manamiproject.modb.core.coverage.KoverIgnore
-import io.github.manamiproject.modb.core.models.Anime
+import io.github.manamiproject.modb.core.anime.Anime
 import java.net.URI
 
 @KoverIgnore

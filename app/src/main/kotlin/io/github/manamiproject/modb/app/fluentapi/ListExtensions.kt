@@ -6,7 +6,9 @@ import io.github.manamiproject.modb.app.merging.DefaultMergingService
 import io.github.manamiproject.modb.app.readme.DefaultReadmeCreator
 import io.github.manamiproject.modb.app.relatedanime.DefaultUnknownRelatedAnimeRemover
 import io.github.manamiproject.modb.core.coverage.KoverIgnore
-import io.github.manamiproject.modb.core.models.Anime
+import io.github.manamiproject.modb.core.anime.Anime
+import io.github.manamiproject.modb.core.anime.AnimeRaw
+import io.github.manamiproject.modb.core.anime.DefaultAnimeRawToAnimeTransformer
 
 @KoverIgnore
 internal suspend fun List<Anime>.updateStatistics(): List<Anime> {
@@ -21,10 +23,13 @@ internal suspend fun List<Anime>.saveToDataset(): List<Anime> {
 }
 
 @KoverIgnore
-internal fun List<Anime>.addAnimeCountdown(): List<Anime> = AnimeCountdownUrlAdder.addAnimeCountdown(this)
+internal fun List<AnimeRaw>.addAnimeCountdown(): List<AnimeRaw> = AnimeCountdownUrlAdder.addAnimeCountdown(this)
 
 @KoverIgnore
-internal fun List<Anime>.removeUnknownEntriesFromRelatedAnime(): List<Anime> = DefaultUnknownRelatedAnimeRemover.instance.removeRelatedAnimeWhichHaveNoCorrespondingEntryInSources(this)
+internal fun List<AnimeRaw>.removeUnknownEntriesFromRelatedAnime(): List<AnimeRaw> = DefaultUnknownRelatedAnimeRemover.instance.removeRelatedAnimeWhichHaveNoCorrespondingEntryInSources(this)
 
 @KoverIgnore
-internal suspend fun List<Anime>.mergeAnime(): List<Anime> = DefaultMergingService.instance.merge(this)
+internal suspend fun List<AnimeRaw>.mergeAnime(): List<AnimeRaw> = DefaultMergingService.instance.merge(this)
+
+@KoverIgnore
+internal fun List<AnimeRaw>.transformToDatasetEntries(): List<Anime> = this.map { DefaultAnimeRawToAnimeTransformer.instance.transform(it) }

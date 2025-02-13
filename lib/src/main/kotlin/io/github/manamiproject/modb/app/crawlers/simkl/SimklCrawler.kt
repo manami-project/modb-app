@@ -24,7 +24,7 @@ import io.github.manamiproject.modb.core.extractor.XmlDataExtractor
 import io.github.manamiproject.modb.core.httpclient.HttpClient
 import io.github.manamiproject.modb.core.httpclient.RequestBody
 import io.github.manamiproject.modb.core.logging.LoggerDelegate
-import io.github.manamiproject.modb.core.models.YEAR_OF_THE_FIRST_ANIME
+import io.github.manamiproject.modb.core.anime.YEAR_OF_THE_FIRST_ANIME
 import io.github.manamiproject.modb.core.random
 import io.github.manamiproject.modb.simkl.SimklConfig
 import io.github.manamiproject.modb.simkl.SimklDownloader

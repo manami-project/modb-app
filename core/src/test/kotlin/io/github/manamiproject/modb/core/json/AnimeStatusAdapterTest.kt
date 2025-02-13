@@ -1,7 +1,7 @@
 package io.github.manamiproject.modb.core.json
 
 import com.squareup.moshi.JsonDataException
-import io.github.manamiproject.modb.core.models.Anime
+import io.github.manamiproject.modb.core.anime.AnimeStatus.FINISHED
 import io.github.manamiproject.modb.test.exceptionExpected
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Nested
@@ -21,7 +21,7 @@ internal class AnimeStatusAdapterTest {
             val result = adapter.fromJson("\"FINISHED\"")
 
             // then
-            assertThat(result).isEqualTo(Anime.Status.FINISHED)
+            assertThat(result).isEqualTo(FINISHED)
         }
 
         @Test
@@ -46,7 +46,7 @@ internal class AnimeStatusAdapterTest {
         fun `correctly serialize non-null value`() {
             // given
             val adapter = AnimeStatusAdapter()
-            val obj = Anime.Status.FINISHED
+            val obj = FINISHED
 
             // when
             val result = adapter.toJson(obj)

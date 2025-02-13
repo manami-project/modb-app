@@ -9,7 +9,7 @@ import io.github.manamiproject.modb.core.coverage.KoverIgnore
 import io.github.manamiproject.modb.core.extensions.*
 import io.github.manamiproject.modb.core.json.Json
 import io.github.manamiproject.modb.core.logging.LoggerDelegate
-import io.github.manamiproject.modb.core.models.Anime
+import io.github.manamiproject.modb.core.anime.AnimeRaw
 import kotlinx.coroutines.async
 import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.withContext
@@ -20,14 +20,14 @@ import kotlin.io.path.exists
 import kotlin.io.path.notExists
 
 /**
- * Converts raw files into an intermediate format containing an [Anime].
- * This [FileConverter] is used for meta data providers which require multiple files to be able to create an [Anime].
+ * Converts raw files into an intermediate format containing an [AnimeRaw].
+ * This [FileConverter] is used for meta data providers which require multiple files to be able to create an [AnimeRaw].
  * It can handle [MetaDataProviderConfig] with differing values for [MetaDataProviderConfig.fileSuffix].
  * @since 1.0.0
  * @param appConfig Application specific configuration. Uses [AppConfig] by default.
  * @param dependentMetaDataProciderConfigs Additional configuration used for additional data like tags or related anime.
  * @property metaDataProviderConfig Configuration for a specific meta data provider. This is the "main" config.
- * @property converter Converts a [Path] to instances of [Anime]. Must match [metaDataProviderConfig].
+ * @property converter Converts a [Path] to instances of [AnimeRaw]. Must match [metaDataProviderConfig].
  */
 class DependentFileConverter @KoverIgnore constructor(
     appConfig: Config = AppConfig.instance,

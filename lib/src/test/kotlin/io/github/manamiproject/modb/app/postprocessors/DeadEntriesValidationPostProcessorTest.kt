@@ -1,17 +1,14 @@
 package io.github.manamiproject.modb.app.postprocessors
 
 import io.github.manamiproject.modb.app.*
-import io.github.manamiproject.modb.app.TestDatasetFileAccessor
-import io.github.manamiproject.modb.app.TestDeadEntriesAccessor
-import io.github.manamiproject.modb.app.TestDownloadControlStateAccessor
-import io.github.manamiproject.modb.app.TestMergeLockAccessor
 import io.github.manamiproject.modb.app.dataset.DatasetFileAccessor
 import io.github.manamiproject.modb.app.dataset.DeadEntriesAccessor
 import io.github.manamiproject.modb.app.downloadcontrolstate.DownloadControlStateAccessor
 import io.github.manamiproject.modb.app.merging.lock.MergeLockAccessor
 import io.github.manamiproject.modb.core.config.Hostname
 import io.github.manamiproject.modb.core.config.MetaDataProviderConfig
-import io.github.manamiproject.modb.core.models.Anime
+import io.github.manamiproject.modb.core.anime.Anime
+import io.github.manamiproject.modb.core.anime.AnimeRaw
 import io.github.manamiproject.modb.test.exceptionExpected
 import io.github.manamiproject.modb.test.tempDirectory
 import kotlinx.coroutines.runBlocking
@@ -29,9 +26,14 @@ internal class DeadEntriesValidationPostProcessorTest {
         fun `returns true if no dead entries have been found`() {
             runBlocking {
                 // given
-                val testAnime = Anime(
+                val testAnimeRaw = AnimeRaw(
                     _title = "Death Note",
                     _sources = hashSetOf(URI("https://myanimelist.net/anime/1535")),
+                )
+
+                val testAnime = Anime(
+                    title = "Death Note",
+                    sources = hashSetOf(URI("https://myanimelist.net/anime/1535")),
                 )
 
                 val testDatasetFileAccessor = object: DatasetFileAccessor by TestDatasetFileAccessor {
@@ -43,7 +45,7 @@ internal class DeadEntriesValidationPostProcessorTest {
                 }
 
                 val testDownloadControlStateAccessor = object: DownloadControlStateAccessor by TestDownloadControlStateAccessor {
-                    override suspend fun allAnime(): List<Anime> = listOf(testAnime)
+                    override suspend fun allAnime(): List<AnimeRaw> = listOf(testAnimeRaw)
                 }
 
                 val testMergeLockAccess = object: MergeLockAccessor by TestMergeLockAccessor {
@@ -70,11 +72,16 @@ internal class DeadEntriesValidationPostProcessorTest {
             runBlocking {
                 // given
                 val testAnime = Anime(
+                    title = "Death Note",
+                    sources = hashSetOf(URI("https://myanimelist.net/anime/1535")),
+                )
+
+                val testAnimeRaw = AnimeRaw(
                     _title = "Death Note",
                     _sources = hashSetOf(URI("https://myanimelist.net/anime/1535")),
                 )
 
-                val testDeadEntry = Anime(
+                val testDeadEntry = AnimeRaw(
                     _title = "Death Note",
                     _sources = hashSetOf(URI("https://myanimelist.net/anime/9997")),
                 )
@@ -88,14 +95,14 @@ internal class DeadEntriesValidationPostProcessorTest {
                 }
 
                 val testDownloadControlStateAccessor = object: DownloadControlStateAccessor by TestDownloadControlStateAccessor {
-                    override suspend fun allAnime(): List<Anime> = listOf(
-                        testAnime,
+                    override suspend fun allAnime(): List<AnimeRaw> = listOf(
+                        testAnimeRaw,
                         testDeadEntry,
                     )
                 }
 
                 val testMergeLockAccess = object: MergeLockAccessor by TestMergeLockAccessor {
-                    override suspend fun allSourcesInAllMergeLockEntries(): Set<URI> = setOf(testAnime.sources.first())
+                    override suspend fun allSourcesInAllMergeLockEntries(): Set<URI> = setOf(testAnimeRaw.sources.first())
                 }
 
                 val deadEntriesValidationPostProcessor = DeadEntriesValidationPostProcessor(
@@ -120,11 +127,16 @@ internal class DeadEntriesValidationPostProcessorTest {
             runBlocking {
                 // given
                 val testAnime = Anime(
+                    title = "Death Note",
+                    sources = hashSetOf(URI("https://myanimelist.net/anime/1535")),
+                )
+
+                val testAnimeRaw = AnimeRaw(
                     _title = "Death Note",
                     _sources = hashSetOf(URI("https://myanimelist.net/anime/1535")),
                 )
 
-                val testDeadEntry = Anime(
+                val testDeadEntry = AnimeRaw(
                     _title = "Death Note",
                     _sources = hashSetOf(URI("https://myanimelist.net/anime/9997")),
                 )
@@ -138,12 +150,12 @@ internal class DeadEntriesValidationPostProcessorTest {
                 }
 
                 val testDownloadControlStateAccessor = object: DownloadControlStateAccessor by TestDownloadControlStateAccessor {
-                    override suspend fun allAnime(): List<Anime> = listOf(testAnime)
+                    override suspend fun allAnime(): List<AnimeRaw> = listOf(testAnimeRaw)
                 }
 
                 val testMergeLockAccess = object: MergeLockAccessor by TestMergeLockAccessor {
                     override suspend fun allSourcesInAllMergeLockEntries(): Set<URI> = setOf(
-                        testAnime.sources.first(),
+                        testAnimeRaw.sources.first(),
                         testDeadEntry.sources.first(),
                     )
                 }
@@ -170,13 +182,18 @@ internal class DeadEntriesValidationPostProcessorTest {
             runBlocking {
                 // given
                 val testAnime = Anime(
-                    _title = "Death Note",
-                    _sources = hashSetOf(URI("https://myanimelist.net/anime/1535")),
+                    title = "Death Note",
+                    sources = hashSetOf(URI("https://myanimelist.net/anime/1535")),
                 )
 
                 val testDeadEntry = Anime(
+                    title = "Death Note",
+                    sources = hashSetOf(URI("https://myanimelist.net/anime/9997")),
+                )
+
+                val testAnimeRaw = AnimeRaw(
                     _title = "Death Note",
-                    _sources = hashSetOf(URI("https://myanimelist.net/anime/9997")),
+                    _sources = hashSetOf(URI("https://myanimelist.net/anime/1535")),
                 )
 
                 val testDatasetFileAccessor = object: DatasetFileAccessor by TestDatasetFileAccessor {
@@ -191,7 +208,7 @@ internal class DeadEntriesValidationPostProcessorTest {
                 }
 
                 val testDownloadControlStateAccessor = object: DownloadControlStateAccessor by TestDownloadControlStateAccessor {
-                    override suspend fun allAnime(): List<Anime> = listOf(testAnime)
+                    override suspend fun allAnime(): List<AnimeRaw> = listOf(testAnimeRaw)
                 }
 
                 val testMergeLockAccess = object: MergeLockAccessor by TestMergeLockAccessor {
@@ -220,11 +237,16 @@ internal class DeadEntriesValidationPostProcessorTest {
             runBlocking {
                 // given
                 val testAnime = Anime(
+                    title = "Death Note",
+                    sources = hashSetOf(URI("https://myanimelist.net/anime/1535")),
+                )
+
+                val testAnimeRaw = AnimeRaw(
                     _title = "Death Note",
                     _sources = hashSetOf(URI("https://myanimelist.net/anime/1535")),
                 )
 
-                val testDeadEntry = Anime(
+                val testDeadEntry = AnimeRaw(
                     _title = "Death Note",
                     _sources = hashSetOf(URI("https://animecountdown.com/9997")),
                 )
@@ -238,14 +260,14 @@ internal class DeadEntriesValidationPostProcessorTest {
                 }
 
                 val testDownloadControlStateAccessor = object: DownloadControlStateAccessor by TestDownloadControlStateAccessor {
-                    override suspend fun allAnime(): List<Anime> = listOf(
-                        testAnime,
+                    override suspend fun allAnime(): List<AnimeRaw> = listOf(
+                        testAnimeRaw,
                         testDeadEntry,
                     )
                 }
 
                 val testMergeLockAccess = object: MergeLockAccessor by TestMergeLockAccessor {
-                    override suspend fun allSourcesInAllMergeLockEntries(): Set<URI> = setOf(testAnime.sources.first())
+                    override suspend fun allSourcesInAllMergeLockEntries(): Set<URI> = setOf(testAnimeRaw.sources.first())
                 }
 
                 val testIgnoredMetaDataProviderConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
@@ -273,13 +295,18 @@ internal class DeadEntriesValidationPostProcessorTest {
             runBlocking {
                 // given
                 val testAnime = Anime(
-                    _title = "Death Note",
-                    _sources = hashSetOf(URI("https://myanimelist.net/anime/1535")),
+                    title = "Death Note",
+                    sources = hashSetOf(URI("https://myanimelist.net/anime/1535")),
                 )
 
                 val testDeadEntry = Anime(
+                    title = "Death Note",
+                    sources = hashSetOf(URI("https://animecountdown.com/9997")),
+                )
+
+                val testAnimeRaw = AnimeRaw(
                     _title = "Death Note",
-                    _sources = hashSetOf(URI("https://animecountdown.com/9997")),
+                    _sources = hashSetOf(URI("https://myanimelist.net/anime/1535")),
                 )
 
                 val testDatasetFileAccessor = object: DatasetFileAccessor by TestDatasetFileAccessor {
@@ -294,7 +321,7 @@ internal class DeadEntriesValidationPostProcessorTest {
                 }
 
                 val testDownloadControlStateAccessor = object: DownloadControlStateAccessor by TestDownloadControlStateAccessor {
-                    override suspend fun allAnime(): List<Anime> = listOf(testAnime)
+                    override suspend fun allAnime(): List<AnimeRaw> = listOf(testAnimeRaw)
                 }
 
                 val testMergeLockAccess = object: MergeLockAccessor by TestMergeLockAccessor {

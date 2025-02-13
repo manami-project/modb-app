@@ -1,8 +1,12 @@
 package io.github.manamiproject.modb.serde.json
 
-import io.github.manamiproject.modb.core.models.Anime
-import io.github.manamiproject.modb.core.models.AnimeSeason
-import io.github.manamiproject.modb.core.models.Duration
+import io.github.manamiproject.modb.core.anime.Anime
+import io.github.manamiproject.modb.core.anime.AnimeSeason
+import io.github.manamiproject.modb.core.anime.AnimeSeason.Season.SUMMER
+import io.github.manamiproject.modb.core.anime.AnimeStatus.FINISHED
+import io.github.manamiproject.modb.core.anime.AnimeType.*
+import io.github.manamiproject.modb.core.anime.Duration
+import io.github.manamiproject.modb.core.anime.Duration.TimeUnit.HOURS
 import kotlinx.coroutines.runBlocking
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Nested
@@ -150,32 +154,32 @@ internal class AnimeListJsonSerializerTest {
 
                 val animeList = listOf(
                     Anime(
-                        _sources = hashSetOf(
+                        sources = hashSetOf(
                             URI("https://myanimelist.net/anime/6351"),
                         ),
-                        _title = "Clannad: After Story - Mou Hitotsu no Sekai, Kyou-hen",
-                        type = Anime.Type.SPECIAL,
+                        title = "Clannad: After Story - Mou Hitotsu no Sekai, Kyou-hen",
+                        type = SPECIAL,
                         episodes = 1,
-                        status = Anime.Status.FINISHED,
+                        status = FINISHED,
                         animeSeason = AnimeSeason(
-                            season = AnimeSeason.Season.SUMMER,
+                            season = SUMMER,
                             year = 2009
                         ),
                         picture = URI("https://cdn.myanimelist.net/images/anime/10/19621.jpg"),
                         thumbnail = URI("https://cdn.myanimelist.net/images/anime/10/19621t.jpg"),
                         duration = Duration(
                             value = 1,
-                            unit = Duration.TimeUnit.HOURS,
+                            unit = HOURS,
                         ),
-                        _relatedAnime = hashSetOf(
+                        relatedAnime = hashSetOf(
                             URI("https://myanimelist.net/anime/2167"),
                         ),
-                        _synonyms = hashSetOf(
+                        synonyms = hashSetOf(
                             "Clannad ~After Story~: Another World, Kyou Chapter",
                             "Clannad: After Story OVA",
                             "クラナド　アフターストーリー　もうひとつの世界　杏編",
                         ),
-                        _tags = hashSetOf(
+                        tags = hashSetOf(
                             "comedy",
                             "drama",
                             "romance",
@@ -356,16 +360,16 @@ internal class AnimeListJsonSerializerTest {
 
                 val animeList = listOf(
                     Anime(
-                        _title = "test",
-                        type = Anime.Type.OVA,
+                        title = "test",
+                        type = OVA,
                     ),
                     Anime(
-                        _title = "test",
-                        type = Anime.Type.SPECIAL,
+                        title = "test",
+                        type = SPECIAL,
                     ),
                     Anime(
-                        _title = "test",
-                        type = Anime.Type.MOVIE,
+                        title = "test",
+                        type = MOVIE,
                     ),
                 )
 
@@ -450,18 +454,18 @@ internal class AnimeListJsonSerializerTest {
 
                 val animeList = listOf(
                     Anime(
-                        _title = "test",
-                        type = Anime.Type.TV,
+                        title = "test",
+                        type = TV,
                         episodes = 24,
                     ),
                     Anime(
-                        _title = "test",
-                        type = Anime.Type.TV,
+                        title = "test",
+                        type = TV,
                         episodes = 12,
                     ),
                     Anime(
-                        _title = "test",
-                        type = Anime.Type.TV,
+                        title = "test",
+                        type = TV,
                         episodes = 13,
                     ),
                 )

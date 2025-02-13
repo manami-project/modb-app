@@ -6,19 +6,19 @@ import io.github.manamiproject.modb.core.coroutines.ModbDispatchers.LIMITED_CPU
 import io.github.manamiproject.modb.core.extractor.DataExtractor
 import io.github.manamiproject.modb.core.extractor.ExtractionResult
 import io.github.manamiproject.modb.core.extractor.JsonDataExtractor
-import io.github.manamiproject.modb.core.models.*
-import io.github.manamiproject.modb.core.models.Anime.Companion.NO_PICTURE
-import io.github.manamiproject.modb.core.models.Anime.Companion.NO_PICTURE_THUMBNAIL
-import io.github.manamiproject.modb.core.models.Anime.Status
-import io.github.manamiproject.modb.core.models.Anime.Status.*
-import io.github.manamiproject.modb.core.models.Anime.Type
-import io.github.manamiproject.modb.core.models.Anime.Type.*
-import io.github.manamiproject.modb.core.models.Duration.TimeUnit.MINUTES
+import io.github.manamiproject.modb.core.anime.*
+import io.github.manamiproject.modb.core.anime.AnimeRaw.Companion.NO_PICTURE
+import io.github.manamiproject.modb.core.anime.AnimeRaw.Companion.NO_PICTURE_THUMBNAIL
+import io.github.manamiproject.modb.core.anime.AnimeStatus.*
+import io.github.manamiproject.modb.core.anime.AnimeStatus.UNKNOWN as UNKNOWN_STATUS
+import io.github.manamiproject.modb.core.anime.AnimeType.*
+import io.github.manamiproject.modb.core.anime.AnimeType.UNKNOWN as UNKNOWN_TYPE
+import io.github.manamiproject.modb.core.anime.Duration.TimeUnit.MINUTES
 import kotlinx.coroutines.withContext
 import java.net.URI
 
 /**
- * Converts raw data to an [Anime].
+ * Converts raw data to an [AnimeRaw].
  * @since 1.0.0
  * @param metaDataProviderConfig Configuration for converting data.
  */
@@ -27,7 +27,7 @@ public class AnilistAnimeConverter(
     private val extractor: DataExtractor = JsonDataExtractor,
 ) : AnimeConverter {
 
-    override suspend fun convert(rawContent: String): Anime = withContext(LIMITED_CPU) {
+    override suspend fun convert(rawContent: String): AnimeRaw = withContext(LIMITED_CPU) {
 
         val data: ExtractionResult = extractor.extract(rawContent, mapOf(
             "userPreferred" to "$.data.Media.title.userPreferred",
@@ -48,7 +48,7 @@ public class AnilistAnimeConverter(
             "relatedAnime" to "$.data.Media.relations.edges.*.node"
         ))
 
-        return@withContext Anime(
+        return@withContext AnimeRaw(
             _title = extractTitle(data),
             episodes = extractEpisodes(data),
             type = extractType(data),
@@ -74,9 +74,9 @@ public class AnilistAnimeConverter(
         return data.intOrDefault("nextAiringEpisode")
     }
 
-    private fun extractType(data: ExtractionResult): Type {
+    private fun extractType(data: ExtractionResult): AnimeType {
         if (data.notFound("format")) {
-            return Type.UNKNOWN
+            return UNKNOWN_TYPE
         }
 
         return when(data.string("format").trim().uppercase()) {
@@ -129,16 +129,16 @@ public class AnilistAnimeConverter(
             .toHashSet()
     }
 
-    private fun extractStatus(data: ExtractionResult): Status {
+    private fun extractStatus(data: ExtractionResult): AnimeStatus {
         if (data.notFound("status")) {
-            return Status.UNKNOWN
+            return UNKNOWN_STATUS
         }
 
         return when(data.string("status").trim().uppercase()) {
             "FINISHED" -> FINISHED
             "RELEASING" -> ONGOING
             "NOT_YET_RELEASED" -> UPCOMING
-            "CANCELLED" -> Status.UNKNOWN
+            "CANCELLED" -> UNKNOWN_STATUS
             else -> throw IllegalStateException("Unknown status [${data.string("status")}]")
         }
     }

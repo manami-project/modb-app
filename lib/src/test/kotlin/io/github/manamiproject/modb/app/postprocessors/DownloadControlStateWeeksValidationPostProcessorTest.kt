@@ -5,7 +5,7 @@ import io.github.manamiproject.modb.app.downloadcontrolstate.DownloadControlStat
 import io.github.manamiproject.modb.app.downloadcontrolstate.DownloadControlStateEntry
 import io.github.manamiproject.modb.app.downloadcontrolstate.WeekOfYear
 import io.github.manamiproject.modb.app.minusWeeks
-import io.github.manamiproject.modb.core.models.Anime
+import io.github.manamiproject.modb.core.anime.AnimeRaw
 import io.github.manamiproject.modb.test.exceptionExpected
 import io.github.manamiproject.modb.test.tempDirectory
 import kotlinx.coroutines.runBlocking
@@ -30,7 +30,7 @@ internal class DownloadControlStateWeeksValidationPostProcessorTest {
                     _weeksWihoutChange = 0,
                     _lastDownloaded = WeekOfYear.currentWeek(),
                     _nextDownload = WeekOfYear.currentWeek().minusWeeks(numberOfWeeks),
-                    _anime = Anime(
+                    _anime = AnimeRaw(
                         _title = "test1",
                         _sources = hashSetOf(
                             URI("https://example.org/anime/1"),
@@ -64,7 +64,7 @@ internal class DownloadControlStateWeeksValidationPostProcessorTest {
                     _weeksWihoutChange = 0,
                     _lastDownloaded = WeekOfYear.currentWeek().plusWeeks(1),
                     _nextDownload = WeekOfYear.currentWeek().plusWeeks(1),
-                    _anime = Anime(
+                    _anime = AnimeRaw(
                         _title = "test1",
                         _sources = hashSetOf(
                             URI("https://example.org/anime/1"),
@@ -100,7 +100,7 @@ internal class DownloadControlStateWeeksValidationPostProcessorTest {
                         _weeksWihoutChange = 0,
                         _lastDownloaded = WeekOfYear.currentWeek().minusWeeks(numberOfWeeks),
                         _nextDownload = WeekOfYear.currentWeek().plusWeeks(1),
-                        _anime = Anime(
+                        _anime = AnimeRaw(
                             _title = "test1",
                             _sources = hashSetOf(URI("https://example.org/anime/1")),
                         )

@@ -1,15 +1,15 @@
 package io.github.manamiproject.modb.core.json
 
 import com.squareup.moshi.*
-import io.github.manamiproject.modb.core.models.Anime
+import io.github.manamiproject.modb.core.anime.AnimeStatus
 
-internal class AnimeStatusAdapter: JsonAdapter<Anime.Status>() {
+internal class AnimeStatusAdapter: JsonAdapter<AnimeStatus>() {
 
     @FromJson
-    override fun fromJson(reader: JsonReader): Anime.Status = Anime.Status.valueOf(reader.nextString())
+    override fun fromJson(reader: JsonReader): AnimeStatus = AnimeStatus.valueOf(reader.nextString())
 
     @ToJson
-    override fun toJson(writer: JsonWriter, value: Anime.Status?) {
+    override fun toJson(writer: JsonWriter, value: AnimeStatus?) {
         requireNotNull(value) { "AnimeStatusAdapter is non-nullable, but received null." }
         writer.value(value.toString())
     }
