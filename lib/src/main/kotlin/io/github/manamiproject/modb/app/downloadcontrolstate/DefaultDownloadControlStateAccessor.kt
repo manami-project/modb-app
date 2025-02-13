@@ -5,13 +5,13 @@ import io.github.manamiproject.modb.app.config.Config
 import io.github.manamiproject.modb.app.convfiles.CONVERTED_FILE_SUFFIX
 import io.github.manamiproject.modb.app.merging.lock.DefaultMergeLockAccessor
 import io.github.manamiproject.modb.app.merging.lock.MergeLockAccessor
+import io.github.manamiproject.modb.core.anime.AnimeRaw
 import io.github.manamiproject.modb.core.config.AnimeId
 import io.github.manamiproject.modb.core.config.MetaDataProviderConfig
 import io.github.manamiproject.modb.core.coroutines.ModbDispatchers.LIMITED_FS
 import io.github.manamiproject.modb.core.extensions.*
 import io.github.manamiproject.modb.core.json.Json
 import io.github.manamiproject.modb.core.logging.LoggerDelegate
-import io.github.manamiproject.modb.core.models.Anime
 import kotlinx.coroutines.async
 import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.sync.Mutex
@@ -76,7 +76,7 @@ class DefaultDownloadControlStateAccessor(
         return allDcsEntries().filter { it.anime.sources.first().host == metaDataProviderConfig.hostname() }
     }
 
-    override suspend fun allAnime(): List<Anime> {
+    override suspend fun allAnime(): List<AnimeRaw> {
         if (!isInitialized) {
             init()
         }
@@ -84,7 +84,7 @@ class DefaultDownloadControlStateAccessor(
         return allDcsEntries().map { it.anime }
     }
 
-    override suspend fun allAnime(metaDataProviderConfig: MetaDataProviderConfig): List<Anime> {
+    override suspend fun allAnime(metaDataProviderConfig: MetaDataProviderConfig): List<AnimeRaw> {
         if (!isInitialized) {
             init()
         }

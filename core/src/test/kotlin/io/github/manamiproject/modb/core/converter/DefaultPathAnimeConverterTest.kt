@@ -2,7 +2,7 @@ package io.github.manamiproject.modb.core.converter
 
 import io.github.manamiproject.modb.core.TestAnimeConverter
 import io.github.manamiproject.modb.core.extensions.writeToFile
-import io.github.manamiproject.modb.core.models.Anime
+import io.github.manamiproject.modb.core.anime.AnimeRaw
 import io.github.manamiproject.modb.test.exceptionExpected
 import io.github.manamiproject.modb.test.shouldNotBeInvoked
 import io.github.manamiproject.modb.test.tempDirectory
@@ -39,10 +39,10 @@ internal class DefaultPathAnimeConverterTest {
             val file = tempDir.resolve("test.txt").createFile()
             "Correct file".writeToFile(file)
 
-            val expectedAnime = Anime("Expected Anime")
+            val expectedAnime = AnimeRaw("Expected Anime")
 
             val specificTestConverter = object : AnimeConverter by TestAnimeConverter {
-                override suspend fun convert(rawContent: String): Anime {
+                override suspend fun convert(rawContent: String): AnimeRaw {
                     return if (rawContent == "Correct file") {
                         expectedAnime
                     } else {
@@ -71,9 +71,9 @@ internal class DefaultPathAnimeConverterTest {
             }
 
             val specificTestConverter = object: AnimeConverter by TestAnimeConverter {
-                override suspend fun convert(rawContent: String): Anime {
+                override suspend fun convert(rawContent: String): AnimeRaw {
                     return if (rawContent.startsWith("accept")) {
-                        Anime(rawContent)
+                        AnimeRaw(rawContent)
                     } else {
                         shouldNotBeInvoked()
                     }
@@ -87,8 +87,8 @@ internal class DefaultPathAnimeConverterTest {
 
             // then
             assertThat(result).containsExactlyInAnyOrder(
-                Anime("accept 1"),
-                Anime("accept 2"),
+                AnimeRaw("accept 1"),
+                AnimeRaw("accept 2"),
             )
         }
     }

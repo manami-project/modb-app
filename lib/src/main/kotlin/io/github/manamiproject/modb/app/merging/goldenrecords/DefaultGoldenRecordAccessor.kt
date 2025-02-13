@@ -5,8 +5,8 @@ import io.github.manamiproject.modb.app.extensions.firstNotNullResult
 import io.github.manamiproject.modb.core.extensions.EMPTY
 import io.github.manamiproject.modb.core.extensions.normalize
 import io.github.manamiproject.modb.core.extensions.remove
-import io.github.manamiproject.modb.core.models.Anime
-import io.github.manamiproject.modb.core.models.Title
+import io.github.manamiproject.modb.core.anime.AnimeRaw
+import io.github.manamiproject.modb.core.anime.Title
 import java.net.URI
 import java.util.*
 
@@ -20,9 +20,9 @@ class DefaultGoldenRecordAccessor: GoldenRecordAccessor {
     /** Outer map key = first two chars of the title. Inner map key = lower case, cleaned-up title */
     private val partitionedTitleCluster: HashMap<String, HashMap<Title, HashSet<UUID>>>  = hashMapOf()
     private val sourceCluster: HashMap<URI, UUID>  = hashMapOf()
-    private val goldenRecords: HashMap<UUID, Anime>  = hashMapOf()
+    private val goldenRecords: HashMap<UUID, AnimeRaw>  = hashMapOf()
 
-    override fun createGoldenRecord(anime: Anime) {
+    override fun createGoldenRecord(anime: AnimeRaw) {
         val uuid = UUID.randomUUID()
         goldenRecords[uuid] = anime
 
@@ -40,7 +40,7 @@ class DefaultGoldenRecordAccessor: GoldenRecordAccessor {
         return null
     }
 
-    override fun findPossibleGoldenRecords(anime: Anime): Set<PotentialGoldenRecord> {
+    override fun findPossibleGoldenRecords(anime: AnimeRaw): Set<PotentialGoldenRecord> {
         var entries = findByTitle(anime.title)
 
         // anime-planet usually provides a title which is very unique across all meta data provider. In case we couldn't find anything using that title we retry using the first synonym
@@ -66,7 +66,7 @@ class DefaultGoldenRecordAccessor: GoldenRecordAccessor {
             ?: emptySet()
     }
 
-    override fun merge(goldenRecordId: UUID, anime: Anime): Anime {
+    override fun merge(goldenRecordId: UUID, anime: AnimeRaw): AnimeRaw {
         goldenRecords[goldenRecordId] = goldenRecords[goldenRecordId]?.mergeWith(anime) ?: throw IllegalStateException("Unable to find golden record [$goldenRecordId]")
 
         updateTitleCluster(goldenRecordId, anime)
@@ -75,7 +75,7 @@ class DefaultGoldenRecordAccessor: GoldenRecordAccessor {
         return goldenRecords[goldenRecordId]!!
     }
 
-    override fun allEntries(): List<Anime> = goldenRecords.values.toList()
+    override fun allEntries(): List<AnimeRaw> = goldenRecords.values.toList()
 
     override fun clear() {
         partitionedTitleCluster.clear()
@@ -89,7 +89,7 @@ class DefaultGoldenRecordAccessor: GoldenRecordAccessor {
         return partitionedTitleCluster[partition] ?: hashMapOf()
     }
 
-    private fun updateTitleCluster(goldenRecordId: UUID, anime: Anime) {
+    private fun updateTitleCluster(goldenRecordId: UUID, anime: AnimeRaw) {
         extractAllTitles(anime).forEach { title ->
             val partition = title.safeSubstring(0, 2)
 
@@ -107,9 +107,9 @@ class DefaultGoldenRecordAccessor: GoldenRecordAccessor {
         }
     }
 
-    private fun extractAllTitles(anime: Anime) = listOf(anime.title).union(anime.synonyms).map { cleanupTitle(it) }
+    private fun extractAllTitles(anime: AnimeRaw) = listOf(anime.title).union(anime.synonyms).map { cleanupTitle(it) }
 
-    private fun updateSourceCluster(goldenRecordId: UUID, anime: Anime) {
+    private fun updateSourceCluster(goldenRecordId: UUID, anime: AnimeRaw) {
         anime.sources.forEach {
             sourceCluster[it] = goldenRecordId
         }

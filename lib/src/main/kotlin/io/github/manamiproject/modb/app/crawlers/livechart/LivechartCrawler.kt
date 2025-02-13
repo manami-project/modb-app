@@ -18,10 +18,10 @@ import io.github.manamiproject.modb.core.extensions.createShuffledList
 import io.github.manamiproject.modb.core.extensions.neitherNullNorBlank
 import io.github.manamiproject.modb.core.extensions.writeToFile
 import io.github.manamiproject.modb.core.logging.LoggerDelegate
-import io.github.manamiproject.modb.core.models.AnimeSeason
-import io.github.manamiproject.modb.core.models.AnimeSeason.Season.UNDEFINED
-import io.github.manamiproject.modb.core.models.YEAR_OF_THE_FIRST_ANIME
-import io.github.manamiproject.modb.core.models.Year
+import io.github.manamiproject.modb.core.anime.AnimeSeason
+import io.github.manamiproject.modb.core.anime.AnimeSeason.Season.UNDEFINED
+import io.github.manamiproject.modb.core.anime.YEAR_OF_THE_FIRST_ANIME
+import io.github.manamiproject.modb.core.anime.Year
 import io.github.manamiproject.modb.core.random
 import io.github.manamiproject.modb.livechart.LivechartConfig
 import io.github.manamiproject.modb.livechart.LivechartDownloader

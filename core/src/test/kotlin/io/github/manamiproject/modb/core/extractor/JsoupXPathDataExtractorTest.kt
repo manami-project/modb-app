@@ -1,7 +1,7 @@
 package io.github.manamiproject.modb.core.extractor
 
-import io.github.manamiproject.modb.core.models.Tag
-import io.github.manamiproject.modb.core.models.Title
+import io.github.manamiproject.modb.core.anime.Tag
+import io.github.manamiproject.modb.core.anime.Title
 import io.github.manamiproject.modb.test.loadTestResource
 import kotlinx.coroutines.runBlocking
 import org.assertj.core.api.Assertions.assertThat

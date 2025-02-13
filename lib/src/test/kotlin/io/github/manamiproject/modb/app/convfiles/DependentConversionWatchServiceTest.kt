@@ -14,7 +14,7 @@ import io.github.manamiproject.modb.core.extensions.Directory
 import io.github.manamiproject.modb.core.extensions.LOCK_FILE_SUFFIX
 import io.github.manamiproject.modb.core.extensions.fileName
 import io.github.manamiproject.modb.core.extensions.regularFileExists
-import io.github.manamiproject.modb.core.models.Anime
+import io.github.manamiproject.modb.core.anime.AnimeRaw
 import io.github.manamiproject.modb.test.exceptionExpected
 import io.github.manamiproject.modb.test.shouldNotBeInvoked
 import io.github.manamiproject.modb.test.tempDirectory
@@ -114,10 +114,10 @@ internal class DependentConversionWatchServiceTest {
                     }
                 }
 
-                val anime = Anime("Death Note")
+                val anime = AnimeRaw("Death Note")
 
                 val testConverter = object: PathAnimeConverter by TestPathAnimeConverter {
-                    override suspend fun convert(path: Path): List<Anime> = listOf(anime)
+                    override suspend fun convert(path: Path): List<AnimeRaw> = listOf(anime)
                 }
 
                 val dependentConversionWatchService = DependentConversionWatchService(
@@ -180,7 +180,7 @@ internal class DependentConversionWatchServiceTest {
                     }
 
                     val testConverter = object: PathAnimeConverter by TestPathAnimeConverter {
-                        override suspend fun convert(path: Path): List<Anime> {
+                        override suspend fun convert(path: Path): List<AnimeRaw> {
                             converterHasBeenInvoked = true
                             return  emptyList()
                         }
@@ -246,7 +246,7 @@ internal class DependentConversionWatchServiceTest {
                     }
 
                     val testConverter = object: PathAnimeConverter by TestPathAnimeConverter {
-                        override suspend fun convert(path: Path): List<Anime> {
+                        override suspend fun convert(path: Path): List<AnimeRaw> {
                             converterHasBeenInvoked = true
                             return  emptyList()
                         }
@@ -314,10 +314,10 @@ internal class DependentConversionWatchServiceTest {
                         }
                     }
 
-                    val anime = Anime("Death Note")
+                    val anime = AnimeRaw("Death Note")
 
                     val testConverter = object : PathAnimeConverter by TestPathAnimeConverter {
-                        override suspend fun convert(path: Path): List<Anime> {
+                        override suspend fun convert(path: Path): List<AnimeRaw> {
                             if (canBeInvoked) {
                                 converterHasBeenInvoked = true
                             }
@@ -395,10 +395,10 @@ internal class DependentConversionWatchServiceTest {
                         }
                     }
 
-                    val anime = Anime("Death Note")
+                    val anime = AnimeRaw("Death Note")
 
                     val testConverter = object : PathAnimeConverter by TestPathAnimeConverter {
-                        override suspend fun convert(path: Path): List<Anime> {
+                        override suspend fun convert(path: Path): List<AnimeRaw> {
                             if (canBeInvoked) {
                                 converterHasBeenInvoked = true
                             }

@@ -1,17 +1,17 @@
 package io.github.manamiproject.modb.app.convfiles
 
 import io.github.manamiproject.modb.core.extensions.RegularFile
-import io.github.manamiproject.modb.core.models.Anime
+import io.github.manamiproject.modb.core.anime.AnimeRaw
 
 /**
- * File suffix used for the files containing the serialized [Anime] object as intermediate format.
+ * File suffix used for the files containing the serialized [AnimeRaw] object as intermediate format.
  * @since 1.0.0
  */
 const val CONVERTED_FILE_SUFFIX = "conv"
 
 
 /**
- * Converts raw files into a generic intermediate format based on [Anime].
+ * Converts raw files into a generic intermediate format based on [AnimeRaw].
  * @since 1.0.0
  */
 interface FileConverter {

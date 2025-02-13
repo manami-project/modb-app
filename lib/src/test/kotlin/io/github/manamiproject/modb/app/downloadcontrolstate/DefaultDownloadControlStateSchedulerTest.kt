@@ -5,13 +5,13 @@ import io.github.manamiproject.modb.app.TestAppConfig
 import io.github.manamiproject.modb.app.TestDownloadControlStateAccessor
 import io.github.manamiproject.modb.app.config.Config
 import io.github.manamiproject.modb.core.config.MetaDataProviderConfig
-import io.github.manamiproject.modb.core.models.Anime
-import io.github.manamiproject.modb.core.models.Anime.Status.FINISHED
-import io.github.manamiproject.modb.core.models.Anime.Type.MOVIE
-import io.github.manamiproject.modb.core.models.Anime.Type.TV
-import io.github.manamiproject.modb.core.models.AnimeSeason
-import io.github.manamiproject.modb.core.models.Duration
-import io.github.manamiproject.modb.core.models.Duration.TimeUnit.MINUTES
+import io.github.manamiproject.modb.core.anime.AnimeRaw
+import io.github.manamiproject.modb.core.anime.AnimeStatus.FINISHED
+import io.github.manamiproject.modb.core.anime.AnimeType.MOVIE
+import io.github.manamiproject.modb.core.anime.AnimeType.TV
+import io.github.manamiproject.modb.core.anime.AnimeSeason
+import io.github.manamiproject.modb.core.anime.Duration
+import io.github.manamiproject.modb.core.anime.Duration.TimeUnit.MINUTES
 import io.github.manamiproject.modb.kitsu.KitsuConfig
 import io.github.manamiproject.modb.test.tempDirectory
 import org.assertj.core.api.Assertions.assertThat
@@ -39,7 +39,7 @@ internal class DefaultDownloadControlStateSchedulerTest {
                     _weeksWihoutChange = 0,
                     _lastDownloaded = WeekOfYear(2021, 44),
                     _nextDownload = WeekOfYear(2021, 45),
-                    _anime = Anime(
+                    _anime = AnimeRaw(
                         _title = "Fruits Basket",
                         type = TV,
                         episodes = 26,
@@ -64,7 +64,7 @@ internal class DefaultDownloadControlStateSchedulerTest {
                     _weeksWihoutChange = 0,
                     _lastDownloaded = WeekOfYear(2021, 2),
                     _nextDownload = WeekOfYear(2021, 4),
-                    _anime = Anime(
+                    _anime = AnimeRaw(
                         _title = "Unexpected",
                         _sources = hashSetOf(URI("https://kitsu.app/anime/19999999")),
                     ),
@@ -102,7 +102,7 @@ internal class DefaultDownloadControlStateSchedulerTest {
                     _weeksWihoutChange = 0,
                     _lastDownloaded = WeekOfYear(2021, 44),
                     _nextDownload = WeekOfYear(2022, 2),
-                    _anime = Anime(
+                    _anime = AnimeRaw(
                         _title = "Fruits Basket",
                         type = TV,
                         episodes = 26,
@@ -127,7 +127,7 @@ internal class DefaultDownloadControlStateSchedulerTest {
                     _weeksWihoutChange = 0,
                     _lastDownloaded = WeekOfYear(2021, 2),
                     _nextDownload = WeekOfYear(2021, 4),
-                    _anime = Anime(
+                    _anime = AnimeRaw(
                         _title = "Unexpected",
                         _sources = hashSetOf(URI("https://kitsu.app/anime/19999999")),
                     ),
@@ -169,7 +169,7 @@ internal class DefaultDownloadControlStateSchedulerTest {
                     _weeksWihoutChange = 0,
                     _lastDownloaded = WeekOfYear(2021, 2),
                     _nextDownload = WeekOfYear(2021, 4),
-                    _anime = Anime(
+                    _anime = AnimeRaw(
                         _title = "Shin Seiki Evangelion Movie: THE END OF EVANGELION",
                         type = MOVIE,
                         episodes = 1,
@@ -202,7 +202,7 @@ internal class DefaultDownloadControlStateSchedulerTest {
                     _weeksWihoutChange = 0,
                     _lastDownloaded = WeekOfYear(2021, 44),
                     _nextDownload = WeekOfYear(2021, 45),
-                    _anime = Anime(
+                    _anime = AnimeRaw(
                         _title = "Unexpected Entry",
                         _sources = hashSetOf(URI("https://anilist.co/anime/19999999")),
                     )
@@ -240,7 +240,7 @@ internal class DefaultDownloadControlStateSchedulerTest {
                     _weeksWihoutChange = 0,
                     _lastDownloaded = WeekOfYear(2020, 49),
                     _nextDownload = WeekOfYear(2020, 51),
-                    _anime = Anime(
+                    _anime = AnimeRaw(
                         _title = "Shin Seiki Evangelion Movie: THE END OF EVANGELION",
                         type = MOVIE,
                         episodes = 1,
@@ -273,7 +273,7 @@ internal class DefaultDownloadControlStateSchedulerTest {
                     _weeksWihoutChange = 0,
                     _lastDownloaded = WeekOfYear(2021, 44),
                     _nextDownload = WeekOfYear(2021, 45),
-                    _anime = Anime(
+                    _anime = AnimeRaw(
                         _title = "Unexpected Entry",
                         _sources = hashSetOf(URI("https://anilist.co/anime/19999999")),
                     )

@@ -1,7 +1,7 @@
 package io.github.manamiproject.modb.app.dataset
 
 import io.github.manamiproject.modb.core.extensions.RegularFile
-import io.github.manamiproject.modb.core.models.Anime
+import io.github.manamiproject.modb.core.anime.Anime
 
 /**
  * Access to the dataset file.

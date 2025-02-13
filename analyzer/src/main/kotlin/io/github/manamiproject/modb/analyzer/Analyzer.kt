@@ -12,7 +12,7 @@ import io.github.manamiproject.modb.core.coroutines.CoroutineManager.runCoroutin
 import io.github.manamiproject.modb.core.coverage.KoverIgnore
 import io.github.manamiproject.modb.core.extensions.EMPTY
 import io.github.manamiproject.modb.core.json.Json
-import io.github.manamiproject.modb.core.models.Anime
+import io.github.manamiproject.modb.core.anime.Anime
 import java.awt.Desktop
 import java.net.URI
 import kotlin.system.exitProcess
@@ -271,7 +271,7 @@ object Analyzer {
             DefaultDatasetFileAccessor.instance
                 .fetchEntries()
                 .map { anime ->
-                    anime.removeSourceIf { it.host == AnimeCountdownConfig.hostname() }
+                    anime.copy(sources = anime.sources.filterNot { it.host == AnimeCountdownConfig.hostname() }.toHashSet())
                 }
         )
     }

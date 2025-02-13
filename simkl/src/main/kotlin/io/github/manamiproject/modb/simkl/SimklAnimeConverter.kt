@@ -11,8 +11,17 @@ import io.github.manamiproject.modb.core.extensions.remove
 import io.github.manamiproject.modb.core.extractor.DataExtractor
 import io.github.manamiproject.modb.core.extractor.ExtractionResult
 import io.github.manamiproject.modb.core.extractor.XmlDataExtractor
-import io.github.manamiproject.modb.core.models.*
-import io.github.manamiproject.modb.core.models.AnimeSeason.Season
+import io.github.manamiproject.modb.core.anime.*
+import io.github.manamiproject.modb.core.anime.AnimeRaw.Companion.NO_PICTURE
+import io.github.manamiproject.modb.core.anime.AnimeRaw.Companion.NO_PICTURE_THUMBNAIL
+import io.github.manamiproject.modb.core.anime.AnimeSeason.Companion.UNKNOWN_YEAR
+import io.github.manamiproject.modb.core.anime.AnimeSeason.Season.*
+import io.github.manamiproject.modb.core.anime.AnimeStatus.*
+import io.github.manamiproject.modb.core.anime.AnimeStatus.UNKNOWN as UNKNOWN_STATUS
+import io.github.manamiproject.modb.core.anime.AnimeType.*
+import io.github.manamiproject.modb.core.anime.AnimeType.UNKNOWN as UNKNOWN_TYPE
+import io.github.manamiproject.modb.core.anime.Duration.TimeUnit.*
+import io.github.manamiproject.modb.core.anime.Duration.Companion.UNKNOWN as UNKNOWN_DURATION
 import kotlinx.coroutines.withContext
 import java.net.URI
 import java.time.Instant
@@ -21,7 +30,7 @@ import java.time.ZoneId
 import java.time.format.DateTimeFormatter
 
 /**
- * Converts raw data to an [Anime].
+ * Converts raw data to an [AnimeRaw].
  * @since 1.0.0
  * @param simklMetaDataProviderConfig Configuration for converting data.
  * @param extractor Extracts specific data from raw content.
@@ -31,7 +40,7 @@ public class SimklAnimeConverter(
     private val extractor: DataExtractor = XmlDataExtractor,
 ): AnimeConverter {
 
-    override suspend fun convert(rawContent: String): Anime = withContext(LIMITED_CPU) {
+    override suspend fun convert(rawContent: String): AnimeRaw = withContext(LIMITED_CPU) {
         val data = extractor.extract(
             rawContent, mapOf(
                 "title" to "//img[@id='detailPosterImg']/@alt",
@@ -54,7 +63,7 @@ public class SimklAnimeConverter(
         val title = extractTitle(data)
         val episodes = extractEpisodes(data)
 
-        return@withContext Anime(
+        return@withContext AnimeRaw(
             _title = title,
             episodes = episodes,
             type = extractType(data),
@@ -113,7 +122,7 @@ public class SimklAnimeConverter(
         return 0
     }
 
-    private fun extractType(data: ExtractionResult): Anime.Type {
+    private fun extractType(data: ExtractionResult): AnimeType {
         val prefix = "Type: "
         val extractedType = data.listNotNull<String>("type")
             .firstOrNull { it.startsWith(prefix) }
@@ -123,19 +132,19 @@ public class SimklAnimeConverter(
             ?: EMPTY
 
         return when (extractedType) {
-            "movie" -> Anime.Type.MOVIE
-            "ova" -> Anime.Type.OVA
-            "ona" -> Anime.Type.ONA
-            "tv" -> Anime.Type.TV
-            "special" -> Anime.Type.SPECIAL
-            "music video" -> Anime.Type.SPECIAL
-            else -> Anime.Type.UNKNOWN
+            "movie" -> MOVIE
+            "ova" -> OVA
+            "ona" -> ONA
+            "tv" -> TV
+            "special" -> SPECIAL
+            "music video" -> SPECIAL
+            else -> UNKNOWN_TYPE
         }
     }
 
     private fun extractPicture(data: ExtractionResult): URI {
         return when {
-            data.notFound("picture") || !data.stringOrDefault("picture", EMPTY).contains("posters") -> Anime.NO_PICTURE
+            data.notFound("picture") || !data.stringOrDefault("picture", EMPTY).contains("posters") -> NO_PICTURE
             else -> URI(data.string("picture")
                 .trim()
                 .remove("https://og.simkl.in/image/details/?poster=")
@@ -146,12 +155,12 @@ public class SimklAnimeConverter(
 
     private fun extractThumbnail(picture: URI): URI {
         return when {
-            picture == Anime.NO_PICTURE -> Anime.NO_PICTURE_THUMBNAIL
+            picture == NO_PICTURE -> NO_PICTURE_THUMBNAIL
             else -> picture
         }
     }
 
-    private fun extractStatus(data: ExtractionResult): Anime.Status {
+    private fun extractStatus(data: ExtractionResult): AnimeStatus {
         val prefix = "Air Date: "
         val airDate = if (data.notFound("airDate")) {
             EMPTY
@@ -173,50 +182,50 @@ public class SimklAnimeConverter(
         }
 
         return when {
-            airDate.endsWith("now") -> Anime.Status.ONGOING
-            startDate?.isAfter(today) ?: false -> Anime.Status.UPCOMING
+            airDate.endsWith("now") -> ONGOING
+            startDate?.isAfter(today) ?: false -> UPCOMING
             airDate.contains("-") -> {
                 val formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy")
                 val endDate = LocalDate.parse(airDate.substringAfter('-').trim(), formatter)
 
                 when {
-                    endDate.isBefore(today) -> Anime.Status.FINISHED
-                    startDate?.isBefore(today) ?: false && endDate.isAfter(today) -> Anime.Status.ONGOING
-                    else -> Anime.Status.ONGOING
+                    endDate.isBefore(today) -> FINISHED
+                    startDate?.isBefore(today) ?: false && endDate.isAfter(today) -> ONGOING
+                    else -> ONGOING
                 }
             }
             airDate.contains(YEAR_REGEX) && !airDate.contains("-") -> {
                 val year = YEAR_REGEX.find(airDate)?.value?.toInt() ?: 0
 
                 when {
-                    year == 0 -> Anime.Status.UNKNOWN
-                    year < today.year -> Anime.Status.FINISHED
-                    year == today.year && startDate != null && startDate.isBefore(today) -> Anime.Status.FINISHED
-                    else -> Anime.Status.ONGOING
+                    year == 0 -> UNKNOWN_STATUS
+                    year < today.year -> FINISHED
+                    year == today.year && startDate != null && startDate.isBefore(today) -> FINISHED
+                    else -> ONGOING
                 }
             }
-            else -> Anime.Status.UNKNOWN
+            else -> UNKNOWN_STATUS
         }
     }
 
     private fun extractDuration(episodes: Int, data: ExtractionResult): Duration {
         if (data.notFound("duration") || data.int("duration") == 0 || episodes == 0) {
-            return Duration.UNKNOWN
+            return UNKNOWN_DURATION
         }
 
         val duration = data.int("duration") / episodes
 
         return Duration(
             value = duration,
-            unit = Duration.TimeUnit.SECONDS,
+            unit = SECONDS,
         )
     }
 
     private fun extractAnimeSeason(data: ExtractionResult): AnimeSeason {
         if (data.notFound("startDate") || data.string("startDate") == NO_START_DATE) {
             return AnimeSeason(
-                season = AnimeSeason.Season.UNDEFINED,
-                year = AnimeSeason.UNKNOWN_YEAR,
+                season = UNDEFINED,
+                year = UNKNOWN_YEAR,
             )
         }
 
@@ -229,11 +238,11 @@ public class SimklAnimeConverter(
         }
 
         val season = when (localDate.monthValue) {
-            1, 2, 3 -> Season.WINTER
-            4, 5, 6 -> Season.SPRING
-            7, 8, 9 -> Season.SUMMER
-            10, 11, 12 -> Season.FALL
-            else -> Season.UNDEFINED
+            1, 2, 3 -> WINTER
+            4, 5, 6 -> SPRING
+            7, 8, 9 -> SUMMER
+            10, 11, 12 -> FALL
+            else -> UNDEFINED
         }
 
         return AnimeSeason(

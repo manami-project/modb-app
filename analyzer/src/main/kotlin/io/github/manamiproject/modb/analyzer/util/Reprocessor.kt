@@ -17,6 +17,7 @@ internal object Reprocessor {
             .mergeAnime()
             .removeUnknownEntriesFromRelatedAnime()
             .addAnimeCountdown()
+            .transformToDatasetEntries()
             .saveToDataset()
             .updateStatistics()
 

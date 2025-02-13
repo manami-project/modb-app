@@ -2,8 +2,8 @@ package io.github.manamiproject.modb.core.json
 
 import com.squareup.moshi.*
 import io.github.manamiproject.modb.core.extensions.EMPTY
-import io.github.manamiproject.modb.core.models.Duration
-import io.github.manamiproject.modb.core.models.Duration.TimeUnit.SECONDS
+import io.github.manamiproject.modb.core.anime.Duration
+import io.github.manamiproject.modb.core.anime.Duration.TimeUnit.SECONDS
 
 internal class DurationAdapter: JsonAdapter<Duration>() {
 

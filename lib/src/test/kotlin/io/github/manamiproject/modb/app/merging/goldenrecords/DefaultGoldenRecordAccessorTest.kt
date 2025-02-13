@@ -1,9 +1,9 @@
 package io.github.manamiproject.modb.app.merging.goldenrecords
 
-import io.github.manamiproject.modb.core.models.Anime
-import io.github.manamiproject.modb.core.models.Anime.Type.*
-import io.github.manamiproject.modb.core.models.Duration
-import io.github.manamiproject.modb.core.models.Duration.TimeUnit.MINUTES
+import io.github.manamiproject.modb.core.anime.AnimeRaw
+import io.github.manamiproject.modb.core.anime.AnimeType.*
+import io.github.manamiproject.modb.core.anime.Duration
+import io.github.manamiproject.modb.core.anime.Duration.TimeUnit.MINUTES
 import io.github.manamiproject.modb.test.tempDirectory
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Nested
@@ -25,7 +25,7 @@ internal class DefaultGoldenRecordAccessorTest {
             // given
             val goldenRecordList = DefaultGoldenRecordAccessor()
 
-            val anime = Anime("Death Note")
+            val anime = AnimeRaw("Death Note")
 
             // when
             goldenRecordList.createGoldenRecord(anime)
@@ -39,7 +39,7 @@ internal class DefaultGoldenRecordAccessorTest {
             // given
             val goldenRecordList = DefaultGoldenRecordAccessor()
 
-            val anime = Anime("Death Note")
+            val anime = AnimeRaw("Death Note")
             goldenRecordList.createGoldenRecord(anime)
 
             // when
@@ -71,7 +71,7 @@ internal class DefaultGoldenRecordAccessorTest {
             // given
             val goldenRecordList = DefaultGoldenRecordAccessor()
 
-            val anime = Anime(
+            val anime = AnimeRaw(
                 _sources = hashSetOf(
                     URI("https://myanimelist.net/anime/37514"),
                 ),
@@ -105,7 +105,7 @@ internal class DefaultGoldenRecordAccessorTest {
             // given
             val goldenRecordList = DefaultGoldenRecordAccessor()
 
-            val anime = Anime(
+            val anime = AnimeRaw(
                 _sources = hashSetOf(
                     URI("https://myanimelist.net/anime/37514"),
                 ),
@@ -148,12 +148,12 @@ internal class DefaultGoldenRecordAccessorTest {
         @Test
         fun `return empty list for matching episode, but non-matching main title`() {
             // given
-            val anime = Anime(
+            val anime = AnimeRaw(
                 _title = "Made in Abyss",
                 episodes = 13,
             )
 
-            val animeToFindGoldenRecordFor = Anime(
+            val animeToFindGoldenRecordFor = AnimeRaw(
                 _title = "Searching for",
                 episodes = 13,
             )
@@ -171,7 +171,7 @@ internal class DefaultGoldenRecordAccessorTest {
         @Test
         fun `find correct entry for matching main title`() {
             // given
-            val madeInAbyss = Anime(
+            val madeInAbyss = AnimeRaw(
                 _sources = hashSetOf(
                     URI("https://myanimelist.net/anime/34599"),
                 ),
@@ -190,7 +190,7 @@ internal class DefaultGoldenRecordAccessorTest {
                 ),
             )
 
-            val madeInAbyssMovie = Anime(
+            val madeInAbyssMovie = AnimeRaw(
                 _sources = hashSetOf(
                     URI("https://myanimelist.net/anime/37514"),
                 ),
@@ -209,7 +209,7 @@ internal class DefaultGoldenRecordAccessorTest {
                 ),
             )
 
-            val soraYoriMoTooiBasho = Anime(
+            val soraYoriMoTooiBasho = AnimeRaw(
                 _sources = hashSetOf(
                     URI("https://myanimelist.net/anime/35839"),
                 ),
@@ -230,7 +230,7 @@ internal class DefaultGoldenRecordAccessorTest {
                 ),
             )
 
-            val soraYoriMoTooiBashoSpecial = Anime(
+            val soraYoriMoTooiBashoSpecial = AnimeRaw(
                 _sources = hashSetOf(
                     URI("https://myanimelist.net/anime/37123")
                 ),
@@ -248,7 +248,7 @@ internal class DefaultGoldenRecordAccessorTest {
                 ),
             )
 
-            val animeToFindGoldenRecordFor = Anime(
+            val animeToFindGoldenRecordFor = AnimeRaw(
                 _sources = hashSetOf(
                     URI("https://anilist.co/anime/97986"),
                 ),
@@ -276,14 +276,14 @@ internal class DefaultGoldenRecordAccessorTest {
         @Test
         fun `find correct entry for matching title which is shorter than the partition size`() {
             // given
-            val animeWithTitleShorterThanPartitionSize = Anime(
+            val animeWithTitleShorterThanPartitionSize = AnimeRaw(
                 _sources = hashSetOf(
                     URI("https://example.org.net/anime/y"),
                 ),
                 _title = "Y",
             )
 
-            val soraYoriMoTooiBasho = Anime(
+            val soraYoriMoTooiBasho = AnimeRaw(
                 _sources = hashSetOf(
                     URI("https://myanimelist.net/anime/35839"),
                 ),
@@ -304,7 +304,7 @@ internal class DefaultGoldenRecordAccessorTest {
                 ),
             )
 
-            val animeToFindGoldenRecordFor = Anime(
+            val animeToFindGoldenRecordFor = AnimeRaw(
                 _sources = hashSetOf(
                     URI("https://otherexample.com/anime/994"),
                 ),
@@ -522,7 +522,7 @@ internal class DefaultGoldenRecordAccessorTest {
         ])
         fun `find title by ignoring special char`(specialChar: String) {
             // given
-            val titleWithoutSpecialChar = Anime(
+            val titleWithoutSpecialChar = AnimeRaw(
                 _sources = hashSetOf(
                     URI("https://myanimelist.net/anime/37514"),
                 ),
@@ -541,7 +541,7 @@ internal class DefaultGoldenRecordAccessorTest {
                 )
             )
 
-            val titleWithSpecialChar = Anime(
+            val titleWithSpecialChar = AnimeRaw(
                 _sources = hashSetOf(
                     URI("https://example.org/anime/37514"),
                 ),
@@ -624,7 +624,7 @@ internal class DefaultGoldenRecordAccessorTest {
         )
         fun `returns entry, because it correctly replaces special chars`(specialChar: String, replacement: String) {
             // given
-            val titleWithoutSpecialChar = Anime(
+            val titleWithoutSpecialChar = AnimeRaw(
                 _sources = hashSetOf(
                     URI("https://myanimelist.net/anime/37514"),
                 ),
@@ -643,7 +643,7 @@ internal class DefaultGoldenRecordAccessorTest {
                 )
             )
 
-            val titleWithSpecialChar = Anime(
+            val titleWithSpecialChar = AnimeRaw(
                 _sources = hashSetOf(
                     URI("https://example.org/anime/37514"),
                 ),
@@ -668,7 +668,7 @@ internal class DefaultGoldenRecordAccessorTest {
         @Test
         fun `returns multiple possible golden records, because the anime share the same synonym`() {
             // given
-            val madeInAbyssMovie = Anime(
+            val madeInAbyssMovie = AnimeRaw(
                 _sources = hashSetOf(
                     URI("https://myanimelist.net/anime/37514"),
                 ),
@@ -688,7 +688,7 @@ internal class DefaultGoldenRecordAccessorTest {
                 ),
             )
 
-            val madeInAbyssMovie2 = Anime(
+            val madeInAbyssMovie2 = AnimeRaw(
                 _sources = hashSetOf(
                     URI("https://myanimelist.net/anime/37515"),
                 ),
@@ -708,7 +708,7 @@ internal class DefaultGoldenRecordAccessorTest {
                 )
             )
 
-            val soraYoriMoTooiBasho = Anime(
+            val soraYoriMoTooiBasho = AnimeRaw(
                 _sources = hashSetOf(
                     URI("https://myanimelist.net/anime/35839"),
                 ),
@@ -729,7 +729,7 @@ internal class DefaultGoldenRecordAccessorTest {
                 ),
             )
 
-            val soraYoriMoTooiBashoSpecial = Anime(
+            val soraYoriMoTooiBashoSpecial = AnimeRaw(
                 _sources = hashSetOf(
                     URI("https://myanimelist.net/anime/37123"),
                 ),
@@ -747,7 +747,7 @@ internal class DefaultGoldenRecordAccessorTest {
                 )
             )
 
-            val animeToFindGoldenRecordFor = Anime(
+            val animeToFindGoldenRecordFor = AnimeRaw(
                 _sources = hashSetOf(
                     URI("https://anilist.co/anime/97986"),
                 ),
@@ -777,7 +777,7 @@ internal class DefaultGoldenRecordAccessorTest {
         @Test
         fun `if nothing could be found for the title and the source is anime-planet then try the first synonym`() {
             // given
-            val soraYoriMoTooiBasho = Anime(
+            val soraYoriMoTooiBasho = AnimeRaw(
                 _sources = hashSetOf(
                     URI("https://myanimelist.net/anime/35839"),
                 ),
@@ -797,7 +797,7 @@ internal class DefaultGoldenRecordAccessorTest {
                 ),
             )
 
-            val animeToFindGoldenRecordFor = Anime(
+            val animeToFindGoldenRecordFor = AnimeRaw(
                 _sources = hashSetOf(
                     URI("https://anime-planet.com/anime/a-place-further-than-the-universe"),
                 ),
@@ -830,7 +830,7 @@ internal class DefaultGoldenRecordAccessorTest {
             val id = UUID.randomUUID()
             val goldenRecordList = DefaultGoldenRecordAccessor()
 
-            val anime = Anime(
+            val anime = AnimeRaw(
                 _title =  "Death Note",
                 duration = Duration(25, MINUTES),
                 _synonyms = hashSetOf(
@@ -852,7 +852,7 @@ internal class DefaultGoldenRecordAccessorTest {
             // given
             val goldenRecordList = DefaultGoldenRecordAccessor()
 
-            val goldenAnime = Anime(
+            val goldenAnime = AnimeRaw(
                 _title =  "Death Note",
                 duration = Duration(25, MINUTES),
                 _synonyms = hashSetOf(
@@ -863,7 +863,7 @@ internal class DefaultGoldenRecordAccessorTest {
             goldenRecordList.createGoldenRecord(goldenAnime)
             val uuid = goldenRecordList.findPossibleGoldenRecords(goldenAnime).first().id
 
-            val otherAnime = Anime(
+            val otherAnime = AnimeRaw(
                 _title =  "DEATH NOTE",
                 duration = Duration(25, MINUTES),
                 _synonyms = hashSetOf(
@@ -889,7 +889,7 @@ internal class DefaultGoldenRecordAccessorTest {
             // given
             val goldenRecordList = DefaultGoldenRecordAccessor()
 
-            val anime = Anime(
+            val anime = AnimeRaw(
                 _sources = hashSetOf(
                     URI("https://myanimelist.net/anime/1535"),
                 ),
@@ -902,7 +902,7 @@ internal class DefaultGoldenRecordAccessorTest {
             goldenRecordList.createGoldenRecord(anime)
             val uuid = goldenRecordList.findPossibleGoldenRecords(anime).first().id
 
-            val otherAnime = Anime(
+            val otherAnime = AnimeRaw(
                 _sources = hashSetOf(
                     URI("https://anidb.net/anime/4563"),
                 ),
@@ -933,7 +933,7 @@ internal class DefaultGoldenRecordAccessorTest {
             // given
             val goldenRecordList = DefaultGoldenRecordAccessor()
 
-            val anime = Anime(
+            val anime = AnimeRaw(
                 _sources = hashSetOf(
                     URI("https://myanimelist.net/anime/1535"),
                 ),
@@ -946,7 +946,7 @@ internal class DefaultGoldenRecordAccessorTest {
             goldenRecordList.createGoldenRecord(anime)
             val uuid = goldenRecordList.findPossibleGoldenRecords(anime).first().id
 
-            val otherAnime = Anime(
+            val otherAnime = AnimeRaw(
                 _sources = hashSetOf(
                     URI("https://anidb.net/anime/4563"),
                 ),
@@ -976,7 +976,7 @@ internal class DefaultGoldenRecordAccessorTest {
             // given
             val goldenRecordList = DefaultGoldenRecordAccessor()
 
-            val anime = Anime(
+            val anime = AnimeRaw(
                 _sources = hashSetOf(
                     URI("https://myanimelist.net/anime/1535"),
                 ),
@@ -986,7 +986,7 @@ internal class DefaultGoldenRecordAccessorTest {
             goldenRecordList.createGoldenRecord(anime)
             val uuid = goldenRecordList.findPossibleGoldenRecords(anime).first().id
 
-            val otherAnime = Anime(
+            val otherAnime = AnimeRaw(
                 _sources = hashSetOf(
                     URI("https://anidb.net/anime/4563"),
                 ),
@@ -1010,7 +1010,7 @@ internal class DefaultGoldenRecordAccessorTest {
             // given
             val goldenRecordList = DefaultGoldenRecordAccessor()
 
-            val anime = Anime("Death Note")
+            val anime = AnimeRaw("Death Note")
             goldenRecordList.createGoldenRecord(anime)
 
             // when

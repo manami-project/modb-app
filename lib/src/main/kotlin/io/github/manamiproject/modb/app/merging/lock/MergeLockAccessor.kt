@@ -1,11 +1,11 @@
 package io.github.manamiproject.modb.app.merging.lock
 
-import io.github.manamiproject.modb.core.models.Anime
+import io.github.manamiproject.modb.core.anime.AnimeRaw
 import java.net.URI
 
 /**
  * Represents a single entry within the `merge.lock` file.
- * This corresponds with what you find in [Anime.sources].
+ * This corresponds with what you find in [AnimeRaw.sources].
  * @since 1.0.0
  */
 typealias MergeLock = Set<URI>

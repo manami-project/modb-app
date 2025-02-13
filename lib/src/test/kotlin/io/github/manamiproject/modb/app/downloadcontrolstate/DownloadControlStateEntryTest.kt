@@ -1,9 +1,16 @@
 package io.github.manamiproject.modb.app.downloadcontrolstate
 
 import io.github.manamiproject.modb.app.minusWeeks
-import io.github.manamiproject.modb.core.models.Anime
-import io.github.manamiproject.modb.core.models.AnimeSeason
-import io.github.manamiproject.modb.core.models.Duration
+import io.github.manamiproject.modb.core.anime.AnimeRaw
+import io.github.manamiproject.modb.core.anime.AnimeSeason
+import io.github.manamiproject.modb.core.anime.AnimeSeason.Season.*
+import io.github.manamiproject.modb.core.anime.AnimeStatus
+import io.github.manamiproject.modb.core.anime.AnimeStatus.FINISHED
+import io.github.manamiproject.modb.core.anime.AnimeStatus.UPCOMING
+import io.github.manamiproject.modb.core.anime.AnimeType.SPECIAL
+import io.github.manamiproject.modb.core.anime.AnimeType.TV
+import io.github.manamiproject.modb.core.anime.Duration
+import io.github.manamiproject.modb.core.anime.Duration.TimeUnit.MINUTES
 import io.github.manamiproject.modb.test.exceptionExpected
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Nested
@@ -13,6 +20,8 @@ import org.junit.jupiter.params.provider.EnumSource.Mode.EXCLUDE
 import org.junit.jupiter.params.provider.EnumSource.Mode.INCLUDE
 import java.net.URI
 import kotlin.test.Test
+import io.github.manamiproject.modb.core.anime.AnimeStatus.UNKNOWN as UNKNOWN_STATUS
+import io.github.manamiproject.modb.core.anime.AnimeType.UNKNOWN as UNKNOWN_TYPE
 
 internal class DownloadControlStateEntryTest {
 
@@ -33,7 +42,7 @@ internal class DownloadControlStateEntryTest {
                         year = 2021,
                         week = 2,
                     ),
-                    _anime = Anime("title"),
+                    _anime = AnimeRaw("title"),
                 )
             }
 
@@ -46,17 +55,17 @@ internal class DownloadControlStateEntryTest {
     inner class UpdateTests {
 
         @ParameterizedTest
-        @EnumSource(value = Anime.Status::class, mode = EXCLUDE, names = ["ONGOING", "UPCOMING"])
-        fun `if the anime provides changes then schedule redownload for next week`(status: Anime.Status) {
+        @EnumSource(value = AnimeStatus::class, mode = EXCLUDE, names = ["ONGOING", "UPCOMING"])
+        fun `if the anime provides changes then schedule redownload for next week`(status: AnimeStatus) {
             // given
             val downloadControlStateEntry = DownloadControlStateEntry(
                 _weeksWihoutChange = 3,
                 _lastDownloaded = WeekOfYear.currentWeek().minusWeeks(3),
                 _nextDownload = WeekOfYear.currentWeek(),
-                _anime = Anime("title"),
+                _anime = AnimeRaw("title"),
             )
 
-            val newAnime = Anime(
+            val newAnime = AnimeRaw(
                 _title = "Title",
                 episodes = 12,
                 status = status,
@@ -73,10 +82,10 @@ internal class DownloadControlStateEntryTest {
         }
 
         @ParameterizedTest
-        @EnumSource(value = Anime.Status::class, mode = EXCLUDE, names = ["ONGOING", "UPCOMING"])
-        fun `if the anime doesn't change first time schedule redownload in 2 to 4 weeks`(status: Anime.Status) {
+        @EnumSource(value = AnimeStatus::class, mode = EXCLUDE, names = ["ONGOING", "UPCOMING"])
+        fun `if the anime doesn't change first time schedule redownload in 2 to 4 weeks`(status: AnimeStatus) {
             // given
-            val anime = Anime(
+            val anime = AnimeRaw(
                 _title = "title",
                 status = status,
             )
@@ -102,10 +111,10 @@ internal class DownloadControlStateEntryTest {
         }
 
         @ParameterizedTest
-        @EnumSource(value = Anime.Status::class, mode = EXCLUDE, names = ["ONGOING", "UPCOMING"])
-        fun `if the anime didn't change repeatedly expand waiting by the weeks without changes so far`(status: Anime.Status) {
+        @EnumSource(value = AnimeStatus::class, mode = EXCLUDE, names = ["ONGOING", "UPCOMING"])
+        fun `if the anime didn't change repeatedly expand waiting by the weeks without changes so far`(status: AnimeStatus) {
             // given
-            val anime = Anime(
+            val anime = AnimeRaw(
                 _title = "title",
                 status = status,
             )
@@ -127,10 +136,10 @@ internal class DownloadControlStateEntryTest {
         }
 
         @ParameterizedTest
-        @EnumSource(value = Anime.Status::class, mode = EXCLUDE, names = ["ONGOING", "UPCOMING"])
-        fun `if the anime didn't change repeatedly expand waiting time for 12 weeks maximum`(status: Anime.Status) {
+        @EnumSource(value = AnimeStatus::class, mode = EXCLUDE, names = ["ONGOING", "UPCOMING"])
+        fun `if the anime didn't change repeatedly expand waiting time for 12 weeks maximum`(status: AnimeStatus) {
             // given
-            val anime = Anime(
+            val anime = AnimeRaw(
                 _title = "title",
                 status = status,
             )
@@ -152,10 +161,10 @@ internal class DownloadControlStateEntryTest {
         }
 
         @ParameterizedTest
-        @EnumSource(value = Anime.Status::class, mode = INCLUDE, names = ["ONGOING", "UPCOMING"])
-        fun `if the anime didn't change, but the status is either ONGOING or UPCOMING then schedule redownload for next week`(status: Anime.Status) {
+        @EnumSource(value = AnimeStatus::class, mode = INCLUDE, names = ["ONGOING", "UPCOMING"])
+        fun `if the anime didn't change, but the status is either ONGOING or UPCOMING then schedule redownload for next week`(status: AnimeStatus) {
             // given
-            val anime = Anime(
+            val anime = AnimeRaw(
                 _title = "title",
                 status = status
             )
@@ -187,13 +196,13 @@ internal class DownloadControlStateEntryTest {
                 _weeksWihoutChange = 2,
                 _lastDownloaded = WeekOfYear.currentWeek().minusWeeks(1),
                 _nextDownload = WeekOfYear.currentWeek(),
-                _anime = Anime(
+                _anime = AnimeRaw(
                     _title = "Test",
                     _synonyms = hashSetOf("abcd", "efgh"),
                 ),
             )
 
-            val anime = Anime(
+            val anime = AnimeRaw(
                 _title = "Test",
                 _synonyms = hashSetOf("efgh"),
             )
@@ -212,15 +221,15 @@ internal class DownloadControlStateEntryTest {
                 _weeksWihoutChange = 2,
                 _lastDownloaded = WeekOfYear.currentWeek().minusWeeks(1),
                 _nextDownload = WeekOfYear.currentWeek(),
-                _anime = Anime(
+                _anime = AnimeRaw(
                     _title = "Test",
-                    type = Anime.Type.TV,
+                    type = TV,
                 ),
             )
 
-            val anime = Anime(
+            val anime = AnimeRaw(
                 _title = "Test",
-                type = Anime.Type.UNKNOWN,
+                type = UNKNOWN_TYPE,
             )
 
             // when
@@ -237,13 +246,13 @@ internal class DownloadControlStateEntryTest {
                 _weeksWihoutChange = 2,
                 _lastDownloaded = WeekOfYear.currentWeek().minusWeeks(1),
                 _nextDownload = WeekOfYear.currentWeek(),
-                _anime = Anime(
+                _anime = AnimeRaw(
                     _title = "Test",
                     episodes = 12,
                 ),
             )
 
-            val anime = Anime(
+            val anime = AnimeRaw(
                 _title = "Test",
                 episodes = 0,
             )
@@ -262,15 +271,15 @@ internal class DownloadControlStateEntryTest {
                 _weeksWihoutChange = 2,
                 _lastDownloaded = WeekOfYear.currentWeek().minusWeeks(1),
                 _nextDownload = WeekOfYear.currentWeek(),
-                _anime = Anime(
+                _anime = AnimeRaw(
                     _title = "Test",
-                    status = Anime.Status.UPCOMING
+                    status = UPCOMING
                 ),
             )
 
-            val anime = Anime(
+            val anime = AnimeRaw(
                 _title = "Test",
-                status = Anime.Status.UNKNOWN,
+                status = UNKNOWN_STATUS,
             )
 
             // when
@@ -287,19 +296,19 @@ internal class DownloadControlStateEntryTest {
                 _weeksWihoutChange = 2,
                 _lastDownloaded = WeekOfYear.currentWeek().minusWeeks(1),
                 _nextDownload = WeekOfYear.currentWeek(),
-                _anime = Anime(
+                _anime = AnimeRaw(
                     _title = "Test",
                     animeSeason = AnimeSeason(
-                        season = AnimeSeason.Season.FALL,
+                        season = FALL,
                         year = 2023,
                     )
                 ),
             )
 
-            val anime = Anime(
+            val anime = AnimeRaw(
                 _title = "Test",
                 animeSeason = AnimeSeason(
-                    season = AnimeSeason.Season.UNDEFINED,
+                    season = UNDEFINED,
                     year = 2023,
                 )
             )
@@ -318,19 +327,19 @@ internal class DownloadControlStateEntryTest {
                 _weeksWihoutChange = 2,
                 _lastDownloaded = WeekOfYear.currentWeek().minusWeeks(1),
                 _nextDownload = WeekOfYear.currentWeek(),
-                _anime = Anime(
+                _anime = AnimeRaw(
                     _title = "Test",
                     animeSeason = AnimeSeason(
-                        season = AnimeSeason.Season.FALL,
+                        season = FALL,
                         year = 2023,
                     )
                 ),
             )
 
-            val anime = Anime(
+            val anime = AnimeRaw(
                 _title = "Test",
                 animeSeason = AnimeSeason(
-                    season = AnimeSeason.Season.FALL,
+                    season = FALL,
                     year = 0,
                 )
             )
@@ -349,13 +358,13 @@ internal class DownloadControlStateEntryTest {
                 _weeksWihoutChange = 2,
                 _lastDownloaded = WeekOfYear.currentWeek().minusWeeks(1),
                 _nextDownload = WeekOfYear.currentWeek(),
-                _anime = Anime(
+                _anime = AnimeRaw(
                     _title = "Test",
                     picture = URI("https://example.org/picture.jpg"),
                 ),
             )
 
-            val anime = Anime(
+            val anime = AnimeRaw(
                 _title = "Test",
             )
 
@@ -373,13 +382,13 @@ internal class DownloadControlStateEntryTest {
                 _weeksWihoutChange = 2,
                 _lastDownloaded = WeekOfYear.currentWeek().minusWeeks(1),
                 _nextDownload = WeekOfYear.currentWeek(),
-                _anime = Anime(
+                _anime = AnimeRaw(
                     _title = "Test",
                     thumbnail = URI("https://example.org/picture.jpg"),
                 ),
             )
 
-            val anime = Anime(
+            val anime = AnimeRaw(
                 _title = "Test",
             )
 
@@ -397,16 +406,16 @@ internal class DownloadControlStateEntryTest {
                 _weeksWihoutChange = 2,
                 _lastDownloaded = WeekOfYear.currentWeek().minusWeeks(1),
                 _nextDownload = WeekOfYear.currentWeek(),
-                _anime = Anime(
+                _anime = AnimeRaw(
                     _title = "Test",
                     duration = Duration(
                         value = 24,
-                        unit = Duration.TimeUnit.MINUTES,
+                        unit = MINUTES,
                     )
                 ),
             )
 
-            val anime = Anime(
+            val anime = AnimeRaw(
                 _title = "Test",
             )
 
@@ -424,13 +433,13 @@ internal class DownloadControlStateEntryTest {
                 _weeksWihoutChange = 2,
                 _lastDownloaded = WeekOfYear.currentWeek().minusWeeks(1),
                 _nextDownload = WeekOfYear.currentWeek(),
-                _anime = Anime(
+                _anime = AnimeRaw(
                     _title = "Test",
                     _relatedAnime = hashSetOf(URI("https://example.org/real1"))
                 ),
             )
 
-            val anime = Anime(
+            val anime = AnimeRaw(
                 _title = "Test",
             )
 
@@ -448,7 +457,7 @@ internal class DownloadControlStateEntryTest {
                 _weeksWihoutChange = 2,
                 _lastDownloaded = WeekOfYear.currentWeek().minusWeeks(1),
                 _nextDownload = WeekOfYear.currentWeek(),
-                _anime = Anime(
+                _anime = AnimeRaw(
                     _title = "Test",
                     _tags = hashSetOf(
                         "abcd",
@@ -457,7 +466,7 @@ internal class DownloadControlStateEntryTest {
                 ),
             )
 
-            val anime = Anime(
+            val anime = AnimeRaw(
                 _title = "Test",
                 _tags = hashSetOf(
                     "efgh",
@@ -474,29 +483,29 @@ internal class DownloadControlStateEntryTest {
         @Test
         fun `each score indicator is counted`() {
             // given
-            val anime = Anime(
+            val anime = AnimeRaw(
                 _title = "Clannad: After Story - Mou Hitotsu no Sekai, Kyou-hen",
-                type = Anime.Type.UNKNOWN
+                type = UNKNOWN_TYPE,
             )
 
             val downloadControlStateEntry = DownloadControlStateEntry(
                 _weeksWihoutChange = 2,
                 _lastDownloaded = WeekOfYear.currentWeek().minusWeeks(1),
                 _nextDownload = WeekOfYear.currentWeek(),
-                _anime = Anime(
+                _anime = AnimeRaw(
                     _title = "Clannad: After Story - Mou Hitotsu no Sekai, Kyou-hen",
-                    type = Anime.Type.SPECIAL,
+                    type = SPECIAL,
                     episodes = 1,
-                    status = Anime.Status.FINISHED,
+                    status = FINISHED,
                     animeSeason = AnimeSeason(
-                        season = AnimeSeason.Season.SUMMER,
-                        year = 2009
+                        season = SUMMER,
+                        year = 2009,
                     ),
                     picture = URI("https://cdn.myanimelist.net/images/anime/10/19621.jpg"),
                     thumbnail = URI("https://cdn.myanimelist.net/images/anime/10/19621t.jpg"),
                     duration = Duration(
                         value = 24,
-                        unit = Duration.TimeUnit.MINUTES,
+                        unit = MINUTES,
                     ),
                     _sources = hashSetOf(URI("https://myanimelist.net/anime/6351")),
                     _synonyms = hashSetOf(
@@ -530,20 +539,20 @@ internal class DownloadControlStateEntryTest {
                 _weeksWihoutChange = 2,
                 _lastDownloaded = WeekOfYear.currentWeek().minusWeeks(1),
                 _nextDownload = WeekOfYear.currentWeek(),
-                _anime = Anime(
+                _anime = AnimeRaw(
                     _title = "Clannad: After Story - Mou Hitotsu no Sekai, Kyou-hen",
-                    type = Anime.Type.SPECIAL,
+                    type = SPECIAL,
                     episodes = 1,
-                    status = Anime.Status.FINISHED,
+                    status = FINISHED,
                     animeSeason = AnimeSeason(
-                        season = AnimeSeason.Season.SUMMER,
-                        year = 2009
+                        season = SUMMER,
+                        year = 2009,
                     ),
                     picture = URI("https://cdn.myanimelist.net/images/anime/10/19621.jpg"),
                     thumbnail = URI("https://cdn.myanimelist.net/images/anime/10/19621t.jpg"),
                     duration = Duration(
                         value = 24,
-                        unit = Duration.TimeUnit.MINUTES,
+                        unit = MINUTES,
                     ),
                     _sources = hashSetOf(URI("https://myanimelist.net/anime/6351")),
                     _synonyms = hashSetOf(

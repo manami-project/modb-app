@@ -10,7 +10,7 @@ import io.github.manamiproject.modb.core.coverage.KoverIgnore
 import io.github.manamiproject.modb.core.excludeFromTestContext
 import io.github.manamiproject.modb.core.extensions.*
 import io.github.manamiproject.modb.core.logging.LoggerDelegate
-import io.github.manamiproject.modb.core.models.Anime
+import io.github.manamiproject.modb.core.anime.AnimeRaw
 import kotlinx.coroutines.*
 import java.nio.file.FileSystems
 import java.nio.file.Path
@@ -22,11 +22,11 @@ import java.nio.file.WatchService as JavaWatchService
 private typealias IdentityHashCode = String
 
 /**
- * Used for meta data provider which require multiple files in order to convert raw data into an [Anime] object.
+ * Used for meta data provider which require multiple files in order to convert raw data into an [AnimeRaw] object.
  * Watches multiple directories for changes based on the different [MetaDataProviderConfig]s.
  * As soon as all data is available a [DependentFileConverter] is used to convert the files.
  * @since 1.0.0
- * @param converter Instance used to convert multiple files into the intermediate format which represents an [Anime].
+ * @param converter Instance used to convert multiple files into the intermediate format which represents an [AnimeRaw].
  * @property appConfig Application specific configuration. Uses [AppConfig] by default.
  * @property mainConfig Configuration for a specific meta data provider. This is the "main" config.
  * @property dependentMetaDataProciderConfigs Additional configuration used for additional data like tags or related anime.

@@ -7,7 +7,7 @@ import io.github.manamiproject.modb.app.config.Config
 import io.github.manamiproject.modb.app.dataset.DatasetFileType.*
 import io.github.manamiproject.modb.core.extensions.Directory
 import io.github.manamiproject.modb.core.extensions.RegularFile
-import io.github.manamiproject.modb.core.models.Anime
+import io.github.manamiproject.modb.core.anime.Anime
 import io.github.manamiproject.modb.serde.json.ExternalResourceJsonDeserializer
 import io.github.manamiproject.modb.serde.json.JsonSerializer
 import io.github.manamiproject.modb.serde.json.models.Dataset

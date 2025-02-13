@@ -3,12 +3,13 @@ package io.github.manamiproject.modb.anidb
 import io.github.manamiproject.modb.core.config.AnimeId
 import io.github.manamiproject.modb.core.config.FileSuffix
 import io.github.manamiproject.modb.core.config.MetaDataProviderConfig
-import io.github.manamiproject.modb.core.models.Anime
-import io.github.manamiproject.modb.core.models.Anime.Status.*
-import io.github.manamiproject.modb.core.models.Anime.Type.*
-import io.github.manamiproject.modb.core.models.AnimeSeason.Season.*
-import io.github.manamiproject.modb.core.models.Duration
-import io.github.manamiproject.modb.core.models.Duration.TimeUnit.*
+import io.github.manamiproject.modb.core.anime.AnimeStatus.*
+import io.github.manamiproject.modb.core.anime.AnimeType.*
+import io.github.manamiproject.modb.core.anime.AnimeSeason.Season.*
+import io.github.manamiproject.modb.core.anime.AnimeStatus.UNKNOWN as UNKNOWN_STATUS
+import io.github.manamiproject.modb.core.anime.AnimeType.UNKNOWN as UNKNOWN_TYPE
+import io.github.manamiproject.modb.core.anime.Duration
+import io.github.manamiproject.modb.core.anime.Duration.TimeUnit.*
 import io.github.manamiproject.modb.test.loadTestResource
 import kotlinx.coroutines.runBlocking
 import org.assertj.core.api.Assertions.assertThat
@@ -338,7 +339,7 @@ internal class AnidbAnimeConverterTest {
                 val result = converter.convert(testFile)
 
                 // then
-                assertThat(result.type).isEqualTo(Anime.Type.UNKNOWN)
+                assertThat(result.type).isEqualTo(UNKNOWN_TYPE)
             }
         }
 
@@ -860,7 +861,7 @@ internal class AnidbAnimeConverterTest {
                 val result = converter.convert(testFile)
 
                 // then
-                assertThat(result.status).isEqualTo(Anime.Status.UNKNOWN)
+                assertThat(result.status).isEqualTo(UNKNOWN_STATUS)
             }
         }
     }

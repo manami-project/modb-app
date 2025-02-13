@@ -1,9 +1,12 @@
 package io.github.manamiproject.modb.core.json
 
 import com.squareup.moshi.JsonDataException
-import io.github.manamiproject.modb.core.models.Anime
-import io.github.manamiproject.modb.core.models.AnimeSeason
-import io.github.manamiproject.modb.core.models.Duration
+import io.github.manamiproject.modb.core.anime.*
+import io.github.manamiproject.modb.core.anime.AnimeSeason.Season.SUMMER
+import io.github.manamiproject.modb.core.anime.AnimeStatus.*
+import io.github.manamiproject.modb.core.anime.AnimeType.*
+import io.github.manamiproject.modb.core.anime.Duration.Companion.UNKNOWN as UNKNOWN_DURATION
+import io.github.manamiproject.modb.core.anime.Duration.TimeUnit.MINUTES
 import io.github.manamiproject.modb.test.exceptionExpected
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Nested
@@ -22,32 +25,33 @@ internal class AnimeAdapterTest {
             // given
             val adapter = AnimeAdapter()
             val expected = Anime(
-                _title = "Clannad: After Story - Mou Hitotsu no Sekai, Kyou-hen",
-                _sources = hashSetOf(URI("https://myanimelist.net/anime/6351")),
-                _relatedAnime = hashSetOf(URI("https://myanimelist.net/anime/2167")),
-                type = Anime.Type.TV,
+                title = "Clannad: After Story - Mou Hitotsu no Sekai, Kyou-hen",
+                sources = hashSetOf(URI("https://myanimelist.net/anime/6351")),
+                relatedAnime = hashSetOf(URI("https://myanimelist.net/anime/2167")),
+                type = TV,
                 episodes = 24,
-                status = Anime.Status.FINISHED,
+                status = FINISHED,
                 animeSeason = AnimeSeason(
-                    season = AnimeSeason.Season.SUMMER,
+                    season = SUMMER,
                     year = 2009
                 ),
                 picture = URI("https://cdn.myanimelist.net/images/anime/10/19621.jpg"),
                 thumbnail = URI("https://cdn.myanimelist.net/images/anime/10/19621t.jpg"),
-                duration = Duration(24, Duration.TimeUnit.MINUTES),
-                _synonyms = hashSetOf(
+                duration = Duration(24, MINUTES),
+                synonyms = hashSetOf(
                     "Clannad ~After Story~: Another World, Kyou Chapter",
                     "Clannad: After Story OVA",
                     "クラナド　アフターストーリー　もうひとつの世界　杏編",
                 ),
-                _tags = hashSetOf(
+                tags = hashSetOf(
                     "comedy",
                     "romance",
                 )
             )
 
             // when
-            val result = adapter.fromJson("""
+            val result = adapter.fromJson(
+                """
                 {
                   "title": "Clannad: After Story - Mou Hitotsu no Sekai, Kyou-hen",
                   "sources": [
@@ -79,7 +83,8 @@ internal class AnimeAdapterTest {
                     "romance"
                   ]
                 }
-            """.trimIndent())
+            """.trimIndent()
+            )
 
             // then
             assertThat(result).isEqualTo(expected)
@@ -99,6 +104,85 @@ internal class AnimeAdapterTest {
             assertThat(result).hasMessage("Expected BEGIN_OBJECT but was NULL at path \$")
         }
 
+        @ParameterizedTest
+        @ValueSource(strings = [
+            "",
+            "   ",
+            "\u00A0",
+            "\u202F",
+            "\u200A",
+            "\u205F",
+            "\u2000",
+            "\u2001",
+            "\u2002",
+            "\u2003",
+            "\u2004",
+            "\u2005",
+            "\u2006",
+            "\u2007",
+            "\u2008",
+            "\u2009",
+            "\uFEFF",
+            "\u180E",
+            "\u2060",
+            "\u200D",
+            "\u0090",
+            "\u200C",
+            "\u200B",
+            "\u00AD",
+            "\u000C",
+            "\u2028",
+            "\r",
+            "\n",
+            "\t",
+        ])
+        fun `throws exception if title is blank`(value: String) {
+            // given
+            val adapter = AnimeAdapter()
+
+            // when
+            val result = exceptionExpected<IllegalArgumentException> {
+                adapter.fromJson(
+                    """
+                    {
+                      "title": "$value",
+                      "sources": [
+                        "https://myanimelist.net/anime/6351"
+                      ],
+                      "synonyms": [
+                        "Clannad ~After Story~: Another World, Kyou Chapter",
+                        "Clannad: After Story OVA",
+                        "クラナド　アフターストーリー　もうひとつの世界　杏編"
+                      ],
+                      "type": "TV",
+                      "episodes": 24,
+                      "status": "FINISHED",
+                      "animeSeason": {
+                        "season": "SUMMER",
+                        "year": 2009
+                      },
+                      "picture": "https://cdn.myanimelist.net/images/anime/10/19621.jpg",
+                      "thumbnail": "https://cdn.myanimelist.net/images/anime/10/19621t.jpg",
+                      "duration": {
+                        "value": 1440,
+                        "unit": "SECONDS"
+                      },
+                      "relatedAnime": [
+                        "https://myanimelist.net/anime/2167"
+                      ],
+                      "tags": [
+                        "comedy",
+                        "romance"
+                      ]
+                    }
+            """.trimIndent()
+                )
+            }
+
+            // then
+            assertThat(result).hasMessage("Title cannot be blank.")
+        }
+
         @Test
         fun `throws exception if title is null`() {
             // given
@@ -106,7 +190,8 @@ internal class AnimeAdapterTest {
 
             // when
             val result = exceptionExpected<JsonDataException> {
-                adapter.fromJson("""
+                adapter.fromJson(
+                    """
                     {
                       "title": null,
                       "sources": [
@@ -138,7 +223,8 @@ internal class AnimeAdapterTest {
                         "romance"
                       ]
                     }
-            """.trimIndent())
+            """.trimIndent()
+                )
             }
 
             // then
@@ -152,7 +238,8 @@ internal class AnimeAdapterTest {
 
             // when
             val result = exceptionExpected<IllegalStateException> {
-                adapter.fromJson("""
+                adapter.fromJson(
+                    """
                     {
                       "sources": [
                         "https://myanimelist.net/anime/6351"
@@ -183,7 +270,8 @@ internal class AnimeAdapterTest {
                         "romance"
                       ]
                     }
-            """.trimIndent())
+            """.trimIndent()
+                )
             }
 
             // then
@@ -197,7 +285,8 @@ internal class AnimeAdapterTest {
 
             // when
             val result = exceptionExpected<JsonDataException> {
-                adapter.fromJson("""
+                adapter.fromJson(
+                    """
                     {
                       "title": "Clannad: After Story - Mou Hitotsu no Sekai, Kyou-hen",
                       "sources": null,
@@ -227,7 +316,8 @@ internal class AnimeAdapterTest {
                         "romance"
                       ]
                     }
-            """.trimIndent())
+            """.trimIndent()
+                )
             }
 
             // then
@@ -241,7 +331,8 @@ internal class AnimeAdapterTest {
 
             // when
             val result = exceptionExpected<IllegalStateException> {
-                adapter.fromJson("""
+                adapter.fromJson(
+                    """
                     {
                       "title": "Clannad: After Story - Mou Hitotsu no Sekai, Kyou-hen",
                       "synonyms": [
@@ -270,7 +361,8 @@ internal class AnimeAdapterTest {
                         "romance"
                       ]
                     }
-            """.trimIndent())
+            """.trimIndent()
+                )
             }
 
             // then
@@ -284,7 +376,8 @@ internal class AnimeAdapterTest {
 
             // when
             val result = exceptionExpected<JsonDataException> {
-                adapter.fromJson("""
+                adapter.fromJson(
+                    """
                     {
                       "title": "Clannad: After Story - Mou Hitotsu no Sekai, Kyou-hen",
                       "sources": [
@@ -312,7 +405,8 @@ internal class AnimeAdapterTest {
                         "romance"
                       ]
                     }
-            """.trimIndent())
+            """.trimIndent()
+                )
             }
 
             // then
@@ -326,7 +420,8 @@ internal class AnimeAdapterTest {
 
             // when
             val result = exceptionExpected<IllegalStateException> {
-                adapter.fromJson("""
+                adapter.fromJson(
+                    """
                     {
                       "title": "Clannad: After Story - Mou Hitotsu no Sekai, Kyou-hen",
                       "sources": [
@@ -353,7 +448,8 @@ internal class AnimeAdapterTest {
                         "romance"
                       ]
                     }
-            """.trimIndent())
+            """.trimIndent()
+                )
             }
 
             // then
@@ -367,7 +463,8 @@ internal class AnimeAdapterTest {
 
             // when
             val result = exceptionExpected<JsonDataException> {
-                adapter.fromJson("""
+                adapter.fromJson(
+                    """
                     {
                       "title": "Clannad: After Story - Mou Hitotsu no Sekai, Kyou-hen",
                       "sources": [
@@ -399,7 +496,8 @@ internal class AnimeAdapterTest {
                         "romance"
                       ]
                     }
-            """.trimIndent())
+            """.trimIndent()
+                )
             }
 
             // then
@@ -413,7 +511,8 @@ internal class AnimeAdapterTest {
 
             // when
             val result = exceptionExpected<IllegalStateException> {
-                adapter.fromJson("""
+                adapter.fromJson(
+                    """
                     {
                       "title": "Clannad: After Story - Mou Hitotsu no Sekai, Kyou-hen",
                       "sources": [
@@ -444,7 +543,8 @@ internal class AnimeAdapterTest {
                         "romance"
                       ]
                     }
-            """.trimIndent())
+            """.trimIndent()
+                )
             }
 
             // then
@@ -458,7 +558,8 @@ internal class AnimeAdapterTest {
 
             // when
             val result = exceptionExpected<JsonDataException> {
-                adapter.fromJson("""
+                adapter.fromJson(
+                    """
                     {
                       "title": "Clannad: After Story - Mou Hitotsu no Sekai, Kyou-hen",
                       "sources": [
@@ -490,7 +591,8 @@ internal class AnimeAdapterTest {
                         "romance"
                       ]
                     }
-            """.trimIndent())
+            """.trimIndent()
+                )
             }
 
             // then
@@ -504,7 +606,8 @@ internal class AnimeAdapterTest {
 
             // when
             val result = exceptionExpected<IllegalStateException> {
-                adapter.fromJson("""
+                adapter.fromJson(
+                    """
                     {
                       "title": "Clannad: After Story - Mou Hitotsu no Sekai, Kyou-hen",
                       "sources": [
@@ -535,7 +638,8 @@ internal class AnimeAdapterTest {
                         "romance"
                       ]
                     }
-            """.trimIndent())
+            """.trimIndent()
+                )
             }
 
             // then
@@ -549,7 +653,8 @@ internal class AnimeAdapterTest {
 
             // when
             val result = exceptionExpected<JsonDataException> {
-                adapter.fromJson("""
+                adapter.fromJson(
+                    """
                     {
                       "title": "Clannad: After Story - Mou Hitotsu no Sekai, Kyou-hen",
                       "sources": [
@@ -581,7 +686,8 @@ internal class AnimeAdapterTest {
                         "romance"
                       ]
                     }
-            """.trimIndent())
+            """.trimIndent()
+                )
             }
 
             // then
@@ -595,7 +701,8 @@ internal class AnimeAdapterTest {
 
             // when
             val result = exceptionExpected<IllegalStateException> {
-                adapter.fromJson("""
+                adapter.fromJson(
+                    """
                     {
                       "title": "Clannad: After Story - Mou Hitotsu no Sekai, Kyou-hen",
                       "sources": [
@@ -626,7 +733,8 @@ internal class AnimeAdapterTest {
                         "romance"
                       ]
                     }
-            """.trimIndent())
+            """.trimIndent()
+                )
             }
 
             // then
@@ -640,7 +748,8 @@ internal class AnimeAdapterTest {
 
             // when
             val result = exceptionExpected<JsonDataException> {
-                adapter.fromJson("""
+                adapter.fromJson(
+                    """
                     {
                       "title": "Clannad: After Story - Mou Hitotsu no Sekai, Kyou-hen",
                       "sources": [
@@ -669,7 +778,8 @@ internal class AnimeAdapterTest {
                         "romance"
                       ]
                     }
-            """.trimIndent())
+            """.trimIndent()
+                )
             }
 
             // then
@@ -683,7 +793,8 @@ internal class AnimeAdapterTest {
 
             // when
             val result = exceptionExpected<IllegalStateException> {
-                adapter.fromJson("""
+                adapter.fromJson(
+                    """
                     {
                       "title": "Clannad: After Story - Mou Hitotsu no Sekai, Kyou-hen",
                       "sources": [
@@ -711,7 +822,8 @@ internal class AnimeAdapterTest {
                         "romance"
                       ]
                     }
-            """.trimIndent())
+            """.trimIndent()
+                )
             }
 
             // then
@@ -725,7 +837,8 @@ internal class AnimeAdapterTest {
 
             // when
             val result = exceptionExpected<JsonDataException> {
-                adapter.fromJson("""
+                adapter.fromJson(
+                    """
                     {
                       "title": "Clannad: After Story - Mou Hitotsu no Sekai, Kyou-hen",
                       "sources": [
@@ -757,7 +870,8 @@ internal class AnimeAdapterTest {
                         "romance"
                       ]
                     }
-            """.trimIndent())
+            """.trimIndent()
+                )
             }
 
             // then
@@ -771,7 +885,8 @@ internal class AnimeAdapterTest {
 
             // when
             val result = exceptionExpected<IllegalStateException> {
-                adapter.fromJson("""
+                adapter.fromJson(
+                    """
                     {
                       "title": "Clannad: After Story - Mou Hitotsu no Sekai, Kyou-hen",
                       "sources": [
@@ -802,7 +917,8 @@ internal class AnimeAdapterTest {
                         "romance"
                       ]
                     }
-            """.trimIndent())
+            """.trimIndent()
+                )
             }
 
             // then
@@ -816,7 +932,8 @@ internal class AnimeAdapterTest {
 
             // when
             val result = exceptionExpected<JsonDataException> {
-                adapter.fromJson("""
+                adapter.fromJson(
+                    """
                     {
                       "title": "Clannad: After Story - Mou Hitotsu no Sekai, Kyou-hen",
                       "sources": [
@@ -848,7 +965,8 @@ internal class AnimeAdapterTest {
                         "romance"
                       ]
                     }
-            """.trimIndent())
+            """.trimIndent()
+                )
             }
 
             // then
@@ -862,7 +980,8 @@ internal class AnimeAdapterTest {
 
             // when
             val result = exceptionExpected<IllegalStateException> {
-                adapter.fromJson("""
+                adapter.fromJson(
+                    """
                     {
                       "title": "Clannad: After Story - Mou Hitotsu no Sekai, Kyou-hen",
                       "sources": [
@@ -893,7 +1012,8 @@ internal class AnimeAdapterTest {
                         "romance"
                       ]
                     }
-            """.trimIndent())
+            """.trimIndent()
+                )
             }
 
             // then
@@ -906,7 +1026,8 @@ internal class AnimeAdapterTest {
             val adapter = AnimeAdapter()
 
             // when
-            val result = adapter.fromJson("""
+            val result = adapter.fromJson(
+                """
                 {
                   "title": "Clannad: After Story - Mou Hitotsu no Sekai, Kyou-hen",
                   "sources": [
@@ -935,10 +1056,11 @@ internal class AnimeAdapterTest {
                     "romance"
                   ]
                 }
-            """.trimIndent())!!
+            """.trimIndent()
+            )!!
 
             // then
-            assertThat(result.duration).isEqualTo(Duration.UNKNOWN)
+            assertThat(result.duration).isEqualTo(UNKNOWN_DURATION)
         }
 
         @Test
@@ -947,7 +1069,8 @@ internal class AnimeAdapterTest {
             val adapter = AnimeAdapter()
 
             // when
-            val result = adapter.fromJson("""
+            val result = adapter.fromJson(
+                """
                 {
                   "title": "Clannad: After Story - Mou Hitotsu no Sekai, Kyou-hen",
                   "sources": [
@@ -975,10 +1098,11 @@ internal class AnimeAdapterTest {
                     "romance"
                   ]
                 }
-            """.trimIndent())!!
+            """.trimIndent()
+            )!!
 
             // then
-            assertThat(result.duration).isEqualTo(Duration.UNKNOWN)
+            assertThat(result.duration).isEqualTo(UNKNOWN_DURATION)
         }
 
         @Test
@@ -988,7 +1112,8 @@ internal class AnimeAdapterTest {
 
             // when
             val result = exceptionExpected<JsonDataException> {
-                adapter.fromJson("""
+                adapter.fromJson(
+                    """
                     {
                       "title": "Clannad: After Story - Mou Hitotsu no Sekai, Kyou-hen",
                       "sources": [
@@ -1018,7 +1143,8 @@ internal class AnimeAdapterTest {
                         "romance"
                       ]
                     }
-            """.trimIndent())
+            """.trimIndent()
+                )
             }
 
             // then
@@ -1032,7 +1158,8 @@ internal class AnimeAdapterTest {
 
             // when
             val result = exceptionExpected<IllegalStateException> {
-                adapter.fromJson("""
+                adapter.fromJson(
+                    """
                     {
                       "title": "Clannad: After Story - Mou Hitotsu no Sekai, Kyou-hen",
                       "sources": [
@@ -1061,7 +1188,8 @@ internal class AnimeAdapterTest {
                         "romance"
                       ]
                     }
-            """.trimIndent())
+            """.trimIndent()
+                )
             }
 
             // then
@@ -1075,7 +1203,8 @@ internal class AnimeAdapterTest {
 
             // when
             val result = exceptionExpected<JsonDataException> {
-                adapter.fromJson("""
+                adapter.fromJson(
+                    """
                     {
                       "title": "Clannad: After Story - Mou Hitotsu no Sekai, Kyou-hen",
                       "sources": [
@@ -1104,7 +1233,8 @@ internal class AnimeAdapterTest {
                       ],
                       "tags": null
                     }
-            """.trimIndent())
+            """.trimIndent()
+                )
             }
 
             // then
@@ -1118,7 +1248,8 @@ internal class AnimeAdapterTest {
 
             // when
             val result = exceptionExpected<IllegalStateException> {
-                adapter.fromJson("""
+                adapter.fromJson(
+                    """
                     {
                       "title": "Clannad: After Story - Mou Hitotsu no Sekai, Kyou-hen",
                       "sources": [
@@ -1146,7 +1277,8 @@ internal class AnimeAdapterTest {
                         "https://myanimelist.net/anime/2167"
                       ]
                     }
-            """.trimIndent())
+            """.trimIndent()
+                )
             }
 
             // then
@@ -1162,25 +1294,25 @@ internal class AnimeAdapterTest {
             // given
             val adapter = AnimeAdapter().indent("  ")
             val obj = Anime(
-                _title = "Clannad: After Story - Mou Hitotsu no Sekai, Kyou-hen",
-                _sources = hashSetOf(URI("https://myanimelist.net/anime/6351")),
-                _relatedAnime = hashSetOf(URI("https://myanimelist.net/anime/2167")),
-                type = Anime.Type.TV,
+                title = "Clannad: After Story - Mou Hitotsu no Sekai, Kyou-hen",
+                sources = hashSetOf(URI("https://myanimelist.net/anime/6351")),
+                relatedAnime = hashSetOf(URI("https://myanimelist.net/anime/2167")),
+                type = TV,
                 episodes = 24,
-                status = Anime.Status.FINISHED,
+                status = FINISHED,
                 animeSeason = AnimeSeason(
-                    season = AnimeSeason.Season.SUMMER,
+                    season = SUMMER,
                     year = 2009
                 ),
                 picture = URI("https://cdn.myanimelist.net/images/anime/10/19621.jpg"),
                 thumbnail = URI("https://cdn.myanimelist.net/images/anime/10/19621t.jpg"),
-                duration = Duration(24, Duration.TimeUnit.MINUTES),
-                _synonyms = hashSetOf(
+                duration = Duration(24, MINUTES),
+                synonyms = hashSetOf(
                     "Clannad ~After Story~: Another World, Kyou Chapter",
                     "Clannad: After Story OVA",
                     "クラナド　アフターストーリー　もうひとつの世界　杏編",
                 ),
-                _tags = hashSetOf(
+                tags = hashSetOf(
                     "comedy",
                     "romance",
                 )
@@ -1190,7 +1322,8 @@ internal class AnimeAdapterTest {
             val result = adapter.toJson(obj)
 
             // then
-            assertThat(result).isEqualTo("""
+            assertThat(result).isEqualTo(
+                """
                 {
                   "sources": [
                     "https://myanimelist.net/anime/6351"
@@ -1222,7 +1355,8 @@ internal class AnimeAdapterTest {
                     "romance"
                   ]
                 }
-            """.trimIndent())
+            """.trimIndent()
+            )
         }
 
         @Test
@@ -1230,25 +1364,25 @@ internal class AnimeAdapterTest {
             // given
             val adapter = AnimeAdapter().indent("  ").serializeNulls()
             val obj = Anime(
-                _title = "Clannad: After Story - Mou Hitotsu no Sekai, Kyou-hen",
-                _sources = hashSetOf(URI("https://myanimelist.net/anime/6351")),
-                _relatedAnime = hashSetOf(URI("https://myanimelist.net/anime/2167")),
-                type = Anime.Type.TV,
+                title = "Clannad: After Story - Mou Hitotsu no Sekai, Kyou-hen",
+                sources = hashSetOf(URI("https://myanimelist.net/anime/6351")),
+                relatedAnime = hashSetOf(URI("https://myanimelist.net/anime/2167")),
+                type = TV,
                 episodes = 24,
-                status = Anime.Status.FINISHED,
+                status = FINISHED,
                 animeSeason = AnimeSeason(
-                    season = AnimeSeason.Season.SUMMER,
+                    season = SUMMER,
                     year = 0
                 ),
                 picture = URI("https://cdn.myanimelist.net/images/anime/10/19621.jpg"),
                 thumbnail = URI("https://cdn.myanimelist.net/images/anime/10/19621t.jpg"),
-                duration = Duration.UNKNOWN,
-                _synonyms = hashSetOf(
+                duration = UNKNOWN_DURATION,
+                synonyms = hashSetOf(
                     "Clannad ~After Story~: Another World, Kyou Chapter",
                     "Clannad: After Story OVA",
                     "クラナド　アフターストーリー　もうひとつの世界　杏編",
                 ),
-                _tags = hashSetOf(
+                tags = hashSetOf(
                     "comedy",
                     "romance",
                 )
@@ -1258,7 +1392,8 @@ internal class AnimeAdapterTest {
             val result = adapter.toJson(obj)
 
             // then
-            assertThat(result).isEqualTo("""
+            assertThat(result).isEqualTo(
+                """
                 {
                   "sources": [
                     "https://myanimelist.net/anime/6351"
@@ -1287,259 +1422,8 @@ internal class AnimeAdapterTest {
                     "romance"
                   ]
                 }
-            """.trimIndent())
-        }
-
-        @ParameterizedTest
-        @ValueSource(strings = ["", " ", "    ", "\u200C"])
-        fun `runs performChecks if activateChecks is false and throws an exception if title is blank`(value: String) {
-            // given
-            val adapter = AnimeAdapter()
-            val obj = Anime(
-                _title = value,
-                activateChecks = false,
+            """.trimIndent()
             )
-
-            // when
-            val result = exceptionExpected<IllegalArgumentException> {
-                adapter.toJson(obj)
-            }
-
-            // then
-            assertThat(result).hasMessage("Title cannot be blank.")
-        }
-
-        @ParameterizedTest
-        @ValueSource(strings = [" Death Note", "Death Note ", "  Death   Note  "])
-        fun `runs performChecks if activateChecks is false and fixes title`(value: String) {
-            // given
-            val adapter = AnimeAdapter().indent("  ")
-            val obj = Anime(
-                _title = value,
-                activateChecks = false,
-            )
-
-            // when
-            val result = adapter.toJson(obj)
-
-            // then
-            assertThat(result).isEqualTo("""
-                {
-                  "sources": [],
-                  "title": "Death Note",
-                  "type": "UNKNOWN",
-                  "episodes": 0,
-                  "status": "UNKNOWN",
-                  "animeSeason": {
-                    "season": "UNDEFINED"
-                  },
-                  "picture": "https://raw.githubusercontent.com/manami-project/anime-offline-database/master/pics/no_pic.png",
-                  "thumbnail": "https://raw.githubusercontent.com/manami-project/anime-offline-database/master/pics/no_pic_thumbnail.png",
-                  "synonyms": [],
-                  "relatedAnime": [],
-                  "tags": []
-                }
-            """.trimIndent())
-        }
-
-        @Test
-        fun `runs performChecks if activateChecks is false and throws an exception if episodes is negative`() {
-            // given
-            val adapter = AnimeAdapter()
-            val obj = Anime(
-                _title = "Death Note",
-                episodes = -1,
-                activateChecks = false,
-            )
-
-            // when
-            val result = exceptionExpected<IllegalArgumentException> {
-                adapter.toJson(obj)
-            }
-
-            // then
-            assertThat(result).hasMessage("Episodes cannot have a negative value.")
-        }
-
-        @Test
-        fun `runs performChecks if activateChecks is false and removes sources from relatedAnime`() {
-            // given
-            val adapter = AnimeAdapter().indent("  ")
-            val obj = Anime(
-                _title = "Clannad: After Story - Mou Hitotsu no Sekai, Kyou-hen",
-                _sources = hashSetOf(URI("https://myanimelist.net/anime/6351")),
-                _relatedAnime = hashSetOf(
-                    URI("https://myanimelist.net/anime/2167"),
-                    URI("https://myanimelist.net/anime/6351"),
-                ),
-                activateChecks = false,
-            )
-
-            // when
-            val result = adapter.toJson(obj)
-
-            // then
-            assertThat(result).isEqualTo("""
-                {
-                  "sources": [
-                    "https://myanimelist.net/anime/6351"
-                  ],
-                  "title": "Clannad: After Story - Mou Hitotsu no Sekai, Kyou-hen",
-                  "type": "UNKNOWN",
-                  "episodes": 0,
-                  "status": "UNKNOWN",
-                  "animeSeason": {
-                    "season": "UNDEFINED"
-                  },
-                  "picture": "https://raw.githubusercontent.com/manami-project/anime-offline-database/master/pics/no_pic.png",
-                  "thumbnail": "https://raw.githubusercontent.com/manami-project/anime-offline-database/master/pics/no_pic_thumbnail.png",
-                  "synonyms": [],
-                  "relatedAnime": [
-                    "https://myanimelist.net/anime/2167"
-                  ],
-                  "tags": []
-                }
-            """.trimIndent())
-        }
-
-        @ParameterizedTest
-        @ValueSource(strings = [" Death Note", "Death Note ", "  Death   Note  "])
-        fun `runs performChecks if activateChecks is false and fixes synonyms`(value: String) {
-            // given
-            val adapter = AnimeAdapter().indent("  ")
-            val obj = Anime(
-                _title = "デスノート",
-                _synonyms = hashSetOf(value),
-                activateChecks = false,
-            )
-
-            // when
-            val result = adapter.toJson(obj)
-
-            // then
-            assertThat(result).isEqualTo("""
-                {
-                  "sources": [],
-                  "title": "デスノート",
-                  "type": "UNKNOWN",
-                  "episodes": 0,
-                  "status": "UNKNOWN",
-                  "animeSeason": {
-                    "season": "UNDEFINED"
-                  },
-                  "picture": "https://raw.githubusercontent.com/manami-project/anime-offline-database/master/pics/no_pic.png",
-                  "thumbnail": "https://raw.githubusercontent.com/manami-project/anime-offline-database/master/pics/no_pic_thumbnail.png",
-                  "synonyms": [
-                    "Death Note"
-                  ],
-                  "relatedAnime": [],
-                  "tags": []
-                }
-            """.trimIndent())
-        }
-
-        @ParameterizedTest
-        @ValueSource(strings = ["", " ", "    ", "\u200C"])
-        fun `runs performChecks if activateChecks is false and removes blank entries from synonyms`(value: String) {
-            // given
-            val adapter = AnimeAdapter().indent("  ")
-            val obj = Anime(
-                _title = "デスノート",
-                _synonyms = hashSetOf(value),
-                activateChecks = false,
-            )
-
-            // when
-            val result = adapter.toJson(obj)
-
-            // then
-            assertThat(result).isEqualTo("""
-                {
-                  "sources": [],
-                  "title": "デスノート",
-                  "type": "UNKNOWN",
-                  "episodes": 0,
-                  "status": "UNKNOWN",
-                  "animeSeason": {
-                    "season": "UNDEFINED"
-                  },
-                  "picture": "https://raw.githubusercontent.com/manami-project/anime-offline-database/master/pics/no_pic.png",
-                  "thumbnail": "https://raw.githubusercontent.com/manami-project/anime-offline-database/master/pics/no_pic_thumbnail.png",
-                  "synonyms": [],
-                  "relatedAnime": [],
-                  "tags": []
-                }
-            """.trimIndent())
-        }
-
-        @ParameterizedTest
-        @ValueSource(strings = [" Death Note", "Death Note ", "  Death   Note  ", "DEATH NOTE"])
-        fun `runs performChecks if activateChecks is false and fixes tags`(value: String) {
-            // given
-            val adapter = AnimeAdapter().indent("  ")
-            val obj = Anime(
-                _title = "デスノート",
-                _tags = hashSetOf(value),
-                activateChecks = false,
-            )
-
-            // when
-            val result = adapter.toJson(obj)
-
-            // then
-            assertThat(result).isEqualTo("""
-                {
-                  "sources": [],
-                  "title": "デスノート",
-                  "type": "UNKNOWN",
-                  "episodes": 0,
-                  "status": "UNKNOWN",
-                  "animeSeason": {
-                    "season": "UNDEFINED"
-                  },
-                  "picture": "https://raw.githubusercontent.com/manami-project/anime-offline-database/master/pics/no_pic.png",
-                  "thumbnail": "https://raw.githubusercontent.com/manami-project/anime-offline-database/master/pics/no_pic_thumbnail.png",
-                  "synonyms": [],
-                  "relatedAnime": [],
-                  "tags": [
-                    "death note"
-                  ]
-                }
-            """.trimIndent())
-        }
-
-        @ParameterizedTest
-        @ValueSource(strings = ["", " ", "    ", "\u200C"])
-        fun `runs performChecks if activateChecks is false and removes blank entries from tags`(value: String) {
-            // given
-            val adapter = AnimeAdapter().indent("  ")
-            val obj = Anime(
-                _title = "デスノート",
-                _tags = hashSetOf(value),
-                activateChecks = false,
-            )
-
-            // when
-            val result = adapter.toJson(obj)
-
-            // then
-            assertThat(result).isEqualTo("""
-                {
-                  "sources": [],
-                  "title": "デスノート",
-                  "type": "UNKNOWN",
-                  "episodes": 0,
-                  "status": "UNKNOWN",
-                  "animeSeason": {
-                    "season": "UNDEFINED"
-                  },
-                  "picture": "https://raw.githubusercontent.com/manami-project/anime-offline-database/master/pics/no_pic.png",
-                  "thumbnail": "https://raw.githubusercontent.com/manami-project/anime-offline-database/master/pics/no_pic_thumbnail.png",
-                  "synonyms": [],
-                  "relatedAnime": [],
-                  "tags": []
-                }
-            """.trimIndent())
         }
 
         @Test
@@ -1547,8 +1431,8 @@ internal class AnimeAdapterTest {
             // given
             val adapter = AnimeAdapter().indent("  ")
             val obj = Anime(
-                _title = "Clannad: After Story - Mou Hitotsu no Sekai, Kyou-hen",
-                _sources = hashSetOf(
+                title = "Clannad: After Story - Mou Hitotsu no Sekai, Kyou-hen",
+                sources = hashSetOf(
                     URI("https://livechart.me/anime/3681"),
                     URI("https://anisearch.com/anime/6826"),
                     URI("https://kitsu.io/anime/4529"),
@@ -1557,7 +1441,7 @@ internal class AnimeAdapterTest {
                     URI("https://notify.moe/anime/3L63cKimg"),
                     URI("https://myanimelist.net/anime/6351"),
                 ),
-                _relatedAnime = hashSetOf(
+                relatedAnime = hashSetOf(
                     URI("https://myanimelist.net/anime/4181"),
                     URI("https://anilist.co/anime/2167"),
                     URI("https://anime-planet.com/anime/clannad"),
@@ -1576,17 +1460,17 @@ internal class AnimeAdapterTest {
                     URI("https://livechart.me/anime/3822"),
                     URI("https://kitsu.io/anime/1962"),
                 ),
-                type = Anime.Type.TV,
+                type = TV,
                 episodes = 24,
-                status = Anime.Status.FINISHED,
+                status = FINISHED,
                 animeSeason = AnimeSeason(
-                    season = AnimeSeason.Season.SUMMER,
+                    season = SUMMER,
                     year = 2009
                 ),
                 picture = URI("https://cdn.myanimelist.net/images/anime/10/19621.jpg"),
                 thumbnail = URI("https://cdn.myanimelist.net/images/anime/10/19621t.jpg"),
-                duration = Duration(24, Duration.TimeUnit.MINUTES),
-                _synonyms = hashSetOf(
+                duration = Duration(24, MINUTES),
+                synonyms = hashSetOf(
                     "Clannad (TV)",
                     "Kuranado",
                     "Clannad TV",
@@ -1603,7 +1487,7 @@ internal class AnimeAdapterTest {
                     "くらなど",
                     "ＣＬＡＮＮＡＤ -クラナド-",
                 ),
-                _tags = hashSetOf(
+                tags = hashSetOf(
                     "baseball",
                     "based on a visual novel",
                     "basketball",
@@ -1624,7 +1508,8 @@ internal class AnimeAdapterTest {
             val result = adapter.toJson(obj)
 
             // then
-            assertThat(result).isEqualTo("""
+            assertThat(result).isEqualTo(
+                """
                 {
                   "sources": [
                     "https://anilist.co/anime/6351",
@@ -1701,7 +1586,8 @@ internal class AnimeAdapterTest {
                     "romance"
                   ]
                 }
-            """.trimIndent())
+            """.trimIndent()
+            )
         }
 
         @Test
@@ -1715,7 +1601,7 @@ internal class AnimeAdapterTest {
             }
 
             // then
-            assertThat(result).hasMessage("AnimeAdapter is non-nullable, but received null.")
+            assertThat(result).hasMessage("AnimeAdapter expects non-nullable value, but received null.")
         }
     }
 }
