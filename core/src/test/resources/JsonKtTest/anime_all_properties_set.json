@@ -13,6 +13,11 @@
     "season": "SUMMER",
     "year": 2009
   },
+  "score": {
+    "arithmeticGeometricMean": 1.29,
+    "arithmeticMean": 2.38,
+    "median": 3.47
+  },
   "synonyms": [
     "Clannad ~After Story~: Another World, Kyou Chapter",
     "Clannad: After Story OVA",

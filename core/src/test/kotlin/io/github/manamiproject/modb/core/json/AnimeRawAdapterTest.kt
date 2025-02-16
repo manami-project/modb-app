@@ -8,6 +8,7 @@ import io.github.manamiproject.modb.core.anime.AnimeStatus.FINISHED
 import io.github.manamiproject.modb.core.anime.AnimeType.TV
 import io.github.manamiproject.modb.core.anime.Duration
 import io.github.manamiproject.modb.core.anime.Duration.TimeUnit.MINUTES
+import io.github.manamiproject.modb.core.anime.MetaDataProviderScoreValue
 import io.github.manamiproject.modb.test.exceptionExpected
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Nested
@@ -49,7 +50,15 @@ internal class AnimeRawAdapterTest {
                     "comedy",
                     "romance",
                 )
-            )
+            ).apply {
+                addScores(
+                    MetaDataProviderScoreValue(
+                        hostname = "myanimelist.net",
+                        value = 7.77,
+                        originalRange = 1.0..10.0,
+                    )
+                )
+            }
 
             // when
             val result = adapter.fromJson("""
@@ -76,6 +85,16 @@ internal class AnimeRawAdapterTest {
                     "value": 1440,
                     "unit": "SECONDS"
                   },
+                  "scores": [
+                    {
+                      "hostname": "myanimelist.net",
+                      "value": 7.77,
+                      "range": {
+                        "minInclusive": 1.0,
+                        "maxInclusive": 10.0
+                      }
+                    }
+                  ],
                   "relatedAnime": [
                     "https://myanimelist.net/anime/2167"
                   ],
@@ -167,6 +186,7 @@ internal class AnimeRawAdapterTest {
                         "value": 1440,
                         "unit": "SECONDS"
                       },
+                      "scores": [],
                       "relatedAnime": [
                         "https://myanimelist.net/anime/2167"
                       ],
@@ -214,6 +234,7 @@ internal class AnimeRawAdapterTest {
                         "value": 1440,
                         "unit": "SECONDS"
                       },
+                      "scores": [],
                       "relatedAnime": [
                         "https://myanimelist.net/anime/2167"
                       ],
@@ -259,6 +280,7 @@ internal class AnimeRawAdapterTest {
                         "value": 1440,
                         "unit": "SECONDS"
                       },
+                      "scores": [],
                       "relatedAnime": [
                         "https://myanimelist.net/anime/2167"
                       ],
@@ -303,6 +325,7 @@ internal class AnimeRawAdapterTest {
                         "value": 1440,
                         "unit": "SECONDS"
                       },
+                      "scores": [],
                       "relatedAnime": [
                         "https://myanimelist.net/anime/2167"
                       ],
@@ -346,6 +369,7 @@ internal class AnimeRawAdapterTest {
                         "value": 1440,
                         "unit": "SECONDS"
                       },
+                      "scores": [],
                       "relatedAnime": [
                         "https://myanimelist.net/anime/2167"
                       ],
@@ -388,6 +412,7 @@ internal class AnimeRawAdapterTest {
                         "value": 1440,
                         "unit": "SECONDS"
                       },
+                      "scores": [],
                       "relatedAnime": [
                         "https://myanimelist.net/anime/2167"
                       ],
@@ -429,6 +454,7 @@ internal class AnimeRawAdapterTest {
                         "value": 1440,
                         "unit": "SECONDS"
                       },
+                      "scores": [],
                       "relatedAnime": [
                         "https://myanimelist.net/anime/2167"
                       ],
@@ -475,6 +501,7 @@ internal class AnimeRawAdapterTest {
                         "value": 1440,
                         "unit": "SECONDS"
                       },
+                      "scores": [],
                       "relatedAnime": [
                         "https://myanimelist.net/anime/2167"
                       ],
@@ -520,6 +547,7 @@ internal class AnimeRawAdapterTest {
                         "value": 1440,
                         "unit": "SECONDS"
                       },
+                      "scores": [],
                       "relatedAnime": [
                         "https://myanimelist.net/anime/2167"
                       ],
@@ -566,6 +594,7 @@ internal class AnimeRawAdapterTest {
                         "value": 1440,
                         "unit": "SECONDS"
                       },
+                      "scores": [],
                       "relatedAnime": [
                         "https://myanimelist.net/anime/2167"
                       ],
@@ -611,6 +640,7 @@ internal class AnimeRawAdapterTest {
                         "value": 1440,
                         "unit": "SECONDS"
                       },
+                      "scores": [],
                       "relatedAnime": [
                         "https://myanimelist.net/anime/2167"
                       ],
@@ -657,6 +687,7 @@ internal class AnimeRawAdapterTest {
                         "value": 1440,
                         "unit": "SECONDS"
                       },
+                      "scores": [],
                       "relatedAnime": [
                         "https://myanimelist.net/anime/2167"
                       ],
@@ -702,6 +733,7 @@ internal class AnimeRawAdapterTest {
                         "value": 1440,
                         "unit": "SECONDS"
                       },
+                      "scores": [],
                       "relatedAnime": [
                         "https://myanimelist.net/anime/2167"
                       ],
@@ -745,6 +777,7 @@ internal class AnimeRawAdapterTest {
                         "value": 1440,
                         "unit": "SECONDS"
                       },
+                      "scores": [],
                       "relatedAnime": [
                         "https://myanimelist.net/anime/2167"
                       ],
@@ -787,6 +820,7 @@ internal class AnimeRawAdapterTest {
                         "value": 1440,
                         "unit": "SECONDS"
                       },
+                      "scores": [],
                       "relatedAnime": [
                         "https://myanimelist.net/anime/2167"
                       ],
@@ -833,6 +867,7 @@ internal class AnimeRawAdapterTest {
                         "value": 1440,
                         "unit": "SECONDS"
                       },
+                      "scores": [],
                       "relatedAnime": [
                         "https://myanimelist.net/anime/2167"
                       ],
@@ -878,6 +913,7 @@ internal class AnimeRawAdapterTest {
                         "value": 1440,
                         "unit": "SECONDS"
                       },
+                      "scores": [],
                       "relatedAnime": [
                         "https://myanimelist.net/anime/2167"
                       ],
@@ -924,6 +960,7 @@ internal class AnimeRawAdapterTest {
                         "value": 1440,
                         "unit": "SECONDS"
                       },
+                      "scores": [],
                       "relatedAnime": [
                         "https://myanimelist.net/anime/2167"
                       ],
@@ -969,6 +1006,7 @@ internal class AnimeRawAdapterTest {
                         "value": 1440,
                         "unit": "SECONDS"
                       },
+                      "scores": [],
                       "relatedAnime": [
                         "https://myanimelist.net/anime/2167"
                       ],
@@ -1011,6 +1049,7 @@ internal class AnimeRawAdapterTest {
                   "picture": "https://cdn.myanimelist.net/images/anime/10/19621.jpg",
                   "thumbnail": "https://cdn.myanimelist.net/images/anime/10/19621t.jpg",
                   "duration": null,
+                  "scores": [],
                   "relatedAnime": [
                     "https://myanimelist.net/anime/2167"
                   ],
@@ -1051,6 +1090,7 @@ internal class AnimeRawAdapterTest {
                   },
                   "picture": "https://cdn.myanimelist.net/images/anime/10/19621.jpg",
                   "thumbnail": "https://cdn.myanimelist.net/images/anime/10/19621t.jpg",
+                  "scores": [],
                   "relatedAnime": [
                     "https://myanimelist.net/anime/2167"
                   ],
@@ -1096,6 +1136,7 @@ internal class AnimeRawAdapterTest {
                         "value": 1440,
                         "unit": "SECONDS"
                       },
+                      "scores": [],
                       "relatedAnime": null,
                       "tags": [
                         "comedy",
@@ -1140,6 +1181,7 @@ internal class AnimeRawAdapterTest {
                         "value": 1440,
                         "unit": "SECONDS"
                       },
+                      "scores": [],
                       "tags": [
                         "comedy",
                         "romance"
@@ -1183,6 +1225,7 @@ internal class AnimeRawAdapterTest {
                         "value": 1440,
                         "unit": "SECONDS"
                       },
+                      "scores": [],
                       "relatedAnime": [
                         "https://myanimelist.net/anime/2167"
                       ],
@@ -1226,6 +1269,7 @@ internal class AnimeRawAdapterTest {
                         "value": 1440,
                         "unit": "SECONDS"
                       },
+                      "scores": [],
                       "relatedAnime": [
                         "https://myanimelist.net/anime/2167"
                       ]
@@ -1268,7 +1312,15 @@ internal class AnimeRawAdapterTest {
                     "comedy",
                     "romance",
                 )
-            )
+            ).apply {
+                addScores(
+                    MetaDataProviderScoreValue(
+                        hostname = "myanimelist.net",
+                        value = 7.77,
+                        originalRange = 1.0..10.0,
+                    ),
+                )
+            }
 
             // when
             val result = adapter.toJson(obj)
@@ -1293,6 +1345,16 @@ internal class AnimeRawAdapterTest {
                     "value": 1440,
                     "unit": "SECONDS"
                   },
+                  "scores": [
+                    {
+                      "hostname": "myanimelist.net",
+                      "value": 7.77,
+                      "range": {
+                        "minInclusive": 1.0,
+                        "maxInclusive": 10.0
+                      }
+                    }
+                  ],
                   "synonyms": [
                     "Clannad ~After Story~: Another World, Kyou Chapter",
                     "Clannad: After Story OVA",
@@ -1336,7 +1398,15 @@ internal class AnimeRawAdapterTest {
                     "comedy",
                     "romance",
                 )
-            )
+            ).apply {
+                addScores(
+                    MetaDataProviderScoreValue(
+                        hostname = "myanimelist.net",
+                        value = 7.77,
+                        originalRange = 1.0..10.0,
+                    ),
+                )
+            }
 
             // when
             val result = adapter.toJson(obj)
@@ -1358,6 +1428,16 @@ internal class AnimeRawAdapterTest {
                   "picture": "https://cdn.myanimelist.net/images/anime/10/19621.jpg",
                   "thumbnail": "https://cdn.myanimelist.net/images/anime/10/19621t.jpg",
                   "duration": null,
+                  "scores": [
+                    {
+                      "hostname": "myanimelist.net",
+                      "value": 7.77,
+                      "range": {
+                        "minInclusive": 1.0,
+                        "maxInclusive": 10.0
+                      }
+                    }
+                  ],
                   "synonyms": [
                     "Clannad ~After Story~: Another World, Kyou Chapter",
                     "Clannad: After Story OVA",
@@ -1400,6 +1480,7 @@ internal class AnimeRawAdapterTest {
                   },
                   "picture": "https://raw.githubusercontent.com/manami-project/anime-offline-database/master/pics/no_pic.png",
                   "thumbnail": "https://raw.githubusercontent.com/manami-project/anime-offline-database/master/pics/no_pic_thumbnail.png",
+                  "scores": [],
                   "synonyms": [],
                   "relatedAnime": [],
                   "tags": []
@@ -1458,6 +1539,7 @@ internal class AnimeRawAdapterTest {
                   },
                   "picture": "https://raw.githubusercontent.com/manami-project/anime-offline-database/master/pics/no_pic.png",
                   "thumbnail": "https://raw.githubusercontent.com/manami-project/anime-offline-database/master/pics/no_pic_thumbnail.png",
+                  "scores": [],
                   "synonyms": [],
                   "relatedAnime": [
                     "https://myanimelist.net/anime/2167"
@@ -1494,6 +1576,7 @@ internal class AnimeRawAdapterTest {
                   },
                   "picture": "https://raw.githubusercontent.com/manami-project/anime-offline-database/master/pics/no_pic.png",
                   "thumbnail": "https://raw.githubusercontent.com/manami-project/anime-offline-database/master/pics/no_pic_thumbnail.png",
+                  "scores": [],
                   "synonyms": [
                     "Death Note"
                   ],
@@ -1504,7 +1587,37 @@ internal class AnimeRawAdapterTest {
         }
 
         @ParameterizedTest
-        @ValueSource(strings = ["", " ", "    ", "\u200C"])
+        @ValueSource(strings = [
+            "",
+            "   ",
+            "\u00A0",
+            "\u202F",
+            "\u200A",
+            "\u205F",
+            "\u2000",
+            "\u2001",
+            "\u2002",
+            "\u2003",
+            "\u2004",
+            "\u2005",
+            "\u2006",
+            "\u2007",
+            "\u2008",
+            "\u2009",
+            "\uFEFF",
+            "\u180E",
+            "\u2060",
+            "\u200D",
+            "\u0090",
+            "\u200C",
+            "\u200B",
+            "\u00AD",
+            "\u000C",
+            "\u2028",
+            "\r",
+            "\n",
+            "\t",
+        ])
         fun `runs performChecks if activateChecks is false and removes blank entries from synonyms`(value: String) {
             // given
             val adapter = AnimeRawAdapter().indent("  ")
@@ -1530,6 +1643,7 @@ internal class AnimeRawAdapterTest {
                   },
                   "picture": "https://raw.githubusercontent.com/manami-project/anime-offline-database/master/pics/no_pic.png",
                   "thumbnail": "https://raw.githubusercontent.com/manami-project/anime-offline-database/master/pics/no_pic_thumbnail.png",
+                  "scores": [],
                   "synonyms": [],
                   "relatedAnime": [],
                   "tags": []
@@ -1564,6 +1678,7 @@ internal class AnimeRawAdapterTest {
                   },
                   "picture": "https://raw.githubusercontent.com/manami-project/anime-offline-database/master/pics/no_pic.png",
                   "thumbnail": "https://raw.githubusercontent.com/manami-project/anime-offline-database/master/pics/no_pic_thumbnail.png",
+                  "scores": [],
                   "synonyms": [],
                   "relatedAnime": [],
                   "tags": [
@@ -1574,7 +1689,37 @@ internal class AnimeRawAdapterTest {
         }
 
         @ParameterizedTest
-        @ValueSource(strings = ["", " ", "    ", "\u200C"])
+        @ValueSource(strings = [
+            "",
+            "   ",
+            "\u00A0",
+            "\u202F",
+            "\u200A",
+            "\u205F",
+            "\u2000",
+            "\u2001",
+            "\u2002",
+            "\u2003",
+            "\u2004",
+            "\u2005",
+            "\u2006",
+            "\u2007",
+            "\u2008",
+            "\u2009",
+            "\uFEFF",
+            "\u180E",
+            "\u2060",
+            "\u200D",
+            "\u0090",
+            "\u200C",
+            "\u200B",
+            "\u00AD",
+            "\u000C",
+            "\u2028",
+            "\r",
+            "\n",
+            "\t",
+        ])
         fun `runs performChecks if activateChecks is false and removes blank entries from tags`(value: String) {
             // given
             val adapter = AnimeRawAdapter().indent("  ")
@@ -1600,6 +1745,7 @@ internal class AnimeRawAdapterTest {
                   },
                   "picture": "https://raw.githubusercontent.com/manami-project/anime-offline-database/master/pics/no_pic.png",
                   "thumbnail": "https://raw.githubusercontent.com/manami-project/anime-offline-database/master/pics/no_pic_thumbnail.png",
+                  "scores": [],
                   "synonyms": [],
                   "relatedAnime": [],
                   "tags": []
@@ -1714,6 +1860,7 @@ internal class AnimeRawAdapterTest {
                     "value": 1440,
                     "unit": "SECONDS"
                   },
+                  "scores": [],
                   "synonyms": [
                     "CLANNAD",
                     "Clannad (TV)",
@@ -1763,6 +1910,105 @@ internal class AnimeRawAdapterTest {
                     "drama",
                     "earth",
                     "ensemble cast",
+                    "romance"
+                  ]
+                }
+            """.trimIndent())
+        }
+
+        @Test
+        fun `sort scores by hostname`() {
+            // given
+            val adapter = AnimeRawAdapter().indent("  ")
+            val obj = AnimeRaw(
+                _title = "Clannad: After Story - Mou Hitotsu no Sekai, Kyou-hen",
+                _sources = hashSetOf(URI("https://myanimelist.net/anime/6351")),
+                _relatedAnime = hashSetOf(URI("https://myanimelist.net/anime/2167")),
+                type = TV,
+                episodes = 24,
+                status = FINISHED,
+                animeSeason = AnimeSeason(
+                    season = SUMMER,
+                    year = 2009
+                ),
+                picture = URI("https://cdn.myanimelist.net/images/anime/10/19621.jpg"),
+                thumbnail = URI("https://cdn.myanimelist.net/images/anime/10/19621t.jpg"),
+                duration = Duration(24, MINUTES),
+                _synonyms = hashSetOf(
+                    "Clannad ~After Story~: Another World, Kyou Chapter",
+                    "Clannad: After Story OVA",
+                    "クラナド　アフターストーリー　もうひとつの世界　杏編",
+                ),
+                _tags = hashSetOf(
+                    "comedy",
+                    "romance",
+                )
+            ).apply {
+                addScores(
+                    MetaDataProviderScoreValue(
+                        hostname = "myanimelist.net",
+                        value = 7.77,
+                        originalRange = 1.0..10.0,
+                    ),
+                    MetaDataProviderScoreValue(
+                        hostname = "anilist.co",
+                        value = 84.0,
+                        originalRange = 1.0..100.0,
+                    ),
+                )
+            }
+
+            // when
+            val result = adapter.toJson(obj)
+
+            // then
+            assertThat(result).isEqualTo("""
+                {
+                  "sources": [
+                    "https://myanimelist.net/anime/6351"
+                  ],
+                  "title": "Clannad: After Story - Mou Hitotsu no Sekai, Kyou-hen",
+                  "type": "TV",
+                  "episodes": 24,
+                  "status": "FINISHED",
+                  "animeSeason": {
+                    "season": "SUMMER",
+                    "year": 2009
+                  },
+                  "picture": "https://cdn.myanimelist.net/images/anime/10/19621.jpg",
+                  "thumbnail": "https://cdn.myanimelist.net/images/anime/10/19621t.jpg",
+                  "duration": {
+                    "value": 1440,
+                    "unit": "SECONDS"
+                  },
+                  "scores": [
+                    {
+                      "hostname": "anilist.co",
+                      "value": 84.0,
+                      "range": {
+                        "minInclusive": 1.0,
+                        "maxInclusive": 100.0
+                      }
+                    },
+                    {
+                      "hostname": "myanimelist.net",
+                      "value": 7.77,
+                      "range": {
+                        "minInclusive": 1.0,
+                        "maxInclusive": 10.0
+                      }
+                    }
+                  ],
+                  "synonyms": [
+                    "Clannad ~After Story~: Another World, Kyou Chapter",
+                    "Clannad: After Story OVA",
+                    "クラナド　アフターストーリー　もうひとつの世界　杏編"
+                  ],
+                  "relatedAnime": [
+                    "https://myanimelist.net/anime/2167"
+                  ],
+                  "tags": [
+                    "comedy",
                     "romance"
                   ]
                 }

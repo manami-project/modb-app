@@ -3,6 +3,7 @@ package io.github.manamiproject.modb.core.anime
 import io.github.manamiproject.modb.core.extensions.neitherNullNorBlank
 import io.github.manamiproject.modb.core.extensions.normalize
 import io.github.manamiproject.modb.core.anime.AnimeSeason.Season.UNDEFINED
+import io.github.manamiproject.modb.core.config.Hostname
 import io.github.manamiproject.modb.core.anime.AnimeStatus.UNKNOWN as UNKNOWN_STATUS
 import io.github.manamiproject.modb.core.anime.AnimeType.UNKNOWN as UNKNOWN_TYPE
 import io.github.manamiproject.modb.core.anime.Duration.Companion.UNKNOWN as UNKNOWN_DURATION
@@ -13,8 +14,10 @@ import java.net.URI
  * This class represents an anime directly converted from raw data of a meta data provider.
  * It is also the type used to merge multiple anime of different meta data providers.
  * @since 3.1.0
- * @property _title Main title. Must not be blank.
- * @property _sources Duplicate-free list of sources from which this anime was created.
+ * @param _title Main title. Must not be blank.
+ * @property title Main title.
+ * @param _sources Duplicate-free list of sources from which this anime was created.
+ * @property sources Duplicate-free list of sources from which this anime was created.
  * @property type Distribution type. **Default** is [AnimeType.UNKNOWN].
  * @property episodes Number of episodes. **Default** is `0`.
  * @property status Publishing status. **Default** is [AnimeStatus.UNKNOWN].
@@ -22,9 +25,13 @@ import java.net.URI
  * @property picture [URI] to a (large) poster/cover. **Default** is a self created "not found" pic.
  * @property thumbnail [URI] to a thumbnail poster/cover. **Default** is a self created "not found" pic.
  * @property duration Duration of an anime having one episode or average duration of an episode if the anime has more than one episode.
- * @property _synonyms Duplicate-free list of alternative titles. Synonyms are case sensitive.
- * @property _relatedAnime Duplicate-free list of links to related anime.
- * @property _tags Duplicate-free list of tags. This contains both genres and tags from meta data providers. All tags are lower case.
+ * @property scores List of scores provided by meta data providers.
+ * @param _synonyms Duplicate-free list of alternative titles. Synonyms are case sensitive.
+ * @property synonyms Duplicate-free list of alternative titles. Synonyms are case sensitive.
+ * @param _relatedAnime Duplicate-free list of links to related anime.
+ * @property relatedAnime Duplicate-free list of links to related anime.
+ * @param _tags Duplicate-free list of tags. This contains both genres and tags from meta data providers. All tags transformed to lower case.
+ * @property tags Duplicate-free list of tags. This contains both genres and tags from meta data providers. All tags are lower case.
  * @property activateChecks Disable any checks upon creating the object. This is only supposed to be used during safe deserialization. If created using `false` you can call [performChecks] manually.
  * @throws IllegalArgumentException if _title is blank or number of episodes is negative.
  */
@@ -43,6 +50,8 @@ public data class AnimeRaw(
     private val _tags: HashSet<Tag> = HashSet(),
     @Transient val activateChecks: Boolean = true,
 ) {
+
+    private val metaDataProviderScores: HashMap<Hostname, MetaDataProviderScoreValue> = hashMapOf()
 
     /**
      * Main title.
@@ -79,6 +88,12 @@ public data class AnimeRaw(
     val tags: HashSet<Tag>
         get() = _tags.toHashSet()
 
+    /**
+     * Duplicate-free list of scores.
+     * @since 17.0.0
+     */
+    val scores: HashSet<MetaDataProviderScoreValue>
+        get() = metaDataProviderScores.values.toHashSet()
 
     init {
         require(title.neitherNullNorBlank()) { "Title cannot be blank." }
@@ -190,10 +205,10 @@ public data class AnimeRaw(
      * Add additional tags to the existing list. This will **not** override [tags].
      * Duplicates are being ignored.
      * @since 3.1.0
-     * @param tag List of tags.
+     * @param tags List of tags.
      * @return Same instance.
      */
-    public fun addTags(vararg tag: Tag): AnimeRaw = addTags(tag.toHashSet())
+    public fun addTags(vararg tags: Tag): AnimeRaw = addTags(tags.toHashSet())
 
     /**
      * Add additional tags to the existing list. This will **not** override [tags].
@@ -213,6 +228,30 @@ public data class AnimeRaw(
     }
 
     /**
+     * Adds scores provided by meta data providers. Ignores [NoMetaDataProviderScore].
+     * Only one instance of a score per meta data provider is supported. Latest score added wins.
+     * @since 17.0.0
+     * @param scores List of scores provided by meta data providers.
+     * @return Same instance.
+     */
+    public fun addScores(vararg scores: MetaDataProviderScore): AnimeRaw = addScores(scores.toHashSet())
+
+    /**
+     * Adds scores provided by meta data providers. Ignores [NoMetaDataProviderScore].
+     * Only one instance of a score per meta data provider is supported. Latest score added wins.
+     * @since 17.0.0
+     * @param scores A score of a meta data provider.
+     * @return Same instance.
+     */
+    public fun addScores(scores: Collection<MetaDataProviderScore>): AnimeRaw {
+        scores.filterIsInstance<MetaDataProviderScoreValue>().forEach { score ->
+            metaDataProviderScores[score.hostname] = score
+        }
+
+        return this
+    }
+
+    /**
      * + Title and synonyms of the given [AnimeRaw] will both be added to the [synonyms] of this instance.
      * + All sources of the given [AnimeRaw] will be added to the [sources] of this instance.
      * + All related anime of the given [AnimeRaw] will be added to the [relatedAnime] of this instance.
@@ -223,6 +262,7 @@ public data class AnimeRaw(
      * + In case the duration of this instance is [Duration.UNKNOWN], the value of the given [AnimeRaw] will be applied.
      * + In case the season of this instance's [animeSeason] is [UNDEFINED], the season of the given [AnimeRaw] will be applied.
      * + In case the year of this instance's [animeSeason] is [AnimeSeason.UNKNOWN_YEAR], the year if the given [AnimeRaw] will be applied.
+     * + All scores are collected. However, only one instance per meta data provider is kept. Latest score added wins.
      * @since 1.0.0
      * @param anime [AnimeRaw] which is being merged into the this instance.
      * @return New instance of the merged anime.
@@ -285,6 +325,8 @@ public data class AnimeRaw(
             .addRelatedAnime(anime.relatedAnime)
             .addTags(_tags)
             .addTags(anime.tags)
+            .addScores(scores)
+            .addScores(anime.scores)
     }
 
     /**
@@ -333,6 +375,7 @@ public data class AnimeRaw(
         if (picture != other.picture) return false
         if (thumbnail != other.thumbnail) return false
         if (duration != other.duration) return false
+        if (scores != other.scores) return false
         if (_synonyms != other.synonyms) return false
         if (_relatedAnime != other.relatedAnime) return false
         if (_tags != other.tags) return false
@@ -350,6 +393,7 @@ public data class AnimeRaw(
         result = 31 * result + picture.hashCode()
         result = 31 * result + thumbnail.hashCode()
         result = 31 * result + duration.hashCode()
+        result = 31 * result + metaDataProviderScores.values.sorted().hashCode()
         result = 31 * result + _synonyms.hashCode()
         result = 31 * result + _relatedAnime.hashCode()
         result = 31 * result + _tags.hashCode()
@@ -368,6 +412,7 @@ public data class AnimeRaw(
               picture = $picture
               thumbnail = $thumbnail
               duration = $duration
+              scores = ${metaDataProviderScores.values.sortedBy { it.hostname }}
               synonyms = ${_synonyms.sorted()}
               relatedAnime = ${_relatedAnime.sorted()}
               tags = ${_tags.sorted()}

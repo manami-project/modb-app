@@ -9,7 +9,37 @@ import kotlin.test.Test
 internal class JsonDataExtractorTest {
 
     @ParameterizedTest
-    @ValueSource(strings = ["", "    "])
+    @ValueSource(strings = [
+        "",
+        "   ",
+        "\u00A0",
+        "\u202F",
+        "\u200A",
+        "\u205F",
+        "\u2000",
+        "\u2001",
+        "\u2002",
+        "\u2003",
+        "\u2004",
+        "\u2005",
+        "\u2006",
+        "\u2007",
+        "\u2008",
+        "\u2009",
+        "\uFEFF",
+        "\u180E",
+        "\u2060",
+        "\u200D",
+        "\u0090",
+        "\u200C",
+        "\u200B",
+        "\u00AD",
+        "\u000C",
+        "\u2028",
+        "\r",
+        "\n",
+        "\t",
+    ])
     fun `contains NotFound for the OutputKey if raw content is blank`(input: String) {
         runBlocking {
             // when
