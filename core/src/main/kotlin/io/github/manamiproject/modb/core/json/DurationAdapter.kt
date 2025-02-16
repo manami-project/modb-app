@@ -1,17 +1,19 @@
 package io.github.manamiproject.modb.core.json
 
 import com.squareup.moshi.*
+import com.squareup.moshi.JsonReader.Token.NULL
 import io.github.manamiproject.modb.core.extensions.EMPTY
 import io.github.manamiproject.modb.core.anime.Duration
+import io.github.manamiproject.modb.core.anime.Duration.Companion.UNKNOWN as UNKNOWN_DURATION
 import io.github.manamiproject.modb.core.anime.Duration.TimeUnit.SECONDS
 
 internal class DurationAdapter: JsonAdapter<Duration>() {
 
     @FromJson
     override fun fromJson(reader: JsonReader): Duration {
-        if (reader.peek() == JsonReader.Token.NULL) {
-            reader.nextNull<Any>()
-            return Duration.UNKNOWN
+        if (reader.peek() == NULL) {
+            reader.nextNull<Unit>()
+            return UNKNOWN_DURATION
         }
 
         reader.beginObject()
@@ -50,7 +52,7 @@ internal class DurationAdapter: JsonAdapter<Duration>() {
 
     @ToJson
     override fun toJson(writer: JsonWriter, value: Duration?) {
-        requireNotNull(value) { "DurationAdapter is non-nullable, but received null." }
+        requireNotNull(value) { "DurationAdapter expects non-nullable value, but received null." }
 
         when {
             value.duration == 0 && writer.serializeNulls -> {

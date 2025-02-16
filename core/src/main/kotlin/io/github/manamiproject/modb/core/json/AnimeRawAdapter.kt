@@ -1,12 +1,9 @@
 package io.github.manamiproject.modb.core.json
 
 import com.squareup.moshi.*
-import io.github.manamiproject.modb.core.anime.AnimeRaw
+import io.github.manamiproject.modb.core.anime.*
 import io.github.manamiproject.modb.core.anime.AnimeRaw.Companion.NO_PICTURE
 import io.github.manamiproject.modb.core.anime.AnimeRaw.Companion.NO_PICTURE_THUMBNAIL
-import io.github.manamiproject.modb.core.anime.AnimeSeason
-import io.github.manamiproject.modb.core.anime.Tag
-import io.github.manamiproject.modb.core.anime.Title
 import io.github.manamiproject.modb.core.extensions.EMPTY
 import java.net.URI
 import io.github.manamiproject.modb.core.anime.AnimeStatus.UNKNOWN as UNKNOWN_STATUS
@@ -24,6 +21,7 @@ internal class AnimeRawAdapter: JsonAdapter<AnimeRaw>() {
     private val statusAdapter = AnimeStatusAdapter()
     private val durationAdapter = DurationAdapter()
     private val animeSeasonAdapter = AnimeSeasonAdapter()
+    private val metaDataProviderScoreValueAdapter = HashSetAdapter(MetaDataProviderScoreValueAdapter())
 
 
     @FromJson
@@ -47,6 +45,7 @@ internal class AnimeRawAdapter: JsonAdapter<AnimeRaw>() {
         var thumbnail = NO_PICTURE_THUMBNAIL
         var thumbnailDeserialized = false
         var duration = UNKNOWN_DURATION
+        var scores = HashSet<MetaDataProviderScoreValue>()
         var tags = HashSet<Tag>()
         var tagsDeserialized = false
         var relatedAnime = HashSet<URI>()
@@ -90,6 +89,9 @@ internal class AnimeRawAdapter: JsonAdapter<AnimeRaw>() {
                 }
                 "duration" -> {
                     duration = durationAdapter.fromJson(reader)
+                }
+                "scores" -> {
+                    scores = metaDataProviderScoreValueAdapter.fromJson(reader)
                 }
                 "synonyms" -> {
                     synonyms = titleHashSetAdapter.fromJson(reader)
@@ -137,7 +139,9 @@ internal class AnimeRawAdapter: JsonAdapter<AnimeRaw>() {
             duration = duration,
             animeSeason = animeSeason,
             activateChecks = false,
-        )
+        ).apply {
+            addScores(scores)
+        }
     }
 
     @ToJson
@@ -178,6 +182,9 @@ internal class AnimeRawAdapter: JsonAdapter<AnimeRaw>() {
             writer.name("duration")
             durationAdapter.toJson(writer, value.duration)
         }
+
+        writer.name("scores")
+        metaDataProviderScoreValueAdapter.toJson(writer, value.scores)
 
         writer.name("synonyms").beginArray()
         value.synonyms.sorted().forEach { writer.value(it) }

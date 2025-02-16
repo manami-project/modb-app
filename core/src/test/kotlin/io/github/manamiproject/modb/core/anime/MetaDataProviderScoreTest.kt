@@ -71,7 +71,37 @@ internal class MetaDataProviderScoreTest {
             }
 
             @ParameterizedTest
-            @ValueSource(strings = ["", " ", "   "])
+            @ValueSource(strings = [
+                "",
+                "   ",
+                "\u00A0",
+                "\u202F",
+                "\u200A",
+                "\u205F",
+                "\u2000",
+                "\u2001",
+                "\u2002",
+                "\u2003",
+                "\u2004",
+                "\u2005",
+                "\u2006",
+                "\u2007",
+                "\u2008",
+                "\u2009",
+                "\uFEFF",
+                "\u180E",
+                "\u2060",
+                "\u200D",
+                "\u0090",
+                "\u200C",
+                "\u200B",
+                "\u00AD",
+                "\u000C",
+                "\u2028",
+                "\r",
+                "\n",
+                "\t",
+            ])
             fun `throws exception if hostname is blank`(input: String) {
                 // when
                 val result = exceptionExpected<IllegalArgumentException> {
@@ -251,6 +281,67 @@ internal class MetaDataProviderScoreTest {
 
                 // then
                 assertThat(result).isEqualTo(10.0)
+            }
+        }
+
+        @Nested
+        inner class CompareToTests {
+
+            @Test
+            fun `returns negative value, because first is to be placed before second `() {
+                // given
+                val first = MetaDataProviderScoreValue(
+                    hostname = "example.org",
+                    value = 6.0,
+                    originalRange = 1.0..10.0,
+                )
+
+                val second = MetaDataProviderScoreValue(
+                    hostname = "other.com",
+                    value = 4.0,
+                    originalRange = 1.0..5.0,
+                )
+
+                // when
+                val result = first.compareTo(second)
+
+                assertThat(result).isNegative()
+            }
+
+            @Test
+            fun `returns positive value, because first is to be placed before second `() {
+                // given
+                val first = MetaDataProviderScoreValue(
+                    hostname = "example.org",
+                    value = 6.0,
+                    originalRange = 1.0..10.0,
+                )
+
+                val second = MetaDataProviderScoreValue(
+                    hostname = "other.com",
+                    value = 4.0,
+                    originalRange = 1.0..5.0,
+                )
+
+                // when
+                val result = second.compareTo(first)
+
+                assertThat(result).isPositive()
+            }
+
+            @Test
+            fun `returns zero, because the values are identical`() {
+                // given
+                val score = MetaDataProviderScoreValue(
+                    hostname = "example.org",
+                    value = 6.0,
+                    originalRange = 1.0..10.0,
+                )
+
+                // when
+                val result = score.compareTo(score)
+
+                assertThat(result).isZero()
             }
         }
     }

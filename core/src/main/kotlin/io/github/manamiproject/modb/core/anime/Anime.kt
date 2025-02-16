@@ -34,6 +34,7 @@ public data class Anime(
     val picture: URI = NO_PICTURE,
     val thumbnail: URI = NO_PICTURE_THUMBNAIL,
     val duration: Duration = UNKNOWN_DURATION,
+    val score: Score = NoScore,
     val synonyms: HashSet<Title> = HashSet(),
     val relatedAnime: HashSet<URI> = HashSet(),
     val tags: HashSet<Tag> = HashSet(),
@@ -55,6 +56,7 @@ public data class Anime(
               picture = $picture
               thumbnail = $thumbnail
               duration = $duration
+              score = $score
               synonyms = ${synonyms.sorted()}
               relatedAnime = ${relatedAnime.sorted()}
               tags = ${tags.sorted()}

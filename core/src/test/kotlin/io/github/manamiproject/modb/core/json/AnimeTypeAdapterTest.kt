@@ -66,7 +66,7 @@ internal class AnimeTypeAdapterTest {
             }
 
             // then
-            assertThat(result).hasMessage("AnimeTypeAdapter is non-nullable, but received null.")
+            assertThat(result).hasMessage("AnimeTypeAdapter expects non-nullable value, but received null.")
         }
     }
 }

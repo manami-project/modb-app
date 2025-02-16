@@ -10,7 +10,7 @@ internal class UriAdapter: JsonAdapter<URI>() {
 
     @ToJson
     override fun toJson(writer: JsonWriter, value: URI?) {
-        requireNotNull(value) { "UriAdapter is non-nullable, but received null." }
+        requireNotNull(value) { "UriAdapter expects non-nullable value, but received null." }
         writer.value(value.toString())
     }
 }

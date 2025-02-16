@@ -3,7 +3,6 @@ package io.github.manamiproject.modb.core.anime
 import io.github.manamiproject.modb.test.exceptionExpected
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Nested
-import java.time.LocalDate
 import kotlin.test.Test
 
 internal class ScoreTest {
@@ -30,7 +29,6 @@ internal class ScoreTest {
             assertThat(result.median).isZero()
             assertThat(result.arithmeticMean).isZero()
             assertThat(result.arithmeticGeometricMean).isZero()
-            assertThat(result.createdAt).isEqualTo(LocalDate.now())
         }
 
         @Nested

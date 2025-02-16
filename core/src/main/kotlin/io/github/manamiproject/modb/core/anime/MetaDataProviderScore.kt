@@ -2,7 +2,6 @@ package io.github.manamiproject.modb.core.anime
 
 import io.github.manamiproject.modb.core.config.Hostname
 import io.github.manamiproject.modb.core.extensions.neitherNullNorBlank
-import java.time.LocalDate
 
 /**
  * Generic return type for meta data provider score.
@@ -19,17 +18,15 @@ public data object NoMetaDataProviderScore: MetaDataProviderScore()
 /**
  * Represents the score as it is found on the site of the meta data provider.
  * @since 17.0.0
- * @param hostname Hostname of the meta data provider which was the source of this score.
- * @param value Score as-is
- * @param originalRange The range in which scores can be represented on the meta data provider site.
- * @param createdAt The date on which the value was determined.
+ * @property hostname Hostname of the meta data provider which was the source of this score.
+ * @property value Score as-is
+ * @property originalRange The range in which scores can be represented on the meta data provider site.
  */
 public data class MetaDataProviderScoreValue(
     val hostname: Hostname,
-    private val value: Double = 0.0,
-    private val originalRange: ClosedFloatingPointRange<Double>,
-    val createdAt: LocalDate = LocalDate.now(),
-): MetaDataProviderScore() {
+    val value: Double = 0.0,
+    val originalRange: ClosedFloatingPointRange<Double>,
+): MetaDataProviderScore(), Comparable<MetaDataProviderScoreValue> {
 
     init {
         require(hostname.neitherNullNorBlank()) { "hostname must not be blank" }
@@ -67,4 +64,6 @@ public data class MetaDataProviderScoreValue(
 
         return ( (value - minValue) / (maxValue - minValue) ) * (newMax - newMin) + newMin
     }
+
+    override fun compareTo(other: MetaDataProviderScoreValue): Int = hostname.compareTo(other.hostname)
 }

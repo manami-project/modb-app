@@ -2120,6 +2120,83 @@ internal class AnimeRawTest {
         }
 
         @Test
+        fun `is equal if scores are the same`() {
+            // given
+            val title =  "Death Note"
+            val a = AnimeRaw(
+                _title = title,
+            ).apply {
+                addScores(
+                    MetaDataProviderScoreValue(
+                        hostname = "example.org",
+                        value = 4.97,
+                        originalRange = 1.0..5.0,
+                    ),
+                )
+            }
+
+            val b = AnimeRaw(
+                _title = title,
+            ).apply {
+                addScores(
+                    MetaDataProviderScoreValue(
+                        hostname = "example.org",
+                        value = 4.97,
+                        originalRange = 1.0..5.0,
+                    ),
+                )
+            }
+
+            // when
+            val result = a == b
+
+            // then
+            assertThat(result).isTrue()
+            assertThat(a.hashCode()).isEqualTo(b.hashCode())
+        }
+
+        @Test
+        fun `is not equal if scores are different`() {
+            // given
+            val title  =  "Death Note"
+            val a = AnimeRaw(
+                _title =  title,
+            ).apply {
+                addScores(
+                    MetaDataProviderScoreValue(
+                        hostname = "example.org",
+                        value = 4.97,
+                        originalRange = 1.0..5.0,
+                    ),
+                )
+            }
+
+            val b = AnimeRaw(
+                _title =  title,
+            ).apply {
+                addScores(
+                    MetaDataProviderScoreValue(
+                        hostname = "example.org",
+                        value = 4.97,
+                        originalRange = 1.0..5.0,
+                    ),
+                    MetaDataProviderScoreValue(
+                        hostname = "other.com",
+                        value = 9.50,
+                        originalRange = 1.0..10.0,
+                    )
+                )
+            }
+
+            // when
+            val result = a == b
+
+            // then
+            assertThat(result).isFalse()
+            assertThat(a.hashCode()).isNotEqualTo(b.hashCode())
+        }
+
+        @Test
         fun `is equal if related anime are the same`() {
             // given
             val title  =  "Death Note"
@@ -2608,6 +2685,85 @@ internal class AnimeRawTest {
                 "shounen",
                 "supernatural",
                 "thriller",
+            )
+        }
+
+        @Test
+        fun `use other's score if hostname of a score entry has the same hostname`() {
+            // given
+            val title =  "Death Note"
+            val scoreA = MetaDataProviderScoreValue(
+                hostname = "example.org",
+                value = 4.97,
+                originalRange = 1.0..5.0,
+            )
+            val a = AnimeRaw(
+                _title = title,
+            ).apply {
+                addScores(
+                    scoreA,
+                )
+            }
+
+            val scoreB = MetaDataProviderScoreValue(
+                hostname = "other.com",
+                value = 9.5,
+                originalRange = 1.0..10.0,
+            )
+            val b = AnimeRaw(
+                _title = title,
+            ).apply {
+                addScores(
+                    scoreB,
+                )
+            }
+
+            // when
+            val result = a.mergeWith(b)
+
+            // then
+            assertThat(result.scores).containsExactlyInAnyOrder(
+                scoreA,
+                scoreB,
+            )
+        }
+
+        @Test
+        fun `overrides entries with same hostname`() {
+            // given
+            val title =  "Death Note"
+            val scoreA = MetaDataProviderScoreValue(
+                hostname = "example.org",
+                value = 2.41,
+                originalRange = 1.0..5.0,
+            )
+            val a = AnimeRaw(
+                _title = title,
+            ).apply {
+                addScores(
+                    scoreA,
+                )
+            }
+
+            val scoreB = MetaDataProviderScoreValue(
+                hostname = "example.org",
+                value = 4.97,
+                originalRange = 1.0..5.0,
+            )
+            val b = AnimeRaw(
+                _title = title,
+            ).apply {
+                addScores(
+                    scoreB,
+                )
+            }
+
+            // when
+            val result = a.mergeWith(b)
+
+            // then
+            assertThat(result.scores).containsExactlyInAnyOrder(
+                scoreB,
             )
         }
     }
@@ -3320,7 +3476,15 @@ internal class AnimeRawTest {
                     "slice of life",
                     "supernatural",
                 ),
-            )
+            ).apply {
+                addScores(
+                    MetaDataProviderScoreValue(
+                        hostname = "myanimelist.net",
+                        value = 7.77,
+                        originalRange = 1.0..10.0,
+                    ),
+                )
+            }
 
             // when
             val result = anime.toString()
@@ -3338,6 +3502,7 @@ internal class AnimeRawTest {
                       picture = https://cdn.myanimelist.net/images/anime/10/19621.jpg
                       thumbnail = https://cdn.myanimelist.net/images/anime/10/19621t.jpg
                       duration = 120 seconds
+                      scores = [MetaDataProviderScoreValue(hostname=myanimelist.net, value=7.77, originalRange=1.0..10.0)]
                       synonyms = [Clannad ~After Story~: Another World, Kyou Chapter, Clannad: After Story OVA, クラナド　アフターストーリー　もうひとつの世界　杏編]
                       relatedAnime = [https://myanimelist.net/anime/2167]
                       tags = [comedy, drama, romance, school, slice of life, supernatural]
@@ -3473,6 +3638,7 @@ internal class AnimeRawTest {
                       },
                       "picture": "https://raw.githubusercontent.com/manami-project/anime-offline-database/master/pics/no_pic.png",
                       "thumbnail": "https://raw.githubusercontent.com/manami-project/anime-offline-database/master/pics/no_pic_thumbnail.png",
+                      "scores": [],
                       "synonyms": [],
                       "relatedAnime": [
                         "https://myanimelist.net/anime/2167"
@@ -3619,6 +3785,257 @@ internal class AnimeRawTest {
                 // then
                 assertThat(anime.sources).containsExactly(source)
                 assertThat(anime.relatedAnime).isEmpty()
+            }
+        }
+    }
+
+    @Nested
+    inner class ScoresTests {
+
+        @Test
+        fun `default is empty`() {
+            // when
+            val result = AnimeRaw("Death Note")
+
+            // then
+            assertThat(result.scores).isEmpty()
+        }
+
+        @Test
+        fun `ensure that you cannot directly modify the internal hashset`() {
+            // given
+            val anime = AnimeRaw(
+                _title = "test",
+            ).apply {
+                addScores(
+                    MetaDataProviderScoreValue(
+                        hostname = "example.org",
+                        value = 4.97,
+                        originalRange = 1.0..5.0,
+                    ),
+                )
+            }
+
+            // when
+            anime.scores.clear()
+
+            // then
+            assertThat(anime.scores).isNotEmpty()
+        }
+
+        @Nested
+        inner class AddTagsTests {
+
+            @Test
+            fun `ignores NoMetaDataProviderScore`() {
+                // given
+                val anime = AnimeRaw(
+                    _title = "Death Note",
+                )
+
+                // when
+                val result = anime.addScores(
+                    NoMetaDataProviderScore,
+                )
+
+                // then
+                assertThat(result.scores).isEmpty()
+            }
+
+            @Test
+            fun `correctly adds score`() {
+                // given
+                val score = MetaDataProviderScoreValue(
+                    hostname = "example.org",
+                    value = 4.97,
+                    originalRange = 1.0..5.0,
+                )
+                val anime = AnimeRaw(
+                    _title = "test",
+                )
+
+                // when
+                val result = anime.addScores(
+                    score,
+                )
+
+                // then
+                assertThat(result.scores).containsExactlyInAnyOrder(
+                    score,
+                )
+            }
+
+            @Test
+            fun `correctly adds multiple scores`() {
+                // given
+                val scoreA = MetaDataProviderScoreValue(
+                    hostname = "example.org",
+                    value = 4.97,
+                    originalRange = 1.0..5.0,
+                )
+                val scoreB = MetaDataProviderScoreValue(
+                    hostname = "other.com",
+                    value = 6.83,
+                    originalRange = 1.0..10.0,
+                )
+                val anime = AnimeRaw(
+                    _title = "test",
+                )
+
+                // when
+                val result = anime.addScores(
+                    scoreA,
+                    scoreB,
+                )
+
+                // then
+                assertThat(result.scores).containsExactlyInAnyOrder(
+                    scoreA,
+                    scoreB,
+                )
+            }
+
+            @Test
+            fun `overrides existing score if the hostname is identical`() {
+                // given
+                val score = MetaDataProviderScoreValue(
+                    hostname = "example.org",
+                    value = 4.97,
+                    originalRange = 1.0..5.0,
+                )
+                val anime = AnimeRaw(
+                    _title = "test",
+                ).apply {
+                    addScores(
+                        MetaDataProviderScoreValue(
+                            hostname = "example.org",
+                            value = 2.54,
+                            originalRange = 1.0..5.0,
+                        ),
+                    )
+                }
+
+                // when
+                val result = anime.addScores(
+                    score,
+                )
+
+                // then
+                assertThat(result.scores).containsExactlyInAnyOrder(
+                    score,
+                )
+            }
+        }
+
+        @Nested
+        inner class AddTagsVarargTests {
+
+            @Test
+            fun `ignores NoMetaDataProviderScore`() {
+                // given
+                val anime = AnimeRaw(
+                    _title = "Death Note",
+                )
+
+                // when
+                val result = anime.addScores(
+                    listOf(
+                        NoMetaDataProviderScore,
+                    )
+                )
+
+                // then
+                assertThat(result.scores).isEmpty()
+            }
+
+            @Test
+            fun `correctly adds score`() {
+                // given
+                val score = MetaDataProviderScoreValue(
+                    hostname = "example.org",
+                    value = 4.97,
+                    originalRange = 1.0..5.0,
+                )
+                val anime = AnimeRaw(
+                    _title = "test",
+                )
+
+                // when
+                val result = anime.addScores(
+                    listOf(
+                        score,
+                    )
+                )
+
+                // then
+                assertThat(result.scores).containsExactlyInAnyOrder(
+                    score,
+                )
+            }
+
+            @Test
+            fun `correctly adds multiple scores`() {
+                // given
+                val scoreA = MetaDataProviderScoreValue(
+                    hostname = "example.org",
+                    value = 4.97,
+                    originalRange = 1.0..5.0,
+                )
+                val scoreB = MetaDataProviderScoreValue(
+                    hostname = "other.com",
+                    value = 6.83,
+                    originalRange = 1.0..10.0,
+                )
+                val anime = AnimeRaw(
+                    _title = "test",
+                )
+
+                // when
+                val result = anime.addScores(
+                    listOf(
+                        scoreA,
+                        scoreB,
+                    )
+                )
+
+                // then
+                assertThat(result.scores).containsExactlyInAnyOrder(
+                    scoreA,
+                    scoreB,
+                )
+            }
+
+            @Test
+            fun `overrides existing score if the hostname is identical`() {
+                // given
+                val score = MetaDataProviderScoreValue(
+                    hostname = "example.org",
+                    value = 4.97,
+                    originalRange = 1.0..5.0,
+                )
+                val anime = AnimeRaw(
+                    _title = "test",
+                ).apply {
+                    addScores(
+                        listOf(
+                            MetaDataProviderScoreValue(
+                                hostname = "example.org",
+                                value = 2.54,
+                                originalRange = 1.0..5.0,
+                            ),
+                        )
+                    )
+                }
+
+                // when
+                val result = anime.addScores(
+                    score,
+                )
+
+                // then
+                assertThat(result.scores).containsExactlyInAnyOrder(
+                    score,
+                )
             }
         }
     }
