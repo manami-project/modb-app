@@ -66,7 +66,7 @@ internal class HashSetAdapterTest {
             }
 
             // then
-            assertThat(result).hasMessage("HashSetAdapter is non-nullable, but received null.")
+            assertThat(result).hasMessage("HashSetAdapter expects non-nullable value, but received null.")
         }
     }
 }

@@ -65,7 +65,7 @@ internal class TitleAdapterTest {
             }
 
             // then
-            assertThat(result).hasMessage("TitleAdapter is non-nullable, but received null.")
+            assertThat(result).hasMessage("TitleAdapter expects non-nullable value, but received null.")
         }
     }
 }

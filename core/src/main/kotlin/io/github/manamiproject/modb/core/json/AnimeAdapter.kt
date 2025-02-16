@@ -1,12 +1,9 @@
 package io.github.manamiproject.modb.core.json
 
 import com.squareup.moshi.*
-import io.github.manamiproject.modb.core.anime.Anime
+import io.github.manamiproject.modb.core.anime.*
 import io.github.manamiproject.modb.core.anime.AnimeRaw.Companion.NO_PICTURE
 import io.github.manamiproject.modb.core.anime.AnimeRaw.Companion.NO_PICTURE_THUMBNAIL
-import io.github.manamiproject.modb.core.anime.AnimeSeason
-import io.github.manamiproject.modb.core.anime.Tag
-import io.github.manamiproject.modb.core.anime.Title
 import io.github.manamiproject.modb.core.extensions.EMPTY
 import java.net.URI
 import io.github.manamiproject.modb.core.anime.AnimeStatus.UNKNOWN as UNKNOWN_STATUS
@@ -24,6 +21,7 @@ internal class AnimeAdapter: JsonAdapter<Anime>() {
     private val statusAdapter = AnimeStatusAdapter()
     private val durationAdapter = DurationAdapter()
     private val animeSeasonAdapter = AnimeSeasonAdapter()
+    private val scoreAdapter = ScoreAdapter()
 
     @FromJson
     override fun fromJson(reader: JsonReader): Anime? {
@@ -46,6 +44,7 @@ internal class AnimeAdapter: JsonAdapter<Anime>() {
         var thumbnail = NO_PICTURE_THUMBNAIL
         var thumbnailDeserialized = false
         var duration = UNKNOWN_DURATION
+        var score: Score = NoScore
         var tags = HashSet<Tag>()
         var tagsDeserialized = false
         var relatedAnime = HashSet<URI>()
@@ -89,6 +88,9 @@ internal class AnimeAdapter: JsonAdapter<Anime>() {
                 }
                 "duration" -> {
                     duration = durationAdapter.fromJson(reader)
+                }
+                "score" -> {
+                    score = scoreAdapter.fromJson(reader)
                 }
                 "synonyms" -> {
                     synonyms = titleHashSetAdapter.fromJson(reader)
@@ -134,6 +136,7 @@ internal class AnimeAdapter: JsonAdapter<Anime>() {
             tags = tags,
             relatedAnime = relatedAnime,
             duration = duration,
+            score = score,
             animeSeason = animeSeason,
         )
     }
@@ -144,9 +147,8 @@ internal class AnimeAdapter: JsonAdapter<Anime>() {
 
         writer.beginObject()
 
-        writer.name("sources").beginArray()
-        value.sources.map { it.toString() }.sorted().forEach { writer.value(it) }
-        writer.endArray()
+        writer.name("sources")
+        uriHashSetAdapter.toJson(writer, value.sources)
 
         writer.name("title")
         titleAdapter.toJson(writer, value.title)
@@ -173,17 +175,19 @@ internal class AnimeAdapter: JsonAdapter<Anime>() {
             durationAdapter.toJson(writer, value.duration)
         }
 
-        writer.name("synonyms").beginArray()
-        value.synonyms.sorted().forEach { writer.value(it) }
-        writer.endArray()
+        if (value.score != NoScore || (value.score == NoScore && writer.serializeNulls)) {
+            writer.name("score")
+            scoreAdapter.toJson(writer, value.score)
+        }
 
-        writer.name("relatedAnime").beginArray()
-        value.relatedAnime.map { it.toString() }.sorted().forEach { writer.value(it) }
-        writer.endArray()
+        writer.name("synonyms")
+        titleHashSetAdapter.toJson(writer, value.synonyms)
 
-        writer.name("tags").beginArray()
-        value.tags.sorted().forEach { writer.value(it) }
-        writer.endArray()
+        writer.name("relatedAnime")
+        uriHashSetAdapter.toJson(writer, value.relatedAnime)
+
+        writer.name("tags")
+        titleHashSetAdapter.toJson(writer, value.tags)
 
         writer.endObject()
     }

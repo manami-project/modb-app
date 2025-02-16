@@ -2,7 +2,7 @@ package io.github.manamiproject.modb.core.json
 
 import com.squareup.moshi.*
 
-internal class HashSetAdapter<T>(private val elementAdapter: JsonAdapter<T>) : JsonAdapter<HashSet<T>>() {
+internal class HashSetAdapter<T: Comparable<T>>(private val elementAdapter: JsonAdapter<T>) : JsonAdapter<HashSet<T>>() {
 
     @FromJson
     override fun fromJson(reader: JsonReader): HashSet<T> {
@@ -20,12 +20,14 @@ internal class HashSetAdapter<T>(private val elementAdapter: JsonAdapter<T>) : J
 
     @ToJson
     override fun toJson(writer: JsonWriter, value: HashSet<T>?) {
-        requireNotNull(value) { "HashSetAdapter is non-nullable, but received null." }
+        requireNotNull(value) { "HashSetAdapter expects non-nullable value, but received null." }
 
         writer.beginArray()
-        for (element in value) {
-            elementAdapter.toJson(writer, element)
+
+        value.sorted().forEach {
+            elementAdapter.toJson(writer, it)
         }
+
         writer.endArray()
     }
 }

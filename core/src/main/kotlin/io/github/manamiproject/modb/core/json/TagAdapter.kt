@@ -10,7 +10,7 @@ internal class TagAdapter: JsonAdapter<Tag>() {
 
     @ToJson
     override fun toJson(writer: JsonWriter, value: Tag?) {
-        requireNotNull(value) { "TagAdapter is non-nullable, but received null." }
+        requireNotNull(value) { "TagAdapter expects non-nullable value, but received null." }
         writer.value(value)
     }
 }

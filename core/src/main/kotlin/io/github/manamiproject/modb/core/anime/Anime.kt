@@ -20,6 +20,7 @@ import java.net.URI
  * @property picture [URI] to a (large) poster/cover. **Default** is a self created "not found" pic.
  * @property thumbnail [URI] to a thumbnail poster/cover. **Default** is a self created "not found" pic.
  * @property duration Duration of an anime having one episode or average duration of an episode if the anime has more than one episode.
+ * @property score Score based on the different scores of the meta data providers.
  * @property synonyms Duplicate-free list of alternative titles. Synonyms are case sensitive.
  * @property relatedAnime Duplicate-free list of links to related anime.
  * @property tags Duplicate-free list of tags. This contains both genres and tags from meta data providers. All tags are lower case.
@@ -34,6 +35,7 @@ public data class Anime(
     val picture: URI = NO_PICTURE,
     val thumbnail: URI = NO_PICTURE_THUMBNAIL,
     val duration: Duration = UNKNOWN_DURATION,
+    val score: Score = NoScore,
     val synonyms: HashSet<Title> = HashSet(),
     val relatedAnime: HashSet<URI> = HashSet(),
     val tags: HashSet<Tag> = HashSet(),
@@ -55,6 +57,7 @@ public data class Anime(
               picture = $picture
               thumbnail = $thumbnail
               duration = $duration
+              score = $score
               synonyms = ${synonyms.sorted()}
               relatedAnime = ${relatedAnime.sorted()}
               tags = ${tags.sorted()}

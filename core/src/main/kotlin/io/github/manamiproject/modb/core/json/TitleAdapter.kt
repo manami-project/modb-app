@@ -10,7 +10,7 @@ internal class TitleAdapter: JsonAdapter<Title>() {
 
     @ToJson
     override fun toJson(writer: JsonWriter, value: Title?) {
-        requireNotNull(value) { "TitleAdapter is non-nullable, but received null." }
+        requireNotNull(value) { "TitleAdapter expects non-nullable value, but received null." }
         writer.value(value)
     }
 }

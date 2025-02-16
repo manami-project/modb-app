@@ -19,6 +19,7 @@ import io.github.manamiproject.modb.core.anime.AnimeType.MOVIE
 import io.github.manamiproject.modb.core.anime.AnimeType.TV
 import io.github.manamiproject.modb.core.anime.Duration
 import io.github.manamiproject.modb.core.anime.Duration.TimeUnit.MINUTES
+import io.github.manamiproject.modb.core.anime.MetaDataProviderScoreValue
 import io.github.manamiproject.modb.core.config.AnimeId
 import io.github.manamiproject.modb.core.config.FileSuffix
 import io.github.manamiproject.modb.core.config.Hostname
@@ -988,7 +989,15 @@ internal class DefaultDownloadControlStateAccessorTest {
                             "sci-fi",
                         ),
                     ),
-                )
+                ).apply {
+                    anime.addScores(
+                        MetaDataProviderScoreValue(
+                            hostname = "anilist.co",
+                            value = 85.0,
+                            originalRange = 1.0..100.0,
+                        ),
+                    )
+                }
 
                 val defaultDownloadControlStateAccessor = DefaultDownloadControlStateAccessor(
                     appConfig = testAppConfig,
@@ -1137,7 +1146,15 @@ internal class DefaultDownloadControlStateAccessorTest {
                             "sci-fi",
                         ),
                     ),
-                )
+                ).apply {
+                    anime.addScores(
+                        MetaDataProviderScoreValue(
+                            hostname = "anilist.co",
+                            value = 85.0,
+                            originalRange = 1.0..100.0,
+                        ),
+                    )
+                }
 
                 val expectedFile = loadTestResource<String>("downloadcontrolstate/DefaultDownloadControlStateAccessorTest/success/32.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX")
                 val outputDir = tempDir.resolve(AnilistConfig.hostname()).createDirectory()
@@ -1228,7 +1245,15 @@ internal class DefaultDownloadControlStateAccessorTest {
                             "sci-fi",
                         ),
                     ),
-                )
+                ).apply {
+                    anime.addScores(
+                        MetaDataProviderScoreValue(
+                            hostname = "anilist.co",
+                            value = 85.0,
+                            originalRange = 1.0..100.0,
+                        ),
+                    )
+                }
 
                 val expectedFile = loadTestResource<String>("downloadcontrolstate/DefaultDownloadControlStateAccessorTest/success/32.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX")
                 val outputDir = tempDir.resolve(AnilistConfig.hostname()).createDirectory()
