@@ -26,6 +26,16 @@
       "value": 5220,
       "unit": "SECONDS"
     },
+    "scores": [
+      {
+        "hostname": "anilist.co",
+        "value": 85.0,
+        "range": {
+          "minInclusive": 1.0,
+          "maxInclusive": 100.0
+        }
+      }
+    ],
     "synonyms": [
       "Neon Genesis Evangelion: The End of Evangelion",
       "新世紀エヴァンゲリオン劇場版 THE END OF EVANGELION"

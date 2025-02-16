@@ -1,8 +1,10 @@
 package io.github.manamiproject.modb.core.json
 
 import com.squareup.moshi.*
+import com.squareup.moshi.JsonReader.Token.NULL
 import io.github.manamiproject.modb.core.anime.AnimeSeason
 import io.github.manamiproject.modb.core.anime.AnimeSeason.Companion.UNKNOWN_YEAR
+import io.github.manamiproject.modb.core.anime.AnimeSeason.Season.UNDEFINED
 
 internal class AnimeSeasonAdapter: JsonAdapter<AnimeSeason>() {
 
@@ -10,7 +12,7 @@ internal class AnimeSeasonAdapter: JsonAdapter<AnimeSeason>() {
     override fun fromJson(reader: JsonReader): AnimeSeason {
         reader.beginObject()
 
-        var season = AnimeSeason.Season.UNDEFINED
+        var season = UNDEFINED
         var seasonDeserialized = false
         var year = UNKNOWN_YEAR
 
@@ -21,7 +23,7 @@ internal class AnimeSeasonAdapter: JsonAdapter<AnimeSeason>() {
                     seasonDeserialized = true
                 }
                 "year" -> {
-                    year = if (reader.peek() != JsonReader.Token.NULL) { reader.nextInt() } else { reader.nextNull<Any>(); 0 }
+                    year = if (reader.peek() != NULL) { reader.nextInt() } else { reader.nextNull<Unit>(); 0 }
                 }
                 else -> reader.skipValue()
             }
@@ -41,7 +43,7 @@ internal class AnimeSeasonAdapter: JsonAdapter<AnimeSeason>() {
 
     @ToJson
     override fun toJson(writer: JsonWriter, value: AnimeSeason?) {
-        requireNotNull(value) { "AnimeSeasonAdapter is non-nullable, but received null." }
+        requireNotNull(value) { "AnimeSeasonAdapter expects non-nullable value, but received null." }
 
         writer.beginObject()
         writer.name("season").value(value.season.toString())

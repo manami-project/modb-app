@@ -28,7 +28,7 @@ import kotlin.test.fail
  * @return [Path] object of the given file.
  */
 public fun testResource(path: String): Path {
-    require(path.isNotBlank()) { "Path must not be blank" }
+    require(!"""^[\u00A0\u202F\u200A\u205F\u2000\u2001\u2002\u2003\u2004\u2005\u2006\u2007\u2008\u2009\uFEFF\u180E\u2060\u200D\u0090\u200C\u200B\u00AD\u000C\u2028\r\n\t ]*$""".toRegex().matches(path)) { "Path must not be blank" }
     val resource = ClassLoader.getSystemResource(path)?.toURI() ?: throw IllegalStateException("Path [$path] not found.")
 
     return Paths.get(resource)
@@ -56,7 +56,7 @@ public fun testResource(path: String): Path {
  * @throws IllegalStateException If the given [path] is not a regular file.
  */
 public inline fun <reified T> loadTestResource(path: String): T {
-    require(path.isNotBlank()) { "Path must not be blank" }
+    require(!"""^[\u00A0\u202F\u200A\u205F\u2000\u2001\u2002\u2003\u2004\u2005\u2006\u2007\u2008\u2009\uFEFF\u180E\u2060\u200D\u0090\u200C\u200B\u00AD\u000C\u2028\r\n\t ]*$""".toRegex().matches(path)) { "Path must not be blank" }
 
     val file = testResource(path)
     check(Files.exists(file) and Files.isRegularFile(file)) { "[$path] either not exists or is not a file." }

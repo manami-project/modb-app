@@ -1,13 +1,10 @@
 package io.github.manamiproject.modb.core.json
 
 import com.squareup.moshi.JsonDataException
-import io.github.manamiproject.modb.core.anime.Anime
-import io.github.manamiproject.modb.core.anime.AnimeRaw
-import io.github.manamiproject.modb.core.anime.AnimeSeason
+import io.github.manamiproject.modb.core.anime.*
 import io.github.manamiproject.modb.core.anime.AnimeSeason.Season.SUMMER
 import io.github.manamiproject.modb.core.anime.AnimeStatus.FINISHED
 import io.github.manamiproject.modb.core.anime.AnimeType.TV
-import io.github.manamiproject.modb.core.anime.Duration
 import io.github.manamiproject.modb.core.anime.Duration.TimeUnit.MINUTES
 import io.github.manamiproject.modb.core.json.Json.SerializationOptions.DEACTIVATE_PRETTY_PRINT
 import io.github.manamiproject.modb.core.json.Json.SerializationOptions.DEACTIVATE_SERIALIZE_NULL
@@ -17,8 +14,6 @@ import io.github.manamiproject.modb.test.testResource
 import kotlinx.coroutines.runBlocking
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Nested
-import org.junit.jupiter.params.ParameterizedTest
-import org.junit.jupiter.params.provider.ValueSource
 import java.net.URI
 import kotlin.io.path.inputStream
 import kotlin.test.Test
@@ -62,7 +57,15 @@ internal class JsonKtTest {
                             "comedy",
                             "romance",
                         ),
-                    )
+                    ).apply {
+                        addScores(
+                            MetaDataProviderScoreValue(
+                                hostname = "myanimelist.net",
+                                value = 7.77,
+                                originalRange = 1.0..10.0,
+                            ),
+                        )
+                    }
 
                     val inputStream = testResource("JsonKtTest/animeraw_all_properties_set.json").inputStream()
 
@@ -104,9 +107,16 @@ internal class JsonKtTest {
                         _tags = hashSetOf(
                             "comedy",
                             "romance",
-
+                        ),
+                    ).apply {
+                        addScores(
+                            MetaDataProviderScoreValue(
+                                hostname = "myanimelist.net",
+                                value = 7.77,
+                                originalRange = 1.0..10.0,
                             ),
-                    )
+                        )
+                    }
 
                     val json = loadTestResource<String>("JsonKtTest/animeraw_all_properties_set.json")
 
@@ -118,8 +128,7 @@ internal class JsonKtTest {
                 }
             }
 
-            @ParameterizedTest
-            @ValueSource(strings = ["animeraw_default_values", "animeraw_default_serialized_nullables.json", "animeraw_default_missing_nullables.json"])
+            @Test
             fun `deserialize AnimeRaw - default properties`() {
                 runBlocking {
                     // given
@@ -161,6 +170,11 @@ internal class JsonKtTest {
                         picture = URI("https://cdn.myanimelist.net/images/anime/10/19621.jpg"),
                         thumbnail = URI("https://cdn.myanimelist.net/images/anime/10/19621t.jpg"),
                         duration = Duration(24, MINUTES),
+                        score = ScoreValue(
+                            arithmeticGeometricMean = 1.29,
+                            arithmeticMean = 2.38,
+                            median = 3.47,
+                        ),
                         synonyms = hashSetOf(
                             "Clannad ~After Story~: Another World, Kyou Chapter",
                             "Clannad: After Story OVA",
@@ -204,6 +218,11 @@ internal class JsonKtTest {
                         picture = URI("https://cdn.myanimelist.net/images/anime/10/19621.jpg"),
                         thumbnail = URI("https://cdn.myanimelist.net/images/anime/10/19621t.jpg"),
                         duration = Duration(24, MINUTES),
+                        score = ScoreValue(
+                            arithmeticGeometricMean = 1.29,
+                            arithmeticMean = 2.38,
+                            median = 3.47,
+                        ),
                         synonyms = hashSetOf(
                             "Clannad ~After Story~: Another World, Kyou Chapter",
                             "Clannad: After Story OVA",
@@ -212,8 +231,7 @@ internal class JsonKtTest {
                         tags = hashSetOf(
                             "comedy",
                             "romance",
-
-                            ),
+                        ),
                     )
 
                     val json = loadTestResource<String>("JsonKtTest/anime_all_properties_set.json")
@@ -226,8 +244,7 @@ internal class JsonKtTest {
                 }
             }
 
-            @ParameterizedTest
-            @ValueSource(strings = ["anime_default_values", "anime_default_serialized_nullables.json", "anime_default_missing_nullables.json"])
+            @Test
             fun `deserialize Anime - default properties`() {
                 runBlocking {
                     // given
@@ -393,7 +410,15 @@ internal class JsonKtTest {
                                 "ensemble cast",
                                 "drama",
                             ),
-                        )
+                        ).apply {
+                            addScores(
+                                MetaDataProviderScoreValue(
+                                    hostname = "myanimelist.net",
+                                    value = 7.77,
+                                    originalRange = 1.0..10.0,
+                                ),
+                            )
+                        }
 
                         val expectedJson = """
                         {
@@ -420,6 +445,16 @@ internal class JsonKtTest {
                             "value": 1440,
                             "unit": "SECONDS"
                           },
+                          "scores": [
+                            {
+                              "hostname": "myanimelist.net",
+                              "value": 7.77,
+                              "range": {
+                                "minInclusive": 1.0,
+                                "maxInclusive": 10.0
+                              }
+                            }
+                          ],
                           "synonyms": [
                             "CLANNAD",
                             "Clannad (TV)",
@@ -502,6 +537,7 @@ internal class JsonKtTest {
                           "picture": "https://raw.githubusercontent.com/manami-project/anime-offline-database/master/pics/no_pic.png",
                           "thumbnail": "https://raw.githubusercontent.com/manami-project/anime-offline-database/master/pics/no_pic_thumbnail.png",
                           "duration": null,
+                          "scores": [],
                           "synonyms": [],
                           "relatedAnime": [],
                           "tags": []
@@ -564,6 +600,11 @@ internal class JsonKtTest {
                             picture = URI("https://cdn.myanimelist.net/images/anime/10/19621.jpg"),
                             thumbnail = URI("https://cdn.myanimelist.net/images/anime/10/19621t.jpg"),
                             duration = Duration(24, MINUTES),
+                            score = ScoreValue(
+                                arithmeticGeometricMean = 1.29,
+                                arithmeticMean = 2.38,
+                                median = 3.47,
+                            ),
                             synonyms = hashSetOf(
                                 "Clannad (TV)",
                                 "Kuranado",
@@ -622,6 +663,11 @@ internal class JsonKtTest {
                           "duration": {
                             "value": 1440,
                             "unit": "SECONDS"
+                          },
+                          "score": {
+                            "arithmeticGeometricMean": 1.29,
+                            "arithmeticMean": 2.38,
+                            "median": 3.47
                           },
                           "synonyms": [
                             "CLANNAD",
@@ -705,6 +751,7 @@ internal class JsonKtTest {
                           "picture": "https://raw.githubusercontent.com/manami-project/anime-offline-database/master/pics/no_pic.png",
                           "thumbnail": "https://raw.githubusercontent.com/manami-project/anime-offline-database/master/pics/no_pic_thumbnail.png",
                           "duration": null,
+                          "score": null,
                           "synonyms": [],
                           "relatedAnime": [],
                           "tags": []
@@ -777,9 +824,17 @@ internal class JsonKtTest {
                                 "comedy",
                                 "romance",
                             ),
-                        )
+                        ).apply {
+                            addScores(
+                                MetaDataProviderScoreValue(
+                                    hostname = "myanimelist.net",
+                                    value = 7.77,
+                                    originalRange = 1.0..10.0,
+                                ),
+                            )
+                        }
 
-                        val expectedJson = """{"sources":["https://myanimelist.net/anime/6351"],"title":"Clannad: After Story - Mou Hitotsu no Sekai, Kyou-hen","type":"TV","episodes":24,"status":"FINISHED","animeSeason":{"season":"SUMMER","year":2009},"picture":"https://cdn.myanimelist.net/images/anime/10/19621.jpg","thumbnail":"https://cdn.myanimelist.net/images/anime/10/19621t.jpg","duration":{"value":1440,"unit":"SECONDS"},"synonyms":["Clannad ~After Story~: Another World, Kyou Chapter","Clannad: After Story OVA","クラナド　アフターストーリー　もうひとつの世界　杏編"],"relatedAnime":["https://myanimelist.net/anime/2167"],"tags":["comedy","romance"]}""".trimIndent()
+                        val expectedJson = """{"sources":["https://myanimelist.net/anime/6351"],"title":"Clannad: After Story - Mou Hitotsu no Sekai, Kyou-hen","type":"TV","episodes":24,"status":"FINISHED","animeSeason":{"season":"SUMMER","year":2009},"picture":"https://cdn.myanimelist.net/images/anime/10/19621.jpg","thumbnail":"https://cdn.myanimelist.net/images/anime/10/19621t.jpg","duration":{"value":1440,"unit":"SECONDS"},"scores":[{"hostname":"myanimelist.net","value":7.77,"range":{"minInclusive":1.0,"maxInclusive":10.0}}],"synonyms":["Clannad ~After Story~: Another World, Kyou Chapter","Clannad: After Story OVA","クラナド　アフターストーリー　もうひとつの世界　杏編"],"relatedAnime":["https://myanimelist.net/anime/2167"],"tags":["comedy","romance"]}""".trimIndent()
 
                         // when
                         val result = Json.toJson(anime, DEACTIVATE_PRETTY_PRINT)
@@ -813,6 +868,7 @@ internal class JsonKtTest {
                           },
                           "picture": "https://raw.githubusercontent.com/manami-project/anime-offline-database/master/pics/no_pic.png",
                           "thumbnail": "https://raw.githubusercontent.com/manami-project/anime-offline-database/master/pics/no_pic_thumbnail.png",
+                          "scores": [],
                           "synonyms": [],
                           "relatedAnime": [],
                           "tags": []
@@ -853,6 +909,11 @@ internal class JsonKtTest {
                             picture = URI("https://cdn.myanimelist.net/images/anime/10/19621.jpg"),
                             thumbnail = URI("https://cdn.myanimelist.net/images/anime/10/19621t.jpg"),
                             duration = Duration(24, MINUTES),
+                            score = ScoreValue(
+                                arithmeticGeometricMean = 1.29,
+                                arithmeticMean = 2.38,
+                                median = 3.47,
+                            ),
                             synonyms = hashSetOf(
                                 "Clannad ~After Story~: Another World, Kyou Chapter",
                                 "Clannad: After Story OVA",
@@ -864,7 +925,7 @@ internal class JsonKtTest {
                             ),
                         )
 
-                        val expectedJson = """{"sources":["https://myanimelist.net/anime/6351"],"title":"Clannad: After Story - Mou Hitotsu no Sekai, Kyou-hen","type":"TV","episodes":24,"status":"FINISHED","animeSeason":{"season":"SUMMER","year":2009},"picture":"https://cdn.myanimelist.net/images/anime/10/19621.jpg","thumbnail":"https://cdn.myanimelist.net/images/anime/10/19621t.jpg","duration":{"value":1440,"unit":"SECONDS"},"synonyms":["Clannad ~After Story~: Another World, Kyou Chapter","Clannad: After Story OVA","クラナド　アフターストーリー　もうひとつの世界　杏編"],"relatedAnime":["https://myanimelist.net/anime/2167"],"tags":["comedy","romance"]}""".trimIndent()
+                        val expectedJson = """{"sources":["https://myanimelist.net/anime/6351"],"title":"Clannad: After Story - Mou Hitotsu no Sekai, Kyou-hen","type":"TV","episodes":24,"status":"FINISHED","animeSeason":{"season":"SUMMER","year":2009},"picture":"https://cdn.myanimelist.net/images/anime/10/19621.jpg","thumbnail":"https://cdn.myanimelist.net/images/anime/10/19621t.jpg","duration":{"value":1440,"unit":"SECONDS"},"score":{"arithmeticGeometricMean":1.29,"arithmeticMean":2.38,"median":3.47},"synonyms":["Clannad ~After Story~: Another World, Kyou Chapter","Clannad: After Story OVA","クラナド　アフターストーリー　もうひとつの世界　杏編"],"relatedAnime":["https://myanimelist.net/anime/2167"],"tags":["comedy","romance"]}""".trimIndent()
 
                         // when
                         val result = Json.toJson(anime, DEACTIVATE_PRETTY_PRINT)
@@ -884,6 +945,7 @@ internal class JsonKtTest {
                                 season = SUMMER,
                                 year = 0,
                             ),
+                            score = NoScore,
                         )
 
                         val expectedJson = """
@@ -939,6 +1001,11 @@ internal class JsonKtTest {
                         picture = URI("https://cdn.myanimelist.net/images/anime/10/19621.jpg"),
                         thumbnail = URI("https://cdn.myanimelist.net/images/anime/10/19621t.jpg"),
                         duration = Duration(24, MINUTES),
+                        score = ScoreValue(
+                            arithmeticGeometricMean = 1.29,
+                            arithmeticMean = 2.38,
+                            median = 3.47,
+                        ),
                         synonyms = hashSetOf(
                             "Clannad ~After Story~: Another World, Kyou Chapter",
                             "Clannad: After Story OVA",
@@ -968,6 +1035,11 @@ internal class JsonKtTest {
                           "duration": {
                             "value": 1440,
                             "unit": "SECONDS"
+                          },
+                          "score": {
+                            "arithmeticGeometricMean": 1.29,
+                            "arithmeticMean": 2.38,
+                            "median": 3.47
                           },
                           "synonyms": [
                             "Clannad ~After Story~: Another World, Kyou Chapter",
@@ -1014,6 +1086,11 @@ internal class JsonKtTest {
                         picture = URI("https://cdn.myanimelist.net/images/anime/10/19621.jpg"),
                         thumbnail = URI("https://cdn.myanimelist.net/images/anime/10/19621t.jpg"),
                         duration = Duration(24, MINUTES),
+                        score = ScoreValue(
+                            arithmeticGeometricMean = 1.29,
+                            arithmeticMean = 2.38,
+                            median = 3.47,
+                        ),
                         synonyms = hashSetOf(
                             "Clannad ~After Story~: Another World, Kyou Chapter",
                             "Clannad: After Story OVA",
@@ -1025,7 +1102,7 @@ internal class JsonKtTest {
                         ),
                     )
 
-                    val expectedJson = """{"sources":["https://myanimelist.net/anime/6351"],"title":"Clannad: After Story - Mou Hitotsu no Sekai, Kyou-hen","type":"TV","episodes":24,"status":"FINISHED","animeSeason":{"season":"SUMMER","year":2009},"picture":"https://cdn.myanimelist.net/images/anime/10/19621.jpg","thumbnail":"https://cdn.myanimelist.net/images/anime/10/19621t.jpg","duration":{"value":1440,"unit":"SECONDS"},"synonyms":["Clannad ~After Story~: Another World, Kyou Chapter","Clannad: After Story OVA","クラナド　アフターストーリー　もうひとつの世界　杏編"],"relatedAnime":["https://myanimelist.net/anime/2167"],"tags":["comedy","romance"]}""".trimIndent()
+                    val expectedJson = """{"sources":["https://myanimelist.net/anime/6351"],"title":"Clannad: After Story - Mou Hitotsu no Sekai, Kyou-hen","type":"TV","episodes":24,"status":"FINISHED","animeSeason":{"season":"SUMMER","year":2009},"picture":"https://cdn.myanimelist.net/images/anime/10/19621.jpg","thumbnail":"https://cdn.myanimelist.net/images/anime/10/19621t.jpg","duration":{"value":1440,"unit":"SECONDS"},"score":{"arithmeticGeometricMean":1.29,"arithmeticMean":2.38,"median":3.47},"synonyms":["Clannad ~After Story~: Another World, Kyou Chapter","Clannad: After Story OVA","クラナド　アフターストーリー　もうひとつの世界　杏編"],"relatedAnime":["https://myanimelist.net/anime/2167"],"tags":["comedy","romance"]}""".trimIndent()
 
                     // when
                     val result = Json.toJson(anime, DEACTIVATE_PRETTY_PRINT)
@@ -1066,7 +1143,15 @@ internal class JsonKtTest {
                             "comedy",
                             "romance",
                         ),
-                    )
+                    ).apply {
+                        addScores(
+                            MetaDataProviderScoreValue(
+                                hostname = "myanimelist.net",
+                                value = 7.77,
+                                originalRange = 1.0..10.0,
+                            ),
+                        )
+                    }
 
                     val expectedJson = """
                         {
@@ -1087,6 +1172,16 @@ internal class JsonKtTest {
                             "value": 1440,
                             "unit": "SECONDS"
                           },
+                          "scores": [
+                            {
+                              "hostname": "myanimelist.net",
+                              "value": 7.77,
+                              "range": {
+                                "minInclusive": 1.0,
+                                "maxInclusive": 10.0
+                              }
+                            }
+                          ],
                           "synonyms": [
                             "Clannad ~After Story~: Another World, Kyou Chapter",
                             "Clannad: After Story OVA",

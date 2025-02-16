@@ -60,20 +60,21 @@ Here is a description of the types in the JSON files.
 
 ### Anime
 
-| Field        | Type                                              | Nullable | Description                                                                       |
-|--------------|---------------------------------------------------|----------|-----------------------------------------------------------------------------------|
-| sources      | `URL[]`                                           | no       | URLs to the pages of the meta data providers for this anime.                      |
-| title        | `String`                                          | no       | Main title.                                                                       |
-| type         | `Enum of [TV, MOVIE, OVA, ONA, SPECIAL, UNKNOWN]` | no       | Distribution type.                                                                |
-| episodes     | `Integer`                                         | no       | Number of episodes, movies or parts.                                              |
-| status       | `Enum of [FINISHED, ONGOING, UPCOMING, UNKNOWN]`  | no       | Status of distribution.                                                           |
-| animeSeason  | [AnimeSeason](#animeseason)                       | no       | Data on when the anime was first distributed.                                     |
-| picture      | `URL`                                             | no       | URL of a picture which represents the anime.                                      |
-| thumbnail    | `URL`                                             | no       | URL of a smaller version of the picture.                                          |
-| duration     | [Duration](#duration)                             | yes      | Duration. Normally this is per episode.                                           |
-| synonyms     | `String[]`                                        | no       | Alternative titles and spellings under which the anime is also known.             |
-| relatedAnime | `URL[]`                                           | no       | URLs to the meta data providers for anime that are somehow related to this anime. |
-| tags         | `String[]`                                        | no       | A non-curated list of tags and genres which describe the anime.                   |
+| Field        | Type                                              | Nullable | Description                                                                                                      |
+|--------------|---------------------------------------------------|----------|------------------------------------------------------------------------------------------------------------------|
+| sources      | `URL[]`                                           | no       | URLs to the pages of the meta data providers for this anime.                                                     |
+| title        | `String`                                          | no       | Main title.                                                                                                      |
+| type         | `Enum of [TV, MOVIE, OVA, ONA, SPECIAL, UNKNOWN]` | no       | Distribution type.                                                                                               |
+| episodes     | `Integer`                                         | no       | Number of episodes, movies or parts.                                                                             |
+| status       | `Enum of [FINISHED, ONGOING, UPCOMING, UNKNOWN]`  | no       | Status of distribution.                                                                                          |
+| animeSeason  | [AnimeSeason](#animeseason)                       | no       | Data on when the anime was first distributed.                                                                    |
+| picture      | `URL`                                             | no       | URL of a picture which represents the anime.                                                                     |
+| thumbnail    | `URL`                                             | no       | URL of a smaller version of the picture.                                                                         |
+| duration     | [Duration](#duration)                             | yes      | Duration. Normally this is per episode.                                                                          |
+| score        | [Score](#score)                                   | yes      | Score calculated using all available scores from meta data providers. Original scores are rescaled if necessary. |
+| synonyms     | `String[]`                                        | no       | Alternative titles and spellings under which the anime is also known.                                            |
+| relatedAnime | `URL[]`                                           | no       | URLs to the meta data providers for anime that are somehow related to this anime.                                |
+| tags         | `String[]`                                        | no       | A non-curated list of tags and genres which describe the anime.                                                  |
 
 ### AnimeSeason
 
@@ -88,6 +89,14 @@ Here is a description of the types in the JSON files.
 |--------|-----------|----------|-------------------------------------------------------|
 | value  | `Integer` | no       | Duration in seconds.                                  |
 | unit   | `String`  | no       | For (de)serialization this value is always `SECONDS`. |
+
+### Score
+
+| Field                   | Type     | Nullable | Description                                                                             |
+|-------------------------|----------|----------|-----------------------------------------------------------------------------------------|
+| arithmeticGeometricMean | `Double` | no       | Arithmetic–geometric mean based on all available scores from all meta data providers. |
+| arithmeticMean          | `Double` | no       | Arithmetic mean based on all available scores from all meta data providers.           |
+| median                  | `Double` | no       | Median based on all available scores from all meta data providers.                    |
 
 ### DeadEntries root
 

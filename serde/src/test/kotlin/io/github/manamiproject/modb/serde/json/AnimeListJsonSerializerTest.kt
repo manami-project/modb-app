@@ -7,6 +7,7 @@ import io.github.manamiproject.modb.core.anime.AnimeStatus.FINISHED
 import io.github.manamiproject.modb.core.anime.AnimeType.*
 import io.github.manamiproject.modb.core.anime.Duration
 import io.github.manamiproject.modb.core.anime.Duration.TimeUnit.HOURS
+import io.github.manamiproject.modb.core.anime.ScoreValue
 import kotlinx.coroutines.runBlocking
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Nested
@@ -47,6 +48,7 @@ internal class AnimeListJsonSerializerTest {
                           "picture": "https://raw.githubusercontent.com/manami-project/anime-offline-database/master/pics/no_pic.png",
                           "thumbnail": "https://raw.githubusercontent.com/manami-project/anime-offline-database/master/pics/no_pic_thumbnail.png",
                           "duration": null,
+                          "score": null,
                           "synonyms": [],
                           "relatedAnime": [],
                           "tags": []
@@ -127,6 +129,11 @@ internal class AnimeListJsonSerializerTest {
                             "value": 3600,
                             "unit": "SECONDS"
                           },
+                          "score": {
+                            "arithmeticGeometricMean": 1.29,
+                            "arithmeticMean": 2.38,
+                            "median": 3.47
+                          },
                           "synonyms": [
                             "Clannad ~After Story~: Another World, Kyou Chapter",
                             "Clannad: After Story OVA",
@@ -170,6 +177,11 @@ internal class AnimeListJsonSerializerTest {
                         duration = Duration(
                             value = 1,
                             unit = HOURS,
+                        ),
+                        score = ScoreValue(
+                            arithmeticGeometricMean = 1.29,
+                            arithmeticMean = 2.38,
+                            median = 3.47,
                         ),
                         relatedAnime = hashSetOf(
                             URI("https://myanimelist.net/anime/2167"),
@@ -228,6 +240,7 @@ internal class AnimeListJsonSerializerTest {
                           "picture": "https://raw.githubusercontent.com/manami-project/anime-offline-database/master/pics/no_pic.png",
                           "thumbnail": "https://raw.githubusercontent.com/manami-project/anime-offline-database/master/pics/no_pic_thumbnail.png",
                           "duration": null,
+                          "score": null,
                           "synonyms": [],
                           "relatedAnime": [],
                           "tags": []
@@ -245,6 +258,7 @@ internal class AnimeListJsonSerializerTest {
                           "picture": "https://raw.githubusercontent.com/manami-project/anime-offline-database/master/pics/no_pic.png",
                           "thumbnail": "https://raw.githubusercontent.com/manami-project/anime-offline-database/master/pics/no_pic_thumbnail.png",
                           "duration": null,
+                          "score": null,
                           "synonyms": [],
                           "relatedAnime": [],
                           "tags": []
@@ -262,6 +276,7 @@ internal class AnimeListJsonSerializerTest {
                           "picture": "https://raw.githubusercontent.com/manami-project/anime-offline-database/master/pics/no_pic.png",
                           "thumbnail": "https://raw.githubusercontent.com/manami-project/anime-offline-database/master/pics/no_pic_thumbnail.png",
                           "duration": null,
+                          "score": null,
                           "synonyms": [],
                           "relatedAnime": [],
                           "tags": []
@@ -313,6 +328,7 @@ internal class AnimeListJsonSerializerTest {
                           "picture": "https://raw.githubusercontent.com/manami-project/anime-offline-database/master/pics/no_pic.png",
                           "thumbnail": "https://raw.githubusercontent.com/manami-project/anime-offline-database/master/pics/no_pic_thumbnail.png",
                           "duration": null,
+                          "score": null,
                           "synonyms": [],
                           "relatedAnime": [],
                           "tags": []
@@ -330,6 +346,7 @@ internal class AnimeListJsonSerializerTest {
                           "picture": "https://raw.githubusercontent.com/manami-project/anime-offline-database/master/pics/no_pic.png",
                           "thumbnail": "https://raw.githubusercontent.com/manami-project/anime-offline-database/master/pics/no_pic_thumbnail.png",
                           "duration": null,
+                          "score": null,
                           "synonyms": [],
                           "relatedAnime": [],
                           "tags": []
@@ -347,6 +364,7 @@ internal class AnimeListJsonSerializerTest {
                           "picture": "https://raw.githubusercontent.com/manami-project/anime-offline-database/master/pics/no_pic.png",
                           "thumbnail": "https://raw.githubusercontent.com/manami-project/anime-offline-database/master/pics/no_pic_thumbnail.png",
                           "duration": null,
+                          "score": null,
                           "synonyms": [],
                           "relatedAnime": [],
                           "tags": []
@@ -407,6 +425,7 @@ internal class AnimeListJsonSerializerTest {
                           "picture": "https://raw.githubusercontent.com/manami-project/anime-offline-database/master/pics/no_pic.png",
                           "thumbnail": "https://raw.githubusercontent.com/manami-project/anime-offline-database/master/pics/no_pic_thumbnail.png",
                           "duration": null,
+                          "score": null,
                           "synonyms": [],
                           "relatedAnime": [],
                           "tags": []
@@ -424,6 +443,7 @@ internal class AnimeListJsonSerializerTest {
                           "picture": "https://raw.githubusercontent.com/manami-project/anime-offline-database/master/pics/no_pic.png",
                           "thumbnail": "https://raw.githubusercontent.com/manami-project/anime-offline-database/master/pics/no_pic_thumbnail.png",
                           "duration": null,
+                          "score": null,
                           "synonyms": [],
                           "relatedAnime": [],
                           "tags": []
@@ -441,6 +461,7 @@ internal class AnimeListJsonSerializerTest {
                           "picture": "https://raw.githubusercontent.com/manami-project/anime-offline-database/master/pics/no_pic.png",
                           "thumbnail": "https://raw.githubusercontent.com/manami-project/anime-offline-database/master/pics/no_pic_thumbnail.png",
                           "duration": null,
+                          "score": null,
                           "synonyms": [],
                           "relatedAnime": [],
                           "tags": []

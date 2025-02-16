@@ -19,3 +19,13 @@ include("notify")
 include("serde")
 include("simkl")
 include("test")
+
+val maxParallelForks = if (System.getenv("CI") == "true") {
+    2
+} else {
+    (Runtime.getRuntime().availableProcessors() / 2).coerceAtLeast(2)
+}
+
+gradle.projectsLoaded {
+    rootProject.extra.set("maxParallelForks", maxParallelForks)
+}

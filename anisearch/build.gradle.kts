@@ -43,7 +43,7 @@ tasks.withType<Test> {
     useJUnitPlatform()
     reports.html.required.set(false)
     reports.junitXml.required.set(true)
-    maxParallelForks = Runtime.getRuntime().availableProcessors()
+    maxParallelForks = rootProject.extra["maxParallelForks"] as Int
 }
 
 val sourcesJar by tasks.registering(Jar::class) {

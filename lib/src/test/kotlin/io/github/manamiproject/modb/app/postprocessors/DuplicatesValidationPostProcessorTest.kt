@@ -86,6 +86,7 @@ internal class DuplicatesValidationPostProcessorTest {
               picture = https://raw.githubusercontent.com/manami-project/anime-offline-database/master/pics/no_pic.png
               thumbnail = https://raw.githubusercontent.com/manami-project/anime-offline-database/master/pics/no_pic_thumbnail.png
               duration = 0 seconds
+              scores = []
               synonyms = []
               relatedAnime = []
               tags = []
@@ -136,6 +137,7 @@ internal class DuplicatesValidationPostProcessorTest {
               picture = https://raw.githubusercontent.com/manami-project/anime-offline-database/master/pics/no_pic.png
               thumbnail = https://raw.githubusercontent.com/manami-project/anime-offline-database/master/pics/no_pic_thumbnail.png
               duration = 0 seconds
+              scores = []
               synonyms = []
               relatedAnime = []
               tags = []
@@ -235,6 +237,7 @@ internal class DuplicatesValidationPostProcessorTest {
               picture = https://raw.githubusercontent.com/manami-project/anime-offline-database/master/pics/no_pic.png
               thumbnail = https://raw.githubusercontent.com/manami-project/anime-offline-database/master/pics/no_pic_thumbnail.png
               duration = 0 seconds
+              score = NoScore
               synonyms = []
               relatedAnime = []
               tags = []

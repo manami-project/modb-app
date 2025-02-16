@@ -38,6 +38,11 @@ internal class AnimeAdapterTest {
                 picture = URI("https://cdn.myanimelist.net/images/anime/10/19621.jpg"),
                 thumbnail = URI("https://cdn.myanimelist.net/images/anime/10/19621t.jpg"),
                 duration = Duration(24, MINUTES),
+                score = ScoreValue(
+                    arithmeticGeometricMean = 1.29,
+                    arithmeticMean = 2.38,
+                    median = 3.47,
+                ),
                 synonyms = hashSetOf(
                     "Clannad ~After Story~: Another World, Kyou Chapter",
                     "Clannad: After Story OVA",
@@ -74,6 +79,11 @@ internal class AnimeAdapterTest {
                   "duration": {
                     "value": 1440,
                     "unit": "SECONDS"
+                  },
+                  "score": {
+                    "arithmeticGeometricMean": 1.29,
+                    "arithmeticMean": 2.38,
+                    "median": 3.47
                   },
                   "relatedAnime": [
                     "https://myanimelist.net/anime/2167"
@@ -1106,6 +1116,99 @@ internal class AnimeAdapterTest {
         }
 
         @Test
+        fun `returns anime with NoScore if score property is null`() {
+            // given
+            val adapter = AnimeAdapter()
+
+            // when
+            val result = adapter.fromJson(
+                """
+                {
+                  "title": "Clannad: After Story - Mou Hitotsu no Sekai, Kyou-hen",
+                  "sources": [
+                    "https://myanimelist.net/anime/6351"
+                  ],
+                  "synonyms": [
+                    "Clannad ~After Story~: Another World, Kyou Chapter",
+                    "Clannad: After Story OVA",
+                    "クラナド　アフターストーリー　もうひとつの世界　杏編"
+                  ],
+                  "type": "TV",
+                  "episodes": 24,
+                  "status": "FINISHED",
+                  "animeSeason": {
+                    "season": "SUMMER",
+                    "year": 2009
+                  },
+                  "picture": "https://cdn.myanimelist.net/images/anime/10/19621.jpg",
+                  "thumbnail": "https://cdn.myanimelist.net/images/anime/10/19621t.jpg",
+                  "duration": {
+                    "value": 1440,
+                    "unit": "SECONDS"
+                  },
+                  "score": null,
+                  "relatedAnime": [
+                    "https://myanimelist.net/anime/2167"
+                  ],
+                  "tags": [
+                    "comedy",
+                    "romance"
+                  ]
+                }
+            """.trimIndent()
+            )!!
+
+            // then
+            assertThat(result.score).isEqualTo(NoScore)
+        }
+
+        @Test
+        fun `returns anime with NoScore if score property is missing`() {
+            // given
+            val adapter = AnimeAdapter()
+
+            // when
+            val result = adapter.fromJson(
+                """
+                {
+                  "title": "Clannad: After Story - Mou Hitotsu no Sekai, Kyou-hen",
+                  "sources": [
+                    "https://myanimelist.net/anime/6351"
+                  ],
+                  "synonyms": [
+                    "Clannad ~After Story~: Another World, Kyou Chapter",
+                    "Clannad: After Story OVA",
+                    "クラナド　アフターストーリー　もうひとつの世界　杏編"
+                  ],
+                  "type": "TV",
+                  "episodes": 24,
+                  "status": "FINISHED",
+                  "animeSeason": {
+                    "season": "SUMMER",
+                    "year": 2009
+                  },
+                  "picture": "https://cdn.myanimelist.net/images/anime/10/19621.jpg",
+                  "thumbnail": "https://cdn.myanimelist.net/images/anime/10/19621t.jpg",
+                  "duration": {
+                    "value": 1440,
+                    "unit": "SECONDS"
+                  },
+                  "relatedAnime": [
+                    "https://myanimelist.net/anime/2167"
+                  ],
+                  "tags": [
+                    "comedy",
+                    "romance"
+                  ]
+                }
+            """.trimIndent()
+            )!!
+
+            // then
+            assertThat(result.score).isEqualTo(NoScore)
+        }
+
+        @Test
         fun `throws exception if relatedAnime is null`() {
             // given
             val adapter = AnimeAdapter()
@@ -1307,6 +1410,11 @@ internal class AnimeAdapterTest {
                 picture = URI("https://cdn.myanimelist.net/images/anime/10/19621.jpg"),
                 thumbnail = URI("https://cdn.myanimelist.net/images/anime/10/19621t.jpg"),
                 duration = Duration(24, MINUTES),
+                score = ScoreValue(
+                    arithmeticGeometricMean = 1.29,
+                    arithmeticMean = 2.38,
+                    median = 3.47,
+                ),
                 synonyms = hashSetOf(
                     "Clannad ~After Story~: Another World, Kyou Chapter",
                     "Clannad: After Story OVA",
@@ -1341,6 +1449,11 @@ internal class AnimeAdapterTest {
                   "duration": {
                     "value": 1440,
                     "unit": "SECONDS"
+                  },
+                  "score": {
+                    "arithmeticGeometricMean": 1.29,
+                    "arithmeticMean": 2.38,
+                    "median": 3.47
                   },
                   "synonyms": [
                     "Clannad ~After Story~: Another World, Kyou Chapter",
@@ -1377,6 +1490,7 @@ internal class AnimeAdapterTest {
                 picture = URI("https://cdn.myanimelist.net/images/anime/10/19621.jpg"),
                 thumbnail = URI("https://cdn.myanimelist.net/images/anime/10/19621t.jpg"),
                 duration = UNKNOWN_DURATION,
+                score = NoScore,
                 synonyms = hashSetOf(
                     "Clannad ~After Story~: Another World, Kyou Chapter",
                     "Clannad: After Story OVA",
@@ -1409,6 +1523,7 @@ internal class AnimeAdapterTest {
                   "picture": "https://cdn.myanimelist.net/images/anime/10/19621.jpg",
                   "thumbnail": "https://cdn.myanimelist.net/images/anime/10/19621t.jpg",
                   "duration": null,
+                  "score": null,
                   "synonyms": [
                     "Clannad ~After Story~: Another World, Kyou Chapter",
                     "Clannad: After Story OVA",

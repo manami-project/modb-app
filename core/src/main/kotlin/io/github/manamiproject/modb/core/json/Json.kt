@@ -32,6 +32,8 @@ public object Json {
         .addAdapter(AnimeSeasonAdapter())
         .addAdapter(AnimeRawAdapter())
         .addAdapter(AnimeAdapter())
+        .addAdapter(ScoreAdapter())
+        .addAdapter(MetaDataProviderScoreValueAdapter())
         .addLast(KotlinJsonAdapterFactory())
         .build()
 

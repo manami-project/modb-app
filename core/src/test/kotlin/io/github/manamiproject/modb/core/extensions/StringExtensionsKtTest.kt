@@ -33,7 +33,37 @@ internal class StringExtensionsKtTest {
         }
 
         @ParameterizedTest
-        @ValueSource(strings = ["", " ", "    "])
+        @ValueSource(strings = [
+            "",
+            "   ",
+            "\u00A0",
+            "\u202F",
+            "\u200A",
+            "\u205F",
+            "\u2000",
+            "\u2001",
+            "\u2002",
+            "\u2003",
+            "\u2004",
+            "\u2005",
+            "\u2006",
+            "\u2007",
+            "\u2008",
+            "\u2009",
+            "\uFEFF",
+            "\u180E",
+            "\u2060",
+            "\u200D",
+            "\u0090",
+            "\u200C",
+            "\u200B",
+            "\u00AD",
+            "\u000C",
+            "\u2028",
+            "\r",
+            "\n",
+            "\t",
+        ])
         fun `throws exception if the string is empty`(value: String) {
             tempDirectory {
                 // given
@@ -438,7 +468,37 @@ internal class StringExtensionsKtTest {
         }
 
         @ParameterizedTest
-        @ValueSource(strings = ["\u00A0", "\u202F", "\uFEFF", "\u2007", "\u180E", "\u2060", "\u200D", "\u200C", "\r", "\n", "\t", " "])
+        @ValueSource(strings = [
+            "",
+            "   ",
+            "\u00A0",
+            "\u202F",
+            "\u200A",
+            "\u205F",
+            "\u2000",
+            "\u2001",
+            "\u2002",
+            "\u2003",
+            "\u2004",
+            "\u2005",
+            "\u2006",
+            "\u2007",
+            "\u2008",
+            "\u2009",
+            "\uFEFF",
+            "\u180E",
+            "\u2060",
+            "\u200D",
+            "\u0090",
+            "\u200C",
+            "\u200B",
+            "\u00AD",
+            "\u000C",
+            "\u2028",
+            "\r",
+            "\n",
+            "\t",
+        ])
         fun `returns false if string only contains types of whitespaces or new lines or tabs`(input: String) {
             // given
             val value = "$input$input"
