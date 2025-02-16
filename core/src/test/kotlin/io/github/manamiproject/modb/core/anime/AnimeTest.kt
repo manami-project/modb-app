@@ -80,6 +80,7 @@ internal class AnimeTest {
             assertThat(result.picture).isEqualTo(NO_PICTURE)
             assertThat(result.thumbnail).isEqualTo(NO_PICTURE_THUMBNAIL)
             assertThat(result.duration).isEqualTo(UNKNOWN_DURATION)
+            assertThat(result.score).isEqualTo(NoScore)
             assertThat(result.sources).isEmpty()
             assertThat(result.synonyms).isEmpty()
             assertThat(result.relatedAnime).isEmpty()
@@ -111,6 +112,11 @@ internal class AnimeTest {
                 picture = URI("https://cdn.myanimelist.net/images/anime/10/19621.jpg"),
                 thumbnail = URI("https://cdn.myanimelist.net/images/anime/10/19621t.jpg"),
                 duration = Duration(2, MINUTES),
+                score = ScoreValue(
+                    arithmeticGeometricMean = 1.29,
+                    arithmeticMean = 2.38,
+                    median = 3.47,
+                ),
                 synonyms = hashSetOf(
                     "Clannad ~After Story~: Another World, Kyou Chapter",
                     "Clannad: After Story OVA",
@@ -142,6 +148,7 @@ internal class AnimeTest {
                       picture = https://cdn.myanimelist.net/images/anime/10/19621.jpg
                       thumbnail = https://cdn.myanimelist.net/images/anime/10/19621t.jpg
                       duration = 120 seconds
+                      score = ScoreValue(arithmeticGeometricMean=1.29, arithmeticMean=2.38, median=3.47)
                       synonyms = [Clannad ~After Story~: Another World, Kyou Chapter, Clannad: After Story OVA, クラナド　アフターストーリー　もうひとつの世界　杏編]
                       relatedAnime = [https://myanimelist.net/anime/2167]
                       tags = [comedy, drama, romance, school, slice of life, supernatural]

@@ -26,6 +26,16 @@
       "value": 1440,
       "unit": "SECONDS"
     },
+    "scores": [
+      {
+        "hostname": "kitsu.app",
+        "value": 77.8,
+        "range": {
+          "minInclusive": 1.0,
+          "maxInclusive": 100.0
+        }
+      }
+    ],
     "synonyms": [
       "Furuba",
       "フルーツバスケット"

@@ -9,6 +9,16 @@
     "value": 24,
     "unit": "MINUTES"
   },
+  "scores": [
+    {
+      "hostname": "myanimelist.net",
+      "value": 7.77,
+      "range": {
+        "minInclusive": 1.0,
+        "maxInclusive": 10.0
+      }
+    }
+  ],
   "animeSeason": {
     "season": "SUMMER",
     "year": 2009

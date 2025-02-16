@@ -66,7 +66,7 @@ internal class UriAdapterTest {
             }
 
             // then
-            assertThat(result).hasMessage("UriAdapter is non-nullable, but received null.")
+            assertThat(result).hasMessage("UriAdapter expects non-nullable value, but received null.")
         }
     }
 }

@@ -3,6 +3,7 @@ package io.github.manamiproject.modb.core.json
 import com.squareup.moshi.JsonDataException
 import io.github.manamiproject.modb.core.extensions.EMPTY
 import io.github.manamiproject.modb.core.anime.Duration
+import io.github.manamiproject.modb.core.anime.Duration.Companion.UNKNOWN
 import io.github.manamiproject.modb.core.anime.Duration.TimeUnit.MINUTES
 import io.github.manamiproject.modb.test.exceptionExpected
 import org.assertj.core.api.Assertions.assertThat
@@ -91,7 +92,7 @@ internal class DurationAdapterTest {
             val result = adapter.fromJson("""null""")
 
             // then
-            assertThat(result).isEqualTo(Duration.UNKNOWN)
+            assertThat(result).isEqualTo(UNKNOWN)
         }
     }
 
@@ -122,14 +123,14 @@ internal class DurationAdapterTest {
             }
 
             // then
-            assertThat(result).hasMessage("DurationAdapter is non-nullable, but received null.")
+            assertThat(result).hasMessage("DurationAdapter expects non-nullable value, but received null.")
         }
 
         @Test
         fun `correctly serialize unknown value`() {
             // given
             val adapter = DurationAdapter()
-            val obj = Duration.UNKNOWN
+            val obj = UNKNOWN
 
             // when
             val result = adapter.toJson(obj)

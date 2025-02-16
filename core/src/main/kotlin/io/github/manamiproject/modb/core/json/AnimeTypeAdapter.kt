@@ -10,7 +10,7 @@ internal class AnimeTypeAdapter: JsonAdapter<AnimeType>() {
     override fun fromJson(reader: JsonReader): AnimeType = AnimeType.valueOf(reader.nextString())
 
     override fun toJson(writer: JsonWriter, value: AnimeType?) {
-        requireNotNull(value) { "AnimeTypeAdapter is non-nullable, but received null." }
+        requireNotNull(value) { "AnimeTypeAdapter expects non-nullable value, but received null." }
         writer.value(value.toString())
     }
 }

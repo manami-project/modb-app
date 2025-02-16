@@ -65,7 +65,7 @@ internal class TagAdapterTest {
             }
 
             // then
-            assertThat(result).hasMessage("TagAdapter is non-nullable, but received null.")
+            assertThat(result).hasMessage("TagAdapter expects non-nullable value, but received null.")
         }
     }
 }

@@ -3,6 +3,7 @@ package io.github.manamiproject.modb.core.json
 import com.squareup.moshi.JsonDataException
 import io.github.manamiproject.modb.core.anime.AnimeSeason
 import io.github.manamiproject.modb.core.anime.AnimeSeason.Companion.UNKNOWN_YEAR
+import io.github.manamiproject.modb.core.anime.AnimeSeason.Season.*
 import io.github.manamiproject.modb.test.exceptionExpected
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Nested
@@ -18,7 +19,7 @@ internal class AnimeSeasonAdapterTest {
             // given
             val adapter = AnimeSeasonAdapter()
             val expected = AnimeSeason(
-                season = AnimeSeason.Season.WINTER,
+                season = WINTER,
                 year = 2024,
             )
 
@@ -34,7 +35,7 @@ internal class AnimeSeasonAdapterTest {
             // given
             val adapter = AnimeSeasonAdapter()
             val expected = AnimeSeason(
-                season = AnimeSeason.Season.WINTER,
+                season = WINTER,
                 year = UNKNOWN_YEAR,
             )
 
@@ -50,7 +51,7 @@ internal class AnimeSeasonAdapterTest {
             // given
             val adapter = AnimeSeasonAdapter()
             val expected = AnimeSeason(
-                season = AnimeSeason.Season.WINTER,
+                season = WINTER,
                 year = UNKNOWN_YEAR,
             )
 
@@ -112,7 +113,7 @@ internal class AnimeSeasonAdapterTest {
             // given
             val adapter = AnimeSeasonAdapter()
             val obj = AnimeSeason(
-                season = AnimeSeason.Season.WINTER,
+                season = WINTER,
                 year = 2024,
             )
 
@@ -128,7 +129,7 @@ internal class AnimeSeasonAdapterTest {
             // given
             val adapter = AnimeSeasonAdapter().serializeNulls()
             val obj = AnimeSeason(
-                season = AnimeSeason.Season.WINTER,
+                season = WINTER,
                 year = UNKNOWN_YEAR,
             )
 
@@ -144,7 +145,7 @@ internal class AnimeSeasonAdapterTest {
             // given
             val adapter = AnimeSeasonAdapter()
             val obj = AnimeSeason(
-                season = AnimeSeason.Season.WINTER,
+                season = WINTER,
                 year = UNKNOWN_YEAR,
             )
 
@@ -166,7 +167,7 @@ internal class AnimeSeasonAdapterTest {
             }
 
             // then
-            assertThat(result).hasMessage("AnimeSeasonAdapter is non-nullable, but received null.")
+            assertThat(result).hasMessage("AnimeSeasonAdapter expects non-nullable value, but received null.")
         }
     }
 }

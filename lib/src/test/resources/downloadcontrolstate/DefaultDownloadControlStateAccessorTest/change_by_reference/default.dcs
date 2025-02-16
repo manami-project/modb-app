@@ -23,6 +23,7 @@
     "picture": "https://raw.githubusercontent.com/manami-project/anime-offline-database/master/pics/no_pic.png",
     "thumbnail": "https://raw.githubusercontent.com/manami-project/anime-offline-database/master/pics/no_pic_thumbnail.png",
     "duration": null,
+    "scores": [],
     "synonyms": [],
     "relatedAnime": [
       "https://anilist.co/anime/30"
