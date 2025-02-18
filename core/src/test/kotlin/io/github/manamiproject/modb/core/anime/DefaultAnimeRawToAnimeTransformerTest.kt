@@ -1,5 +1,6 @@
 package io.github.manamiproject.modb.core.anime
 
+import io.github.manamiproject.modb.core.TestScoreCalculator
 import io.github.manamiproject.modb.core.anime.AnimeSeason.Season.SUMMER
 import io.github.manamiproject.modb.core.anime.AnimeStatus.FINISHED
 import io.github.manamiproject.modb.core.anime.AnimeType.TV
@@ -18,10 +19,18 @@ internal class DefaultAnimeRawToAnimeTransformerTest {
         @Test
         fun `correctly transforms object with default values`() {
             // given
+            val testScoreCalculator = object: ScoreCalculator by TestScoreCalculator {
+                override fun calculateScore(scores: Collection<MetaDataProviderScore>): Score = NoScore
+            }
+
+            val animeRawToAnimeTransformer = DefaultAnimeRawToAnimeTransformer(
+                scoreCalculator = testScoreCalculator,
+            )
+
             val animeRaw = AnimeRaw("test")
 
             // when
-            val result = DefaultAnimeRawToAnimeTransformer.instance.transform(animeRaw)
+            val result = animeRawToAnimeTransformer.transform(animeRaw)
 
             // then
             assertThat(result.title).isEqualTo(animeRaw.title)
@@ -32,6 +41,7 @@ internal class DefaultAnimeRawToAnimeTransformerTest {
             assertThat(result.picture).isEqualTo(result.picture)
             assertThat(result.thumbnail).isEqualTo(result.thumbnail)
             assertThat(result.duration).isEqualTo(result.duration)
+            assertThat(result.score).isEqualTo(NoScore)
             assertThat(result.sources).isEqualTo(result.sources)
             assertThat(result.synonyms).isEqualTo(result.synonyms)
             assertThat(result.relatedAnime).isEqualTo(result.relatedAnime)
@@ -115,8 +125,20 @@ internal class DefaultAnimeRawToAnimeTransformerTest {
                 )
             )
 
+            val testScoreCalculator = object: ScoreCalculator by TestScoreCalculator {
+                override fun calculateScore(scores: Collection<MetaDataProviderScore>): Score = ScoreValue(
+                    arithmeticGeometricMean = 1.29,
+                    arithmeticMean = 2.38,
+                    median = 3.47,
+                )
+            }
+
+            val animeRawToAnimeTransformer = DefaultAnimeRawToAnimeTransformer(
+                scoreCalculator = testScoreCalculator,
+            )
+
             // when
-            val result = DefaultAnimeRawToAnimeTransformer.instance.transform(animeRaw)
+            val result = animeRawToAnimeTransformer.transform(animeRaw)
 
             // then
             assertThat(result.title).isEqualTo(animeRaw.title)
@@ -127,6 +149,10 @@ internal class DefaultAnimeRawToAnimeTransformerTest {
             assertThat(result.picture).isEqualTo(result.picture)
             assertThat(result.thumbnail).isEqualTo(result.thumbnail)
             assertThat(result.duration).isEqualTo(result.duration)
+            assertThat(result.score).isExactlyInstanceOf(ScoreValue::class.java)
+            assertThat((result.score as ScoreValue).arithmeticGeometricMean).isEqualTo(1.29)
+            assertThat((result.score as ScoreValue).arithmeticMean).isEqualTo(2.38)
+            assertThat((result.score as ScoreValue).median).isEqualTo(3.47)
             assertThat(result.sources).isEqualTo(result.sources)
             assertThat(result.synonyms).isEqualTo(result.synonyms)
             assertThat(result.relatedAnime).isEqualTo(result.relatedAnime)

@@ -1,5 +1,8 @@
 package io.github.manamiproject.modb.core
 
+import io.github.manamiproject.modb.core.anime.MetaDataProviderScore
+import io.github.manamiproject.modb.core.anime.Score
+import io.github.manamiproject.modb.core.anime.ScoreCalculator
 import io.github.manamiproject.modb.core.config.*
 import io.github.manamiproject.modb.core.converter.AnimeConverter
 import io.github.manamiproject.modb.core.extractor.DataExtractor
@@ -71,4 +74,8 @@ internal class TestKProperty<T>: KProperty<T> {
         get() = shouldNotBeInvoked()
     override fun call(vararg args: Any?): T = shouldNotBeInvoked()
     override fun callBy(args: Map<KParameter, Any?>): T = shouldNotBeInvoked()
+}
+
+internal object TestScoreCalculator: ScoreCalculator {
+    override fun calculateScore(scores: Collection<MetaDataProviderScore>): Score = shouldNotBeInvoked()
 }
