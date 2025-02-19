@@ -60,6 +60,7 @@ public class AnidbAnimeConverter(
             "endDateAttr" to "//span[contains(@itemprop, 'endDate')]/@content",
             "isTimePeriod" to "//tr[contains(@class, 'year')]/td[contains(@class, 'value')]/text()",
             "datePublishedAttr" to "//span[contains(@itemprop, 'datePublished')]/@content",
+            "score" to "//span[@data-label='Rating'][contains(@class, 'tmpanime')]/a/span/text()",
         ))
 
         val picture = extractPicture(data)
@@ -77,7 +78,9 @@ public class AnidbAnimeConverter(
             _synonyms = extractSynonyms(data),
             _relatedAnime = extractRelatedAnime(data),
             _tags = extractTags(data),
-        )
+        ).apply {
+            addScores(extractScore(data))
+        }
     }
 
     private fun extractTitle(data: ExtractionResult) = data.string("title").remove("Anime: ")
@@ -342,6 +345,20 @@ public class AnidbAnimeConverter(
         } else {
             data.listNotNull<Tag>("tags").toHashSet()
         }
+    }
+
+    private fun extractScore(data: ExtractionResult): MetaDataProviderScore {
+        if (data.notFound("score") || data.stringOrDefault("score") == "N/A") {
+            return NoMetaDataProviderScore
+        }
+
+        val rawScore = data.double("score")
+
+        return MetaDataProviderScoreValue(
+            hostname = metaDataProviderConfig.hostname(),
+            value = rawScore,
+            originalRange = 1.0..10.0,
+        )
     }
 
     public companion object {
