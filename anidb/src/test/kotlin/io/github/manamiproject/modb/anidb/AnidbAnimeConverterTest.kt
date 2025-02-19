@@ -10,6 +10,9 @@ import io.github.manamiproject.modb.core.anime.AnimeStatus.UNKNOWN as UNKNOWN_ST
 import io.github.manamiproject.modb.core.anime.AnimeType.UNKNOWN as UNKNOWN_TYPE
 import io.github.manamiproject.modb.core.anime.Duration
 import io.github.manamiproject.modb.core.anime.Duration.TimeUnit.*
+import io.github.manamiproject.modb.core.anime.MetaDataProviderScoreValue
+import io.github.manamiproject.modb.core.anime.NoMetaDataProviderScore
+import io.github.manamiproject.modb.core.config.Hostname
 import io.github.manamiproject.modb.test.loadTestResource
 import kotlinx.coroutines.runBlocking
 import org.assertj.core.api.Assertions.assertThat
@@ -32,9 +35,8 @@ internal class AnidbAnimeConverterTest {
             runBlocking {
                 // given
                 val testAnidbConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = AnidbConfig.hostname()
                     override fun buildAnimeLink(id: AnimeId): URI = AnidbConfig.buildAnimeLink(id)
-                    override fun buildDataDownloadLink(id: String): URI = AnidbConfig.buildDataDownloadLink(id)
-                    override fun fileSuffix(): FileSuffix = AnidbConfig.fileSuffix()
                 }
 
                 val testFile = loadTestResource<String>("AnidbAnimeConverterTest/title/special_chars.html")
@@ -58,8 +60,8 @@ internal class AnidbAnimeConverterTest {
             runBlocking {
                 // given
                 val testAnidbConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = AnidbConfig.hostname()
                     override fun buildAnimeLink(id: AnimeId): URI = AnidbConfig.buildAnimeLink(id)
-                    override fun buildDataDownloadLink(id: String): URI = AnidbConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = AnidbConfig.fileSuffix()
                 }
 
@@ -80,8 +82,8 @@ internal class AnidbAnimeConverterTest {
             runBlocking {
                 // given
                 val testAnidbConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = AnidbConfig.hostname()
                     override fun buildAnimeLink(id: AnimeId): URI = AnidbConfig.buildAnimeLink(id)
-                    override fun buildDataDownloadLink(id: String): URI = AnidbConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = AnidbConfig.fileSuffix()
                 }
 
@@ -102,8 +104,8 @@ internal class AnidbAnimeConverterTest {
             runBlocking {
                 // given
                 val testAnidbConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = AnidbConfig.hostname()
                     override fun buildAnimeLink(id: AnimeId): URI = AnidbConfig.buildAnimeLink(id)
-                    override fun buildDataDownloadLink(id: String): URI = AnidbConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = AnidbConfig.fileSuffix()
                 }
 
@@ -124,8 +126,8 @@ internal class AnidbAnimeConverterTest {
             runBlocking {
                 // given
                 val testAnidbConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = AnidbConfig.hostname()
                     override fun buildAnimeLink(id: AnimeId): URI = AnidbConfig.buildAnimeLink(id)
-                    override fun buildDataDownloadLink(id: String): URI = AnidbConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = AnidbConfig.fileSuffix()
                 }
 
@@ -146,8 +148,8 @@ internal class AnidbAnimeConverterTest {
             runBlocking {
                 // given
                 val testAnidbConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = AnidbConfig.hostname()
                     override fun buildAnimeLink(id: AnimeId): URI = AnidbConfig.buildAnimeLink(id)
-                    override fun buildDataDownloadLink(id: String): URI = AnidbConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = AnidbConfig.fileSuffix()
                 }
 
@@ -168,8 +170,8 @@ internal class AnidbAnimeConverterTest {
             runBlocking {
                 // given
                 val testAnidbConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = AnidbConfig.hostname()
                     override fun buildAnimeLink(id: AnimeId): URI = AnidbConfig.buildAnimeLink(id)
-                    override fun buildDataDownloadLink(id: String): URI = AnidbConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = AnidbConfig.fileSuffix()
                 }
 
@@ -194,8 +196,8 @@ internal class AnidbAnimeConverterTest {
             runBlocking {
                 // given
                 val testAnidbConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = AnidbConfig.hostname()
                     override fun buildAnimeLink(id: AnimeId): URI = AnidbConfig.buildAnimeLink(id)
-                    override fun buildDataDownloadLink(id: String): URI = AnidbConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = AnidbConfig.fileSuffix()
                 }
 
@@ -216,8 +218,8 @@ internal class AnidbAnimeConverterTest {
             runBlocking {
                 // given
                 val testAnidbConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = AnidbConfig.hostname()
                     override fun buildAnimeLink(id: AnimeId): URI = AnidbConfig.buildAnimeLink(id)
-                    override fun buildDataDownloadLink(id: String): URI = AnidbConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = AnidbConfig.fileSuffix()
                 }
 
@@ -238,8 +240,8 @@ internal class AnidbAnimeConverterTest {
             runBlocking {
                 // given
                 val testAnidbConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = AnidbConfig.hostname()
                     override fun buildAnimeLink(id: AnimeId): URI = AnidbConfig.buildAnimeLink(id)
-                    override fun buildDataDownloadLink(id: String): URI = AnidbConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = AnidbConfig.fileSuffix()
                 }
 
@@ -260,8 +262,8 @@ internal class AnidbAnimeConverterTest {
             runBlocking {
                 // given
                 val testAnidbConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = AnidbConfig.hostname()
                     override fun buildAnimeLink(id: AnimeId): URI = AnidbConfig.buildAnimeLink(id)
-                    override fun buildDataDownloadLink(id: String): URI = AnidbConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = AnidbConfig.fileSuffix()
                 }
 
@@ -282,8 +284,8 @@ internal class AnidbAnimeConverterTest {
             runBlocking {
                 // given
                 val testAnidbConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = AnidbConfig.hostname()
                     override fun buildAnimeLink(id: AnimeId): URI = AnidbConfig.buildAnimeLink(id)
-                    override fun buildDataDownloadLink(id: String): URI = AnidbConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = AnidbConfig.fileSuffix()
                 }
 
@@ -304,8 +306,8 @@ internal class AnidbAnimeConverterTest {
             runBlocking {
                 // given
                 val testAnidbConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = AnidbConfig.hostname()
                     override fun buildAnimeLink(id: AnimeId): URI = AnidbConfig.buildAnimeLink(id)
-                    override fun buildDataDownloadLink(id: String): URI = AnidbConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = AnidbConfig.fileSuffix()
                 }
 
@@ -326,8 +328,8 @@ internal class AnidbAnimeConverterTest {
             runBlocking {
                 // given
                 val testAnidbConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = AnidbConfig.hostname()
                     override fun buildAnimeLink(id: AnimeId): URI = AnidbConfig.buildAnimeLink(id)
-                    override fun buildDataDownloadLink(id: String): URI = AnidbConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = AnidbConfig.fileSuffix()
                 }
 
@@ -348,8 +350,8 @@ internal class AnidbAnimeConverterTest {
             runBlocking {
                 // given
                 val testAnidbConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = AnidbConfig.hostname()
                     override fun buildAnimeLink(id: AnimeId): URI = AnidbConfig.buildAnimeLink(id)
-                    override fun buildDataDownloadLink(id: String): URI = AnidbConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = AnidbConfig.fileSuffix()
                 }
 
@@ -374,8 +376,8 @@ internal class AnidbAnimeConverterTest {
             runBlocking {
                 // given
                 val testAnidbConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = AnidbConfig.hostname()
                     override fun buildAnimeLink(id: AnimeId): URI = AnidbConfig.buildAnimeLink(id)
-                    override fun buildDataDownloadLink(id: String): URI = AnidbConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = AnidbConfig.fileSuffix()
                 }
 
@@ -398,8 +400,8 @@ internal class AnidbAnimeConverterTest {
             runBlocking {
                 // given
                 val testAnidbConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = AnidbConfig.hostname()
                     override fun buildAnimeLink(id: AnimeId): URI = AnidbConfig.buildAnimeLink(id)
-                    override fun buildDataDownloadLink(id: String): URI = AnidbConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = AnidbConfig.fileSuffix()
                 }
 
@@ -422,8 +424,8 @@ internal class AnidbAnimeConverterTest {
             runBlocking {
                 // given
                 val testAnidbConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = AnidbConfig.hostname()
                     override fun buildAnimeLink(id: AnimeId): URI = AnidbConfig.buildAnimeLink(id)
-                    override fun buildDataDownloadLink(id: String): URI = AnidbConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = AnidbConfig.fileSuffix()
                 }
 
@@ -446,8 +448,8 @@ internal class AnidbAnimeConverterTest {
             runBlocking {
                 // given
                 val testAnidbConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = AnidbConfig.hostname()
                     override fun buildAnimeLink(id: AnimeId): URI = AnidbConfig.buildAnimeLink(id)
-                    override fun buildDataDownloadLink(id: String): URI = AnidbConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = AnidbConfig.fileSuffix()
                 }
 
@@ -474,8 +476,8 @@ internal class AnidbAnimeConverterTest {
             runBlocking {
                 // given
                 val testAnidbConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = AnidbConfig.hostname()
                     override fun buildAnimeLink(id: AnimeId): URI = AnidbConfig.buildAnimeLink(id)
-                    override fun buildDataDownloadLink(id: String): URI = AnidbConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = AnidbConfig.fileSuffix()
                 }
 
@@ -500,8 +502,8 @@ internal class AnidbAnimeConverterTest {
             runBlocking {
                 // given
                 val testAnidbConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = AnidbConfig.hostname()
                     override fun buildAnimeLink(id: AnimeId): URI = AnidbConfig.buildAnimeLink(id)
-                    override fun buildDataDownloadLink(id: String): URI = AnidbConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = AnidbConfig.fileSuffix()
                 }
 
@@ -522,8 +524,8 @@ internal class AnidbAnimeConverterTest {
             runBlocking {
                 // given
                 val testAnidbConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = AnidbConfig.hostname()
                     override fun buildAnimeLink(id: AnimeId): URI = AnidbConfig.buildAnimeLink(id)
-                    override fun buildDataDownloadLink(id: String): URI = AnidbConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = AnidbConfig.fileSuffix()
                 }
 
@@ -558,8 +560,8 @@ internal class AnidbAnimeConverterTest {
             runBlocking {
                 // given
                 val testAnidbConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = AnidbConfig.hostname()
                     override fun buildAnimeLink(id: AnimeId): URI = AnidbConfig.buildAnimeLink(id)
-                    override fun buildDataDownloadLink(id: String): URI = AnidbConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = AnidbConfig.fileSuffix()
                 }
 
@@ -621,8 +623,8 @@ internal class AnidbAnimeConverterTest {
                 val fixedClock = Clock.fixed(Instant.parse("2019-11-17T15:00:00.00Z"), UTC)
 
                 val testAnidbConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = AnidbConfig.hostname()
                     override fun buildAnimeLink(id: AnimeId): URI = AnidbConfig.buildAnimeLink(id)
-                    override fun buildDataDownloadLink(id: String): URI = AnidbConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = AnidbConfig.fileSuffix()
                 }
 
@@ -648,13 +650,12 @@ internal class AnidbAnimeConverterTest {
                 val fixedClock = Clock.fixed(Instant.parse("2013-06-13T15:00:00.00Z"), UTC)
 
                 val testAnidbConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = AnidbConfig.hostname()
                     override fun buildAnimeLink(id: AnimeId): URI = AnidbConfig.buildAnimeLink(id)
-                    override fun buildDataDownloadLink(id: String): URI = AnidbConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = AnidbConfig.fileSuffix()
                 }
 
-                val testFile =
-                    loadTestResource<String>("AnidbAnimeConverterTest/status/date_published.html")
+                val testFile = loadTestResource<String>("AnidbAnimeConverterTest/status/date_published.html")
 
                 val converter = AnidbAnimeConverter(
                     metaDataProviderConfig = testAnidbConfig,
@@ -676,13 +677,12 @@ internal class AnidbAnimeConverterTest {
                 val fixedClock = Clock.fixed(Instant.parse("2012-11-17T15:00:00.00Z"), UTC)
 
                 val testAnidbConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = AnidbConfig.hostname()
                     override fun buildAnimeLink(id: AnimeId): URI = AnidbConfig.buildAnimeLink(id)
-                    override fun buildDataDownloadLink(id: String): URI = AnidbConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = AnidbConfig.fileSuffix()
                 }
 
-                val testFile =
-                    loadTestResource<String>("AnidbAnimeConverterTest/status/date_published.html")
+                val testFile = loadTestResource<String>("AnidbAnimeConverterTest/status/date_published.html")
 
                 val converter = AnidbAnimeConverter(
                     metaDataProviderConfig = testAnidbConfig,
@@ -704,13 +704,12 @@ internal class AnidbAnimeConverterTest {
                 val fixedClock = Clock.fixed(Instant.parse("2019-11-17T15:00:00.00Z"), UTC)
 
                 val testAnidbConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = AnidbConfig.hostname()
                     override fun buildAnimeLink(id: AnimeId): URI = AnidbConfig.buildAnimeLink(id)
-                    override fun buildDataDownloadLink(id: String): URI = AnidbConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = AnidbConfig.fileSuffix()
                 }
 
-                val testFile =
-                    loadTestResource<String>("AnidbAnimeConverterTest/status/start_to_end.html")
+                val testFile = loadTestResource<String>("AnidbAnimeConverterTest/status/start_to_end.html")
 
                 val converter = AnidbAnimeConverter(
                     metaDataProviderConfig = testAnidbConfig,
@@ -732,13 +731,12 @@ internal class AnidbAnimeConverterTest {
                 val fixedClock = Clock.fixed(Instant.parse("2006-05-17T15:00:00.00Z"), UTC)
 
                 val testAnidbConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = AnidbConfig.hostname()
                     override fun buildAnimeLink(id: AnimeId): URI = AnidbConfig.buildAnimeLink(id)
-                    override fun buildDataDownloadLink(id: String): URI = AnidbConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = AnidbConfig.fileSuffix()
                 }
 
-                val testFile =
-                    loadTestResource<String>("AnidbAnimeConverterTest/status/start_to_end.html")
+                val testFile = loadTestResource<String>("AnidbAnimeConverterTest/status/start_to_end.html")
 
                 val converter = AnidbAnimeConverter(
                     metaDataProviderConfig = testAnidbConfig,
@@ -760,13 +758,12 @@ internal class AnidbAnimeConverterTest {
                 val fixedClock = Clock.fixed(Instant.parse("2005-11-17T15:00:00.00Z"), UTC)
 
                 val testAnidbConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = AnidbConfig.hostname()
                     override fun buildAnimeLink(id: AnimeId): URI = AnidbConfig.buildAnimeLink(id)
-                    override fun buildDataDownloadLink(id: String): URI = AnidbConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = AnidbConfig.fileSuffix()
                 }
 
-                val testFile =
-                    loadTestResource<String>("AnidbAnimeConverterTest/status/start_to_end.html")
+                val testFile = loadTestResource<String>("AnidbAnimeConverterTest/status/start_to_end.html")
 
                 val converter = AnidbAnimeConverter(
                     metaDataProviderConfig = testAnidbConfig,
@@ -788,13 +785,12 @@ internal class AnidbAnimeConverterTest {
                 val fixedClock = Clock.fixed(Instant.parse("2023-10-17T15:00:00.00Z"), UTC)
 
                 val testAnidbConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = AnidbConfig.hostname()
                     override fun buildAnimeLink(id: AnimeId): URI = AnidbConfig.buildAnimeLink(id)
-                    override fun buildDataDownloadLink(id: String): URI = AnidbConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = AnidbConfig.fileSuffix()
                 }
 
-                val testFile =
-                    loadTestResource<String>("AnidbAnimeConverterTest/status/start_to_unknown.html")
+                val testFile = loadTestResource<String>("AnidbAnimeConverterTest/status/start_to_unknown.html")
 
                 val converter = AnidbAnimeConverter(
                     metaDataProviderConfig = testAnidbConfig,
@@ -816,13 +812,12 @@ internal class AnidbAnimeConverterTest {
                 val fixedClock = Clock.fixed(Instant.parse("2022-10-17T15:00:00.00Z"), UTC)
 
                 val testAnidbConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = AnidbConfig.hostname()
                     override fun buildAnimeLink(id: AnimeId): URI = AnidbConfig.buildAnimeLink(id)
-                    override fun buildDataDownloadLink(id: String): URI = AnidbConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = AnidbConfig.fileSuffix()
                 }
 
-                val testFile =
-                    loadTestResource<String>("AnidbAnimeConverterTest/status/start_to_unknown.html")
+                val testFile = loadTestResource<String>("AnidbAnimeConverterTest/status/start_to_unknown.html")
 
                 val converter = AnidbAnimeConverter(
                     metaDataProviderConfig = testAnidbConfig,
@@ -844,13 +839,12 @@ internal class AnidbAnimeConverterTest {
                 val fixedClock = Clock.fixed(Instant.parse("2019-11-17T15:00:00.00Z"), UTC)
 
                 val testAnidbConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = AnidbConfig.hostname()
                     override fun buildAnimeLink(id: AnimeId): URI = AnidbConfig.buildAnimeLink(id)
-                    override fun buildDataDownloadLink(id: String): URI = AnidbConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = AnidbConfig.fileSuffix()
                 }
 
-                val testFile =
-                    loadTestResource<String>("AnidbAnimeConverterTest/status/unknown.html")
+                val testFile = loadTestResource<String>("AnidbAnimeConverterTest/status/unknown.html")
 
                 val converter = AnidbAnimeConverter(
                     metaDataProviderConfig = testAnidbConfig,
@@ -874,8 +868,8 @@ internal class AnidbAnimeConverterTest {
             runBlocking {
                 // given
                 val testAnidbConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = AnidbConfig.hostname()
                     override fun buildAnimeLink(id: AnimeId): URI = AnidbConfig.buildAnimeLink(id)
-                    override fun buildDataDownloadLink(id: String): URI = AnidbConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = AnidbConfig.fileSuffix()
                 }
 
@@ -902,8 +896,8 @@ internal class AnidbAnimeConverterTest {
             runBlocking {
                 // given
                 val testAnidbConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = AnidbConfig.hostname()
                     override fun buildAnimeLink(id: AnimeId): URI = AnidbConfig.buildAnimeLink(id)
-                    override fun buildDataDownloadLink(id: String): URI = AnidbConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = AnidbConfig.fileSuffix()
                 }
 
@@ -924,8 +918,8 @@ internal class AnidbAnimeConverterTest {
             runBlocking {
                 // given
                 val testAnidbConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = AnidbConfig.hostname()
                     override fun buildAnimeLink(id: AnimeId): URI = AnidbConfig.buildAnimeLink(id)
-                    override fun buildDataDownloadLink(id: String): URI = AnidbConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = AnidbConfig.fileSuffix()
                 }
 
@@ -949,8 +943,8 @@ internal class AnidbAnimeConverterTest {
             runBlocking {
                 // given
                 val testAnidbConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = AnidbConfig.hostname()
                     override fun buildAnimeLink(id: AnimeId): URI = AnidbConfig.buildAnimeLink(id)
-                    override fun buildDataDownloadLink(id: String): URI = AnidbConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = AnidbConfig.fileSuffix()
                 }
 
@@ -963,7 +957,7 @@ internal class AnidbAnimeConverterTest {
 
                 // then
                 assertThat(result.tags).containsExactly(
-                    "new"
+                    "new",
                 )
             }
         }
@@ -977,8 +971,8 @@ internal class AnidbAnimeConverterTest {
             runBlocking {
                 // given
                 val testAnidbConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = AnidbConfig.hostname()
                     override fun buildAnimeLink(id: AnimeId): URI = AnidbConfig.buildAnimeLink(id)
-                    override fun buildDataDownloadLink(id: String): URI = AnidbConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = AnidbConfig.fileSuffix()
                 }
 
@@ -999,8 +993,8 @@ internal class AnidbAnimeConverterTest {
             runBlocking {
                 // given
                 val testAnidbConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = AnidbConfig.hostname()
                     override fun buildAnimeLink(id: AnimeId): URI = AnidbConfig.buildAnimeLink(id)
-                    override fun buildDataDownloadLink(id: String): URI = AnidbConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = AnidbConfig.fileSuffix()
                 }
 
@@ -1021,8 +1015,8 @@ internal class AnidbAnimeConverterTest {
             runBlocking {
                 // given
                 val testAnidbConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = AnidbConfig.hostname()
                     override fun buildAnimeLink(id: AnimeId): URI = AnidbConfig.buildAnimeLink(id)
-                    override fun buildDataDownloadLink(id: String): URI = AnidbConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = AnidbConfig.fileSuffix()
                 }
 
@@ -1043,8 +1037,8 @@ internal class AnidbAnimeConverterTest {
             runBlocking {
                 // given
                 val testAnidbConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = AnidbConfig.hostname()
                     override fun buildAnimeLink(id: AnimeId): URI = AnidbConfig.buildAnimeLink(id)
-                    override fun buildDataDownloadLink(id: String): URI = AnidbConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = AnidbConfig.fileSuffix()
                 }
 
@@ -1065,8 +1059,8 @@ internal class AnidbAnimeConverterTest {
             runBlocking {
                 // given
                 val testAnidbConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = AnidbConfig.hostname()
                     override fun buildAnimeLink(id: AnimeId): URI = AnidbConfig.buildAnimeLink(id)
-                    override fun buildDataDownloadLink(id: String): URI = AnidbConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = AnidbConfig.fileSuffix()
                 }
 
@@ -1087,8 +1081,8 @@ internal class AnidbAnimeConverterTest {
             runBlocking {
                 // given
                 val testAnidbConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = AnidbConfig.hostname()
                     override fun buildAnimeLink(id: AnimeId): URI = AnidbConfig.buildAnimeLink(id)
-                    override fun buildDataDownloadLink(id: String): URI = AnidbConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = AnidbConfig.fileSuffix()
                 }
 
@@ -1116,8 +1110,8 @@ internal class AnidbAnimeConverterTest {
                 runBlocking {
                     // given
                     val testAnidbConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                        override fun hostname(): Hostname = AnidbConfig.hostname()
                         override fun buildAnimeLink(id: AnimeId): URI = AnidbConfig.buildAnimeLink(id)
-                        override fun buildDataDownloadLink(id: String): URI = AnidbConfig.buildDataDownloadLink(id)
                         override fun fileSuffix(): FileSuffix = AnidbConfig.fileSuffix()
                     }
 
@@ -1139,8 +1133,8 @@ internal class AnidbAnimeConverterTest {
                 runBlocking {
                     // given
                     val testAnidbConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                        override fun hostname(): Hostname = AnidbConfig.hostname()
                         override fun buildAnimeLink(id: AnimeId): URI = AnidbConfig.buildAnimeLink(id)
-                        override fun buildDataDownloadLink(id: String): URI = AnidbConfig.buildDataDownloadLink(id)
                         override fun fileSuffix(): FileSuffix = AnidbConfig.fileSuffix()
                     }
 
@@ -1162,8 +1156,8 @@ internal class AnidbAnimeConverterTest {
                 runBlocking {
                     // given
                     val testAnidbConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                        override fun hostname(): Hostname = AnidbConfig.hostname()
                         override fun buildAnimeLink(id: AnimeId): URI = AnidbConfig.buildAnimeLink(id)
-                        override fun buildDataDownloadLink(id: String): URI = AnidbConfig.buildDataDownloadLink(id)
                         override fun fileSuffix(): FileSuffix = AnidbConfig.fileSuffix()
                     }
 
@@ -1185,8 +1179,8 @@ internal class AnidbAnimeConverterTest {
                 runBlocking {
                     // given
                     val testAnidbConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                        override fun hostname(): Hostname = AnidbConfig.hostname()
                         override fun buildAnimeLink(id: AnimeId): URI = AnidbConfig.buildAnimeLink(id)
-                        override fun buildDataDownloadLink(id: String): URI = AnidbConfig.buildDataDownloadLink(id)
                         override fun fileSuffix(): FileSuffix = AnidbConfig.fileSuffix()
                     }
 
@@ -1207,8 +1201,8 @@ internal class AnidbAnimeConverterTest {
                 runBlocking {
                     // given
                     val testAnidbConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                        override fun hostname(): Hostname = AnidbConfig.hostname()
                         override fun buildAnimeLink(id: AnimeId): URI = AnidbConfig.buildAnimeLink(id)
-                        override fun buildDataDownloadLink(id: String): URI = AnidbConfig.buildDataDownloadLink(id)
                         override fun fileSuffix(): FileSuffix = AnidbConfig.fileSuffix()
                     }
 
@@ -1229,8 +1223,8 @@ internal class AnidbAnimeConverterTest {
                 runBlocking {
                     // given
                     val testAnidbConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                        override fun hostname(): Hostname = AnidbConfig.hostname()
                         override fun buildAnimeLink(id: AnimeId): URI = AnidbConfig.buildAnimeLink(id)
-                        override fun buildDataDownloadLink(id: String): URI = AnidbConfig.buildDataDownloadLink(id)
                         override fun fileSuffix(): FileSuffix = AnidbConfig.fileSuffix()
                     }
 
@@ -1251,8 +1245,8 @@ internal class AnidbAnimeConverterTest {
                 runBlocking {
                     // given
                     val testAnidbConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                        override fun hostname(): Hostname = AnidbConfig.hostname()
                         override fun buildAnimeLink(id: AnimeId): URI = AnidbConfig.buildAnimeLink(id)
-                        override fun buildDataDownloadLink(id: String): URI = AnidbConfig.buildDataDownloadLink(id)
                         override fun fileSuffix(): FileSuffix = AnidbConfig.fileSuffix()
                     }
 
@@ -1273,8 +1267,8 @@ internal class AnidbAnimeConverterTest {
                 runBlocking {
                     // given
                     val testAnidbConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                        override fun hostname(): Hostname = AnidbConfig.hostname()
                         override fun buildAnimeLink(id: AnimeId): URI = AnidbConfig.buildAnimeLink(id)
-                        override fun buildDataDownloadLink(id: String): URI = AnidbConfig.buildDataDownloadLink(id)
                         override fun fileSuffix(): FileSuffix = AnidbConfig.fileSuffix()
                     }
 
@@ -1295,8 +1289,8 @@ internal class AnidbAnimeConverterTest {
                 runBlocking {
                     // given
                     val testAnidbConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                        override fun hostname(): Hostname = AnidbConfig.hostname()
                         override fun buildAnimeLink(id: AnimeId): URI = AnidbConfig.buildAnimeLink(id)
-                        override fun buildDataDownloadLink(id: String): URI = AnidbConfig.buildDataDownloadLink(id)
                         override fun fileSuffix(): FileSuffix = AnidbConfig.fileSuffix()
                     }
 
@@ -1317,8 +1311,8 @@ internal class AnidbAnimeConverterTest {
                 runBlocking {
                     // given
                     val testAnidbConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                        override fun hostname(): Hostname = AnidbConfig.hostname()
                         override fun buildAnimeLink(id: AnimeId): URI = AnidbConfig.buildAnimeLink(id)
-                        override fun buildDataDownloadLink(id: String): URI = AnidbConfig.buildDataDownloadLink(id)
                         override fun fileSuffix(): FileSuffix = AnidbConfig.fileSuffix()
                     }
 
@@ -1339,8 +1333,8 @@ internal class AnidbAnimeConverterTest {
                 runBlocking {
                     // given
                     val testAnidbConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                        override fun hostname(): Hostname = AnidbConfig.hostname()
                         override fun buildAnimeLink(id: AnimeId): URI = AnidbConfig.buildAnimeLink(id)
-                        override fun buildDataDownloadLink(id: String): URI = AnidbConfig.buildDataDownloadLink(id)
                         override fun fileSuffix(): FileSuffix = AnidbConfig.fileSuffix()
                     }
 
@@ -1368,8 +1362,8 @@ internal class AnidbAnimeConverterTest {
                     runBlocking {
                         // given
                         val testAnidbConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                            override fun hostname(): Hostname = AnidbConfig.hostname()
                             override fun buildAnimeLink(id: AnimeId): URI = AnidbConfig.buildAnimeLink(id)
-                            override fun buildDataDownloadLink(id: String): URI = AnidbConfig.buildDataDownloadLink(id)
                             override fun fileSuffix(): FileSuffix = AnidbConfig.fileSuffix()
                         }
 
@@ -1391,8 +1385,8 @@ internal class AnidbAnimeConverterTest {
                     runBlocking {
                         // given
                         val testAnidbConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                            override fun hostname(): Hostname = AnidbConfig.hostname()
                             override fun buildAnimeLink(id: AnimeId): URI = AnidbConfig.buildAnimeLink(id)
-                            override fun buildDataDownloadLink(id: String): URI = AnidbConfig.buildDataDownloadLink(id)
                             override fun fileSuffix(): FileSuffix = AnidbConfig.fileSuffix()
                         }
 
@@ -1414,8 +1408,8 @@ internal class AnidbAnimeConverterTest {
                     runBlocking {
                         // given
                         val testAnidbConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                            override fun hostname(): Hostname = AnidbConfig.hostname()
                             override fun buildAnimeLink(id: AnimeId): URI = AnidbConfig.buildAnimeLink(id)
-                            override fun buildDataDownloadLink(id: String): URI = AnidbConfig.buildDataDownloadLink(id)
                             override fun fileSuffix(): FileSuffix = AnidbConfig.fileSuffix()
                         }
 
@@ -1437,8 +1431,8 @@ internal class AnidbAnimeConverterTest {
                     runBlocking {
                         // given
                         val testAnidbConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                            override fun hostname(): Hostname = AnidbConfig.hostname()
                             override fun buildAnimeLink(id: AnimeId): URI = AnidbConfig.buildAnimeLink(id)
-                            override fun buildDataDownloadLink(id: String): URI = AnidbConfig.buildDataDownloadLink(id)
                             override fun fileSuffix(): FileSuffix = AnidbConfig.fileSuffix()
                         }
 
@@ -1465,8 +1459,8 @@ internal class AnidbAnimeConverterTest {
                     runBlocking {
                         // given
                         val testAnidbConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                            override fun hostname(): Hostname = AnidbConfig.hostname()
                             override fun buildAnimeLink(id: AnimeId): URI = AnidbConfig.buildAnimeLink(id)
-                            override fun buildDataDownloadLink(id: String): URI = AnidbConfig.buildDataDownloadLink(id)
                             override fun fileSuffix(): FileSuffix = AnidbConfig.fileSuffix()
                         }
 
@@ -1489,8 +1483,8 @@ internal class AnidbAnimeConverterTest {
                     runBlocking {
                         // given
                         val testAnidbConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                            override fun hostname(): Hostname = AnidbConfig.hostname()
                             override fun buildAnimeLink(id: AnimeId): URI = AnidbConfig.buildAnimeLink(id)
-                            override fun buildDataDownloadLink(id: String): URI = AnidbConfig.buildDataDownloadLink(id)
                             override fun fileSuffix(): FileSuffix = AnidbConfig.fileSuffix()
                         }
 
@@ -1513,8 +1507,8 @@ internal class AnidbAnimeConverterTest {
                     runBlocking {
                         // given
                         val testAnidbConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                            override fun hostname(): Hostname = AnidbConfig.hostname()
                             override fun buildAnimeLink(id: AnimeId): URI = AnidbConfig.buildAnimeLink(id)
-                            override fun buildDataDownloadLink(id: String): URI = AnidbConfig.buildDataDownloadLink(id)
                             override fun fileSuffix(): FileSuffix = AnidbConfig.fileSuffix()
                         }
 
@@ -1536,8 +1530,8 @@ internal class AnidbAnimeConverterTest {
                     runBlocking {
                         // given
                         val testAnidbConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                            override fun hostname(): Hostname = AnidbConfig.hostname()
                             override fun buildAnimeLink(id: AnimeId): URI = AnidbConfig.buildAnimeLink(id)
-                            override fun buildDataDownloadLink(id: String): URI = AnidbConfig.buildDataDownloadLink(id)
                             override fun fileSuffix(): FileSuffix = AnidbConfig.fileSuffix()
                         }
 
@@ -1564,8 +1558,8 @@ internal class AnidbAnimeConverterTest {
                     runBlocking {
                         // given
                         val testAnidbConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                            override fun hostname(): Hostname = AnidbConfig.hostname()
                             override fun buildAnimeLink(id: AnimeId): URI = AnidbConfig.buildAnimeLink(id)
-                            override fun buildDataDownloadLink(id: String): URI = AnidbConfig.buildDataDownloadLink(id)
                             override fun fileSuffix(): FileSuffix = AnidbConfig.fileSuffix()
                         }
 
@@ -1588,8 +1582,8 @@ internal class AnidbAnimeConverterTest {
                     runBlocking {
                         // given
                         val testAnidbConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                            override fun hostname(): Hostname = AnidbConfig.hostname()
                             override fun buildAnimeLink(id: AnimeId): URI = AnidbConfig.buildAnimeLink(id)
-                            override fun buildDataDownloadLink(id: String): URI = AnidbConfig.buildDataDownloadLink(id)
                             override fun fileSuffix(): FileSuffix = AnidbConfig.fileSuffix()
                         }
 
@@ -1612,8 +1606,8 @@ internal class AnidbAnimeConverterTest {
                     runBlocking {
                         // given
                         val testAnidbConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                            override fun hostname(): Hostname = AnidbConfig.hostname()
                             override fun buildAnimeLink(id: AnimeId): URI = AnidbConfig.buildAnimeLink(id)
-                            override fun buildDataDownloadLink(id: String): URI = AnidbConfig.buildDataDownloadLink(id)
                             override fun fileSuffix(): FileSuffix = AnidbConfig.fileSuffix()
                         }
 
@@ -1635,8 +1629,8 @@ internal class AnidbAnimeConverterTest {
                     runBlocking {
                         // given
                         val testAnidbConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                            override fun hostname(): Hostname = AnidbConfig.hostname()
                             override fun buildAnimeLink(id: AnimeId): URI = AnidbConfig.buildAnimeLink(id)
-                            override fun buildDataDownloadLink(id: String): URI = AnidbConfig.buildDataDownloadLink(id)
                             override fun fileSuffix(): FileSuffix = AnidbConfig.fileSuffix()
                         }
 
@@ -1659,8 +1653,8 @@ internal class AnidbAnimeConverterTest {
                 runBlocking {
                     // given
                     val testAnidbConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                        override fun hostname(): Hostname = AnidbConfig.hostname()
                         override fun buildAnimeLink(id: AnimeId): URI = AnidbConfig.buildAnimeLink(id)
-                        override fun buildDataDownloadLink(id: String): URI = AnidbConfig.buildDataDownloadLink(id)
                         override fun fileSuffix(): FileSuffix = AnidbConfig.fileSuffix()
                     }
 
@@ -1674,6 +1668,55 @@ internal class AnidbAnimeConverterTest {
                     // then
                     assertThat(result.animeSeason.season).isEqualTo(UNDEFINED)
                 }
+            }
+        }
+    }
+
+    @Nested
+    inner class ScoresTests {
+
+        @Test
+        fun `successfully extracts score`() {
+            runBlocking {
+                // given
+                val testAnidbConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = AnidbConfig.hostname()
+                    override fun buildAnimeLink(id: AnimeId): URI = AnidbConfig.buildAnimeLink(id)
+                    override fun fileSuffix(): FileSuffix = AnidbConfig.fileSuffix()
+                }
+
+                val converter = AnidbAnimeConverter(testAnidbConfig)
+
+                val testFile = loadTestResource<String>("AnidbAnimeConverterTest/scores/score.html")
+
+                // when
+                val result = converter.convert(testFile)
+
+                // then
+                assertThat(result.scores).hasSize(1)
+                assertThat(result.scores.first().scaledValue()).isEqualTo(8.65)
+            }
+        }
+
+        @Test
+        fun `returns NoMetaDataProviderScore`() {
+            runBlocking {
+                // given
+                val testAnidbConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = AnidbConfig.hostname()
+                    override fun buildAnimeLink(id: AnimeId): URI = AnidbConfig.buildAnimeLink(id)
+                    override fun fileSuffix(): FileSuffix = AnidbConfig.fileSuffix()
+                }
+
+                val converter = AnidbAnimeConverter(testAnidbConfig)
+
+                val testFile = loadTestResource<String>("AnidbAnimeConverterTest/scores/no-score.html")
+
+                // when
+                val result = converter.convert(testFile)
+
+                // then
+                assertThat(result.scores).isEmpty()
             }
         }
     }

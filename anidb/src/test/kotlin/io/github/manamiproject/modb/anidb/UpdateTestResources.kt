@@ -80,6 +80,9 @@ private val files = mapOf(
     "AnidbAnimeConverterTest/related_anime/multiple_related_anime.html" to "193",
     "AnidbAnimeConverterTest/related_anime/no_related_anime.html" to "14453",
 
+    "AnidbAnimeConverterTest/scores/no-score.html" to "4563",
+    "AnidbAnimeConverterTest/scores/score.html" to "17862",
+
     "AnidbAnimeConverterTest/sources/11221.html" to "11221",
 
     "AnidbAnimeConverterTest/status/date_published.html" to "8857",
