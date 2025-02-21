@@ -42,6 +42,9 @@ private val files = mapOf(
     "AnilistAnimeConverterTest/related_anime/no_adaption_multiple_relations.json" to "100133",
     "AnilistAnimeConverterTest/related_anime/no_adaption_no_relations.json" to "10003",
 
+    "AnilistAnimeConverterTest/scores/no-score.json" to "100081",
+    "AnilistAnimeConverterTest/scores/score.json" to "5114",
+
     "AnilistAnimeConverterTest/sources/15689.json" to "15689",
 
     "AnilistAnimeConverterTest/status/cancelled.json" to "101704",

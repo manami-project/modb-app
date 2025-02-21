@@ -45,7 +45,8 @@ public class AnilistAnimeConverter(
             "id" to "$.data.Media.id",
             "status" to "$.data.Media.status",
             "tags" to "$.data.Media.tags.*.name",
-            "relatedAnime" to "$.data.Media.relations.edges.*.node"
+            "relatedAnime" to "$.data.Media.relations.edges.*.node",
+            "score" to "$.data.Media.meanScore",
         ))
 
         return@withContext AnimeRaw(
@@ -61,7 +62,9 @@ public class AnilistAnimeConverter(
             _synonyms = extractSynonyms(data),
             _tags = extractTags(data),
             _relatedAnime = extractRelatedAnime(data),
-        )
+        ).apply { 
+            addScores(extractScore(data))
+        }
     }
 
     private fun extractTitle(data: ExtractionResult): String = data.stringOrDefault("userPreferred")
@@ -169,6 +172,20 @@ public class AnilistAnimeConverter(
         val tags = data.listNotNull<Tag>("tags")
 
         return genres.plus(tags).toHashSet()
+    }
+
+    private fun extractScore(data: ExtractionResult): MetaDataProviderScore {
+        if (data.notFound("score")) {
+            return NoMetaDataProviderScore
+        }
+
+        val rawScore = data.double("score")
+
+        return MetaDataProviderScoreValue(
+            hostname = metaDataProviderConfig.hostname(),
+            value = rawScore,
+            originalRange = 1.0..100.0,
+        )
     }
 
     public companion object {

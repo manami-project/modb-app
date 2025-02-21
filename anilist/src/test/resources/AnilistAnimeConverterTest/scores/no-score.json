@@ -1,0 +1,277 @@
+{
+  "data": {
+    "Media": {
+      "id": 100081,
+      "title": {
+        "userPreferred": "Zero Seiki Movie 1: Emeraldas",
+        "romaji": "Zero Seiki Movie 1: Emeraldas",
+        "english": null,
+        "native": "\u96f6\u4e16\u7d00 \u30a8\u30e1\u30e9\u30eb\u30c0\u30b9"
+      },
+      "coverImage": {
+        "extraLarge": "https:\/\/s4.anilist.co\/file\/anilistcdn\/media\/anime\/cover\/large\/nx100081-SkiKHz5hPTtD.jpg",
+        "large": "https:\/\/s4.anilist.co\/file\/anilistcdn\/media\/anime\/cover\/medium\/nx100081-SkiKHz5hPTtD.jpg"
+      },
+      "bannerImage": null,
+      "startDate": {
+        "year": null,
+        "month": null,
+        "day": null
+      },
+      "endDate": {
+        "year": null,
+        "month": null,
+        "day": null
+      },
+      "description": "An anime movie that was announced at Japan Expo which was supposed to air in 2020.",
+      "season": null,
+      "seasonYear": null,
+      "type": "ANIME",
+      "format": "MOVIE",
+      "status": "NOT_YET_RELEASED",
+      "episodes": 1,
+      "duration": null,
+      "chapters": null,
+      "volumes": null,
+      "genres": [
+        "Action",
+        "Adventure",
+        "Sci-Fi"
+      ],
+      "synonyms": [
+        "The Zero Century Movie 1: Emeraldas",
+        "The Zero Century: Emeraldas"
+      ],
+      "source": "MANGA",
+      "isAdult": false,
+      "isLocked": false,
+      "meanScore": null,
+      "averageScore": null,
+      "popularity": 856,
+      "favourites": 3,
+      "hashtag": null,
+      "countryOfOrigin": "JP",
+      "isLicensed": true,
+      "isFavourite": false,
+      "isRecommendationBlocked": false,
+      "nextAiringEpisode": null,
+      "relations": {
+        "edges": [
+          {
+            "id": 21067,
+            "relationType": "ALTERNATIVE",
+            "node": {
+              "id": 1553,
+              "title": {
+                "userPreferred": "Queen Emeraldas"
+              },
+              "format": "OVA",
+              "type": "ANIME",
+              "status": "FINISHED",
+              "bannerImage": null,
+              "coverImage": {
+                "large": "https:\/\/s4.anilist.co\/file\/anilistcdn\/media\/anime\/cover\/medium\/nx1553-KvFiw3uwx136.jpg"
+              }
+            }
+          },
+          {
+            "id": 21069,
+            "relationType": "SOURCE",
+            "node": {
+              "id": 56486,
+              "title": {
+                "userPreferred": "Queen Emeraldas"
+              },
+              "format": "MANGA",
+              "type": "MANGA",
+              "status": "FINISHED",
+              "bannerImage": null,
+              "coverImage": {
+                "large": "https:\/\/s4.anilist.co\/file\/anilistcdn\/media\/manga\/cover\/medium\/bx56486-IvjlLNXUbvZ8.jpg"
+              }
+            }
+          },
+          {
+            "id": 21151,
+            "relationType": "SEQUEL",
+            "node": {
+              "id": 100148,
+              "title": {
+                "userPreferred": "Zero Seiki Movie 2: Herlock"
+              },
+              "format": "MOVIE",
+              "type": "ANIME",
+              "status": "NOT_YET_RELEASED",
+              "bannerImage": null,
+              "coverImage": {
+                "large": "https:\/\/s4.anilist.co\/file\/anilistcdn\/media\/anime\/cover\/medium\/nx100148-0tfdtJVMCyMm.jpg"
+              }
+            }
+          }
+        ]
+      },
+      "characterPreview": {
+        "edges": []
+      },
+      "staffPreview": {
+        "edges": [
+          {
+            "id": 101620,
+            "role": "Director",
+            "node": {
+              "id": 100988,
+              "name": {
+                "full": "Hiroyuki Yamaga"
+              },
+              "language": "JAPANESE",
+              "image": {
+                "large": "https:\/\/s4.anilist.co\/file\/anilistcdn\/staff\/large\/5988.jpg"
+              }
+            }
+          },
+          {
+            "id": 101621,
+            "role": "Script",
+            "node": {
+              "id": 115288,
+              "name": {
+                "full": "Masaki Wachi"
+              },
+              "language": "JAPANESE",
+              "image": {
+                "large": "https:\/\/s4.anilist.co\/file\/anilistcdn\/staff\/large\/115288-GLGBGmslaro2.jpg"
+              }
+            }
+          },
+          {
+            "id": 101622,
+            "role": "Original Creator",
+            "node": {
+              "id": 97597,
+              "name": {
+                "full": "Leiji Matsumoto"
+              },
+              "language": "JAPANESE",
+              "image": {
+                "large": "https:\/\/s4.anilist.co\/file\/anilistcdn\/staff\/large\/n97597-6SFzeXGMXD11.png"
+              }
+            }
+          },
+          {
+            "id": 101623,
+            "role": "Character Design",
+            "node": {
+              "id": 98158,
+              "name": {
+                "full": "Yoshiyuki Sadamoto"
+              },
+              "language": "JAPANESE",
+              "image": {
+                "large": "https:\/\/s4.anilist.co\/file\/anilistcdn\/staff\/large\/3158.jpg"
+              }
+            }
+          },
+          {
+            "id": 120288,
+            "role": "Chief Animation Director",
+            "node": {
+              "id": 130405,
+              "name": {
+                "full": "Toshihisa Kaiya"
+              },
+              "language": "JAPANESE",
+              "image": {
+                "large": "https:\/\/s4.anilist.co\/file\/anilistcdn\/staff\/large\/n130405-e0DZBcVxlYfK.jpg"
+              }
+            }
+          }
+        ]
+      },
+      "studios": {
+        "edges": [
+          {
+            "isMain": false,
+            "node": {
+              "id": 6295,
+              "name": "GAINAX Kyoto"
+            }
+          }
+        ]
+      },
+      "reviewPreview": {
+        "pageInfo": {
+          "total": 0
+        },
+        "nodes": []
+      },
+      "recommendations": {
+        "pageInfo": {
+          "total": 0
+        },
+        "nodes": []
+      },
+      "externalLinks": [
+        {
+          "site": "Official Site",
+          "url": "http:\/\/zero-century.net\/"
+        }
+      ],
+      "streamingEpisodes": [],
+      "trailer": null,
+      "rankings": [],
+      "tags": [
+        {
+          "id": 63,
+          "name": "Space",
+          "description": "Partly or completely set in outer space.",
+          "rank": 20,
+          "isMediaSpoiler": false,
+          "isGeneralSpoiler": false
+        }
+      ],
+      "mediaListEntry": null,
+      "stats": {
+        "statusDistribution": [
+          {
+            "status": "CURRENT",
+            "amount": 8
+          },
+          {
+            "status": "PLANNING",
+            "amount": 827
+          },
+          {
+            "status": "COMPLETED",
+            "amount": 10
+          },
+          {
+            "status": "DROPPED",
+            "amount": 6
+          },
+          {
+            "status": "PAUSED",
+            "amount": 5
+          }
+        ],
+        "scoreDistribution": [
+          {
+            "score": 10,
+            "amount": 1
+          },
+          {
+            "score": 30,
+            "amount": 1
+          },
+          {
+            "score": 50,
+            "amount": 2
+          },
+          {
+            "score": 80,
+            "amount": 1
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,18 +1,21 @@
 package io.github.manamiproject.modb.anilist
 
+import io.github.manamiproject.modb.core.anime.AnimeSeason.Season.*
 import io.github.manamiproject.modb.core.anime.AnimeStatus.*
 import io.github.manamiproject.modb.core.anime.AnimeType.*
-import io.github.manamiproject.modb.core.anime.AnimeSeason.Season.*
-import io.github.manamiproject.modb.core.anime.AnimeStatus.UNKNOWN as UNKNOWN_STATUS
-import io.github.manamiproject.modb.core.anime.AnimeType.UNKNOWN as UNKNOWN_TYPE
 import io.github.manamiproject.modb.core.anime.Duration
 import io.github.manamiproject.modb.core.anime.Duration.TimeUnit.*
+import io.github.manamiproject.modb.core.config.AnimeId
+import io.github.manamiproject.modb.core.config.Hostname
+import io.github.manamiproject.modb.core.config.MetaDataProviderConfig
 import io.github.manamiproject.modb.test.loadTestResource
 import kotlinx.coroutines.runBlocking
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Nested
 import java.net.URI
 import kotlin.test.Test
+import io.github.manamiproject.modb.core.anime.AnimeStatus.UNKNOWN as UNKNOWN_STATUS
+import io.github.manamiproject.modb.core.anime.AnimeType.UNKNOWN as UNKNOWN_TYPE
 
 internal class AnilistAnimeConverterTest {
 
@@ -23,9 +26,13 @@ internal class AnilistAnimeConverterTest {
         fun `title containing special chars`() {
             runBlocking {
                 // given
-                val testFileContent = loadTestResource<String>("AnilistAnimeConverterTest/title/special_chars.json")
+                val testAnilistConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = AnilistConfig.hostname()
+                    override fun buildAnimeLink(id: AnimeId): URI = AnilistConfig.buildAnimeLink(id)
+                }
+                val converter = AnilistAnimeConverter(testAnilistConfig)
 
-                val converter = AnilistAnimeConverter()
+                val testFileContent = loadTestResource<String>("AnilistAnimeConverterTest/title/special_chars.json")
 
                 // when
                 val result = converter.convert(testFileContent)
@@ -43,9 +50,13 @@ internal class AnilistAnimeConverterTest {
         fun `type is tv`() {
             runBlocking {
                 // given
-                val testFileContent = loadTestResource<String>("AnilistAnimeConverterTest/type/tv.json")
+                val testAnilistConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = AnilistConfig.hostname()
+                    override fun buildAnimeLink(id: AnimeId): URI = AnilistConfig.buildAnimeLink(id)
+                }
+                val converter = AnilistAnimeConverter(testAnilistConfig)
 
-                val converter = AnilistAnimeConverter()
+                val testFileContent = loadTestResource<String>("AnilistAnimeConverterTest/type/tv.json")
 
                 // when
                 val result = converter.convert(testFileContent)
@@ -59,9 +70,13 @@ internal class AnilistAnimeConverterTest {
         fun `type is tv_short and is mapped to tv`() {
             runBlocking {
                 // given
-                val testFileContent = loadTestResource<String>("AnilistAnimeConverterTest/type/tv_short.json")
+                val testAnilistConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = AnilistConfig.hostname()
+                    override fun buildAnimeLink(id: AnimeId): URI = AnilistConfig.buildAnimeLink(id)
+                }
+                val converter = AnilistAnimeConverter(testAnilistConfig)
 
-                val converter = AnilistAnimeConverter()
+                val testFileContent = loadTestResource<String>("AnilistAnimeConverterTest/type/tv_short.json")
 
                 // when
                 val result = converter.convert(testFileContent)
@@ -75,9 +90,13 @@ internal class AnilistAnimeConverterTest {
         fun `type is special`() {
             runBlocking {
                 // given
-                val testFileContent = loadTestResource<String>("AnilistAnimeConverterTest/type/special.json")
+                val testAnilistConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = AnilistConfig.hostname()
+                    override fun buildAnimeLink(id: AnimeId): URI = AnilistConfig.buildAnimeLink(id)
+                }
+                val converter = AnilistAnimeConverter(testAnilistConfig)
 
-                val converter = AnilistAnimeConverter()
+                val testFileContent = loadTestResource<String>("AnilistAnimeConverterTest/type/special.json")
 
                 // when
                 val result = converter.convert(testFileContent)
@@ -91,9 +110,13 @@ internal class AnilistAnimeConverterTest {
         fun `type is ova`() {
             runBlocking {
                 // given
-                val testFileContent = loadTestResource<String>("AnilistAnimeConverterTest/type/ova.json")
+                val testAnilistConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = AnilistConfig.hostname()
+                    override fun buildAnimeLink(id: AnimeId): URI = AnilistConfig.buildAnimeLink(id)
+                }
+                val converter = AnilistAnimeConverter(testAnilistConfig)
 
-                val converter = AnilistAnimeConverter()
+                val testFileContent = loadTestResource<String>("AnilistAnimeConverterTest/type/ova.json")
 
                 // when
                 val result = converter.convert(testFileContent)
@@ -107,9 +130,13 @@ internal class AnilistAnimeConverterTest {
         fun `type is ona`() {
             runBlocking {
                 // given
-                val testFileContent = loadTestResource<String>("AnilistAnimeConverterTest/type/ona.json")
+                val testAnilistConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = AnilistConfig.hostname()
+                    override fun buildAnimeLink(id: AnimeId): URI = AnilistConfig.buildAnimeLink(id)
+                }
+                val converter = AnilistAnimeConverter(testAnilistConfig)
 
-                val converter = AnilistAnimeConverter()
+                val testFileContent = loadTestResource<String>("AnilistAnimeConverterTest/type/ona.json")
 
                 // when
                 val result = converter.convert(testFileContent)
@@ -123,9 +150,13 @@ internal class AnilistAnimeConverterTest {
         fun `type is movie`() {
             runBlocking {
                 // given
-                val testFileContent = loadTestResource<String>("AnilistAnimeConverterTest/type/movie.json")
+                val testAnilistConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = AnilistConfig.hostname()
+                    override fun buildAnimeLink(id: AnimeId): URI = AnilistConfig.buildAnimeLink(id)
+                }
+                val converter = AnilistAnimeConverter(testAnilistConfig)
 
-                val converter = AnilistAnimeConverter()
+                val testFileContent = loadTestResource<String>("AnilistAnimeConverterTest/type/movie.json")
 
                 // when
                 val result = converter.convert(testFileContent)
@@ -139,9 +170,13 @@ internal class AnilistAnimeConverterTest {
         fun `type is music is mapped to special`() {
             runBlocking {
                 // given
-                val testFileContent = loadTestResource<String>("AnilistAnimeConverterTest/type/music.json")
+                val testAnilistConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = AnilistConfig.hostname()
+                    override fun buildAnimeLink(id: AnimeId): URI = AnilistConfig.buildAnimeLink(id)
+                }
+                val converter = AnilistAnimeConverter(testAnilistConfig)
 
-                val converter = AnilistAnimeConverter()
+                val testFileContent = loadTestResource<String>("AnilistAnimeConverterTest/type/music.json")
 
                 // when
                 val result = converter.convert(testFileContent)
@@ -155,9 +190,13 @@ internal class AnilistAnimeConverterTest {
         fun `type is null and is mapped to UNKNOWN`() {
             runBlocking {
                 // given
-                val testFileContent = loadTestResource<String>("AnilistAnimeConverterTest/type/null.json")
+                val testAnilistConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = AnilistConfig.hostname()
+                    override fun buildAnimeLink(id: AnimeId): URI = AnilistConfig.buildAnimeLink(id)
+                }
+                val converter = AnilistAnimeConverter(testAnilistConfig)
 
-                val converter = AnilistAnimeConverter()
+                val testFileContent = loadTestResource<String>("AnilistAnimeConverterTest/type/null.json")
 
                 // when
                 val result = converter.convert(testFileContent)
@@ -175,9 +214,13 @@ internal class AnilistAnimeConverterTest {
         fun `fixed number of episodes`() {
             runBlocking {
                 // given
-                val testFileContent = loadTestResource<String>("AnilistAnimeConverterTest/episodes/39.json")
+                val testAnilistConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = AnilistConfig.hostname()
+                    override fun buildAnimeLink(id: AnimeId): URI = AnilistConfig.buildAnimeLink(id)
+                }
+                val converter = AnilistAnimeConverter(testAnilistConfig)
 
-                val converter = AnilistAnimeConverter()
+                val testFileContent = loadTestResource<String>("AnilistAnimeConverterTest/episodes/39.json")
 
                 // when
                 val result = converter.convert(testFileContent)
@@ -191,10 +234,13 @@ internal class AnilistAnimeConverterTest {
         fun `neither episodes nor nextairingepisode is set`() {
             runBlocking {
                 // given
-                val testFileContent =
-                    loadTestResource<String>("AnilistAnimeConverterTest/episodes/neither_episodes_nor_nextairingepisode_is_set.json")
+                val testAnilistConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = AnilistConfig.hostname()
+                    override fun buildAnimeLink(id: AnimeId): URI = AnilistConfig.buildAnimeLink(id)
+                }
+                val converter = AnilistAnimeConverter(testAnilistConfig)
 
-                val converter = AnilistAnimeConverter()
+                val testFileContent = loadTestResource<String>("AnilistAnimeConverterTest/episodes/neither_episodes_nor_nextairingepisode_is_set.json")
 
                 // when
                 val result = converter.convert(testFileContent)
@@ -208,9 +254,13 @@ internal class AnilistAnimeConverterTest {
         fun `ongoing series for which the value has to be taken from nextairingepisode`() {
             runBlocking {
                 // given
-                val testFileContent = loadTestResource<String>("AnilistAnimeConverterTest/episodes/ongoing.json")
+                val testAnilistConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = AnilistConfig.hostname()
+                    override fun buildAnimeLink(id: AnimeId): URI = AnilistConfig.buildAnimeLink(id)
+                }
+                val converter = AnilistAnimeConverter(testAnilistConfig)
 
-                val converter = AnilistAnimeConverter()
+                val testFileContent = loadTestResource<String>("AnilistAnimeConverterTest/episodes/ongoing.json")
 
                 // when
                 val result = converter.convert(testFileContent)
@@ -228,10 +278,13 @@ internal class AnilistAnimeConverterTest {
         fun `picture is available, but anilist never provides a thumbnail so the thumbnail is the same as the picture`() {
             runBlocking {
                 // given
-                val testFileContent =
-                    loadTestResource<String>("AnilistAnimeConverterTest/picture_and_thumbnail/picture_available.json")
+                val testAnilistConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = AnilistConfig.hostname()
+                    override fun buildAnimeLink(id: AnimeId): URI = AnilistConfig.buildAnimeLink(id)
+                }
+                val converter = AnilistAnimeConverter(testAnilistConfig)
 
-                val converter = AnilistAnimeConverter()
+                val testFileContent = loadTestResource<String>("AnilistAnimeConverterTest/picture_and_thumbnail/picture_available.json")
 
                 // when
                 val result = converter.convert(testFileContent)
@@ -246,10 +299,13 @@ internal class AnilistAnimeConverterTest {
         fun `picture is unavailable`() {
             runBlocking {
                 // given
-                val testFileContent =
-                    loadTestResource<String>("AnilistAnimeConverterTest/picture_and_thumbnail/picture_unavailable.json")
+                val testAnilistConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = AnilistConfig.hostname()
+                    override fun buildAnimeLink(id: AnimeId): URI = AnilistConfig.buildAnimeLink(id)
+                }
+                val converter = AnilistAnimeConverter(testAnilistConfig)
 
-                val converter = AnilistAnimeConverter()
+                val testFileContent = loadTestResource<String>("AnilistAnimeConverterTest/picture_and_thumbnail/picture_unavailable.json")
 
                 // when
                 val result = converter.convert(testFileContent)
@@ -268,10 +324,13 @@ internal class AnilistAnimeConverterTest {
         fun `synonyms taken from titles and synonyms, ignoring null`() {
             runBlocking {
                 // given
-                val testFileContent =
-                    loadTestResource<String>("AnilistAnimeConverterTest/synonyms/synonyms_from_titles_and_synonyms.json")
+                val testAnilistConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = AnilistConfig.hostname()
+                    override fun buildAnimeLink(id: AnimeId): URI = AnilistConfig.buildAnimeLink(id)
+                }
+                val converter = AnilistAnimeConverter(testAnilistConfig)
 
-                val converter = AnilistAnimeConverter()
+                val testFileContent = loadTestResource<String>("AnilistAnimeConverterTest/synonyms/synonyms_from_titles_and_synonyms.json")
 
                 // when
                 val result = converter.convert(testFileContent)
@@ -294,9 +353,13 @@ internal class AnilistAnimeConverterTest {
         fun `extract correct id and build anime link correctly`() {
             runBlocking {
                 // given
-                val testFileContent = loadTestResource<String>("AnilistAnimeConverterTest/sources/15689.json")
+                val testAnilistConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = AnilistConfig.hostname()
+                    override fun buildAnimeLink(id: AnimeId): URI = AnilistConfig.buildAnimeLink(id)
+                }
+                val converter = AnilistAnimeConverter(testAnilistConfig)
 
-                val converter = AnilistAnimeConverter()
+                val testFileContent = loadTestResource<String>("AnilistAnimeConverterTest/sources/15689.json")
 
                 // when
                 val result = converter.convert(testFileContent)
@@ -314,10 +377,13 @@ internal class AnilistAnimeConverterTest {
         fun `no adaption, no relations`() {
             runBlocking {
                 // given
-                val testFileContent =
-                    loadTestResource<String>("AnilistAnimeConverterTest/related_anime/no_adaption_no_relations.json")
+                val testAnilistConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = AnilistConfig.hostname()
+                    override fun buildAnimeLink(id: AnimeId): URI = AnilistConfig.buildAnimeLink(id)
+                }
+                val converter = AnilistAnimeConverter(testAnilistConfig)
 
-                val converter = AnilistAnimeConverter()
+                val testFileContent = loadTestResource<String>("AnilistAnimeConverterTest/related_anime/no_adaption_no_relations.json")
 
                 // when
                 val result = converter.convert(testFileContent)
@@ -331,10 +397,13 @@ internal class AnilistAnimeConverterTest {
         fun `no adaption, multiple relations`() {
             runBlocking {
                 // given
-                val testFileContent =
-                    loadTestResource<String>("AnilistAnimeConverterTest/related_anime/no_adaption_multiple_relations.json")
+                val testAnilistConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = AnilistConfig.hostname()
+                    override fun buildAnimeLink(id: AnimeId): URI = AnilistConfig.buildAnimeLink(id)
+                }
+                val converter = AnilistAnimeConverter(testAnilistConfig)
 
-                val converter = AnilistAnimeConverter()
+                val testFileContent = loadTestResource<String>("AnilistAnimeConverterTest/related_anime/no_adaption_multiple_relations.json")
 
                 // when
                 val result = converter.convert(testFileContent)
@@ -352,10 +421,13 @@ internal class AnilistAnimeConverterTest {
         fun `one adaption, one relation`() {
             runBlocking {
                 // given
-                val testFileContent =
-                    loadTestResource<String>("AnilistAnimeConverterTest/related_anime/has_one_adaption_and_one_relation.json")
+                val testAnilistConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = AnilistConfig.hostname()
+                    override fun buildAnimeLink(id: AnimeId): URI = AnilistConfig.buildAnimeLink(id)
+                }
+                val converter = AnilistAnimeConverter(testAnilistConfig)
 
-                val converter = AnilistAnimeConverter()
+                val testFileContent = loadTestResource<String>("AnilistAnimeConverterTest/related_anime/has_one_adaption_and_one_relation.json")
 
                 // when
                 val result = converter.convert(testFileContent)
@@ -371,10 +443,13 @@ internal class AnilistAnimeConverterTest {
         fun `has adaption, multiple relations`() {
             runBlocking {
                 // given
-                val testFileContent =
-                    loadTestResource<String>("AnilistAnimeConverterTest/related_anime/has_adaption_and_multiple_relations.json")
+                val testAnilistConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = AnilistConfig.hostname()
+                    override fun buildAnimeLink(id: AnimeId): URI = AnilistConfig.buildAnimeLink(id)
+                }
+                val converter = AnilistAnimeConverter(testAnilistConfig)
 
-                val converter = AnilistAnimeConverter()
+                val testFileContent = loadTestResource<String>("AnilistAnimeConverterTest/related_anime/has_adaption_and_multiple_relations.json")
 
                 // when
                 val result = converter.convert(testFileContent)
@@ -401,10 +476,13 @@ internal class AnilistAnimeConverterTest {
         fun `has adaption, no relations`() {
             runBlocking {
                 // given
-                val testFileContent =
-                    loadTestResource<String>("AnilistAnimeConverterTest/related_anime/has_adaption_but_no_relation.json")
+                val testAnilistConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = AnilistConfig.hostname()
+                    override fun buildAnimeLink(id: AnimeId): URI = AnilistConfig.buildAnimeLink(id)
+                }
+                val converter = AnilistAnimeConverter(testAnilistConfig)
 
-                val converter = AnilistAnimeConverter()
+                val testFileContent = loadTestResource<String>("AnilistAnimeConverterTest/related_anime/has_adaption_but_no_relation.json")
 
                 // when
                 val result = converter.convert(testFileContent)
@@ -422,9 +500,13 @@ internal class AnilistAnimeConverterTest {
         fun `'FINISHED' is mapped to 'FINISHED'`() {
             runBlocking {
                 // given
-                val testFileContent = loadTestResource<String>("AnilistAnimeConverterTest/status/finished.json")
+                val testAnilistConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = AnilistConfig.hostname()
+                    override fun buildAnimeLink(id: AnimeId): URI = AnilistConfig.buildAnimeLink(id)
+                }
+                val converter = AnilistAnimeConverter(testAnilistConfig)
 
-                val converter = AnilistAnimeConverter()
+                val testFileContent = loadTestResource<String>("AnilistAnimeConverterTest/status/finished.json")
 
                 // when
                 val result = converter.convert(testFileContent)
@@ -438,9 +520,13 @@ internal class AnilistAnimeConverterTest {
         fun `'RELEASING' is mapped to 'ONGOING'`() {
             runBlocking {
                 // given
-                val testFileContent = loadTestResource<String>("AnilistAnimeConverterTest/status/releasing.json")
+                val testAnilistConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = AnilistConfig.hostname()
+                    override fun buildAnimeLink(id: AnimeId): URI = AnilistConfig.buildAnimeLink(id)
+                }
+                val converter = AnilistAnimeConverter(testAnilistConfig)
 
-                val converter = AnilistAnimeConverter()
+                val testFileContent = loadTestResource<String>("AnilistAnimeConverterTest/status/releasing.json")
 
                 // when
                 val result = converter.convert(testFileContent)
@@ -454,9 +540,13 @@ internal class AnilistAnimeConverterTest {
         fun `'NOT_YET_RELEASED' is mapped to 'UPCOMING'`() {
             runBlocking {
                 // given
-                val testFileContent = loadTestResource<String>("AnilistAnimeConverterTest/status/not_yet_released.json")
+                val testAnilistConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = AnilistConfig.hostname()
+                    override fun buildAnimeLink(id: AnimeId): URI = AnilistConfig.buildAnimeLink(id)
+                }
+                val converter = AnilistAnimeConverter(testAnilistConfig)
 
-                val converter = AnilistAnimeConverter()
+                val testFileContent = loadTestResource<String>("AnilistAnimeConverterTest/status/not_yet_released.json")
 
                 // when
                 val result = converter.convert(testFileContent)
@@ -470,9 +560,13 @@ internal class AnilistAnimeConverterTest {
         fun `'CANCELLED' is mapped to 'UNKNOWN'`() {
             runBlocking {
                 // given
-                val testFileContent = loadTestResource<String>("AnilistAnimeConverterTest/status/cancelled.json")
+                val testAnilistConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = AnilistConfig.hostname()
+                    override fun buildAnimeLink(id: AnimeId): URI = AnilistConfig.buildAnimeLink(id)
+                }
+                val converter = AnilistAnimeConverter(testAnilistConfig)
 
-                val converter = AnilistAnimeConverter()
+                val testFileContent = loadTestResource<String>("AnilistAnimeConverterTest/status/cancelled.json")
 
                 // when
                 val result = converter.convert(testFileContent)
@@ -486,9 +580,13 @@ internal class AnilistAnimeConverterTest {
         fun `null is mapped to 'UNKNOWN'`() {
             runBlocking {
                 // given
-                val testFileContent = loadTestResource<String>("AnilistAnimeConverterTest/status/null.json")
+                val testAnilistConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = AnilistConfig.hostname()
+                    override fun buildAnimeLink(id: AnimeId): URI = AnilistConfig.buildAnimeLink(id)
+                }
+                val converter = AnilistAnimeConverter(testAnilistConfig)
 
-                val converter = AnilistAnimeConverter()
+                val testFileContent = loadTestResource<String>("AnilistAnimeConverterTest/status/null.json")
 
                 // when
                 val result = converter.convert(testFileContent)
@@ -506,9 +604,13 @@ internal class AnilistAnimeConverterTest {
         fun `put names of genres and tags as distinct list into the anime's tags`() {
             runBlocking {
                 // given
-                val testFileContent = loadTestResource<String>("AnilistAnimeConverterTest/tags/tags.json")
+                val testAnilistConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = AnilistConfig.hostname()
+                    override fun buildAnimeLink(id: AnimeId): URI = AnilistConfig.buildAnimeLink(id)
+                }
+                val converter = AnilistAnimeConverter(testAnilistConfig)
 
-                val converter = AnilistAnimeConverter()
+                val testFileContent = loadTestResource<String>("AnilistAnimeConverterTest/tags/tags.json")
 
                 // when
                 val result = converter.convert(testFileContent)
@@ -556,9 +658,13 @@ internal class AnilistAnimeConverterTest {
         fun `duration is not set and therefore 0`() {
             runBlocking {
                 // given
-                val testFileContent = loadTestResource<String>("AnilistAnimeConverterTest/duration/null.json")
+                val testAnilistConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = AnilistConfig.hostname()
+                    override fun buildAnimeLink(id: AnimeId): URI = AnilistConfig.buildAnimeLink(id)
+                }
+                val converter = AnilistAnimeConverter(testAnilistConfig)
 
-                val converter = AnilistAnimeConverter()
+                val testFileContent = loadTestResource<String>("AnilistAnimeConverterTest/duration/null.json")
 
                 // when
                 val result = converter.convert(testFileContent)
@@ -572,9 +678,13 @@ internal class AnilistAnimeConverterTest {
         fun `duration is set to 0`() {
             runBlocking {
                 // given
-                val testFileContent = loadTestResource<String>("AnilistAnimeConverterTest/duration/0.json")
+                val testAnilistConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = AnilistConfig.hostname()
+                    override fun buildAnimeLink(id: AnimeId): URI = AnilistConfig.buildAnimeLink(id)
+                }
+                val converter = AnilistAnimeConverter(testAnilistConfig)
 
-                val converter = AnilistAnimeConverter()
+                val testFileContent = loadTestResource<String>("AnilistAnimeConverterTest/duration/0.json")
 
                 // when
                 val result = converter.convert(testFileContent)
@@ -588,9 +698,13 @@ internal class AnilistAnimeConverterTest {
         fun `anilist only uses minutes for duration - so this entry although 15 seconds long is set to 1 min`() {
             runBlocking {
                 // given
-                val testFileContent = loadTestResource<String>("AnilistAnimeConverterTest/duration/min_duration.json")
+                val testAnilistConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = AnilistConfig.hostname()
+                    override fun buildAnimeLink(id: AnimeId): URI = AnilistConfig.buildAnimeLink(id)
+                }
+                val converter = AnilistAnimeConverter(testAnilistConfig)
 
-                val converter = AnilistAnimeConverter()
+                val testFileContent = loadTestResource<String>("AnilistAnimeConverterTest/duration/min_duration.json")
 
                 // when
                 val result = converter.convert(testFileContent)
@@ -604,9 +718,13 @@ internal class AnilistAnimeConverterTest {
         fun `duration of 24 minutes`() {
             runBlocking {
                 // given
-                val testFileContent = loadTestResource<String>("AnilistAnimeConverterTest/duration/24.json")
+                val testAnilistConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = AnilistConfig.hostname()
+                    override fun buildAnimeLink(id: AnimeId): URI = AnilistConfig.buildAnimeLink(id)
+                }
+                val converter = AnilistAnimeConverter(testAnilistConfig)
 
-                val converter = AnilistAnimeConverter()
+                val testFileContent = loadTestResource<String>("AnilistAnimeConverterTest/duration/24.json")
 
                 // when
                 val result = converter.convert(testFileContent)
@@ -620,9 +738,13 @@ internal class AnilistAnimeConverterTest {
         fun `duration of 2 hours`() {
             runBlocking {
                 // given
-                val testFileContent = loadTestResource<String>("AnilistAnimeConverterTest/duration/120.json")
+                val testAnilistConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = AnilistConfig.hostname()
+                    override fun buildAnimeLink(id: AnimeId): URI = AnilistConfig.buildAnimeLink(id)
+                }
+                val converter = AnilistAnimeConverter(testAnilistConfig)
 
-                val converter = AnilistAnimeConverter()
+                val testFileContent = loadTestResource<String>("AnilistAnimeConverterTest/duration/120.json")
 
                 // when
                 val result = converter.convert(testFileContent)
@@ -643,10 +765,13 @@ internal class AnilistAnimeConverterTest {
             fun `season is 'undefined'`() {
                 runBlocking {
                     // given
-                    val testFileContent =
-                        loadTestResource<String>("AnilistAnimeConverterTest/anime_season/season_is_null_and_start_date_is_null.json")
+                    val testAnilistConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
+                        override fun hostname(): Hostname = AnilistConfig.hostname()
+                        override fun buildAnimeLink(id: AnimeId): URI = AnilistConfig.buildAnimeLink(id)
+                    }
+                    val converter = AnilistAnimeConverter(testAnilistConfig)
 
-                    val converter = AnilistAnimeConverter()
+                    val testFileContent = loadTestResource<String>("AnilistAnimeConverterTest/anime_season/season_is_null_and_start_date_is_null.json")
 
                     // when
                     val result = converter.convert(testFileContent)
@@ -660,9 +785,13 @@ internal class AnilistAnimeConverterTest {
             fun `season is 'spring'`() {
                 runBlocking {
                     // given
-                    val testFileContent = loadTestResource<String>("AnilistAnimeConverterTest/anime_season/spring.json")
+                    val testAnilistConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
+                        override fun hostname(): Hostname = AnilistConfig.hostname()
+                        override fun buildAnimeLink(id: AnimeId): URI = AnilistConfig.buildAnimeLink(id)
+                    }
+                    val converter = AnilistAnimeConverter(testAnilistConfig)
 
-                    val converter = AnilistAnimeConverter()
+                    val testFileContent = loadTestResource<String>("AnilistAnimeConverterTest/anime_season/spring.json")
 
                     // when
                     val result = converter.convert(testFileContent)
@@ -676,9 +805,13 @@ internal class AnilistAnimeConverterTest {
             fun `season is 'summer'`() {
                 runBlocking {
                     // given
-                    val testFileContent = loadTestResource<String>("AnilistAnimeConverterTest/anime_season/summer.json")
+                    val testAnilistConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
+                        override fun hostname(): Hostname = AnilistConfig.hostname()
+                        override fun buildAnimeLink(id: AnimeId): URI = AnilistConfig.buildAnimeLink(id)
+                    }
+                    val converter = AnilistAnimeConverter(testAnilistConfig)
 
-                    val converter = AnilistAnimeConverter()
+                    val testFileContent = loadTestResource<String>("AnilistAnimeConverterTest/anime_season/summer.json")
 
                     // when
                     val result = converter.convert(testFileContent)
@@ -692,9 +825,13 @@ internal class AnilistAnimeConverterTest {
             fun `season is 'fall'`() {
                 runBlocking {
                     // given
-                    val testFileContent = loadTestResource<String>("AnilistAnimeConverterTest/anime_season/fall.json")
+                    val testAnilistConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
+                        override fun hostname(): Hostname = AnilistConfig.hostname()
+                        override fun buildAnimeLink(id: AnimeId): URI = AnilistConfig.buildAnimeLink(id)
+                    }
+                    val converter = AnilistAnimeConverter(testAnilistConfig)
 
-                    val converter = AnilistAnimeConverter()
+                    val testFileContent = loadTestResource<String>("AnilistAnimeConverterTest/anime_season/fall.json")
 
                     // when
                     val result = converter.convert(testFileContent)
@@ -708,9 +845,13 @@ internal class AnilistAnimeConverterTest {
             fun `season is 'wimter'`() {
                 runBlocking {
                     // given
-                    val testFileContent = loadTestResource<String>("AnilistAnimeConverterTest/anime_season/winter.json")
+                    val testAnilistConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
+                        override fun hostname(): Hostname = AnilistConfig.hostname()
+                        override fun buildAnimeLink(id: AnimeId): URI = AnilistConfig.buildAnimeLink(id)
+                    }
+                    val converter = AnilistAnimeConverter(testAnilistConfig)
 
-                    val converter = AnilistAnimeConverter()
+                    val testFileContent = loadTestResource<String>("AnilistAnimeConverterTest/anime_season/winter.json")
 
                     // when
                     val result = converter.convert(testFileContent)
@@ -728,10 +869,13 @@ internal class AnilistAnimeConverterTest {
             fun `seasonYear is set`() {
                 runBlocking {
                     // given
-                    val testFileContent =
-                        loadTestResource<String>("AnilistAnimeConverterTest/anime_season/seasonyear_set.json")
+                    val testAnilistConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
+                        override fun hostname(): Hostname = AnilistConfig.hostname()
+                        override fun buildAnimeLink(id: AnimeId): URI = AnilistConfig.buildAnimeLink(id)
+                    }
+                    val converter = AnilistAnimeConverter(testAnilistConfig)
 
-                    val converter = AnilistAnimeConverter()
+                    val testFileContent = loadTestResource<String>("AnilistAnimeConverterTest/anime_season/seasonyear_set.json")
 
                     // when
                     val result = converter.convert(testFileContent)
@@ -745,10 +889,13 @@ internal class AnilistAnimeConverterTest {
             fun `year is not set and default is 0`() {
                 runBlocking {
                     // given
-                    val testFileContent =
-                        loadTestResource<String>("AnilistAnimeConverterTest/anime_season/season_is_null_and_start_date_is_null.json")
+                    val testAnilistConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
+                        override fun hostname(): Hostname = AnilistConfig.hostname()
+                        override fun buildAnimeLink(id: AnimeId): URI = AnilistConfig.buildAnimeLink(id)
+                    }
+                    val converter = AnilistAnimeConverter(testAnilistConfig)
 
-                    val converter = AnilistAnimeConverter()
+                    val testFileContent = loadTestResource<String>("AnilistAnimeConverterTest/anime_season/season_is_null_and_start_date_is_null.json")
 
                     // when
                     val result = converter.convert(testFileContent)
@@ -762,9 +909,13 @@ internal class AnilistAnimeConverterTest {
             fun `year is 2006 - seasonYear is null but start date is set`() {
                 runBlocking {
                     // given
-                    val testFileContent = loadTestResource<String>("AnilistAnimeConverterTest/anime_season/season_is_null_and_start_date_is_2006.json")
+                    val testAnilistConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
+                        override fun hostname(): Hostname = AnilistConfig.hostname()
+                        override fun buildAnimeLink(id: AnimeId): URI = AnilistConfig.buildAnimeLink(id)
+                    }
+                    val converter = AnilistAnimeConverter(testAnilistConfig)
 
-                    val converter = AnilistAnimeConverter()
+                    val testFileContent = loadTestResource<String>("AnilistAnimeConverterTest/anime_season/season_is_null_and_start_date_is_2006.json")
 
                     // when
                     val result = converter.convert(testFileContent)
@@ -772,6 +923,47 @@ internal class AnilistAnimeConverterTest {
                     // then
                     assertThat(result.animeSeason.year).isEqualTo(2006)
                 }
+            }
+        }
+    }
+
+    @Nested
+    inner class ScoresTests {
+
+        @Test
+        fun `successfully load score`() {
+            runBlocking {
+                // given
+                val testAnilistConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = AnilistConfig.hostname()
+                    override fun buildAnimeLink(id: AnimeId): URI = AnilistConfig.buildAnimeLink(id)
+                }
+                val converter = AnilistAnimeConverter(testAnilistConfig)
+
+                // when
+                val result = converter.convert(loadTestResource("AnilistAnimeConverterTest/scores/score.json"))
+
+                // then
+                assertThat(result.scores).hasSize(1)
+                assertThat(result.scores.first().scaledValue()).isEqualTo(9.090909090909092)
+            }
+        }
+
+        @Test
+        fun `returns NoMetaDataProviderScore`() {
+            runBlocking {
+                // given
+                val testAnilistConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = AnilistConfig.hostname()
+                    override fun buildAnimeLink(id: AnimeId): URI = AnilistConfig.buildAnimeLink(id)
+                }
+                val converter = AnilistAnimeConverter(testAnilistConfig)
+
+                // when
+                val result = converter.convert(loadTestResource("AnilistAnimeConverterTest/scores/no-score.json"))
+
+                // then
+                assertThat(result.scores).isEmpty()
             }
         }
     }
