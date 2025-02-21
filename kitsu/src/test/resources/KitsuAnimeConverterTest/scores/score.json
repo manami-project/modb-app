@@ -1,0 +1,217 @@
+{
+  "data": {
+    "id": "1517",
+    "type": "anime",
+    "links": {
+      "self": "https://kitsu.io/api/edge/anime/1517"
+    },
+    "attributes": {
+      "createdAt": "2013-02-20T16:24:13.528Z",
+      "updatedAt": "2023-04-28T12:00:04.037Z",
+      "slug": "five-centimeters-per-second",
+      "synopsis": "Takaki Toono and Akari Shinohara, two very close friends and classmates, are torn apart when Akari's family is transferred to another region of Japan due to her family's job. Despite separation, they continue to keep in touch through mail. When Takaki finds out that his family is also moving, he decides to meet with Akari one last time.\nAs years pass by, they continue down their own paths, their distance slowly growing wider and their contact with one another fades. Yet, they keep remembering one another and the times they have shared together, wondering if they will have the chance to meet once again.\n[Written by MAL Rewrite]",
+      "description": "Takaki Toono and Akari Shinohara, two very close friends and classmates, are torn apart when Akari's family is transferred to another region of Japan due to her family's job. Despite separation, they continue to keep in touch through mail. When Takaki finds out that his family is also moving, he decides to meet with Akari one last time.\nAs years pass by, they continue down their own paths, their distance slowly growing wider and their contact with one another fades. Yet, they keep remembering one another and the times they have shared together, wondering if they will have the chance to meet once again.\n[Written by MAL Rewrite]",
+      "coverImageTopOffset": 312,
+      "titles": {
+        "en": "5 Centimeters Per Second",
+        "en_jp": "Byousoku 5 Centimeter",
+        "en_us": "5 Centimeters Per Second",
+        "ja_jp": "秒速５センチメートル"
+      },
+      "canonicalTitle": "5 Centimeters Per Second",
+      "abbreviatedTitles": [
+        "Five Centimeters Per Second",
+        "Byousoku 5 Centimeter - a chain of short stories about their distance",
+        "5 Centimetres Per Second",
+        "5 cm per second"
+      ],
+      "averageRating": "76.83",
+      "ratingFrequencies": {
+        "2": "370",
+        "3": "14",
+        "4": "307",
+        "5": "24",
+        "6": "378",
+        "7": "38",
+        "8": "1649",
+        "9": "75",
+        "10": "1860",
+        "11": "95",
+        "12": "3904",
+        "13": "233",
+        "14": "7756",
+        "15": "436",
+        "16": "8660",
+        "17": "388",
+        "18": "5693",
+        "19": "140",
+        "20": "8025"
+      },
+      "userCount": 53722,
+      "favoritesCount": 931,
+      "startDate": "2007-02-16",
+      "endDate": "2007-03-03",
+      "nextRelease": null,
+      "popularityRank": 140,
+      "ratingRank": 1369,
+      "ageRating": "PG",
+      "ageRatingGuide": "Teens 13 or older",
+      "subtype": "movie",
+      "status": "finished",
+      "tba": null,
+      "posterImage": {
+        "tiny": "https://media.kitsu.io/anime/poster_images/1517/tiny.jpg",
+        "large": "https://media.kitsu.io/anime/poster_images/1517/large.jpg",
+        "small": "https://media.kitsu.io/anime/poster_images/1517/small.jpg",
+        "medium": "https://media.kitsu.io/anime/poster_images/1517/medium.jpg",
+        "original": "https://media.kitsu.io/anime/poster_images/1517/original.png",
+        "meta": {
+          "dimensions": {
+            "tiny": {
+              "width": 110,
+              "height": 156
+            },
+            "large": {
+              "width": 550,
+              "height": 780
+            },
+            "small": {
+              "width": 284,
+              "height": 402
+            },
+            "medium": {
+              "width": 390,
+              "height": 554
+            }
+          }
+        }
+      },
+      "coverImage": {
+        "tiny": "https://media.kitsu.io/anime/cover_images/1517/tiny.jpg",
+        "large": "https://media.kitsu.io/anime/cover_images/1517/large.jpg",
+        "small": "https://media.kitsu.io/anime/cover_images/1517/small.jpg",
+        "original": "https://media.kitsu.io/anime/cover_images/1517/original.png",
+        "meta": {
+          "dimensions": {
+            "tiny": {
+              "width": 840,
+              "height": 200
+            },
+            "large": {
+              "width": 3360,
+              "height": 800
+            },
+            "small": {
+              "width": 1680,
+              "height": 400
+            }
+          }
+        }
+      },
+      "episodeCount": 3,
+      "episodeLength": 22,
+      "totalLength": 66,
+      "youtubeVideoId": "1X95eE2fwuc",
+      "showType": "movie",
+      "nsfw": false
+    },
+    "relationships": {
+      "genres": {
+        "links": {
+          "self": "https://kitsu.io/api/edge/anime/1517/relationships/genres",
+          "related": "https://kitsu.io/api/edge/anime/1517/genres"
+        }
+      },
+      "categories": {
+        "links": {
+          "self": "https://kitsu.io/api/edge/anime/1517/relationships/categories",
+          "related": "https://kitsu.io/api/edge/anime/1517/categories"
+        }
+      },
+      "castings": {
+        "links": {
+          "self": "https://kitsu.io/api/edge/anime/1517/relationships/castings",
+          "related": "https://kitsu.io/api/edge/anime/1517/castings"
+        }
+      },
+      "installments": {
+        "links": {
+          "self": "https://kitsu.io/api/edge/anime/1517/relationships/installments",
+          "related": "https://kitsu.io/api/edge/anime/1517/installments"
+        }
+      },
+      "mappings": {
+        "links": {
+          "self": "https://kitsu.io/api/edge/anime/1517/relationships/mappings",
+          "related": "https://kitsu.io/api/edge/anime/1517/mappings"
+        }
+      },
+      "reviews": {
+        "links": {
+          "self": "https://kitsu.io/api/edge/anime/1517/relationships/reviews",
+          "related": "https://kitsu.io/api/edge/anime/1517/reviews"
+        }
+      },
+      "mediaRelationships": {
+        "links": {
+          "self": "https://kitsu.io/api/edge/anime/1517/relationships/media-relationships",
+          "related": "https://kitsu.io/api/edge/anime/1517/media-relationships"
+        }
+      },
+      "characters": {
+        "links": {
+          "self": "https://kitsu.io/api/edge/anime/1517/relationships/characters",
+          "related": "https://kitsu.io/api/edge/anime/1517/characters"
+        }
+      },
+      "staff": {
+        "links": {
+          "self": "https://kitsu.io/api/edge/anime/1517/relationships/staff",
+          "related": "https://kitsu.io/api/edge/anime/1517/staff"
+        }
+      },
+      "productions": {
+        "links": {
+          "self": "https://kitsu.io/api/edge/anime/1517/relationships/productions",
+          "related": "https://kitsu.io/api/edge/anime/1517/productions"
+        }
+      },
+      "quotes": {
+        "links": {
+          "self": "https://kitsu.io/api/edge/anime/1517/relationships/quotes",
+          "related": "https://kitsu.io/api/edge/anime/1517/quotes"
+        }
+      },
+      "episodes": {
+        "links": {
+          "self": "https://kitsu.io/api/edge/anime/1517/relationships/episodes",
+          "related": "https://kitsu.io/api/edge/anime/1517/episodes"
+        }
+      },
+      "streamingLinks": {
+        "links": {
+          "self": "https://kitsu.io/api/edge/anime/1517/relationships/streaming-links",
+          "related": "https://kitsu.io/api/edge/anime/1517/streaming-links"
+        }
+      },
+      "animeProductions": {
+        "links": {
+          "self": "https://kitsu.io/api/edge/anime/1517/relationships/anime-productions",
+          "related": "https://kitsu.io/api/edge/anime/1517/anime-productions"
+        }
+      },
+      "animeCharacters": {
+        "links": {
+          "self": "https://kitsu.io/api/edge/anime/1517/relationships/anime-characters",
+          "related": "https://kitsu.io/api/edge/anime/1517/anime-characters"
+        }
+      },
+      "animeStaff": {
+        "links": {
+          "self": "https://kitsu.io/api/edge/anime/1517/relationships/anime-staff",
+          "related": "https://kitsu.io/api/edge/anime/1517/anime-staff"
+        }
+      }
+    }
+  }
+}
