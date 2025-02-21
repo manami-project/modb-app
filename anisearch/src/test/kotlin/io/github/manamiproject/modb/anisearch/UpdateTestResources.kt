@@ -56,6 +56,9 @@ private val mainConfigFiles = mapOf(
     "AnisearchAnimeConverterTest/picture_and_thumbnail/neither_picture_nor_thumbnail.html" to "15237",
     "AnisearchAnimeConverterTest/picture_and_thumbnail/picture_and_thumbnail_available.html" to "3633",
 
+    "AnisearchAnimeConverterTest/scores/no-score.html" to "12224",
+    "AnisearchAnimeConverterTest/scores/score.html" to "3633",
+
     "AnisearchAnimeConverterTest/sources/3633.html" to "3633",
 
     "AnisearchAnimeConverterTest/status/aborted.html" to "12433",
