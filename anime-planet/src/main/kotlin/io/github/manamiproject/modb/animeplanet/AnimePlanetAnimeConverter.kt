@@ -60,6 +60,9 @@ public class AnimePlanetAnimeConverter(
             "image" to "$.image",
             "datePublished" to "$.datePublished",
             "genre" to "$.genre",
+            "worstRating" to "$.aggregateRating.worstRating",
+            "bestRating" to "$.aggregateRating.bestRating",
+            "ratingValue" to "$.aggregateRating.ratingValue",
         ))
 
         val thumbnail = extractThumbnail(jsonldData, data)
@@ -77,7 +80,9 @@ public class AnimePlanetAnimeConverter(
             _synonyms = extractSynonyms(jsonldData, data),
             _relatedAnime = extractRelatedAnime(data),
             _tags = extractTags(jsonldData, data),
-        )
+        ).apply {
+            addScores(extractScore(jsonldData))
+        }
     }
 
     private fun extractStatus(data: ExtractionResult): AnimeStatus {
@@ -266,8 +271,22 @@ public class AnimePlanetAnimeConverter(
                 .map { metaDataProviderConfig.buildAnimeLink(it) }
                 .toHashSet()
         }
+    }
 
+    private fun extractScore(jsonldData: ExtractionResult): MetaDataProviderScore {
+        if (jsonldData.notFound("ratingValue")) {
+            return NoMetaDataProviderScore
+        }
 
+        val rawScore = jsonldData.double("ratingValue")
+        val from = jsonldData.doubleOrDefault("worstRating", 0.5)
+        val to = jsonldData.doubleOrDefault("bestRating", 5.0)
+
+        return MetaDataProviderScoreValue(
+            hostname = metaDataProviderConfig.hostname(),
+            value = rawScore,
+            originalRange = from..to,
+        )
     }
 
     public companion object {

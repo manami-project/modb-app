@@ -11,6 +11,7 @@ import io.github.manamiproject.modb.core.anime.AnimeStatus.UNKNOWN as UNKNOWN_ST
 import io.github.manamiproject.modb.core.anime.Duration
 import io.github.manamiproject.modb.core.anime.Duration.TimeUnit.HOURS
 import io.github.manamiproject.modb.core.anime.Duration.TimeUnit.MINUTES
+import io.github.manamiproject.modb.core.anime.NoMetaDataProviderScore
 import io.github.manamiproject.modb.test.loadTestResource
 import io.github.manamiproject.modb.test.tempDirectory
 import kotlinx.coroutines.runBlocking
@@ -1143,6 +1144,49 @@ internal class AnimePlanetAnimeConverterTest {
 
                 // then
                 assertThat(result.tags).isEmpty()
+            }
+        }
+    }
+
+    @Nested
+    inner class ScoresTests {
+
+        @Test
+        fun `successfully load score`() {
+            runBlocking {
+                // given
+                val testAnimePlanetConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = AnimePlanetConfig.hostname()
+                    override fun buildAnimeLink(id: AnimeId): URI = AnimePlanetConfig.buildAnimeLink(id)
+                }
+
+                val converter = AnimePlanetAnimeConverter(testAnimePlanetConfig)
+
+                // when
+                val result = converter.convert(loadTestResource("AnimePlanetAnimeConverterTest/scores/score.html"))
+
+                // then
+                assertThat(result.scores).hasSize(1)
+                assertThat((result.scores.first()).scaledValue()).isEqualTo(8.844)
+            }
+        }
+
+        @Test
+        fun `returns NoMetaDataProviderScore`() {
+            runBlocking {
+                // given
+                val testAnimePlanetConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = AnimePlanetConfig.hostname()
+                    override fun buildAnimeLink(id: AnimeId): URI = AnimePlanetConfig.buildAnimeLink(id)
+                }
+
+                val converter = AnimePlanetAnimeConverter(testAnimePlanetConfig)
+
+                // when
+                val result = converter.convert(loadTestResource("AnimePlanetAnimeConverterTest/scores/no-score.html"))
+
+                // then
+                assertThat(result.scores).isEmpty()
             }
         }
     }

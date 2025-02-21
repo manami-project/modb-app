@@ -42,6 +42,9 @@ private val files = mapOf(
     "AnimePlanetAnimeConverterTest/related_anime/same_franchise_and_other_franchise.html" to "fullmetal-alchemist-brotherhood",
     "AnimePlanetAnimeConverterTest/related_anime/same_franchise_only.html" to "demon-slayer-kimetsu-no-yaiba",
 
+    "AnimePlanetAnimeConverterTest/scores/no-score.html" to "the-elder-sister-like-one",
+    "AnimePlanetAnimeConverterTest/scores/score.html" to "the-promised-neverland",
+
     "AnimePlanetAnimeConverterTest/sources/id.html" to "code-geass-lelouch-of-the-rebellion-r2",
 
     "AnimePlanetAnimeConverterTest/status/range_-_ends_in_the_past.html" to "blade-of-the-immortal-2019",
