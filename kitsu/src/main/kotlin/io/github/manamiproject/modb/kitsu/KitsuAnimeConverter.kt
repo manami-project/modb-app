@@ -51,6 +51,7 @@ public class KitsuAnimeConverter(
             "status" to "$.data.attributes.status",
             "episodeLength" to "$.data.attributes.episodeLength",
             "startDate" to "$.data.attributes.startDate",
+            "score" to "$.data.attributes.averageRating",
         ))
 
         return@withContext AnimeRaw(
@@ -66,7 +67,9 @@ public class KitsuAnimeConverter(
             _synonyms = extractSynonyms(data),
             _relatedAnime = extractRelatedAnime(data),
             _tags = extractTags(data),
-        )
+        ).apply {
+            addScores(extractScore(data))
+        }
     }
 
     private fun extractTitle(data: ExtractionResult): Title = data.string("title")
@@ -176,6 +179,20 @@ public class KitsuAnimeConverter(
         return AnimeSeason(
             season = season,
             year = year
+        )
+    }
+
+    private fun extractScore(data: ExtractionResult): MetaDataProviderScore {
+        if (data.notFound("score")) {
+            return NoMetaDataProviderScore
+        }
+
+        val rawScore = data.double("score")
+
+        return MetaDataProviderScoreValue(
+            hostname = metaDataProviderConfig.hostname(),
+            value = rawScore,
+            originalRange = 1.0..100.0,
         )
     }
 }

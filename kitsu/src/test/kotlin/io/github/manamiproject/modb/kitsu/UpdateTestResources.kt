@@ -35,6 +35,9 @@ private val mainConfigFiles = mapOf(
     "KitsuAnimeConverterTest/picture_and_thumbnail/null.json" to "6334",
     "KitsuAnimeConverterTest/picture_and_thumbnail/pictures.json" to "42006",
 
+    "KitsuAnimeConverterTest/scores/no-score.json" to "44117",
+    "KitsuAnimeConverterTest/scores/score.json" to "1517",
+
     "KitsuAnimeConverterTest/sources/1517.json" to "1517",
 
     "KitsuAnimeConverterTest/status/current.json" to "12",

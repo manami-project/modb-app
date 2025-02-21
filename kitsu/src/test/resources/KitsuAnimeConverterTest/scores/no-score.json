@@ -1,0 +1,174 @@
+{
+  "data": {
+    "id": "44117",
+    "type": "anime",
+    "links": {
+      "self": "https://kitsu.io/api/edge/anime/44117"
+    },
+    "attributes": {
+      "createdAt": "2021-03-08T21:31:35.093Z",
+      "updatedAt": "2021-04-09T12:00:14.303Z",
+      "slug": "fei-ren-zai-4th-season",
+      "synopsis": "Fourth season of Fei Ren Zai.",
+      "description": "Fourth season of Fei Ren Zai.",
+      "coverImageTopOffset": 0,
+      "titles": {
+        "en": "Non-human 4",
+        "en_cn": "Fei Ren Zai 4th Season",
+        "zh_cn": "非人哉 第四季"
+      },
+      "canonicalTitle": "Fei Ren Zai 4th Season",
+      "abbreviatedTitles": [
+        "Shenme Gui 4,"
+      ],
+      "averageRating": null,
+      "ratingFrequencies": {
+        "12": "1"
+      },
+      "userCount": 0,
+      "favoritesCount": 0,
+      "startDate": "0202-02-03",
+      "endDate": "2021-04-14",
+      "nextRelease": null,
+      "popularityRank": 17305,
+      "ratingRank": null,
+      "ageRating": "PG",
+      "ageRatingGuide": null,
+      "subtype": "ONA",
+      "status": "current",
+      "tba": null,
+      "posterImage": {
+        "tiny": "https://media.kitsu.io/anime/poster_images/44117/tiny.jpg?1615239086",
+        "small": "https://media.kitsu.io/anime/poster_images/44117/small.jpg?1615239086",
+        "medium": "https://media.kitsu.io/anime/poster_images/44117/medium.jpg?1615239086",
+        "large": "https://media.kitsu.io/anime/poster_images/44117/large.jpg?1615239086",
+        "original": "https://media.kitsu.io/anime/poster_images/44117/original.png?1615239086",
+        "meta": {
+          "dimensions": {
+            "tiny": {
+              "width": 110,
+              "height": 156
+            },
+            "small": {
+              "width": 284,
+              "height": 402
+            },
+            "medium": {
+              "width": 390,
+              "height": 554
+            },
+            "large": {
+              "width": 550,
+              "height": 780
+            }
+          }
+        }
+      },
+      "coverImage": null,
+      "episodeCount": 12,
+      "episodeLength": 5,
+      "totalLength": 60,
+      "youtubeVideoId": null,
+      "showType": "ONA",
+      "nsfw": false
+    },
+    "relationships": {
+      "genres": {
+        "links": {
+          "self": "https://kitsu.io/api/edge/anime/44117/relationships/genres",
+          "related": "https://kitsu.io/api/edge/anime/44117/genres"
+        }
+      },
+      "categories": {
+        "links": {
+          "self": "https://kitsu.io/api/edge/anime/44117/relationships/categories",
+          "related": "https://kitsu.io/api/edge/anime/44117/categories"
+        }
+      },
+      "castings": {
+        "links": {
+          "self": "https://kitsu.io/api/edge/anime/44117/relationships/castings",
+          "related": "https://kitsu.io/api/edge/anime/44117/castings"
+        }
+      },
+      "installments": {
+        "links": {
+          "self": "https://kitsu.io/api/edge/anime/44117/relationships/installments",
+          "related": "https://kitsu.io/api/edge/anime/44117/installments"
+        }
+      },
+      "mappings": {
+        "links": {
+          "self": "https://kitsu.io/api/edge/anime/44117/relationships/mappings",
+          "related": "https://kitsu.io/api/edge/anime/44117/mappings"
+        }
+      },
+      "reviews": {
+        "links": {
+          "self": "https://kitsu.io/api/edge/anime/44117/relationships/reviews",
+          "related": "https://kitsu.io/api/edge/anime/44117/reviews"
+        }
+      },
+      "mediaRelationships": {
+        "links": {
+          "self": "https://kitsu.io/api/edge/anime/44117/relationships/media-relationships",
+          "related": "https://kitsu.io/api/edge/anime/44117/media-relationships"
+        }
+      },
+      "characters": {
+        "links": {
+          "self": "https://kitsu.io/api/edge/anime/44117/relationships/characters",
+          "related": "https://kitsu.io/api/edge/anime/44117/characters"
+        }
+      },
+      "staff": {
+        "links": {
+          "self": "https://kitsu.io/api/edge/anime/44117/relationships/staff",
+          "related": "https://kitsu.io/api/edge/anime/44117/staff"
+        }
+      },
+      "productions": {
+        "links": {
+          "self": "https://kitsu.io/api/edge/anime/44117/relationships/productions",
+          "related": "https://kitsu.io/api/edge/anime/44117/productions"
+        }
+      },
+      "quotes": {
+        "links": {
+          "self": "https://kitsu.io/api/edge/anime/44117/relationships/quotes",
+          "related": "https://kitsu.io/api/edge/anime/44117/quotes"
+        }
+      },
+      "episodes": {
+        "links": {
+          "self": "https://kitsu.io/api/edge/anime/44117/relationships/episodes",
+          "related": "https://kitsu.io/api/edge/anime/44117/episodes"
+        }
+      },
+      "streamingLinks": {
+        "links": {
+          "self": "https://kitsu.io/api/edge/anime/44117/relationships/streaming-links",
+          "related": "https://kitsu.io/api/edge/anime/44117/streaming-links"
+        }
+      },
+      "animeProductions": {
+        "links": {
+          "self": "https://kitsu.io/api/edge/anime/44117/relationships/anime-productions",
+          "related": "https://kitsu.io/api/edge/anime/44117/anime-productions"
+        }
+      },
+      "animeCharacters": {
+        "links": {
+          "self": "https://kitsu.io/api/edge/anime/44117/relationships/anime-characters",
+          "related": "https://kitsu.io/api/edge/anime/44117/anime-characters"
+        }
+      },
+      "animeStaff": {
+        "links": {
+          "self": "https://kitsu.io/api/edge/anime/44117/relationships/anime-staff",
+          "related": "https://kitsu.io/api/edge/anime/44117/anime-staff"
+        }
+      }
+    }
+  }
+}
