@@ -54,6 +54,7 @@ public class AnisearchAnimeConverter(
             "synonymsDivNoSpan" to "//div[@class='synonyms']",
             "synonymsDivSpan" to "//div[@class='synonyms']//span[@id='text-synonyms']",
             "synonymsItalic" to "//div[@class='synonyms']//i/text()",
+            "score" to "//td[contains(text(), 'Calculated Value')]/text()",
         ))
         
         val jsonld = data.listNotNull<String>("jsonld").first()
@@ -63,6 +64,10 @@ public class AnisearchAnimeConverter(
             "image" to "$.image",
             "episodes" to "$.numberOfEpisodes", // they mess up the type. They use both strings and integer for episodes
             "year" to "startDate",
+            "ratingValue" to "$.aggregateRating.ratingValue",
+            "worstRating" to "$.aggregateRating.worstRating",
+            "bestRating" to "$.aggregateRating.bestRating",
+            "ratingCount" to ".aggregateRating.ratingCount",
         ))
         
         val thumbnail = extractThumbnail(data)
@@ -80,7 +85,9 @@ public class AnisearchAnimeConverter(
             _synonyms = extractSynonyms(data),
             _relatedAnime = extractRelatedAnime(data),
             _tags = extractTags(data),
-        )
+        ).apply {
+            addScores(extractScore(jsonData, data))
+        }
     }
 
     private fun extractTitle(jsonldData: ExtractionResult, data: ExtractionResult): Title {
@@ -246,6 +253,37 @@ public class AnisearchAnimeConverter(
                 .map { it.substring(0, it.indexOf(',')) }
                 .map { metaDataProviderConfig.buildAnimeLink(it) }
                 .toHashSet()
+        }
+    }
+
+    private fun extractScore(jsonData: ExtractionResult, data: ExtractionResult): MetaDataProviderScore {
+        val from = jsonData.doubleOrDefault("worstRating", 0.1)
+        val to = jsonData.doubleOrDefault("bestRating", 5.0)
+        val rawScore = when {
+            !jsonData.notFound("ratingValue") -> {
+                // if there is effectively no rating they set the rating to 2.5 (more or less the middle of the range and set count to 1
+                jsonData.doubleOrDefault("ratingValue")
+                    .takeUnless { jsonData.int("ratingCount") == 1 && jsonData.doubleOrDefault("ratingValue") == 2.5 }
+                    ?: 0.0
+            }
+            !data.notFound("score") && jsonData.notFound("ratingValue") -> {
+                data.string("score")
+                    .remove("Calculated Value")
+                    .substringBefore('=')
+                    .trim()
+                    .toDoubleOrNull() ?: 0.0
+            }
+            else -> 0.0
+        }
+
+        return if (rawScore == 0.0) {
+            NoMetaDataProviderScore
+        } else {
+            MetaDataProviderScoreValue(
+                hostname = metaDataProviderConfig.hostname(),
+                value = rawScore,
+                originalRange = from..to,
+            )
         }
     }
 
