@@ -31,9 +31,10 @@ public data class MetaDataProviderScoreValue(
     init {
         require(hostname.neitherNullNorBlank()) { "hostname must not be blank" }
         require("^([a-zA-Z]|-|\\d)+\\.[a-z]+$".toRegex().matches(hostname)) { "hostname has invalid format" }
-        require(value >= 0.0) { "value must be >= 0.0" }
         require(originalRange.start >= 0.0) { "originalRange start must be >= 0.0" }
         require(originalRange.endInclusive >= 0.0) { "originalRange end must be >= 0.0" }
+        require(value >= originalRange.start) { "value must be >= [${originalRange.start}]" }
+        require(value <= originalRange.endInclusive) { "value must be <= [${originalRange.endInclusive}]" }
     }
 
     /**
