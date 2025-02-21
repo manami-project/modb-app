@@ -25,19 +25,36 @@ internal class MetaDataProviderScoreTest {
         @Nested
         inner class ConstructorTests {
 
-            @Test
-            fun `throws exception if the value is negative`() {
+            @ParameterizedTest
+            @ValueSource(doubles = [0.0, 0.9])
+            fun `throws exception if the value is smaller than the minimum of the range`(value: Double) {
                 // when
                 val result = exceptionExpected<IllegalArgumentException> {
                     MetaDataProviderScoreValue(
                         hostname = "example.org",
-                        value = -0.1,
+                        value = value,
                         originalRange = 1.0..10.0,
                     )
                 }
 
                 // then
-                assertThat(result).hasMessage("value must be >= 0.0")
+                assertThat(result).hasMessage("value must be >= [1.0]")
+            }
+
+            @ParameterizedTest
+            @ValueSource(doubles = [10.1, 11.0])
+            fun `throws exception if the value is higher than the maximum of the range`(value: Double) {
+                // when
+                val result = exceptionExpected<IllegalArgumentException> {
+                    MetaDataProviderScoreValue(
+                        hostname = "example.org",
+                        value = value,
+                        originalRange = 1.0..10.0,
+                    )
+                }
+
+                // then
+                assertThat(result).hasMessage("value must be <= [10.0]")
             }
 
             @Test
@@ -135,23 +152,6 @@ internal class MetaDataProviderScoreTest {
 
         @Nested
         inner class ScaledValueTests {
-
-            @ParameterizedTest
-            @ValueSource(doubles = [5.0, 10.0])
-            fun `correctly return 0 for ranges beginning with 1`(input: Double) {
-                // given
-                val metaDataProviderScoreValue = MetaDataProviderScoreValue(
-                    hostname = "example.org",
-                    value = 0.0,
-                    originalRange = 1.0..input,
-                )
-
-                // when
-                val result = metaDataProviderScoreValue.scaledValue()
-
-                // then
-                assertThat(result).isZero()
-            }
 
             @ParameterizedTest
             @ValueSource(doubles = [5.0, 10.0])
