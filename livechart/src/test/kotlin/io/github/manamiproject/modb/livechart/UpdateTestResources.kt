@@ -50,6 +50,9 @@ private val files = mapOf(
     "LivechartAnimeConverterTest/related_anime/no_relations.html" to "9741",
     "LivechartAnimeConverterTest/related_anime/one_relation.html" to "3437",
 
+    "LivechartAnimeConverterTest/scores/no-score.html" to "10384",
+    "LivechartAnimeConverterTest/scores/score.html" to "3437",
+
     "LivechartAnimeConverterTest/sources/3437.html" to "3437",
 
     "LivechartAnimeConverterTest/status/finished.html" to "9818",
