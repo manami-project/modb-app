@@ -1,0 +1,101 @@
+{
+  "id": "DCzg6xMnR",
+  "type": "ona",
+  "title": {
+    "canonical": "BEASTARS: Final Season",
+    "romaji": "BEASTARS: Final Season",
+    "english": "",
+    "japanese": "ビースターズ: Final Season",
+    "hiragana": "",
+    "synonyms": [
+      "BEASTARS Season 3"
+    ]
+  },
+  "summary": "Announced on Studio Orange's twitter, a new arc will be made for the animated series.",
+  "status": "tba",
+  "genres": [
+    "Slice of Life",
+    "Psychological",
+    "Drama",
+    "School",
+    "Shounen"
+  ],
+  "startDate": "2024",
+  "endDate": "",
+  "episodeCount": 0,
+  "episodeLength": 0,
+  "source": "manga",
+  "image": {
+    "extension": ".jpg",
+    "width": 400,
+    "height": 380,
+    "averageColor": {
+      "hue": 0.14041250112582193,
+      "saturation": 0.13041333380316436,
+      "lightness": 0.7834821087968261
+    },
+    "lastModified": 1628336555
+  },
+  "firstChannel": "",
+  "rating": {
+    "overall": 0,
+    "story": 0,
+    "visuals": 0,
+    "soundtrack": 0,
+    "count": {
+      "overall": 0,
+      "story": 0,
+      "visuals": 0,
+      "soundtrack": 0
+    }
+  },
+  "popularity": {
+    "watching": 0,
+    "completed": 0,
+    "planned": 16,
+    "hold": 0,
+    "dropped": 0
+  },
+  "trailers": [],
+  "episodes": null,
+  "mappings": [
+    {
+      "service": "myanimelist/anime",
+      "serviceId": "49469"
+    },
+    {
+      "service": "anilist/anime",
+      "serviceId": "136880"
+    },
+    {
+      "service": "kitsu/anime",
+      "serviceId": "44914"
+    },
+    {
+      "service": "anidb/anime",
+      "serviceId": "16443"
+    }
+  ],
+  "posts": null,
+  "likes": null,
+  "created": "2021-08-07T11:42:26Z",
+  "createdBy": "I_vyeZamg",
+  "edited": "",
+  "editedBy": "",
+  "isDraft": false,
+  "studios": [
+    "YCA89n8kRX"
+  ],
+  "producers": null,
+  "licensors": null,
+  "links": [
+    {
+      "title": "Website",
+      "url": "https://bst-animation.com/"
+    },
+    {
+      "title": "Twitter",
+      "url": "https://twitter.com/bst_anime"
+    }
+  ]
+}
