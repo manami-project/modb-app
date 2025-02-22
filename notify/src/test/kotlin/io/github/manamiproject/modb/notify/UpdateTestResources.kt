@@ -32,6 +32,9 @@ private val mainConfigFiles = mapOf(
 
     "NotifyAnimeConverterTest/picture_and_thumbnail/picture_and_thumbnail_available.json" to "IkCdhKimR",
 
+    "NotifyAnimeConverterTest/scores/no-score.json" to "DCzg6xMnR",
+    "NotifyAnimeConverterTest/scores/score.json" to "0-A-5Fimg",
+
     "NotifyAnimeConverterTest/sources/0-A-5Fimg.json" to "0-A-5Fimg",
 
     "NotifyAnimeConverterTest/status/current.json" to "CqN9Rja7R",

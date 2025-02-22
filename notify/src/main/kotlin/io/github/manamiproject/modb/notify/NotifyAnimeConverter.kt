@@ -48,6 +48,7 @@ public class NotifyAnimeConverter(
             "status" to "$.status",
             "startDate" to "$.startDate",
             "genres" to "$.genres",
+            "score" to "$.rating.overall",
         ))
 
         return@withContext AnimeRaw(
@@ -63,7 +64,9 @@ public class NotifyAnimeConverter(
             _synonyms = extractSynonyms(data),
             _relatedAnime = extractRelatedAnime(data),
             _tags = extractTags(data),
-        )
+        ).apply {
+            addScores(extractScore(data))
+        }
     }
 
     private fun extractTitle(data: ExtractionResult) = data.string("title")
@@ -159,6 +162,24 @@ public class NotifyAnimeConverter(
             hashSetOf()
         } else {
             data.listNotNull<Title>("genres").toHashSet()
+        }
+    }
+
+    private fun extractScore(data: ExtractionResult): MetaDataProviderScore {
+        if (data.notFound("score")) {
+            return NoMetaDataProviderScore
+        }
+
+        val rawScore = data.double("score")
+
+        return if (rawScore == 0.0) {
+            NoMetaDataProviderScore
+        } else {
+            MetaDataProviderScoreValue(
+                hostname = metaDataProviderConfig.hostname(),
+                value = rawScore,
+                originalRange = 1.0..10.0,
+            )
         }
     }
 }
