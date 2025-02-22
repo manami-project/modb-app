@@ -32,11 +32,11 @@ import java.time.format.DateTimeFormatter
 /**
  * Converts raw data to an [AnimeRaw].
  * @since 1.0.0
- * @param simklMetaDataProviderConfig Configuration for converting data.
+ * @param metaDataProviderConfig Configuration for converting data.
  * @param extractor Extracts specific data from raw content.
  */
 public class SimklAnimeConverter(
-    private val simklMetaDataProviderConfig: MetaDataProviderConfig = SimklConfig,
+    private val metaDataProviderConfig: MetaDataProviderConfig = SimklConfig,
     private val extractor: DataExtractor = XmlDataExtractor,
 ): AnimeConverter {
 
@@ -56,6 +56,9 @@ public class SimklAnimeConverter(
                 "picture" to "//meta[@property='og:image']/@content",
                 "relatedAnime" to "//detail-related-item[@id='tvdetailrelations']//div[@class='tvdetailrelationsitems']//a/@href",
                 "synonyms" to "//td[@itemprop='alternateName']/text()",
+                "score" to "//div[@itemprop='aggregateRating']//span[@class='SimklTVRatingAverage'][@itemprop='ratingValue']/text()",
+                "bestRating" to "//div[@itemprop='aggregateRating']//span[@itemprop='bestRating']/text()",
+                "worstRating" to "//div[@itemprop='aggregateRating']//span[@itemprop='worstRating']/text()",
             )
         )
 
@@ -76,7 +79,9 @@ public class SimklAnimeConverter(
             _synonyms = postProcessSynonyms(title, extractSynonyms(data)),
             _relatedAnime = extractRelatedAnime(data),
             _tags = extractTags(data),
-        )
+        ).apply {
+            addScores(extractScore(data))
+        }
     }
 
     private fun extractTitle(data: ExtractionResult) = data.string("title").trim()
@@ -253,10 +258,10 @@ public class SimklAnimeConverter(
 
     private fun extractSourcesEntry(data: ExtractionResult): HashSet<URI> {
         val animeId = data.string("source")
-            .remove(simklMetaDataProviderConfig.buildAnimeLink(EMPTY).toString())
+            .remove(metaDataProviderConfig.buildAnimeLink(EMPTY).toString())
             .substringBefore('/')
 
-        return hashSetOf(simklMetaDataProviderConfig.buildAnimeLink(animeId))
+        return hashSetOf(metaDataProviderConfig.buildAnimeLink(animeId))
     }
 
     private fun extractRelatedAnime(data: ExtractionResult): HashSet<URI> {
@@ -268,7 +273,7 @@ public class SimklAnimeConverter(
             it.remove("/anime/").substringBefore('/')
         }
 
-        return relatedAnimeIds.map { simklMetaDataProviderConfig.buildAnimeLink(it) }.toHashSet()
+        return relatedAnimeIds.map { metaDataProviderConfig.buildAnimeLink(it) }.toHashSet()
     }
 
     private fun extractSynonyms(data: ExtractionResult): HashSet<String> {
@@ -291,6 +296,22 @@ public class SimklAnimeConverter(
         }
 
         return genres.union(subgenres).toHashSet()
+    }
+
+    private fun extractScore(data: ExtractionResult): MetaDataProviderScore {
+        if (data.notFound("score")) {
+            return NoMetaDataProviderScore
+        }
+
+        val rawScore = data.double("score")
+        val bestRating = data.double("bestRating")
+        val worstRating = data.double("worstRating")
+
+        return MetaDataProviderScoreValue(
+            hostname = metaDataProviderConfig.hostname(),
+            value = rawScore,
+            originalRange = worstRating..bestRating,
+        )
     }
 
     public companion object {
