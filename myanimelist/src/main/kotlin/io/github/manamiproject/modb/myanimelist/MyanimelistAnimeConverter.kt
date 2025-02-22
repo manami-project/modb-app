@@ -48,6 +48,7 @@ public class MyanimelistAnimeConverter(
             "relatedAnime" to "//table[contains(@class, 'entries-table')]//a/@href",
             "relatedAnimeDetails" to "//div[contains(@class, 'anime-detail-related-entries')]//a/@href",
             "synonyms" to "//h2[contains(text(), 'Information')]/following-sibling::*//tr[0]/td[1]",
+            "score" to "//span[@itemprop='ratingValue']/span/text()",
         ))
 
         val picture = extractPicture(data)
@@ -66,7 +67,9 @@ public class MyanimelistAnimeConverter(
             _synonyms = postProcessSynonyms(title, extractSynonyms(data)),
             _relatedAnime = extractRelatedAnime(data),
             _tags = extractTags(data),
-        )
+        ).apply {
+            addScores(extractScore(data))
+        }
     }
 
     private fun postProcessSynonyms(title: String, synonyms: HashSet<String>): HashSet<String> {
@@ -262,6 +265,20 @@ public class MyanimelistAnimeConverter(
                 .filterNot { it == data.string("title") }
                 .toHashSet()
         }
+    }
+
+    private fun extractScore(data: ExtractionResult): MetaDataProviderScore {
+        if (data.notFound("score")) {
+            return NoMetaDataProviderScore
+        }
+
+        val rawScore = data.double("score")
+
+        return MetaDataProviderScoreValue(
+            hostname = metaDataProviderConfig.hostname(),
+            value = rawScore,
+            originalRange = 1.0..10.0,
+        )
     }
 
     public companion object {

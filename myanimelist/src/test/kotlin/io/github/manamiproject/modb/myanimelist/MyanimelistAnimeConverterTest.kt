@@ -7,6 +7,7 @@ import io.github.manamiproject.modb.core.anime.Duration
 import io.github.manamiproject.modb.core.anime.Duration.TimeUnit.*
 import io.github.manamiproject.modb.core.config.AnimeId
 import io.github.manamiproject.modb.core.config.FileSuffix
+import io.github.manamiproject.modb.core.config.Hostname
 import io.github.manamiproject.modb.core.config.MetaDataProviderConfig
 import io.github.manamiproject.modb.test.loadTestResource
 import kotlinx.coroutines.runBlocking
@@ -27,15 +28,15 @@ internal class MyanimelistAnimeConverterTest {
         fun `title containing special chars`() {
             runBlocking {
                 // given
-                val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                val testMyanimelistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = MyanimelistConfig.hostname()
                     override fun buildAnimeLink(id: AnimeId): URI = MyanimelistConfig.buildAnimeLink(id)
-                    override fun buildDataDownloadLink(id: String): URI = MyanimelistConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = MyanimelistConfig.fileSuffix()
                 }
 
-                val testFile = loadTestResource<String>("MyanimelistAnimeConverterTest/title/special_chars.html")
+                val converter = MyanimelistAnimeConverter(testMyanimelistConfig)
 
-                val converter = MyanimelistAnimeConverter(testConfig)
+                val testFile = loadTestResource<String>("MyanimelistAnimeConverterTest/title/special_chars.html")
 
                 // when
                 val result = converter.convert(testFile)
@@ -49,15 +50,15 @@ internal class MyanimelistAnimeConverterTest {
         fun `anime has original and english title in header`() {
             runBlocking {
                 // given
-                val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                val testMyanimelistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = MyanimelistConfig.hostname()
                     override fun buildAnimeLink(id: AnimeId): URI = MyanimelistConfig.buildAnimeLink(id)
-                    override fun buildDataDownloadLink(id: String): URI = MyanimelistConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = MyanimelistConfig.fileSuffix()
                 }
 
-                val testFile = loadTestResource<String>("MyanimelistAnimeConverterTest/title/english_and_original_title.html")
+                val converter = MyanimelistAnimeConverter(testMyanimelistConfig)
 
-                val converter = MyanimelistAnimeConverter(testConfig)
+                val testFile = loadTestResource<String>("MyanimelistAnimeConverterTest/title/english_and_original_title.html")
 
                 // when
                 val result = converter.convert(testFile)
@@ -75,15 +76,15 @@ internal class MyanimelistAnimeConverterTest {
         fun `type is TV`() {
             runBlocking {
                 // given
-                val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                val testMyanimelistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = MyanimelistConfig.hostname()
                     override fun buildAnimeLink(id: AnimeId): URI = MyanimelistConfig.buildAnimeLink(id)
-                    override fun buildDataDownloadLink(id: String): URI = MyanimelistConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = MyanimelistConfig.fileSuffix()
                 }
 
-                val testFile = loadTestResource<String>("MyanimelistAnimeConverterTest/type/tv.html")
+                val converter = MyanimelistAnimeConverter(testMyanimelistConfig)
 
-                val converter = MyanimelistAnimeConverter(testConfig)
+                val testFile = loadTestResource<String>("MyanimelistAnimeConverterTest/type/tv.html")
 
                 // when
                 val result = converter.convert(testFile)
@@ -97,15 +98,15 @@ internal class MyanimelistAnimeConverterTest {
         fun `'Unknown' is mapped to 'UNKNOWN'`() {
             runBlocking {
                 // given
-                val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                val testMyanimelistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = MyanimelistConfig.hostname()
                     override fun buildAnimeLink(id: AnimeId): URI = MyanimelistConfig.buildAnimeLink(id)
-                    override fun buildDataDownloadLink(id: String): URI = MyanimelistConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = MyanimelistConfig.fileSuffix()
                 }
 
-                val testFile = loadTestResource<String>("MyanimelistAnimeConverterTest/type/unknown.html")
+                val converter = MyanimelistAnimeConverter(testMyanimelistConfig)
 
-                val converter = MyanimelistAnimeConverter(testConfig)
+                val testFile = loadTestResource<String>("MyanimelistAnimeConverterTest/type/unknown.html")
 
                 // when
                 val result = converter.convert(testFile)
@@ -119,15 +120,15 @@ internal class MyanimelistAnimeConverterTest {
         fun `type is Movie`() {
             runBlocking {
                 // given
-                val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                val testMyanimelistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = MyanimelistConfig.hostname()
                     override fun buildAnimeLink(id: AnimeId): URI = MyanimelistConfig.buildAnimeLink(id)
-                    override fun buildDataDownloadLink(id: String): URI = MyanimelistConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = MyanimelistConfig.fileSuffix()
                 }
 
-                val testFile = loadTestResource<String>("MyanimelistAnimeConverterTest/type/movie.html")
+                val converter = MyanimelistAnimeConverter(testMyanimelistConfig)
 
-                val converter = MyanimelistAnimeConverter(testConfig)
+                val testFile = loadTestResource<String>("MyanimelistAnimeConverterTest/type/movie.html")
 
                 // when
                 val result = converter.convert(testFile)
@@ -141,15 +142,15 @@ internal class MyanimelistAnimeConverterTest {
         fun `type is music is mapped to special`() {
             runBlocking {
                 // given
-                val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                val testMyanimelistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = MyanimelistConfig.hostname()
                     override fun buildAnimeLink(id: AnimeId): URI = MyanimelistConfig.buildAnimeLink(id)
-                    override fun buildDataDownloadLink(id: String): URI = MyanimelistConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = MyanimelistConfig.fileSuffix()
                 }
 
-                val testFile = loadTestResource<String>("MyanimelistAnimeConverterTest/type/music.html")
+                val converter = MyanimelistAnimeConverter(testMyanimelistConfig)
 
-                val converter = MyanimelistAnimeConverter(testConfig)
+                val testFile = loadTestResource<String>("MyanimelistAnimeConverterTest/type/music.html")
 
                 // when
                 val result = converter.convert(testFile)
@@ -163,15 +164,15 @@ internal class MyanimelistAnimeConverterTest {
         fun `type is ONA`() {
             runBlocking {
                 // given
-                val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                val testMyanimelistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = MyanimelistConfig.hostname()
                     override fun buildAnimeLink(id: AnimeId): URI = MyanimelistConfig.buildAnimeLink(id)
-                    override fun buildDataDownloadLink(id: String): URI = MyanimelistConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = MyanimelistConfig.fileSuffix()
                 }
 
-                val testFile = loadTestResource<String>("MyanimelistAnimeConverterTest/type/ona.html")
+                val converter = MyanimelistAnimeConverter(testMyanimelistConfig)
 
-                val converter = MyanimelistAnimeConverter(testConfig)
+                val testFile = loadTestResource<String>("MyanimelistAnimeConverterTest/type/ona.html")
 
                 // when
                 val result = converter.convert(testFile)
@@ -185,15 +186,15 @@ internal class MyanimelistAnimeConverterTest {
         fun `type is OVA`() {
             runBlocking {
                 // given
-                val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                val testMyanimelistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = MyanimelistConfig.hostname()
                     override fun buildAnimeLink(id: AnimeId): URI = MyanimelistConfig.buildAnimeLink(id)
-                    override fun buildDataDownloadLink(id: String): URI = MyanimelistConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = MyanimelistConfig.fileSuffix()
                 }
 
-                val testFile = loadTestResource<String>("MyanimelistAnimeConverterTest/type/ova.html")
+                val converter = MyanimelistAnimeConverter(testMyanimelistConfig)
 
-                val converter = MyanimelistAnimeConverter(testConfig)
+                val testFile = loadTestResource<String>("MyanimelistAnimeConverterTest/type/ova.html")
 
                 // when
                 val result = converter.convert(testFile)
@@ -207,15 +208,15 @@ internal class MyanimelistAnimeConverterTest {
         fun `type is Special`() {
             runBlocking {
                 // given
-                val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                val testMyanimelistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = MyanimelistConfig.hostname()
                     override fun buildAnimeLink(id: AnimeId): URI = MyanimelistConfig.buildAnimeLink(id)
-                    override fun buildDataDownloadLink(id: String): URI = MyanimelistConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = MyanimelistConfig.fileSuffix()
                 }
 
-                val testFile = loadTestResource<String>("MyanimelistAnimeConverterTest/type/special.html")
+                val converter = MyanimelistAnimeConverter(testMyanimelistConfig)
 
-                val converter = MyanimelistAnimeConverter(testConfig)
+                val testFile = loadTestResource<String>("MyanimelistAnimeConverterTest/type/special.html")
 
                 // when
                 val result = converter.convert(testFile)
@@ -229,15 +230,15 @@ internal class MyanimelistAnimeConverterTest {
         fun `type PV is mapped to SPECIAL`() {
             runBlocking {
                 // given
-                val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                val testMyanimelistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = MyanimelistConfig.hostname()
                     override fun buildAnimeLink(id: AnimeId): URI = MyanimelistConfig.buildAnimeLink(id)
-                    override fun buildDataDownloadLink(id: String): URI = MyanimelistConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = MyanimelistConfig.fileSuffix()
                 }
 
-                val testFile = loadTestResource<String>("MyanimelistAnimeConverterTest/type/pv.html")
+                val converter = MyanimelistAnimeConverter(testMyanimelistConfig)
 
-                val converter = MyanimelistAnimeConverter(testConfig)
+                val testFile = loadTestResource<String>("MyanimelistAnimeConverterTest/type/pv.html")
 
                 // when
                 val result = converter.convert(testFile)
@@ -251,15 +252,15 @@ internal class MyanimelistAnimeConverterTest {
         fun `type CM is mapped to SPECIAL`() {
             runBlocking {
                 // given
-                val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                val testMyanimelistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = MyanimelistConfig.hostname()
                     override fun buildAnimeLink(id: AnimeId): URI = MyanimelistConfig.buildAnimeLink(id)
-                    override fun buildDataDownloadLink(id: String): URI = MyanimelistConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = MyanimelistConfig.fileSuffix()
                 }
 
-                val testFile = loadTestResource<String>("MyanimelistAnimeConverterTest/type/cm.html")
+                val converter = MyanimelistAnimeConverter(testMyanimelistConfig)
 
-                val converter = MyanimelistAnimeConverter(testConfig)
+                val testFile = loadTestResource<String>("MyanimelistAnimeConverterTest/type/cm.html")
 
                 // when
                 val result = converter.convert(testFile)
@@ -273,15 +274,15 @@ internal class MyanimelistAnimeConverterTest {
         fun `type 'TV Special' is mapped to SPECIAL`() {
             runBlocking {
                 // given
-                val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                val testMyanimelistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = MyanimelistConfig.hostname()
                     override fun buildAnimeLink(id: AnimeId): URI = MyanimelistConfig.buildAnimeLink(id)
-                    override fun buildDataDownloadLink(id: String): URI = MyanimelistConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = MyanimelistConfig.fileSuffix()
                 }
 
-                val testFile = loadTestResource<String>("MyanimelistAnimeConverterTest/type/tv_special.html")
+                val converter = MyanimelistAnimeConverter(testMyanimelistConfig)
 
-                val converter = MyanimelistAnimeConverter(testConfig)
+                val testFile = loadTestResource<String>("MyanimelistAnimeConverterTest/type/tv_special.html")
 
                 // when
                 val result = converter.convert(testFile)
@@ -295,15 +296,15 @@ internal class MyanimelistAnimeConverterTest {
         fun `type Music but without a link is mapped to SPECIAL`() {
             runBlocking {
                 // given
-                val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                val testMyanimelistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = MyanimelistConfig.hostname()
                     override fun buildAnimeLink(id: AnimeId): URI = MyanimelistConfig.buildAnimeLink(id)
-                    override fun buildDataDownloadLink(id: String): URI = MyanimelistConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = MyanimelistConfig.fileSuffix()
                 }
 
-                val testFile = loadTestResource<String>("MyanimelistAnimeConverterTest/type/music_without_link.html")
+                val converter = MyanimelistAnimeConverter(testMyanimelistConfig)
 
-                val converter = MyanimelistAnimeConverter(testConfig)
+                val testFile = loadTestResource<String>("MyanimelistAnimeConverterTest/type/music_without_link.html")
 
                 // when
                 val result = converter.convert(testFile)
@@ -317,16 +318,15 @@ internal class MyanimelistAnimeConverterTest {
         fun `movie case which resulted in containsOwn`() {
             runBlocking {
                 // given
-                val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                val testMyanimelistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = MyanimelistConfig.hostname()
                     override fun buildAnimeLink(id: AnimeId): URI = MyanimelistConfig.buildAnimeLink(id)
-                    override fun buildDataDownloadLink(id: String): URI = MyanimelistConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = MyanimelistConfig.fileSuffix()
                 }
 
-                val testFile =
-                    loadTestResource<String>("MyanimelistAnimeConverterTest/type/movie_case_which_resulted_in_containsOwn.html")
+                val converter = MyanimelistAnimeConverter(testMyanimelistConfig)
 
-                val converter = MyanimelistAnimeConverter(testConfig)
+                val testFile = loadTestResource<String>("MyanimelistAnimeConverterTest/type/movie_case_which_resulted_in_containsOwn.html")
 
                 // when
                 val result = converter.convert(testFile)
@@ -344,15 +344,15 @@ internal class MyanimelistAnimeConverterTest {
         fun `unknown number of episodes`() {
             runBlocking {
                 // given
-                val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                val testMyanimelistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = MyanimelistConfig.hostname()
                     override fun buildAnimeLink(id: AnimeId): URI = MyanimelistConfig.buildAnimeLink(id)
-                    override fun buildDataDownloadLink(id: String): URI = MyanimelistConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = MyanimelistConfig.fileSuffix()
                 }
 
-                val testFile = loadTestResource<String>("MyanimelistAnimeConverterTest/episodes/unknown.html")
+                val converter = MyanimelistAnimeConverter(testMyanimelistConfig)
 
-                val converter = MyanimelistAnimeConverter(testConfig)
+                val testFile = loadTestResource<String>("MyanimelistAnimeConverterTest/episodes/unknown.html")
 
                 // when
                 val result = converter.convert(testFile)
@@ -366,15 +366,15 @@ internal class MyanimelistAnimeConverterTest {
         fun `1 episode`() {
             runBlocking {
                 // given
-                val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                val testMyanimelistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = MyanimelistConfig.hostname()
                     override fun buildAnimeLink(id: AnimeId): URI = MyanimelistConfig.buildAnimeLink(id)
-                    override fun buildDataDownloadLink(id: String): URI = MyanimelistConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = MyanimelistConfig.fileSuffix()
                 }
 
-                val testFile = loadTestResource<String>("MyanimelistAnimeConverterTest/episodes/1.html")
+                val converter = MyanimelistAnimeConverter(testMyanimelistConfig)
 
-                val converter = MyanimelistAnimeConverter(testConfig)
+                val testFile = loadTestResource<String>("MyanimelistAnimeConverterTest/episodes/1.html")
 
                 // when
                 val result = converter.convert(testFile)
@@ -388,15 +388,15 @@ internal class MyanimelistAnimeConverterTest {
         fun `10 episodes`() {
             runBlocking {
                 // given
-                val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                val testMyanimelistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = MyanimelistConfig.hostname()
                     override fun buildAnimeLink(id: AnimeId): URI = MyanimelistConfig.buildAnimeLink(id)
-                    override fun buildDataDownloadLink(id: String): URI = MyanimelistConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = MyanimelistConfig.fileSuffix()
                 }
 
-                val testFile = loadTestResource<String>("MyanimelistAnimeConverterTest/episodes/10.html")
+                val converter = MyanimelistAnimeConverter(testMyanimelistConfig)
 
-                val converter = MyanimelistAnimeConverter(testConfig)
+                val testFile = loadTestResource<String>("MyanimelistAnimeConverterTest/episodes/10.html")
 
                 // when
                 val result = converter.convert(testFile)
@@ -410,15 +410,15 @@ internal class MyanimelistAnimeConverterTest {
         fun `100 episodes`() {
             runBlocking {
                 // given
-                val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                val testMyanimelistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = MyanimelistConfig.hostname()
                     override fun buildAnimeLink(id: AnimeId): URI = MyanimelistConfig.buildAnimeLink(id)
-                    override fun buildDataDownloadLink(id: String): URI = MyanimelistConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = MyanimelistConfig.fileSuffix()
                 }
 
-                val testFile = loadTestResource<String>("MyanimelistAnimeConverterTest/episodes/100.html")
+                val converter = MyanimelistAnimeConverter(testMyanimelistConfig)
 
-                val converter = MyanimelistAnimeConverter(testConfig)
+                val testFile = loadTestResource<String>("MyanimelistAnimeConverterTest/episodes/100.html")
 
                 // when
                 val result = converter.convert(testFile)
@@ -432,15 +432,15 @@ internal class MyanimelistAnimeConverterTest {
         fun `1818 episodes`() {
             runBlocking {
                 // given
-                val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                val testMyanimelistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = MyanimelistConfig.hostname()
                     override fun buildAnimeLink(id: AnimeId): URI = MyanimelistConfig.buildAnimeLink(id)
-                    override fun buildDataDownloadLink(id: String): URI = MyanimelistConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = MyanimelistConfig.fileSuffix()
                 }
 
-                val testFile = loadTestResource<String>("MyanimelistAnimeConverterTest/episodes/1818.html")
+                val converter = MyanimelistAnimeConverter(testMyanimelistConfig)
 
-                val converter = MyanimelistAnimeConverter(testConfig)
+                val testFile = loadTestResource<String>("MyanimelistAnimeConverterTest/episodes/1818.html")
 
                 // when
                 val result = converter.convert(testFile)
@@ -458,16 +458,15 @@ internal class MyanimelistAnimeConverterTest {
         fun `neither picture nor thumbnail`() {
             runBlocking {
                 // given
-                val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                val testMyanimelistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = MyanimelistConfig.hostname()
                     override fun buildAnimeLink(id: AnimeId): URI = MyanimelistConfig.buildAnimeLink(id)
-                    override fun buildDataDownloadLink(id: String): URI = MyanimelistConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = MyanimelistConfig.fileSuffix()
                 }
 
-                val testFile =
-                    loadTestResource<String>("MyanimelistAnimeConverterTest/picture_and_thumbnail/neither_picture_nor_thumbnail.html")
+                val converter = MyanimelistAnimeConverter(testMyanimelistConfig)
 
-                val converter = MyanimelistAnimeConverter(testConfig)
+                val testFile = loadTestResource<String>("MyanimelistAnimeConverterTest/picture_and_thumbnail/neither_picture_nor_thumbnail.html")
 
                 // when
                 val result = converter.convert(testFile)
@@ -482,16 +481,15 @@ internal class MyanimelistAnimeConverterTest {
         fun `picture and thumbnail`() {
             runBlocking {
                 // given
-                val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                val testMyanimelistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = MyanimelistConfig.hostname()
                     override fun buildAnimeLink(id: AnimeId): URI = MyanimelistConfig.buildAnimeLink(id)
-                    override fun buildDataDownloadLink(id: String): URI = MyanimelistConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = MyanimelistConfig.fileSuffix()
                 }
 
-                val testFile =
-                    loadTestResource<String>("MyanimelistAnimeConverterTest/picture_and_thumbnail/picture_and_thumbnail_available.html")
+                val converter = MyanimelistAnimeConverter(testMyanimelistConfig)
 
-                val converter = MyanimelistAnimeConverter(testConfig)
+                val testFile = loadTestResource<String>("MyanimelistAnimeConverterTest/picture_and_thumbnail/picture_and_thumbnail_available.html")
 
                 // when
                 val result = converter.convert(testFile)
@@ -510,15 +508,15 @@ internal class MyanimelistAnimeConverterTest {
         fun `no synonyms`() {
             runBlocking {
                 // given
-                val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                val testMyanimelistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = MyanimelistConfig.hostname()
                     override fun buildAnimeLink(id: AnimeId): URI = MyanimelistConfig.buildAnimeLink(id)
-                    override fun buildDataDownloadLink(id: String): URI = MyanimelistConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = MyanimelistConfig.fileSuffix()
                 }
 
-                val testFile = loadTestResource<String>("MyanimelistAnimeConverterTest/synonyms/no_synonyms.html")
+                val converter = MyanimelistAnimeConverter(testMyanimelistConfig)
 
-                val converter = MyanimelistAnimeConverter(testConfig)
+                val testFile = loadTestResource<String>("MyanimelistAnimeConverterTest/synonyms/no_synonyms.html")
 
                 // when
                 val result = converter.convert(testFile)
@@ -532,15 +530,15 @@ internal class MyanimelistAnimeConverterTest {
         fun `one synonym`() {
             runBlocking {
                 // given
-                val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                val testMyanimelistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = MyanimelistConfig.hostname()
                     override fun buildAnimeLink(id: AnimeId): URI = MyanimelistConfig.buildAnimeLink(id)
-                    override fun buildDataDownloadLink(id: String): URI = MyanimelistConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = MyanimelistConfig.fileSuffix()
                 }
 
-                val testFile = loadTestResource<String>("MyanimelistAnimeConverterTest/synonyms/one_synonym.html")
+                val converter = MyanimelistAnimeConverter(testMyanimelistConfig)
 
-                val converter = MyanimelistAnimeConverter(testConfig)
+                val testFile = loadTestResource<String>("MyanimelistAnimeConverterTest/synonyms/one_synonym.html")
 
                 // when
                 val result = converter.convert(testFile)
@@ -554,15 +552,15 @@ internal class MyanimelistAnimeConverterTest {
         fun `multiple languages, one synonym each`() {
             runBlocking {
                 // given
-                val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                val testMyanimelistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = MyanimelistConfig.hostname()
                     override fun buildAnimeLink(id: AnimeId): URI = MyanimelistConfig.buildAnimeLink(id)
-                    override fun buildDataDownloadLink(id: String): URI = MyanimelistConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = MyanimelistConfig.fileSuffix()
                 }
 
-                val testFile = loadTestResource<String>("MyanimelistAnimeConverterTest/synonyms/multiple_languages_one_each.html")
+                val converter = MyanimelistAnimeConverter(testMyanimelistConfig)
 
-                val converter = MyanimelistAnimeConverter(testConfig)
+                val testFile = loadTestResource<String>("MyanimelistAnimeConverterTest/synonyms/multiple_languages_one_each.html")
 
                 // when
                 val result = converter.convert(testFile)
@@ -581,16 +579,15 @@ internal class MyanimelistAnimeConverterTest {
         fun `synonym containing comma`() {
             runBlocking {
                 // given
-                val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                val testMyanimelistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = MyanimelistConfig.hostname()
                     override fun buildAnimeLink(id: AnimeId): URI = MyanimelistConfig.buildAnimeLink(id)
-                    override fun buildDataDownloadLink(id: String): URI = MyanimelistConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = MyanimelistConfig.fileSuffix()
                 }
 
-                val testFile =
-                    loadTestResource<String>("MyanimelistAnimeConverterTest/synonyms/synonym_contains_comma_but_title_does_not.html")
+                val converter = MyanimelistAnimeConverter(testMyanimelistConfig)
 
-                val converter = MyanimelistAnimeConverter(testConfig)
+                val testFile = loadTestResource<String>("MyanimelistAnimeConverterTest/synonyms/synonym_contains_comma_but_title_does_not.html")
 
                 // when
                 val result = converter.convert(testFile)
@@ -609,15 +606,15 @@ internal class MyanimelistAnimeConverterTest {
         fun `multiple synonyms for one language`() {
             runBlocking {
                 // given
-                val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                val testMyanimelistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = MyanimelistConfig.hostname()
                     override fun buildAnimeLink(id: AnimeId): URI = MyanimelistConfig.buildAnimeLink(id)
-                    override fun buildDataDownloadLink(id: String): URI = MyanimelistConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = MyanimelistConfig.fileSuffix()
                 }
 
-                val testFile = loadTestResource<String>("MyanimelistAnimeConverterTest/synonyms/multiple_synonyms_for_one_language.html")
+                val converter = MyanimelistAnimeConverter(testMyanimelistConfig)
 
-                val converter = MyanimelistAnimeConverter(testConfig)
+                val testFile = loadTestResource<String>("MyanimelistAnimeConverterTest/synonyms/multiple_synonyms_for_one_language.html")
 
                 // when
                 val result = converter.convert(testFile)
@@ -638,15 +635,15 @@ internal class MyanimelistAnimeConverterTest {
         fun `multiple synonyms with comma in one language section`() {
             runBlocking {
                 // given
-                val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                val testMyanimelistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = MyanimelistConfig.hostname()
                     override fun buildAnimeLink(id: AnimeId): URI = MyanimelistConfig.buildAnimeLink(id)
                     override fun fileSuffix(): FileSuffix = MyanimelistConfig.fileSuffix()
                 }
 
-                val testFile =
-                    loadTestResource<String>("MyanimelistAnimeConverterTest/synonyms/multiple_synonyms_with_comma_in_one_language.html")
+                val converter = MyanimelistAnimeConverter(testMyanimelistConfig)
 
-                val converter = MyanimelistAnimeConverter(testConfig)
+                val testFile = loadTestResource<String>("MyanimelistAnimeConverterTest/synonyms/multiple_synonyms_with_comma_in_one_language.html")
 
                 // when
                 val result = converter.convert(testFile)
@@ -667,14 +664,15 @@ internal class MyanimelistAnimeConverterTest {
         fun `one synonym with multiple commas`() {
             runBlocking {
                 // given
-                val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                val testMyanimelistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = MyanimelistConfig.hostname()
                     override fun buildAnimeLink(id: AnimeId): URI = MyanimelistConfig.buildAnimeLink(id)
                     override fun fileSuffix(): FileSuffix = MyanimelistConfig.fileSuffix()
                 }
 
-                val testFile = loadTestResource<String>("MyanimelistAnimeConverterTest/synonyms/one_synonym_with_multiple_commas.html")
+                val converter = MyanimelistAnimeConverter(testMyanimelistConfig)
 
-                val converter = MyanimelistAnimeConverter(testConfig)
+                val testFile = loadTestResource<String>("MyanimelistAnimeConverterTest/synonyms/one_synonym_with_multiple_commas.html")
 
                 // when
                 val result = converter.convert(testFile)
@@ -692,15 +690,15 @@ internal class MyanimelistAnimeConverterTest {
         fun `semicolon in synonym wihtout whitespaces`() {
             runBlocking {
                 // given
-                val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                val testMyanimelistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = MyanimelistConfig.hostname()
                     override fun buildAnimeLink(id: AnimeId): URI = MyanimelistConfig.buildAnimeLink(id)
                     override fun fileSuffix(): FileSuffix = MyanimelistConfig.fileSuffix()
                 }
 
-                val testFile =
-                    loadTestResource<String>("MyanimelistAnimeConverterTest/synonyms/semicolon_in_synonym_wihtout_whitespaces.html")
+                val converter = MyanimelistAnimeConverter(testMyanimelistConfig)
 
-                val converter = MyanimelistAnimeConverter(testConfig)
+                val testFile = loadTestResource<String>("MyanimelistAnimeConverterTest/synonyms/semicolon_in_synonym_wihtout_whitespaces.html")
 
                 // when
                 val result = converter.convert(testFile)
@@ -722,15 +720,15 @@ internal class MyanimelistAnimeConverterTest {
         fun `semicolon in synonym with whitespace`() {
             runBlocking {
                 // given
-                val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                val testMyanimelistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = MyanimelistConfig.hostname()
                     override fun buildAnimeLink(id: AnimeId): URI = MyanimelistConfig.buildAnimeLink(id)
                     override fun fileSuffix(): FileSuffix = MyanimelistConfig.fileSuffix()
                 }
 
-                val testFile =
-                    loadTestResource<String>("MyanimelistAnimeConverterTest/synonyms/semicolon_in_synonym_with_whitespace.html")
+                val converter = MyanimelistAnimeConverter(testMyanimelistConfig)
 
-                val converter = MyanimelistAnimeConverter(testConfig)
+                val testFile = loadTestResource<String>("MyanimelistAnimeConverterTest/synonyms/semicolon_in_synonym_with_whitespace.html")
 
                 // when
                 val result = converter.convert(testFile)
@@ -747,15 +745,15 @@ internal class MyanimelistAnimeConverterTest {
         fun `semicolon in title but not in synonyms`() {
             runBlocking {
                 // given
-                val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                val testMyanimelistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = MyanimelistConfig.hostname()
                     override fun buildAnimeLink(id: AnimeId): URI = MyanimelistConfig.buildAnimeLink(id)
                     override fun fileSuffix(): FileSuffix = MyanimelistConfig.fileSuffix()
                 }
 
-                val testFile =
-                    loadTestResource<String>("MyanimelistAnimeConverterTest/synonyms/semicolon_in_title_but_not_in_synonyms.html")
+                val converter = MyanimelistAnimeConverter(testMyanimelistConfig)
 
-                val converter = MyanimelistAnimeConverter(testConfig)
+                val testFile = loadTestResource<String>("MyanimelistAnimeConverterTest/synonyms/semicolon_in_title_but_not_in_synonyms.html")
 
                 // when
                 val result = converter.convert(testFile)
@@ -778,15 +776,15 @@ internal class MyanimelistAnimeConverterTest {
         fun `extract id 16498`() {
             runBlocking {
                 // given
-                val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                val testMyanimelistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = MyanimelistConfig.hostname()
                     override fun buildAnimeLink(id: AnimeId): URI = MyanimelistConfig.buildAnimeLink(id)
-                    override fun buildDataDownloadLink(id: String): URI = MyanimelistConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = MyanimelistConfig.fileSuffix()
                 }
 
-                val testFile = loadTestResource<String>("MyanimelistAnimeConverterTest/sources/16498.html")
+                val converter = MyanimelistAnimeConverter(testMyanimelistConfig)
 
-                val converter = MyanimelistAnimeConverter(testConfig)
+                val testFile = loadTestResource<String>("MyanimelistAnimeConverterTest/sources/16498.html")
 
                 // when
                 val result = converter.convert(testFile)
@@ -804,15 +802,15 @@ internal class MyanimelistAnimeConverterTest {
         fun `no adaption, no relations`() {
             runBlocking {
                 // given
-                val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                val testMyanimelistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = MyanimelistConfig.hostname()
                     override fun buildAnimeLink(id: AnimeId): URI = MyanimelistConfig.buildAnimeLink(id)
-                    override fun buildDataDownloadLink(id: String): URI = MyanimelistConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = MyanimelistConfig.fileSuffix()
                 }
 
-                val testFile = loadTestResource<String>("MyanimelistAnimeConverterTest/related_anime/no_adaption_no_relations.html")
+                val converter = MyanimelistAnimeConverter(testMyanimelistConfig)
 
-                val converter = MyanimelistAnimeConverter(testConfig)
+                val testFile = loadTestResource<String>("MyanimelistAnimeConverterTest/related_anime/no_adaption_no_relations.html")
 
                 // when
                 val result = converter.convert(testFile)
@@ -826,16 +824,15 @@ internal class MyanimelistAnimeConverterTest {
         fun `no adaption, multiple relations`() {
             runBlocking {
                 // given
-                val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                val testMyanimelistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = MyanimelistConfig.hostname()
                     override fun buildAnimeLink(id: AnimeId): URI = MyanimelistConfig.buildAnimeLink(id)
-                    override fun buildDataDownloadLink(id: String): URI = MyanimelistConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = MyanimelistConfig.fileSuffix()
                 }
 
-                val testFile =
-                    loadTestResource<String>("MyanimelistAnimeConverterTest/related_anime/no_adaption_multiple_relations.html")
+                val converter = MyanimelistAnimeConverter(testMyanimelistConfig)
 
-                val converter = MyanimelistAnimeConverter(testConfig)
+                val testFile = loadTestResource<String>("MyanimelistAnimeConverterTest/related_anime/no_adaption_multiple_relations.html")
 
                 // when
                 val result = converter.convert(testFile)
@@ -855,16 +852,15 @@ internal class MyanimelistAnimeConverterTest {
         fun `one adaption, one relation`() {
             runBlocking {
                 // given
-                val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                val testMyanimelistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = MyanimelistConfig.hostname()
                     override fun buildAnimeLink(id: AnimeId): URI = MyanimelistConfig.buildAnimeLink(id)
-                    override fun buildDataDownloadLink(id: String): URI = MyanimelistConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = MyanimelistConfig.fileSuffix()
                 }
 
-                val testFile =
-                    loadTestResource<String>("MyanimelistAnimeConverterTest/related_anime/has_one_adaption_and_one_relation.html")
+                val converter = MyanimelistAnimeConverter(testMyanimelistConfig)
 
-                val converter = MyanimelistAnimeConverter(testConfig)
+                val testFile = loadTestResource<String>("MyanimelistAnimeConverterTest/related_anime/has_one_adaption_and_one_relation.html")
 
                 // when
                 val result = converter.convert(testFile)
@@ -880,16 +876,15 @@ internal class MyanimelistAnimeConverterTest {
         fun `has adaption, multiple relations`() {
             runBlocking {
                 // given
-                val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                val testMyanimelistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = MyanimelistConfig.hostname()
                     override fun buildAnimeLink(id: AnimeId): URI = MyanimelistConfig.buildAnimeLink(id)
-                    override fun buildDataDownloadLink(id: String): URI = MyanimelistConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = MyanimelistConfig.fileSuffix()
                 }
 
-                val testFile =
-                    loadTestResource<String>("MyanimelistAnimeConverterTest/related_anime/has_adaption_and_multiple_relations.html")
+                val converter = MyanimelistAnimeConverter(testMyanimelistConfig)
 
-                val converter = MyanimelistAnimeConverter(testConfig)
+                val testFile = loadTestResource<String>("MyanimelistAnimeConverterTest/related_anime/has_adaption_and_multiple_relations.html")
 
                 // when
                 val result = converter.convert(testFile)
@@ -921,15 +916,15 @@ internal class MyanimelistAnimeConverterTest {
         fun `has adaption, no relations`() {
             runBlocking {
                 // given
-                val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                val testMyanimelistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = MyanimelistConfig.hostname()
                     override fun buildAnimeLink(id: AnimeId): URI = MyanimelistConfig.buildAnimeLink(id)
-                    override fun buildDataDownloadLink(id: String): URI = MyanimelistConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = MyanimelistConfig.fileSuffix()
                 }
 
-                val testFile = loadTestResource<String>("MyanimelistAnimeConverterTest/related_anime/has_adaption_but_no_relation.html")
+                val converter = MyanimelistAnimeConverter(testMyanimelistConfig)
 
-                val converter = MyanimelistAnimeConverter(testConfig)
+                val testFile = loadTestResource<String>("MyanimelistAnimeConverterTest/related_anime/has_adaption_but_no_relation.html")
 
                 // when
                 val result = converter.convert(testFile)
@@ -947,15 +942,15 @@ internal class MyanimelistAnimeConverterTest {
         fun `'currently airing' is mapped to 'ONGOING'`() {
             runBlocking {
                 // given
-                val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                val testMyanimelistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = MyanimelistConfig.hostname()
                     override fun buildAnimeLink(id: AnimeId): URI = MyanimelistConfig.buildAnimeLink(id)
-                    override fun buildDataDownloadLink(id: String): URI = MyanimelistConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = MyanimelistConfig.fileSuffix()
                 }
 
-                val testFile = loadTestResource<String>("MyanimelistAnimeConverterTest/status/ongoing.html")
+                val converter = MyanimelistAnimeConverter(testMyanimelistConfig)
 
-                val converter = MyanimelistAnimeConverter(testConfig)
+                val testFile = loadTestResource<String>("MyanimelistAnimeConverterTest/status/ongoing.html")
 
                 // when
                 val result = converter.convert(testFile)
@@ -969,15 +964,15 @@ internal class MyanimelistAnimeConverterTest {
         fun `'Not yet aired' is mapped to 'UPCOMING'`() {
             runBlocking {
                 // given
-                val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                val testMyanimelistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = MyanimelistConfig.hostname()
                     override fun buildAnimeLink(id: AnimeId): URI = MyanimelistConfig.buildAnimeLink(id)
-                    override fun buildDataDownloadLink(id: String): URI = MyanimelistConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = MyanimelistConfig.fileSuffix()
                 }
 
-                val testFile = loadTestResource<String>("MyanimelistAnimeConverterTest/status/upcoming.html")
+                val converter = MyanimelistAnimeConverter(testMyanimelistConfig)
 
-                val converter = MyanimelistAnimeConverter(testConfig)
+                val testFile = loadTestResource<String>("MyanimelistAnimeConverterTest/status/upcoming.html")
 
                 // when
                 val result = converter.convert(testFile)
@@ -991,15 +986,15 @@ internal class MyanimelistAnimeConverterTest {
         fun `'Finished Airing' is mapped to 'FINISHED'`() {
             runBlocking {
                 // given
-                val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                val testMyanimelistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = MyanimelistConfig.hostname()
                     override fun buildAnimeLink(id: AnimeId): URI = MyanimelistConfig.buildAnimeLink(id)
-                    override fun buildDataDownloadLink(id: String): URI = MyanimelistConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = MyanimelistConfig.fileSuffix()
                 }
 
-                val testFile = loadTestResource<String>("MyanimelistAnimeConverterTest/status/finished.html")
+                val converter = MyanimelistAnimeConverter(testMyanimelistConfig)
 
-                val converter = MyanimelistAnimeConverter(testConfig)
+                val testFile = loadTestResource<String>("MyanimelistAnimeConverterTest/status/finished.html")
 
                 // when
                 val result = converter.convert(testFile)
@@ -1017,15 +1012,15 @@ internal class MyanimelistAnimeConverterTest {
         fun `extract multiple tags`() {
             runBlocking {
                 // given
-                val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                val testMyanimelistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = MyanimelistConfig.hostname()
                     override fun buildAnimeLink(id: AnimeId): URI = MyanimelistConfig.buildAnimeLink(id)
-                    override fun buildDataDownloadLink(id: String): URI = MyanimelistConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = MyanimelistConfig.fileSuffix()
                 }
 
-                val testFile = loadTestResource<String>("MyanimelistAnimeConverterTest/tags/multiple_tags.html")
+                val converter = MyanimelistAnimeConverter(testMyanimelistConfig)
 
-                val converter = MyanimelistAnimeConverter(testConfig)
+                val testFile = loadTestResource<String>("MyanimelistAnimeConverterTest/tags/multiple_tags.html")
 
                 // when
                 val result = converter.convert(testFile)
@@ -1046,15 +1041,15 @@ internal class MyanimelistAnimeConverterTest {
         fun `extract exactly one tag`() {
             runBlocking {
                 // given
-                val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                val testMyanimelistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = MyanimelistConfig.hostname()
                     override fun buildAnimeLink(id: AnimeId): URI = MyanimelistConfig.buildAnimeLink(id)
-                    override fun buildDataDownloadLink(id: String): URI = MyanimelistConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = MyanimelistConfig.fileSuffix()
                 }
 
-                val testFile = loadTestResource<String>("MyanimelistAnimeConverterTest/tags/one_tag.html")
+                val converter = MyanimelistAnimeConverter(testMyanimelistConfig)
 
-                val converter = MyanimelistAnimeConverter(testConfig)
+                val testFile = loadTestResource<String>("MyanimelistAnimeConverterTest/tags/one_tag.html")
 
                 // when
                 val result = converter.convert(testFile)
@@ -1068,15 +1063,15 @@ internal class MyanimelistAnimeConverterTest {
         fun `no tags available`() {
             runBlocking {
                 // given
-                val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                val testMyanimelistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = MyanimelistConfig.hostname()
                     override fun buildAnimeLink(id: AnimeId): URI = MyanimelistConfig.buildAnimeLink(id)
-                    override fun buildDataDownloadLink(id: String): URI = MyanimelistConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = MyanimelistConfig.fileSuffix()
                 }
 
-                val testFile = loadTestResource<String>("MyanimelistAnimeConverterTest/tags/no_tags.html")
+                val converter = MyanimelistAnimeConverter(testMyanimelistConfig)
 
-                val converter = MyanimelistAnimeConverter(testConfig)
+                val testFile = loadTestResource<String>("MyanimelistAnimeConverterTest/tags/no_tags.html")
 
                 // when
                 val result = converter.convert(testFile)
@@ -1094,15 +1089,15 @@ internal class MyanimelistAnimeConverterTest {
         fun `1 hr`() {
             runBlocking {
                 // given
-                val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                val testMyanimelistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = MyanimelistConfig.hostname()
                     override fun buildAnimeLink(id: AnimeId): URI = MyanimelistConfig.buildAnimeLink(id)
-                    override fun buildDataDownloadLink(id: String): URI = MyanimelistConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = MyanimelistConfig.fileSuffix()
                 }
 
-                val testFile = loadTestResource<String>("MyanimelistAnimeConverterTest/duration/1_hour.html")
+                val converter = MyanimelistAnimeConverter(testMyanimelistConfig)
 
-                val converter = MyanimelistAnimeConverter(testConfig)
+                val testFile = loadTestResource<String>("MyanimelistAnimeConverterTest/duration/1_hour.html")
 
                 // when
                 val result = converter.convert(testFile)
@@ -1116,15 +1111,15 @@ internal class MyanimelistAnimeConverterTest {
         fun `1 hr 11 min`() {
             runBlocking {
                 // given
-                val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                val testMyanimelistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = MyanimelistConfig.hostname()
                     override fun buildAnimeLink(id: AnimeId): URI = MyanimelistConfig.buildAnimeLink(id)
-                    override fun buildDataDownloadLink(id: String): URI = MyanimelistConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = MyanimelistConfig.fileSuffix()
                 }
 
-                val testFile = loadTestResource<String>("MyanimelistAnimeConverterTest/duration/1_hour_11_min.html")
+                val converter = MyanimelistAnimeConverter(testMyanimelistConfig)
 
-                val converter = MyanimelistAnimeConverter(testConfig)
+                val testFile = loadTestResource<String>("MyanimelistAnimeConverterTest/duration/1_hour_11_min.html")
 
                 // when
                 val result = converter.convert(testFile)
@@ -1138,15 +1133,15 @@ internal class MyanimelistAnimeConverterTest {
         fun `1 hr 11 min per ep`() {
             runBlocking {
                 // given
-                val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                val testMyanimelistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = MyanimelistConfig.hostname()
                     override fun buildAnimeLink(id: AnimeId): URI = MyanimelistConfig.buildAnimeLink(id)
-                    override fun buildDataDownloadLink(id: String): URI = MyanimelistConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = MyanimelistConfig.fileSuffix()
                 }
 
-                val testFile = loadTestResource<String>("MyanimelistAnimeConverterTest/duration/1_hour_11_min_per_episode.html")
+                val converter = MyanimelistAnimeConverter(testMyanimelistConfig)
 
-                val converter = MyanimelistAnimeConverter(testConfig)
+                val testFile = loadTestResource<String>("MyanimelistAnimeConverterTest/duration/1_hour_11_min_per_episode.html")
 
                 // when
                 val result = converter.convert(testFile)
@@ -1160,15 +1155,15 @@ internal class MyanimelistAnimeConverterTest {
         fun `2 hr`() {
             runBlocking {
                 // given
-                val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                val testMyanimelistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = MyanimelistConfig.hostname()
                     override fun buildAnimeLink(id: AnimeId): URI = MyanimelistConfig.buildAnimeLink(id)
-                    override fun buildDataDownloadLink(id: String): URI = MyanimelistConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = MyanimelistConfig.fileSuffix()
                 }
 
-                val testFile = loadTestResource<String>("MyanimelistAnimeConverterTest/duration/2_hours.html")
+                val converter = MyanimelistAnimeConverter(testMyanimelistConfig)
 
-                val converter = MyanimelistAnimeConverter(testConfig)
+                val testFile = loadTestResource<String>("MyanimelistAnimeConverterTest/duration/2_hours.html")
 
                 // when
                 val result = converter.convert(testFile)
@@ -1182,15 +1177,15 @@ internal class MyanimelistAnimeConverterTest {
         fun `2 hr 15 min`() {
             runBlocking {
                 // given
-                val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                val testMyanimelistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = MyanimelistConfig.hostname()
                     override fun buildAnimeLink(id: AnimeId): URI = MyanimelistConfig.buildAnimeLink(id)
-                    override fun buildDataDownloadLink(id: String): URI = MyanimelistConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = MyanimelistConfig.fileSuffix()
                 }
 
-                val testFile = loadTestResource<String>("MyanimelistAnimeConverterTest/duration/2_hours_15_minutes.html")
+                val converter = MyanimelistAnimeConverter(testMyanimelistConfig)
 
-                val converter = MyanimelistAnimeConverter(testConfig)
+                val testFile = loadTestResource<String>("MyanimelistAnimeConverterTest/duration/2_hours_15_minutes.html")
 
                 // when
                 val result = converter.convert(testFile)
@@ -1204,15 +1199,15 @@ internal class MyanimelistAnimeConverterTest {
         fun `10 min`() {
             runBlocking {
                 // given
-                val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                val testMyanimelistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = MyanimelistConfig.hostname()
                     override fun buildAnimeLink(id: AnimeId): URI = MyanimelistConfig.buildAnimeLink(id)
-                    override fun buildDataDownloadLink(id: String): URI = MyanimelistConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = MyanimelistConfig.fileSuffix()
                 }
 
-                val testFile = loadTestResource<String>("MyanimelistAnimeConverterTest/duration/10_min.html")
+                val converter = MyanimelistAnimeConverter(testMyanimelistConfig)
 
-                val converter = MyanimelistAnimeConverter(testConfig)
+                val testFile = loadTestResource<String>("MyanimelistAnimeConverterTest/duration/10_min.html")
 
                 // when
                 val result = converter.convert(testFile)
@@ -1226,15 +1221,15 @@ internal class MyanimelistAnimeConverterTest {
         fun `10 min per ep`() {
             runBlocking {
                 // given
-                val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                val testMyanimelistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = MyanimelistConfig.hostname()
                     override fun buildAnimeLink(id: AnimeId): URI = MyanimelistConfig.buildAnimeLink(id)
-                    override fun buildDataDownloadLink(id: String): URI = MyanimelistConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = MyanimelistConfig.fileSuffix()
                 }
 
-                val testFile = loadTestResource<String>("MyanimelistAnimeConverterTest/duration/10_min_per_episode.html")
+                val converter = MyanimelistAnimeConverter(testMyanimelistConfig)
 
-                val converter = MyanimelistAnimeConverter(testConfig)
+                val testFile = loadTestResource<String>("MyanimelistAnimeConverterTest/duration/10_min_per_episode.html")
 
                 // when
                 val result = converter.convert(testFile)
@@ -1248,15 +1243,15 @@ internal class MyanimelistAnimeConverterTest {
         fun `10 sec`() {
             runBlocking {
                 // given
-                val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                val testMyanimelistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = MyanimelistConfig.hostname()
                     override fun buildAnimeLink(id: AnimeId): URI = MyanimelistConfig.buildAnimeLink(id)
-                    override fun buildDataDownloadLink(id: String): URI = MyanimelistConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = MyanimelistConfig.fileSuffix()
                 }
 
-                val testFile = loadTestResource<String>("MyanimelistAnimeConverterTest/duration/10_sec.html")
+                val converter = MyanimelistAnimeConverter(testMyanimelistConfig)
 
-                val converter = MyanimelistAnimeConverter(testConfig)
+                val testFile = loadTestResource<String>("MyanimelistAnimeConverterTest/duration/10_sec.html")
 
                 // when
                 val result = converter.convert(testFile)
@@ -1270,15 +1265,15 @@ internal class MyanimelistAnimeConverterTest {
         fun `10 sec per ep`() {
             runBlocking {
                 // given
-                val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                val testMyanimelistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = MyanimelistConfig.hostname()
                     override fun buildAnimeLink(id: AnimeId): URI = MyanimelistConfig.buildAnimeLink(id)
-                    override fun buildDataDownloadLink(id: String): URI = MyanimelistConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = MyanimelistConfig.fileSuffix()
                 }
 
-                val testFile = loadTestResource<String>("MyanimelistAnimeConverterTest/duration/10_sec_per_episode.html")
+                val converter = MyanimelistAnimeConverter(testMyanimelistConfig)
 
-                val converter = MyanimelistAnimeConverter(testConfig)
+                val testFile = loadTestResource<String>("MyanimelistAnimeConverterTest/duration/10_sec_per_episode.html")
 
                 // when
                 val result = converter.convert(testFile)
@@ -1292,15 +1287,15 @@ internal class MyanimelistAnimeConverterTest {
         fun `unknown duration`() {
             runBlocking {
                 // given
-                val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                val testMyanimelistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = MyanimelistConfig.hostname()
                     override fun buildAnimeLink(id: AnimeId): URI = MyanimelistConfig.buildAnimeLink(id)
-                    override fun buildDataDownloadLink(id: String): URI = MyanimelistConfig.buildDataDownloadLink(id)
                     override fun fileSuffix(): FileSuffix = MyanimelistConfig.fileSuffix()
                 }
 
-                val testFile = loadTestResource<String>("MyanimelistAnimeConverterTest/duration/unknown.html")
+                val converter = MyanimelistAnimeConverter(testMyanimelistConfig)
 
-                val converter = MyanimelistAnimeConverter(testConfig)
+                val testFile = loadTestResource<String>("MyanimelistAnimeConverterTest/duration/unknown.html")
 
                 // when
                 val result = converter.convert(testFile)
@@ -1321,15 +1316,15 @@ internal class MyanimelistAnimeConverterTest {
             fun `'UNDEFINED', because anime season link is not available`() {
                 runBlocking {
                     // given
-                    val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    val testMyanimelistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                        override fun hostname(): Hostname = MyanimelistConfig.hostname()
                         override fun buildAnimeLink(id: AnimeId): URI = MyanimelistConfig.buildAnimeLink(id)
-                        override fun buildDataDownloadLink(id: String): URI = MyanimelistConfig.buildDataDownloadLink(id)
                         override fun fileSuffix(): FileSuffix = MyanimelistConfig.fileSuffix()
                     }
 
-                    val testFile = loadTestResource<String>("MyanimelistAnimeConverterTest/anime_season/season/undefined.html")
+                    val converter = MyanimelistAnimeConverter(testMyanimelistConfig)
 
-                    val converter = MyanimelistAnimeConverter(testConfig)
+                    val testFile = loadTestResource<String>("MyanimelistAnimeConverterTest/anime_season/season/undefined.html")
 
                     // when
                     val result = converter.convert(testFile)
@@ -1343,15 +1338,15 @@ internal class MyanimelistAnimeConverterTest {
             fun `season is 'FALL'`() {
                 runBlocking {
                     // given
-                    val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    val testMyanimelistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                        override fun hostname(): Hostname = MyanimelistConfig.hostname()
                         override fun buildAnimeLink(id: AnimeId): URI = MyanimelistConfig.buildAnimeLink(id)
-                        override fun buildDataDownloadLink(id: String): URI = MyanimelistConfig.buildDataDownloadLink(id)
                         override fun fileSuffix(): FileSuffix = MyanimelistConfig.fileSuffix()
                     }
 
-                    val testFile = loadTestResource<String>("MyanimelistAnimeConverterTest/anime_season/season/fall.html")
+                    val converter = MyanimelistAnimeConverter(testMyanimelistConfig)
 
-                    val converter = MyanimelistAnimeConverter(testConfig)
+                    val testFile = loadTestResource<String>("MyanimelistAnimeConverterTest/anime_season/season/fall.html")
 
                     // when
                     val result = converter.convert(testFile)
@@ -1365,15 +1360,15 @@ internal class MyanimelistAnimeConverterTest {
             fun `season is 'SPRING'`() {
                 runBlocking {
                     // given
-                    val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    val testMyanimelistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                        override fun hostname(): Hostname = MyanimelistConfig.hostname()
                         override fun buildAnimeLink(id: AnimeId): URI = MyanimelistConfig.buildAnimeLink(id)
-                        override fun buildDataDownloadLink(id: String): URI = MyanimelistConfig.buildDataDownloadLink(id)
                         override fun fileSuffix(): FileSuffix = MyanimelistConfig.fileSuffix()
                     }
 
-                    val testFile = loadTestResource<String>("MyanimelistAnimeConverterTest/anime_season/season/spring.html")
+                    val converter = MyanimelistAnimeConverter(testMyanimelistConfig)
 
-                    val converter = MyanimelistAnimeConverter(testConfig)
+                    val testFile = loadTestResource<String>("MyanimelistAnimeConverterTest/anime_season/season/spring.html")
 
                     // when
                     val result = converter.convert(testFile)
@@ -1387,15 +1382,15 @@ internal class MyanimelistAnimeConverterTest {
             fun `season is 'SUMMER'`() {
                 runBlocking {
                     // given
-                    val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    val testMyanimelistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                        override fun hostname(): Hostname = MyanimelistConfig.hostname()
                         override fun buildAnimeLink(id: AnimeId): URI = MyanimelistConfig.buildAnimeLink(id)
-                        override fun buildDataDownloadLink(id: String): URI = MyanimelistConfig.buildDataDownloadLink(id)
                         override fun fileSuffix(): FileSuffix = MyanimelistConfig.fileSuffix()
                     }
 
-                    val testFile = loadTestResource<String>("MyanimelistAnimeConverterTest/anime_season/season/summer.html")
+                    val converter = MyanimelistAnimeConverter(testMyanimelistConfig)
 
-                    val converter = MyanimelistAnimeConverter(testConfig)
+                    val testFile = loadTestResource<String>("MyanimelistAnimeConverterTest/anime_season/season/summer.html")
 
                     // when
                     val result = converter.convert(testFile)
@@ -1409,15 +1404,15 @@ internal class MyanimelistAnimeConverterTest {
             fun `season is 'WINTER'`() {
                 runBlocking {
                     // given
-                    val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    val testMyanimelistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                        override fun hostname(): Hostname = MyanimelistConfig.hostname()
                         override fun buildAnimeLink(id: AnimeId): URI = MyanimelistConfig.buildAnimeLink(id)
-                        override fun buildDataDownloadLink(id: String): URI = MyanimelistConfig.buildDataDownloadLink(id)
                         override fun fileSuffix(): FileSuffix = MyanimelistConfig.fileSuffix()
                     }
 
-                    val testFile = loadTestResource<String>("MyanimelistAnimeConverterTest/anime_season/season/winter.html")
+                    val converter = MyanimelistAnimeConverter(testMyanimelistConfig)
 
-                    val converter = MyanimelistAnimeConverter(testConfig)
+                    val testFile = loadTestResource<String>("MyanimelistAnimeConverterTest/anime_season/season/winter.html")
 
                     // when
                     val result = converter.convert(testFile)
@@ -1432,15 +1427,15 @@ internal class MyanimelistAnimeConverterTest {
             fun `season is 'SPRING' by aired because premiered is not set`(value: String) {
                 runBlocking {
                     // given
-                    val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    val testMyanimelistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                        override fun hostname(): Hostname = MyanimelistConfig.hostname()
                         override fun buildAnimeLink(id: AnimeId): URI = MyanimelistConfig.buildAnimeLink(id)
-                        override fun buildDataDownloadLink(id: String): URI = MyanimelistConfig.buildDataDownloadLink(id)
                         override fun fileSuffix(): FileSuffix = MyanimelistConfig.fileSuffix()
                     }
 
-                    val testFile = loadTestResource<String>("MyanimelistAnimeConverterTest/anime_season/season/$value.html")
+                    val converter = MyanimelistAnimeConverter(testMyanimelistConfig)
 
-                    val converter = MyanimelistAnimeConverter(testConfig)
+                    val testFile = loadTestResource<String>("MyanimelistAnimeConverterTest/anime_season/season/$value.html")
 
                     // when
                     val result = converter.convert(testFile)
@@ -1455,15 +1450,15 @@ internal class MyanimelistAnimeConverterTest {
             fun `season is 'SUMMER' by aired because premiered is not set`(value: String) {
                 runBlocking {
                     // given
-                    val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    val testMyanimelistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                        override fun hostname(): Hostname = MyanimelistConfig.hostname()
                         override fun buildAnimeLink(id: AnimeId): URI = MyanimelistConfig.buildAnimeLink(id)
-                        override fun buildDataDownloadLink(id: String): URI = MyanimelistConfig.buildDataDownloadLink(id)
                         override fun fileSuffix(): FileSuffix = MyanimelistConfig.fileSuffix()
                     }
 
-                    val testFile = loadTestResource<String>("MyanimelistAnimeConverterTest/anime_season/season/$value.html")
+                    val converter = MyanimelistAnimeConverter(testMyanimelistConfig)
 
-                    val converter = MyanimelistAnimeConverter(testConfig)
+                    val testFile = loadTestResource<String>("MyanimelistAnimeConverterTest/anime_season/season/$value.html")
 
                     // when
                     val result = converter.convert(testFile)
@@ -1478,15 +1473,15 @@ internal class MyanimelistAnimeConverterTest {
             fun `season is 'FALL' by aired because premiered is not set`(value: String) {
                 runBlocking {
                     // given
-                    val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    val testMyanimelistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                        override fun hostname(): Hostname = MyanimelistConfig.hostname()
                         override fun buildAnimeLink(id: AnimeId): URI = MyanimelistConfig.buildAnimeLink(id)
-                        override fun buildDataDownloadLink(id: String): URI = MyanimelistConfig.buildDataDownloadLink(id)
                         override fun fileSuffix(): FileSuffix = MyanimelistConfig.fileSuffix()
                     }
 
-                    val testFile = loadTestResource<String>("MyanimelistAnimeConverterTest/anime_season/season/$value.html")
+                    val converter = MyanimelistAnimeConverter(testMyanimelistConfig)
 
-                    val converter = MyanimelistAnimeConverter(testConfig)
+                    val testFile = loadTestResource<String>("MyanimelistAnimeConverterTest/anime_season/season/$value.html")
 
                     // when
                     val result = converter.convert(testFile)
@@ -1501,15 +1496,15 @@ internal class MyanimelistAnimeConverterTest {
             fun `season is 'WINTER' by aired because premiered is not set`(value: String) {
                 runBlocking {
                     // given
-                    val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    val testMyanimelistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                        override fun hostname(): Hostname = MyanimelistConfig.hostname()
                         override fun buildAnimeLink(id: AnimeId): URI = MyanimelistConfig.buildAnimeLink(id)
-                        override fun buildDataDownloadLink(id: String): URI = MyanimelistConfig.buildDataDownloadLink(id)
                         override fun fileSuffix(): FileSuffix = MyanimelistConfig.fileSuffix()
                     }
 
-                    val testFile = loadTestResource<String>("MyanimelistAnimeConverterTest/anime_season/season/$value.html")
+                    val converter = MyanimelistAnimeConverter(testMyanimelistConfig)
 
-                    val converter = MyanimelistAnimeConverter(testConfig)
+                    val testFile = loadTestResource<String>("MyanimelistAnimeConverterTest/anime_season/season/$value.html")
 
                     // when
                     val result = converter.convert(testFile)
@@ -1527,16 +1522,15 @@ internal class MyanimelistAnimeConverterTest {
             fun `extract from 'aired', because anime season is not set - year only`() {
                 runBlocking {
                     // given
-                    val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    val testMyanimelistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                        override fun hostname(): Hostname = MyanimelistConfig.hostname()
                         override fun buildAnimeLink(id: AnimeId): URI = MyanimelistConfig.buildAnimeLink(id)
-                        override fun buildDataDownloadLink(id: String): URI = MyanimelistConfig.buildDataDownloadLink(id)
                         override fun fileSuffix(): FileSuffix = MyanimelistConfig.fileSuffix()
                     }
 
-                    val testFile =
-                        loadTestResource<String>("MyanimelistAnimeConverterTest/anime_season/year_of_premiere/aired_node_-_year_only.html")
+                    val converter = MyanimelistAnimeConverter(testMyanimelistConfig)
 
-                    val converter = MyanimelistAnimeConverter(testConfig)
+                    val testFile = loadTestResource<String>("MyanimelistAnimeConverterTest/anime_season/year_of_premiere/aired_node_-_year_only.html")
 
                     // when
                     val result = converter.convert(testFile)
@@ -1550,16 +1544,15 @@ internal class MyanimelistAnimeConverterTest {
             fun `extract from 'aired', because anime season is not set - year to unknown`() {
                 runBlocking {
                     // given
-                    val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    val testMyanimelistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                        override fun hostname(): Hostname = MyanimelistConfig.hostname()
                         override fun buildAnimeLink(id: AnimeId): URI = MyanimelistConfig.buildAnimeLink(id)
-                        override fun buildDataDownloadLink(id: String): URI = MyanimelistConfig.buildDataDownloadLink(id)
                         override fun fileSuffix(): FileSuffix = MyanimelistConfig.fileSuffix()
                     }
 
-                    val testFile =
-                        loadTestResource<String>("MyanimelistAnimeConverterTest/anime_season/year_of_premiere/aired_node_-_year_to_unknown.html")
+                    val converter = MyanimelistAnimeConverter(testMyanimelistConfig)
 
-                    val converter = MyanimelistAnimeConverter(testConfig)
+                    val testFile = loadTestResource<String>("MyanimelistAnimeConverterTest/anime_season/year_of_premiere/aired_node_-_year_to_unknown.html")
 
                     // when
                     val result = converter.convert(testFile)
@@ -1573,16 +1566,15 @@ internal class MyanimelistAnimeConverterTest {
             fun `extract from 'aired', because anime season is not set - unavailable`() {
                 runBlocking {
                     // given
-                    val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    val testMyanimelistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                        override fun hostname(): Hostname = MyanimelistConfig.hostname()
                         override fun buildAnimeLink(id: AnimeId): URI = MyanimelistConfig.buildAnimeLink(id)
-                        override fun buildDataDownloadLink(id: String): URI = MyanimelistConfig.buildDataDownloadLink(id)
                         override fun fileSuffix(): FileSuffix = MyanimelistConfig.fileSuffix()
                     }
 
-                    val testFile =
-                        loadTestResource<String>("MyanimelistAnimeConverterTest/anime_season/year_of_premiere/aired_node_-_unavailable.html")
+                    val converter = MyanimelistAnimeConverter(testMyanimelistConfig)
 
-                    val converter = MyanimelistAnimeConverter(testConfig)
+                    val testFile = loadTestResource<String>("MyanimelistAnimeConverterTest/anime_season/year_of_premiere/aired_node_-_unavailable.html")
 
                     // when
                     val result = converter.convert(testFile)
@@ -1596,16 +1588,15 @@ internal class MyanimelistAnimeConverterTest {
             fun `extract from 'aired', because anime season is not set - exact day to unknown`() {
                 runBlocking {
                     // given
-                    val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    val testMyanimelistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                        override fun hostname(): Hostname = MyanimelistConfig.hostname()
                         override fun buildAnimeLink(id: AnimeId): URI = MyanimelistConfig.buildAnimeLink(id)
-                        override fun buildDataDownloadLink(id: String): URI = MyanimelistConfig.buildDataDownloadLink(id)
                         override fun fileSuffix(): FileSuffix = MyanimelistConfig.fileSuffix()
                     }
 
-                    val testFile =
-                        loadTestResource<String>("MyanimelistAnimeConverterTest/anime_season/year_of_premiere/aired_node_-_exact_day_to_unknown.html")
+                    val converter = MyanimelistAnimeConverter(testMyanimelistConfig)
 
-                    val converter = MyanimelistAnimeConverter(testConfig)
+                    val testFile = loadTestResource<String>("MyanimelistAnimeConverterTest/anime_season/year_of_premiere/aired_node_-_exact_day_to_unknown.html")
 
                     // when
                     val result = converter.convert(testFile)
@@ -1619,16 +1610,15 @@ internal class MyanimelistAnimeConverterTest {
             fun `extract from 'aired', because anime season is not set - year to year`() {
                 runBlocking {
                     // given
-                    val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    val testMyanimelistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                        override fun hostname(): Hostname = MyanimelistConfig.hostname()
                         override fun buildAnimeLink(id: AnimeId): URI = MyanimelistConfig.buildAnimeLink(id)
-                        override fun buildDataDownloadLink(id: String): URI = MyanimelistConfig.buildDataDownloadLink(id)
                         override fun fileSuffix(): FileSuffix = MyanimelistConfig.fileSuffix()
                     }
 
-                    val testFile =
-                        loadTestResource<String>("MyanimelistAnimeConverterTest/anime_season/year_of_premiere/aired_node_-_year_to_year.html")
+                    val converter = MyanimelistAnimeConverter(testMyanimelistConfig)
 
-                    val converter = MyanimelistAnimeConverter(testConfig)
+                    val testFile = loadTestResource<String>("MyanimelistAnimeConverterTest/anime_season/year_of_premiere/aired_node_-_year_to_year.html")
 
                     // when
                     val result = converter.convert(testFile)
@@ -1642,16 +1632,15 @@ internal class MyanimelistAnimeConverterTest {
             fun `extract from 'aired', because anime season is not set - month of year to year`() {
                 runBlocking {
                     // given
-                    val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    val testMyanimelistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                        override fun hostname(): Hostname = MyanimelistConfig.hostname()
                         override fun buildAnimeLink(id: AnimeId): URI = MyanimelistConfig.buildAnimeLink(id)
-                        override fun buildDataDownloadLink(id: String): URI = MyanimelistConfig.buildDataDownloadLink(id)
                         override fun fileSuffix(): FileSuffix = MyanimelistConfig.fileSuffix()
                     }
 
-                    val testFile =
-                        loadTestResource<String>("MyanimelistAnimeConverterTest/anime_season/year_of_premiere/aired_node_-_month_of_year_to_year.html")
+                    val converter = MyanimelistAnimeConverter(testMyanimelistConfig)
 
-                    val converter = MyanimelistAnimeConverter(testConfig)
+                    val testFile = loadTestResource<String>("MyanimelistAnimeConverterTest/anime_season/year_of_premiere/aired_node_-_month_of_year_to_year.html")
 
                     // when
                     val result = converter.convert(testFile)
@@ -1665,16 +1654,15 @@ internal class MyanimelistAnimeConverterTest {
             fun `extract from 'aired', because anime season is not set - month of year to unknown`() {
                 runBlocking {
                     // given
-                    val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    val testMyanimelistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                        override fun hostname(): Hostname = MyanimelistConfig.hostname()
                         override fun buildAnimeLink(id: AnimeId): URI = MyanimelistConfig.buildAnimeLink(id)
-                        override fun buildDataDownloadLink(id: String): URI = MyanimelistConfig.buildDataDownloadLink(id)
                         override fun fileSuffix(): FileSuffix = MyanimelistConfig.fileSuffix()
                     }
 
-                    val testFile =
-                        loadTestResource<String>("MyanimelistAnimeConverterTest/anime_season/year_of_premiere/aired_node_-_month_of_year_to_unknown.html")
+                    val converter = MyanimelistAnimeConverter(testMyanimelistConfig)
 
-                    val converter = MyanimelistAnimeConverter(testConfig)
+                    val testFile = loadTestResource<String>("MyanimelistAnimeConverterTest/anime_season/year_of_premiere/aired_node_-_month_of_year_to_unknown.html")
 
                     // when
                     val result = converter.convert(testFile)
@@ -1688,16 +1676,15 @@ internal class MyanimelistAnimeConverterTest {
             fun `extract from 'aired', because anime season is not set - exact day`() {
                 runBlocking {
                     // given
-                    val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    val testMyanimelistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                        override fun hostname(): Hostname = MyanimelistConfig.hostname()
                         override fun buildAnimeLink(id: AnimeId): URI = MyanimelistConfig.buildAnimeLink(id)
-                        override fun buildDataDownloadLink(id: String): URI = MyanimelistConfig.buildDataDownloadLink(id)
                         override fun fileSuffix(): FileSuffix = MyanimelistConfig.fileSuffix()
                     }
 
-                    val testFile =
-                        loadTestResource<String>("MyanimelistAnimeConverterTest/anime_season/year_of_premiere/aired_node_-_exact_day.html")
+                    val converter = MyanimelistAnimeConverter(testMyanimelistConfig)
 
-                    val converter = MyanimelistAnimeConverter(testConfig)
+                    val testFile = loadTestResource<String>("MyanimelistAnimeConverterTest/anime_season/year_of_premiere/aired_node_-_exact_day.html")
 
                     // when
                     val result = converter.convert(testFile)
@@ -1711,16 +1698,15 @@ internal class MyanimelistAnimeConverterTest {
             fun `extract from 'aired', because anime season is not set - exact day to exact day`() {
                 runBlocking {
                     // given
-                    val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    val testMyanimelistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                        override fun hostname(): Hostname = MyanimelistConfig.hostname()
                         override fun buildAnimeLink(id: AnimeId): URI = MyanimelistConfig.buildAnimeLink(id)
-                        override fun buildDataDownloadLink(id: String): URI = MyanimelistConfig.buildDataDownloadLink(id)
                         override fun fileSuffix(): FileSuffix = MyanimelistConfig.fileSuffix()
                     }
 
-                    val testFile =
-                        loadTestResource<String>("MyanimelistAnimeConverterTest/anime_season/year_of_premiere/aired_node_-_exact_day_to_exact_day.html")
+                    val converter = MyanimelistAnimeConverter(testMyanimelistConfig)
 
-                    val converter = MyanimelistAnimeConverter(testConfig)
+                    val testFile = loadTestResource<String>("MyanimelistAnimeConverterTest/anime_season/year_of_premiere/aired_node_-_exact_day_to_exact_day.html")
 
                     // when
                     val result = converter.convert(testFile)
@@ -1730,21 +1716,19 @@ internal class MyanimelistAnimeConverterTest {
                 }
             }
 
-
             @Test
             fun `extract from 'aired', because anime season is not set - year to exact day`() {
                 runBlocking {
                     // given
-                    val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    val testMyanimelistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                        override fun hostname(): Hostname = MyanimelistConfig.hostname()
                         override fun buildAnimeLink(id: AnimeId): URI = MyanimelistConfig.buildAnimeLink(id)
-                        override fun buildDataDownloadLink(id: String): URI = MyanimelistConfig.buildDataDownloadLink(id)
                         override fun fileSuffix(): FileSuffix = MyanimelistConfig.fileSuffix()
                     }
 
-                    val testFile =
-                        loadTestResource<String>("MyanimelistAnimeConverterTest/anime_season/year_of_premiere/aired_node_-_year_to_exact_day.html")
+                    val converter = MyanimelistAnimeConverter(testMyanimelistConfig)
 
-                    val converter = MyanimelistAnimeConverter(testConfig)
+                    val testFile = loadTestResource<String>("MyanimelistAnimeConverterTest/anime_season/year_of_premiere/aired_node_-_year_to_exact_day.html")
 
                     // when
                     val result = converter.convert(testFile)
@@ -1758,16 +1742,15 @@ internal class MyanimelistAnimeConverterTest {
             fun `extract from 'aired', because anime season is not set - exact day to year`() {
                 runBlocking {
                     // given
-                    val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    val testMyanimelistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                        override fun hostname(): Hostname = MyanimelistConfig.hostname()
                         override fun buildAnimeLink(id: AnimeId): URI = MyanimelistConfig.buildAnimeLink(id)
-                        override fun buildDataDownloadLink(id: String): URI = MyanimelistConfig.buildDataDownloadLink(id)
                         override fun fileSuffix(): FileSuffix = MyanimelistConfig.fileSuffix()
                     }
 
-                    val testFile =
-                        loadTestResource<String>("MyanimelistAnimeConverterTest/anime_season/year_of_premiere/aired_node_-_exact_day_to_year.html")
+                    val converter = MyanimelistAnimeConverter(testMyanimelistConfig)
 
-                    val converter = MyanimelistAnimeConverter(testConfig)
+                    val testFile = loadTestResource<String>("MyanimelistAnimeConverterTest/anime_season/year_of_premiere/aired_node_-_exact_day_to_year.html")
 
                     // when
                     val result = converter.convert(testFile)
@@ -1781,16 +1764,15 @@ internal class MyanimelistAnimeConverterTest {
             fun `extract from anime season link which exists in mobile version, but not on desktop version`() {
                 runBlocking {
                     // given
-                    val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    val testMyanimelistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                        override fun hostname(): Hostname = MyanimelistConfig.hostname()
                         override fun buildAnimeLink(id: AnimeId): URI = MyanimelistConfig.buildAnimeLink(id)
-                        override fun buildDataDownloadLink(id: String): URI = MyanimelistConfig.buildDataDownloadLink(id)
                         override fun fileSuffix(): FileSuffix = MyanimelistConfig.fileSuffix()
                     }
 
-                    val testFile =
-                        loadTestResource<String>("MyanimelistAnimeConverterTest/anime_season/year_of_premiere/premiered.html")
+                    val converter = MyanimelistAnimeConverter(testMyanimelistConfig)
 
-                    val converter = MyanimelistAnimeConverter(testConfig)
+                    val testFile = loadTestResource<String>("MyanimelistAnimeConverterTest/anime_season/year_of_premiere/premiered.html")
 
                     // when
                     val result = converter.convert(testFile)
@@ -1798,6 +1780,51 @@ internal class MyanimelistAnimeConverterTest {
                     // then
                     assertThat(result.animeSeason.year).isEqualTo(2010)
                 }
+            }
+        }
+    }
+
+    @Nested
+    inner class ScoresTests {
+
+        @Test
+        fun `successfully load score`() {
+            runBlocking {
+                // given
+                val testMyanimelistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = MyanimelistConfig.hostname()
+                    override fun buildAnimeLink(id: AnimeId): URI = MyanimelistConfig.buildAnimeLink(id)
+                    override fun fileSuffix(): FileSuffix = MyanimelistConfig.fileSuffix()
+                }
+
+                val converter = MyanimelistAnimeConverter(testMyanimelistConfig)
+
+                // when
+                val result = converter.convert(loadTestResource("MyanimelistAnimeConverterTest/scores/score.html"))
+
+                // then
+                assertThat(result.scores).hasSize(1)
+                assertThat(result.scores.first().scaledValue()).isEqualTo(8.62)
+            }
+        }
+
+        @Test
+        fun `returns NoMetaDataProviderScore`() {
+            runBlocking {
+                // given
+                val testMyanimelistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = MyanimelistConfig.hostname()
+                    override fun buildAnimeLink(id: AnimeId): URI = MyanimelistConfig.buildAnimeLink(id)
+                    override fun fileSuffix(): FileSuffix = MyanimelistConfig.fileSuffix()
+                }
+
+                val converter = MyanimelistAnimeConverter(testMyanimelistConfig)
+
+                // when
+                val result = converter.convert(loadTestResource("MyanimelistAnimeConverterTest/scores/no-score.html"))
+
+                // then
+                assertThat(result.scores).isEmpty()
             }
         }
     }
