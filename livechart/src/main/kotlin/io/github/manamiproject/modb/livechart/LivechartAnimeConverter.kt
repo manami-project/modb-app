@@ -24,7 +24,7 @@ import io.github.manamiproject.modb.core.anime.AnimeType.UNKNOWN as UNKNOWN_TYPE
 
 /**
  * Converts raw data to an [AnimeRaw].
- * Requires raw HTML. -> test
+ * Requires raw HTML.
  * @since 1.0.0
  * @param metaDataProviderConfig Configuration for converting data.
  */
@@ -61,6 +61,9 @@ public class LivechartAnimeConverter(
             "numberOfEpisodes" to "$.numberOfEpisodes",
             "datePublished" to "$.datePublished",
             "alternateName" to "$.alternateName",
+            "score" to "$.aggregateRating.ratingValue",
+            "worstRating" to "$.aggregateRating.worstRating",
+            "bestRating" to "$.aggregateRating.bestRating",
         ))
 
         val picture = extractPicture(jsonldData, data)
@@ -78,7 +81,9 @@ public class LivechartAnimeConverter(
             _synonyms = extractSynonyms(jsonldData),
             _relatedAnime = extractRelatedAnime(data),
             _tags = extractTags(jsonldData, data),
-        )
+        ).apply {
+            addScores(extractScore(jsonldData))
+        }
     }
 
     private fun extractTitle(jsonData: ExtractionResult, data: ExtractionResult): Title {
@@ -277,6 +282,22 @@ public class LivechartAnimeConverter(
         }
 
         return tags
+    }
+
+    private fun extractScore(jsonldData: ExtractionResult): MetaDataProviderScore {
+        if (jsonldData.notFound("score")) {
+            return NoMetaDataProviderScore
+        }
+
+        val rawScore = jsonldData.double("score")
+        val from = jsonldData.doubleOrDefault("worstRating", 1.0)
+        val to = jsonldData.doubleOrDefault("bestRating", 10.0)
+
+        return MetaDataProviderScoreValue(
+            hostname = metaDataProviderConfig.hostname(),
+            value = rawScore,
+            originalRange = from..to,
+        )
     }
 
     public companion object {
