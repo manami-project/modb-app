@@ -75,6 +75,9 @@ private val files = mapOf(
     "MyanimelistAnimeConverterTest/related_anime/no_adaption_multiple_relations.html" to "18507",
     "MyanimelistAnimeConverterTest/related_anime/no_adaption_no_relations.html" to "10003",
 
+    "MyanimelistAnimeConverterTest/scores/no-score.html" to "54915",
+    "MyanimelistAnimeConverterTest/scores/score.html" to "1535",
+
     "MyanimelistAnimeConverterTest/sources/16498.html" to "16498",
 
     "MyanimelistAnimeConverterTest/status/finished.html" to "21329",
