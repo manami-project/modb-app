@@ -1,0 +1,157 @@
+{
+  "id": "0-A-5Fimg",
+  "type": "tv",
+  "title": {
+    "canonical": "Death Note",
+    "romaji": "Death Note",
+    "english": "Death Note",
+    "japanese": "デスノート",
+    "hiragana": "ですのーと",
+    "synonyms": [
+      "DN"
+    ]
+  },
+  "summary": "A shinigami, as a god of death, can kill any person—provided they see their victim's face and write their victim's name in a notebook called a Death Note. One day, Ryuk, bored by the shinigami lifestyle and interested in seeing how a human would use a Death Note, drops one into the human realm.\r\n\r\nHigh school student and prodigy Light Yagami stumbles upon the Death Note and—since he deplores the state of the world—tests the deadly notebook by writing a criminal's name in it. When the criminal dies immediately following his experiment with the Death Note, Light is greatly surprised and quickly recognizes how devastating the power that has fallen into his hands could be.\r\n\r\nWith this divine capability, Light decides to extinguish all criminals in order to build a new world where crime does not exist and people worship him as a god. Police, however, quickly discover that a serial killer is targeting criminals and, consequently, try to apprehend the culprit. To do this, the Japanese investigators count on the assistance of the best detective in the world: a young and eccentric man known only by the name of L.",
+  "status": "finished",
+  "genres": [
+    "Mystery",
+    "Police",
+    "Psychological",
+    "Supernatural",
+    "Thriller"
+  ],
+  "startDate": "2006-10-04",
+  "endDate": "2007-06-27",
+  "episodeCount": 37,
+  "episodeLength": 23,
+  "source": "manga",
+  "image": {
+    "extension": ".png",
+    "width": 569,
+    "height": 825,
+    "averageColor": {
+      "hue": 0.5510891089108909,
+      "saturation": 0.09350812872643781,
+      "lightness": 0.20601968413824673
+    },
+    "lastModified": 1521567885
+  },
+  "firstChannel": "日本テレビ",
+  "rating": {
+    "overall": 8.62030369826108,
+    "story": 8.843678160919538,
+    "visuals": 8.350000000000001,
+    "soundtrack": 8.40375,
+    "count": {
+      "overall": 1361,
+      "story": 87,
+      "visuals": 82,
+      "soundtrack": 80
+    }
+  },
+  "popularity": {
+    "watching": 54,
+    "completed": 1723,
+    "planned": 271,
+    "hold": 65,
+    "dropped": 58
+  },
+  "trailers": [
+    {
+      "service": "Youtube",
+      "serviceId": "4TrEY9Zs_FQ"
+    }
+  ],
+  "episodes": [
+    "NCl3ohKWgS",
+    "Hj_qThKZRH",
+    "Hj_qT2FZRD",
+    "Hj_qo2FWRd",
+    "HC_3ohKZRK",
+    "NC_qThFZR5",
+    "NC_qT2KZRt",
+    "Hj_qo2KWR2",
+    "NC_3o2KWgT",
+    "NC_qo2KWRA",
+    "Hj_3o2KZgJ",
+    "Hj_qThFWRb",
+    "HC_3o2KWRa",
+    "NjlqThFZgB",
+    "NClqohFWgL",
+    "NC_3ThKWgE",
+    "HC_3o2KZRy",
+    "Nj_3o2KWgU",
+    "Hj_qohFWRw",
+    "Nj_qThFWRl",
+    "HjlqT2KZgX",
+    "HC_3ThFZg9",
+    "HC_3ThFWgC",
+    "HC_3ohKZg3",
+    "Hj_3ThFZge",
+    "NCl3T2KZggz",
+    "HClqT2FZgzz",
+    "Hjl3ThKWRmz",
+    "NClqThKWgZz",
+    "HClqT2KZRMz",
+    "NC_3ohFWR7z",
+    "HClqT2FZRVz",
+    "NC_3o2KWgIz",
+    "Njl3ohFWRNz",
+    "Njlqo2KWRvz",
+    "NC_qo2KZgOz",
+    "Nj_qThFWRFz"
+  ],
+  "mappings": [
+    {
+      "service": "shoboi/anime",
+      "serviceId": "945"
+    },
+    {
+      "service": "anilist/anime",
+      "serviceId": "1535"
+    },
+    {
+      "service": "myanimelist/anime",
+      "serviceId": "1535"
+    },
+    {
+      "service": "thetvdb/anime",
+      "serviceId": "79481"
+    },
+    {
+      "service": "anidb/anime",
+      "serviceId": "4563"
+    },
+    {
+      "service": "trakt/anime",
+      "serviceId": "13855"
+    },
+    {
+      "service": "kitsu/anime",
+      "serviceId": "1376"
+    }
+  ],
+  "posts": [
+    "9bXfhc1GR"
+  ],
+  "likes": null,
+  "created": "",
+  "createdBy": "",
+  "edited": "",
+  "editedBy": "",
+  "isDraft": false,
+  "studios": [
+    "bjA89n8zRR"
+  ],
+  "producers": [
+    "aC089nUzR-",
+    "xj08rn8kR3",
+    "YjA89nUzgc",
+    "-C08rn8kR5",
+    "bC08r7UzRz"
+  ],
+  "licensors": [
+    "xC0897UkgQ"
+  ],
+  "links": null
+}
