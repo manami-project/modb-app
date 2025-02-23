@@ -1,15 +1,12 @@
 package io.github.manamiproject.modb.app.downloadcontrolstate
 
 import io.github.manamiproject.modb.app.minusWeeks
-import io.github.manamiproject.modb.core.anime.AnimeRaw
-import io.github.manamiproject.modb.core.anime.AnimeSeason
+import io.github.manamiproject.modb.core.anime.*
+import io.github.manamiproject.modb.core.anime.AnimeRaw.Companion.NO_PICTURE
 import io.github.manamiproject.modb.core.anime.AnimeSeason.Season.*
-import io.github.manamiproject.modb.core.anime.AnimeStatus
-import io.github.manamiproject.modb.core.anime.AnimeStatus.FINISHED
-import io.github.manamiproject.modb.core.anime.AnimeStatus.UPCOMING
-import io.github.manamiproject.modb.core.anime.AnimeType.SPECIAL
-import io.github.manamiproject.modb.core.anime.AnimeType.TV
-import io.github.manamiproject.modb.core.anime.Duration
+import io.github.manamiproject.modb.core.anime.AnimeStatus.*
+import io.github.manamiproject.modb.core.anime.AnimeType.*
+import io.github.manamiproject.modb.core.anime.Duration.Companion.UNKNOWN as UNKNOWN_DURATION
 import io.github.manamiproject.modb.core.anime.Duration.TimeUnit.MINUTES
 import io.github.manamiproject.modb.test.exceptionExpected
 import org.assertj.core.api.Assertions.assertThat
@@ -183,6 +180,415 @@ internal class DownloadControlStateEntryTest {
             assertThat(result.lastDownloaded).isEqualTo(WeekOfYear.currentWeek())
             assertThat(result.nextDownload).isEqualTo(WeekOfYear.currentWeek().plusWeeks(1))
             assertThat(result.anime).isEqualTo(result.anime)
+        }
+
+        @Test
+        fun `different title is considered a change`() {
+            // given
+            val downloadControlStateEntry = DownloadControlStateEntry(
+                _weeksWihoutChange = 3,
+                _lastDownloaded = WeekOfYear.currentWeek().minusWeeks(3),
+                _nextDownload = WeekOfYear.currentWeek(),
+                _anime = AnimeRaw("title"),
+            )
+
+            val newAnime = downloadControlStateEntry.anime.copy(
+                _title = "other",
+            )
+
+            // when
+            val result = downloadControlStateEntry.update(newAnime)
+
+            // then
+            assertThat(result.weeksWihoutChange).isZero()
+            assertThat(result.lastDownloaded).isEqualTo(WeekOfYear.currentWeek())
+            assertThat(result.nextDownload).isEqualTo(WeekOfYear.currentWeek().plusWeeks(1))
+            assertThat(result.anime).isEqualTo(newAnime)
+        }
+
+        @Test
+        fun `different sources is considered a change`() {
+            // given
+            val downloadControlStateEntry = DownloadControlStateEntry(
+                _weeksWihoutChange = 3,
+                _lastDownloaded = WeekOfYear.currentWeek().minusWeeks(3),
+                _nextDownload = WeekOfYear.currentWeek(),
+                _anime = AnimeRaw(
+                    _title = "title",
+                    _sources = hashSetOf(URI("https://example.org/anime/some-title")),
+                ),
+            )
+
+            val newAnime = downloadControlStateEntry.anime.copy(
+                _sources = hashSetOf(URI("https://example.org/anime/other-title")),
+            )
+
+            // when
+            val result = downloadControlStateEntry.update(newAnime)
+
+            // then
+            assertThat(result.weeksWihoutChange).isZero()
+            assertThat(result.lastDownloaded).isEqualTo(WeekOfYear.currentWeek())
+            assertThat(result.nextDownload).isEqualTo(WeekOfYear.currentWeek().plusWeeks(1))
+            assertThat(result.anime).isEqualTo(newAnime)
+        }
+
+        @Test
+        fun `different type is considered a change`() {
+            // given
+            val downloadControlStateEntry = DownloadControlStateEntry(
+                _weeksWihoutChange = 3,
+                _lastDownloaded = WeekOfYear.currentWeek().minusWeeks(3),
+                _nextDownload = WeekOfYear.currentWeek(),
+                _anime = AnimeRaw(
+                    _title = "title",
+                    type = UNKNOWN_TYPE,
+                ),
+            )
+
+            val newAnime = downloadControlStateEntry.anime.copy(
+                type = MOVIE,
+            )
+
+            // when
+            val result = downloadControlStateEntry.update(newAnime)
+
+            // then
+            assertThat(result.weeksWihoutChange).isZero()
+            assertThat(result.lastDownloaded).isEqualTo(WeekOfYear.currentWeek())
+            assertThat(result.nextDownload).isEqualTo(WeekOfYear.currentWeek().plusWeeks(1))
+            assertThat(result.anime).isEqualTo(newAnime)
+        }
+
+        @Test
+        fun `different episodes is considered a change`() {
+            // given
+            val downloadControlStateEntry = DownloadControlStateEntry(
+                _weeksWihoutChange = 3,
+                _lastDownloaded = WeekOfYear.currentWeek().minusWeeks(3),
+                _nextDownload = WeekOfYear.currentWeek(),
+                _anime = AnimeRaw(
+                    _title = "title",
+                    episodes = 0,
+                ),
+            )
+
+            val newAnime = downloadControlStateEntry.anime.copy(
+                episodes = 12,
+            )
+
+            // when
+            val result = downloadControlStateEntry.update(newAnime)
+
+            // then
+            assertThat(result.weeksWihoutChange).isZero()
+            assertThat(result.lastDownloaded).isEqualTo(WeekOfYear.currentWeek())
+            assertThat(result.nextDownload).isEqualTo(WeekOfYear.currentWeek().plusWeeks(1))
+            assertThat(result.anime).isEqualTo(newAnime)
+        }
+
+        @Test
+        fun `different status is considered a change`() {
+            // given
+            val downloadControlStateEntry = DownloadControlStateEntry(
+                _weeksWihoutChange = 3,
+                _lastDownloaded = WeekOfYear.currentWeek().minusWeeks(3),
+                _nextDownload = WeekOfYear.currentWeek(),
+                _anime = AnimeRaw(
+                    _title = "title",
+                    status = UNKNOWN_STATUS,
+                ),
+            )
+
+            val newAnime = downloadControlStateEntry.anime.copy(
+                status = ONGOING,
+            )
+
+            // when
+            val result = downloadControlStateEntry.update(newAnime)
+
+            // then
+            assertThat(result.weeksWihoutChange).isZero()
+            assertThat(result.lastDownloaded).isEqualTo(WeekOfYear.currentWeek())
+            assertThat(result.nextDownload).isEqualTo(WeekOfYear.currentWeek().plusWeeks(1))
+            assertThat(result.anime).isEqualTo(newAnime)
+        }
+
+        @Test
+        fun `different animeSeason is considered a change`() {
+            // given
+            val downloadControlStateEntry = DownloadControlStateEntry(
+                _weeksWihoutChange = 3,
+                _lastDownloaded = WeekOfYear.currentWeek().minusWeeks(3),
+                _nextDownload = WeekOfYear.currentWeek(),
+                _anime = AnimeRaw(
+                    _title = "title",
+                    animeSeason = AnimeSeason(
+                        year = 2025,
+                    ),
+                ),
+            )
+
+            val newAnime = downloadControlStateEntry.anime.copy(
+                animeSeason = AnimeSeason(
+                    season = FALL,
+                    year = 2025,
+                ),
+            )
+
+            // when
+            val result = downloadControlStateEntry.update(newAnime)
+
+            // then
+            assertThat(result.weeksWihoutChange).isZero()
+            assertThat(result.lastDownloaded).isEqualTo(WeekOfYear.currentWeek())
+            assertThat(result.nextDownload).isEqualTo(WeekOfYear.currentWeek().plusWeeks(1))
+            assertThat(result.anime).isEqualTo(newAnime)
+        }
+
+        @Test
+        fun `different picture is considered a change`() {
+            // given
+            val downloadControlStateEntry = DownloadControlStateEntry(
+                _weeksWihoutChange = 3,
+                _lastDownloaded = WeekOfYear.currentWeek().minusWeeks(3),
+                _nextDownload = WeekOfYear.currentWeek(),
+                _anime = AnimeRaw(
+                    _title = "title",
+                    picture = NO_PICTURE,
+                ),
+            )
+
+            val newAnime = downloadControlStateEntry.anime.copy(
+                picture = URI("https://example.org/media/1.png"),
+            )
+
+            // when
+            val result = downloadControlStateEntry.update(newAnime)
+
+            // then
+            assertThat(result.weeksWihoutChange).isZero()
+            assertThat(result.lastDownloaded).isEqualTo(WeekOfYear.currentWeek())
+            assertThat(result.nextDownload).isEqualTo(WeekOfYear.currentWeek().plusWeeks(1))
+            assertThat(result.anime).isEqualTo(newAnime)
+        }
+
+        @Test
+        fun `different thumbnail is considered a change`() {
+            // given
+            val downloadControlStateEntry = DownloadControlStateEntry(
+                _weeksWihoutChange = 3,
+                _lastDownloaded = WeekOfYear.currentWeek().minusWeeks(3),
+                _nextDownload = WeekOfYear.currentWeek(),
+                _anime = AnimeRaw(
+                    _title = "title",
+                    thumbnail = NO_PICTURE,
+                ),
+            )
+
+            val newAnime = downloadControlStateEntry.anime.copy(
+                thumbnail = URI("https://example.org/media/1.png"),
+            )
+
+            // when
+            val result = downloadControlStateEntry.update(newAnime)
+
+            // then
+            assertThat(result.weeksWihoutChange).isZero()
+            assertThat(result.lastDownloaded).isEqualTo(WeekOfYear.currentWeek())
+            assertThat(result.nextDownload).isEqualTo(WeekOfYear.currentWeek().plusWeeks(1))
+            assertThat(result.anime).isEqualTo(newAnime)
+        }
+
+        @Test
+        fun `different duration is considered a change`() {
+            // given
+            val downloadControlStateEntry = DownloadControlStateEntry(
+                _weeksWihoutChange = 3,
+                _lastDownloaded = WeekOfYear.currentWeek().minusWeeks(3),
+                _nextDownload = WeekOfYear.currentWeek(),
+                _anime = AnimeRaw(
+                    _title = "title",
+                    duration = UNKNOWN_DURATION,
+                ),
+            )
+
+            val newAnime = downloadControlStateEntry.anime.copy(
+                duration = Duration(
+                    value = 20,
+                    unit = MINUTES,
+                ),
+            )
+
+            // when
+            val result = downloadControlStateEntry.update(newAnime)
+
+            // then
+            assertThat(result.weeksWihoutChange).isZero()
+            assertThat(result.lastDownloaded).isEqualTo(WeekOfYear.currentWeek())
+            assertThat(result.nextDownload).isEqualTo(WeekOfYear.currentWeek().plusWeeks(1))
+            assertThat(result.anime).isEqualTo(newAnime)
+        }
+
+        @Test
+        fun `different synonyms is considered a change`() {
+            // given
+            val downloadControlStateEntry = DownloadControlStateEntry(
+                _weeksWihoutChange = 3,
+                _lastDownloaded = WeekOfYear.currentWeek().minusWeeks(3),
+                _nextDownload = WeekOfYear.currentWeek(),
+                _anime = AnimeRaw(
+                    _title = "title",
+                    _synonyms = hashSetOf("Alternative title"),
+                ),
+            )
+
+            val newAnime = downloadControlStateEntry.anime.copy(
+                _synonyms = hashSetOf(
+                    "Alternative title",
+                    "Additional title",
+                ),
+            )
+
+            // when
+            val result = downloadControlStateEntry.update(newAnime)
+
+            // then
+            assertThat(result.weeksWihoutChange).isZero()
+            assertThat(result.lastDownloaded).isEqualTo(WeekOfYear.currentWeek())
+            assertThat(result.nextDownload).isEqualTo(WeekOfYear.currentWeek().plusWeeks(1))
+            assertThat(result.anime).isEqualTo(newAnime)
+        }
+
+        @Test
+        fun `different relatedAnime is considered a change`() {
+            // given
+            val downloadControlStateEntry = DownloadControlStateEntry(
+                _weeksWihoutChange = 3,
+                _lastDownloaded = WeekOfYear.currentWeek().minusWeeks(3),
+                _nextDownload = WeekOfYear.currentWeek(),
+                _anime = AnimeRaw(
+                    _title = "title",
+                    _relatedAnime = hashSetOf(URI("https://example.org/anime/some-title")),
+                ),
+            )
+
+            val newAnime = downloadControlStateEntry.anime.copy(
+                _relatedAnime = hashSetOf(
+                    URI("https://example.org/anime/some-title"),
+                    URI("https://example.org/anime/additional-title"),
+                ),
+            )
+
+            // when
+            val result = downloadControlStateEntry.update(newAnime)
+
+            // then
+            assertThat(result.weeksWihoutChange).isZero()
+            assertThat(result.lastDownloaded).isEqualTo(WeekOfYear.currentWeek())
+            assertThat(result.nextDownload).isEqualTo(WeekOfYear.currentWeek().plusWeeks(1))
+            assertThat(result.anime).isEqualTo(newAnime)
+        }
+
+        @Test
+        fun `different tags is considered a change`() {
+            // given
+            val downloadControlStateEntry = DownloadControlStateEntry(
+                _weeksWihoutChange = 3,
+                _lastDownloaded = WeekOfYear.currentWeek().minusWeeks(3),
+                _nextDownload = WeekOfYear.currentWeek(),
+                _anime = AnimeRaw(
+                    _title = "title",
+                    _tags = hashSetOf("descriptive tag"),
+                ),
+            )
+
+            val newAnime = downloadControlStateEntry.anime.copy(
+                _tags = hashSetOf(
+                    "descriptive tag",
+                    "Additional tag",
+                ),
+            )
+
+            // when
+            val result = downloadControlStateEntry.update(newAnime)
+
+            // then
+            assertThat(result.weeksWihoutChange).isZero()
+            assertThat(result.lastDownloaded).isEqualTo(WeekOfYear.currentWeek())
+            assertThat(result.nextDownload).isEqualTo(WeekOfYear.currentWeek().plusWeeks(1))
+            assertThat(result.anime).isEqualTo(newAnime)
+        }
+
+        @Test
+        fun `different score is NOT considered a change, therefore next download is scheduled for an unchanged anime, but the score is being updated`() {
+            // given
+            val downloadControlStateEntry = DownloadControlStateEntry(
+                _weeksWihoutChange = 0,
+                _lastDownloaded = WeekOfYear.currentWeek().minusWeeks(1),
+                _nextDownload = WeekOfYear.currentWeek(),
+                _anime = AnimeRaw(
+                    _title = "title",
+                ).addScores(
+                    MetaDataProviderScoreValue(
+                        hostname = "example.org",
+                        value = 7.8,
+                        originalRange = 1.0..10.0
+                    )
+                ),
+            )
+
+            val newAnime = downloadControlStateEntry.anime.copy().addScores(
+                MetaDataProviderScoreValue(
+                    hostname = "example.org",
+                    value = 7.9,
+                    originalRange = 1.0..10.0
+                )
+            )
+
+            // when
+            val result = downloadControlStateEntry.update(newAnime)
+
+            // then
+            assertThat(result.weeksWihoutChange).isOne()
+            assertThat(result.lastDownloaded).isEqualTo(WeekOfYear.currentWeek())
+            assertThat(result.nextDownload.week).isIn(
+                WeekOfYear.currentWeek().plusWeeks(2).week,
+                WeekOfYear.currentWeek().plusWeeks(3).week,
+                WeekOfYear.currentWeek().plusWeeks(4).week,
+            )
+            assertThat(result.anime).isEqualTo(newAnime)
+        }
+
+        @Test
+        fun `different activateChecks is NOT considered a change, therefore next download is scheduled for an unchanged anime`() {
+            // given
+            val downloadControlStateEntry = DownloadControlStateEntry(
+                _weeksWihoutChange = 0,
+                _lastDownloaded = WeekOfYear.currentWeek().minusWeeks(1),
+                _nextDownload = WeekOfYear.currentWeek(),
+                _anime = AnimeRaw(
+                    _title = "title",
+                    activateChecks = false,
+                )
+            )
+
+            val newAnime = downloadControlStateEntry.anime.copy(
+                activateChecks = true,
+            )
+
+            // when
+            val result = downloadControlStateEntry.update(newAnime)
+
+            // then
+            assertThat(result.weeksWihoutChange).isOne()
+            assertThat(result.lastDownloaded).isEqualTo(WeekOfYear.currentWeek())
+            assertThat(result.nextDownload.week).isIn(
+                WeekOfYear.currentWeek().plusWeeks(2).week,
+                WeekOfYear.currentWeek().plusWeeks(3).week,
+                WeekOfYear.currentWeek().plusWeeks(4).week,
+            )
+            assertThat(result.anime).isEqualTo(newAnime)
         }
     }
 
