@@ -2125,27 +2125,23 @@ internal class AnimeRawTest {
             val title =  "Death Note"
             val a = AnimeRaw(
                 _title = title,
-            ).apply {
-                addScores(
-                    MetaDataProviderScoreValue(
-                        hostname = "example.org",
-                        value = 4.97,
-                        range = 1.0..5.0,
-                    ),
-                )
-            }
+            ).addScores(
+                MetaDataProviderScoreValue(
+                    hostname = "example.org",
+                    value = 4.97,
+                    range = 1.0..5.0,
+                ),
+            )
 
             val b = AnimeRaw(
                 _title = title,
-            ).apply {
-                addScores(
-                    MetaDataProviderScoreValue(
-                        hostname = "example.org",
-                        value = 4.97,
-                        range = 1.0..5.0,
-                    ),
-                )
-            }
+            ).addScores(
+                MetaDataProviderScoreValue(
+                    hostname = "example.org",
+                    value = 4.97,
+                    range = 1.0..5.0,
+                ),
+            )
 
             // when
             val result = a == b
@@ -2161,32 +2157,28 @@ internal class AnimeRawTest {
             val title  =  "Death Note"
             val a = AnimeRaw(
                 _title =  title,
-            ).apply {
-                addScores(
-                    MetaDataProviderScoreValue(
-                        hostname = "example.org",
-                        value = 4.97,
-                        range = 1.0..5.0,
-                    ),
-                )
-            }
+            ).addScores(
+                MetaDataProviderScoreValue(
+                    hostname = "example.org",
+                    value = 4.97,
+                    range = 1.0..5.0,
+                ),
+            )
 
             val b = AnimeRaw(
                 _title =  title,
-            ).apply {
-                addScores(
-                    MetaDataProviderScoreValue(
-                        hostname = "example.org",
-                        value = 4.97,
-                        range = 1.0..5.0,
-                    ),
-                    MetaDataProviderScoreValue(
-                        hostname = "other.com",
-                        value = 9.50,
-                        range = 1.0..10.0,
-                    )
+            ).addScores(
+                MetaDataProviderScoreValue(
+                    hostname = "example.org",
+                    value = 4.97,
+                    range = 1.0..5.0,
+                ),
+                MetaDataProviderScoreValue(
+                    hostname = "other.com",
+                    value = 9.50,
+                    range = 1.0..10.0,
                 )
-            }
+            )
 
             // when
             val result = a == b
@@ -2699,11 +2691,9 @@ internal class AnimeRawTest {
             )
             val a = AnimeRaw(
                 _title = title,
-            ).apply {
-                addScores(
-                    scoreA,
-                )
-            }
+            ).addScores(
+                scoreA,
+            )
 
             val scoreB = MetaDataProviderScoreValue(
                 hostname = "other.com",
@@ -2712,11 +2702,9 @@ internal class AnimeRawTest {
             )
             val b = AnimeRaw(
                 _title = title,
-            ).apply {
-                addScores(
-                    scoreB,
-                )
-            }
+            ).addScores(
+                scoreB,
+            )
 
             // when
             val result = a.mergeWith(b)
@@ -2739,11 +2727,9 @@ internal class AnimeRawTest {
             )
             val a = AnimeRaw(
                 _title = title,
-            ).apply {
-                addScores(
-                    scoreA,
-                )
-            }
+            ).addScores(
+                scoreA,
+            )
 
             val scoreB = MetaDataProviderScoreValue(
                 hostname = "example.org",
@@ -2752,11 +2738,9 @@ internal class AnimeRawTest {
             )
             val b = AnimeRaw(
                 _title = title,
-            ).apply {
-                addScores(
-                    scoreB,
-                )
-            }
+            ).addScores(
+                scoreB,
+            )
 
             // when
             val result = a.mergeWith(b)
@@ -3476,15 +3460,13 @@ internal class AnimeRawTest {
                     "slice of life",
                     "supernatural",
                 ),
-            ).apply {
-                addScores(
-                    MetaDataProviderScoreValue(
-                        hostname = "myanimelist.net",
-                        value = 7.77,
-                        range = 1.0..10.0,
-                    ),
-                )
-            }
+            ).addScores(
+                MetaDataProviderScoreValue(
+                    hostname = "myanimelist.net",
+                    value = 7.77,
+                    range = 1.0..10.0,
+                ),
+            )
 
             // when
             val result = anime.toString()
@@ -3806,15 +3788,13 @@ internal class AnimeRawTest {
             // given
             val anime = AnimeRaw(
                 _title = "test",
-            ).apply {
-                addScores(
-                    MetaDataProviderScoreValue(
-                        hostname = "example.org",
-                        value = 4.97,
-                        range = 1.0..5.0,
-                    ),
-                )
-            }
+            ).addScores(
+                MetaDataProviderScoreValue(
+                    hostname = "example.org",
+                    value = 4.97,
+                    range = 1.0..5.0,
+                ),
+            )
 
             // when
             anime.scores.clear()
@@ -3905,15 +3885,13 @@ internal class AnimeRawTest {
                 )
                 val anime = AnimeRaw(
                     _title = "test",
-                ).apply {
-                    addScores(
-                        MetaDataProviderScoreValue(
-                            hostname = "example.org",
-                            value = 2.54,
-                            range = 1.0..5.0,
-                        ),
-                    )
-                }
+                ).addScores(
+                    MetaDataProviderScoreValue(
+                        hostname = "example.org",
+                        value = 2.54,
+                        range = 1.0..5.0,
+                    ),
+                )
 
                 // when
                 val result = anime.addScores(
@@ -4015,17 +3993,15 @@ internal class AnimeRawTest {
                 )
                 val anime = AnimeRaw(
                     _title = "test",
-                ).apply {
-                    addScores(
-                        listOf(
-                            MetaDataProviderScoreValue(
-                                hostname = "example.org",
-                                value = 2.54,
-                                range = 1.0..5.0,
-                            ),
-                        )
+                ).addScores(
+                    listOf(
+                        MetaDataProviderScoreValue(
+                            hostname = "example.org",
+                            value = 2.54,
+                            range = 1.0..5.0,
+                        ),
                     )
-                }
+                )
 
                 // when
                 val result = anime.addScores(

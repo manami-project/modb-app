@@ -62,9 +62,7 @@ public class AnilistAnimeConverter(
             _synonyms = extractSynonyms(data),
             _tags = extractTags(data),
             _relatedAnime = extractRelatedAnime(data),
-        ).apply { 
-            addScores(extractScore(data))
-        }
+        ).addScores(extractScore(data))
     }
 
     private fun extractTitle(data: ExtractionResult): String = data.stringOrDefault("userPreferred")

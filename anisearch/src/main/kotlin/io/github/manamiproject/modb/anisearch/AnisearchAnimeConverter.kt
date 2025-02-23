@@ -85,9 +85,7 @@ public class AnisearchAnimeConverter(
             _synonyms = extractSynonyms(data),
             _relatedAnime = extractRelatedAnime(data),
             _tags = extractTags(data),
-        ).apply {
-            addScores(extractScore(jsonData, data))
-        }
+        ).addScores(extractScore(jsonData, data))
     }
 
     private fun extractTitle(jsonldData: ExtractionResult, data: ExtractionResult): Title {

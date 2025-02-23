@@ -64,9 +64,7 @@ public class NotifyAnimeConverter(
             _synonyms = extractSynonyms(data),
             _relatedAnime = extractRelatedAnime(data),
             _tags = extractTags(data),
-        ).apply {
-            addScores(extractScore(data))
-        }
+        ).addScores(extractScore(data))
     }
 
     private fun extractTitle(data: ExtractionResult) = data.string("title")
