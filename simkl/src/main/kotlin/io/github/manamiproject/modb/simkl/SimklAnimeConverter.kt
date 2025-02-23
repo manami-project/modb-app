@@ -310,7 +310,7 @@ public class SimklAnimeConverter(
         return MetaDataProviderScoreValue(
             hostname = metaDataProviderConfig.hostname(),
             value = rawScore,
-            originalRange = worstRating..bestRating,
+            range = worstRating..bestRating,
         )
     }
 

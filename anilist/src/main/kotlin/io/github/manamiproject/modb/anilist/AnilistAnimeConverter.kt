@@ -184,7 +184,7 @@ public class AnilistAnimeConverter(
         return MetaDataProviderScoreValue(
             hostname = metaDataProviderConfig.hostname(),
             value = rawScore,
-            originalRange = 1.0..100.0,
+            range = 1.0..100.0,
         )
     }
 

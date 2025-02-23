@@ -296,7 +296,7 @@ public class LivechartAnimeConverter(
         return MetaDataProviderScoreValue(
             hostname = metaDataProviderConfig.hostname(),
             value = rawScore,
-            originalRange = from..to,
+            range = from..to,
         )
     }
 

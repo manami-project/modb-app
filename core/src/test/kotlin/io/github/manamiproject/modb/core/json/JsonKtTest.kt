@@ -62,7 +62,7 @@ internal class JsonKtTest {
                             MetaDataProviderScoreValue(
                                 hostname = "myanimelist.net",
                                 value = 7.77,
-                                originalRange = 1.0..10.0,
+                                range = 1.0..10.0,
                             ),
                         )
                     }
@@ -113,7 +113,7 @@ internal class JsonKtTest {
                             MetaDataProviderScoreValue(
                                 hostname = "myanimelist.net",
                                 value = 7.77,
-                                originalRange = 1.0..10.0,
+                                range = 1.0..10.0,
                             ),
                         )
                     }
@@ -415,7 +415,7 @@ internal class JsonKtTest {
                                 MetaDataProviderScoreValue(
                                     hostname = "myanimelist.net",
                                     value = 7.77,
-                                    originalRange = 1.0..10.0,
+                                    range = 1.0..10.0,
                                 ),
                             )
                         }
@@ -829,7 +829,7 @@ internal class JsonKtTest {
                                 MetaDataProviderScoreValue(
                                     hostname = "myanimelist.net",
                                     value = 7.77,
-                                    originalRange = 1.0..10.0,
+                                    range = 1.0..10.0,
                                 ),
                             )
                         }
@@ -1148,7 +1148,7 @@ internal class JsonKtTest {
                             MetaDataProviderScoreValue(
                                 hostname = "myanimelist.net",
                                 value = 7.77,
-                                originalRange = 1.0..10.0,
+                                range = 1.0..10.0,
                             ),
                         )
                     }

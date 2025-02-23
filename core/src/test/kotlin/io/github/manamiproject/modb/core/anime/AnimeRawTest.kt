@@ -2130,7 +2130,7 @@ internal class AnimeRawTest {
                     MetaDataProviderScoreValue(
                         hostname = "example.org",
                         value = 4.97,
-                        originalRange = 1.0..5.0,
+                        range = 1.0..5.0,
                     ),
                 )
             }
@@ -2142,7 +2142,7 @@ internal class AnimeRawTest {
                     MetaDataProviderScoreValue(
                         hostname = "example.org",
                         value = 4.97,
-                        originalRange = 1.0..5.0,
+                        range = 1.0..5.0,
                     ),
                 )
             }
@@ -2166,7 +2166,7 @@ internal class AnimeRawTest {
                     MetaDataProviderScoreValue(
                         hostname = "example.org",
                         value = 4.97,
-                        originalRange = 1.0..5.0,
+                        range = 1.0..5.0,
                     ),
                 )
             }
@@ -2178,12 +2178,12 @@ internal class AnimeRawTest {
                     MetaDataProviderScoreValue(
                         hostname = "example.org",
                         value = 4.97,
-                        originalRange = 1.0..5.0,
+                        range = 1.0..5.0,
                     ),
                     MetaDataProviderScoreValue(
                         hostname = "other.com",
                         value = 9.50,
-                        originalRange = 1.0..10.0,
+                        range = 1.0..10.0,
                     )
                 )
             }
@@ -2695,7 +2695,7 @@ internal class AnimeRawTest {
             val scoreA = MetaDataProviderScoreValue(
                 hostname = "example.org",
                 value = 4.97,
-                originalRange = 1.0..5.0,
+                range = 1.0..5.0,
             )
             val a = AnimeRaw(
                 _title = title,
@@ -2708,7 +2708,7 @@ internal class AnimeRawTest {
             val scoreB = MetaDataProviderScoreValue(
                 hostname = "other.com",
                 value = 9.5,
-                originalRange = 1.0..10.0,
+                range = 1.0..10.0,
             )
             val b = AnimeRaw(
                 _title = title,
@@ -2735,7 +2735,7 @@ internal class AnimeRawTest {
             val scoreA = MetaDataProviderScoreValue(
                 hostname = "example.org",
                 value = 2.41,
-                originalRange = 1.0..5.0,
+                range = 1.0..5.0,
             )
             val a = AnimeRaw(
                 _title = title,
@@ -2748,7 +2748,7 @@ internal class AnimeRawTest {
             val scoreB = MetaDataProviderScoreValue(
                 hostname = "example.org",
                 value = 4.97,
-                originalRange = 1.0..5.0,
+                range = 1.0..5.0,
             )
             val b = AnimeRaw(
                 _title = title,
@@ -3481,7 +3481,7 @@ internal class AnimeRawTest {
                     MetaDataProviderScoreValue(
                         hostname = "myanimelist.net",
                         value = 7.77,
-                        originalRange = 1.0..10.0,
+                        range = 1.0..10.0,
                     ),
                 )
             }
@@ -3502,7 +3502,7 @@ internal class AnimeRawTest {
                       picture = https://cdn.myanimelist.net/images/anime/10/19621.jpg
                       thumbnail = https://cdn.myanimelist.net/images/anime/10/19621t.jpg
                       duration = 120 seconds
-                      scores = [MetaDataProviderScoreValue(hostname=myanimelist.net, value=7.77, originalRange=1.0..10.0)]
+                      scores = [MetaDataProviderScoreValue(hostname=myanimelist.net, value=7.77, range=1.0..10.0)]
                       synonyms = [Clannad ~After Story~: Another World, Kyou Chapter, Clannad: After Story OVA, クラナド　アフターストーリー　もうひとつの世界　杏編]
                       relatedAnime = [https://myanimelist.net/anime/2167]
                       tags = [comedy, drama, romance, school, slice of life, supernatural]
@@ -3811,7 +3811,7 @@ internal class AnimeRawTest {
                     MetaDataProviderScoreValue(
                         hostname = "example.org",
                         value = 4.97,
-                        originalRange = 1.0..5.0,
+                        range = 1.0..5.0,
                     ),
                 )
             }
@@ -3848,7 +3848,7 @@ internal class AnimeRawTest {
                 val score = MetaDataProviderScoreValue(
                     hostname = "example.org",
                     value = 4.97,
-                    originalRange = 1.0..5.0,
+                    range = 1.0..5.0,
                 )
                 val anime = AnimeRaw(
                     _title = "test",
@@ -3871,12 +3871,12 @@ internal class AnimeRawTest {
                 val scoreA = MetaDataProviderScoreValue(
                     hostname = "example.org",
                     value = 4.97,
-                    originalRange = 1.0..5.0,
+                    range = 1.0..5.0,
                 )
                 val scoreB = MetaDataProviderScoreValue(
                     hostname = "other.com",
                     value = 6.83,
-                    originalRange = 1.0..10.0,
+                    range = 1.0..10.0,
                 )
                 val anime = AnimeRaw(
                     _title = "test",
@@ -3901,7 +3901,7 @@ internal class AnimeRawTest {
                 val score = MetaDataProviderScoreValue(
                     hostname = "example.org",
                     value = 4.97,
-                    originalRange = 1.0..5.0,
+                    range = 1.0..5.0,
                 )
                 val anime = AnimeRaw(
                     _title = "test",
@@ -3910,7 +3910,7 @@ internal class AnimeRawTest {
                         MetaDataProviderScoreValue(
                             hostname = "example.org",
                             value = 2.54,
-                            originalRange = 1.0..5.0,
+                            range = 1.0..5.0,
                         ),
                     )
                 }
@@ -3954,7 +3954,7 @@ internal class AnimeRawTest {
                 val score = MetaDataProviderScoreValue(
                     hostname = "example.org",
                     value = 4.97,
-                    originalRange = 1.0..5.0,
+                    range = 1.0..5.0,
                 )
                 val anime = AnimeRaw(
                     _title = "test",
@@ -3979,12 +3979,12 @@ internal class AnimeRawTest {
                 val scoreA = MetaDataProviderScoreValue(
                     hostname = "example.org",
                     value = 4.97,
-                    originalRange = 1.0..5.0,
+                    range = 1.0..5.0,
                 )
                 val scoreB = MetaDataProviderScoreValue(
                     hostname = "other.com",
                     value = 6.83,
-                    originalRange = 1.0..10.0,
+                    range = 1.0..10.0,
                 )
                 val anime = AnimeRaw(
                     _title = "test",
@@ -4011,7 +4011,7 @@ internal class AnimeRawTest {
                 val score = MetaDataProviderScoreValue(
                     hostname = "example.org",
                     value = 4.97,
-                    originalRange = 1.0..5.0,
+                    range = 1.0..5.0,
                 )
                 val anime = AnimeRaw(
                     _title = "test",
@@ -4021,7 +4021,7 @@ internal class AnimeRawTest {
                             MetaDataProviderScoreValue(
                                 hostname = "example.org",
                                 value = 2.54,
-                                originalRange = 1.0..5.0,
+                                range = 1.0..5.0,
                             ),
                         )
                     )

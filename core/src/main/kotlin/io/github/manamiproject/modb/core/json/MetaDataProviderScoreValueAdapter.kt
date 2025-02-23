@@ -61,7 +61,7 @@ internal class MetaDataProviderScoreValueAdapter: JsonAdapter<MetaDataProviderSc
         return MetaDataProviderScoreValue(
             hostname = hostname,
             value = value,
-            originalRange = minInclusive..maxInclusive,
+            range = minInclusive..maxInclusive,
         )
     }
 
@@ -74,8 +74,8 @@ internal class MetaDataProviderScoreValueAdapter: JsonAdapter<MetaDataProviderSc
             .name("value").value(value.value)
             .name("range")
                 .beginObject()
-                    .name("minInclusive").value(value.originalRange.start)
-                    .name("maxInclusive").value(value.originalRange.endInclusive)
+                    .name("minInclusive").value(value.range.start)
+                    .name("maxInclusive").value(value.range.endInclusive)
                 .endObject()
         .endObject()
     }
