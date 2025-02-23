@@ -67,9 +67,7 @@ public class KitsuAnimeConverter(
             _synonyms = extractSynonyms(data),
             _relatedAnime = extractRelatedAnime(data),
             _tags = extractTags(data),
-        ).apply {
-            addScores(extractScore(data))
-        }
+        ).addScores(extractScore(data))
     }
 
     private fun extractTitle(data: ExtractionResult): Title = data.string("title")

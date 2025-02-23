@@ -988,16 +988,14 @@ internal class DefaultDownloadControlStateAccessorTest {
                             "psychological",
                             "sci-fi",
                         ),
-                    ),
-                ).apply {
-                    anime.addScores(
+                    ).addScores(
                         MetaDataProviderScoreValue(
                             hostname = "anilist.co",
                             value = 85.0,
                             range = 1.0..100.0,
                         ),
-                    )
-                }
+                    ),
+                )
 
                 val defaultDownloadControlStateAccessor = DefaultDownloadControlStateAccessor(
                     appConfig = testAppConfig,
@@ -1145,16 +1143,14 @@ internal class DefaultDownloadControlStateAccessorTest {
                             "psychological",
                             "sci-fi",
                         ),
-                    ),
-                ).apply {
-                    anime.addScores(
+                    ).addScores(
                         MetaDataProviderScoreValue(
                             hostname = "anilist.co",
                             value = 85.0,
                             range = 1.0..100.0,
                         ),
-                    )
-                }
+                    ),
+                )
 
                 val expectedFile = loadTestResource<String>("downloadcontrolstate/DefaultDownloadControlStateAccessorTest/success/32.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX")
                 val outputDir = tempDir.resolve(AnilistConfig.hostname()).createDirectory()
@@ -1244,16 +1240,14 @@ internal class DefaultDownloadControlStateAccessorTest {
                             "psychological",
                             "sci-fi",
                         ),
-                    ),
-                ).apply {
-                    anime.addScores(
+                    ).addScores(
                         MetaDataProviderScoreValue(
                             hostname = "anilist.co",
                             value = 85.0,
                             range = 1.0..100.0,
                         ),
-                    )
-                }
+                    ),
+                )
 
                 val expectedFile = loadTestResource<String>("downloadcontrolstate/DefaultDownloadControlStateAccessorTest/success/32.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX")
                 val outputDir = tempDir.resolve(AnilistConfig.hostname()).createDirectory()

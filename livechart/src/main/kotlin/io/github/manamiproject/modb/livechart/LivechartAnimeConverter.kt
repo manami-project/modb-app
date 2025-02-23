@@ -81,9 +81,7 @@ public class LivechartAnimeConverter(
             _synonyms = extractSynonyms(jsonldData),
             _relatedAnime = extractRelatedAnime(data),
             _tags = extractTags(jsonldData, data),
-        ).apply {
-            addScores(extractScore(jsonldData))
-        }
+        ).addScores(extractScore(jsonldData))
     }
 
     private fun extractTitle(jsonData: ExtractionResult, data: ExtractionResult): Title {
