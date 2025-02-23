@@ -138,9 +138,7 @@ internal class AnimeRawAdapter: JsonAdapter<AnimeRaw>() {
             duration = duration,
             animeSeason = animeSeason,
             activateChecks = false,
-        ).apply {
-            addScores(scores)
-        }
+        ).addScores(scores)
     }
 
     @ToJson

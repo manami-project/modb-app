@@ -50,15 +50,13 @@ internal class AnimeRawAdapterTest {
                     "comedy",
                     "romance",
                 )
-            ).apply {
-                addScores(
-                    MetaDataProviderScoreValue(
-                        hostname = "myanimelist.net",
-                        value = 7.77,
-                        range = 1.0..10.0,
-                    )
+            ).addScores(
+                MetaDataProviderScoreValue(
+                    hostname = "myanimelist.net",
+                    value = 7.77,
+                    range = 1.0..10.0,
                 )
-            }
+            )
 
             // when
             val result = adapter.fromJson("""
@@ -1312,15 +1310,13 @@ internal class AnimeRawAdapterTest {
                     "comedy",
                     "romance",
                 )
-            ).apply {
-                addScores(
-                    MetaDataProviderScoreValue(
-                        hostname = "myanimelist.net",
-                        value = 7.77,
-                        range = 1.0..10.0,
-                    ),
-                )
-            }
+            ).addScores(
+                MetaDataProviderScoreValue(
+                    hostname = "myanimelist.net",
+                    value = 7.77,
+                    range = 1.0..10.0,
+                ),
+            )
 
             // when
             val result = adapter.toJson(obj)
@@ -1398,15 +1394,13 @@ internal class AnimeRawAdapterTest {
                     "comedy",
                     "romance",
                 )
-            ).apply {
-                addScores(
-                    MetaDataProviderScoreValue(
-                        hostname = "myanimelist.net",
-                        value = 7.77,
-                        range = 1.0..10.0,
-                    ),
-                )
-            }
+            ).addScores(
+                MetaDataProviderScoreValue(
+                    hostname = "myanimelist.net",
+                    value = 7.77,
+                    range = 1.0..10.0,
+                ),
+            )
 
             // when
             val result = adapter.toJson(obj)
@@ -1943,20 +1937,18 @@ internal class AnimeRawAdapterTest {
                     "comedy",
                     "romance",
                 )
-            ).apply {
-                addScores(
-                    MetaDataProviderScoreValue(
-                        hostname = "myanimelist.net",
-                        value = 7.77,
-                        range = 1.0..10.0,
-                    ),
-                    MetaDataProviderScoreValue(
-                        hostname = "anilist.co",
-                        value = 84.0,
-                        range = 1.0..100.0,
-                    ),
-                )
-            }
+            ).addScores(
+                MetaDataProviderScoreValue(
+                    hostname = "myanimelist.net",
+                    value = 7.77,
+                    range = 1.0..10.0,
+                ),
+                MetaDataProviderScoreValue(
+                    hostname = "anilist.co",
+                    value = 84.0,
+                    range = 1.0..100.0,
+                ),
+            )
 
             // when
             val result = adapter.toJson(obj)

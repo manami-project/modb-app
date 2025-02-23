@@ -79,9 +79,7 @@ public class SimklAnimeConverter(
             _synonyms = postProcessSynonyms(title, extractSynonyms(data)),
             _relatedAnime = extractRelatedAnime(data),
             _tags = extractTags(data),
-        ).apply {
-            addScores(extractScore(data))
-        }
+        ).addScores(extractScore(data))
     }
 
     private fun extractTitle(data: ExtractionResult) = data.string("title").trim()

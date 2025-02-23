@@ -80,9 +80,7 @@ public class AnimePlanetAnimeConverter(
             _synonyms = extractSynonyms(jsonldData, data),
             _relatedAnime = extractRelatedAnime(data),
             _tags = extractTags(jsonldData, data),
-        ).apply {
-            addScores(extractScore(jsonldData))
-        }
+        ).addScores(extractScore(jsonldData))
     }
 
     private fun extractStatus(data: ExtractionResult): AnimeStatus {
