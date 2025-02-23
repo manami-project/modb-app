@@ -17,6 +17,8 @@ import io.github.manamiproject.modb.core.anime.AnimeType.UNKNOWN as UNKNOWN_TYPE
  * If an anime has no changes for the first time, it's scheduled for redownload in 2-4 weeks in order to further
  * distribute the number of downloads. The value is picked randomly.
  * If an anime hasn't changed repeatedly, it will be downloaded in the number of weeks without changes up to this point.
+ * Changes are examined by checking all properties with the exception of [AnimeRaw.scores] and [AnimeRaw.activateChecks].
+ *
  * **Example:** If there haven't been any changes after 3 weeks, it will be downloaded again in 6 weeks. This is limited
  * to 12 weeks. The time until the next download takes place cannot exceed 12 weeks, because every anime must be
  * downloaded from each meta data provider at least once per quarter.
@@ -69,18 +71,21 @@ data class DownloadControlStateEntry(
 
     /**
      * Updates the properties of the DCS entry.
+     * Check for equality excludes [AnimeRaw.scores] and [AnimeRaw.activateChecks].
      * @since 1.0.0
      * @param anime Newly downloaded anime to check against the [DownloadControlStateEntry.anime].
      * @return Same instance with updated properties.
      */
     fun update(anime: AnimeRaw): DownloadControlStateEntry {
         when {
-            _anime != anime || anime.status in setOf(ONGOING, UPCOMING) -> {
+            !isEqualIgnoringScore(anime) || anime.status in setOf(ONGOING, UPCOMING) -> {
                 scheduleRedownloadForChangedAnime()
                 _anime = anime
             }
-            _anime == anime -> scheduleRedownloadForUnchangedAnime()
-            else -> throw IllegalStateException("Unhandled case when updating DCS entry.")
+            else -> {
+                scheduleRedownloadForUnchangedAnime()
+                _anime = anime
+            }
         }
 
         return this
@@ -165,5 +170,20 @@ data class DownloadControlStateEntry(
                 _nextDownload = WeekOfYear.currentWeek().plusWeeks(waitingTime)
             }
         }
+    }
+
+    private fun isEqualIgnoringScore(other: AnimeRaw): Boolean {
+        return other.title == _anime.title
+                && other.sources == _anime.sources
+                && other.type == _anime.type
+                && other.episodes == _anime.episodes
+                && other.status == _anime.status
+                && other.animeSeason == _anime.animeSeason
+                && other.picture == _anime.picture
+                && other.thumbnail == _anime.thumbnail
+                && other.duration == _anime.duration
+                && other.synonyms == _anime.synonyms
+                && other.relatedAnime == _anime.relatedAnime
+                && other.tags == _anime.tags
     }
 }
