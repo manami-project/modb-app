@@ -21,7 +21,7 @@ internal class MetaDataProviderScoreValueAdapterTest {
             val expected = MetaDataProviderScoreValue(
                 hostname = "example.org",
                 value = 4.62,
-                originalRange = 1.0..5.0,
+                range = 1.0..5.0,
             )
 
             // when
@@ -167,7 +167,7 @@ internal class MetaDataProviderScoreValueAdapterTest {
             val expected = MetaDataProviderScoreValue(
                 hostname = "example.org",
                 value = 4.62,
-                originalRange = 1.0..5.0,
+                range = 1.0..5.0,
             )
 
             // when
@@ -202,7 +202,7 @@ internal class MetaDataProviderScoreValueAdapterTest {
             val score = MetaDataProviderScoreValue(
                 hostname = "example.org",
                 value = 4.62,
-                originalRange = 1.0..5.0,
+                range = 1.0..5.0,
             )
 
             // when

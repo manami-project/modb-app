@@ -994,7 +994,7 @@ internal class DefaultDownloadControlStateAccessorTest {
                         MetaDataProviderScoreValue(
                             hostname = "anilist.co",
                             value = 85.0,
-                            originalRange = 1.0..100.0,
+                            range = 1.0..100.0,
                         ),
                     )
                 }
@@ -1151,7 +1151,7 @@ internal class DefaultDownloadControlStateAccessorTest {
                         MetaDataProviderScoreValue(
                             hostname = "anilist.co",
                             value = 85.0,
-                            originalRange = 1.0..100.0,
+                            range = 1.0..100.0,
                         ),
                     )
                 }
@@ -1250,7 +1250,7 @@ internal class DefaultDownloadControlStateAccessorTest {
                         MetaDataProviderScoreValue(
                             hostname = "anilist.co",
                             value = 85.0,
-                            originalRange = 1.0..100.0,
+                            range = 1.0..100.0,
                         ),
                     )
                 }

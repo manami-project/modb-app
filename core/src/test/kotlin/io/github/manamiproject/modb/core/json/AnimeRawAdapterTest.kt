@@ -55,7 +55,7 @@ internal class AnimeRawAdapterTest {
                     MetaDataProviderScoreValue(
                         hostname = "myanimelist.net",
                         value = 7.77,
-                        originalRange = 1.0..10.0,
+                        range = 1.0..10.0,
                     )
                 )
             }
@@ -1317,7 +1317,7 @@ internal class AnimeRawAdapterTest {
                     MetaDataProviderScoreValue(
                         hostname = "myanimelist.net",
                         value = 7.77,
-                        originalRange = 1.0..10.0,
+                        range = 1.0..10.0,
                     ),
                 )
             }
@@ -1403,7 +1403,7 @@ internal class AnimeRawAdapterTest {
                     MetaDataProviderScoreValue(
                         hostname = "myanimelist.net",
                         value = 7.77,
-                        originalRange = 1.0..10.0,
+                        range = 1.0..10.0,
                     ),
                 )
             }
@@ -1948,12 +1948,12 @@ internal class AnimeRawAdapterTest {
                     MetaDataProviderScoreValue(
                         hostname = "myanimelist.net",
                         value = 7.77,
-                        originalRange = 1.0..10.0,
+                        range = 1.0..10.0,
                     ),
                     MetaDataProviderScoreValue(
                         hostname = "anilist.co",
                         value = 84.0,
-                        originalRange = 1.0..100.0,
+                        range = 1.0..100.0,
                     ),
                 )
             }

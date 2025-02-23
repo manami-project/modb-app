@@ -30,7 +30,7 @@ internal class DefaultScoreCalculatorTest {
                 MetaDataProviderScoreValue(
                     hostname = "example.org",
                     value = 5.0,
-                    originalRange = 1.0..10.0,
+                    range = 1.0..10.0,
                 ),
             )
 
@@ -51,12 +51,12 @@ internal class DefaultScoreCalculatorTest {
                 MetaDataProviderScoreValue(
                     hostname = "example.org",
                     value = 3.14,
-                    originalRange = 1.0..10.0,
+                    range = 1.0..10.0,
                 ),
                 MetaDataProviderScoreValue(
                     hostname = "example.org",
                     value = 7.85,
-                    originalRange = 1.0..10.0,
+                    range = 1.0..10.0,
                 ),
             )
 
@@ -77,17 +77,17 @@ internal class DefaultScoreCalculatorTest {
                 MetaDataProviderScoreValue(
                     hostname = "example.org",
                     value = 3.14,
-                    originalRange = 1.0..10.0,
+                    range = 1.0..10.0,
                 ),
                 MetaDataProviderScoreValue(
                     hostname = "example.org",
                     value = 7.85,
-                    originalRange = 1.0..10.0,
+                    range = 1.0..10.0,
                 ),
                 MetaDataProviderScoreValue(
                     hostname = "example.org",
                     value = 6.19,
-                    originalRange = 1.0..10.0,
+                    range = 1.0..10.0,
                 ),
             )
 
@@ -109,22 +109,22 @@ internal class DefaultScoreCalculatorTest {
                 MetaDataProviderScoreValue(
                     hostname = "example.org",
                     value = 3.14,
-                    originalRange = 1.0..10.0,
+                    range = 1.0..10.0,
                 ),
                 MetaDataProviderScoreValue(
                     hostname = "example.org",
                     value = 7.85,
-                    originalRange = 1.0..10.0,
+                    range = 1.0..10.0,
                 ),
                 MetaDataProviderScoreValue(
                     hostname = "example.org",
                     value = 6.19,
-                    originalRange = 1.0..10.0,
+                    range = 1.0..10.0,
                 ),
                 MetaDataProviderScoreValue(
                     hostname = "example.org",
                     value = 5.21,
-                    originalRange = 1.0..10.0,
+                    range = 1.0..10.0,
                 ),
             )
 
@@ -145,42 +145,42 @@ internal class DefaultScoreCalculatorTest {
                 MetaDataProviderScoreValue(
                     hostname = "example.org",
                     value = 7.090909090909091,
-                    originalRange = 1.0..10.0,
+                    range = 1.0..10.0,
                 ),
                 MetaDataProviderScoreValue(
                     hostname = "example.org",
                     value = 7.514545454545455,
-                    originalRange = 1.0..10.0,
+                    range = 1.0..10.0,
                 ),
                 MetaDataProviderScoreValue(
                     hostname = "example.org",
                     value = 7.67,
-                    originalRange = 1.0..10.0,
+                    range = 1.0..10.0,
                 ),
                 MetaDataProviderScoreValue(
                     hostname = "example.org",
                     value = 7.16,
-                    originalRange = 1.0..10.0,
+                    range = 1.0..10.0,
                 ),
                 MetaDataProviderScoreValue(
                     hostname = "example.org",
                     value = 5.95,
-                    originalRange = 1.0..10.0,
+                    range = 1.0..10.0,
                 ),
                 MetaDataProviderScoreValue(
                     hostname = "example.org",
                     value = 7.342,
-                    originalRange = 1.0..10.0,
+                    range = 1.0..10.0,
                 ),
                 MetaDataProviderScoreValue(
                     hostname = "example.org",
                     value = 6.9411764705882355,
-                    originalRange = 1.0..10.0,
+                    range = 1.0..10.0,
                 ),
                 MetaDataProviderScoreValue(
                     hostname = "example.org",
                     value = 7.27,
-                    originalRange = 1.0..10.0,
+                    range = 1.0..10.0,
                 ),
             )
 
