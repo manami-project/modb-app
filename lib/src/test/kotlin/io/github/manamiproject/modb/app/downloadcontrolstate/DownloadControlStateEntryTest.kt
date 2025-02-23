@@ -533,7 +533,7 @@ internal class DownloadControlStateEntryTest {
                     MetaDataProviderScoreValue(
                         hostname = "example.org",
                         value = 7.8,
-                        originalRange = 1.0..10.0
+                        range = 1.0..10.0
                     )
                 ),
             )
@@ -542,7 +542,7 @@ internal class DownloadControlStateEntryTest {
                 MetaDataProviderScoreValue(
                     hostname = "example.org",
                     value = 7.9,
-                    originalRange = 1.0..10.0
+                    range = 1.0..10.0
                 )
             )
 

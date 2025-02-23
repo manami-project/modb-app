@@ -33,7 +33,7 @@ internal class MetaDataProviderScoreTest {
                     MetaDataProviderScoreValue(
                         hostname = "example.org",
                         value = value,
-                        originalRange = 1.0..10.0,
+                        range = 1.0..10.0,
                     )
                 }
 
@@ -49,7 +49,7 @@ internal class MetaDataProviderScoreTest {
                     MetaDataProviderScoreValue(
                         hostname = "example.org",
                         value = value,
-                        originalRange = 1.0..10.0,
+                        range = 1.0..10.0,
                     )
                 }
 
@@ -64,12 +64,12 @@ internal class MetaDataProviderScoreTest {
                     MetaDataProviderScoreValue(
                         hostname = "example.org",
                         value = 5.0,
-                        originalRange = -0.1..10.0,
+                        range = -0.1..10.0,
                     )
                 }
 
                 // then
-                assertThat(result).hasMessage("originalRange start must be >= 0.0")
+                assertThat(result).hasMessage("range start must be >= 0.0")
             }
 
             @Test
@@ -79,12 +79,12 @@ internal class MetaDataProviderScoreTest {
                     MetaDataProviderScoreValue(
                         hostname = "example.org",
                         value = 5.0,
-                        originalRange = 0.0..-10.0,
+                        range = 0.0..-10.0,
                     )
                 }
 
                 // then
-                assertThat(result).hasMessage("originalRange end must be >= 0.0")
+                assertThat(result).hasMessage("range end must be >= 0.0")
             }
 
             @ParameterizedTest
@@ -125,7 +125,7 @@ internal class MetaDataProviderScoreTest {
                     MetaDataProviderScoreValue(
                         hostname = input,
                         value = 5.0,
-                        originalRange = 1.0..5.0,
+                        range = 1.0..5.0,
                     )
                 }
 
@@ -141,7 +141,7 @@ internal class MetaDataProviderScoreTest {
                     MetaDataProviderScoreValue(
                         hostname = input,
                         value = 5.0,
-                        originalRange = 1.0..5.0,
+                        range = 1.0..5.0,
                     )
                 }
 
@@ -160,7 +160,7 @@ internal class MetaDataProviderScoreTest {
                 val metaDataProviderScoreValue = MetaDataProviderScoreValue(
                     hostname = "example.org",
                     value = 0.0,
-                    originalRange = 0.0..input,
+                    range = 0.0..input,
                 )
 
                 // when
@@ -177,7 +177,7 @@ internal class MetaDataProviderScoreTest {
                 val metaDataProviderScoreValue = MetaDataProviderScoreValue(
                     hostname = "example.org",
                     value = input,
-                    originalRange = 1.0..10.0,
+                    range = 1.0..10.0,
                 )
 
                 // when
@@ -193,7 +193,7 @@ internal class MetaDataProviderScoreTest {
                 val metaDataProviderScoreValue = MetaDataProviderScoreValue(
                     hostname = "example.org",
                     value = 1.0,
-                    originalRange = 1.0..100.0,
+                    range = 1.0..100.0,
                 )
 
                 // when
@@ -209,7 +209,7 @@ internal class MetaDataProviderScoreTest {
                 val metaDataProviderScoreValue = MetaDataProviderScoreValue(
                     hostname = "example.org",
                     value = 50.0,
-                    originalRange = 1.0..100.0,
+                    range = 1.0..100.0,
                 )
 
                 // when
@@ -225,7 +225,7 @@ internal class MetaDataProviderScoreTest {
                 val metaDataProviderScoreValue = MetaDataProviderScoreValue(
                     hostname = "example.org",
                     value = 100.0,
-                    originalRange = 1.0..100.0,
+                    range = 1.0..100.0,
                 )
 
                 // when
@@ -241,7 +241,7 @@ internal class MetaDataProviderScoreTest {
                 val metaDataProviderScoreValue = MetaDataProviderScoreValue(
                     hostname = "example.org",
                     value = 1.0,
-                    originalRange = 1.0..5.0,
+                    range = 1.0..5.0,
                 )
 
                 // when
@@ -257,7 +257,7 @@ internal class MetaDataProviderScoreTest {
                 val metaDataProviderScoreValue = MetaDataProviderScoreValue(
                     hostname = "example.org",
                     value = 3.5,
-                    originalRange = 1.0..5.0,
+                    range = 1.0..5.0,
                 )
 
                 // when
@@ -273,7 +273,7 @@ internal class MetaDataProviderScoreTest {
                 val metaDataProviderScoreValue = MetaDataProviderScoreValue(
                     hostname = "example.org",
                     value = 5.0,
-                    originalRange = 1.0..5.0,
+                    range = 1.0..5.0,
                 )
 
                 // when
@@ -293,13 +293,13 @@ internal class MetaDataProviderScoreTest {
                 val first = MetaDataProviderScoreValue(
                     hostname = "example.org",
                     value = 6.0,
-                    originalRange = 1.0..10.0,
+                    range = 1.0..10.0,
                 )
 
                 val second = MetaDataProviderScoreValue(
                     hostname = "other.com",
                     value = 4.0,
-                    originalRange = 1.0..5.0,
+                    range = 1.0..5.0,
                 )
 
                 // when
@@ -314,13 +314,13 @@ internal class MetaDataProviderScoreTest {
                 val first = MetaDataProviderScoreValue(
                     hostname = "example.org",
                     value = 6.0,
-                    originalRange = 1.0..10.0,
+                    range = 1.0..10.0,
                 )
 
                 val second = MetaDataProviderScoreValue(
                     hostname = "other.com",
                     value = 4.0,
-                    originalRange = 1.0..5.0,
+                    range = 1.0..5.0,
                 )
 
                 // when
@@ -335,7 +335,7 @@ internal class MetaDataProviderScoreTest {
                 val score = MetaDataProviderScoreValue(
                     hostname = "example.org",
                     value = 6.0,
-                    originalRange = 1.0..10.0,
+                    range = 1.0..10.0,
                 )
 
                 // when

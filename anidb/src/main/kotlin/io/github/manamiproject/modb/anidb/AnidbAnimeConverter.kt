@@ -357,7 +357,7 @@ public class AnidbAnimeConverter(
         return MetaDataProviderScoreValue(
             hostname = metaDataProviderConfig.hostname(),
             value = rawScore,
-            originalRange = 1.0..10.0,
+            range = 1.0..10.0,
         )
     }
 
