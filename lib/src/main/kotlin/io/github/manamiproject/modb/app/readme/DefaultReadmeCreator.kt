@@ -217,6 +217,11 @@ class DefaultReadmeCreator(
                         "value": 1380,
                         "unit": "SECONDS"
                       },
+                      "score": {
+                        "arithmeticGeometricMean": 8.631697859409492,
+                        "arithmeticMean": 8.631818181818183,
+                        "median": 8.65
+                      },
                       "synonyms": [
                         "Bilježnica smrti",
                         "Caderno da Morte",
