@@ -12,8 +12,8 @@ import io.github.manamiproject.modb.core.extractor.DataExtractor
 import io.github.manamiproject.modb.core.extractor.ExtractionResult
 import io.github.manamiproject.modb.core.extractor.XmlDataExtractor
 import io.github.manamiproject.modb.core.anime.*
-import io.github.manamiproject.modb.core.anime.AnimeRaw.Companion.NO_PICTURE
-import io.github.manamiproject.modb.core.anime.AnimeRaw.Companion.NO_PICTURE_THUMBNAIL
+import io.github.manamiproject.modb.core.anime.AnimeMedia.NO_PICTURE
+import io.github.manamiproject.modb.core.anime.AnimeMedia.NO_PICTURE_THUMBNAIL
 import io.github.manamiproject.modb.core.anime.AnimeSeason.Companion.UNKNOWN_YEAR
 import io.github.manamiproject.modb.core.anime.AnimeSeason.Season.*
 import io.github.manamiproject.modb.core.anime.AnimeStatus.*
