@@ -56,16 +56,20 @@ class DefaultDownloadControlStateAccessor(
             init()
         }
 
-        return downloadControlStateEntries.values.map { it.copy(
-            _lastDownloaded = it.lastDownloaded.copy(),
-            _nextDownload = it.nextDownload.copy(),
-            _anime = it.anime.copy(
-                _sources = it.anime.sources.toHashSet(),
-                _synonyms = it.anime.synonyms.toHashSet(),
-                _relatedAnime = it.anime.relatedAnime.toHashSet(),
-                _tags = it.anime.tags.toHashSet(),
-            ),
-        ) }.toList()
+        return downloadControlStateEntries.values.map { originalDcs ->
+            originalDcs.copy(
+                _lastDownloaded = originalDcs.lastDownloaded.copy(),
+                _nextDownload = originalDcs.nextDownload.copy(),
+                _anime = originalDcs.anime.copy(
+                    _sources = originalDcs.anime.sources.toHashSet(),
+                    _synonyms = originalDcs.anime.synonyms.toHashSet(),
+                    _relatedAnime = originalDcs.anime.relatedAnime.toHashSet(),
+                    _tags = originalDcs.anime.tags.toHashSet(),
+                ),
+            ).apply {
+                anime.addScores(originalDcs.anime.scores)
+            }
+        }.toList()
     }
 
     override suspend fun allDcsEntries(metaDataProviderConfig: MetaDataProviderConfig): List<DownloadControlStateEntry> {

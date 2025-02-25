@@ -325,7 +325,7 @@ public data class AnimeRaw(
             .addRelatedAnime(anime.relatedAnime)
             .addTags(_tags)
             .addTags(anime.tags)
-            .addScores(scores)
+            .addScores(metaDataProviderScores.values)
             .addScores(anime.scores)
     }
 

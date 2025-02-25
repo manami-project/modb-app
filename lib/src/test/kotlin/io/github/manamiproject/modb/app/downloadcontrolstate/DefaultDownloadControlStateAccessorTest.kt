@@ -192,7 +192,13 @@ internal class DefaultDownloadControlStateAccessorTest {
                             "psychological",
                             "sci-fi",
                         ),
-                    )
+                    ).addScores(
+                        MetaDataProviderScoreValue(
+                            hostname = "anilist.co",
+                            value = 85.0,
+                            range = 1.0..100.0,
+                        ),
+                    ),
                 )
                 val expectedEntry2 = DownloadControlStateEntry(
                     _weeksWihoutChange = 0,
@@ -217,6 +223,12 @@ internal class DefaultDownloadControlStateAccessorTest {
                         _relatedAnime = hashSetOf(
                             URI("https://kitsu.app/anime/41995"),
                         ),
+                    ).addScores(
+                        MetaDataProviderScoreValue(
+                            hostname = "kitsu.app",
+                            value = 77.8,
+                            range = 1.0..100.0,
+                        ),
                     ),
                 )
 
@@ -232,91 +244,6 @@ internal class DefaultDownloadControlStateAccessorTest {
                 assertThat(result).containsExactlyInAnyOrder(
                     expectedEntry1,
                     expectedEntry2,
-                )
-            }
-        }
-
-        @Test
-        fun `doesn't allow change by reference`() {
-            tempDirectory {
-                // given
-                val dir = tempDir.resolve(AnilistConfig.hostname()).createDirectory()
-                testResource("downloadcontrolstate/DefaultDownloadControlStateAccessorTest/change_by_reference/default.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").copyTo(dir.resolve("32.${DOWNLOAD_CONTROL_STATE_FILE_SUFFIX}"))
-
-                val testAppConfig = object: Config by TestAppConfig {
-                    override fun metaDataProviderConfigurations(): Set<MetaDataProviderConfig> = setOf(AnilistConfig)
-                    override fun downloadControlStateDirectory(): Directory = tempDir
-                    override fun findMetaDataProviderConfig(host: Hostname): MetaDataProviderConfig = super.findMetaDataProviderConfig(host)
-                }
-
-                val expectedEntry1 = DownloadControlStateEntry(
-                    _weeksWihoutChange = 0,
-                    _lastDownloaded = WeekOfYear(2021, 44),
-                    _nextDownload = WeekOfYear(2021, 45),
-                    _anime = AnimeRaw(
-                        _title = "Shin Seiki Evangelion Movie: THE END OF EVANGELION",
-                        type = UNKNOWN_TYPE,
-                        episodes = 0,
-                        picture = NO_PICTURE,
-                        thumbnail = NO_PICTURE_THUMBNAIL,
-                        status = UNKNOWN_STATUS,
-                        duration = UNKNOWN_DURATION,
-                        animeSeason = AnimeSeason(
-                            season = UNDEFINED,
-                            year = UNKNOWN_YEAR,
-                        ),
-                        _sources = hashSetOf(URI("https://anilist.co/anime/32")),
-                        _synonyms = hashSetOf(),
-                        _relatedAnime = hashSetOf(
-                            URI("https://anilist.co/anime/30"),
-                        ),
-                        _tags = hashSetOf(),
-                    )
-                )
-
-                val defaultDownloadControlStateAccessor = DefaultDownloadControlStateAccessor(
-                    appConfig = testAppConfig,
-                    mergeLockAccess = TestMergeLockAccessor,
-                )
-
-                val otherAnime = AnimeRaw(
-                    _title = "Shin Seiki Evangelion Movie: THE END OF EVANGELION",
-                    type = MOVIE,
-                    episodes = 1,
-                    picture = URI("https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/32-7YrdcGEX1FP3.png"),
-                    thumbnail = URI("https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/default.jpg"),
-                    status = FINISHED,
-                    duration = Duration(87, MINUTES),
-                    animeSeason = AnimeSeason(
-                        season = SPRING,
-                        year = 1997,
-                    ),
-                    _sources = hashSetOf(URI("https://myanimelist.net/anime/32")),
-                    _synonyms = hashSetOf(
-                        "Neon Genesis Evangelion: The End of Evangelion",
-                        "新世紀エヴァンゲリオン劇場版 THE END OF EVANGELION",
-                    ),
-                    _relatedAnime = hashSetOf(
-                        URI("https://myanimelist.net/anime/30"),
-                    ),
-                    _tags = hashSetOf(
-                        "action",
-                        "drama",
-                        "mecha",
-                        "psychological",
-                        "sci-fi",
-                    ),
-                )
-
-                val inMemoryDcsEntry = defaultDownloadControlStateAccessor.allDcsEntries().first().anime
-                inMemoryDcsEntry.mergeWith(otherAnime)
-
-                // when
-                val result = defaultDownloadControlStateAccessor.allDcsEntries()
-
-                // then
-                assertThat(result).containsExactlyInAnyOrder(
-                    expectedEntry1,
                 )
             }
         }
@@ -372,6 +299,92 @@ internal class DefaultDownloadControlStateAccessorTest {
 
                 // then
                 assertThat(initHasBeenInvoked).isOne()
+            }
+        }
+
+        @Test
+        fun `doesn't allow change by reference`() {
+            tempDirectory {
+                // given
+                val dir = tempDir.resolve(AnilistConfig.hostname()).createDirectory()
+                testResource("downloadcontrolstate/DefaultDownloadControlStateAccessorTest/change_by_reference/default.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX")
+                    .copyTo(dir.resolve("32.${DOWNLOAD_CONTROL_STATE_FILE_SUFFIX}"))
+
+                val testAppConfig = object: Config by TestAppConfig {
+                    override fun metaDataProviderConfigurations(): Set<MetaDataProviderConfig> = setOf(AnilistConfig)
+                    override fun downloadControlStateDirectory(): Directory = tempDir
+                    override fun findMetaDataProviderConfig(host: Hostname): MetaDataProviderConfig = super.findMetaDataProviderConfig(host)
+                }
+
+                val expectedEntry1 = DownloadControlStateEntry(
+                    _weeksWihoutChange = 0,
+                    _lastDownloaded = WeekOfYear(2021, 44),
+                    _nextDownload = WeekOfYear(2021, 45),
+                    _anime = AnimeRaw(
+                        _title = "Shin Seiki Evangelion Movie: THE END OF EVANGELION",
+                        type = UNKNOWN_TYPE,
+                        episodes = 0,
+                        picture = NO_PICTURE,
+                        thumbnail = NO_PICTURE_THUMBNAIL,
+                        status = UNKNOWN_STATUS,
+                        duration = UNKNOWN_DURATION,
+                        animeSeason = AnimeSeason(
+                            season = UNDEFINED,
+                            year = UNKNOWN_YEAR,
+                        ),
+                        _sources = hashSetOf(URI("https://anilist.co/anime/32")),
+                        _synonyms = hashSetOf(),
+                        _relatedAnime = hashSetOf(
+                            URI("https://anilist.co/anime/30"),
+                        ),
+                        _tags = hashSetOf(),
+                    ),
+                )
+
+                val defaultDownloadControlStateAccessor = DefaultDownloadControlStateAccessor(
+                    appConfig = testAppConfig,
+                    mergeLockAccess = TestMergeLockAccessor,
+                )
+
+                val otherAnime = AnimeRaw(
+                    _title = "Shin Seiki Evangelion Movie: THE END OF EVANGELION",
+                    type = MOVIE,
+                    episodes = 1,
+                    picture = URI("https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/32-7YrdcGEX1FP3.png"),
+                    thumbnail = URI("https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/default.jpg"),
+                    status = FINISHED,
+                    duration = Duration(87, MINUTES),
+                    animeSeason = AnimeSeason(
+                        season = SPRING,
+                        year = 1997,
+                    ),
+                    _sources = hashSetOf(URI("https://myanimelist.net/anime/32")),
+                    _synonyms = hashSetOf(
+                        "Neon Genesis Evangelion: The End of Evangelion",
+                        "新世紀エヴァンゲリオン劇場版 THE END OF EVANGELION",
+                    ),
+                    _relatedAnime = hashSetOf(
+                        URI("https://myanimelist.net/anime/30"),
+                    ),
+                    _tags = hashSetOf(
+                        "action",
+                        "drama",
+                        "mecha",
+                        "psychological",
+                        "sci-fi",
+                    ),
+                )
+
+                val inMemoryDcsEntry = defaultDownloadControlStateAccessor.allDcsEntries().first().anime
+                inMemoryDcsEntry.mergeWith(otherAnime)
+
+                // when
+                val result = defaultDownloadControlStateAccessor.allDcsEntries()
+
+                // then
+                assertThat(result).containsExactlyInAnyOrder(
+                    expectedEntry1,
+                )
             }
         }
     }
@@ -452,6 +465,12 @@ internal class DefaultDownloadControlStateAccessorTest {
                             "psychological",
                             "sci-fi",
                         ),
+                    ).addScores(
+                        MetaDataProviderScoreValue(
+                            hostname = "anilist.co",
+                            value = 85.0,
+                            range = 1.0..100.0,
+                        ),
                     ),
                 )
 
@@ -519,6 +538,92 @@ internal class DefaultDownloadControlStateAccessorTest {
 
                 // then
                 assertThat(initHasBeenInvoked).isOne()
+            }
+        }
+
+        @Test
+        fun `doesn't allow change by reference`() {
+            tempDirectory {
+                // given
+                val dir = tempDir.resolve(AnilistConfig.hostname()).createDirectory()
+                testResource("downloadcontrolstate/DefaultDownloadControlStateAccessorTest/change_by_reference/default.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX")
+                    .copyTo(dir.resolve("32.${DOWNLOAD_CONTROL_STATE_FILE_SUFFIX}"))
+
+                val testAppConfig = object: Config by TestAppConfig {
+                    override fun metaDataProviderConfigurations(): Set<MetaDataProviderConfig> = setOf(AnilistConfig)
+                    override fun downloadControlStateDirectory(): Directory = tempDir
+                    override fun findMetaDataProviderConfig(host: Hostname): MetaDataProviderConfig = super.findMetaDataProviderConfig(host)
+                }
+
+                val expectedEntry1 = DownloadControlStateEntry(
+                    _weeksWihoutChange = 0,
+                    _lastDownloaded = WeekOfYear(2021, 44),
+                    _nextDownload = WeekOfYear(2021, 45),
+                    _anime = AnimeRaw(
+                        _title = "Shin Seiki Evangelion Movie: THE END OF EVANGELION",
+                        type = UNKNOWN_TYPE,
+                        episodes = 0,
+                        picture = NO_PICTURE,
+                        thumbnail = NO_PICTURE_THUMBNAIL,
+                        status = UNKNOWN_STATUS,
+                        duration = UNKNOWN_DURATION,
+                        animeSeason = AnimeSeason(
+                            season = UNDEFINED,
+                            year = UNKNOWN_YEAR,
+                        ),
+                        _sources = hashSetOf(URI("https://anilist.co/anime/32")),
+                        _synonyms = hashSetOf(),
+                        _relatedAnime = hashSetOf(
+                            URI("https://anilist.co/anime/30"),
+                        ),
+                        _tags = hashSetOf(),
+                    ),
+                )
+
+                val defaultDownloadControlStateAccessor = DefaultDownloadControlStateAccessor(
+                    appConfig = testAppConfig,
+                    mergeLockAccess = TestMergeLockAccessor,
+                )
+
+                val otherAnime = AnimeRaw(
+                    _title = "Shin Seiki Evangelion Movie: THE END OF EVANGELION",
+                    type = MOVIE,
+                    episodes = 1,
+                    picture = URI("https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/32-7YrdcGEX1FP3.png"),
+                    thumbnail = URI("https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/default.jpg"),
+                    status = FINISHED,
+                    duration = Duration(87, MINUTES),
+                    animeSeason = AnimeSeason(
+                        season = SPRING,
+                        year = 1997,
+                    ),
+                    _sources = hashSetOf(URI("https://myanimelist.net/anime/32")),
+                    _synonyms = hashSetOf(
+                        "Neon Genesis Evangelion: The End of Evangelion",
+                        "新世紀エヴァンゲリオン劇場版 THE END OF EVANGELION",
+                    ),
+                    _relatedAnime = hashSetOf(
+                        URI("https://myanimelist.net/anime/30"),
+                    ),
+                    _tags = hashSetOf(
+                        "action",
+                        "drama",
+                        "mecha",
+                        "psychological",
+                        "sci-fi",
+                    ),
+                )
+
+                val inMemoryDcsEntry = defaultDownloadControlStateAccessor.allDcsEntries(AnilistConfig).first().anime
+                inMemoryDcsEntry.mergeWith(otherAnime)
+
+                // when
+                val result = defaultDownloadControlStateAccessor.allDcsEntries(AnilistConfig)
+
+                // then
+                assertThat(result).containsExactlyInAnyOrder(
+                    expectedEntry1,
+                )
             }
         }
     }
@@ -595,7 +700,14 @@ internal class DefaultDownloadControlStateAccessorTest {
                         "psychological",
                         "sci-fi",
                     ),
+                ).addScores(
+                    MetaDataProviderScoreValue(
+                        hostname = "anilist.co",
+                        value = 85.0,
+                        range = 1.0..100.0,
+                    ),
                 )
+
                 val expectedAnime2 = AnimeRaw(
                     _title = "Fruits Basket",
                     type = TV,
@@ -614,6 +726,12 @@ internal class DefaultDownloadControlStateAccessorTest {
                     ),
                     _relatedAnime = hashSetOf(
                         URI("https://kitsu.app/anime/41995"),
+                    ),
+                ).addScores(
+                    MetaDataProviderScoreValue(
+                        hostname = "kitsu.app",
+                        value = 77.8,
+                        range = 1.0..100.0,
                     ),
                 )
 
@@ -683,6 +801,92 @@ internal class DefaultDownloadControlStateAccessorTest {
 
                 // then
                 assertThat(initHasBeenInvoked).isOne()
+            }
+        }
+
+        @Test
+        fun `doesn't allow change by reference`() {
+            tempDirectory {
+                // given
+                val dir = tempDir.resolve(AnilistConfig.hostname()).createDirectory()
+                testResource("downloadcontrolstate/DefaultDownloadControlStateAccessorTest/change_by_reference/default.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX")
+                    .copyTo(dir.resolve("32.${DOWNLOAD_CONTROL_STATE_FILE_SUFFIX}"))
+
+                val testAppConfig = object: Config by TestAppConfig {
+                    override fun metaDataProviderConfigurations(): Set<MetaDataProviderConfig> = setOf(AnilistConfig)
+                    override fun downloadControlStateDirectory(): Directory = tempDir
+                    override fun findMetaDataProviderConfig(host: Hostname): MetaDataProviderConfig = super.findMetaDataProviderConfig(host)
+                }
+
+                val expectedEntry1 = DownloadControlStateEntry(
+                    _weeksWihoutChange = 0,
+                    _lastDownloaded = WeekOfYear(2021, 44),
+                    _nextDownload = WeekOfYear(2021, 45),
+                    _anime = AnimeRaw(
+                        _title = "Shin Seiki Evangelion Movie: THE END OF EVANGELION",
+                        type = UNKNOWN_TYPE,
+                        episodes = 0,
+                        picture = NO_PICTURE,
+                        thumbnail = NO_PICTURE_THUMBNAIL,
+                        status = UNKNOWN_STATUS,
+                        duration = UNKNOWN_DURATION,
+                        animeSeason = AnimeSeason(
+                            season = UNDEFINED,
+                            year = UNKNOWN_YEAR,
+                        ),
+                        _sources = hashSetOf(URI("https://anilist.co/anime/32")),
+                        _synonyms = hashSetOf(),
+                        _relatedAnime = hashSetOf(
+                            URI("https://anilist.co/anime/30"),
+                        ),
+                        _tags = hashSetOf(),
+                    ),
+                )
+
+                val defaultDownloadControlStateAccessor = DefaultDownloadControlStateAccessor(
+                    appConfig = testAppConfig,
+                    mergeLockAccess = TestMergeLockAccessor,
+                )
+
+                val otherAnime = AnimeRaw(
+                    _title = "Shin Seiki Evangelion Movie: THE END OF EVANGELION",
+                    type = MOVIE,
+                    episodes = 1,
+                    picture = URI("https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/32-7YrdcGEX1FP3.png"),
+                    thumbnail = URI("https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/default.jpg"),
+                    status = FINISHED,
+                    duration = Duration(87, MINUTES),
+                    animeSeason = AnimeSeason(
+                        season = SPRING,
+                        year = 1997,
+                    ),
+                    _sources = hashSetOf(URI("https://myanimelist.net/anime/32")),
+                    _synonyms = hashSetOf(
+                        "Neon Genesis Evangelion: The End of Evangelion",
+                        "新世紀エヴァンゲリオン劇場版 THE END OF EVANGELION",
+                    ),
+                    _relatedAnime = hashSetOf(
+                        URI("https://myanimelist.net/anime/30"),
+                    ),
+                    _tags = hashSetOf(
+                        "action",
+                        "drama",
+                        "mecha",
+                        "psychological",
+                        "sci-fi",
+                    ),
+                )
+
+                val inMemoryDcsEntry = defaultDownloadControlStateAccessor.allAnime().first()
+                inMemoryDcsEntry.mergeWith(otherAnime)
+
+                // when
+                val result = defaultDownloadControlStateAccessor.allAnime()
+
+                // then
+                assertThat(result).containsExactlyInAnyOrder(
+                    expectedEntry1.anime,
+                )
             }
         }
     }
@@ -759,6 +963,12 @@ internal class DefaultDownloadControlStateAccessorTest {
                         "psychological",
                         "sci-fi",
                     ),
+                ).addScores(
+                    MetaDataProviderScoreValue(
+                        hostname = "anilist.co",
+                        value = 85.0,
+                        range = 1.0..100.0,
+                    ),
                 )
 
                 val defaultDownloadControlStateAccessor = DefaultDownloadControlStateAccessor(
@@ -826,6 +1036,92 @@ internal class DefaultDownloadControlStateAccessorTest {
 
                 // then
                 assertThat(initHasBeenInvoked).isOne()
+            }
+        }
+
+        @Test
+        fun `doesn't allow change by reference`() {
+            tempDirectory {
+                // given
+                val dir = tempDir.resolve(AnilistConfig.hostname()).createDirectory()
+                testResource("downloadcontrolstate/DefaultDownloadControlStateAccessorTest/change_by_reference/default.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX")
+                    .copyTo(dir.resolve("32.${DOWNLOAD_CONTROL_STATE_FILE_SUFFIX}"))
+
+                val testAppConfig = object: Config by TestAppConfig {
+                    override fun metaDataProviderConfigurations(): Set<MetaDataProviderConfig> = setOf(AnilistConfig)
+                    override fun downloadControlStateDirectory(): Directory = tempDir
+                    override fun findMetaDataProviderConfig(host: Hostname): MetaDataProviderConfig = super.findMetaDataProviderConfig(host)
+                }
+
+                val expectedEntry1 = DownloadControlStateEntry(
+                    _weeksWihoutChange = 0,
+                    _lastDownloaded = WeekOfYear(2021, 44),
+                    _nextDownload = WeekOfYear(2021, 45),
+                    _anime = AnimeRaw(
+                        _title = "Shin Seiki Evangelion Movie: THE END OF EVANGELION",
+                        type = UNKNOWN_TYPE,
+                        episodes = 0,
+                        picture = NO_PICTURE,
+                        thumbnail = NO_PICTURE_THUMBNAIL,
+                        status = UNKNOWN_STATUS,
+                        duration = UNKNOWN_DURATION,
+                        animeSeason = AnimeSeason(
+                            season = UNDEFINED,
+                            year = UNKNOWN_YEAR,
+                        ),
+                        _sources = hashSetOf(URI("https://anilist.co/anime/32")),
+                        _synonyms = hashSetOf(),
+                        _relatedAnime = hashSetOf(
+                            URI("https://anilist.co/anime/30"),
+                        ),
+                        _tags = hashSetOf(),
+                    ),
+                )
+
+                val defaultDownloadControlStateAccessor = DefaultDownloadControlStateAccessor(
+                    appConfig = testAppConfig,
+                    mergeLockAccess = TestMergeLockAccessor,
+                )
+
+                val otherAnime = AnimeRaw(
+                    _title = "Shin Seiki Evangelion Movie: THE END OF EVANGELION",
+                    type = MOVIE,
+                    episodes = 1,
+                    picture = URI("https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/32-7YrdcGEX1FP3.png"),
+                    thumbnail = URI("https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/default.jpg"),
+                    status = FINISHED,
+                    duration = Duration(87, MINUTES),
+                    animeSeason = AnimeSeason(
+                        season = SPRING,
+                        year = 1997,
+                    ),
+                    _sources = hashSetOf(URI("https://myanimelist.net/anime/32")),
+                    _synonyms = hashSetOf(
+                        "Neon Genesis Evangelion: The End of Evangelion",
+                        "新世紀エヴァンゲリオン劇場版 THE END OF EVANGELION",
+                    ),
+                    _relatedAnime = hashSetOf(
+                        URI("https://myanimelist.net/anime/30"),
+                    ),
+                    _tags = hashSetOf(
+                        "action",
+                        "drama",
+                        "mecha",
+                        "psychological",
+                        "sci-fi",
+                    ),
+                )
+
+                val inMemoryDcsEntry = defaultDownloadControlStateAccessor.allAnime(AnilistConfig).first()
+                inMemoryDcsEntry.mergeWith(otherAnime)
+
+                // when
+                val result = defaultDownloadControlStateAccessor.allAnime(AnilistConfig)
+
+                // then
+                assertThat(result).containsExactlyInAnyOrder(
+                    expectedEntry1.anime,
+                )
             }
         }
     }
@@ -1097,6 +1393,90 @@ internal class DefaultDownloadControlStateAccessorTest {
 
                 // then
                 assertThat(initHasBeenInvoked).isOne()
+            }
+        }
+
+        @Test
+        fun `doesn't allow change by reference`() {
+            tempDirectory {
+                // given
+                val dir = tempDir.resolve(AnilistConfig.hostname()).createDirectory()
+                testResource("downloadcontrolstate/DefaultDownloadControlStateAccessorTest/change_by_reference/default.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX")
+                    .copyTo(dir.resolve("32.${DOWNLOAD_CONTROL_STATE_FILE_SUFFIX}"))
+
+                val testAppConfig = object: Config by TestAppConfig {
+                    override fun metaDataProviderConfigurations(): Set<MetaDataProviderConfig> = setOf(AnilistConfig)
+                    override fun downloadControlStateDirectory(): Directory = tempDir
+                    override fun findMetaDataProviderConfig(host: Hostname): MetaDataProviderConfig = super.findMetaDataProviderConfig(host)
+                }
+
+                val expectedEntry1 = DownloadControlStateEntry(
+                    _weeksWihoutChange = 0,
+                    _lastDownloaded = WeekOfYear(2021, 44),
+                    _nextDownload = WeekOfYear(2021, 45),
+                    _anime = AnimeRaw(
+                        _title = "Shin Seiki Evangelion Movie: THE END OF EVANGELION",
+                        type = UNKNOWN_TYPE,
+                        episodes = 0,
+                        picture = NO_PICTURE,
+                        thumbnail = NO_PICTURE_THUMBNAIL,
+                        status = UNKNOWN_STATUS,
+                        duration = UNKNOWN_DURATION,
+                        animeSeason = AnimeSeason(
+                            season = UNDEFINED,
+                            year = UNKNOWN_YEAR,
+                        ),
+                        _sources = hashSetOf(URI("https://anilist.co/anime/32")),
+                        _synonyms = hashSetOf(),
+                        _relatedAnime = hashSetOf(
+                            URI("https://anilist.co/anime/30"),
+                        ),
+                        _tags = hashSetOf(),
+                    ),
+                )
+
+                val defaultDownloadControlStateAccessor = DefaultDownloadControlStateAccessor(
+                    appConfig = testAppConfig,
+                    mergeLockAccess = TestMergeLockAccessor,
+                )
+
+                val otherAnime = AnimeRaw(
+                    _title = "Shin Seiki Evangelion Movie: THE END OF EVANGELION",
+                    type = MOVIE,
+                    episodes = 1,
+                    picture = URI("https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/32-7YrdcGEX1FP3.png"),
+                    thumbnail = URI("https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/default.jpg"),
+                    status = FINISHED,
+                    duration = Duration(87, MINUTES),
+                    animeSeason = AnimeSeason(
+                        season = SPRING,
+                        year = 1997,
+                    ),
+                    _sources = hashSetOf(URI("https://myanimelist.net/anime/32")),
+                    _synonyms = hashSetOf(
+                        "Neon Genesis Evangelion: The End of Evangelion",
+                        "新世紀エヴァンゲリオン劇場版 THE END OF EVANGELION",
+                    ),
+                    _relatedAnime = hashSetOf(
+                        URI("https://myanimelist.net/anime/30"),
+                    ),
+                    _tags = hashSetOf(
+                        "action",
+                        "drama",
+                        "mecha",
+                        "psychological",
+                        "sci-fi",
+                    ),
+                )
+
+                val inMemoryDcsEntry = defaultDownloadControlStateAccessor.dcsEntry(AnilistConfig, "32").anime
+                inMemoryDcsEntry.mergeWith(otherAnime)
+
+                // when
+                val result = defaultDownloadControlStateAccessor.dcsEntry(AnilistConfig, "32")
+
+                // then
+                assertThat(result).isEqualTo(expectedEntry1)
             }
         }
     }
