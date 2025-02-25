@@ -1,8 +1,8 @@
 package io.github.manamiproject.modb.livechart
 
 import io.github.manamiproject.modb.core.anime.*
-import io.github.manamiproject.modb.core.anime.AnimeRaw.Companion.NO_PICTURE
-import io.github.manamiproject.modb.core.anime.AnimeRaw.Companion.NO_PICTURE_THUMBNAIL
+import io.github.manamiproject.modb.core.anime.AnimeMedia.NO_PICTURE
+import io.github.manamiproject.modb.core.anime.AnimeMedia.NO_PICTURE_THUMBNAIL
 import io.github.manamiproject.modb.core.anime.AnimeSeason.Season.*
 import io.github.manamiproject.modb.core.anime.AnimeStatus.*
 import io.github.manamiproject.modb.core.anime.AnimeType.*

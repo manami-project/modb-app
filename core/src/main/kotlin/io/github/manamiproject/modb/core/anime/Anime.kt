@@ -1,12 +1,12 @@
 package io.github.manamiproject.modb.core.anime
 
-import io.github.manamiproject.modb.core.anime.AnimeRaw.Companion.NO_PICTURE
-import io.github.manamiproject.modb.core.anime.AnimeRaw.Companion.NO_PICTURE_THUMBNAIL
+import io.github.manamiproject.modb.core.anime.AnimeMedia.NO_PICTURE
+import io.github.manamiproject.modb.core.anime.AnimeMedia.NO_PICTURE_THUMBNAIL
 import io.github.manamiproject.modb.core.extensions.neitherNullNorBlank
+import java.net.URI
 import io.github.manamiproject.modb.core.anime.AnimeStatus.UNKNOWN as UNKNOWN_STATUS
 import io.github.manamiproject.modb.core.anime.AnimeType.UNKNOWN as UNKNOWN_TYPE
 import io.github.manamiproject.modb.core.anime.Duration.Companion.UNKNOWN as UNKNOWN_DURATION
-import java.net.URI
 
 /**
  * This class represents the finalized and immutable anime which can be found in the dataset.

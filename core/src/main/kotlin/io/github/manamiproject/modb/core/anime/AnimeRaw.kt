@@ -1,5 +1,7 @@
 package io.github.manamiproject.modb.core.anime
 
+import io.github.manamiproject.modb.core.anime.AnimeMedia.NO_PICTURE
+import io.github.manamiproject.modb.core.anime.AnimeMedia.NO_PICTURE_THUMBNAIL
 import io.github.manamiproject.modb.core.extensions.neitherNullNorBlank
 import io.github.manamiproject.modb.core.extensions.normalize
 import io.github.manamiproject.modb.core.anime.AnimeSeason.Season.UNDEFINED
@@ -418,19 +420,5 @@ public data class AnimeRaw(
               tags = ${_tags.sorted()}
             )
         """.trimIndent()
-    }
-
-    public companion object {
-        /**
-         * URL to a default picture.
-         * @since 11.0.0
-         */
-        public val NO_PICTURE: URI = URI("https://raw.githubusercontent.com/manami-project/anime-offline-database/master/pics/no_pic.png")
-
-        /**
-         * URL to a default thumbnail.
-         * @since 11.0.0
-         */
-        public val NO_PICTURE_THUMBNAIL: URI = URI("https://raw.githubusercontent.com/manami-project/anime-offline-database/master/pics/no_pic_thumbnail.png")
     }
 }
