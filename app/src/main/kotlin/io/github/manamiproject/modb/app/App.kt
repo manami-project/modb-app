@@ -10,7 +10,9 @@ import io.github.manamiproject.modb.app.crawlers.anisearch.AnisearchCrawler
 import io.github.manamiproject.modb.app.crawlers.kitsu.KitsuCrawler
 import io.github.manamiproject.modb.app.crawlers.livechart.LivechartCrawler
 import io.github.manamiproject.modb.app.crawlers.myanimelist.MyanimelistCrawler
-import io.github.manamiproject.modb.app.crawlers.notify.NotifyCrawler
+import io.github.manamiproject.modb.app.crawlers.notify.NotifyDatasetDownloadCrawler
+import io.github.manamiproject.modb.app.crawlers.notify.NotifyAnimeDatasetDownloaderConfig
+import io.github.manamiproject.modb.app.crawlers.notify.NotifyRelationsDatasetDownloaderConfig
 import io.github.manamiproject.modb.app.crawlers.simkl.SimklCrawler
 import io.github.manamiproject.modb.app.downloadcontrolstate.DefaultDownloadControlStateAccessor
 import io.github.manamiproject.modb.app.downloadcontrolstate.DefaultDownloadControlStateUpdater
@@ -27,7 +29,6 @@ import io.github.manamiproject.modb.core.extensions.EMPTY
 import io.github.manamiproject.modb.kitsu.KitsuConfig
 import io.github.manamiproject.modb.kitsu.KitsuRelationsConfig
 import io.github.manamiproject.modb.kitsu.KitsuTagsConfig
-import io.github.manamiproject.modb.notify.NotifyConfig
 import io.github.manamiproject.modb.notify.NotifyRelationsConfig
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -55,8 +56,8 @@ fun main() = runCoroutine {
         launch { KitsuCrawler(metaDataProviderConfig = KitsuTagsConfig).start() }
         launch { LivechartCrawler.instance.start() }
         launch { MyanimelistCrawler.instance.start() }
-        launch { NotifyCrawler(metaDataProviderConfig = NotifyConfig).start() }
-        launch { NotifyCrawler(metaDataProviderConfig = NotifyRelationsConfig).start() }
+        launch { NotifyDatasetDownloadCrawler(metaDataProviderConfig = NotifyAnimeDatasetDownloaderConfig).start() }
+        launch { NotifyDatasetDownloadCrawler(metaDataProviderConfig = NotifyRelationsDatasetDownloaderConfig).start() }
         launch { SimklCrawler.instance.start() }
     }.join()
 
