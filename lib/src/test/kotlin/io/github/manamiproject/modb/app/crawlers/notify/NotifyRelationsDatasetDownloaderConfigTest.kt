@@ -4,12 +4,12 @@ import org.assertj.core.api.Assertions.assertThat
 import java.net.URI
 import kotlin.test.Test
 
-internal class NotifyDatasetDownloaderConfigTest {
+internal class NotifyRelationsDatasetDownloaderConfigTest {
 
     @Test
     fun `isTestContext is false`() {
         // when
-        val result = NotifyAnimeDatasetDownloaderConfig.isTestContext()
+        val result = NotifyRelationsDatasetDownloaderConfig.isTestContext()
 
         // then
         assertThat(result).isFalse()
@@ -18,7 +18,7 @@ internal class NotifyDatasetDownloaderConfigTest {
     @Test
     fun `hostname must be correct`() {
         // when
-        val result = NotifyAnimeDatasetDownloaderConfig.hostname()
+        val result = NotifyRelationsDatasetDownloaderConfig.hostname()
 
         // then
         assertThat(result).isEqualTo("notify.moe")
@@ -30,10 +30,10 @@ internal class NotifyDatasetDownloaderConfigTest {
         val id = "0-A-5Fimg"
 
         // when
-        val result = NotifyAnimeDatasetDownloaderConfig.buildAnimeLink(id)
+        val result = NotifyRelationsDatasetDownloaderConfig.buildAnimeLink(id)
 
         // then
-        assertThat(result).isEqualTo(URI("https://${NotifyAnimeDatasetDownloaderConfig.hostname()}/anime/$id"))
+        assertThat(result).isEqualTo(URI("https://${NotifyRelationsDatasetDownloaderConfig.hostname()}/anime/$id"))
     }
 
     @Test
@@ -42,16 +42,16 @@ internal class NotifyDatasetDownloaderConfigTest {
         val id = "1535"
 
         // when
-        val result = NotifyAnimeDatasetDownloaderConfig.buildDataDownloadLink(id)
+        val result = NotifyRelationsDatasetDownloaderConfig.buildDataDownloadLink(id)
 
         // then
-        assertThat(result).isEqualTo(URI("https://${NotifyAnimeDatasetDownloaderConfig.hostname()}/api/types/Anime/download"))
+        assertThat(result).isEqualTo(URI("https://${NotifyRelationsDatasetDownloaderConfig.hostname()}/api/types/AnimeRelations/download"))
     }
 
     @Test
     fun `file suffix must be html`() {
         // when
-        val result = NotifyAnimeDatasetDownloaderConfig.fileSuffix()
+        val result = NotifyRelationsDatasetDownloaderConfig.fileSuffix()
 
         // then
         assertThat(result).isEqualTo("json")

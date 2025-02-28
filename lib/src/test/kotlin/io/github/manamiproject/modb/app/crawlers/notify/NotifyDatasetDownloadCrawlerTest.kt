@@ -29,8 +29,8 @@ internal class NotifyDatasetDownloadCrawlerTest {
     fun `throws exception if response code is not OK`() {
         // given
         val testNotifyConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
-            override fun hostname(): Hostname = NotifyDatasetDownloaderConfig.hostname()
-            override fun buildDataDownloadLink(id: String): URI = NotifyDatasetDownloaderConfig.buildDataDownloadLink(id)
+            override fun hostname(): Hostname = NotifyAnimeDatasetDownloaderConfig.hostname()
+            override fun buildDataDownloadLink(id: String): URI = NotifyAnimeDatasetDownloaderConfig.buildDataDownloadLink(id)
         }
 
         val testHttpClient = object: HttpClient by TestHttpClient {
@@ -60,7 +60,7 @@ internal class NotifyDatasetDownloadCrawlerTest {
     }
 
     @Test
-    fun `correctly create conv files`() {
+    fun `correctly create raw files for anime`() {
         // given
         tempDirectory {
             val testAppConfig = object: Config by TestAppConfig {
@@ -68,9 +68,9 @@ internal class NotifyDatasetDownloadCrawlerTest {
             }
 
             val testNotifyConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
-                override fun hostname(): Hostname = NotifyDatasetDownloaderConfig.hostname()
-                override fun buildDataDownloadLink(id: String): URI = NotifyDatasetDownloaderConfig.buildDataDownloadLink(id)
-                override fun fileSuffix(): FileSuffix = NotifyDatasetDownloaderConfig.fileSuffix()
+                override fun hostname(): Hostname = NotifyAnimeDatasetDownloaderConfig.hostname()
+                override fun buildDataDownloadLink(id: String): URI = NotifyAnimeDatasetDownloaderConfig.buildDataDownloadLink(id)
+                override fun fileSuffix(): FileSuffix = NotifyAnimeDatasetDownloaderConfig.fileSuffix()
             }
 
             val dcsDir = tempDir.resolve("dcs").createDirectory()
@@ -82,7 +82,7 @@ internal class NotifyDatasetDownloadCrawlerTest {
                 override suspend fun get(url: URL, headers: Map<String, Collection<String>>): HttpResponse {
                     return HttpResponse(
                         code = 200,
-                        body = loadTestResource("crawler/notify/NotifyDatasetDownloadCrawlerTest/example-dataset.txt"),
+                        body = loadTestResource("crawler/notify/NotifyDatasetDownloadCrawlerTest/example-anime-dataset.txt"),
                     )
                 }
             }
@@ -117,6 +117,59 @@ internal class NotifyDatasetDownloadCrawlerTest {
     }
 
     @Test
+    fun `correctly create raw files for relations`() {
+        // given
+        tempDirectory {
+            val testWorkingDir = tempDir.resolve("notify.moe-relations").createDirectory()
+            val testAppConfig = object: Config by TestAppConfig {
+                override fun workingDir(metaDataProviderConfig: MetaDataProviderConfig): Directory = testWorkingDir
+            }
+
+            val testNotifyConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
+                override fun hostname(): Hostname = NotifyRelationsDatasetDownloaderConfig.hostname()
+                override fun buildDataDownloadLink(id: String): URI = NotifyRelationsDatasetDownloaderConfig.buildDataDownloadLink(id)
+                override fun fileSuffix(): FileSuffix = NotifyRelationsDatasetDownloaderConfig.fileSuffix()
+            }
+
+            val testHttpClient = object: HttpClient by TestHttpClient {
+                override suspend fun get(url: URL, headers: Map<String, Collection<String>>): HttpResponse {
+                    return HttpResponse(
+                        code = 200,
+                        body = loadTestResource("crawler/notify/NotifyDatasetDownloadCrawlerTest/example-relations-dataset.txt"),
+                    )
+                }
+            }
+
+            val expectedFiles = setOf(
+                testWorkingDir.resolve("aL4F2FimR.${testNotifyConfig.fileSuffix()}"),
+                testWorkingDir.resolve("0NixcKimg.${testNotifyConfig.fileSuffix()}"),
+                testWorkingDir.resolve("s6dGL1FVR.${testNotifyConfig.fileSuffix()}"),
+                testWorkingDir.resolve("FZEIkXeSg.${testNotifyConfig.fileSuffix()}"),
+            )
+
+            val crawler = NotifyDatasetDownloadCrawler(
+                appConfig = testAppConfig,
+                metaDataProviderConfig = testNotifyConfig,
+                httpClient = testHttpClient,
+                downloadControlStateAccessor = TestDownloadControlStateAccessor,
+                deadEntriesAccessor = TestDeadEntriesAccessor,
+            )
+
+            // when
+            crawler.start()
+
+            //then
+            expectedFiles.forEach {
+                assertThat(it).exists()
+                val content = it.readFile()
+                assertThat(content).startsWith("{")
+                assertThat(content).contains(it.fileName().remove(".${testNotifyConfig.fileSuffix()}"))
+                assertThat(content).endsWith("}")
+            }
+        }
+    }
+
+    @Test
     fun `correctly identify dead entry`() {
         // given
         tempDirectory {
@@ -125,16 +178,16 @@ internal class NotifyDatasetDownloadCrawlerTest {
             }
 
             val testNotifyConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
-                override fun hostname(): Hostname = NotifyDatasetDownloaderConfig.hostname()
-                override fun buildDataDownloadLink(id: String): URI = NotifyDatasetDownloaderConfig.buildDataDownloadLink(id)
-                override fun fileSuffix(): FileSuffix = NotifyDatasetDownloaderConfig.fileSuffix()
+                override fun hostname(): Hostname = NotifyAnimeDatasetDownloaderConfig.hostname()
+                override fun buildDataDownloadLink(id: String): URI = NotifyAnimeDatasetDownloaderConfig.buildDataDownloadLink(id)
+                override fun fileSuffix(): FileSuffix = NotifyAnimeDatasetDownloaderConfig.fileSuffix()
             }
 
             val testHttpClient = object: HttpClient by TestHttpClient {
                 override suspend fun get(url: URL, headers: Map<String, Collection<String>>): HttpResponse {
                     return HttpResponse(
                         code = 200,
-                        body = loadTestResource("crawler/notify/NotifyDatasetDownloadCrawlerTest/example-dataset.txt"),
+                        body = loadTestResource("crawler/notify/NotifyDatasetDownloadCrawlerTest/example-anime-dataset.txt"),
                     )
                 }
             }

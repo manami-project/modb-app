@@ -27,7 +27,7 @@ import io.github.manamiproject.modb.core.logging.LoggerDelegate
  */
 class NotifyDatasetDownloadCrawler(
     private val appConfig: Config = AppConfig.instance,
-    private val metaDataProviderConfig: MetaDataProviderConfig = NotifyDatasetDownloaderConfig,
+    private val metaDataProviderConfig: MetaDataProviderConfig = NotifyAnimeDatasetDownloaderConfig,
     private val httpClient: HttpClient = SuspendableHttpClient.instance,
     private val downloadControlStateAccessor: DownloadControlStateAccessor = DefaultDownloadControlStateAccessor.instance,
     private val deadEntriesAccessor: DeadEntriesAccessor = DefaultDeadEntriesAccessor.instance,
@@ -53,14 +53,18 @@ class NotifyDatasetDownloadCrawler(
             }
             .toHashSet()
 
-        val dcsFileIds = downloadControlStateAccessor.downloadControlStateDirectory(metaDataProviderConfig)
-            .listRegularFiles("*.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX")
-            .map { it.fileName() }
-            .map { it.remove(".$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX") }
-            .toHashSet()
+        val isRelationsDownload = appConfig.workingDir(metaDataProviderConfig).fileName().endsWith("-relations")
 
-        (dcsFileIds - idList).forEach {
-            deadEntriesAccessor.addDeadEntry(it, metaDataProviderConfig)
+        if (!isRelationsDownload) {
+            val dcsFileIds = downloadControlStateAccessor.downloadControlStateDirectory(metaDataProviderConfig)
+                .listRegularFiles("*.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX")
+                .map { it.fileName() }
+                .map { it.remove(".$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX") }
+                .toHashSet()
+
+            (dcsFileIds - idList).forEach {
+                deadEntriesAccessor.addDeadEntry(it, metaDataProviderConfig)
+            }
         }
 
         log.info { "Finished crawling data for [${metaDataProviderConfig.hostname()}]." }
