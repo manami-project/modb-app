@@ -32,8 +32,10 @@ import io.github.manamiproject.modb.notify.NotifyRelationsConfig
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import javax.swing.JOptionPane
+import javax.swing.JOptionPane.*
 import javax.swing.JPasswordField
 import javax.swing.SwingUtilities
+import kotlin.system.exitProcess
 
 @KoverIgnore
 fun main() = runCoroutine {
@@ -95,18 +97,21 @@ private fun passwordPrompt(): String {
         SwingUtilities.invokeAndWait {
             val passwordField = JPasswordField()
             val options = arrayOf<Any>("OK", "Cancel")
-            val option = JOptionPane.showOptionDialog(
+            val option = showOptionDialog(
                 null,
                 passwordField,
                 "sudo password:",
-                JOptionPane.NO_OPTION, JOptionPane.PLAIN_MESSAGE,
+                NO_OPTION, PLAIN_MESSAGE,
                 null,
                 options,
                 options[0],
             )
-            if (option == 0) {
-                val passwordArray = passwordField.password
-                ret = String(passwordArray)
+            when (option) {
+                0 -> {
+                    val passwordArray = passwordField.password
+                    ret = String(passwordArray)
+                }
+                else -> exitProcess(0)
             }
         }
         ret
