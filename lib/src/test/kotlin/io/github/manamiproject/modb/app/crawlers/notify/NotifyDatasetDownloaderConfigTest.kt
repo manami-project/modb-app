@@ -4,12 +4,12 @@ import org.assertj.core.api.Assertions.assertThat
 import java.net.URI
 import kotlin.test.Test
 
-internal class NotifyIdRangeSelectorConfigTest {
+internal class NotifyDatasetDownloaderConfigTest {
 
     @Test
     fun `isTestContext is false`() {
         // when
-        val result = NotifyIdRangeSelectorConfig.isTestContext()
+        val result = NotifyDatasetDownloaderConfig.isTestContext()
 
         // then
         assertThat(result).isFalse()
@@ -18,7 +18,7 @@ internal class NotifyIdRangeSelectorConfigTest {
     @Test
     fun `hostname must be correct`() {
         // when
-        val result = NotifyIdRangeSelectorConfig.hostname()
+        val result = NotifyDatasetDownloaderConfig.hostname()
 
         // then
         assertThat(result).isEqualTo("notify.moe")
@@ -30,10 +30,10 @@ internal class NotifyIdRangeSelectorConfigTest {
         val id = "0-A-5Fimg"
 
         // when
-        val result = NotifyIdRangeSelectorConfig.buildAnimeLink(id)
+        val result = NotifyDatasetDownloaderConfig.buildAnimeLink(id)
 
         // then
-        assertThat(result).isEqualTo(URI("https://${NotifyIdRangeSelectorConfig.hostname()}/anime/$id"))
+        assertThat(result).isEqualTo(URI("https://${NotifyDatasetDownloaderConfig.hostname()}/anime/$id"))
     }
 
     @Test
@@ -42,16 +42,16 @@ internal class NotifyIdRangeSelectorConfigTest {
         val id = "1535"
 
         // when
-        val result = NotifyIdRangeSelectorConfig.buildDataDownloadLink(id)
+        val result = NotifyDatasetDownloaderConfig.buildDataDownloadLink(id)
 
         // then
-        assertThat(result).isEqualTo(URI("https://${NotifyIdRangeSelectorConfig.hostname()}/explore/anime/any/any/any/1535"))
+        assertThat(result).isEqualTo(URI("https://${NotifyDatasetDownloaderConfig.hostname()}/api/types/Anime/download"))
     }
 
     @Test
     fun `file suffix must be html`() {
         // when
-        val result = NotifyIdRangeSelectorConfig.fileSuffix()
+        val result = NotifyDatasetDownloaderConfig.fileSuffix()
 
         // then
         assertThat(result).isEqualTo("json")
