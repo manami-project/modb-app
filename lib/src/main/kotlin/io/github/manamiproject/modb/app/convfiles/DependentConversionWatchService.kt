@@ -29,13 +29,13 @@ private typealias IdentityHashCode = String
  * @param converter Instance used to convert multiple files into the intermediate format which represents an [AnimeRaw].
  * @property appConfig Application specific configuration. Uses [AppConfig] by default.
  * @property mainConfig Configuration for a specific meta data provider. This is the "main" config.
- * @property dependentMetaDataProciderConfigs Additional configuration used for additional data like tags or related anime.
+ * @property dependentMetaDataProviderConfigs Additional configuration used for additional data like tags or related anime.
  */
 class DependentConversionWatchService(
     converter: PathAnimeConverter,
     private val appConfig: Config = AppConfig.instance,
     private val mainConfig: MetaDataProviderConfig,
-    private val dependentMetaDataProciderConfigs: List<MetaDataProviderConfig>,
+    private val dependentMetaDataProviderConfigs: List<MetaDataProviderConfig>,
 ): WatchService {
 
     private var isPrepared = false
@@ -47,17 +47,17 @@ class DependentConversionWatchService(
 
     private val dependentFileConverter = DependentFileConverter(
         appConfig = appConfig,
-        dependentMetaDataProciderConfigs = dependentMetaDataProciderConfigs,
+        dependentMetaDataProviderConfigs = dependentMetaDataProviderConfigs,
         metaDataProviderConfig = mainConfig,
         converter = converter,
     )
 
     init {
-        require(setOf(mainConfig).union(dependentMetaDataProciderConfigs).map { it.hostname() }.toSet().size == 1) { "All configs must be from the same meta data provider." }
+        require(setOf(mainConfig).union(dependentMetaDataProviderConfigs).map { it.hostname() }.toSet().size == 1) { "All configs must be from the same meta data provider." }
     }
 
     override suspend fun prepare() = withContext(LIMITED_FS) {
-        setOf(mainConfig).union(dependentMetaDataProciderConfigs).forEach { config ->
+        setOf(mainConfig).union(dependentMetaDataProviderConfigs).forEach { config ->
             val watchService = FileSystems.getDefault().newWatchService()
             val workingDir = appConfig.workingDir(config)
 

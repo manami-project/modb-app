@@ -138,7 +138,7 @@ class DefaultRawFileConversionService(
             DependentConversionWatchService(
                 appConfig = appConfig,
                 mainConfig = AnisearchConfig,
-                dependentMetaDataProciderConfigs = listOf(
+                dependentMetaDataProviderConfigs = listOf(
                     AnisearchRelationsConfig,
                 ),
                 converter = DefaultPathAnimeConverter(
@@ -154,7 +154,7 @@ class DefaultRawFileConversionService(
             DependentConversionWatchService(
                 appConfig = appConfig,
                 mainConfig = KitsuConfig,
-                dependentMetaDataProciderConfigs = listOf(
+                dependentMetaDataProviderConfigs = listOf(
                     KitsuRelationsConfig,
                     KitsuTagsConfig,
                 ),
@@ -172,7 +172,7 @@ class DefaultRawFileConversionService(
             DependentConversionWatchService(
                 appConfig = appConfig,
                 mainConfig = NotifyConfig,
-                dependentMetaDataProciderConfigs = listOf(
+                dependentMetaDataProviderConfigs = listOf(
                     NotifyRelationsConfig,
                 ),
                 converter = DefaultPathAnimeConverter(

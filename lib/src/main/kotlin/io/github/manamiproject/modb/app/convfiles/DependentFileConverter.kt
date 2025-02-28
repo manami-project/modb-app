@@ -25,13 +25,13 @@ import kotlin.io.path.notExists
  * It can handle [MetaDataProviderConfig] with differing values for [MetaDataProviderConfig.fileSuffix].
  * @since 1.0.0
  * @param appConfig Application specific configuration. Uses [AppConfig] by default.
- * @param dependentMetaDataProciderConfigs Additional configuration used for additional data like tags or related anime.
+ * @param dependentMetaDataProviderConfigs Additional configuration used for additional data like tags or related anime.
  * @property metaDataProviderConfig Configuration for a specific meta data provider. This is the "main" config.
  * @property converter Converts a [Path] to instances of [AnimeRaw]. Must match [metaDataProviderConfig].
  */
 class DependentFileConverter @KoverIgnore constructor(
     appConfig: Config = AppConfig.instance,
-    dependentMetaDataProciderConfigs: List<MetaDataProviderConfig>,
+    dependentMetaDataProviderConfigs: List<MetaDataProviderConfig>,
     private val metaDataProviderConfig: MetaDataProviderConfig,
     private val converter: PathAnimeConverter,
 ): FileConverter {
@@ -42,7 +42,7 @@ class DependentFileConverter @KoverIgnore constructor(
     private val workingDirs = mutableMapOf<String, Directory>()
 
     init {
-        val allConfigs = setOf(metaDataProviderConfig).union(dependentMetaDataProciderConfigs)
+        val allConfigs = setOf(metaDataProviderConfig).union(dependentMetaDataProviderConfigs)
         require(allConfigs.map { it.hostname() }.toSet().size == 1) { "All configs must be from the same meta data provider." }
 
         allConfigs.forEach {
