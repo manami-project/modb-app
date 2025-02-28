@@ -9,6 +9,7 @@ import io.github.manamiproject.modb.app.TestConfigRegistry
 import io.github.manamiproject.modb.app.TestMetaDataProviderConfig
 import io.github.manamiproject.modb.app.crawlers.animeplanet.AnimePlanetPaginationIdRangeSelectorConfig
 import io.github.manamiproject.modb.app.crawlers.livechart.LivechartPaginationIdRangeSelectorConfig
+import io.github.manamiproject.modb.app.crawlers.notify.NotifyDatasetDownloaderConfig
 import io.github.manamiproject.modb.app.crawlers.simkl.SimklPaginationIdRangeSelectorConfig
 import io.github.manamiproject.modb.app.downloadcontrolstate.WeekOfYear
 import io.github.manamiproject.modb.core.config.ConfigRegistry
@@ -475,6 +476,27 @@ internal class AppConfigTest {
 
                 // when
                 val result = appConfig.workingDir(NotifyConfig)
+
+                // then
+                assertThat(result).exists()
+                assertThat(result.fileName.toString()).isEqualTo("notify.moe")
+            }
+        }
+
+        @Test
+        fun `check that name of working directory for NotifyDatasetDownloaderConfig is correct`() {
+            tempDirectory {
+                // given
+                val testConfigRegistry = object: ConfigRegistry by TestConfigRegistry {
+                    override fun string(key: String): String = tempDir.toAbsolutePath().toString()
+                }
+
+                val appConfig = AppConfig(
+                    configRegistry = testConfigRegistry,
+                )
+
+                // when
+                val result = appConfig.workingDir(NotifyDatasetDownloaderConfig)
 
                 // then
                 assertThat(result).exists()
