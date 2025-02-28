@@ -63,7 +63,7 @@ internal class DependentConversionWatchServiceTest {
                         converter = TestPathAnimeConverter,
                         appConfig = testAppConfig,
                         mainConfig = mainTestConfig,
-                        dependentMetaDataProciderConfigs = listOf(dependentTestConfig),
+                        dependentMetaDataProviderConfigs = listOf(dependentTestConfig),
                     )
                 }
 
@@ -123,7 +123,7 @@ internal class DependentConversionWatchServiceTest {
                 val dependentConversionWatchService = DependentConversionWatchService(
                     appConfig = testAppConfig,
                     mainConfig = mainTestConfig,
-                    dependentMetaDataProciderConfigs = listOf(dependentTestConfig),
+                    dependentMetaDataProviderConfigs = listOf(dependentTestConfig),
                     converter = testConverter
                 )
 
@@ -189,7 +189,7 @@ internal class DependentConversionWatchServiceTest {
                     val dependentConversionWatchService = DependentConversionWatchService(
                         appConfig = testAppConfig,
                         mainConfig = mainTestConfig,
-                        dependentMetaDataProciderConfigs = listOf(dependentTestConfig),
+                        dependentMetaDataProviderConfigs = listOf(dependentTestConfig),
                         converter = testConverter,
                     )
 
@@ -255,7 +255,7 @@ internal class DependentConversionWatchServiceTest {
                     val dependentConversionWatchService = DependentConversionWatchService(
                         appConfig = testAppConfig,
                         mainConfig = mainTestConfig,
-                        dependentMetaDataProciderConfigs = listOf(dependentTestConfig),
+                        dependentMetaDataProviderConfigs = listOf(dependentTestConfig),
                         converter = testConverter,
                     )
 
@@ -328,7 +328,7 @@ internal class DependentConversionWatchServiceTest {
                     val dependentConversionWatchService = DependentConversionWatchService(
                         appConfig = testAppConfig,
                         mainConfig = mainTestConfig,
-                        dependentMetaDataProciderConfigs = listOf(dependentTestConfig),
+                        dependentMetaDataProviderConfigs = listOf(dependentTestConfig),
                         converter = testConverter,
                     )
 
@@ -409,7 +409,7 @@ internal class DependentConversionWatchServiceTest {
                     val dependentConversionWatchService = DependentConversionWatchService(
                         appConfig = testAppConfig,
                         mainConfig = mainTestConfig,
-                        dependentMetaDataProciderConfigs = listOf(dependentTestConfig),
+                        dependentMetaDataProviderConfigs = listOf(dependentTestConfig),
                         converter = testConverter,
                     )
 

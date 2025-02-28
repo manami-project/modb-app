@@ -49,7 +49,7 @@ internal class DependentFileConverterTest {
                 val result = exceptionExpected<IllegalArgumentException> {
                     DependentFileConverter(
                         appConfig = testAppConfig,
-                        dependentMetaDataProciderConfigs = listOf(dependentTestConfig),
+                        dependentMetaDataProviderConfigs = listOf(dependentTestConfig),
                         metaDataProviderConfig = mainTestConfig,
                         converter = TestPathAnimeConverter,
                     )
@@ -111,7 +111,7 @@ internal class DependentFileConverterTest {
 
                 val testAbstractDependentFileConverter = DependentFileConverter(
                     appConfig = testAppConfig,
-                    dependentMetaDataProciderConfigs = listOf(dependentTestConfig),
+                    dependentMetaDataProviderConfigs = listOf(dependentTestConfig),
                     metaDataProviderConfig = mainTestConfig,
                     converter = testConverter,
                 )
@@ -170,7 +170,7 @@ internal class DependentFileConverterTest {
 
                 val testAbstractDependentFileConverter = DependentFileConverter(
                     appConfig = testAppConfig,
-                    dependentMetaDataProciderConfigs = listOf(dependentTestConfig),
+                    dependentMetaDataProviderConfigs = listOf(dependentTestConfig),
                     metaDataProviderConfig = mainTestConfig,
                     converter = testConverter,
                 )
@@ -216,7 +216,7 @@ internal class DependentFileConverterTest {
 
                 val testAbstractDependentFileConverter = DependentFileConverter(
                     appConfig = testAppConfig,
-                    dependentMetaDataProciderConfigs = listOf(dependentTestConfig),
+                    dependentMetaDataProviderConfigs = listOf(dependentTestConfig),
                     metaDataProviderConfig = mainTestConfig,
                     converter = TestPathAnimeConverter,
                 )
@@ -272,7 +272,7 @@ internal class DependentFileConverterTest {
 
                 val testAbstractDependentFileConverter = DependentFileConverter(
                     appConfig = testAppConfig,
-                    dependentMetaDataProciderConfigs = listOf(dependentTestConfig),
+                    dependentMetaDataProviderConfigs = listOf(dependentTestConfig),
                     metaDataProviderConfig = mainTestConfig,
                     converter = testConverter,
                 )
