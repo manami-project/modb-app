@@ -15,6 +15,7 @@ import io.github.manamiproject.modb.test.tempDirectory
 import kotlinx.coroutines.runBlocking
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Nested
+import java.net.URI
 import kotlin.io.path.Path
 import kotlin.test.Test
 
@@ -73,6 +74,7 @@ internal class DefaultDatasetFileAccessorTest {
                     override suspend fun deserialize(file: RegularFile): Dataset {
                         hasBeenInvoked = true
                         return Dataset(
+                            `$schema` = URI("https://raw.githubusercontent.com/manami-project/anime-offline-database/refs/heads/master/anime-offline-database.schema.json"),
                             lastUpdate = "2020-01-01",
                             data = emptyList(),
                         )
