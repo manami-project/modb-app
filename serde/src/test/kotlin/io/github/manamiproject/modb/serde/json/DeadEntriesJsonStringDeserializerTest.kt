@@ -1,36 +1,54 @@
 package io.github.manamiproject.modb.serde.json
 
-import io.github.manamiproject.modb.core.extensions.EMPTY
 import io.github.manamiproject.modb.test.exceptionExpected
 import kotlinx.coroutines.runBlocking
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Nested
+import org.junit.jupiter.params.ParameterizedTest
+import org.junit.jupiter.params.provider.ValueSource
 import kotlin.test.Test
 
 internal class DeadEntriesJsonStringDeserializerTest {
 
-    @Test
-    fun `throws exception if the json string is empty`() {
+    @ParameterizedTest
+    @ValueSource(strings = [
+        "",
+        "   ",
+        "\u00A0",
+        "\u202F",
+        "\u200A",
+        "\u205F",
+        "\u2000",
+        "\u2001",
+        "\u2002",
+        "\u2003",
+        "\u2004",
+        "\u2005",
+        "\u2006",
+        "\u2007",
+        "\u2008",
+        "\u2009",
+        "\uFEFF",
+        "\u180E",
+        "\u2060",
+        "\u200D",
+        "\u0090",
+        "\u200C",
+        "\u200B",
+        "\u00AD",
+        "\u000C",
+        "\u2028",
+        "\r",
+        "\n",
+        "\t",
+    ])
+    fun `throws exception if the json string is blank`(input: String) {
         // given
         val deserializer = DeadEntriesJsonStringDeserializer()
 
         // when
         val result = exceptionExpected<IllegalArgumentException> {
-            deserializer.deserialize(EMPTY)
-        }
-
-        // then
-        assertThat(result).hasMessage("Given JSON string must not be blank.")
-    }
-
-    @Test
-    fun `throws exception if the json string is blank`() {
-        // given
-        val deserializer = DeadEntriesJsonStringDeserializer()
-
-        // when
-        val result = exceptionExpected<IllegalArgumentException> {
-            deserializer.deserialize("    ")
+            deserializer.deserialize(input)
         }
 
         // then
@@ -44,6 +62,7 @@ internal class DeadEntriesJsonStringDeserializerTest {
             val deserializer = DeadEntriesJsonStringDeserializer()
             val json = """
                 {
+                  "${'$'}schema": "https://raw.githubusercontent.com/manami-project/anime-offline-database/refs/heads/master/dead-entries/dead-entries.schema.json",
                   "license": {
                     "name": "GNU Affero General Public License v3.0",
                     "url": "https://github.com/manami-project/anime-offline-database/blob/master/LICENSE"
@@ -69,6 +88,7 @@ internal class DeadEntriesJsonStringDeserializerTest {
             val deserializer = DeadEntriesJsonStringDeserializer()
             val json = """
                 {
+                  "${'$'}schema": "https://raw.githubusercontent.com/manami-project/anime-offline-database/refs/heads/master/dead-entries/dead-entries.schema.json",
                   "license": {
                     "name": "GNU Affero General Public License v3.0",
                     "url": "https://github.com/manami-project/anime-offline-database/blob/master/LICENSE"
@@ -84,6 +104,27 @@ internal class DeadEntriesJsonStringDeserializerTest {
                   ]
                 }
             """.trimIndent()
+
+            // when
+            val result = deserializer.deserialize(json)
+
+            // then
+            assertThat(result.deadEntries).containsExactlyInAnyOrder(
+                "kj42fc5--",
+                "lkn6--k44",
+                "l2ht33--1",
+                "1kj5g--41",
+                "3jl253vv9",
+            )
+        }
+    }
+
+    @Test
+    fun `correctly deserialize minified dead entries file`() {
+        runBlocking {
+            // given
+            val deserializer = DeadEntriesJsonStringDeserializer()
+            val json = """{"${'$'}schema":"https://raw.githubusercontent.com/manami-project/anime-offline-database/refs/heads/master/dead-entries/dead-entries.schema.json","license":{"name":"GNU Affero General Public License v3.0","url":"https://github.com/manami-project/anime-offline-database/blob/master/LICENSE"},"repository":"https://github.com/manami-project/anime-offline-database","lastUpdate":"2020-01-01","deadEntries":["kj42fc5--","lkn6--k44","l2ht33--1","1kj5g--41","3jl253vv9"]}""".trimIndent()
 
             // when
             val result = deserializer.deserialize(json)

@@ -1,9 +1,14 @@
 {
+  "$schema": "https://raw.githubusercontent.com/manami-project/anime-offline-database/refs/heads/master/anime-offline-database.schema.json",
   "license": {
     "name": "GNU Affero General Public License v3.0",
     "url": "https://github.com/manami-project/anime-offline-database/blob/master/LICENSE"
   },
   "repository": "https://github.com/manami-project/anime-offline-database",
+  "scoreRange": {
+    "minInclusive": 1.0,
+    "maxInclusive": 10.0
+  },
   "lastUpdate": "2024-08-12",
   "data": [
     {
@@ -23,6 +28,15 @@
       },
       "picture": "https://cdn.myanimelist.net/images/anime/1930/122178.jpg",
       "thumbnail": "https://cdn.myanimelist.net/images/anime/1930/122178t.jpg",
+      "duration": {
+        "value": 120,
+        "unit": "SECONDS"
+      },
+      "score": {
+        "arithmeticGeometricMean": 5.85,
+        "arithmeticMean": 5.85,
+        "median": 5.85
+      },
       "synonyms": [
         "!nvade Show!",
         "Invade Show!",
@@ -62,6 +76,15 @@
       },
       "picture": "https://cdn.myanimelist.net/images/anime/12/81160.jpg",
       "thumbnail": "https://cdn.myanimelist.net/images/anime/12/81160t.jpg",
+      "duration": {
+        "value": 240,
+        "unit": "SECONDS"
+      },
+      "score": {
+        "arithmeticGeometricMean": 4.71,
+        "arithmeticMean": 4.71,
+        "median": 4.71
+      },
       "synonyms": [
         "\"Zero\"",
         "0 (Zero)",

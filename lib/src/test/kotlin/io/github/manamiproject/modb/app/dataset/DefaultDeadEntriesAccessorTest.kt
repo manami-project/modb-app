@@ -220,6 +220,7 @@ internal class DefaultDeadEntriesAccessorTest {
 
                 val testExternalResourceJsonDeserializerDeadEntries = object: ExternalResourceJsonDeserializer<DeadEntries> by TestExternalResourceJsonDeserializerDeadEntries {
                     override suspend fun deserialize(file: RegularFile): DeadEntries = DeadEntries(
+                        `$schema` = URI("https://raw.githubusercontent.com/manami-project/anime-offline-database/refs/heads/master/dead-entries/dead-entries.schema.json"),
                         lastUpdate = "2024-08-01",
                         deadEntries = emptyList(),
                     )
@@ -365,6 +366,7 @@ internal class DefaultDeadEntriesAccessorTest {
 
                 val testExternalResourceJsonDeserializerDeadEntries = object: ExternalResourceJsonDeserializer<DeadEntries> by TestExternalResourceJsonDeserializerDeadEntries {
                     override suspend fun deserialize(file: RegularFile): DeadEntries = DeadEntries(
+                        `$schema` = URI("https://raw.githubusercontent.com/manami-project/anime-offline-database/refs/heads/master/dead-entries/dead-entries.schema.json"),
                         lastUpdate = "2024-08-01",
                         deadEntries = emptyList(),
                     )
@@ -408,6 +410,7 @@ internal class DefaultDeadEntriesAccessorTest {
 
                 val testExternalResourceJsonDeserializerDeadEntries = object: ExternalResourceJsonDeserializer<DeadEntries> by TestExternalResourceJsonDeserializerDeadEntries {
                     override suspend fun deserialize(file: RegularFile): DeadEntries = DeadEntries(
+                        `$schema` = URI("https://raw.githubusercontent.com/manami-project/anime-offline-database/refs/heads/master/dead-entries/dead-entries.schema.json"),
                         lastUpdate = "2024-08-01",
                         deadEntries = emptyList(),
                     )
@@ -531,6 +534,7 @@ internal class DefaultDeadEntriesAccessorTest {
 
                 val testExternalResourceJsonDeserializerDeadEntries = object: ExternalResourceJsonDeserializer<DeadEntries> by TestExternalResourceJsonDeserializerDeadEntries {
                     override suspend fun deserialize(file: RegularFile): DeadEntries = DeadEntries(
+                        `$schema` = URI("https://raw.githubusercontent.com/manami-project/anime-offline-database/refs/heads/master/dead-entries/dead-entries.schema.json"),
                         lastUpdate = "2024-08-01",
                         deadEntries = emptyList(),
                     )
@@ -573,6 +577,7 @@ internal class DefaultDeadEntriesAccessorTest {
 
                 val testExternalResourceJsonDeserializerDeadEntries = object: ExternalResourceJsonDeserializer<DeadEntries> by TestExternalResourceJsonDeserializerDeadEntries {
                     override suspend fun deserialize(file: RegularFile): DeadEntries = DeadEntries(
+                        `$schema` = URI("https://raw.githubusercontent.com/manami-project/anime-offline-database/refs/heads/master/dead-entries/dead-entries.schema.json"),
                         lastUpdate = "2024-08-01",
                         deadEntries = emptyList(),
                     )
@@ -752,6 +757,7 @@ internal class DefaultDeadEntriesAccessorTest {
 
                 val testExternalResourceJsonDeserializerDeadEntries = object: ExternalResourceJsonDeserializer<DeadEntries> by TestExternalResourceJsonDeserializerDeadEntries {
                     override suspend fun deserialize(file: RegularFile): DeadEntries = DeadEntries(
+                        `$schema` = URI("https://raw.githubusercontent.com/manami-project/anime-offline-database/refs/heads/master/dead-entries/dead-entries.schema.json"),
                         lastUpdate = "2024-08-01",
                         deadEntries = emptyList(),
                     )
@@ -806,6 +812,7 @@ internal class DefaultDeadEntriesAccessorTest {
 
                 val testExternalResourceJsonDeserializerDeadEntries = object: ExternalResourceJsonDeserializer<DeadEntries> by TestExternalResourceJsonDeserializerDeadEntries {
                     override suspend fun deserialize(file: RegularFile): DeadEntries = DeadEntries(
+                        `$schema` = URI("https://raw.githubusercontent.com/manami-project/anime-offline-database/refs/heads/master/dead-entries/dead-entries.schema.json"),
                         lastUpdate = "2024-08-01",
                         deadEntries = emptyList(),
                     )
@@ -931,6 +938,7 @@ internal class DefaultDeadEntriesAccessorTest {
 
                 val testExternalResourceJsonDeserializerDeadEntries = object: ExternalResourceJsonDeserializer<DeadEntries> by TestExternalResourceJsonDeserializerDeadEntries {
                     override suspend fun deserialize(file: RegularFile): DeadEntries = DeadEntries(
+                        `$schema` = URI("https://raw.githubusercontent.com/manami-project/anime-offline-database/refs/heads/master/dead-entries/dead-entries.schema.json"),
                         lastUpdate = "2024-08-01",
                         deadEntries = emptyList(),
                     )
@@ -973,6 +981,7 @@ internal class DefaultDeadEntriesAccessorTest {
 
                 val testExternalResourceJsonDeserializerDeadEntries = object: ExternalResourceJsonDeserializer<DeadEntries> by TestExternalResourceJsonDeserializerDeadEntries {
                     override suspend fun deserialize(file: RegularFile): DeadEntries = DeadEntries(
+                        `$schema` = URI("https://raw.githubusercontent.com/manami-project/anime-offline-database/refs/heads/master/dead-entries/dead-entries.schema.json"),
                         lastUpdate = "2024-08-01",
                         deadEntries = emptyList(),
                     )

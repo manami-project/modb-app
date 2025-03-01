@@ -8,6 +8,9 @@ import io.github.manamiproject.modb.core.anime.AnimeSeason
 import io.github.manamiproject.modb.core.anime.AnimeSeason.Season.*
 import io.github.manamiproject.modb.core.anime.AnimeStatus.*
 import io.github.manamiproject.modb.core.anime.AnimeType.*
+import io.github.manamiproject.modb.core.anime.Duration
+import io.github.manamiproject.modb.core.anime.Duration.TimeUnit.MINUTES
+import io.github.manamiproject.modb.core.anime.ScoreValue
 import io.github.manamiproject.modb.serde.TestHttpClient
 import io.github.manamiproject.modb.serde.TestJsonDeserializer
 import io.github.manamiproject.modb.test.*
@@ -186,6 +189,15 @@ internal class DefaultExternalResourceJsonDeserializerTest : MockServerTestCase<
                         episodes = 13,
                         picture = URI("https://cdn.anidb.net/images/main/224618.jpg"),
                         thumbnail = URI("https://cdn.anidb.net/images/main/224618.jpg-thumb.jpg"),
+                        duration = Duration(
+                            value = 25,
+                            unit = MINUTES,
+                        ),
+                        score = ScoreValue(
+                            arithmeticGeometricMean = 8.20,
+                            arithmeticMean = 8.20,
+                            median = 8.20
+                        ),
                         status = FINISHED,
                         animeSeason = AnimeSeason(
                             season = UNDEFINED,
@@ -222,6 +234,15 @@ internal class DefaultExternalResourceJsonDeserializerTest : MockServerTestCase<
                         episodes = 26,
                         picture = URI("https://cdn.myanimelist.net/images/anime/4/19644.jpg"),
                         thumbnail = URI("https://cdn.myanimelist.net/images/anime/4/19644t.jpg"),
+                        duration = Duration(
+                            value = 24,
+                            unit = MINUTES,
+                        ),
+                        score = ScoreValue(
+                            arithmeticGeometricMean = 8.75,
+                            arithmeticMean = 8.75,
+                            median = 8.75
+                        ),
                         status = FINISHED,
                         animeSeason = AnimeSeason(
                             season = SPRING,
@@ -251,6 +272,15 @@ internal class DefaultExternalResourceJsonDeserializerTest : MockServerTestCase<
                         episodes = 1,
                         picture = URI("https://cdn.myanimelist.net/images/anime/1439/93480.jpg"),
                         thumbnail = URI("https://cdn.myanimelist.net/images/anime/1439/93480t.jpg"),
+                        duration = Duration(
+                            value = 115,
+                            unit = MINUTES,
+                        ),
+                        score = ScoreValue(
+                            arithmeticGeometricMean = 8.38,
+                            arithmeticMean = 8.38,
+                            median = 8.38
+                        ),
                         status = FINISHED,
                         animeSeason = AnimeSeason(
                             season = SPRING,
@@ -277,6 +307,15 @@ internal class DefaultExternalResourceJsonDeserializerTest : MockServerTestCase<
                         episodes = 12,
                         picture = URI("https://cdn.anidb.net/images/main/32901.jpg"),
                         thumbnail = URI("https://cdn.anidb.net/images/main/32901.jpg-thumb.jpg"),
+                        duration = Duration(
+                            value = 25,
+                            unit = MINUTES,
+                        ),
+                        score = ScoreValue(
+                            arithmeticGeometricMean = 5.88,
+                            arithmeticMean = 5.88,
+                            median = 5.88
+                        ),
                         status = FINISHED,
                         animeSeason = AnimeSeason(
                             season = UNDEFINED,
@@ -323,6 +362,15 @@ internal class DefaultExternalResourceJsonDeserializerTest : MockServerTestCase<
                         episodes = 12,
                         picture = URI("https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx6682-ZptgLsCCNHjL.jpg"),
                         thumbnail = URI("https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/default.jpg"),
+                        duration = Duration(
+                            value = 25,
+                            unit = MINUTES,
+                        ),
+                        score = ScoreValue(
+                            arithmeticGeometricMean = 6.04,
+                            arithmeticMean = 6.04,
+                            median = 6.04
+                        ),
                         status = FINISHED,
                         animeSeason = AnimeSeason(
                             season = FALL,
@@ -393,6 +441,15 @@ internal class DefaultExternalResourceJsonDeserializerTest : MockServerTestCase<
                         episodes = 13,
                         picture = URI("https://cdn.anidb.net/images/main/224618.jpg"),
                         thumbnail = URI("https://cdn.anidb.net/images/main/224618.jpg-thumb.jpg"),
+                        duration = Duration(
+                            value = 25,
+                            unit = MINUTES,
+                        ),
+                        score = ScoreValue(
+                            arithmeticGeometricMean = 8.20,
+                            arithmeticMean = 8.20,
+                            median = 8.20
+                        ),
                         status = FINISHED,
                         animeSeason = AnimeSeason(
                             season = UNDEFINED,
@@ -429,6 +486,15 @@ internal class DefaultExternalResourceJsonDeserializerTest : MockServerTestCase<
                         episodes = 26,
                         picture = URI("https://cdn.myanimelist.net/images/anime/4/19644.jpg"),
                         thumbnail = URI("https://cdn.myanimelist.net/images/anime/4/19644t.jpg"),
+                        duration = Duration(
+                            value = 24,
+                            unit = MINUTES,
+                        ),
+                        score = ScoreValue(
+                            arithmeticGeometricMean = 8.75,
+                            arithmeticMean = 8.75,
+                            median = 8.75
+                        ),
                         status = FINISHED,
                         animeSeason = AnimeSeason(
                             season = SPRING,
@@ -458,6 +524,15 @@ internal class DefaultExternalResourceJsonDeserializerTest : MockServerTestCase<
                         episodes = 1,
                         picture = URI("https://cdn.myanimelist.net/images/anime/1439/93480.jpg"),
                         thumbnail = URI("https://cdn.myanimelist.net/images/anime/1439/93480t.jpg"),
+                        duration = Duration(
+                            value = 115,
+                            unit = MINUTES,
+                        ),
+                        score = ScoreValue(
+                            arithmeticGeometricMean = 8.38,
+                            arithmeticMean = 8.38,
+                            median = 8.38
+                        ),
                         status = FINISHED,
                         animeSeason = AnimeSeason(
                             season = SPRING,
@@ -484,6 +559,15 @@ internal class DefaultExternalResourceJsonDeserializerTest : MockServerTestCase<
                         episodes = 12,
                         picture = URI("https://cdn.anidb.net/images/main/32901.jpg"),
                         thumbnail = URI("https://cdn.anidb.net/images/main/32901.jpg-thumb.jpg"),
+                        duration = Duration(
+                            value = 25,
+                            unit = MINUTES,
+                        ),
+                        score = ScoreValue(
+                            arithmeticGeometricMean = 5.88,
+                            arithmeticMean = 5.88,
+                            median = 5.88
+                        ),
                         status = FINISHED,
                         animeSeason = AnimeSeason(
                             season = UNDEFINED,
@@ -530,6 +614,15 @@ internal class DefaultExternalResourceJsonDeserializerTest : MockServerTestCase<
                         episodes = 12,
                         picture = URI("https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx6682-ZptgLsCCNHjL.jpg"),
                         thumbnail = URI("https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/default.jpg"),
+                        duration = Duration(
+                            value = 25,
+                            unit = MINUTES,
+                        ),
+                        score = ScoreValue(
+                            arithmeticGeometricMean = 6.04,
+                            arithmeticMean = 6.04,
+                            median = 6.04
+                        ),
                         status = FINISHED,
                         animeSeason = AnimeSeason(
                             season = FALL,
@@ -709,6 +802,15 @@ internal class DefaultExternalResourceJsonDeserializerTest : MockServerTestCase<
                         episodes = 13,
                         picture = URI("https://cdn.anidb.net/images/main/224618.jpg"),
                         thumbnail = URI("https://cdn.anidb.net/images/main/224618.jpg-thumb.jpg"),
+                        duration = Duration(
+                            value = 25,
+                            unit = MINUTES,
+                        ),
+                        score = ScoreValue(
+                            arithmeticGeometricMean = 8.20,
+                            arithmeticMean = 8.20,
+                            median = 8.20
+                        ),
                         status = FINISHED,
                         animeSeason = AnimeSeason(
                             season = UNDEFINED,
@@ -729,7 +831,7 @@ internal class DefaultExternalResourceJsonDeserializerTest : MockServerTestCase<
                             "novel",
                             "science fiction",
                             "space travel",
-                        )
+                        ),
                     ),
                     Anime(
                         title = "Cowboy Bebop",
@@ -745,6 +847,15 @@ internal class DefaultExternalResourceJsonDeserializerTest : MockServerTestCase<
                         episodes = 26,
                         picture = URI("https://cdn.myanimelist.net/images/anime/4/19644.jpg"),
                         thumbnail = URI("https://cdn.myanimelist.net/images/anime/4/19644t.jpg"),
+                        duration = Duration(
+                            value = 24,
+                            unit = MINUTES,
+                        ),
+                        score = ScoreValue(
+                            arithmeticGeometricMean = 8.75,
+                            arithmeticMean = 8.75,
+                            median = 8.75
+                        ),
                         status = FINISHED,
                         animeSeason = AnimeSeason(
                             season = SPRING,
@@ -767,17 +878,26 @@ internal class DefaultExternalResourceJsonDeserializerTest : MockServerTestCase<
                         sources = hashSetOf(
                             URI("https://myanimelist.net/anime/5"),
                         ),
+                        relatedAnime = hashSetOf(
+                            URI("https://myanimelist.net/anime/1"),
+                        ),
                         type = MOVIE,
                         episodes = 1,
                         picture = URI("https://cdn.myanimelist.net/images/anime/1439/93480.jpg"),
                         thumbnail = URI("https://cdn.myanimelist.net/images/anime/1439/93480t.jpg"),
+                        duration = Duration(
+                            value = 115,
+                            unit = MINUTES,
+                        ),
+                        score = ScoreValue(
+                            arithmeticGeometricMean = 8.38,
+                            arithmeticMean = 8.38,
+                            median = 8.38
+                        ),
                         status = FINISHED,
                         animeSeason = AnimeSeason(
                             season = SPRING,
                             year = 1998,
-                        ),
-                        relatedAnime = hashSetOf(
-                            URI("https://myanimelist.net/anime/1"),
                         ),
                         synonyms = hashSetOf(
                             "Cowboy Bebop: Knockin' on Heaven's Door",
@@ -800,6 +920,15 @@ internal class DefaultExternalResourceJsonDeserializerTest : MockServerTestCase<
                         episodes = 12,
                         picture = URI("https://cdn.anidb.net/images/main/32901.jpg"),
                         thumbnail = URI("https://cdn.anidb.net/images/main/32901.jpg-thumb.jpg"),
+                        duration = Duration(
+                            value = 25,
+                            unit = MINUTES,
+                        ),
+                        score = ScoreValue(
+                            arithmeticGeometricMean = 5.88,
+                            arithmeticMean = 5.88,
+                            median = 5.88
+                        ),
                         status = FINISHED,
                         animeSeason = AnimeSeason(
                             season = UNDEFINED,
@@ -846,6 +975,15 @@ internal class DefaultExternalResourceJsonDeserializerTest : MockServerTestCase<
                         episodes = 12,
                         picture = URI("https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx6682-ZptgLsCCNHjL.jpg"),
                         thumbnail = URI("https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/default.jpg"),
+                        duration = Duration(
+                            value = 25,
+                            unit = MINUTES,
+                        ),
+                        score = ScoreValue(
+                            arithmeticGeometricMean = 6.04,
+                            arithmeticMean = 6.04,
+                            median = 6.04
+                        ),
                         status = FINISHED,
                         animeSeason = AnimeSeason(
                             season = FALL,
@@ -873,7 +1011,7 @@ internal class DefaultExternalResourceJsonDeserializerTest : MockServerTestCase<
                             "tragedy",
                             "witch",
                         ),
-                    )
+                    ),
                 )
 
                 val externalResourceDeserializer = DefaultExternalResourceJsonDeserializer(

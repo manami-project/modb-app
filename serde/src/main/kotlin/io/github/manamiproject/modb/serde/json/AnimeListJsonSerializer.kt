@@ -7,6 +7,7 @@ import io.github.manamiproject.modb.core.logging.LoggerDelegate
 import io.github.manamiproject.modb.core.anime.Anime
 import io.github.manamiproject.modb.serde.json.models.Dataset
 import kotlinx.coroutines.withContext
+import java.net.URI
 import java.time.Clock
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter.ISO_DATE
@@ -26,7 +27,13 @@ public class AnimeListJsonSerializer(
 
         val sortedList = obj.toSet().sortedWith(compareBy({ it.title.lowercase() }, {it.type}, { it.episodes }))
 
+        val schemaLink = when(minify) {
+            true -> URI("https://raw.githubusercontent.com/manami-project/anime-offline-database/refs/heads/master/anime-offline-database-minified.schema.json")
+            else -> URI("https://raw.githubusercontent.com/manami-project/anime-offline-database/refs/heads/master/anime-offline-database.schema.json")
+        }
+
         val data = Dataset(
+            `$schema` = schemaLink,
             data = sortedList,
             lastUpdate = LocalDate.now(clock).format(ISO_DATE),
         )

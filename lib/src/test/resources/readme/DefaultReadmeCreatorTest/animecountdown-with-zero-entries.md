@@ -38,6 +38,7 @@ Here is a description of the types in the JSON files.
 
 | Field        | Type                        | Nullable | Description                                                       |
 |--------------|-----------------------------|----------|-------------------------------------------------------------------|
+| `$schema`    | `URI`                       | no       | Link to the JSON schema which allows to validate the content.     |
 | `license`    | [License](#license)         | no       | Information about the license of the dataset.                     |
 | `repository` | `URL`                       | no       | URL of this github repository which is the source of the dataset. |
 | `scoreRange` | [ScoreRange](#scorerange)   | no       | Describes the upper and lower boundaries of a score.              |
@@ -102,6 +103,7 @@ Here is a description of the types in the JSON files.
 
 | Field         | Type                        | Nullable | Description                                                                  |
 |---------------|-----------------------------|----------|------------------------------------------------------------------------------|
+| `$schema`     | `URI`                       | no       | Link to the JSON schema which allows to validate the content.                |
 | `license`     | [License](#license)         | no       | Information about the license of the dataset.                                |
 | `repository`  | `URL`                       | no       | URL of this github repository which is the source of the dataset.            |
 | `lastUpdate`  | `Date` (format: YYYY-MM-DD) | no       | The date on which the file was updated.                                      |
@@ -118,6 +120,7 @@ Here are some examples showing what the files look like.
 
 ```json
 {
+    "$schema": "https://raw.githubusercontent.com/manami-project/anime-offline-database/refs/heads/master/anime-offline-database.schema.json",
     "license": {
       "name": "GNU Affero General Public License v3.0",
       "url": "https://github.com/manami-project/anime-offline-database/blob/master/LICENSE"
@@ -326,6 +329,7 @@ Here are some examples showing what the files look like.
 
 ```json
 {
+    "$schema": "https://raw.githubusercontent.com/manami-project/anime-offline-database/refs/heads/master/dead-entries/dead-entries.schema.json",
     "license": {
       "name": "GNU Affero General Public License v3.0",
       "url": "https://github.com/manami-project/anime-offline-database/blob/master/LICENSE"
