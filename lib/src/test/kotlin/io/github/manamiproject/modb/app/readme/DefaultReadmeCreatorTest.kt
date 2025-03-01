@@ -33,7 +33,7 @@ import java.time.Instant
 import java.time.ZoneOffset.UTC
 import kotlin.test.Test
 
-class DefaultReadmeCreatorTest {
+internal class DefaultReadmeCreatorTest {
 
     @Nested
     inner class UpdateWithTests {
