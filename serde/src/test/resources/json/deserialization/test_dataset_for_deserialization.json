@@ -4,6 +4,10 @@
     "url": "https://github.com/manami-project/anime-offline-database/blob/master/LICENSE"
   },
   "repository": "https://github.com/manami-project/anime-offline-database",
+  "scoreRange": {
+    "minInclusive": 1.0,
+    "maxInclusive": 10.0
+  },
   "lastUpdate": "2020-01-01",
   "data": [
     {

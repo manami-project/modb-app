@@ -4,7 +4,7 @@ import com.squareup.moshi.JsonDataException
 import io.github.manamiproject.modb.test.exceptionExpected
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Nested
-import org.junit.jupiter.api.Test
+import kotlin.test.Test
 import java.net.URI
 
 internal class UriAdapterTest {
