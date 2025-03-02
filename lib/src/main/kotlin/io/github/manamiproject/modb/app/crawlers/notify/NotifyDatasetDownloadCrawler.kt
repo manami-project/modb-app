@@ -10,9 +10,11 @@ import io.github.manamiproject.modb.app.downloadcontrolstate.DefaultDownloadCont
 import io.github.manamiproject.modb.app.downloadcontrolstate.DownloadControlStateAccessor
 import io.github.manamiproject.modb.app.network.SuspendableHttpClient
 import io.github.manamiproject.modb.core.config.MetaDataProviderConfig
+import io.github.manamiproject.modb.core.coverage.KoverIgnore
 import io.github.manamiproject.modb.core.extensions.*
 import io.github.manamiproject.modb.core.httpclient.HttpClient
 import io.github.manamiproject.modb.core.logging.LoggerDelegate
+import kotlinx.coroutines.delay
 
 
 /**
@@ -45,16 +47,22 @@ class NotifyDatasetDownloadCrawler(
             throw IllegalStateException("Unhandled response code [${animeResponse.code}] when downloading anime data.")
         }
 
-        val animeIdList = animeResponse.bodyAsText.split("\n")
+        val animeFileMapping = animeResponse.bodyAsText.split("\n")
             .chunked(2) {
                 it.first() to it.last()
             }
             .filter { it.first.neitherNullNorBlank() && it.second.neitherNullNorBlank() }
-            .map { (key, content) ->
+            .filterNot { it.second.contains(DEAD_ENTTRY) }
+
+        animeFileMapping.chunked(100).forEach {
+            log.debug { "Creating batch of 100 anime data files." }
+            it.map { (key, content) ->
                 content.writeToFile(appConfig.workingDir(metaDataProviderConfig).resolve("$key.${metaDataProviderConfig.fileSuffix()}"))
-                key
             }
-            .toHashSet()
+            wait()
+        }
+
+        val animeIdList = animeFileMapping.map { it.first }.toHashSet()
 
         val dcsFileIds = downloadControlStateAccessor.downloadControlStateDirectory(metaDataProviderConfig)
             .listRegularFiles("*.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX")
@@ -74,16 +82,21 @@ class NotifyDatasetDownloadCrawler(
             throw IllegalStateException("Unhandled response code [${relationsResponse.code}] when downloading relations.")
         }
 
-        val relationsIdList = relationsResponse.bodyAsText.split("\n")
+        val relationsFileMapping = relationsResponse.bodyAsText.split("\n")
             .chunked(2) {
                 it.first() to it.last()
             }
             .filter { it.first.neitherNullNorBlank() && it.second.neitherNullNorBlank() }
-            .map { (key, content) ->
+
+        relationsFileMapping.chunked(100).forEach {
+            log.debug { "Creating batch of 100 anime relations files." }
+            it.map { (key, content) ->
                 content.writeToFile(appConfig.workingDir(relationsMetaDataProviderConfig).resolve("$key.${relationsMetaDataProviderConfig.fileSuffix()}"))
-                key
             }
-            .toHashSet()
+            wait()
+        }
+
+        val relationsIdList = relationsFileMapping.map { it.first }.toHashSet()
 
         (animeIdList - relationsIdList).forEach {
             """{"animeId":"$it","items":[]}""".writeToFile(appConfig.workingDir(relationsMetaDataProviderConfig).resolve("$it.${relationsMetaDataProviderConfig.fileSuffix()}"))
@@ -92,8 +105,16 @@ class NotifyDatasetDownloadCrawler(
         log.info { "Finished crawling data for [${metaDataProviderConfig.hostname()}]." }
     }
 
+    @KoverIgnore
+    private suspend fun wait() {
+        if (!metaDataProviderConfig.isTestContext()) {
+            delay(500)
+        }
+    }
+
     companion object {
         private val log by LoggerDelegate()
+        private const val DEAD_ENTTRY = """{"canonical":"","romaji":"","english":"","japanese":"","hiragana":"","synonyms":null}"""
 
         /**
          * Singleton of [NotifyDatasetDownloadCrawler]
