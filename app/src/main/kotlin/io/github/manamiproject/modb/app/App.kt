@@ -11,15 +11,11 @@ import io.github.manamiproject.modb.app.crawlers.kitsu.KitsuCrawler
 import io.github.manamiproject.modb.app.crawlers.livechart.LivechartCrawler
 import io.github.manamiproject.modb.app.crawlers.myanimelist.MyanimelistCrawler
 import io.github.manamiproject.modb.app.crawlers.notify.NotifyDatasetDownloadCrawler
-import io.github.manamiproject.modb.app.crawlers.notify.NotifyAnimeDatasetDownloaderConfig
-import io.github.manamiproject.modb.app.crawlers.notify.NotifyRelationsDatasetDownloaderConfig
 import io.github.manamiproject.modb.app.crawlers.simkl.SimklCrawler
 import io.github.manamiproject.modb.app.downloadcontrolstate.DefaultDownloadControlStateAccessor
 import io.github.manamiproject.modb.app.downloadcontrolstate.DefaultDownloadControlStateUpdater
 import io.github.manamiproject.modb.app.extensions.alertDeletedAnimeByTitle
 import io.github.manamiproject.modb.app.fluentapi.*
-import io.github.manamiproject.modb.app.fluentapi.mergeAnime
-import io.github.manamiproject.modb.app.fluentapi.removeUnknownEntriesFromRelatedAnime
 import io.github.manamiproject.modb.app.network.LinuxNetworkController
 import io.github.manamiproject.modb.app.postprocessors.*
 import io.github.manamiproject.modb.core.coroutines.CoroutineManager.runCoroutine
@@ -29,7 +25,6 @@ import io.github.manamiproject.modb.core.extensions.EMPTY
 import io.github.manamiproject.modb.kitsu.KitsuConfig
 import io.github.manamiproject.modb.kitsu.KitsuRelationsConfig
 import io.github.manamiproject.modb.kitsu.KitsuTagsConfig
-import io.github.manamiproject.modb.notify.NotifyRelationsConfig
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import javax.swing.JOptionPane
@@ -56,8 +51,7 @@ fun main() = runCoroutine {
         launch { KitsuCrawler(metaDataProviderConfig = KitsuTagsConfig).start() }
         launch { LivechartCrawler.instance.start() }
         launch { MyanimelistCrawler.instance.start() }
-        launch { NotifyDatasetDownloadCrawler(metaDataProviderConfig = NotifyAnimeDatasetDownloaderConfig).start() }
-        launch { NotifyDatasetDownloadCrawler(metaDataProviderConfig = NotifyRelationsDatasetDownloaderConfig).start() }
+        launch { NotifyDatasetDownloadCrawler.instance.start() }
         launch { SimklCrawler.instance.start() }
     }.join()
 
