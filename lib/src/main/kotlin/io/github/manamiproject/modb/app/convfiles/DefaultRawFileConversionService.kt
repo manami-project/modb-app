@@ -11,6 +11,8 @@ import io.github.manamiproject.modb.anisearch.AnisearchConfig
 import io.github.manamiproject.modb.anisearch.AnisearchRelationsConfig
 import io.github.manamiproject.modb.app.config.AppConfig
 import io.github.manamiproject.modb.app.config.Config
+import io.github.manamiproject.modb.app.crawlers.notify.NotifyAnimeDatasetDownloaderConfig
+import io.github.manamiproject.modb.app.crawlers.notify.NotifyRelationsDatasetDownloaderConfig
 import io.github.manamiproject.modb.core.converter.DefaultPathAnimeConverter
 import io.github.manamiproject.modb.core.coroutines.ModbDispatchers.LIMITED_CPU
 import io.github.manamiproject.modb.core.coverage.KoverIgnore
@@ -27,8 +29,6 @@ import io.github.manamiproject.modb.livechart.LivechartConfig
 import io.github.manamiproject.modb.myanimelist.MyanimelistAnimeConverter
 import io.github.manamiproject.modb.myanimelist.MyanimelistConfig
 import io.github.manamiproject.modb.notify.NotifyAnimeConverter
-import io.github.manamiproject.modb.notify.NotifyConfig
-import io.github.manamiproject.modb.notify.NotifyRelationsConfig
 import io.github.manamiproject.modb.simkl.SimklAnimeConverter
 import io.github.manamiproject.modb.simkl.SimklConfig
 import kotlinx.coroutines.*
@@ -171,15 +171,15 @@ class DefaultRawFileConversionService(
         watchServices.add(
             DependentConversionWatchService(
                 appConfig = appConfig,
-                mainConfig = NotifyConfig,
+                mainConfig = NotifyAnimeDatasetDownloaderConfig,
                 dependentMetaDataProviderConfigs = listOf(
-                    NotifyRelationsConfig,
+                    NotifyRelationsDatasetDownloaderConfig,
                 ),
                 converter = DefaultPathAnimeConverter(
                     animeConverter = NotifyAnimeConverter(
-                        relationsDir = appConfig.workingDir(NotifyRelationsConfig),
+                        relationsDir = appConfig.workingDir(NotifyRelationsDatasetDownloaderConfig),
                     ),
-                    fileSuffix = NotifyConfig.fileSuffix(),
+                    fileSuffix = NotifyAnimeDatasetDownloaderConfig.fileSuffix(),
                 )
             )
         )
