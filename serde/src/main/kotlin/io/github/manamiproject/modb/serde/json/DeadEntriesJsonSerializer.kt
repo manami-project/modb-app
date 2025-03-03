@@ -2,6 +2,7 @@ package io.github.manamiproject.modb.serde.json
 
 import io.github.manamiproject.modb.core.config.AnimeId
 import io.github.manamiproject.modb.core.coroutines.ModbDispatchers.LIMITED_CPU
+import io.github.manamiproject.modb.core.date.WeekOfYear
 import io.github.manamiproject.modb.core.json.Json
 import io.github.manamiproject.modb.core.json.Json.SerializationOptions.DEACTIVATE_PRETTY_PRINT
 import io.github.manamiproject.modb.core.json.Json.SerializationOptions.DEACTIVATE_SERIALIZE_NULL
@@ -26,8 +27,10 @@ public class DeadEntriesJsonSerializer(
     override suspend fun serialize(obj: Collection<AnimeId>, minify: Boolean): String = withContext(LIMITED_CPU) {
         log.debug { "Sorting dead entries" }
 
+        val currentWeek = WeekOfYear(LocalDate.now(clock))
+
         val deadEntriesDocument = DeadEntries(
-            `$schema` = URI("https://raw.githubusercontent.com/manami-project/anime-offline-database/refs/heads/master/dead-entries/dead-entries.schema.json"),
+            `$schema` = URI("https://raw.githubusercontent.com/manami-project/anime-offline-database/refs/tags/${currentWeek}/dead-entries/dead-entries.schema.json"),
             lastUpdate = LocalDate.now(clock).format(ISO_DATE),
             deadEntries = obj.toSet().sorted(),
         )

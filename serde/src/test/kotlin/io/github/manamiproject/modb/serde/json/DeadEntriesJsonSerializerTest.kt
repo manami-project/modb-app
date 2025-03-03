@@ -25,7 +25,7 @@ internal class DeadEntriesJsonSerializerTest {
             val result = serializer.serialize(list, minify = true)
 
             // then
-            assertThat(result).isEqualTo("""{"${'$'}schema":"https://raw.githubusercontent.com/manami-project/anime-offline-database/refs/heads/master/dead-entries/dead-entries.schema.json","license":{"name":"GNU Affero General Public License v3.0","url":"https://github.com/manami-project/anime-offline-database/blob/master/LICENSE"},"repository":"https://github.com/manami-project/anime-offline-database","lastUpdate":"2020-01-01","deadEntries":["1234","5678"]}""".trimIndent())
+            assertThat(result).isEqualTo("""{"${'$'}schema":"https://raw.githubusercontent.com/manami-project/anime-offline-database/refs/tags/2020-01/dead-entries/dead-entries.schema.json","license":{"name":"GNU Affero General Public License v3.0","url":"https://github.com/manami-project/anime-offline-database/blob/master/LICENSE"},"repository":"https://github.com/manami-project/anime-offline-database","lastUpdate":"2020-01-01","deadEntries":["1234","5678"]}""".trimIndent())
         }
     }
 
@@ -46,7 +46,7 @@ internal class DeadEntriesJsonSerializerTest {
             // then
             assertThat(result).isEqualTo("""
                 {
-                  "${'$'}schema": "https://raw.githubusercontent.com/manami-project/anime-offline-database/refs/heads/master/dead-entries/dead-entries.schema.json",
+                  "${'$'}schema": "https://raw.githubusercontent.com/manami-project/anime-offline-database/refs/tags/2020-01/dead-entries/dead-entries.schema.json",
                   "license": {
                     "name": "GNU Affero General Public License v3.0",
                     "url": "https://github.com/manami-project/anime-offline-database/blob/master/LICENSE"
@@ -79,7 +79,7 @@ internal class DeadEntriesJsonSerializerTest {
             // then
             assertThat(result).isEqualTo("""
                 {
-                  "${'$'}schema": "https://raw.githubusercontent.com/manami-project/anime-offline-database/refs/heads/master/dead-entries/dead-entries.schema.json",
+                  "${'$'}schema": "https://raw.githubusercontent.com/manami-project/anime-offline-database/refs/tags/2020-01/dead-entries/dead-entries.schema.json",
                   "license": {
                     "name": "GNU Affero General Public License v3.0",
                     "url": "https://github.com/manami-project/anime-offline-database/blob/master/LICENSE"
