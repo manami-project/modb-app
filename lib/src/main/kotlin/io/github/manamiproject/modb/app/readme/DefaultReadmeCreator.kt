@@ -5,7 +5,7 @@ import io.github.manamiproject.modb.app.config.AppConfig
 import io.github.manamiproject.modb.app.config.Config
 import io.github.manamiproject.modb.app.downloadcontrolstate.DefaultDownloadControlStateAccessor
 import io.github.manamiproject.modb.app.downloadcontrolstate.DownloadControlStateAccessor
-import io.github.manamiproject.modb.app.downloadcontrolstate.weekOfYear
+import io.github.manamiproject.modb.core.date.weekOfYear
 import io.github.manamiproject.modb.app.merging.DefaultReviewedIsolatedEntriesAccessor
 import io.github.manamiproject.modb.app.merging.ReviewedIsolatedEntriesAccessor
 import io.github.manamiproject.modb.app.merging.lock.DefaultMergeLockAccessor

@@ -1,6 +1,8 @@
 package io.github.manamiproject.modb.app.postprocessors
 
 import io.github.manamiproject.modb.app.downloadcontrolstate.*
+import io.github.manamiproject.modb.core.date.WeekOfYear
+import io.github.manamiproject.modb.core.date.compareTo
 import io.github.manamiproject.modb.core.logging.LoggerDelegate
 
 /**

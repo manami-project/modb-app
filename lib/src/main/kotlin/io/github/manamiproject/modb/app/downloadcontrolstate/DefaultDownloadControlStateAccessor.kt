@@ -9,6 +9,7 @@ import io.github.manamiproject.modb.core.anime.AnimeRaw
 import io.github.manamiproject.modb.core.config.AnimeId
 import io.github.manamiproject.modb.core.config.MetaDataProviderConfig
 import io.github.manamiproject.modb.core.coroutines.ModbDispatchers.LIMITED_FS
+import io.github.manamiproject.modb.core.date.WeekOfYear
 import io.github.manamiproject.modb.core.extensions.*
 import io.github.manamiproject.modb.core.json.Json
 import io.github.manamiproject.modb.core.logging.LoggerDelegate

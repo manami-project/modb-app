@@ -6,6 +6,7 @@ import io.github.manamiproject.modb.core.anime.AnimeRaw
 import io.github.manamiproject.modb.core.anime.AnimeSeason.Season.UNDEFINED
 import io.github.manamiproject.modb.core.anime.AnimeStatus.*
 import io.github.manamiproject.modb.core.converter.AnimeConverter
+import io.github.manamiproject.modb.core.date.WeekOfYear
 import io.github.manamiproject.modb.core.extensions.pickRandom
 import io.github.manamiproject.modb.core.anime.AnimeStatus.UNKNOWN as UNKNOWN_STATUS
 import io.github.manamiproject.modb.core.anime.AnimeType.UNKNOWN as UNKNOWN_TYPE

@@ -4,6 +4,8 @@ import io.github.manamiproject.modb.app.config.AppConfig
 import io.github.manamiproject.modb.app.config.Config
 import io.github.manamiproject.modb.core.config.AnimeId
 import io.github.manamiproject.modb.core.config.MetaDataProviderConfig
+import io.github.manamiproject.modb.core.date.WeekOfYear
+import io.github.manamiproject.modb.core.date.weekOfYear
 import io.github.manamiproject.modb.core.logging.LoggerDelegate
 import java.time.LocalDate
 
