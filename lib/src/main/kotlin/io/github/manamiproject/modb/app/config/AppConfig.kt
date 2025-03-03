@@ -10,7 +10,7 @@ import io.github.manamiproject.modb.app.crawlers.livechart.LivechartPaginationId
 import io.github.manamiproject.modb.app.crawlers.notify.NotifyAnimeDatasetDownloaderConfig
 import io.github.manamiproject.modb.app.crawlers.notify.NotifyRelationsDatasetDownloaderConfig
 import io.github.manamiproject.modb.app.crawlers.simkl.SimklPaginationIdRangeSelectorConfig
-import io.github.manamiproject.modb.app.downloadcontrolstate.weekOfYear
+import io.github.manamiproject.modb.core.date.weekOfYear
 import io.github.manamiproject.modb.core.config.ConfigRegistry
 import io.github.manamiproject.modb.core.config.DefaultConfigRegistry
 import io.github.manamiproject.modb.core.config.MetaDataProviderConfig

@@ -1,7 +1,7 @@
 package io.github.manamiproject.modb.app
 
-import io.github.manamiproject.modb.app.downloadcontrolstate.WeekOfYear
-import io.github.manamiproject.modb.app.downloadcontrolstate.weekOfYear
+import io.github.manamiproject.modb.core.date.WeekOfYear
+import io.github.manamiproject.modb.core.date.weekOfYear
 import kotlinx.coroutines.Dispatchers.Unconfined
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.isActive

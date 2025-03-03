@@ -1,4 +1,4 @@
-package io.github.manamiproject.modb.app.downloadcontrolstate
+package io.github.manamiproject.modb.core.date
 
 import io.github.manamiproject.modb.core.anime.YEAR_OF_THE_FIRST_ANIME
 import io.github.manamiproject.modb.core.anime.Year
@@ -12,7 +12,7 @@ import java.util.GregorianCalendar.WEEK_OF_YEAR
  * Number of week within a year.
  * @since 1.0.0
  */
-typealias Week = Int
+public typealias Week = Int
 
 /**
  * Determines the week of a date.
@@ -20,7 +20,7 @@ typealias Week = Int
  * @receiver Any LocaDate.
  * @return An instance of [WeekOfYear] matching the date of the receiver.
  */
-fun LocalDate.weekOfYear(): WeekOfYear = WeekOfYear(this)
+public fun LocalDate.weekOfYear(): WeekOfYear = WeekOfYear(this)
 
 /**
  * Represents the week of a year.
@@ -29,7 +29,7 @@ fun LocalDate.weekOfYear(): WeekOfYear = WeekOfYear(this)
  * @param week Week of the year.
  * @throws IllegalArgumentException if corresponding date is not within range of [YEAR_OF_THE_FIRST_ANIME] <= date <= `today + 5 years` or if values don't represent a valid week.
  */
-data class WeekOfYear(
+public data class WeekOfYear(
     val year: Year,
     val week: Week,
 ) {
@@ -40,7 +40,7 @@ data class WeekOfYear(
      * @param localDate Date for which the week of the year should be determined.
      * @param zoneId Id of the time zone used for the date.
      */
-    constructor(localDate: LocalDate, zoneId: ZoneId = ZoneId.systemDefault()): this(
+    public constructor(localDate: LocalDate, zoneId: ZoneId = ZoneId.systemDefault()): this(
         year = determineYear(localDate, zoneId),
         week = GregorianCalendar.from(localDate.atStartOfDay(zoneId)).get(WEEK_OF_YEAR)
     )
@@ -58,7 +58,7 @@ data class WeekOfYear(
      * @param value Number of weeks to add.
      * @return A new instance containing the week of year.
      */
-    fun plusWeeks(value: Int): WeekOfYear {
+    public fun plusWeeks(value: Int): WeekOfYear {
         val dateOfCurrentWeek = toLocalDate()
         return dateOfCurrentWeek.plusWeeks(value.toLong()).weekOfYear()
     }
@@ -69,7 +69,7 @@ data class WeekOfYear(
      * @param other Other instance of [WeekOfYear] to compare to this instance.
      * @return A new instance containing the week of year.
      */
-    fun difference(other: WeekOfYear): Int {
+    public fun difference(other: WeekOfYear): Int {
         val currentDate = toLocalDate()
         val otherDate = other.toLocalDate()
 
@@ -83,7 +83,7 @@ data class WeekOfYear(
      * @since 1.0.0
      * @return An instance of LocalDate matching this week.
      */
-    fun toLocalDate(): LocalDate {
+    public fun toLocalDate(): LocalDate {
         val firstDayOfCurrentYear = localDateOfFirstWeekOfYear(year)
 
         return if (week == 1) {
@@ -98,14 +98,14 @@ data class WeekOfYear(
         return "$year-$zeroBasedWeek"
     }
 
-    companion object {
+    public companion object {
 
         /**
          * Determines the current week of year and returns it.
          * @since 1.0.0
          * @return An instance representing the current week of year.
          */
-        fun currentWeek(): WeekOfYear = WeekOfYear(LocalDate.now())
+        public fun currentWeek(): WeekOfYear = WeekOfYear(LocalDate.now())
     }
 }
 
@@ -115,7 +115,7 @@ data class WeekOfYear(
  * @param other Other instance of [WeekOfYear] to compare to this instance.
  * @return The comparator value, that is the comparison of this [WeekOfYear] with the other [WeekOfYear].
  */
-operator fun WeekOfYear.compareTo(other: WeekOfYear): Int {
+public operator fun WeekOfYear.compareTo(other: WeekOfYear): Int {
     val currentDate = toLocalDate()
     val otherDate = other.toLocalDate()
 

@@ -5,7 +5,7 @@ import io.github.manamiproject.modb.app.TestDownloadControlStateAccessor
 import io.github.manamiproject.modb.app.dataset.DatasetFileAccessor
 import io.github.manamiproject.modb.app.downloadcontrolstate.DownloadControlStateAccessor
 import io.github.manamiproject.modb.app.downloadcontrolstate.DownloadControlStateEntry
-import io.github.manamiproject.modb.app.downloadcontrolstate.WeekOfYear
+import io.github.manamiproject.modb.core.date.WeekOfYear
 import io.github.manamiproject.modb.core.anime.Anime
 import io.github.manamiproject.modb.core.anime.AnimeRaw
 import io.github.manamiproject.modb.test.exceptionExpected

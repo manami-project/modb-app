@@ -11,6 +11,7 @@ import io.github.manamiproject.modb.core.extensions.readFile
 import io.github.manamiproject.modb.core.json.Json
 import io.github.manamiproject.modb.core.logging.LoggerDelegate
 import io.github.manamiproject.modb.core.anime.AnimeRaw
+import io.github.manamiproject.modb.core.date.WeekOfYear
 import kotlinx.coroutines.async
 import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.withContext
