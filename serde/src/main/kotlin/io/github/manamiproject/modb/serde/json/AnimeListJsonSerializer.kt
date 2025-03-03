@@ -5,7 +5,9 @@ import io.github.manamiproject.modb.core.json.Json
 import io.github.manamiproject.modb.core.json.Json.SerializationOptions.*
 import io.github.manamiproject.modb.core.logging.LoggerDelegate
 import io.github.manamiproject.modb.core.anime.Anime
+import io.github.manamiproject.modb.core.date.WeekOfYear
 import io.github.manamiproject.modb.serde.json.models.Dataset
+import io.github.manamiproject.modb.serde.json.models.License
 import kotlinx.coroutines.withContext
 import java.net.URI
 import java.time.Clock
@@ -26,14 +28,18 @@ public class AnimeListJsonSerializer(
         log.debug { "Sorting dataset by title, type and episodes." }
 
         val sortedList = obj.toSet().sortedWith(compareBy({ it.title.lowercase() }, {it.type}, { it.episodes }))
+        val currentWeek = WeekOfYear(LocalDate.now(clock))
 
         val schemaLink = when(minify) {
-            true -> URI("https://raw.githubusercontent.com/manami-project/anime-offline-database/refs/heads/master/anime-offline-database-minified.schema.json")
-            else -> URI("https://raw.githubusercontent.com/manami-project/anime-offline-database/refs/heads/master/anime-offline-database.schema.json")
+            true -> URI("https://raw.githubusercontent.com/manami-project/anime-offline-database/refs/tags/$currentWeek/anime-offline-database-minified.schema.json")
+            else -> URI("https://raw.githubusercontent.com/manami-project/anime-offline-database/refs/tags/$currentWeek/anime-offline-database.schema.json")
         }
 
         val data = Dataset(
             `$schema` = schemaLink,
+            license = License().copy(
+                url = "https://github.com/manami-project/anime-offline-database/blob/$currentWeek/LICENSE",
+            ),
             data = sortedList,
             lastUpdate = LocalDate.now(clock).format(ISO_DATE),
         )
