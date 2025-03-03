@@ -409,6 +409,76 @@ internal class NotifyDatasetDownloadCrawlerTest {
         }
     }
 
+    @Test
+    fun `don't create raw files if the file already exists`() {
+        // given
+        tempDirectory {
+            val testNotifyConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
+                override fun hostname(): Hostname = NotifyAnimeDatasetDownloaderConfig.hostname()
+                override fun buildDataDownloadLink(id: String): URI = NotifyAnimeDatasetDownloaderConfig.buildDataDownloadLink(id)
+                override fun fileSuffix(): FileSuffix = NotifyAnimeDatasetDownloaderConfig.fileSuffix()
+            }
+
+            val testNotifyRelationsConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
+                override fun hostname(): Hostname = NotifyRelationsDatasetDownloaderConfig.hostname()
+                override fun buildDataDownloadLink(id: String): URI = NotifyRelationsDatasetDownloaderConfig.buildDataDownloadLink(id)
+                override fun fileSuffix(): FileSuffix = NotifyRelationsDatasetDownloaderConfig.fileSuffix()
+            }
+
+            val testWorkingDir = tempDir.resolve("notify.moe").createDirectory()
+            val testRelationsWorkingDir = tempDir.resolve("notify.moe-relations").createDirectory()
+            val testAppConfig = object: Config by TestAppConfig {
+                override fun workingDir(metaDataProviderConfig: MetaDataProviderConfig): Directory = when (metaDataProviderConfig.buildDataDownloadLink()) {
+                    NotifyAnimeDatasetDownloaderConfig.buildDataDownloadLink() -> testWorkingDir
+                    NotifyRelationsDatasetDownloaderConfig.buildDataDownloadLink() -> testRelationsWorkingDir
+                    else -> shouldNotBeInvoked()
+                }
+            }
+
+            val testHttpClient = object: HttpClient by TestHttpClient {
+                override suspend fun get(url: URL, headers: Map<String, Collection<String>>): HttpResponse {
+                    val body: ByteArray = when (url) {
+                        NotifyAnimeDatasetDownloaderConfig.buildDataDownloadLink().toURL() -> loadTestResource("crawler/notify/NotifyDatasetDownloadCrawlerTest/example-anime-dataset.txt")
+                        NotifyRelationsDatasetDownloaderConfig.buildDataDownloadLink().toURL() -> loadTestResource("crawler/notify/NotifyDatasetDownloadCrawlerTest/example-relations-dataset.txt")
+                        else -> shouldNotBeInvoked()
+                    }
+
+                    return HttpResponse(
+                        code = 200,
+                        body = body,
+                    )
+                }
+            }
+
+            val dcsDir = tempDir.resolve("dcs").createDirectory()
+            val testDownloadControlStateAccessor = object: DownloadControlStateAccessor by TestDownloadControlStateAccessor {
+                override fun downloadControlStateDirectory(metaDataProviderConfig: MetaDataProviderConfig): Directory = dcsDir
+            }
+
+            val crawler = NotifyDatasetDownloadCrawler(
+                appConfig = testAppConfig,
+                metaDataProviderConfig = testNotifyConfig,
+                relationsMetaDataProviderConfig = testNotifyRelationsConfig,
+                httpClient = testHttpClient,
+                downloadControlStateAccessor = testDownloadControlStateAccessor,
+                deadEntriesAccessor = TestDeadEntriesAccessor,
+            )
+
+            val file = testWorkingDir.resolve("iEOy6VGHg.${testNotifyConfig.fileSuffix()}")
+            "previously created content for anime".writeToFile(file)
+
+            val relationsFile = testRelationsWorkingDir.resolve("aL4F2FimR.${testNotifyRelationsConfig.fileSuffix()}")
+            "previously created content for relations".writeToFile(relationsFile)
+
+            // when
+            crawler.start()
+
+            //then
+            assertThat(file.readFile()).isEqualTo("previously created content for anime")
+            assertThat(relationsFile.readFile()).isEqualTo("previously created content for relations")
+        }
+    }
+
     @Nested
     inner class CompanionObjectTests {
 

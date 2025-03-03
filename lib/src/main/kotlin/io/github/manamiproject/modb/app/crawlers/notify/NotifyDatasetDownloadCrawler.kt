@@ -53,9 +53,10 @@ class NotifyDatasetDownloadCrawler(
             }
             .filter { it.first.neitherNullNorBlank() && it.second.neitherNullNorBlank() }
             .filterNot { it.second.contains(DEAD_ENTTRY) }
+            .filterNot { appConfig.workingDir(metaDataProviderConfig).resolve("${it.first}.${metaDataProviderConfig.fileSuffix()}").regularFileExists() }
 
-        animeFileMapping.chunked(100).forEach {
-            log.debug { "Creating batch of 100 anime data files." }
+        animeFileMapping.chunked(CHUNK_SIZE).forEach {
+            log.debug { "Creating batch of [$CHUNK_SIZE] anime data files." }
             it.map { (key, content) ->
                 content.writeToFile(appConfig.workingDir(metaDataProviderConfig).resolve("$key.${metaDataProviderConfig.fileSuffix()}"))
             }
@@ -87,9 +88,10 @@ class NotifyDatasetDownloadCrawler(
                 it.first() to it.last()
             }
             .filter { it.first.neitherNullNorBlank() && it.second.neitherNullNorBlank() }
+            .filterNot { appConfig.workingDir(relationsMetaDataProviderConfig).resolve("${it.first}.${relationsMetaDataProviderConfig.fileSuffix()}").regularFileExists() }
 
-        relationsFileMapping.chunked(100).forEach {
-            log.debug { "Creating batch of 100 anime relations files." }
+        relationsFileMapping.chunked(CHUNK_SIZE).forEach {
+            log.debug { "Creating batch of [$CHUNK_SIZE] anime relations files." }
             it.map { (key, content) ->
                 content.writeToFile(appConfig.workingDir(relationsMetaDataProviderConfig).resolve("$key.${relationsMetaDataProviderConfig.fileSuffix()}"))
             }
@@ -108,13 +110,14 @@ class NotifyDatasetDownloadCrawler(
     @KoverIgnore
     private suspend fun wait() {
         if (!metaDataProviderConfig.isTestContext()) {
-            delay(500)
+            delay(800)
         }
     }
 
     companion object {
         private val log by LoggerDelegate()
         private const val DEAD_ENTTRY = """{"canonical":"","romaji":"","english":"","japanese":"","hiragana":"","synonyms":null}"""
+        private const val CHUNK_SIZE = 50
 
         /**
          * Singleton of [NotifyDatasetDownloadCrawler]
