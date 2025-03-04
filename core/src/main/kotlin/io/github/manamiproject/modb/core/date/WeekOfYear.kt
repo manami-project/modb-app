@@ -10,13 +10,13 @@ import java.util.GregorianCalendar.WEEK_OF_YEAR
 
 /**
  * Number of week within a year.
- * @since 1.0.0
+ * @since 18.1.0
  */
 public typealias Week = Int
 
 /**
  * Determines the week of a date.
- * @since 1.0.0
+ * @since 18.1.0
  * @receiver Any LocaDate.
  * @return An instance of [WeekOfYear] matching the date of the receiver.
  */
@@ -24,7 +24,7 @@ public fun LocalDate.weekOfYear(): WeekOfYear = WeekOfYear(this)
 
 /**
  * Represents the week of a year.
- * @since 1.0.0
+ * @since 18.1.0
  * @param year Year
  * @param week Week of the year.
  * @throws IllegalArgumentException if corresponding date is not within range of [YEAR_OF_THE_FIRST_ANIME] <= date <= `today + 5 years` or if values don't represent a valid week.
@@ -36,7 +36,7 @@ public data class WeekOfYear(
 
     /**
      * Create an instance of [WeekOfYear] based on a date.
-     * @since 1.0.0
+     * @since 18.1.0
      * @param localDate Date for which the week of the year should be determined.
      * @param zoneId Id of the time zone used for the date.
      */
@@ -54,7 +54,7 @@ public data class WeekOfYear(
 
     /**
      * Add a number of weeks.
-     * @since 1.0.0
+     * @since 18.1.0
      * @param value Number of weeks to add.
      * @return A new instance containing the week of year.
      */
@@ -65,7 +65,7 @@ public data class WeekOfYear(
 
     /**
      * Determines the difference in weeks. This function takes changing years into consideration.
-     * @since 1.0.0
+     * @since 18.1.0
      * @param other Other instance of [WeekOfYear] to compare to this instance.
      * @return A new instance containing the week of year.
      */
@@ -80,7 +80,7 @@ public data class WeekOfYear(
 
     /**
      * Creates an instance of [LocalDate] an uses the first day of the week.
-     * @since 1.0.0
+     * @since 18.1.0
      * @return An instance of LocalDate matching this week.
      */
     public fun toLocalDate(): LocalDate {
@@ -102,7 +102,7 @@ public data class WeekOfYear(
 
         /**
          * Determines the current week of year and returns it.
-         * @since 1.0.0
+         * @since 18.1.0
          * @return An instance representing the current week of year.
          */
         public fun currentWeek(): WeekOfYear = WeekOfYear(LocalDate.now())
@@ -111,7 +111,7 @@ public data class WeekOfYear(
 
 /**
  * Allows to compare two instances of [WeekOfYear].
- * @since 1.0.0
+ * @since 18.1.0
  * @param other Other instance of [WeekOfYear] to compare to this instance.
  * @return The comparator value, that is the comparison of this [WeekOfYear] with the other [WeekOfYear].
  */
