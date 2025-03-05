@@ -18,8 +18,9 @@ private const val CSRF_TOKEN_PREFIX = "window.al_token"
 /**
  * Retrieves a valid token.
  * @since 1.0.0
- * @param metaDataProviderConfig Configuration for retrieving the token.
- * @param httpClient To download the site from which the token will be extracted
+ * @property metaDataProviderConfig Configuration for retrieving the token.
+ * @property httpClient To download the site from which the token will be extracted
+ * @property extractor Extractor which retrieves the data from raw data.
  */
 public class AnilistDefaultTokenRetriever(
     private val metaDataProviderConfig: MetaDataProviderConfig = AnilistDefaultTokenRetrieverConfig,

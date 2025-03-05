@@ -1,29 +1,27 @@
 package io.github.manamiproject.modb.anidb
 
-import io.github.manamiproject.modb.core.config.AnimeId
-import io.github.manamiproject.modb.core.config.FileSuffix
-import io.github.manamiproject.modb.core.config.MetaDataProviderConfig
+import io.github.manamiproject.modb.core.anime.AnimeSeason.Season.*
 import io.github.manamiproject.modb.core.anime.AnimeStatus.*
 import io.github.manamiproject.modb.core.anime.AnimeType.*
-import io.github.manamiproject.modb.core.anime.AnimeSeason.Season.*
-import io.github.manamiproject.modb.core.anime.AnimeStatus.UNKNOWN as UNKNOWN_STATUS
-import io.github.manamiproject.modb.core.anime.AnimeType.UNKNOWN as UNKNOWN_TYPE
 import io.github.manamiproject.modb.core.anime.Duration
 import io.github.manamiproject.modb.core.anime.Duration.TimeUnit.*
-import io.github.manamiproject.modb.core.anime.MetaDataProviderScoreValue
-import io.github.manamiproject.modb.core.anime.NoMetaDataProviderScore
+import io.github.manamiproject.modb.core.config.AnimeId
+import io.github.manamiproject.modb.core.config.FileSuffix
 import io.github.manamiproject.modb.core.config.Hostname
+import io.github.manamiproject.modb.core.config.MetaDataProviderConfig
 import io.github.manamiproject.modb.test.loadTestResource
 import kotlinx.coroutines.runBlocking
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Nested
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.ValueSource
-import kotlin.test.Test
 import java.net.URI
 import java.time.Clock
 import java.time.Instant
 import java.time.ZoneOffset.UTC
+import kotlin.test.Test
+import io.github.manamiproject.modb.core.anime.AnimeStatus.UNKNOWN as UNKNOWN_STATUS
+import io.github.manamiproject.modb.core.anime.AnimeType.UNKNOWN as UNKNOWN_TYPE
 
 internal class AnidbAnimeConverterTest {
 

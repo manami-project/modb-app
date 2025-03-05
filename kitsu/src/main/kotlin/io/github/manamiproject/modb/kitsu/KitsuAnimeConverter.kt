@@ -21,9 +21,10 @@ import io.github.manamiproject.modb.core.anime.AnimeStatus.UNKNOWN as UNKNOWN_ST
 /**
  * Converts raw data to an [AnimeRaw].
  * @since 1.0.0
- * @param metaDataProviderConfig Configuration for converting data.
- * @param relationsDir Directory containing the raw files for the related anime.
- * @param tagsDir Directory containing the raw files for the tags.
+ * @property metaDataProviderConfig Configuration for converting data.
+ * @property extractor Extractor which retrieves the data from raw data.
+ * @property relationsDir Directory containing the raw files for the related anime.
+ * @property tagsDir Directory containing the raw files for the tags.
  * @throws IllegalArgumentException if either [relationsDir] or [tagsDir] doesn't exist or is not a directory.
  */
 public class KitsuAnimeConverter(

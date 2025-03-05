@@ -15,8 +15,8 @@ import kotlinx.coroutines.withContext
 /**
  * Downloads anime data from kitsu.app
  * @since 1.0.0
- * @param metaDataProviderConfig Configuration for downloading data.
- * @param httpClient To actually download the anime data.
+ * @property metaDataProviderConfig Configuration for downloading data.
+ * @property httpClient To actually download the anime data.
  */
 public class KitsuDownloader(
     private val metaDataProviderConfig: MetaDataProviderConfig,

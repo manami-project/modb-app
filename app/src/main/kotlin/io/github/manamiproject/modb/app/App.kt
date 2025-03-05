@@ -27,7 +27,6 @@ import io.github.manamiproject.modb.kitsu.KitsuRelationsConfig
 import io.github.manamiproject.modb.kitsu.KitsuTagsConfig
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import javax.swing.JOptionPane
 import javax.swing.JOptionPane.*
 import javax.swing.JPasswordField
 import javax.swing.SwingUtilities

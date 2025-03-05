@@ -14,8 +14,8 @@ import kotlinx.coroutines.withContext
 /**
  * Downloads anime data from anidb.net
  * @since 1.0.0
- * @param metaDataProviderConfig Configuration for downloading data.
- * @param httpClient To actually download the anime data.
+ * @property metaDataProviderConfig Configuration for downloading data.
+ * @property httpClient To actually download the anime data.
  */
 public class AnidbDownloader(
     private val metaDataProviderConfig: MetaDataProviderConfig = AnidbConfig,

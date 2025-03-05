@@ -2859,7 +2859,7 @@ internal class PropertiesKtTest {
                     override val name: String = "testProp"
                 }
 
-                val property = ListPropertyDelegate<String>(
+                val property = ListPropertyDelegate(
                     configRegistry = testConfigRegistry,
                     namespace = input,
                     default = listOf("my-default"),
@@ -2958,7 +2958,7 @@ internal class PropertiesKtTest {
                     override fun <T: Any> list(key: String): List<T> = listOf("my-value") as List<T>
                 }
 
-                val property = ListPropertyDelegate<String>(
+                val property = ListPropertyDelegate(
                     configRegistry = testConfigRegistry,
                     namespace = "modb.core.unittest",
                     default = listOf("my-default"),
@@ -2984,7 +2984,7 @@ internal class PropertiesKtTest {
                     override fun <T: Any> list(key: String): List<T> = listOf("my-value") as List<T>
                 }
 
-                val property = ListPropertyDelegate<String>(
+                val property = ListPropertyDelegate(
                     configRegistry = testConfigRegistry,
                     namespace = "modb.core.unittest",
                     default = listOf("my-default"),
@@ -3210,7 +3210,7 @@ internal class PropertiesKtTest {
                     override val name: String = "testProp"
                 }
 
-                val property = SetPropertyDelegate<String>(
+                val property = SetPropertyDelegate(
                     configRegistry = testConfigRegistry,
                     namespace = input,
                     default = setOf("my-default"),
@@ -3322,7 +3322,7 @@ internal class PropertiesKtTest {
                     ) as List<T>
                 }
 
-                val property = SetPropertyDelegate<String>(
+                val property = SetPropertyDelegate(
                     configRegistry = testConfigRegistry,
                     namespace = "modb.core.unittest",
                     default = setOf("my-default"),
@@ -3356,7 +3356,7 @@ internal class PropertiesKtTest {
                     ) as List<T>
                 }
 
-                val property = SetPropertyDelegate<String>(
+                val property = SetPropertyDelegate(
                     configRegistry = testConfigRegistry,
                     namespace = "modb.core.unittest",
                     default = setOf("my-default"),

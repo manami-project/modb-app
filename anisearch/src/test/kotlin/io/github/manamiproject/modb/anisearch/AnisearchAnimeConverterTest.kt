@@ -5,7 +5,6 @@ import io.github.manamiproject.modb.core.anime.AnimeStatus.*
 import io.github.manamiproject.modb.core.anime.AnimeType.*
 import io.github.manamiproject.modb.core.anime.Duration
 import io.github.manamiproject.modb.core.anime.Duration.TimeUnit.*
-import io.github.manamiproject.modb.core.anime.MetaDataProviderScoreValue
 import io.github.manamiproject.modb.core.config.AnimeId
 import io.github.manamiproject.modb.core.config.FileSuffix
 import io.github.manamiproject.modb.core.config.Hostname
