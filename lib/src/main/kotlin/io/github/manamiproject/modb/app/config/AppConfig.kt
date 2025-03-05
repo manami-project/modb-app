@@ -1,5 +1,6 @@
 package io.github.manamiproject.modb.app.config
 
+import io.github.manamiproject.AnimenewsnetworkConfig
 import io.github.manamiproject.modb.anidb.AnidbConfig
 import io.github.manamiproject.modb.anilist.AnilistConfig
 import io.github.manamiproject.modb.animeplanet.AnimePlanetConfig
@@ -74,13 +75,14 @@ class AppConfig(
             AnilistConfig,
             AnimePlanetConfig,
             AnimePlanetPaginationIdRangeSelectorConfig,
+            AnimenewsnetworkConfig,
             AnisearchConfig,
             KitsuConfig,
             LivechartConfig,
             LivechartPaginationIdRangeSelectorConfig,
             MyanimelistConfig,
-            NotifyConfig,
             NotifyAnimeDatasetDownloaderConfig,
+            NotifyConfig,
             SimklConfig,
             SimklPaginationIdRangeSelectorConfig -> currentWeekWorkingDir().resolve(hostname)
             AnisearchRelationsConfig, KitsuRelationsConfig, NotifyRelationsConfig, NotifyRelationsDatasetDownloaderConfig -> currentWeekWorkingDir().resolve("$hostname-relations")
