@@ -32,8 +32,8 @@ import java.time.format.DateTimeFormatter
 /**
  * Converts raw data to an [AnimeRaw].
  * @since 1.0.0
- * @param metaDataProviderConfig Configuration for converting data.
- * @param extractor Extracts specific data from raw content.
+ * @property metaDataProviderConfig Configuration for converting data.
+ * @property extractor Extracts specific data from raw content.
  */
 public class SimklAnimeConverter(
     private val metaDataProviderConfig: MetaDataProviderConfig = SimklConfig,

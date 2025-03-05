@@ -25,8 +25,8 @@ import io.github.manamiproject.modb.core.anime.Duration.Companion.UNKNOWN as UNK
  * Converts raw data to an [AnimeRaw].
  * Requires raw HTML from the mobile site version.
  * @since 1.0.0
- * @param metaDataProviderConfig Configuration for converting data.
- * @param extractor Extracts specific data from raw content.
+ * @property metaDataProviderConfig Configuration for converting data.
+ * @property extractor Extracts specific data from raw content.
  */
 public class MyanimelistAnimeConverter(
     private val metaDataProviderConfig: MetaDataProviderConfig = MyanimelistConfig,

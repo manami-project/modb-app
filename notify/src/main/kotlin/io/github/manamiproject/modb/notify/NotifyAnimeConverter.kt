@@ -21,8 +21,9 @@ import java.net.URI
  * The conversion requires two files. The file with all main data and a second file containing related anime.
  * IDs are always identical. If an anime doesn't provide any related anime it still has to have a file for related anime.
  * @since 1.0.0
- * @param metaDataProviderConfig Configuration
- * @param relationsDir Directory containing the raw files for the related anime.
+ * @property metaDataProviderConfig Configuration for converting data.
+ * @property extractor Extractor which retrieves the data from raw data.
+ * @property relationsDir Directory containing the raw files for the related anime.
  * @throws IllegalArgumentException if the [relationsDir] doesn't exist or is not a directory.
  */
 public class NotifyAnimeConverter(

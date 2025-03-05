@@ -20,7 +20,8 @@ import java.net.URI
 /**
  * Converts raw data to an [AnimeRaw].
  * @since 1.0.0
- * @param metaDataProviderConfig Configuration for converting data.
+ * @property metaDataProviderConfig Configuration for converting data.
+ * @property extractor Extractor which retrieves the data from raw data.
  */
 public class AnilistAnimeConverter(
     private val metaDataProviderConfig: MetaDataProviderConfig = AnilistConfig,

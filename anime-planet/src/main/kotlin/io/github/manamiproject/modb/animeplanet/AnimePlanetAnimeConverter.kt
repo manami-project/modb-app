@@ -28,7 +28,10 @@ import java.time.LocalDate
 /**
  * Converts raw data to an [AnimeRaw].
  * @since 1.0.0
- * @param metaDataProviderConfig Configuration for converting data.
+ * @property metaDataProviderConfig Configuration for converting data.
+ * @property xmlExtractor Extractor which retrieves the data from raw data.
+ * @property jsonExtractor Extractor which retrieves the data from raw data.
+ * @property clock Instance of a clock to determine the current date.
  */
 public class AnimePlanetAnimeConverter(
     private val metaDataProviderConfig: MetaDataProviderConfig = AnimePlanetConfig,

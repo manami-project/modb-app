@@ -28,7 +28,8 @@ import java.time.LocalDate
 /**
  * Converts raw data to an [AnimeRaw]
  * @since 1.0.0
- * @param metaDataProviderConfig Configuration for converting data.
+ * @property metaDataProviderConfig Configuration for converting data.
+ * @property extractor Extractor which retrieves the data from raw data.
  * @param clock Used to determine the current date. **Default:** `Clock.systemDefaultZone()`
  */
 public class AnidbAnimeConverter(

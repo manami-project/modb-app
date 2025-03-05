@@ -1,17 +1,15 @@
 package io.github.manamiproject.modb.animeplanet
 
-import io.github.manamiproject.modb.core.config.AnimeId
-import io.github.manamiproject.modb.core.config.Hostname
-import io.github.manamiproject.modb.core.config.MetaDataProviderConfig
-import io.github.manamiproject.modb.core.anime.AnimeStatus.*
-import io.github.manamiproject.modb.core.anime.AnimeType.*
 import io.github.manamiproject.modb.core.anime.AnimeSeason
 import io.github.manamiproject.modb.core.anime.AnimeSeason.Season.*
-import io.github.manamiproject.modb.core.anime.AnimeStatus.UNKNOWN as UNKNOWN_STATUS
+import io.github.manamiproject.modb.core.anime.AnimeStatus.*
+import io.github.manamiproject.modb.core.anime.AnimeType.*
 import io.github.manamiproject.modb.core.anime.Duration
 import io.github.manamiproject.modb.core.anime.Duration.TimeUnit.HOURS
 import io.github.manamiproject.modb.core.anime.Duration.TimeUnit.MINUTES
-import io.github.manamiproject.modb.core.anime.NoMetaDataProviderScore
+import io.github.manamiproject.modb.core.config.AnimeId
+import io.github.manamiproject.modb.core.config.Hostname
+import io.github.manamiproject.modb.core.config.MetaDataProviderConfig
 import io.github.manamiproject.modb.test.loadTestResource
 import io.github.manamiproject.modb.test.tempDirectory
 import kotlinx.coroutines.runBlocking
@@ -22,6 +20,7 @@ import java.time.Clock
 import java.time.LocalDate
 import java.time.ZoneOffset.UTC
 import kotlin.test.Test
+import io.github.manamiproject.modb.core.anime.AnimeStatus.UNKNOWN as UNKNOWN_STATUS
 
 internal class AnimePlanetAnimeConverterTest {
 

@@ -26,7 +26,9 @@ import io.github.manamiproject.modb.core.anime.AnimeType.UNKNOWN as UNKNOWN_TYPE
  * Converts raw data to an [AnimeRaw].
  * Requires raw HTML.
  * @since 1.0.0
- * @param metaDataProviderConfig Configuration for converting data.
+ * @property metaDataProviderConfig Configuration for converting data.
+ * @property xmlExtractor Extractor which retrieves the data from raw data.
+ * @property jsonExtractor Extractor which retrieves the data from raw data.
  */
 public class LivechartAnimeConverter(
     private val metaDataProviderConfig: MetaDataProviderConfig = LivechartConfig,

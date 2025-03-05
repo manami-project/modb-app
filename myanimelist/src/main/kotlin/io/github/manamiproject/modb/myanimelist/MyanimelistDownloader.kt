@@ -14,8 +14,10 @@ import io.github.manamiproject.modb.core.logging.LoggerDelegate
 /**
  * Downloads anime data from myanimelist.net
  * @since 1.0.0
- * @param metaDataProviderConfig Configuration for downloading data.
- * @param httpClient To actually download the anime data.
+ * @property metaDataProviderConfig Configuration for downloading data.
+ * @property configRegistry Extractor which retrieves the data from raw data.
+ * @property headerCreator Extractor which retrieves the data from raw data.
+ * @property httpClient To actually download the anime data.
  */
 public class MyanimelistDownloader(
     private val metaDataProviderConfig: MetaDataProviderConfig = MyanimelistConfig,

@@ -7,6 +7,13 @@ import io.github.manamiproject.modb.core.httpclient.RequestBody
 import io.github.manamiproject.modb.core.logging.LoggerDelegate
 import java.net.URL
 
+/**
+ * Anilist specific implemenation of a [HttpClient] which handles the renewal of the token under the hood.
+ * @since 5.1.1
+ * @property delegate HttpClient which is used under the hood.
+ * @property anilistTokenRetriever Fechtes a new token for the CSRF.
+ * @property anilistTokenRepository Keeps the current CSRF token in-memory.
+ */
 public class AnilistHttpClient(
     private val delegate: HttpClient = DefaultHttpClient(),
     private val anilistTokenRetriever: AnilistTokenRetriever = AnilistDefaultTokenRetriever.instance,
