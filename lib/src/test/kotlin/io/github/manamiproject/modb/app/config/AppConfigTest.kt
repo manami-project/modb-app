@@ -1,5 +1,6 @@
 package io.github.manamiproject.modb.app.config
 
+import io.github.manamiproject.AnimenewsnetworkConfig
 import io.github.manamiproject.modb.anidb.AnidbConfig
 import io.github.manamiproject.modb.anilist.AnilistConfig
 import io.github.manamiproject.modb.animeplanet.AnimePlanetConfig
@@ -292,6 +293,27 @@ internal class AppConfigTest {
                 // then
                 assertThat(result).exists()
                 assertThat(result.fileName.toString()).isEqualTo("anime-planet.com")
+            }
+        }
+
+        @Test
+        fun `check that name of working directory for AnimenewsnetworkConfig is correct`() {
+            tempDirectory {
+                // given
+                val testConfigRegistry = object: ConfigRegistry by TestConfigRegistry {
+                    override fun string(key: String): String = tempDir.toAbsolutePath().toString()
+                }
+
+                val appConfig = AppConfig(
+                    configRegistry = testConfigRegistry,
+                )
+
+                // when
+                val result = appConfig.workingDir(AnimenewsnetworkConfig)
+
+                // then
+                assertThat(result).exists()
+                assertThat(result.fileName.toString()).isEqualTo("animenewsnetwork.com")
             }
         }
 
