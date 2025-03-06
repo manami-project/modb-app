@@ -47,23 +47,27 @@ class NotifyDatasetDownloadCrawler(
             throw IllegalStateException("Unhandled response code [${animeResponse.code}] when downloading anime data.")
         }
 
-        val animeFileMapping = animeResponse.bodyAsText.split("\n")
+        animeResponse.bodyAsText.split("\n")
+            .asSequence()
             .chunked(2) {
                 it.first() to it.last()
             }
             .filter { it.first.neitherNullNorBlank() && it.second.neitherNullNorBlank() }
             .filterNot { it.second.contains(DEAD_ENTTRY) }
             .filterNot { appConfig.workingDir(metaDataProviderConfig).resolve("${it.first}.${metaDataProviderConfig.fileSuffix()}").regularFileExists() }
-
-        animeFileMapping.chunked(CHUNK_SIZE).forEach {
-            log.debug { "Creating batch of [$CHUNK_SIZE] anime data files." }
-            it.map { (key, content) ->
-                content.writeToFile(appConfig.workingDir(metaDataProviderConfig).resolve("$key.${metaDataProviderConfig.fileSuffix()}"))
+            .chunked(CHUNK_SIZE)
+            .toList().forEach {
+                log.debug { "Creating batch of [$CHUNK_SIZE] anime data files." }
+                it.map { (key, content) ->
+                    content.writeToFile(appConfig.workingDir(metaDataProviderConfig).resolve("$key.${metaDataProviderConfig.fileSuffix()}"))
+                }
+                wait()
             }
-            wait()
-        }
 
-        val animeIdList = animeFileMapping.map { it.first }.toHashSet()
+        val animeIdList = appConfig.workingDir(metaDataProviderConfig)
+            .listRegularFiles("*.${metaDataProviderConfig.fileSuffix()}")
+            .map { it.fileName().remove(".${metaDataProviderConfig.fileSuffix()}") }
+            .toHashSet()
 
         val dcsFileIds = downloadControlStateAccessor.downloadControlStateDirectory(metaDataProviderConfig)
             .listRegularFiles("*.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX")
@@ -83,22 +87,24 @@ class NotifyDatasetDownloadCrawler(
             throw IllegalStateException("Unhandled response code [${relationsResponse.code}] when downloading relations.")
         }
 
-        val relationsFileMapping = relationsResponse.bodyAsText.split("\n")
+        relationsResponse.bodyAsText.split("\n")
             .chunked(2) {
                 it.first() to it.last()
             }
             .filter { it.first.neitherNullNorBlank() && it.second.neitherNullNorBlank() }
             .filterNot { appConfig.workingDir(relationsMetaDataProviderConfig).resolve("${it.first}.${relationsMetaDataProviderConfig.fileSuffix()}").regularFileExists() }
-
-        relationsFileMapping.chunked(CHUNK_SIZE).forEach {
-            log.debug { "Creating batch of [$CHUNK_SIZE] anime relations files." }
-            it.map { (key, content) ->
-                content.writeToFile(appConfig.workingDir(relationsMetaDataProviderConfig).resolve("$key.${relationsMetaDataProviderConfig.fileSuffix()}"))
+            .chunked(CHUNK_SIZE).forEach {
+                log.debug { "Creating batch of [$CHUNK_SIZE] anime relations files." }
+                it.map { (key, content) ->
+                    content.writeToFile(appConfig.workingDir(relationsMetaDataProviderConfig).resolve("$key.${relationsMetaDataProviderConfig.fileSuffix()}"))
+                }
+                wait()
             }
-            wait()
-        }
 
-        val relationsIdList = relationsFileMapping.map { it.first }.toHashSet()
+        val relationsIdList = appConfig.workingDir(relationsMetaDataProviderConfig)
+            .listRegularFiles("*.${relationsMetaDataProviderConfig.fileSuffix()}")
+            .map { it.fileName().remove(".${relationsMetaDataProviderConfig.fileSuffix()}") }
+            .toHashSet()
 
         (animeIdList - relationsIdList).forEach {
             """{"animeId":"$it","items":[]}""".writeToFile(appConfig.workingDir(relationsMetaDataProviderConfig).resolve("$it.${relationsMetaDataProviderConfig.fileSuffix()}"))
