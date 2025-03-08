@@ -5,6 +5,7 @@ import io.github.manamiproject.modb.anisearch.AnisearchRelationsConfig
 import io.github.manamiproject.modb.app.convfiles.DefaultRawFileConversionService
 import io.github.manamiproject.modb.app.crawlers.anidb.AnidbCrawler
 import io.github.manamiproject.modb.app.crawlers.anilist.AnilistCrawler
+import io.github.manamiproject.modb.app.crawlers.animenewsnetwork.AnimenewsnetworkCrawler
 import io.github.manamiproject.modb.app.crawlers.animeplanet.AnimePlanetCrawler
 import io.github.manamiproject.modb.app.crawlers.anisearch.AnisearchCrawler
 import io.github.manamiproject.modb.app.crawlers.kitsu.KitsuCrawler
@@ -43,6 +44,7 @@ fun main() = runCoroutine {
         launch { AnidbCrawler.instance.start() }
         launch { AnilistCrawler.instance.start() }
         launch { AnimePlanetCrawler.instance.start() }
+        launch { AnimenewsnetworkCrawler.instance.start() }
         launch { AnisearchCrawler(metaDataProviderConfig = AnisearchConfig).start() }
         launch { AnisearchCrawler(metaDataProviderConfig = AnisearchRelationsConfig).start() }
         launch { KitsuCrawler(metaDataProviderConfig = KitsuConfig).start() }
