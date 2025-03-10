@@ -1,5 +1,7 @@
 package io.github.manamiproject.modb.app.convfiles
 
+import io.github.manamiproject.AnimenewsnetworkConfig
+import io.github.manamiproject.AnimenewsnetworkAnimeConverter
 import io.github.manamiproject.modb.anidb.AnidbAnimeConverter
 import io.github.manamiproject.modb.anidb.AnidbConfig
 import io.github.manamiproject.modb.anilist.AnilistAnimeConverter
@@ -121,6 +123,7 @@ class DefaultRawFileConversionService(
             LivechartConfig to LivechartAnimeConverter.instance,
             MyanimelistConfig to MyanimelistAnimeConverter.instance,
             SimklConfig to SimklAnimeConverter.instance,
+            AnimenewsnetworkConfig to AnimenewsnetworkAnimeConverter.instance,
         ).map { entry ->
             SimpleConversionWatchService(
                 appConfig = appConfig,
