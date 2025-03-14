@@ -139,8 +139,8 @@ public class NotifyAnimeConverter(
     private fun extractDuration(data: ExtractionResult) = Duration(data.int("episodeLength"), MINUTES)
 
     private fun extractAnimeSeason(data: ExtractionResult): AnimeSeason {
-        val month = Regex("-[0-9]{2}-").findAll(data.string("startDate")).firstOrNull()?.value?.remove("-")?.toInt() ?: 0
-        val year = Regex("[0-9]{4}").findAll(data.string("startDate")).firstOrNull()?.value?.toInt() ?: UNKNOWN_YEAR
+        val month = """-\d{2}-""".toRegex().findAll(data.string("startDate")).firstOrNull()?.value?.remove("-")?.toInt() ?: 0
+        val year = """\d{4}""".toRegex().findAll(data.string("startDate")).firstOrNull()?.value?.toInt() ?: UNKNOWN_YEAR
 
         val season = when(month) {
             1, 2, 3 -> WINTER

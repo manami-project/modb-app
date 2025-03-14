@@ -130,7 +130,7 @@ public fun String.normalizeWhitespaces(): String = this.replace('\u00A0', ' ') /
     .remove("\u000C") // form feed
     .remove("\u2028") // line separator
     // reduce multiple consecutive whitespaces to a single whitespace
-    .replace(Regex(" {2,}"), " ")
+    .replace(""" {2,}""".toRegex(), " ")
     .trim()
 
 

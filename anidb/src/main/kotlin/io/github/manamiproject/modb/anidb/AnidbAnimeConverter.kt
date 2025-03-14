@@ -261,7 +261,7 @@ public class AnidbAnimeConverter(
         var season = UNDEFINED
 
         if (seasonCell.neitherNullNorBlank()) {
-            val seasonNameFormat = Regex("[aA-zZ]+")
+            val seasonNameFormat = """[aA-zZ]+""".toRegex()
             season = when (seasonNameFormat.find(seasonCell)?.value?.lowercase() ?: EMPTY) {
                 "winter" -> WINTER
                 "spring" -> SPRING
@@ -270,8 +270,8 @@ public class AnidbAnimeConverter(
                 else -> UNDEFINED
             }
 
-            val winterSeasonYearFormat = Regex("\\d+/\\d+")
-            val defaultSeasonYearFormat = Regex("\\d{4}")
+            val winterSeasonYearFormat = """\d+/\d+""".toRegex()
+            val defaultSeasonYearFormat = """\d{4}""".toRegex()
 
             year = if (winterSeasonYearFormat.containsMatchIn(seasonCell)) {
                 winterSeasonYearFormat.find(seasonCell)?.value?.trim()?.split('/')?.get(0)?.toInt()?.plus(1) ?: 0
@@ -364,7 +364,7 @@ public class AnidbAnimeConverter(
         private const val EU_CDN = "https://cdn-eu.anidb.net"
         private const val US_CDN = "https://cdn-us.anidb.net"
         private const val CDN = "https://cdn.anidb.net"
-        private val DATEFORMAT = Regex("(?<year>\\d{4})-(?<month>\\d{2})-(?<day>\\d{2})")
+        private val DATEFORMAT = """(?<year>\d{4})-(?<month>\d{2})-(?<day>\d{2})""".toRegex()
 
         /**
          * Singleton of [AnidbAnimeConverter]

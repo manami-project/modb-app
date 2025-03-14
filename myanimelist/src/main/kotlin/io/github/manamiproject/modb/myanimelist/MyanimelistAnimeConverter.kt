@@ -81,7 +81,7 @@ public class MyanimelistAnimeConverter(
                         .map { it.trim() }
                 )
             }
-            title.contains(Regex("[^ ];[^ ]")) or title.endsWith(";") -> {
+            title.contains("""[^ ];[^ ]""".toRegex()) or title.endsWith(";") -> {
                 processedSynonyms.addAll(
                     synonyms.flatMap { it.split("; ") }
                         .map { it.trim() }
@@ -99,7 +99,7 @@ public class MyanimelistAnimeConverter(
         return if (data.notFound("episodes")) {
             0
         } else {
-            val matchResult = Regex("\\d+").find(data.string("episodes"))
+            val matchResult = """\d+""".toRegex().find(data.string("episodes"))
             return matchResult?.value?.toInt() ?: 0
         }
     }
@@ -148,7 +148,7 @@ public class MyanimelistAnimeConverter(
 
     private fun extractSourcesEntry(data: ExtractionResult): HashSet<URI> {
         val text = data.string("source")
-        val matchResult = Regex("/[0-9]+/").find(text)
+        val matchResult = """/\d+/""".toRegex().find(text)
         val rawId = matchResult?.value ?: throw IllegalStateException("Unable to extract source")
         val id = rawId.trimStart('/').trimEnd('/')
         return hashSetOf(metaDataProviderConfig.buildAnimeLink(id))
@@ -160,7 +160,7 @@ public class MyanimelistAnimeConverter(
         } else {
             data.listNotNull<String>("relatedAnimeDetails")
                 .filter { it.trim().startsWith(metaDataProviderConfig.buildAnimeLink(EMPTY).toString()) }
-                .mapNotNull { Regex("[0-9]+").find(it)?.value }
+                .mapNotNull { """\d+""".toRegex().find(it)?.value }
                 .map { metaDataProviderConfig.buildAnimeLink(it) }
                 .toHashSet()
         }
@@ -170,7 +170,7 @@ public class MyanimelistAnimeConverter(
         } else {
             data.listNotNull<String>("relatedAnime")
                 .filter { it.trim().startsWith(metaDataProviderConfig.buildAnimeLink(EMPTY).toString()) }
-                .mapNotNull { Regex("[0-9]+").find(it)?.value }
+                .mapNotNull { """\d+""".toRegex().find(it)?.value }
                 .map { metaDataProviderConfig.buildAnimeLink(it) }
                 .toHashSet()
         }
@@ -194,8 +194,8 @@ public class MyanimelistAnimeConverter(
 
         val text = data.string("duration").trim()
 
-        val values = Regex("[0-9]+").findAll(text).toList().map { it.value }
-        val units = Regex("(hr|min|sec)").findAll(text)
+        val values = """\d+""".toRegex().findAll(text).toList().map { it.value }
+        val units = """(hr|min|sec)""".toRegex().findAll(text)
             .toList()
             .map { it.value }
             .map { it.trim() }
@@ -230,10 +230,10 @@ public class MyanimelistAnimeConverter(
         val premiered = data.string("premiered").trim()
         val aired = data.string("aired").trim()
 
-        val seasonText = Regex("[aA-zZ]+").find(premiered)?.value ?: EMPTY
+        val seasonText = """[aA-zZ]+""".toRegex().find(premiered)?.value ?: EMPTY
         var season =  Season.of(seasonText)
         if (season == Season.UNDEFINED) {
-            season = when(Regex("[aA-zZ]+").find(aired)?.value?.lowercase() ?: EMPTY) {
+            season = when("""[aA-zZ]+""".toRegex().find(aired)?.value?.lowercase() ?: EMPTY) {
                 "jan", "feb", "mar" -> Season.WINTER
                 "apr", "may", "jun" -> Season.SPRING
                 "jul", "aug", "sep" -> Season.SUMMER
@@ -242,11 +242,11 @@ public class MyanimelistAnimeConverter(
             }
         }
 
-        val yearPremiered = Regex("[0-9]{4}").find(premiered)?.value?.toInt() ?: 0
+        val yearPremiered = """\d{4}""".toRegex().find(premiered)?.value?.toInt() ?: 0
         val year = if (yearPremiered != 0) {
             yearPremiered
         } else {
-            Regex("[0-9]{4}").findAll(aired).firstOrNull()?.value?.toInt() ?: 0
+            """\d{4}""".toRegex().findAll(aired).firstOrNull()?.value?.toInt() ?: 0
         }
 
         return AnimeSeason(

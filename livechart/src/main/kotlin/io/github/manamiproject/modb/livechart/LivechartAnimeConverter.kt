@@ -184,12 +184,12 @@ public class LivechartAnimeConverter(
     private fun extractDuration(data: ExtractionResult): Duration {
         val durationString = data.stringOrDefault("duration").trim()
 
-        val seconds = Regex("([0-9]+ ?[aA-zZ]+)+")
+        val seconds = """(\d+ ?[aA-zZ]+)+""".toRegex()
             .findAll(durationString)
             .map { it.value }
             .map {
-                val value = (Regex("[0-9]+").find(it)?.value?.trim() ?: "0").ifBlank { "0" }.toIntOrNull() ?: 0
-                val unit = Regex("[a-z]+").find(it)?.value?.trim()?.lowercase() ?: ""
+                val value = ("""\d+""".toRegex().find(it)?.value?.trim() ?: "0").ifBlank { "0" }.toIntOrNull() ?: 0
+                val unit = """[a-z]+""".toRegex().find(it)?.value?.trim()?.lowercase() ?: ""
                 value to unit
             }
             .map {

@@ -40,7 +40,7 @@ internal object OpenInBrowserHelper {
         val entriesBeingPartOfMergeLock = currentEntryUris.filter { DefaultMergeLockAccessor.instance.isPartOfMergeLock(it) }.toSet()
         val searchLinkForMissingMetaDataProvider = with(currentEntryUris.map { it.host }.toSet()) {
             val searchLink = mutableSetOf<URI>()
-            val urlEncodedTitle = URLEncoder.encode(currentEntry.first.title, "UTF-8").replace(Regex("\\+"), "%20")
+            val urlEncodedTitle = URLEncoder.encode(currentEntry.first.title, "UTF-8").replace("""\+""".toRegex(), "%20")
 
             if (!this.contains(AnidbConfig.hostname())) {
                 searchLink.add(URI("https://${AnidbConfig.hostname()}/anime/?adb.search=$urlEncodedTitle&do.search=1"))

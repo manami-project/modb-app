@@ -160,9 +160,9 @@ public class AnisearchAnimeConverter(
             .trim()
             .lowercase()
 
-        val value = Regex("\\d+").find(textValue)!!.value.toInt()
+        val value = """\d+""".toRegex().find(textValue)!!.value.toInt()
         val fallbackUnit = "unknown"
-        val extractedUnit = Regex("[aA-zZ]+").find(textValue)?.value ?: fallbackUnit
+        val extractedUnit = """[aA-zZ]+""".toRegex().find(textValue)?.value ?: fallbackUnit
 
         when {
             value > 0 && extractedUnit == fallbackUnit -> throw IllegalStateException("Value for duration is present [], but unit is unknown")
@@ -184,9 +184,9 @@ public class AnisearchAnimeConverter(
             return AnimeSeason()
         }
 
-        val year = Regex("[0-9]{4}").find(date)!!.value.toInt()
+        val year = """\d{4}""".toRegex().find(date)!!.value.toInt()
         val fallback = "0"
-        val month = (Regex("-[0-9]{2}-").find(date)?.value?.replace(Regex("-"), EMPTY)?.ifBlank { fallback } ?: fallback).toInt()
+        val month = ("""-\d{2}-""".toRegex().find(date)?.value?.replace("""-""".toRegex(), EMPTY)?.ifBlank { fallback } ?: fallback).toInt()
 
         val season = when(month) {
             1, 2, 3 -> WINTER

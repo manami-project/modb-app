@@ -56,7 +56,7 @@ class AnisearchLastPageDetector(
 
         val lastPageNavEntry = data.listNotNull<String>("lastPageNavEntry").first()
 
-        return Regex("[0-9]+").find(lastPageNavEntry)!!.value.toInt()
+        return """\d+""".toRegex().find(lastPageNavEntry)!!.value.toInt()
     }
 
     private suspend fun download(): String {
