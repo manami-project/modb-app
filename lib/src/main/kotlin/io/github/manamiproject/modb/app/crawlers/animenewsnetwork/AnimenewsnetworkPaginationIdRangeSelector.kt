@@ -61,7 +61,7 @@ class AnimenewsnetworkPaginationIdRangeSelector(
         }
 
         val entriesOnThePage = data.listNotNull<String>("entriesOnThePage")
-            .map { Regex("=\\d+").find(it)?.value ?: EMPTY }
+            .map { """=\d+""".toRegex().find(it)?.value ?: EMPTY }
             .filter { it.neitherNullNorBlank() }
             .map { it.remove("=") }
             .toHashSet()
