@@ -101,7 +101,7 @@ public class AnimePlanetAnimeConverter(
         }
 
         // shows range of two years
-        if (Regex("[0-9]{4} - [0-9]{4}").matches(value)) {
+        if ("""\d{4} - \d{4}""".toRegex().matches(value)) {
             val year = REGEX_YEAR.findAll(value).last().value.toInt()
             return when {
                 year > currentYear -> UPCOMING
@@ -111,7 +111,7 @@ public class AnimePlanetAnimeConverter(
         }
 
         // shows range from year to unknown
-        if (Regex("[0-9]{4} - \\?").matches(value)) {
+        if ("""\d{4} - \?""".toRegex().matches(value)) {
             val year = REGEX_YEAR.find(value)!!.value.toInt()
             return when {
                 year > currentYear -> UPCOMING
@@ -144,13 +144,13 @@ public class AnimePlanetAnimeConverter(
 
     private fun extractEpisodes(data: ExtractionResult): Episodes {
         return data.stringOrDefault("typeEpisodesDuration").let {
-            Regex("\\d+").find(it)?.value?.toInt() ?: 0
+            """\d+""".toRegex().find(it)?.value?.toInt() ?: 0
         }
     }
 
     private fun extractType(data: ExtractionResult): AnimeType {
         val textValue = data.string("typeEpisodesDuration").substringBefore('(').lowercase().let {
-            Regex("([a-z]| )+").find(it)?.value?.trim() ?: EMPTY
+            """([a-z]| )+""".toRegex().find(it)?.value?.trim() ?: EMPTY
         }
 
         return when(textValue) {
@@ -180,7 +180,7 @@ public class AnimePlanetAnimeConverter(
 
     private fun extractPicture(thumbnail: URI): URI {
         return if (thumbnail != NO_PICTURE) {
-            URI(thumbnail.toString().replace(Regex("-\\d+x\\d+"), EMPTY))
+            URI(thumbnail.toString().replace("""-\d+x\d+""".toRegex(), EMPTY))
         } else {
             NO_PICTURE_THUMBNAIL
         }
@@ -188,7 +188,7 @@ public class AnimePlanetAnimeConverter(
 
     private fun extractDuration(data: ExtractionResult): Duration {
         val durationInMinutes = data.string("typeEpisodesDuration").let {
-            Regex("\\d+ min").find(it)?.value?.remove("min")?.trim()?.toInt() ?: 0
+            """\d+ min""".toRegex().find(it)?.value?.remove("min")?.trim()?.toInt() ?: 0
         }
 
         return Duration(durationInMinutes, MINUTES)
@@ -291,7 +291,7 @@ public class AnimePlanetAnimeConverter(
     }
 
     public companion object {
-        private val REGEX_YEAR = Regex("\\d{4}")
+        private val REGEX_YEAR = """\d{4}""".toRegex()
         private const val TITLE_CONTAINING_AT_CHAR= "[email protected]"
         private const val SINGLE_SYNONYM = "Alt title:"
         private const val MULTIPLE_SYNONYMS = "Alt titles:"

@@ -79,7 +79,7 @@ class AnisearchPaginationIdRangeSelector(
         }
 
         val entriesOnThePage = data.listNotNull<String>("entriesOnThePage")
-            .map { Regex("/[0-9]+,").find(it)?.value ?: EMPTY }
+            .map { """/\d+,""".toRegex().find(it)?.value ?: EMPTY }
             .filter { it.neitherNullNorBlank() }
             .map { it.remove("/").remove(",") }
             .toHashSet()

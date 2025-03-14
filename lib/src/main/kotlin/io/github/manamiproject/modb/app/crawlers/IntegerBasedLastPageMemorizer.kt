@@ -25,7 +25,7 @@ class IntegerBasedLastPageMemorizer @KoverIgnore constructor(
         val value = stringBasedLastPageMemorizer.retrieveLastPage()
 
         return if (value.neitherNullNorBlank()) {
-            Regex("\\d+").find(value)?.value?.toInt() ?: throw IllegalStateException("Unable to retrieve last page for [${metaDataProviderConfig.hostname()}]")
+            """\d+""".toRegex().find(value)?.value?.toInt() ?: throw IllegalStateException("Unable to retrieve last page for [${metaDataProviderConfig.hostname()}]")
         } else {
             1
         }

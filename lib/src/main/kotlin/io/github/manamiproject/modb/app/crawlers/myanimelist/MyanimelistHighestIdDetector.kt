@@ -40,7 +40,7 @@ class MyanimelistHighestIdDetector(
 
         val urlOfTheMostRecentAddition = data.listNotNull<String>("urlOfTheMostRecentAddition").first()
 
-        return Regex("/[0-9]+/").find(urlOfTheMostRecentAddition)
+        return """/\d+/""".toRegex().find(urlOfTheMostRecentAddition)
             ?.value
             ?.remove("/")
             ?.toIntOrNull()

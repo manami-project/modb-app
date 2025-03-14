@@ -88,7 +88,7 @@ private fun parseOutput(output: String): IfconfigOutput {
                     currentLines.clear()
                 }
 
-                currentDevice = Regex("[aA-zZ]+[0-9]+:").find(line)?.value?.trimEnd(':') ?: throw IllegalStateException("Error: Unexpected output.")
+                currentDevice = """[aA-zZ]+\d+:""".toRegex().find(line)?.value?.trimEnd(':') ?: throw IllegalStateException("Error: Unexpected output.")
                 currentLines.add(line.substringAfter(':').trim())
             }
             else -> currentLines.add(line.trim())

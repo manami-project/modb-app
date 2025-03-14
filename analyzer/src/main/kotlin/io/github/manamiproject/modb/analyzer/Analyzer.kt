@@ -107,7 +107,7 @@ object Analyzer {
 
         val cluster = waitForUserInput()
 
-        if (!Regex("\\d+").matches(cluster)) {
+        if (!"""\d+""".toRegex().matches(cluster)) {
             checkMergeLocks()
         }
 
