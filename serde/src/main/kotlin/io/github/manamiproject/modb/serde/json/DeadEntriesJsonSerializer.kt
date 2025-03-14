@@ -8,6 +8,7 @@ import io.github.manamiproject.modb.core.json.Json.SerializationOptions.DEACTIVA
 import io.github.manamiproject.modb.core.json.Json.SerializationOptions.DEACTIVATE_SERIALIZE_NULL
 import io.github.manamiproject.modb.core.logging.LoggerDelegate
 import io.github.manamiproject.modb.serde.json.models.DeadEntries
+import io.github.manamiproject.modb.serde.json.models.License
 import kotlinx.coroutines.withContext
 import java.net.URI
 import java.time.Clock
@@ -31,6 +32,9 @@ public class DeadEntriesJsonSerializer(
 
         val deadEntriesDocument = DeadEntries(
             `$schema` = URI("https://raw.githubusercontent.com/manami-project/anime-offline-database/refs/tags/${currentWeek}/dead-entries/dead-entries.schema.json"),
+            license = License().copy(
+                url = "https://github.com/manami-project/anime-offline-database/blob/$currentWeek/LICENSE",
+            ),
             lastUpdate = LocalDate.now(clock).format(ISO_DATE),
             deadEntries = obj.toSet().sorted(),
         )
