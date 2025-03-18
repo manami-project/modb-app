@@ -1,5 +1,6 @@
 package io.github.manamiproject.modb.app.dataset
 
+import io.github.manamiproject.AnimenewsnetworkConfig
 import io.github.manamiproject.modb.anidb.AnidbConfig
 import io.github.manamiproject.modb.anilist.AnilistConfig
 import io.github.manamiproject.modb.animeplanet.AnimePlanetConfig
@@ -96,6 +97,7 @@ class DefaultDeadEntriesAccessor(
                 AnidbConfig.hostname() -> containsDeadEntry(uri)
                 AnilistConfig.hostname() -> containsDeadEntry(uri)
                 AnimePlanetConfig.hostname() -> entryNotExistsAsDcsFile(uri)
+                AnimenewsnetworkConfig.hostname() -> entryNotExistsAsDcsFile(uri)
                 AnisearchConfig.hostname() -> entryNotExistsAsDcsFile(uri)
                 KitsuConfig.hostname() -> containsDeadEntry(uri)
                 LivechartConfig.hostname() -> entryNotExistsAsDcsFile(uri)
