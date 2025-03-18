@@ -14,7 +14,7 @@ public object AnimenewsnetworkConfig: MetaDataProviderConfig {
 
     override fun hostname(): Hostname = "animenewsnetwork.com"
 
-    override fun buildAnimeLink(id: AnimeId): URI = URI("https://www.${hostname()}/encyclopedia/anime.php?id=$id")
+    override fun buildAnimeLink(id: AnimeId): URI = URI("https://${hostname()}/encyclopedia/anime.php?id=$id")
 
     override fun fileSuffix(): FileSuffix = "html"
 }

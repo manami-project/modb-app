@@ -45,7 +45,7 @@ internal class AnimenewsnetworkAnimeConverterTest {
                 val result = converter.convert(testFile)
 
                 // then
-                assertThat(result.sources).containsExactly(URI("https://www.animenewsnetwork.com/encyclopedia/anime.php?id=6592"))
+                assertThat(result.sources).containsExactly(URI("https://animenewsnetwork.com/encyclopedia/anime.php?id=6592"))
             }
         }
     }
@@ -1002,7 +1002,7 @@ internal class AnimenewsnetworkAnimeConverterTest {
 
                 // then
                 assertThat(result.relatedAnime).containsExactlyInAnyOrder(
-                    URI("https://www.animenewsnetwork.com/encyclopedia/anime.php?id=7809")
+                    URI("https://animenewsnetwork.com/encyclopedia/anime.php?id=7809")
                 )
             }
         }
@@ -1048,8 +1048,8 @@ internal class AnimenewsnetworkAnimeConverterTest {
 
                 // then
                 assertThat(result.relatedAnime).containsExactlyInAnyOrder(
-                    URI("https://www.animenewsnetwork.com/encyclopedia/anime.php?id=33628"),
-                    URI("https://www.animenewsnetwork.com/encyclopedia/anime.php?id=30277"),
+                    URI("https://animenewsnetwork.com/encyclopedia/anime.php?id=33628"),
+                    URI("https://animenewsnetwork.com/encyclopedia/anime.php?id=30277"),
                 )
             }
         }
@@ -1073,9 +1073,9 @@ internal class AnimenewsnetworkAnimeConverterTest {
 
                 // then
                 assertThat(result.relatedAnime).containsExactlyInAnyOrder(
-                    URI("https://www.animenewsnetwork.com/encyclopedia/anime.php?id=2960"),
-                    URI("https://www.animenewsnetwork.com/encyclopedia/anime.php?id=14079"),
-                    URI("https://www.animenewsnetwork.com/encyclopedia/anime.php?id=12180"),
+                    URI("https://animenewsnetwork.com/encyclopedia/anime.php?id=2960"),
+                    URI("https://animenewsnetwork.com/encyclopedia/anime.php?id=14079"),
+                    URI("https://animenewsnetwork.com/encyclopedia/anime.php?id=12180"),
                 )
             }
         }
@@ -1099,14 +1099,14 @@ internal class AnimenewsnetworkAnimeConverterTest {
 
                 // then
                 assertThat(result.relatedAnime).containsExactlyInAnyOrder(
-                    URI("https://www.animenewsnetwork.com/encyclopedia/anime.php?id=20000"),
-                    URI("https://www.animenewsnetwork.com/encyclopedia/anime.php?id=28763"),
-                    URI("https://www.animenewsnetwork.com/encyclopedia/anime.php?id=23886"),
-                    URI("https://www.animenewsnetwork.com/encyclopedia/anime.php?id=24366"),
-                    URI("https://www.animenewsnetwork.com/encyclopedia/anime.php?id=27622"),
-                    URI("https://www.animenewsnetwork.com/encyclopedia/anime.php?id=26353"),
-                    URI("https://www.animenewsnetwork.com/encyclopedia/anime.php?id=26831"),
-                    URI("https://www.animenewsnetwork.com/encyclopedia/anime.php?id=31113"),
+                    URI("https://animenewsnetwork.com/encyclopedia/anime.php?id=20000"),
+                    URI("https://animenewsnetwork.com/encyclopedia/anime.php?id=28763"),
+                    URI("https://animenewsnetwork.com/encyclopedia/anime.php?id=23886"),
+                    URI("https://animenewsnetwork.com/encyclopedia/anime.php?id=24366"),
+                    URI("https://animenewsnetwork.com/encyclopedia/anime.php?id=27622"),
+                    URI("https://animenewsnetwork.com/encyclopedia/anime.php?id=26353"),
+                    URI("https://animenewsnetwork.com/encyclopedia/anime.php?id=26831"),
+                    URI("https://animenewsnetwork.com/encyclopedia/anime.php?id=31113"),
                 )
             }
         }
