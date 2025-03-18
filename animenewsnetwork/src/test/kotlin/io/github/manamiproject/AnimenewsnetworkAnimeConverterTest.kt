@@ -1579,6 +1579,33 @@ internal class AnimenewsnetworkAnimeConverterTest {
         }
 
         @Test
+        fun `vintage - no range, year-month - FINISHED special case where the suffix contains 'to', but not to set a range`() {
+            runBlocking {
+                // given
+                val testAnimenewsnetworkConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = AnimenewsnetworkConfig.hostname()
+                    override fun buildAnimeLink(id: AnimeId): URI = AnimenewsnetworkConfig.buildAnimeLink(id)
+                    override fun fileSuffix(): FileSuffix = AnimenewsnetworkConfig.fileSuffix()
+                }
+
+                val testClock = Clock.fixed(Instant.parse("1990-12-31T16:02:42.00Z"), UTC)
+
+                val converter = AnimenewsnetworkAnimeConverter(
+                    testAnimenewsnetworkConfig,
+                    clock = testClock,
+                )
+
+                val testFile = loadTestResource<String>("AnimenewsnetworkConverterTest/status/vintage-year-month-special-case.html")
+
+                // when
+                val result = converter.convert(testFile)
+
+                // then
+                assertThat(result.status).isEqualTo(FINISHED)
+            }
+        }
+
+        @Test
         fun `vintage - range - UPCOMING`() {
             runBlocking {
                 // given
