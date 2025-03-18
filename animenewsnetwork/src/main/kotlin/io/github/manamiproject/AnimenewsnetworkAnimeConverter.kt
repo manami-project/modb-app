@@ -76,7 +76,7 @@ public class AnimenewsnetworkAnimeConverter(
     }
 
     private fun extractSourcesEntry(data: ExtractionResult): HashSet<URI> {
-        return hashSetOf(URI(data.string("source")))
+        return hashSetOf(URI(data.string("source").remove("www.")))
     }
 
     private fun extractTitle(data: ExtractionResult): Pair<Title, Title> {

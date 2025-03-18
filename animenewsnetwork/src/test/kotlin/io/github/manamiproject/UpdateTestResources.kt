@@ -92,6 +92,7 @@ private val files = mapOf(
     "AnimenewsnetworkConverterTest/status/vintage-year-month-day.html" to "7171",
     "AnimenewsnetworkConverterTest/status/vintage-year-month.html" to "22540",
     "AnimenewsnetworkConverterTest/status/vintage-year.html" to "301",
+    "AnimenewsnetworkConverterTest/status/vintage-year-month-special-case.html" to "31510",
 )
 
 internal fun main(): Unit = runCoroutine {
