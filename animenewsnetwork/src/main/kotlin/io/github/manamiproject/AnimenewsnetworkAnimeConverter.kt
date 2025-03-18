@@ -330,7 +330,7 @@ public class AnimenewsnetworkAnimeConverter(
             }
         }
 
-        val splitDates = value.split(" to ").map { it.normalize() }
+        val splitDates = value.split(" to ").map { it.normalize() }.filter { str -> setOf(yearMonthRegex, yearMonthDayRegex).any { it.matches(str) } }
         val now = LocalDate.now(clock)
 
         // Single date
