@@ -1,5 +1,6 @@
 package io.github.manamiproject.modb.app.config
 
+import io.github.manamiproject.AnimenewsnetworkConfig
 import io.github.manamiproject.modb.anidb.AnidbConfig
 import io.github.manamiproject.modb.anilist.AnilistConfig
 import io.github.manamiproject.modb.animeplanet.AnimePlanetConfig
@@ -54,6 +55,7 @@ internal class ConfigTest {
                 AnidbConfig,
                 AnilistConfig,
                 AnimePlanetConfig,
+                AnimenewsnetworkConfig,
                 AnisearchConfig,
                 KitsuConfig,
                 LivechartConfig,
