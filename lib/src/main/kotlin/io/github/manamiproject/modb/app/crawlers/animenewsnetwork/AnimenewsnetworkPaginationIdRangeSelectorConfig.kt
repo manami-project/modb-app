@@ -10,5 +10,5 @@ import java.net.URI
  */
 object AnimenewsnetworkPaginationIdRangeSelectorConfig: MetaDataProviderConfig by AnimenewsnetworkConfig{
 
-    override fun buildDataDownloadLink(id: String): URI = URI("https://www.${hostname()}/encyclopedia/anime.php?list=$id")
+    override fun buildDataDownloadLink(id: String): URI = URI("https://${hostname()}/encyclopedia/anime.php?list=$id")
 }
