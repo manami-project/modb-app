@@ -33,7 +33,7 @@ internal class AnimenewsnetworkConfigTest {
         val result = AnimenewsnetworkConfig.buildAnimeLink(id)
 
         // then
-        assertThat(result).isEqualTo(URI("https://www.animenewsnetwork.com/encyclopedia/anime.php?id=$id"))
+        assertThat(result).isEqualTo(URI("https://animenewsnetwork.com/encyclopedia/anime.php?id=$id"))
     }
 
     @Test
@@ -45,7 +45,7 @@ internal class AnimenewsnetworkConfigTest {
         val result = AnimenewsnetworkConfig.buildDataDownloadLink(id)
 
         // then
-        assertThat(result).isEqualTo(URI("https://www.animenewsnetwork.com/encyclopedia/anime.php?id=$id"))
+        assertThat(result).isEqualTo(URI("https://animenewsnetwork.com/encyclopedia/anime.php?id=$id"))
     }
 
     @Test
