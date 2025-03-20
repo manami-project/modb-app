@@ -38,7 +38,7 @@ jobs:
       - name: Execute tests
         env:
           GH_PACKAGES_READ_TOKEN: ${{ secrets.PACKAGES_READ_TOKEN }}
-        run: ./gradlew test
+        run: ./gradlew clean test
 
       - name: Publish Test Results
         uses: EnricoMi/publish-unit-test-result-action@v2
