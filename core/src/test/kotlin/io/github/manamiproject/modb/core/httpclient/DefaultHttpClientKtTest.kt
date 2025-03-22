@@ -19,6 +19,7 @@ import org.junit.jupiter.params.provider.ValueSource
 import java.net.SocketTimeoutException
 import java.net.URI
 import java.net.UnknownHostException
+import java.util.concurrent.TimeUnit.MILLISECONDS
 import kotlin.test.Test
 
 
@@ -446,12 +447,16 @@ internal class DefaultHttpClientKtTest : MockServerTestCase<WireMockServer> by W
                     get(urlPathEqualTo("/test")).willReturn(
                         aResponse()
                             .withStatus(200)
-                            .withFixedDelay(10000)
+                            .withFixedDelay(3000)
                     )
                 )
 
                 val client = DefaultHttpClient(
                     isTestContext = true,
+                    okhttpClient = OkHttpClient().newBuilder()
+                        .writeTimeout(1500, MILLISECONDS)
+                        .readTimeout(1500, MILLISECONDS)
+                        .build(),
                 )
 
                 // when
@@ -462,7 +467,10 @@ internal class DefaultHttpClientKtTest : MockServerTestCase<WireMockServer> by W
                 }
 
                 // then
-                assertThat(result).hasMessage("timeout")
+                assertThat(result.message).isIn(
+                    "Read timed out",
+                    "timeout",
+                )
             }
         }
 
@@ -569,7 +577,7 @@ internal class DefaultHttpClientKtTest : MockServerTestCase<WireMockServer> by W
                     headers = mapOf("test-header" to listOf("headervalue")),
                     requestBody = RequestBody(
                         mediaType = APPLICATION_JSON,
-                        body = body
+                        body = body,
                     ),
                 )
 
@@ -606,7 +614,7 @@ internal class DefaultHttpClientKtTest : MockServerTestCase<WireMockServer> by W
                     headers = mapOf("test-header" to listOf("headervalue")),
                     requestBody = RequestBody(
                         mediaType = APPLICATION_JSON,
-                        body = body
+                        body = body,
                     )
                 )
 
@@ -907,7 +915,7 @@ internal class DefaultHttpClientKtTest : MockServerTestCase<WireMockServer> by W
                     headers = mapOf("test-header" to listOf("headervalue")),
                     requestBody = RequestBody(
                         mediaType = APPLICATION_JSON,
-                        body = body
+                        body = body,
                     )
                 )
 
@@ -1006,7 +1014,7 @@ internal class DefaultHttpClientKtTest : MockServerTestCase<WireMockServer> by W
                     headers = mapOf("test-header" to listOf("headervalue")),
                     requestBody = RequestBody(
                         mediaType = APPLICATION_JSON,
-                        body = body
+                        body = body,
                     )
                 )
 
@@ -1043,7 +1051,7 @@ internal class DefaultHttpClientKtTest : MockServerTestCase<WireMockServer> by W
                         headers = mapOf("test-header" to listOf("headervalue")),
                         requestBody = RequestBody(
                             mediaType = APPLICATION_JSON,
-                            body = body
+                            body = body,
                         )
                     )
                 }
@@ -1075,7 +1083,7 @@ internal class DefaultHttpClientKtTest : MockServerTestCase<WireMockServer> by W
                         headers = mapOf("test-header" to listOf("headervalue")),
                         requestBody = RequestBody(
                             mediaType = APPLICATION_JSON,
-                            body = body
+                            body = body,
                         ),
                     )
                 }
@@ -1126,7 +1134,7 @@ internal class DefaultHttpClientKtTest : MockServerTestCase<WireMockServer> by W
                     headers = mapOf("test-header" to listOf("headervalue")),
                     requestBody = RequestBody(
                         mediaType = APPLICATION_JSON,
-                        body = body
+                        body = body,
                     ),
                 )
 
@@ -1146,7 +1154,7 @@ internal class DefaultHttpClientKtTest : MockServerTestCase<WireMockServer> by W
                     post(urlPathEqualTo("/$path")).willReturn(
                         aResponse()
                             .withStatus(200)
-                            .withFixedDelay(10000)
+                            .withFixedDelay(3000)
                     )
                 )
 
@@ -1154,6 +1162,10 @@ internal class DefaultHttpClientKtTest : MockServerTestCase<WireMockServer> by W
                 val body = "{ \"key\": \"some-value\" }"
                 val client = DefaultHttpClient(
                     isTestContext = true,
+                    okhttpClient = OkHttpClient().newBuilder()
+                        .writeTimeout(1500, MILLISECONDS)
+                        .readTimeout(1500, MILLISECONDS)
+                        .build(),
                 )
 
                 // when
@@ -1163,13 +1175,16 @@ internal class DefaultHttpClientKtTest : MockServerTestCase<WireMockServer> by W
                         headers = mapOf("test-header" to listOf("headervalue")),
                         requestBody = RequestBody(
                             mediaType = APPLICATION_JSON,
-                            body = body
+                            body = body,
                         ),
                     )
                 }
 
                 // then
-                assertThat(result).hasMessage("timeout")
+                assertThat(result.message).isIn(
+                    "Read timed out",
+                    "timeout",
+                )
             }
         }
 
@@ -1240,7 +1255,7 @@ internal class DefaultHttpClientKtTest : MockServerTestCase<WireMockServer> by W
                     headers = mapOf("test-header" to listOf("headervalue")),
                     requestBody = RequestBody(
                         mediaType = APPLICATION_JSON,
-                        body = body
+                        body = body,
                     )
                 )
 
