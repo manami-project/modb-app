@@ -15,14 +15,27 @@ internal class RetryBehaviorTest {
     inner class AddCaseTests {
 
         @Test
+        fun `returns same instance`() {
+            // given
+            val retryIf = { httpResponse: HttpResponse -> httpResponse.code == 403 }
+            val retryBehavior = RetryBehavior()
+
+            // when
+            val result = retryBehavior.addCases(
+                HttpResponseRetryCase(retryIf=retryIf),
+            )
+
+            // then
+            assertThat(result).isSameAs(retryBehavior)
+        }
+
+        @Test
         fun `HttpResponse - adding duplicates is not possible`() {
             // given
             val retryIf = { httpResponse: HttpResponse -> httpResponse.code == 403 }
-            val retryBehavior = RetryBehavior().apply {
-                addCases(
-                    HttpResponseRetryCase(waitDuration = { _: Int -> 1.toDuration(SECONDS)}, retryIf=retryIf),
-                )
-            }
+            val retryBehavior = RetryBehavior().addCases(
+                HttpResponseRetryCase(waitDuration = { _: Int -> 1.toDuration(SECONDS)}, retryIf=retryIf),
+            )
 
             // when
             retryBehavior.addCases(
@@ -55,11 +68,9 @@ internal class RetryBehaviorTest {
         fun `Throwable - adding duplicates is not possible`() {
             // given
             val retryIf = { throwable: Throwable -> throwable is SocketTimeoutException }
-            val retryBehavior = RetryBehavior().apply {
-                addCases(
-                    ThrowableRetryCase(waitDuration = { _: Int -> 1.toDuration(SECONDS)}, retryIf=retryIf),
-                )
-            }
+            val retryBehavior = RetryBehavior().addCases(
+                ThrowableRetryCase(waitDuration = { _: Int -> 1.toDuration(SECONDS)}, retryIf=retryIf),
+            )
 
             // when
             retryBehavior.addCases(
@@ -114,11 +125,9 @@ internal class RetryBehaviorTest {
         fun `true if a corresponding case was found`() {
             // given
             val retryIf = { httpResponse: HttpResponse -> httpResponse.code == 403 }
-            val retryBehavior = RetryBehavior().apply {
-                addCases(
-                    HttpResponseRetryCase(retryIf=retryIf),
-                )
-            }
+            val retryBehavior = RetryBehavior().addCases(
+                HttpResponseRetryCase(retryIf=retryIf),
+            )
 
             // when
             val result = retryBehavior.requiresRetry(HttpResponse(code = 403, body = EMPTY))
@@ -147,11 +156,9 @@ internal class RetryBehaviorTest {
         fun `true if a corresponding case was found`() {
             // given
             val retryIf = { throwable: Throwable -> throwable is SocketTimeoutException }
-            val retryBehavior = RetryBehavior().apply {
-                addCases(
-                    ThrowableRetryCase(retryIf=retryIf),
-                )
-            }
+            val retryBehavior = RetryBehavior().addCases(
+                ThrowableRetryCase(retryIf=retryIf),
+            )
 
             // when
             val result = retryBehavior.requiresRetry(SocketTimeoutException())
@@ -181,9 +188,7 @@ internal class RetryBehaviorTest {
             // given
             val retryIf = { httpResponse: HttpResponse -> httpResponse.code == 403 }
             val retryCase = HttpResponseRetryCase(waitDuration = { _: Int -> 1.toDuration(SECONDS)}, retryIf=retryIf)
-            val retryBehavior = RetryBehavior().apply {
-                addCases(retryCase)
-            }
+            val retryBehavior = RetryBehavior().addCases(retryCase)
 
             // when
             val result = retryBehavior.retryCase(HttpResponse(code = 403, body = EMPTY))
@@ -215,9 +220,7 @@ internal class RetryBehaviorTest {
             // given
             val retryIf = { throwable: Throwable -> throwable is SocketTimeoutException }
             val retryCase = ThrowableRetryCase(retryIf=retryIf)
-            val retryBehavior = RetryBehavior().apply {
-                addCases(retryCase)
-            }
+            val retryBehavior = RetryBehavior().addCases(retryCase)
 
             // when
             val result = retryBehavior.retryCase(SocketTimeoutException())

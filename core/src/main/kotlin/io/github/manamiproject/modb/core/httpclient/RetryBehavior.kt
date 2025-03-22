@@ -19,8 +19,9 @@ public data class RetryBehavior(
      * Any case of type [NoRetry] is ignored.
      * @since 9.0.0
      * @param retryCases Can take a single or multiple [HttpResponseRetryCase]s.
+     * @return Same instance.
      */
-    public fun addCases(vararg retryCases: RetryCase) {
+    public fun addCases(vararg retryCases: RetryCase): RetryBehavior {
         retryCases.forEach {
             when (it) {
                 is HttpResponseRetryCase -> httpResponseRetryCases[it.retryIf] = it
@@ -28,6 +29,8 @@ public data class RetryBehavior(
                 NoRetry -> {}
             }
         }
+
+        return this
     }
 
     /**
