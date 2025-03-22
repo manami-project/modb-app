@@ -43,7 +43,7 @@ class NotifyDatasetDownloadCrawler(
 
         val animeResponse = httpClient.get(metaDataProviderConfig.buildDataDownloadLink().toURL())
 
-        if (!animeResponse.isOk()) {
+        if (animeResponse.isNotOk()) {
             throw IllegalStateException("Unhandled response code [${animeResponse.code}] when downloading anime data.")
         }
 
@@ -83,7 +83,7 @@ class NotifyDatasetDownloadCrawler(
 
         val relationsResponse = httpClient.get(relationsMetaDataProviderConfig.buildDataDownloadLink().toURL())
 
-        if (!relationsResponse.isOk()) {
+        if (relationsResponse.isNotOk()) {
             throw IllegalStateException("Unhandled response code [${relationsResponse.code}] when downloading relations.")
         }
 

@@ -71,7 +71,7 @@ internal class SimklCrawlerTest {
                 val testHttpClient = object: HttpClient by TestHttpClient {
                     override suspend fun post(url: URL, requestBody: RequestBody, headers: Map<String, Collection<String>>): HttpResponse = HttpResponse(
                         code = 200,
-                        body = value.toByteArray(),
+                        body = value,
                     )
                 }
 
@@ -137,7 +137,7 @@ internal class SimklCrawlerTest {
                     override suspend fun post(url: URL, requestBody: RequestBody, headers: Map<String, Collection<String>>): HttpResponse {
                         return HttpResponse(
                             code = 200,
-                            body = "<div style=\"height: 500px\"></div>".toByteArray(),
+                            body = "<div style=\"height: 500px\"></div>",
                         )
                     }
                 }
@@ -216,7 +216,7 @@ internal class SimklCrawlerTest {
                     override suspend fun post(url: URL, requestBody: RequestBody, headers: Map<String, Collection<String>>): HttpResponse {
                         return HttpResponse(
                             code = 200,
-                            body = "<div style=\"height: 500px\"></div>".toByteArray(),
+                            body = "<div style=\"height: 500px\"></div>",
                         )
                     }
                 }
@@ -289,7 +289,7 @@ internal class SimklCrawlerTest {
                         requests.add(requestBody.body)
                         return HttpResponse(
                             code = 200,
-                            body = "<div style=\"height: 500px\"></div>".toByteArray(),
+                            body = "<div style=\"height: 500px\"></div>",
                         )
                     }
                 }
@@ -362,11 +362,11 @@ internal class SimklCrawlerTest {
                         return when (invocations) {
                             1 -> HttpResponse(
                                 code = 200,
-                                body = loadTestResource("crawler/simkl/SimklCrawlerTest/page-with-entries.html"),
+                                body = loadTestResource<ByteArray>("crawler/simkl/SimklCrawlerTest/page-with-entries.html"),
                             )
                             else -> HttpResponse(
                                 code = 200,
-                                body = "<div style=\"height: 500px\"></div>".toByteArray(),
+                                body = "<div style=\"height: 500px\"></div>",
                             )
                         }
                     }
@@ -457,11 +457,11 @@ internal class SimklCrawlerTest {
                         return when (invocations) {
                             1 -> HttpResponse(
                                 code = 200,
-                                body = loadTestResource("crawler/simkl/SimklCrawlerTest/page-with-entries.html"),
+                                body = loadTestResource<ByteArray>("crawler/simkl/SimklCrawlerTest/page-with-entries.html"),
                             )
                             else -> HttpResponse(
                                 code = 200,
-                                body = "<div style=\"height: 500px\"></div>".toByteArray(),
+                                body = "<div style=\"height: 500px\"></div>",
                             )
                         }
                     }
@@ -548,11 +548,11 @@ internal class SimklCrawlerTest {
                         return when (invocations) {
                             1 -> HttpResponse(
                                 code = 200,
-                                body = loadTestResource("crawler/simkl/SimklCrawlerTest/page-with-entries.html"),
+                                body = loadTestResource<ByteArray>("crawler/simkl/SimklCrawlerTest/page-with-entries.html"),
                             )
                             else -> HttpResponse(
                                 code = 200,
-                                body = "<div style=\"height: 500px\"></div>".toByteArray(),
+                                body = "<div style=\"height: 500px\"></div>",
                             )
                         }
                     }
@@ -634,7 +634,7 @@ internal class SimklCrawlerTest {
                     override suspend fun post(url: URL, requestBody: RequestBody, headers: Map<String, Collection<String>>): HttpResponse {
                         return HttpResponse(
                             code = 200,
-                            body = "<div style=\"height: 500px\"></div>".toByteArray(),
+                            body = "<div style=\"height: 500px\"></div>",
                         )
                     }
                 }
@@ -707,7 +707,7 @@ internal class SimklCrawlerTest {
                     override suspend fun post(url: URL, requestBody: RequestBody, headers: Map<String, Collection<String>>): HttpResponse {
                         return HttpResponse(
                             code = 200,
-                            body = "<div style=\"height: 500px\"></div>".toByteArray(),
+                            body = "<div style=\"height: 500px\"></div>",
                         )
                     }
                 }
@@ -776,7 +776,7 @@ internal class SimklCrawlerTest {
                 val testHttpClient = object: HttpClient by TestHttpClient {
                     override suspend fun post(url: URL, requestBody: RequestBody, headers: Map<String, Collection<String>>): HttpResponse = HttpResponse(
                         code = 200,
-                        body = "<div style=\"height: 500px\"></div>".toByteArray(),
+                        body = "<div style=\"height: 500px\"></div>",
                     )
                 }
                 val testDownloader = object: Downloader by TestDownloader {
@@ -854,7 +854,7 @@ internal class SimklCrawlerTest {
                 val testHttpClient = object: HttpClient by TestHttpClient {
                     override suspend fun post(url: URL, requestBody: RequestBody, headers: Map<String, Collection<String>>): HttpResponse = HttpResponse(
                         code = 200,
-                        body = "<div style=\"height: 500px\"></div>".toByteArray(),
+                        body = "<div style=\"height: 500px\"></div>",
                     )
                 }
                 val testDownloader = object: Downloader by TestDownloader {

@@ -19,6 +19,20 @@ public data class HttpResponse(
     public val body: ByteArray,
     private val _headers: MutableMap<String, Collection<String>> = mutableMapOf(),
 ) {
+
+    /**
+     * Data representing a HTTP response.
+     * @since 18.2.0
+     * @param code Numerical HTTP response code.
+     * @param body Raw response body as [String]. Internal representation is in form of a [ByteArray]. Use [body] to read the property as-is and [bodyAsText] to access the [String] representation.
+     * @param headers All HTTP header sent by the server.
+     */
+    public constructor(
+        code: HttpResponseCode,
+        body: String,
+        headers: MutableMap<String, Collection<String>> = mutableMapOf(),
+    ) : this(code, body.toByteArray(), headers)
+
     /**
      * HTTP headers sent by the server in lower case.
      * @since 1.0.0
@@ -33,6 +47,7 @@ public data class HttpResponse(
     public val bodyAsText: String = body.toByteString().utf8()
 
     init {
+        require(code in 100..599) { "HTTP response code must be between 100 (inclusive) and 599 (inclusive), but was [$code]." }
         lowerCaseHeaders()
     }
 
@@ -52,6 +67,12 @@ public data class HttpResponse(
      */
     public fun isOk(): Boolean = code == 200
 
+    /**
+     * Convenience function to indicate the status based on [code].
+     * @since 18.2.0
+     * @return `true` if the response code is anything but 200.
+     */
+    public fun isNotOk(): Boolean = code != 200
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
