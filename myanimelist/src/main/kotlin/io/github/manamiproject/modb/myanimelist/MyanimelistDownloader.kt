@@ -25,8 +25,8 @@ public class MyanimelistDownloader(
     private val headerCreator: HeaderCreator = DefaultHeaderCreator(configRegistry = configRegistry),
     private val httpClient: HttpClient = DefaultHttpClient(isTestContext = metaDataProviderConfig.isTestContext()).apply {
         retryBehavior.addCases(
-            RetryCase { it.code == 403 },
-            RetryCase { it.code == 404 && it.bodyAsText.contains("was not found on this server.</p>") },
+            HttpResponseRetryCase { it.code == 403 },
+            HttpResponseRetryCase { it.code == 404 && it.bodyAsText.contains("was not found on this server.</p>") },
         )
     },
 ) : Downloader {
