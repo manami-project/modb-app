@@ -100,7 +100,7 @@ internal class RetryBehaviorTest {
         }
 
         @Test
-        fun `NoRetry - adding NoRetry doesn nothing`() {
+        fun `NoRetry - adding NoRetry does nothing`() {
             // given
             val expectedRetryBehavior = RetryBehavior()
             val retryBehavior = RetryBehavior()
@@ -114,7 +114,7 @@ internal class RetryBehaviorTest {
             )
 
             // then
-            assertThat(retryBehavior).usingRecursiveAssertion().isEqualTo(expectedRetryBehavior)
+            assertThat(retryBehavior).isEqualTo(expectedRetryBehavior)
         }
     }
 

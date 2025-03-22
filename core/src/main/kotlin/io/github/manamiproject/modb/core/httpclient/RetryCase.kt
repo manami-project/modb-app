@@ -21,8 +21,8 @@ public sealed class RetryCase(
     public open val waitDuration: (Int) -> Duration = { currentAttempt ->
         (random(120000, 240000) * currentAttempt).toDuration(MILLISECONDS)
     },
-    public open val executeBefore: () -> Unit = {},
-    public open val executeAfter: () -> Unit = {},
+    public open val executeBefore: suspend () -> Unit = {},
+    public open val executeAfter: suspend () -> Unit = {},
 )
 
 /**
@@ -45,8 +45,8 @@ public data class HttpResponseRetryCase(
     override val waitDuration: (Int) -> Duration = { currentAttempt ->
         (random(120000, 240000) * currentAttempt).toDuration(MILLISECONDS)
     },
-    override val executeBefore: () -> Unit = {},
-    override val executeAfter: () -> Unit = {},
+    override val executeBefore: suspend () -> Unit = {},
+    override val executeAfter: suspend () -> Unit = {},
     val retryIf: (HttpResponse) -> Boolean,
 ): RetryCase(waitDuration, executeBefore, executeAfter)
 
@@ -63,7 +63,7 @@ public data class ThrowableRetryCase(
     override val waitDuration: (Int) -> Duration = { currentAttempt ->
         (random(120000, 240000) * currentAttempt).toDuration(MILLISECONDS)
     },
-    override val executeBefore: () -> Unit = {},
-    override val executeAfter: () -> Unit = {},
+    override val executeBefore: suspend () -> Unit = {},
+    override val executeAfter: suspend () -> Unit = {},
     val retryIf: (Throwable) -> Boolean,
 ): RetryCase(waitDuration, executeBefore, executeAfter)
