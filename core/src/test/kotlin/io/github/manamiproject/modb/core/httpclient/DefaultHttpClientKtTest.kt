@@ -545,6 +545,62 @@ internal class DefaultHttpClientKtTest : MockServerTestCase<WireMockServer> by W
                 assertThat(value).containsExactlyInAnyOrder(HTTP_1_1)
             }
         }
+
+        @Test
+        fun `executes higher order functions before and after retry`() {
+            runBlocking {
+                // given
+                val path = "anime/1535"
+
+                serverInstance.stubFor(
+                    get(urlPathEqualTo("/$path"))
+                        .inScenario("single retry")
+                        .whenScenarioStateIs(STARTED)
+                        .willReturn(
+                            aResponse()
+                                .withHeader("Content-Type", "text/plain")
+                                .withStatus(429)
+                        )
+                        .willSetStateTo("Retry")
+                )
+                serverInstance.stubFor(
+                    get(urlPathEqualTo("/$path"))
+                        .inScenario("single retry")
+                        .whenScenarioStateIs("Retry")
+                        .willReturn(
+                            aResponse()
+                                .withHeader("Content-Type", "text/plain")
+                                .withStatus(200)
+                                .withBody("Success")
+                        )
+                )
+
+                val url = URI("http://localhost:$port/$path").toURL()
+
+                var executeBeforeHasBeenInvoked = false
+                val testExecuteBefore = { executeBeforeHasBeenInvoked = true }
+
+                var executeAfterHasBeenInvoked = false
+                val testExecuteAfter = { executeAfterHasBeenInvoked = true }
+
+                val client = DefaultHttpClient(
+                    isTestContext = true,
+                    retryBehavior = RetryBehavior().addCases(
+                        HttpResponseRetryCase(
+                            executeBefore = testExecuteBefore,
+                            executeAfter = testExecuteAfter,
+                        ) { it.isNotOk() },
+                    ),
+                )
+
+                // when
+                client.get(url)
+
+                // then
+                assertThat(executeBeforeHasBeenInvoked).isTrue()
+                assertThat(executeAfterHasBeenInvoked).isTrue()
+            }
+        }
     }
 
     @Nested
@@ -1265,6 +1321,70 @@ internal class DefaultHttpClientKtTest : MockServerTestCase<WireMockServer> by W
                 protocols.isAccessible = true
                 val value = protocols.get(client) as (ArrayList<*>)
                 assertThat(value).containsExactlyInAnyOrder(HTTP_1_1)
+            }
+        }
+
+        @Test
+        fun `executes higher order functions before and after retry`() {
+            runBlocking {
+                // given
+                val path = "anime/1535"
+
+                serverInstance.stubFor(
+                    post(urlPathEqualTo("/$path"))
+                        .inScenario("single retry")
+                        .whenScenarioStateIs(STARTED)
+                        .willReturn(
+                            aResponse()
+                                .withHeader("Content-Type", "text/plain")
+                                .withStatus(429)
+                        )
+                        .willSetStateTo("Retry")
+                )
+                serverInstance.stubFor(
+                    post(urlPathEqualTo("/$path"))
+                        .inScenario("single retry")
+                        .whenScenarioStateIs("Retry")
+                        .willReturn(
+                            aResponse()
+                                .withHeader("Content-Type", "text/plain")
+                                .withStatus(200)
+                                .withBody("Success")
+                        )
+                )
+
+                val url = URI("http://localhost:$port/$path").toURL()
+                val body = "{ \"key\": \"some-value\" }"
+
+                var executeBeforeHasBeenInvoked = false
+                val testExecuteBefore = { executeBeforeHasBeenInvoked = true }
+
+                var executeAfterHasBeenInvoked = false
+                val testExecuteAfter = { executeAfterHasBeenInvoked = true }
+
+                val client = DefaultHttpClient(
+                    isTestContext = true,
+                    retryBehavior = RetryBehavior().addCases(
+                        HttpResponseRetryCase(
+                            executeBefore = testExecuteBefore,
+                            executeAfter = testExecuteAfter,
+                        ) { it.isNotOk() },
+                    ),
+                )
+
+                // when
+                client.post(
+                    url = url,
+                    headers = mapOf("test-header" to listOf("headervalue")),
+                    requestBody = RequestBody(
+                        mediaType = APPLICATION_JSON,
+                        body = body,
+                    ),
+                )
+
+                // then
+                assertThat(executeBeforeHasBeenInvoked).isTrue()
+                assertThat(executeAfterHasBeenInvoked).isTrue()
             }
         }
     }
