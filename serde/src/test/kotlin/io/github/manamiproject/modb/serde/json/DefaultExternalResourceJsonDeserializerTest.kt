@@ -32,7 +32,7 @@ internal class DefaultExternalResourceJsonDeserializerTest : MockServerTestCase<
         fun `throws exception if the response code is not 200`() {
             // given
             val testHttpClient = object: HttpClient by TestHttpClient {
-                override suspend fun get(url: URL, headers: Map<String, Collection<String>>): HttpResponse = HttpResponse(500, "ERROR".toByteArray())
+                override suspend fun get(url: URL, headers: Map<String, Collection<String>>): HttpResponse = HttpResponse(500, "ERROR")
             }
 
             val externalResourceDeserializer = DefaultExternalResourceJsonDeserializer(
@@ -84,7 +84,7 @@ internal class DefaultExternalResourceJsonDeserializerTest : MockServerTestCase<
         fun `throws exception if the response body is blank`(value: String) {
             // given
             val testHttpClient = object: HttpClient by TestHttpClient {
-                override suspend fun get(url: URL, headers: Map<String, Collection<String>>): HttpResponse = HttpResponse(200, value.toByteArray())
+                override suspend fun get(url: URL, headers: Map<String, Collection<String>>): HttpResponse = HttpResponse(200, value)
             }
 
             val externalResourceDeserializer = DefaultExternalResourceJsonDeserializer(

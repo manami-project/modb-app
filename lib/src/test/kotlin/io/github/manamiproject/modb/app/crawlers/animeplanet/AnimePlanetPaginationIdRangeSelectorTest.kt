@@ -29,7 +29,7 @@ internal class AnimePlanetPaginationIdRangeSelectorTest {
             val testHttpClient = object: HttpClient by TestHttpClient {
                 override suspend fun get(url: URL, headers: Map<String, Collection<String>>): HttpResponse = HttpResponse(
                     code = 200,
-                    body = "<html></head></body></html>".toByteArray(),
+                    body = "<html></head></body></html>",
                 )
             }
 
@@ -59,7 +59,7 @@ internal class AnimePlanetPaginationIdRangeSelectorTest {
                 val testHttpClient = object: HttpClient by TestHttpClient {
                     override suspend fun get(url: URL, headers: Map<String, Collection<String>>): HttpResponse = HttpResponse(
                         code = 200,
-                        body = loadTestResource("crawler/animeplanet/AnimePlanetPaginationIdRangeSelectorTest/page-31.html"),
+                        body = loadTestResource<ByteArray>("crawler/animeplanet/AnimePlanetPaginationIdRangeSelectorTest/page-31.html"),
                     )
                 }
 
@@ -128,7 +128,7 @@ internal class AnimePlanetPaginationIdRangeSelectorTest {
                 val testHttpClient = object: HttpClient by TestHttpClient {
                     override suspend fun get(url: URL, headers: Map<String, Collection<String>>): HttpResponse = HttpResponse(
                         code = 200,
-                        body = loadTestResource("crawler/animeplanet/AnimePlanetPaginationIdRangeSelectorTest/page-31.html"),
+                        body = loadTestResource<ByteArray>("crawler/animeplanet/AnimePlanetPaginationIdRangeSelectorTest/page-31.html"),
                     )
                 }
 
@@ -167,7 +167,7 @@ internal class AnimePlanetPaginationIdRangeSelectorTest {
                 val testHttpClient = object: HttpClient by TestHttpClient {
                     override suspend fun get(url: URL, headers: Map<String, Collection<String>>): HttpResponse = HttpResponse(
                         code = 200,
-                        body = loadTestResource("crawler/animeplanet/AnimePlanetPaginationIdRangeSelectorTest/page-31.html"),
+                        body = loadTestResource<ByteArray>("crawler/animeplanet/AnimePlanetPaginationIdRangeSelectorTest/page-31.html"),
                     )
                 }
 
@@ -238,7 +238,7 @@ internal class AnimePlanetPaginationIdRangeSelectorTest {
                 val testHttpClient = object: HttpClient by TestHttpClient {
                     override suspend fun get(url: URL, headers: Map<String, Collection<String>>): HttpResponse = HttpResponse(
                         code = 200,
-                        body = loadTestResource("crawler/animeplanet/AnimePlanetPaginationIdRangeSelectorTest/page-31.html"),
+                        body = loadTestResource<ByteArray>("crawler/animeplanet/AnimePlanetPaginationIdRangeSelectorTest/page-31.html"),
                     )
                 }
 
@@ -308,7 +308,7 @@ internal class AnimePlanetPaginationIdRangeSelectorTest {
                 val testHttpClient = object: HttpClient by TestHttpClient {
                     override suspend fun get(url: URL, headers: Map<String, Collection<String>>): HttpResponse = HttpResponse(
                         code = 200,
-                        body = loadTestResource("crawler/animeplanet/AnimePlanetPaginationIdRangeSelectorTest/page-31.html"),
+                        body = loadTestResource<ByteArray>("crawler/animeplanet/AnimePlanetPaginationIdRangeSelectorTest/page-31.html"),
                     )
                 }
 

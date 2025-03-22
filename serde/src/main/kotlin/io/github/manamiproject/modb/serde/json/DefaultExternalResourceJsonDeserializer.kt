@@ -50,7 +50,7 @@ public class DefaultExternalResourceJsonDeserializer<out T>(
         val response = httpClient.get(url)
 
         when {
-            !response.isOk() -> throw IllegalStateException("Error downloading file: HTTP response code was: [${response.code}]")
+            response.isNotOk() -> throw IllegalStateException("Error downloading file: HTTP response code was: [${response.code}]")
             response.body.isEmpty() || response.bodyAsText.eitherNullOrBlank() -> throw IllegalStateException("Error downloading file: The response body was blank.")
         }
 

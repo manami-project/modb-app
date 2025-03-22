@@ -30,7 +30,7 @@ internal class MyanimelistHighestIdDetectorTest {
                 val testHttpClient = object : HttpClient by TestHttpClient {
                     override suspend fun get(url: URL, headers: Map<String, Collection<String>>): HttpResponse = HttpResponse(
                         code = 200,
-                        body = loadTestResource("crawler/myanimelist/MyanimelistHighestIdDetectorTest/just_added.html"),
+                        body = loadTestResource<ByteArray>("crawler/myanimelist/MyanimelistHighestIdDetectorTest/just_added.html"),
                     )
                 }
 
@@ -65,7 +65,7 @@ internal class MyanimelistHighestIdDetectorTest {
                 val testHttpClient = object : HttpClient by TestHttpClient {
                     override suspend fun get(url: URL, headers: Map<String, Collection<String>>): HttpResponse = HttpResponse(
                         code = 200,
-                        body = content.toByteArray(),
+                        body = content,
                     )
                 }
 
@@ -104,7 +104,7 @@ internal class MyanimelistHighestIdDetectorTest {
                 val testHttpClient = object : HttpClient by TestHttpClient {
                     override suspend fun get(url: URL, headers: Map<String, Collection<String>>): HttpResponse = HttpResponse(
                         code = 200,
-                        body = content.toByteArray(),
+                        body = content,
                     )
                 }
 
