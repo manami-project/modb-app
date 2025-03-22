@@ -7,10 +7,8 @@ import io.github.manamiproject.modb.core.httpclient.BrowserType.DESKTOP
 import io.github.manamiproject.modb.core.httpclient.HttpProtocol.HTTP_1_1
 import io.github.manamiproject.modb.core.httpclient.HttpProtocol.HTTP_2
 import io.github.manamiproject.modb.core.logging.LoggerDelegate
-import io.github.manamiproject.modb.core.random
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.isActive
-import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.withContext
 import okhttp3.*
 import okhttp3.Headers.Companion.toHeaders
@@ -21,7 +19,6 @@ import java.net.Proxy
 import java.net.Proxy.NO_PROXY
 import java.net.SocketTimeoutException
 import java.net.URL
-import java.time.LocalDateTime
 
 
 /**
@@ -41,16 +38,19 @@ import java.time.LocalDateTime
  * @param proxy **Default** is [NO_PROXY]
  * @property protocols List of supported HTTP protocol versions in the order of preference. Default is `HTTP/2, HTTP/1.1`.
  * @property okhttpClient Instance of the OKHTTP client on which this client is based.
- * @property retryBehavior [RetryBehavior] to use for each request.
  * @property isTestContext Whether this runs in the unit test context or not.
+ * @property headerCreator Creates default headers based on the selected browser type.
+ * @property retryBehavior [RetryBehavior] to use for each request.
  */
 public class DefaultHttpClient(
     proxy: Proxy = NO_PROXY,
     private val protocols: MutableList<HttpProtocol> = mutableListOf(HTTP_2, HTTP_1_1),
-    private var okhttpClient: Call.Factory = sharedOkHttpClient,
+    private var okhttpClient: Call.Factory = OkHttpClient.Builder()
+        .retryOnConnectionFailure(true)
+        .build(),
     private val isTestContext: Boolean = false,
     private val headerCreator: HeaderCreator = DefaultHeaderCreator.instance,
-    public val retryBehavior: RetryBehavior = defaultRetryBehavior,
+    public val retryBehavior: RetryBehavior = RetryBehavior(),
 ) : HttpClient {
 
     init {
@@ -60,6 +60,14 @@ public class DefaultHttpClient(
                 .proxy(proxy)
                 .build()
         }
+
+        retryBehavior.addCases(
+            HttpResponseRetryCase { it.code in 500..599 },
+            HttpResponseRetryCase { it.code == 425 },
+            HttpResponseRetryCase { it.code == 429 },
+            HttpResponseRetryCase { it.code == 103 },
+            ThrowableRetryCase { it is SocketTimeoutException },
+        )
     }
 
     override suspend fun post(
@@ -81,7 +89,7 @@ public class DefaultHttpClient(
             .headers(requestHeaders.toHeaders())
             .build()
 
-        executeRetryable(request)
+        retry(request)
     }
 
     override suspend fun get(
@@ -98,44 +106,87 @@ public class DefaultHttpClient(
             .headers(requestHeaders.toHeaders())
             .build()
 
-        executeRetryable(request)
+        retry(request)
     }
 
-    private suspend fun executeRetryable(request: Request): HttpResponse = withContext(LIMITED_NETWORK) {
+    private suspend fun retry(request: Request): HttpResponse = withContext(LIMITED_NETWORK) {
         var attempt = 0
-        var response = okhttpClient.newCall(request).execute().toHttpResponse()
+        var retryCase: RetryCase = NoRetry
+        var responseOrException: Any = HttpResponse(100, EMPTY)
 
-        while (attempt < retryBehavior.maxAttempts && isActive && (response.code == 0 || retryBehavior.requiresRetry(response))) {
-            log.info { "Performing retry [${attempt+1}/${retryBehavior.maxAttempts}]" }
+        do {
+            if (retryCase !is NoRetry) {
+                log.debug { "Retry [$attempt/${retryBehavior.maxAttempts}] for [${request.method} ${request.url}]." }
 
-            if (!isTestContext) {
-                val retryCase = retryBehavior.retryCase(response)
-                delay(retryCase.waitDuration.invoke(attempt).inWholeMilliseconds)
-            }
+                if ((responseOrException is HttpResponse) && (responseOrException.code == 103)) {
+                    log.warn { "Received HTTP status code 103. Deactivating HTTP/2." }
+                    protocols.remove(HTTP_2)
+                }
 
-            if (response.code == 103) {
-                log.warn { "Received HTTP status code 103. Deactivating HTTP/2." }
-                protocols.remove(HTTP_2)
-            }
+                log.trace { "Executing statement prior to the retry of [${request.method} ${request.url}] if set." }
+                retryCase.executeBefore()
 
-            attempt++
-
-            try {
-                response = okhttpClient.newCall(request).execute().toHttpResponse()
-            } catch (e: Throwable) {
-                if (attempt == retryBehavior.maxAttempts) {
-                    throw FailedAfterRetryException("Execution failed despite [$attempt] retry attempts.", e)
-                } else {
-                    log.warn { "[${e.javaClass.canonicalName}] was thrown calling [${request.method} ${request.url}]. Performing retry [${attempt +1}] after waiting time." }
+                if (!isTestContext) {
+                    log.trace { "Initiating waiting time for retry of [${request.method} ${request.url}]." }
+                    delay(retryCase.waitDuration(attempt))
                 }
             }
-        }
 
-        if (retryBehavior.requiresRetry(response)) {
-            throw FailedAfterRetryException("Execution failed despite [$attempt] retry attempts. Last invocation of [${request.method} ${request.url}] returned http status code [${response.code}]")
-        }
+            responseOrException = safelyExecute {
+                okhttpClient.newCall(request).execute().toHttpResponse()
+            }
 
-        return@withContext response
+            if (retryCase !is NoRetry) {
+                log.trace { "Executing statement after the retry of [${request.method} ${request.url}] if set." }
+                retryCase.executeAfter()
+            }
+
+            if (requiresRetry(responseOrException)) {
+                retryCase = fetchRetryCase(responseOrException)
+            }
+            attempt++
+        } while (retryCase !is NoRetry && attempt <= retryBehavior.maxAttempts && isActive)
+
+        return@withContext when (responseOrException) {
+            is HttpResponse -> {
+                if (responseOrException.isNotOk() && retryCase !is NoRetry && attempt >= retryBehavior.maxAttempts) {
+                    throw FailedAfterRetryException("Execution failed despite [${attempt-1}] retry attempts. Last invocation of [${request.method} ${request.url}] returned http status code [${responseOrException.code}]")
+                }
+                responseOrException
+            }
+            is Throwable -> throw responseOrException
+            else -> throw IllegalStateException("Unexpected type [${responseOrException.javaClass}] during call [${request.method} ${request.url}].")
+        }
+    }
+
+    private fun safelyExecute(run: () -> Any): Any {
+        return try {
+            run()
+        } catch (e: Throwable) {
+            e
+        }
+    }
+
+    private fun requiresRetry(obj: Any): Boolean {
+        return when (obj) {
+            is HttpResponse -> retryBehavior.requiresRetry(obj)
+            is Throwable -> retryBehavior.requiresRetry(obj)
+            else -> {
+                log.warn { "Unexpected type [${obj.javaClass}]. Assuming that no retry is required." }
+                false
+            }
+        }
+    }
+
+    private fun fetchRetryCase(obj: Any): RetryCase {
+        return when (obj) {
+            is HttpResponse -> retryBehavior.retryCase(obj)
+            is Throwable -> retryBehavior.retryCase(obj)
+            else -> {
+                log.warn { "Unexpected type [${obj.javaClass}]. Returning NoRetry as RetryCase." }
+                NoRetry
+            }
+        }
     }
 
     private fun mapHttpProtocols(): List<Protocol> {
@@ -151,45 +202,6 @@ public class DefaultHttpClient(
 
     public companion object {
         private val log by LoggerDelegate()
-        private var lastEviction = LocalDateTime.of(2024, 1, 1, 0, 0, 0)
-
-        /**
-         * Shared [OkHttpClient]. Useful, because this will result in a shared thread pool between different instances of [DefaultHttpClient].
-         * [see](https://square.github.io/okhttp/4.x/okhttp/okhttp3/-ok-http-client/#customize-your-client-with-newbuilder)
-         */
-        private val sharedOkHttpClient: Call.Factory by lazy {
-            OkHttpClient.Builder()
-                .retryOnConnectionFailure(true)
-                .addInterceptor { chain ->
-                    val request = chain.request()
-                    return@addInterceptor try {
-                        chain.proceed(request)
-                    } catch (e: SocketTimeoutException) {
-                        log.warn { "SocketTimeoutException on [${request.url}]. Retrying call." }
-
-                        val difference = java.time.Duration.between(LocalDateTime.now(), lastEviction)
-
-                        if (sharedOkHttpClient is OkHttpClient && difference.seconds >= 60L) {
-                            log.info { "Evicting connection pool and performing retry due to SocketTimeoutException." }
-                            (sharedOkHttpClient as OkHttpClient).connectionPool.evictAll()
-                        } else {
-                            runBlocking { delay(random(1500, 2500)) }
-                        }
-
-                        chain.proceed(request)
-                    }
-                }
-                .build()
-        }
-
-        private val defaultRetryBehavior = RetryBehavior().apply {
-            addCases(
-                RetryCase { it.code in 500..599 },
-                RetryCase { it.code == 425 },
-                RetryCase { it.code == 429 },
-                RetryCase { it.code == 103 },
-            )
-        }
 
         /**
          * Singleton of [DefaultHttpClient]
