@@ -34,7 +34,7 @@ internal class AnidbHighestIdDetectorTest {
                 val testHttpClient = object : HttpClient by TestHttpClient {
                     override suspend fun get(url: URL, headers: Map<String, Collection<String>>): HttpResponse = HttpResponse(
                         code = 200,
-                        body = loadTestResource("crawler/anidb/AnidbHighestIdDetectorTest/latest-anime.html"),
+                        body = loadTestResource<ByteArray>("crawler/anidb/AnidbHighestIdDetectorTest/latest-anime.html"),
                     )
                 }
 
@@ -70,7 +70,7 @@ internal class AnidbHighestIdDetectorTest {
                 val testHttpClient = object : HttpClient by TestHttpClient {
                     override suspend fun get(url: URL, headers: Map<String, Collection<String>>): HttpResponse = HttpResponse(
                         code = 200,
-                        body = content.toByteArray(),
+                        body = content,
                     )
                 }
 
@@ -114,7 +114,7 @@ internal class AnidbHighestIdDetectorTest {
                 val testHttpClient = object : HttpClient by TestHttpClient {
                     override suspend fun get(url: URL, headers: Map<String, Collection<String>>): HttpResponse = HttpResponse(
                         code = 200,
-                        body = content.toByteArray(),
+                        body = content,
                     )
                 }
 
@@ -155,7 +155,7 @@ internal class AnidbHighestIdDetectorTest {
                         return if (hasBeenInvoked) {
                             HttpResponse(
                                 code = 200,
-                                body = loadTestResource("crawler/anidb/AnidbHighestIdDetectorTest/latest-anime.html"),
+                                body = loadTestResource<ByteArray>("crawler/anidb/AnidbHighestIdDetectorTest/latest-anime.html"),
                             )
                         } else {
                             throw ConnectException()
@@ -199,7 +199,7 @@ internal class AnidbHighestIdDetectorTest {
                         return if (hasBeenInvoked) {
                             HttpResponse(
                                 code = 200,
-                                body = loadTestResource("crawler/anidb/AnidbHighestIdDetectorTest/latest-anime.html"),
+                                body = loadTestResource<ByteArray>("crawler/anidb/AnidbHighestIdDetectorTest/latest-anime.html"),
                             )
                         } else {
                             throw UnknownHostException()
@@ -243,7 +243,7 @@ internal class AnidbHighestIdDetectorTest {
                         return if (hasBeenInvoked) {
                             HttpResponse(
                                 code = 200,
-                                body = loadTestResource("crawler/anidb/AnidbHighestIdDetectorTest/latest-anime.html"),
+                                body = loadTestResource<ByteArray>("crawler/anidb/AnidbHighestIdDetectorTest/latest-anime.html"),
                             )
                         } else {
                             throw NoRouteToHostException()
@@ -287,7 +287,7 @@ internal class AnidbHighestIdDetectorTest {
                         return if (hasBeenInvoked) {
                             HttpResponse(
                                 code = 200,
-                                body = loadTestResource("crawler/anidb/AnidbHighestIdDetectorTest/latest-anime.html"),
+                                body = loadTestResource<ByteArray>("crawler/anidb/AnidbHighestIdDetectorTest/latest-anime.html"),
                             )
                         } else {
                             throw CrawlerDetectedException

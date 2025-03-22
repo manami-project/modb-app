@@ -38,7 +38,7 @@ internal class NotifyDatasetDownloadCrawlerTest {
             override suspend fun get(url: URL, headers: Map<String, Collection<String>>): HttpResponse {
                 return HttpResponse(
                     code = 500,
-                    body = EMPTY.toByteArray(),
+                    body = EMPTY,
                 )
             }
         }
@@ -90,11 +90,11 @@ internal class NotifyDatasetDownloadCrawlerTest {
                 override suspend fun get(url: URL, headers: Map<String, Collection<String>>): HttpResponse = when (url) {
                     NotifyAnimeDatasetDownloaderConfig.buildDataDownloadLink().toURL() -> HttpResponse(
                         code = 200,
-                        body = loadTestResource("crawler/notify/NotifyDatasetDownloadCrawlerTest/example-anime-dataset.txt"),
+                        body = loadTestResource<ByteArray>("crawler/notify/NotifyDatasetDownloadCrawlerTest/example-anime-dataset.txt"),
                     )
                     else -> HttpResponse(
                         code = 500,
-                        body = "error".toByteArray(),
+                        body = "error",
                     )
                 }
             }

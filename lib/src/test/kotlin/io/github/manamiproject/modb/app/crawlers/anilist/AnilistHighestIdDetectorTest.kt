@@ -31,7 +31,7 @@ internal class AnilistHighestIdDetectorTest {
                 val testHttpClient = object : HttpClient by TestHttpClient {
                     override suspend fun post(url: URL, requestBody: RequestBody, headers: Map<String, Collection<String>>): HttpResponse = HttpResponse(
                         code = 200,
-                        body = loadTestResource("crawler/anilist/AnilistHighestIdDetectorTest/highest_id.json"),
+                        body = loadTestResource<ByteArray>("crawler/anilist/AnilistHighestIdDetectorTest/highest_id.json"),
                     )
                 }
 

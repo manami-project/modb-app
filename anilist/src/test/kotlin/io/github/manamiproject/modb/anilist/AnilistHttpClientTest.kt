@@ -29,11 +29,11 @@ internal class AnilistHttpClientTest {
                         return when (delegateCallTimes) {
                             1 -> HttpResponse(
                                 code = 403,
-                                body = "token outdated".toByteArray(),
+                                body = "token outdated",
                             )
                             else -> HttpResponse(
                                 code = 200,
-                                body = "success".toByteArray(),
+                                body = "success",
                             )
                         }
                     }
@@ -90,11 +90,11 @@ internal class AnilistHttpClientTest {
                         return when (delegateCallTimes) {
                             1 -> HttpResponse(
                                 code = 403,
-                                body = "token outdated".toByteArray(),
+                                body = "token outdated",
                             )
                             else -> HttpResponse(
                                 code = 200,
-                                body = "success".toByteArray(),
+                                body = "success",
                             )
                         }
                     }
@@ -149,7 +149,7 @@ internal class AnilistHttpClientTest {
                         delegateCallTimes++
                         return HttpResponse(
                             code = 200,
-                            body = "success".toByteArray(),
+                            body = "success",
                         )
                     }
                 }
@@ -203,11 +203,11 @@ internal class AnilistHttpClientTest {
                         return when (delegateCallTimes) {
                             1 -> HttpResponse(
                                 code = 403,
-                                body = "token outdated".toByteArray(),
+                                body = "token outdated",
                             )
                             else -> HttpResponse(
                                 code = 200,
-                                body = "success".toByteArray(),
+                                body = "success",
                             )
                         }
                     }
@@ -268,11 +268,11 @@ internal class AnilistHttpClientTest {
                         return when (delegateCallTimes) {
                             1 -> HttpResponse(
                                 code = 403,
-                                body = "token outdated".toByteArray(),
+                                body = "token outdated",
                             )
                             else -> HttpResponse(
                                 code = 200,
-                                body = "success".toByteArray(),
+                                body = "success",
                             )
                         }
                     }
@@ -331,7 +331,7 @@ internal class AnilistHttpClientTest {
                         delegateCallTimes++
                         return HttpResponse(
                             code = 200,
-                            body = "success".toByteArray(),
+                            body = "success",
                         )
                     }
                 }
