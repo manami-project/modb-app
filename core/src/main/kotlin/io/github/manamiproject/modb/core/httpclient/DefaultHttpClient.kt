@@ -1,6 +1,7 @@
 package io.github.manamiproject.modb.core.httpclient
 
 import io.github.manamiproject.modb.core.coroutines.ModbDispatchers.LIMITED_NETWORK
+import io.github.manamiproject.modb.core.coverage.KoverIgnore
 import io.github.manamiproject.modb.core.extensions.EMPTY
 import io.github.manamiproject.modb.core.extensions.neitherNullNorBlank
 import io.github.manamiproject.modb.core.httpclient.BrowserType.DESKTOP
@@ -62,7 +63,32 @@ public class DefaultHttpClient(
         }
 
         retryBehavior.addCases(
-            HttpResponseRetryCase { it.code in 500..599 },
+            // Server errors based on https://http.dev/status#5xx-server-error
+            HttpResponseRetryCase { it.code == 500 },
+            HttpResponseRetryCase { it.code == 501 },
+            HttpResponseRetryCase { it.code == 502 },
+            HttpResponseRetryCase { it.code == 503 },
+            HttpResponseRetryCase { it.code == 504 },
+            HttpResponseRetryCase { it.code == 505 },
+            HttpResponseRetryCase { it.code == 506 },
+            HttpResponseRetryCase { it.code == 507 },
+            HttpResponseRetryCase { it.code == 508 },
+            HttpResponseRetryCase { it.code == 509 },
+            HttpResponseRetryCase { it.code == 510 },
+            HttpResponseRetryCase { it.code == 511 },
+            HttpResponseRetryCase { it.code == 520 },
+            HttpResponseRetryCase { it.code == 521 },
+            HttpResponseRetryCase { it.code == 522 },
+            HttpResponseRetryCase { it.code == 523 },
+            HttpResponseRetryCase { it.code == 524 },
+            HttpResponseRetryCase { it.code == 525 },
+            HttpResponseRetryCase { it.code == 526 },
+            HttpResponseRetryCase { it.code == 527 },
+            HttpResponseRetryCase { it.code == 529 },
+            HttpResponseRetryCase { it.code == 530 },
+            HttpResponseRetryCase { it.code == 561 },
+            HttpResponseRetryCase { it.code == 598 },
+            HttpResponseRetryCase { it.code == 599 },
             HttpResponseRetryCase { it.code == 425 },
             HttpResponseRetryCase { it.code == 429 },
             HttpResponseRetryCase { it.code == 103 },
@@ -126,10 +152,7 @@ public class DefaultHttpClient(
                 log.trace { "Executing statement prior to the retry of [${request.method} ${request.url}] if set." }
                 retryCase.executeBefore()
 
-                if (!isTestContext) {
-                    log.trace { "Initiating waiting time for retry of [${request.method} ${request.url}]." }
-                    delay(retryCase.waitDuration(attempt))
-                }
+                wait(request, retryCase, attempt)
             }
 
             responseOrException = safelyExecute {
@@ -156,6 +179,14 @@ public class DefaultHttpClient(
             }
             is Throwable -> throw responseOrException
             else -> throw IllegalStateException("Unexpected type [${responseOrException.javaClass}] during call [${request.method} ${request.url}].")
+        }
+    }
+
+    @KoverIgnore
+    private suspend fun wait(request: Request, retryCase: RetryCase, attempt: Int) {
+        if (!isTestContext) {
+            log.trace { "Initiating waiting time for retry of [${request.method} ${request.url}]." }
+            delay(retryCase.waitDuration(attempt))
         }
     }
 
