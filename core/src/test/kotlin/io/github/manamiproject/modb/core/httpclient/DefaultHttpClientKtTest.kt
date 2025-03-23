@@ -203,7 +203,7 @@ internal class DefaultHttpClientKtTest : MockServerTestCase<WireMockServer> by W
         }
 
         @ParameterizedTest
-        @ValueSource(ints = [500, 501, 502, 503, 504, 599, 425, 429])
+        @ValueSource(ints = [500, 501, 502, 503, 504, 505, 506, 507, 508, 509, 510, 511, 520, 521, 522, 523, 524, 525, 526, 527, 529, 530, 561, 598, 599, 425, 429])
         fun `performs retry for a variety of status codes`(value: Int) {
 
             runBlocking {
@@ -372,7 +372,7 @@ internal class DefaultHttpClientKtTest : MockServerTestCase<WireMockServer> by W
         }
 
         @Test
-        fun `exception - any exception except SocketTimeoutException is thrown as-is`() {
+        fun `throwable - exception without a retry case is thrown as-is`() {
             runBlocking {
                 // given
                 val url = URI("http://localhost:$port/test").toURL()
@@ -397,7 +397,7 @@ internal class DefaultHttpClientKtTest : MockServerTestCase<WireMockServer> by W
         }
 
         @Test
-        fun `performs a single retry in case of a SocketTimeoutException`() {
+        fun `throwable - performs a retry for a SocketTimeoutException`() {
             runBlocking {
                 // given
                 val path = "anime/1535"
@@ -441,7 +441,7 @@ internal class DefaultHttpClientKtTest : MockServerTestCase<WireMockServer> by W
         }
 
         @Test
-        fun `re-throws SocketTimeoutException after maximum of attempts has been reached`() {
+        fun `throwable - re-throws SocketTimeoutException after maximum of attempts has been reached`() {
             runBlocking {
                 serverInstance.stubFor(
                     get(urlPathEqualTo("/test")).willReturn(
@@ -929,7 +929,7 @@ internal class DefaultHttpClientKtTest : MockServerTestCase<WireMockServer> by W
         }
 
         @ParameterizedTest
-        @ValueSource(ints = [500, 501, 502, 503, 504, 599, 425, 429])
+        @ValueSource(ints = [500, 501, 502, 503, 504, 505, 506, 507, 508, 509, 510, 511, 520, 521, 522, 523, 524, 525, 526, 527, 529, 530, 561, 598, 599, 425, 429])
         fun `performs retry for a variety of status codes`(value: Int) {
             runBlocking {
                 // given
@@ -1119,7 +1119,7 @@ internal class DefaultHttpClientKtTest : MockServerTestCase<WireMockServer> by W
         }
 
         @Test
-        fun `exception - any exception except SocketTimeoutException is thrown as-is`() {
+        fun `throwable - exception without a retry case is thrown as-is`() {
             runBlocking {
                 // given
                 val url = URI("http://localhost:$port/test").toURL()
@@ -1149,7 +1149,7 @@ internal class DefaultHttpClientKtTest : MockServerTestCase<WireMockServer> by W
         }
 
         @Test
-        fun `performs a single retry in case of a SocketTimeoutException`() {
+        fun `throwable - performs a retry for a SocketTimeoutException`() {
             runBlocking {
                 // given
                 val path = "anime/1535"
@@ -1201,7 +1201,7 @@ internal class DefaultHttpClientKtTest : MockServerTestCase<WireMockServer> by W
         }
 
         @Test
-        fun `re-throws SocketTimeoutException after maximum of attempts has been reached`() {
+        fun `throwable - re-throws SocketTimeoutException after maximum of attempts has been reached`() {
             runBlocking {
                 // given
                 val path = "anime/1535"
