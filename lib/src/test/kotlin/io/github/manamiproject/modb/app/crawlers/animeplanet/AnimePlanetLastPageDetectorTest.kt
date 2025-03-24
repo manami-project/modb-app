@@ -31,7 +31,7 @@ internal class AnimePlanetLastPageDetectorTest {
                 val testHttpClient = object : HttpClient by TestHttpClient {
                     override suspend fun get(url: URL, headers: Map<String, Collection<String>>): HttpResponse = HttpResponse(
                         code = 200,
-                        body = loadTestResource("crawler/animeplanet/AnimePlanetLastPageDetectorTest/all.html"),
+                        body = loadTestResource<ByteArray>("crawler/animeplanet/AnimePlanetLastPageDetectorTest/all.html"),
                     )
                 }
 
@@ -66,7 +66,7 @@ internal class AnimePlanetLastPageDetectorTest {
                 val testHttpClient = object : HttpClient by TestHttpClient {
                     override suspend fun get(url: URL, headers: Map<String, Collection<String>>): HttpResponse = HttpResponse(
                         code = 200,
-                        body = content.toByteArray(),
+                        body = content,
                     )
                 }
 
@@ -105,7 +105,7 @@ internal class AnimePlanetLastPageDetectorTest {
                 val testHttpClient = object : HttpClient by TestHttpClient {
                     override suspend fun get(url: URL, headers: Map<String, Collection<String>>): HttpResponse = HttpResponse(
                         code = 200,
-                        body = content.toByteArray(),
+                        body = content,
                     )
                 }
 

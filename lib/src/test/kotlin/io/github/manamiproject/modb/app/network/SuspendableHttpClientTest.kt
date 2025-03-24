@@ -37,7 +37,7 @@ internal class SuspendableHttpClientTest {
                         headers: Map<String, Collection<String>>,
                     ): HttpResponse {
                         delegationInvoked = true
-                        return HttpResponse(200, EMPTY.toByteArray())
+                        return HttpResponse(200, EMPTY)
                     }
                 }
 
@@ -85,7 +85,7 @@ internal class SuspendableHttpClientTest {
                         headers: Map<String, Collection<String>>,
                     ): HttpResponse {
                         delegationInvoked = true
-                        return HttpResponse(200, EMPTY.toByteArray())
+                        return HttpResponse(200, EMPTY)
                     }
                 }
 

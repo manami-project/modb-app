@@ -14,7 +14,7 @@ internal class HttpResponseExtensionsKtTest {
         // given
         val response = HttpResponse(
             code = 200,
-            body = "response body".toByteArray(),
+            body = "response body",
         )
 
         // when
@@ -29,7 +29,7 @@ internal class HttpResponseExtensionsKtTest {
         // given
         val response = HttpResponse(
             code = 500,
-            body = "response body".toByteArray(),
+            body = "response body",
         )
 
         // when
@@ -77,7 +77,7 @@ internal class HttpResponseExtensionsKtTest {
         // given
         val response = HttpResponse(
             code = 200,
-            body = value.toByteArray(),
+            body = value,
         )
 
         // when

@@ -8,7 +8,7 @@ import io.github.manamiproject.modb.core.extensions.EMPTY
 import io.github.manamiproject.modb.core.extensions.neitherNullNorBlank
 import io.github.manamiproject.modb.core.httpclient.DefaultHttpClient
 import io.github.manamiproject.modb.core.httpclient.HttpClient
-import io.github.manamiproject.modb.core.httpclient.RetryCase
+import io.github.manamiproject.modb.core.httpclient.HttpResponseRetryCase
 import io.github.manamiproject.modb.core.logging.LoggerDelegate
 import kotlinx.coroutines.withContext
 
@@ -21,7 +21,7 @@ import kotlinx.coroutines.withContext
 public class KitsuDownloader(
     private val metaDataProviderConfig: MetaDataProviderConfig,
     private val httpClient: HttpClient = DefaultHttpClient(isTestContext = metaDataProviderConfig.isTestContext()).apply {
-        retryBehavior.addCases(RetryCase { it.code == 400 })
+        retryBehavior.addCases(HttpResponseRetryCase { it.code == 400 })
     },
 ) : Downloader {
 

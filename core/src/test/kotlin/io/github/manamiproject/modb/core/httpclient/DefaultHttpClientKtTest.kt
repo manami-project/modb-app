@@ -19,6 +19,7 @@ import org.junit.jupiter.params.provider.ValueSource
 import java.net.SocketTimeoutException
 import java.net.URI
 import java.net.UnknownHostException
+import java.util.concurrent.TimeUnit.MILLISECONDS
 import kotlin.test.Test
 
 
@@ -202,7 +203,7 @@ internal class DefaultHttpClientKtTest : MockServerTestCase<WireMockServer> by W
         }
 
         @ParameterizedTest
-        @ValueSource(ints = [500, 501, 502, 503, 504, 599, 425, 429])
+        @ValueSource(ints = [500, 501, 502, 503, 504, 505, 506, 507, 508, 509, 510, 511, 520, 521, 522, 523, 524, 525, 526, 527, 529, 530, 561, 598, 599, 425, 429])
         fun `performs retry for a variety of status codes`(value: Int) {
 
             runBlocking {
@@ -371,7 +372,7 @@ internal class DefaultHttpClientKtTest : MockServerTestCase<WireMockServer> by W
         }
 
         @Test
-        fun `exception - any exception except SocketTimeoutException is thrown as-is`() {
+        fun `throwable - exception without a retry case is thrown as-is`() {
             runBlocking {
                 // given
                 val url = URI("http://localhost:$port/test").toURL()
@@ -396,7 +397,7 @@ internal class DefaultHttpClientKtTest : MockServerTestCase<WireMockServer> by W
         }
 
         @Test
-        fun `performs a single retry in case of a SocketTimeoutException`() {
+        fun `throwable - performs a retry for a SocketTimeoutException`() {
             runBlocking {
                 // given
                 val path = "anime/1535"
@@ -440,18 +441,22 @@ internal class DefaultHttpClientKtTest : MockServerTestCase<WireMockServer> by W
         }
 
         @Test
-        fun `re-throws SocketTimeoutException after maximum of attempts has been reached`() {
+        fun `throwable - re-throws SocketTimeoutException after maximum of attempts has been reached`() {
             runBlocking {
                 serverInstance.stubFor(
                     get(urlPathEqualTo("/test")).willReturn(
                         aResponse()
                             .withStatus(200)
-                            .withFixedDelay(10000)
+                            .withFixedDelay(3000)
                     )
                 )
 
                 val client = DefaultHttpClient(
                     isTestContext = true,
+                    okhttpClient = OkHttpClient().newBuilder()
+                        .writeTimeout(1500, MILLISECONDS)
+                        .readTimeout(1500, MILLISECONDS)
+                        .build(),
                 )
 
                 // when
@@ -462,7 +467,10 @@ internal class DefaultHttpClientKtTest : MockServerTestCase<WireMockServer> by W
                 }
 
                 // then
-                assertThat(result).hasMessage("timeout")
+                assertThat(result.message).isIn(
+                    "Read timed out",
+                    "timeout",
+                )
             }
         }
 
@@ -537,6 +545,62 @@ internal class DefaultHttpClientKtTest : MockServerTestCase<WireMockServer> by W
                 assertThat(value).containsExactlyInAnyOrder(HTTP_1_1)
             }
         }
+
+        @Test
+        fun `executes higher order functions before and after retry`() {
+            runBlocking {
+                // given
+                val path = "anime/1535"
+
+                serverInstance.stubFor(
+                    get(urlPathEqualTo("/$path"))
+                        .inScenario("single retry")
+                        .whenScenarioStateIs(STARTED)
+                        .willReturn(
+                            aResponse()
+                                .withHeader("Content-Type", "text/plain")
+                                .withStatus(429)
+                        )
+                        .willSetStateTo("Retry")
+                )
+                serverInstance.stubFor(
+                    get(urlPathEqualTo("/$path"))
+                        .inScenario("single retry")
+                        .whenScenarioStateIs("Retry")
+                        .willReturn(
+                            aResponse()
+                                .withHeader("Content-Type", "text/plain")
+                                .withStatus(200)
+                                .withBody("Success")
+                        )
+                )
+
+                val url = URI("http://localhost:$port/$path").toURL()
+
+                var executeBeforeHasBeenInvoked = false
+                val testExecuteBefore = { executeBeforeHasBeenInvoked = true }
+
+                var executeAfterHasBeenInvoked = false
+                val testExecuteAfter = { executeAfterHasBeenInvoked = true }
+
+                val client = DefaultHttpClient(
+                    isTestContext = true,
+                    retryBehavior = RetryBehavior().addCases(
+                        HttpResponseRetryCase(
+                            executeBefore = testExecuteBefore,
+                            executeAfter = testExecuteAfter,
+                        ) { it.isNotOk() },
+                    ),
+                )
+
+                // when
+                client.get(url)
+
+                // then
+                assertThat(executeBeforeHasBeenInvoked).isTrue()
+                assertThat(executeAfterHasBeenInvoked).isTrue()
+            }
+        }
     }
 
     @Nested
@@ -569,7 +633,7 @@ internal class DefaultHttpClientKtTest : MockServerTestCase<WireMockServer> by W
                     headers = mapOf("test-header" to listOf("headervalue")),
                     requestBody = RequestBody(
                         mediaType = APPLICATION_JSON,
-                        body = body
+                        body = body,
                     ),
                 )
 
@@ -606,7 +670,7 @@ internal class DefaultHttpClientKtTest : MockServerTestCase<WireMockServer> by W
                     headers = mapOf("test-header" to listOf("headervalue")),
                     requestBody = RequestBody(
                         mediaType = APPLICATION_JSON,
-                        body = body
+                        body = body,
                     )
                 )
 
@@ -865,7 +929,7 @@ internal class DefaultHttpClientKtTest : MockServerTestCase<WireMockServer> by W
         }
 
         @ParameterizedTest
-        @ValueSource(ints = [500, 501, 502, 503, 504, 599, 425, 429])
+        @ValueSource(ints = [500, 501, 502, 503, 504, 505, 506, 507, 508, 509, 510, 511, 520, 521, 522, 523, 524, 525, 526, 527, 529, 530, 561, 598, 599, 425, 429])
         fun `performs retry for a variety of status codes`(value: Int) {
             runBlocking {
                 // given
@@ -907,7 +971,7 @@ internal class DefaultHttpClientKtTest : MockServerTestCase<WireMockServer> by W
                     headers = mapOf("test-header" to listOf("headervalue")),
                     requestBody = RequestBody(
                         mediaType = APPLICATION_JSON,
-                        body = body
+                        body = body,
                     )
                 )
 
@@ -1006,7 +1070,7 @@ internal class DefaultHttpClientKtTest : MockServerTestCase<WireMockServer> by W
                     headers = mapOf("test-header" to listOf("headervalue")),
                     requestBody = RequestBody(
                         mediaType = APPLICATION_JSON,
-                        body = body
+                        body = body,
                     )
                 )
 
@@ -1043,7 +1107,7 @@ internal class DefaultHttpClientKtTest : MockServerTestCase<WireMockServer> by W
                         headers = mapOf("test-header" to listOf("headervalue")),
                         requestBody = RequestBody(
                             mediaType = APPLICATION_JSON,
-                            body = body
+                            body = body,
                         )
                     )
                 }
@@ -1055,7 +1119,7 @@ internal class DefaultHttpClientKtTest : MockServerTestCase<WireMockServer> by W
         }
 
         @Test
-        fun `exception - any exception except SocketTimeoutException is thrown as-is`() {
+        fun `throwable - exception without a retry case is thrown as-is`() {
             runBlocking {
                 // given
                 val url = URI("http://localhost:$port/test").toURL()
@@ -1075,7 +1139,7 @@ internal class DefaultHttpClientKtTest : MockServerTestCase<WireMockServer> by W
                         headers = mapOf("test-header" to listOf("headervalue")),
                         requestBody = RequestBody(
                             mediaType = APPLICATION_JSON,
-                            body = body
+                            body = body,
                         ),
                     )
                 }
@@ -1085,7 +1149,7 @@ internal class DefaultHttpClientKtTest : MockServerTestCase<WireMockServer> by W
         }
 
         @Test
-        fun `performs a single retry in case of a SocketTimeoutException`() {
+        fun `throwable - performs a retry for a SocketTimeoutException`() {
             runBlocking {
                 // given
                 val path = "anime/1535"
@@ -1126,7 +1190,7 @@ internal class DefaultHttpClientKtTest : MockServerTestCase<WireMockServer> by W
                     headers = mapOf("test-header" to listOf("headervalue")),
                     requestBody = RequestBody(
                         mediaType = APPLICATION_JSON,
-                        body = body
+                        body = body,
                     ),
                 )
 
@@ -1137,7 +1201,7 @@ internal class DefaultHttpClientKtTest : MockServerTestCase<WireMockServer> by W
         }
 
         @Test
-        fun `re-throws SocketTimeoutException after maximum of attempts has been reached`() {
+        fun `throwable - re-throws SocketTimeoutException after maximum of attempts has been reached`() {
             runBlocking {
                 // given
                 val path = "anime/1535"
@@ -1146,7 +1210,7 @@ internal class DefaultHttpClientKtTest : MockServerTestCase<WireMockServer> by W
                     post(urlPathEqualTo("/$path")).willReturn(
                         aResponse()
                             .withStatus(200)
-                            .withFixedDelay(10000)
+                            .withFixedDelay(3000)
                     )
                 )
 
@@ -1154,6 +1218,10 @@ internal class DefaultHttpClientKtTest : MockServerTestCase<WireMockServer> by W
                 val body = "{ \"key\": \"some-value\" }"
                 val client = DefaultHttpClient(
                     isTestContext = true,
+                    okhttpClient = OkHttpClient().newBuilder()
+                        .writeTimeout(1500, MILLISECONDS)
+                        .readTimeout(1500, MILLISECONDS)
+                        .build(),
                 )
 
                 // when
@@ -1163,13 +1231,16 @@ internal class DefaultHttpClientKtTest : MockServerTestCase<WireMockServer> by W
                         headers = mapOf("test-header" to listOf("headervalue")),
                         requestBody = RequestBody(
                             mediaType = APPLICATION_JSON,
-                            body = body
+                            body = body,
                         ),
                     )
                 }
 
                 // then
-                assertThat(result).hasMessage("timeout")
+                assertThat(result.message).isIn(
+                    "Read timed out",
+                    "timeout",
+                )
             }
         }
 
@@ -1240,7 +1311,7 @@ internal class DefaultHttpClientKtTest : MockServerTestCase<WireMockServer> by W
                     headers = mapOf("test-header" to listOf("headervalue")),
                     requestBody = RequestBody(
                         mediaType = APPLICATION_JSON,
-                        body = body
+                        body = body,
                     )
                 )
 
@@ -1250,6 +1321,70 @@ internal class DefaultHttpClientKtTest : MockServerTestCase<WireMockServer> by W
                 protocols.isAccessible = true
                 val value = protocols.get(client) as (ArrayList<*>)
                 assertThat(value).containsExactlyInAnyOrder(HTTP_1_1)
+            }
+        }
+
+        @Test
+        fun `executes higher order functions before and after retry`() {
+            runBlocking {
+                // given
+                val path = "anime/1535"
+
+                serverInstance.stubFor(
+                    post(urlPathEqualTo("/$path"))
+                        .inScenario("single retry")
+                        .whenScenarioStateIs(STARTED)
+                        .willReturn(
+                            aResponse()
+                                .withHeader("Content-Type", "text/plain")
+                                .withStatus(429)
+                        )
+                        .willSetStateTo("Retry")
+                )
+                serverInstance.stubFor(
+                    post(urlPathEqualTo("/$path"))
+                        .inScenario("single retry")
+                        .whenScenarioStateIs("Retry")
+                        .willReturn(
+                            aResponse()
+                                .withHeader("Content-Type", "text/plain")
+                                .withStatus(200)
+                                .withBody("Success")
+                        )
+                )
+
+                val url = URI("http://localhost:$port/$path").toURL()
+                val body = "{ \"key\": \"some-value\" }"
+
+                var executeBeforeHasBeenInvoked = false
+                val testExecuteBefore = { executeBeforeHasBeenInvoked = true }
+
+                var executeAfterHasBeenInvoked = false
+                val testExecuteAfter = { executeAfterHasBeenInvoked = true }
+
+                val client = DefaultHttpClient(
+                    isTestContext = true,
+                    retryBehavior = RetryBehavior().addCases(
+                        HttpResponseRetryCase(
+                            executeBefore = testExecuteBefore,
+                            executeAfter = testExecuteAfter,
+                        ) { it.isNotOk() },
+                    ),
+                )
+
+                // when
+                client.post(
+                    url = url,
+                    headers = mapOf("test-header" to listOf("headervalue")),
+                    requestBody = RequestBody(
+                        mediaType = APPLICATION_JSON,
+                        body = body,
+                    ),
+                )
+
+                // then
+                assertThat(executeBeforeHasBeenInvoked).isTrue()
+                assertThat(executeAfterHasBeenInvoked).isTrue()
             }
         }
     }
