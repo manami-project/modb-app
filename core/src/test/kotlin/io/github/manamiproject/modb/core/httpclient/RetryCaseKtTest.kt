@@ -9,6 +9,48 @@ import kotlin.test.Test
 internal class RetryCaseKtTest {
 
     @Nested
+    inner class NoRetryTests {
+
+        @Test
+        fun `default duration`() {
+            // given
+            val retryCase = NoRetry
+
+            // when
+            val result = retryCase.waitDuration.invoke(5)
+
+            // then
+            assertThat(result.inWholeMilliseconds).isZero()
+        }
+
+        @Test
+        fun `empty executeBefore`() {
+            // given
+            val retryCase = NoRetry
+            val expected: suspend () -> Unit = {}
+
+            // when
+            val result = retryCase.executeBefore
+
+            // then
+            assertThat(result.toString()).isEqualTo(expected.toString())
+        }
+
+        @Test
+        fun `empty executeAfter`() {
+            // given
+            val retryCase = NoRetry
+            val expected: suspend () -> Unit = {}
+
+            // when
+            val result = retryCase.executeAfter
+
+            // then
+            assertThat(result.toString()).isEqualTo(expected.toString())
+        }
+    }
+
+    @Nested
     inner class HttpResponseRetryCaseTests {
 
         @Test
@@ -37,6 +79,32 @@ internal class RetryCaseKtTest {
             // then
             assertThat(resultTrue).isTrue()
             assertThat(resultFalse).isFalse()
+        }
+
+        @Test
+        fun `empty executeBefore`() {
+            // given
+            val retryCase = HttpResponseRetryCase { it.isNotOk() }
+            val expected: suspend () -> Unit = {}
+
+            // when
+            val result = retryCase.executeBefore
+
+            // then
+            assertThat(result.toString()).isEqualTo(expected.toString())
+        }
+
+        @Test
+        fun `empty executeAfter`() {
+            // given
+            val retryCase = HttpResponseRetryCase { it.isNotOk() }
+            val expected: suspend () -> Unit = {}
+
+            // when
+            val result = retryCase.executeAfter
+
+            // then
+            assertThat(result.toString()).isEqualTo(expected.toString())
         }
     }
 
@@ -67,6 +135,32 @@ internal class RetryCaseKtTest {
             // then
             assertThat(resultTrue).isTrue()
             assertThat(resultFalse).isFalse()
+        }
+
+        @Test
+        fun `empty executeBefore`() {
+            // given
+            val retryCase = ThrowableRetryCase { it is SocketTimeoutException }
+            val expected: suspend () -> Unit = {}
+
+            // when
+            val result = retryCase.executeBefore
+
+            // then
+            assertThat(result.toString()).isEqualTo(expected.toString())
+        }
+
+        @Test
+        fun `empty executeAfter`() {
+            // given
+            val retryCase = ThrowableRetryCase { it is SocketTimeoutException }
+            val expected: suspend () -> Unit = {}
+
+            // when
+            val result = retryCase.executeAfter
+
+            // then
+            assertThat(result.toString()).isEqualTo(expected.toString())
         }
     }
 }

@@ -18,11 +18,9 @@ import kotlin.time.toDuration
  * @see ThrowableRetryCase
  */
 public sealed class RetryCase(
-    public open val waitDuration: (Int) -> Duration = { currentAttempt ->
-        (random(120000, 240000) * currentAttempt).toDuration(MILLISECONDS)
-    },
-    public open val executeBefore: suspend () -> Unit = {},
-    public open val executeAfter: suspend () -> Unit = {},
+    public open val waitDuration: (Int) -> Duration,
+    public open val executeBefore: suspend () -> Unit,
+    public open val executeAfter: suspend () -> Unit,
 )
 
 /**
@@ -30,7 +28,11 @@ public sealed class RetryCase(
  * @since 18.2.0
  * @see RetryCase
  */
-public data object NoRetry: RetryCase()
+public data object NoRetry: RetryCase(
+    waitDuration = { Duration.ZERO },
+    executeBefore = {},
+    executeAfter = {},
+)
 
 /**
  * Defines if a retry will take place and how long to wait before the next retry.
