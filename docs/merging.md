@@ -20,8 +20,8 @@ Merging is done in multiple run-throughs.
 The first run-through is done with the anime of the meta data provider which has the most anime.
 This initially populates the golden records list. During the merging step, a golden record serves as a provisional final
 version of an entry. Once the entire merging process is complete, these golden records form the foundation for the
-entries in the finalized dataset. Next run-throughs check anime per meta data provider sorted by the number of anime in
-descending order.
+entries in the finalized dataset. Consecutive run-throughs check anime per meta data provider sorted by the number of
+anime in descending order.
 
 While merging entries either a merge lock exists which means that the merging logic is skipped or a list of potential
 golden records is retrieved based on the title. Doing a lookup based on titles scales a lot better than calculating the
@@ -39,11 +39,11 @@ for this anime.
 ## How is the probability being calculated?
 
 There are there properties which are always taken into consideration: `title`, `type` and `episodes`.
-Each property creates a value between `0.0` and `1.0`. Where `0.0` means that the values are completely differnet and 
+Each property creates a value between `0.0` and `1.0`. Where `0.0` means that the values are completely different and 
 `1.0` means that they are equal.
 
 * `title`: The score for the title is calculated using "jaro winkler similarity".
-* `type`: A type is either equal (`1.0`) or not (`0.0`). But because the data from different sources varies a lot, there is another case. Based on experience there is another case for any combination of `SPECIAL` and `ONA`. For this case the value is `0.4` to indicate that it's somewhat possible that these could be the same.
+* `type`: A type is either equal (`1.0`) or not (`0.0`). But because the data from different sources varies a lot. Based on experience there is another case for any combination of `SPECIAL` and `ONA`. For this pairing the value is `0.4` to indicate that it's somewhat possible that these could be the same.
 * `episodes`: The closer the values the more likely it is that these values describe the same anime and the higher the score.
 
 **Background on episodes:**
