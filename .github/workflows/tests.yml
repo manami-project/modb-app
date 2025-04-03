@@ -46,6 +46,8 @@ jobs:
         with:
           check_name: Test results JDK ${{ matrix.java }}
           comment_title: Test results JDK ${{ matrix.java }}
+          large_files: true
+          ignore_runs: false
           files: |
             /github/workspace/**/build/test-results/**/*.xml
 
