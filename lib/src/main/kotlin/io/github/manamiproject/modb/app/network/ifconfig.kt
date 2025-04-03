@@ -82,7 +82,7 @@ private fun parseOutput(output: String): IfconfigOutput {
 
     output.lines().forEach { line ->
         when {
-            !line.startsWith("\t") && !line.startsWith(" ") && line != EMPTY -> {
+            !line.startsWith("\t") && !line.startsWith(" ") && line.neitherNullNorBlank() -> {
                 if (currentDevice.neitherNullNorBlank() && currentLines.isNotEmpty()) {
                     parsedOutput[currentDevice] = currentLines.toList()
                     currentLines.clear()

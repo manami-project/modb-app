@@ -1,6 +1,7 @@
 package io.github.manamiproject.modb.core.extractor
 
 import io.github.manamiproject.modb.core.extensions.EMPTY
+import io.github.manamiproject.modb.core.extensions.eitherNullOrBlank
 import io.github.manamiproject.modb.core.extensions.neitherNullNorBlank
 import org.jsoup.Jsoup
 import org.jsoup.nodes.Document
@@ -55,7 +56,7 @@ internal object JsoupXPathDataExtractor : DataExtractor {
             jsoupElements.isEmpty() -> NotFound
             entry.third == "text()" -> jsoupElements.eachText() ?: NotFound
             entry.third == "node()" -> jsoupElements.dataNodes().map { it.wholeData.trim() }
-            entry.third == EMPTY -> jsoupElements.textNodes().map { it.text().trim() }.filter { it.neitherNullNorBlank() }
+            entry.third.eitherNullOrBlank() -> jsoupElements.textNodes().map { it.text().trim() }.filter { it.neitherNullNorBlank() }
             else -> jsoupElements.eachAttr(entry.third) ?: NotFound
         }
 
