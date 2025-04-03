@@ -118,7 +118,7 @@ class SimklCrawler(
         )
 
         check(response.isOk()) { "Response code is not 200." }
-        val skipToNextYear = response.bodyAsText == NO_MORE_CONTENT_FOR_OFFSET || response.bodyAsText == EMPTY
+        val skipToNextYear = response.bodyAsText == NO_MORE_CONTENT_FOR_OFFSET || response.bodyAsText.eitherNullOrBlank()
 
         val data = xmlDataExtractor.extract(
             response.bodyAsText, mapOf(

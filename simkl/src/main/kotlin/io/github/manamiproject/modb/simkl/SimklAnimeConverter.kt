@@ -147,7 +147,7 @@ public class SimklAnimeConverter(
 
     private fun extractPicture(data: ExtractionResult): URI {
         return when {
-            data.notFound("picture") || !data.stringOrDefault("picture", EMPTY).contains("posters") -> NO_PICTURE
+            data.notFound("picture") || !data.stringOrDefault("picture").contains("posters") -> NO_PICTURE
             else -> URI(data.string("picture")
                 .trim()
                 .remove("https://og.simkl.in/image/details/?poster=")

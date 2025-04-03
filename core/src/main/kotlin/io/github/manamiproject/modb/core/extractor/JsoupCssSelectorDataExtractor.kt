@@ -1,6 +1,7 @@
 package io.github.manamiproject.modb.core.extractor
 
 import io.github.manamiproject.modb.core.extensions.EMPTY
+import io.github.manamiproject.modb.core.extensions.eitherNullOrBlank
 import io.github.manamiproject.modb.core.extensions.neitherNullNorBlank
 import org.jsoup.Jsoup
 import org.jsoup.nodes.Document
@@ -112,7 +113,7 @@ internal object JsoupCssSelectorDataExtractor : DataExtractor {
             jsoupElements.isEmpty() -> NotFound
             terminatingChild == "text()" -> jsoupElements.eachText()
             terminatingChild == "node()" -> jsoupElements.dataNodes().map { it.wholeData.trim() }
-            terminatingChild == EMPTY -> jsoupElements.textNodes().map { it.text().trim() }.filter { it.neitherNullNorBlank() }
+            terminatingChild.eitherNullOrBlank() -> jsoupElements.textNodes().map { it.text().trim() }.filter { it.neitherNullNorBlank() }
             terminatingChild.startsWith('@') -> jsoupElements.eachAttr(terminatingChild.trimStart('@')) ?: NotFound
             else -> throw IllegalStateException("unmapped case")
         }
