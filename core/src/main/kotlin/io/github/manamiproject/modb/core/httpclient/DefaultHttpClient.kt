@@ -152,11 +152,15 @@ public class DefaultHttpClient(
                 log.trace { "Executing statement prior to the retry of [${request.method} ${request.url}] if set." }
                 retryCase.executeBefore()
 
+                if (okhttpClient is OkHttpClient) {
+                    (okhttpClient as OkHttpClient).cache?.evictAll()
+                }
+
                 wait(request, retryCase, attempt)
             }
 
             responseOrException = safelyExecute {
-                okhttpClient.newCall(request).execute().toHttpResponse()
+                okhttpClient.newCall(request.newBuilder().build()).execute().toHttpResponse()
             }
 
             if (retryCase !is NoRetry) {

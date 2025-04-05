@@ -62,7 +62,7 @@ internal class RetryCaseKtTest {
             val result = retryCase.waitDuration.invoke(1)
 
             // then
-            assertThat(result.inWholeMilliseconds).isBetween(120000L, 240000L)
+            assertThat(result.inWholeMilliseconds).isBetween(60000L, 90000L)
         }
 
         @Test
@@ -120,7 +120,7 @@ internal class RetryCaseKtTest {
             val result = retryCase.waitDuration.invoke(1)
 
             // then
-            assertThat(result.inWholeMilliseconds).isBetween(120000L, 240000L)
+            assertThat(result.inWholeMilliseconds).isBetween(60000L, 90000L)
         }
 
         @Test
