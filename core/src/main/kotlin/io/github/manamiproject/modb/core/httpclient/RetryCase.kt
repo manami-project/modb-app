@@ -45,7 +45,7 @@ public data object NoRetry: RetryCase(
  */
 public data class HttpResponseRetryCase(
     override val waitDuration: (Int) -> Duration = { currentAttempt ->
-        (random(120000, 240000) * currentAttempt).toDuration(MILLISECONDS)
+        (random(60000, 90000) * currentAttempt).toDuration(MILLISECONDS)
     },
     override val executeBefore: suspend () -> Unit = {},
     override val executeAfter: suspend () -> Unit = {},
@@ -63,7 +63,7 @@ public data class HttpResponseRetryCase(
  */
 public data class ThrowableRetryCase(
     override val waitDuration: (Int) -> Duration = { currentAttempt ->
-        (random(120000, 240000) * currentAttempt).toDuration(MILLISECONDS)
+        (random(60000, 90000) * currentAttempt).toDuration(MILLISECONDS)
     },
     override val executeBefore: suspend () -> Unit = {},
     override val executeAfter: suspend () -> Unit = {},
