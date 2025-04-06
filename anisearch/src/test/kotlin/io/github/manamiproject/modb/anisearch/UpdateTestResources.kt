@@ -62,6 +62,7 @@ private val mainConfigFiles = mapOf(
     "AnisearchAnimeConverterTest/sources/3633.html" to "3633",
 
     "AnisearchAnimeConverterTest/status/aborted.html" to "12433",
+    "AnisearchAnimeConverterTest/status/canceled.html" to "13270",
     "AnisearchAnimeConverterTest/status/completed.html" to "3633",
     "AnisearchAnimeConverterTest/status/completed_in_japan_upcoming_elsewhere.html" to "6222",
     "AnisearchAnimeConverterTest/status/no_status.html" to "14494",

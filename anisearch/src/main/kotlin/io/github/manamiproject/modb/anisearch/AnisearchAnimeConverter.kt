@@ -146,7 +146,7 @@ public class AnisearchAnimeConverter(
         }
 
         return when(value.trim().lowercase()) {
-            "aborted" -> UNKNOWN_STATUS
+            "aborted", "canceled" -> UNKNOWN_STATUS
             "completed" -> FINISHED
             "ongoing" -> ONGOING
             "upcoming" -> UPCOMING

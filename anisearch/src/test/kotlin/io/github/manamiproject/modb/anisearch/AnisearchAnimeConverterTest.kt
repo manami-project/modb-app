@@ -1281,6 +1281,32 @@ internal class AnisearchAnimeConverterTest {
         }
 
         @Test
+        fun `'canceled' is mapped to 'UNKNOWN'`() {
+            tempDirectory {
+                // given
+                val testAnisearchConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = AnisearchConfig.hostname()
+                    override fun buildAnimeLink(id: AnimeId): URI = AnisearchConfig.buildAnimeLink(id)
+                    override fun fileSuffix(): FileSuffix = AnisearchConfig.fileSuffix()
+                }
+
+                val testFile = loadTestResource<String>("AnisearchAnimeConverterTest/status/canceled.html")
+                "<html></html>".writeToFile(tempDir.resolve("13270.${testAnisearchConfig.fileSuffix()}"))
+
+                val converter = AnisearchAnimeConverter(
+                    metaDataProviderConfig = testAnisearchConfig,
+                    relationsDir = tempDir,
+                )
+
+                // when
+                val result = converter.convert(testFile)
+
+                // then
+                assertThat(result.status).isEqualTo(UNKNOWN_STATUS)
+            }
+        }
+
+        @Test
         fun `'on hold' is mapped to 'UNKNOWN'`() {
             tempDirectory {
                 // given
