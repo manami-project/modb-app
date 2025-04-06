@@ -303,6 +303,44 @@ internal class LivechartPaginationIdRangeSelectorTest {
                 assertThat(result).isEmpty()
             }
         }
+
+        @Test
+        fun `returns empty list if html contains an empty list and a note that there are no anime to show`() {
+            runBlocking {
+                // given
+                val testMetaDataProviderConfig = object: MetaDataProviderConfig by LivechartPaginationIdRangeSelectorConfig {
+                    override fun isTestContext(): Boolean = true
+                }
+
+                val testHttpClient = object: HttpClient by TestHttpClient {
+                    override suspend fun get(url: URL, headers: Map<String, Collection<String>>): HttpResponse = HttpResponse(
+                        code = 200,
+                        body = loadTestResource<String>("crawler/livechart/LivechartPaginationIdRangeSelectorTest/no-anime-to-show.html"),
+                    )
+                }
+
+                val testDownloadControlStateScheduler = object: DownloadControlStateScheduler by TestDownloadControlStateScheduler {
+                    override suspend fun findEntriesNotScheduledForCurrentWeek(metaDataProviderConfig: MetaDataProviderConfig): Set<AnimeId> = emptySet()
+                }
+
+                val testAlreadyDownloadedIdsFinder = object: AlreadyDownloadedIdsFinder by TestAlreadyDownloadedIdsFinder {
+                    override suspend fun alreadyDownloadedIds(metaDataProviderConfig: MetaDataProviderConfig): Set<AnimeId> = emptySet()
+                }
+
+                val livechartPaginationIdRangeSelector = LivechartPaginationIdRangeSelector(
+                    metaDataProviderConfig = testMetaDataProviderConfig,
+                    httpClient = testHttpClient,
+                    downloadControlStateScheduler = testDownloadControlStateScheduler,
+                    alreadyDownloadedIdsFinder = testAlreadyDownloadedIdsFinder,
+                )
+
+                // when
+                val result = livechartPaginationIdRangeSelector.idDownloadList("spring-2026")
+
+                // then
+                assertThat(result).isEmpty()
+            }
+        }
     }
 
     @Nested
