@@ -62,8 +62,13 @@ class LivechartPaginationIdRangeSelector(
         }
 
         val data = extractor.extract(response.checkedBody(this::class), mapOf(
-            "animeIdList" to "//article[@class='anime']/@data-anime-id"
+            "animeIdList" to "//article[@class='anime']/@data-anime-id",
+            "emptyMessage" to "//section[@data-anime-card-list-target='emptyMessage']/text()",
         ))
+
+        if (data.notFound("animeIdList") && !data.notFound("emptyMessage") && data.stringOrDefault("emptyMessage").contains("We don't have any anime to display here.")) {
+            return emptyList()
+        }
 
         if (data.notFound("animeIdList")) {
             throw IllegalStateException("Unable to extract animeIdList.")
