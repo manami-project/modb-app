@@ -18,8 +18,10 @@ import okhttp3.RequestBody.Companion.toRequestBody
 import okio.ByteString.Companion.encodeUtf8
 import java.net.Proxy
 import java.net.Proxy.NO_PROXY
+import java.net.SocketException
 import java.net.SocketTimeoutException
 import java.net.URL
+import java.util.concurrent.TimeUnit.*
 
 
 /**
@@ -48,6 +50,8 @@ public class DefaultHttpClient(
     private val protocols: MutableList<HttpProtocol> = mutableListOf(HTTP_2, HTTP_1_1),
     private var okhttpClient: Call.Factory = OkHttpClient.Builder()
         .retryOnConnectionFailure(true)
+        .connectTimeout(5L, SECONDS)
+        .readTimeout(60L, SECONDS)
         .build(),
     private val isTestContext: Boolean = false,
     private val headerCreator: HeaderCreator = DefaultHeaderCreator.instance,
@@ -93,6 +97,7 @@ public class DefaultHttpClient(
             HttpResponseRetryCase { it.code == 429 },
             HttpResponseRetryCase { it.code == 103 },
             ThrowableRetryCase { it is SocketTimeoutException },
+            ThrowableRetryCase { it is SocketException },
         )
     }
 
@@ -153,7 +158,22 @@ public class DefaultHttpClient(
                 retryCase.executeBefore()
 
                 if (okhttpClient is OkHttpClient) {
-                    (okhttpClient as OkHttpClient).cache?.evictAll()
+                    /*
+                        It seems that only the combination of
+                        1. setting connectTimeout/readTimeout
+                        2. evicting the connection pool
+                        3. and creating a completely new instance of the okhttp client
+                        actually solves the problem with recurring SocketTimeoutExceptions.
+                    */
+                    val currentClient = (okhttpClient as OkHttpClient)
+                    currentClient.connectionPool.evictAll()
+                    okhttpClient = OkHttpClient.Builder()
+                        .retryOnConnectionFailure(currentClient.retryOnConnectionFailure)
+                        .connectTimeout(currentClient.connectTimeoutMillis.toLong(), MILLISECONDS)
+                        .readTimeout(currentClient.readTimeoutMillis.toLong(), MILLISECONDS)
+                        .protocols(currentClient.protocols)
+                        .proxy(currentClient.proxy)
+                        .build()
                 }
 
                 wait(request, retryCase, attempt)
