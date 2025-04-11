@@ -72,10 +72,18 @@ class AnilistCrawler(
 
         val response = downloader.download(animeId.toString()) {
             deadEntriesAccess.addDeadEntry(it, metaDataProviderConfig)
+            waitAfterDeadEntry()
         }
 
         if (response.neitherNullNorBlank()) {
             response.writeToFile(file, true)
+        }
+    }
+
+    @KoverIgnore
+    private suspend fun waitAfterDeadEntry() {
+        excludeFromTestContext(metaDataProviderConfig) {
+            delay(random(10000, 20000).toDuration(MILLISECONDS))
         }
     }
 
