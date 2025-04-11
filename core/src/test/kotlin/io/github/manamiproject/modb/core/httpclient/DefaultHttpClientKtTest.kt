@@ -20,6 +20,7 @@ import java.net.SocketTimeoutException
 import java.net.URI
 import java.net.UnknownHostException
 import java.util.concurrent.TimeUnit.MILLISECONDS
+import java.util.concurrent.TimeUnit.SECONDS
 import kotlin.test.Test
 
 
@@ -410,7 +411,7 @@ internal class DefaultHttpClientKtTest : MockServerTestCase<WireMockServer> by W
                             aResponse()
                                 .withHeader("Content-Type", "text/plain")
                                 .withStatus(200)
-                                .withFixedDelay(10000)
+                                .withFixedDelay(6000)
                         )
                         .willSetStateTo("Retry")
                 )
@@ -429,6 +430,11 @@ internal class DefaultHttpClientKtTest : MockServerTestCase<WireMockServer> by W
                 val url = URI("http://localhost:$port/$path").toURL()
                 val client = DefaultHttpClient(
                     isTestContext = true,
+                    okhttpClient = OkHttpClient.Builder()
+                        .retryOnConnectionFailure(true)
+                        .connectTimeout(1L, SECONDS)
+                        .readTimeout(5L, SECONDS)
+                        .build(),
                 )
 
                 // when
@@ -1182,6 +1188,11 @@ internal class DefaultHttpClientKtTest : MockServerTestCase<WireMockServer> by W
                 val body = "{ \"key\": \"some-value\" }"
                 val client = DefaultHttpClient(
                     isTestContext = true,
+                    okhttpClient = OkHttpClient.Builder()
+                        .retryOnConnectionFailure(true)
+                        .connectTimeout(1L, SECONDS)
+                        .readTimeout(5L, SECONDS)
+                        .build(),
                 )
 
                 // when
