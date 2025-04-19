@@ -33,7 +33,7 @@ class NotifyDatasetDownloadCrawler(
     private val appConfig: Config = AppConfig.instance,
     private val metaDataProviderConfig: MetaDataProviderConfig = NotifyAnimeDatasetDownloaderConfig,
     private val relationsMetaDataProviderConfig: MetaDataProviderConfig = NotifyRelationsDatasetDownloaderConfig,
-    private val httpClient: HttpClient = SuspendableHttpClient.instance,
+    private val httpClient: HttpClient = SuspendableHttpClient(),
     private val downloadControlStateAccessor: DownloadControlStateAccessor = DefaultDownloadControlStateAccessor.instance,
     private val deadEntriesAccessor: DeadEntriesAccessor = DefaultDeadEntriesAccessor.instance,
 ): Crawler {

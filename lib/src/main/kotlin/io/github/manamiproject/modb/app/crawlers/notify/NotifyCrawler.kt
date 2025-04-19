@@ -39,7 +39,10 @@ class NotifyCrawler(
     private val appConfig: Config = AppConfig.instance,
     private val metaDataProviderConfig: MetaDataProviderConfig,
     private val idRangeSelector: IdRangeSelector<String> = NotifyIdRangeSelector(metaDataProviderConfig = metaDataProviderConfig),
-    private val downloader: Downloader = NotifyDownloader(metaDataProviderConfig = metaDataProviderConfig, httpClient = SuspendableHttpClient()),
+    private val downloader: Downloader = NotifyDownloader(
+        metaDataProviderConfig = metaDataProviderConfig,
+        httpClient = SuspendableHttpClient(),
+    ),
     private val downloadControlStateAccessor: DownloadControlStateAccessor = DefaultDownloadControlStateAccessor.instance,
 ): Crawler {
 
