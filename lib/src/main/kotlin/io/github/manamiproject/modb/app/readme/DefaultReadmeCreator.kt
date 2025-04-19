@@ -193,17 +193,17 @@ class DefaultReadmeCreator(
             
             ```json
             {
-                "${'$'}schema": "https://raw.githubusercontent.com/manami-project/anime-offline-database/refs/heads/master/anime-offline-database.schema.json",
+                "${'$'}schema": "https://raw.githubusercontent.com/manami-project/anime-offline-database/refs/tags/2025-10/anime-offline-database.schema.json",
                 "license": {
                   "name": "GNU Affero General Public License v3.0",
-                  "url": "https://github.com/manami-project/anime-offline-database/blob/master/LICENSE"
+                  "url": "https://github.com/manami-project/anime-offline-database/blob/2025-10/LICENSE"
                 },
                 "repository": "https://github.com/manami-project/anime-offline-database",
                 "scoreRange": {
                     "minInclusive": 1.0,
                     "maxInclusive": 10.0
                 },
-                "lastUpdate": "2024-01-06",
+                "lastUpdate": "2025-03-03",
                 "data": [
                 {
                       "sources": [
@@ -402,13 +402,13 @@ class DefaultReadmeCreator(
             
             ```json
             {
-                "${'$'}schema": "https://raw.githubusercontent.com/manami-project/anime-offline-database/refs/heads/master/dead-entries/dead-entries.schema.json",
+                "${'$'}schema": "https://raw.githubusercontent.com/manami-project/anime-offline-database/refs/tags/2025-10/dead-entries/dead-entries.schema.json",
                 "license": {
                   "name": "GNU Affero General Public License v3.0",
-                  "url": "https://github.com/manami-project/anime-offline-database/blob/master/LICENSE"
+                  "url": "https://github.com/manami-project/anime-offline-database/blob/2025-10/LICENSE"
                 },
                 "repository": "https://github.com/manami-project/anime-offline-database",
-                "lastUpdate": "2024-01-06",
+                "lastUpdate": "2025-03-03",
                 "deadEntries": [
                     "38492",
                     "38518",
