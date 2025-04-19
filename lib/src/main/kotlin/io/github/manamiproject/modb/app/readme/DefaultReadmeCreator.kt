@@ -120,10 +120,10 @@ class DefaultReadmeCreator(
             
             ### License
             
-            | Field  | Type     | Nullable | Description                    |
-            |--------|----------|----------|--------------------------------|
-            | `name` | `String` | no       | Name of the license.           |
-            | `url`  | `URL`    | no       | URL to the whole license file. |
+            | Field  | Type     | Nullable | Description              |
+            |--------|----------|----------|--------------------------|
+            | `name` | `String` | no       | Name of the license.     |
+            | `url`  | `URL`    | no       | URL to the license file. |
             
             ### ScoreRange
             
