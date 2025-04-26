@@ -7,6 +7,6 @@ package io.github.manamiproject.modb.serde.json.models
  * @property url URL to the license file.
  */
 public data class License(
-    val name: String = "GNU Affero General Public License v3.0",
+    val name: String = "Open Data Commons Open Database License (ODbL) v1.0 + Database Contents License (DbCL) v1.0",
     val url: String = "https://github.com/manami-project/anime-offline-database/blob/master/LICENSE",
 )
