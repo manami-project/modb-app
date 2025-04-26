@@ -64,7 +64,7 @@ internal class DeadEntriesJsonStringDeserializerTest {
                 {
                   "${'$'}schema": "https://raw.githubusercontent.com/manami-project/anime-offline-database/refs/heads/master/dead-entries/dead-entries.schema.json",
                   "license": {
-                    "name": "GNU Affero General Public License v3.0",
+                    "name": "Open Data Commons Open Database License (ODbL) v1.0 + Database Contents License (DbCL) v1.0",
                     "url": "https://github.com/manami-project/anime-offline-database/blob/master/LICENSE"
                   },
                   "repository": "https://github.com/manami-project/anime-offline-database",
@@ -90,7 +90,7 @@ internal class DeadEntriesJsonStringDeserializerTest {
                 {
                   "${'$'}schema": "https://raw.githubusercontent.com/manami-project/anime-offline-database/refs/heads/master/dead-entries/dead-entries.schema.json",
                   "license": {
-                    "name": "GNU Affero General Public License v3.0",
+                    "name": "Open Data Commons Open Database License (ODbL) v1.0 + Database Contents License (DbCL) v1.0",
                     "url": "https://github.com/manami-project/anime-offline-database/blob/master/LICENSE"
                   },
                   "repository": "https://github.com/manami-project/anime-offline-database",
@@ -124,7 +124,7 @@ internal class DeadEntriesJsonStringDeserializerTest {
         runBlocking {
             // given
             val deserializer = DeadEntriesJsonStringDeserializer()
-            val json = """{"${'$'}schema":"https://raw.githubusercontent.com/manami-project/anime-offline-database/refs/heads/master/dead-entries/dead-entries.schema.json","license":{"name":"GNU Affero General Public License v3.0","url":"https://github.com/manami-project/anime-offline-database/blob/master/LICENSE"},"repository":"https://github.com/manami-project/anime-offline-database","lastUpdate":"2020-01-01","deadEntries":["kj42fc5--","lkn6--k44","l2ht33--1","1kj5g--41","3jl253vv9"]}""".trimIndent()
+            val json = """{"${'$'}schema":"https://raw.githubusercontent.com/manami-project/anime-offline-database/refs/heads/master/dead-entries/dead-entries.schema.json","license":{"name":"Open Data Commons Open Database License (ODbL) v1.0 + Database Contents License (DbCL) v1.0","url":"https://github.com/manami-project/anime-offline-database/blob/master/LICENSE"},"repository":"https://github.com/manami-project/anime-offline-database","lastUpdate":"2020-01-01","deadEntries":["kj42fc5--","lkn6--k44","l2ht33--1","1kj5g--41","3jl253vv9"]}""".trimIndent()
 
             // when
             val result = deserializer.deserialize(json)
