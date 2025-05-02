@@ -14,8 +14,6 @@ import io.github.manamiproject.modb.app.dataset.DeadEntriesAccessor
 import io.github.manamiproject.modb.app.dataset.DefaultDeadEntriesAccessor
 import io.github.manamiproject.modb.app.downloadcontrolstate.DefaultDownloadControlStateScheduler
 import io.github.manamiproject.modb.app.downloadcontrolstate.DownloadControlStateScheduler
-import io.github.manamiproject.modb.app.network.LinuxNetworkController
-import io.github.manamiproject.modb.app.network.NetworkController
 import io.github.manamiproject.modb.app.network.SuspendableHttpClient
 import io.github.manamiproject.modb.core.config.MetaDataProviderConfig
 import io.github.manamiproject.modb.core.coverage.KoverIgnore
@@ -28,8 +26,6 @@ import io.github.manamiproject.modb.core.extensions.writeToFile
 import io.github.manamiproject.modb.core.logging.LoggerDelegate
 import io.github.manamiproject.modb.core.random
 import kotlinx.coroutines.delay
-import java.net.SocketException
-import java.net.SocketTimeoutException
 import kotlin.time.DurationUnit.MILLISECONDS
 import kotlin.time.toDuration
 
@@ -56,8 +52,9 @@ class AnimenewsnetworkCrawler(
     private val lastPageMemorizer: LastPageMemorizer<String> = StringBasedLastPageMemorizer(metaDataProviderConfig = metaDataProviderConfig),
     private val paginationIdRangeSelector: PaginationIdRangeSelector<String> = AnimenewsnetworkPaginationIdRangeSelector.instance,
     private val alreadyDownloadedIdsFinder: AlreadyDownloadedIdsFinder = DefaultAlreadyDownloadedIdsFinder.instance,
-    private val downloader: Downloader = AnimenewsnetworkDownloader(httpClient = SuspendableHttpClient()),
-    private val networkController: NetworkController = LinuxNetworkController.instance,
+    private val downloader: Downloader = AnimenewsnetworkDownloader(
+        httpClient = SuspendableHttpClient(),
+    ),
 ): Crawler {
 
     override suspend fun start() {
@@ -112,23 +109,9 @@ class AnimenewsnetworkCrawler(
 
         log.debug { "Downloading ${index+1}/${idDownloadList.size}: [animenewsnetworkId=$animeId]" }
 
-        val response = try {
-            downloader.download(animeId) {
-                if (metaDataProviderConfig is AnimenewsnetworkConfig) {
-                    deadEntriesAccessor.addDeadEntry(it, metaDataProviderConfig)
-                }
-            }
-        } catch (e: Throwable) {
-            when(e) {
-                is SocketTimeoutException,
-                is SocketException -> {
-                    networkController.restartAsync().await()
-                    wait()
-                    downloader.download(animeId) {
-                        deadEntriesAccessor.addDeadEntry(it, metaDataProviderConfig)
-                    }
-                }
-                else -> throw e
+        val response = downloader.download(animeId) {
+            if (metaDataProviderConfig is AnimenewsnetworkConfig) {
+                deadEntriesAccessor.addDeadEntry(it, metaDataProviderConfig)
             }
         }
 
