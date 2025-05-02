@@ -34,7 +34,7 @@ internal class AnimenewsnetworkPaginationIdRangeSelectorConfigTest {
         val result = AnimenewsnetworkPaginationIdRangeSelectorConfig.buildAnimeLink(id)
 
         // then
-        assertThat(result).isEqualTo(URI("https://www.animenewsnetwork.com/encyclopedia/anime.php?id=$id"))
+        assertThat(result).isEqualTo(URI("https://animenewsnetwork.com/encyclopedia/anime.php?id=$id"))
     }
 
     @Test
@@ -46,7 +46,7 @@ internal class AnimenewsnetworkPaginationIdRangeSelectorConfigTest {
         val result = AnimenewsnetworkPaginationIdRangeSelectorConfig.buildDataDownloadLink(id)
 
         // then
-        assertThat(result).isEqualTo(URI("https://www.${hostname()}/encyclopedia/anime.php?list=$id"))
+        assertThat(result).isEqualTo(URI("https://${hostname()}/encyclopedia/anime.php?list=$id"))
     }
 
     @Test

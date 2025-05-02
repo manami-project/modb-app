@@ -4,7 +4,6 @@ import io.github.manamiproject.modb.app.TestAlreadyDownloadedIdsFinder
 import io.github.manamiproject.modb.app.TestDownloadControlStateScheduler
 import io.github.manamiproject.modb.app.TestHttpClient
 import io.github.manamiproject.modb.app.convfiles.AlreadyDownloadedIdsFinder
-import io.github.manamiproject.modb.app.crawlers.animeplanet.AnimePlanetCrawler
 import io.github.manamiproject.modb.app.downloadcontrolstate.DownloadControlStateScheduler
 import io.github.manamiproject.modb.core.config.AnimeId
 import io.github.manamiproject.modb.core.config.MetaDataProviderConfig
@@ -29,7 +28,7 @@ internal class AnimenewsnetworkPaginationIdRangeSelectorTest {
             val testHttpClient = object: HttpClient by TestHttpClient {
                 override suspend fun get(url: URL, headers: Map<String, Collection<String>>): HttpResponse = HttpResponse(
                     code = 200,
-                    body = loadTestResource("crawler/animenewsnetwork/AnimenewsnetworkPaginationIdRangeSelectorTest/page-x.html"),
+                    body = loadTestResource<ByteArray>("crawler/animenewsnetwork/AnimenewsnetworkPaginationIdRangeSelectorTest/page-x.html"),
                 )
             }
 
@@ -93,7 +92,7 @@ internal class AnimenewsnetworkPaginationIdRangeSelectorTest {
             val testHttpClient = object: HttpClient by TestHttpClient {
                 override suspend fun get(url: URL, headers: Map<String, Collection<String>>): HttpResponse = HttpResponse(
                     code = 200,
-                    body = loadTestResource("crawler/animenewsnetwork/AnimenewsnetworkPaginationIdRangeSelectorTest/page-x.html"),
+                    body = loadTestResource<ByteArray>("crawler/animenewsnetwork/AnimenewsnetworkPaginationIdRangeSelectorTest/page-x.html"),
                 )
             }
 
@@ -158,7 +157,7 @@ internal class AnimenewsnetworkPaginationIdRangeSelectorTest {
             val testHttpClient = object: HttpClient by TestHttpClient {
                 override suspend fun get(url: URL, headers: Map<String, Collection<String>>): HttpResponse = HttpResponse(
                     code = 200,
-                    body = loadTestResource("crawler/animenewsnetwork/AnimenewsnetworkPaginationIdRangeSelectorTest/page-x.html"),
+                    body = loadTestResource<ByteArray>("crawler/animenewsnetwork/AnimenewsnetworkPaginationIdRangeSelectorTest/page-x.html"),
                 )
             }
 
@@ -223,7 +222,7 @@ internal class AnimenewsnetworkPaginationIdRangeSelectorTest {
             val testHttpClient = object: HttpClient by TestHttpClient {
                 override suspend fun get(url: URL, headers: Map<String, Collection<String>>): HttpResponse = HttpResponse(
                     code = 200,
-                    body = loadTestResource("crawler/animenewsnetwork/AnimenewsnetworkPaginationIdRangeSelectorTest/page-x.html"),
+                    body = loadTestResource<ByteArray>("crawler/animenewsnetwork/AnimenewsnetworkPaginationIdRangeSelectorTest/page-x.html"),
                 )
             }
 
