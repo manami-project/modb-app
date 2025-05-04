@@ -111,7 +111,7 @@ private fun passwordPrompt(): String {
             }
         }
         ret
-    } catch (e: Exception) {
+    } catch (_: Exception) {
         println("sudo password:")
         readlnOrNull() ?: EMPTY
     }

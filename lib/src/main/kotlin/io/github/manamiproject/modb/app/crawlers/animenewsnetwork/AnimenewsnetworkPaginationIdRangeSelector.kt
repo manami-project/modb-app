@@ -50,7 +50,10 @@ class AnimenewsnetworkPaginationIdRangeSelector(
             entriesNotScheduledForCurrentWeek.addAll(downloadControlStateScheduler.findEntriesNotScheduledForCurrentWeek(metaDataProviderConfig))
         }
 
-        val resonse = httpClient.get(url = paginationIdRangeSelectorConfig.buildDataDownloadLink(page).toURL(),).checkedBody(this::class)
+        val resonse = httpClient.get(
+            url = paginationIdRangeSelectorConfig.buildDataDownloadLink(page).toURL(),
+            headers = mapOf("host" to listOf("www.${metaDataProviderConfig.hostname()}")),
+        ).checkedBody(this::class)
 
         val data = extractor.extract(resonse, mapOf(
             "entriesOnThePage" to "//div[@id='content-zone']//a[@class='HOVERLINE']/@href",
