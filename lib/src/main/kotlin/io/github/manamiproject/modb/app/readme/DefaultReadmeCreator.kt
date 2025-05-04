@@ -435,15 +435,18 @@ class DefaultReadmeCreator(
     }
 
     private suspend fun getNumberOfEntriesAndPercentReviewed(mergedAnime: List<Anime>): Pair<Int, Int> {
-        val numberOfUnreviewedEntries = mergedAnime.map {
-            return@map if (it.sources.size == 1) {
-                reviewedIsolatedEntriesAccessor.contains(it.sources.first()) || mergeLockAccessor.hasMergeLock(it.sources)
-            } else {
-                mergeLockAccessor.hasMergeLock(it.sources)
+        val numberOfUnreviewedEntries = mergedAnime
+            .map { it.sources }
+            .map { it.filterNot { uri -> uri.host == AnimeCountdownConfig.hostname() }.toHashSet() }
+            .map {
+                return@map if (it.size == 1) {
+                    reviewedIsolatedEntriesAccessor.contains(it.first()) || mergeLockAccessor.hasMergeLock(it)
+                } else {
+                    mergeLockAccessor.hasMergeLock(it)
+                }
             }
-        }
-        .filterNot { it }
-        .count()
+            .filterNot { it }
+            .count()
 
         val reviewedEntriesInPercent = (100.0 - (numberOfUnreviewedEntries.toDouble() / mergedAnime.size.toDouble() * 100.0)).toInt()
 
