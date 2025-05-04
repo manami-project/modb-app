@@ -25,7 +25,10 @@ public class AnimenewsnetworkDownloader(
     override suspend fun download(id: AnimeId, onDeadEntry: suspend (AnimeId) -> Unit): String = withContext(LIMITED_NETWORK) {
         log.debug { "Downloading [animenewsnetworkId=$id]" }
 
-        val response = httpClient.get(metaDataProviderConfig.buildDataDownloadLink(id).toURL())
+        val response = httpClient.get(
+            url = metaDataProviderConfig.buildDataDownloadLink(id).toURL(),
+            headers = mapOf("host" to listOf("www.${metaDataProviderConfig.hostname()}")),
+        )
 
         check(response.bodyAsText.neitherNullNorBlank()) { "Response body was blank for [animenewsnetworkId=$id] with response code [${response.code}]" }
 
