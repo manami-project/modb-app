@@ -1,19 +1,15 @@
 package io.github.manamiproject.modb.core.json
 
 import com.squareup.moshi.JsonDataException
-import io.github.manamiproject.modb.core.anime.*
-import io.github.manamiproject.modb.core.anime.AnimeSeason.Season.SUMMER
-import io.github.manamiproject.modb.core.anime.AnimeStatus.*
-import io.github.manamiproject.modb.core.anime.AnimeType.*
-import io.github.manamiproject.modb.core.anime.Duration.Companion.UNKNOWN as UNKNOWN_DURATION
-import io.github.manamiproject.modb.core.anime.Duration.TimeUnit.MINUTES
+import io.github.manamiproject.modb.core.TestAnimeObjects
+import io.github.manamiproject.modb.core.anime.NoScore
 import io.github.manamiproject.modb.test.exceptionExpected
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Nested
-import kotlin.test.Test
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.ValueSource
-import java.net.URI
+import kotlin.test.Test
+import io.github.manamiproject.modb.core.anime.Duration.Companion.UNKNOWN as UNKNOWN_DURATION
 
 internal class AnimeAdapterTest {
 
@@ -24,80 +20,36 @@ internal class AnimeAdapterTest {
         fun `correctly deserialize non-null value`() {
             // given
             val adapter = AnimeAdapter()
-            val expected = Anime(
-                title = "Clannad: After Story - Mou Hitotsu no Sekai, Kyou-hen",
-                sources = hashSetOf(URI("https://myanimelist.net/anime/6351")),
-                relatedAnime = hashSetOf(URI("https://myanimelist.net/anime/2167")),
-                type = TV,
-                episodes = 24,
-                status = FINISHED,
-                animeSeason = AnimeSeason(
-                    season = SUMMER,
-                    year = 2009
-                ),
-                picture = URI("https://cdn.myanimelist.net/images/anime/10/19621.jpg"),
-                thumbnail = URI("https://cdn.myanimelist.net/images/anime/10/19621t.jpg"),
-                duration = Duration(24, MINUTES),
-                score = ScoreValue(
-                    arithmeticGeometricMean = 1.29,
-                    arithmeticMean = 2.38,
-                    median = 3.47,
-                ),
-                synonyms = hashSetOf(
-                    "Clannad ~After Story~: Another World, Kyou Chapter",
-                    "Clannad: After Story OVA",
-                    "クラナド　アフターストーリー　もうひとつの世界　杏編",
-                ),
-                tags = hashSetOf(
-                    "comedy",
-                    "romance",
-                )
-            )
 
             // when
-            val result = adapter.fromJson(
-                """
-                {
-                  "title": "Clannad: After Story - Mou Hitotsu no Sekai, Kyou-hen",
-                  "sources": [
-                    "https://myanimelist.net/anime/6351"
-                  ],
-                  "synonyms": [
-                    "Clannad ~After Story~: Another World, Kyou Chapter",
-                    "Clannad: After Story OVA",
-                    "クラナド　アフターストーリー　もうひとつの世界　杏編"
-                  ],
-                  "type": "TV",
-                  "episodes": 24,
-                  "status": "FINISHED",
-                  "animeSeason": {
-                    "season": "SUMMER",
-                    "year": 2009
-                  },
-                  "picture": "https://cdn.myanimelist.net/images/anime/10/19621.jpg",
-                  "thumbnail": "https://cdn.myanimelist.net/images/anime/10/19621t.jpg",
-                  "duration": {
-                    "value": 1440,
-                    "unit": "SECONDS"
-                  },
-                  "score": {
-                    "arithmeticGeometricMean": 1.29,
-                    "arithmeticMean": 2.38,
-                    "median": 3.47
-                  },
-                  "relatedAnime": [
-                    "https://myanimelist.net/anime/2167"
-                  ],
-                  "tags": [
-                    "comedy",
-                    "romance"
-                  ]
-                }
-            """.trimIndent()
-            )
+            val result = adapter.fromJson(TestAnimeObjects.ReducedTvNonNull.serializedPrettyPrint)
 
             // then
-            assertThat(result).isEqualTo(expected)
+            assertThat(result).isEqualTo(TestAnimeObjects.ReducedTvNonNull.obj)
+        }
+
+        @Test
+        fun `correctly deserialize nullable values`() {
+            // given
+            val adapter = AnimeAdapter()
+
+            // when
+            val result = adapter.fromJson(TestAnimeObjects.ReducedTvNull.serializedPrettyPrint)
+
+            // then
+            assertThat(result).isEqualTo(TestAnimeObjects.ReducedTvNull.obj)
+        }
+
+        @Test
+        fun `correctly deserialize object with default values`() {
+            // given
+            val adapter = AnimeAdapter()
+
+            // when
+            val result = adapter.fromJson(TestAnimeObjects.DefaultAnime.serializedPrettyPrint)
+
+            // then
+            assertThat(result).isEqualTo(TestAnimeObjects.DefaultAnime.obj)
         }
 
         @Test
@@ -152,41 +104,41 @@ internal class AnimeAdapterTest {
 
             // when
             val result = exceptionExpected<IllegalArgumentException> {
-                adapter.fromJson(
-                    """
+                adapter.fromJson("""
                     {
-                      "title": "$value",
                       "sources": [
-                        "https://myanimelist.net/anime/6351"
+                        "https://myanimelist.net/anime/1535"
                       ],
+                      "title": "$value",
                       "synonyms": [
-                        "Clannad ~After Story~: Another World, Kyou Chapter",
-                        "Clannad: After Story OVA",
-                        "クラナド　アフターストーリー　もうひとつの世界　杏編"
+                        "DN"
                       ],
                       "type": "TV",
-                      "episodes": 24,
+                      "episodes": 37,
                       "status": "FINISHED",
                       "animeSeason": {
-                        "season": "SUMMER",
-                        "year": 2009
+                        "season": "FALL",
+                        "year": 2006
                       },
-                      "picture": "https://cdn.myanimelist.net/images/anime/10/19621.jpg",
-                      "thumbnail": "https://cdn.myanimelist.net/images/anime/10/19621t.jpg",
+                      "picture": "https://cdn.myanimelist.net/images/anime/1079/138100.jpg",
+                      "thumbnail": "https://cdn.myanimelist.net/images/anime/1079/138100t.jpg",
                       "duration": {
-                        "value": 1440,
+                        "value": 1380,
                         "unit": "SECONDS"
                       },
+                      "score": {
+                        "arithmeticGeometricMean": 8.62,
+                        "arithmeticMean": 8.62,
+                        "median": 8.62
+                      },
                       "relatedAnime": [
-                        "https://myanimelist.net/anime/2167"
+                        "https://myanimelist.net/anime/2994"
                       ],
                       "tags": [
-                        "comedy",
-                        "romance"
+                        "psychological"
                       ]
                     }
-            """.trimIndent()
-                )
+                """.trimIndent())
             }
 
             // then
@@ -200,41 +152,41 @@ internal class AnimeAdapterTest {
 
             // when
             val result = exceptionExpected<JsonDataException> {
-                adapter.fromJson(
-                    """
+                adapter.fromJson("""
                     {
-                      "title": null,
                       "sources": [
-                        "https://myanimelist.net/anime/6351"
+                        "https://myanimelist.net/anime/1535"
                       ],
+                      "title": null,
                       "synonyms": [
-                        "Clannad ~After Story~: Another World, Kyou Chapter",
-                        "Clannad: After Story OVA",
-                        "クラナド　アフターストーリー　もうひとつの世界　杏編"
+                        "DN"
                       ],
                       "type": "TV",
-                      "episodes": 24,
+                      "episodes": 37,
                       "status": "FINISHED",
                       "animeSeason": {
-                        "season": "SUMMER",
-                        "year": 2009
+                        "season": "FALL",
+                        "year": 2006
                       },
-                      "picture": "https://cdn.myanimelist.net/images/anime/10/19621.jpg",
-                      "thumbnail": "https://cdn.myanimelist.net/images/anime/10/19621t.jpg",
+                      "picture": "https://cdn.myanimelist.net/images/anime/1079/138100.jpg",
+                      "thumbnail": "https://cdn.myanimelist.net/images/anime/1079/138100t.jpg",
                       "duration": {
-                        "value": 1440,
+                        "value": 1380,
                         "unit": "SECONDS"
                       },
+                      "score": {
+                        "arithmeticGeometricMean": 8.62,
+                        "arithmeticMean": 8.62,
+                        "median": 8.62
+                      },
                       "relatedAnime": [
-                        "https://myanimelist.net/anime/2167"
+                        "https://myanimelist.net/anime/2994"
                       ],
                       "tags": [
-                        "comedy",
-                        "romance"
+                        "psychological"
                       ]
                     }
-            """.trimIndent()
-                )
+                """.trimIndent())
             }
 
             // then
@@ -248,40 +200,40 @@ internal class AnimeAdapterTest {
 
             // when
             val result = exceptionExpected<IllegalStateException> {
-                adapter.fromJson(
-                    """
+                adapter.fromJson("""
                     {
                       "sources": [
-                        "https://myanimelist.net/anime/6351"
+                        "https://myanimelist.net/anime/1535"
                       ],
                       "synonyms": [
-                        "Clannad ~After Story~: Another World, Kyou Chapter",
-                        "Clannad: After Story OVA",
-                        "クラナド　アフターストーリー　もうひとつの世界　杏編"
+                        "DN"
                       ],
                       "type": "TV",
-                      "episodes": 24,
+                      "episodes": 37,
                       "status": "FINISHED",
                       "animeSeason": {
-                        "season": "SUMMER",
-                        "year": 2009
+                        "season": "FALL",
+                        "year": 2006
                       },
-                      "picture": "https://cdn.myanimelist.net/images/anime/10/19621.jpg",
-                      "thumbnail": "https://cdn.myanimelist.net/images/anime/10/19621t.jpg",
+                      "picture": "https://cdn.myanimelist.net/images/anime/1079/138100.jpg",
+                      "thumbnail": "https://cdn.myanimelist.net/images/anime/1079/138100t.jpg",
                       "duration": {
-                        "value": 1440,
+                        "value": 1380,
                         "unit": "SECONDS"
                       },
+                      "score": {
+                        "arithmeticGeometricMean": 8.62,
+                        "arithmeticMean": 8.62,
+                        "median": 8.62
+                      },
                       "relatedAnime": [
-                        "https://myanimelist.net/anime/2167"
+                        "https://myanimelist.net/anime/2994"
                       ],
                       "tags": [
-                        "comedy",
-                        "romance"
+                        "psychological"
                       ]
                     }
-            """.trimIndent()
-                )
+                """.trimIndent())
             }
 
             // then
@@ -295,39 +247,39 @@ internal class AnimeAdapterTest {
 
             // when
             val result = exceptionExpected<JsonDataException> {
-                adapter.fromJson(
-                    """
+                adapter.fromJson("""
                     {
-                      "title": "Clannad: After Story - Mou Hitotsu no Sekai, Kyou-hen",
                       "sources": null,
+                      "title": "Death Note",
                       "synonyms": [
-                        "Clannad ~After Story~: Another World, Kyou Chapter",
-                        "Clannad: After Story OVA",
-                        "クラナド　アフターストーリー　もうひとつの世界　杏編"
+                        "DN"
                       ],
                       "type": "TV",
-                      "episodes": 24,
+                      "episodes": 37,
                       "status": "FINISHED",
                       "animeSeason": {
-                        "season": "SUMMER",
-                        "year": 2009
+                        "season": "FALL",
+                        "year": 2006
                       },
-                      "picture": "https://cdn.myanimelist.net/images/anime/10/19621.jpg",
-                      "thumbnail": "https://cdn.myanimelist.net/images/anime/10/19621t.jpg",
+                      "picture": "https://cdn.myanimelist.net/images/anime/1079/138100.jpg",
+                      "thumbnail": "https://cdn.myanimelist.net/images/anime/1079/138100t.jpg",
                       "duration": {
-                        "value": 1440,
+                        "value": 1380,
                         "unit": "SECONDS"
                       },
+                      "score": {
+                        "arithmeticGeometricMean": 8.62,
+                        "arithmeticMean": 8.62,
+                        "median": 8.62
+                      },
                       "relatedAnime": [
-                        "https://myanimelist.net/anime/2167"
+                        "https://myanimelist.net/anime/2994"
                       ],
                       "tags": [
-                        "comedy",
-                        "romance"
+                        "psychological"
                       ]
                     }
-            """.trimIndent()
-                )
+                """.trimIndent())
             }
 
             // then
@@ -341,38 +293,38 @@ internal class AnimeAdapterTest {
 
             // when
             val result = exceptionExpected<IllegalStateException> {
-                adapter.fromJson(
-                    """
+                adapter.fromJson("""
                     {
-                      "title": "Clannad: After Story - Mou Hitotsu no Sekai, Kyou-hen",
+                      "title": "Death Note",
                       "synonyms": [
-                        "Clannad ~After Story~: Another World, Kyou Chapter",
-                        "Clannad: After Story OVA",
-                        "クラナド　アフターストーリー　もうひとつの世界　杏編"
+                        "DN"
                       ],
                       "type": "TV",
-                      "episodes": 24,
+                      "episodes": 37,
                       "status": "FINISHED",
                       "animeSeason": {
-                        "season": "SUMMER",
-                        "year": 2009
+                        "season": "FALL",
+                        "year": 2006
                       },
-                      "picture": "https://cdn.myanimelist.net/images/anime/10/19621.jpg",
-                      "thumbnail": "https://cdn.myanimelist.net/images/anime/10/19621t.jpg",
+                      "picture": "https://cdn.myanimelist.net/images/anime/1079/138100.jpg",
+                      "thumbnail": "https://cdn.myanimelist.net/images/anime/1079/138100t.jpg",
                       "duration": {
-                        "value": 1440,
+                        "value": 1380,
                         "unit": "SECONDS"
                       },
+                      "score": {
+                        "arithmeticGeometricMean": 8.62,
+                        "arithmeticMean": 8.62,
+                        "median": 8.62
+                      },
                       "relatedAnime": [
-                        "https://myanimelist.net/anime/2167"
+                        "https://myanimelist.net/anime/2994"
                       ],
                       "tags": [
-                        "comedy",
-                        "romance"
+                        "psychological"
                       ]
                     }
-            """.trimIndent()
-                )
+                """.trimIndent())
             }
 
             // then
@@ -386,37 +338,39 @@ internal class AnimeAdapterTest {
 
             // when
             val result = exceptionExpected<JsonDataException> {
-                adapter.fromJson(
-                    """
+                adapter.fromJson("""
                     {
-                      "title": "Clannad: After Story - Mou Hitotsu no Sekai, Kyou-hen",
                       "sources": [
-                        "https://myanimelist.net/anime/6351"
+                        "https://myanimelist.net/anime/1535"
                       ],
+                      "title": "Death Note",
                       "synonyms": null,
                       "type": "TV",
-                      "episodes": 24,
+                      "episodes": 37,
                       "status": "FINISHED",
                       "animeSeason": {
-                        "season": "SUMMER",
-                        "year": 2009
+                        "season": "FALL",
+                        "year": 2006
                       },
-                      "picture": "https://cdn.myanimelist.net/images/anime/10/19621.jpg",
-                      "thumbnail": "https://cdn.myanimelist.net/images/anime/10/19621t.jpg",
+                      "picture": "https://cdn.myanimelist.net/images/anime/1079/138100.jpg",
+                      "thumbnail": "https://cdn.myanimelist.net/images/anime/1079/138100t.jpg",
                       "duration": {
-                        "value": 1440,
+                        "value": 1380,
                         "unit": "SECONDS"
                       },
+                      "score": {
+                        "arithmeticGeometricMean": 8.62,
+                        "arithmeticMean": 8.62,
+                        "median": 8.62
+                      },
                       "relatedAnime": [
-                        "https://myanimelist.net/anime/2167"
+                        "https://myanimelist.net/anime/2994"
                       ],
                       "tags": [
-                        "comedy",
-                        "romance"
+                        "psychological"
                       ]
                     }
-            """.trimIndent()
-                )
+                """.trimIndent())
             }
 
             // then
@@ -430,36 +384,38 @@ internal class AnimeAdapterTest {
 
             // when
             val result = exceptionExpected<IllegalStateException> {
-                adapter.fromJson(
-                    """
+                adapter.fromJson("""
                     {
-                      "title": "Clannad: After Story - Mou Hitotsu no Sekai, Kyou-hen",
                       "sources": [
-                        "https://myanimelist.net/anime/6351"
+                        "https://myanimelist.net/anime/1535"
                       ],
+                      "title": "Death Note",
                       "type": "TV",
-                      "episodes": 24,
+                      "episodes": 37,
                       "status": "FINISHED",
                       "animeSeason": {
-                        "season": "SUMMER",
-                        "year": 2009
+                        "season": "FALL",
+                        "year": 2006
                       },
-                      "picture": "https://cdn.myanimelist.net/images/anime/10/19621.jpg",
-                      "thumbnail": "https://cdn.myanimelist.net/images/anime/10/19621t.jpg",
+                      "picture": "https://cdn.myanimelist.net/images/anime/1079/138100.jpg",
+                      "thumbnail": "https://cdn.myanimelist.net/images/anime/1079/138100t.jpg",
                       "duration": {
-                        "value": 1440,
+                        "value": 1380,
                         "unit": "SECONDS"
                       },
+                      "score": {
+                        "arithmeticGeometricMean": 8.62,
+                        "arithmeticMean": 8.62,
+                        "median": 8.62
+                      },
                       "relatedAnime": [
-                        "https://myanimelist.net/anime/2167"
+                        "https://myanimelist.net/anime/2994"
                       ],
                       "tags": [
-                        "comedy",
-                        "romance"
+                        "psychological"
                       ]
                     }
-            """.trimIndent()
-                )
+                """.trimIndent())
             }
 
             // then
@@ -473,41 +429,41 @@ internal class AnimeAdapterTest {
 
             // when
             val result = exceptionExpected<JsonDataException> {
-                adapter.fromJson(
-                    """
+                adapter.fromJson("""
                     {
-                      "title": "Clannad: After Story - Mou Hitotsu no Sekai, Kyou-hen",
                       "sources": [
-                        "https://myanimelist.net/anime/6351"
+                        "https://myanimelist.net/anime/1535"
                       ],
+                      "title": "Death Note",
                       "synonyms": [
-                        "Clannad ~After Story~: Another World, Kyou Chapter",
-                        "Clannad: After Story OVA",
-                        "クラナド　アフターストーリー　もうひとつの世界　杏編"
+                        "DN"
                       ],
                       "type": null,
-                      "episodes": 24,
+                      "episodes": 37,
                       "status": "FINISHED",
                       "animeSeason": {
-                        "season": "SUMMER",
-                        "year": 2009
+                        "season": "FALL",
+                        "year": 2006
                       },
-                      "picture": "https://cdn.myanimelist.net/images/anime/10/19621.jpg",
-                      "thumbnail": "https://cdn.myanimelist.net/images/anime/10/19621t.jpg",
+                      "picture": "https://cdn.myanimelist.net/images/anime/1079/138100.jpg",
+                      "thumbnail": "https://cdn.myanimelist.net/images/anime/1079/138100t.jpg",
                       "duration": {
-                        "value": 1440,
+                        "value": 1380,
                         "unit": "SECONDS"
                       },
+                      "score": {
+                        "arithmeticGeometricMean": 8.62,
+                        "arithmeticMean": 8.62,
+                        "median": 8.62
+                      },
                       "relatedAnime": [
-                        "https://myanimelist.net/anime/2167"
+                        "https://myanimelist.net/anime/2994"
                       ],
                       "tags": [
-                        "comedy",
-                        "romance"
+                        "psychological"
                       ]
                     }
-            """.trimIndent()
-                )
+                """.trimIndent())
             }
 
             // then
@@ -521,40 +477,40 @@ internal class AnimeAdapterTest {
 
             // when
             val result = exceptionExpected<IllegalStateException> {
-                adapter.fromJson(
-                    """
+                adapter.fromJson("""
                     {
-                      "title": "Clannad: After Story - Mou Hitotsu no Sekai, Kyou-hen",
                       "sources": [
-                        "https://myanimelist.net/anime/6351"
+                        "https://myanimelist.net/anime/1535"
                       ],
+                      "title": "Death Note",
                       "synonyms": [
-                        "Clannad ~After Story~: Another World, Kyou Chapter",
-                        "Clannad: After Story OVA",
-                        "クラナド　アフターストーリー　もうひとつの世界　杏編"
+                        "DN"
                       ],
-                      "episodes": 24,
+                      "episodes": 37,
                       "status": "FINISHED",
                       "animeSeason": {
-                        "season": "SUMMER",
-                        "year": 2009
+                        "season": "FALL",
+                        "year": 2006
                       },
-                      "picture": "https://cdn.myanimelist.net/images/anime/10/19621.jpg",
-                      "thumbnail": "https://cdn.myanimelist.net/images/anime/10/19621t.jpg",
+                      "picture": "https://cdn.myanimelist.net/images/anime/1079/138100.jpg",
+                      "thumbnail": "https://cdn.myanimelist.net/images/anime/1079/138100t.jpg",
                       "duration": {
-                        "value": 1440,
+                        "value": 1380,
                         "unit": "SECONDS"
                       },
+                      "score": {
+                        "arithmeticGeometricMean": 8.62,
+                        "arithmeticMean": 8.62,
+                        "median": 8.62
+                      },
                       "relatedAnime": [
-                        "https://myanimelist.net/anime/2167"
+                        "https://myanimelist.net/anime/2994"
                       ],
                       "tags": [
-                        "comedy",
-                        "romance"
+                        "psychological"
                       ]
                     }
-            """.trimIndent()
-                )
+                """.trimIndent())
             }
 
             // then
@@ -568,41 +524,41 @@ internal class AnimeAdapterTest {
 
             // when
             val result = exceptionExpected<JsonDataException> {
-                adapter.fromJson(
-                    """
+                adapter.fromJson("""
                     {
-                      "title": "Clannad: After Story - Mou Hitotsu no Sekai, Kyou-hen",
                       "sources": [
-                        "https://myanimelist.net/anime/6351"
+                        "https://myanimelist.net/anime/1535"
                       ],
+                      "title": "Death Note",
                       "synonyms": [
-                        "Clannad ~After Story~: Another World, Kyou Chapter",
-                        "Clannad: After Story OVA",
-                        "クラナド　アフターストーリー　もうひとつの世界　杏編"
+                        "DN"
                       ],
                       "type": "TV",
                       "episodes": null,
                       "status": "FINISHED",
                       "animeSeason": {
-                        "season": "SUMMER",
-                        "year": 2009
+                        "season": "FALL",
+                        "year": 2006
                       },
-                      "picture": "https://cdn.myanimelist.net/images/anime/10/19621.jpg",
-                      "thumbnail": "https://cdn.myanimelist.net/images/anime/10/19621t.jpg",
+                      "picture": "https://cdn.myanimelist.net/images/anime/1079/138100.jpg",
+                      "thumbnail": "https://cdn.myanimelist.net/images/anime/1079/138100t.jpg",
                       "duration": {
-                        "value": 1440,
+                        "value": 1380,
                         "unit": "SECONDS"
                       },
+                      "score": {
+                        "arithmeticGeometricMean": 8.62,
+                        "arithmeticMean": 8.62,
+                        "median": 8.62
+                      },
                       "relatedAnime": [
-                        "https://myanimelist.net/anime/2167"
+                        "https://myanimelist.net/anime/2994"
                       ],
                       "tags": [
-                        "comedy",
-                        "romance"
+                        "psychological"
                       ]
                     }
-            """.trimIndent()
-                )
+                """.trimIndent())
             }
 
             // then
@@ -616,40 +572,40 @@ internal class AnimeAdapterTest {
 
             // when
             val result = exceptionExpected<IllegalStateException> {
-                adapter.fromJson(
-                    """
+                adapter.fromJson("""
                     {
-                      "title": "Clannad: After Story - Mou Hitotsu no Sekai, Kyou-hen",
                       "sources": [
-                        "https://myanimelist.net/anime/6351"
+                        "https://myanimelist.net/anime/1535"
                       ],
+                      "title": "Death Note",
                       "synonyms": [
-                        "Clannad ~After Story~: Another World, Kyou Chapter",
-                        "Clannad: After Story OVA",
-                        "クラナド　アフターストーリー　もうひとつの世界　杏編"
+                        "DN"
                       ],
                       "type": "TV",
                       "status": "FINISHED",
                       "animeSeason": {
-                        "season": "SUMMER",
-                        "year": 2009
+                        "season": "FALL",
+                        "year": 2006
                       },
-                      "picture": "https://cdn.myanimelist.net/images/anime/10/19621.jpg",
-                      "thumbnail": "https://cdn.myanimelist.net/images/anime/10/19621t.jpg",
+                      "picture": "https://cdn.myanimelist.net/images/anime/1079/138100.jpg",
+                      "thumbnail": "https://cdn.myanimelist.net/images/anime/1079/138100t.jpg",
                       "duration": {
-                        "value": 1440,
+                        "value": 1380,
                         "unit": "SECONDS"
                       },
+                      "score": {
+                        "arithmeticGeometricMean": 8.62,
+                        "arithmeticMean": 8.62,
+                        "median": 8.62
+                      },
                       "relatedAnime": [
-                        "https://myanimelist.net/anime/2167"
+                        "https://myanimelist.net/anime/2994"
                       ],
                       "tags": [
-                        "comedy",
-                        "romance"
+                        "psychological"
                       ]
                     }
-            """.trimIndent()
-                )
+                """.trimIndent())
             }
 
             // then
@@ -663,41 +619,41 @@ internal class AnimeAdapterTest {
 
             // when
             val result = exceptionExpected<JsonDataException> {
-                adapter.fromJson(
-                    """
+                adapter.fromJson("""
                     {
-                      "title": "Clannad: After Story - Mou Hitotsu no Sekai, Kyou-hen",
                       "sources": [
-                        "https://myanimelist.net/anime/6351"
+                        "https://myanimelist.net/anime/1535"
                       ],
+                      "title": "Death Note",
                       "synonyms": [
-                        "Clannad ~After Story~: Another World, Kyou Chapter",
-                        "Clannad: After Story OVA",
-                        "クラナド　アフターストーリー　もうひとつの世界　杏編"
+                        "DN"
                       ],
                       "type": "TV",
-                      "episodes": 24,
+                      "episodes": 37,
                       "status": null,
                       "animeSeason": {
-                        "season": "SUMMER",
-                        "year": 2009
+                        "season": "FALL",
+                        "year": 2006
                       },
-                      "picture": "https://cdn.myanimelist.net/images/anime/10/19621.jpg",
-                      "thumbnail": "https://cdn.myanimelist.net/images/anime/10/19621t.jpg",
+                      "picture": "https://cdn.myanimelist.net/images/anime/1079/138100.jpg",
+                      "thumbnail": "https://cdn.myanimelist.net/images/anime/1079/138100t.jpg",
                       "duration": {
-                        "value": 1440,
+                        "value": 1380,
                         "unit": "SECONDS"
                       },
+                      "score": {
+                        "arithmeticGeometricMean": 8.62,
+                        "arithmeticMean": 8.62,
+                        "median": 8.62
+                      },
                       "relatedAnime": [
-                        "https://myanimelist.net/anime/2167"
+                        "https://myanimelist.net/anime/2994"
                       ],
                       "tags": [
-                        "comedy",
-                        "romance"
+                        "psychological"
                       ]
                     }
-            """.trimIndent()
-                )
+                """.trimIndent())
             }
 
             // then
@@ -711,40 +667,40 @@ internal class AnimeAdapterTest {
 
             // when
             val result = exceptionExpected<IllegalStateException> {
-                adapter.fromJson(
-                    """
+                adapter.fromJson("""
                     {
-                      "title": "Clannad: After Story - Mou Hitotsu no Sekai, Kyou-hen",
                       "sources": [
-                        "https://myanimelist.net/anime/6351"
+                        "https://myanimelist.net/anime/1535"
                       ],
+                      "title": "Death Note",
                       "synonyms": [
-                        "Clannad ~After Story~: Another World, Kyou Chapter",
-                        "Clannad: After Story OVA",
-                        "クラナド　アフターストーリー　もうひとつの世界　杏編"
+                        "DN"
                       ],
                       "type": "TV",
-                      "episodes": 24,
+                      "episodes": 37,
                       "animeSeason": {
-                        "season": "SUMMER",
-                        "year": 2009
+                        "season": "FALL",
+                        "year": 2006
                       },
-                      "picture": "https://cdn.myanimelist.net/images/anime/10/19621.jpg",
-                      "thumbnail": "https://cdn.myanimelist.net/images/anime/10/19621t.jpg",
+                      "picture": "https://cdn.myanimelist.net/images/anime/1079/138100.jpg",
+                      "thumbnail": "https://cdn.myanimelist.net/images/anime/1079/138100t.jpg",
                       "duration": {
-                        "value": 1440,
+                        "value": 1380,
                         "unit": "SECONDS"
                       },
+                      "score": {
+                        "arithmeticGeometricMean": 8.62,
+                        "arithmeticMean": 8.62,
+                        "median": 8.62
+                      },
                       "relatedAnime": [
-                        "https://myanimelist.net/anime/2167"
+                        "https://myanimelist.net/anime/2994"
                       ],
                       "tags": [
-                        "comedy",
-                        "romance"
+                        "psychological"
                       ]
                     }
-            """.trimIndent()
-                )
+                """.trimIndent())
             }
 
             // then
@@ -758,38 +714,38 @@ internal class AnimeAdapterTest {
 
             // when
             val result = exceptionExpected<JsonDataException> {
-                adapter.fromJson(
-                    """
+                adapter.fromJson("""
                     {
-                      "title": "Clannad: After Story - Mou Hitotsu no Sekai, Kyou-hen",
                       "sources": [
-                        "https://myanimelist.net/anime/6351"
+                        "https://myanimelist.net/anime/1535"
                       ],
+                      "title": "Death Note",
                       "synonyms": [
-                        "Clannad ~After Story~: Another World, Kyou Chapter",
-                        "Clannad: After Story OVA",
-                        "クラナド　アフターストーリー　もうひとつの世界　杏編"
+                        "DN"
                       ],
                       "type": "TV",
-                      "episodes": 24,
+                      "episodes": 37,
                       "status": "FINISHED",
                       "animeSeason": null,
-                      "picture": "https://cdn.myanimelist.net/images/anime/10/19621.jpg",
-                      "thumbnail": "https://cdn.myanimelist.net/images/anime/10/19621t.jpg",
+                      "picture": "https://cdn.myanimelist.net/images/anime/1079/138100.jpg",
+                      "thumbnail": "https://cdn.myanimelist.net/images/anime/1079/138100t.jpg",
                       "duration": {
-                        "value": 1440,
+                        "value": 1380,
                         "unit": "SECONDS"
                       },
+                      "score": {
+                        "arithmeticGeometricMean": 8.62,
+                        "arithmeticMean": 8.62,
+                        "median": 8.62
+                      },
                       "relatedAnime": [
-                        "https://myanimelist.net/anime/2167"
+                        "https://myanimelist.net/anime/2994"
                       ],
                       "tags": [
-                        "comedy",
-                        "romance"
+                        "psychological"
                       ]
                     }
-            """.trimIndent()
-                )
+                """.trimIndent())
             }
 
             // then
@@ -803,37 +759,37 @@ internal class AnimeAdapterTest {
 
             // when
             val result = exceptionExpected<IllegalStateException> {
-                adapter.fromJson(
-                    """
+                adapter.fromJson("""
                     {
-                      "title": "Clannad: After Story - Mou Hitotsu no Sekai, Kyou-hen",
                       "sources": [
-                        "https://myanimelist.net/anime/6351"
+                        "https://myanimelist.net/anime/1535"
                       ],
+                      "title": "Death Note",
                       "synonyms": [
-                        "Clannad ~After Story~: Another World, Kyou Chapter",
-                        "Clannad: After Story OVA",
-                        "クラナド　アフターストーリー　もうひとつの世界　杏編"
+                        "DN"
                       ],
                       "type": "TV",
-                      "episodes": 24,
+                      "episodes": 37,
                       "status": "FINISHED",
-                      "picture": "https://cdn.myanimelist.net/images/anime/10/19621.jpg",
-                      "thumbnail": "https://cdn.myanimelist.net/images/anime/10/19621t.jpg",
+                      "picture": "https://cdn.myanimelist.net/images/anime/1079/138100.jpg",
+                      "thumbnail": "https://cdn.myanimelist.net/images/anime/1079/138100t.jpg",
                       "duration": {
-                        "value": 1440,
+                        "value": 1380,
                         "unit": "SECONDS"
                       },
+                      "score": {
+                        "arithmeticGeometricMean": 8.62,
+                        "arithmeticMean": 8.62,
+                        "median": 8.62
+                      },
                       "relatedAnime": [
-                        "https://myanimelist.net/anime/2167"
+                        "https://myanimelist.net/anime/2994"
                       ],
                       "tags": [
-                        "comedy",
-                        "romance"
+                        "psychological"
                       ]
                     }
-            """.trimIndent()
-                )
+                """.trimIndent())
             }
 
             // then
@@ -847,41 +803,41 @@ internal class AnimeAdapterTest {
 
             // when
             val result = exceptionExpected<JsonDataException> {
-                adapter.fromJson(
-                    """
+                adapter.fromJson("""
                     {
-                      "title": "Clannad: After Story - Mou Hitotsu no Sekai, Kyou-hen",
                       "sources": [
-                        "https://myanimelist.net/anime/6351"
+                        "https://myanimelist.net/anime/1535"
                       ],
+                      "title": "Death Note",
                       "synonyms": [
-                        "Clannad ~After Story~: Another World, Kyou Chapter",
-                        "Clannad: After Story OVA",
-                        "クラナド　アフターストーリー　もうひとつの世界　杏編"
+                        "DN"
                       ],
                       "type": "TV",
-                      "episodes": 24,
+                      "episodes": 37,
                       "status": "FINISHED",
                       "animeSeason": {
-                        "season": "SUMMER",
-                        "year": 2009
+                        "season": "FALL",
+                        "year": 2006
                       },
                       "picture": null,
-                      "thumbnail": "https://cdn.myanimelist.net/images/anime/10/19621t.jpg",
+                      "thumbnail": "https://cdn.myanimelist.net/images/anime/1079/138100t.jpg",
                       "duration": {
-                        "value": 1440,
+                        "value": 1380,
                         "unit": "SECONDS"
                       },
+                      "score": {
+                        "arithmeticGeometricMean": 8.62,
+                        "arithmeticMean": 8.62,
+                        "median": 8.62
+                      },
                       "relatedAnime": [
-                        "https://myanimelist.net/anime/2167"
+                        "https://myanimelist.net/anime/2994"
                       ],
                       "tags": [
-                        "comedy",
-                        "romance"
+                        "psychological"
                       ]
                     }
-            """.trimIndent()
-                )
+                """.trimIndent())
             }
 
             // then
@@ -895,40 +851,40 @@ internal class AnimeAdapterTest {
 
             // when
             val result = exceptionExpected<IllegalStateException> {
-                adapter.fromJson(
-                    """
+                adapter.fromJson("""
                     {
-                      "title": "Clannad: After Story - Mou Hitotsu no Sekai, Kyou-hen",
                       "sources": [
-                        "https://myanimelist.net/anime/6351"
+                        "https://myanimelist.net/anime/1535"
                       ],
+                      "title": "Death Note",
                       "synonyms": [
-                        "Clannad ~After Story~: Another World, Kyou Chapter",
-                        "Clannad: After Story OVA",
-                        "クラナド　アフターストーリー　もうひとつの世界　杏編"
+                        "DN"
                       ],
                       "type": "TV",
-                      "episodes": 24,
+                      "episodes": 37,
                       "status": "FINISHED",
                       "animeSeason": {
-                        "season": "SUMMER",
-                        "year": 2009
+                        "season": "FALL",
+                        "year": 2006
                       },
-                      "thumbnail": "https://cdn.myanimelist.net/images/anime/10/19621t.jpg",
+                      "thumbnail": "https://cdn.myanimelist.net/images/anime/1079/138100t.jpg",
                       "duration": {
-                        "value": 1440,
+                        "value": 1380,
                         "unit": "SECONDS"
                       },
+                      "score": {
+                        "arithmeticGeometricMean": 8.62,
+                        "arithmeticMean": 8.62,
+                        "median": 8.62
+                      },
                       "relatedAnime": [
-                        "https://myanimelist.net/anime/2167"
+                        "https://myanimelist.net/anime/2994"
                       ],
                       "tags": [
-                        "comedy",
-                        "romance"
+                        "psychological"
                       ]
                     }
-            """.trimIndent()
-                )
+                """.trimIndent())
             }
 
             // then
@@ -942,41 +898,41 @@ internal class AnimeAdapterTest {
 
             // when
             val result = exceptionExpected<JsonDataException> {
-                adapter.fromJson(
-                    """
+                adapter.fromJson("""
                     {
-                      "title": "Clannad: After Story - Mou Hitotsu no Sekai, Kyou-hen",
                       "sources": [
-                        "https://myanimelist.net/anime/6351"
+                        "https://myanimelist.net/anime/1535"
                       ],
+                      "title": "Death Note",
                       "synonyms": [
-                        "Clannad ~After Story~: Another World, Kyou Chapter",
-                        "Clannad: After Story OVA",
-                        "クラナド　アフターストーリー　もうひとつの世界　杏編"
+                        "DN"
                       ],
                       "type": "TV",
-                      "episodes": 24,
+                      "episodes": 37,
                       "status": "FINISHED",
                       "animeSeason": {
-                        "season": "SUMMER",
-                        "year": 2009
+                        "season": "FALL",
+                        "year": 2006
                       },
-                      "picture": "https://cdn.myanimelist.net/images/anime/10/19621.jpg",
+                      "picture": "https://cdn.myanimelist.net/images/anime/1079/138100.jpg",
                       "thumbnail": null,
                       "duration": {
-                        "value": 1440,
+                        "value": 1380,
                         "unit": "SECONDS"
                       },
+                      "score": {
+                        "arithmeticGeometricMean": 8.62,
+                        "arithmeticMean": 8.62,
+                        "median": 8.62
+                      },
                       "relatedAnime": [
-                        "https://myanimelist.net/anime/2167"
+                        "https://myanimelist.net/anime/2994"
                       ],
                       "tags": [
-                        "comedy",
-                        "romance"
+                        "psychological"
                       ]
                     }
-            """.trimIndent()
-                )
+                """.trimIndent())
             }
 
             // then
@@ -990,40 +946,40 @@ internal class AnimeAdapterTest {
 
             // when
             val result = exceptionExpected<IllegalStateException> {
-                adapter.fromJson(
-                    """
+                adapter.fromJson("""
                     {
-                      "title": "Clannad: After Story - Mou Hitotsu no Sekai, Kyou-hen",
                       "sources": [
-                        "https://myanimelist.net/anime/6351"
+                        "https://myanimelist.net/anime/1535"
                       ],
+                      "title": "Death Note",
                       "synonyms": [
-                        "Clannad ~After Story~: Another World, Kyou Chapter",
-                        "Clannad: After Story OVA",
-                        "クラナド　アフターストーリー　もうひとつの世界　杏編"
+                        "DN"
                       ],
                       "type": "TV",
-                      "episodes": 24,
+                      "episodes": 37,
                       "status": "FINISHED",
                       "animeSeason": {
-                        "season": "SUMMER",
-                        "year": 2009
+                        "season": "FALL",
+                        "year": 2006
                       },
-                      "picture": "https://cdn.myanimelist.net/images/anime/10/19621.jpg",
+                      "picture": "https://cdn.myanimelist.net/images/anime/1079/138100.jpg",
                       "duration": {
-                        "value": 1440,
+                        "value": 1380,
                         "unit": "SECONDS"
                       },
+                      "score": {
+                        "arithmeticGeometricMean": 8.62,
+                        "arithmeticMean": 8.62,
+                        "median": 8.62
+                      },
                       "relatedAnime": [
-                        "https://myanimelist.net/anime/2167"
+                        "https://myanimelist.net/anime/2994"
                       ],
                       "tags": [
-                        "comedy",
-                        "romance"
+                        "psychological"
                       ]
                     }
-            """.trimIndent()
-                )
+                """.trimIndent())
             }
 
             // then
@@ -1036,38 +992,38 @@ internal class AnimeAdapterTest {
             val adapter = AnimeAdapter()
 
             // when
-            val result = adapter.fromJson(
-                """
+            val result = adapter.fromJson("""
                 {
-                  "title": "Clannad: After Story - Mou Hitotsu no Sekai, Kyou-hen",
                   "sources": [
-                    "https://myanimelist.net/anime/6351"
+                    "https://myanimelist.net/anime/1535"
                   ],
+                  "title": "Death Note",
                   "synonyms": [
-                    "Clannad ~After Story~: Another World, Kyou Chapter",
-                    "Clannad: After Story OVA",
-                    "クラナド　アフターストーリー　もうひとつの世界　杏編"
+                    "DN"
                   ],
                   "type": "TV",
-                  "episodes": 24,
+                  "episodes": 37,
                   "status": "FINISHED",
                   "animeSeason": {
-                    "season": "SUMMER",
-                    "year": 2009
+                    "season": "FALL",
+                    "year": 2006
                   },
-                  "picture": "https://cdn.myanimelist.net/images/anime/10/19621.jpg",
-                  "thumbnail": "https://cdn.myanimelist.net/images/anime/10/19621t.jpg",
+                  "picture": "https://cdn.myanimelist.net/images/anime/1079/138100.jpg",
+                  "thumbnail": "https://cdn.myanimelist.net/images/anime/1079/138100t.jpg",
                   "duration": null,
+                  "score": {
+                    "arithmeticGeometricMean": 8.62,
+                    "arithmeticMean": 8.62,
+                    "median": 8.62
+                  },
                   "relatedAnime": [
-                    "https://myanimelist.net/anime/2167"
+                    "https://myanimelist.net/anime/2994"
                   ],
                   "tags": [
-                    "comedy",
-                    "romance"
+                    "psychological"
                   ]
                 }
-            """.trimIndent()
-            )!!
+            """.trimIndent())!!
 
             // then
             assertThat(result.duration).isEqualTo(UNKNOWN_DURATION)
@@ -1079,37 +1035,37 @@ internal class AnimeAdapterTest {
             val adapter = AnimeAdapter()
 
             // when
-            val result = adapter.fromJson(
-                """
+            val result = adapter.fromJson("""
                 {
-                  "title": "Clannad: After Story - Mou Hitotsu no Sekai, Kyou-hen",
                   "sources": [
-                    "https://myanimelist.net/anime/6351"
+                    "https://myanimelist.net/anime/1535"
                   ],
+                  "title": "Death Note",
                   "synonyms": [
-                    "Clannad ~After Story~: Another World, Kyou Chapter",
-                    "Clannad: After Story OVA",
-                    "クラナド　アフターストーリー　もうひとつの世界　杏編"
+                    "DN"
                   ],
                   "type": "TV",
-                  "episodes": 24,
+                  "episodes": 37,
                   "status": "FINISHED",
                   "animeSeason": {
-                    "season": "SUMMER",
-                    "year": 2009
+                    "season": "FALL",
+                    "year": 2006
                   },
-                  "picture": "https://cdn.myanimelist.net/images/anime/10/19621.jpg",
-                  "thumbnail": "https://cdn.myanimelist.net/images/anime/10/19621t.jpg",
+                  "picture": "https://cdn.myanimelist.net/images/anime/1079/138100.jpg",
+                  "thumbnail": "https://cdn.myanimelist.net/images/anime/1079/138100t.jpg",
+                  "score": {
+                    "arithmeticGeometricMean": 8.62,
+                    "arithmeticMean": 8.62,
+                    "median": 8.62
+                  },
                   "relatedAnime": [
-                    "https://myanimelist.net/anime/2167"
+                    "https://myanimelist.net/anime/2994"
                   ],
                   "tags": [
-                    "comedy",
-                    "romance"
+                    "psychological"
                   ]
                 }
-            """.trimIndent()
-            )!!
+            """.trimIndent())!!
 
             // then
             assertThat(result.duration).isEqualTo(UNKNOWN_DURATION)
@@ -1121,42 +1077,37 @@ internal class AnimeAdapterTest {
             val adapter = AnimeAdapter()
 
             // when
-            val result = adapter.fromJson(
-                """
+            val result = adapter.fromJson("""
                 {
-                  "title": "Clannad: After Story - Mou Hitotsu no Sekai, Kyou-hen",
                   "sources": [
-                    "https://myanimelist.net/anime/6351"
+                    "https://myanimelist.net/anime/1535"
                   ],
+                  "title": "Death Note",
                   "synonyms": [
-                    "Clannad ~After Story~: Another World, Kyou Chapter",
-                    "Clannad: After Story OVA",
-                    "クラナド　アフターストーリー　もうひとつの世界　杏編"
+                    "DN"
                   ],
                   "type": "TV",
-                  "episodes": 24,
+                  "episodes": 37,
                   "status": "FINISHED",
                   "animeSeason": {
-                    "season": "SUMMER",
-                    "year": 2009
+                    "season": "FALL",
+                    "year": 2006
                   },
-                  "picture": "https://cdn.myanimelist.net/images/anime/10/19621.jpg",
-                  "thumbnail": "https://cdn.myanimelist.net/images/anime/10/19621t.jpg",
+                  "picture": "https://cdn.myanimelist.net/images/anime/1079/138100.jpg",
+                  "thumbnail": "https://cdn.myanimelist.net/images/anime/1079/138100t.jpg",
                   "duration": {
-                    "value": 1440,
+                    "value": 1380,
                     "unit": "SECONDS"
                   },
                   "score": null,
                   "relatedAnime": [
-                    "https://myanimelist.net/anime/2167"
+                    "https://myanimelist.net/anime/2994"
                   ],
                   "tags": [
-                    "comedy",
-                    "romance"
+                    "psychological"
                   ]
                 }
-            """.trimIndent()
-            )!!
+            """.trimIndent())!!
 
             // then
             assertThat(result.score).isEqualTo(NoScore)
@@ -1168,41 +1119,36 @@ internal class AnimeAdapterTest {
             val adapter = AnimeAdapter()
 
             // when
-            val result = adapter.fromJson(
-                """
+            val result = adapter.fromJson("""
                 {
-                  "title": "Clannad: After Story - Mou Hitotsu no Sekai, Kyou-hen",
                   "sources": [
-                    "https://myanimelist.net/anime/6351"
+                    "https://myanimelist.net/anime/1535"
                   ],
+                  "title": "Death Note",
                   "synonyms": [
-                    "Clannad ~After Story~: Another World, Kyou Chapter",
-                    "Clannad: After Story OVA",
-                    "クラナド　アフターストーリー　もうひとつの世界　杏編"
+                    "DN"
                   ],
                   "type": "TV",
-                  "episodes": 24,
+                  "episodes": 37,
                   "status": "FINISHED",
                   "animeSeason": {
-                    "season": "SUMMER",
-                    "year": 2009
+                    "season": "FALL",
+                    "year": 2006
                   },
-                  "picture": "https://cdn.myanimelist.net/images/anime/10/19621.jpg",
-                  "thumbnail": "https://cdn.myanimelist.net/images/anime/10/19621t.jpg",
+                  "picture": "https://cdn.myanimelist.net/images/anime/1079/138100.jpg",
+                  "thumbnail": "https://cdn.myanimelist.net/images/anime/1079/138100t.jpg",
                   "duration": {
-                    "value": 1440,
+                    "value": 1380,
                     "unit": "SECONDS"
                   },
                   "relatedAnime": [
-                    "https://myanimelist.net/anime/2167"
+                    "https://myanimelist.net/anime/2994"
                   ],
                   "tags": [
-                    "comedy",
-                    "romance"
+                    "psychological"
                   ]
                 }
-            """.trimIndent()
-            )!!
+            """.trimIndent())!!
 
             // then
             assertThat(result.score).isEqualTo(NoScore)
@@ -1215,39 +1161,39 @@ internal class AnimeAdapterTest {
 
             // when
             val result = exceptionExpected<JsonDataException> {
-                adapter.fromJson(
-                    """
+                adapter.fromJson("""
                     {
-                      "title": "Clannad: After Story - Mou Hitotsu no Sekai, Kyou-hen",
                       "sources": [
-                        "https://myanimelist.net/anime/6351"
+                        "https://myanimelist.net/anime/1535"
                       ],
+                      "title": "Death Note",
                       "synonyms": [
-                        "Clannad ~After Story~: Another World, Kyou Chapter",
-                        "Clannad: After Story OVA",
-                        "クラナド　アフターストーリー　もうひとつの世界　杏編"
+                        "DN"
                       ],
                       "type": "TV",
-                      "episodes": 24,
+                      "episodes": 37,
                       "status": "FINISHED",
                       "animeSeason": {
-                        "season": "SUMMER",
-                        "year": 2009
+                        "season": "FALL",
+                        "year": 2006
                       },
-                      "picture": "https://cdn.myanimelist.net/images/anime/10/19621.jpg",
-                      "thumbnail": "https://cdn.myanimelist.net/images/anime/10/19621t.jpg",
+                      "picture": "https://cdn.myanimelist.net/images/anime/1079/138100.jpg",
+                      "thumbnail": "https://cdn.myanimelist.net/images/anime/1079/138100t.jpg",
                       "duration": {
-                        "value": 1440,
+                        "value": 1380,
                         "unit": "SECONDS"
+                      },
+                      "score": {
+                        "arithmeticGeometricMean": 8.62,
+                        "arithmeticMean": 8.62,
+                        "median": 8.62
                       },
                       "relatedAnime": null,
                       "tags": [
-                        "comedy",
-                        "romance"
+                        "psychological"
                       ]
                     }
-            """.trimIndent()
-                )
+                """.trimIndent())
             }
 
             // then
@@ -1261,38 +1207,38 @@ internal class AnimeAdapterTest {
 
             // when
             val result = exceptionExpected<IllegalStateException> {
-                adapter.fromJson(
-                    """
+                adapter.fromJson("""
                     {
-                      "title": "Clannad: After Story - Mou Hitotsu no Sekai, Kyou-hen",
                       "sources": [
-                        "https://myanimelist.net/anime/6351"
+                        "https://myanimelist.net/anime/1535"
                       ],
+                      "title": "Death Note",
                       "synonyms": [
-                        "Clannad ~After Story~: Another World, Kyou Chapter",
-                        "Clannad: After Story OVA",
-                        "クラナド　アフターストーリー　もうひとつの世界　杏編"
+                        "DN"
                       ],
                       "type": "TV",
-                      "episodes": 24,
+                      "episodes": 37,
                       "status": "FINISHED",
                       "animeSeason": {
-                        "season": "SUMMER",
-                        "year": 2009
+                        "season": "FALL",
+                        "year": 2006
                       },
-                      "picture": "https://cdn.myanimelist.net/images/anime/10/19621.jpg",
-                      "thumbnail": "https://cdn.myanimelist.net/images/anime/10/19621t.jpg",
+                      "picture": "https://cdn.myanimelist.net/images/anime/1079/138100.jpg",
+                      "thumbnail": "https://cdn.myanimelist.net/images/anime/1079/138100t.jpg",
                       "duration": {
-                        "value": 1440,
+                        "value": 1380,
                         "unit": "SECONDS"
                       },
+                      "score": {
+                        "arithmeticGeometricMean": 8.62,
+                        "arithmeticMean": 8.62,
+                        "median": 8.62
+                      },
                       "tags": [
-                        "comedy",
-                        "romance"
+                        "psychological"
                       ]
                     }
-            """.trimIndent()
-                )
+                """.trimIndent())
             }
 
             // then
@@ -1306,38 +1252,39 @@ internal class AnimeAdapterTest {
 
             // when
             val result = exceptionExpected<JsonDataException> {
-                adapter.fromJson(
-                    """
+                adapter.fromJson("""
                     {
-                      "title": "Clannad: After Story - Mou Hitotsu no Sekai, Kyou-hen",
                       "sources": [
-                        "https://myanimelist.net/anime/6351"
+                        "https://myanimelist.net/anime/1535"
                       ],
+                      "title": "Death Note",
                       "synonyms": [
-                        "Clannad ~After Story~: Another World, Kyou Chapter",
-                        "Clannad: After Story OVA",
-                        "クラナド　アフターストーリー　もうひとつの世界　杏編"
+                        "DN"
                       ],
                       "type": "TV",
-                      "episodes": 24,
+                      "episodes": 37,
                       "status": "FINISHED",
                       "animeSeason": {
-                        "season": "SUMMER",
-                        "year": 2009
+                        "season": "FALL",
+                        "year": 2006
                       },
-                      "picture": "https://cdn.myanimelist.net/images/anime/10/19621.jpg",
-                      "thumbnail": "https://cdn.myanimelist.net/images/anime/10/19621t.jpg",
+                      "picture": "https://cdn.myanimelist.net/images/anime/1079/138100.jpg",
+                      "thumbnail": "https://cdn.myanimelist.net/images/anime/1079/138100t.jpg",
                       "duration": {
-                        "value": 1440,
+                        "value": 1380,
                         "unit": "SECONDS"
                       },
+                      "score": {
+                        "arithmeticGeometricMean": 8.62,
+                        "arithmeticMean": 8.62,
+                        "median": 8.62
+                      },
                       "relatedAnime": [
-                        "https://myanimelist.net/anime/2167"
+                        "https://myanimelist.net/anime/2994"
                       ],
                       "tags": null
                     }
-            """.trimIndent()
-                )
+                """.trimIndent())
             }
 
             // then
@@ -1351,37 +1298,38 @@ internal class AnimeAdapterTest {
 
             // when
             val result = exceptionExpected<IllegalStateException> {
-                adapter.fromJson(
-                    """
+                adapter.fromJson("""
                     {
-                      "title": "Clannad: After Story - Mou Hitotsu no Sekai, Kyou-hen",
                       "sources": [
-                        "https://myanimelist.net/anime/6351"
+                        "https://myanimelist.net/anime/1535"
                       ],
+                      "title": "Death Note",
                       "synonyms": [
-                        "Clannad ~After Story~: Another World, Kyou Chapter",
-                        "Clannad: After Story OVA",
-                        "クラナド　アフターストーリー　もうひとつの世界　杏編"
+                        "DN"
                       ],
                       "type": "TV",
-                      "episodes": 24,
+                      "episodes": 37,
                       "status": "FINISHED",
                       "animeSeason": {
-                        "season": "SUMMER",
-                        "year": 2009
+                        "season": "FALL",
+                        "year": 2006
                       },
-                      "picture": "https://cdn.myanimelist.net/images/anime/10/19621.jpg",
-                      "thumbnail": "https://cdn.myanimelist.net/images/anime/10/19621t.jpg",
+                      "picture": "https://cdn.myanimelist.net/images/anime/1079/138100.jpg",
+                      "thumbnail": "https://cdn.myanimelist.net/images/anime/1079/138100t.jpg",
                       "duration": {
-                        "value": 1440,
+                        "value": 1380,
                         "unit": "SECONDS"
                       },
+                      "score": {
+                        "arithmeticGeometricMean": 8.62,
+                        "arithmeticMean": 8.62,
+                        "median": 8.62
+                      },
                       "relatedAnime": [
-                        "https://myanimelist.net/anime/2167"
+                        "https://myanimelist.net/anime/2994"
                       ]
                     }
-            """.trimIndent()
-                )
+                """.trimIndent())
             }
 
             // then
@@ -1396,313 +1344,55 @@ internal class AnimeAdapterTest {
         fun `correctly serialize non-null value`() {
             // given
             val adapter = AnimeAdapter().indent("  ")
-            val obj = Anime(
-                title = "Clannad: After Story - Mou Hitotsu no Sekai, Kyou-hen",
-                sources = hashSetOf(URI("https://myanimelist.net/anime/6351")),
-                relatedAnime = hashSetOf(URI("https://myanimelist.net/anime/2167")),
-                type = TV,
-                episodes = 24,
-                status = FINISHED,
-                animeSeason = AnimeSeason(
-                    season = SUMMER,
-                    year = 2009
-                ),
-                picture = URI("https://cdn.myanimelist.net/images/anime/10/19621.jpg"),
-                thumbnail = URI("https://cdn.myanimelist.net/images/anime/10/19621t.jpg"),
-                duration = Duration(24, MINUTES),
-                score = ScoreValue(
-                    arithmeticGeometricMean = 1.29,
-                    arithmeticMean = 2.38,
-                    median = 3.47,
-                ),
-                synonyms = hashSetOf(
-                    "Clannad ~After Story~: Another World, Kyou Chapter",
-                    "Clannad: After Story OVA",
-                    "クラナド　アフターストーリー　もうひとつの世界　杏編",
-                ),
-                tags = hashSetOf(
-                    "comedy",
-                    "romance",
-                )
-            )
 
             // when
-            val result = adapter.toJson(obj)
+            val result = adapter.toJson(TestAnimeObjects.ReducedTvNonNull.obj)
 
             // then
-            assertThat(result).isEqualTo(
-                """
-                {
-                  "sources": [
-                    "https://myanimelist.net/anime/6351"
-                  ],
-                  "title": "Clannad: After Story - Mou Hitotsu no Sekai, Kyou-hen",
-                  "type": "TV",
-                  "episodes": 24,
-                  "status": "FINISHED",
-                  "animeSeason": {
-                    "season": "SUMMER",
-                    "year": 2009
-                  },
-                  "picture": "https://cdn.myanimelist.net/images/anime/10/19621.jpg",
-                  "thumbnail": "https://cdn.myanimelist.net/images/anime/10/19621t.jpg",
-                  "duration": {
-                    "value": 1440,
-                    "unit": "SECONDS"
-                  },
-                  "score": {
-                    "arithmeticGeometricMean": 1.29,
-                    "arithmeticMean": 2.38,
-                    "median": 3.47
-                  },
-                  "synonyms": [
-                    "Clannad ~After Story~: Another World, Kyou Chapter",
-                    "Clannad: After Story OVA",
-                    "クラナド　アフターストーリー　もうひとつの世界　杏編"
-                  ],
-                  "relatedAnime": [
-                    "https://myanimelist.net/anime/2167"
-                  ],
-                  "tags": [
-                    "comedy",
-                    "romance"
-                  ]
-                }
-            """.trimIndent()
-            )
+            assertThat(result).isEqualTo(TestAnimeObjects.ReducedTvNonNull.serializedPrettyPrint)
         }
 
         @Test
         fun `correctly serialize nullable data if serializeNulls has been set`() {
             // given
             val adapter = AnimeAdapter().indent("  ").serializeNulls()
-            val obj = Anime(
-                title = "Clannad: After Story - Mou Hitotsu no Sekai, Kyou-hen",
-                sources = hashSetOf(URI("https://myanimelist.net/anime/6351")),
-                relatedAnime = hashSetOf(URI("https://myanimelist.net/anime/2167")),
-                type = TV,
-                episodes = 24,
-                status = FINISHED,
-                animeSeason = AnimeSeason(
-                    season = SUMMER,
-                    year = 0
-                ),
-                picture = URI("https://cdn.myanimelist.net/images/anime/10/19621.jpg"),
-                thumbnail = URI("https://cdn.myanimelist.net/images/anime/10/19621t.jpg"),
-                duration = UNKNOWN_DURATION,
-                score = NoScore,
-                synonyms = hashSetOf(
-                    "Clannad ~After Story~: Another World, Kyou Chapter",
-                    "Clannad: After Story OVA",
-                    "クラナド　アフターストーリー　もうひとつの世界　杏編",
-                ),
-                tags = hashSetOf(
-                    "comedy",
-                    "romance",
-                )
-            )
 
             // when
-            val result = adapter.toJson(obj)
+            val result = adapter.toJson(TestAnimeObjects.ReducedTvNull.obj)
 
             // then
-            assertThat(result).isEqualTo(
-                """
-                {
-                  "sources": [
-                    "https://myanimelist.net/anime/6351"
-                  ],
-                  "title": "Clannad: After Story - Mou Hitotsu no Sekai, Kyou-hen",
-                  "type": "TV",
-                  "episodes": 24,
-                  "status": "FINISHED",
-                  "animeSeason": {
-                    "season": "SUMMER",
-                    "year": null
-                  },
-                  "picture": "https://cdn.myanimelist.net/images/anime/10/19621.jpg",
-                  "thumbnail": "https://cdn.myanimelist.net/images/anime/10/19621t.jpg",
-                  "duration": null,
-                  "score": null,
-                  "synonyms": [
-                    "Clannad ~After Story~: Another World, Kyou Chapter",
-                    "Clannad: After Story OVA",
-                    "クラナド　アフターストーリー　もうひとつの世界　杏編"
-                  ],
-                  "relatedAnime": [
-                    "https://myanimelist.net/anime/2167"
-                  ],
-                  "tags": [
-                    "comedy",
-                    "romance"
-                  ]
-                }
-            """.trimIndent()
-            )
+            assertThat(result).isEqualTo(TestAnimeObjects.ReducedTvNull.serializedPrettyPrint)
         }
 
         @Test
-        fun `sources synonyms relatedAnime and tags are being sorted asc by their string representation`() {
+        fun `correctly serialize object with default values`() {
+            // given
+            val adapter = AnimeAdapter().indent("  ").serializeNulls()
+            val obj = TestAnimeObjects.DefaultAnime.obj
+
+            // when
+            val result = adapter.toJson(obj)
+
+            // then
+            assertThat(result).isEqualTo(TestAnimeObjects.DefaultAnime.serializedPrettyPrint)
+        }
+
+        @Test
+        fun `sources, synonyms, relatedAnime and tags are being sorted asc by their string representation`() {
             // given
             val adapter = AnimeAdapter().indent("  ")
-            val obj = Anime(
-                title = "Clannad: After Story - Mou Hitotsu no Sekai, Kyou-hen",
-                sources = hashSetOf(
-                    URI("https://livechart.me/anime/3681"),
-                    URI("https://anisearch.com/anime/6826"),
-                    URI("https://kitsu.io/anime/4529"),
-                    URI("https://anime-planet.com/anime/clannad-another-world-kyou-chapter"),
-                    URI("https://anilist.co/anime/6351"),
-                    URI("https://notify.moe/anime/3L63cKimg"),
-                    URI("https://myanimelist.net/anime/6351"),
-                ),
-                relatedAnime = hashSetOf(
-                    URI("https://myanimelist.net/anime/4181"),
-                    URI("https://anilist.co/anime/2167"),
-                    URI("https://anime-planet.com/anime/clannad"),
-                    URI("https://livechart.me/anime/10537"),
-                    URI("https://anime-planet.com/anime/clannad-another-world-tomoyo-chapter"),
-                    URI("https://livechart.me/anime/10976"),
-                    URI("https://anime-planet.com/anime/clannad-movie"),
-                    URI("https://anisearch.com/anime/4199"),
-                    URI("https://notify.moe/anime/F2eY5Fmig"),
-                    URI("https://livechart.me/anime/3581"),
-                    URI("https://anime-planet.com/anime/clannad-after-story"),
-                    URI("https://livechart.me/anime/3588"),
-                    URI("https://myanimelist.net/anime/2167"),
-                    URI("https://livechart.me/anime/3657"),
-                    URI("https://anilist.co/anime/4059"),
-                    URI("https://livechart.me/anime/3822"),
-                    URI("https://kitsu.io/anime/1962"),
-                ),
-                type = TV,
-                episodes = 24,
-                status = FINISHED,
-                animeSeason = AnimeSeason(
-                    season = SUMMER,
-                    year = 2009
-                ),
-                picture = URI("https://cdn.myanimelist.net/images/anime/10/19621.jpg"),
-                thumbnail = URI("https://cdn.myanimelist.net/images/anime/10/19621t.jpg"),
-                duration = Duration(24, MINUTES),
-                synonyms = hashSetOf(
-                    "Clannad (TV)",
-                    "Kuranado",
-                    "Clannad TV",
-                    "CLANNAD",
-                    "クラナド",
-                    "Кланнад",
-                    "Кланад",
-                    "كلاناد",
-                    "Clannad 1",
-                    "클라나드",
-                    "خانواده",
-                    "کلاناد",
-                    "แคลนนาด",
-                    "くらなど",
-                    "ＣＬＡＮＮＡＤ -クラナド-",
-                ),
-                tags = hashSetOf(
-                    "baseball",
-                    "based on a visual novel",
-                    "basketball",
-                    "amnesia",
-                    "coming of age",
-                    "asia",
-                    "daily life",
-                    "comedy",
-                    "delinquents",
-                    "earth",
-                    "romance",
-                    "ensemble cast",
-                    "drama",
-                )
+            val obj = TestAnimeObjects.FullyMergedSpecialWithMultipleEpisodes.obj.copy(
+                sources = TestAnimeObjects.FullyMergedSpecialWithMultipleEpisodes.obj.sources.toList().shuffled().toHashSet(),
+                relatedAnime = TestAnimeObjects.FullyMergedSpecialWithMultipleEpisodes.obj.relatedAnime.toList().shuffled().toHashSet(),
+                synonyms = TestAnimeObjects.FullyMergedSpecialWithMultipleEpisodes.obj.synonyms.toList().shuffled().toHashSet(),
+                tags = TestAnimeObjects.FullyMergedSpecialWithMultipleEpisodes.obj.tags.toList().shuffled().toHashSet(),
             )
 
             // when
             val result = adapter.toJson(obj)
 
             // then
-            assertThat(result).isEqualTo(
-                """
-                {
-                  "sources": [
-                    "https://anilist.co/anime/6351",
-                    "https://anime-planet.com/anime/clannad-another-world-kyou-chapter",
-                    "https://anisearch.com/anime/6826",
-                    "https://kitsu.io/anime/4529",
-                    "https://livechart.me/anime/3681",
-                    "https://myanimelist.net/anime/6351",
-                    "https://notify.moe/anime/3L63cKimg"
-                  ],
-                  "title": "Clannad: After Story - Mou Hitotsu no Sekai, Kyou-hen",
-                  "type": "TV",
-                  "episodes": 24,
-                  "status": "FINISHED",
-                  "animeSeason": {
-                    "season": "SUMMER",
-                    "year": 2009
-                  },
-                  "picture": "https://cdn.myanimelist.net/images/anime/10/19621.jpg",
-                  "thumbnail": "https://cdn.myanimelist.net/images/anime/10/19621t.jpg",
-                  "duration": {
-                    "value": 1440,
-                    "unit": "SECONDS"
-                  },
-                  "synonyms": [
-                    "CLANNAD",
-                    "Clannad (TV)",
-                    "Clannad 1",
-                    "Clannad TV",
-                    "Kuranado",
-                    "Кланад",
-                    "Кланнад",
-                    "خانواده",
-                    "كلاناد",
-                    "کلاناد",
-                    "แคลนนาด",
-                    "くらなど",
-                    "クラナド",
-                    "클라나드",
-                    "ＣＬＡＮＮＡＤ -クラナド-"
-                  ],
-                  "relatedAnime": [
-                    "https://anilist.co/anime/2167",
-                    "https://anilist.co/anime/4059",
-                    "https://anime-planet.com/anime/clannad",
-                    "https://anime-planet.com/anime/clannad-after-story",
-                    "https://anime-planet.com/anime/clannad-another-world-tomoyo-chapter",
-                    "https://anime-planet.com/anime/clannad-movie",
-                    "https://anisearch.com/anime/4199",
-                    "https://kitsu.io/anime/1962",
-                    "https://livechart.me/anime/10537",
-                    "https://livechart.me/anime/10976",
-                    "https://livechart.me/anime/3581",
-                    "https://livechart.me/anime/3588",
-                    "https://livechart.me/anime/3657",
-                    "https://livechart.me/anime/3822",
-                    "https://myanimelist.net/anime/2167",
-                    "https://myanimelist.net/anime/4181",
-                    "https://notify.moe/anime/F2eY5Fmig"
-                  ],
-                  "tags": [
-                    "amnesia",
-                    "asia",
-                    "baseball",
-                    "based on a visual novel",
-                    "basketball",
-                    "comedy",
-                    "coming of age",
-                    "daily life",
-                    "delinquents",
-                    "drama",
-                    "earth",
-                    "ensemble cast",
-                    "romance"
-                  ]
-                }
-            """.trimIndent()
-            )
+            assertThat(result).isEqualTo(TestAnimeObjects.FullyMergedSpecialWithMultipleEpisodes.serializedPrettyPrint)
         }
 
         @Test

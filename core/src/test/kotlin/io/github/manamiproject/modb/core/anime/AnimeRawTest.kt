@@ -3430,7 +3430,7 @@ internal class AnimeRawTest {
         @Test
         fun `create formatted string listing all properties`() {
             // when
-            val result = TestAnimeRawObjects.specialWithMultipleEpisodes.toString()
+            val result = TestAnimeRawObjects.SpecialWithMultipleEpisodes.obj.toString()
 
             // then
             assertThat(result).isEqualTo(
