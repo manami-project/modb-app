@@ -34,7 +34,8 @@ import java.net.URI
  * @property relatedAnime Duplicate-free list of links to related anime.
  * @param _tags Duplicate-free list of tags. This contains both genres and tags from meta data providers. All tags transformed to lower case.
  * @property tags Duplicate-free list of tags. This contains both genres and tags from meta data providers. All tags are lower case.
- * @property activateChecks Disable any checks upon creating the object. This is only supposed to be used during safe deserialization. If created using `false` you can call [performChecks] manually.
+ * @property metaDataProviderScores Contains a score for each meta data provider. The property will not be serialized as-is. It's serialized using backing field [scores].
+ * @property activateChecks Disable any checks upon creating the object. This is only supposed to be used during safe deserialization. If created using `false` you can call [performChecks] manually. The property will not be serialized
  * @throws IllegalArgumentException if _title is blank or number of episodes is negative.
  */
 public data class AnimeRaw(
@@ -50,10 +51,9 @@ public data class AnimeRaw(
     private val _synonyms: HashSet<Title> = HashSet(),
     private val _relatedAnime: HashSet<URI> = HashSet(),
     private val _tags: HashSet<Tag> = HashSet(),
+    @Transient private val metaDataProviderScores: HashMap<Hostname, MetaDataProviderScoreValue> = hashMapOf(),
     @Transient val activateChecks: Boolean = true,
 ) {
-
-    private val metaDataProviderScores: HashMap<Hostname, MetaDataProviderScoreValue> = hashMapOf()
 
     /**
      * Main title.
