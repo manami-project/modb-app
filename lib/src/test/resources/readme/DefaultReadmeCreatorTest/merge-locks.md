@@ -1,4 +1,4 @@
-![Check JSON files](https://github.com/manami-project/anime-offline-database/actions/workflows/json_lint.yml/badge.svg) ![License: ODbL-1.0](https://img.shields.io/badge/license-ODbL--1.0-orange)
+![Check JSON files](https://github.com/manami-project/anime-offline-database/actions/workflows/json_lint.yml/badge.svg) [![License: ODbL-1.0](https://img.shields.io/badge/license-ODbL--1.0-orange)](https://github.com/manami-project/anime-offline-database/blob/2020-18/LICENSE)
 
 # anime-offline-database
 The purpose of this repository is to create a dataset containing anime meta data aggregated by different anime meta data providers (such as myanimelist.net, anidb.net, kitsu.app and more) and allow cross references between those meta data providers. This dataset is supposed to be used by and created for [manami](https://github.com/manami-project/manami).
