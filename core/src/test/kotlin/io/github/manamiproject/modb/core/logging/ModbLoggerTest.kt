@@ -1,5 +1,6 @@
 package io.github.manamiproject.modb.core.logging
 
+import io.github.manamiproject.modb.core.TestLoggerImplementation
 import io.github.manamiproject.modb.core.extensions.EMPTY
 import io.github.manamiproject.modb.core.logging.LogLevel.OFF
 import org.assertj.core.api.Assertions.assertThat

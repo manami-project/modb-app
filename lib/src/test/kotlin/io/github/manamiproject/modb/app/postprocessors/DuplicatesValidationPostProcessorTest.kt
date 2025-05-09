@@ -76,7 +76,7 @@ internal class DuplicatesValidationPostProcessorTest {
 
             // then
             assertThat(result).hasMessage("""
-            Found duplicates in DCS files: [DownloadControlStateEntry(_weeksWihoutChange=1, _lastDownloaded=2024-32, _nextDownload=2024-33, _anime=Anime(
+            Found duplicates in DCS files: [DownloadControlStateEntry(_weeksWihoutChange=1, _lastDownloaded=2024-32, _nextDownload=2024-33, _anime=AnimeRaw(
               sources = []
               title = example
               type = UNKNOWN
@@ -127,7 +127,7 @@ internal class DuplicatesValidationPostProcessorTest {
 
             // then
             assertThat(result).hasMessage("""
-            Found duplicates in anime entries of DCS files: [Anime(
+            Found duplicates in anime entries of DCS files: [AnimeRaw(
               sources = []
               title = example
               type = UNKNOWN

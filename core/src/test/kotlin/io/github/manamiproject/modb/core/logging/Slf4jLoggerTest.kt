@@ -1,5 +1,6 @@
 package io.github.manamiproject.modb.core.logging
 
+import io.github.manamiproject.modb.core.TestSlf4jImplementation
 import io.github.manamiproject.modb.core.extensions.EMPTY
 import org.assertj.core.api.Assertions.assertThat
 import org.slf4j.Logger
