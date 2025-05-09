@@ -11,7 +11,10 @@ import io.github.manamiproject.modb.core.extractor.DataExtractor
 import io.github.manamiproject.modb.core.extractor.ExtractionResult
 import io.github.manamiproject.modb.core.extractor.OutputKey
 import io.github.manamiproject.modb.core.extractor.Selector
+import io.github.manamiproject.modb.core.logging.Logger
 import io.github.manamiproject.modb.test.shouldNotBeInvoked
+import org.slf4j.Marker
+import org.slf4j.Logger as Slf4jLogger
 import java.net.URI
 import java.time.LocalDate
 import java.time.LocalDateTime
@@ -80,6 +83,80 @@ internal class TestKProperty<T>: KProperty<T> {
 
 internal object TestScoreCalculator: ScoreCalculator {
     override fun calculateScore(scores: Collection<MetaDataProviderScore>): Score = shouldNotBeInvoked()
+}
+
+internal object TestLoggerImplementation: Logger {
+    override fun error(message: () -> String) = shouldNotBeInvoked()
+    override fun error(exception: Throwable, message: () -> String) = shouldNotBeInvoked()
+    override fun warn(message: () -> String) = shouldNotBeInvoked()
+    override fun warn(exception: Throwable, message: () -> String) = shouldNotBeInvoked()
+    override fun info(message: () -> String) = shouldNotBeInvoked()
+    override fun debug(message: () -> String) = shouldNotBeInvoked()
+    override fun trace(message: () -> String) = shouldNotBeInvoked()
+}
+
+internal object TestSlf4jImplementation: Slf4jLogger {
+    override fun getName(): String = shouldNotBeInvoked()
+    override fun isTraceEnabled(): Boolean = shouldNotBeInvoked()
+    override fun isTraceEnabled(marker: Marker?): Boolean = shouldNotBeInvoked()
+    override fun trace(msg: String?) = shouldNotBeInvoked()
+    override fun trace(format: String?, arg: Any?) = shouldNotBeInvoked()
+    override fun trace(format: String?, arg1: Any?, arg2: Any?) = shouldNotBeInvoked()
+    override fun trace(format: String?, vararg arguments: Any?) = shouldNotBeInvoked()
+    override fun trace(msg: String?, t: Throwable?) = shouldNotBeInvoked()
+    override fun trace(marker: Marker?, msg: String?) = shouldNotBeInvoked()
+    override fun trace(marker: Marker?, format: String?, arg: Any?) = shouldNotBeInvoked()
+    override fun trace(marker: Marker?, format: String?, arg1: Any?, arg2: Any?) = shouldNotBeInvoked()
+    override fun trace(marker: Marker?, format: String?, vararg argArray: Any?) = shouldNotBeInvoked()
+    override fun trace(marker: Marker?, msg: String?, t: Throwable?) = shouldNotBeInvoked()
+    override fun isDebugEnabled(): Boolean = shouldNotBeInvoked()
+    override fun isDebugEnabled(marker: Marker?): Boolean = shouldNotBeInvoked()
+    override fun debug(msg: String?) = shouldNotBeInvoked()
+    override fun debug(format: String?, arg: Any?) = shouldNotBeInvoked()
+    override fun debug(format: String?, arg1: Any?, arg2: Any?) = shouldNotBeInvoked()
+    override fun debug(format: String?, vararg arguments: Any?) = shouldNotBeInvoked()
+    override fun debug(msg: String?, t: Throwable?) = shouldNotBeInvoked()
+    override fun debug(marker: Marker?, msg: String?) = shouldNotBeInvoked()
+    override fun debug(marker: Marker?, format: String?, arg: Any?) = shouldNotBeInvoked()
+    override fun debug(marker: Marker?, format: String?, arg1: Any?, arg2: Any?) = shouldNotBeInvoked()
+    override fun debug(marker: Marker?, format: String?, vararg arguments: Any?) = shouldNotBeInvoked()
+    override fun debug(marker: Marker?, msg: String?, t: Throwable?) = shouldNotBeInvoked()
+    override fun isInfoEnabled(): Boolean = shouldNotBeInvoked()
+    override fun isInfoEnabled(marker: Marker?): Boolean = shouldNotBeInvoked()
+    override fun info(msg: String?) = shouldNotBeInvoked()
+    override fun info(format: String?, arg: Any?) = shouldNotBeInvoked()
+    override fun info(format: String?, arg1: Any?, arg2: Any?) = shouldNotBeInvoked()
+    override fun info(format: String?, vararg arguments: Any?) = shouldNotBeInvoked()
+    override fun info(msg: String?, t: Throwable?) = shouldNotBeInvoked()
+    override fun info(marker: Marker?, msg: String?) = shouldNotBeInvoked()
+    override fun info(marker: Marker?, format: String?, arg: Any?) = shouldNotBeInvoked()
+    override fun info(marker: Marker?, format: String?, arg1: Any?, arg2: Any?) = shouldNotBeInvoked()
+    override fun info(marker: Marker?, format: String?, vararg arguments: Any?) = shouldNotBeInvoked()
+    override fun info(marker: Marker?, msg: String?, t: Throwable?) = shouldNotBeInvoked()
+    override fun isWarnEnabled(): Boolean = shouldNotBeInvoked()
+    override fun isWarnEnabled(marker: Marker?): Boolean = shouldNotBeInvoked()
+    override fun warn(msg: String?) = shouldNotBeInvoked()
+    override fun warn(format: String?, arg: Any?) = shouldNotBeInvoked()
+    override fun warn(format: String?, vararg arguments: Any?) = shouldNotBeInvoked()
+    override fun warn(format: String?, arg1: Any?, arg2: Any?) = shouldNotBeInvoked()
+    override fun warn(msg: String?, t: Throwable?) = shouldNotBeInvoked()
+    override fun warn(marker: Marker?, msg: String?) = shouldNotBeInvoked()
+    override fun warn(marker: Marker?, format: String?, arg: Any?) = shouldNotBeInvoked()
+    override fun warn(marker: Marker?, format: String?, arg1: Any?, arg2: Any?) = shouldNotBeInvoked()
+    override fun warn(marker: Marker?, format: String?, vararg arguments: Any?) = shouldNotBeInvoked()
+    override fun warn(marker: Marker?, msg: String?, t: Throwable?) = shouldNotBeInvoked()
+    override fun isErrorEnabled(): Boolean = shouldNotBeInvoked()
+    override fun isErrorEnabled(marker: Marker?): Boolean = shouldNotBeInvoked()
+    override fun error(msg: String?) = shouldNotBeInvoked()
+    override fun error(format: String?, arg: Any?) = shouldNotBeInvoked()
+    override fun error(format: String?, arg1: Any?, arg2: Any?) = shouldNotBeInvoked()
+    override fun error(format: String?, vararg arguments: Any?) = shouldNotBeInvoked()
+    override fun error(msg: String?, t: Throwable?) = shouldNotBeInvoked()
+    override fun error(marker: Marker?, msg: String?) = shouldNotBeInvoked()
+    override fun error(marker: Marker?, format: String?, arg: Any?) = shouldNotBeInvoked()
+    override fun error(marker: Marker?, format: String?, arg1: Any?, arg2: Any?) = shouldNotBeInvoked()
+    override fun error(marker: Marker?, format: String?, vararg arguments: Any?) = shouldNotBeInvoked()
+    override fun error(marker: Marker?, msg: String?, t: Throwable?) = shouldNotBeInvoked()
 }
 
 object TestAnimeRawObjects {
