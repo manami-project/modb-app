@@ -1,19 +1,15 @@
 package io.github.manamiproject.modb.core.anime
 
+import io.github.manamiproject.modb.core.TestAnimeObjects
 import io.github.manamiproject.modb.core.anime.AnimeMedia.NO_PICTURE
 import io.github.manamiproject.modb.core.anime.AnimeMedia.NO_PICTURE_THUMBNAIL
 import io.github.manamiproject.modb.core.anime.AnimeSeason.Companion.UNKNOWN_YEAR
-import io.github.manamiproject.modb.core.anime.AnimeSeason.Season.SUMMER
 import io.github.manamiproject.modb.core.anime.AnimeSeason.Season.UNDEFINED
-import io.github.manamiproject.modb.core.anime.AnimeStatus.FINISHED
-import io.github.manamiproject.modb.core.anime.AnimeType.SPECIAL
-import io.github.manamiproject.modb.core.anime.Duration.TimeUnit.MINUTES
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.assertThrows
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.ValueSource
-import java.net.URI
 import kotlin.test.Test
 import io.github.manamiproject.modb.core.anime.AnimeStatus.UNKNOWN as UNKNOWN_STATUS
 import io.github.manamiproject.modb.core.anime.AnimeType.UNKNOWN as UNKNOWN_TYPE
@@ -25,37 +21,39 @@ internal class AnimeTest {
     inner class ConstructorTests {
 
         @ParameterizedTest
-        @ValueSource(strings = [
-            "",
-            "   ",
-            "\u00A0",
-            "\u202F",
-            "\u200A",
-            "\u205F",
-            "\u2000",
-            "\u2001",
-            "\u2002",
-            "\u2003",
-            "\u2004",
-            "\u2005",
-            "\u2006",
-            "\u2007",
-            "\u2008",
-            "\u2009",
-            "\uFEFF",
-            "\u180E",
-            "\u2060",
-            "\u200D",
-            "\u0090",
-            "\u200C",
-            "\u200B",
-            "\u00AD",
-            "\u000C",
-            "\u2028",
-            "\r",
-            "\n",
-            "\t",
-        ])
+        @ValueSource(
+            strings = [
+                "",
+                "   ",
+                "\u00A0",
+                "\u202F",
+                "\u200A",
+                "\u205F",
+                "\u2000",
+                "\u2001",
+                "\u2002",
+                "\u2003",
+                "\u2004",
+                "\u2005",
+                "\u2006",
+                "\u2007",
+                "\u2008",
+                "\u2009",
+                "\uFEFF",
+                "\u180E",
+                "\u2060",
+                "\u200D",
+                "\u0090",
+                "\u200C",
+                "\u200B",
+                "\u00AD",
+                "\u000C",
+                "\u2028",
+                "\r",
+                "\n",
+                "\t",
+            ]
+        )
         fun `throws exception if title is empty or blank or zero-width non-joiner`(value: String) {
             // when
             val result = assertThrows<IllegalArgumentException> {
@@ -93,65 +91,26 @@ internal class AnimeTest {
 
         @Test
         fun `create formatted string listing all properties`() {
-            // given
-            val anime = Anime(
-                title = "Clannad: After Story - Mou Hitotsu no Sekai, Kyou-hen",
-                sources = hashSetOf(
-                    URI("https://myanimelist.net/anime/6351"),
-                ),
-                relatedAnime = hashSetOf(
-                    URI("https://myanimelist.net/anime/2167"),
-                ),
-                type = SPECIAL,
-                episodes = 1,
-                status = FINISHED,
-                animeSeason = AnimeSeason(
-                    season = SUMMER,
-                    year = 2009
-                ),
-                picture = URI("https://cdn.myanimelist.net/images/anime/10/19621.jpg"),
-                thumbnail = URI("https://cdn.myanimelist.net/images/anime/10/19621t.jpg"),
-                duration = Duration(2, MINUTES),
-                score = ScoreValue(
-                    arithmeticGeometricMean = 1.29,
-                    arithmeticMean = 2.38,
-                    median = 3.47,
-                ),
-                synonyms = hashSetOf(
-                    "Clannad ~After Story~: Another World, Kyou Chapter",
-                    "Clannad: After Story OVA",
-                    "クラナド　アフターストーリー　もうひとつの世界　杏編",
-                ),
-                tags = hashSetOf(
-                    "comedy",
-                    "drama",
-                    "romance",
-                    "school",
-                    "slice of life",
-                    "supernatural",
-                ),
-            )
-
             // when
-            val result = anime.toString()
+            val result = TestAnimeObjects.specialWithMultipleEpisodes.toString()
 
             // then
             assertThat(result).isEqualTo(
                 """
                     Anime(
-                      sources = [https://myanimelist.net/anime/6351]
-                      title = Clannad: After Story - Mou Hitotsu no Sekai, Kyou-hen
+                      sources = [https://myanimelist.net/anime/58755]
+                      title = 5-toubun no Hanayome*
                       type = SPECIAL
-                      episodes = 1
+                      episodes = 2
                       status = FINISHED
-                      animeSeason = AnimeSeason(season=SUMMER, year=2009)
-                      picture = https://cdn.myanimelist.net/images/anime/10/19621.jpg
-                      thumbnail = https://cdn.myanimelist.net/images/anime/10/19621t.jpg
-                      duration = 120 seconds
-                      score = ScoreValue(arithmeticGeometricMean=1.29, arithmeticMean=2.38, median=3.47)
-                      synonyms = [Clannad ~After Story~: Another World, Kyou Chapter, Clannad: After Story OVA, クラナド　アフターストーリー　もうひとつの世界　杏編]
-                      relatedAnime = [https://myanimelist.net/anime/2167]
-                      tags = [comedy, drama, romance, school, slice of life, supernatural]
+                      animeSeason = AnimeSeason(season=FALL, year=2024)
+                      picture = https://cdn.myanimelist.net/images/anime/1915/145336.jpg
+                      thumbnail = https://cdn.myanimelist.net/images/anime/1915/145336t.jpg
+                      duration = 1440 seconds
+                      score = ScoreValue(arithmeticGeometricMean=7.44, arithmeticMean=7.44, median=7.44)
+                      synonyms = [The Quintessential Quintuplets*, 五等分の花嫁*]
+                      relatedAnime = [https://myanimelist.net/anime/48548]
+                      tags = [comedy, harem, romance, school, shounen]
                     )
                 """.trimIndent()
             )

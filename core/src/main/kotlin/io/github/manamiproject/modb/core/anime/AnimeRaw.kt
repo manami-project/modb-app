@@ -404,7 +404,7 @@ public data class AnimeRaw(
 
     override fun toString(): String {
         return """
-            Anime(
+            AnimeRaw(
               sources = ${_sources.sorted()}
               title = $_title
               type = $type
