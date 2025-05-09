@@ -1,5 +1,6 @@
 package io.github.manamiproject.modb.core.anime
 
+import io.github.manamiproject.modb.core.TestAnimeRawObjects
 import io.github.manamiproject.modb.core.anime.AnimeSeason.Companion.UNKNOWN_YEAR
 import io.github.manamiproject.modb.core.anime.AnimeSeason.Season.*
 import io.github.manamiproject.modb.core.anime.AnimeStatus.FINISHED
@@ -3428,66 +3429,26 @@ internal class AnimeRawTest {
 
         @Test
         fun `create formatted string listing all properties`() {
-            // given
-            val anime = AnimeRaw(
-                _title = "Clannad: After Story - Mou Hitotsu no Sekai, Kyou-hen",
-                _sources = hashSetOf(
-                    URI("https://myanimelist.net/anime/6351"),
-                ),
-                _relatedAnime = hashSetOf(
-                    URI("https://myanimelist.net/anime/2167"),
-                ),
-                type = SPECIAL,
-                episodes = 1,
-                status = FINISHED,
-                animeSeason = AnimeSeason(
-                    season = SUMMER,
-                    year = 2009
-                ),
-                picture = URI("https://cdn.myanimelist.net/images/anime/10/19621.jpg"),
-                thumbnail = URI("https://cdn.myanimelist.net/images/anime/10/19621t.jpg"),
-                duration = Duration(2, MINUTES),
-                _synonyms = hashSetOf(
-                    "Clannad ~After Story~: Another World, Kyou Chapter",
-                    "Clannad: After Story OVA",
-                    "クラナド　アフターストーリー　もうひとつの世界　杏編",
-                ),
-                _tags = hashSetOf(
-                    "comedy",
-                    "drama",
-                    "romance",
-                    "school",
-                    "slice of life",
-                    "supernatural",
-                ),
-            ).addScores(
-                MetaDataProviderScoreValue(
-                    hostname = "myanimelist.net",
-                    value = 7.77,
-                    range = 1.0..10.0,
-                ),
-            )
-
             // when
-            val result = anime.toString()
+            val result = TestAnimeRawObjects.specialWithMultipleEpisodes.toString()
 
             // then
             assertThat(result).isEqualTo(
                 """
-                    Anime(
-                      sources = [https://myanimelist.net/anime/6351]
-                      title = Clannad: After Story - Mou Hitotsu no Sekai, Kyou-hen
+                    AnimeRaw(
+                      sources = [https://myanimelist.net/anime/58755]
+                      title = 5-toubun no Hanayome*
                       type = SPECIAL
-                      episodes = 1
+                      episodes = 2
                       status = FINISHED
-                      animeSeason = AnimeSeason(season=SUMMER, year=2009)
-                      picture = https://cdn.myanimelist.net/images/anime/10/19621.jpg
-                      thumbnail = https://cdn.myanimelist.net/images/anime/10/19621t.jpg
-                      duration = 120 seconds
-                      scores = [MetaDataProviderScoreValue(hostname=myanimelist.net, value=7.77, range=1.0..10.0)]
-                      synonyms = [Clannad ~After Story~: Another World, Kyou Chapter, Clannad: After Story OVA, クラナド　アフターストーリー　もうひとつの世界　杏編]
-                      relatedAnime = [https://myanimelist.net/anime/2167]
-                      tags = [comedy, drama, romance, school, slice of life, supernatural]
+                      animeSeason = AnimeSeason(season=FALL, year=2024)
+                      picture = https://cdn.myanimelist.net/images/anime/1915/145336.jpg
+                      thumbnail = https://cdn.myanimelist.net/images/anime/1915/145336t.jpg
+                      duration = 1440 seconds
+                      scores = [MetaDataProviderScoreValue(hostname=myanimelist.net, value=7.44, range=1.0..10.0)]
+                      synonyms = [The Quintessential Quintuplets*, 五等分の花嫁*]
+                      relatedAnime = [https://myanimelist.net/anime/48548]
+                      tags = [comedy, harem, romance, school, shounen]
                     )
                 """.trimIndent()
             )
