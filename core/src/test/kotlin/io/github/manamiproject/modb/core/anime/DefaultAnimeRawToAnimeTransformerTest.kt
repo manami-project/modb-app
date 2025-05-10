@@ -47,7 +47,7 @@ internal class DefaultAnimeRawToAnimeTransformerTest {
         @Test
         fun `correctly transforms object`() {
             // given
-            val animeRaw = TestAnimeRawObjects.SpecialWithMultipleEpisodes.obj
+            val animeRaw = TestAnimeRawObjects.AllPropertiesSet.obj
 
             val testScoreCalculator = object: ScoreCalculator by TestScoreCalculator {
                 override fun calculateScore(scores: Collection<MetaDataProviderScore>): Score = ScoreValue(

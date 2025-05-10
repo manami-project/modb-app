@@ -92,7 +92,7 @@ internal class AnimeTest {
         @Test
         fun `create formatted string listing all properties`() {
             // when
-            val result = TestAnimeObjects.SpecialWithMultipleEpisodes.obj.toString()
+            val result = TestAnimeObjects.AllPropertiesSet.obj.toString()
 
             // then
             assertThat(result).isEqualTo(

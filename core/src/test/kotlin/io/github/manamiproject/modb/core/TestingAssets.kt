@@ -1,6 +1,5 @@
 package io.github.manamiproject.modb.core
 
-import io.github.manamiproject.modb.core.TestAnimeRawObjects.SpecialWithMultipleEpisodes
 import io.github.manamiproject.modb.core.anime.*
 import io.github.manamiproject.modb.core.anime.AnimeSeason.Companion.UNKNOWN_YEAR
 import io.github.manamiproject.modb.core.anime.AnimeSeason.Season.*
@@ -200,108 +199,9 @@ internal object TestAnimeRawObjects {
     }
 
     /**
-     * Default anime of type TV with all nullable fields set.
-     * Reduced content compared to [SpecialWithMultipleEpisodes].
-     */
-    object ReducedTvNonNull {
-
-        val obj: AnimeRaw
-            get() = AnimeRaw(
-                _title = "Death Note",
-                _sources = hashSetOf(
-                    URI("https://myanimelist.net/anime/1535"),
-                ),
-                type = TV,
-                episodes = 37,
-                status = FINISHED,
-                animeSeason = AnimeSeason(
-                    season = FALL,
-                    year = 2006,
-                ),
-                picture = URI("https://cdn.myanimelist.net/images/anime/1079/138100.jpg"),
-                thumbnail = URI("https://cdn.myanimelist.net/images/anime/1079/138100t.jpg"),
-                duration = Duration(
-                    value = 23,
-                    unit = MINUTES,
-                ),
-                _synonyms = hashSetOf(
-                    "DN",
-                    "デスノート",
-                ),
-                _relatedAnime = hashSetOf(
-                    URI("https://myanimelist.net/anime/2994"),
-                ),
-                _tags = hashSetOf(
-                    "psychological",
-                    "shounen",
-                    "supernatural",
-                    "suspense",
-                ),
-            ).apply {
-                addScores(
-                    MetaDataProviderScoreValue(
-                        hostname = "myanimelist.net",
-                        value = 8.62,
-                        range = 1.0..10.0,
-                    ),
-                )
-            }
-
-        val serializedPrettyPrint = """
-            {
-              "sources": [
-                "https://myanimelist.net/anime/1535"
-              ],
-              "title": "Death Note",
-              "type": "TV",
-              "episodes": 37,
-              "status": "FINISHED",
-              "animeSeason": {
-                "season": "FALL",
-                "year": 2006
-              },
-              "picture": "https://cdn.myanimelist.net/images/anime/1079/138100.jpg",
-              "thumbnail": "https://cdn.myanimelist.net/images/anime/1079/138100t.jpg",
-              "duration": {
-                "value": 1380,
-                "unit": "SECONDS"
-              },
-              "scores": [
-                {
-                  "hostname": "myanimelist.net",
-                  "value": 8.62,
-                  "range": {
-                    "minInclusive": 1.0,
-                    "maxInclusive": 10.0
-                  }
-                }
-              ],
-              "synonyms": [
-                "DN",
-                "デスノート"
-              ],
-              "relatedAnime": [
-                "https://myanimelist.net/anime/2994"
-              ],
-              "tags": [
-                "psychological",
-                "shounen",
-                "supernatural",
-                "suspense"
-              ]
-            }
-        """.trimIndent()
-
-        val serializedMinified = """
-            {"sources":["https://myanimelist.net/anime/1535"],"title":"Death Note","type":"TV","episodes":37,"status":"FINISHED","animeSeason":{"season":"FALL","year":2006},"picture":"https://cdn.myanimelist.net/images/anime/1079/138100.jpg","thumbnail":"https://cdn.myanimelist.net/images/anime/1079/138100t.jpg","duration":{"value":1380,"unit":"SECONDS"},"scores":[{"hostname":"myanimelist.net","value":8.62,"range":{"minInclusive":1.0,"maxInclusive":10.0}}],"synonyms":["DN","デスノート"],"relatedAnime":["https://myanimelist.net/anime/2994"],"tags":["psychological","shounen","supernatural","suspense"]}
-        """.trimIndent()
-    }
-
-    /**
      * Default anime of type TV with all optional fields not set to enforce `null` in serialization.
-     * Reduced content compared to [SpecialWithMultipleEpisodes].
      */
-    object ReducedTvNull {
+    object NullableNotSet {
 
         val obj: AnimeRaw
             get() = AnimeRaw(
@@ -392,7 +292,7 @@ internal object TestAnimeRawObjects {
     /**
      * A special with multiple episodes. Single meta data provider only.
      */
-    object SpecialWithMultipleEpisodes {
+    object AllPropertiesSet {
 
         val obj: AnimeRaw
             get() = AnimeRaw(
@@ -484,14 +384,14 @@ internal object TestAnimeRawObjects {
         """.trimIndent()
 
         val serializedMinified = """
-            {"sources":["https://myanimelist.net/anime/58755"],"title":"5-toubun no Hanayome*","type":"SPECIAL","episodes":2,"status":"FINISHED","animeSeason":{"season":"FALL","year":2024},"picture":"https://cdn.myanimelist.net/images/anime/1915/145336.jpg","thumbnail":"https://cdn.myanimelist.net/images/anime/1915/145336t.jpg","duration":{"value":1440,"unit":"SECONDS"},"scores":[{"hostname":"myanimelist.net","value":7.44,"range":{"minInclusive":1,"maxInclusive":10}}],"synonyms":["The Quintessential Quintuplets*","五等分の花嫁*"],"relatedAnime":["https://myanimelist.net/anime/48548"],"tags":["comedy","harem","romance","school","shounen"]}
+            {"sources":["https://myanimelist.net/anime/58755"],"title":"5-toubun no Hanayome*","type":"SPECIAL","episodes":2,"status":"FINISHED","animeSeason":{"season":"FALL","year":2024},"picture":"https://cdn.myanimelist.net/images/anime/1915/145336.jpg","thumbnail":"https://cdn.myanimelist.net/images/anime/1915/145336t.jpg","duration":{"value":1440,"unit":"SECONDS"},"scores":[{"hostname":"myanimelist.net","value":7.44,"range":{"minInclusive":1.0,"maxInclusive":10.0}}],"synonyms":["The Quintessential Quintuplets*","五等分の花嫁*"],"relatedAnime":["https://myanimelist.net/anime/48548"],"tags":["comedy","harem","romance","school","shounen"]}
         """.trimIndent()
     }
 
     /**
      * A special with multiple episodes. Contains a fully merged anime object with all meta data providers.
      */
-    object FullyMergedSpecialWithMultipleEpisodes {
+    object FullyMergedAllPropertiesSet {
 
         val obj: AnimeRaw
             get() = AnimeRaw(
@@ -828,101 +728,9 @@ internal object TestAnimeObjects {
     }
 
     /**
-     * Default anime of type TV with all nullable fields set.
-     * Reduced content compared to [SpecialWithMultipleEpisodes].
-     */
-    object ReducedTvNonNull {
-
-        val obj: Anime
-            get() = Anime(
-                title = "Death Note",
-                sources = hashSetOf(
-                    URI("https://myanimelist.net/anime/1535"),
-                ),
-                type = TV,
-                episodes = 37,
-                status = FINISHED,
-                animeSeason = AnimeSeason(
-                    season = FALL,
-                    year = 2006,
-                ),
-                picture = URI("https://cdn.myanimelist.net/images/anime/1079/138100.jpg"),
-                thumbnail = URI("https://cdn.myanimelist.net/images/anime/1079/138100t.jpg"),
-                duration = Duration(
-                    value = 23,
-                    unit = MINUTES,
-                ),
-                score = ScoreValue(
-                    arithmeticGeometricMean = 8.62,
-                    arithmeticMean = 8.62,
-                    median = 8.62,
-                ),
-                synonyms = hashSetOf(
-                    "DN",
-                    "デスノート",
-                ),
-                relatedAnime = hashSetOf(
-                    URI("https://myanimelist.net/anime/2994"),
-                ),
-                tags = hashSetOf(
-                    "psychological",
-                    "shounen",
-                    "supernatural",
-                    "suspense",
-                ),
-            )
-
-
-        val serializedPrettyPrint = """
-            {
-              "sources": [
-                "https://myanimelist.net/anime/1535"
-              ],
-              "title": "Death Note",
-              "type": "TV",
-              "episodes": 37,
-              "status": "FINISHED",
-              "animeSeason": {
-                "season": "FALL",
-                "year": 2006
-              },
-              "picture": "https://cdn.myanimelist.net/images/anime/1079/138100.jpg",
-              "thumbnail": "https://cdn.myanimelist.net/images/anime/1079/138100t.jpg",
-              "duration": {
-                "value": 1380,
-                "unit": "SECONDS"
-              },
-              "score": {
-                "arithmeticGeometricMean": 8.62,
-                "arithmeticMean": 8.62,
-                "median": 8.62
-              },
-              "synonyms": [
-                "DN",
-                "デスノート"
-              ],
-              "relatedAnime": [
-                "https://myanimelist.net/anime/2994"
-              ],
-              "tags": [
-                "psychological",
-                "shounen",
-                "supernatural",
-                "suspense"
-              ]
-            }
-        """.trimIndent()
-
-        val serializedMinified = """
-            {"sources":["https://myanimelist.net/anime/1535"],"title":"Death Note","type":"TV","episodes":37,"status":"FINISHED","animeSeason":{"season":"FALL","year":2006},"picture":"https://cdn.myanimelist.net/images/anime/1079/138100.jpg","thumbnail":"https://cdn.myanimelist.net/images/anime/1079/138100t.jpg","duration":{"value":1380,"unit":"SECONDS"},"score":{"arithmeticGeometricMean":8.62,"arithmeticMean":8.62,"median":8.62},"synonyms":["DN","デスノート"],"relatedAnime":["https://myanimelist.net/anime/2994"],"tags":["psychological","shounen","supernatural","suspense"]}
-        """.trimIndent()
-    }
-
-    /**
      * Default anime of type TV with all optional fields not set to enforce `null` in serialization.
-     * Reduced content compared to [SpecialWithMultipleEpisodes].
      */
-    object ReducedTvNull {
+    object NullableNotSet {
 
         val obj: Anime
             get() = Anime(
@@ -997,7 +805,7 @@ internal object TestAnimeObjects {
     /**
      * A special with multiple episodes. Single meta data provider only.
      */
-    object SpecialWithMultipleEpisodes {
+    object AllPropertiesSet {
 
         val obj: Anime
             get() = Anime(
@@ -1055,7 +863,7 @@ internal object TestAnimeObjects {
               "picture": "https://cdn.myanimelist.net/images/anime/1915/145336.jpg",
               "thumbnail": "https://cdn.myanimelist.net/images/anime/1915/145336t.jpg",
               "duration": {
-                "value": 1380,
+                "value": 1440,
                 "unit": "SECONDS"
               },
               "score": {
@@ -1081,14 +889,14 @@ internal object TestAnimeObjects {
         """.trimIndent()
 
         val serializedMinified = """
-            {"sources":["https://myanimelist.net/anime/58755"],"title":"5-toubun no Hanayome*","type":"SPECIAL","episodes":2,"status":"FINISHED","animeSeason":{"season":"FALL","year":2024},"picture":"https://cdn.myanimelist.net/images/anime/1915/145336.jpg","thumbnail":"https://cdn.myanimelist.net/images/anime/1915/145336t.jpg","duration":{"value":1380,"unit":"SECONDS"},"score":{"arithmeticGeometricMean":7.44,"arithmeticMean":7.44,"median":7.44},"synonyms":["The Quintessential Quintuplets*","五等分の花嫁*"],"relatedAnime":["https://myanimelist.net/anime/48548"],"tags":["comedy","harem","romance","school","shounen"]}
+            {"sources":["https://myanimelist.net/anime/58755"],"title":"5-toubun no Hanayome*","type":"SPECIAL","episodes":2,"status":"FINISHED","animeSeason":{"season":"FALL","year":2024},"picture":"https://cdn.myanimelist.net/images/anime/1915/145336.jpg","thumbnail":"https://cdn.myanimelist.net/images/anime/1915/145336t.jpg","duration":{"value":1440,"unit":"SECONDS"},"score":{"arithmeticGeometricMean":7.44,"arithmeticMean":7.44,"median":7.44},"synonyms":["The Quintessential Quintuplets*","五等分の花嫁*"],"relatedAnime":["https://myanimelist.net/anime/48548"],"tags":["comedy","harem","romance","school","shounen"]}
         """.trimIndent()
     }
 
     /**
      * A special with multiple episodes. Contains a fully merged anime object with all meta data providers.
      */
-    object FullyMergedSpecialWithMultipleEpisodes {
+    object FullyMergedAllPropertiesSet {
 
         val obj: Anime
             get() = Anime(
