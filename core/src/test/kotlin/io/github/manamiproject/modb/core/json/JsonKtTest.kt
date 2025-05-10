@@ -30,7 +30,7 @@ internal class JsonKtTest {
                 tempDirectory {
                     // given
                     val tempFile = tempDir.resolve("${UUID.randomUUID()}.json")
-                    TestAnimeRawObjects.ReducedTvNonNull.serializedPrettyPrint.writeToFile(tempFile)
+                    TestAnimeRawObjects.AllPropertiesSet.serializedPrettyPrint.writeToFile(tempFile)
 
                     val inputStream = tempFile.inputStream()
 
@@ -38,7 +38,7 @@ internal class JsonKtTest {
                     val result = Json.parseJson<AnimeRaw>(inputStream)
 
                     // then
-                    assertThat(result).isEqualTo(TestAnimeRawObjects.ReducedTvNonNull.obj)
+                    assertThat(result).isEqualTo(TestAnimeRawObjects.AllPropertiesSet.obj)
                 }
             }
 
@@ -46,13 +46,13 @@ internal class JsonKtTest {
             fun `deserialize AnimeRaw - using string, all properties set`() {
                 runBlocking {
                     // given
-                    val json = TestAnimeRawObjects.ReducedTvNonNull.serializedPrettyPrint
+                    val json = TestAnimeRawObjects.AllPropertiesSet.serializedPrettyPrint
 
                     // when
                     val result = Json.parseJson<AnimeRaw>(json)
 
                     // then
-                    assertThat(result).isEqualTo(TestAnimeRawObjects.ReducedTvNonNull.obj)
+                    assertThat(result).isEqualTo(TestAnimeRawObjects.AllPropertiesSet.obj)
                 }
             }
 
@@ -79,7 +79,7 @@ internal class JsonKtTest {
                 tempDirectory {
                     // given
                     val tempFile = tempDir.resolve("${UUID.randomUUID()}.json")
-                    TestAnimeObjects.ReducedTvNonNull.serializedPrettyPrint.writeToFile(tempFile)
+                    TestAnimeObjects.AllPropertiesSet.serializedPrettyPrint.writeToFile(tempFile)
 
                     val inputStream = tempFile.inputStream()
 
@@ -87,7 +87,7 @@ internal class JsonKtTest {
                     val result = Json.parseJson<Anime>(inputStream)
 
                     // then
-                    assertThat(result).isEqualTo(TestAnimeObjects.ReducedTvNonNull.obj)
+                    assertThat(result).isEqualTo(TestAnimeObjects.AllPropertiesSet.obj)
                 }
             }
 
@@ -95,13 +95,13 @@ internal class JsonKtTest {
             fun `deserialize Anime - using string, all properties set`() {
                 runBlocking {
                     // given
-                    val json = TestAnimeObjects.ReducedTvNonNull.serializedPrettyPrint
+                    val json = TestAnimeObjects.AllPropertiesSet.serializedPrettyPrint
 
                     // when
                     val result = Json.parseJson<Anime>(json)
 
                     // then
-                    assertThat(result).isEqualTo(TestAnimeObjects.ReducedTvNonNull.obj)
+                    assertThat(result).isEqualTo(TestAnimeObjects.AllPropertiesSet.obj)
                 }
             }
 
@@ -197,13 +197,13 @@ internal class JsonKtTest {
                 fun `serialize AnimeRaw - all properties set`() {
                     runBlocking {
                         // given
-                        val anime = TestAnimeRawObjects.ReducedTvNonNull.obj
+                        val anime = TestAnimeRawObjects.AllPropertiesSet.obj
 
                         // when
                         val result = Json.toJson(anime)
 
                         // then
-                        assertThat(result).isEqualTo(TestAnimeRawObjects.ReducedTvNonNull.serializedPrettyPrint)
+                        assertThat(result).isEqualTo(TestAnimeRawObjects.AllPropertiesSet.serializedPrettyPrint)
                     }
                 }
 
@@ -229,13 +229,13 @@ internal class JsonKtTest {
                 fun `serialize Anime - all properties set`() {
                     runBlocking {
                         // given
-                        val anime = TestAnimeObjects.ReducedTvNonNull.obj
+                        val anime = TestAnimeObjects.AllPropertiesSet.obj
 
                         // when
                         val result = Json.toJson(anime)
 
                         // then
-                        assertThat(result).isEqualTo(TestAnimeObjects.ReducedTvNonNull.serializedPrettyPrint)
+                        assertThat(result).isEqualTo(TestAnimeObjects.AllPropertiesSet.serializedPrettyPrint)
                     }
                 }
 
@@ -284,13 +284,13 @@ internal class JsonKtTest {
                 fun `serialize AnimeRaw - deactivate pretty print`() {
                     runBlocking {
                         // given
-                        val anime = TestAnimeRawObjects.ReducedTvNonNull.obj
+                        val anime = TestAnimeRawObjects.AllPropertiesSet.obj
 
                         // when
                         val result = Json.toJson(anime, DEACTIVATE_PRETTY_PRINT)
 
                         // then
-                        assertThat(result).isEqualTo(TestAnimeRawObjects.ReducedTvNonNull.serializedMinified)
+                        assertThat(result).isEqualTo(TestAnimeRawObjects.AllPropertiesSet.serializedMinified)
                     }
                 }
 
@@ -298,7 +298,7 @@ internal class JsonKtTest {
                 fun `serialize AnimeRaw - deactivate serialize null`() {
                     runBlocking {
                         // given
-                        val anime = TestAnimeRawObjects.ReducedTvNull.obj
+                        val anime = TestAnimeRawObjects.NullableNotSet.obj
 
                         val expectedJson = """
                             {
@@ -356,13 +356,13 @@ internal class JsonKtTest {
                 fun `serialize Anime - deactivate pretty print`() {
                     runBlocking {
                         // given
-                        val anime = TestAnimeObjects.ReducedTvNonNull.obj
+                        val anime = TestAnimeObjects.AllPropertiesSet.obj
 
                         // when
                         val result = Json.toJson(anime, DEACTIVATE_PRETTY_PRINT)
 
                         // then
-                        assertThat(result).isEqualTo(TestAnimeObjects.ReducedTvNonNull.serializedMinified)
+                        assertThat(result).isEqualTo(TestAnimeObjects.AllPropertiesSet.serializedMinified)
                     }
                 }
 
@@ -370,7 +370,7 @@ internal class JsonKtTest {
                 fun `serialize Anime - deactivate serialize null`() {
                     runBlocking {
                         // given
-                        val anime = TestAnimeObjects.ReducedTvNull.obj
+                        val anime = TestAnimeObjects.NullableNotSet.obj
 
                         val expectedJson = """
                             {

@@ -22,10 +22,10 @@ internal class AnimeAdapterTest {
             val adapter = AnimeAdapter()
 
             // when
-            val result = adapter.fromJson(TestAnimeObjects.ReducedTvNonNull.serializedPrettyPrint)
+            val result = adapter.fromJson(TestAnimeObjects.AllPropertiesSet.serializedPrettyPrint)
 
             // then
-            assertThat(result).isEqualTo(TestAnimeObjects.ReducedTvNonNull.obj)
+            assertThat(result).isEqualTo(TestAnimeObjects.AllPropertiesSet.obj)
         }
 
         @Test
@@ -34,10 +34,10 @@ internal class AnimeAdapterTest {
             val adapter = AnimeAdapter()
 
             // when
-            val result = adapter.fromJson(TestAnimeObjects.ReducedTvNull.serializedPrettyPrint)
+            val result = adapter.fromJson(TestAnimeObjects.NullableNotSet.serializedPrettyPrint)
 
             // then
-            assertThat(result).isEqualTo(TestAnimeObjects.ReducedTvNull.obj)
+            assertThat(result).isEqualTo(TestAnimeObjects.NullableNotSet.obj)
         }
 
         @Test
@@ -1346,10 +1346,10 @@ internal class AnimeAdapterTest {
             val adapter = AnimeAdapter().indent("  ")
 
             // when
-            val result = adapter.toJson(TestAnimeObjects.ReducedTvNonNull.obj)
+            val result = adapter.toJson(TestAnimeObjects.AllPropertiesSet.obj)
 
             // then
-            assertThat(result).isEqualTo(TestAnimeObjects.ReducedTvNonNull.serializedPrettyPrint)
+            assertThat(result).isEqualTo(TestAnimeObjects.AllPropertiesSet.serializedPrettyPrint)
         }
 
         @Test
@@ -1358,10 +1358,10 @@ internal class AnimeAdapterTest {
             val adapter = AnimeAdapter().indent("  ").serializeNulls()
 
             // when
-            val result = adapter.toJson(TestAnimeObjects.ReducedTvNull.obj)
+            val result = adapter.toJson(TestAnimeObjects.NullableNotSet.obj)
 
             // then
-            assertThat(result).isEqualTo(TestAnimeObjects.ReducedTvNull.serializedPrettyPrint)
+            assertThat(result).isEqualTo(TestAnimeObjects.NullableNotSet.serializedPrettyPrint)
         }
 
         @Test
@@ -1381,18 +1381,18 @@ internal class AnimeAdapterTest {
         fun `sources, synonyms, relatedAnime and tags are being sorted asc by their string representation`() {
             // given
             val adapter = AnimeAdapter().indent("  ")
-            val obj = TestAnimeObjects.FullyMergedSpecialWithMultipleEpisodes.obj.copy(
-                sources = TestAnimeObjects.FullyMergedSpecialWithMultipleEpisodes.obj.sources.toList().shuffled().toHashSet(),
-                relatedAnime = TestAnimeObjects.FullyMergedSpecialWithMultipleEpisodes.obj.relatedAnime.toList().shuffled().toHashSet(),
-                synonyms = TestAnimeObjects.FullyMergedSpecialWithMultipleEpisodes.obj.synonyms.toList().shuffled().toHashSet(),
-                tags = TestAnimeObjects.FullyMergedSpecialWithMultipleEpisodes.obj.tags.toList().shuffled().toHashSet(),
+            val obj = TestAnimeObjects.FullyMergedAllPropertiesSet.obj.copy(
+                sources = TestAnimeObjects.FullyMergedAllPropertiesSet.obj.sources.toList().shuffled().toHashSet(),
+                relatedAnime = TestAnimeObjects.FullyMergedAllPropertiesSet.obj.relatedAnime.toList().shuffled().toHashSet(),
+                synonyms = TestAnimeObjects.FullyMergedAllPropertiesSet.obj.synonyms.toList().shuffled().toHashSet(),
+                tags = TestAnimeObjects.FullyMergedAllPropertiesSet.obj.tags.toList().shuffled().toHashSet(),
             )
 
             // when
             val result = adapter.toJson(obj)
 
             // then
-            assertThat(result).isEqualTo(TestAnimeObjects.FullyMergedSpecialWithMultipleEpisodes.serializedPrettyPrint)
+            assertThat(result).isEqualTo(TestAnimeObjects.FullyMergedAllPropertiesSet.serializedPrettyPrint)
         }
 
         @Test

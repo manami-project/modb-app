@@ -21,10 +21,10 @@ internal class AnimeRawAdapterTest {
             val adapter = AnimeRawAdapter()
 
             // when
-            val result = adapter.fromJson(TestAnimeRawObjects.ReducedTvNonNull.serializedPrettyPrint)
+            val result = adapter.fromJson(TestAnimeRawObjects.AllPropertiesSet.serializedPrettyPrint)
 
             // then
-            assertThat(result).isEqualTo(TestAnimeRawObjects.ReducedTvNonNull.obj)
+            assertThat(result).isEqualTo(TestAnimeRawObjects.AllPropertiesSet.obj)
         }
 
         @Test
@@ -33,10 +33,10 @@ internal class AnimeRawAdapterTest {
             val adapter = AnimeRawAdapter()
 
             // when
-            val result = adapter.fromJson(TestAnimeRawObjects.ReducedTvNull.serializedPrettyPrint)
+            val result = adapter.fromJson(TestAnimeRawObjects.NullableNotSet.serializedPrettyPrint)
 
             // then
-            assertThat(result).isEqualTo(TestAnimeRawObjects.ReducedTvNull.obj)
+            assertThat(result).isEqualTo(TestAnimeRawObjects.NullableNotSet.obj)
         }
 
         @Test
@@ -1385,26 +1385,26 @@ internal class AnimeRawAdapterTest {
         fun `correctly serialize non-null value`() {
             // given
             val adapter = AnimeRawAdapter().indent("  ")
-            val obj = TestAnimeRawObjects.ReducedTvNonNull.obj
+            val obj = TestAnimeRawObjects.AllPropertiesSet.obj
 
             // when
             val result = adapter.toJson(obj)
 
             // then
-            assertThat(result).isEqualTo(TestAnimeRawObjects.ReducedTvNonNull.serializedPrettyPrint)
+            assertThat(result).isEqualTo(TestAnimeRawObjects.AllPropertiesSet.serializedPrettyPrint)
         }
 
         @Test
         fun `correctly serialize nullable data if serializeNulls has been set`() {
             // given
             val adapter = AnimeRawAdapter().indent("  ").serializeNulls()
-            val obj = TestAnimeRawObjects.ReducedTvNull.obj
+            val obj = TestAnimeRawObjects.NullableNotSet.obj
 
             // when
             val result = adapter.toJson(obj)
 
             // then
-            assertThat(result).isEqualTo(TestAnimeRawObjects.ReducedTvNull.serializedPrettyPrint)
+            assertThat(result).isEqualTo(TestAnimeRawObjects.NullableNotSet.serializedPrettyPrint)
         }
 
         @Test
@@ -1455,8 +1455,8 @@ internal class AnimeRawAdapterTest {
         fun `runs performChecks if activateChecks is false and fixes title`(value: String) {
             // given
             val adapter = AnimeRawAdapter().indent("  ")
-            val obj = TestAnimeRawObjects.ReducedTvNonNull.obj.copy(
-                _title = " ${value}Death $value$value${value}Note$value$value ",
+            val obj = TestAnimeRawObjects.AllPropertiesSet.obj.copy(
+                _title = " ${value}5-toubun$value no$value$value Hanayome*$value$value ",
                 activateChecks = false,
             )
 
@@ -1464,14 +1464,14 @@ internal class AnimeRawAdapterTest {
             val result = adapter.toJson(obj)
 
             // then
-            assertThat(result).isEqualTo(TestAnimeRawObjects.ReducedTvNonNull.serializedPrettyPrint)
+            assertThat(result).isEqualTo(TestAnimeRawObjects.AllPropertiesSet.serializedPrettyPrint)
         }
 
         @Test
         fun `runs performChecks if activateChecks is false and throws an exception if episodes is negative`() {
             // given
             val adapter = AnimeRawAdapter()
-            val obj = TestAnimeRawObjects.ReducedTvNonNull.obj.copy(
+            val obj = TestAnimeRawObjects.AllPropertiesSet.obj.copy(
                 episodes = -1,
                 activateChecks = false,
             )
@@ -1489,8 +1489,8 @@ internal class AnimeRawAdapterTest {
         fun `runs performChecks if activateChecks is false and removes sources from relatedAnime`() {
             // given
             val adapter = AnimeRawAdapter().indent("  ")
-            val obj = TestAnimeRawObjects.ReducedTvNonNull.obj.copy(
-                _relatedAnime = TestAnimeRawObjects.ReducedTvNonNull.obj.relatedAnime.union(TestAnimeRawObjects.ReducedTvNonNull.obj.sources).toHashSet(),
+            val obj = TestAnimeRawObjects.AllPropertiesSet.obj.copy(
+                _relatedAnime = TestAnimeRawObjects.AllPropertiesSet.obj.relatedAnime.union(TestAnimeRawObjects.AllPropertiesSet.obj.sources).toHashSet(),
                 activateChecks = false,
             )
 
@@ -1498,7 +1498,7 @@ internal class AnimeRawAdapterTest {
             val result = adapter.toJson(obj)
 
             // then
-            assertThat(result).isEqualTo(TestAnimeRawObjects.ReducedTvNonNull.serializedPrettyPrint)
+            assertThat(result).isEqualTo(TestAnimeRawObjects.AllPropertiesSet.serializedPrettyPrint)
         }
 
         @ParameterizedTest
@@ -1536,8 +1536,8 @@ internal class AnimeRawAdapterTest {
         fun `runs performChecks if activateChecks is false and fixes synonyms`(value: String) {
             // given
             val adapter = AnimeRawAdapter().indent("  ")
-            val obj = TestAnimeRawObjects.SpecialWithMultipleEpisodes.obj.copy(
-                _synonyms = TestAnimeRawObjects.SpecialWithMultipleEpisodes.obj.synonyms.union(
+            val obj = TestAnimeRawObjects.AllPropertiesSet.obj.copy(
+                _synonyms = TestAnimeRawObjects.AllPropertiesSet.obj.synonyms.union(
                     hashSetOf(" ${value}The $value${value}Quintessential $value$value${value}Quintuplets*$value$value ")
                 ).toHashSet(),
                 activateChecks = false,
@@ -1547,7 +1547,7 @@ internal class AnimeRawAdapterTest {
             val result = adapter.toJson(obj)
 
             // then
-            assertThat(result).isEqualTo(TestAnimeRawObjects.SpecialWithMultipleEpisodes.serializedPrettyPrint)
+            assertThat(result).isEqualTo(TestAnimeRawObjects.AllPropertiesSet.serializedPrettyPrint)
         }
 
         @ParameterizedTest
@@ -1585,8 +1585,8 @@ internal class AnimeRawAdapterTest {
         fun `runs performChecks if activateChecks is false and removes blank entries from synonyms`(value: String) {
             // given
             val adapter = AnimeRawAdapter().indent("  ")
-            val obj = TestAnimeRawObjects.ReducedTvNonNull.obj.copy(
-                _synonyms = TestAnimeRawObjects.ReducedTvNonNull.obj.synonyms.union(hashSetOf(value)).toHashSet(),
+            val obj = TestAnimeRawObjects.AllPropertiesSet.obj.copy(
+                _synonyms = TestAnimeRawObjects.AllPropertiesSet.obj.synonyms.union(hashSetOf(value)).toHashSet(),
                 activateChecks = false,
             )
 
@@ -1594,16 +1594,16 @@ internal class AnimeRawAdapterTest {
             val result = adapter.toJson(obj)
 
             // then
-            assertThat(result).isEqualTo(TestAnimeRawObjects.ReducedTvNonNull.serializedPrettyPrint)
+            assertThat(result).isEqualTo(TestAnimeRawObjects.AllPropertiesSet.serializedPrettyPrint)
         }
 
         @ParameterizedTest
-        @ValueSource(strings = ["   psychological", "psychological    ", "PSYCHOLOGICAL"])
+        @ValueSource(strings = ["   romance", "romance    ", "ROMANCE"])
         fun `runs performChecks if activateChecks is false and fixes tags`(value: String) {
             // given
             val adapter = AnimeRawAdapter().indent("  ")
-            val obj = TestAnimeRawObjects.ReducedTvNonNull.obj.copy(
-                _tags = TestAnimeRawObjects.ReducedTvNonNull.obj.tags.union(hashSetOf(value)).toHashSet(),
+            val obj = TestAnimeRawObjects.AllPropertiesSet.obj.copy(
+                _tags = TestAnimeRawObjects.AllPropertiesSet.obj.tags.union(hashSetOf(value)).toHashSet(),
                 activateChecks = false,
             )
 
@@ -1611,7 +1611,7 @@ internal class AnimeRawAdapterTest {
             val result = adapter.toJson(obj)
 
             // then
-            assertThat(result).isEqualTo(TestAnimeRawObjects.ReducedTvNonNull.serializedPrettyPrint)
+            assertThat(result).isEqualTo(TestAnimeRawObjects.AllPropertiesSet.serializedPrettyPrint)
         }
 
         @ParameterizedTest
@@ -1649,8 +1649,8 @@ internal class AnimeRawAdapterTest {
         fun `runs performChecks if activateChecks is false and removes blank entries from tags`(value: String) {
             // given
             val adapter = AnimeRawAdapter().indent("  ")
-            val obj = TestAnimeRawObjects.ReducedTvNonNull.obj.copy(
-                _tags = TestAnimeRawObjects.ReducedTvNonNull.obj.tags.union(hashSetOf(value)).toHashSet(),
+            val obj = TestAnimeRawObjects.AllPropertiesSet.obj.copy(
+                _tags = TestAnimeRawObjects.AllPropertiesSet.obj.tags.union(hashSetOf(value)).toHashSet(),
                 activateChecks = false,
             )
 
@@ -1658,40 +1658,40 @@ internal class AnimeRawAdapterTest {
             val result = adapter.toJson(obj)
 
             // then
-            assertThat(result).isEqualTo(TestAnimeRawObjects.ReducedTvNonNull.serializedPrettyPrint)
+            assertThat(result).isEqualTo(TestAnimeRawObjects.AllPropertiesSet.serializedPrettyPrint)
         }
 
         @Test
         fun `sources, synonyms, relatedAnime and tags are being sorted asc by their string representation`() {
             // given
             val adapter = AnimeRawAdapter().indent("  ")
-            val obj = TestAnimeRawObjects.SpecialWithMultipleEpisodes.obj.copy(
-                _sources = TestAnimeRawObjects.SpecialWithMultipleEpisodes.obj.sources.toList().shuffled().toHashSet(),
-                _relatedAnime = TestAnimeRawObjects.SpecialWithMultipleEpisodes.obj.relatedAnime.toList().shuffled().toHashSet(),
-                _synonyms = TestAnimeRawObjects.SpecialWithMultipleEpisodes.obj.synonyms.toList().shuffled().toHashSet(),
-                _tags = TestAnimeRawObjects.SpecialWithMultipleEpisodes.obj.tags.toList().shuffled().toHashSet(),
+            val obj = TestAnimeRawObjects.AllPropertiesSet.obj.copy(
+                _sources = TestAnimeRawObjects.AllPropertiesSet.obj.sources.toList().shuffled().toHashSet(),
+                _relatedAnime = TestAnimeRawObjects.AllPropertiesSet.obj.relatedAnime.toList().shuffled().toHashSet(),
+                _synonyms = TestAnimeRawObjects.AllPropertiesSet.obj.synonyms.toList().shuffled().toHashSet(),
+                _tags = TestAnimeRawObjects.AllPropertiesSet.obj.tags.toList().shuffled().toHashSet(),
             )
 
             // when
             val result = adapter.toJson(obj)
 
             // then
-            assertThat(result).isEqualTo(TestAnimeRawObjects.SpecialWithMultipleEpisodes.serializedPrettyPrint)
+            assertThat(result).isEqualTo(TestAnimeRawObjects.AllPropertiesSet.serializedPrettyPrint)
         }
 
         @Test
         fun `sort scores by hostname`() {
             // given
             val adapter = AnimeRawAdapter().indent("  ")
-            val obj = TestAnimeRawObjects.FullyMergedSpecialWithMultipleEpisodes.obj.copy().addScores(
-                TestAnimeRawObjects.FullyMergedSpecialWithMultipleEpisodes.obj.scores.shuffled(),
+            val obj = TestAnimeRawObjects.FullyMergedAllPropertiesSet.obj.copy().addScores(
+                TestAnimeRawObjects.FullyMergedAllPropertiesSet.obj.scores.shuffled(),
             )
 
             // when
             val result = adapter.toJson(obj)
 
             // then
-            assertThat(result).isEqualTo(TestAnimeRawObjects.FullyMergedSpecialWithMultipleEpisodes.serializedPrettyPrint)
+            assertThat(result).isEqualTo(TestAnimeRawObjects.FullyMergedAllPropertiesSet.serializedPrettyPrint)
         }
 
         @Test
