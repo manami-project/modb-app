@@ -1,5 +1,7 @@
 package io.github.manamiproject.modb.serde.json
 
+import io.github.manamiproject.modb.serde.createExpectedDeadEntriesMinified
+import io.github.manamiproject.modb.serde.createExpectedDeadEntriesPrettyPrint
 import kotlinx.coroutines.runBlocking
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Nested
@@ -16,6 +18,11 @@ internal class DeadEntriesJsonSerializerTest {
             // given
             val clock = Clock.fixed(Instant.parse("2020-01-01T16:02:42.00Z"), UTC)
             val serializer = DeadEntriesJsonSerializer(clock = clock)
+
+            val expected = createExpectedDeadEntriesMinified("""
+                    "1234","5678"
+            """.trimIndent())
+
             val list = setOf(
                 "1234",
                 "5678",
@@ -25,7 +32,7 @@ internal class DeadEntriesJsonSerializerTest {
             val result = serializer.serialize(list, minify = true)
 
             // then
-            assertThat(result).isEqualTo("""{"${'$'}schema":"https://raw.githubusercontent.com/manami-project/anime-offline-database/refs/tags/2020-01/dead-entries/dead-entries.schema.json","license":{"name":"Open Data Commons Open Database License (ODbL) v1.0 + Database Contents License (DbCL) v1.0","url":"https://github.com/manami-project/anime-offline-database/blob/2020-01/LICENSE"},"repository":"https://github.com/manami-project/anime-offline-database","lastUpdate":"2020-01-01","deadEntries":["1234","5678"]}""".trimIndent())
+            assertThat(result).isEqualTo(expected)
         }
     }
 
@@ -35,6 +42,12 @@ internal class DeadEntriesJsonSerializerTest {
             // given
             val clock = Clock.fixed(Instant.parse("2020-01-01T16:02:42.00Z"), UTC)
             val serializer = DeadEntriesJsonSerializer(clock = clock)
+
+            val expected = createExpectedDeadEntriesPrettyPrint("""
+                "1234",
+                "5678"
+            """.trimIndent())
+
             val list = setOf(
                 "1234",
                 "5678",
@@ -44,21 +57,7 @@ internal class DeadEntriesJsonSerializerTest {
             val result = serializer.serialize(list, minify = false)
 
             // then
-            assertThat(result).isEqualTo("""
-                {
-                  "${'$'}schema": "https://raw.githubusercontent.com/manami-project/anime-offline-database/refs/tags/2020-01/dead-entries/dead-entries.schema.json",
-                  "license": {
-                    "name": "Open Data Commons Open Database License (ODbL) v1.0 + Database Contents License (DbCL) v1.0",
-                    "url": "https://github.com/manami-project/anime-offline-database/blob/2020-01/LICENSE"
-                  },
-                  "repository": "https://github.com/manami-project/anime-offline-database",
-                  "lastUpdate": "2020-01-01",
-                  "deadEntries": [
-                    "1234",
-                    "5678"
-                  ]
-                }
-            """.trimIndent())
+            assertThat(result).isEqualTo(expected)
         }
     }
 
@@ -68,6 +67,12 @@ internal class DeadEntriesJsonSerializerTest {
             // given
             val clock = Clock.fixed(Instant.parse("2020-01-01T16:02:42.00Z"), UTC)
             val serializer = DeadEntriesJsonSerializer(clock = clock)
+
+            val expected = createExpectedDeadEntriesPrettyPrint("""
+                "1234",
+                "5678"
+            """.trimIndent())
+
             val list = setOf(
                 "5678",
                 "1234",
@@ -77,21 +82,7 @@ internal class DeadEntriesJsonSerializerTest {
             val result = serializer.serialize(list)
 
             // then
-            assertThat(result).isEqualTo("""
-                {
-                  "${'$'}schema": "https://raw.githubusercontent.com/manami-project/anime-offline-database/refs/tags/2020-01/dead-entries/dead-entries.schema.json",
-                  "license": {
-                    "name": "Open Data Commons Open Database License (ODbL) v1.0 + Database Contents License (DbCL) v1.0",
-                    "url": "https://github.com/manami-project/anime-offline-database/blob/2020-01/LICENSE"
-                  },
-                  "repository": "https://github.com/manami-project/anime-offline-database",
-                  "lastUpdate": "2020-01-01",
-                  "deadEntries": [
-                    "1234",
-                    "5678"
-                  ]
-                }
-            """.trimIndent())
+            assertThat(result).isEqualTo(expected)
         }
     }
 
