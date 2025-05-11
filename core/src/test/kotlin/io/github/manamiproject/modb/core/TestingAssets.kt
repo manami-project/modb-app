@@ -722,7 +722,7 @@ internal object TestAnimeObjects {
             }
         """.trimIndent()
 
-        val serializedMinfied = """
+        val serializedMinified = """
             {"sources":[],"title":"default","type":"UNKNOWN","episodes":0,"status":"UNKNOWN","animeSeason":{"season":"UNDEFINED"},"picture":"https://raw.githubusercontent.com/manami-project/anime-offline-database/master/pics/no_pic.png","thumbnail":"https://raw.githubusercontent.com/manami-project/anime-offline-database/master/pics/no_pic_thumbnail.png","synonyms":[],"relatedAnime":[],"tags":[]}
         """.trimIndent()
     }

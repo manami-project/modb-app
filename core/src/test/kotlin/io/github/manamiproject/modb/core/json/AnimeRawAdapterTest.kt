@@ -105,42 +105,25 @@ internal class AnimeRawAdapterTest {
             val result = exceptionExpected<IllegalArgumentException> {
                 adapter.fromJson("""
                     {
-                      "sources": [
-                        "https://myanimelist.net/anime/1535"
-                      ],
+                      "sources": [],
                       "title": "$value",
-                      "synonyms": [
-                        "DN"
-                      ],
-                      "type": "TV",
-                      "episodes": 37,
-                      "status": "FINISHED",
+                      "type": "UNKNOWN",
+                      "episodes": 1,
+                      "status": "UNKNOWN",
                       "animeSeason": {
-                        "season": "FALL",
-                        "year": 2006
+                        "season": "UNDEFINED",
+                        "year": 2025
                       },
-                      "picture": "https://cdn.myanimelist.net/images/anime/1079/138100.jpg",
-                      "thumbnail": "https://cdn.myanimelist.net/images/anime/1079/138100t.jpg",
+                      "picture": "https://raw.githubusercontent.com/manami-project/anime-offline-database/master/pics/no_pic.png",
+                      "thumbnail": "https://raw.githubusercontent.com/manami-project/anime-offline-database/master/pics/no_pic_thumbnail.png",
                       "duration": {
                         "value": 1380,
                         "unit": "SECONDS"
                       },
-                      "scores": [
-                        {
-                          "hostname": "myanimelist.net",
-                          "value": 8.62,
-                          "range": {
-                            "minInclusive": 1.0,
-                            "maxInclusive": 10.0
-                          }
-                        }
-                      ],
-                      "relatedAnime": [
-                        "https://myanimelist.net/anime/2994"
-                      ],
-                      "tags": [
-                        "psychological"
-                      ]
+                      "scores": [],
+                      "synonyms": [],
+                      "relatedAnime": [],
+                      "tags": []
                     }
                 """.trimIndent())
             }
@@ -158,42 +141,25 @@ internal class AnimeRawAdapterTest {
             val result = exceptionExpected<JsonDataException> {
                 adapter.fromJson("""
                     {
-                      "sources": [
-                        "https://myanimelist.net/anime/1535"
-                      ],
+                      "sources": [],
                       "title": null,
-                      "synonyms": [
-                        "DN"
-                      ],
-                      "type": "TV",
-                      "episodes": 37,
-                      "status": "FINISHED",
+                      "type": "UNKNOWN",
+                      "episodes": 1,
+                      "status": "UNKNOWN",
                       "animeSeason": {
-                        "season": "FALL",
-                        "year": 2006
+                        "season": "UNDEFINED",
+                        "year": 2025
                       },
-                      "picture": "https://cdn.myanimelist.net/images/anime/1079/138100.jpg",
-                      "thumbnail": "https://cdn.myanimelist.net/images/anime/1079/138100t.jpg",
+                      "picture": "https://raw.githubusercontent.com/manami-project/anime-offline-database/master/pics/no_pic.png",
+                      "thumbnail": "https://raw.githubusercontent.com/manami-project/anime-offline-database/master/pics/no_pic_thumbnail.png",
                       "duration": {
                         "value": 1380,
                         "unit": "SECONDS"
                       },
-                      "scores": [
-                        {
-                          "hostname": "myanimelist.net",
-                          "value": 8.62,
-                          "range": {
-                            "minInclusive": 1.0,
-                            "maxInclusive": 10.0
-                          }
-                        }
-                      ],
-                      "relatedAnime": [
-                        "https://myanimelist.net/anime/2994"
-                      ],
-                      "tags": [
-                        "psychological"
-                      ]
+                      "scores": [],
+                      "synonyms": [],
+                      "relatedAnime": [],
+                      "tags": []
                     }
                 """.trimIndent())
             }
@@ -211,41 +177,24 @@ internal class AnimeRawAdapterTest {
             val result = exceptionExpected<IllegalStateException> {
                 adapter.fromJson("""
                     {
-                      "sources": [
-                        "https://myanimelist.net/anime/1535"
-                      ],
-                      "synonyms": [
-                        "DN"
-                      ],
-                      "type": "TV",
-                      "episodes": 37,
-                      "status": "FINISHED",
+                      "sources": [],
+                      "type": "UNKNOWN",
+                      "episodes": 1,
+                      "status": "UNKNOWN",
                       "animeSeason": {
-                        "season": "FALL",
-                        "year": 2006
+                        "season": "UNDEFINED",
+                        "year": 2025
                       },
-                      "picture": "https://cdn.myanimelist.net/images/anime/1079/138100.jpg",
-                      "thumbnail": "https://cdn.myanimelist.net/images/anime/1079/138100t.jpg",
+                      "picture": "https://raw.githubusercontent.com/manami-project/anime-offline-database/master/pics/no_pic.png",
+                      "thumbnail": "https://raw.githubusercontent.com/manami-project/anime-offline-database/master/pics/no_pic_thumbnail.png",
                       "duration": {
                         "value": 1380,
                         "unit": "SECONDS"
                       },
-                      "scores": [
-                        {
-                          "hostname": "myanimelist.net",
-                          "value": 8.62,
-                          "range": {
-                            "minInclusive": 1.0,
-                            "maxInclusive": 10.0
-                          }
-                        }
-                      ],
-                      "relatedAnime": [
-                        "https://myanimelist.net/anime/2994"
-                      ],
-                      "tags": [
-                        "psychological"
-                      ]
+                      "scores": [],
+                      "synonyms": [],
+                      "relatedAnime": [],
+                      "tags": []
                     }
                 """.trimIndent())
             }
@@ -264,39 +213,24 @@ internal class AnimeRawAdapterTest {
                 adapter.fromJson("""
                     {
                       "sources": null,
-                      "title": "Death Note",
-                      "synonyms": [
-                        "DN"
-                      ],
-                      "type": "TV",
-                      "episodes": 37,
-                      "status": "FINISHED",
+                      "title": "default",
+                      "type": "UNKNOWN",
+                      "episodes": 1,
+                      "status": "UNKNOWN",
                       "animeSeason": {
-                        "season": "FALL",
-                        "year": 2006
+                        "season": "UNDEFINED",
+                        "year": 2025
                       },
-                      "picture": "https://cdn.myanimelist.net/images/anime/1079/138100.jpg",
-                      "thumbnail": "https://cdn.myanimelist.net/images/anime/1079/138100t.jpg",
+                      "picture": "https://raw.githubusercontent.com/manami-project/anime-offline-database/master/pics/no_pic.png",
+                      "thumbnail": "https://raw.githubusercontent.com/manami-project/anime-offline-database/master/pics/no_pic_thumbnail.png",
                       "duration": {
                         "value": 1380,
                         "unit": "SECONDS"
                       },
-                      "scores": [
-                        {
-                          "hostname": "myanimelist.net",
-                          "value": 8.62,
-                          "range": {
-                            "minInclusive": 1.0,
-                            "maxInclusive": 10.0
-                          }
-                        }
-                      ],
-                      "relatedAnime": [
-                        "https://myanimelist.net/anime/2994"
-                      ],
-                      "tags": [
-                        "psychological"
-                      ]
+                      "scores": [],
+                      "synonyms": [],
+                      "relatedAnime": [],
+                      "tags": []
                     }
                 """.trimIndent())
             }
@@ -314,39 +248,24 @@ internal class AnimeRawAdapterTest {
             val result = exceptionExpected<IllegalStateException> {
                 adapter.fromJson("""
                     {
-                      "title": "Death Note",
-                      "synonyms": [
-                        "DN"
-                      ],
-                      "type": "TV",
-                      "episodes": 37,
-                      "status": "FINISHED",
+                      "title": "default",
+                      "type": "UNKNOWN",
+                      "episodes": 1,
+                      "status": "UNKNOWN",
                       "animeSeason": {
-                        "season": "FALL",
-                        "year": 2006
+                        "season": "UNDEFINED",
+                        "year": 2025
                       },
-                      "picture": "https://cdn.myanimelist.net/images/anime/1079/138100.jpg",
-                      "thumbnail": "https://cdn.myanimelist.net/images/anime/1079/138100t.jpg",
+                      "picture": "https://raw.githubusercontent.com/manami-project/anime-offline-database/master/pics/no_pic.png",
+                      "thumbnail": "https://raw.githubusercontent.com/manami-project/anime-offline-database/master/pics/no_pic_thumbnail.png",
                       "duration": {
                         "value": 1380,
                         "unit": "SECONDS"
                       },
-                      "scores": [
-                        {
-                          "hostname": "myanimelist.net",
-                          "value": 8.62,
-                          "range": {
-                            "minInclusive": 1.0,
-                            "maxInclusive": 10.0
-                          }
-                        }
-                      ],
-                      "relatedAnime": [
-                        "https://myanimelist.net/anime/2994"
-                      ],
-                      "tags": [
-                        "psychological"
-                      ]
+                      "scores": [],
+                      "synonyms": [],
+                      "relatedAnime": [],
+                      "tags": []
                     }
                 """.trimIndent())
             }
@@ -364,40 +283,25 @@ internal class AnimeRawAdapterTest {
             val result = exceptionExpected<JsonDataException> {
                 adapter.fromJson("""
                     {
-                      "sources": [
-                        "https://myanimelist.net/anime/1535"
-                      ],
-                      "title": "Death Note",
-                      "synonyms": null,
-                      "type": "TV",
-                      "episodes": 37,
-                      "status": "FINISHED",
+                      "sources": [],
+                      "title": "default",
+                      "type": "UNKNOWN",
+                      "episodes": 1,
+                      "status": "UNKNOWN",
                       "animeSeason": {
-                        "season": "FALL",
-                        "year": 2006
+                        "season": "UNDEFINED",
+                        "year": 2025
                       },
-                      "picture": "https://cdn.myanimelist.net/images/anime/1079/138100.jpg",
-                      "thumbnail": "https://cdn.myanimelist.net/images/anime/1079/138100t.jpg",
+                      "picture": "https://raw.githubusercontent.com/manami-project/anime-offline-database/master/pics/no_pic.png",
+                      "thumbnail": "https://raw.githubusercontent.com/manami-project/anime-offline-database/master/pics/no_pic_thumbnail.png",
                       "duration": {
                         "value": 1380,
                         "unit": "SECONDS"
                       },
-                      "scores": [
-                        {
-                          "hostname": "myanimelist.net",
-                          "value": 8.62,
-                          "range": {
-                            "minInclusive": 1.0,
-                            "maxInclusive": 10.0
-                          }
-                        }
-                      ],
-                      "relatedAnime": [
-                        "https://myanimelist.net/anime/2994"
-                      ],
-                      "tags": [
-                        "psychological"
-                      ]
+                      "scores": [],
+                      "synonyms": null,
+                      "relatedAnime": [],
+                      "tags": []
                     }
                 """.trimIndent())
             }
@@ -415,39 +319,24 @@ internal class AnimeRawAdapterTest {
             val result = exceptionExpected<IllegalStateException> {
                 adapter.fromJson("""
                     {
-                      "sources": [
-                        "https://myanimelist.net/anime/1535"
-                      ],
-                      "title": "Death Note",
-                      "type": "TV",
-                      "episodes": 37,
-                      "status": "FINISHED",
+                      "sources": [],
+                      "title": "default",
+                      "type": "UNKNOWN",
+                      "episodes": 1,
+                      "status": "UNKNOWN",
                       "animeSeason": {
-                        "season": "FALL",
-                        "year": 2006
+                        "season": "UNDEFINED",
+                        "year": 2025
                       },
-                      "picture": "https://cdn.myanimelist.net/images/anime/1079/138100.jpg",
-                      "thumbnail": "https://cdn.myanimelist.net/images/anime/1079/138100t.jpg",
+                      "picture": "https://raw.githubusercontent.com/manami-project/anime-offline-database/master/pics/no_pic.png",
+                      "thumbnail": "https://raw.githubusercontent.com/manami-project/anime-offline-database/master/pics/no_pic_thumbnail.png",
                       "duration": {
                         "value": 1380,
                         "unit": "SECONDS"
                       },
-                      "scores": [
-                        {
-                          "hostname": "myanimelist.net",
-                          "value": 8.62,
-                          "range": {
-                            "minInclusive": 1.0,
-                            "maxInclusive": 10.0
-                          }
-                        }
-                      ],
-                      "relatedAnime": [
-                        "https://myanimelist.net/anime/2994"
-                      ],
-                      "tags": [
-                        "psychological"
-                      ]
+                      "scores": [],
+                      "relatedAnime": [],
+                      "tags": []
                     }
                 """.trimIndent())
             }
@@ -465,42 +354,25 @@ internal class AnimeRawAdapterTest {
             val result = exceptionExpected<JsonDataException> {
                 adapter.fromJson("""
                     {
-                      "sources": [
-                        "https://myanimelist.net/anime/1535"
-                      ],
-                      "title": "Death Note",
-                      "synonyms": [
-                        "DN"
-                      ],
+                      "sources": [],
+                      "title": "default",
                       "type": null,
-                      "episodes": 37,
-                      "status": "FINISHED",
+                      "episodes": 1,
+                      "status": "UNKNOWN",
                       "animeSeason": {
-                        "season": "FALL",
-                        "year": 2006
+                        "season": "UNDEFINED",
+                        "year": 2025
                       },
-                      "picture": "https://cdn.myanimelist.net/images/anime/1079/138100.jpg",
-                      "thumbnail": "https://cdn.myanimelist.net/images/anime/1079/138100t.jpg",
+                      "picture": "https://raw.githubusercontent.com/manami-project/anime-offline-database/master/pics/no_pic.png",
+                      "thumbnail": "https://raw.githubusercontent.com/manami-project/anime-offline-database/master/pics/no_pic_thumbnail.png",
                       "duration": {
                         "value": 1380,
                         "unit": "SECONDS"
                       },
-                      "scores": [
-                        {
-                          "hostname": "myanimelist.net",
-                          "value": 8.62,
-                          "range": {
-                            "minInclusive": 1.0,
-                            "maxInclusive": 10.0
-                          }
-                        }
-                      ],
-                      "relatedAnime": [
-                        "https://myanimelist.net/anime/2994"
-                      ],
-                      "tags": [
-                        "psychological"
-                      ]
+                      "scores": [],
+                      "synonyms": [],
+                      "relatedAnime": [],
+                      "tags": []
                     }
                 """.trimIndent())
             }
@@ -518,41 +390,24 @@ internal class AnimeRawAdapterTest {
             val result = exceptionExpected<IllegalStateException> {
                 adapter.fromJson("""
                     {
-                      "sources": [
-                        "https://myanimelist.net/anime/1535"
-                      ],
-                      "title": "Death Note",
-                      "synonyms": [
-                        "DN"
-                      ],
-                      "episodes": 37,
-                      "status": "FINISHED",
+                      "sources": [],
+                      "title": "default",
+                      "episodes": 1,
+                      "status": "UNKNOWN",
                       "animeSeason": {
-                        "season": "FALL",
-                        "year": 2006
+                        "season": "UNDEFINED",
+                        "year": 2025
                       },
-                      "picture": "https://cdn.myanimelist.net/images/anime/1079/138100.jpg",
-                      "thumbnail": "https://cdn.myanimelist.net/images/anime/1079/138100t.jpg",
+                      "picture": "https://raw.githubusercontent.com/manami-project/anime-offline-database/master/pics/no_pic.png",
+                      "thumbnail": "https://raw.githubusercontent.com/manami-project/anime-offline-database/master/pics/no_pic_thumbnail.png",
                       "duration": {
                         "value": 1380,
                         "unit": "SECONDS"
                       },
-                      "scores": [
-                        {
-                          "hostname": "myanimelist.net",
-                          "value": 8.62,
-                          "range": {
-                            "minInclusive": 1.0,
-                            "maxInclusive": 10.0
-                          }
-                        }
-                      ],
-                      "relatedAnime": [
-                        "https://myanimelist.net/anime/2994"
-                      ],
-                      "tags": [
-                        "psychological"
-                      ]
+                      "scores": [],
+                      "synonyms": [],
+                      "relatedAnime": [],
+                      "tags": []
                     }
                 """.trimIndent())
             }
@@ -570,42 +425,25 @@ internal class AnimeRawAdapterTest {
             val result = exceptionExpected<JsonDataException> {
                 adapter.fromJson("""
                     {
-                      "sources": [
-                        "https://myanimelist.net/anime/1535"
-                      ],
-                      "title": "Death Note",
-                      "synonyms": [
-                        "DN"
-                      ],
-                      "type": "TV",
+                      "sources": [],
+                      "title": "default",
+                      "type": "UNKNOWN",
                       "episodes": null,
-                      "status": "FINISHED",
+                      "status": "UNKNOWN",
                       "animeSeason": {
-                        "season": "FALL",
-                        "year": 2006
+                        "season": "UNDEFINED",
+                        "year": 2025
                       },
-                      "picture": "https://cdn.myanimelist.net/images/anime/1079/138100.jpg",
-                      "thumbnail": "https://cdn.myanimelist.net/images/anime/1079/138100t.jpg",
+                      "picture": "https://raw.githubusercontent.com/manami-project/anime-offline-database/master/pics/no_pic.png",
+                      "thumbnail": "https://raw.githubusercontent.com/manami-project/anime-offline-database/master/pics/no_pic_thumbnail.png",
                       "duration": {
                         "value": 1380,
                         "unit": "SECONDS"
                       },
-                      "scores": [
-                        {
-                          "hostname": "myanimelist.net",
-                          "value": 8.62,
-                          "range": {
-                            "minInclusive": 1.0,
-                            "maxInclusive": 10.0
-                          }
-                        }
-                      ],
-                      "relatedAnime": [
-                        "https://myanimelist.net/anime/2994"
-                      ],
-                      "tags": [
-                        "psychological"
-                      ]
+                      "scores": [],
+                      "synonyms": [],
+                      "relatedAnime": [],
+                      "tags": []
                     }
                 """.trimIndent())
             }
@@ -623,41 +461,24 @@ internal class AnimeRawAdapterTest {
             val result = exceptionExpected<IllegalStateException> {
                 adapter.fromJson("""
                     {
-                      "sources": [
-                        "https://myanimelist.net/anime/1535"
-                      ],
-                      "title": "Death Note",
-                      "synonyms": [
-                        "DN"
-                      ],
-                      "type": "TV",
-                      "status": "FINISHED",
+                      "sources": [],
+                      "title": "default",
+                      "type": "UNKNOWN",
+                      "status": "UNKNOWN",
                       "animeSeason": {
-                        "season": "FALL",
-                        "year": 2006
+                        "season": "UNDEFINED",
+                        "year": 2025
                       },
-                      "picture": "https://cdn.myanimelist.net/images/anime/1079/138100.jpg",
-                      "thumbnail": "https://cdn.myanimelist.net/images/anime/1079/138100t.jpg",
+                      "picture": "https://raw.githubusercontent.com/manami-project/anime-offline-database/master/pics/no_pic.png",
+                      "thumbnail": "https://raw.githubusercontent.com/manami-project/anime-offline-database/master/pics/no_pic_thumbnail.png",
                       "duration": {
                         "value": 1380,
                         "unit": "SECONDS"
                       },
-                      "scores": [
-                        {
-                          "hostname": "myanimelist.net",
-                          "value": 8.62,
-                          "range": {
-                            "minInclusive": 1.0,
-                            "maxInclusive": 10.0
-                          }
-                        }
-                      ],
-                      "relatedAnime": [
-                        "https://myanimelist.net/anime/2994"
-                      ],
-                      "tags": [
-                        "psychological"
-                      ]
+                      "scores": [],
+                      "synonyms": [],
+                      "relatedAnime": [],
+                      "tags": []
                     }
                 """.trimIndent())
             }
@@ -675,42 +496,25 @@ internal class AnimeRawAdapterTest {
             val result = exceptionExpected<JsonDataException> {
                 adapter.fromJson("""
                     {
-                      "sources": [
-                        "https://myanimelist.net/anime/1535"
-                      ],
-                      "title": "Death Note",
-                      "synonyms": [
-                        "DN"
-                      ],
-                      "type": "TV",
-                      "episodes": 37,
+                      "sources": [],
+                      "title": "default",
+                      "type": "UNKNOWN",
+                      "episodes": 1,
                       "status": null,
                       "animeSeason": {
-                        "season": "FALL",
-                        "year": 2006
+                        "season": "UNDEFINED",
+                        "year": 2025
                       },
-                      "picture": "https://cdn.myanimelist.net/images/anime/1079/138100.jpg",
-                      "thumbnail": "https://cdn.myanimelist.net/images/anime/1079/138100t.jpg",
+                      "picture": "https://raw.githubusercontent.com/manami-project/anime-offline-database/master/pics/no_pic.png",
+                      "thumbnail": "https://raw.githubusercontent.com/manami-project/anime-offline-database/master/pics/no_pic_thumbnail.png",
                       "duration": {
                         "value": 1380,
                         "unit": "SECONDS"
                       },
-                      "scores": [
-                        {
-                          "hostname": "myanimelist.net",
-                          "value": 8.62,
-                          "range": {
-                            "minInclusive": 1.0,
-                            "maxInclusive": 10.0
-                          }
-                        }
-                      ],
-                      "relatedAnime": [
-                        "https://myanimelist.net/anime/2994"
-                      ],
-                      "tags": [
-                        "psychological"
-                      ]
+                      "scores": [],
+                      "synonyms": [],
+                      "relatedAnime": [],
+                      "tags": []
                     }
                 """.trimIndent())
             }
@@ -728,41 +532,24 @@ internal class AnimeRawAdapterTest {
             val result = exceptionExpected<IllegalStateException> {
                 adapter.fromJson("""
                     {
-                      "sources": [
-                        "https://myanimelist.net/anime/1535"
-                      ],
-                      "title": "Death Note",
-                      "synonyms": [
-                        "DN"
-                      ],
-                      "type": "TV",
-                      "episodes": 37,
+                      "sources": [],
+                      "title": "default",
+                      "type": "UNKNOWN",
+                      "episodes": 1,
                       "animeSeason": {
-                        "season": "FALL",
-                        "year": 2006
+                        "season": "UNDEFINED",
+                        "year": 2025
                       },
-                      "picture": "https://cdn.myanimelist.net/images/anime/1079/138100.jpg",
-                      "thumbnail": "https://cdn.myanimelist.net/images/anime/1079/138100t.jpg",
+                      "picture": "https://raw.githubusercontent.com/manami-project/anime-offline-database/master/pics/no_pic.png",
+                      "thumbnail": "https://raw.githubusercontent.com/manami-project/anime-offline-database/master/pics/no_pic_thumbnail.png",
                       "duration": {
                         "value": 1380,
                         "unit": "SECONDS"
                       },
-                      "scores": [
-                        {
-                          "hostname": "myanimelist.net",
-                          "value": 8.62,
-                          "range": {
-                            "minInclusive": 1.0,
-                            "maxInclusive": 10.0
-                          }
-                        }
-                      ],
-                      "relatedAnime": [
-                        "https://myanimelist.net/anime/2994"
-                      ],
-                      "tags": [
-                        "psychological"
-                      ]
+                      "scores": [],
+                      "synonyms": [],
+                      "relatedAnime": [],
+                      "tags": []
                     }
                 """.trimIndent())
             }
@@ -780,39 +567,22 @@ internal class AnimeRawAdapterTest {
             val result = exceptionExpected<JsonDataException> {
                 adapter.fromJson("""
                     {
-                      "sources": [
-                        "https://myanimelist.net/anime/1535"
-                      ],
-                      "title": "Death Note",
-                      "synonyms": [
-                        "DN"
-                      ],
-                      "type": "TV",
-                      "episodes": 37,
-                      "status": "FINISHED",
+                      "sources": [],
+                      "title": "default",
+                      "type": "UNKNOWN",
+                      "episodes": 1,
+                      "status": "UNKNOWN",
                       "animeSeason": null,
-                      "picture": "https://cdn.myanimelist.net/images/anime/1079/138100.jpg",
-                      "thumbnail": "https://cdn.myanimelist.net/images/anime/1079/138100t.jpg",
+                      "picture": "https://raw.githubusercontent.com/manami-project/anime-offline-database/master/pics/no_pic.png",
+                      "thumbnail": "https://raw.githubusercontent.com/manami-project/anime-offline-database/master/pics/no_pic_thumbnail.png",
                       "duration": {
                         "value": 1380,
                         "unit": "SECONDS"
                       },
-                      "scores": [
-                        {
-                          "hostname": "myanimelist.net",
-                          "value": 8.62,
-                          "range": {
-                            "minInclusive": 1.0,
-                            "maxInclusive": 10.0
-                          }
-                        }
-                      ],
-                      "relatedAnime": [
-                        "https://myanimelist.net/anime/2994"
-                      ],
-                      "tags": [
-                        "psychological"
-                      ]
+                      "scores": [],
+                      "synonyms": [],
+                      "relatedAnime": [],
+                      "tags": []
                     }
                 """.trimIndent())
             }
@@ -830,44 +600,98 @@ internal class AnimeRawAdapterTest {
             val result = exceptionExpected<IllegalStateException> {
                 adapter.fromJson("""
                     {
-                      "sources": [
-                        "https://myanimelist.net/anime/1535"
-                      ],
-                      "title": "Death Note",
-                      "synonyms": [
-                        "DN"
-                      ],
-                      "type": "TV",
-                      "episodes": 37,
-                      "status": "FINISHED",
-                      "picture": "https://cdn.myanimelist.net/images/anime/1079/138100.jpg",
-                      "thumbnail": "https://cdn.myanimelist.net/images/anime/1079/138100t.jpg",
+                      "sources": [],
+                      "title": "default",
+                      "type": "UNKNOWN",
+                      "episodes": 1,
+                      "status": "UNKNOWN",
+                      "picture": "https://raw.githubusercontent.com/manami-project/anime-offline-database/master/pics/no_pic.png",
+                      "thumbnail": "https://raw.githubusercontent.com/manami-project/anime-offline-database/master/pics/no_pic_thumbnail.png",
                       "duration": {
                         "value": 1380,
                         "unit": "SECONDS"
                       },
-                      "scores": [
-                        {
-                          "hostname": "myanimelist.net",
-                          "value": 8.62,
-                          "range": {
-                            "minInclusive": 1.0,
-                            "maxInclusive": 10.0
-                          }
-                        }
-                      ],
-                      "relatedAnime": [
-                        "https://myanimelist.net/anime/2994"
-                      ],
-                      "tags": [
-                        "psychological"
-                      ]
+                      "scores": [],
+                      "synonyms": [],
+                      "relatedAnime": [],
+                      "tags": []
                     }
                 """.trimIndent())
             }
 
             // then
             assertThat(result).hasMessage("Property 'animeSeason' is either missing or null.")
+        }
+
+        @Test
+        fun `throws exception if season in animeSeason is null`() {
+            // given
+            val adapter = AnimeRawAdapter()
+
+            // when
+            val result = exceptionExpected<JsonDataException> {
+                adapter.fromJson("""
+                    {
+                      "sources": [],
+                      "title": "default",
+                      "type": "UNKNOWN",
+                      "episodes": 1,
+                      "status": "UNKNOWN",
+                      "animeSeason": {
+                        "season": null,
+                        "year": 2025
+                      },
+                      "picture": "https://raw.githubusercontent.com/manami-project/anime-offline-database/master/pics/no_pic.png",
+                      "thumbnail": "https://raw.githubusercontent.com/manami-project/anime-offline-database/master/pics/no_pic_thumbnail.png",
+                      "duration": {
+                        "value": 1380,
+                        "unit": "SECONDS"
+                      },
+                      "scores": [],
+                      "synonyms": [],
+                      "relatedAnime": [],
+                      "tags": []
+                    }
+                """.trimIndent())
+            }
+
+            // then
+            assertThat(result).hasMessage("Expected a string but was NULL at path \$.animeSeason.season")
+        }
+
+        @Test
+        fun `throws exception if season in animeSeason is missing`() {
+            // given
+            val adapter = AnimeRawAdapter()
+
+            // when
+            val result = exceptionExpected<IllegalStateException> {
+                adapter.fromJson("""
+                    {
+                      "sources": [],
+                      "title": "default",
+                      "type": "UNKNOWN",
+                      "episodes": 1,
+                      "status": "UNKNOWN",
+                      "animeSeason": {
+                        "year": 2025
+                      },
+                      "picture": "https://raw.githubusercontent.com/manami-project/anime-offline-database/master/pics/no_pic.png",
+                      "thumbnail": "https://raw.githubusercontent.com/manami-project/anime-offline-database/master/pics/no_pic_thumbnail.png",
+                      "duration": {
+                        "value": 1380,
+                        "unit": "SECONDS"
+                      },
+                      "scores": [],
+                      "synonyms": [],
+                      "relatedAnime": [],
+                      "tags": []
+                    }
+                """.trimIndent())
+            }
+
+            // then
+            assertThat(result).hasMessage("Property 'season' is either missing or null.")
         }
 
         @Test
@@ -879,42 +703,25 @@ internal class AnimeRawAdapterTest {
             val result = exceptionExpected<JsonDataException> {
                 adapter.fromJson("""
                     {
-                      "sources": [
-                        "https://myanimelist.net/anime/1535"
-                      ],
-                      "title": "Death Note",
-                      "synonyms": [
-                        "DN"
-                      ],
-                      "type": "TV",
-                      "episodes": 37,
-                      "status": "FINISHED",
+                      "sources": [],
+                      "title": "default",
+                      "type": "UNKNOWN",
+                      "episodes": 1,
+                      "status": "UNKNOWN",
                       "animeSeason": {
-                        "season": "FALL",
-                        "year": 2006
+                        "season": "UNDEFINED",
+                        "year": 2025
                       },
                       "picture": null,
-                      "thumbnail": "https://cdn.myanimelist.net/images/anime/1079/138100t.jpg",
+                      "thumbnail": "https://raw.githubusercontent.com/manami-project/anime-offline-database/master/pics/no_pic_thumbnail.png",
                       "duration": {
                         "value": 1380,
                         "unit": "SECONDS"
                       },
-                      "scores": [
-                        {
-                          "hostname": "myanimelist.net",
-                          "value": 8.62,
-                          "range": {
-                            "minInclusive": 1.0,
-                            "maxInclusive": 10.0
-                          }
-                        }
-                      ],
-                      "relatedAnime": [
-                        "https://myanimelist.net/anime/2994"
-                      ],
-                      "tags": [
-                        "psychological"
-                      ]
+                      "scores": [],
+                      "synonyms": [],
+                      "relatedAnime": [],
+                      "tags": []
                     }
                 """.trimIndent())
             }
@@ -932,41 +739,24 @@ internal class AnimeRawAdapterTest {
             val result = exceptionExpected<IllegalStateException> {
                 adapter.fromJson("""
                     {
-                      "sources": [
-                        "https://myanimelist.net/anime/1535"
-                      ],
-                      "title": "Death Note",
-                      "synonyms": [
-                        "DN"
-                      ],
-                      "type": "TV",
-                      "episodes": 37,
-                      "status": "FINISHED",
+                      "sources": [],
+                      "title": "default",
+                      "type": "UNKNOWN",
+                      "episodes": 1,
+                      "status": "UNKNOWN",
                       "animeSeason": {
-                        "season": "FALL",
-                        "year": 2006
+                        "season": "UNDEFINED",
+                        "year": 2025
                       },
-                      "thumbnail": "https://cdn.myanimelist.net/images/anime/1079/138100t.jpg",
+                      "thumbnail": "https://raw.githubusercontent.com/manami-project/anime-offline-database/master/pics/no_pic_thumbnail.png",
                       "duration": {
                         "value": 1380,
                         "unit": "SECONDS"
                       },
-                      "scores": [
-                        {
-                          "hostname": "myanimelist.net",
-                          "value": 8.62,
-                          "range": {
-                            "minInclusive": 1.0,
-                            "maxInclusive": 10.0
-                          }
-                        }
-                      ],
-                      "relatedAnime": [
-                        "https://myanimelist.net/anime/2994"
-                      ],
-                      "tags": [
-                        "psychological"
-                      ]
+                      "scores": [],
+                      "synonyms": [],
+                      "relatedAnime": [],
+                      "tags": []
                     }
                 """.trimIndent())
             }
@@ -984,42 +774,25 @@ internal class AnimeRawAdapterTest {
             val result = exceptionExpected<JsonDataException> {
                 adapter.fromJson("""
                     {
-                      "sources": [
-                        "https://myanimelist.net/anime/1535"
-                      ],
-                      "title": "Death Note",
-                      "synonyms": [
-                        "DN"
-                      ],
-                      "type": "TV",
-                      "episodes": 37,
-                      "status": "FINISHED",
+                      "sources": [],
+                      "title": "default",
+                      "type": "UNKNOWN",
+                      "episodes": 1,
+                      "status": "UNKNOWN",
                       "animeSeason": {
-                        "season": "FALL",
-                        "year": 2006
+                        "season": "UNDEFINED",
+                        "year": 2025
                       },
-                      "picture": "https://cdn.myanimelist.net/images/anime/1079/138100.jpg",
+                      "picture": "https://raw.githubusercontent.com/manami-project/anime-offline-database/master/pics/no_pic.png",
                       "thumbnail": null,
                       "duration": {
                         "value": 1380,
                         "unit": "SECONDS"
                       },
-                      "scores": [
-                        {
-                          "hostname": "myanimelist.net",
-                          "value": 8.62,
-                          "range": {
-                            "minInclusive": 1.0,
-                            "maxInclusive": 10.0
-                          }
-                        }
-                      ],
-                      "relatedAnime": [
-                        "https://myanimelist.net/anime/2994"
-                      ],
-                      "tags": [
-                        "psychological"
-                      ]
+                      "scores": [],
+                      "synonyms": [],
+                      "relatedAnime": [],
+                      "tags": []
                     }
                 """.trimIndent())
             }
@@ -1037,41 +810,24 @@ internal class AnimeRawAdapterTest {
             val result = exceptionExpected<IllegalStateException> {
                 adapter.fromJson("""
                     {
-                      "sources": [
-                        "https://myanimelist.net/anime/1535"
-                      ],
-                      "title": "Death Note",
-                      "synonyms": [
-                        "DN"
-                      ],
-                      "type": "TV",
-                      "episodes": 37,
-                      "status": "FINISHED",
+                      "sources": [],
+                      "title": "default",
+                      "type": "UNKNOWN",
+                      "episodes": 1,
+                      "status": "UNKNOWN",
                       "animeSeason": {
-                        "season": "FALL",
-                        "year": 2006
+                        "season": "UNDEFINED",
+                        "year": 2025
                       },
-                      "picture": "https://cdn.myanimelist.net/images/anime/1079/138100.jpg",
+                      "picture": "https://raw.githubusercontent.com/manami-project/anime-offline-database/master/pics/no_pic.png",
                       "duration": {
                         "value": 1380,
                         "unit": "SECONDS"
                       },
-                      "scores": [
-                        {
-                          "hostname": "myanimelist.net",
-                          "value": 8.62,
-                          "range": {
-                            "minInclusive": 1.0,
-                            "maxInclusive": 10.0
-                          }
-                        }
-                      ],
-                      "relatedAnime": [
-                        "https://myanimelist.net/anime/2994"
-                      ],
-                      "tags": [
-                        "psychological"
-                      ]
+                      "scores": [],
+                      "synonyms": [],
+                      "relatedAnime": [],
+                      "tags": []
                     }
                 """.trimIndent())
             }
@@ -1081,98 +837,145 @@ internal class AnimeRawAdapterTest {
         }
 
         @Test
-        fun `returns anime with unknown duration if duration property is null`() {
+        fun `throws exception if value in duration is null`() {
             // given
             val adapter = AnimeRawAdapter()
 
             // when
-            val result = adapter.fromJson("""
-                {
-                  "sources": [
-                    "https://myanimelist.net/anime/1535"
-                  ],
-                  "title": "Death Note",
-                  "synonyms": [
-                    "DN"
-                  ],
-                  "type": "TV",
-                  "episodes": 37,
-                  "status": "FINISHED",
-                  "animeSeason": {
-                    "season": "FALL",
-                    "year": 2006
-                  },
-                  "picture": "https://cdn.myanimelist.net/images/anime/1079/138100.jpg",
-                  "thumbnail": "https://cdn.myanimelist.net/images/anime/1079/138100t.jpg",
-                  "duration": null,
-                  "scores": [
+            val result = exceptionExpected<JsonDataException> {
+                adapter.fromJson("""
                     {
-                      "hostname": "myanimelist.net",
-                      "value": 8.62,
-                      "range": {
-                        "minInclusive": 1.0,
-                        "maxInclusive": 10.0
-                      }
+                      "sources": [],
+                      "title": "default",
+                      "type": "UNKNOWN",
+                      "episodes": 1,
+                      "status": "UNKNOWN",
+                      "animeSeason": {
+                        "season": "UNDEFINED",
+                        "year": 2025
+                      },
+                      "picture": "https://raw.githubusercontent.com/manami-project/anime-offline-database/master/pics/no_pic.png",
+                      "thumbnail": "https://raw.githubusercontent.com/manami-project/anime-offline-database/master/pics/no_pic_thumbnail.png",
+                      "duration": {
+                        "value": null,
+                        "unit": "SECONDS"
+                      },
+                      "scores": [],
+                      "synonyms": [],
+                      "relatedAnime": [],
+                      "tags": []
                     }
-                  ],
-                  "relatedAnime": [
-                    "https://myanimelist.net/anime/2994"
-                  ],
-                  "tags": [
-                    "psychological"
-                  ]
-                }
-            """.trimIndent())!!
+                """.trimIndent())
+            }
 
             // then
-            assertThat(result.duration).isEqualTo(UNKNOWN_DURATION)
+            assertThat(result).hasMessage("Expected an int but was NULL at path \$.duration.value")
         }
 
         @Test
-        fun `returns anime with unknown duration if duration property is missing`() {
+        fun `throws exception if value in duration is missing`() {
             // given
             val adapter = AnimeRawAdapter()
 
             // when
-            val result = adapter.fromJson("""
-                {
-                  "sources": [
-                    "https://myanimelist.net/anime/1535"
-                  ],
-                  "title": "Death Note",
-                  "synonyms": [
-                    "DN"
-                  ],
-                  "type": "TV",
-                  "episodes": 37,
-                  "status": "FINISHED",
-                  "animeSeason": {
-                    "season": "FALL",
-                    "year": 2006
-                  },
-                  "picture": "https://cdn.myanimelist.net/images/anime/1079/138100.jpg",
-                  "thumbnail": "https://cdn.myanimelist.net/images/anime/1079/138100t.jpg",
-                  "scores": [
+            val result = exceptionExpected<IllegalStateException> {
+                adapter.fromJson("""
                     {
-                      "hostname": "myanimelist.net",
-                      "value": 8.62,
-                      "range": {
-                        "minInclusive": 1.0,
-                        "maxInclusive": 10.0
-                      }
+                      "sources": [],
+                      "title": "default",
+                      "type": "UNKNOWN",
+                      "episodes": 1,
+                      "status": "UNKNOWN",
+                      "animeSeason": {
+                        "season": "UNDEFINED",
+                        "year": 2025
+                      },
+                      "picture": "https://raw.githubusercontent.com/manami-project/anime-offline-database/master/pics/no_pic.png",
+                      "thumbnail": "https://raw.githubusercontent.com/manami-project/anime-offline-database/master/pics/no_pic_thumbnail.png",
+                      "duration": {
+                        "unit": "SECONDS"
+                      },
+                      "scores": [],
+                      "synonyms": [],
+                      "relatedAnime": [],
+                      "tags": []
                     }
-                  ],
-                  "relatedAnime": [
-                    "https://myanimelist.net/anime/2994"
-                  ],
-                  "tags": [
-                    "psychological"
-                  ]
-                }
-            """.trimIndent())!!
+                """.trimIndent())
+            }
 
             // then
-            assertThat(result.duration).isEqualTo(UNKNOWN_DURATION)
+            assertThat(result).hasMessage("Property 'value' is either missing or null.")
+        }
+
+        @Test
+        fun `throws exception if unit in duration is null`() {
+            // given
+            val adapter = AnimeRawAdapter()
+
+            // when
+            val result = exceptionExpected<JsonDataException> {
+                adapter.fromJson("""
+                    {
+                      "sources": [],
+                      "title": "default",
+                      "type": "UNKNOWN",
+                      "episodes": 1,
+                      "status": "UNKNOWN",
+                      "animeSeason": {
+                        "season": "UNDEFINED",
+                        "year": 2025
+                      },
+                      "picture": "https://raw.githubusercontent.com/manami-project/anime-offline-database/master/pics/no_pic.png",
+                      "thumbnail": "https://raw.githubusercontent.com/manami-project/anime-offline-database/master/pics/no_pic_thumbnail.png",
+                      "duration": {
+                        "value": 1380,
+                        "unit": null
+                      },
+                      "scores": [],
+                      "synonyms": [],
+                      "relatedAnime": [],
+                      "tags": []
+                    }
+                """.trimIndent())
+            }
+
+            // then
+            assertThat(result).hasMessage("Expected a string but was NULL at path \$.duration.unit")
+        }
+
+        @Test
+        fun `throws exception if unit in duration is missing`() {
+            // given
+            val adapter = AnimeRawAdapter()
+
+            // when
+            val result = exceptionExpected<IllegalStateException> {
+                adapter.fromJson("""
+                    {
+                      "sources": [],
+                      "title": "default",
+                      "type": "UNKNOWN",
+                      "episodes": 1,
+                      "status": "UNKNOWN",
+                      "animeSeason": {
+                        "season": "UNDEFINED",
+                        "year": 2025
+                      },
+                      "picture": "https://raw.githubusercontent.com/manami-project/anime-offline-database/master/pics/no_pic.png",
+                      "thumbnail": "https://raw.githubusercontent.com/manami-project/anime-offline-database/master/pics/no_pic_thumbnail.png",
+                      "duration": {
+                        "value": 1380
+                      },
+                      "scores": [],
+                      "synonyms": [],
+                      "relatedAnime": [],
+                      "tags": []
+                    }
+                """.trimIndent())
+            }
+
+            // then
+            assertThat(result).hasMessage("Property 'unit' is either missing or null.")
         }
 
         @Test
@@ -1184,40 +987,25 @@ internal class AnimeRawAdapterTest {
             val result = exceptionExpected<JsonDataException> {
                 adapter.fromJson("""
                     {
-                      "sources": [
-                        "https://myanimelist.net/anime/1535"
-                      ],
-                      "title": "Death Note",
-                      "synonyms": [
-                        "DN"
-                      ],
-                      "type": "TV",
-                      "episodes": 37,
-                      "status": "FINISHED",
+                      "sources": [],
+                      "title": "default",
+                      "type": "UNKNOWN",
+                      "episodes": 1,
+                      "status": "UNKNOWN",
                       "animeSeason": {
-                        "season": "FALL",
-                        "year": 2006
+                        "season": "UNDEFINED",
+                        "year": 2025
                       },
-                      "picture": "https://cdn.myanimelist.net/images/anime/1079/138100.jpg",
-                      "thumbnail": "https://cdn.myanimelist.net/images/anime/1079/138100t.jpg",
+                      "picture": "https://raw.githubusercontent.com/manami-project/anime-offline-database/master/pics/no_pic.png",
+                      "thumbnail": "https://raw.githubusercontent.com/manami-project/anime-offline-database/master/pics/no_pic_thumbnail.png",
                       "duration": {
                         "value": 1380,
                         "unit": "SECONDS"
                       },
-                      "scores": [
-                        {
-                          "hostname": "myanimelist.net",
-                          "value": 8.62,
-                          "range": {
-                            "minInclusive": 1.0,
-                            "maxInclusive": 10.0
-                          }
-                        }
-                      ],
+                      "scores": [],
+                      "synonyms": [],
                       "relatedAnime": null,
-                      "tags": [
-                        "psychological"
-                      ]
+                      "tags": []
                     }
                 """.trimIndent())
             }
@@ -1235,39 +1023,24 @@ internal class AnimeRawAdapterTest {
             val result = exceptionExpected<IllegalStateException> {
                 adapter.fromJson("""
                     {
-                      "sources": [
-                        "https://myanimelist.net/anime/1535"
-                      ],
-                      "title": "Death Note",
-                      "synonyms": [
-                        "DN"
-                      ],
-                      "type": "TV",
-                      "episodes": 37,
-                      "status": "FINISHED",
+                      "sources": [],
+                      "title": "default",
+                      "type": "UNKNOWN",
+                      "episodes": 1,
+                      "status": "UNKNOWN",
                       "animeSeason": {
-                        "season": "FALL",
-                        "year": 2006
+                        "season": "UNDEFINED",
+                        "year": 2025
                       },
-                      "picture": "https://cdn.myanimelist.net/images/anime/1079/138100.jpg",
-                      "thumbnail": "https://cdn.myanimelist.net/images/anime/1079/138100t.jpg",
+                      "picture": "https://raw.githubusercontent.com/manami-project/anime-offline-database/master/pics/no_pic.png",
+                      "thumbnail": "https://raw.githubusercontent.com/manami-project/anime-offline-database/master/pics/no_pic_thumbnail.png",
                       "duration": {
                         "value": 1380,
                         "unit": "SECONDS"
                       },
-                      "scores": [
-                        {
-                          "hostname": "myanimelist.net",
-                          "value": 8.62,
-                          "range": {
-                            "minInclusive": 1.0,
-                            "maxInclusive": 10.0
-                          }
-                        }
-                      ],
-                      "tags": [
-                        "psychological"
-                      ]
+                      "scores": [],
+                      "synonyms": [],
+                      "tags": []
                     }
                 """.trimIndent())
             }
@@ -1285,39 +1058,24 @@ internal class AnimeRawAdapterTest {
             val result = exceptionExpected<JsonDataException> {
                 adapter.fromJson("""
                     {
-                      "sources": [
-                        "https://myanimelist.net/anime/1535"
-                      ],
-                      "title": "Death Note",
-                      "synonyms": [
-                        "DN"
-                      ],
-                      "type": "TV",
-                      "episodes": 37,
-                      "status": "FINISHED",
+                      "sources": [],
+                      "title": "default",
+                      "type": "UNKNOWN",
+                      "episodes": 1,
+                      "status": "UNKNOWN",
                       "animeSeason": {
-                        "season": "FALL",
-                        "year": 2006
+                        "season": "UNDEFINED",
+                        "year": 2025
                       },
-                      "picture": "https://cdn.myanimelist.net/images/anime/1079/138100.jpg",
-                      "thumbnail": "https://cdn.myanimelist.net/images/anime/1079/138100t.jpg",
+                      "picture": "https://raw.githubusercontent.com/manami-project/anime-offline-database/master/pics/no_pic.png",
+                      "thumbnail": "https://raw.githubusercontent.com/manami-project/anime-offline-database/master/pics/no_pic_thumbnail.png",
                       "duration": {
                         "value": 1380,
                         "unit": "SECONDS"
                       },
-                      "scores": [
-                        {
-                          "hostname": "myanimelist.net",
-                          "value": 8.62,
-                          "range": {
-                            "minInclusive": 1.0,
-                            "maxInclusive": 10.0
-                          }
-                        }
-                      ],
-                      "relatedAnime": [
-                        "https://myanimelist.net/anime/2994"
-                      ],
+                      "scores": [],
+                      "synonyms": [],
+                      "relatedAnime": [],
                       "tags": null
                     }
                 """.trimIndent())
@@ -1336,45 +1094,158 @@ internal class AnimeRawAdapterTest {
             val result = exceptionExpected<IllegalStateException> {
                 adapter.fromJson("""
                     {
-                      "sources": [
-                        "https://myanimelist.net/anime/1535"
-                      ],
-                      "title": "Death Note",
-                      "synonyms": [
-                        "DN"
-                      ],
-                      "type": "TV",
-                      "episodes": 37,
-                      "status": "FINISHED",
+                      "sources": [],
+                      "title": "default",
+                      "type": "UNKNOWN",
+                      "episodes": 1,
+                      "status": "UNKNOWN",
                       "animeSeason": {
-                        "season": "FALL",
-                        "year": 2006
+                        "season": "UNDEFINED",
+                        "year": 2025
                       },
-                      "picture": "https://cdn.myanimelist.net/images/anime/1079/138100.jpg",
-                      "thumbnail": "https://cdn.myanimelist.net/images/anime/1079/138100t.jpg",
+                      "picture": "https://raw.githubusercontent.com/manami-project/anime-offline-database/master/pics/no_pic.png",
+                      "thumbnail": "https://raw.githubusercontent.com/manami-project/anime-offline-database/master/pics/no_pic_thumbnail.png",
                       "duration": {
                         "value": 1380,
                         "unit": "SECONDS"
                       },
-                      "scores": [
-                        {
-                          "hostname": "myanimelist.net",
-                          "value": 8.62,
-                          "range": {
-                            "minInclusive": 1.0,
-                            "maxInclusive": 10.0
-                          }
-                        }
-                      ],
-                      "relatedAnime": [
-                        "https://myanimelist.net/anime/2994"
-                      ]
+                      "scores": [],
+                      "synonyms": [],
+                      "relatedAnime": []
                     }
                 """.trimIndent())
             }
 
             // then
             assertThat(result).hasMessage("Property 'tags' is either missing or null.")
+        }
+
+        @Test
+        fun `returns anime with year 0 if year in animeSeason is null`() {
+            // given
+            val adapter = AnimeRawAdapter()
+
+            // when
+            val result = adapter.fromJson("""
+                {
+                  "sources": [],
+                  "title": "default",
+                  "type": "UNKNOWN",
+                  "episodes": 1,
+                  "status": "UNKNOWN",
+                  "animeSeason": {
+                    "season": "UNDEFINED",
+                    "year": null
+                  },
+                  "picture": "https://raw.githubusercontent.com/manami-project/anime-offline-database/master/pics/no_pic.png",
+                  "thumbnail": "https://raw.githubusercontent.com/manami-project/anime-offline-database/master/pics/no_pic_thumbnail.png",
+                  "duration": {
+                    "value": 1380,
+                    "unit": "SECONDS"
+                  },
+                  "scores": [],
+                  "synonyms": [],
+                  "relatedAnime": [],
+                  "tags": []
+                }
+            """.trimIndent())!!
+
+            // then
+            assertThat(result.animeSeason.year).isZero()
+        }
+
+        @Test
+        fun `returns anime with year 0 if year in animeSeason is missing`() {
+            // given
+            val adapter = AnimeRawAdapter()
+
+            // when
+            val result = adapter.fromJson("""
+                {
+                  "sources": [],
+                  "title": "default",
+                  "type": "UNKNOWN",
+                  "episodes": 1,
+                  "status": "UNKNOWN",
+                  "animeSeason": {
+                    "season": "UNDEFINED"
+                  },
+                  "picture": "https://raw.githubusercontent.com/manami-project/anime-offline-database/master/pics/no_pic.png",
+                  "thumbnail": "https://raw.githubusercontent.com/manami-project/anime-offline-database/master/pics/no_pic_thumbnail.png",
+                  "duration": {
+                    "value": 1380,
+                    "unit": "SECONDS"
+                  },
+                  "scores": [],
+                  "synonyms": [],
+                  "relatedAnime": [],
+                  "tags": []
+                }
+            """.trimIndent())!!
+
+            // then
+            assertThat(result.animeSeason.year).isZero()
+        }
+
+        @Test
+        fun `returns anime with unknown duration if duration property is null`() {
+            // given
+            val adapter = AnimeRawAdapter()
+
+            // when
+            val result = adapter.fromJson("""
+                {
+                  "sources": [],
+                  "title": "default",
+                  "type": "UNKNOWN",
+                  "episodes": 1,
+                  "status": "UNKNOWN",
+                  "animeSeason": {
+                    "season": "UNDEFINED",
+                    "year": 2025
+                  },
+                  "picture": "https://raw.githubusercontent.com/manami-project/anime-offline-database/master/pics/no_pic.png",
+                  "thumbnail": "https://raw.githubusercontent.com/manami-project/anime-offline-database/master/pics/no_pic_thumbnail.png",
+                  "duration": null,
+                  "scores": [],
+                  "synonyms": [],
+                  "relatedAnime": [],
+                  "tags": []
+                }
+            """.trimIndent())!!
+
+            // then
+            assertThat(result.duration).isEqualTo(UNKNOWN_DURATION)
+        }
+
+        @Test
+        fun `returns anime with unknown duration if duration property is missing`() {
+            // given
+            val adapter = AnimeRawAdapter()
+
+            // when
+            val result = adapter.fromJson("""
+                {
+                  "sources": [],
+                  "title": "default",
+                  "type": "UNKNOWN",
+                  "episodes": 1,
+                  "status": "UNKNOWN",
+                  "animeSeason": {
+                    "season": "UNDEFINED",
+                    "year": 2025
+                  },
+                  "picture": "https://raw.githubusercontent.com/manami-project/anime-offline-database/master/pics/no_pic.png",
+                  "thumbnail": "https://raw.githubusercontent.com/manami-project/anime-offline-database/master/pics/no_pic_thumbnail.png",
+                  "scores": [],
+                  "synonyms": [],
+                  "relatedAnime": [],
+                  "tags": []
+                }
+            """.trimIndent())!!
+
+            // then
+            assertThat(result.duration).isEqualTo(UNKNOWN_DURATION)
         }
     }
 
