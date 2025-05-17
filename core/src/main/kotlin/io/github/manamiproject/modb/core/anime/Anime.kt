@@ -22,6 +22,8 @@ import io.github.manamiproject.modb.core.anime.Duration.Companion.UNKNOWN as UNK
  * @property duration Duration of an anime having one episode or average duration of an episode if the anime has more than one episode.
  * @property score Score based on the different scores of the meta data providers.
  * @property synonyms Duplicate-free list of alternative titles. Synonyms are case sensitive.
+ * @property studios List of studios. May contain duplicates for slightly different writings. All studio names are lower case.
+ * @property producers List of producers. May contain duplicates for slightly different writings. All producer names are lower case.
  * @property relatedAnime Duplicate-free list of links to related anime.
  * @property tags Duplicate-free list of tags. This contains both genres and tags from meta data providers. All tags are lower case.
  */
@@ -37,6 +39,8 @@ public data class Anime(
     val duration: Duration = UNKNOWN_DURATION,
     val score: Score = NoScore,
     val synonyms: HashSet<Title> = HashSet(),
+    val studios: HashSet<String> = HashSet(),
+    val producers: HashSet<String> = HashSet(),
     val relatedAnime: HashSet<URI> = HashSet(),
     val tags: HashSet<Tag> = HashSet(),
 ) {
@@ -48,19 +52,21 @@ public data class Anime(
     override fun toString(): String {
         return """
             Anime(
-              sources = ${sources.sorted()}
-              title = $title
-              type = $type
-              episodes = $episodes
-              status = $status
-              animeSeason = $animeSeason
-              picture = $picture
-              thumbnail = $thumbnail
-              duration = $duration
-              score = $score
-              synonyms = ${synonyms.sorted()}
+              sources      = ${sources.sorted()}
+              title        = $title
+              type         = $type
+              episodes     = $episodes
+              status       = $status
+              animeSeason  = $animeSeason
+              picture      = $picture
+              thumbnail    = $thumbnail
+              duration     = $duration
+              score        = $score
+              synonyms     = ${synonyms.sorted()}
+              studios      = ${studios.sorted()}
+              producers    = ${producers.sorted()}
               relatedAnime = ${relatedAnime.sorted()}
-              tags = ${tags.sorted()}
+              tags         = ${tags.sorted()}
             )
         """.trimIndent()
     }
