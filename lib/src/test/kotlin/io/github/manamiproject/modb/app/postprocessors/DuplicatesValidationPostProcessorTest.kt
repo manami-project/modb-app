@@ -228,19 +228,21 @@ internal class DuplicatesValidationPostProcessorTest {
             // then
             assertThat(result).hasMessage("""
             Found duplicates in dataset entries: [Anime(
-              sources = []
-              title = example
-              type = UNKNOWN
-              episodes = 0
-              status = UNKNOWN
-              animeSeason = AnimeSeason(season=UNDEFINED, year=0)
-              picture = https://raw.githubusercontent.com/manami-project/anime-offline-database/master/pics/no_pic.png
-              thumbnail = https://raw.githubusercontent.com/manami-project/anime-offline-database/master/pics/no_pic_thumbnail.png
-              duration = 0 seconds
-              score = NoScore
-              synonyms = []
+              sources      = []
+              title        = example
+              type         = UNKNOWN
+              episodes     = 0
+              status       = UNKNOWN
+              animeSeason  = AnimeSeason(season=UNDEFINED, year=0)
+              picture      = https://raw.githubusercontent.com/manami-project/anime-offline-database/master/pics/no_pic.png
+              thumbnail    = https://raw.githubusercontent.com/manami-project/anime-offline-database/master/pics/no_pic_thumbnail.png
+              duration     = 0 seconds
+              score        = NoScore
+              synonyms     = []
+              studios      = []
+              producers    = []
               relatedAnime = []
-              tags = []
+              tags         = []
             )]""".trimIndent())
         }
 
