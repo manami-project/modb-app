@@ -81,6 +81,9 @@ internal class AnimeTest {
             assertThat(result.score).isEqualTo(NoScore)
             assertThat(result.sources).isEmpty()
             assertThat(result.synonyms).isEmpty()
+            assertThat(result.studios).isEmpty()
+            assertThat(result.producers).isEmpty()
+            assertThat(result.synonyms).isEmpty()
             assertThat(result.relatedAnime).isEmpty()
             assertThat(result.tags).isEmpty()
         }
@@ -98,19 +101,21 @@ internal class AnimeTest {
             assertThat(result).isEqualTo(
                 """
                     Anime(
-                      sources = [https://myanimelist.net/anime/58755]
-                      title = 5-toubun no Hanayome*
-                      type = SPECIAL
-                      episodes = 2
-                      status = FINISHED
-                      animeSeason = AnimeSeason(season=FALL, year=2024)
-                      picture = https://cdn.myanimelist.net/images/anime/1915/145336.jpg
-                      thumbnail = https://cdn.myanimelist.net/images/anime/1915/145336t.jpg
-                      duration = 1440 seconds
-                      score = ScoreValue(arithmeticGeometricMean=7.44, arithmeticMean=7.44, median=7.44)
-                      synonyms = [The Quintessential Quintuplets*, 五等分の花嫁*]
+                      sources      = [https://myanimelist.net/anime/58755]
+                      title        = 5-toubun no Hanayome*
+                      type         = SPECIAL
+                      episodes     = 2
+                      status       = FINISHED
+                      animeSeason  = AnimeSeason(season=FALL, year=2024)
+                      picture      = https://cdn.myanimelist.net/images/anime/1915/145336.jpg
+                      thumbnail    = https://cdn.myanimelist.net/images/anime/1915/145336t.jpg
+                      duration     = 1440 seconds
+                      score        = ScoreValue(arithmeticGeometricMean=7.44, arithmeticMean=7.44, median=7.44)
+                      synonyms     = [The Quintessential Quintuplets*, 五等分の花嫁*]
+                      studios      = [bibury animation studios]
+                      producers    = [dax production, nichion, pony canyon]
                       relatedAnime = [https://myanimelist.net/anime/48548]
-                      tags = [comedy, harem, romance, school, shounen]
+                      tags         = [comedy, harem, romance, school, shounen]
                     )
                 """.trimIndent()
             )

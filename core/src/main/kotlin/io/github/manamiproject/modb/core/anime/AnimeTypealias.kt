@@ -14,3 +14,13 @@ public typealias Tag = String
  * @since 3.0.0
  */
 public typealias Title = String
+
+/**
+ * @since 18.3.0
+ */
+public typealias Studio = String
+
+/**
+ * @since 18.3.0
+ */
+public typealias Producer = String
