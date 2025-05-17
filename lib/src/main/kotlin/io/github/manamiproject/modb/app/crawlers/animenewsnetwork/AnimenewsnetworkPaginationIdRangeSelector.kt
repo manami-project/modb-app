@@ -24,7 +24,7 @@ import io.github.manamiproject.modb.core.logging.LoggerDelegate
  * Fetches the anime IDs from a given page and removes all IDs which are not scheduled for re-download and those
  * which have been downloaded already. If the crawler downloads the IDs which have been scheduled for re-download
  * first then the resulting list of this class will only contain completely new entries. The list is shuffled.
- * @since 1.6.0
+ * @since 1.7.0
  * @property metaDataProviderConfig Configuration for a specific meta data provider.
  * @property paginationIdRangeSelectorConfig Configuration which allows to download a specific page of a meta data provider.
  * @property httpClient Implementation of [HttpClient] which is used to download the selected pages.

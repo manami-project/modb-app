@@ -6,7 +6,7 @@ import java.net.URI
 
 /**
  * Configuration for creating the id range for animenewsnetwork.com
- * @since 1.6.0
+ * @since 1.7.0
  */
 object AnimenewsnetworkPaginationIdRangeSelectorConfig: MetaDataProviderConfig by AnimenewsnetworkConfig{
 
