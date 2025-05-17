@@ -1,9 +1,6 @@
 package io.github.manamiproject.modb.app.postprocessors
 
-import io.github.manamiproject.modb.app.TestAppConfig
-import io.github.manamiproject.modb.app.TestDatasetFileAccessor
-import io.github.manamiproject.modb.app.TestDeadEntriesAccessor
-import io.github.manamiproject.modb.app.TestMetaDataProviderConfig
+import io.github.manamiproject.modb.app.*
 import io.github.manamiproject.modb.app.config.Config
 import io.github.manamiproject.modb.app.dataset.DatasetFileAccessor
 import io.github.manamiproject.modb.app.dataset.DatasetFileType
@@ -11,11 +8,10 @@ import io.github.manamiproject.modb.app.dataset.DeadEntriesAccessor
 import io.github.manamiproject.modb.core.config.Hostname
 import io.github.manamiproject.modb.core.config.MetaDataProviderConfig
 import io.github.manamiproject.modb.core.extensions.RegularFile
-import io.github.manamiproject.modb.core.extensions.copyTo
+import io.github.manamiproject.modb.core.extensions.createZipOf
+import io.github.manamiproject.modb.core.extensions.writeToFile
 import io.github.manamiproject.modb.test.exceptionExpected
 import io.github.manamiproject.modb.test.tempDirectory
-import io.github.manamiproject.modb.test.testResource
-import kotlinx.coroutines.runBlocking
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Nested
 import kotlin.io.path.createDirectory
@@ -31,17 +27,39 @@ internal class NumberOfEntriesValidationPostProcessorTest {
 
             @Test
             fun `returns true if all dataset entries have the same number of entries`() {
-                runBlocking {
+                tempDirectory {
                     // given
                     val testAppConfig = object: Config by TestAppConfig {
                         override fun metaDataProviderConfigurations(): Set<MetaDataProviderConfig> = emptySet()
                     }
 
+                    val prettyPrintFile = tempDir.resolve("prettyprint.json")
+                    val prettyPrintJson = createExpectedDatasetPrettyPrint(
+                        TestAnimeObjects.DefaultAnime.serializedPrettyPrint,
+                        TestAnimeObjects.AllPropertiesSet.serializedPrettyPrint,
+                    )
+                    prettyPrintJson.writeToFile(prettyPrintFile)
+
+                    val minifiedFile = tempDir.resolve("minified.json")
+                    val minifiedJson = createExpectedDatasetMinified(
+                        TestAnimeObjects.DefaultAnime.serializedMinified,
+                        TestAnimeObjects.AllPropertiesSet.serializedMinified,
+                    )
+                    minifiedJson.writeToFile(minifiedFile)
+
+                    val zippedJsonFile = tempDir.resolve("zipped.json")
+                    val zippedJson = createExpectedDatasetMinified(
+                        TestAnimeObjects.DefaultAnime.serializedPrettyPrint,
+                        TestAnimeObjects.AllPropertiesSet.serializedMinified,
+                    )
+                    zippedJson.writeToFile(zippedJsonFile)
+                    val zipFile = tempDir.resolve("zipped.zip").createZipOf(zippedJsonFile)
+
                     val testDatasetFileAccessor = object: DatasetFileAccessor by TestDatasetFileAccessor {
                         override fun offlineDatabaseFile(type: DatasetFileType): RegularFile = when(type) {
-                            DatasetFileType.JSON -> testResource("postprocessors/NumberOfEntriesValidationPostProcessorTest/2-entries.json")
-                            DatasetFileType.JSON_MINIFIED -> testResource("postprocessors/NumberOfEntriesValidationPostProcessorTest/2-entries-minified.json")
-                            DatasetFileType.ZIP -> testResource("postprocessors/NumberOfEntriesValidationPostProcessorTest/2-entries.zip")
+                            DatasetFileType.JSON -> prettyPrintFile
+                            DatasetFileType.JSON_MINIFIED -> minifiedFile
+                            DatasetFileType.ZIP -> zipFile
                         }
                     }
 
@@ -61,17 +79,38 @@ internal class NumberOfEntriesValidationPostProcessorTest {
 
             @Test
             fun `throws exception if dataset json file has differing number of entries`() {
-                runBlocking {
+                tempDirectory {
                     // given
                     val testAppConfig = object: Config by TestAppConfig {
                         override fun metaDataProviderConfigurations(): Set<MetaDataProviderConfig> = emptySet()
                     }
 
+                    val prettyPrintFile = tempDir.resolve("prettyprint.json")
+                    val prettyPrintJson = createExpectedDatasetPrettyPrint(
+                        TestAnimeObjects.AllPropertiesSet.serializedPrettyPrint,
+                    )
+                    prettyPrintJson.writeToFile(prettyPrintFile)
+
+                    val minifiedFile = tempDir.resolve("minified.json")
+                    val minifiedJson = createExpectedDatasetMinified(
+                        TestAnimeObjects.DefaultAnime.serializedMinified,
+                        TestAnimeObjects.AllPropertiesSet.serializedMinified,
+                    )
+                    minifiedJson.writeToFile(minifiedFile)
+
+                    val zippedJsonFile = tempDir.resolve("zipped.json")
+                    val zippedJson = createExpectedDatasetMinified(
+                        TestAnimeObjects.DefaultAnime.serializedPrettyPrint,
+                        TestAnimeObjects.AllPropertiesSet.serializedMinified,
+                    )
+                    zippedJson.writeToFile(zippedJsonFile)
+                    val zipFile = tempDir.resolve("zipped.zip").createZipOf(zippedJsonFile)
+
                     val testDatasetFileAccessor = object: DatasetFileAccessor by TestDatasetFileAccessor {
                         override fun offlineDatabaseFile(type: DatasetFileType): RegularFile = when(type) {
-                            DatasetFileType.JSON -> testResource("postprocessors/NumberOfEntriesValidationPostProcessorTest/1-entry.json")
-                            DatasetFileType.JSON_MINIFIED -> testResource("postprocessors/NumberOfEntriesValidationPostProcessorTest/2-entries-minified.json")
-                            DatasetFileType.ZIP -> testResource("postprocessors/NumberOfEntriesValidationPostProcessorTest/2-entries.zip")
+                            DatasetFileType.JSON -> prettyPrintFile
+                            DatasetFileType.JSON_MINIFIED -> minifiedFile
+                            DatasetFileType.ZIP -> zipFile
                         }
                     }
 
@@ -93,17 +132,38 @@ internal class NumberOfEntriesValidationPostProcessorTest {
 
             @Test
             fun `throws exception if dataset json minified file has differing number of entries`() {
-                runBlocking {
+                tempDirectory {
                     // given
                     val testAppConfig = object: Config by TestAppConfig {
                         override fun metaDataProviderConfigurations(): Set<MetaDataProviderConfig> = emptySet()
                     }
 
+                    val prettyPrintFile = tempDir.resolve("prettyprint.json")
+                    val prettyPrintJson = createExpectedDatasetPrettyPrint(
+                        TestAnimeObjects.DefaultAnime.serializedPrettyPrint,
+                        TestAnimeObjects.AllPropertiesSet.serializedPrettyPrint,
+                    )
+                    prettyPrintJson.writeToFile(prettyPrintFile)
+
+                    val minifiedFile = tempDir.resolve("minified.json")
+                    val minifiedJson = createExpectedDatasetMinified(
+                        TestAnimeObjects.AllPropertiesSet.serializedMinified,
+                    )
+                    minifiedJson.writeToFile(minifiedFile)
+
+                    val zippedJsonFile = tempDir.resolve("zipped.json")
+                    val zippedJson = createExpectedDatasetMinified(
+                        TestAnimeObjects.DefaultAnime.serializedPrettyPrint,
+                        TestAnimeObjects.AllPropertiesSet.serializedMinified,
+                    )
+                    zippedJson.writeToFile(zippedJsonFile)
+                    val zipFile = tempDir.resolve("zipped.zip").createZipOf(zippedJsonFile)
+
                     val testDatasetFileAccessor = object: DatasetFileAccessor by TestDatasetFileAccessor {
                         override fun offlineDatabaseFile(type: DatasetFileType): RegularFile = when(type) {
-                            DatasetFileType.JSON -> testResource("postprocessors/NumberOfEntriesValidationPostProcessorTest/2-entries.json")
-                            DatasetFileType.JSON_MINIFIED -> testResource("postprocessors/NumberOfEntriesValidationPostProcessorTest/1-entry-minified.json")
-                            DatasetFileType.ZIP -> testResource("postprocessors/NumberOfEntriesValidationPostProcessorTest/2-entries.zip")
+                            DatasetFileType.JSON -> prettyPrintFile
+                            DatasetFileType.JSON_MINIFIED -> minifiedFile
+                            DatasetFileType.ZIP -> zipFile
                         }
                     }
 
@@ -125,17 +185,38 @@ internal class NumberOfEntriesValidationPostProcessorTest {
 
             @Test
             fun `throws exception if dataset zip file has differing number of entries`() {
-                runBlocking {
+                tempDirectory {
                     // given
                     val testAppConfig = object: Config by TestAppConfig {
                         override fun metaDataProviderConfigurations(): Set<MetaDataProviderConfig> = emptySet()
                     }
 
+                    val prettyPrintFile = tempDir.resolve("prettyprint.json")
+                    val prettyPrintJson = createExpectedDatasetPrettyPrint(
+                        TestAnimeObjects.DefaultAnime.serializedPrettyPrint,
+                        TestAnimeObjects.AllPropertiesSet.serializedPrettyPrint,
+                    )
+                    prettyPrintJson.writeToFile(prettyPrintFile)
+
+                    val minifiedFile = tempDir.resolve("minified.json")
+                    val minifiedJson = createExpectedDatasetMinified(
+                        TestAnimeObjects.DefaultAnime.serializedMinified,
+                        TestAnimeObjects.AllPropertiesSet.serializedMinified,
+                    )
+                    minifiedJson.writeToFile(minifiedFile)
+
+                    val zippedJsonFile = tempDir.resolve("zipped.json")
+                    val zippedJson = createExpectedDatasetMinified(
+                        TestAnimeObjects.AllPropertiesSet.serializedMinified,
+                    )
+                    zippedJson.writeToFile(zippedJsonFile)
+                    val zipFile = tempDir.resolve("zipped.zip").createZipOf(zippedJsonFile)
+
                     val testDatasetFileAccessor = object: DatasetFileAccessor by TestDatasetFileAccessor {
                         override fun offlineDatabaseFile(type: DatasetFileType): RegularFile = when(type) {
-                            DatasetFileType.JSON -> testResource("postprocessors/NumberOfEntriesValidationPostProcessorTest/2-entries.json")
-                            DatasetFileType.JSON_MINIFIED -> testResource("postprocessors/NumberOfEntriesValidationPostProcessorTest/2-entries-minified.json")
-                            DatasetFileType.ZIP -> testResource("postprocessors/NumberOfEntriesValidationPostProcessorTest/1-entry.zip")
+                            DatasetFileType.JSON -> prettyPrintFile
+                            DatasetFileType.JSON_MINIFIED -> minifiedFile
+                            DatasetFileType.ZIP -> zipFile
                         }
                     }
 
@@ -163,11 +244,26 @@ internal class NumberOfEntriesValidationPostProcessorTest {
                         override fun metaDataProviderConfigurations(): Set<MetaDataProviderConfig> = emptySet()
                     }
 
+                    val minifiedFile = tempDir.resolve("minified.json")
+                    val minifiedJson = createExpectedDatasetMinified(
+                        TestAnimeObjects.DefaultAnime.serializedMinified,
+                        TestAnimeObjects.AllPropertiesSet.serializedMinified,
+                    )
+                    minifiedJson.writeToFile(minifiedFile)
+
+                    val zippedJsonFile = tempDir.resolve("zipped.json")
+                    val zippedJson = createExpectedDatasetMinified(
+                        TestAnimeObjects.DefaultAnime.serializedPrettyPrint,
+                        TestAnimeObjects.AllPropertiesSet.serializedMinified,
+                    )
+                    zippedJson.writeToFile(zippedJsonFile)
+                    val zipFile = tempDir.resolve("zipped.zip").createZipOf(zippedJsonFile)
+
                     val testDatasetFileAccessor = object: DatasetFileAccessor by TestDatasetFileAccessor {
                         override fun offlineDatabaseFile(type: DatasetFileType): RegularFile = when(type) {
-                            DatasetFileType.JSON -> tempDir.resolve("not-exists.json")
-                            DatasetFileType.JSON_MINIFIED -> testResource("postprocessors/NumberOfEntriesValidationPostProcessorTest/2-entries-minified.json")
-                            DatasetFileType.ZIP -> testResource("postprocessors/NumberOfEntriesValidationPostProcessorTest/2-entries.zip")
+                            DatasetFileType.JSON -> tempDir.resolve("non-existent-pretty-print.json")
+                            DatasetFileType.JSON_MINIFIED -> minifiedFile
+                            DatasetFileType.ZIP -> zipFile
                         }
                     }
 
@@ -184,7 +280,7 @@ internal class NumberOfEntriesValidationPostProcessorTest {
 
                     // then
                     assertThat(result).hasMessageStartingWith("The given path does not exist or is not a regular file: [")
-                    assertThat(result).hasMessageEndingWith("not-exists.json]")
+                    assertThat(result).hasMessageEndingWith("non-existent-pretty-print.json]")
                 }
             }
 
@@ -196,11 +292,26 @@ internal class NumberOfEntriesValidationPostProcessorTest {
                         override fun metaDataProviderConfigurations(): Set<MetaDataProviderConfig> = emptySet()
                     }
 
+                    val prettyPrintFile = tempDir.resolve("prettyprint.json")
+                    val prettyPrintJson = createExpectedDatasetPrettyPrint(
+                        TestAnimeObjects.DefaultAnime.serializedPrettyPrint,
+                        TestAnimeObjects.AllPropertiesSet.serializedPrettyPrint,
+                    )
+                    prettyPrintJson.writeToFile(prettyPrintFile)
+
+                    val zippedJsonFile = tempDir.resolve("zipped.json")
+                    val zippedJson = createExpectedDatasetMinified(
+                        TestAnimeObjects.DefaultAnime.serializedPrettyPrint,
+                        TestAnimeObjects.AllPropertiesSet.serializedMinified,
+                    )
+                    zippedJson.writeToFile(zippedJsonFile)
+                    val zipFile = tempDir.resolve("zipped.zip").createZipOf(zippedJsonFile)
+
                     val testDatasetFileAccessor = object: DatasetFileAccessor by TestDatasetFileAccessor {
                         override fun offlineDatabaseFile(type: DatasetFileType): RegularFile = when(type) {
-                            DatasetFileType.JSON -> testResource("postprocessors/NumberOfEntriesValidationPostProcessorTest/2-entries.json")
-                            DatasetFileType.JSON_MINIFIED -> tempDir.resolve("not-exists-minified.json")
-                            DatasetFileType.ZIP -> testResource("postprocessors/NumberOfEntriesValidationPostProcessorTest/2-entries.zip")
+                            DatasetFileType.JSON -> prettyPrintFile
+                            DatasetFileType.JSON_MINIFIED -> tempDir.resolve("non-existent-minified.json")
+                            DatasetFileType.ZIP -> zipFile
                         }
                     }
 
@@ -217,7 +328,7 @@ internal class NumberOfEntriesValidationPostProcessorTest {
 
                     // then
                     assertThat(result).hasMessageStartingWith("The given path does not exist or is not a regular file: [")
-                    assertThat(result).hasMessageEndingWith("not-exists-minified.json]")
+                    assertThat(result).hasMessageEndingWith("non-existent-minified.json]")
                 }
             }
 
@@ -229,11 +340,25 @@ internal class NumberOfEntriesValidationPostProcessorTest {
                         override fun metaDataProviderConfigurations(): Set<MetaDataProviderConfig> = emptySet()
                     }
 
+                    val prettyPrintFile = tempDir.resolve("prettyprint.json")
+                    val prettyPrintJson = createExpectedDatasetPrettyPrint(
+                        TestAnimeObjects.DefaultAnime.serializedPrettyPrint,
+                        TestAnimeObjects.AllPropertiesSet.serializedPrettyPrint,
+                    )
+                    prettyPrintJson.writeToFile(prettyPrintFile)
+
+                    val minifiedFile = tempDir.resolve("minified.json")
+                    val minifiedJson = createExpectedDatasetMinified(
+                        TestAnimeObjects.DefaultAnime.serializedMinified,
+                        TestAnimeObjects.AllPropertiesSet.serializedMinified,
+                    )
+                    minifiedJson.writeToFile(minifiedFile)
+
                     val testDatasetFileAccessor = object: DatasetFileAccessor by TestDatasetFileAccessor {
                         override fun offlineDatabaseFile(type: DatasetFileType): RegularFile = when(type) {
-                            DatasetFileType.JSON -> testResource("postprocessors/NumberOfEntriesValidationPostProcessorTest/2-entries.json")
-                            DatasetFileType.JSON_MINIFIED -> testResource("postprocessors/NumberOfEntriesValidationPostProcessorTest/2-entries-minified.json")
-                            DatasetFileType.ZIP -> tempDir.resolve("not-exists.zip")
+                            DatasetFileType.JSON -> prettyPrintFile
+                            DatasetFileType.JSON_MINIFIED -> minifiedFile
+                            DatasetFileType.ZIP -> tempDir.resolve("non-existent.zip")
                         }
                     }
 
@@ -250,7 +375,7 @@ internal class NumberOfEntriesValidationPostProcessorTest {
 
                     // then
                     assertThat(result).hasMessageStartingWith("The given path does not exist or is not a regular file: [")
-                    assertThat(result).hasMessageEndingWith("not-exists.zip]")
+                    assertThat(result).hasMessageEndingWith("non-existent.zip]")
                 }
             }
         }
@@ -278,11 +403,30 @@ internal class NumberOfEntriesValidationPostProcessorTest {
                         )
                     }
 
+                    val prettyPrintFile = tempDir.resolve("prettyprint.json")
+                    val prettyPrintJson = createExpectedDatasetPrettyPrint(
+                        TestAnimeObjects.DefaultAnime.serializedPrettyPrint,
+                    )
+                    prettyPrintJson.writeToFile(prettyPrintFile)
+
+                    val minifiedFile = tempDir.resolve("minified.json")
+                    val minifiedJson = createExpectedDatasetMinified(
+                        TestAnimeObjects.DefaultAnime.serializedMinified,
+                    )
+                    minifiedJson.writeToFile(minifiedFile)
+
+                    val zippedJsonFile = tempDir.resolve("zipped.json")
+                    val zippedJson = createExpectedDatasetMinified(
+                        TestAnimeObjects.DefaultAnime.serializedPrettyPrint,
+                    )
+                    zippedJson.writeToFile(zippedJsonFile)
+                    val zipFile = tempDir.resolve("zipped.zip").createZipOf(zippedJsonFile)
+
                     val testDatasetFileAccessor = object: DatasetFileAccessor by TestDatasetFileAccessor {
                         override fun offlineDatabaseFile(type: DatasetFileType): RegularFile = when(type) {
-                            DatasetFileType.JSON -> testResource("postprocessors/NumberOfEntriesValidationPostProcessorTest/2-entries.json")
-                            DatasetFileType.JSON_MINIFIED -> testResource("postprocessors/NumberOfEntriesValidationPostProcessorTest/2-entries-minified.json")
-                            DatasetFileType.ZIP -> testResource("postprocessors/NumberOfEntriesValidationPostProcessorTest/2-entries.zip")
+                            DatasetFileType.JSON -> prettyPrintFile
+                            DatasetFileType.JSON_MINIFIED -> minifiedFile
+                            DatasetFileType.ZIP -> zipFile
                         }
                     }
 
@@ -300,21 +444,40 @@ internal class NumberOfEntriesValidationPostProcessorTest {
                         deadEntriesAccessor = testDeadEntriesAccessor,
                     )
 
+                    val testMetaDataProviderConfig1Json = createExpectedDeadEntriesPrettyPrint(
+                        "10001",
+                    )
+                    val testMetaDataProviderConfig1Minified = createExpectedDeadEntriesMinified(
+                        "10001",
+                    )
+                    val testMetaDataProviderConfig1Zipped = createExpectedDeadEntriesMinified(
+                        "10001",
+                    )
                     tempDir.resolve(testMetaDataProviderConfig1.hostname()).createDirectory()
-                    testResource("postprocessors/NumberOfEntriesValidationPostProcessorTest/dead-entries-1-entry.json")
-                        .copyTo(testDeadEntriesAccessor.deadEntriesFile(testMetaDataProviderConfig1, DatasetFileType.JSON))
-                    testResource("postprocessors/NumberOfEntriesValidationPostProcessorTest/dead-entries-1-entry-minified.json")
-                        .copyTo(testDeadEntriesAccessor.deadEntriesFile(testMetaDataProviderConfig1, DatasetFileType.JSON_MINIFIED))
-                    testResource("postprocessors/NumberOfEntriesValidationPostProcessorTest/dead-entries-1-entry.zip")
-                        .copyTo(testDeadEntriesAccessor.deadEntriesFile(testMetaDataProviderConfig1, DatasetFileType.ZIP))
+                    testMetaDataProviderConfig1Json.writeToFile(testDeadEntriesAccessor.deadEntriesFile(testMetaDataProviderConfig1, DatasetFileType.JSON))
+                    testMetaDataProviderConfig1Minified.writeToFile(testDeadEntriesAccessor.deadEntriesFile(testMetaDataProviderConfig1, DatasetFileType.JSON_MINIFIED))
+                    val testMetaDataProviderConfig1JsonForZip = tempDir.resolve(testMetaDataProviderConfig1.hostname()).resolve("jsonForZip.json")
+                    testMetaDataProviderConfig1Zipped.writeToFile(testMetaDataProviderConfig1JsonForZip)
+                    testDeadEntriesAccessor.deadEntriesFile(testMetaDataProviderConfig1, DatasetFileType.ZIP).createZipOf(testMetaDataProviderConfig1JsonForZip)
 
+                    val testMetaDataProviderConfig2Json = createExpectedDeadEntriesPrettyPrint(
+                        "20008",
+                        "20009",
+                    )
+                    val testMetaDataProviderConfig2Minified = createExpectedDeadEntriesMinified(
+                        "20008",
+                        "20009",
+                    )
+                    val testMetaDataProviderConfig2Zipped = createExpectedDeadEntriesMinified(
+                        "20008",
+                        "20009",
+                    )
                     tempDir.resolve(testMetaDataProviderConfig2.hostname()).createDirectory()
-                    testResource("postprocessors/NumberOfEntriesValidationPostProcessorTest/dead-entries-2-entries.json")
-                        .copyTo(testDeadEntriesAccessor.deadEntriesFile(testMetaDataProviderConfig2, DatasetFileType.JSON))
-                    testResource("postprocessors/NumberOfEntriesValidationPostProcessorTest/dead-entries-2-entries-minified.json")
-                        .copyTo(testDeadEntriesAccessor.deadEntriesFile(testMetaDataProviderConfig2, DatasetFileType.JSON_MINIFIED))
-                    testResource("postprocessors/NumberOfEntriesValidationPostProcessorTest/dead-entries-2-entries.zip")
-                        .copyTo(testDeadEntriesAccessor.deadEntriesFile(testMetaDataProviderConfig2, DatasetFileType.ZIP))
+                    testMetaDataProviderConfig2Json.writeToFile(testDeadEntriesAccessor.deadEntriesFile(testMetaDataProviderConfig2, DatasetFileType.JSON))
+                    testMetaDataProviderConfig2Minified.writeToFile(testDeadEntriesAccessor.deadEntriesFile(testMetaDataProviderConfig2, DatasetFileType.JSON_MINIFIED))
+                    val testMetaDataProviderConfig2JsonForZip = tempDir.resolve(testMetaDataProviderConfig2.hostname()).resolve("jsonForZip.json")
+                    testMetaDataProviderConfig2Zipped.writeToFile(testMetaDataProviderConfig2JsonForZip)
+                    testDeadEntriesAccessor.deadEntriesFile(testMetaDataProviderConfig2, DatasetFileType.ZIP).createZipOf(testMetaDataProviderConfig2JsonForZip)
 
                     // when
                     val result = numberOfEntriesValidationPostProcessor.process()
@@ -325,7 +488,7 @@ internal class NumberOfEntriesValidationPostProcessorTest {
             }
 
             @Test
-            fun `throws exception if dead entries zip file has differing number if entries`() {
+            fun `throws exception if dead entries json file has differing number of entries`() {
                 tempDirectory {
                     // given
                     val testMetaDataProviderConfig1 = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
@@ -344,11 +507,33 @@ internal class NumberOfEntriesValidationPostProcessorTest {
                         )
                     }
 
+                    val prettyPrintFile = tempDir.resolve("prettyprint.json")
+                    val prettyPrintJson = createExpectedDatasetPrettyPrint(
+                        TestAnimeObjects.DefaultAnime.serializedPrettyPrint,
+                        TestAnimeObjects.AllPropertiesSet.serializedPrettyPrint,
+                    )
+                    prettyPrintJson.writeToFile(prettyPrintFile)
+
+                    val minifiedFile = tempDir.resolve("minified.json")
+                    val minifiedJson = createExpectedDatasetMinified(
+                        TestAnimeObjects.DefaultAnime.serializedMinified,
+                        TestAnimeObjects.AllPropertiesSet.serializedMinified,
+                    )
+                    minifiedJson.writeToFile(minifiedFile)
+
+                    val zippedJsonFile = tempDir.resolve("zipped.json")
+                    val zippedJson = createExpectedDatasetMinified(
+                        TestAnimeObjects.DefaultAnime.serializedPrettyPrint,
+                        TestAnimeObjects.AllPropertiesSet.serializedMinified,
+                    )
+                    zippedJson.writeToFile(zippedJsonFile)
+                    val zipFile = tempDir.resolve("zipped.zip").createZipOf(zippedJsonFile)
+
                     val testDatasetFileAccessor = object: DatasetFileAccessor by TestDatasetFileAccessor {
                         override fun offlineDatabaseFile(type: DatasetFileType): RegularFile = when(type) {
-                            DatasetFileType.JSON -> testResource("postprocessors/NumberOfEntriesValidationPostProcessorTest/2-entries.json")
-                            DatasetFileType.JSON_MINIFIED -> testResource("postprocessors/NumberOfEntriesValidationPostProcessorTest/2-entries-minified.json")
-                            DatasetFileType.ZIP -> testResource("postprocessors/NumberOfEntriesValidationPostProcessorTest/2-entries.zip")
+                            DatasetFileType.JSON -> prettyPrintFile
+                            DatasetFileType.JSON_MINIFIED -> minifiedFile
+                            DatasetFileType.ZIP -> zipFile
                         }
                     }
 
@@ -366,21 +551,41 @@ internal class NumberOfEntriesValidationPostProcessorTest {
                         deadEntriesAccessor = testDeadEntriesAccessor,
                     )
 
+                    val testMetaDataProviderConfig1Json = createExpectedDeadEntriesPrettyPrint(
+                        "10001",
+                        "300",
+                    )
+                    val testMetaDataProviderConfig1Minified = createExpectedDeadEntriesMinified(
+                        "10001",
+                    )
+                    val testMetaDataProviderConfig1Zipped = createExpectedDeadEntriesMinified(
+                        "10001",
+                    )
                     tempDir.resolve(testMetaDataProviderConfig1.hostname()).createDirectory()
-                    testResource("postprocessors/NumberOfEntriesValidationPostProcessorTest/dead-entries-2-entries.json")
-                        .copyTo(testDeadEntriesAccessor.deadEntriesFile(testMetaDataProviderConfig1, DatasetFileType.JSON))
-                    testResource("postprocessors/NumberOfEntriesValidationPostProcessorTest/dead-entries-1-entry-minified.json")
-                        .copyTo(testDeadEntriesAccessor.deadEntriesFile(testMetaDataProviderConfig1, DatasetFileType.JSON_MINIFIED))
-                    testResource("postprocessors/NumberOfEntriesValidationPostProcessorTest/dead-entries-1-entry.zip")
-                        .copyTo(testDeadEntriesAccessor.deadEntriesFile(testMetaDataProviderConfig1, DatasetFileType.ZIP))
+                    testMetaDataProviderConfig1Json.writeToFile(testDeadEntriesAccessor.deadEntriesFile(testMetaDataProviderConfig1, DatasetFileType.JSON))
+                    testMetaDataProviderConfig1Minified.writeToFile(testDeadEntriesAccessor.deadEntriesFile(testMetaDataProviderConfig1, DatasetFileType.JSON_MINIFIED))
+                    val testMetaDataProviderConfig1JsonForZip = tempDir.resolve(testMetaDataProviderConfig1.hostname()).resolve("jsonForZip.json")
+                    testMetaDataProviderConfig1Zipped.writeToFile(testMetaDataProviderConfig1JsonForZip)
+                    testDeadEntriesAccessor.deadEntriesFile(testMetaDataProviderConfig1, DatasetFileType.ZIP).createZipOf(testMetaDataProviderConfig1JsonForZip)
 
+                    val testMetaDataProviderConfig2Json = createExpectedDeadEntriesPrettyPrint(
+                        "20008",
+                        "20009",
+                    )
+                    val testMetaDataProviderConfig2Minified = createExpectedDeadEntriesMinified(
+                        "20008",
+                        "20009",
+                    )
+                    val testMetaDataProviderConfig2Zipped = createExpectedDeadEntriesMinified(
+                        "20008",
+                        "20009",
+                    )
                     tempDir.resolve(testMetaDataProviderConfig2.hostname()).createDirectory()
-                    testResource("postprocessors/NumberOfEntriesValidationPostProcessorTest/dead-entries-2-entries.json")
-                        .copyTo(testDeadEntriesAccessor.deadEntriesFile(testMetaDataProviderConfig2, DatasetFileType.JSON))
-                    testResource("postprocessors/NumberOfEntriesValidationPostProcessorTest/dead-entries-2-entries-minified.json")
-                        .copyTo(testDeadEntriesAccessor.deadEntriesFile(testMetaDataProviderConfig2, DatasetFileType.JSON_MINIFIED))
-                    testResource("postprocessors/NumberOfEntriesValidationPostProcessorTest/dead-entries-2-entries.zip")
-                        .copyTo(testDeadEntriesAccessor.deadEntriesFile(testMetaDataProviderConfig2, DatasetFileType.ZIP))
+                    testMetaDataProviderConfig2Json.writeToFile(testDeadEntriesAccessor.deadEntriesFile(testMetaDataProviderConfig2, DatasetFileType.JSON))
+                    testMetaDataProviderConfig2Minified.writeToFile(testDeadEntriesAccessor.deadEntriesFile(testMetaDataProviderConfig2, DatasetFileType.JSON_MINIFIED))
+                    val testMetaDataProviderConfig2JsonForZip = tempDir.resolve(testMetaDataProviderConfig2.hostname()).resolve("jsonForZip.json")
+                    testMetaDataProviderConfig2Zipped.writeToFile(testMetaDataProviderConfig2JsonForZip)
+                    testDeadEntriesAccessor.deadEntriesFile(testMetaDataProviderConfig2, DatasetFileType.ZIP).createZipOf(testMetaDataProviderConfig2JsonForZip)
 
                     // when
                     val result = exceptionExpected<IllegalStateException> {
@@ -393,7 +598,7 @@ internal class NumberOfEntriesValidationPostProcessorTest {
             }
 
             @Test
-            fun `throws exception if dead entries json minified file has differing number if entries`() {
+            fun `throws exception if dead entries json minified file has differing number of entries`() {
                 tempDirectory {
                     // given
                     val testMetaDataProviderConfig1 = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
@@ -412,11 +617,33 @@ internal class NumberOfEntriesValidationPostProcessorTest {
                         )
                     }
 
+                    val prettyPrintFile = tempDir.resolve("prettyprint.json")
+                    val prettyPrintJson = createExpectedDatasetPrettyPrint(
+                        TestAnimeObjects.DefaultAnime.serializedPrettyPrint,
+                        TestAnimeObjects.AllPropertiesSet.serializedPrettyPrint,
+                    )
+                    prettyPrintJson.writeToFile(prettyPrintFile)
+
+                    val minifiedFile = tempDir.resolve("minified.json")
+                    val minifiedJson = createExpectedDatasetMinified(
+                        TestAnimeObjects.DefaultAnime.serializedMinified,
+                        TestAnimeObjects.AllPropertiesSet.serializedMinified,
+                    )
+                    minifiedJson.writeToFile(minifiedFile)
+
+                    val zippedJsonFile = tempDir.resolve("zipped.json")
+                    val zippedJson = createExpectedDatasetMinified(
+                        TestAnimeObjects.DefaultAnime.serializedPrettyPrint,
+                        TestAnimeObjects.AllPropertiesSet.serializedMinified,
+                    )
+                    zippedJson.writeToFile(zippedJsonFile)
+                    val zipFile = tempDir.resolve("zipped.zip").createZipOf(zippedJsonFile)
+
                     val testDatasetFileAccessor = object: DatasetFileAccessor by TestDatasetFileAccessor {
                         override fun offlineDatabaseFile(type: DatasetFileType): RegularFile = when(type) {
-                            DatasetFileType.JSON -> testResource("postprocessors/NumberOfEntriesValidationPostProcessorTest/2-entries.json")
-                            DatasetFileType.JSON_MINIFIED -> testResource("postprocessors/NumberOfEntriesValidationPostProcessorTest/2-entries-minified.json")
-                            DatasetFileType.ZIP -> testResource("postprocessors/NumberOfEntriesValidationPostProcessorTest/2-entries.zip")
+                            DatasetFileType.JSON -> prettyPrintFile
+                            DatasetFileType.JSON_MINIFIED -> minifiedFile
+                            DatasetFileType.ZIP -> zipFile
                         }
                     }
 
@@ -434,21 +661,39 @@ internal class NumberOfEntriesValidationPostProcessorTest {
                         deadEntriesAccessor = testDeadEntriesAccessor,
                     )
 
+                    val testMetaDataProviderConfig1Json = createExpectedDeadEntriesPrettyPrint(
+                        "10001",
+                    )
+                    val testMetaDataProviderConfig1Minified = createExpectedDeadEntriesMinified(
+                        "10001",
+                    )
+                    val testMetaDataProviderConfig1Zipped = createExpectedDeadEntriesMinified(
+                        "10001",
+                    )
                     tempDir.resolve(testMetaDataProviderConfig1.hostname()).createDirectory()
-                    testResource("postprocessors/NumberOfEntriesValidationPostProcessorTest/dead-entries-1-entry.json")
-                        .copyTo(testDeadEntriesAccessor.deadEntriesFile(testMetaDataProviderConfig1, DatasetFileType.JSON))
-                    testResource("postprocessors/NumberOfEntriesValidationPostProcessorTest/dead-entries-1-entry-minified.json")
-                        .copyTo(testDeadEntriesAccessor.deadEntriesFile(testMetaDataProviderConfig1, DatasetFileType.JSON_MINIFIED))
-                    testResource("postprocessors/NumberOfEntriesValidationPostProcessorTest/dead-entries-1-entry.zip")
-                        .copyTo(testDeadEntriesAccessor.deadEntriesFile(testMetaDataProviderConfig1, DatasetFileType.ZIP))
+                    testMetaDataProviderConfig1Json.writeToFile(testDeadEntriesAccessor.deadEntriesFile(testMetaDataProviderConfig1, DatasetFileType.JSON))
+                    testMetaDataProviderConfig1Minified.writeToFile(testDeadEntriesAccessor.deadEntriesFile(testMetaDataProviderConfig1, DatasetFileType.JSON_MINIFIED))
+                    val testMetaDataProviderConfig1JsonForZip = tempDir.resolve(testMetaDataProviderConfig1.hostname()).resolve("jsonForZip.json")
+                    testMetaDataProviderConfig1Zipped.writeToFile(testMetaDataProviderConfig1JsonForZip)
+                    testDeadEntriesAccessor.deadEntriesFile(testMetaDataProviderConfig1, DatasetFileType.ZIP).createZipOf(testMetaDataProviderConfig1JsonForZip)
 
+                    val testMetaDataProviderConfig2Json = createExpectedDeadEntriesPrettyPrint(
+                        "20008",
+                        "20009",
+                    )
+                    val testMetaDataProviderConfig2Minified = createExpectedDeadEntriesMinified(
+                        "20009",
+                    )
+                    val testMetaDataProviderConfig2Zipped = createExpectedDeadEntriesMinified(
+                        "20008",
+                        "20009",
+                    )
                     tempDir.resolve(testMetaDataProviderConfig2.hostname()).createDirectory()
-                    testResource("postprocessors/NumberOfEntriesValidationPostProcessorTest/dead-entries-2-entries.json")
-                        .copyTo(testDeadEntriesAccessor.deadEntriesFile(testMetaDataProviderConfig2, DatasetFileType.JSON))
-                    testResource("postprocessors/NumberOfEntriesValidationPostProcessorTest/dead-entries-1-entry-minified.json")
-                        .copyTo(testDeadEntriesAccessor.deadEntriesFile(testMetaDataProviderConfig2, DatasetFileType.JSON_MINIFIED))
-                    testResource("postprocessors/NumberOfEntriesValidationPostProcessorTest/dead-entries-2-entries.zip")
-                        .copyTo(testDeadEntriesAccessor.deadEntriesFile(testMetaDataProviderConfig2, DatasetFileType.ZIP))
+                    testMetaDataProviderConfig2Json.writeToFile(testDeadEntriesAccessor.deadEntriesFile(testMetaDataProviderConfig2, DatasetFileType.JSON))
+                    testMetaDataProviderConfig2Minified.writeToFile(testDeadEntriesAccessor.deadEntriesFile(testMetaDataProviderConfig2, DatasetFileType.JSON_MINIFIED))
+                    val testMetaDataProviderConfig2JsonForZip = tempDir.resolve(testMetaDataProviderConfig2.hostname()).resolve("jsonForZip.json")
+                    testMetaDataProviderConfig2Zipped.writeToFile(testMetaDataProviderConfig2JsonForZip)
+                    testDeadEntriesAccessor.deadEntriesFile(testMetaDataProviderConfig2, DatasetFileType.ZIP).createZipOf(testMetaDataProviderConfig2JsonForZip)
 
                     // when
                     val result = exceptionExpected<IllegalStateException> {
@@ -461,7 +706,7 @@ internal class NumberOfEntriesValidationPostProcessorTest {
             }
 
             @Test
-            fun `throws exception if dead entries json file has differing number if entries`() {
+            fun `throws exception if dead entries zip file has differing number of entries`() {
                 tempDirectory {
                     // given
                     val testMetaDataProviderConfig1 = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
@@ -480,11 +725,33 @@ internal class NumberOfEntriesValidationPostProcessorTest {
                         )
                     }
 
+                    val prettyPrintFile = tempDir.resolve("prettyprint.json")
+                    val prettyPrintJson = createExpectedDatasetPrettyPrint(
+                        TestAnimeObjects.DefaultAnime.serializedPrettyPrint,
+                        TestAnimeObjects.AllPropertiesSet.serializedPrettyPrint,
+                    )
+                    prettyPrintJson.writeToFile(prettyPrintFile)
+
+                    val minifiedFile = tempDir.resolve("minified.json")
+                    val minifiedJson = createExpectedDatasetMinified(
+                        TestAnimeObjects.DefaultAnime.serializedMinified,
+                        TestAnimeObjects.AllPropertiesSet.serializedMinified,
+                    )
+                    minifiedJson.writeToFile(minifiedFile)
+
+                    val zippedJsonFile = tempDir.resolve("zipped.json")
+                    val zippedJson = createExpectedDatasetMinified(
+                        TestAnimeObjects.DefaultAnime.serializedPrettyPrint,
+                        TestAnimeObjects.AllPropertiesSet.serializedMinified,
+                    )
+                    zippedJson.writeToFile(zippedJsonFile)
+                    val zipFile = tempDir.resolve("zipped.zip").createZipOf(zippedJsonFile)
+
                     val testDatasetFileAccessor = object: DatasetFileAccessor by TestDatasetFileAccessor {
                         override fun offlineDatabaseFile(type: DatasetFileType): RegularFile = when(type) {
-                            DatasetFileType.JSON -> testResource("postprocessors/NumberOfEntriesValidationPostProcessorTest/2-entries.json")
-                            DatasetFileType.JSON_MINIFIED -> testResource("postprocessors/NumberOfEntriesValidationPostProcessorTest/2-entries-minified.json")
-                            DatasetFileType.ZIP -> testResource("postprocessors/NumberOfEntriesValidationPostProcessorTest/2-entries.zip")
+                            DatasetFileType.JSON -> prettyPrintFile
+                            DatasetFileType.JSON_MINIFIED -> minifiedFile
+                            DatasetFileType.ZIP -> zipFile
                         }
                     }
 
@@ -502,21 +769,41 @@ internal class NumberOfEntriesValidationPostProcessorTest {
                         deadEntriesAccessor = testDeadEntriesAccessor,
                     )
 
+                    val testMetaDataProviderConfig1Json = createExpectedDeadEntriesPrettyPrint(
+                        "10001",
+                    )
+                    val testMetaDataProviderConfig1Minified = createExpectedDeadEntriesMinified(
+                        "10001",
+                    )
+                    val testMetaDataProviderConfig1Zipped = createExpectedDeadEntriesMinified(
+                        "10001",
+                        "300",
+                    )
                     tempDir.resolve(testMetaDataProviderConfig1.hostname()).createDirectory()
-                    testResource("postprocessors/NumberOfEntriesValidationPostProcessorTest/dead-entries-1-entry.json")
-                        .copyTo(testDeadEntriesAccessor.deadEntriesFile(testMetaDataProviderConfig1, DatasetFileType.JSON))
-                    testResource("postprocessors/NumberOfEntriesValidationPostProcessorTest/dead-entries-1-entry-minified.json")
-                        .copyTo(testDeadEntriesAccessor.deadEntriesFile(testMetaDataProviderConfig1, DatasetFileType.JSON_MINIFIED))
-                    testResource("postprocessors/NumberOfEntriesValidationPostProcessorTest/dead-entries-2-entries.zip")
-                        .copyTo(testDeadEntriesAccessor.deadEntriesFile(testMetaDataProviderConfig1, DatasetFileType.ZIP))
+                    testMetaDataProviderConfig1Json.writeToFile(testDeadEntriesAccessor.deadEntriesFile(testMetaDataProviderConfig1, DatasetFileType.JSON))
+                    testMetaDataProviderConfig1Minified.writeToFile(testDeadEntriesAccessor.deadEntriesFile(testMetaDataProviderConfig1, DatasetFileType.JSON_MINIFIED))
+                    val testMetaDataProviderConfig1JsonForZip = tempDir.resolve(testMetaDataProviderConfig1.hostname()).resolve("jsonForZip.json")
+                    testMetaDataProviderConfig1Zipped.writeToFile(testMetaDataProviderConfig1JsonForZip)
+                    testDeadEntriesAccessor.deadEntriesFile(testMetaDataProviderConfig1, DatasetFileType.ZIP).createZipOf(testMetaDataProviderConfig1JsonForZip)
 
+                    val testMetaDataProviderConfig2Json = createExpectedDeadEntriesPrettyPrint(
+                        "20008",
+                        "20009",
+                    )
+                    val testMetaDataProviderConfig2Minified = createExpectedDeadEntriesMinified(
+                        "20008",
+                        "20009",
+                    )
+                    val testMetaDataProviderConfig2Zipped = createExpectedDeadEntriesMinified(
+                        "20008",
+                        "20009",
+                    )
                     tempDir.resolve(testMetaDataProviderConfig2.hostname()).createDirectory()
-                    testResource("postprocessors/NumberOfEntriesValidationPostProcessorTest/dead-entries-2-entries.json")
-                        .copyTo(testDeadEntriesAccessor.deadEntriesFile(testMetaDataProviderConfig2, DatasetFileType.JSON))
-                    testResource("postprocessors/NumberOfEntriesValidationPostProcessorTest/dead-entries-2-entries-minified.json")
-                        .copyTo(testDeadEntriesAccessor.deadEntriesFile(testMetaDataProviderConfig2, DatasetFileType.JSON_MINIFIED))
-                    testResource("postprocessors/NumberOfEntriesValidationPostProcessorTest/dead-entries-2-entries.zip")
-                        .copyTo(testDeadEntriesAccessor.deadEntriesFile(testMetaDataProviderConfig2, DatasetFileType.ZIP))
+                    testMetaDataProviderConfig2Json.writeToFile(testDeadEntriesAccessor.deadEntriesFile(testMetaDataProviderConfig2, DatasetFileType.JSON))
+                    testMetaDataProviderConfig2Minified.writeToFile(testDeadEntriesAccessor.deadEntriesFile(testMetaDataProviderConfig2, DatasetFileType.JSON_MINIFIED))
+                    val testMetaDataProviderConfig2JsonForZip = tempDir.resolve(testMetaDataProviderConfig2.hostname()).resolve("jsonForZip.json")
+                    testMetaDataProviderConfig2Zipped.writeToFile(testMetaDataProviderConfig2JsonForZip)
+                    testDeadEntriesAccessor.deadEntriesFile(testMetaDataProviderConfig2, DatasetFileType.ZIP).createZipOf(testMetaDataProviderConfig2JsonForZip)
 
                     // when
                     val result = exceptionExpected<IllegalStateException> {
@@ -543,19 +830,46 @@ internal class NumberOfEntriesValidationPostProcessorTest {
                         )
                     }
 
+                    val prettyPrintFile = tempDir.resolve("prettyprint.json")
+                    val prettyPrintJson = createExpectedDatasetPrettyPrint(
+                        TestAnimeObjects.DefaultAnime.serializedPrettyPrint,
+                        TestAnimeObjects.AllPropertiesSet.serializedPrettyPrint,
+                    )
+                    prettyPrintJson.writeToFile(prettyPrintFile)
+
+                    val minifiedFile = tempDir.resolve("minified.json")
+                    val minifiedJson = createExpectedDatasetMinified(
+                        TestAnimeObjects.DefaultAnime.serializedMinified,
+                        TestAnimeObjects.AllPropertiesSet.serializedMinified,
+                    )
+                    minifiedJson.writeToFile(minifiedFile)
+
+                    val zippedJsonFile = tempDir.resolve("zipped.json")
+                    val zippedJson = createExpectedDatasetMinified(
+                        TestAnimeObjects.DefaultAnime.serializedPrettyPrint,
+                        TestAnimeObjects.AllPropertiesSet.serializedMinified,
+                    )
+                    zippedJson.writeToFile(zippedJsonFile)
+                    val zipFile = tempDir.resolve("zipped.zip").createZipOf(zippedJsonFile)
+
                     val testDatasetFileAccessor = object: DatasetFileAccessor by TestDatasetFileAccessor {
                         override fun offlineDatabaseFile(type: DatasetFileType): RegularFile = when(type) {
-                            DatasetFileType.JSON -> testResource("postprocessors/NumberOfEntriesValidationPostProcessorTest/2-entries.json")
-                            DatasetFileType.JSON_MINIFIED -> testResource("postprocessors/NumberOfEntriesValidationPostProcessorTest/2-entries-minified.json")
-                            DatasetFileType.ZIP -> testResource("postprocessors/NumberOfEntriesValidationPostProcessorTest/2-entries.zip")
+                            DatasetFileType.JSON -> prettyPrintFile
+                            DatasetFileType.JSON_MINIFIED -> minifiedFile
+                            DatasetFileType.ZIP -> zipFile
                         }
                     }
 
+                    val deadEntriesMinified = tempDir.resolve("deadEntriesMinified.json")
+                    createExpectedDeadEntriesMinified().writeToFile(deadEntriesMinified)
+                    val deadEntriesZip = tempDir.resolve("deadEntries.zip")
+                    deadEntriesZip.createZipOf(deadEntriesMinified)
+
                     val testDeadEntriesAccessor = object: DeadEntriesAccessor by TestDeadEntriesAccessor {
                         override fun deadEntriesFile(metaDataProviderConfig: MetaDataProviderConfig, type: DatasetFileType): RegularFile = when(type) {
-                            DatasetFileType.JSON -> tempDir.resolve("not-exists.json")
-                            DatasetFileType.JSON_MINIFIED -> testResource("postprocessors/NumberOfEntriesValidationPostProcessorTest/dead-entries-2-entries-minified.json")
-                            DatasetFileType.ZIP -> testResource("postprocessors/NumberOfEntriesValidationPostProcessorTest/dead-entries-2-entries.zip")
+                            DatasetFileType.JSON -> tempDir.resolve("non-existent.json")
+                            DatasetFileType.JSON_MINIFIED -> deadEntriesMinified
+                            DatasetFileType.ZIP -> deadEntriesZip
                         }
                     }
 
@@ -572,7 +886,7 @@ internal class NumberOfEntriesValidationPostProcessorTest {
 
                     // then
                     assertThat(result).hasMessageStartingWith("The given path does not exist or is not a regular file: [")
-                    assertThat(result).hasMessageEndingWith("not-exists.json]")
+                    assertThat(result).hasMessageEndingWith("non-existent.json]")
                 }
             }
 
@@ -591,19 +905,46 @@ internal class NumberOfEntriesValidationPostProcessorTest {
                         )
                     }
 
+                    val prettyPrintFile = tempDir.resolve("prettyprint.json")
+                    val prettyPrintJson = createExpectedDatasetPrettyPrint(
+                        TestAnimeObjects.DefaultAnime.serializedPrettyPrint,
+                        TestAnimeObjects.AllPropertiesSet.serializedPrettyPrint,
+                    )
+                    prettyPrintJson.writeToFile(prettyPrintFile)
+
+                    val minifiedFile = tempDir.resolve("minified.json")
+                    val minifiedJson = createExpectedDatasetMinified(
+                        TestAnimeObjects.DefaultAnime.serializedMinified,
+                        TestAnimeObjects.AllPropertiesSet.serializedMinified,
+                    )
+                    minifiedJson.writeToFile(minifiedFile)
+
+                    val zippedJsonFile = tempDir.resolve("zipped.json")
+                    val zippedJson = createExpectedDatasetMinified(
+                        TestAnimeObjects.DefaultAnime.serializedPrettyPrint,
+                        TestAnimeObjects.AllPropertiesSet.serializedMinified,
+                    )
+                    zippedJson.writeToFile(zippedJsonFile)
+                    val zipFile = tempDir.resolve("zipped.zip").createZipOf(zippedJsonFile)
+
                     val testDatasetFileAccessor = object: DatasetFileAccessor by TestDatasetFileAccessor {
                         override fun offlineDatabaseFile(type: DatasetFileType): RegularFile = when(type) {
-                            DatasetFileType.JSON -> testResource("postprocessors/NumberOfEntriesValidationPostProcessorTest/2-entries.json")
-                            DatasetFileType.JSON_MINIFIED -> testResource("postprocessors/NumberOfEntriesValidationPostProcessorTest/2-entries-minified.json")
-                            DatasetFileType.ZIP -> testResource("postprocessors/NumberOfEntriesValidationPostProcessorTest/2-entries.zip")
+                            DatasetFileType.JSON -> prettyPrintFile
+                            DatasetFileType.JSON_MINIFIED -> minifiedFile
+                            DatasetFileType.ZIP -> zipFile
                         }
                     }
 
+                    val deadEntriesPrettyPrint = tempDir.resolve("deadEntriesPrettyPrint.json")
+                    createExpectedDeadEntriesPrettyPrint().writeToFile(deadEntriesPrettyPrint)
+                    val deadEntriesZip = tempDir.resolve("deadEntries.zip")
+                    deadEntriesZip.createZipOf(deadEntriesPrettyPrint)
+
                     val testDeadEntriesAccessor = object: DeadEntriesAccessor by TestDeadEntriesAccessor {
                         override fun deadEntriesFile(metaDataProviderConfig: MetaDataProviderConfig, type: DatasetFileType): RegularFile = when(type) {
-                            DatasetFileType.JSON -> testResource("postprocessors/NumberOfEntriesValidationPostProcessorTest/dead-entries-2-entries.json")
-                            DatasetFileType.JSON_MINIFIED -> tempDir.resolve("not-exists-minified.json")
-                            DatasetFileType.ZIP -> testResource("postprocessors/NumberOfEntriesValidationPostProcessorTest/dead-entries-2-entries.zip")
+                            DatasetFileType.JSON -> deadEntriesPrettyPrint
+                            DatasetFileType.JSON_MINIFIED -> tempDir.resolve("non-existent-minified.json")
+                            DatasetFileType.ZIP -> deadEntriesZip
                         }
                     }
 
@@ -620,7 +961,7 @@ internal class NumberOfEntriesValidationPostProcessorTest {
 
                     // then
                     assertThat(result).hasMessageStartingWith("The given path does not exist or is not a regular file: [")
-                    assertThat(result).hasMessageEndingWith("not-exists-minified.json]")
+                    assertThat(result).hasMessageEndingWith("non-existent-minified.json]")
                 }
             }
 
@@ -639,18 +980,45 @@ internal class NumberOfEntriesValidationPostProcessorTest {
                         )
                     }
 
+                    val prettyPrintFile = tempDir.resolve("prettyprint.json")
+                    val prettyPrintJson = createExpectedDatasetPrettyPrint(
+                        TestAnimeObjects.DefaultAnime.serializedPrettyPrint,
+                        TestAnimeObjects.AllPropertiesSet.serializedPrettyPrint,
+                    )
+                    prettyPrintJson.writeToFile(prettyPrintFile)
+
+                    val minifiedFile = tempDir.resolve("minified.json")
+                    val minifiedJson = createExpectedDatasetMinified(
+                        TestAnimeObjects.DefaultAnime.serializedMinified,
+                        TestAnimeObjects.AllPropertiesSet.serializedMinified,
+                    )
+                    minifiedJson.writeToFile(minifiedFile)
+
+                    val zippedJsonFile = tempDir.resolve("zipped.json")
+                    val zippedJson = createExpectedDatasetMinified(
+                        TestAnimeObjects.DefaultAnime.serializedPrettyPrint,
+                        TestAnimeObjects.AllPropertiesSet.serializedMinified,
+                    )
+                    zippedJson.writeToFile(zippedJsonFile)
+                    val zipFile = tempDir.resolve("zipped.zip").createZipOf(zippedJsonFile)
+
                     val testDatasetFileAccessor = object: DatasetFileAccessor by TestDatasetFileAccessor {
                         override fun offlineDatabaseFile(type: DatasetFileType): RegularFile = when(type) {
-                            DatasetFileType.JSON -> testResource("postprocessors/NumberOfEntriesValidationPostProcessorTest/2-entries.json")
-                            DatasetFileType.JSON_MINIFIED -> testResource("postprocessors/NumberOfEntriesValidationPostProcessorTest/2-entries-minified.json")
-                            DatasetFileType.ZIP -> testResource("postprocessors/NumberOfEntriesValidationPostProcessorTest/2-entries.zip")
+                            DatasetFileType.JSON -> prettyPrintFile
+                            DatasetFileType.JSON_MINIFIED -> minifiedFile
+                            DatasetFileType.ZIP -> zipFile
                         }
                     }
 
+                    val deadEntriesPrettyPrint = tempDir.resolve("deadEntriesPrettyPrint.json")
+                    createExpectedDeadEntriesPrettyPrint().writeToFile(deadEntriesPrettyPrint)
+                    val deadEntriesinified = tempDir.resolve("deadEntriesMinified.json")
+                    createExpectedDeadEntriesMinified().writeToFile(deadEntriesinified)
+
                     val testDeadEntriesAccessor = object: DeadEntriesAccessor by TestDeadEntriesAccessor {
                         override fun deadEntriesFile(metaDataProviderConfig: MetaDataProviderConfig, type: DatasetFileType): RegularFile = when(type) {
-                            DatasetFileType.JSON -> testResource("postprocessors/NumberOfEntriesValidationPostProcessorTest/dead-entries-2-entries.json")
-                            DatasetFileType.JSON_MINIFIED -> testResource("postprocessors/NumberOfEntriesValidationPostProcessorTest/dead-entries-2-entries-minified.json")
+                            DatasetFileType.JSON -> deadEntriesPrettyPrint
+                            DatasetFileType.JSON_MINIFIED -> deadEntriesinified
                             DatasetFileType.ZIP -> tempDir.resolve("not-exists.zip")
                         }
                     }
