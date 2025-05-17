@@ -34,7 +34,7 @@ import kotlin.time.toDuration
  * Uses [DownloadControlStateScheduler] to to download all anime scheduled for re-download and
  * [PaginationIdRangeSelector] for downloading new entries.
  * Includes a hard coded random waiting time to reduce pressure on the meta data provider.
- * @since 1.6.0
+ * @since 1.7.0
  * @property appConfig Application specific configuration. Uses [AppConfig] by default.
  * @property metaDataProviderConfig Configuration for a specific meta data provider.
  * @property downloadControlStateScheduler Allows to check which anime are scheduled for re-download and which are not.
