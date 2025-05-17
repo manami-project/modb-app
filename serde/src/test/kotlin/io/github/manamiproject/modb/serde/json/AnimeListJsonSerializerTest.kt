@@ -121,6 +121,8 @@ internal class AnimeListJsonSerializerTest {
                       "duration": null,
                       "score": null,
                       "synonyms": [],
+                      "studios": [],
+                      "producers": [],
                       "relatedAnime": [],
                       "tags": []
                     },
@@ -139,6 +141,8 @@ internal class AnimeListJsonSerializerTest {
                       "duration": null,
                       "score": null,
                       "synonyms": [],
+                      "studios": [],
+                      "producers": [],
                       "relatedAnime": [],
                       "tags": []
                     },
@@ -157,6 +161,8 @@ internal class AnimeListJsonSerializerTest {
                       "duration": null,
                       "score": null,
                       "synonyms": [],
+                      "studios": [],
+                      "producers": [],
                       "relatedAnime": [],
                       "tags": []
                     }
@@ -199,6 +205,8 @@ internal class AnimeListJsonSerializerTest {
                       "duration": null,
                       "score": null,
                       "synonyms": [],
+                      "studios": [],
+                      "producers": [],
                       "relatedAnime": [],
                       "tags": []
                     },
@@ -217,6 +225,8 @@ internal class AnimeListJsonSerializerTest {
                       "duration": null,
                       "score": null,
                       "synonyms": [],
+                      "studios": [],
+                      "producers": [],
                       "relatedAnime": [],
                       "tags": []
                     },
@@ -235,6 +245,8 @@ internal class AnimeListJsonSerializerTest {
                       "duration": null,
                       "score": null,
                       "synonyms": [],
+                      "studios": [],
+                      "producers": [],
                       "relatedAnime": [],
                       "tags": []
                     }
@@ -286,6 +298,8 @@ internal class AnimeListJsonSerializerTest {
                       "duration": null,
                       "score": null,
                       "synonyms": [],
+                      "studios": [],
+                      "producers": [],
                       "relatedAnime": [],
                       "tags": []
                     },
@@ -304,6 +318,8 @@ internal class AnimeListJsonSerializerTest {
                       "duration": null,
                       "score": null,
                       "synonyms": [],
+                      "studios": [],
+                      "producers": [],
                       "relatedAnime": [],
                       "tags": []
                     },
@@ -322,6 +338,8 @@ internal class AnimeListJsonSerializerTest {
                       "duration": null,
                       "score": null,
                       "synonyms": [],
+                      "studios": [],
+                      "producers": [],
                       "relatedAnime": [],
                       "tags": []
                     }
