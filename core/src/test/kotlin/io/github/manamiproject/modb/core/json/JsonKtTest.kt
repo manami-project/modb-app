@@ -390,6 +390,15 @@ internal class JsonKtTest {
                                 "DN",
                                 "デスノート"
                               ],
+                              "studios": [
+                                "madhouse"
+                              ],
+                              "producers": [
+                                "D.N. Dream Partners",
+                                "nippon television network",
+                                "shueisha",
+                                "vap"
+                              ],
                               "relatedAnime": [
                                 "https://myanimelist.net/anime/2994"
                               ],
