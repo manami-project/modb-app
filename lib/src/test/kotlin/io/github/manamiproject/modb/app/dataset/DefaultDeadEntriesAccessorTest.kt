@@ -1,5 +1,6 @@
 package io.github.manamiproject.modb.app.dataset
 
+import io.github.manamiproject.AnimenewsnetworkConfig
 import io.github.manamiproject.modb.anidb.AnidbConfig
 import io.github.manamiproject.modb.anilist.AnilistConfig
 import io.github.manamiproject.modb.animeplanet.AnimePlanetConfig
@@ -433,6 +434,7 @@ internal class DefaultDeadEntriesAccessorTest {
 
         @ParameterizedTest
         @ValueSource(classes = [
+            AnimenewsnetworkConfig::class,
             AnimePlanetConfig::class,
             AnisearchConfig::class,
             LivechartConfig::class,
@@ -470,6 +472,7 @@ internal class DefaultDeadEntriesAccessorTest {
 
         @ParameterizedTest
         @ValueSource(classes = [
+            AnimenewsnetworkConfig::class,
             AnimePlanetConfig::class,
             AnisearchConfig::class,
             LivechartConfig::class,
@@ -670,6 +673,7 @@ internal class DefaultDeadEntriesAccessorTest {
 
         @ParameterizedTest
         @ValueSource(classes = [
+            AnimenewsnetworkConfig::class,
             AnimePlanetConfig::class,
             AnisearchConfig::class,
             LivechartConfig::class,
@@ -728,6 +732,7 @@ internal class DefaultDeadEntriesAccessorTest {
             AnilistConfig::class, // supportd
             KitsuConfig::class, // supportd
             MyanimelistConfig::class, // supportd
+            AnimenewsnetworkConfig::class, // unsupported
             AnimePlanetConfig::class, // unsupported
             AnisearchConfig::class, // unsupported
             LivechartConfig::class, // unsupported
@@ -784,6 +789,7 @@ internal class DefaultDeadEntriesAccessorTest {
             AnilistConfig::class, // supportd
             KitsuConfig::class, // supportd
             MyanimelistConfig::class, // supportd
+            AnimenewsnetworkConfig::class, // unsupported
             AnimePlanetConfig::class, // unsupported
             AnisearchConfig::class, // unsupported
             LivechartConfig::class, // unsupported
@@ -845,6 +851,7 @@ internal class DefaultDeadEntriesAccessorTest {
 
         @ParameterizedTest
         @ValueSource(classes = [
+            AnimenewsnetworkConfig::class,
             AnimePlanetConfig::class,
             AnisearchConfig::class,
             LivechartConfig::class,
