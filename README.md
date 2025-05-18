@@ -7,6 +7,7 @@ _[modb](https://github.com/manami-project?tab=repositories&q=modb&type=source)_ 
 * **anidb:** Config, downloader and converter for [anidb.net](https://anidb.net)
 * **anilist:** Config, downloader and converter for [anilist.co](https://anilist.co)
 * **anime-planet:** Config, downloader and converter for [anime-planet.com](https://anime-planet.com)
+* **animenewsnetwork:** Config, downloader and converter for [animenewsnetwork.com](https://animenewsnetwork.com)
 * **anisearch:** Config, downloader and converter for [anisearch.com](https://anisearch.com)
 * **app:** The application that runs the crawlers, merges anime and updates the repository.
 * **core:** Core functionality used by all other modules.
