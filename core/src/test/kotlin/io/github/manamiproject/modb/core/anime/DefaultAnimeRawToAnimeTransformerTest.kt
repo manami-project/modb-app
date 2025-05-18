@@ -40,6 +40,8 @@ internal class DefaultAnimeRawToAnimeTransformerTest {
             assertThat(result.score).isEqualTo(NoScore)
             assertThat(result.sources).isEqualTo(result.sources)
             assertThat(result.synonyms).isEqualTo(result.synonyms)
+            assertThat(result.studios).isEqualTo(result.studios)
+            assertThat(result.producers).isEqualTo(result.producers)
             assertThat(result.relatedAnime).isEqualTo(result.relatedAnime)
             assertThat(result.tags).isEqualTo(result.tags)
         }
@@ -79,6 +81,8 @@ internal class DefaultAnimeRawToAnimeTransformerTest {
             assertThat((result.score).median).isEqualTo(3.47)
             assertThat(result.sources).isEqualTo(result.sources)
             assertThat(result.synonyms).isEqualTo(result.synonyms)
+            assertThat(result.studios).isEqualTo(result.studios)
+            assertThat(result.producers).isEqualTo(result.producers)
             assertThat(result.relatedAnime).isEqualTo(result.relatedAnime)
             assertThat(result.tags).isEqualTo(result.tags)
         }

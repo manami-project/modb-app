@@ -30,6 +30,10 @@ import java.net.URI
  * @property scores List of scores provided by meta data providers.
  * @param _synonyms Duplicate-free list of alternative titles. Synonyms are case sensitive.
  * @property synonyms Duplicate-free list of alternative titles. Synonyms are case sensitive.
+ * @param _studios List of studio names as provided by the meta data providers.
+ * @property studios List of studio names. May contain duplicates for slightly different writings. All studio names are lower case.
+ * @param _producers List of names of producers as provided by the meta data providers.
+ * @property producers List of names of producers. May contain duplicates for slightly different writings. All producer names are lower case.
  * @param _relatedAnime Duplicate-free list of links to related anime.
  * @property relatedAnime Duplicate-free list of links to related anime.
  * @param _tags Duplicate-free list of tags. This contains both genres and tags from meta data providers. All tags transformed to lower case.
@@ -49,6 +53,8 @@ public data class AnimeRaw(
     val thumbnail: URI = NO_PICTURE_THUMBNAIL,
     val duration: Duration = UNKNOWN_DURATION,
     private val _synonyms: HashSet<Title> = HashSet(),
+    private val _studios: HashSet<Studio> = HashSet(),
+    private val _producers: HashSet<Producer> = HashSet(),
     private val _relatedAnime: HashSet<URI> = HashSet(),
     private val _tags: HashSet<Tag> = HashSet(),
     @Transient private val metaDataProviderScores: HashMap<Hostname, MetaDataProviderScoreValue> = hashMapOf(),
@@ -75,6 +81,20 @@ public data class AnimeRaw(
      */
     val synonyms: HashSet<Title>
         get() = _synonyms.toHashSet()
+
+    /**
+     * List of studio names. May contain duplicates for slightly different writings. All studios names are lower case.
+     * @since 18.3.0
+     */
+    val studios: HashSet<Studio>
+        get() = _studios.toHashSet()
+
+    /**
+     * List of names of producers. May contain duplicates for slightly different writings. All producer names are lower case.
+     * @since 18.3.0
+     */
+    val producers: HashSet<Producer>
+        get() = _producers.toHashSet()
 
     /**
      * Duplicate-free list of links to related anime.
@@ -129,6 +149,58 @@ public data class AnimeRaw(
             .filter { it.neitherNullNorBlank() }
             .filter { it != _title }
             .forEach { _synonyms.add(it) }
+
+        return this
+    }
+
+    /**
+     * Add additional studio names to the existing list. Duplicates are being ignored.
+     * Studios are added as lower case. This will **not** override [studios].
+     * @since 18.3.0
+     * @param studios Studio names to be added.
+     * @return Same instance.
+     */
+    public fun addStudios(vararg studios: Studio): AnimeRaw = addStudios(studios.toHashSet())
+
+    /**
+     * Add additional studio names to the existing list. Duplicates are being ignored.
+     * Studios are added as lower case. This will **not** override [studios].
+     * @since 18.3.0
+     * @param studios List of studio names to be added.
+     * @return Same instance.
+     */
+    public fun addStudios(studios: Collection<Studio>): AnimeRaw {
+        studios.asSequence()
+            .map { it.normalize() }
+            .filter { it.neitherNullNorBlank() }
+            .map { it.lowercase() }
+            .forEach { _studios.add(it) }
+
+        return this
+    }
+
+    /**
+     * Add additional names of producers to the existing list. Duplicates are being ignored.
+     * Producers are added as lower case. This will **not** override [producers].
+     * @since 18.3.0
+     * @param producers names of producers to be added.
+     * @return Same instance.
+     */
+    public fun addProducers(vararg producers: Producer): AnimeRaw = addProducers(producers.toHashSet())
+
+    /**
+     * Add additional names of producers to the existing list. Duplicates are being ignored.
+     * Producers are added as lower case. This will **not** override [producers].
+     * @since 18.3.0
+     * @param producers List of names of producers to be added.
+     * @return Same instance.
+     */
+    public fun addProducers(producers: Collection<Producer>): AnimeRaw {
+        producers.asSequence()
+            .map { it.normalize() }
+            .filter { it.neitherNullNorBlank() }
+            .map { it.lowercase() }
+            .forEach { _producers.add(it) }
 
         return this
     }
@@ -258,6 +330,8 @@ public data class AnimeRaw(
      * + All sources of the given [AnimeRaw] will be added to the [sources] of this instance.
      * + All related anime of the given [AnimeRaw] will be added to the [relatedAnime] of this instance.
      * + All tags of the given [AnimeRaw] will be added to the [tags] of this instance.
+     * + All studios of the given [AnimeRaw] will be added to the [studios] of this instance.
+     * + All producers of the given [AnimeRaw] will be added to the [producers] of this instance.
      * + In case the number of episodes of this instance is 0, the value of the given [AnimeRaw] will be applied.
      * + In case the type of this instance is [AnimeType.UNKNOWN], the value of the given [AnimeRaw] will be applied.
      * + In case the status of this instance is [AnimeStatus.UNKNOWN], the value of the given [AnimeRaw] will be applied.
@@ -327,6 +401,10 @@ public data class AnimeRaw(
             .addRelatedAnime(anime.relatedAnime)
             .addTags(_tags)
             .addTags(anime.tags)
+            .addStudios(_studios)
+            .addStudios(anime.studios)
+            .addProducers(_producers)
+            .addProducers(anime.producers)
             .addScores(metaDataProviderScores.values)
             .addScores(anime.scores)
     }
@@ -350,6 +428,14 @@ public data class AnimeRaw(
         val uncheckedSynonyms: Collection<Title> = _synonyms.toSet()
         _synonyms.clear()
         addSynonyms(uncheckedSynonyms)
+
+        val uncheckedStudios: Collection<Title> = _studios.toSet()
+        _studios.clear()
+        addStudios(uncheckedStudios)
+
+        val uncheckedProducers: Collection<Title> = _producers.toSet()
+        _producers.clear()
+        addProducers(uncheckedProducers)
 
         val uncheckedRelatedAnime: Collection<URI> = _relatedAnime.toSet()
         _relatedAnime.clear()
@@ -379,6 +465,8 @@ public data class AnimeRaw(
         if (duration != other.duration) return false
         if (scores != other.scores) return false
         if (_synonyms != other.synonyms) return false
+        if (_studios != other.studios) return false
+        if (_producers != other.producers) return false
         if (_relatedAnime != other.relatedAnime) return false
         if (_tags != other.tags) return false
 
@@ -397,6 +485,8 @@ public data class AnimeRaw(
         result = 31 * result + duration.hashCode()
         result = 31 * result + metaDataProviderScores.values.sorted().hashCode()
         result = 31 * result + _synonyms.hashCode()
+        result = 31 * result + _studios.hashCode()
+        result = 31 * result + _producers.hashCode()
         result = 31 * result + _relatedAnime.hashCode()
         result = 31 * result + _tags.hashCode()
         return result
@@ -405,19 +495,21 @@ public data class AnimeRaw(
     override fun toString(): String {
         return """
             AnimeRaw(
-              sources = ${_sources.sorted()}
-              title = $_title
-              type = $type
-              episodes = $episodes
-              status = $status
-              animeSeason = $animeSeason
-              picture = $picture
-              thumbnail = $thumbnail
-              duration = $duration
-              scores = ${metaDataProviderScores.values.sortedBy { it.hostname }}
-              synonyms = ${_synonyms.sorted()}
+              sources      = ${_sources.sorted()}
+              title        = $_title
+              type         = $type
+              episodes     = $episodes
+              status       = $status
+              animeSeason  = $animeSeason
+              picture      = $picture
+              thumbnail    = $thumbnail
+              duration     = $duration
+              scores       = ${metaDataProviderScores.values.sortedBy { it.hostname }}
+              synonyms     = ${_synonyms.sorted()}
+              studios      = ${_studios.sorted()}
+              producers    = ${_producers.sorted()}
               relatedAnime = ${_relatedAnime.sorted()}
-              tags = ${_tags.sorted()}
+              tags         = ${_tags.sorted()}
             )
         """.trimIndent()
     }

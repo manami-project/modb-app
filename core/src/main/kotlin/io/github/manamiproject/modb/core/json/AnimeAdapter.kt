@@ -103,11 +103,11 @@ internal class AnimeAdapter: JsonAdapter<Anime>() {
                     synonymsDeserialized = true
                 }
                 "studios" -> {
-                    studios = titleHashSetAdapter.fromJson(reader)
+                    studios = studioHashSetAdapter.fromJson(reader)
                     studiosDeserialized = true
                 }
                 "producers" -> {
-                    producers = titleHashSetAdapter.fromJson(reader)
+                    producers = producerHashSetAdapter.fromJson(reader)
                     producersDeserialized = true
                 }
                 "relatedAnime" -> {

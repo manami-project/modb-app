@@ -13,15 +13,17 @@ import io.github.manamiproject.modb.core.anime.Duration.Companion.UNKNOWN as UNK
 internal class AnimeRawAdapter: JsonAdapter<AnimeRaw>() {
 
     private val titleAdapter = TitleAdapter()
-    private val uriHashSetAdapter = HashSetAdapter(UriAdapter())
     private val titleHashSetAdapter = HashSetAdapter(TitleAdapter())
     private val uriAdapter = UriAdapter()
-    private val tagHashSetAdapter = HashSetAdapter(TagAdapter())
     private val typeAdapter = AnimeTypeAdapter()
     private val statusAdapter = AnimeStatusAdapter()
-    private val durationAdapter = DurationAdapter()
     private val animeSeasonAdapter = AnimeSeasonAdapter()
+    private val durationAdapter = DurationAdapter()
     private val metaDataProviderScoreValueAdapter = HashSetAdapter(MetaDataProviderScoreValueAdapter())
+    private val studioHashSetAdapter = HashSetAdapter(StudioAdapter())
+    private val producerHashSetAdapter = HashSetAdapter(ProducerAdapter())
+    private val uriHashSetAdapter = HashSetAdapter(UriAdapter())
+    private val tagHashSetAdapter = HashSetAdapter(TagAdapter())
 
     @FromJson
     override fun fromJson(reader: JsonReader): AnimeRaw {
@@ -33,24 +35,28 @@ internal class AnimeRawAdapter: JsonAdapter<AnimeRaw>() {
         var sourcesDeserialized = false
         var type = UNKNOWN_TYPE
         var typeDeserialized = false
-        var synonyms = HashSet<Title>()
-        var synonymsDeserialized = false
         var episodes = 0
         var episodesDeserialized = false
         var status = UNKNOWN_STATUS
         var statusDeserialized = false
+        var animeSeason = AnimeSeason()
+        var animeSeasonDeserialized = false
         var picture = NO_PICTURE
         var pictureDeserialized = false
         var thumbnail = NO_PICTURE_THUMBNAIL
         var thumbnailDeserialized = false
         var duration = UNKNOWN_DURATION
         var scores = HashSet<MetaDataProviderScoreValue>()
-        var tags = HashSet<Tag>()
-        var tagsDeserialized = false
+        var synonyms = HashSet<Title>()
+        var synonymsDeserialized = false
+        var studios = HashSet<String>()
+        var studiosDeserialized = false
+        var producers = HashSet<String>()
+        var producersDeserialized = false
         var relatedAnime = HashSet<URI>()
         var relatedAnimeDeserialized = false
-        var animeSeason = AnimeSeason()
-        var animeSeasonDeserialized = false
+        var tags = HashSet<Tag>()
+        var tagsDeserialized = false
 
         while (reader.hasNext()) {
             when (reader.nextName()) {
@@ -96,6 +102,14 @@ internal class AnimeRawAdapter: JsonAdapter<AnimeRaw>() {
                     synonyms = titleHashSetAdapter.fromJson(reader)
                     synonymsDeserialized = true
                 }
+                "studios" -> {
+                    studios = titleHashSetAdapter.fromJson(reader)
+                    studiosDeserialized = true
+                }
+                "producers" -> {
+                    producers = titleHashSetAdapter.fromJson(reader)
+                    producersDeserialized = true
+                }
                 "relatedAnime" -> {
                     relatedAnime = uriHashSetAdapter.fromJson(reader)
                     relatedAnimeDeserialized = true
@@ -113,30 +127,34 @@ internal class AnimeRawAdapter: JsonAdapter<AnimeRaw>() {
         when {
             !titleDeserialized -> throw IllegalStateException("Property 'title' is either missing or null.")
             !sourcesDeserialized -> throw IllegalStateException("Property 'sources' is either missing or null.")
-            !typeDeserialized -> throw IllegalStateException("Property 'type' is either missing or null.")
-            !synonymsDeserialized -> throw IllegalStateException("Property 'synonyms' is either missing or null.")
             !episodesDeserialized -> throw IllegalStateException("Property 'episodes' is either missing or null.")
+            !typeDeserialized -> throw IllegalStateException("Property 'type' is either missing or null.")
             !statusDeserialized -> throw IllegalStateException("Property 'status' is either missing or null.")
+            !animeSeasonDeserialized -> throw IllegalStateException("Property 'animeSeason' is either missing or null.")
             !pictureDeserialized -> throw IllegalStateException("Property 'picture' is either missing or null.")
             !thumbnailDeserialized -> throw IllegalStateException("Property 'thumbnail' is either missing or null.")
-            !tagsDeserialized -> throw IllegalStateException("Property 'tags' is either missing or null.")
+            !synonymsDeserialized -> throw IllegalStateException("Property 'synonyms' is either missing or null.")
+            !studiosDeserialized -> throw IllegalStateException("Property 'studios' is either missing or null.")
+            !producersDeserialized -> throw IllegalStateException("Property 'producers' is either missing or null.")
             !relatedAnimeDeserialized -> throw IllegalStateException("Property 'relatedAnime' is either missing or null.")
-            !animeSeasonDeserialized -> throw IllegalStateException("Property 'animeSeason' is either missing or null.")
+            !tagsDeserialized -> throw IllegalStateException("Property 'tags' is either missing or null.")
         }
 
         return AnimeRaw(
             _title = title,
             _sources = sources,
-            _synonyms = synonyms,
             type = type,
             episodes = episodes,
             status = status,
+            animeSeason = animeSeason,
             picture = picture,
             thumbnail = thumbnail,
-            _tags = tags,
-            _relatedAnime = relatedAnime,
             duration = duration,
-            animeSeason = animeSeason,
+            _synonyms = synonyms,
+            _studios = studios,
+            _producers = producers,
+            _relatedAnime = relatedAnime,
+            _tags = tags,
             activateChecks = false,
         ).addScores(scores)
     }
@@ -184,6 +202,12 @@ internal class AnimeRawAdapter: JsonAdapter<AnimeRaw>() {
 
         writer.name("synonyms")
         titleHashSetAdapter.toJson(writer, value.synonyms)
+
+        writer.name("studios")
+        studioHashSetAdapter.toJson(writer, value.studios)
+
+        writer.name("producers")
+        producerHashSetAdapter.toJson(writer, value.producers)
 
         writer.name("relatedAnime")
         uriHashSetAdapter.toJson(writer, value.relatedAnime)

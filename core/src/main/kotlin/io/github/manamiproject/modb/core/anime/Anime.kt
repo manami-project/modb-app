@@ -39,8 +39,8 @@ public data class Anime(
     val duration: Duration = UNKNOWN_DURATION,
     val score: Score = NoScore,
     val synonyms: HashSet<Title> = HashSet(),
-    val studios: HashSet<String> = HashSet(),
-    val producers: HashSet<String> = HashSet(),
+    val studios: HashSet<Studio> = HashSet(),
+    val producers: HashSet<Producer> = HashSet(),
     val relatedAnime: HashSet<URI> = HashSet(),
     val tags: HashSet<Tag> = HashSet(),
 ) {

@@ -23,6 +23,8 @@ public class DefaultAnimeRawToAnimeTransformer(
             duration = obj.duration,
             score = scoreCalculator.calculateScore(obj.scores),
             synonyms = obj.synonyms,
+            studios = obj.studios,
+            producers = obj.producers,
             relatedAnime = obj.relatedAnime,
             tags = obj.tags,
         )
