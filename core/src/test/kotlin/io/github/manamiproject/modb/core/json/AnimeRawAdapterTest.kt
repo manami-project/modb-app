@@ -122,6 +122,8 @@ internal class AnimeRawAdapterTest {
                       },
                       "scores": [],
                       "synonyms": [],
+                      "studios": [],
+                      "producers": [],
                       "relatedAnime": [],
                       "tags": []
                     }
@@ -158,6 +160,8 @@ internal class AnimeRawAdapterTest {
                       },
                       "scores": [],
                       "synonyms": [],
+                      "studios": [],
+                      "producers": [],
                       "relatedAnime": [],
                       "tags": []
                     }
@@ -193,6 +197,8 @@ internal class AnimeRawAdapterTest {
                       },
                       "scores": [],
                       "synonyms": [],
+                      "studios": [],
+                      "producers": [],
                       "relatedAnime": [],
                       "tags": []
                     }
@@ -229,6 +235,8 @@ internal class AnimeRawAdapterTest {
                       },
                       "scores": [],
                       "synonyms": [],
+                      "studios": [],
+                      "producers": [],
                       "relatedAnime": [],
                       "tags": []
                     }
@@ -264,6 +272,8 @@ internal class AnimeRawAdapterTest {
                       },
                       "scores": [],
                       "synonyms": [],
+                      "studios": [],
+                      "producers": [],
                       "relatedAnime": [],
                       "tags": []
                     }
@@ -272,77 +282,6 @@ internal class AnimeRawAdapterTest {
 
             // then
             assertThat(result).hasMessage("Property 'sources' is either missing or null.")
-        }
-
-        @Test
-        fun `throws exception if synonyms is null`() {
-            // given
-            val adapter = AnimeRawAdapter()
-
-            // when
-            val result = exceptionExpected<JsonDataException> {
-                adapter.fromJson("""
-                    {
-                      "sources": [],
-                      "title": "default",
-                      "type": "UNKNOWN",
-                      "episodes": 1,
-                      "status": "UNKNOWN",
-                      "animeSeason": {
-                        "season": "UNDEFINED",
-                        "year": 2025
-                      },
-                      "picture": "https://raw.githubusercontent.com/manami-project/anime-offline-database/master/pics/no_pic.png",
-                      "thumbnail": "https://raw.githubusercontent.com/manami-project/anime-offline-database/master/pics/no_pic_thumbnail.png",
-                      "duration": {
-                        "value": 1380,
-                        "unit": "SECONDS"
-                      },
-                      "scores": [],
-                      "synonyms": null,
-                      "relatedAnime": [],
-                      "tags": []
-                    }
-                """.trimIndent())
-            }
-
-            // then
-            assertThat(result).hasMessage("Expected BEGIN_ARRAY but was NULL at path \$.synonyms")
-        }
-
-        @Test
-        fun `throws exception if synonyms is missing`() {
-            // given
-            val adapter = AnimeRawAdapter()
-
-            // when
-            val result = exceptionExpected<IllegalStateException> {
-                adapter.fromJson("""
-                    {
-                      "sources": [],
-                      "title": "default",
-                      "type": "UNKNOWN",
-                      "episodes": 1,
-                      "status": "UNKNOWN",
-                      "animeSeason": {
-                        "season": "UNDEFINED",
-                        "year": 2025
-                      },
-                      "picture": "https://raw.githubusercontent.com/manami-project/anime-offline-database/master/pics/no_pic.png",
-                      "thumbnail": "https://raw.githubusercontent.com/manami-project/anime-offline-database/master/pics/no_pic_thumbnail.png",
-                      "duration": {
-                        "value": 1380,
-                        "unit": "SECONDS"
-                      },
-                      "scores": [],
-                      "relatedAnime": [],
-                      "tags": []
-                    }
-                """.trimIndent())
-            }
-
-            // then
-            assertThat(result).hasMessage("Property 'synonyms' is either missing or null.")
         }
 
         @Test
@@ -371,6 +310,8 @@ internal class AnimeRawAdapterTest {
                       },
                       "scores": [],
                       "synonyms": [],
+                      "studios": [],
+                      "producers": [],
                       "relatedAnime": [],
                       "tags": []
                     }
@@ -406,6 +347,8 @@ internal class AnimeRawAdapterTest {
                       },
                       "scores": [],
                       "synonyms": [],
+                      "studios": [],
+                      "producers": [],
                       "relatedAnime": [],
                       "tags": []
                     }
@@ -442,6 +385,8 @@ internal class AnimeRawAdapterTest {
                       },
                       "scores": [],
                       "synonyms": [],
+                      "studios": [],
+                      "producers": [],
                       "relatedAnime": [],
                       "tags": []
                     }
@@ -477,6 +422,8 @@ internal class AnimeRawAdapterTest {
                       },
                       "scores": [],
                       "synonyms": [],
+                      "studios": [],
+                      "producers": [],
                       "relatedAnime": [],
                       "tags": []
                     }
@@ -513,6 +460,8 @@ internal class AnimeRawAdapterTest {
                       },
                       "scores": [],
                       "synonyms": [],
+                      "studios": [],
+                      "producers": [],
                       "relatedAnime": [],
                       "tags": []
                     }
@@ -548,6 +497,8 @@ internal class AnimeRawAdapterTest {
                       },
                       "scores": [],
                       "synonyms": [],
+                      "studios": [],
+                      "producers": [],
                       "relatedAnime": [],
                       "tags": []
                     }
@@ -581,6 +532,8 @@ internal class AnimeRawAdapterTest {
                       },
                       "scores": [],
                       "synonyms": [],
+                      "studios": [],
+                      "producers": [],
                       "relatedAnime": [],
                       "tags": []
                     }
@@ -613,6 +566,8 @@ internal class AnimeRawAdapterTest {
                       },
                       "scores": [],
                       "synonyms": [],
+                      "studios": [],
+                      "producers": [],
                       "relatedAnime": [],
                       "tags": []
                     }
@@ -649,6 +604,8 @@ internal class AnimeRawAdapterTest {
                       },
                       "scores": [],
                       "synonyms": [],
+                      "studios": [],
+                      "producers": [],
                       "relatedAnime": [],
                       "tags": []
                     }
@@ -684,6 +641,8 @@ internal class AnimeRawAdapterTest {
                       },
                       "scores": [],
                       "synonyms": [],
+                      "studios": [],
+                      "producers": [],
                       "relatedAnime": [],
                       "tags": []
                     }
@@ -720,6 +679,8 @@ internal class AnimeRawAdapterTest {
                       },
                       "scores": [],
                       "synonyms": [],
+                      "studios": [],
+                      "producers": [],
                       "relatedAnime": [],
                       "tags": []
                     }
@@ -755,6 +716,8 @@ internal class AnimeRawAdapterTest {
                       },
                       "scores": [],
                       "synonyms": [],
+                      "studios": [],
+                      "producers": [],
                       "relatedAnime": [],
                       "tags": []
                     }
@@ -791,6 +754,8 @@ internal class AnimeRawAdapterTest {
                       },
                       "scores": [],
                       "synonyms": [],
+                      "studios": [],
+                      "producers": [],
                       "relatedAnime": [],
                       "tags": []
                     }
@@ -826,6 +791,8 @@ internal class AnimeRawAdapterTest {
                       },
                       "scores": [],
                       "synonyms": [],
+                      "studios": [],
+                      "producers": [],
                       "relatedAnime": [],
                       "tags": []
                     }
@@ -862,6 +829,8 @@ internal class AnimeRawAdapterTest {
                       },
                       "scores": [],
                       "synonyms": [],
+                      "studios": [],
+                      "producers": [],
                       "relatedAnime": [],
                       "tags": []
                     }
@@ -897,6 +866,8 @@ internal class AnimeRawAdapterTest {
                       },
                       "scores": [],
                       "synonyms": [],
+                      "studios": [],
+                      "producers": [],
                       "relatedAnime": [],
                       "tags": []
                     }
@@ -933,6 +904,8 @@ internal class AnimeRawAdapterTest {
                       },
                       "scores": [],
                       "synonyms": [],
+                      "studios": [],
+                      "producers": [],
                       "relatedAnime": [],
                       "tags": []
                     }
@@ -968,6 +941,8 @@ internal class AnimeRawAdapterTest {
                       },
                       "scores": [],
                       "synonyms": [],
+                      "studios": [],
+                      "producers": [],
                       "relatedAnime": [],
                       "tags": []
                     }
@@ -976,6 +951,231 @@ internal class AnimeRawAdapterTest {
 
             // then
             assertThat(result).hasMessage("Property 'unit' is either missing or null.")
+        }
+
+        @Test
+        fun `throws exception if synonyms is null`() {
+            // given
+            val adapter = AnimeRawAdapter()
+
+            // when
+            val result = exceptionExpected<JsonDataException> {
+                adapter.fromJson("""
+                    {
+                      "sources": [],
+                      "title": "default",
+                      "type": "UNKNOWN",
+                      "episodes": 1,
+                      "status": "UNKNOWN",
+                      "animeSeason": {
+                        "season": "UNDEFINED",
+                        "year": 2025
+                      },
+                      "picture": "https://raw.githubusercontent.com/manami-project/anime-offline-database/master/pics/no_pic.png",
+                      "thumbnail": "https://raw.githubusercontent.com/manami-project/anime-offline-database/master/pics/no_pic_thumbnail.png",
+                      "duration": {
+                        "value": 1380,
+                        "unit": "SECONDS"
+                      },
+                      "scores": [],
+                      "synonyms": null,
+                      "studios": [],
+                      "producers": [],
+                      "relatedAnime": [],
+                      "tags": []
+                    }
+                """.trimIndent())
+            }
+
+            // then
+            assertThat(result).hasMessage("Expected BEGIN_ARRAY but was NULL at path \$.synonyms")
+        }
+
+        @Test
+        fun `throws exception if synonyms is missing`() {
+            // given
+            val adapter = AnimeRawAdapter()
+
+            // when
+            val result = exceptionExpected<IllegalStateException> {
+                adapter.fromJson("""
+                    {
+                      "sources": [],
+                      "title": "default",
+                      "type": "UNKNOWN",
+                      "episodes": 1,
+                      "status": "UNKNOWN",
+                      "animeSeason": {
+                        "season": "UNDEFINED",
+                        "year": 2025
+                      },
+                      "picture": "https://raw.githubusercontent.com/manami-project/anime-offline-database/master/pics/no_pic.png",
+                      "thumbnail": "https://raw.githubusercontent.com/manami-project/anime-offline-database/master/pics/no_pic_thumbnail.png",
+                      "duration": {
+                        "value": 1380,
+                        "unit": "SECONDS"
+                      },
+                      "scores": [],
+                      "studios": [],
+                      "producers": [],
+                      "relatedAnime": [],
+                      "tags": []
+                    }
+                """.trimIndent())
+            }
+
+            // then
+            assertThat(result).hasMessage("Property 'synonyms' is either missing or null.")
+        }
+
+        @Test
+        fun `throws exception if studios is null`() {
+            // given
+            val adapter = AnimeRawAdapter()
+
+            // when
+            val result = exceptionExpected<JsonDataException> {
+                adapter.fromJson("""
+                    {
+                      "sources": [],
+                      "title": "default",
+                      "type": "UNKNOWN",
+                      "episodes": 1,
+                      "status": "UNKNOWN",
+                      "animeSeason": {
+                        "season": "UNDEFINED",
+                        "year": 2025
+                      },
+                      "picture": "https://raw.githubusercontent.com/manami-project/anime-offline-database/master/pics/no_pic.png",
+                      "thumbnail": "https://raw.githubusercontent.com/manami-project/anime-offline-database/master/pics/no_pic_thumbnail.png",
+                      "duration": {
+                        "value": 1380,
+                        "unit": "SECONDS"
+                      },
+                      "scores": [],
+                      "synonyms": [],
+                      "studios": null,
+                      "producers": [],
+                      "relatedAnime": [],
+                      "tags": []
+                    }
+                """.trimIndent())
+            }
+
+            // then
+            assertThat(result).hasMessage("Expected BEGIN_ARRAY but was NULL at path \$.studios")
+        }
+
+        @Test
+        fun `throws exception if studios is missing`() {
+            // given
+            val adapter = AnimeRawAdapter()
+
+            // when
+            val result = exceptionExpected<IllegalStateException> {
+                adapter.fromJson("""
+                    {
+                      "sources": [],
+                      "title": "default",
+                      "type": "UNKNOWN",
+                      "episodes": 1,
+                      "status": "UNKNOWN",
+                      "animeSeason": {
+                        "season": "UNDEFINED",
+                        "year": 2025
+                      },
+                      "picture": "https://raw.githubusercontent.com/manami-project/anime-offline-database/master/pics/no_pic.png",
+                      "thumbnail": "https://raw.githubusercontent.com/manami-project/anime-offline-database/master/pics/no_pic_thumbnail.png",
+                      "duration": {
+                        "value": 1380,
+                        "unit": "SECONDS"
+                      },
+                      "scores": [],
+                      "synonyms": [],
+                      "producers": [],
+                      "relatedAnime": [],
+                      "tags": []
+                    }
+                """.trimIndent())
+            }
+
+            // then
+            assertThat(result).hasMessage("Property 'studios' is either missing or null.")
+        }
+
+        @Test
+        fun `throws exception if producers is null`() {
+            // given
+            val adapter = AnimeRawAdapter()
+
+            // when
+            val result = exceptionExpected<JsonDataException> {
+                adapter.fromJson("""
+                    {
+                      "sources": [],
+                      "title": "default",
+                      "type": "UNKNOWN",
+                      "episodes": 1,
+                      "status": "UNKNOWN",
+                      "animeSeason": {
+                        "season": "UNDEFINED",
+                        "year": 2025
+                      },
+                      "picture": "https://raw.githubusercontent.com/manami-project/anime-offline-database/master/pics/no_pic.png",
+                      "thumbnail": "https://raw.githubusercontent.com/manami-project/anime-offline-database/master/pics/no_pic_thumbnail.png",
+                      "duration": {
+                        "value": 1380,
+                        "unit": "SECONDS"
+                      },
+                      "scores": [],
+                      "synonyms": [],
+                      "studios": [],
+                      "producers": null,
+                      "relatedAnime": [],
+                      "tags": []
+                    }
+                """.trimIndent())
+            }
+
+            // then
+            assertThat(result).hasMessage("Expected BEGIN_ARRAY but was NULL at path \$.producers")
+        }
+
+        @Test
+        fun `throws exception if producers is missing`() {
+            // given
+            val adapter = AnimeRawAdapter()
+
+            // when
+            val result = exceptionExpected<IllegalStateException> {
+                adapter.fromJson("""
+                    {
+                      "sources": [],
+                      "title": "default",
+                      "type": "UNKNOWN",
+                      "episodes": 1,
+                      "status": "UNKNOWN",
+                      "animeSeason": {
+                        "season": "UNDEFINED",
+                        "year": 2025
+                      },
+                      "picture": "https://raw.githubusercontent.com/manami-project/anime-offline-database/master/pics/no_pic.png",
+                      "thumbnail": "https://raw.githubusercontent.com/manami-project/anime-offline-database/master/pics/no_pic_thumbnail.png",
+                      "duration": {
+                        "value": 1380,
+                        "unit": "SECONDS"
+                      },
+                      "scores": [],
+                      "synonyms": [],
+                      "studios": [],
+                      "relatedAnime": [],
+                      "tags": []
+                    }
+                """.trimIndent())
+            }
+
+            // then
+            assertThat(result).hasMessage("Property 'producers' is either missing or null.")
         }
 
         @Test
@@ -1004,6 +1204,8 @@ internal class AnimeRawAdapterTest {
                       },
                       "scores": [],
                       "synonyms": [],
+                      "studios": [],
+                      "producers": [],
                       "relatedAnime": null,
                       "tags": []
                     }
@@ -1040,6 +1242,8 @@ internal class AnimeRawAdapterTest {
                       },
                       "scores": [],
                       "synonyms": [],
+                      "studios": [],
+                      "producers": [],
                       "tags": []
                     }
                 """.trimIndent())
@@ -1075,6 +1279,8 @@ internal class AnimeRawAdapterTest {
                       },
                       "scores": [],
                       "synonyms": [],
+                      "studios": [],
+                      "producers": [],
                       "relatedAnime": [],
                       "tags": null
                     }
@@ -1111,6 +1317,8 @@ internal class AnimeRawAdapterTest {
                       },
                       "scores": [],
                       "synonyms": [],
+                      "studios": [],
+                      "producers": [],
                       "relatedAnime": []
                     }
                 """.trimIndent())
@@ -1145,6 +1353,8 @@ internal class AnimeRawAdapterTest {
                   },
                   "scores": [],
                   "synonyms": [],
+                  "studios": [],
+                  "producers": [],
                   "relatedAnime": [],
                   "tags": []
                 }
@@ -1178,6 +1388,8 @@ internal class AnimeRawAdapterTest {
                   },
                   "scores": [],
                   "synonyms": [],
+                  "studios": [],
+                  "producers": [],
                   "relatedAnime": [],
                   "tags": []
                 }
@@ -1209,6 +1421,8 @@ internal class AnimeRawAdapterTest {
                   "duration": null,
                   "scores": [],
                   "synonyms": [],
+                  "studios": [],
+                  "producers": [],
                   "relatedAnime": [],
                   "tags": []
                 }
@@ -1239,6 +1453,8 @@ internal class AnimeRawAdapterTest {
                   "thumbnail": "https://raw.githubusercontent.com/manami-project/anime-offline-database/master/pics/no_pic_thumbnail.png",
                   "scores": [],
                   "synonyms": [],
+                  "studios": [],
+                  "producers": [],
                   "relatedAnime": [],
                   "tags": []
                 }

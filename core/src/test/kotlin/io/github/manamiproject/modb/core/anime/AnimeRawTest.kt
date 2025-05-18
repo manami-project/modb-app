@@ -62,46 +62,50 @@ internal class AnimeRawTest {
             assertThat(result.title).isEqualTo(expectedTitle)
         }
 
-        @Test
-        fun `replace tab character with whitespace in title`() {
+        @ParameterizedTest
+        @ValueSource(strings = [
+            "\u00A0",
+            "\u202F",
+            "\u200A",
+            "\u205F",
+            "\u2000",
+            "\u2001",
+            "\u2002",
+            "\u2003",
+            "\u2004",
+            "\u2005",
+            "\u2006",
+            "\u2007",
+            "\u2008",
+            "\u2009",
+        ])
+        fun `normalize visible whitespaces to a normale whitespace`(input: String) {
             // given
             val expectedTitle = "Death Note"
 
             // when
-            val result = AnimeRaw("Death\tNote")
+            val result = AnimeRaw("Death${input}Note")
 
             // then
             assertThat(result.title).isEqualTo(expectedTitle)
         }
 
-        @Test
-        fun `replace line feed character with whitespace in title`() {
-            // given
-            val expectedTitle = "Death Note"
-
+        @ParameterizedTest
+        @ValueSource(strings = [
+            "\uFEFF",
+            "\u180E",
+            "\u2060",
+            "\u200D",
+            "\u0090",
+            "\u200C",
+            "\u200B",
+            "\u00AD",
+            "\u000C",
+            "\u2028",
+        ])
+        fun `remove non-visible whitespaces`(input: String) {
             // when
-            val result = AnimeRaw("Death\nNote")
-
-            // then
-            assertThat(result.title).isEqualTo(expectedTitle)
-        }
-
-        @Test
-        fun `replace carriage return line feed with whitespace in title`() {
-            // given
-            val expectedTitle = "Death Note"
-
-            // when
-            val result = AnimeRaw("Death\r\nNote")
-
-            // then
-            assertThat(result.title).isEqualTo(expectedTitle)
-        }
-
-        @Test
-        fun `remove zero-width non-joiner`() {
-            // when
-            val result = AnimeRaw("Ba\u200Cek")
+            val result = AnimeRaw("Ba${input}ek")
 
             // then
             assertThat(result.title).isEqualTo("Baek")
@@ -139,7 +143,7 @@ internal class AnimeRawTest {
             "\n",
             "\t",
         ])
-        fun `throws exception if title is empty or blank or zero-width non-joiner`(value: String) {
+        fun `throws exception if title is blank`(value: String) {
             // when
             val result = assertThrows<IllegalArgumentException> {
                 AnimeRaw(value)
@@ -251,13 +255,44 @@ internal class AnimeRawTest {
                 assertThat(result.synonyms).isEmpty()
             }
 
-            @Test
-            fun `must not add blank synonym`() {
+            @ParameterizedTest
+            @ValueSource(strings = [
+                "",
+                "   ",
+                "\u00A0",
+                "\u202F",
+                "\u200A",
+                "\u205F",
+                "\u2000",
+                "\u2001",
+                "\u2002",
+                "\u2003",
+                "\u2004",
+                "\u2005",
+                "\u2006",
+                "\u2007",
+                "\u2008",
+                "\u2009",
+                "\uFEFF",
+                "\u180E",
+                "\u2060",
+                "\u200D",
+                "\u0090",
+                "\u200C",
+                "\u200B",
+                "\u00AD",
+                "\u000C",
+                "\u2028",
+                "\r",
+                "\n",
+                "\t",
+            ])
+            fun `must not add blank synonym`(input: String) {
                 // when
                 val result = AnimeRaw(
                     _title = "Death Note",
                     _synonyms = hashSetOf(
-                        "         ",
+                        "$input $input",
                     ),
                 )
 
@@ -265,18 +300,128 @@ internal class AnimeRawTest {
                 assertThat(result.synonyms).isEmpty()
             }
 
-            @Test
-            fun `must not add zero-width non-joiner synonym`() {
+            @ParameterizedTest
+            @ValueSource(strings = [
+                "\u00A0",
+                "\u202F",
+                "\u200A",
+                "\u205F",
+                "\u2000",
+                "\u2001",
+                "\u2002",
+                "\u2003",
+                "\u2004",
+                "\u2005",
+                "\u2006",
+                "\u2007",
+                "\u2008",
+                "\u2009",
+            ])
+            fun `normalize visible whitespaces to a normale whitespace`(input: String) {
                 // when
                 val result = AnimeRaw(
                     _title = "Death Note",
                     _synonyms = hashSetOf(
-                        "\u200C",
+                        "Caderno${input}da${input}Morte",
                     ),
                 )
 
                 // then
-                assertThat(result.synonyms).isEmpty()
+                assertThat(result.synonyms).hasSize(1)
+                assertThat(result.synonyms.first()).isEqualTo("Caderno da Morte")
+            }
+
+            @ParameterizedTest
+            @ValueSource(strings = [
+                "\uFEFF",
+                "\u180E",
+                "\u2060",
+                "\u200D",
+                "\u0090",
+                "\u200C",
+                "\u200B",
+                "\u00AD",
+                "\u000C",
+                "\u2028",
+            ])
+            fun `remove non-visible whitespaces`(input: String) {
+                // when
+                val result = AnimeRaw(
+                    _title = "Death Note",
+                    _synonyms = hashSetOf(
+                        "Cader${input}no da Mor${input}te",
+                    ),
+                )
+
+                // then
+                assertThat(result.synonyms).hasSize(1)
+                assertThat(result.synonyms.first()).isEqualTo("Caderno da Morte")
+            }
+
+            @Test
+            fun `remove leading whitespace from synonyms`() {
+                // given
+                val expectedTitleOne = "Death Note"
+                val expectedTitleTwo = "Made in Abyss"
+
+                // when
+                val result = AnimeRaw(
+                    _title = "Title",
+                    _synonyms = hashSetOf(
+                        " $expectedTitleOne",
+                        " $expectedTitleTwo",
+                    ),
+                )
+
+                // then
+                assertThat(result.synonyms).containsExactlyInAnyOrder(
+                    expectedTitleOne,
+                    expectedTitleTwo,
+                )
+            }
+
+            @Test
+            fun `remove tailing whitespace from synonyms`() {
+                // given
+                val expectedTitleOne = "Death Note"
+                val expectedTitleTwo = "Made in Abyss"
+
+                // when
+                val result = AnimeRaw(
+                    _title = "Title",
+                    _synonyms = hashSetOf(
+                        "$expectedTitleOne ",
+                        "$expectedTitleTwo ",
+                    ),
+                )
+
+                // then
+                assertThat(result.synonyms).containsExactlyInAnyOrder(
+                    expectedTitleOne,
+                    expectedTitleTwo,
+                )
+            }
+
+            @Test
+            fun `replace multiple whitespaces with a single whitespace in synonyms`() {
+                // given
+                val expectedTitleOne = "Death Note"
+                val expectedTitleTwo = "Made in Abyss"
+
+                // when
+                val result = AnimeRaw(
+                    _title = "Title",
+                    _synonyms = hashSetOf(
+                        "Death        Note",
+                        "Made      in        Abyss",
+                    ),
+                )
+
+                // then
+                assertThat(result.synonyms).containsExactlyInAnyOrder(
+                    expectedTitleOne,
+                    expectedTitleTwo,
+                )
             }
 
             @Test
@@ -362,160 +507,6 @@ internal class AnimeRawTest {
                 )
             }
 
-            @Test
-            fun `remove leading whitespace from synonyms`() {
-                // given
-                val expectedTitleOne = "Death Note"
-                val expectedTitleTwo = "Made in Abyss"
-
-                // when
-                val result = AnimeRaw(
-                    _title = "Title",
-                    _synonyms = hashSetOf(
-                        " $expectedTitleOne",
-                        " $expectedTitleTwo",
-                    ),
-                )
-
-                // then
-                assertThat(result.synonyms).containsExactlyInAnyOrder(
-                    expectedTitleOne,
-                    expectedTitleTwo,
-                )
-            }
-
-            @Test
-            fun `remove tailing whitespace from synonyms`() {
-                // given
-                val expectedTitleOne = "Death Note"
-                val expectedTitleTwo = "Made in Abyss"
-
-                // when
-                val result = AnimeRaw(
-                    _title = "Title",
-                    _synonyms = hashSetOf(
-                        "$expectedTitleOne ",
-                        "$expectedTitleTwo ",
-                    ),
-                )
-
-                // then
-                assertThat(result.synonyms).containsExactlyInAnyOrder(
-                    expectedTitleOne,
-                    expectedTitleTwo,
-                )
-            }
-
-            @Test
-            fun `replace multiple whitespaces with a single whitespace in synonyms`() {
-                // given
-                val expectedTitleOne = "Death Note"
-                val expectedTitleTwo = "Made in Abyss"
-
-                // when
-                val result = AnimeRaw(
-                    _title = "Title",
-                    _synonyms = hashSetOf(
-                        "Death        Note",
-                        "Made      in        Abyss",
-                    ),
-                )
-
-                // then
-                assertThat(result.synonyms).containsExactlyInAnyOrder(
-                    expectedTitleOne,
-                    expectedTitleTwo,
-                )
-            }
-
-            @Test
-            fun `replace tab character with whitespace in synonyms`() {
-                // given
-                val expectedTitleOne = "Death Note"
-                val expectedTitleTwo = "Made in Abyss"
-
-                // when
-                val result = AnimeRaw(
-                    _title = "Title",
-                    _synonyms = hashSetOf(
-                        "Death\tNote",
-                        "Made\tin\tAbyss",
-                    ),
-                )
-
-                // then
-                assertThat(result.synonyms).containsExactlyInAnyOrder(
-                    expectedTitleOne,
-                    expectedTitleTwo,
-                )
-            }
-
-            @Test
-            fun `replace line feed character with whitespace in synonyms`() {
-                // given
-                val expectedTitleOne = "Death Note"
-                val expectedTitleTwo = "Made in Abyss"
-
-                // when
-                val result = AnimeRaw(
-                    _title = "Title",
-                    _synonyms = hashSetOf(
-                        "Death\nNote",
-                        "Made\nin\nAbyss",
-                    ),
-                )
-
-                // then
-                assertThat(result.synonyms).containsExactlyInAnyOrder(
-                    expectedTitleOne,
-                    expectedTitleTwo,
-                )
-            }
-
-            @Test
-            fun `replace carriage return line feed character with whitespace in synonyms`() {
-                // given
-                val expectedTitleOne = "Death Note"
-                val expectedTitleTwo = "Made in Abyss"
-
-                // when
-                val result = AnimeRaw(
-                    _title = "Title",
-                    _synonyms = hashSetOf(
-                        "Death\r\nNote",
-                        "Made\r\nin\r\nAbyss",
-                    ),
-                )
-
-                // then
-                assertThat(result.synonyms).containsExactlyInAnyOrder(
-                    expectedTitleOne,
-                    expectedTitleTwo,
-                )
-            }
-
-            @Test
-            fun `replace zero-width non-joiner character in synonyms`() {
-                // given
-                val expectedTitleOne = "DeathNote"
-                val expectedTitleTwo = "MadeinAbyss"
-
-                // when
-                val result = AnimeRaw(
-                    _title = "Title",
-                    _synonyms = hashSetOf(
-                        "Death\u200CNote",
-                        "Made\u200Cin\u200CAbyss",
-                    ),
-                )
-
-                // then
-                assertThat(result.synonyms).containsExactlyInAnyOrder(
-                    expectedTitleOne,
-                    expectedTitleTwo,
-                )
-            }
-
             @ParameterizedTest
             @ValueSource(strings = [" Death Note", "Death Note ", "  Death   Note  ", "", " ", "    ", "\u200C"])
             fun `doesn't fix synonyms if activateChecks is false`(value: String) {
@@ -550,32 +541,179 @@ internal class AnimeRawTest {
                 assertThat(anime.synonyms).isEmpty()
             }
 
-            @Test
-            fun `must not add blank synonym`() {
+            @ParameterizedTest
+            @ValueSource(strings = [
+                "",
+                "   ",
+                "\u00A0",
+                "\u202F",
+                "\u200A",
+                "\u205F",
+                "\u2000",
+                "\u2001",
+                "\u2002",
+                "\u2003",
+                "\u2004",
+                "\u2005",
+                "\u2006",
+                "\u2007",
+                "\u2008",
+                "\u2009",
+                "\uFEFF",
+                "\u180E",
+                "\u2060",
+                "\u200D",
+                "\u0090",
+                "\u200C",
+                "\u200B",
+                "\u00AD",
+                "\u000C",
+                "\u2028",
+                "\r",
+                "\n",
+                "\t",
+            ])
+            fun `must not add blank synonym`(input: String) {
                 // given
-                val anime = AnimeRaw("Death Note")
+                val anime = AnimeRaw(
+                    _title = "Death Note",
+                )
 
                 // when
                 anime.addSynonyms(listOf(
-                    "         ",
+                    "$input $input",
                 ))
 
                 // then
                 assertThat(anime.synonyms).isEmpty()
             }
 
-            @Test
-            fun `must not add zero-width non-joiner synonym`() {
+            @ParameterizedTest
+            @ValueSource(strings = [
+                "\u00A0",
+                "\u202F",
+                "\u200A",
+                "\u205F",
+                "\u2000",
+                "\u2001",
+                "\u2002",
+                "\u2003",
+                "\u2004",
+                "\u2005",
+                "\u2006",
+                "\u2007",
+                "\u2008",
+                "\u2009",
+            ])
+            fun `normalize visible whitespaces to a normale whitespace`(input: String) {
                 // given
-                val anime = AnimeRaw("Death Note")
+                val expectedTitleOne = "Death Note"
+                val expectedTitleTwo = "Caderno da Morte"
+                val anime = AnimeRaw("Title")
 
                 // when
                 anime.addSynonyms(listOf(
-                    "\u200C",
+                    "Death${input}Note",
+                    "Caderno${input}da${input}Morte",
                 ))
 
                 // then
-                assertThat(anime.synonyms).isEmpty()
+                assertThat(anime.synonyms).containsExactlyInAnyOrder(
+                    expectedTitleOne,
+                    expectedTitleTwo,
+                )
+            }
+
+            @ParameterizedTest
+            @ValueSource(strings = [
+                "\uFEFF",
+                "\u180E",
+                "\u2060",
+                "\u200D",
+                "\u0090",
+                "\u200C",
+                "\u200B",
+                "\u00AD",
+                "\u000C",
+                "\u2028",
+            ])
+            fun `remove non-visible whitespaces`(input: String) {
+                // given
+                val expectedTitleOne = "Death Note"
+                val expectedTitleTwo = "Caderno da Morte"
+                val anime = AnimeRaw("Title")
+
+                // when
+                anime.addSynonyms(listOf(
+                    "Death Note",
+                    "Cader${input}no da Mor${input}te",
+                ))
+
+                // then
+                assertThat(anime.synonyms).containsExactlyInAnyOrder(
+                    expectedTitleOne,
+                    expectedTitleTwo,
+                )
+            }
+
+            @Test
+            fun `remove leading whitespace from synonyms`() {
+                // given
+                val expectedTitleOne = "Death Note"
+                val expectedTitleTwo = "Made in Abyss"
+                val anime = AnimeRaw("Title")
+
+                // when
+                anime.addSynonyms(listOf(
+                    " $expectedTitleOne",
+                    " $expectedTitleTwo",
+                ))
+
+                // then
+                assertThat(anime.synonyms).containsExactlyInAnyOrder(
+                    expectedTitleOne,
+                    expectedTitleTwo,
+                )
+            }
+
+            @Test
+            fun `remove tailing whitespace from synonyms`() {
+                // given
+                val expectedTitleOne = "Death Note"
+                val expectedTitleTwo = "Made in Abyss"
+                val anime = AnimeRaw("Title")
+
+                // when
+                anime.addSynonyms(listOf(
+                    "$expectedTitleOne ",
+                    "$expectedTitleTwo ",
+                ))
+
+                // then
+                assertThat(anime.synonyms).containsExactlyInAnyOrder(
+                    expectedTitleOne,
+                    expectedTitleTwo,
+                )
+            }
+
+            @Test
+            fun `replace multiple whitespaces with a single whitespace in synonyms`() {
+                // given
+                val expectedTitleOne = "Death Note"
+                val expectedTitleTwo = "Made in Abyss"
+                val anime = AnimeRaw("Title")
+
+                // when
+                anime.addSynonyms(listOf(
+                    "Death        Note",
+                    "Made      in        Abyss",
+                ))
+
+                // then
+                assertThat(anime.synonyms).containsExactlyInAnyOrder(
+                    expectedTitleOne,
+                    expectedTitleTwo,
+                )
             }
 
             @Test
@@ -672,146 +810,6 @@ internal class AnimeRawTest {
                     title.lowercase(),
                 )
             }
-
-            @Test
-            fun `remove leading whitespace from synonyms`() {
-                // given
-                val expectedTitleOne = "Death Note"
-                val expectedTitleTwo = "Made in Abyss"
-                val anime = AnimeRaw("Title")
-
-                // when
-                anime.addSynonyms(listOf(
-                    " $expectedTitleOne",
-                    " $expectedTitleTwo",
-                ))
-
-                // then
-                assertThat(anime.synonyms).containsExactlyInAnyOrder(
-                    expectedTitleOne,
-                    expectedTitleTwo,
-                )
-            }
-
-            @Test
-            fun `remove tailing whitespace from synonyms`() {
-                // given
-                val expectedTitleOne = "Death Note"
-                val expectedTitleTwo = "Made in Abyss"
-                val anime = AnimeRaw("Title")
-
-                // when
-                anime.addSynonyms(listOf(
-                    "$expectedTitleOne ",
-                    "$expectedTitleTwo ",
-                ))
-
-                // then
-                assertThat(anime.synonyms).containsExactlyInAnyOrder(
-                    expectedTitleOne,
-                    expectedTitleTwo,
-                )
-            }
-
-            @Test
-            fun `replace multiple whitespaces with a single whitespace in synonyms`() {
-                // given
-                val expectedTitleOne = "Death Note"
-                val expectedTitleTwo = "Made in Abyss"
-                val anime = AnimeRaw("Title")
-
-                // when
-                anime.addSynonyms(listOf(
-                    "Death        Note",
-                    "Made      in        Abyss",
-                ))
-
-                // then
-                assertThat(anime.synonyms).containsExactlyInAnyOrder(
-                    expectedTitleOne,
-                    expectedTitleTwo,
-                )
-            }
-
-            @Test
-            fun `replace tab character with whitespace in synonyms`() {
-                // given
-                val expectedTitleOne = "Death Note"
-                val expectedTitleTwo = "Made in Abyss"
-                val anime = AnimeRaw("Title")
-
-                // when
-                anime.addSynonyms(listOf(
-                    "Death\tNote",
-                    "Made\tin\tAbyss",
-                ))
-
-                // then
-                assertThat(anime.synonyms).containsExactlyInAnyOrder(
-                    expectedTitleOne,
-                    expectedTitleTwo,
-                )
-            }
-
-            @Test
-            fun `replace line feed character with whitespace in synonyms`() {
-                // given
-                val expectedTitleOne = "Death Note"
-                val expectedTitleTwo = "Made in Abyss"
-                val anime = AnimeRaw("Title")
-
-                // when
-                anime.addSynonyms(listOf(
-                    "Death\nNote",
-                    "Made\nin\nAbyss",
-                ))
-
-                // then
-                assertThat(anime.synonyms).containsExactlyInAnyOrder(
-                    expectedTitleOne,
-                    expectedTitleTwo,
-                )
-            }
-
-            @Test
-            fun `replace carriage return line feed character with whitespace in synonyms`() {
-                // given
-                val expectedTitleOne = "Death Note"
-                val expectedTitleTwo = "Made in Abyss"
-                val anime = AnimeRaw("Title")
-
-                // when
-                anime.addSynonyms(listOf(
-                    "Death\r\nNote",
-                    "Made\r\nin\r\nAbyss",
-                ))
-
-                // then
-                assertThat(anime.synonyms).containsExactlyInAnyOrder(
-                    expectedTitleOne,
-                    expectedTitleTwo,
-                )
-            }
-
-            @Test
-            fun `replace zero-width non-joiner character in synonyms`() {
-                // given
-                val expectedTitleOne = "DeathNote"
-                val expectedTitleTwo = "MadeinAbyss"
-                val anime = AnimeRaw("Title")
-
-                // when
-                anime.addSynonyms(listOf(
-                    "Death\u200CNote",
-                    "Made\u200Cin\u200CAbyss",
-                ))
-
-                // then
-                assertThat(anime.synonyms).containsExactlyInAnyOrder(
-                    expectedTitleOne,
-                    expectedTitleTwo,
-                )
-            }
         }
 
         @Nested
@@ -831,32 +829,167 @@ internal class AnimeRawTest {
                 assertThat(anime.synonyms).isEmpty()
             }
 
-            @Test
-            fun `must not add blank synonym`() {
+            @ParameterizedTest
+            @ValueSource(strings = [
+                "",
+                "   ",
+                "\u00A0",
+                "\u202F",
+                "\u200A",
+                "\u205F",
+                "\u2000",
+                "\u2001",
+                "\u2002",
+                "\u2003",
+                "\u2004",
+                "\u2005",
+                "\u2006",
+                "\u2007",
+                "\u2008",
+                "\u2009",
+                "\uFEFF",
+                "\u180E",
+                "\u2060",
+                "\u200D",
+                "\u0090",
+                "\u200C",
+                "\u200B",
+                "\u00AD",
+                "\u000C",
+                "\u2028",
+                "\r",
+                "\n",
+                "\t",
+            ])
+            fun `must not add blank synonym`(input: String) {
                 // given
                 val anime = AnimeRaw("Death Note")
 
                 // when
                 anime.addSynonyms(
-                    "         ",
+                    "$input $input",
                 )
 
                 // then
                 assertThat(anime.synonyms).isEmpty()
             }
 
-            @Test
-            fun `must not add zero-width non-joiner synonym`() {
+            @ParameterizedTest
+            @ValueSource(strings = [
+                "\u00A0",
+                "\u202F",
+                "\u200A",
+                "\u205F",
+                "\u2000",
+                "\u2001",
+                "\u2002",
+                "\u2003",
+                "\u2004",
+                "\u2005",
+                "\u2006",
+                "\u2007",
+                "\u2008",
+                "\u2009",
+            ])
+            fun `normalize visible whitespaces to a normale whitespace`(input: String) {
                 // given
                 val anime = AnimeRaw("Death Note")
 
                 // when
                 anime.addSynonyms(
-                    "\u200C",
+                    "Caderno${input}da${input}Morte",
                 )
 
                 // then
-                assertThat(anime.synonyms).isEmpty()
+                assertThat(anime.synonyms).hasSize(1)
+                assertThat(anime.synonyms.first()).isEqualTo("Caderno da Morte")
+            }
+
+            @ParameterizedTest
+            @ValueSource(strings = [
+                "\uFEFF",
+                "\u180E",
+                "\u2060",
+                "\u200D",
+                "\u0090",
+                "\u200C",
+                "\u200B",
+                "\u00AD",
+                "\u000C",
+                "\u2028",
+            ])
+            fun `remove non-visible whitespaces`(input: String) {
+                // given
+                val anime = AnimeRaw("Death Note")
+
+                // when
+                anime.addSynonyms(
+                    "Cader${input}no da Mor${input}te",
+                )
+
+                // then
+                assertThat(anime.synonyms).hasSize(1)
+                assertThat(anime.synonyms.first()).isEqualTo("Caderno da Morte")
+            }
+
+            @Test
+            fun `remove leading whitespace from synonyms`() {
+                // given
+                val expectedTitleOne = "Death Note"
+                val expectedTitleTwo = "Made in Abyss"
+                val anime = AnimeRaw("Title")
+
+                // when
+                anime.addSynonyms(
+                    " $expectedTitleOne",
+                    " $expectedTitleTwo",
+                )
+
+                // then
+                assertThat(anime.synonyms).containsExactlyInAnyOrder(
+                    expectedTitleOne,
+                    expectedTitleTwo,
+                )
+            }
+
+            @Test
+            fun `remove tailing whitespace from synonyms`() {
+                // given
+                val expectedTitleOne = "Death Note"
+                val expectedTitleTwo = "Made in Abyss"
+                val anime = AnimeRaw("Title")
+
+                // when
+                anime.addSynonyms(
+                    "$expectedTitleOne ",
+                    "$expectedTitleTwo ",
+                )
+
+                // then
+                assertThat(anime.synonyms).containsExactlyInAnyOrder(
+                    expectedTitleOne,
+                    expectedTitleTwo,
+                )
+            }
+
+            @Test
+            fun `replace multiple whitespaces with a single whitespace in synonyms`() {
+                // given
+                val expectedTitleOne = "Death Note"
+                val expectedTitleTwo = "Made in Abyss"
+                val anime = AnimeRaw("Title")
+
+                // when
+                anime.addSynonyms(
+                    "Death        Note",
+                    "Made      in        Abyss",
+                )
+
+                // then
+                assertThat(anime.synonyms).containsExactlyInAnyOrder(
+                    expectedTitleOne,
+                    expectedTitleTwo,
+                )
             }
 
             @Test
@@ -951,144 +1084,1320 @@ internal class AnimeRawTest {
                     title.lowercase(),
                 )
             }
+        }
+    }
+
+    @Nested
+    inner class StudiosTest {
+
+        @Test
+        fun `ensure that you cannot directly modify the internal hashset`() {
+            // given
+            val anime = AnimeRaw(
+                _title = "test",
+                _studios = hashSetOf(
+                    "studio 1",
+                    "studio 2",
+                ),
+            )
+
+            // when
+            anime.studios.clear()
+
+            // then
+            assertThat(anime.studios).isNotEmpty()
+        }
+
+        @Nested
+        inner class AddStudiosConstructorTests {
 
             @Test
-            fun `remove leading whitespace from synonyms`() {
+            fun `studios added by constructor are set to lower case`() {
                 // given
-                val expectedTitleOne = "Death Note"
-                val expectedTitleTwo = "Made in Abyss"
-                val anime = AnimeRaw("Title")
+                val studio = "EXAMPLE"
 
                 // when
-                anime.addSynonyms(
-                    " $expectedTitleOne",
-                    " $expectedTitleTwo",
+                val result = AnimeRaw(
+                    _title = "Test",
+                    _studios = hashSetOf(
+                        studio,
+                    ),
                 )
 
                 // then
-                assertThat(anime.synonyms).containsExactlyInAnyOrder(
-                    expectedTitleOne,
-                    expectedTitleTwo,
+                assertThat(result.studios).containsExactly(
+                    studio.lowercase(),
                 )
             }
 
             @Test
-            fun `remove tailing whitespace from synonyms`() {
+            fun `remove leading whitespace from studios`() {
                 // given
-                val expectedTitleOne = "Death Note"
-                val expectedTitleTwo = "Made in Abyss"
-                val anime = AnimeRaw("Title")
+                val expectedStudio = "example"
 
                 // when
-                anime.addSynonyms(
-                    "$expectedTitleOne ",
-                    "$expectedTitleTwo ",
+                val result = AnimeRaw(
+                    _title = "Test",
+                    _studios = hashSetOf(
+                        " $expectedStudio",
+                    ),
                 )
 
                 // then
-                assertThat(anime.synonyms).containsExactlyInAnyOrder(
-                    expectedTitleOne,
-                    expectedTitleTwo,
+                assertThat(result.studios).containsExactly(
+                    expectedStudio,
                 )
             }
 
             @Test
-            fun `replace multiple whitespaces with a single whitespace in synonyms`() {
+            fun `remove tailing whitespace from studios`() {
                 // given
-                val expectedTitleOne = "Death Note"
-                val expectedTitleTwo = "Made in Abyss"
-                val anime = AnimeRaw("Title")
+                val expectedStudio = "example"
 
                 // when
-                anime.addSynonyms(
-                    "Death        Note",
-                    "Made      in        Abyss",
+                val result = AnimeRaw(
+                    _title = "Test",
+                    _studios = hashSetOf(
+                        "$expectedStudio ",
+                    ),
                 )
 
                 // then
-                assertThat(anime.synonyms).containsExactlyInAnyOrder(
-                    expectedTitleOne,
-                    expectedTitleTwo,
+                assertThat(result.studios).containsExactly(
+                    expectedStudio,
                 )
             }
 
             @Test
-            fun `replace tab character with whitespace in synonyms`() {
+            fun `replace multiple whitespaces with a single whitespace in studios`() {
                 // given
-                val expectedTitleOne = "Death Note"
-                val expectedTitleTwo = "Made in Abyss"
-                val anime = AnimeRaw("Title")
+                val expectedStudio = "bibury animation studios"
 
                 // when
-                anime.addSynonyms(
-                    "Death\tNote",
-                    "Made\tin\tAbyss",
+                val result = AnimeRaw(
+                    _title = "Test",
+                    _studios = hashSetOf(
+                        "bibury       animation     studios",
+                    ),
                 )
 
                 // then
-                assertThat(anime.synonyms).containsExactlyInAnyOrder(
-                    expectedTitleOne,
-                    expectedTitleTwo,
+                assertThat(result.studios).containsExactly(
+                    expectedStudio,
+                )
+            }
+
+            @ParameterizedTest
+            @ValueSource(strings = [
+                "",
+                "   ",
+                "\u00A0",
+                "\u202F",
+                "\u200A",
+                "\u205F",
+                "\u2000",
+                "\u2001",
+                "\u2002",
+                "\u2003",
+                "\u2004",
+                "\u2005",
+                "\u2006",
+                "\u2007",
+                "\u2008",
+                "\u2009",
+                "\uFEFF",
+                "\u180E",
+                "\u2060",
+                "\u200D",
+                "\u0090",
+                "\u200C",
+                "\u200B",
+                "\u00AD",
+                "\u000C",
+                "\u2028",
+                "\r",
+                "\n",
+                "\t",
+            ])
+            fun `don't add studios if it's a blank string`(input: String) {
+                // when
+                val result = AnimeRaw(
+                    _title = "Test",
+                    _studios = hashSetOf(
+                        "$input $input",
+                    ),
+                )
+
+                // then
+                assertThat(result.studios).isEmpty()
+            }
+
+            @ParameterizedTest
+            @ValueSource(strings = [
+                "\u00A0",
+                "\u202F",
+                "\u200A",
+                "\u205F",
+                "\u2000",
+                "\u2001",
+                "\u2002",
+                "\u2003",
+                "\u2004",
+                "\u2005",
+                "\u2006",
+                "\u2007",
+                "\u2008",
+                "\u2009",
+            ])
+            fun `normalize visible whitespaces to a normale whitespace`(input: String) {
+                // given
+                val expectedStudio = "bibury animation studios"
+
+                // when
+                val result = AnimeRaw(
+                    _title = "Test",
+                    _studios = hashSetOf(
+                        "bibury${input}animation${input}studios",
+                    ),
+                )
+
+                // then
+                assertThat(result.studios).containsExactly(
+                    expectedStudio,
+                )
+            }
+
+            @ParameterizedTest
+            @ValueSource(strings = [
+                "\uFEFF",
+                "\u180E",
+                "\u2060",
+                "\u200D",
+                "\u0090",
+                "\u200C",
+                "\u200B",
+                "\u00AD",
+                "\u000C",
+                "\u2028",
+            ])
+            fun `remove non-visible whitespaces`(input: String) {
+                // given
+                val expectedStudio = "bibury animation studios"
+
+                // when
+                val result = AnimeRaw(
+                    _title = "Test",
+                    _studios = hashSetOf(
+                        "bi${input}bury ani${input}mation stu${input}dios",
+                    ),
+                )
+
+                // then
+                assertThat(result.studios).containsExactly(
+                    expectedStudio,
                 )
             }
 
             @Test
-            fun `replace line feed character with whitespace in synonyms`() {
+            fun `prevent duplicates`() {
                 // given
-                val expectedTitleOne = "Death Note"
-                val expectedTitleTwo = "Made in Abyss"
-                val anime = AnimeRaw("Title")
+                val studio1 = "a studio"
+                val studio2 = "before the other"
 
                 // when
-                anime.addSynonyms(
-                    "Death\nNote",
-                    "Made\nin\nAbyss",
+                val result = AnimeRaw(
+                    _title = "Test",
+                    _studios = hashSetOf(
+                        studio2,
+                        studio1,
+                        studio1,
+                        studio2,
+                    ),
                 )
 
                 // then
-                assertThat(anime.synonyms).containsExactlyInAnyOrder(
-                    expectedTitleOne,
-                    expectedTitleTwo,
+                assertThat(result.studios).hasSize(2)
+                assertThat(result.studios).containsExactlyInAnyOrder(
+                    studio1,
+                    studio2,
+                )
+            }
+
+            @ParameterizedTest
+            @ValueSource(strings = [" Death Note", "Death Note ", "  Death   Note  ", "DEATH NOTE", "", " ", "    ", "\u200C"])
+            fun `doesn't fix tags if activateChecks is false`(value: String) {
+                // when
+                val obj = AnimeRaw(
+                    _title = "デスノート",
+                    _studios = hashSetOf(
+                        value,
+                    ),
+                    activateChecks = false,
+                )
+
+                // then
+                assertThat(obj.studios).containsExactlyInAnyOrder(
+                    value,
+                )
+            }
+        }
+
+        @Nested
+        inner class AddStudiosTests {
+
+            @Test
+            fun `studios added are set to lower case`() {
+                // given
+                val studio = "EXAMPLE"
+                val anime = AnimeRaw("Test")
+
+                // when
+                anime.addStudios(listOf(
+                    studio,
+                ))
+
+                // then
+                assertThat(anime.studios).containsExactly(
+                    studio.lowercase(),
                 )
             }
 
             @Test
-            fun `replace carriage return line feed character with whitespace in synonyms`() {
+            fun `remove leading whitespace from studios`() {
                 // given
-                val expectedTitleOne = "Death Note"
-                val expectedTitleTwo = "Made in Abyss"
-                val anime = AnimeRaw("Title")
+                val expectedStudio = "example"
+                val anime = AnimeRaw("Test")
 
                 // when
-                anime.addSynonyms(
-                    "Death\r\nNote",
-                    "Made\r\nin\r\nAbyss",
-                )
+                anime.addStudios(listOf(
+                    " $expectedStudio",
+                ))
 
                 // then
-                assertThat(anime.synonyms).containsExactlyInAnyOrder(
-                    expectedTitleOne,
-                    expectedTitleTwo,
+                assertThat(anime.studios).containsExactly(
+                    expectedStudio,
                 )
             }
 
             @Test
-            fun `replace zero-width non-joiner character in synonyms`() {
+            fun `remove tailing whitespace from studios`() {
                 // given
-                val expectedTitleOne = "DeathNote"
-                val expectedTitleTwo = "MadeinAbyss"
-                val anime = AnimeRaw("Title")
+                val expectedStudios = "example"
+                val anime = AnimeRaw("Test")
 
                 // when
-                anime.addSynonyms(
-                    "Death\u200CNote",
-                    "Made\u200Cin\u200CAbyss",
+                anime.addStudios(listOf(
+                    "$expectedStudios ",
+                ))
+
+                // then
+                assertThat(anime.studios).containsExactly(
+                    expectedStudios,
+                )
+            }
+
+            @Test
+            fun `replace multiple whitespaces with a single whitespace in studios`() {
+                // given
+                val expectedStudio = "bibury animation studios"
+                val anime = AnimeRaw("Test")
+
+                // when
+                anime.addStudios(listOf(
+                    "bibury    animation     studios",
+                ))
+
+                // then
+                assertThat(anime.studios).containsExactly(
+                    expectedStudio,
+                )
+            }
+
+            @ParameterizedTest
+            @ValueSource(strings = [
+                "",
+                "   ",
+                "\u00A0",
+                "\u202F",
+                "\u200A",
+                "\u205F",
+                "\u2000",
+                "\u2001",
+                "\u2002",
+                "\u2003",
+                "\u2004",
+                "\u2005",
+                "\u2006",
+                "\u2007",
+                "\u2008",
+                "\u2009",
+                "\uFEFF",
+                "\u180E",
+                "\u2060",
+                "\u200D",
+                "\u0090",
+                "\u200C",
+                "\u200B",
+                "\u00AD",
+                "\u000C",
+                "\u2028",
+                "\r",
+                "\n",
+                "\t",
+            ])
+            fun `don't add studios if it's a blank string`(input: String) {
+                // given
+                val anime = AnimeRaw("Test")
+
+                // when
+                anime.addStudios(listOf(
+                    "$input $input",
+                ))
+
+                // then
+                assertThat(anime.studios).isEmpty()
+            }
+
+            @ParameterizedTest
+            @ValueSource(strings = [
+                "\u00A0",
+                "\u202F",
+                "\u200A",
+                "\u205F",
+                "\u2000",
+                "\u2001",
+                "\u2002",
+                "\u2003",
+                "\u2004",
+                "\u2005",
+                "\u2006",
+                "\u2007",
+                "\u2008",
+                "\u2009",
+            ])
+            fun `normalize visible whitespaces to a normale whitespace`(input: String) {
+                // given
+                val expectedStudio = "bibury animation studios"
+                val anime = AnimeRaw("Test")
+
+                // when
+                anime.addStudios(listOf(
+                    "bibury${input}animation${input}studios",
+                ))
+
+                // then
+                assertThat(anime.studios).containsExactly(
+                    expectedStudio,
+                )
+            }
+
+            @ParameterizedTest
+            @ValueSource(strings = [
+                "\uFEFF",
+                "\u180E",
+                "\u2060",
+                "\u200D",
+                "\u0090",
+                "\u200C",
+                "\u200B",
+                "\u00AD",
+                "\u000C",
+                "\u2028",
+            ])
+            fun `remove non-visible whitespaces`(input: String) {
+                // given
+                val expectedStudio = "bibury animation studios"
+                val anime = AnimeRaw("Test")
+
+                // when
+                anime.addStudios(listOf(
+                    "bi${input}bury ani${input}mation stu${input}dios",
+                ))
+
+                // then
+                assertThat(anime.studios).containsExactly(
+                    expectedStudio,
+                )
+            }
+
+            @Test
+            fun `prevent duplicates`() {
+                // given
+                val studio1 = "a studio"
+                val studio2 = "before the other"
+                val anime = AnimeRaw("Test")
+
+                // when
+                anime.addStudios(listOf(
+                    studio2,
+                    studio1,
+                    studio1,
+                    studio2,
+                ))
+
+                // then
+                assertThat(anime.studios).hasSize(2)
+                assertThat(anime.studios).containsExactlyInAnyOrder(
+                    studio1,
+                    studio2,
+                )
+            }
+        }
+
+        @Nested
+        inner class AddStudiosVarargTests {
+
+            @Test
+            fun `studios added are set to lower case`() {
+                // given
+                val studio = "EXAMPLE"
+                val anime = AnimeRaw("Test")
+
+                // when
+                anime.addStudios(studio)
+
+                // then
+                assertThat(anime.studios).containsExactly(
+                    studio.lowercase(),
+                )
+            }
+
+            @Test
+            fun `remove leading whitespace from studios`() {
+                // given
+                val expectedStudio = "example"
+                val anime = AnimeRaw("Test")
+
+                // when
+                anime.addStudios(
+                    " $expectedStudio",
                 )
 
                 // then
-                assertThat(anime.synonyms).containsExactlyInAnyOrder(
-                    expectedTitleOne,
-                    expectedTitleTwo,
+                assertThat(anime.studios).containsExactly(
+                    expectedStudio,
+                )
+            }
+
+            @Test
+            fun `remove tailing whitespace from studios`() {
+                // given
+                val expectedStudio = "example"
+                val anime = AnimeRaw("Test")
+
+                // when
+                anime.addStudios(
+                    "$expectedStudio ",
+                )
+
+                // then
+                assertThat(anime.studios).containsExactly(
+                    expectedStudio,
+                )
+            }
+
+            @Test
+            fun `replace multiple whitespaces with a single whitespace in studios`() {
+                // given
+                val expectedStudio = "bibury animation studios"
+                val anime = AnimeRaw("Test")
+
+                // when
+                anime.addStudios(
+                    "bibury    animation    studios",
+                )
+
+                // then
+                assertThat(anime.studios).containsExactly(
+                    expectedStudio,
+                )
+            }
+
+            @ParameterizedTest
+            @ValueSource(strings = [
+                "",
+                "   ",
+                "\u00A0",
+                "\u202F",
+                "\u200A",
+                "\u205F",
+                "\u2000",
+                "\u2001",
+                "\u2002",
+                "\u2003",
+                "\u2004",
+                "\u2005",
+                "\u2006",
+                "\u2007",
+                "\u2008",
+                "\u2009",
+                "\uFEFF",
+                "\u180E",
+                "\u2060",
+                "\u200D",
+                "\u0090",
+                "\u200C",
+                "\u200B",
+                "\u00AD",
+                "\u000C",
+                "\u2028",
+                "\r",
+                "\n",
+                "\t",
+            ])
+            fun `don't add studios if it's a blank string`(input: String) {
+                // given
+                val anime = AnimeRaw("Test")
+
+                // when
+                anime.addStudios(
+                    "$input $input",
+                )
+
+                // then
+                assertThat(anime.studios).isEmpty()
+            }
+
+            @ParameterizedTest
+            @ValueSource(strings = [
+                "\u00A0",
+                "\u202F",
+                "\u200A",
+                "\u205F",
+                "\u2000",
+                "\u2001",
+                "\u2002",
+                "\u2003",
+                "\u2004",
+                "\u2005",
+                "\u2006",
+                "\u2007",
+                "\u2008",
+                "\u2009",
+            ])
+            fun `normalize visible whitespaces to a normale whitespace`(input: String) {
+                // given
+                val expectedStudio = "bibury animation studios"
+                val anime = AnimeRaw("Test")
+
+                // when
+                anime.addStudios(
+                    "bibury${input}animation${input}studios",
+                )
+
+                // then
+                assertThat(anime.studios).containsExactly(
+                    expectedStudio,
+                )
+            }
+
+            @ParameterizedTest
+            @ValueSource(strings = [
+                "\uFEFF",
+                "\u180E",
+                "\u2060",
+                "\u200D",
+                "\u0090",
+                "\u200C",
+                "\u200B",
+                "\u00AD",
+                "\u000C",
+                "\u2028",
+            ])
+            fun `remove non-visible whitespaces`(input: String) {
+                // given
+                val expectedStudio = "bibury animation studios"
+                val anime = AnimeRaw("Test")
+
+                // when
+                anime.addStudios(
+                    "bi${input}bury ani${input}mation stu${input}dios",
+                )
+
+                // then
+                assertThat(anime.studios).containsExactly(
+                    expectedStudio,
+                )
+            }
+
+            @Test
+            fun `prevent duplicates`() {
+                // given
+                val studio1 = "a studio"
+                val studio2 = "before the other"
+                val anime = AnimeRaw("Test")
+
+                // when
+                anime.addStudios(
+                    studio2,
+                    studio1,
+                    studio1,
+                    studio2,
+                )
+
+                // then
+                assertThat(anime.studios).hasSize(2)
+                assertThat(anime.studios).containsExactlyInAnyOrder(
+                    studio1,
+                    studio2,
+                )
+            }
+        }
+    }
+
+    @Nested
+    inner class ProducersTest {
+
+        @Test
+        fun `ensure that you cannot directly modify the internal hashset`() {
+            // given
+            val anime = AnimeRaw(
+                _title = "test",
+                _producers = hashSetOf(
+                    "producer 1",
+                    "producer 2",
+                ),
+            )
+
+            // when
+            anime.producers.clear()
+
+            // then
+            assertThat(anime.producers).isNotEmpty()
+        }
+
+        @Nested
+        inner class AddProducersConstructorTests {
+
+            @Test
+            fun `producers added by constructor are set to lower case`() {
+                // given
+                val producer = "EXAMPLE"
+
+                // when
+                val result = AnimeRaw(
+                    _title = "Test",
+                    _producers = hashSetOf(
+                        producer,
+                    ),
+                )
+
+                // then
+                assertThat(result.producers).containsExactly(
+                    producer.lowercase(),
+                )
+            }
+
+            @Test
+            fun `remove leading whitespace from producers`() {
+                // given
+                val expectedProducer = "example"
+
+                // when
+                val result = AnimeRaw(
+                    _title = "Test",
+                    _producers = hashSetOf(
+                        " $expectedProducer",
+                    ),
+                )
+
+                // then
+                assertThat(result.producers).containsExactly(
+                    expectedProducer,
+                )
+            }
+
+            @Test
+            fun `remove tailing whitespace from producers`() {
+                // given
+                val expectedProducer = "example"
+
+                // when
+                val result = AnimeRaw(
+                    _title = "Test",
+                    _producers = hashSetOf(
+                        "$expectedProducer ",
+                    ),
+                )
+
+                // then
+                assertThat(result.producers).containsExactly(
+                    expectedProducer,
+                )
+            }
+
+            @Test
+            fun `replace multiple whitespaces with a single whitespace in producers`() {
+                // given
+                val expectedProducer = "pony canyon"
+
+                // when
+                val result = AnimeRaw(
+                    _title = "Test",
+                    _producers = hashSetOf(
+                        "pony         canyon",
+                    ),
+                )
+
+                // then
+                assertThat(result.producers).containsExactly(
+                    expectedProducer,
+                )
+            }
+
+            @ParameterizedTest
+            @ValueSource(strings = [
+                "",
+                "   ",
+                "\u00A0",
+                "\u202F",
+                "\u200A",
+                "\u205F",
+                "\u2000",
+                "\u2001",
+                "\u2002",
+                "\u2003",
+                "\u2004",
+                "\u2005",
+                "\u2006",
+                "\u2007",
+                "\u2008",
+                "\u2009",
+                "\uFEFF",
+                "\u180E",
+                "\u2060",
+                "\u200D",
+                "\u0090",
+                "\u200C",
+                "\u200B",
+                "\u00AD",
+                "\u000C",
+                "\u2028",
+                "\r",
+                "\n",
+                "\t",
+            ])
+            fun `don't add producer if it's a blank string`(input: String) {
+                // when
+                val result = AnimeRaw(
+                    _title = "Test",
+                    _producers = hashSetOf(
+                        "$input $input",
+                    ),
+                )
+
+                // then
+                assertThat(result.producers).isEmpty()
+            }
+
+            @ParameterizedTest
+            @ValueSource(strings = [
+                "\u00A0",
+                "\u202F",
+                "\u200A",
+                "\u205F",
+                "\u2000",
+                "\u2001",
+                "\u2002",
+                "\u2003",
+                "\u2004",
+                "\u2005",
+                "\u2006",
+                "\u2007",
+                "\u2008",
+                "\u2009",
+            ])
+            fun `normalize visible whitespaces to a normale whitespace`(input: String) {
+                // given
+                val expectedProducer = "pony canyon"
+
+                // when
+                val result = AnimeRaw(
+                    _title = "Test",
+                    _producers = hashSetOf(
+                        "pony${input}canyon",
+                    ),
+                )
+
+                // then
+                assertThat(result.producers).containsExactly(
+                    expectedProducer,
+                )
+            }
+
+            @ParameterizedTest
+            @ValueSource(strings = [
+                "\uFEFF",
+                "\u180E",
+                "\u2060",
+                "\u200D",
+                "\u0090",
+                "\u200C",
+                "\u200B",
+                "\u00AD",
+                "\u000C",
+                "\u2028",
+            ])
+            fun `remove non-visible whitespaces`(input: String) {
+                // given
+                val expectedProducer = "pony canyon"
+
+                // when
+                val result = AnimeRaw(
+                    _title = "Test",
+                    _producers = hashSetOf(
+                        "po${input}ny can${input}yon",
+                    ),
+                )
+
+                // then
+                assertThat(result.producers).containsExactly(
+                    expectedProducer,
+                )
+            }
+
+            @Test
+            fun `prevent duplicates`() {
+                // given
+                val producer1 = "a producer"
+                val producer2 = "before the other"
+
+                // when
+                val result = AnimeRaw(
+                    _title = "Test",
+                    _producers = hashSetOf(
+                        producer2,
+                        producer1,
+                        producer1,
+                        producer2,
+                    ),
+                )
+
+                // then
+                assertThat(result.producers).hasSize(2)
+                assertThat(result.producers).containsExactlyInAnyOrder(
+                    producer1,
+                    producer2,
+                )
+            }
+
+            @ParameterizedTest
+            @ValueSource(strings = [" Death Note", "Death Note ", "  Death   Note  ", "DEATH NOTE", "", " ", "    ", "\u200C"])
+            fun `doesn't fix tags if activateChecks is false`(value: String) {
+                // when
+                val obj = AnimeRaw(
+                    _title = "デスノート",
+                    _producers = hashSetOf(
+                        value,
+                    ),
+                    activateChecks = false,
+                )
+
+                // then
+                assertThat(obj.producers).containsExactlyInAnyOrder(
+                    value,
+                )
+            }
+        }
+
+        @Nested
+        inner class AddProducersTests {
+
+            @Test
+            fun `producers added are set to lower case`() {
+                // given
+                val producer = "EXAMPLE"
+                val anime = AnimeRaw("Test")
+
+                // when
+                anime.addProducers(listOf(
+                    producer,
+                ))
+
+                // then
+                assertThat(anime.producers).containsExactly(
+                    producer.lowercase(),
+                )
+            }
+
+            @Test
+            fun `remove leading whitespace from producers`() {
+                // given
+                val expectedProducer = "example"
+                val anime = AnimeRaw("Test")
+
+                // when
+                anime.addProducers(listOf(
+                    " $expectedProducer",
+                ))
+
+                // then
+                assertThat(anime.producers).containsExactly(
+                    expectedProducer,
+                )
+            }
+
+            @Test
+            fun `remove tailing whitespace from producers`() {
+                // given
+                val expectedProducer = "example"
+                val anime = AnimeRaw("Test")
+
+                // when
+                anime.addProducers(listOf(
+                    "$expectedProducer ",
+                ))
+
+                // then
+                assertThat(anime.producers).containsExactly(
+                    expectedProducer,
+                )
+            }
+
+            @Test
+            fun `replace multiple whitespaces with a single whitespace in producers`() {
+                // given
+                val expectedProducer = "pony canyon"
+                val anime = AnimeRaw("Test")
+
+                // when
+                anime.addProducers(listOf(
+                    "pony           canyon",
+                ))
+
+                // then
+                assertThat(anime.producers).containsExactly(
+                    expectedProducer,
+                )
+            }
+
+            @ParameterizedTest
+            @ValueSource(strings = [
+                "",
+                "   ",
+                "\u00A0",
+                "\u202F",
+                "\u200A",
+                "\u205F",
+                "\u2000",
+                "\u2001",
+                "\u2002",
+                "\u2003",
+                "\u2004",
+                "\u2005",
+                "\u2006",
+                "\u2007",
+                "\u2008",
+                "\u2009",
+                "\uFEFF",
+                "\u180E",
+                "\u2060",
+                "\u200D",
+                "\u0090",
+                "\u200C",
+                "\u200B",
+                "\u00AD",
+                "\u000C",
+                "\u2028",
+                "\r",
+                "\n",
+                "\t",
+            ])
+            fun `don't add studios if it's a blank string`(input: String) {
+                // given
+                val anime = AnimeRaw("Test")
+
+                // when
+                anime.addProducers(listOf(
+                    "$input $input",
+                ))
+
+                // then
+                assertThat(anime.producers).isEmpty()
+            }
+
+            @ParameterizedTest
+            @ValueSource(strings = [
+                "\u00A0",
+                "\u202F",
+                "\u200A",
+                "\u205F",
+                "\u2000",
+                "\u2001",
+                "\u2002",
+                "\u2003",
+                "\u2004",
+                "\u2005",
+                "\u2006",
+                "\u2007",
+                "\u2008",
+                "\u2009",
+            ])
+            fun `normalize visible whitespaces to a normale whitespace`(input: String) {
+                // given
+                val expectedProducer = "pony canyon"
+                val anime = AnimeRaw("Test")
+
+                // when
+                anime.addProducers(listOf(
+                    "pony${input}canyon",
+                ))
+
+                // then
+                assertThat(anime.producers).containsExactly(
+                    expectedProducer,
+                )
+            }
+
+            @ParameterizedTest
+            @ValueSource(strings = [
+                "\uFEFF",
+                "\u180E",
+                "\u2060",
+                "\u200D",
+                "\u0090",
+                "\u200C",
+                "\u200B",
+                "\u00AD",
+                "\u000C",
+                "\u2028",
+            ])
+            fun `remove non-visible whitespaces`(input: String) {
+                // given
+                val expectedProducer = "pony canyon"
+                val anime = AnimeRaw("Test")
+
+                // when
+                anime.addProducers(listOf(
+                    "po${input}ny can${input}yon",
+                ))
+
+                // then
+                assertThat(anime.producers).containsExactly(
+                    expectedProducer,
+                )
+            }
+
+            @Test
+            fun `prevent duplicates`() {
+                // given
+                val producer1 = "a producer"
+                val producer2 = "before the other"
+                val anime = AnimeRaw("Test")
+
+                // when
+                anime.addProducers(listOf(
+                    producer2,
+                    producer1,
+                    producer1,
+                    producer2,
+                ))
+
+                // then
+                assertThat(anime.producers).hasSize(2)
+                assertThat(anime.producers).containsExactlyInAnyOrder(
+                    producer1,
+                    producer2,
+                )
+            }
+        }
+
+        @Nested
+        inner class AddProducersVarargTests {
+
+            @Test
+            fun `producers added are set to lower case`() {
+                // given
+                val producer = "EXAMPLE"
+                val anime = AnimeRaw("Test")
+
+                // when
+                anime.addProducers(producer)
+
+                // then
+                assertThat(anime.producers).containsExactly(
+                    producer.lowercase(),
+                )
+            }
+
+            @Test
+            fun `remove leading whitespace from producers`() {
+                // given
+                val expectedProducer = "example"
+                val anime = AnimeRaw("Test")
+
+                // when
+                anime.addProducers(
+                    " $expectedProducer",
+                )
+
+                // then
+                assertThat(anime.producers).containsExactly(
+                    expectedProducer,
+                )
+            }
+
+            @Test
+            fun `remove tailing whitespace from producers`() {
+                // given
+                val expectedProducer = "example"
+                val anime = AnimeRaw("Test")
+
+                // when
+                anime.addProducers(
+                    "$expectedProducer ",
+                )
+
+                // then
+                assertThat(anime.producers).containsExactly(
+                    expectedProducer,
+                )
+            }
+
+            @Test
+            fun `replace multiple whitespaces with a single whitespace in producers`() {
+                // given
+                val expectedProducer = "pony canyon"
+                val anime = AnimeRaw("Test")
+
+                // when
+                anime.addProducers(
+                    "pony        canyon",
+                )
+
+                // then
+                assertThat(anime.producers).containsExactly(
+                    expectedProducer,
+                )
+            }
+
+            @ParameterizedTest
+            @ValueSource(strings = [
+                "",
+                "   ",
+                "\u00A0",
+                "\u202F",
+                "\u200A",
+                "\u205F",
+                "\u2000",
+                "\u2001",
+                "\u2002",
+                "\u2003",
+                "\u2004",
+                "\u2005",
+                "\u2006",
+                "\u2007",
+                "\u2008",
+                "\u2009",
+                "\uFEFF",
+                "\u180E",
+                "\u2060",
+                "\u200D",
+                "\u0090",
+                "\u200C",
+                "\u200B",
+                "\u00AD",
+                "\u000C",
+                "\u2028",
+                "\r",
+                "\n",
+                "\t",
+            ])
+            fun `don't add producers if it's a blank string`(input: String) {
+                // given
+                val anime = AnimeRaw("Test")
+
+                // when
+                anime.addProducers(
+                    "$input $input",
+                )
+
+                // then
+                assertThat(anime.producers).isEmpty()
+            }
+
+            @ParameterizedTest
+            @ValueSource(strings = [
+                "\u00A0",
+                "\u202F",
+                "\u200A",
+                "\u205F",
+                "\u2000",
+                "\u2001",
+                "\u2002",
+                "\u2003",
+                "\u2004",
+                "\u2005",
+                "\u2006",
+                "\u2007",
+                "\u2008",
+                "\u2009",
+            ])
+            fun `normalize visible whitespaces to a normale whitespace`(input: String) {
+                // given
+                val expectedProducer = "pony canyon"
+                val anime = AnimeRaw("Test")
+
+                // when
+                anime.addProducers(
+                    "pony${input}canyon",
+                )
+
+                // then
+                assertThat(anime.producers).containsExactly(
+                    expectedProducer,
+                )
+            }
+
+            @ParameterizedTest
+            @ValueSource(strings = [
+                "\uFEFF",
+                "\u180E",
+                "\u2060",
+                "\u200D",
+                "\u0090",
+                "\u200C",
+                "\u200B",
+                "\u00AD",
+                "\u000C",
+                "\u2028",
+            ])
+            fun `remove non-visible whitespaces`(input: String) {
+                // given
+                val expectedProducer = "pony canyon"
+                val anime = AnimeRaw("Test")
+
+                // when
+                anime.addProducers(
+                    "po${input}ny can${input}yon",
+                )
+
+                // then
+                assertThat(anime.producers).containsExactly(
+                    expectedProducer,
+                )
+            }
+
+            @Test
+            fun `prevent duplicates`() {
+                // given
+                val producer1 = "a producer"
+                val producer2 = "before the other"
+                val anime = AnimeRaw("Test")
+
+                // when
+                anime.addProducers(
+                    producer2,
+                    producer1,
+                    producer1,
+                    producer2,
+                )
+
+                // then
+                assertThat(anime.producers).hasSize(2)
+                assertThat(anime.producers).containsExactlyInAnyOrder(
+                    producer1,
+                    producer2,
                 )
             }
         }
@@ -2298,6 +3607,116 @@ internal class AnimeRawTest {
         }
 
         @Test
+        fun `is equal if studios are the same`() {
+            // given
+            val title  =  "Death Note"
+            val a = AnimeRaw(
+                _title =  title,
+                _studios = hashSetOf(
+                    "studio 1",
+                    "studio 2",
+                ),
+            )
+
+            val b = AnimeRaw(
+                _title =  title,
+                _studios = hashSetOf(
+                    "studio 1",
+                    "studio 2",
+                ),
+            )
+
+            // when
+            val result = a == b
+
+            // then
+            assertThat(result).isTrue()
+            assertThat(a.hashCode()).isEqualTo(b.hashCode())
+        }
+
+        @Test
+        fun `is not equal if studios are different`() {
+            // given
+            val title  =  "Death Note"
+            val a = AnimeRaw(
+                _title =  title,
+                _studios = hashSetOf(
+                    "studio 2",
+                ),
+            )
+
+            val b = AnimeRaw(
+                _title =  title,
+                _studios = hashSetOf(
+                    "studio 1",
+                    "studio 2",
+                ),
+            )
+
+            // when
+            val result = a == b
+
+            // then
+            assertThat(result).isFalse()
+            assertThat(a.hashCode()).isNotEqualTo(b.hashCode())
+        }
+
+        @Test
+        fun `is equal if producers are the same`() {
+            // given
+            val title  =  "Death Note"
+            val a = AnimeRaw(
+                _title =  title,
+                _producers = hashSetOf(
+                    "producer 1",
+                    "producer 2",
+                ),
+            )
+
+            val b = AnimeRaw(
+                _title =  title,
+                _producers = hashSetOf(
+                    "producer 1",
+                    "producer 2",
+                ),
+            )
+
+            // when
+            val result = a == b
+
+            // then
+            assertThat(result).isTrue()
+            assertThat(a.hashCode()).isEqualTo(b.hashCode())
+        }
+
+        @Test
+        fun `is not equal if producers are different`() {
+            // given
+            val title  =  "Death Note"
+            val a = AnimeRaw(
+                _title =  title,
+                _producers = hashSetOf(
+                    "producer 2",
+                ),
+            )
+
+            val b = AnimeRaw(
+                _title =  title,
+                _producers = hashSetOf(
+                    "producer 1",
+                    "producer 2",
+                ),
+            )
+
+            // when
+            val result = a == b
+
+            // then
+            assertThat(result).isFalse()
+            assertThat(a.hashCode()).isNotEqualTo(b.hashCode())
+        }
+
+        @Test
         fun `is not equal if the other object is of a different type`() {
             // given
             val title  =  "Death Note"
@@ -2682,6 +4101,60 @@ internal class AnimeRawTest {
         }
 
         @Test
+        fun `merge studios`() {
+            // given
+            val anime = AnimeRaw(
+                _title =  "Death Note",
+                _studios = hashSetOf(
+                    "studio 1"
+                ),
+            )
+
+            val other = AnimeRaw(
+                _title =  "Death Note",
+                _studios = hashSetOf(
+                    "studio 2",
+                ),
+            )
+
+            // when
+            val result = anime.mergeWith(other)
+
+            // then
+            assertThat(result.studios).containsExactlyInAnyOrder(
+                "studio 1",
+                "studio 2",
+            )
+        }
+
+        @Test
+        fun `merge producers`() {
+            // given
+            val anime = AnimeRaw(
+                _title =  "Death Note",
+                _producers = hashSetOf(
+                    "producer 1"
+                ),
+            )
+
+            val other = AnimeRaw(
+                _title =  "Death Note",
+                _producers = hashSetOf(
+                    "producer 2",
+                ),
+            )
+
+            // when
+            val result = anime.mergeWith(other)
+
+            // then
+            assertThat(result.producers).containsExactlyInAnyOrder(
+                "producer 1",
+                "producer 2",
+            )
+        }
+
+        @Test
         fun `merge scores`() {
             // given
             val title =  "Death Note"
@@ -2756,26 +4229,26 @@ internal class AnimeRawTest {
     @Nested
     inner class TagsTest {
 
+        @Test
+        fun `ensure that you cannot directly modify the internal hashset`() {
+            // given
+            val anime = AnimeRaw(
+                _title = "test",
+                _tags = hashSetOf(
+                    "thriller",
+                    "acion",
+                ),
+            )
+
+            // when
+            anime.tags.clear()
+
+            // then
+            assertThat(anime.tags).isNotEmpty()
+        }
+
         @Nested
         inner class AddTagsConstructorTests {
-
-            @Test
-            fun `ensure that you cannot directly modify the internal hashset`() {
-                // given
-                val anime = AnimeRaw(
-                    _title = "test",
-                    _tags = hashSetOf(
-                        "thriller",
-                        "acion",
-                    ),
-                )
-
-                // when
-                anime.tags.clear()
-
-                // then
-                assertThat(anime.tags).isNotEmpty()
-            }
 
             @Test
             fun `tags added by constructor are set to lower case`() {
@@ -2797,7 +4270,7 @@ internal class AnimeRawTest {
             }
 
             @Test
-            fun `remove leading whitespace from title`() {
+            fun `remove leading whitespace from tags`() {
                 // given
                 val expectedTag = "example"
 
@@ -2816,7 +4289,7 @@ internal class AnimeRawTest {
             }
 
             @Test
-            fun `remove tailing whitespace from title`() {
+            fun `remove tailing whitespace from tags`() {
                 // given
                 val expectedTag = "example"
 
@@ -2835,7 +4308,7 @@ internal class AnimeRawTest {
             }
 
             @Test
-            fun `replace multiple whitespaces with a single whitespace in title`() {
+            fun `replace multiple whitespaces with a single whitespace in tags`() {
                 // given
                 val expectedTag = "slice of life"
 
@@ -2853,70 +4326,44 @@ internal class AnimeRawTest {
                 )
             }
 
-            @Test
-            fun `replace tab character with whitespace in title`() {
-                // given
-                val expectedTag = "slice of life"
-
+            @ParameterizedTest
+            @ValueSource(strings = [
+                "",
+                "   ",
+                "\u00A0",
+                "\u202F",
+                "\u200A",
+                "\u205F",
+                "\u2000",
+                "\u2001",
+                "\u2002",
+                "\u2003",
+                "\u2004",
+                "\u2005",
+                "\u2006",
+                "\u2007",
+                "\u2008",
+                "\u2009",
+                "\uFEFF",
+                "\u180E",
+                "\u2060",
+                "\u200D",
+                "\u0090",
+                "\u200C",
+                "\u200B",
+                "\u00AD",
+                "\u000C",
+                "\u2028",
+                "\r",
+                "\n",
+                "\t",
+            ])
+            fun `must not add blank tag`(input: String) {
                 // when
                 val result = AnimeRaw(
                     _title = "Test",
                     _tags = hashSetOf(
-                        "slice\tof\tlife",
-                    ),
-                )
-
-                // then
-                assertThat(result.tags).containsExactly(
-                    expectedTag,
-                )
-            }
-
-            @Test
-            fun `replace line feed character with whitespace in title`() {
-                // given
-                val expectedTag = "slice of life"
-
-                // when
-                val result = AnimeRaw(
-                    _title = "Test",
-                    _tags = hashSetOf(
-                        "slice\nof\nlife",
-                    ),
-                )
-
-                // then
-                assertThat(result.tags).containsExactly(
-                    expectedTag,
-                )
-            }
-
-            @Test
-            fun `replace carriage return line feed with whitespace in title`() {
-                // given
-                val expectedTag = "slice of life"
-
-                // when
-                val result = AnimeRaw(
-                    _title = "Test",
-                    _tags = hashSetOf(
-                        "slice\r\nof\r\nlife",
-                    ),
-                )
-
-                // then
-                assertThat(result.tags).containsExactly(
-                    expectedTag,
-                )
-            }
-
-            @Test
-            fun `don't add tag if it's an empty string`() {
-                // when
-                val result = AnimeRaw(
-                    _title = "Test",
-                    _tags = hashSetOf(
-                        EMPTY,
+                        "$input $input",
                     ),
                 )
 
@@ -2924,22 +4371,74 @@ internal class AnimeRawTest {
                 assertThat(result.tags).isEmpty()
             }
 
-            @Test
-            fun `don't add tag if it's a blank string`() {
+            @ParameterizedTest
+            @ValueSource(strings = [
+                "\u00A0",
+                "\u202F",
+                "\u200A",
+                "\u205F",
+                "\u2000",
+                "\u2001",
+                "\u2002",
+                "\u2003",
+                "\u2004",
+                "\u2005",
+                "\u2006",
+                "\u2007",
+                "\u2008",
+                "\u2009",
+            ])
+            fun `normalize visible whitespaces to a normale whitespace`(input: String) {
+                // given
+                val expectedTag = "slice of life"
+
                 // when
                 val result = AnimeRaw(
                     _title = "Test",
                     _tags = hashSetOf(
-                        "     ",
+                        "slice${input}of${input}life",
                     ),
                 )
 
                 // then
-                assertThat(result.tags).isEmpty()
+                assertThat(result.tags).containsExactly(
+                    expectedTag,
+                )
+            }
+
+            @ParameterizedTest
+            @ValueSource(strings = [
+                "\uFEFF",
+                "\u180E",
+                "\u2060",
+                "\u200D",
+                "\u0090",
+                "\u200C",
+                "\u200B",
+                "\u00AD",
+                "\u000C",
+                "\u2028",
+            ])
+            fun `remove non-visible whitespaces`(input: String) {
+                // given
+                val expectedTag = "slice of life"
+
+                // when
+                val result = AnimeRaw(
+                    _title = "Test",
+                    _tags = hashSetOf(
+                        "sli${input}ce of li${input}fe",
+                    ),
+                )
+
+                // then
+                assertThat(result.tags).containsExactly(
+                    expectedTag,
+                )
             }
 
             @Test
-            fun `tags is a distinct list`() {
+            fun `prevent duplicates`() {
                 // given
                 val tag1 = "a tag"
                 val tag2 = "before the other"
@@ -3003,7 +4502,7 @@ internal class AnimeRawTest {
             }
 
             @Test
-            fun `remove leading whitespace from title`() {
+            fun `remove leading whitespace from tags`() {
                 // given
                 val expectedTag = "example"
                 val anime = AnimeRaw("Test")
@@ -3020,7 +4519,7 @@ internal class AnimeRawTest {
             }
 
             @Test
-            fun `remove tailing whitespace from title`() {
+            fun `remove tailing whitespace from tags`() {
                 // given
                 val expectedTag = "example"
                 val anime = AnimeRaw("Test")
@@ -3037,7 +4536,7 @@ internal class AnimeRawTest {
             }
 
             @Test
-            fun `replace multiple whitespaces with a single whitespace in title`() {
+            fun `replace multiple whitespaces with a single whitespace in tags`() {
                 // given
                 val expectedTag = "slice of life"
                 val anime = AnimeRaw("Test")
@@ -3053,87 +4552,115 @@ internal class AnimeRawTest {
                 )
             }
 
-            @Test
-            fun `replace tab character with whitespace in title`() {
-                // given
-                val expectedTag = "slice of life"
-                val anime = AnimeRaw("Test")
-
-                // when
-                anime.addTags(listOf(
-                    "slice\tof\tlife",
-                ))
-
-                // then
-                assertThat(anime.tags).containsExactly(
-                    expectedTag,
-                )
-            }
-
-            @Test
-            fun `replace line feed character with whitespace in title`() {
-                // given
-                val expectedTag = "slice of life"
-                val anime = AnimeRaw("Test")
-
-                // when
-                anime.addTags(listOf(
-                    "slice\nof\nlife",
-                ))
-
-                // then
-                assertThat(anime.tags).containsExactly(
-                    expectedTag,
-                )
-            }
-
-            @Test
-            fun `replace carriage return line feed with whitespace in title`() {
-                // given
-                val expectedTag = "slice of life"
-                val anime = AnimeRaw("Test")
-
-                // when
-                anime.addTags(listOf(
-                    "slice\r\nof\r\nlife",
-                ))
-
-                // then
-                assertThat(anime.tags).containsExactly(
-                    expectedTag,
-                )
-            }
-
-            @Test
-            fun `don't add tag if it's an empty string`() {
+            @ParameterizedTest
+            @ValueSource(strings = [
+                "",
+                "   ",
+                "\u00A0",
+                "\u202F",
+                "\u200A",
+                "\u205F",
+                "\u2000",
+                "\u2001",
+                "\u2002",
+                "\u2003",
+                "\u2004",
+                "\u2005",
+                "\u2006",
+                "\u2007",
+                "\u2008",
+                "\u2009",
+                "\uFEFF",
+                "\u180E",
+                "\u2060",
+                "\u200D",
+                "\u0090",
+                "\u200C",
+                "\u200B",
+                "\u00AD",
+                "\u000C",
+                "\u2028",
+                "\r",
+                "\n",
+                "\t",
+            ])
+            fun `must not add blank tag`(input: String) {
                 // given
                 val anime = AnimeRaw("Test")
 
                 // when
                 anime.addTags(listOf(
-                    EMPTY,
+                    "$input $input",
                 ))
 
                 // then
                 assertThat(anime.tags).isEmpty()
             }
 
-            @Test
-            fun `don't add tag if it's a blank string`() {
+            @ParameterizedTest
+            @ValueSource(strings = [
+                "\u00A0",
+                "\u202F",
+                "\u200A",
+                "\u205F",
+                "\u2000",
+                "\u2001",
+                "\u2002",
+                "\u2003",
+                "\u2004",
+                "\u2005",
+                "\u2006",
+                "\u2007",
+                "\u2008",
+                "\u2009",
+            ])
+            fun `normalize visible whitespaces to a normale whitespace`(input: String) {
                 // given
+                val expectedTag = "slice of life"
                 val anime = AnimeRaw("Test")
 
                 // when
                 anime.addTags(listOf(
-                    "     ",
+                    "slice${input}of${input}life",
                 ))
 
                 // then
-                assertThat(anime.tags).isEmpty()
+                assertThat(anime.tags).containsExactly(
+                    expectedTag,
+                )
+            }
+
+            @ParameterizedTest
+            @ValueSource(strings = [
+                "\uFEFF",
+                "\u180E",
+                "\u2060",
+                "\u200D",
+                "\u0090",
+                "\u200C",
+                "\u200B",
+                "\u00AD",
+                "\u000C",
+                "\u2028",
+            ])
+            fun `remove non-visible whitespaces`(input: String) {
+                // given
+                val expectedTag = "slice of life"
+                val anime = AnimeRaw("Test")
+
+                // when
+                anime.addTags(listOf(
+                    "sli${input}ce o${input}f li${input}fe",
+                ))
+
+                // then
+                assertThat(anime.tags).containsExactly(
+                    expectedTag,
+                )
             }
 
             @Test
-            fun `tags is a distinct list`() {
+            fun `prevent duplicates`() {
                 // given
                 val tag1 = "a tag"
                 val tag2 = "before the other"
@@ -3175,7 +4702,7 @@ internal class AnimeRawTest {
             }
 
             @Test
-            fun `remove leading whitespace from title`() {
+            fun `remove leading whitespace from tags`() {
                 // given
                 val expectedTag = "example"
                 val anime = AnimeRaw("Test")
@@ -3192,7 +4719,7 @@ internal class AnimeRawTest {
             }
 
             @Test
-            fun `remove tailing whitespace from title`() {
+            fun `remove tailing whitespace from tags`() {
                 // given
                 val expectedTag = "example"
                 val anime = AnimeRaw("Test")
@@ -3209,7 +4736,7 @@ internal class AnimeRawTest {
             }
 
             @Test
-            fun `replace multiple whitespaces with a single whitespace in title`() {
+            fun `replace multiple whitespaces with a single whitespace in tags`() {
                 // given
                 val expectedTag = "slice of life"
                 val anime = AnimeRaw("Test")
@@ -3225,87 +4752,115 @@ internal class AnimeRawTest {
                 )
             }
 
-            @Test
-            fun `replace tab character with whitespace in title`() {
-                // given
-                val expectedTag = "slice of life"
-                val anime = AnimeRaw("Test")
-
-                // when
-                anime.addTags(
-                    "slice\tof\tlife",
-                )
-
-                // then
-                assertThat(anime.tags).containsExactly(
-                    expectedTag,
-                )
-            }
-
-            @Test
-            fun `replace line feed character with whitespace in title`() {
-                // given
-                val expectedTag = "slice of life"
-                val anime = AnimeRaw("Test")
-
-                // when
-                anime.addTags(
-                    "slice\nof\nlife",
-                )
-
-                // then
-                assertThat(anime.tags).containsExactly(
-                    expectedTag,
-                )
-            }
-
-            @Test
-            fun `replace carriage return line feed with whitespace in title`() {
-                // given
-                val expectedTag = "slice of life"
-                val anime = AnimeRaw("Test")
-
-                // when
-                anime.addTags(
-                    "slice\r\nof\r\nlife",
-                )
-
-                // then
-                assertThat(anime.tags).containsExactly(
-                    expectedTag,
-                )
-            }
-
-            @Test
-            fun `don't add tag if it's an empty string`() {
+            @ParameterizedTest
+            @ValueSource(strings = [
+                "",
+                "   ",
+                "\u00A0",
+                "\u202F",
+                "\u200A",
+                "\u205F",
+                "\u2000",
+                "\u2001",
+                "\u2002",
+                "\u2003",
+                "\u2004",
+                "\u2005",
+                "\u2006",
+                "\u2007",
+                "\u2008",
+                "\u2009",
+                "\uFEFF",
+                "\u180E",
+                "\u2060",
+                "\u200D",
+                "\u0090",
+                "\u200C",
+                "\u200B",
+                "\u00AD",
+                "\u000C",
+                "\u2028",
+                "\r",
+                "\n",
+                "\t",
+            ])
+            fun `must not add blank tag`(input: String) {
                 // given
                 val anime = AnimeRaw("Test")
 
                 // when
                 anime.addTags(
-                    EMPTY,
+                    "$input $input",
                 )
 
                 // then
                 assertThat(anime.tags).isEmpty()
             }
 
-            @Test
-            fun `don't add tag if it's a blank string`() {
+            @ParameterizedTest
+            @ValueSource(strings = [
+                "\u00A0",
+                "\u202F",
+                "\u200A",
+                "\u205F",
+                "\u2000",
+                "\u2001",
+                "\u2002",
+                "\u2003",
+                "\u2004",
+                "\u2005",
+                "\u2006",
+                "\u2007",
+                "\u2008",
+                "\u2009",
+            ])
+            fun `normalize visible whitespaces to a normale whitespace`(input: String) {
                 // given
+                val expectedTag = "slice of life"
                 val anime = AnimeRaw("Test")
 
                 // when
                 anime.addTags(
-                    "     ",
+                    "slice${input}of${input}life",
                 )
 
                 // then
-                assertThat(anime.tags).isEmpty()
+                assertThat(anime.tags).containsExactly(
+                    expectedTag,
+                )
+            }
+
+            @ParameterizedTest
+            @ValueSource(strings = [
+                "\uFEFF",
+                "\u180E",
+                "\u2060",
+                "\u200D",
+                "\u0090",
+                "\u200C",
+                "\u200B",
+                "\u00AD",
+                "\u000C",
+                "\u2028",
+            ])
+            fun `remove non-visible whitespaces`(input: String) {
+                // given
+                val expectedTag = "slice of life"
+                val anime = AnimeRaw("Test")
+
+                // when
+                anime.addTags(
+                    "sli${input}ce o${input}f li${input}fe",
+                )
+
+                // then
+                assertThat(anime.tags).containsExactly(
+                    expectedTag,
+                )
             }
 
             @Test
-            fun `tags is a distinct list`() {
+            fun `prevent duplicates`() {
                 // given
                 val tag1 = "a tag"
                 val tag2 = "before the other"
@@ -3436,19 +4991,21 @@ internal class AnimeRawTest {
             assertThat(result).isEqualTo(
                 """
                     AnimeRaw(
-                      sources = [https://myanimelist.net/anime/58755]
-                      title = 5-toubun no Hanayome*
-                      type = SPECIAL
-                      episodes = 2
-                      status = FINISHED
-                      animeSeason = AnimeSeason(season=FALL, year=2024)
-                      picture = https://cdn.myanimelist.net/images/anime/1915/145336.jpg
-                      thumbnail = https://cdn.myanimelist.net/images/anime/1915/145336t.jpg
-                      duration = 1440 seconds
-                      scores = [MetaDataProviderScoreValue(hostname=myanimelist.net, value=7.44, range=1.0..10.0)]
-                      synonyms = [The Quintessential Quintuplets*, 五等分の花嫁*]
+                      sources      = [https://myanimelist.net/anime/58755]
+                      title        = 5-toubun no Hanayome*
+                      type         = SPECIAL
+                      episodes     = 2
+                      status       = FINISHED
+                      animeSeason  = AnimeSeason(season=FALL, year=2024)
+                      picture      = https://cdn.myanimelist.net/images/anime/1915/145336.jpg
+                      thumbnail    = https://cdn.myanimelist.net/images/anime/1915/145336t.jpg
+                      duration     = 1440 seconds
+                      scores       = [MetaDataProviderScoreValue(hostname=myanimelist.net, value=7.44, range=1.0..10.0)]
+                      synonyms     = [The Quintessential Quintuplets*, 五等分の花嫁*]
+                      studios      = [bibury animation studios]
+                      producers    = [dax production, nichion, pony canyon]
                       relatedAnime = [https://myanimelist.net/anime/48548]
-                      tags = [comedy, harem, romance, school, shounen]
+                      tags         = [comedy, harem, romance, school, shounen]
                     )
                 """.trimIndent()
             )
@@ -3583,6 +5140,8 @@ internal class AnimeRawTest {
                       "thumbnail": "https://raw.githubusercontent.com/manami-project/anime-offline-database/master/pics/no_pic_thumbnail.png",
                       "scores": [],
                       "synonyms": [],
+                      "studios": [],
+                      "producers": [],
                       "relatedAnime": [
                         "https://myanimelist.net/anime/2167"
                       ],
