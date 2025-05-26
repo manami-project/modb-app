@@ -316,9 +316,9 @@ internal object TestAnimeRawObjects {
 
         val obj: AnimeRaw
             get() = AnimeRaw(
-                _title = "5-toubun no Hanayome*",
+                _title = "Go-toubun no Hanayome *",
                 _sources = hashSetOf(
-                    URI("https://myanimelist.net/anime/58755"),
+                    URI("https://anilist.co/anime/177191"),
                 ),
                 type = SPECIAL,
                 episodes = 2,
@@ -327,8 +327,8 @@ internal object TestAnimeRawObjects {
                     season = FALL,
                     year = 2024,
                 ),
-                picture = URI("https://cdn.myanimelist.net/images/anime/1915/145336.jpg"),
-                thumbnail = URI("https://cdn.myanimelist.net/images/anime/1915/145336t.jpg"),
+                picture = URI("https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx177191-ovNZsq8EbIPY.jpg"),
+                thumbnail = URI("https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx177191-ovNZsq8EbIPY.jpg"),
                 duration = Duration(
                     value = 24,
                     unit = MINUTES,
@@ -346,21 +346,29 @@ internal object TestAnimeRawObjects {
                     "pony canyon",
                 ),
                 _relatedAnime = hashSetOf(
-                    URI("https://myanimelist.net/anime/48548"),
+                    URI("https://anilist.co/anime/131520"),
                 ),
                 _tags = hashSetOf(
                     "comedy",
-                    "harem",
+                    "drama",
+                    "ensemble cast",
+                    "female harem",
+                    "heterosexual",
+                    "language barrier",
+                    "male protagonist",
+                    "marriage",
+                    "primarily female cast",
                     "romance",
                     "school",
                     "shounen",
+                    "twins",
                 ),
             ).apply {
                 addScores(
                     MetaDataProviderScoreValue(
-                        hostname = "myanimelist.net",
-                        value = 7.44,
-                        range = 1.0..10.0,
+                        hostname = "anilist.co",
+                        value = 75.0,
+                        range = 1.0..100.0,
                     ),
                 )
             }
@@ -368,9 +376,9 @@ internal object TestAnimeRawObjects {
         val serializedPrettyPrint = """
             {
               "sources": [
-                "https://myanimelist.net/anime/58755"
+                "https://anilist.co/anime/177191"
               ],
-              "title": "5-toubun no Hanayome*",
+              "title": "Go-toubun no Hanayome *",
               "type": "SPECIAL",
               "episodes": 2,
               "status": "FINISHED",
@@ -378,19 +386,19 @@ internal object TestAnimeRawObjects {
                 "season": "FALL",
                 "year": 2024
               },
-              "picture": "https://cdn.myanimelist.net/images/anime/1915/145336.jpg",
-              "thumbnail": "https://cdn.myanimelist.net/images/anime/1915/145336t.jpg",
+              "picture": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx177191-ovNZsq8EbIPY.jpg",
+              "thumbnail": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx177191-ovNZsq8EbIPY.jpg",
               "duration": {
                 "value": 1440,
                 "unit": "SECONDS"
               },
               "scores": [
                 {
-                  "hostname": "myanimelist.net",
-                  "value": 7.44,
+                  "hostname": "anilist.co",
+                  "value": 75.0,
                   "range": {
                     "minInclusive": 1.0,
-                    "maxInclusive": 10.0
+                    "maxInclusive": 100.0
                   }
                 }
               ],
@@ -407,20 +415,28 @@ internal object TestAnimeRawObjects {
                 "pony canyon"
               ],
               "relatedAnime": [
-                "https://myanimelist.net/anime/48548"
+                "https://anilist.co/anime/131520"
               ],
               "tags": [
                 "comedy",
-                "harem",
+                "drama",
+                "ensemble cast",
+                "female harem",
+                "heterosexual",
+                "language barrier",
+                "male protagonist",
+                "marriage",
+                "primarily female cast",
                 "romance",
                 "school",
-                "shounen"
+                "shounen",
+                "twins"
               ]
             }
         """.trimIndent()
 
         val serializedMinified = """
-            {"sources":["https://myanimelist.net/anime/58755"],"title":"5-toubun no Hanayome*","type":"SPECIAL","episodes":2,"status":"FINISHED","animeSeason":{"season":"FALL","year":2024},"picture":"https://cdn.myanimelist.net/images/anime/1915/145336.jpg","thumbnail":"https://cdn.myanimelist.net/images/anime/1915/145336t.jpg","duration":{"value":1440,"unit":"SECONDS"},"scores":[{"hostname":"myanimelist.net","value":7.44,"range":{"minInclusive":1.0,"maxInclusive":10.0}}],"synonyms":["The Quintessential Quintuplets*","五等分の花嫁*"],"studios":["bibury animation studios"],"producers":["dax production","nichion","pony canyon"],"relatedAnime":["https://myanimelist.net/anime/48548"],"tags":["comedy","harem","romance","school","shounen"]}
+            {"sources":["https://anilist.co/anime/177191"],"title":"Go-toubun no Hanayome *","type":"SPECIAL","episodes":2,"status":"FINISHED","animeSeason":{"season":"FALL","year":2024},"picture":"https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx177191-ovNZsq8EbIPY.jpg","thumbnail":"https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx177191-ovNZsq8EbIPY.jpg","duration":{"value":1440,"unit":"SECONDS"},"scores":[{"hostname":"anilist.co","value":75.0,"range":{"minInclusive":1.0,"maxInclusive":100.0}}],"synonyms":["The Quintessential Quintuplets*","五等分の花嫁*"],"studios":["bibury animation studios"],"producers":["dax production","nichion","pony canyon"],"relatedAnime":["https://anilist.co/anime/131520"],"tags":["comedy","drama","ensemble cast","female harem","heterosexual","language barrier","male protagonist","marriage","primarily female cast","romance","school","shounen","twins"]}
         """.trimIndent()
     }
 

@@ -4991,21 +4991,21 @@ internal class AnimeRawTest {
             assertThat(result).isEqualTo(
                 """
                     AnimeRaw(
-                      sources      = [https://myanimelist.net/anime/58755]
-                      title        = 5-toubun no Hanayome*
+                      sources      = [https://anilist.co/anime/177191]
+                      title        = Go-toubun no Hanayome *
                       type         = SPECIAL
                       episodes     = 2
                       status       = FINISHED
                       animeSeason  = AnimeSeason(season=FALL, year=2024)
-                      picture      = https://cdn.myanimelist.net/images/anime/1915/145336.jpg
-                      thumbnail    = https://cdn.myanimelist.net/images/anime/1915/145336t.jpg
+                      picture      = https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx177191-ovNZsq8EbIPY.jpg
+                      thumbnail    = https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx177191-ovNZsq8EbIPY.jpg
                       duration     = 1440 seconds
-                      scores       = [MetaDataProviderScoreValue(hostname=myanimelist.net, value=7.44, range=1.0..10.0)]
+                      scores       = [MetaDataProviderScoreValue(hostname=anilist.co, value=75.0, range=1.0..100.0)]
                       synonyms     = [The Quintessential Quintuplets*, 五等分の花嫁*]
                       studios      = [bibury animation studios]
                       producers    = [dax production, nichion, pony canyon]
-                      relatedAnime = [https://myanimelist.net/anime/48548]
-                      tags         = [comedy, harem, romance, school, shounen]
+                      relatedAnime = [https://anilist.co/anime/131520]
+                      tags         = [comedy, drama, ensemble cast, female harem, heterosexual, language barrier, male protagonist, marriage, primarily female cast, romance, school, shounen, twins]
                     )
                 """.trimIndent()
             )

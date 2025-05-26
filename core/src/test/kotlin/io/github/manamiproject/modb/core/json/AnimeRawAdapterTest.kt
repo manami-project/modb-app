@@ -1543,7 +1543,7 @@ internal class AnimeRawAdapterTest {
             // given
             val adapter = AnimeRawAdapter().indent("  ")
             val obj = TestAnimeRawObjects.AllPropertiesSet.obj.copy(
-                _title = " ${value}5-toubun$value no$value$value Hanayome*$value$value ",
+                _title = " ${value}Go-toubun$value no$value$value Hanayome *$value$value ",
                 activateChecks = false,
             )
 
