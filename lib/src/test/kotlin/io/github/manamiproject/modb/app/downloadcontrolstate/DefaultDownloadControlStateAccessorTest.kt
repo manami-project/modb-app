@@ -1,48 +1,29 @@
 package io.github.manamiproject.modb.app.downloadcontrolstate
 
 import io.github.manamiproject.modb.anilist.AnilistConfig
-import io.github.manamiproject.modb.app.TestAppConfig
-import io.github.manamiproject.modb.app.TestMergeLockAccessor
-import io.github.manamiproject.modb.app.TestMetaDataProviderConfig
+import io.github.manamiproject.modb.app.*
 import io.github.manamiproject.modb.app.config.Config
 import io.github.manamiproject.modb.app.convfiles.CONVERTED_FILE_SUFFIX
 import io.github.manamiproject.modb.app.merging.lock.MergeLockAccessor
-import io.github.manamiproject.modb.core.anime.AnimeMedia.NO_PICTURE
-import io.github.manamiproject.modb.core.anime.AnimeMedia.NO_PICTURE_THUMBNAIL
 import io.github.manamiproject.modb.core.anime.AnimeRaw
-import io.github.manamiproject.modb.core.anime.AnimeSeason
-import io.github.manamiproject.modb.core.anime.AnimeSeason.Companion.UNKNOWN_YEAR
-import io.github.manamiproject.modb.core.anime.AnimeSeason.Season.SPRING
-import io.github.manamiproject.modb.core.anime.AnimeSeason.Season.UNDEFINED
-import io.github.manamiproject.modb.core.anime.AnimeStatus.FINISHED
-import io.github.manamiproject.modb.core.anime.AnimeType.MOVIE
-import io.github.manamiproject.modb.core.anime.AnimeType.TV
-import io.github.manamiproject.modb.core.anime.Duration
-import io.github.manamiproject.modb.core.anime.Duration.TimeUnit.MINUTES
-import io.github.manamiproject.modb.core.anime.MetaDataProviderScoreValue
 import io.github.manamiproject.modb.core.config.AnimeId
 import io.github.manamiproject.modb.core.config.FileSuffix
 import io.github.manamiproject.modb.core.config.Hostname
 import io.github.manamiproject.modb.core.config.MetaDataProviderConfig
 import io.github.manamiproject.modb.core.date.WeekOfYear
 import io.github.manamiproject.modb.core.extensions.*
-import io.github.manamiproject.modb.kitsu.KitsuConfig
 import io.github.manamiproject.modb.myanimelist.MyanimelistConfig
 import io.github.manamiproject.modb.notify.NotifyConfig
 import io.github.manamiproject.modb.test.exceptionExpected
-import io.github.manamiproject.modb.test.loadTestResource
 import io.github.manamiproject.modb.test.tempDirectory
-import io.github.manamiproject.modb.test.testResource
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Nested
 import java.net.URI
+import java.time.LocalDate
 import kotlin.io.path.createDirectories
 import kotlin.io.path.createDirectory
 import kotlin.io.path.createFile
 import kotlin.test.Test
-import io.github.manamiproject.modb.core.anime.AnimeStatus.UNKNOWN as UNKNOWN_STATUS
-import io.github.manamiproject.modb.core.anime.AnimeType.UNKNOWN as UNKNOWN_TYPE
-import io.github.manamiproject.modb.core.anime.Duration.Companion.UNKNOWN as UNKNOWN_DURATION
 
 internal class DefaultDownloadControlStateAccessorTest {
 
@@ -124,8 +105,10 @@ internal class DefaultDownloadControlStateAccessorTest {
         fun `throws exception if the file name and the actual id from the source link don't match`() {
             tempDirectory {
                 // given
+                // given
                 val dir = tempDir.resolve(AnilistConfig.hostname()).createDirectory()
-                testResource("downloadcontrolstate/DefaultDownloadControlStateAccessorTest/ids_dont_match/10294.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").copyTo(dir)
+                createExpectedDcsEntry(TestAnimeRawObjects.AllPropertiesSet.serializedPrettyPrint)
+                    .writeToFile(dir.resolve("10294.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX"))
 
                 val testAppConfig = object: Config by TestAppConfig {
                     override fun metaDataProviderConfigurations(): Set<MetaDataProviderConfig> = setOf(AnilistConfig)
@@ -134,7 +117,6 @@ internal class DefaultDownloadControlStateAccessorTest {
 
                 val defaultDownloadControlStateAccessor = DefaultDownloadControlStateAccessor(
                     appConfig = testAppConfig,
-                    mergeLockAccess = TestMergeLockAccessor,
                 )
 
                 // when
@@ -152,85 +134,31 @@ internal class DefaultDownloadControlStateAccessorTest {
             tempDirectory {
                 // given
                 val dir1 = tempDir.resolve(AnilistConfig.hostname()).createDirectory()
-                testResource("downloadcontrolstate/DefaultDownloadControlStateAccessorTest/success/32.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").copyTo(dir1)
+                createExpectedDcsEntry(TestAnimeRawObjects.AllPropertiesSet.serializedPrettyPrint)
+                    .writeToFile(dir1.resolve("177191.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX"))
 
-                val dir2 = tempDir.resolve(KitsuConfig.hostname()).createDirectory()
-                testResource("downloadcontrolstate/DefaultDownloadControlStateAccessorTest/success/99.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").copyTo(dir2)
+
+                val dir2 = tempDir.resolve(MyanimelistConfig.hostname()).createDirectory()
+                createExpectedDcsEntry(TestAnimeRawObjects.NullableNotSet.serializedPrettyPrint)
+                    .writeToFile(dir2.resolve("1535.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX"))
 
                 val testAppConfig = object: Config by TestAppConfig {
-                    override fun metaDataProviderConfigurations(): Set<MetaDataProviderConfig> = setOf(AnilistConfig, KitsuConfig)
+                    override fun metaDataProviderConfigurations(): Set<MetaDataProviderConfig> = setOf(AnilistConfig, MyanimelistConfig)
                     override fun downloadControlStateDirectory(): Directory = tempDir
                     override fun findMetaDataProviderConfig(host: Hostname): MetaDataProviderConfig = super.findMetaDataProviderConfig(host)
                 }
 
                 val expectedEntry1 = DownloadControlStateEntry(
                     _weeksWihoutChange = 0,
-                    _lastDownloaded = WeekOfYear(2021, 44),
-                    _nextDownload = WeekOfYear(2021, 45),
-                    _anime = AnimeRaw(
-                        _title = "Shin Seiki Evangelion Movie: THE END OF EVANGELION",
-                        type = MOVIE,
-                        episodes = 1,
-                        picture = URI("https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/32-7YrdcGEX1FP3.png"),
-                        thumbnail = URI("https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/default.jpg"),
-                        status = FINISHED,
-                        duration = Duration(87, MINUTES),
-                        animeSeason = AnimeSeason(
-                            year = 1997,
-                        ),
-                        _sources = hashSetOf(URI("https://anilist.co/anime/32")),
-                        _synonyms = hashSetOf(
-                            "Neon Genesis Evangelion: The End of Evangelion",
-                            "新世紀エヴァンゲリオン劇場版 THE END OF EVANGELION",
-                        ),
-                        _relatedAnime = hashSetOf(
-                            URI("https://anilist.co/anime/30"),
-                        ),
-                        _tags = hashSetOf(
-                            "action",
-                            "drama",
-                            "mecha",
-                            "psychological",
-                            "sci-fi",
-                        ),
-                    ).addScores(
-                        MetaDataProviderScoreValue(
-                            hostname = "anilist.co",
-                            value = 85.0,
-                            range = 1.0..100.0,
-                        ),
-                    ),
+                    _lastDownloaded = WeekOfYear(LocalDate.now().minusWeeks(1)),
+                    _nextDownload = WeekOfYear.currentWeek(),
+                    _anime = TestAnimeRawObjects.AllPropertiesSet.obj,
                 )
                 val expectedEntry2 = DownloadControlStateEntry(
                     _weeksWihoutChange = 0,
-                    _lastDownloaded = WeekOfYear(2021, 44),
-                    _nextDownload = WeekOfYear(2021, 45),
-                    _anime = AnimeRaw(
-                        _title = "Fruits Basket",
-                        type = TV,
-                        episodes = 26,
-                        picture = URI("https://media.kitsu.app/anime/poster_images/99/small.jpg?1474922066"),
-                        thumbnail = URI("https://media.kitsu.app/anime/poster_images/99/tiny.jpg?1474922066"),
-                        status = FINISHED,
-                        duration = Duration(24, MINUTES),
-                        animeSeason = AnimeSeason(
-                            year = 2001,
-                        ),
-                        _sources = hashSetOf(URI("https://kitsu.app/anime/99")),
-                        _synonyms = hashSetOf(
-                            "Furuba",
-                            "フルーツバスケット",
-                        ),
-                        _relatedAnime = hashSetOf(
-                            URI("https://kitsu.app/anime/41995"),
-                        ),
-                    ).addScores(
-                        MetaDataProviderScoreValue(
-                            hostname = "kitsu.app",
-                            value = 77.8,
-                            range = 1.0..100.0,
-                        ),
-                    ),
+                    _lastDownloaded = WeekOfYear(LocalDate.now().minusWeeks(1)),
+                    _nextDownload = WeekOfYear.currentWeek(),
+                    _anime =  TestAnimeRawObjects.NullableNotSet.obj,
                 )
 
                 val defaultDownloadControlStateAccessor = DefaultDownloadControlStateAccessor(
@@ -308,8 +236,8 @@ internal class DefaultDownloadControlStateAccessorTest {
             tempDirectory {
                 // given
                 val dir = tempDir.resolve(AnilistConfig.hostname()).createDirectory()
-                testResource("downloadcontrolstate/DefaultDownloadControlStateAccessorTest/change_by_reference/default.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX")
-                    .copyTo(dir.resolve("32.${DOWNLOAD_CONTROL_STATE_FILE_SUFFIX}"))
+                createExpectedDcsEntry(TestAnimeRawObjects.AllPropertiesSet.serializedPrettyPrint)
+                    .writeToFile(dir.resolve("177191.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX"))
 
                 val testAppConfig = object: Config by TestAppConfig {
                     override fun metaDataProviderConfigurations(): Set<MetaDataProviderConfig> = setOf(AnilistConfig)
@@ -319,27 +247,9 @@ internal class DefaultDownloadControlStateAccessorTest {
 
                 val expectedEntry1 = DownloadControlStateEntry(
                     _weeksWihoutChange = 0,
-                    _lastDownloaded = WeekOfYear(2021, 44),
-                    _nextDownload = WeekOfYear(2021, 45),
-                    _anime = AnimeRaw(
-                        _title = "Shin Seiki Evangelion Movie: THE END OF EVANGELION",
-                        type = UNKNOWN_TYPE,
-                        episodes = 0,
-                        picture = NO_PICTURE,
-                        thumbnail = NO_PICTURE_THUMBNAIL,
-                        status = UNKNOWN_STATUS,
-                        duration = UNKNOWN_DURATION,
-                        animeSeason = AnimeSeason(
-                            season = UNDEFINED,
-                            year = UNKNOWN_YEAR,
-                        ),
-                        _sources = hashSetOf(URI("https://anilist.co/anime/32")),
-                        _synonyms = hashSetOf(),
-                        _relatedAnime = hashSetOf(
-                            URI("https://anilist.co/anime/30"),
-                        ),
-                        _tags = hashSetOf(),
-                    ),
+                    _lastDownloaded = WeekOfYear(LocalDate.now().minusWeeks(1)),
+                    _nextDownload = WeekOfYear.currentWeek(),
+                    _anime = TestAnimeRawObjects.AllPropertiesSet.obj,
                 )
 
                 val defaultDownloadControlStateAccessor = DefaultDownloadControlStateAccessor(
@@ -347,34 +257,7 @@ internal class DefaultDownloadControlStateAccessorTest {
                     mergeLockAccess = TestMergeLockAccessor,
                 )
 
-                val otherAnime = AnimeRaw(
-                    _title = "Shin Seiki Evangelion Movie: THE END OF EVANGELION",
-                    type = MOVIE,
-                    episodes = 1,
-                    picture = URI("https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/32-7YrdcGEX1FP3.png"),
-                    thumbnail = URI("https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/default.jpg"),
-                    status = FINISHED,
-                    duration = Duration(87, MINUTES),
-                    animeSeason = AnimeSeason(
-                        season = SPRING,
-                        year = 1997,
-                    ),
-                    _sources = hashSetOf(URI("https://myanimelist.net/anime/32")),
-                    _synonyms = hashSetOf(
-                        "Neon Genesis Evangelion: The End of Evangelion",
-                        "新世紀エヴァンゲリオン劇場版 THE END OF EVANGELION",
-                    ),
-                    _relatedAnime = hashSetOf(
-                        URI("https://myanimelist.net/anime/30"),
-                    ),
-                    _tags = hashSetOf(
-                        "action",
-                        "drama",
-                        "mecha",
-                        "psychological",
-                        "sci-fi",
-                    ),
-                )
+                val otherAnime = TestAnimeRawObjects.NullableNotSet.obj
 
                 val inMemoryDcsEntry = defaultDownloadControlStateAccessor.allDcsEntries().first().anime
                 inMemoryDcsEntry.mergeWith(otherAnime)
@@ -398,7 +281,8 @@ internal class DefaultDownloadControlStateAccessorTest {
             tempDirectory {
                 // given
                 val dir = tempDir.resolve(AnilistConfig.hostname()).createDirectory()
-                testResource("downloadcontrolstate/DefaultDownloadControlStateAccessorTest/ids_dont_match/10294.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").copyTo(dir)
+                createExpectedDcsEntry(TestAnimeRawObjects.AllPropertiesSet.serializedPrettyPrint)
+                    .writeToFile(dir.resolve("10294.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX"))
 
                 val testAppConfig = object: Config by TestAppConfig {
                     override fun metaDataProviderConfigurations(): Set<MetaDataProviderConfig> = setOf(AnilistConfig)
@@ -425,54 +309,24 @@ internal class DefaultDownloadControlStateAccessorTest {
             tempDirectory {
                 // given
                 val dir1 = tempDir.resolve(AnilistConfig.hostname()).createDirectory()
-                testResource("downloadcontrolstate/DefaultDownloadControlStateAccessorTest/success/32.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").copyTo(dir1)
+                createExpectedDcsEntry(TestAnimeRawObjects.AllPropertiesSet.serializedPrettyPrint)
+                    .writeToFile(dir1.resolve("177191.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX"))
 
-                val dir2 = tempDir.resolve(KitsuConfig.hostname()).createDirectory()
-                testResource("downloadcontrolstate/DefaultDownloadControlStateAccessorTest/success/99.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").copyTo(dir2)
+                val dir2 = tempDir.resolve(MyanimelistConfig.hostname()).createDirectory()
+                createExpectedDcsEntry(TestAnimeRawObjects.NullableNotSet.serializedPrettyPrint)
+                    .writeToFile(dir2.resolve("1535.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX"))
 
                 val testAppConfig = object: Config by TestAppConfig {
-                    override fun metaDataProviderConfigurations(): Set<MetaDataProviderConfig> = setOf(AnilistConfig, KitsuConfig)
+                    override fun metaDataProviderConfigurations(): Set<MetaDataProviderConfig> = setOf(AnilistConfig, MyanimelistConfig)
                     override fun downloadControlStateDirectory(): Directory = tempDir
                     override fun findMetaDataProviderConfig(host: Hostname): MetaDataProviderConfig = super.findMetaDataProviderConfig(host)
                 }
 
                 val expectedDcsEntry = DownloadControlStateEntry(
                     _weeksWihoutChange = 0,
-                    _lastDownloaded = WeekOfYear(2021, 44),
-                    _nextDownload = WeekOfYear(2021, 45),
-                    _anime = AnimeRaw(
-                        _title = "Shin Seiki Evangelion Movie: THE END OF EVANGELION",
-                        type = MOVIE,
-                        episodes = 1,
-                        picture = URI("https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/32-7YrdcGEX1FP3.png"),
-                        thumbnail = URI("https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/default.jpg"),
-                        status = FINISHED,
-                        duration = Duration(87, MINUTES),
-                        animeSeason = AnimeSeason(
-                            year = 1997,
-                        ),
-                        _sources = hashSetOf(URI("https://anilist.co/anime/32")),
-                        _synonyms = hashSetOf(
-                            "Neon Genesis Evangelion: The End of Evangelion",
-                            "新世紀エヴァンゲリオン劇場版 THE END OF EVANGELION",
-                        ),
-                        _relatedAnime = hashSetOf(
-                            URI("https://anilist.co/anime/30"),
-                        ),
-                        _tags = hashSetOf(
-                            "action",
-                            "drama",
-                            "mecha",
-                            "psychological",
-                            "sci-fi",
-                        ),
-                    ).addScores(
-                        MetaDataProviderScoreValue(
-                            hostname = "anilist.co",
-                            value = 85.0,
-                            range = 1.0..100.0,
-                        ),
-                    ),
+                    _lastDownloaded = WeekOfYear(LocalDate.now().minusWeeks(1)),
+                    _nextDownload = WeekOfYear.currentWeek(),
+                    _anime = TestAnimeRawObjects.AllPropertiesSet.obj,
                 )
 
                 val defaultDownloadControlStateAccessor = DefaultDownloadControlStateAccessor(
@@ -547,8 +401,8 @@ internal class DefaultDownloadControlStateAccessorTest {
             tempDirectory {
                 // given
                 val dir = tempDir.resolve(AnilistConfig.hostname()).createDirectory()
-                testResource("downloadcontrolstate/DefaultDownloadControlStateAccessorTest/change_by_reference/default.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX")
-                    .copyTo(dir.resolve("32.${DOWNLOAD_CONTROL_STATE_FILE_SUFFIX}"))
+                createExpectedDcsEntry(TestAnimeRawObjects.AllPropertiesSet.serializedPrettyPrint)
+                    .writeToFile(dir.resolve("177191.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX"))
 
                 val testAppConfig = object: Config by TestAppConfig {
                     override fun metaDataProviderConfigurations(): Set<MetaDataProviderConfig> = setOf(AnilistConfig)
@@ -558,27 +412,9 @@ internal class DefaultDownloadControlStateAccessorTest {
 
                 val expectedEntry1 = DownloadControlStateEntry(
                     _weeksWihoutChange = 0,
-                    _lastDownloaded = WeekOfYear(2021, 44),
-                    _nextDownload = WeekOfYear(2021, 45),
-                    _anime = AnimeRaw(
-                        _title = "Shin Seiki Evangelion Movie: THE END OF EVANGELION",
-                        type = UNKNOWN_TYPE,
-                        episodes = 0,
-                        picture = NO_PICTURE,
-                        thumbnail = NO_PICTURE_THUMBNAIL,
-                        status = UNKNOWN_STATUS,
-                        duration = UNKNOWN_DURATION,
-                        animeSeason = AnimeSeason(
-                            season = UNDEFINED,
-                            year = UNKNOWN_YEAR,
-                        ),
-                        _sources = hashSetOf(URI("https://anilist.co/anime/32")),
-                        _synonyms = hashSetOf(),
-                        _relatedAnime = hashSetOf(
-                            URI("https://anilist.co/anime/30"),
-                        ),
-                        _tags = hashSetOf(),
-                    ),
+                    _lastDownloaded = WeekOfYear(LocalDate.now().minusWeeks(1)),
+                    _nextDownload = WeekOfYear.currentWeek(),
+                    _anime = TestAnimeRawObjects.AllPropertiesSet.obj,
                 )
 
                 val defaultDownloadControlStateAccessor = DefaultDownloadControlStateAccessor(
@@ -586,34 +422,7 @@ internal class DefaultDownloadControlStateAccessorTest {
                     mergeLockAccess = TestMergeLockAccessor,
                 )
 
-                val otherAnime = AnimeRaw(
-                    _title = "Shin Seiki Evangelion Movie: THE END OF EVANGELION",
-                    type = MOVIE,
-                    episodes = 1,
-                    picture = URI("https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/32-7YrdcGEX1FP3.png"),
-                    thumbnail = URI("https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/default.jpg"),
-                    status = FINISHED,
-                    duration = Duration(87, MINUTES),
-                    animeSeason = AnimeSeason(
-                        season = SPRING,
-                        year = 1997,
-                    ),
-                    _sources = hashSetOf(URI("https://myanimelist.net/anime/32")),
-                    _synonyms = hashSetOf(
-                        "Neon Genesis Evangelion: The End of Evangelion",
-                        "新世紀エヴァンゲリオン劇場版 THE END OF EVANGELION",
-                    ),
-                    _relatedAnime = hashSetOf(
-                        URI("https://myanimelist.net/anime/30"),
-                    ),
-                    _tags = hashSetOf(
-                        "action",
-                        "drama",
-                        "mecha",
-                        "psychological",
-                        "sci-fi",
-                    ),
-                )
+                val otherAnime = TestAnimeRawObjects.NullableNotSet.obj
 
                 val inMemoryDcsEntry = defaultDownloadControlStateAccessor.allDcsEntries(AnilistConfig).first().anime
                 inMemoryDcsEntry.mergeWith(otherAnime)
@@ -637,7 +446,8 @@ internal class DefaultDownloadControlStateAccessorTest {
             tempDirectory {
                 // given
                 val dir = tempDir.resolve(AnilistConfig.hostname()).createDirectory()
-                testResource("downloadcontrolstate/DefaultDownloadControlStateAccessorTest/ids_dont_match/10294.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").copyTo(dir)
+                createExpectedDcsEntry(TestAnimeRawObjects.AllPropertiesSet.serializedPrettyPrint)
+                    .writeToFile(dir.resolve("10294.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX"))
 
                 val testAppConfig = object: Config by TestAppConfig {
                     override fun metaDataProviderConfigurations(): Set<MetaDataProviderConfig> = setOf(AnilistConfig)
@@ -663,78 +473,22 @@ internal class DefaultDownloadControlStateAccessorTest {
             tempDirectory {
                 // given
                 val dir1 = tempDir.resolve(AnilistConfig.hostname()).createDirectory()
-                testResource("downloadcontrolstate/DefaultDownloadControlStateAccessorTest/success/32.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").copyTo(dir1)
+                createExpectedDcsEntry(TestAnimeRawObjects.AllPropertiesSet.serializedPrettyPrint)
+                    .writeToFile(dir1.resolve("177191.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX"))
 
 
-                val dir2 = tempDir.resolve(KitsuConfig.hostname()).createDirectory()
-                testResource("downloadcontrolstate/DefaultDownloadControlStateAccessorTest/success/99.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").copyTo(dir2)
+                val dir2 = tempDir.resolve(MyanimelistConfig.hostname()).createDirectory()
+                createExpectedDcsEntry(TestAnimeRawObjects.NullableNotSet.serializedPrettyPrint)
+                    .writeToFile(dir2.resolve("1535.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX"))
 
                 val testAppConfig = object: Config by TestAppConfig {
-                    override fun metaDataProviderConfigurations(): Set<MetaDataProviderConfig> = setOf(AnilistConfig, KitsuConfig)
+                    override fun metaDataProviderConfigurations(): Set<MetaDataProviderConfig> = setOf(AnilistConfig, MyanimelistConfig)
                     override fun downloadControlStateDirectory(): Directory = tempDir
                     override fun findMetaDataProviderConfig(host: Hostname): MetaDataProviderConfig = super.findMetaDataProviderConfig(host)
                 }
 
-                val expectedAnime1 = AnimeRaw(
-                    _title = "Shin Seiki Evangelion Movie: THE END OF EVANGELION",
-                    type = MOVIE,
-                    episodes = 1,
-                    picture = URI("https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/32-7YrdcGEX1FP3.png"),
-                    thumbnail = URI("https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/default.jpg"),
-                    status = FINISHED,
-                    duration = Duration(87, MINUTES),
-                    animeSeason = AnimeSeason(
-                        year = 1997,
-                    ),
-                    _sources = hashSetOf(URI("https://anilist.co/anime/32")),
-                    _synonyms = hashSetOf(
-                        "Neon Genesis Evangelion: The End of Evangelion",
-                        "新世紀エヴァンゲリオン劇場版 THE END OF EVANGELION",
-                    ),
-                    _relatedAnime = hashSetOf(
-                        URI("https://anilist.co/anime/30"),
-                    ),
-                    _tags = hashSetOf(
-                        "action",
-                        "drama",
-                        "mecha",
-                        "psychological",
-                        "sci-fi",
-                    ),
-                ).addScores(
-                    MetaDataProviderScoreValue(
-                        hostname = "anilist.co",
-                        value = 85.0,
-                        range = 1.0..100.0,
-                    ),
-                )
-
-                val expectedAnime2 = AnimeRaw(
-                    _title = "Fruits Basket",
-                    type = TV,
-                    episodes = 26,
-                    picture = URI("https://media.kitsu.app/anime/poster_images/99/small.jpg?1474922066"),
-                    thumbnail = URI("https://media.kitsu.app/anime/poster_images/99/tiny.jpg?1474922066"),
-                    status = FINISHED,
-                    duration = Duration(24, MINUTES),
-                    animeSeason = AnimeSeason(
-                        year = 2001,
-                    ),
-                    _sources = hashSetOf(URI("https://kitsu.app/anime/99")),
-                    _synonyms = hashSetOf(
-                        "Furuba",
-                        "フルーツバスケット",
-                    ),
-                    _relatedAnime = hashSetOf(
-                        URI("https://kitsu.app/anime/41995"),
-                    ),
-                ).addScores(
-                    MetaDataProviderScoreValue(
-                        hostname = "kitsu.app",
-                        value = 77.8,
-                        range = 1.0..100.0,
-                    ),
-                )
+                val expectedAnime1 = TestAnimeRawObjects.AllPropertiesSet.obj
+                val expectedAnime2 = TestAnimeRawObjects.NullableNotSet.obj
 
                 val defaultDownloadControlStateAccessor = DefaultDownloadControlStateAccessor(
                     appConfig = testAppConfig,
@@ -810,8 +564,8 @@ internal class DefaultDownloadControlStateAccessorTest {
             tempDirectory {
                 // given
                 val dir = tempDir.resolve(AnilistConfig.hostname()).createDirectory()
-                testResource("downloadcontrolstate/DefaultDownloadControlStateAccessorTest/change_by_reference/default.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX")
-                    .copyTo(dir.resolve("32.${DOWNLOAD_CONTROL_STATE_FILE_SUFFIX}"))
+                createExpectedDcsEntry(TestAnimeRawObjects.AllPropertiesSet.serializedPrettyPrint)
+                    .writeToFile(dir.resolve("177191.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX"))
 
                 val testAppConfig = object: Config by TestAppConfig {
                     override fun metaDataProviderConfigurations(): Set<MetaDataProviderConfig> = setOf(AnilistConfig)
@@ -821,27 +575,9 @@ internal class DefaultDownloadControlStateAccessorTest {
 
                 val expectedEntry1 = DownloadControlStateEntry(
                     _weeksWihoutChange = 0,
-                    _lastDownloaded = WeekOfYear(2021, 44),
-                    _nextDownload = WeekOfYear(2021, 45),
-                    _anime = AnimeRaw(
-                        _title = "Shin Seiki Evangelion Movie: THE END OF EVANGELION",
-                        type = UNKNOWN_TYPE,
-                        episodes = 0,
-                        picture = NO_PICTURE,
-                        thumbnail = NO_PICTURE_THUMBNAIL,
-                        status = UNKNOWN_STATUS,
-                        duration = UNKNOWN_DURATION,
-                        animeSeason = AnimeSeason(
-                            season = UNDEFINED,
-                            year = UNKNOWN_YEAR,
-                        ),
-                        _sources = hashSetOf(URI("https://anilist.co/anime/32")),
-                        _synonyms = hashSetOf(),
-                        _relatedAnime = hashSetOf(
-                            URI("https://anilist.co/anime/30"),
-                        ),
-                        _tags = hashSetOf(),
-                    ),
+                    _lastDownloaded = WeekOfYear(LocalDate.now().minusWeeks(1)),
+                    _nextDownload = WeekOfYear.currentWeek(),
+                    _anime = TestAnimeRawObjects.AllPropertiesSet.obj,
                 )
 
                 val defaultDownloadControlStateAccessor = DefaultDownloadControlStateAccessor(
@@ -849,34 +585,7 @@ internal class DefaultDownloadControlStateAccessorTest {
                     mergeLockAccess = TestMergeLockAccessor,
                 )
 
-                val otherAnime = AnimeRaw(
-                    _title = "Shin Seiki Evangelion Movie: THE END OF EVANGELION",
-                    type = MOVIE,
-                    episodes = 1,
-                    picture = URI("https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/32-7YrdcGEX1FP3.png"),
-                    thumbnail = URI("https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/default.jpg"),
-                    status = FINISHED,
-                    duration = Duration(87, MINUTES),
-                    animeSeason = AnimeSeason(
-                        season = SPRING,
-                        year = 1997,
-                    ),
-                    _sources = hashSetOf(URI("https://myanimelist.net/anime/32")),
-                    _synonyms = hashSetOf(
-                        "Neon Genesis Evangelion: The End of Evangelion",
-                        "新世紀エヴァンゲリオン劇場版 THE END OF EVANGELION",
-                    ),
-                    _relatedAnime = hashSetOf(
-                        URI("https://myanimelist.net/anime/30"),
-                    ),
-                    _tags = hashSetOf(
-                        "action",
-                        "drama",
-                        "mecha",
-                        "psychological",
-                        "sci-fi",
-                    ),
-                )
+                val otherAnime = TestAnimeRawObjects.NullableNotSet.obj
 
                 val inMemoryDcsEntry = defaultDownloadControlStateAccessor.allAnime().first()
                 inMemoryDcsEntry.mergeWith(otherAnime)
@@ -900,7 +609,8 @@ internal class DefaultDownloadControlStateAccessorTest {
             tempDirectory {
                 // given
                 val dir = tempDir.resolve(AnilistConfig.hostname()).createDirectory()
-                testResource("downloadcontrolstate/DefaultDownloadControlStateAccessorTest/ids_dont_match/10294.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").copyTo(dir)
+                createExpectedDcsEntry(TestAnimeRawObjects.AllPropertiesSet.serializedPrettyPrint)
+                    .writeToFile(dir.resolve("10294.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX"))
 
                 val testAppConfig = object: Config by TestAppConfig {
                     override fun metaDataProviderConfigurations(): Set<MetaDataProviderConfig> = setOf(AnilistConfig)
@@ -926,51 +636,18 @@ internal class DefaultDownloadControlStateAccessorTest {
             tempDirectory {
                 // given
                 val dir1 = tempDir.resolve(AnilistConfig.hostname()).createDirectory()
-                testResource("downloadcontrolstate/DefaultDownloadControlStateAccessorTest/success/32.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").copyTo(dir1)
+                createExpectedDcsEntry(TestAnimeRawObjects.AllPropertiesSet.serializedPrettyPrint)
+                    .writeToFile(dir1.resolve("177191.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX"))
 
-
-                val dir2 = tempDir.resolve(KitsuConfig.hostname()).createDirectory()
-                testResource("downloadcontrolstate/DefaultDownloadControlStateAccessorTest/success/99.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").copyTo(dir2)
+                val dir2 = tempDir.resolve(MyanimelistConfig.hostname()).createDirectory()
+                createExpectedDcsEntry(TestAnimeRawObjects.NullableNotSet.serializedPrettyPrint)
+                    .writeToFile(dir2.resolve("1535.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX"))
 
                 val testAppConfig = object: Config by TestAppConfig {
-                    override fun metaDataProviderConfigurations(): Set<MetaDataProviderConfig> = setOf(AnilistConfig, KitsuConfig)
+                    override fun metaDataProviderConfigurations(): Set<MetaDataProviderConfig> = setOf(AnilistConfig, MyanimelistConfig)
                     override fun downloadControlStateDirectory(): Directory = tempDir
                     override fun findMetaDataProviderConfig(host: Hostname): MetaDataProviderConfig = super.findMetaDataProviderConfig(host)
                 }
-
-                val expectedAnime = AnimeRaw(
-                    _title = "Shin Seiki Evangelion Movie: THE END OF EVANGELION",
-                    type = MOVIE,
-                    episodes = 1,
-                    picture = URI("https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/32-7YrdcGEX1FP3.png"),
-                    thumbnail = URI("https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/default.jpg"),
-                    status = FINISHED,
-                    duration = Duration(87, MINUTES),
-                    animeSeason = AnimeSeason(
-                        year = 1997,
-                    ),
-                    _sources = hashSetOf(URI("https://anilist.co/anime/32")),
-                    _synonyms = hashSetOf(
-                        "Neon Genesis Evangelion: The End of Evangelion",
-                        "新世紀エヴァンゲリオン劇場版 THE END OF EVANGELION",
-                    ),
-                    _relatedAnime = hashSetOf(
-                        URI("https://anilist.co/anime/30"),
-                    ),
-                    _tags = hashSetOf(
-                        "action",
-                        "drama",
-                        "mecha",
-                        "psychological",
-                        "sci-fi",
-                    ),
-                ).addScores(
-                    MetaDataProviderScoreValue(
-                        hostname = "anilist.co",
-                        value = 85.0,
-                        range = 1.0..100.0,
-                    ),
-                )
 
                 val defaultDownloadControlStateAccessor = DefaultDownloadControlStateAccessor(
                     appConfig = testAppConfig,
@@ -981,7 +658,7 @@ internal class DefaultDownloadControlStateAccessorTest {
 
                 // then
                 assertThat(result).containsExactlyInAnyOrder(
-                    expectedAnime,
+                    TestAnimeRawObjects.AllPropertiesSet.obj,
                 )
             }
         }
@@ -1045,8 +722,8 @@ internal class DefaultDownloadControlStateAccessorTest {
             tempDirectory {
                 // given
                 val dir = tempDir.resolve(AnilistConfig.hostname()).createDirectory()
-                testResource("downloadcontrolstate/DefaultDownloadControlStateAccessorTest/change_by_reference/default.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX")
-                    .copyTo(dir.resolve("32.${DOWNLOAD_CONTROL_STATE_FILE_SUFFIX}"))
+                createExpectedDcsEntry(TestAnimeRawObjects.AllPropertiesSet.serializedPrettyPrint)
+                    .writeToFile(dir.resolve("177191.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX"))
 
                 val testAppConfig = object: Config by TestAppConfig {
                     override fun metaDataProviderConfigurations(): Set<MetaDataProviderConfig> = setOf(AnilistConfig)
@@ -1056,27 +733,9 @@ internal class DefaultDownloadControlStateAccessorTest {
 
                 val expectedEntry1 = DownloadControlStateEntry(
                     _weeksWihoutChange = 0,
-                    _lastDownloaded = WeekOfYear(2021, 44),
-                    _nextDownload = WeekOfYear(2021, 45),
-                    _anime = AnimeRaw(
-                        _title = "Shin Seiki Evangelion Movie: THE END OF EVANGELION",
-                        type = UNKNOWN_TYPE,
-                        episodes = 0,
-                        picture = NO_PICTURE,
-                        thumbnail = NO_PICTURE_THUMBNAIL,
-                        status = UNKNOWN_STATUS,
-                        duration = UNKNOWN_DURATION,
-                        animeSeason = AnimeSeason(
-                            season = UNDEFINED,
-                            year = UNKNOWN_YEAR,
-                        ),
-                        _sources = hashSetOf(URI("https://anilist.co/anime/32")),
-                        _synonyms = hashSetOf(),
-                        _relatedAnime = hashSetOf(
-                            URI("https://anilist.co/anime/30"),
-                        ),
-                        _tags = hashSetOf(),
-                    ),
+                    _lastDownloaded = WeekOfYear(LocalDate.now().minusWeeks(1)),
+                    _nextDownload = WeekOfYear.currentWeek(),
+                    _anime = TestAnimeRawObjects.AllPropertiesSet.obj
                 )
 
                 val defaultDownloadControlStateAccessor = DefaultDownloadControlStateAccessor(
@@ -1084,34 +743,7 @@ internal class DefaultDownloadControlStateAccessorTest {
                     mergeLockAccess = TestMergeLockAccessor,
                 )
 
-                val otherAnime = AnimeRaw(
-                    _title = "Shin Seiki Evangelion Movie: THE END OF EVANGELION",
-                    type = MOVIE,
-                    episodes = 1,
-                    picture = URI("https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/32-7YrdcGEX1FP3.png"),
-                    thumbnail = URI("https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/default.jpg"),
-                    status = FINISHED,
-                    duration = Duration(87, MINUTES),
-                    animeSeason = AnimeSeason(
-                        season = SPRING,
-                        year = 1997,
-                    ),
-                    _sources = hashSetOf(URI("https://myanimelist.net/anime/32")),
-                    _synonyms = hashSetOf(
-                        "Neon Genesis Evangelion: The End of Evangelion",
-                        "新世紀エヴァンゲリオン劇場版 THE END OF EVANGELION",
-                    ),
-                    _relatedAnime = hashSetOf(
-                        URI("https://myanimelist.net/anime/30"),
-                    ),
-                    _tags = hashSetOf(
-                        "action",
-                        "drama",
-                        "mecha",
-                        "psychological",
-                        "sci-fi",
-                    ),
-                )
+                val otherAnime = TestAnimeRawObjects.NullableNotSet.obj
 
                 val inMemoryDcsEntry = defaultDownloadControlStateAccessor.allAnime(AnilistConfig).first()
                 inMemoryDcsEntry.mergeWith(otherAnime)
@@ -1135,10 +767,11 @@ internal class DefaultDownloadControlStateAccessorTest {
             tempDirectory {
                 // given
                 val dir = tempDir.resolve(AnilistConfig.hostname()).createDirectory()
-                testResource("downloadcontrolstate/DefaultDownloadControlStateAccessorTest/success/32.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").copyTo(dir)
+                createExpectedDcsEntry(TestAnimeRawObjects.AllPropertiesSet.serializedPrettyPrint)
+                    .writeToFile(dir.resolve("177191.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX"))
 
                 val testAppConfig = object: Config by TestAppConfig {
-                    override fun metaDataProviderConfigurations(): Set<MetaDataProviderConfig> = setOf(AnilistConfig, KitsuConfig)
+                    override fun metaDataProviderConfigurations(): Set<MetaDataProviderConfig> = setOf(AnilistConfig, MyanimelistConfig)
                     override fun downloadControlStateDirectory(): Directory = tempDir
                     override fun findMetaDataProviderConfig(host: Hostname): MetaDataProviderConfig = super.findMetaDataProviderConfig(host)
                 }
@@ -1149,7 +782,7 @@ internal class DefaultDownloadControlStateAccessorTest {
                 )
 
                 // when
-                val result = defaultDownloadControlStateAccessor.dcsEntryExists(AnilistConfig, "32")
+                val result = defaultDownloadControlStateAccessor.dcsEntryExists(AnilistConfig, "177191")
 
                 // then
                 assertThat(result).isTrue()
@@ -1161,10 +794,11 @@ internal class DefaultDownloadControlStateAccessorTest {
             tempDirectory {
                 // given
                 val dir = tempDir.resolve(AnilistConfig.hostname()).createDirectory()
-                testResource("downloadcontrolstate/DefaultDownloadControlStateAccessorTest/success/32.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").copyTo(dir)
+                createExpectedDcsEntry(TestAnimeRawObjects.AllPropertiesSet.serializedPrettyPrint)
+                    .writeToFile(dir.resolve("177191.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX"))
 
                 val testAppConfig = object: Config by TestAppConfig {
-                    override fun metaDataProviderConfigurations(): Set<MetaDataProviderConfig> = setOf(AnilistConfig, KitsuConfig)
+                    override fun metaDataProviderConfigurations(): Set<MetaDataProviderConfig> = setOf(AnilistConfig, MyanimelistConfig)
                     override fun downloadControlStateDirectory(): Directory = tempDir
                     override fun findMetaDataProviderConfig(host: Hostname): MetaDataProviderConfig = super.findMetaDataProviderConfig(host)
                 }
@@ -1175,7 +809,7 @@ internal class DefaultDownloadControlStateAccessorTest {
                 )
 
                 // when
-                val result = defaultDownloadControlStateAccessor.dcsEntryExists(KitsuConfig, "99")
+                val result = defaultDownloadControlStateAccessor.dcsEntryExists(MyanimelistConfig, "1535")
 
                 // then
                 assertThat(result).isFalse()
@@ -1202,7 +836,7 @@ internal class DefaultDownloadControlStateAccessorTest {
                 )
 
                 // when
-                val result = defaultDownloadControlStateAccessor.dcsEntryExists(KitsuConfig, "99")
+                val result = defaultDownloadControlStateAccessor.dcsEntryExists(MyanimelistConfig, "1535")
 
                 // then
                 assertThat(result).isFalse()
@@ -1227,10 +861,10 @@ internal class DefaultDownloadControlStateAccessorTest {
                     appConfig = testAppConfig,
                     mergeLockAccess = TestMergeLockAccessor,
                 )
-                defaultDownloadControlStateAccessor.dcsEntryExists(KitsuConfig, "99")
+                defaultDownloadControlStateAccessor.dcsEntryExists(MyanimelistConfig, "1535")
 
                 // when
-                val result = defaultDownloadControlStateAccessor.dcsEntryExists(KitsuConfig, "99")
+                val result = defaultDownloadControlStateAccessor.dcsEntryExists(MyanimelistConfig, "1535")
 
                 // then
                 assertThat(result).isFalse()
@@ -1247,51 +881,20 @@ internal class DefaultDownloadControlStateAccessorTest {
             tempDirectory {
                 // given
                 val dir = tempDir.resolve(AnilistConfig.hostname()).createDirectory()
-                testResource("downloadcontrolstate/DefaultDownloadControlStateAccessorTest/success/32.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").copyTo(dir)
+                createExpectedDcsEntry(TestAnimeRawObjects.AllPropertiesSet.serializedPrettyPrint)
+                    .writeToFile(dir.resolve("177191.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX"))
 
                 val testAppConfig = object: Config by TestAppConfig {
-                    override fun metaDataProviderConfigurations(): Set<MetaDataProviderConfig> = setOf(AnilistConfig, KitsuConfig)
+                    override fun metaDataProviderConfigurations(): Set<MetaDataProviderConfig> = setOf(AnilistConfig, MyanimelistConfig)
                     override fun downloadControlStateDirectory(): Directory = tempDir
                     override fun findMetaDataProviderConfig(host: Hostname): MetaDataProviderConfig = super.findMetaDataProviderConfig(host)
                 }
 
                 val expectedDcsEntry = DownloadControlStateEntry(
                     _weeksWihoutChange = 0,
-                    _lastDownloaded = WeekOfYear(2021, 44),
-                    _nextDownload = WeekOfYear(2021, 45),
-                    _anime = AnimeRaw(
-                        _title = "Shin Seiki Evangelion Movie: THE END OF EVANGELION",
-                        type = MOVIE,
-                        episodes = 1,
-                        picture = URI("https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/32-7YrdcGEX1FP3.png"),
-                        thumbnail = URI("https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/default.jpg"),
-                        status = FINISHED,
-                        duration = Duration(87, MINUTES),
-                        animeSeason = AnimeSeason(
-                            year = 1997,
-                        ),
-                        _sources = hashSetOf(URI("https://anilist.co/anime/32")),
-                        _synonyms = hashSetOf(
-                            "Neon Genesis Evangelion: The End of Evangelion",
-                            "新世紀エヴァンゲリオン劇場版 THE END OF EVANGELION",
-                        ),
-                        _relatedAnime = hashSetOf(
-                            URI("https://anilist.co/anime/30"),
-                        ),
-                        _tags = hashSetOf(
-                            "action",
-                            "drama",
-                            "mecha",
-                            "psychological",
-                            "sci-fi",
-                        ),
-                    ).addScores(
-                        MetaDataProviderScoreValue(
-                            hostname = "anilist.co",
-                            value = 85.0,
-                            range = 1.0..100.0,
-                        ),
-                    ),
+                    _lastDownloaded = WeekOfYear(LocalDate.now().minusWeeks(1)),
+                    _nextDownload = WeekOfYear.currentWeek(),
+                    _anime = TestAnimeRawObjects.AllPropertiesSet.obj,
                 )
 
                 val defaultDownloadControlStateAccessor = DefaultDownloadControlStateAccessor(
@@ -1300,7 +903,7 @@ internal class DefaultDownloadControlStateAccessorTest {
                 )
 
                 // when
-                val result = defaultDownloadControlStateAccessor.dcsEntry(AnilistConfig, "32")
+                val result = defaultDownloadControlStateAccessor.dcsEntry(AnilistConfig, "177191")
 
                 // then
                 assertThat(result).isEqualTo(expectedDcsEntry)
@@ -1312,10 +915,11 @@ internal class DefaultDownloadControlStateAccessorTest {
             tempDirectory {
                 // given
                 val dir = tempDir.resolve(AnilistConfig.hostname()).createDirectory()
-                testResource("downloadcontrolstate/DefaultDownloadControlStateAccessorTest/success/32.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").copyTo(dir)
+                createExpectedDcsEntry(TestAnimeRawObjects.AllPropertiesSet.serializedPrettyPrint)
+                    .writeToFile(dir.resolve("177191.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX"))
 
                 val testAppConfig = object: Config by TestAppConfig {
-                    override fun metaDataProviderConfigurations(): Set<MetaDataProviderConfig> = setOf(AnilistConfig, KitsuConfig)
+                    override fun metaDataProviderConfigurations(): Set<MetaDataProviderConfig> = setOf(AnilistConfig, MyanimelistConfig)
                     override fun downloadControlStateDirectory(): Directory = tempDir
                     override fun findMetaDataProviderConfig(host: Hostname): MetaDataProviderConfig = super.findMetaDataProviderConfig(host)
                 }
@@ -1327,11 +931,11 @@ internal class DefaultDownloadControlStateAccessorTest {
 
                 // when
                 val result = exceptionExpected<IllegalStateException> {
-                    defaultDownloadControlStateAccessor.dcsEntry(KitsuConfig, "99")
+                    defaultDownloadControlStateAccessor.dcsEntry(MyanimelistConfig, "1029")
                 }
 
                 // then
-                assertThat(result).hasMessage("Requested DCS entry with internal id [kitsu.app-99] doesnt exist.")
+                assertThat(result).hasMessage("Requested DCS entry with internal id [myanimelist.net-1029] doesnt exist.")
             }
         }
 
@@ -1340,7 +944,8 @@ internal class DefaultDownloadControlStateAccessorTest {
             tempDirectory {
                 // given
                 val dir = tempDir.resolve(AnilistConfig.hostname()).createDirectory()
-                testResource("downloadcontrolstate/DefaultDownloadControlStateAccessorTest/success/32.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").copyTo(dir)
+                createExpectedDcsEntry(TestAnimeRawObjects.AllPropertiesSet.serializedPrettyPrint)
+                    .writeToFile(dir.resolve("177191.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX"))
 
                 var initHasBeenInvoked = false
                 val testAppConfig = object: Config by TestAppConfig {
@@ -1359,7 +964,7 @@ internal class DefaultDownloadControlStateAccessorTest {
                 )
 
                 // when
-                defaultDownloadControlStateAccessor.dcsEntry(AnilistConfig, "32")
+                defaultDownloadControlStateAccessor.dcsEntry(AnilistConfig, "177191")
 
                 // then
                 assertThat(initHasBeenInvoked).isTrue()
@@ -1371,7 +976,8 @@ internal class DefaultDownloadControlStateAccessorTest {
             tempDirectory {
                 // given
                 val dir = tempDir.resolve(AnilistConfig.hostname()).createDirectory()
-                testResource("downloadcontrolstate/DefaultDownloadControlStateAccessorTest/success/32.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").copyTo(dir)
+                createExpectedDcsEntry(TestAnimeRawObjects.AllPropertiesSet.serializedPrettyPrint)
+                    .writeToFile(dir.resolve("177191.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX"))
 
                 var initHasBeenInvoked = 0
                 val testAppConfig = object: Config by TestAppConfig {
@@ -1387,10 +993,10 @@ internal class DefaultDownloadControlStateAccessorTest {
                     appConfig = testAppConfig,
                     mergeLockAccess = TestMergeLockAccessor,
                 )
-                defaultDownloadControlStateAccessor.dcsEntry(AnilistConfig, "32")
+                defaultDownloadControlStateAccessor.dcsEntry(AnilistConfig, "177191")
 
                 // when
-                defaultDownloadControlStateAccessor.dcsEntry(AnilistConfig, "32")
+                defaultDownloadControlStateAccessor.dcsEntry(AnilistConfig, "177191")
 
                 // then
                 assertThat(initHasBeenInvoked).isOne()
@@ -1402,8 +1008,8 @@ internal class DefaultDownloadControlStateAccessorTest {
             tempDirectory {
                 // given
                 val dir = tempDir.resolve(AnilistConfig.hostname()).createDirectory()
-                testResource("downloadcontrolstate/DefaultDownloadControlStateAccessorTest/change_by_reference/default.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX")
-                    .copyTo(dir.resolve("32.${DOWNLOAD_CONTROL_STATE_FILE_SUFFIX}"))
+                createExpectedDcsEntry(TestAnimeRawObjects.AllPropertiesSet.serializedPrettyPrint)
+                    .writeToFile(dir.resolve("177191.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX"))
 
                 val testAppConfig = object: Config by TestAppConfig {
                     override fun metaDataProviderConfigurations(): Set<MetaDataProviderConfig> = setOf(AnilistConfig)
@@ -1413,27 +1019,9 @@ internal class DefaultDownloadControlStateAccessorTest {
 
                 val expectedEntry1 = DownloadControlStateEntry(
                     _weeksWihoutChange = 0,
-                    _lastDownloaded = WeekOfYear(2021, 44),
-                    _nextDownload = WeekOfYear(2021, 45),
-                    _anime = AnimeRaw(
-                        _title = "Shin Seiki Evangelion Movie: THE END OF EVANGELION",
-                        type = UNKNOWN_TYPE,
-                        episodes = 0,
-                        picture = NO_PICTURE,
-                        thumbnail = NO_PICTURE_THUMBNAIL,
-                        status = UNKNOWN_STATUS,
-                        duration = UNKNOWN_DURATION,
-                        animeSeason = AnimeSeason(
-                            season = UNDEFINED,
-                            year = UNKNOWN_YEAR,
-                        ),
-                        _sources = hashSetOf(URI("https://anilist.co/anime/32")),
-                        _synonyms = hashSetOf(),
-                        _relatedAnime = hashSetOf(
-                            URI("https://anilist.co/anime/30"),
-                        ),
-                        _tags = hashSetOf(),
-                    ),
+                    _lastDownloaded = WeekOfYear(LocalDate.now().minusWeeks(1)),
+                    _nextDownload = WeekOfYear.currentWeek(),
+                    _anime = TestAnimeRawObjects.AllPropertiesSet.obj,
                 )
 
                 val defaultDownloadControlStateAccessor = DefaultDownloadControlStateAccessor(
@@ -1441,40 +1029,13 @@ internal class DefaultDownloadControlStateAccessorTest {
                     mergeLockAccess = TestMergeLockAccessor,
                 )
 
-                val otherAnime = AnimeRaw(
-                    _title = "Shin Seiki Evangelion Movie: THE END OF EVANGELION",
-                    type = MOVIE,
-                    episodes = 1,
-                    picture = URI("https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/32-7YrdcGEX1FP3.png"),
-                    thumbnail = URI("https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/default.jpg"),
-                    status = FINISHED,
-                    duration = Duration(87, MINUTES),
-                    animeSeason = AnimeSeason(
-                        season = SPRING,
-                        year = 1997,
-                    ),
-                    _sources = hashSetOf(URI("https://myanimelist.net/anime/32")),
-                    _synonyms = hashSetOf(
-                        "Neon Genesis Evangelion: The End of Evangelion",
-                        "新世紀エヴァンゲリオン劇場版 THE END OF EVANGELION",
-                    ),
-                    _relatedAnime = hashSetOf(
-                        URI("https://myanimelist.net/anime/30"),
-                    ),
-                    _tags = hashSetOf(
-                        "action",
-                        "drama",
-                        "mecha",
-                        "psychological",
-                        "sci-fi",
-                    ),
-                )
+                val otherAnime = TestAnimeRawObjects.NullableNotSet.obj
 
-                val inMemoryDcsEntry = defaultDownloadControlStateAccessor.dcsEntry(AnilistConfig, "32").anime
+                val inMemoryDcsEntry = defaultDownloadControlStateAccessor.dcsEntry(AnilistConfig, "177191").anime
                 inMemoryDcsEntry.mergeWith(otherAnime)
 
                 // when
-                val result = defaultDownloadControlStateAccessor.dcsEntry(AnilistConfig, "32")
+                val result = defaultDownloadControlStateAccessor.dcsEntry(AnilistConfig, "177191")
 
                 // then
                 assertThat(result).isEqualTo(expectedEntry1)
@@ -1496,44 +1057,14 @@ internal class DefaultDownloadControlStateAccessorTest {
 
                 val dcsEntry = DownloadControlStateEntry(
                     _weeksWihoutChange = 0,
-                    _lastDownloaded = WeekOfYear(2021, 44),
-                    _nextDownload = WeekOfYear(2021, 45),
-                    _anime = AnimeRaw(
-                        _title = "Shin Seiki Evangelion Movie: THE END OF EVANGELION",
-                        type = MOVIE,
-                        episodes = 1,
-                        picture = URI("https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/32-7YrdcGEX1FP3.png"),
-                        thumbnail = URI("https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/default.jpg"),
-                        status = FINISHED,
-                        duration = Duration(87, MINUTES),
-                        animeSeason = AnimeSeason(
-                            year = 1997,
-                        ),
-                        _sources = hashSetOf(URI("https://anilist.co/anime/32")),
-                        _synonyms = hashSetOf(
-                            "Neon Genesis Evangelion: The End of Evangelion",
-                            "新世紀エヴァンゲリオン劇場版 THE END OF EVANGELION",
-                        ),
-                        _relatedAnime = hashSetOf(
-                            URI("https://anilist.co/anime/30"),
-                        ),
-                        _tags = hashSetOf(
-                            "action",
-                            "drama",
-                            "mecha",
-                            "psychological",
-                            "sci-fi",
-                        ),
-                    ).addScores(
-                        MetaDataProviderScoreValue(
-                            hostname = "anilist.co",
-                            value = 85.0,
-                            range = 1.0..100.0,
-                        ),
-                    ),
+                    _lastDownloaded = WeekOfYear(LocalDate.now().minusWeeks(1)),
+                    _nextDownload = WeekOfYear.currentWeek(),
+                    _anime = TestAnimeRawObjects.AllPropertiesSet.obj,
                 )
 
-                val expectedFile = loadTestResource<String>("downloadcontrolstate/DefaultDownloadControlStateAccessorTest/success/32.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX")
+                val expectedFile = createExpectedDcsEntry(
+                    TestAnimeRawObjects.AllPropertiesSet.serializedPrettyPrint,
+                )
                 val outputDir = tempDir.resolve(AnilistConfig.hostname()).createDirectory()
 
                 val defaultDownloadControlStateAccessor = DefaultDownloadControlStateAccessor(
@@ -1542,11 +1073,11 @@ internal class DefaultDownloadControlStateAccessorTest {
                 )
 
                 // when
-                val result = defaultDownloadControlStateAccessor.createOrUpdate(AnilistConfig, "32", dcsEntry)
+                val result = defaultDownloadControlStateAccessor.createOrUpdate(AnilistConfig, "177191", dcsEntry)
 
                 // then
                 assertThat(result).isTrue()
-                val fileContent = outputDir.resolve("32.dcs").readFile()
+                val fileContent = outputDir.resolve("177191.dcs").readFile()
                 assertThat(fileContent).isEqualTo(expectedFile)
             }
         }
@@ -1562,93 +1093,39 @@ internal class DefaultDownloadControlStateAccessorTest {
 
                 val previousEntry = DownloadControlStateEntry(
                     _weeksWihoutChange = 2,
-                    _lastDownloaded = WeekOfYear(2021, 39),
-                    _nextDownload = WeekOfYear(2021, 44),
-                    _anime = AnimeRaw(
-                        _title = "Shin Seiki Evangelion Movie",
-                        type = MOVIE,
-                        episodes = 1,
-                        picture = URI("https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/32-7YrdcGEX1FP3.png"),
-                        thumbnail = URI("https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/default.jpg"),
-                        status = FINISHED,
-                        duration = UNKNOWN_DURATION,
-                        animeSeason = AnimeSeason(
-                            year = UNKNOWN_YEAR,
-                        ),
-                        _sources = hashSetOf(URI("https://anilist.co/anime/32")),
-                        _synonyms = hashSetOf(
-                            "Neon Genesis Evangelion: The End of Evangelion",
-                            "新世紀エヴァンゲリオン劇場版 THE END OF EVANGELION",
-                        ),
-                        _relatedAnime = hashSetOf(
-                            URI("https://anilist.co/anime/30"),
-                        ),
-                        _tags = hashSetOf(
-                            "action",
-                            "mecha",
-                            "sci-fi",
-                        ),
-                    ),
+                    _lastDownloaded = WeekOfYear(LocalDate.now().minusWeeks(1)),
+                    _nextDownload = WeekOfYear.currentWeek(),
+                    _anime = TestAnimeRawObjects.DefaultAnime.obj,
                 )
 
                 val dcsEntry = DownloadControlStateEntry(
                     _weeksWihoutChange = 0,
-                    _lastDownloaded = WeekOfYear(2021, 44),
-                    _nextDownload = WeekOfYear(2021, 45),
-                    _anime = AnimeRaw(
-                        _title = "Shin Seiki Evangelion Movie: THE END OF EVANGELION",
-                        type = MOVIE,
-                        episodes = 1,
-                        picture = URI("https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/32-7YrdcGEX1FP3.png"),
-                        thumbnail = URI("https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/default.jpg"),
-                        status = FINISHED,
-                        duration = Duration(87, MINUTES),
-                        animeSeason = AnimeSeason(
-                            year = 1997,
-                        ),
-                        _sources = hashSetOf(URI("https://anilist.co/anime/32")),
-                        _synonyms = hashSetOf(
-                            "Neon Genesis Evangelion: The End of Evangelion",
-                            "新世紀エヴァンゲリオン劇場版 THE END OF EVANGELION",
-                        ),
-                        _relatedAnime = hashSetOf(
-                            URI("https://anilist.co/anime/30"),
-                        ),
-                        _tags = hashSetOf(
-                            "action",
-                            "drama",
-                            "mecha",
-                            "psychological",
-                            "sci-fi",
-                        ),
-                    ).addScores(
-                        MetaDataProviderScoreValue(
-                            hostname = "anilist.co",
-                            value = 85.0,
-                            range = 1.0..100.0,
-                        ),
-                    ),
+                    _lastDownloaded = WeekOfYear(LocalDate.now().minusWeeks(1)),
+                    _nextDownload = WeekOfYear.currentWeek(),
+                    _anime = TestAnimeRawObjects.AllPropertiesSet.obj,
                 )
 
-                val expectedFile = loadTestResource<String>("downloadcontrolstate/DefaultDownloadControlStateAccessorTest/success/32.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX")
+                val expectedFile = createExpectedDcsEntry(
+                    TestAnimeRawObjects.AllPropertiesSet.serializedPrettyPrint,
+                )
                 val outputDir = tempDir.resolve(AnilistConfig.hostname()).createDirectory()
 
                 val defaultDownloadControlStateAccessor = DefaultDownloadControlStateAccessor(
                     appConfig = testAppConfig,
                     mergeLockAccess = TestMergeLockAccessor,
                 )
-                defaultDownloadControlStateAccessor.createOrUpdate(AnilistConfig, "32", previousEntry)
-                val correctForPreviousVersion = defaultDownloadControlStateAccessor.dcsEntry(AnilistConfig, "32")
+                defaultDownloadControlStateAccessor.createOrUpdate(AnilistConfig, "177191", previousEntry)
+                val correctForPreviousVersion = defaultDownloadControlStateAccessor.dcsEntry(AnilistConfig, "177191")
 
                 // when
-                val result = defaultDownloadControlStateAccessor.createOrUpdate(AnilistConfig, "32", dcsEntry)
+                val result = defaultDownloadControlStateAccessor.createOrUpdate(AnilistConfig, "177191", dcsEntry)
 
                 // then
                 assertThat(result).isTrue()
                 assertThat(correctForPreviousVersion).isEqualTo(previousEntry)
-                val fileContent = outputDir.resolve("32.dcs").readFile()
+                val fileContent = outputDir.resolve("177191.dcs").readFile()
                 assertThat(fileContent).isEqualTo(expectedFile)
-                assertThat(defaultDownloadControlStateAccessor.dcsEntry(AnilistConfig, "32")).isEqualTo(dcsEntry)
+                assertThat(defaultDownloadControlStateAccessor.dcsEntry(AnilistConfig, "177191")).isEqualTo(dcsEntry)
             }
         }
 
@@ -1665,43 +1142,17 @@ internal class DefaultDownloadControlStateAccessorTest {
                     _weeksWihoutChange = 0,
                     _lastDownloaded = WeekOfYear.currentWeek(),
                     _nextDownload = WeekOfYear.currentWeek().plusWeeks(1),
-                    _anime = AnimeRaw(
-                        _title = "Shin Seiki Evangelion Movie: THE END OF EVANGELION",
-                        type = MOVIE,
-                        episodes = 1,
-                        picture = URI("https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/32-7YrdcGEX1FP3.png"),
-                        thumbnail = URI("https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/default.jpg"),
-                        status = FINISHED,
-                        duration = Duration(87, MINUTES),
-                        animeSeason = AnimeSeason(
-                            year = 1997,
-                        ),
-                        _sources = hashSetOf(URI("https://anilist.co/anime/32")),
-                        _synonyms = hashSetOf(
-                            "Neon Genesis Evangelion: The End of Evangelion",
-                            "新世紀エヴァンゲリオン劇場版 THE END OF EVANGELION",
-                        ),
-                        _relatedAnime = hashSetOf(
-                            URI("https://anilist.co/anime/30"),
-                        ),
-                        _tags = hashSetOf(
-                            "action",
-                            "drama",
-                            "mecha",
-                            "psychological",
-                            "sci-fi",
-                        ),
-                    ),
+                    _anime = TestAnimeRawObjects.AllPropertiesSet.obj,
                 )
 
                 val defaultDownloadControlStateAccessor = DefaultDownloadControlStateAccessor(
                     appConfig = testAppConfig,
                     mergeLockAccess = TestMergeLockAccessor,
                 )
-                defaultDownloadControlStateAccessor.createOrUpdate(AnilistConfig, "32", dcsEntry)
+                defaultDownloadControlStateAccessor.createOrUpdate(AnilistConfig, "177191", dcsEntry)
 
                 // when
-                val result = defaultDownloadControlStateAccessor.createOrUpdate(AnilistConfig, "32", dcsEntry)
+                val result = defaultDownloadControlStateAccessor.createOrUpdate(AnilistConfig, "177191", dcsEntry)
 
                 // then
                 assertThat(result).isFalse()
@@ -1725,35 +1176,9 @@ internal class DefaultDownloadControlStateAccessorTest {
 
                 val dcsEntry = DownloadControlStateEntry(
                     _weeksWihoutChange = 0,
-                    _lastDownloaded = WeekOfYear(2021, 44),
-                    _nextDownload = WeekOfYear(2021, 45),
-                    _anime = AnimeRaw(
-                        _title = "Shin Seiki Evangelion Movie: THE END OF EVANGELION",
-                        type = MOVIE,
-                        episodes = 1,
-                        picture = URI("https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/32-7YrdcGEX1FP3.png"),
-                        thumbnail = URI("https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/default.jpg"),
-                        status = FINISHED,
-                        duration = Duration(87, MINUTES),
-                        animeSeason = AnimeSeason(
-                            year = 1997,
-                        ),
-                        _sources = hashSetOf(URI("https://anilist.co/anime/32")),
-                        _synonyms = hashSetOf(
-                            "Neon Genesis Evangelion: The End of Evangelion",
-                            "新世紀エヴァンゲリオン劇場版 THE END OF EVANGELION",
-                        ),
-                        _relatedAnime = hashSetOf(
-                            URI("https://anilist.co/anime/30"),
-                        ),
-                        _tags = hashSetOf(
-                            "action",
-                            "drama",
-                            "mecha",
-                            "psychological",
-                            "sci-fi",
-                        ),
-                    ),
+                    _lastDownloaded = WeekOfYear(LocalDate.now().minusWeeks(1)),
+                    _nextDownload = WeekOfYear.currentWeek(),
+                    _anime = TestAnimeRawObjects.AllPropertiesSet.obj,
                 )
 
                 val defaultDownloadControlStateAccessor = DefaultDownloadControlStateAccessor(
@@ -1762,7 +1187,7 @@ internal class DefaultDownloadControlStateAccessorTest {
                 )
 
                 // when
-                defaultDownloadControlStateAccessor.createOrUpdate(AnilistConfig, "32", dcsEntry)
+                defaultDownloadControlStateAccessor.createOrUpdate(AnilistConfig, "177191", dcsEntry)
 
                 // then
                 assertThat(initHasBeenInvoked).isTrue()
@@ -1777,7 +1202,7 @@ internal class DefaultDownloadControlStateAccessorTest {
                 val testAppConfig = object: Config by TestAppConfig {
                     override fun metaDataProviderConfigurations(): Set<MetaDataProviderConfig> {
                         initHasBeenInvoked++
-                        return setOf(AnilistConfig, KitsuConfig)
+                        return setOf(AnilistConfig, MyanimelistConfig)
                     }
                     override fun downloadControlStateDirectory(): Directory = tempDir
                     override fun findMetaDataProviderConfig(host: Hostname): MetaDataProviderConfig = super.findMetaDataProviderConfig(host)
@@ -1785,35 +1210,9 @@ internal class DefaultDownloadControlStateAccessorTest {
 
                 val dcsEntry = DownloadControlStateEntry(
                     _weeksWihoutChange = 0,
-                    _lastDownloaded = WeekOfYear(2021, 44),
-                    _nextDownload = WeekOfYear(2021, 45),
-                    _anime = AnimeRaw(
-                        _title = "Shin Seiki Evangelion Movie: THE END OF EVANGELION",
-                        type = MOVIE,
-                        episodes = 1,
-                        picture = URI("https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/32-7YrdcGEX1FP3.png"),
-                        thumbnail = URI("https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/default.jpg"),
-                        status = FINISHED,
-                        duration = Duration(87, MINUTES),
-                        animeSeason = AnimeSeason(
-                            year = 1997,
-                        ),
-                        _sources = hashSetOf(URI("https://anilist.co/anime/32")),
-                        _synonyms = hashSetOf(
-                            "Neon Genesis Evangelion: The End of Evangelion",
-                            "新世紀エヴァンゲリオン劇場版 THE END OF EVANGELION",
-                        ),
-                        _relatedAnime = hashSetOf(
-                            URI("https://anilist.co/anime/30"),
-                        ),
-                        _tags = hashSetOf(
-                            "action",
-                            "drama",
-                            "mecha",
-                            "psychological",
-                            "sci-fi",
-                        ),
-                    ),
+                    _lastDownloaded = WeekOfYear(LocalDate.now().minusWeeks(1)),
+                    _nextDownload = WeekOfYear.currentWeek(),
+                    _anime = TestAnimeRawObjects.AllPropertiesSet.obj,
                 )
 
                 val defaultDownloadControlStateAccessor = DefaultDownloadControlStateAccessor(
@@ -1821,37 +1220,18 @@ internal class DefaultDownloadControlStateAccessorTest {
                     mergeLockAccess = TestMergeLockAccessor,
                 )
                 defaultDownloadControlStateAccessor.createOrUpdate(
-                    metaDataProviderConfig = KitsuConfig,
-                    animeId = "99",
+                    metaDataProviderConfig = MyanimelistConfig,
+                    animeId = "1535",
                     downloadControlStateEntry = DownloadControlStateEntry(
                         _weeksWihoutChange = 0,
-                        _lastDownloaded = WeekOfYear(2021, 44),
-                        _nextDownload = WeekOfYear(2021, 45),
-                        _anime = AnimeRaw(
-                            _title = "Fruits Basket",
-                            type = TV,
-                            episodes = 26,
-                            picture = URI("https://media.kitsu.app/anime/poster_images/99/small.jpg?1474922066"),
-                            thumbnail = URI("https://media.kitsu.app/anime/poster_images/99/tiny.jpg?1474922066"),
-                            status = FINISHED,
-                            duration = Duration(24, MINUTES),
-                            animeSeason = AnimeSeason(
-                                year = 2001,
-                            ),
-                            _sources = hashSetOf(URI("https://kitsu.app/anime/99")),
-                            _synonyms = hashSetOf(
-                                "Furuba",
-                                "フルーツバスケット",
-                            ),
-                            _relatedAnime = hashSetOf(
-                                URI("https://kitsu.app/anime/41995"),
-                            ),
-                        ),
+                        _lastDownloaded = WeekOfYear(LocalDate.now().minusWeeks(1)),
+                        _nextDownload = WeekOfYear.currentWeek(),
+                        _anime = TestAnimeRawObjects.NullableNotSet.obj,
                     )
                 )
 
                 // when
-                defaultDownloadControlStateAccessor.createOrUpdate(AnilistConfig, "32", dcsEntry)
+                defaultDownloadControlStateAccessor.createOrUpdate(AnilistConfig, "177191", dcsEntry)
 
                 // then
                 assertThat(initHasBeenInvoked).isOne()
@@ -1882,7 +1262,7 @@ internal class DefaultDownloadControlStateAccessorTest {
                 }
 
                 tempDir.resolve(testMetaDataProviderConfig.hostname()).createDirectory()
-                val file = tempDir.resolve(testMetaDataProviderConfig.hostname()).resolve("99.dcs").createFile()
+                val file = tempDir.resolve(testMetaDataProviderConfig.hostname()).resolve("177191.dcs").createFile()
                 val fileExistedPreviously = file.regularFileExists()
 
                 val defaultDownloadControlStateAccessor = DefaultDownloadControlStateAccessor(
@@ -1891,7 +1271,7 @@ internal class DefaultDownloadControlStateAccessorTest {
                 )
 
                 // when
-                defaultDownloadControlStateAccessor.removeDeadEntry(testMetaDataProviderConfig, "99")
+                defaultDownloadControlStateAccessor.removeDeadEntry(testMetaDataProviderConfig, "177191")
 
                 // then
                 assertThat(fileExistedPreviously).isTrue()
@@ -1923,7 +1303,7 @@ internal class DefaultDownloadControlStateAccessorTest {
                 }
 
                 tempDir.resolve(testConfig.hostname()).createDirectory()
-                tempDir.resolve(testConfig.hostname()).resolve("99.dcs").createFile()
+                tempDir.resolve(testConfig.hostname()).resolve("177191.dcs").createFile()
 
                 val defaultDownloadControlStateAccessor = DefaultDownloadControlStateAccessor(
                     appConfig = testAppConfig,
@@ -1931,7 +1311,7 @@ internal class DefaultDownloadControlStateAccessorTest {
                 )
 
                 // when
-                defaultDownloadControlStateAccessor.removeDeadEntry(testConfig, "99")
+                defaultDownloadControlStateAccessor.removeDeadEntry(testConfig, "177191")
 
                 // then
                 assertThat(hasMergeLockEntryRemovalBeingInvoked).isTrue()
@@ -1969,7 +1349,7 @@ internal class DefaultDownloadControlStateAccessorTest {
                 )
 
                 // when
-                defaultDownloadControlStateAccessor.removeDeadEntry(testConfig, "99")
+                defaultDownloadControlStateAccessor.removeDeadEntry(testConfig, "177191")
 
                 // then
                 assertThat(hasMergeLockEntryRemovalBeingInvoked).isTrue()
@@ -2007,7 +1387,7 @@ internal class DefaultDownloadControlStateAccessorTest {
                 )
 
                 // when
-                defaultDownloadControlStateAccessor.removeDeadEntry(testConfig, "99")
+                defaultDownloadControlStateAccessor.removeDeadEntry(testConfig, "177191")
 
                 // then
                 assertThat(hasMergeLockEntryRemovalBeingInvoked).isFalse()
@@ -2039,7 +1419,7 @@ internal class DefaultDownloadControlStateAccessorTest {
                 }
 
                 tempDir.resolve(testMetaDataProviderConfig.hostname()).createDirectory()
-                tempDir.resolve(testMetaDataProviderConfig.hostname()).resolve("99.dcs").createFile()
+                tempDir.resolve(testMetaDataProviderConfig.hostname()).resolve("177191.dcs").createFile()
 
                 val defaultDownloadControlStateAccessor = DefaultDownloadControlStateAccessor(
                     appConfig = testAppConfig,
@@ -2047,7 +1427,7 @@ internal class DefaultDownloadControlStateAccessorTest {
                 )
 
                 // when
-                defaultDownloadControlStateAccessor.removeDeadEntry(testMetaDataProviderConfig, "99")
+                defaultDownloadControlStateAccessor.removeDeadEntry(testMetaDataProviderConfig, "177191")
 
                 // then
                 assertThat(initHasBeenInvoked).isTrue()
@@ -2078,16 +1458,16 @@ internal class DefaultDownloadControlStateAccessorTest {
                 }
 
                 tempDir.resolve(testMetaDataProviderConfig.hostname()).createDirectory()
-                tempDir.resolve(testMetaDataProviderConfig.hostname()).resolve("99.dcs").createFile()
+                tempDir.resolve(testMetaDataProviderConfig.hostname()).resolve("177191.dcs").createFile()
 
                 val defaultDownloadControlStateAccessor = DefaultDownloadControlStateAccessor(
                     appConfig = testAppConfig,
                     mergeLockAccess = testMergeLockAccess,
                 )
-                defaultDownloadControlStateAccessor.removeDeadEntry(testMetaDataProviderConfig, "99")
+                defaultDownloadControlStateAccessor.removeDeadEntry(testMetaDataProviderConfig, "177191")
 
                 // when
-                defaultDownloadControlStateAccessor.removeDeadEntry(testMetaDataProviderConfig, "99")
+                defaultDownloadControlStateAccessor.removeDeadEntry(testMetaDataProviderConfig, "177191")
 
                 // then
                 assertThat(initHasBeenInvoked).isOne()
@@ -2177,9 +1557,9 @@ internal class DefaultDownloadControlStateAccessorTest {
                 }
 
                 val dcsSubFolder = tempDir.resolve(testMetaDataProviderConfig.hostname()).createDirectory()
-                val oldFile = dcsSubFolder.resolve("32.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX")
-                testResource("downloadcontrolstate/DefaultDownloadControlStateAccessorTest/success/32.dcs")
-                    .copyTo(oldFile)
+                val oldFile = dcsSubFolder.resolve("177191.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX")
+                createExpectedDcsEntry(TestAnimeRawObjects.AllPropertiesSet.serializedPrettyPrint)
+                    .writeToFile(oldFile)
                 val newFile = dcsSubFolder.resolve("new-id.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX")
 
                 val downloadControlStateAccessor = DefaultDownloadControlStateAccessor(
@@ -2188,13 +1568,13 @@ internal class DefaultDownloadControlStateAccessorTest {
                 )
 
                 // when
-                downloadControlStateAccessor.changeId("32", "new-id", testMetaDataProviderConfig)
+                downloadControlStateAccessor.changeId("177191", "new-id", testMetaDataProviderConfig)
 
                 // then
                 assertThat(oldFile.regularFileExists()).isFalse()
                 assertThat(newFile.regularFileExists()).isTrue()
                 assertThat(downloadControlStateAccessor.allDcsEntries()).hasSize(1)
-                assertThat(downloadControlStateAccessor.dcsEntryExists(testMetaDataProviderConfig, "32")).isFalse()
+                assertThat(downloadControlStateAccessor.dcsEntryExists(testMetaDataProviderConfig, "177191")).isFalse()
                 assertThat(downloadControlStateAccessor.dcsEntryExists(testMetaDataProviderConfig, "new-id")).isTrue()
             }
         }
