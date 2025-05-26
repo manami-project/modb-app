@@ -7,6 +7,8 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.isActive
 import kotlinx.coroutines.withContext
 import kotlinx.coroutines.withTimeout
+import java.time.LocalDate
+import kotlin.collections.joinToString
 import kotlin.time.Duration
 
 internal suspend fun waitFor(timeout: Duration, action: () -> Boolean) = withContext(Unconfined) {
@@ -86,5 +88,29 @@ internal fun createExpectedDeadEntriesMinified(vararg data: String): String {
 
     return """
         {"${'$'}schema":"https://raw.githubusercontent.com/manami-project/anime-offline-database/refs/tags/2020-01/dead-entries/dead-entries.schema.json","license":{"name":"Open Data Commons Open Database License (ODbL) v1.0 + Database Contents License (DbCL) v1.0","url":"https://github.com/manami-project/anime-offline-database/blob/2020-01/LICENSE"},"repository":"https://github.com/manami-project/anime-offline-database","lastUpdate":"2020-01-01","deadEntries":[$joinedData]}
+    """.trimIndent()
+}
+
+internal fun createExpectedDcsEntry(
+    data: String,
+    lastDownload: WeekOfYear = WeekOfYear(LocalDate.now().minusWeeks(1)),
+    nextDownload: WeekOfYear = WeekOfYear.currentWeek(),
+): String {
+    val joinedData = data.lineSequence().drop(1).map { line -> "          $line" }.joinToString("\n")
+
+    return """
+        {
+          "_weeksWihoutChange": 0,
+          "_lastDownloaded": {
+            "year": ${lastDownload.year},
+            "week": ${lastDownload.week}
+          },
+          "_nextDownload": {
+            "year": ${nextDownload.year},
+            "week": ${nextDownload.week}
+          },
+          "_anime": {
+$joinedData
+        }
     """.trimIndent()
 }
