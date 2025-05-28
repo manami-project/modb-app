@@ -65,6 +65,8 @@ public class NotifyAnimeConverter(
             _synonyms = extractSynonyms(data),
             _relatedAnime = extractRelatedAnime(data),
             _tags = extractTags(data),
+            _studios = hashSetOf(), // notify uses foreign key relations which is not supported
+            _producers = hashSetOf(), // notify uses foreign key relations which is not supported
         ).addScores(extractScore(data))
     }
 
