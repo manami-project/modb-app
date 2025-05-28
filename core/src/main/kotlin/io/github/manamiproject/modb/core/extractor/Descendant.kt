@@ -51,6 +51,11 @@ internal class Descendant(private val initial: String) {
                     ":matchesOwn(${matchResult.groups["value"]!!.value})"
                 }
 
+                FILTER_TEXT_EQUALS.matches(it) -> { // [text()='value']
+                    val matchResult = FILTER_TEXT_EQUALS.matchEntire(it)!!
+                    ":matchesOwn(^${matchResult.groups["value"]!!.value}$)"
+                }
+
                 FILTER_SELECT_SIBLING.matches(it) -> { // [1]
                     val matchResult = FILTER_SELECT_SIBLING.matchEntire(it)!!
                     ":eq(${matchResult.groups["number"]!!.value})"
@@ -110,6 +115,7 @@ internal class Descendant(private val initial: String) {
         private val FILTER_ATTRIBUTE_EQUALS_VALUE = """^\[@(?<attr>[\w-]+) *= *'(?<value>.*?)'\]$""".toRegex()
         private val FILTER_ATTRIBUTE_CONTAINS = """^\[contains\(@(?<attr>[\w-]+) *, *'(?<value>.*?)'\)\]$""".toRegex()
         private val FILTER_TEXT_CONTAINS = """^\[contains\(text\(\) *, *'(?<value>.*?)'\)\]$""".toRegex()
+        private val FILTER_TEXT_EQUALS = """^\[text\(\) *= *'(?<value>.*?)'\]$""".toRegex()
         private val FILTER_SELECT_SIBLING = """^\[(?<number>\d+)\]$""".toRegex()
         private val FILTER_ATTRIBUTE_EXISTS = """^\[@(?<attr>[\w-]+)\]$""".toRegex()
         private val STRING_VALUES = """.*?'(?<stringValue>.*?)'.*?""".toRegex()
