@@ -154,8 +154,10 @@ public data class AnimeRaw(
     }
 
     /**
-     * Add additional studio names to the existing list. Duplicates are being ignored.
-     * Studios are added as lower case. This will **not** override [studios].
+     * Add additional studio names to the existing list. Studios are added in lower case. Duplicates are being ignored.
+     * To further prevent duplicates, the longest studio name wins. Example:
+     * When adding `satelight` and `satelight inc.` only `satelight inc.` will remain, because `satelight` is identified
+     * as the shorter version of `satelight inc.`.
      * @since 18.3.0
      * @param studios Studio names to be added.
      * @return Same instance.
@@ -163,25 +165,37 @@ public data class AnimeRaw(
     public fun addStudios(vararg studios: Studio): AnimeRaw = addStudios(studios.toHashSet())
 
     /**
-     * Add additional studio names to the existing list. Duplicates are being ignored.
-     * Studios are added as lower case. This will **not** override [studios].
+     * Add additional studio names to the existing list. Studios are added in lower case. Duplicates are being ignored.
+     * To further prevent duplicates, the longest studio name wins. Example:
+     * When adding `satelight` and `satelight inc.` only `satelight inc.` will remain, because `satelight` is identified
+     * as the shorter version of `satelight inc.`.
      * @since 18.3.0
      * @param studios List of studio names to be added.
      * @return Same instance.
      */
     public fun addStudios(studios: Collection<Studio>): AnimeRaw {
-        studios.asSequence()
+        val newNormalized = studios.asSequence()
             .map { it.normalize() }
             .filter { it.neitherNullNorBlank() }
             .map { it.lowercase() }
-            .forEach { _studios.add(it) }
+            .toSet()
+
+        val union =_studios.union(newNormalized).sortedBy { it.length }
+
+        union.filterNot { check ->
+            union.filter { lookup -> lookup != check }
+                .filter { lookup -> lookup.startsWith(check) }
+                .any { lookup -> lookup.length > check.length }
+        }.forEach { _studios.add(it) }
 
         return this
     }
 
     /**
-     * Add additional names of producers to the existing list. Duplicates are being ignored.
-     * Producers are added as lower case. This will **not** override [producers].
+     * Add additional names of producers to the existing list. Producers are added in lower case.
+     * Duplicates are being ignored. To further prevent duplicates, the longest producer name wins. Example:
+     * When adding `satelight` and `satelight inc.` only `satelight inc.` will remain, because `satelight` is identified
+     * as the shorter version of `satelight inc.`.
      * @since 18.3.0
      * @param producers names of producers to be added.
      * @return Same instance.
@@ -189,18 +203,28 @@ public data class AnimeRaw(
     public fun addProducers(vararg producers: Producer): AnimeRaw = addProducers(producers.toHashSet())
 
     /**
-     * Add additional names of producers to the existing list. Duplicates are being ignored.
-     * Producers are added as lower case. This will **not** override [producers].
+     * Add additional names of producers to the existing list. Producers are added in lower case.
+     * Duplicates are being ignored. To further prevent duplicates, the longest producer name wins. Example:
+     * When adding `satelight` and `satelight inc.` only `satelight inc.` will remain, because `satelight` is identified
+     * as the shorter version of `satelight inc.`.
      * @since 18.3.0
      * @param producers List of names of producers to be added.
      * @return Same instance.
      */
     public fun addProducers(producers: Collection<Producer>): AnimeRaw {
-        producers.asSequence()
+        val newNormalized = producers.asSequence()
             .map { it.normalize() }
             .filter { it.neitherNullNorBlank() }
             .map { it.lowercase() }
-            .forEach { _producers.add(it) }
+            .toSet()
+
+        val union =_producers.union(newNormalized).sortedBy { it.length }
+
+        union.filterNot { check ->
+            union.filter { lookup -> lookup != check }
+                .filter { lookup -> lookup.startsWith(check) }
+                .any { lookup -> lookup.length > check.length }
+        }.forEach { _producers.add(it) }
 
         return this
     }
