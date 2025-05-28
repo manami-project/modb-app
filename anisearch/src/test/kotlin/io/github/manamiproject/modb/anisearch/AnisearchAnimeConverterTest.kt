@@ -1935,6 +1935,64 @@ internal class AnisearchAnimeConverterTest {
     }
 
     @Nested
+    inner class StudiosTests {
+
+        @Test
+        fun `multiple studios`() {
+            tempDirectory {
+                // given
+                val testAnisearchConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = AnisearchConfig.hostname()
+                    override fun buildAnimeLink(id: AnimeId): URI = AnisearchConfig.buildAnimeLink(id)
+                    override fun fileSuffix(): FileSuffix = AnisearchConfig.fileSuffix()
+                }
+
+                val testFile = loadTestResource<String>("AnisearchAnimeConverterTest/studios/multiple_studios.html")
+                "<html></html>".writeToFile(tempDir.resolve("14286.${testAnisearchConfig.fileSuffix()}"))
+
+                val converter = AnisearchAnimeConverter(
+                    metaDataProviderConfig = testAnisearchConfig,
+                    relationsDir = tempDir,
+                )
+
+                // when
+                val result = converter.convert(testFile)
+
+                // then
+                assertThat(result.studios).containsExactlyInAnyOrder(
+                    "satelight inc.",
+                )
+            }
+        }
+
+        @Test
+        fun `no studios`() {
+            tempDirectory {
+                // given
+                val testAnisearchConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = AnisearchConfig.hostname()
+                    override fun buildAnimeLink(id: AnimeId): URI = AnisearchConfig.buildAnimeLink(id)
+                    override fun fileSuffix(): FileSuffix = AnisearchConfig.fileSuffix()
+                }
+
+                val testFile = loadTestResource<String>("AnisearchAnimeConverterTest/studios/no_studios.html")
+                "<html></html>".writeToFile(tempDir.resolve("5419.${testAnisearchConfig.fileSuffix()}"))
+
+                val converter = AnisearchAnimeConverter(
+                    metaDataProviderConfig = testAnisearchConfig,
+                    relationsDir = tempDir,
+                )
+
+                // when
+                val result = converter.convert(testFile)
+
+                // then
+                assertThat(result.studios).isEmpty()
+            }
+        }
+    }
+
+    @Nested
     inner class ConstructorTests {
 
         @Test
