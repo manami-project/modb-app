@@ -1,0 +1,325 @@
+{
+  "data": {
+    "Media": {
+      "id": 104189,
+      "title": {
+        "userPreferred": "Ahiru Riku Sentai",
+        "romaji": "Ahiru Riku Sentai",
+        "english": "The Quack Infantry Troop",
+        "native": "\u3042\u3072\u308b\u9678\u6230\u968a"
+      },
+      "coverImage": {
+        "extraLarge": "https:\/\/s4.anilist.co\/file\/anilistcdn\/media\/anime\/cover\/large\/nx104189-x35c1ZO9N974.jpg",
+        "large": "https:\/\/s4.anilist.co\/file\/anilistcdn\/media\/anime\/cover\/medium\/nx104189-x35c1ZO9N974.jpg"
+      },
+      "bannerImage": null,
+      "startDate": {
+        "year": 1940,
+        "month": null,
+        "day": null
+      },
+      "endDate": {
+        "year": null,
+        "month": null,
+        "day": null
+      },
+      "description": "The conflict between ducklings and frogs escalates into war. However, a lightning strike makes the fighters realize the trivial nature of their battle.\n<br><br>\n(Source: TMDB)",
+      "season": null,
+      "seasonYear": null,
+      "type": "ANIME",
+      "format": "MOVIE",
+      "status": "FINISHED",
+      "episodes": 1,
+      "duration": 13,
+      "chapters": null,
+      "volumes": null,
+      "genres": [
+        "Action"
+      ],
+      "synonyms": [],
+      "source": "ORIGINAL",
+      "isAdult": false,
+      "isLocked": false,
+      "meanScore": 46,
+      "averageScore": 45,
+      "popularity": 844,
+      "favourites": 2,
+      "isFavouriteBlocked": false,
+      "hashtag": null,
+      "countryOfOrigin": "JP",
+      "isLicensed": true,
+      "isFavourite": false,
+      "isRecommendationBlocked": false,
+      "isReviewBlocked": false,
+      "nextAiringEpisode": null,
+      "relations": {
+        "edges": []
+      },
+      "characterPreview": {
+        "edges": []
+      },
+      "staffPreview": {
+        "edges": [
+          {
+            "id": 115472,
+            "role": "Director",
+            "node": {
+              "id": 129939,
+              "name": {
+                "userPreferred": "Mitsuyo Seo"
+              },
+              "language": "Japanese",
+              "image": {
+                "large": "https:\/\/s4.anilist.co\/file\/anilistcdn\/staff\/large\/n129939-9R3KQGuTr4zR.jpg"
+              }
+            }
+          },
+          {
+            "id": 207685,
+            "role": "Music",
+            "node": {
+              "id": 181753,
+              "name": {
+                "userPreferred": "Tadashi Hattori"
+              },
+              "language": "Japanese",
+              "image": {
+                "large": "https:\/\/s4.anilist.co\/file\/anilistcdn\/staff\/large\/n181753-0ancF2y9yUbO.png"
+              }
+            }
+          }
+        ]
+      },
+      "studios": {
+        "edges": []
+      },
+      "reviewPreview": {
+        "pageInfo": {
+          "total": 0
+        },
+        "nodes": []
+      },
+      "recommendations": {
+        "pageInfo": {
+          "total": 3
+        },
+        "nodes": [
+          {
+            "id": 73073,
+            "rating": 3,
+            "userRating": "NO_RATING",
+            "mediaRecommendation": {
+              "id": 6843,
+              "title": {
+                "userPreferred": "Kangaroo no Tanjoubi"
+              },
+              "format": "MOVIE",
+              "type": "ANIME",
+              "status": "FINISHED",
+              "bannerImage": null,
+              "coverImage": {
+                "large": "https:\/\/s4.anilist.co\/file\/anilistcdn\/media\/anime\/cover\/medium\/6843.jpg"
+              }
+            },
+            "user": {
+              "id": 664877,
+              "name": "MitsukeZZZ",
+              "avatar": {
+                "large": "https:\/\/s4.anilist.co\/file\/anilistcdn\/user\/avatar\/large\/b664877-i5r0GRqFwxGd.png"
+              }
+            }
+          },
+          {
+            "id": 391509,
+            "rating": 1,
+            "userRating": "NO_RATING",
+            "mediaRecommendation": {
+              "id": 102526,
+              "title": {
+                "userPreferred": "Ari-chan"
+              },
+              "format": "MOVIE",
+              "type": "ANIME",
+              "status": "FINISHED",
+              "bannerImage": null,
+              "coverImage": {
+                "large": "https:\/\/s4.anilist.co\/file\/anilistcdn\/media\/anime\/cover\/medium\/102526-J4wjPly7LOgj.jpg"
+              }
+            },
+            "user": {
+              "id": 6297379,
+              "name": "Stratosphere",
+              "avatar": {
+                "large": "https:\/\/s4.anilist.co\/file\/anilistcdn\/user\/avatar\/large\/b6297379-rc0OJSNU1TQE.png"
+              }
+            }
+          },
+          {
+            "id": 391511,
+            "rating": 1,
+            "userRating": "NO_RATING",
+            "mediaRecommendation": {
+              "id": 5662,
+              "title": {
+                "userPreferred": "Suteneko Tora-chan"
+              },
+              "format": "MOVIE",
+              "type": "ANIME",
+              "status": "FINISHED",
+              "bannerImage": null,
+              "coverImage": {
+                "large": "https:\/\/s4.anilist.co\/file\/anilistcdn\/media\/anime\/cover\/medium\/b5662-GvO96VG3zeaO.jpg"
+              }
+            },
+            "user": {
+              "id": 6297379,
+              "name": "Stratosphere",
+              "avatar": {
+                "large": "https:\/\/s4.anilist.co\/file\/anilistcdn\/user\/avatar\/large\/b6297379-rc0OJSNU1TQE.png"
+              }
+            }
+          }
+        ]
+      },
+      "externalLinks": [
+        {
+          "id": 7145,
+          "site": "Japanese Film Archives",
+          "url": "https:\/\/animation.filmarchives.jp\/en\/works\/view\/5141",
+          "type": "STREAMING",
+          "language": null,
+          "color": "#E60033",
+          "icon": "https:\/\/s4.anilist.co\/file\/anilistcdn\/link\/icon\/29-nBg0xp4H802d.png",
+          "notes": null,
+          "isDisabled": false
+        }
+      ],
+      "streamingEpisodes": [],
+      "trailer": null,
+      "rankings": [],
+      "tags": [
+        {
+          "id": 433,
+          "name": "Animals",
+          "description": "Prominently features animal characters in a leading role.",
+          "rank": 73,
+          "isMediaSpoiler": false,
+          "isGeneralSpoiler": false,
+          "userId": null
+        },
+        {
+          "id": 710,
+          "name": "Achromatic",
+          "description": "Contains animation that is primarily done in black and white.",
+          "rank": 70,
+          "isMediaSpoiler": false,
+          "isGeneralSpoiler": false,
+          "userId": null
+        },
+        {
+          "id": 34,
+          "name": "Military",
+          "description": "Centered around the life and activities of military personnel.",
+          "rank": 66,
+          "isMediaSpoiler": false,
+          "isGeneralSpoiler": false,
+          "userId": null
+        },
+        {
+          "id": 111,
+          "name": "War",
+          "description": "Partly or completely set during wartime.",
+          "rank": 65,
+          "isMediaSpoiler": false,
+          "isGeneralSpoiler": false,
+          "userId": null
+        },
+        {
+          "id": 1304,
+          "name": "Anthropomorphism",
+          "description": "Contains non-human character(s) that have attributes or characteristics of a human being.",
+          "rank": 50,
+          "isMediaSpoiler": false,
+          "isGeneralSpoiler": false,
+          "userId": 5294472
+        },
+        {
+          "id": 83,
+          "name": "Slapstick",
+          "description": "Prominently features comedy based on deliberately clumsy actions or embarrassing events.",
+          "rank": 33,
+          "isMediaSpoiler": false,
+          "isGeneralSpoiler": false,
+          "userId": null
+        }
+      ],
+      "mediaListEntry": null,
+      "stats": {
+        "statusDistribution": [
+          {
+            "status": "CURRENT",
+            "amount": 9
+          },
+          {
+            "status": "PLANNING",
+            "amount": 110
+          },
+          {
+            "status": "COMPLETED",
+            "amount": 696
+          },
+          {
+            "status": "DROPPED",
+            "amount": 28
+          },
+          {
+            "status": "PAUSED",
+            "amount": 1
+          }
+        ],
+        "scoreDistribution": [
+          {
+            "score": 10,
+            "amount": 36
+          },
+          {
+            "score": 20,
+            "amount": 38
+          },
+          {
+            "score": 30,
+            "amount": 41
+          },
+          {
+            "score": 40,
+            "amount": 56
+          },
+          {
+            "score": 50,
+            "amount": 97
+          },
+          {
+            "score": 60,
+            "amount": 73
+          },
+          {
+            "score": 70,
+            "amount": 32
+          },
+          {
+            "score": 80,
+            "amount": 12
+          },
+          {
+            "score": 90,
+            "amount": 7
+          },
+          {
+            "score": 100,
+            "amount": 12
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,1039 @@
+{
+  "data": {
+    "Media": {
+      "id": 108617,
+      "title": {
+        "userPreferred": "Somali to Mori no Kamisama",
+        "romaji": "Somali to Mori no Kamisama",
+        "english": "Somali and the Forest Spirit",
+        "native": "\u30bd\u30de\u30ea\u3068\u68ee\u306e\u795e\u69d8"
+      },
+      "coverImage": {
+        "extraLarge": "https:\/\/s4.anilist.co\/file\/anilistcdn\/media\/anime\/cover\/large\/bx108617-PgoYLgWzzm0c.png",
+        "large": "https:\/\/s4.anilist.co\/file\/anilistcdn\/media\/anime\/cover\/medium\/bx108617-PgoYLgWzzm0c.png"
+      },
+      "bannerImage": "https:\/\/s4.anilist.co\/file\/anilistcdn\/media\/anime\/banner\/108617-K5pexm0OYdJl.jpg",
+      "startDate": {
+        "year": 2020,
+        "month": 1,
+        "day": 10
+      },
+      "endDate": {
+        "year": 2020,
+        "month": 3,
+        "day": 27
+      },
+      "description": "The world is ruled by a diversity of inhuman beings, who persecuted humans and drove them to near-extinction. One day, the forest guardian Golem meets a human girl. This is a chronicle of a journey that would bind a member of the dying \"human\" clan to the forest guardian Golem, as father and daughter.\n<br><br>\n(Source: Crunchyroll)<br><br><i>The first episode received an advance web distribution on January 3. The regular TV broadcast started on January 10.<\/i>",
+      "season": "WINTER",
+      "seasonYear": 2020,
+      "type": "ANIME",
+      "format": "TV",
+      "status": "FINISHED",
+      "episodes": 12,
+      "duration": 24,
+      "chapters": null,
+      "volumes": null,
+      "genres": [
+        "Adventure",
+        "Drama",
+        "Fantasy",
+        "Slice of Life"
+      ],
+      "synonyms": [
+        "Somari and the Guardian of the Forest",
+        " Somali et l'esprit de la for\u00eat"
+      ],
+      "source": "MANGA",
+      "isAdult": false,
+      "isLocked": false,
+      "meanScore": 76,
+      "averageScore": 76,
+      "popularity": 86143,
+      "favourites": 1866,
+      "isFavouriteBlocked": false,
+      "hashtag": "#\u30bd\u30de\u30ea\u3068\u68ee\u306e\u795e\u69d8",
+      "countryOfOrigin": "JP",
+      "isLicensed": true,
+      "isFavourite": false,
+      "isRecommendationBlocked": false,
+      "isReviewBlocked": false,
+      "nextAiringEpisode": null,
+      "relations": {
+        "edges": [
+          {
+            "id": 31543,
+            "relationType": "SOURCE",
+            "node": {
+              "id": 86788,
+              "title": {
+                "userPreferred": "Somali to Mori no Kamisama"
+              },
+              "format": "MANGA",
+              "type": "MANGA",
+              "status": "CANCELLED",
+              "bannerImage": "https:\/\/s4.anilist.co\/file\/anilistcdn\/media\/manga\/banner\/n86788-ndCerj3OlRU8.jpg",
+              "coverImage": {
+                "large": "https:\/\/s4.anilist.co\/file\/anilistcdn\/media\/manga\/cover\/medium\/bx86788-YatwNfanR8OV.jpg"
+              }
+            }
+          }
+        ]
+      },
+      "characterPreview": {
+        "edges": [
+          {
+            "id": 176958,
+            "role": "MAIN",
+            "name": null,
+            "voiceActors": [
+              {
+                "id": 106297,
+                "name": {
+                  "userPreferred": "Inori Minase"
+                },
+                "language": "Japanese",
+                "image": {
+                  "large": "https:\/\/s4.anilist.co\/file\/anilistcdn\/staff\/large\/n106297-DYjwI6p4yZNJ.jpg"
+                }
+              }
+            ],
+            "node": {
+              "id": 140696,
+              "name": {
+                "userPreferred": "Somali"
+              },
+              "image": {
+                "large": "https:\/\/s4.anilist.co\/file\/anilistcdn\/character\/large\/b140696-xwR2W4QBGmDr.jpg"
+              }
+            }
+          },
+          {
+            "id": 176959,
+            "role": "MAIN",
+            "name": null,
+            "voiceActors": [
+              {
+                "id": 95212,
+                "name": {
+                  "userPreferred": "Daisuke Ono"
+                },
+                "language": "Japanese",
+                "image": {
+                  "large": "https:\/\/s4.anilist.co\/file\/anilistcdn\/staff\/large\/n95212-wX1M4LJN96q2.png"
+                }
+              }
+            ],
+            "node": {
+              "id": 140697,
+              "name": {
+                "userPreferred": "Golem"
+              },
+              "image": {
+                "large": "https:\/\/s4.anilist.co\/file\/anilistcdn\/character\/large\/b140697-EUvJCjIaEidH.png"
+              }
+            }
+          },
+          {
+            "id": 191588,
+            "role": "SUPPORTING",
+            "name": null,
+            "voiceActors": [
+              {
+                "id": 151342,
+                "name": {
+                  "userPreferred": "Hiroki Nanami"
+                },
+                "language": "Japanese",
+                "image": {
+                  "large": "https:\/\/s4.anilist.co\/file\/anilistcdn\/staff\/large\/n151342-MiKKMbBdxs6S.png"
+                }
+              }
+            ],
+            "node": {
+              "id": 151337,
+              "name": {
+                "userPreferred": "Shizuno"
+              },
+              "image": {
+                "large": "https:\/\/s4.anilist.co\/file\/anilistcdn\/character\/large\/b151337-EHKCUBrgfTgB.png"
+              }
+            }
+          },
+          {
+            "id": 191584,
+            "role": "SUPPORTING",
+            "name": null,
+            "voiceActors": [
+              {
+                "id": 95735,
+                "name": {
+                  "userPreferred": "Tatsuhisa Suzuki"
+                },
+                "language": "Japanese",
+                "image": {
+                  "large": "https:\/\/s4.anilist.co\/file\/anilistcdn\/staff\/large\/n95735-xssSe5BRSkaq.jpg"
+                }
+              }
+            ],
+            "node": {
+              "id": 151338,
+              "name": {
+                "userPreferred": "Yabashira"
+              },
+              "image": {
+                "large": "https:\/\/s4.anilist.co\/file\/anilistcdn\/character\/large\/b151338-demG9i6Js1oZ.png"
+              }
+            }
+          },
+          {
+            "id": 191587,
+            "role": "SUPPORTING",
+            "name": null,
+            "voiceActors": [
+              {
+                "id": 95869,
+                "name": {
+                  "userPreferred": "Saori Hayami"
+                },
+                "language": "Japanese",
+                "image": {
+                  "large": "https:\/\/s4.anilist.co\/file\/anilistcdn\/staff\/large\/n95869-qCQ0EaWpq1QT.png"
+                }
+              }
+            ],
+            "node": {
+              "id": 151339,
+              "name": {
+                "userPreferred": "Uzoi"
+              },
+              "image": {
+                "large": "https:\/\/s4.anilist.co\/file\/anilistcdn\/character\/large\/b151339-YJyrjCHMhIVb.png"
+              }
+            }
+          },
+          {
+            "id": 191586,
+            "role": "SUPPORTING",
+            "name": null,
+            "voiceActors": [
+              {
+                "id": 96154,
+                "name": {
+                  "userPreferred": "Yuuki Ono"
+                },
+                "language": "Japanese",
+                "image": {
+                  "large": "https:\/\/s4.anilist.co\/file\/anilistcdn\/staff\/large\/n96154-B8GAO9wm1Fbd.jpg"
+                }
+              }
+            ],
+            "node": {
+              "id": 151340,
+              "name": {
+                "userPreferred": "Haitora"
+              },
+              "image": {
+                "large": "https:\/\/s4.anilist.co\/file\/anilistcdn\/character\/large\/b151340-CIdniV4hfJIi.png"
+              }
+            }
+          }
+        ]
+      },
+      "staffPreview": {
+        "edges": [
+          {
+            "id": 125113,
+            "role": "Original Creator",
+            "node": {
+              "id": 119540,
+              "name": {
+                "userPreferred": "Yako Gureishi"
+              },
+              "language": "Japanese",
+              "image": {
+                "large": "https:\/\/s4.anilist.co\/file\/anilistcdn\/staff\/large\/119540-2N0bpVftX0tO.jpg"
+              }
+            }
+          },
+          {
+            "id": 132948,
+            "role": "Director",
+            "node": {
+              "id": 105146,
+              "name": {
+                "userPreferred": "Kenji Yasuda"
+              },
+              "language": "Japanese",
+              "image": {
+                "large": "https:\/\/s4.anilist.co\/file\/anilistcdn\/staff\/large\/n105146-onMQyhVBFUp6.png"
+              }
+            }
+          },
+          {
+            "id": 132952,
+            "role": "Series Composition",
+            "node": {
+              "id": 144095,
+              "name": {
+                "userPreferred": "Mariko Mochizuki"
+              },
+              "language": "Japanese",
+              "image": {
+                "large": "https:\/\/s4.anilist.co\/file\/anilistcdn\/staff\/large\/default.jpg"
+              }
+            }
+          },
+          {
+            "id": 132950,
+            "role": "Character Design",
+            "node": {
+              "id": 99003,
+              "name": {
+                "userPreferred": "Ikuko Itou"
+              },
+              "language": "Japanese",
+              "image": {
+                "large": "https:\/\/s4.anilist.co\/file\/anilistcdn\/staff\/large\/4003.jpg"
+              }
+            }
+          },
+          {
+            "id": 198393,
+            "role": "Sub Character Design",
+            "node": {
+              "id": 141317,
+              "name": {
+                "userPreferred": "Sachiko Oohashi"
+              },
+              "language": "Japanese",
+              "image": {
+                "large": "https:\/\/s4.anilist.co\/file\/anilistcdn\/staff\/large\/default.jpg"
+              }
+            }
+          },
+          {
+            "id": 132949,
+            "role": "Art Director",
+            "node": {
+              "id": 135528,
+              "name": {
+                "userPreferred": "Vincent Nghiem"
+              },
+              "language": "French",
+              "image": {
+                "large": "https:\/\/s4.anilist.co\/file\/anilistcdn\/staff\/large\/default.jpg"
+              }
+            }
+          },
+          {
+            "id": 132951,
+            "role": "Color Design",
+            "node": {
+              "id": 144096,
+              "name": {
+                "userPreferred": "Chiho Nakamura"
+              },
+              "language": "Japanese",
+              "image": {
+                "large": "https:\/\/s4.anilist.co\/file\/anilistcdn\/staff\/large\/n144096-WHw29vlPDnOA.png"
+              }
+            }
+          },
+          {
+            "id": 132954,
+            "role": "Sound Director",
+            "node": {
+              "id": 144097,
+              "name": {
+                "userPreferred": "Takatoshi Hamano"
+              },
+              "language": "Japanese",
+              "image": {
+                "large": "https:\/\/s4.anilist.co\/file\/anilistcdn\/staff\/large\/default.jpg"
+              }
+            }
+          }
+        ]
+      },
+      "studios": {
+        "edges": [
+          {
+            "isMain": true,
+            "node": {
+              "id": 41,
+              "name": "Satelight"
+            }
+          },
+          {
+            "isMain": true,
+            "node": {
+              "id": 6360,
+              "name": "HORNETS"
+            }
+          },
+          {
+            "isMain": false,
+            "node": {
+              "id": 7203,
+              "name": "Mixer"
+            }
+          },
+          {
+            "isMain": false,
+            "node": {
+              "id": 7204,
+              "name": "North Stars Pictures"
+            }
+          },
+          {
+            "isMain": false,
+            "node": {
+              "id": 6842,
+              "name": "JY Animation"
+            }
+          },
+          {
+            "isMain": false,
+            "node": {
+              "id": 6421,
+              "name": "Crunchyroll"
+            }
+          },
+          {
+            "isMain": false,
+            "node": {
+              "id": 7205,
+              "name": "CA-Cygames Anime Fund"
+            }
+          },
+          {
+            "isMain": false,
+            "node": {
+              "id": 166,
+              "name": "Movic"
+            }
+          }
+        ]
+      },
+      "reviewPreview": {
+        "pageInfo": {
+          "total": 500
+        },
+        "nodes": [
+          {
+            "id": 11124,
+            "summary": "This made me realize that I love children in the most nonsexual way possible",
+            "rating": 109,
+            "ratingAmount": 133,
+            "user": {
+              "id": 5232975,
+              "name": "groggy1",
+              "avatar": {
+                "large": "https:\/\/s4.anilist.co\/file\/anilistcdn\/user\/avatar\/large\/b5232975-xwgI9kTQ77xW.png"
+              }
+            }
+          },
+          {
+            "id": 6206,
+            "summary": "Aburrido, el g\u00e9nero \u201cIyashikei\u201d, epis\u00f3dico de vida familiar o cotidiana no es de mi gusto. ",
+            "rating": 11,
+            "ratingAmount": 103,
+            "user": {
+              "id": 365729,
+              "name": "yabp1600",
+              "avatar": {
+                "large": "https:\/\/s4.anilist.co\/file\/anilistcdn\/user\/avatar\/large\/b365729-OPs2GRaOAgBk.jpg"
+              }
+            }
+          }
+        ]
+      },
+      "recommendations": {
+        "pageInfo": {
+          "total": 500
+        },
+        "nodes": [
+          {
+            "id": 20384,
+            "rating": 164,
+            "userRating": "NO_RATING",
+            "mediaRecommendation": {
+              "id": 98436,
+              "title": {
+                "userPreferred": "Mahoutsukai no Yome"
+              },
+              "format": "TV",
+              "type": "ANIME",
+              "status": "FINISHED",
+              "bannerImage": "https:\/\/s4.anilist.co\/file\/anilistcdn\/media\/anime\/banner\/98436-mipAtJXRUCgx.jpg",
+              "coverImage": {
+                "large": "https:\/\/s4.anilist.co\/file\/anilistcdn\/media\/anime\/cover\/medium\/bx98436-n7sK6POCd0XV.png"
+              }
+            },
+            "user": {
+              "id": 212541,
+              "name": "Spring76",
+              "avatar": {
+                "large": "https:\/\/s4.anilist.co\/file\/anilistcdn\/user\/avatar\/large\/b212541-4Cck3pFqvY5f.png"
+              }
+            }
+          },
+          {
+            "id": 20380,
+            "rating": 159,
+            "userRating": "NO_RATING",
+            "mediaRecommendation": {
+              "id": 97986,
+              "title": {
+                "userPreferred": "Made in Abyss"
+              },
+              "format": "TV",
+              "type": "ANIME",
+              "status": "FINISHED",
+              "bannerImage": "https:\/\/s4.anilist.co\/file\/anilistcdn\/media\/anime\/banner\/97986-C55UnbJKB7ZF.jpg",
+              "coverImage": {
+                "large": "https:\/\/s4.anilist.co\/file\/anilistcdn\/media\/anime\/cover\/medium\/bx97986-TQ7dCgbS3y5s.jpg"
+              }
+            },
+            "user": {
+              "id": 212541,
+              "name": "Spring76",
+              "avatar": {
+                "large": "https:\/\/s4.anilist.co\/file\/anilistcdn\/user\/avatar\/large\/b212541-4Cck3pFqvY5f.png"
+              }
+            }
+          },
+          {
+            "id": 71795,
+            "rating": 118,
+            "userRating": "NO_RATING",
+            "mediaRecommendation": {
+              "id": 114535,
+              "title": {
+                "userPreferred": "Fumetsu no Anata e"
+              },
+              "format": "TV",
+              "type": "ANIME",
+              "status": "FINISHED",
+              "bannerImage": "https:\/\/s4.anilist.co\/file\/anilistcdn\/media\/anime\/banner\/114535-ASUprf4AsNwC.jpg",
+              "coverImage": {
+                "large": "https:\/\/s4.anilist.co\/file\/anilistcdn\/media\/anime\/cover\/medium\/bx114535-y3NnjexcqKG1.jpg"
+              }
+            },
+            "user": {
+              "id": 387455,
+              "name": "Parker404",
+              "avatar": {
+                "large": "https:\/\/s4.anilist.co\/file\/anilistcdn\/user\/avatar\/large\/b387455-VVdkN1RllZv3.png"
+              }
+            }
+          },
+          {
+            "id": 26848,
+            "rating": 94,
+            "userRating": "NO_RATING",
+            "mediaRecommendation": {
+              "id": 113311,
+              "title": {
+                "userPreferred": "Kakushigoto"
+              },
+              "format": "TV",
+              "type": "ANIME",
+              "status": "FINISHED",
+              "bannerImage": "https:\/\/s4.anilist.co\/file\/anilistcdn\/media\/anime\/banner\/113311-T1FWgCflSKtl.jpg",
+              "coverImage": {
+                "large": "https:\/\/s4.anilist.co\/file\/anilistcdn\/media\/anime\/cover\/medium\/bx113311-6bSvvCHBpjpI.jpg"
+              }
+            },
+            "user": {
+              "id": 175361,
+              "name": "DarknessLord",
+              "avatar": {
+                "large": "https:\/\/s4.anilist.co\/file\/anilistcdn\/user\/avatar\/large\/b175361-WzFtYUDo5tPP.jpg"
+              }
+            }
+          },
+          {
+            "id": 20386,
+            "rating": 90,
+            "userRating": "NO_RATING",
+            "mediaRecommendation": {
+              "id": 108354,
+              "title": {
+                "userPreferred": "Totsukuni no Shoujo"
+              },
+              "format": "OVA",
+              "type": "ANIME",
+              "status": "FINISHED",
+              "bannerImage": "https:\/\/s4.anilist.co\/file\/anilistcdn\/media\/anime\/banner\/108354-ineemjtrxhQy.jpg",
+              "coverImage": {
+                "large": "https:\/\/s4.anilist.co\/file\/anilistcdn\/media\/anime\/cover\/medium\/bx108354-MGpTCKLHQBX3.png"
+              }
+            },
+            "user": {
+              "id": 212541,
+              "name": "Spring76",
+              "avatar": {
+                "large": "https:\/\/s4.anilist.co\/file\/anilistcdn\/user\/avatar\/large\/b212541-4Cck3pFqvY5f.png"
+              }
+            }
+          },
+          {
+            "id": 20382,
+            "rating": 68,
+            "userRating": "NO_RATING",
+            "mediaRecommendation": {
+              "id": 10162,
+              "title": {
+                "userPreferred": "Usagi Drop"
+              },
+              "format": "TV",
+              "type": "ANIME",
+              "status": "FINISHED",
+              "bannerImage": "https:\/\/s4.anilist.co\/file\/anilistcdn\/media\/anime\/banner\/10162-CHoa4mll25WM.png",
+              "coverImage": {
+                "large": "https:\/\/s4.anilist.co\/file\/anilistcdn\/media\/anime\/cover\/medium\/bx10162-w4SG5oQSQwMn.jpg"
+              }
+            },
+            "user": {
+              "id": 212541,
+              "name": "Spring76",
+              "avatar": {
+                "large": "https:\/\/s4.anilist.co\/file\/anilistcdn\/user\/avatar\/large\/b212541-4Cck3pFqvY5f.png"
+              }
+            }
+          },
+          {
+            "id": 44889,
+            "rating": 59,
+            "userRating": "NO_RATING",
+            "mediaRecommendation": {
+              "id": 112609,
+              "title": {
+                "userPreferred": "Majo no Tabitabi"
+              },
+              "format": "TV",
+              "type": "ANIME",
+              "status": "FINISHED",
+              "bannerImage": "https:\/\/s4.anilist.co\/file\/anilistcdn\/media\/anime\/banner\/112609-P969sQ0jIU6S.jpg",
+              "coverImage": {
+                "large": "https:\/\/s4.anilist.co\/file\/anilistcdn\/media\/anime\/cover\/medium\/bx112609-hBCbnYlEHluz.jpg"
+              }
+            },
+            "user": {
+              "id": 196797,
+              "name": "lilyissillyyy",
+              "avatar": {
+                "large": "https:\/\/s4.anilist.co\/file\/anilistcdn\/user\/avatar\/large\/b196797-LNkfsWhemXsQ.jpg"
+              }
+            }
+          }
+        ]
+      },
+      "externalLinks": [
+        {
+          "id": 9075,
+          "site": "Twitter",
+          "url": "https:\/\/twitter.com\/somali_anime",
+          "type": "SOCIAL",
+          "language": null,
+          "color": "#000000",
+          "icon": "https:\/\/s4.anilist.co\/file\/anilistcdn\/link\/icon\/17-R0tMgOvwvhsS.png",
+          "notes": null,
+          "isDisabled": false
+        },
+        {
+          "id": 9076,
+          "site": "Official Site",
+          "url": "http:\/\/somali-anime.com\/",
+          "type": "INFO",
+          "language": null,
+          "color": null,
+          "icon": null,
+          "notes": null,
+          "isDisabled": false
+        },
+        {
+          "id": 13917,
+          "site": "Crunchyroll",
+          "url": "https:\/\/www.crunchyroll.com\/somali-and-the-forest-spirit",
+          "type": "STREAMING",
+          "language": null,
+          "color": "#F88B24",
+          "icon": "https:\/\/s4.anilist.co\/file\/anilistcdn\/link\/icon\/5-AWN2pVlluCOO.png",
+          "notes": null,
+          "isDisabled": false
+        }
+      ],
+      "streamingEpisodes": [
+        {
+          "site": "Crunchyroll",
+          "title": "Episode 1 - Journeying Parent and Child",
+          "thumbnail": "https:\/\/img1.ak.crunchyroll.com\/i\/spire1-tmb\/cb15790a17b9a38e7dfeea1d61fa93821581617946_full.jpg",
+          "url": "http:\/\/www.crunchyroll.com\/watch\/GY5PWJXKY\/journeying-parent-and-child"
+        },
+        {
+          "site": "Crunchyroll",
+          "title": "Episode 2 - Edible Herbs and the Oni's Dwelling",
+          "thumbnail": "https:\/\/img1.ak.crunchyroll.com\/i\/spire1-tmb\/bc176277da9516d55f9733a09b44dbb01582222525_full.jpg",
+          "url": "http:\/\/www.crunchyroll.com\/watch\/G6ME7PE5R\/edible-herbs-and-the-onis-dwelling"
+        },
+        {
+          "site": "Crunchyroll",
+          "title": "Episode 3 - The Sea at the Bottom of the Cave",
+          "thumbnail": "https:\/\/img1.ak.crunchyroll.com\/i\/spire4-tmb\/87cb2f4eb6fcd75de4de75b3a5ef272d1582828088_full.jpg",
+          "url": "http:\/\/www.crunchyroll.com\/watch\/GYG5QPP3Y\/the-sea-at-the-bottom-of-the-cave"
+        },
+        {
+          "site": "Crunchyroll",
+          "title": "Episode 4 - The Wishing Flower and the Promise Request",
+          "thumbnail": "https:\/\/img1.ak.crunchyroll.com\/i\/spire2-tmb\/9e70c7b115c9f6390df504213452a95b1583436068_full.jpg",
+          "url": "http:\/\/www.crunchyroll.com\/watch\/G68DE3W46\/the-wishing-flower-and-the-promise-request"
+        },
+        {
+          "site": "Crunchyroll",
+          "title": "Episode 5 - The Wandering Birds",
+          "thumbnail": "https:\/\/img1.ak.crunchyroll.com\/i\/spire1-tmb\/09d01337277fb7a91cd2c1b8ac66e4c21584035065_full.jpg",
+          "url": "http:\/\/www.crunchyroll.com\/watch\/GYNV9M7XR\/the-wandering-birds"
+        },
+        {
+          "site": "Crunchyroll",
+          "title": "Episode 6 - Dying Flowers Look Up at the Birds",
+          "thumbnail": "https:\/\/img1.ak.crunchyroll.com\/i\/spire2-tmb\/8e62af627c76651dae83cfe8e67b24de1584639546_full.jpg",
+          "url": "http:\/\/www.crunchyroll.com\/watch\/G6QW185P6\/dying-flowers-look-up-at-the-birds"
+        },
+        {
+          "site": "Crunchyroll",
+          "title": "Episode 7 - The Footsteps That Stalk the Witches",
+          "thumbnail": "https:\/\/img1.ak.crunchyroll.com\/i\/spire3-tmb\/c56a3b3b296be00118c824b17be69bff1585234330_full.jpg",
+          "url": "http:\/\/www.crunchyroll.com\/watch\/G69V728EY\/the-footsteps-that-stalk-the-witches"
+        },
+        {
+          "site": "Crunchyroll",
+          "title": "Episode 8 - Meetings and Bonds Prayed For",
+          "thumbnail": "https:\/\/img1.ak.crunchyroll.com\/i\/spire3-tmb\/7431c89e64cf148d6396ada692c195021585845917_full.jpg",
+          "url": "http:\/\/www.crunchyroll.com\/watch\/G6NV9KKWY\/meetings-and-bonds-prayed-for"
+        },
+        {
+          "site": "Crunchyroll",
+          "title": "Episode 9 - Memories of Minor Days",
+          "thumbnail": "https:\/\/img1.ak.crunchyroll.com\/i\/spire2-tmb\/fb5115d70a465b86e6666c9b657194701588844528_full.jpg",
+          "url": "http:\/\/www.crunchyroll.com\/watch\/GR1X2MJ2R\/memories-of-minor-days"
+        },
+        {
+          "site": "Crunchyroll",
+          "title": "Episode 10 - The Infant Child and the Green Fortress",
+          "thumbnail": "https:\/\/img1.ak.crunchyroll.com\/i\/spire3-tmb\/a175d5732260c7cb9ee48be824fbc29a1588844669_full.jpg",
+          "url": "http:\/\/www.crunchyroll.com\/watch\/G6ME793GR\/the-infant-child-and-the-green-fortress"
+        },
+        {
+          "site": "Crunchyroll",
+          "title": "Episode 11 - Those Who Protect and Those Who Threaten",
+          "thumbnail": "https:\/\/img1.ak.crunchyroll.com\/i\/spire3-tmb\/909c50dcfbe9232cff4ea4b173c2f79a1588844773_full.jpg",
+          "url": "http:\/\/www.crunchyroll.com\/watch\/G63KQ2EW6\/those-who-protect-and-those-who-threaten"
+        },
+        {
+          "site": "Crunchyroll",
+          "title": "Episode 12 - Bonded Father and Child",
+          "thumbnail": "https:\/\/img1.ak.crunchyroll.com\/i\/spire3-tmb\/19c3ed02da6a4cfc7ab9e53011de17ea1588844646_full.jpg",
+          "url": "http:\/\/www.crunchyroll.com\/watch\/GYNV9430R\/bonded-father-and-child"
+        }
+      ],
+      "trailer": {
+        "id": "XRIXy8zngZc",
+        "site": "youtube"
+      },
+      "rankings": [
+        {
+          "id": 9325,
+          "rank": 25,
+          "type": "RATED",
+          "format": "TV",
+          "year": 2020,
+          "season": null,
+          "allTime": false,
+          "context": "highest rated"
+        },
+        {
+          "id": 9439,
+          "rank": 39,
+          "type": "POPULAR",
+          "format": "TV",
+          "year": 2020,
+          "season": null,
+          "allTime": false,
+          "context": "most popular"
+        },
+        {
+          "id": 9508,
+          "rank": 8,
+          "type": "RATED",
+          "format": "TV",
+          "year": 2020,
+          "season": "WINTER",
+          "allTime": false,
+          "context": "highest rated"
+        },
+        {
+          "id": 9540,
+          "rank": 10,
+          "type": "POPULAR",
+          "format": "TV",
+          "year": 2020,
+          "season": "WINTER",
+          "allTime": false,
+          "context": "most popular"
+        }
+      ],
+      "tags": [
+        {
+          "id": 1052,
+          "name": "Adoption",
+          "description": "Features a character who has been adopted by someone who is neither of their biological parents.",
+          "rank": 100,
+          "isMediaSpoiler": false,
+          "isGeneralSpoiler": false,
+          "userId": null
+        },
+        {
+          "id": 1277,
+          "name": "Found Family",
+          "description": "Features a group of characters with no biological relations that are united in a group providing social support.",
+          "rank": 95,
+          "isMediaSpoiler": false,
+          "isGeneralSpoiler": false,
+          "userId": 573407
+        },
+        {
+          "id": 98,
+          "name": "Female Protagonist",
+          "description": "Main character is female.",
+          "rank": 88,
+          "isMediaSpoiler": false,
+          "isGeneralSpoiler": false,
+          "userId": null
+        },
+        {
+          "id": 1310,
+          "name": "Travel",
+          "description": "Centers around character(s) moving between places a significant distance apart.",
+          "rank": 88,
+          "isMediaSpoiler": false,
+          "isGeneralSpoiler": false,
+          "userId": 493630
+        },
+        {
+          "id": 87,
+          "name": "Family Life",
+          "description": "Centers around the activities of a family unit.",
+          "rank": 88,
+          "isMediaSpoiler": false,
+          "isGeneralSpoiler": false,
+          "userId": null
+        },
+        {
+          "id": 81,
+          "name": "Iyashikei",
+          "description": "Primary aim is to heal the audience through serene depictions of characters' daily lives.",
+          "rank": 83,
+          "isMediaSpoiler": false,
+          "isGeneralSpoiler": false,
+          "userId": null
+        },
+        {
+          "id": 466,
+          "name": "Lost Civilization",
+          "description": "Featuring a civilization with few ruins or records that exist in present day knowledge.",
+          "rank": 80,
+          "isMediaSpoiler": true,
+          "isGeneralSpoiler": false,
+          "userId": null
+        },
+        {
+          "id": 1666,
+          "name": "Elderly Protagonist",
+          "description": "The protagonist is either over 60 years of age, has an elderly appearance, or, in the case of non-humans, is considered elderly for their species.",
+          "rank": 79,
+          "isMediaSpoiler": true,
+          "isGeneralSpoiler": false,
+          "userId": 80733
+        },
+        {
+          "id": 1645,
+          "name": "Parenthood",
+          "description": "Centers around the experience of raising a child.",
+          "rank": 73,
+          "isMediaSpoiler": false,
+          "isGeneralSpoiler": false,
+          "userId": 5478024
+        },
+        {
+          "id": 143,
+          "name": "Survival",
+          "description": "Centers around the struggle to live in spite of extreme obstacles.",
+          "rank": 72,
+          "isMediaSpoiler": false,
+          "isGeneralSpoiler": false,
+          "userId": null
+        },
+        {
+          "id": 82,
+          "name": "Male Protagonist",
+          "description": "Main character is male.",
+          "rank": 71,
+          "isMediaSpoiler": false,
+          "isGeneralSpoiler": false,
+          "userId": null
+        },
+        {
+          "id": 15,
+          "name": "Demons",
+          "description": "Prominently features malevolent otherworldly creatures.",
+          "rank": 70,
+          "isMediaSpoiler": false,
+          "isGeneralSpoiler": false,
+          "userId": null
+        },
+        {
+          "id": 233,
+          "name": "Youkai",
+          "description": "Prominently features supernatural creatures from Japanese folklore.",
+          "rank": 66,
+          "isMediaSpoiler": false,
+          "isGeneralSpoiler": false,
+          "userId": null
+        },
+        {
+          "id": 50,
+          "name": "Seinen",
+          "description": "Target demographic is adult males.",
+          "rank": 62,
+          "isMediaSpoiler": false,
+          "isGeneralSpoiler": false,
+          "userId": null
+        },
+        {
+          "id": 1382,
+          "name": "Orphan",
+          "description": "Prominently features a character that is an orphan.",
+          "rank": 52,
+          "isMediaSpoiler": false,
+          "isGeneralSpoiler": false,
+          "userId": 80733
+        },
+        {
+          "id": 179,
+          "name": "Witch",
+          "description": "Prominently features a character who is a witch.",
+          "rank": 48,
+          "isMediaSpoiler": false,
+          "isGeneralSpoiler": false,
+          "userId": null
+        },
+        {
+          "id": 90,
+          "name": "CGI",
+          "description": "Prominently features scenes created with computer-generated imagery.",
+          "rank": 30,
+          "isMediaSpoiler": false,
+          "isGeneralSpoiler": false,
+          "userId": null
+        },
+        {
+          "id": 598,
+          "name": "Elf",
+          "description": "Prominently features a character who is an elf.",
+          "rank": 22,
+          "isMediaSpoiler": false,
+          "isGeneralSpoiler": false,
+          "userId": null
+        },
+        {
+          "id": 1219,
+          "name": "Disability",
+          "description": "A work that features one or more characters with a physical, mental, cognitive, or developmental condition that impairs, interferes with, or limits the person's ability to engage in certain tasks or actions.",
+          "rank": 20,
+          "isMediaSpoiler": true,
+          "isGeneralSpoiler": false,
+          "userId": 124074
+        },
+        {
+          "id": 247,
+          "name": "Slavery",
+          "description": "Prominently features slaves, slavery, or slave trade.",
+          "rank": 20,
+          "isMediaSpoiler": false,
+          "isGeneralSpoiler": false,
+          "userId": 5620366
+        }
+      ],
+      "mediaListEntry": null,
+      "stats": {
+        "statusDistribution": [
+          {
+            "status": "CURRENT",
+            "amount": 6594
+          },
+          {
+            "status": "PLANNING",
+            "amount": 32623
+          },
+          {
+            "status": "COMPLETED",
+            "amount": 37825
+          },
+          {
+            "status": "DROPPED",
+            "amount": 4884
+          },
+          {
+            "status": "PAUSED",
+            "amount": 4217
+          }
+        ],
+        "scoreDistribution": [
+          {
+            "score": 10,
+            "amount": 149
+          },
+          {
+            "score": 20,
+            "amount": 77
+          },
+          {
+            "score": 30,
+            "amount": 197
+          },
+          {
+            "score": 40,
+            "amount": 401
+          },
+          {
+            "score": 50,
+            "amount": 1270
+          },
+          {
+            "score": 60,
+            "amount": 2471
+          },
+          {
+            "score": 70,
+            "amount": 6439
+          },
+          {
+            "score": 80,
+            "amount": 8469
+          },
+          {
+            "score": 90,
+            "amount": 5577
+          },
+          {
+            "score": 100,
+            "amount": 2935
+          }
+        ]
+      }
+    }
+  }
+}

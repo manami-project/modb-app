@@ -67,6 +67,12 @@ private val files = mapOf(
     "AnilistAnimeConverterTest/type/special.json" to "106169",
     "AnilistAnimeConverterTest/type/tv.json" to "5114",
     "AnilistAnimeConverterTest/type/tv_short.json" to "98291",
+
+    "AnilistAnimeConverterTest/studios/multiple_studios.json" to "108617",
+    "AnilistAnimeConverterTest/studios/no_studios.json" to "104189",
+
+    "AnilistAnimeConverterTest/producers/multiple_producers.json" to "108617",
+    "AnilistAnimeConverterTest/producers/no_producers.json" to "104189",
 )
 
 internal fun main(): Unit = runCoroutine {
