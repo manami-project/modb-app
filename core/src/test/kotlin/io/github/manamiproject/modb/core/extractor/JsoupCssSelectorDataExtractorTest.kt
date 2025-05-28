@@ -409,5 +409,33 @@ internal class JsoupCssSelectorDataExtractorTest {
                 }
             }
         }
+
+        @Nested
+        inner class AnimenewsnetworkExpressionsTests {
+
+            @Test
+            fun `correctly parse text element equals exactly a specific string`() {
+                runBlocking {
+                    // given
+                    val html = loadTestResource<String>("DataExtractorTest/animenewsnetwork/multiple_producers.html")
+
+                    // when
+                    val result = JsoupCssSelectorDataExtractor.extract(html, mapOf(
+                        "producers" to "//b[text()='Production']/following-sibling::a/text()",
+                    ))
+
+                    // then
+                    assertThat(result.listNotNull<String>("producers")).containsExactlyInAnyOrder(
+                        "CA-Cygames Anime Fund",
+                        "Crunchyroll",
+                        "JY Animation",
+                        "Mixer",
+                        "MOVIC",
+                        "North Stars Pictures",
+                        "Sentai Studios"
+                    )
+                }
+            }
+        }
     }
 }
