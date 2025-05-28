@@ -1331,6 +1331,61 @@ internal class LivechartAnimeConverterTest {
     }
 
     @Nested
+    inner class StudiosTests {
+
+        @Test
+        fun `multiple studios`() {
+            runBlocking {
+                // given
+                val testLivechartConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = LivechartConfig.hostname()
+                    override fun buildAnimeLink(id: AnimeId): URI = LivechartConfig.buildAnimeLink(id)
+                    override fun fileSuffix(): FileSuffix = LivechartConfig.fileSuffix()
+                }
+
+                val converter = LivechartAnimeConverter(
+                    metaDataProviderConfig = testLivechartConfig,
+                )
+
+                val testFile = loadTestResource<String>("LivechartAnimeConverterTest/studios/multiple_studios.html")
+
+                // when
+                val result = converter.convert(testFile)
+
+                // then
+                assertThat(result.studios).containsExactlyInAnyOrder(
+                    "satelight",
+                    "hornets",
+                )
+            }
+        }
+
+        @Test
+        fun `no studios`() {
+            runBlocking {
+                // given
+                val testLivechartConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = LivechartConfig.hostname()
+                    override fun buildAnimeLink(id: AnimeId): URI = LivechartConfig.buildAnimeLink(id)
+                    override fun fileSuffix(): FileSuffix = LivechartConfig.fileSuffix()
+                }
+
+                val converter = LivechartAnimeConverter(
+                    metaDataProviderConfig = testLivechartConfig,
+                )
+
+                val testFile = loadTestResource<String>("LivechartAnimeConverterTest/studios/no_studios.html")
+
+                // when
+                val result = converter.convert(testFile)
+
+                // then
+                assertThat(result.studios).isEmpty()
+            }
+        }
+    }
+
+    @Nested
     inner class CompanionObjectTests {
 
         @Test
