@@ -53,6 +53,7 @@ public class AnimePlanetAnimeConverter(
             "alternativeTitle" to "//h2[@class='aka']/text()",
             "relatedAnime" to "//div[@id='tabs--relations--anime']/div//a/@href",
             "tags" to "//div[contains(@class, 'tags')]//a/text()",
+            "studios" to "//a[contains(@href, '/studios/')]/text()",
         ))
 
         val jsonld = data.string("jsonld")
@@ -83,6 +84,8 @@ public class AnimePlanetAnimeConverter(
             _synonyms = extractSynonyms(jsonldData, data),
             _relatedAnime = extractRelatedAnime(data),
             _tags = extractTags(jsonldData, data),
+            _studios = extractStudios(data),
+            _producers = hashSetOf(), // not available on anime-planet
         ).addScores(extractScore(jsonldData))
     }
 
@@ -288,6 +291,14 @@ public class AnimePlanetAnimeConverter(
             value = rawScore,
             range = from..to,
         )
+    }
+
+    private fun extractStudios(data: ExtractionResult): HashSet<Studio> {
+        if (!data.notFound("studios")) {
+            return data.listNotNull<Studio>("studios").toHashSet()
+        }
+
+        return hashSetOf()
     }
 
     public companion object {
