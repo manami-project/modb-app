@@ -77,6 +77,12 @@ private val files = mapOf(
     "SimklAnimeConverterTest/type/ova.html" to "38356",
     "SimklAnimeConverterTest/type/special.html" to "37301",
     "SimklAnimeConverterTest/type/tv.html" to "38590",
+
+    "SimklAnimeConverterTest/studios/multiple_studios.html" to "1062567",
+    "SimklAnimeConverterTest/studios/no_studios.html" to "39311",
+
+    "SimklAnimeConverterTest/producers/multiple_producers.html" to "1062567",
+    "SimklAnimeConverterTest/producers/no_producers.html" to "39311",
 )
 
 internal fun main(): Unit = runCoroutine {

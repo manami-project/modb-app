@@ -996,6 +996,113 @@ internal class SimklAnimeConverterTest {
     }
 
     @Nested
+    inner class StudiosTests {
+
+        @Test
+        fun `multiple studios`() {
+            runBlocking {
+                // given
+                val testSimklConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = SimklConfig.hostname()
+                    override fun buildAnimeLink(id: AnimeId): URI = SimklConfig.buildAnimeLink(id)
+                    override fun fileSuffix(): FileSuffix = SimklConfig.fileSuffix()
+                }
+
+                val testFile = loadTestResource<String>("SimklAnimeConverterTest/studios/multiple_studios.html")
+
+                val converter = SimklAnimeConverter(testSimklConfig)
+
+                // when
+                val result = converter.convert(testFile)
+
+                // then
+                assertThat(result.studios).containsExactlyInAnyOrder(
+                    "satelight",
+                    "hornets",
+                )
+            }
+        }
+
+        @Test
+        fun `no studios`() {
+            runBlocking {
+                // given
+                val testSimklConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = SimklConfig.hostname()
+                    override fun buildAnimeLink(id: AnimeId): URI = SimklConfig.buildAnimeLink(id)
+                    override fun fileSuffix(): FileSuffix = SimklConfig.fileSuffix()
+                }
+
+                val testFile = loadTestResource<String>("SimklAnimeConverterTest/studios/no_studios.html")
+
+                val converter = SimklAnimeConverter(testSimklConfig)
+
+                // when
+                val result = converter.convert(testFile)
+
+                // then
+                assertThat(result.studios).isEmpty()
+            }
+        }
+    }
+
+    @Nested
+    inner class ProducersTests {
+
+        @Test
+        fun `multiple producers`() {
+            runBlocking {
+                // given
+                val testSimklConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = SimklConfig.hostname()
+                    override fun buildAnimeLink(id: AnimeId): URI = SimklConfig.buildAnimeLink(id)
+                    override fun fileSuffix(): FileSuffix = SimklConfig.fileSuffix()
+                }
+
+                val testFile = loadTestResource<String>("SimklAnimeConverterTest/producers/multiple_producers.html")
+
+                val converter = SimklAnimeConverter(testSimklConfig)
+
+                // when
+                val result = converter.convert(testFile)
+
+                // then
+                assertThat(result.producers).containsExactlyInAnyOrder(
+                    "movic",
+                    "crunchyroll",
+                    "north stars pictures",
+                    "jy animation",
+                    "ca-cygames anime fund",
+                    "mixer",
+                    "magic capsule",
+                )
+            }
+        }
+
+        @Test
+        fun `no producers`() {
+            runBlocking {
+                // given
+                val testSimklConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = SimklConfig.hostname()
+                    override fun buildAnimeLink(id: AnimeId): URI = SimklConfig.buildAnimeLink(id)
+                    override fun fileSuffix(): FileSuffix = SimklConfig.fileSuffix()
+                }
+
+                val testFile = loadTestResource<String>("SimklAnimeConverterTest/producers/no_producers.html")
+
+                val converter = SimklAnimeConverter(testSimklConfig)
+
+                // when
+                val result = converter.convert(testFile)
+
+                // then
+                assertThat(result.producers).isEmpty()
+            }
+        }
+    }
+
+    @Nested
     inner class CompanionObjectTests {
 
         @Test
