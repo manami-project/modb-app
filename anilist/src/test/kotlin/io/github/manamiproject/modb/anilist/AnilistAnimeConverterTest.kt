@@ -969,6 +969,105 @@ internal class AnilistAnimeConverterTest {
     }
 
     @Nested
+    inner class StudiosTests {
+
+        @Test
+        fun `multiple studios`() {
+            runBlocking {
+                // given
+                val testAnilistConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = AnilistConfig.hostname()
+                    override fun buildAnimeLink(id: AnimeId): URI = AnilistConfig.buildAnimeLink(id)
+                }
+                val converter = AnilistAnimeConverter(testAnilistConfig)
+
+                val testFileContent = loadTestResource<String>("AnilistAnimeConverterTest/studios/multiple_studios.json")
+
+                // when
+                val result = converter.convert(testFileContent)
+
+                // then
+                assertThat(result.studios).containsExactlyInAnyOrder(
+                    "satelight",
+                    "hornets",
+                )
+            }
+        }
+
+        @Test
+        fun `no studios`() {
+            runBlocking {
+                // given
+                val testAnilistConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = AnilistConfig.hostname()
+                    override fun buildAnimeLink(id: AnimeId): URI = AnilistConfig.buildAnimeLink(id)
+                }
+                val converter = AnilistAnimeConverter(testAnilistConfig)
+
+                val testFileContent = loadTestResource<String>("AnilistAnimeConverterTest/studios/no_studios.json")
+
+                // when
+                val result = converter.convert(testFileContent)
+
+                // then
+                assertThat(result.studios).isEmpty()
+            }
+        }
+    }
+
+    @Nested
+    inner class ProducersTests {
+
+        @Test
+        fun `multiple producers`() {
+            runBlocking {
+                // given
+                val testAnilistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = AnilistConfig.hostname()
+                    override fun buildAnimeLink(id: AnimeId): URI = AnilistConfig.buildAnimeLink(id)
+                }
+                val converter = AnilistAnimeConverter(testAnilistConfig)
+
+                val testFileContent =
+                    loadTestResource<String>("AnilistAnimeConverterTest/producers/multiple_producers.json")
+
+                // when
+                val result = converter.convert(testFileContent)
+
+                // then
+                assertThat(result.producers).containsExactlyInAnyOrder(
+                    "mixer",
+                    "north stars pictures",
+                    "jy animation",
+                    "crunchyroll",
+                    "ca-cygames anime fund",
+                    "movic",
+                )
+            }
+        }
+
+        @Test
+        fun `no producers`() {
+            runBlocking {
+                // given
+                val testAnilistConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = AnilistConfig.hostname()
+                    override fun buildAnimeLink(id: AnimeId): URI = AnilistConfig.buildAnimeLink(id)
+                }
+                val converter = AnilistAnimeConverter(testAnilistConfig)
+
+                val testFileContent = loadTestResource<String>("AnilistAnimeConverterTest/producers/no_producers.json")
+
+                // when
+                val result = converter.convert(testFileContent)
+
+                // then
+                assertThat(result.producers).isEmpty()
+            }
+        }
+    }
+
+    @Nested
     inner class CompanionObjectTests {
 
         @Test

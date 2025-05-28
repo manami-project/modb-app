@@ -23,7 +23,7 @@ import java.net.URI
  * @property metaDataProviderConfig Configuration for converting data.
  * @property extractor Extractor which retrieves the data from raw data.
  */
-public class AnilistAnimeConverter(
+    public class AnilistAnimeConverter(
     private val metaDataProviderConfig: MetaDataProviderConfig = AnilistConfig,
     private val extractor: DataExtractor = JsonDataExtractor,
 ) : AnimeConverter {
@@ -48,6 +48,7 @@ public class AnilistAnimeConverter(
             "tags" to "$.data.Media.tags.*.name",
             "relatedAnime" to "$.data.Media.relations.edges.*.node",
             "score" to "$.data.Media.meanScore",
+            "creators" to "$.data.Media.studios.edges",
         ))
 
         return@withContext AnimeRaw(
@@ -63,6 +64,8 @@ public class AnilistAnimeConverter(
             _synonyms = extractSynonyms(data),
             _tags = extractTags(data),
             _relatedAnime = extractRelatedAnime(data),
+            _studios = extractStudios(data),
+            _producers = extractProducers(data),
         ).addScores(extractScore(data))
     }
 
@@ -185,6 +188,20 @@ public class AnilistAnimeConverter(
             value = rawScore,
             range = 1.0..100.0,
         )
+    }
+
+    private fun extractStudios(data: ExtractionResult): HashSet<Studio> {
+        return data.listNotNull<Map<String, Any>>("creators")
+            .filter { it["isMain"] as Boolean }
+            .map { (it["node"] as Map<String, String>)["name"] as Studio }
+            .toHashSet()
+    }
+
+    private fun extractProducers(data: ExtractionResult): HashSet<Producer> {
+        return data.listNotNull<Map<String, Any>>("creators")
+            .filterNot { it["isMain"] as Boolean }
+            .map { (it["node"] as Map<String, String>)["name"] as Producer }
+            .toHashSet()
     }
 
     public companion object {
