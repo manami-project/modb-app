@@ -79,6 +79,9 @@ private val files = mapOf(
     "LivechartAnimeConverterTest/type/unknown.html" to "11982",
     "LivechartAnimeConverterTest/type/web.html" to "8110",
     "LivechartAnimeConverterTest/type/web_short.html" to "8695",
+
+    "LivechartAnimeConverterTest/studios/multiple_studios.html" to "9380",
+    "LivechartAnimeConverterTest/studios/no_studios.html" to "8435",
 )
 
 internal fun main(): Unit = runCoroutine {

@@ -11,6 +11,7 @@ import io.github.manamiproject.modb.core.config.MetaDataProviderConfig
 import io.github.manamiproject.modb.core.converter.AnimeConverter
 import io.github.manamiproject.modb.core.coroutines.ModbDispatchers.LIMITED_CPU
 import io.github.manamiproject.modb.core.extensions.EMPTY
+import io.github.manamiproject.modb.core.extensions.normalize
 import io.github.manamiproject.modb.core.extensions.remove
 import io.github.manamiproject.modb.core.extractor.DataExtractor
 import io.github.manamiproject.modb.core.extractor.ExtractionResult
@@ -52,6 +53,7 @@ public class LivechartAnimeConverter(
             "tags" to "//div[contains(text(), 'Tags')]/..//a[@data-anime-details-target='tagChip']",
             "sourceDiv" to "//div[@data-anime-details-id]/@data-anime-details-id",
             "sourceMeta" to "//meta[@property='og:url']/@content",
+            "studios" to "//a[contains(@href, 'studios')]/text()",
         ))
 
         val jsonld = data.listNotNull<String>("jsonld").first()
@@ -66,6 +68,7 @@ public class LivechartAnimeConverter(
             "score" to "$.aggregateRating.ratingValue",
             "worstRating" to "$.aggregateRating.worstRating",
             "bestRating" to "$.aggregateRating.bestRating",
+            "productionCompany" to "$.productionCompany.*.name",
         ))
 
         val picture = extractPicture(jsonldData, data)
@@ -83,6 +86,8 @@ public class LivechartAnimeConverter(
             _synonyms = extractSynonyms(jsonldData),
             _relatedAnime = extractRelatedAnime(data),
             _tags = extractTags(jsonldData, data),
+            _studios = extractStudios(jsonldData, data),
+            _producers = hashSetOf(), // not available on livechart
         ).addScores(extractScore(jsonldData))
     }
 
@@ -298,6 +303,23 @@ public class LivechartAnimeConverter(
             value = rawScore,
             range = from..to,
         )
+    }
+
+    private fun extractStudios(jsonData: ExtractionResult, data: ExtractionResult): HashSet<Tag> {
+        val studios: HashSet<Studio> = if (jsonData.notFound("productionCompany")) {
+            hashSetOf()
+        } else {
+            jsonData.listNotNull<Studio>("productionCompany").toHashSet()
+        }
+
+        if (!data.notFound("studios")) {
+            data.listNotNull<Studio>("studios")
+                .map { it.normalize().lowercase() }
+                .filterNot { it == "studios" }
+                .forEach { studios.add(it) }
+        }
+
+        return studios
     }
 
     public companion object {
