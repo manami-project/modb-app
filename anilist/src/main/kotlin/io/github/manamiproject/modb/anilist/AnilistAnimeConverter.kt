@@ -193,14 +193,14 @@ import java.net.URI
     private fun extractStudios(data: ExtractionResult): HashSet<Studio> {
         return data.listNotNull<Map<String, Any>>("creators")
             .filter { it["isMain"] as Boolean }
-            .map { (it["node"] as Map<String, String>)["name"] as Studio }
+            .map { (it["node"] as Map<*, *>)["name"] as Studio }
             .toHashSet()
     }
 
     private fun extractProducers(data: ExtractionResult): HashSet<Producer> {
         return data.listNotNull<Map<String, Any>>("creators")
             .filterNot { it["isMain"] as Boolean }
-            .map { (it["node"] as Map<String, String>)["name"] as Producer }
+            .map { (it["node"] as Map<*, *>)["name"] as Producer }
             .toHashSet()
     }
 
