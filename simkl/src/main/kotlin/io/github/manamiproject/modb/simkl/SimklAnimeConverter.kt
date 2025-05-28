@@ -21,6 +21,7 @@ import io.github.manamiproject.modb.core.anime.AnimeStatus.UNKNOWN as UNKNOWN_ST
 import io.github.manamiproject.modb.core.anime.AnimeType.*
 import io.github.manamiproject.modb.core.anime.AnimeType.UNKNOWN as UNKNOWN_TYPE
 import io.github.manamiproject.modb.core.anime.Duration.TimeUnit.*
+import io.github.manamiproject.modb.core.extensions.normalize
 import io.github.manamiproject.modb.core.anime.Duration.Companion.UNKNOWN as UNKNOWN_DURATION
 import kotlinx.coroutines.withContext
 import java.net.URI
@@ -48,10 +49,10 @@ public class SimklAnimeConverter(
                 "episodesFallback" to "//td[@class='SimklTVAboutYearCountry']/text()",
                 "startDate" to "//span[@itemprop='startDate']/text()",
                 "source" to "//meta[@property='og:url']/@content",
-                "airDate" to "//strong[contains(text(), 'Air Date:')]/../text()",
+                "airDate" to "//strong[contains(text(), 'Date:')]/../following-sibling::td/text()",
                 "genres" to "//span[@class='TagGenre']/text()",
                 "subgenres" to "//span[@class='adGenres']/a/text()",
-                "type" to "//strong[contains(text(), 'Type:')]/../text()",
+                "type" to "//strong[contains(text(), 'Type:')]/..//following-sibling::*/text()",
                 "duration" to "//meta[@property='og:duration']/@content",
                 "picture" to "//meta[@property='og:image']/@content",
                 "relatedAnime" to "//detail-related-item[@id='tvdetailrelations']//div[@class='tvdetailrelationsitems']//a/@href",
@@ -59,6 +60,8 @@ public class SimklAnimeConverter(
                 "score" to "//div[@itemprop='aggregateRating']//span[@class='SimklTVRatingAverage'][@itemprop='ratingValue']/text()",
                 "bestRating" to "//div[@itemprop='aggregateRating']//span[@itemprop='bestRating']/text()",
                 "worstRating" to "//div[@itemprop='aggregateRating']//span[@itemprop='worstRating']/text()",
+                "studios" to "//strong[contains(text(), 'Studios:')]/..//following-sibling::td//a/text()",
+                "producers" to "//strong[contains(text(), 'Producers:')]/..//following-sibling::td//a/text()",
             )
         )
 
@@ -79,6 +82,8 @@ public class SimklAnimeConverter(
             _synonyms = postProcessSynonyms(title, extractSynonyms(data)),
             _relatedAnime = extractRelatedAnime(data),
             _tags = extractTags(data),
+            _studios = extractStudios(data),
+            _producers = extractProducers(data),
         ).addScores(extractScore(data))
     }
 
@@ -126,13 +131,7 @@ public class SimklAnimeConverter(
     }
 
     private fun extractType(data: ExtractionResult): AnimeType {
-        val prefix = "Type: "
-        val extractedType = data.listNotNull<String>("type")
-            .firstOrNull { it.startsWith(prefix) }
-            ?.remove(prefix)
-            ?.lowercase()
-            ?.trim()
-            ?: EMPTY
+        val extractedType = data.stringOrDefault("type").normalize().lowercase()
 
         return when (extractedType) {
             "movie" -> MOVIE
@@ -168,12 +167,10 @@ public class SimklAnimeConverter(
         val airDate = if (data.notFound("airDate")) {
             EMPTY
         } else {
-            data.listNotNull<String>("airDate")
-                    .firstOrNull { it.startsWith(prefix) }
-                    ?.remove(prefix)
-                    ?.trim()
-                    ?.lowercase()
-                    ?: EMPTY
+            data.stringOrDefault("airDate")
+                .remove(prefix)
+                .trim()
+                .lowercase()
         }
         val startDateString = data.stringOrDefault("startDate")
 
@@ -207,6 +204,7 @@ public class SimklAnimeConverter(
                     else -> ONGOING
                 }
             }
+            startDate?.isBefore(today) ?: false -> FINISHED
             else -> UNKNOWN_STATUS
         }
     }
@@ -310,6 +308,22 @@ public class SimklAnimeConverter(
             value = rawScore,
             range = worstRating..bestRating,
         )
+    }
+
+    private fun extractStudios(data: ExtractionResult): HashSet<Studio> {
+        if (data.notFound("studios")) {
+            return hashSetOf()
+        }
+
+        return data.listNotNull<Studio>("studios").toHashSet()
+    }
+
+    private fun extractProducers(data: ExtractionResult): HashSet<Producer> {
+        if (data.notFound("producers")) {
+            return hashSetOf()
+        }
+
+        return data.listNotNull<Producer>("producers").toHashSet()
     }
 
     public companion object {
