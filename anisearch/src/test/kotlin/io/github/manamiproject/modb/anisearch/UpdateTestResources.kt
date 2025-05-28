@@ -108,6 +108,9 @@ private val mainConfigFiles = mapOf(
     "AnisearchAnimeConverterTest/related_anime/no_related_anime_main.html" to "10941",
     "AnisearchAnimeConverterTest/related_anime/related_anime_file_missing_main.html" to "4942",
     "AnisearchAnimeConverterTest/related_anime/single_related_anime_main.html" to "16777",
+
+    "AnisearchAnimeConverterTest/studios/multiple_studios.html" to "14286",
+    "AnisearchAnimeConverterTest/studios/no_studios.html" to "5419",
 )
 
 private val relationsConfigFiles = mapOf(

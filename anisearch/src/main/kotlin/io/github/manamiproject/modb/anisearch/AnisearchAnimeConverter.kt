@@ -57,6 +57,7 @@ public class AnisearchAnimeConverter(
             "synonymsDivSpan" to "//div[@class='synonyms']//span[@id='text-synonyms']",
             "synonymsItalic" to "//div[@class='synonyms']//i/text()",
             "score" to "//td[contains(text(), 'Calculated Value')]/text()",
+            "studios" to "//div[@class='company']/span[contains(text(), 'Studio')]/following-sibling::*/text()",
         ))
         
         val jsonld = data.listNotNull<String>("jsonld").first()
@@ -87,6 +88,8 @@ public class AnisearchAnimeConverter(
             _synonyms = extractSynonyms(data),
             _relatedAnime = extractRelatedAnime(data),
             _tags = extractTags(data),
+            _studios = extractStudios(data),
+            _producers = hashSetOf(), // not available on anisearch
         ).addScores(extractScore(jsonData, data))
     }
 
@@ -292,6 +295,14 @@ public class AnisearchAnimeConverter(
             hashSetOf()
         } else {
             data.listNotNull<Tag>("tags").toHashSet()
+        }
+    }
+
+    private fun extractStudios(data: ExtractionResult): HashSet<Studio> {
+        return if (data.notFound("studios")) {
+            hashSetOf()
+        } else {
+            data.listNotNull<Studio>("studios").toHashSet()
         }
     }
 }
