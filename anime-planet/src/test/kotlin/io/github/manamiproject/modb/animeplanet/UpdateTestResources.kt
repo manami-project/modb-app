@@ -77,6 +77,9 @@ private val files = mapOf(
     "AnimePlanetAnimeConverterTest/type/tv.html" to "fullmetal-alchemist-brotherhood",
     "AnimePlanetAnimeConverterTest/type/tv_special.html" to "hanamonogatari",
     "AnimePlanetAnimeConverterTest/type/web.html" to "planetarian",
+
+    "AnimePlanetAnimeConverterTest/studios/multiple_studios.html" to "somali-and-the-forest-spirit",
+    "AnimePlanetAnimeConverterTest/studios/no_studios.html" to "ahiru-rikusentai",
 )
 
 internal fun main(): Unit = runCoroutine {

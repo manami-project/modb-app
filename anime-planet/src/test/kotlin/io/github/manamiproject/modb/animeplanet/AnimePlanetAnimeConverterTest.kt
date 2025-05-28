@@ -1191,6 +1191,55 @@ internal class AnimePlanetAnimeConverterTest {
     }
 
     @Nested
+    inner class StudiosTests {
+
+        @Test
+        fun `multiple studios`() {
+            runBlocking {
+                // given
+                val testAnimePlanetConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = AnimePlanetConfig.hostname()
+                    override fun buildAnimeLink(id: AnimeId): URI = AnimePlanetConfig.buildAnimeLink(id)
+                }
+
+                val testFileContent = loadTestResource<String>("AnimePlanetAnimeConverterTest/studios/multiple_studios.html")
+
+                val converter = AnimePlanetAnimeConverter(testAnimePlanetConfig)
+
+                // when
+                val result = converter.convert(testFileContent)
+
+                // then
+                assertThat(result.studios).containsExactlyInAnyOrder(
+                    "satelight",
+                    "hornets",
+                )
+            }
+        }
+
+        @Test
+        fun `no studios`() {
+            runBlocking {
+                // given
+                val testAnimePlanetConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = AnimePlanetConfig.hostname()
+                    override fun buildAnimeLink(id: AnimeId): URI = AnimePlanetConfig.buildAnimeLink(id)
+                }
+
+                val testFileContent = loadTestResource<String>("AnimePlanetAnimeConverterTest/studios/no_studios.html")
+
+                val converter = AnimePlanetAnimeConverter(testAnimePlanetConfig)
+
+                // when
+                val result = converter.convert(testFileContent)
+
+                // then
+                assertThat(result.studios).isEmpty()
+            }
+        }
+    }
+
+    @Nested
     inner class CompanionObjectTests {
 
         @Test
