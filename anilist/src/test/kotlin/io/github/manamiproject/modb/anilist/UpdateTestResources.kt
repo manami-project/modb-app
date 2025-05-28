@@ -81,7 +81,7 @@ internal fun main(): Unit = runCoroutine {
         delay(random(5000, 10000))
     }
 
-    print("Done")
+    println("Done")
 }
 
 private fun resourceFile(file: String): Path {

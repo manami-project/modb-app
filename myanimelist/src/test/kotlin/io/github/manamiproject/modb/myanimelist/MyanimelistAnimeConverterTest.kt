@@ -1830,6 +1830,113 @@ internal class MyanimelistAnimeConverterTest {
     }
 
     @Nested
+    inner class StudiosTests {
+
+        @Test
+        fun `multiple studios`() {
+            runBlocking {
+                // given
+                val testMyanimelistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = MyanimelistConfig.hostname()
+                    override fun buildAnimeLink(id: AnimeId): URI = MyanimelistConfig.buildAnimeLink(id)
+                    override fun fileSuffix(): FileSuffix = MyanimelistConfig.fileSuffix()
+                }
+
+                val converter = MyanimelistAnimeConverter(testMyanimelistConfig)
+
+                val testFile = loadTestResource<String>("MyanimelistAnimeConverterTest/studios/multiple_studios.html")
+
+                // when
+                val result = converter.convert(testFile)
+
+                // then
+                assertThat(result.studios).containsExactlyInAnyOrder(
+                    "satelight",
+                    "hornets",
+                )
+            }
+        }
+
+        @Test
+        fun `no studios`() {
+            runBlocking {
+                // given
+                val testMyanimelistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = MyanimelistConfig.hostname()
+                    override fun buildAnimeLink(id: AnimeId): URI = MyanimelistConfig.buildAnimeLink(id)
+                    override fun fileSuffix(): FileSuffix = MyanimelistConfig.fileSuffix()
+                }
+
+                val converter = MyanimelistAnimeConverter(testMyanimelistConfig)
+
+                val testFile = loadTestResource<String>("MyanimelistAnimeConverterTest/studios/no_studios.html")
+
+                // when
+                val result = converter.convert(testFile)
+
+                // then
+                assertThat(result.studios).isEmpty()
+            }
+        }
+    }
+
+    @Nested
+    inner class ProducersTests {
+
+        @Test
+        fun `multiple producers`() {
+            runBlocking {
+                // given
+                val testMyanimelistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = MyanimelistConfig.hostname()
+                    override fun buildAnimeLink(id: AnimeId): URI = MyanimelistConfig.buildAnimeLink(id)
+                    override fun fileSuffix(): FileSuffix = MyanimelistConfig.fileSuffix()
+                }
+
+                val converter = MyanimelistAnimeConverter(testMyanimelistConfig)
+
+                val testFile = loadTestResource<String>("MyanimelistAnimeConverterTest/producers/multiple_producers.html")
+
+                // when
+                val result = converter.convert(testFile)
+
+                // then
+                assertThat(result.producers).containsExactlyInAnyOrder(
+                    "movic",
+                    "magic capsule",
+                    "crunchyroll",
+                    "north stars pictures",
+                    "jy animation",
+                    "ca-cygames anime fund",
+                    "mixer",
+                )
+            }
+        }
+
+        @Test
+        fun `no producers`() {
+            runBlocking {
+                // given
+                val testMyanimelistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = MyanimelistConfig.hostname()
+                    override fun buildAnimeLink(id: AnimeId): URI = MyanimelistConfig.buildAnimeLink(id)
+                    override fun fileSuffix(): FileSuffix = MyanimelistConfig.fileSuffix()
+                }
+
+                val converter = MyanimelistAnimeConverter(testMyanimelistConfig)
+
+                val testFile = loadTestResource<String>("MyanimelistAnimeConverterTest/producers/no_producers.html")
+
+                // when
+                val result = converter.convert(testFile)
+
+                // then
+                assertThat(result.producers).isEmpty()
+            }
+        }
+    }
+
+    @Nested
     inner class CompanionObjectTests {
 
         @Test

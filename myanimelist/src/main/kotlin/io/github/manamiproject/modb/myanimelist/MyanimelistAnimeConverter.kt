@@ -49,6 +49,8 @@ public class MyanimelistAnimeConverter(
             "relatedAnimeDetails" to "//div[contains(@class, 'anime-detail-related-entries')]//a/@href",
             "synonyms" to "//h2[contains(text(), 'Information')]/following-sibling::*//tr[0]/td[1]",
             "score" to "//span[@itemprop='ratingValue']/span/text()",
+            "studios" to "//td[contains(text(), 'Studios')]/following-sibling::td/a/text()",
+            "producers" to "//td[contains(text(), 'Producers')]/following-sibling::td/a/text()",
         ))
 
         val picture = extractPicture(data)
@@ -67,6 +69,8 @@ public class MyanimelistAnimeConverter(
             _synonyms = postProcessSynonyms(title, extractSynonyms(data)),
             _relatedAnime = extractRelatedAnime(data),
             _tags = extractTags(data),
+            _studios = extractStudios(data),
+            _producers = extractProducers(data),
         ).addScores(extractScore(data))
     }
 
@@ -277,6 +281,22 @@ public class MyanimelistAnimeConverter(
             value = rawScore,
             range = 1.0..10.0,
         )
+    }
+
+    private fun extractStudios(data: ExtractionResult): HashSet<Studio> {
+        return if (data.notFound("studios")) {
+            hashSetOf()
+        } else {
+            data.listNotNull<Studio>("studios").toHashSet()
+        }
+    }
+
+    private fun extractProducers(data: ExtractionResult): HashSet<Producer> {
+        return if (data.notFound("producers")) {
+            hashSetOf()
+        } else {
+            data.listNotNull<Producer>("producers").toHashSet()
+        }
     }
 
     public companion object {

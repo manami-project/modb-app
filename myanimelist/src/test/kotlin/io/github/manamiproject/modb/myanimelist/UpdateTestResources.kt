@@ -117,6 +117,12 @@ private val files = mapOf(
     "MyanimelistAnimeConverterTest/type/tv.html" to "1535",
     "MyanimelistAnimeConverterTest/type/tv_special.html" to "2312",
     "MyanimelistAnimeConverterTest/type/unknown.html" to "55579",
+
+    "MyanimelistAnimeConverterTest/studios/multiple_studios.html" to "39575",
+    "MyanimelistAnimeConverterTest/studios/no_studios.html" to "21761",
+
+    "MyanimelistAnimeConverterTest/producers/multiple_producers.html" to "39575",
+    "MyanimelistAnimeConverterTest/producers/no_producers.html" to "21761",
 )
 
 internal fun main(): Unit = runCoroutine {
@@ -125,7 +131,7 @@ internal fun main(): Unit = runCoroutine {
         delay(random(5000, 10000))
     }
 
-    print("Done")
+    println("Done")
 }
 
 private fun resourceFile(file: String): Path {
