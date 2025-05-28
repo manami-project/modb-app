@@ -57,6 +57,14 @@ public class AnimenewsnetworkAnimeConverter(
             "year_list_all" to "//div[@id='infotype-7']//div//text()",
         ))
 
+        val japaneseCompanies = rawContent.substringAfter("<nobr>Japanese companies</nobr>")
+            .substringBefore("<nobr>")
+
+        val productionData = extractor.extract(japaneseCompanies, mapOf(
+            "studios" to "//b[text()='Animation Production']/following-sibling::a/text()",
+            "producers" to "//b[text()='Production']/following-sibling::a/text()",
+        ))
+
         val extractedTitle = extractTitle(data)
 
         return@withContext AnimeRaw(
@@ -64,14 +72,16 @@ public class AnimenewsnetworkAnimeConverter(
             _sources = extractSourcesEntry(data),
             episodes = extractEpisodes(data),
             type = extractType(data),
+            status = extractStatus(data),
             picture = extractPicture(data),
             thumbnail = extractThumbnail(data),
             animeSeason = extractAnimeSeason(data),
-            _synonyms = extractSynonyms(data),
-            _tags = extractTags(data),
-            _relatedAnime = extractRelatedAnime(data),
             duration = extractDuration(data),
-            status = extractStatus(data),
+            _synonyms = extractSynonyms(data),
+            _relatedAnime = extractRelatedAnime(data),
+            _tags = extractTags(data),
+            _studios = extractStudios(productionData),
+            _producers = extractProducers(productionData),
         ).addScores(extractScore(data))
     }
 
@@ -367,6 +377,22 @@ public class AnimenewsnetworkAnimeConverter(
             now.isAfter(endDate) -> FINISHED
             (now.isEqual(startDate) || now.isAfter(startDate)) && (now.isBefore(endDate) || now.isEqual(endDate)) -> ONGOING
             else -> UNKNOWN_STATUS
+        }
+    }
+
+    private fun extractStudios(data: ExtractionResult): HashSet<Studio> {
+        return if (data.notFound("studios")) {
+            hashSetOf()
+        } else {
+            data.listNotNull<Studio>("studios").toHashSet()
+        }
+    }
+
+    private fun extractProducers(data: ExtractionResult): HashSet<Producer> {
+        return if (data.notFound("producers")) {
+            hashSetOf()
+        } else {
+            data.listNotNull<Producer>("producers").toHashSet()
         }
     }
 

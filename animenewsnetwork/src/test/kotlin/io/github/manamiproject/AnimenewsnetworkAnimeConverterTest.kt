@@ -11,6 +11,7 @@ import io.github.manamiproject.modb.core.config.FileSuffix
 import io.github.manamiproject.modb.core.config.Hostname
 import io.github.manamiproject.modb.core.config.MetaDataProviderConfig
 import io.github.manamiproject.modb.test.loadTestResource
+import io.github.manamiproject.modb.test.tempDirectory
 import kotlinx.coroutines.runBlocking
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Nested
@@ -39,7 +40,7 @@ internal class AnimenewsnetworkAnimeConverterTest {
 
                 val converter = AnimenewsnetworkAnimeConverter(testAnimenewsnetworkConfig)
 
-                val testFile = loadTestResource<String>("AnimenewsnetworkConverterTest/sources/6592.html")
+                val testFile = loadTestResource<String>("AnimenewsnetworkAnimeConverterTest/sources/6592.html")
 
                 // when
                 val result = converter.convert(testFile)
@@ -65,7 +66,7 @@ internal class AnimenewsnetworkAnimeConverterTest {
 
                 val converter = AnimenewsnetworkAnimeConverter(testAnimenewsnetworkConfig)
 
-                val testFile = loadTestResource<String>("AnimenewsnetworkConverterTest/title/special_chars.html")
+                val testFile = loadTestResource<String>("AnimenewsnetworkAnimeConverterTest/title/special_chars.html")
 
                 // when
                 val result = converter.convert(testFile)
@@ -87,7 +88,7 @@ internal class AnimenewsnetworkAnimeConverterTest {
 
                 val converter = AnimenewsnetworkAnimeConverter(testAnimenewsnetworkConfig)
 
-                val testFile = loadTestResource<String>("AnimenewsnetworkConverterTest/title/title_with_type.html")
+                val testFile = loadTestResource<String>("AnimenewsnetworkAnimeConverterTest/title/title_with_type.html")
 
                 // when
                 val result = converter.convert(testFile)
@@ -109,7 +110,7 @@ internal class AnimenewsnetworkAnimeConverterTest {
 
                 val converter = AnimenewsnetworkAnimeConverter(testAnimenewsnetworkConfig)
 
-                val testFile = loadTestResource<String>("AnimenewsnetworkConverterTest/title/title_with_type_and_number.html")
+                val testFile = loadTestResource<String>("AnimenewsnetworkAnimeConverterTest/title/title_with_type_and_number.html")
 
                 // when
                 val result = converter.convert(testFile)
@@ -135,7 +136,7 @@ internal class AnimenewsnetworkAnimeConverterTest {
 
                 val converter = AnimenewsnetworkAnimeConverter(testAnimenewsnetworkConfig)
 
-                val testFile = loadTestResource<String>("AnimenewsnetworkConverterTest/episodes/12.html")
+                val testFile = loadTestResource<String>("AnimenewsnetworkAnimeConverterTest/episodes/12.html")
 
                 // when
                 val result = converter.convert(testFile)
@@ -157,7 +158,7 @@ internal class AnimenewsnetworkAnimeConverterTest {
 
                 val converter = AnimenewsnetworkAnimeConverter(testAnimenewsnetworkConfig)
 
-                val testFile = loadTestResource<String>("AnimenewsnetworkConverterTest/episodes/number_of_episodes_missing_use_episodes_titles_instead.html")
+                val testFile = loadTestResource<String>("AnimenewsnetworkAnimeConverterTest/episodes/number_of_episodes_missing_use_episodes_titles_instead.html")
 
                 // when
                 val result = converter.convert(testFile)
@@ -179,7 +180,7 @@ internal class AnimenewsnetworkAnimeConverterTest {
 
                 val converter = AnimenewsnetworkAnimeConverter(testAnimenewsnetworkConfig)
 
-                val testFile = loadTestResource<String>("AnimenewsnetworkConverterTest/episodes/no_episodes_but_movie_in_title.html")
+                val testFile = loadTestResource<String>("AnimenewsnetworkAnimeConverterTest/episodes/no_episodes_but_movie_in_title.html")
 
                 // when
                 val result = converter.convert(testFile)
@@ -201,7 +202,7 @@ internal class AnimenewsnetworkAnimeConverterTest {
 
                 val converter = AnimenewsnetworkAnimeConverter(testAnimenewsnetworkConfig)
 
-                val testFile = loadTestResource<String>("AnimenewsnetworkConverterTest/episodes/no_episodes.html")
+                val testFile = loadTestResource<String>("AnimenewsnetworkAnimeConverterTest/episodes/no_episodes.html")
 
                 // when
                 val result = converter.convert(testFile)
@@ -227,7 +228,7 @@ internal class AnimenewsnetworkAnimeConverterTest {
 
                 val converter = AnimenewsnetworkAnimeConverter(testAnimenewsnetworkConfig)
 
-                val testFile = loadTestResource<String>("AnimenewsnetworkConverterTest/type/tv.html")
+                val testFile = loadTestResource<String>("AnimenewsnetworkAnimeConverterTest/type/tv.html")
 
                 // when
                 val result = converter.convert(testFile)
@@ -249,7 +250,7 @@ internal class AnimenewsnetworkAnimeConverterTest {
 
                 val converter = AnimenewsnetworkAnimeConverter(testAnimenewsnetworkConfig)
 
-                val testFile = loadTestResource<String>("AnimenewsnetworkConverterTest/type/movie.html")
+                val testFile = loadTestResource<String>("AnimenewsnetworkAnimeConverterTest/type/movie.html")
 
                 // when
                 val result = converter.convert(testFile)
@@ -271,7 +272,7 @@ internal class AnimenewsnetworkAnimeConverterTest {
 
                 val converter = AnimenewsnetworkAnimeConverter(testAnimenewsnetworkConfig)
 
-                val testFile = loadTestResource<String>("AnimenewsnetworkConverterTest/type/ova.html")
+                val testFile = loadTestResource<String>("AnimenewsnetworkAnimeConverterTest/type/ova.html")
 
                 // when
                 val result = converter.convert(testFile)
@@ -293,7 +294,7 @@ internal class AnimenewsnetworkAnimeConverterTest {
 
                 val converter = AnimenewsnetworkAnimeConverter(testAnimenewsnetworkConfig)
 
-                val testFile = loadTestResource<String>("AnimenewsnetworkConverterTest/type/ona.html")
+                val testFile = loadTestResource<String>("AnimenewsnetworkAnimeConverterTest/type/ona.html")
 
                 // when
                 val result = converter.convert(testFile)
@@ -315,7 +316,7 @@ internal class AnimenewsnetworkAnimeConverterTest {
 
                 val converter = AnimenewsnetworkAnimeConverter(testAnimenewsnetworkConfig)
 
-                val testFile = loadTestResource<String>("AnimenewsnetworkConverterTest/type/special.html")
+                val testFile = loadTestResource<String>("AnimenewsnetworkAnimeConverterTest/type/special.html")
 
                 // when
                 val result = converter.convert(testFile)
@@ -337,7 +338,7 @@ internal class AnimenewsnetworkAnimeConverterTest {
 
                 val converter = AnimenewsnetworkAnimeConverter(testAnimenewsnetworkConfig)
 
-                val testFile = loadTestResource<String>("AnimenewsnetworkConverterTest/type/motion-picture-in-title.html")
+                val testFile = loadTestResource<String>("AnimenewsnetworkAnimeConverterTest/type/motion-picture-in-title.html")
 
                 // when
                 val result = converter.convert(testFile)
@@ -359,7 +360,7 @@ internal class AnimenewsnetworkAnimeConverterTest {
 
                 val converter = AnimenewsnetworkAnimeConverter(testAnimenewsnetworkConfig)
 
-                val testFile = loadTestResource<String>("AnimenewsnetworkConverterTest/type/ova-in-title.html")
+                val testFile = loadTestResource<String>("AnimenewsnetworkAnimeConverterTest/type/ova-in-title.html")
 
                 // when
                 val result = converter.convert(testFile)
@@ -385,7 +386,7 @@ internal class AnimenewsnetworkAnimeConverterTest {
 
                 val converter = AnimenewsnetworkAnimeConverter(testAnimenewsnetworkConfig)
 
-                val testFile = loadTestResource<String>("AnimenewsnetworkConverterTest/score/score.html")
+                val testFile = loadTestResource<String>("AnimenewsnetworkAnimeConverterTest/score/score.html")
 
                 // when
                 val result = converter.convert(testFile)
@@ -409,7 +410,7 @@ internal class AnimenewsnetworkAnimeConverterTest {
 
                 val converter = AnimenewsnetworkAnimeConverter(testAnimenewsnetworkConfig)
 
-                val testFile = loadTestResource<String>("AnimenewsnetworkConverterTest/score/no-score.html")
+                val testFile = loadTestResource<String>("AnimenewsnetworkAnimeConverterTest/score/no-score.html")
 
                 // when
                 val result = converter.convert(testFile)
@@ -435,7 +436,7 @@ internal class AnimenewsnetworkAnimeConverterTest {
 
                 val converter = AnimenewsnetworkAnimeConverter(testAnimenewsnetworkConfig)
 
-                val testFile = loadTestResource<String>("AnimenewsnetworkConverterTest/picture_and_thumbnail/picture_and_thumbnail_available.html")
+                val testFile = loadTestResource<String>("AnimenewsnetworkAnimeConverterTest/picture_and_thumbnail/picture_and_thumbnail_available.html")
 
                 // when
                 val result = converter.convert(testFile)
@@ -458,7 +459,7 @@ internal class AnimenewsnetworkAnimeConverterTest {
 
                 val converter = AnimenewsnetworkAnimeConverter(testAnimenewsnetworkConfig)
 
-                val testFile = loadTestResource<String>("AnimenewsnetworkConverterTest/picture_and_thumbnail/neither_picture_nor_thumbnail.html")
+                val testFile = loadTestResource<String>("AnimenewsnetworkAnimeConverterTest/picture_and_thumbnail/neither_picture_nor_thumbnail.html")
 
                 // when
                 val result = converter.convert(testFile)
@@ -488,7 +489,7 @@ internal class AnimenewsnetworkAnimeConverterTest {
 
                     val converter = AnimenewsnetworkAnimeConverter(testAnimenewsnetworkConfig)
 
-                    val testFile = loadTestResource<String>("AnimenewsnetworkConverterTest/anime_season/year/vintage-single-date-range.html")
+                    val testFile = loadTestResource<String>("AnimenewsnetworkAnimeConverterTest/anime_season/year/vintage-single-date-range.html")
 
                     // when
                     val result = converter.convert(testFile)
@@ -510,7 +511,7 @@ internal class AnimenewsnetworkAnimeConverterTest {
 
                     val converter = AnimenewsnetworkAnimeConverter(testAnimenewsnetworkConfig)
 
-                    val testFile = loadTestResource<String>("AnimenewsnetworkConverterTest/anime_season/year/vintage-year.html")
+                    val testFile = loadTestResource<String>("AnimenewsnetworkAnimeConverterTest/anime_season/year/vintage-year.html")
 
                     // when
                     val result = converter.convert(testFile)
@@ -532,7 +533,7 @@ internal class AnimenewsnetworkAnimeConverterTest {
 
                     val converter = AnimenewsnetworkAnimeConverter(testAnimenewsnetworkConfig)
 
-                    val testFile = loadTestResource<String>("AnimenewsnetworkConverterTest/anime_season/year/vintage-year-month-day.html")
+                    val testFile = loadTestResource<String>("AnimenewsnetworkAnimeConverterTest/anime_season/year/vintage-year-month-day.html")
 
                     // when
                     val result = converter.convert(testFile)
@@ -554,7 +555,7 @@ internal class AnimenewsnetworkAnimeConverterTest {
 
                     val converter = AnimenewsnetworkAnimeConverter(testAnimenewsnetworkConfig)
 
-                    val testFile = loadTestResource<String>("AnimenewsnetworkConverterTest/anime_season/year/vintage-multiple-entries-single-date.html")
+                    val testFile = loadTestResource<String>("AnimenewsnetworkAnimeConverterTest/anime_season/year/vintage-multiple-entries-single-date.html")
 
                     // when
                     val result = converter.convert(testFile)
@@ -576,7 +577,7 @@ internal class AnimenewsnetworkAnimeConverterTest {
 
                     val converter = AnimenewsnetworkAnimeConverter(testAnimenewsnetworkConfig)
 
-                    val testFile = loadTestResource<String>("AnimenewsnetworkConverterTest/anime_season/year/vintage-multiple-entries-range.html")
+                    val testFile = loadTestResource<String>("AnimenewsnetworkAnimeConverterTest/anime_season/year/vintage-multiple-entries-range.html")
 
                     // when
                     val result = converter.convert(testFile)
@@ -598,7 +599,7 @@ internal class AnimenewsnetworkAnimeConverterTest {
 
                     val converter = AnimenewsnetworkAnimeConverter(testAnimenewsnetworkConfig)
 
-                    val testFile = loadTestResource<String>("AnimenewsnetworkConverterTest/anime_season/year/vintage-missing.html")
+                    val testFile = loadTestResource<String>("AnimenewsnetworkAnimeConverterTest/anime_season/year/vintage-missing.html")
 
                     // when
                     val result = converter.convert(testFile)
@@ -620,7 +621,7 @@ internal class AnimenewsnetworkAnimeConverterTest {
 
                     val converter = AnimenewsnetworkAnimeConverter(testAnimenewsnetworkConfig)
 
-                    val testFile = loadTestResource<String>("AnimenewsnetworkConverterTest/anime_season/year/vintage-year-followed-by-text.html")
+                    val testFile = loadTestResource<String>("AnimenewsnetworkAnimeConverterTest/anime_season/year/vintage-year-followed-by-text.html")
 
                     // when
                     val result = converter.convert(testFile)
@@ -647,7 +648,7 @@ internal class AnimenewsnetworkAnimeConverterTest {
 
                     val converter = AnimenewsnetworkAnimeConverter(testAnimenewsnetworkConfig)
 
-                    val testFile = loadTestResource<String>("AnimenewsnetworkConverterTest/anime_season/season/$input.html")
+                    val testFile = loadTestResource<String>("AnimenewsnetworkAnimeConverterTest/anime_season/season/$input.html")
 
                     // when
                     val result = converter.convert(testFile)
@@ -670,7 +671,7 @@ internal class AnimenewsnetworkAnimeConverterTest {
 
                     val converter = AnimenewsnetworkAnimeConverter(testAnimenewsnetworkConfig)
 
-                    val testFile = loadTestResource<String>("AnimenewsnetworkConverterTest/anime_season/season/$input.html")
+                    val testFile = loadTestResource<String>("AnimenewsnetworkAnimeConverterTest/anime_season/season/$input.html")
 
                     // when
                     val result = converter.convert(testFile)
@@ -693,7 +694,7 @@ internal class AnimenewsnetworkAnimeConverterTest {
 
                     val converter = AnimenewsnetworkAnimeConverter(testAnimenewsnetworkConfig)
 
-                    val testFile = loadTestResource<String>("AnimenewsnetworkConverterTest/anime_season/season/$input.html")
+                    val testFile = loadTestResource<String>("AnimenewsnetworkAnimeConverterTest/anime_season/season/$input.html")
 
                     // when
                     val result = converter.convert(testFile)
@@ -716,7 +717,7 @@ internal class AnimenewsnetworkAnimeConverterTest {
 
                     val converter = AnimenewsnetworkAnimeConverter(testAnimenewsnetworkConfig)
 
-                    val testFile = loadTestResource<String>("AnimenewsnetworkConverterTest/anime_season/season/$input.html")
+                    val testFile = loadTestResource<String>("AnimenewsnetworkAnimeConverterTest/anime_season/season/$input.html")
 
                     // when
                     val result = converter.convert(testFile)
@@ -743,7 +744,7 @@ internal class AnimenewsnetworkAnimeConverterTest {
 
                 val converter = AnimenewsnetworkAnimeConverter(testAnimenewsnetworkConfig)
 
-                val testFile = loadTestResource<String>("AnimenewsnetworkConverterTest/synonyms/multiple.html")
+                val testFile = loadTestResource<String>("AnimenewsnetworkAnimeConverterTest/synonyms/multiple.html")
 
                 // when
                 val result = converter.convert(testFile)
@@ -770,7 +771,7 @@ internal class AnimenewsnetworkAnimeConverterTest {
 
                 val converter = AnimenewsnetworkAnimeConverter(testAnimenewsnetworkConfig)
 
-                val testFile = loadTestResource<String>("AnimenewsnetworkConverterTest/synonyms/no-synonyms.html")
+                val testFile = loadTestResource<String>("AnimenewsnetworkAnimeConverterTest/synonyms/no-synonyms.html")
 
                 // when
                 val result = converter.convert(testFile)
@@ -792,7 +793,7 @@ internal class AnimenewsnetworkAnimeConverterTest {
 
                 val converter = AnimenewsnetworkAnimeConverter(testAnimenewsnetworkConfig)
 
-                val testFile = loadTestResource<String>("AnimenewsnetworkConverterTest/synonyms/nestesd-brackets.html")
+                val testFile = loadTestResource<String>("AnimenewsnetworkAnimeConverterTest/synonyms/nestesd-brackets.html")
 
                 // when
                 val result = converter.convert(testFile)
@@ -828,7 +829,7 @@ internal class AnimenewsnetworkAnimeConverterTest {
 
                 val converter = AnimenewsnetworkAnimeConverter(testAnimenewsnetworkConfig)
 
-                val testFile = loadTestResource<String>("AnimenewsnetworkConverterTest/synonyms/multiple-meta-info-brackets.html")
+                val testFile = loadTestResource<String>("AnimenewsnetworkAnimeConverterTest/synonyms/multiple-meta-info-brackets.html")
 
                 // when
                 val result = converter.convert(testFile)
@@ -865,7 +866,7 @@ internal class AnimenewsnetworkAnimeConverterTest {
 
                 val converter = AnimenewsnetworkAnimeConverter(testAnimenewsnetworkConfig)
 
-                val testFile = loadTestResource<String>("AnimenewsnetworkConverterTest/synonyms/synonym-with-brackets-in-title-without-language-info.html")
+                val testFile = loadTestResource<String>("AnimenewsnetworkAnimeConverterTest/synonyms/synonym-with-brackets-in-title-without-language-info.html")
 
                 // when
                 val result = converter.convert(testFile)
@@ -889,7 +890,7 @@ internal class AnimenewsnetworkAnimeConverterTest {
 
                 val converter = AnimenewsnetworkAnimeConverter(testAnimenewsnetworkConfig)
 
-                val testFile = loadTestResource<String>("AnimenewsnetworkConverterTest/synonyms/synonym-with-brackets-in-title-with-language-info.html")
+                val testFile = loadTestResource<String>("AnimenewsnetworkAnimeConverterTest/synonyms/synonym-with-brackets-in-title-with-language-info.html")
 
                 // when
                 val result = converter.convert(testFile)
@@ -928,7 +929,7 @@ internal class AnimenewsnetworkAnimeConverterTest {
 
                 val converter = AnimenewsnetworkAnimeConverter(testAnimenewsnetworkConfig)
 
-                val testFile = loadTestResource<String>("AnimenewsnetworkConverterTest/tags/neither-genres-nor-themes.html")
+                val testFile = loadTestResource<String>("AnimenewsnetworkAnimeConverterTest/tags/neither-genres-nor-themes.html")
 
                 // when
                 val result = converter.convert(testFile)
@@ -950,7 +951,7 @@ internal class AnimenewsnetworkAnimeConverterTest {
 
                 val converter = AnimenewsnetworkAnimeConverter(testAnimenewsnetworkConfig)
 
-                val testFile = loadTestResource<String>("AnimenewsnetworkConverterTest/tags/multiple-genres-and-multiple-themes.html")
+                val testFile = loadTestResource<String>("AnimenewsnetworkAnimeConverterTest/tags/multiple-genres-and-multiple-themes.html")
 
                 // when
                 val result = converter.convert(testFile)
@@ -995,7 +996,7 @@ internal class AnimenewsnetworkAnimeConverterTest {
 
                 val converter = AnimenewsnetworkAnimeConverter(testAnimenewsnetworkConfig)
 
-                val testFile = loadTestResource<String>("AnimenewsnetworkConverterTest/related_anime/no-related-anime-but-relation-in-brackets.html")
+                val testFile = loadTestResource<String>("AnimenewsnetworkAnimeConverterTest/related_anime/no-related-anime-but-relation-in-brackets.html")
 
                 // when
                 val result = converter.convert(testFile)
@@ -1019,7 +1020,7 @@ internal class AnimenewsnetworkAnimeConverterTest {
 
                 val converter = AnimenewsnetworkAnimeConverter(testAnimenewsnetworkConfig)
 
-                val testFile = loadTestResource<String>("AnimenewsnetworkConverterTest/related_anime/no-related-anime-no-relation-in-brackets-but-an-adaption.html")
+                val testFile = loadTestResource<String>("AnimenewsnetworkAnimeConverterTest/related_anime/no-related-anime-no-relation-in-brackets-but-an-adaption.html")
 
                 // when
                 val result = converter.convert(testFile)
@@ -1041,7 +1042,7 @@ internal class AnimenewsnetworkAnimeConverterTest {
 
                 val converter = AnimenewsnetworkAnimeConverter(testAnimenewsnetworkConfig)
 
-                val testFile = loadTestResource<String>("AnimenewsnetworkConverterTest/related_anime/related-anime.html")
+                val testFile = loadTestResource<String>("AnimenewsnetworkAnimeConverterTest/related_anime/related-anime.html")
 
                 // when
                 val result = converter.convert(testFile)
@@ -1066,7 +1067,7 @@ internal class AnimenewsnetworkAnimeConverterTest {
 
                 val converter = AnimenewsnetworkAnimeConverter(testAnimenewsnetworkConfig)
 
-                val testFile = loadTestResource<String>("AnimenewsnetworkConverterTest/related_anime/related-anime-and-relation-in-brackets.html")
+                val testFile = loadTestResource<String>("AnimenewsnetworkAnimeConverterTest/related_anime/related-anime-and-relation-in-brackets.html")
 
                 // when
                 val result = converter.convert(testFile)
@@ -1092,7 +1093,7 @@ internal class AnimenewsnetworkAnimeConverterTest {
 
                 val converter = AnimenewsnetworkAnimeConverter(testAnimenewsnetworkConfig)
 
-                val testFile = loadTestResource<String>("AnimenewsnetworkConverterTest/related_anime/manga-in-related-anime.html")
+                val testFile = loadTestResource<String>("AnimenewsnetworkAnimeConverterTest/related_anime/manga-in-related-anime.html")
 
                 // when
                 val result = converter.convert(testFile)
@@ -1127,7 +1128,7 @@ internal class AnimenewsnetworkAnimeConverterTest {
 
                 val converter = AnimenewsnetworkAnimeConverter(testAnimenewsnetworkConfig)
 
-                val testFile = loadTestResource<String>("AnimenewsnetworkConverterTest/duration/80-minutes.html")
+                val testFile = loadTestResource<String>("AnimenewsnetworkAnimeConverterTest/duration/80-minutes.html")
 
                 // when
                 val result = converter.convert(testFile)
@@ -1154,7 +1155,7 @@ internal class AnimenewsnetworkAnimeConverterTest {
 
                 val converter = AnimenewsnetworkAnimeConverter(testAnimenewsnetworkConfig)
 
-                val testFile = loadTestResource<String>("AnimenewsnetworkConverterTest/duration/24-minutes-per-episode.html")
+                val testFile = loadTestResource<String>("AnimenewsnetworkAnimeConverterTest/duration/24-minutes-per-episode.html")
 
                 // when
                 val result = converter.convert(testFile)
@@ -1181,7 +1182,7 @@ internal class AnimenewsnetworkAnimeConverterTest {
 
                 val converter = AnimenewsnetworkAnimeConverter(testAnimenewsnetworkConfig)
 
-                val testFile = loadTestResource<String>("AnimenewsnetworkConverterTest/duration/half-hour.html")
+                val testFile = loadTestResource<String>("AnimenewsnetworkAnimeConverterTest/duration/half-hour.html")
 
                 // when
                 val result = converter.convert(testFile)
@@ -1208,7 +1209,7 @@ internal class AnimenewsnetworkAnimeConverterTest {
 
                 val converter = AnimenewsnetworkAnimeConverter(testAnimenewsnetworkConfig)
 
-                val testFile = loadTestResource<String>("AnimenewsnetworkConverterTest/duration/half-hour-per-episode.html")
+                val testFile = loadTestResource<String>("AnimenewsnetworkAnimeConverterTest/duration/half-hour-per-episode.html")
 
                 // when
                 val result = converter.convert(testFile)
@@ -1235,7 +1236,7 @@ internal class AnimenewsnetworkAnimeConverterTest {
 
                 val converter = AnimenewsnetworkAnimeConverter(testAnimenewsnetworkConfig)
 
-                val testFile = loadTestResource<String>("AnimenewsnetworkConverterTest/duration/one-hour.html")
+                val testFile = loadTestResource<String>("AnimenewsnetworkAnimeConverterTest/duration/one-hour.html")
 
                 // when
                 val result = converter.convert(testFile)
@@ -1262,7 +1263,7 @@ internal class AnimenewsnetworkAnimeConverterTest {
 
                 val converter = AnimenewsnetworkAnimeConverter(testAnimenewsnetworkConfig)
 
-                val testFile = loadTestResource<String>("AnimenewsnetworkConverterTest/duration/one-hour-per-episode.html")
+                val testFile = loadTestResource<String>("AnimenewsnetworkAnimeConverterTest/duration/one-hour-per-episode.html")
 
                 // when
                 val result = converter.convert(testFile)
@@ -1289,7 +1290,7 @@ internal class AnimenewsnetworkAnimeConverterTest {
 
                 val converter = AnimenewsnetworkAnimeConverter(testAnimenewsnetworkConfig)
 
-                val testFile = loadTestResource<String>("AnimenewsnetworkConverterTest/duration/numeric-with-error.html")
+                val testFile = loadTestResource<String>("AnimenewsnetworkAnimeConverterTest/duration/numeric-with-error.html")
 
                 // when
                 val result = converter.convert(testFile)
@@ -1316,7 +1317,7 @@ internal class AnimenewsnetworkAnimeConverterTest {
 
                 val converter = AnimenewsnetworkAnimeConverter(testAnimenewsnetworkConfig)
 
-                val testFile = loadTestResource<String>("AnimenewsnetworkConverterTest/duration/text-with-error.html")
+                val testFile = loadTestResource<String>("AnimenewsnetworkAnimeConverterTest/duration/text-with-error.html")
 
                 // when
                 val result = converter.convert(testFile)
@@ -1352,7 +1353,7 @@ internal class AnimenewsnetworkAnimeConverterTest {
                     clock = testClock,
                 )
 
-                val testFile = loadTestResource<String>("AnimenewsnetworkConverterTest/status/vintage-year.html")
+                val testFile = loadTestResource<String>("AnimenewsnetworkAnimeConverterTest/status/vintage-year.html")
 
                 // when
                 val result = converter.convert(testFile)
@@ -1379,7 +1380,7 @@ internal class AnimenewsnetworkAnimeConverterTest {
                     clock = testClock,
                 )
 
-                val testFile = loadTestResource<String>("AnimenewsnetworkConverterTest/status/vintage-year.html")
+                val testFile = loadTestResource<String>("AnimenewsnetworkAnimeConverterTest/status/vintage-year.html")
 
                 // when
                 val result = converter.convert(testFile)
@@ -1406,7 +1407,7 @@ internal class AnimenewsnetworkAnimeConverterTest {
                     clock = testClock,
                 )
 
-                val testFile = loadTestResource<String>("AnimenewsnetworkConverterTest/status/vintage-year.html")
+                val testFile = loadTestResource<String>("AnimenewsnetworkAnimeConverterTest/status/vintage-year.html")
 
                 // when
                 val result = converter.convert(testFile)
@@ -1433,7 +1434,7 @@ internal class AnimenewsnetworkAnimeConverterTest {
                     clock = testClock,
                 )
 
-                val testFile = loadTestResource<String>("AnimenewsnetworkConverterTest/status/vintage-year-month.html")
+                val testFile = loadTestResource<String>("AnimenewsnetworkAnimeConverterTest/status/vintage-year-month.html")
 
                 // when
                 val result = converter.convert(testFile)
@@ -1460,7 +1461,7 @@ internal class AnimenewsnetworkAnimeConverterTest {
                     clock = testClock,
                 )
 
-                val testFile = loadTestResource<String>("AnimenewsnetworkConverterTest/status/vintage-year-month.html")
+                val testFile = loadTestResource<String>("AnimenewsnetworkAnimeConverterTest/status/vintage-year-month.html")
 
                 // when
                 val result = converter.convert(testFile)
@@ -1487,7 +1488,7 @@ internal class AnimenewsnetworkAnimeConverterTest {
                     clock = testClock,
                 )
 
-                val testFile = loadTestResource<String>("AnimenewsnetworkConverterTest/status/vintage-year-month.html")
+                val testFile = loadTestResource<String>("AnimenewsnetworkAnimeConverterTest/status/vintage-year-month.html")
 
                 // when
                 val result = converter.convert(testFile)
@@ -1514,7 +1515,7 @@ internal class AnimenewsnetworkAnimeConverterTest {
                     clock = testClock,
                 )
 
-                val testFile = loadTestResource<String>("AnimenewsnetworkConverterTest/status/vintage-year-month-day.html")
+                val testFile = loadTestResource<String>("AnimenewsnetworkAnimeConverterTest/status/vintage-year-month-day.html")
 
                 // when
                 val result = converter.convert(testFile)
@@ -1541,7 +1542,7 @@ internal class AnimenewsnetworkAnimeConverterTest {
                     clock = testClock,
                 )
 
-                val testFile = loadTestResource<String>("AnimenewsnetworkConverterTest/status/vintage-year-month-day.html")
+                val testFile = loadTestResource<String>("AnimenewsnetworkAnimeConverterTest/status/vintage-year-month-day.html")
 
                 // when
                 val result = converter.convert(testFile)
@@ -1568,7 +1569,7 @@ internal class AnimenewsnetworkAnimeConverterTest {
                     clock = testClock,
                 )
 
-                val testFile = loadTestResource<String>("AnimenewsnetworkConverterTest/status/vintage-year-month-day.html")
+                val testFile = loadTestResource<String>("AnimenewsnetworkAnimeConverterTest/status/vintage-year-month-day.html")
 
                 // when
                 val result = converter.convert(testFile)
@@ -1595,7 +1596,7 @@ internal class AnimenewsnetworkAnimeConverterTest {
                     clock = testClock,
                 )
 
-                val testFile = loadTestResource<String>("AnimenewsnetworkConverterTest/status/vintage-year-month-special-case.html")
+                val testFile = loadTestResource<String>("AnimenewsnetworkAnimeConverterTest/status/vintage-year-month-special-case.html")
 
                 // when
                 val result = converter.convert(testFile)
@@ -1622,7 +1623,7 @@ internal class AnimenewsnetworkAnimeConverterTest {
                     clock = testClock,
                 )
 
-                val testFile = loadTestResource<String>("AnimenewsnetworkConverterTest/status/vintage-range.html")
+                val testFile = loadTestResource<String>("AnimenewsnetworkAnimeConverterTest/status/vintage-range.html")
 
                 // when
                 val result = converter.convert(testFile)
@@ -1650,7 +1651,7 @@ internal class AnimenewsnetworkAnimeConverterTest {
                     clock = testClock,
                 )
 
-                val testFile = loadTestResource<String>("AnimenewsnetworkConverterTest/status/vintage-range.html")
+                val testFile = loadTestResource<String>("AnimenewsnetworkAnimeConverterTest/status/vintage-range.html")
 
                 // when
                 val result = converter.convert(testFile)
@@ -1677,7 +1678,7 @@ internal class AnimenewsnetworkAnimeConverterTest {
                     clock = testClock,
                 )
 
-                val testFile = loadTestResource<String>("AnimenewsnetworkConverterTest/status/vintage-range.html")
+                val testFile = loadTestResource<String>("AnimenewsnetworkAnimeConverterTest/status/vintage-range.html")
 
                 // when
                 val result = converter.convert(testFile)
@@ -1704,7 +1705,7 @@ internal class AnimenewsnetworkAnimeConverterTest {
                     clock = testClock,
                 )
 
-                val testFile = loadTestResource<String>("AnimenewsnetworkConverterTest/status/list-range.html")
+                val testFile = loadTestResource<String>("AnimenewsnetworkAnimeConverterTest/status/list-range.html")
 
                 // when
                 val result = converter.convert(testFile)
@@ -1732,7 +1733,7 @@ internal class AnimenewsnetworkAnimeConverterTest {
                     clock = testClock,
                 )
 
-                val testFile = loadTestResource<String>("AnimenewsnetworkConverterTest/status/list-range.html")
+                val testFile = loadTestResource<String>("AnimenewsnetworkAnimeConverterTest/status/list-range.html")
 
                 // when
                 val result = converter.convert(testFile)
@@ -1759,13 +1760,134 @@ internal class AnimenewsnetworkAnimeConverterTest {
                     clock = testClock,
                 )
 
-                val testFile = loadTestResource<String>("AnimenewsnetworkConverterTest/status/list-range.html")
+                val testFile = loadTestResource<String>("AnimenewsnetworkAnimeConverterTest/status/list-range.html")
 
                 // when
                 val result = converter.convert(testFile)
 
                 // then
                 assertThat(result.status).isEqualTo(FINISHED)
+            }
+        }
+    }
+
+    @Nested
+    inner class StudiosTests {
+
+        @Test
+        fun `multiple studios`() {
+            runBlocking {
+                // given
+                val testAnimenewsnetworkConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = AnimenewsnetworkConfig.hostname()
+                    override fun buildAnimeLink(id: AnimeId): URI = AnimenewsnetworkConfig.buildAnimeLink(id)
+                }
+
+                val testFileContent = loadTestResource<String>("AnimenewsnetworkAnimeConverterTest/studios/multiple_studios.html")
+
+                val converter = AnimenewsnetworkAnimeConverter(testAnimenewsnetworkConfig)
+
+                // when
+                val result = converter.convert(testFileContent)
+
+                // then
+                assertThat(result.studios).containsExactlyInAnyOrder(
+                    "satelight",
+                    "hornets",
+                )
+            }
+        }
+
+        @Test
+        fun `no studios`() {
+            runBlocking {
+                // given
+                val testAnimenewsnetworkConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = AnimenewsnetworkConfig.hostname()
+                    override fun buildAnimeLink(id: AnimeId): URI = AnimenewsnetworkConfig.buildAnimeLink(id)
+                }
+
+                val testFileContent = loadTestResource<String>("AnimenewsnetworkAnimeConverterTest/studios/no_studios.html")
+
+                val converter = AnimenewsnetworkAnimeConverter(testAnimenewsnetworkConfig)
+
+                // when
+                val result = converter.convert(testFileContent)
+
+                // then
+                assertThat(result.studios).isEmpty()
+            }
+        }
+    }
+
+    @Nested
+    inner class ProducersTests {
+
+        @Test
+        fun `multiple producers`() {
+            runBlocking {
+                // given
+                val testAnimenewsnetworkConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = AnimenewsnetworkConfig.hostname()
+                    override fun buildAnimeLink(id: AnimeId): URI = AnimenewsnetworkConfig.buildAnimeLink(id)
+                }
+
+                val testFileContent = loadTestResource<String>("AnimenewsnetworkAnimeConverterTest/producers/multiple_producers.html")
+
+                val converter = AnimenewsnetworkAnimeConverter(testAnimenewsnetworkConfig)
+
+                // when
+                val result = converter.convert(testFileContent)
+
+                // then
+                assertThat(result.producers).containsExactlyInAnyOrder(
+                    "ca-cygames anime fund",
+                    "crunchyroll",
+                    "jy animation",
+                    "mixer",
+                    "movic",
+                    "north stars pictures",
+                )
+            }
+        }
+
+        @Test
+        fun `no producers`() {
+            runBlocking {
+                // given
+                val testAnimenewsnetworkConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = AnimenewsnetworkConfig.hostname()
+                    override fun buildAnimeLink(id: AnimeId): URI = AnimenewsnetworkConfig.buildAnimeLink(id)
+                }
+
+                val testFileContent = loadTestResource<String>("AnimenewsnetworkAnimeConverterTest/producers/no_producers.html")
+
+                val converter = AnimenewsnetworkAnimeConverter(testAnimenewsnetworkConfig)
+
+                // when
+                val result = converter.convert(testFileContent)
+
+                // then
+                assertThat(result.producers).isEmpty()
+            }
+        }
+    }
+
+    @Nested
+    inner class CompanionObjectTests {
+
+        @Test
+        fun `instance property always returns same instance`() {
+            tempDirectory {
+                // given
+                val previous = AnimenewsnetworkAnimeConverter.instance
+
+                // when
+                val result = AnimenewsnetworkAnimeConverter.instance
+
+                // then
+                assertThat(result).isExactlyInstanceOf(AnimenewsnetworkAnimeConverter::class.java)
+                assertThat(result===previous).isTrue()
             }
         }
     }
