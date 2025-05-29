@@ -311,19 +311,19 @@ public class SimklAnimeConverter(
     }
 
     private fun extractStudios(data: ExtractionResult): HashSet<Studio> {
-        if (data.notFound("studios")) {
-            return hashSetOf()
+        return if (data.notFound("studios")) {
+            hashSetOf()
+        } else {
+            data.listNotNull<Studio>("studios").toHashSet()
         }
-
-        return data.listNotNull<Studio>("studios").toHashSet()
     }
 
     private fun extractProducers(data: ExtractionResult): HashSet<Producer> {
-        if (data.notFound("producers")) {
-            return hashSetOf()
+        return if (data.notFound("producers")) {
+            hashSetOf()
+        } else {
+            data.listNotNull<Producer>("producers").toHashSet()
         }
-
-        return data.listNotNull<Producer>("producers").toHashSet()
     }
 
     public companion object {
