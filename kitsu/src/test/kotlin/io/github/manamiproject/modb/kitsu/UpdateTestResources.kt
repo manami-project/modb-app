@@ -67,6 +67,12 @@ private val files = mapOf(
 
     "KitsuAnimeConverterTest/tags/multiple_tags.json" to "1",
     "KitsuAnimeConverterTest/tags/no_tags.json" to "43298",
+
+    "KitsuAnimeConverterTest/studios/multiple_studios.json" to "1376",
+    "KitsuAnimeConverterTest/studios/no_studios.json" to "6337",
+
+    "KitsuAnimeConverterTest/producers/multiple_producers.json" to "1376",
+    "KitsuAnimeConverterTest/producers/no_producers.json" to "6337",
 )
 
 internal fun main(): Unit = runCoroutine {
