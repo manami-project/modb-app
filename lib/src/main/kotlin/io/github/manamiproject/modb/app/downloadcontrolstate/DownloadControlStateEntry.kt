@@ -3,11 +3,22 @@ package io.github.manamiproject.modb.app.downloadcontrolstate
 import io.github.manamiproject.modb.core.anime.AnimeMedia.NO_PICTURE
 import io.github.manamiproject.modb.core.anime.AnimeMedia.NO_PICTURE_THUMBNAIL
 import io.github.manamiproject.modb.core.anime.AnimeRaw
+import io.github.manamiproject.modb.core.anime.AnimeSeason
 import io.github.manamiproject.modb.core.anime.AnimeSeason.Season.UNDEFINED
+import io.github.manamiproject.modb.core.anime.AnimeStatus
 import io.github.manamiproject.modb.core.anime.AnimeStatus.*
+import io.github.manamiproject.modb.core.anime.AnimeType
+import io.github.manamiproject.modb.core.anime.Duration
+import io.github.manamiproject.modb.core.anime.Duration.Companion.UNKNOWN
+import io.github.manamiproject.modb.core.anime.Episodes
+import io.github.manamiproject.modb.core.anime.MetaDataProviderScoreValue
+import io.github.manamiproject.modb.core.anime.Tag
+import io.github.manamiproject.modb.core.anime.Title
+import io.github.manamiproject.modb.core.config.Hostname
 import io.github.manamiproject.modb.core.converter.AnimeConverter
 import io.github.manamiproject.modb.core.date.WeekOfYear
 import io.github.manamiproject.modb.core.extensions.pickRandom
+import java.net.URI
 import io.github.manamiproject.modb.core.anime.AnimeStatus.UNKNOWN as UNKNOWN_STATUS
 import io.github.manamiproject.modb.core.anime.AnimeType.UNKNOWN as UNKNOWN_TYPE
 
@@ -140,11 +151,15 @@ data class DownloadControlStateEntry(
             score += 1u
         }
 
-        if (currentAnime.relatedAnime.size == 0 && anime.relatedAnime.size > 0) {
+        if (currentAnime.relatedAnime.isEmpty() && anime.relatedAnime.isNotEmpty()) {
             score += 1u
         }
 
         if (currentAnime.tags.size < anime.tags.size) {
+            score += 1u
+        }
+
+        if (currentAnime.scores.size < anime.scores.size) {
             score += 1u
         }
 

@@ -985,5 +985,34 @@ internal class DownloadControlStateEntryTest {
             // then
             assertThat(result).isEqualTo(0u)
         }
+
+        @Test
+        fun `decreasing number of scores increases score`() {
+            // given
+            val downloadControlStateEntry = DownloadControlStateEntry(
+                _weeksWihoutChange = 2,
+                _lastDownloaded = WeekOfYear.currentWeek().minusWeeks(1),
+                _nextDownload = WeekOfYear.currentWeek(),
+                _anime = AnimeRaw(
+                    _title = "Test",
+                ).addScores(
+                    MetaDataProviderScoreValue(
+                        hostname = "example.org",
+                        value = 75.0,
+                        range = 1.0..100.0,
+                    ),
+                ),
+            )
+
+            val anime = AnimeRaw(
+                _title = "Test",
+            )
+
+            // when
+            val result = downloadControlStateEntry.calculateQualityScore(anime)
+
+            // then
+            assertThat(result).isEqualTo(1u)
+        }
     }
 }
