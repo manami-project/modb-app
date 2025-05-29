@@ -106,9 +106,9 @@ class DefaultDownloadControlStateUpdater(
         }
 
         check(faulty.isEmpty()) {
-            val msg = StringBuilder("Possibly found a problem in the extraction of data:")
-            faulty.forEach { msg.append("\n  * $it") }
-            msg.toString()
+            val message = StringBuilder("Possibly found a problem in the extraction of data:")
+            faulty.forEach { message.append("\n  * $it") }
+            message.toString()
         }
     }
 

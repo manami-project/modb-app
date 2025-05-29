@@ -1014,5 +1014,65 @@ internal class DownloadControlStateEntryTest {
             // then
             assertThat(result).isEqualTo(1u)
         }
+
+        @Test
+        fun `decreasing number of studios increases score`() {
+            // given
+            val downloadControlStateEntry = DownloadControlStateEntry(
+                _weeksWihoutChange = 2,
+                _lastDownloaded = WeekOfYear.currentWeek().minusWeeks(1),
+                _nextDownload = WeekOfYear.currentWeek(),
+                _anime = AnimeRaw(
+                    _title = "Test",
+                    _studios = hashSetOf(
+                        "abcd",
+                        "efgh",
+                    ),
+                ),
+            )
+
+            val anime = AnimeRaw(
+                _title = "Test",
+                _studios = hashSetOf(
+                    "efgh",
+                ),
+            )
+
+            // when
+            val result = downloadControlStateEntry.calculateQualityScore(anime)
+
+            // then
+            assertThat(result).isEqualTo(1u)
+        }
+
+        @Test
+        fun `decreasing number of producers increases score`() {
+            // given
+            val downloadControlStateEntry = DownloadControlStateEntry(
+                _weeksWihoutChange = 2,
+                _lastDownloaded = WeekOfYear.currentWeek().minusWeeks(1),
+                _nextDownload = WeekOfYear.currentWeek(),
+                _anime = AnimeRaw(
+                    _title = "Test",
+                    _producers = hashSetOf(
+                        "abcd",
+                        "efgh",
+                    ),
+                ),
+            )
+
+            val anime = AnimeRaw(
+                _title = "Test",
+                _producers = hashSetOf(
+                    "efgh",
+                ),
+            )
+
+            // when
+            val result = downloadControlStateEntry.calculateQualityScore(anime)
+
+            // then
+            assertThat(result).isEqualTo(1u)
+        }
     }
 }
