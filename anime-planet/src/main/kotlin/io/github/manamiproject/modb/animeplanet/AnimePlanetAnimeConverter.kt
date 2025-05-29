@@ -294,11 +294,11 @@ public class AnimePlanetAnimeConverter(
     }
 
     private fun extractStudios(data: ExtractionResult): HashSet<Studio> {
-        if (!data.notFound("studios")) {
-            return data.listNotNull<Studio>("studios").toHashSet()
+        return if (data.notFound("studios")) {
+            hashSetOf()
+        } else {
+            data.listNotNull<Studio>("studios").toHashSet()
         }
-
-        return hashSetOf()
     }
 
     public companion object {
