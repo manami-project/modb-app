@@ -1,1 +1,426 @@
-{"data":{"id":"11260","type":"anime","links":{"self":"https://kitsu.app/api/edge/anime/11260"},"attributes":{"createdAt":"2015-07-25T04:07:00.791Z","updatedAt":"2023-04-28T12:00:04.037Z","slug":"tobidasu-pripara-mi-nna-de-mezase-idol-grand-prix","synopsis":"","description":"","coverImageTopOffset":0,"titles":{"en":"","en_jp":"Tobidasu PriPara: Mi~nna de Mezase! Idol☆Grand Prix","ja_jp":"とびだすプリパラ　み～んなでめざせ！アイドル☆グランプリ"},"canonicalTitle":"Tobidasu PriPara: Mi~nna de Mezase! Idol☆Grand Prix","abbreviatedTitles":["Tobidasu PriPara: Minna de Mezase! Idol☆Grand Prix","Puri Para","Pri Para","PuriPara","Prism Paradise"],"averageRating":"73.3","ratingFrequencies":{"2":"1","3":"0","4":"0","5":"0","6":"3","7":"0","8":"8","9":"0","10":"1","11":"1","12":"10","13":"2","14":"9","15":"0","16":"3","17":"0","18":"2","19":"0","20":"16"},"userCount":160,"favoritesCount":0,"startDate":"2015-10-24","endDate":"2015-10-24","nextRelease":null,"popularityRank":9578,"ratingRank":2755,"ageRating":"PG","ageRatingGuide":"","subtype":"movie","status":"finished","tba":null,"posterImage":{"tiny":"https://media.kitsu.app/anime/poster_images/11260/tiny.jpg","large":"https://media.kitsu.app/anime/poster_images/11260/large.jpg","small":"https://media.kitsu.app/anime/poster_images/11260/small.jpg","medium":"https://media.kitsu.app/anime/poster_images/11260/medium.jpg","original":"https://media.kitsu.app/anime/poster_images/11260/original.jpg","meta":{"dimensions":{"tiny":{"width":null,"height":null},"large":{"width":null,"height":null},"small":{"width":null,"height":null},"medium":{"width":null,"height":null}}}},"coverImage":null,"episodeCount":1,"episodeLength":1,"totalLength":1,"youtubeVideoId":"","showType":"movie","nsfw":false},"relationships":{"genres":{"links":{"self":"https://kitsu.app/api/edge/anime/11260/relationships/genres","related":"https://kitsu.app/api/edge/anime/11260/genres"}},"categories":{"links":{"self":"https://kitsu.app/api/edge/anime/11260/relationships/categories","related":"https://kitsu.app/api/edge/anime/11260/categories"}},"castings":{"links":{"self":"https://kitsu.app/api/edge/anime/11260/relationships/castings","related":"https://kitsu.app/api/edge/anime/11260/castings"}},"installments":{"links":{"self":"https://kitsu.app/api/edge/anime/11260/relationships/installments","related":"https://kitsu.app/api/edge/anime/11260/installments"}},"mappings":{"links":{"self":"https://kitsu.app/api/edge/anime/11260/relationships/mappings","related":"https://kitsu.app/api/edge/anime/11260/mappings"}},"reviews":{"links":{"self":"https://kitsu.app/api/edge/anime/11260/relationships/reviews","related":"https://kitsu.app/api/edge/anime/11260/reviews"}},"mediaRelationships":{"links":{"self":"https://kitsu.app/api/edge/anime/11260/relationships/media-relationships","related":"https://kitsu.app/api/edge/anime/11260/media-relationships"}},"characters":{"links":{"self":"https://kitsu.app/api/edge/anime/11260/relationships/characters","related":"https://kitsu.app/api/edge/anime/11260/characters"}},"staff":{"links":{"self":"https://kitsu.app/api/edge/anime/11260/relationships/staff","related":"https://kitsu.app/api/edge/anime/11260/staff"}},"productions":{"links":{"self":"https://kitsu.app/api/edge/anime/11260/relationships/productions","related":"https://kitsu.app/api/edge/anime/11260/productions"}},"quotes":{"links":{"self":"https://kitsu.app/api/edge/anime/11260/relationships/quotes","related":"https://kitsu.app/api/edge/anime/11260/quotes"}},"episodes":{"links":{"self":"https://kitsu.app/api/edge/anime/11260/relationships/episodes","related":"https://kitsu.app/api/edge/anime/11260/episodes"}},"streamingLinks":{"links":{"self":"https://kitsu.app/api/edge/anime/11260/relationships/streaming-links","related":"https://kitsu.app/api/edge/anime/11260/streaming-links"}},"animeProductions":{"links":{"self":"https://kitsu.app/api/edge/anime/11260/relationships/anime-productions","related":"https://kitsu.app/api/edge/anime/11260/anime-productions"}},"animeCharacters":{"links":{"self":"https://kitsu.app/api/edge/anime/11260/relationships/anime-characters","related":"https://kitsu.app/api/edge/anime/11260/anime-characters"}},"animeStaff":{"links":{"self":"https://kitsu.app/api/edge/anime/11260/relationships/anime-staff","related":"https://kitsu.app/api/edge/anime/11260/anime-staff"}}}}}
+{
+  "data": [
+    {
+      "id": "11260",
+      "type": "anime",
+      "links": {
+        "self": "https://kitsu.app/api/edge/anime/11260"
+      },
+      "attributes": {
+        "createdAt": "2015-07-25T04:07:00.791Z",
+        "updatedAt": "2025-05-29T12:00:07.837Z",
+        "slug": "tobidasu-pripara-mi-nna-de-mezase-idol-grand-prix",
+        "synopsis": "",
+        "description": "",
+        "coverImageTopOffset": 0,
+        "titles": {
+          "en": "",
+          "en_jp": "Tobidasu PriPara: Mi~nna de Mezase! Idol☆Grand Prix",
+          "ja_jp": "とびだすプリパラ　み～んなでめざせ！アイドル☆グランプリ"
+        },
+        "canonicalTitle": "Tobidasu PriPara: Mi~nna de Mezase! Idol☆Grand Prix",
+        "abbreviatedTitles": [
+          "Tobidasu PriPara: Minna de Mezase! Idol☆Grand Prix",
+          "Puri Para",
+          "Pri Para",
+          "PuriPara",
+          "Prism Paradise"
+        ],
+        "averageRating": "73.33",
+        "ratingFrequencies": {
+          "2": "1",
+          "3": "0",
+          "4": "0",
+          "5": "0",
+          "6": "2",
+          "7": "0",
+          "8": "7",
+          "9": "0",
+          "10": "2",
+          "11": "1",
+          "12": "8",
+          "13": "2",
+          "14": "11",
+          "15": "0",
+          "16": "3",
+          "17": "0",
+          "18": "2",
+          "19": "0",
+          "20": "13"
+        },
+        "userCount": 234,
+        "favoritesCount": 0,
+        "startDate": "2015-10-24",
+        "endDate": "2015-10-24",
+        "nextRelease": null,
+        "popularityRank": 11126,
+        "ratingRank": 3161,
+        "ageRating": "PG",
+        "ageRatingGuide": "",
+        "subtype": "movie",
+        "status": "finished",
+        "tba": null,
+        "posterImage": {
+          "tiny": "https://media.kitsu.app/anime/poster_images/11260/tiny.jpg",
+          "large": "https://media.kitsu.app/anime/poster_images/11260/large.jpg",
+          "small": "https://media.kitsu.app/anime/poster_images/11260/small.jpg",
+          "medium": "https://media.kitsu.app/anime/poster_images/11260/medium.jpg",
+          "original": "https://media.kitsu.app/anime/poster_images/11260/original.jpg",
+          "meta": {
+            "dimensions": {
+              "tiny": {
+                "width": null,
+                "height": null
+              },
+              "large": {
+                "width": null,
+                "height": null
+              },
+              "small": {
+                "width": null,
+                "height": null
+              },
+              "medium": {
+                "width": null,
+                "height": null
+              }
+            }
+          }
+        },
+        "coverImage": null,
+        "episodeCount": 1,
+        "episodeLength": 1,
+        "totalLength": 1,
+        "youtubeVideoId": "",
+        "showType": "movie",
+        "nsfw": false
+      },
+      "relationships": {
+        "genres": {
+          "links": {
+            "self": "https://kitsu.app/api/edge/anime/11260/relationships/genres",
+            "related": "https://kitsu.app/api/edge/anime/11260/genres"
+          },
+          "data": [
+            {
+              "type": "genres",
+              "id": "24"
+            },
+            {
+              "type": "genres",
+              "id": "35"
+            },
+            {
+              "type": "genres",
+              "id": "16"
+            }
+          ]
+        },
+        "categories": {
+          "links": {
+            "self": "https://kitsu.app/api/edge/anime/11260/relationships/categories",
+            "related": "https://kitsu.app/api/edge/anime/11260/categories"
+          },
+          "data": [
+            {
+              "type": "categories",
+              "id": "172"
+            },
+            {
+              "type": "categories",
+              "id": "132"
+            },
+            {
+              "type": "categories",
+              "id": "169"
+            },
+            {
+              "type": "categories",
+              "id": "242"
+            }
+          ]
+        },
+        "castings": {
+          "links": {
+            "self": "https://kitsu.app/api/edge/anime/11260/relationships/castings",
+            "related": "https://kitsu.app/api/edge/anime/11260/castings"
+          }
+        },
+        "installments": {
+          "links": {
+            "self": "https://kitsu.app/api/edge/anime/11260/relationships/installments",
+            "related": "https://kitsu.app/api/edge/anime/11260/installments"
+          }
+        },
+        "mappings": {
+          "links": {
+            "self": "https://kitsu.app/api/edge/anime/11260/relationships/mappings",
+            "related": "https://kitsu.app/api/edge/anime/11260/mappings"
+          }
+        },
+        "reviews": {
+          "links": {
+            "self": "https://kitsu.app/api/edge/anime/11260/relationships/reviews",
+            "related": "https://kitsu.app/api/edge/anime/11260/reviews"
+          }
+        },
+        "mediaRelationships": {
+          "links": {
+            "self": "https://kitsu.app/api/edge/anime/11260/relationships/media-relationships",
+            "related": "https://kitsu.app/api/edge/anime/11260/media-relationships"
+          },
+          "data": []
+        },
+        "characters": {
+          "links": {
+            "self": "https://kitsu.app/api/edge/anime/11260/relationships/characters",
+            "related": "https://kitsu.app/api/edge/anime/11260/characters"
+          }
+        },
+        "staff": {
+          "links": {
+            "self": "https://kitsu.app/api/edge/anime/11260/relationships/staff",
+            "related": "https://kitsu.app/api/edge/anime/11260/staff"
+          }
+        },
+        "productions": {
+          "links": {
+            "self": "https://kitsu.app/api/edge/anime/11260/relationships/productions",
+            "related": "https://kitsu.app/api/edge/anime/11260/productions"
+          }
+        },
+        "quotes": {
+          "links": {
+            "self": "https://kitsu.app/api/edge/anime/11260/relationships/quotes",
+            "related": "https://kitsu.app/api/edge/anime/11260/quotes"
+          }
+        },
+        "episodes": {
+          "links": {
+            "self": "https://kitsu.app/api/edge/anime/11260/relationships/episodes",
+            "related": "https://kitsu.app/api/edge/anime/11260/episodes"
+          }
+        },
+        "streamingLinks": {
+          "links": {
+            "self": "https://kitsu.app/api/edge/anime/11260/relationships/streaming-links",
+            "related": "https://kitsu.app/api/edge/anime/11260/streaming-links"
+          }
+        },
+        "animeProductions": {
+          "links": {
+            "self": "https://kitsu.app/api/edge/anime/11260/relationships/anime-productions",
+            "related": "https://kitsu.app/api/edge/anime/11260/anime-productions"
+          },
+          "data": [
+            {
+              "type": "animeProductions",
+              "id": "16470"
+            },
+            {
+              "type": "animeProductions",
+              "id": "16471"
+            },
+            {
+              "type": "animeProductions",
+              "id": "16472"
+            },
+            {
+              "type": "animeProductions",
+              "id": "50486"
+            },
+            {
+              "type": "animeProductions",
+              "id": "50487"
+            },
+            {
+              "type": "animeProductions",
+              "id": "50488"
+            }
+          ]
+        },
+        "animeCharacters": {
+          "links": {
+            "self": "https://kitsu.app/api/edge/anime/11260/relationships/anime-characters",
+            "related": "https://kitsu.app/api/edge/anime/11260/anime-characters"
+          }
+        },
+        "animeStaff": {
+          "links": {
+            "self": "https://kitsu.app/api/edge/anime/11260/relationships/anime-staff",
+            "related": "https://kitsu.app/api/edge/anime/11260/anime-staff"
+          }
+        }
+      }
+    }
+  ],
+  "included": [
+    {
+      "id": "24",
+      "type": "genres",
+      "links": {
+        "self": "https://kitsu.app/api/edge/genres/24"
+      },
+      "attributes": {
+        "name": "School"
+      }
+    },
+    {
+      "id": "35",
+      "type": "genres",
+      "links": {
+        "self": "https://kitsu.app/api/edge/genres/35"
+      },
+      "attributes": {
+        "name": "Music"
+      }
+    },
+    {
+      "id": "16",
+      "type": "genres",
+      "links": {
+        "self": "https://kitsu.app/api/edge/genres/16"
+      },
+      "attributes": {
+        "name": "Slice of Life"
+      }
+    },
+    {
+      "id": "172",
+      "type": "categories",
+      "links": {
+        "self": "https://kitsu.app/api/edge/categories/172"
+      },
+      "attributes": {
+        "title": "School Life"
+      }
+    },
+    {
+      "id": "132",
+      "type": "categories",
+      "links": {
+        "self": "https://kitsu.app/api/edge/categories/132"
+      },
+      "attributes": {
+        "title": "Music"
+      }
+    },
+    {
+      "id": "169",
+      "type": "categories",
+      "links": {
+        "self": "https://kitsu.app/api/edge/categories/169"
+      },
+      "attributes": {
+        "title": "Slice of Life"
+      }
+    },
+    {
+      "id": "242",
+      "type": "categories",
+      "links": {
+        "self": "https://kitsu.app/api/edge/categories/242"
+      },
+      "attributes": {
+        "title": "Shoujo"
+      }
+    },
+    {
+      "id": "16470",
+      "type": "animeProductions",
+      "links": {
+        "self": "https://kitsu.app/api/edge/anime-productions/16470"
+      },
+      "attributes": {
+        "role": "producer"
+      }
+    },
+    {
+      "id": "16471",
+      "type": "animeProductions",
+      "links": {
+        "self": "https://kitsu.app/api/edge/anime-productions/16471"
+      },
+      "attributes": {
+        "role": "producer"
+      }
+    },
+    {
+      "id": "16472",
+      "type": "animeProductions",
+      "links": {
+        "self": "https://kitsu.app/api/edge/anime-productions/16472"
+      },
+      "attributes": {
+        "role": "producer"
+      }
+    },
+    {
+      "id": "50486",
+      "type": "animeProductions",
+      "links": {
+        "self": "https://kitsu.app/api/edge/anime-productions/50486"
+      },
+      "attributes": {
+        "role": "producer"
+      }
+    },
+    {
+      "id": "50487",
+      "type": "animeProductions",
+      "links": {
+        "self": "https://kitsu.app/api/edge/anime-productions/50487"
+      },
+      "attributes": {
+        "role": "producer"
+      }
+    },
+    {
+      "id": "50488",
+      "type": "animeProductions",
+      "links": {
+        "self": "https://kitsu.app/api/edge/anime-productions/50488"
+      },
+      "attributes": {
+        "role": "studio"
+      }
+    },
+    {
+      "id": "136",
+      "type": "producers",
+      "links": {
+        "self": "https://kitsu.app/api/edge/producers/136"
+      },
+      "attributes": {
+        "name": "Avex Pictures"
+      }
+    },
+    {
+      "id": "754",
+      "type": "producers",
+      "links": {
+        "self": "https://kitsu.app/api/edge/producers/754"
+      },
+      "attributes": {
+        "name": "Q-Tec"
+      }
+    },
+    {
+      "id": "753",
+      "type": "producers",
+      "links": {
+        "self": "https://kitsu.app/api/edge/producers/753"
+      },
+      "attributes": {
+        "name": "10Gauge"
+      }
+    }
+  ],
+  "meta": {
+    "count": 1
+  },
+  "links": {
+    "first": "https://kitsu.app/api/edge/anime?fields%5BanimeProductions%5D=role&fields%5Bcategories%5D=title&fields%5Bgenres%5D=name&fields%5Bproducers%5D=name&filter%5Bid%5D=11260&include=categories%2Cgenres%2CanimeProductions.producer%2CmediaRelationships.destination&page%5Bnumber%5D=1&page%5Bsize%5D=10",
+    "last": "https://kitsu.app/api/edge/anime?fields%5BanimeProductions%5D=role&fields%5Bcategories%5D=title&fields%5Bgenres%5D=name&fields%5Bproducers%5D=name&filter%5Bid%5D=11260&include=categories%2Cgenres%2CanimeProductions.producer%2CmediaRelationships.destination&page%5Bnumber%5D=1&page%5Bsize%5D=10"
+  }
+}

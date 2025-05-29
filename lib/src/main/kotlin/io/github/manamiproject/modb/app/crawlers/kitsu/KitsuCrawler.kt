@@ -35,7 +35,7 @@ import kotlin.time.toDuration
  */
 class KitsuCrawler @KoverIgnore constructor(
     private val appConfig: Config = AppConfig.instance,
-    private val metaDataProviderConfig: MetaDataProviderConfig,
+    private val metaDataProviderConfig: MetaDataProviderConfig = KitsuConfig,
     private val deadEntriesAccess: DeadEntriesAccessor = DefaultDeadEntriesAccessor.instance,
     private val idRangeSelector: IdRangeSelector<Int> = IntegerBasedIdRangeSelector(
         metaDataProviderConfig = metaDataProviderConfig,
@@ -69,9 +69,7 @@ class KitsuCrawler @KoverIgnore constructor(
         log.debug { "Downloading ${index+1}/${idDownloadList.size}: [kitsutId=$animeId]" }
 
         val response = downloader.download(animeId.toString()) {
-            if (metaDataProviderConfig is KitsuConfig) {
-                deadEntriesAccess.addDeadEntry(animeId.toString(), metaDataProviderConfig)
-            }
+            deadEntriesAccess.addDeadEntry(animeId.toString(), metaDataProviderConfig)
         }
 
         if (response.neitherNullNorBlank()) {
@@ -86,7 +84,13 @@ class KitsuCrawler @KoverIgnore constructor(
         }
     }
 
-    private companion object {
+    companion object {
         private val log by LoggerDelegate()
+
+        /**
+         * Singleton of [KitsuCrawler]
+         * @since 1.0.0
+         */
+        val instance: KitsuCrawler by lazy { KitsuCrawler() }
     }
 }

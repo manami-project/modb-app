@@ -13,7 +13,7 @@ public object KitsuConfig : MetaDataProviderConfig {
 
     override fun hostname(): Hostname = "kitsu.app"
 
-    override fun buildDataDownloadLink(id: String): URI = URI("https://${hostname()}/api/edge/anime/$id")
+    override fun buildDataDownloadLink(id: String): URI = URI("https://${hostname()}/api/edge/anime?fields[categories]=title&fields[genres]=name&fields[producers]=name&fields[animeProductions]=role&filter[id]=${id}&include=categories,genres,animeProductions.producer,mediaRelationships.destination")
 
     override fun fileSuffix(): FileSuffix = "json"
 }

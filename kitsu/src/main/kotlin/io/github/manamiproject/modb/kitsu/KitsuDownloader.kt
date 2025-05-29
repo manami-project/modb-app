@@ -19,7 +19,7 @@ import kotlinx.coroutines.withContext
  * @property httpClient To actually download the anime data.
  */
 public class KitsuDownloader(
-    private val metaDataProviderConfig: MetaDataProviderConfig,
+    private val metaDataProviderConfig: MetaDataProviderConfig = KitsuConfig,
     private val httpClient: HttpClient = DefaultHttpClient(isTestContext = metaDataProviderConfig.isTestContext()).apply {
         retryBehavior.addCases(HttpResponseRetryCase { it.code == 400 })
     },
@@ -44,7 +44,13 @@ public class KitsuDownloader(
         }
     }
 
-    private companion object {
+    public companion object {
         private val log by LoggerDelegate()
+
+        /**
+         * Singleton of [KitsuDownloader]
+         * @since 7.0.0
+         */
+        public val instance: KitsuDownloader by lazy { KitsuDownloader() }
     }
 }

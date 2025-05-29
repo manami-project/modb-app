@@ -1,5 +1,6 @@
 package io.github.manamiproject.modb.kitsu
 
+import io.github.manamiproject.modb.kitsu.KitsuConfig.hostname
 import org.assertj.core.api.Assertions.assertThat
 import kotlin.test.Test
 import java.net.URI
@@ -45,7 +46,7 @@ internal class KitsuConfigTest {
         val result = KitsuConfig.buildDataDownloadLink(id)
 
         // then
-        assertThat(result).isEqualTo(URI("https://kitsu.app/api/edge/anime/$id"))
+        assertThat(result).isEqualTo(URI("https://kitsu.app/api/edge/anime?fields[categories]=title&fields[genres]=name&fields[producers]=name&fields[animeProductions]=role&filter[id]=${id}&include=categories,genres,animeProductions.producer,mediaRelationships.destination"))
     }
 
     @Test

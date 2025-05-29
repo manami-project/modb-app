@@ -18,8 +18,6 @@ import io.github.manamiproject.modb.core.config.ConfigRegistry
 import io.github.manamiproject.modb.core.config.Hostname
 import io.github.manamiproject.modb.core.config.MetaDataProviderConfig
 import io.github.manamiproject.modb.kitsu.KitsuConfig
-import io.github.manamiproject.modb.kitsu.KitsuRelationsConfig
-import io.github.manamiproject.modb.kitsu.KitsuTagsConfig
 import io.github.manamiproject.modb.livechart.LivechartConfig
 import io.github.manamiproject.modb.myanimelist.MyanimelistConfig
 import io.github.manamiproject.modb.notify.NotifyConfig
@@ -377,48 +375,6 @@ internal class AppConfigTest {
                 // then
                 assertThat(result).exists()
                 assertThat(result.fileName.toString()).isEqualTo("kitsu.app")
-            }
-        }
-
-        @Test
-        fun `check that name of working directory for KitsuRelationsConfig is correct`() {
-            tempDirectory {
-                // given
-                val testConfigRegistry = object: ConfigRegistry by TestConfigRegistry {
-                    override fun string(key: String): String = tempDir.toAbsolutePath().toString()
-                }
-
-                val appConfig = AppConfig(
-                    configRegistry = testConfigRegistry,
-                )
-
-                // when
-                val result = appConfig.workingDir(KitsuRelationsConfig)
-
-                // then
-                assertThat(result).exists()
-                assertThat(result.fileName.toString()).isEqualTo("kitsu.app-relations")
-            }
-        }
-
-        @Test
-        fun `check that name of working directory for KitsuTagsConfig is correct`() {
-            tempDirectory {
-                // given
-                val testConfigRegistry = object: ConfigRegistry by TestConfigRegistry {
-                    override fun string(key: String): String = tempDir.toAbsolutePath().toString()
-                }
-
-                val appConfig = AppConfig(
-                    configRegistry = testConfigRegistry,
-                )
-
-                // when
-                val result = appConfig.workingDir(KitsuTagsConfig)
-
-                // then
-                assertThat(result).exists()
-                assertThat(result.fileName.toString()).isEqualTo("kitsu.app-tags")
             }
         }
 

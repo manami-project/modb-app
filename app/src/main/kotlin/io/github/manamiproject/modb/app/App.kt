@@ -24,8 +24,6 @@ import io.github.manamiproject.modb.core.coroutines.ModbDispatchers.LIMITED_NETW
 import io.github.manamiproject.modb.core.coverage.KoverIgnore
 import io.github.manamiproject.modb.core.extensions.EMPTY
 import io.github.manamiproject.modb.kitsu.KitsuConfig
-import io.github.manamiproject.modb.kitsu.KitsuRelationsConfig
-import io.github.manamiproject.modb.kitsu.KitsuTagsConfig
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import javax.swing.JOptionPane.*
@@ -47,9 +45,7 @@ fun main() = runCoroutine {
         launch { AnimenewsnetworkCrawler.instance.start() }
         launch { AnisearchCrawler(metaDataProviderConfig = AnisearchConfig).start() }
         launch { AnisearchCrawler(metaDataProviderConfig = AnisearchRelationsConfig).start() }
-        launch { KitsuCrawler(metaDataProviderConfig = KitsuConfig).start() }
-        launch { KitsuCrawler(metaDataProviderConfig = KitsuRelationsConfig).start() }
-        launch { KitsuCrawler(metaDataProviderConfig = KitsuTagsConfig).start() }
+        launch { KitsuCrawler.instance.start() }
         launch { LivechartCrawler.instance.start() }
         launch { MyanimelistCrawler.instance.start() }
         launch { NotifyDatasetDownloadCrawler.instance.start() }

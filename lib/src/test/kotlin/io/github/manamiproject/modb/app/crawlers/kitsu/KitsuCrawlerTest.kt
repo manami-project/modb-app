@@ -13,7 +13,6 @@ import io.github.manamiproject.modb.core.extensions.Directory
 import io.github.manamiproject.modb.core.extensions.EMPTY
 import io.github.manamiproject.modb.core.extensions.readFile
 import io.github.manamiproject.modb.kitsu.KitsuConfig
-import io.github.manamiproject.modb.kitsu.KitsuRelationsConfig
 import io.github.manamiproject.modb.notify.NotifyConfig
 import io.github.manamiproject.modb.test.tempDirectory
 import kotlinx.coroutines.runBlocking
@@ -44,7 +43,7 @@ internal class KitsuCrawlerTest {
                 metaDataProviderConfig = testMetaDataProviderConfig,
                 downloader = TestDownloader,
                 deadEntriesAccess = TestDeadEntriesAccessor,
-                idRangeSelector = testIdRangeSelector
+                idRangeSelector = testIdRangeSelector,
             )
 
             // when
@@ -81,7 +80,7 @@ internal class KitsuCrawlerTest {
                     metaDataProviderConfig = testMetaDataProviderConfig,
                     downloader = testAnimeDownloader,
                     deadEntriesAccess = TestDeadEntriesAccessor,
-                    idRangeSelector = testIdRangeSelector
+                    idRangeSelector = testIdRangeSelector,
                 )
 
                 // when
@@ -126,7 +125,7 @@ internal class KitsuCrawlerTest {
                     metaDataProviderConfig = KitsuConfig,
                     downloader = testAnimeDownloader,
                     deadEntriesAccess = testDeadEntriesAccessor,
-                    idRangeSelector = testIdRangeSelector
+                    idRangeSelector = testIdRangeSelector,
                 )
 
                 // when
@@ -139,44 +138,22 @@ internal class KitsuCrawlerTest {
                 )
             }
         }
+    }
+
+    @Nested
+    inner class CompanionObjectTests {
 
         @Test
-        fun `doesn't do anything if dead entry is triggered and metaDataProviderConfig is not KitsuConfig`() {
-            tempDirectory {
-                // given
-                val testMetaDataProviderConfig = object: MetaDataProviderConfig by KitsuRelationsConfig {
-                    override fun isTestContext(): Boolean = true
-                }
+        fun `instance property always returns same instance`() {
+            // given
+            val previous = KitsuCrawler.instance
 
-                val testAppConfig = object : Config by TestAppConfig {
-                    override fun workingDir(metaDataProviderConfig: MetaDataProviderConfig): Directory = tempDir
-                }
+            // when
+            val result = KitsuCrawler.instance
 
-                val testIdRangeSelector = object: IdRangeSelector<Int> {
-                    override suspend fun idDownloadList(): List<Int> = listOf(1000)
-                }
-
-                val testAnimeDownloader = object: Downloader by TestDownloader {
-                    override suspend fun download(id: AnimeId, onDeadEntry: suspend (AnimeId) -> Unit): String {
-                        onDeadEntry.invoke(id)
-                        return EMPTY
-                    }
-                }
-
-                val crawler = KitsuCrawler(
-                    appConfig = testAppConfig,
-                    metaDataProviderConfig = testMetaDataProviderConfig,
-                    downloader = testAnimeDownloader,
-                    deadEntriesAccess = TestDeadEntriesAccessor,
-                    idRangeSelector = testIdRangeSelector
-                )
-
-                // when
-                crawler.start()
-
-                // then
-                assertThat(tempDir.listDirectoryEntries()).isEmpty()
-            }
+            // then
+            assertThat(result).isExactlyInstanceOf(KitsuCrawler::class.java)
+            assertThat(result===previous).isTrue()
         }
     }
 }

@@ -65,16 +65,9 @@ internal object AnimeLoader {
                 AnisearchAnimeConverter(relationsDir = relationsWorkingDir).convert(raw)
             }
             KitsuConfig.hostname() -> {
-                val relationsWorkingDir = AppConfig.instance.workingDir(KitsuRelationsConfig)
-                KitsuDownloader(metaDataProviderConfig = KitsuRelationsConfig).download(animeId).writeToFile(relationsWorkingDir.resolve("$animeId.${KitsuRelationsConfig.fileSuffix()}"))
-                val tagsWorkingDir = AppConfig.instance.workingDir(KitsuTagsConfig)
-                KitsuDownloader(metaDataProviderConfig = KitsuTagsConfig).download(animeId).writeToFile(tagsWorkingDir.resolve("$animeId.${KitsuTagsConfig.fileSuffix()}"))
-                val raw = KitsuDownloader(metaDataProviderConfig = KitsuConfig).download(animeId)
-                raw.writeToFile(AppConfig.instance.workingDir(config).resolve("$animeId.${config.fileSuffix()}"))
-                KitsuAnimeConverter(
-                    relationsDir = relationsWorkingDir,
-                    tagsDir = tagsWorkingDir,
-                ).convert(raw)
+                val content = KitsuDownloader.instance.download(animeId)
+                content.writeToFile(AppConfig.instance.workingDir(config).resolve("$animeId.${config.fileSuffix()}"))
+                KitsuAnimeConverter.instance.convert(content)
             }
             LivechartConfig.hostname() -> {
                 val content = LivechartDownloader.instance.download(animeId)
