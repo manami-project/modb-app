@@ -23,7 +23,7 @@ import java.net.URI
  * @property metaDataProviderConfig Configuration for converting data.
  * @property extractor Extractor which retrieves the data from raw data.
  */
-    public class AnilistAnimeConverter(
+public class AnilistAnimeConverter(
     private val metaDataProviderConfig: MetaDataProviderConfig = AnilistConfig,
     private val extractor: DataExtractor = JsonDataExtractor,
 ) : AnimeConverter {
