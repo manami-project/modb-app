@@ -56,8 +56,8 @@ public class AnisearchAnimeConverter(
             "synonymsDivNoSpan" to "//div[@class='synonyms']",
             "synonymsDivSpan" to "//div[@class='synonyms']//span[@id='text-synonyms']",
             "synonymsItalic" to "//div[@class='synonyms']//i/text()",
-            "score" to "//td[contains(text(), 'Calculated Value')]/text()",
-            "studios" to "//div[@class='company']/span[contains(text(), 'Studio')]/following-sibling::*/text()",
+            "score" to "//td[text()='Calculated Value']/text()",
+            "studios" to "//div[@class='company']/span[text()='Studio:']/following-sibling::*/text()",
         ))
         
         val jsonld = data.listNotNull<String>("jsonld").first()

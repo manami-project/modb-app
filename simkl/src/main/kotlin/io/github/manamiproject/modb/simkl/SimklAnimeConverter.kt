@@ -49,10 +49,10 @@ public class SimklAnimeConverter(
                 "episodesFallback" to "//td[@class='SimklTVAboutYearCountry']/text()",
                 "startDate" to "//span[@itemprop='startDate']/text()",
                 "source" to "//meta[@property='og:url']/@content",
-                "airDate" to "//strong[contains(text(), 'Date:')]/../following-sibling::td/text()",
+                "airDate" to "//strong[contains(text(),'Air')][contains(text(),'Date')]/../following-sibling::td/text()",
                 "genres" to "//span[@class='TagGenre']/text()",
                 "subgenres" to "//span[@class='adGenres']/a/text()",
-                "type" to "//strong[contains(text(), 'Type:')]/..//following-sibling::*/text()",
+                "type" to "//strong[text()='Type:']/..//following-sibling::*/text()",
                 "duration" to "//meta[@property='og:duration']/@content",
                 "picture" to "//meta[@property='og:image']/@content",
                 "relatedAnime" to "//detail-related-item[@id='tvdetailrelations']//div[@class='tvdetailrelationsitems']//a/@href",
@@ -60,8 +60,8 @@ public class SimklAnimeConverter(
                 "score" to "//div[@itemprop='aggregateRating']//span[@class='SimklTVRatingAverage'][@itemprop='ratingValue']/text()",
                 "bestRating" to "//div[@itemprop='aggregateRating']//span[@itemprop='bestRating']/text()",
                 "worstRating" to "//div[@itemprop='aggregateRating']//span[@itemprop='worstRating']/text()",
-                "studios" to "//strong[contains(text(), 'Studios:')]/..//following-sibling::td//a/text()",
-                "producers" to "//strong[contains(text(), 'Producers:')]/..//following-sibling::td//a/text()",
+                "studios" to "//strong[text()='Studios:']/..//following-sibling::td//a/text()",
+                "producers" to "//strong[text()='Producers:']/..//following-sibling::td//a/text()",
             )
         )
 

@@ -36,21 +36,21 @@ public class MyanimelistAnimeConverter(
     override suspend fun convert(rawContent: String): AnimeRaw = withContext(LIMITED_CPU) {
         val data = extractor.extract(rawContent, mapOf(
             "title" to "//meta[@property='og:title']/@content",
-            "episodes" to "//td[contains(text(), 'Episodes')]/following-sibling::td/a/text()",
+            "episodes" to "//td[text()='Episodes']/following-sibling::td/a/text()",
             "source" to "//meta[@property='og:url']/@content",
-            "status" to "//td[contains(text(), 'Status')]/following-sibling::*/text()",
+            "status" to "//td[text()='Status']/following-sibling::*/text()",
             "tags" to "//span[@itemprop='genre']/text()",
-            "type" to "//td[contains(text(), 'Type')]/following-sibling::*/text()",
-            "duration" to "//td[contains(text(), 'Duration')]/following-sibling::*/text()",
-            "premiered" to "//td[contains(text(), 'Premiered')]/following-sibling::*/text()",
-            "aired" to "//td[contains(text(), 'Aired')]/following-sibling::*/text()",
+            "type" to "//td[text()='Type']/following-sibling::*/text()",
+            "duration" to "//td[text()='Duration']/following-sibling::*/text()",
+            "premiered" to "//td[text()='Premiered']/following-sibling::*/text()",
+            "aired" to "//td[text()='Aired']/following-sibling::*/text()",
             "picture" to "//div[contains(@class, 'status-block')]/div[@itemprop='image']/@content",
             "relatedAnime" to "//table[contains(@class, 'entries-table')]//a/@href",
             "relatedAnimeDetails" to "//div[contains(@class, 'anime-detail-related-entries')]//a/@href",
-            "synonyms" to "//h2[contains(text(), 'Information')]/following-sibling::*//tr[0]/td[1]",
+            "synonyms" to "//h2[text()='Information']/following-sibling::*//tr[0]/td[1]",
             "score" to "//span[@itemprop='ratingValue']/span/text()",
-            "studios" to "//td[contains(text(), 'Studios')]/following-sibling::td/a/text()",
-            "producers" to "//td[contains(text(), 'Producers')]/following-sibling::td/a/text()",
+            "studios" to "//td[text()='Studios']/following-sibling::td/a/text()",
+            "producers" to "//td[text()='Producers']/following-sibling::td/a/text()",
         ))
 
         val picture = extractPicture(data)
