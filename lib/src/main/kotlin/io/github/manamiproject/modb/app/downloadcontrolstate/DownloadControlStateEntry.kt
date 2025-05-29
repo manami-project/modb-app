@@ -3,22 +3,11 @@ package io.github.manamiproject.modb.app.downloadcontrolstate
 import io.github.manamiproject.modb.core.anime.AnimeMedia.NO_PICTURE
 import io.github.manamiproject.modb.core.anime.AnimeMedia.NO_PICTURE_THUMBNAIL
 import io.github.manamiproject.modb.core.anime.AnimeRaw
-import io.github.manamiproject.modb.core.anime.AnimeSeason
 import io.github.manamiproject.modb.core.anime.AnimeSeason.Season.UNDEFINED
-import io.github.manamiproject.modb.core.anime.AnimeStatus
 import io.github.manamiproject.modb.core.anime.AnimeStatus.*
-import io.github.manamiproject.modb.core.anime.AnimeType
-import io.github.manamiproject.modb.core.anime.Duration
-import io.github.manamiproject.modb.core.anime.Duration.Companion.UNKNOWN
-import io.github.manamiproject.modb.core.anime.Episodes
-import io.github.manamiproject.modb.core.anime.MetaDataProviderScoreValue
-import io.github.manamiproject.modb.core.anime.Tag
-import io.github.manamiproject.modb.core.anime.Title
-import io.github.manamiproject.modb.core.config.Hostname
 import io.github.manamiproject.modb.core.converter.AnimeConverter
 import io.github.manamiproject.modb.core.date.WeekOfYear
 import io.github.manamiproject.modb.core.extensions.pickRandom
-import java.net.URI
 import io.github.manamiproject.modb.core.anime.AnimeStatus.UNKNOWN as UNKNOWN_STATUS
 import io.github.manamiproject.modb.core.anime.AnimeType.UNKNOWN as UNKNOWN_TYPE
 
@@ -90,7 +79,7 @@ data class DownloadControlStateEntry(
      */
     fun update(anime: AnimeRaw): DownloadControlStateEntry {
         when {
-            !isEqualIgnoringScore(anime) || anime.status in setOf(ONGOING, UPCOMING) -> {
+            !isEqualIgnoringMetaDataProviderScore(anime) || anime.status in setOf(ONGOING, UPCOMING) -> {
                 scheduleRedownloadForChangedAnime()
                 _anime = anime
             }
@@ -163,6 +152,14 @@ data class DownloadControlStateEntry(
             score += 1u
         }
 
+        if (currentAnime.studios.size < anime.studios.size) {
+            score += 1u
+        }
+
+        if (currentAnime.producers.size < anime.producers.size) {
+            score += 1u
+        }
+
         return score
     }
 
@@ -188,7 +185,7 @@ data class DownloadControlStateEntry(
         }
     }
 
-    private fun isEqualIgnoringScore(other: AnimeRaw): Boolean {
+    private fun isEqualIgnoringMetaDataProviderScore(other: AnimeRaw): Boolean {
         return other.title == _anime.title
                 && other.sources == _anime.sources
                 && other.type == _anime.type
@@ -201,5 +198,7 @@ data class DownloadControlStateEntry(
                 && other.synonyms == _anime.synonyms
                 && other.relatedAnime == _anime.relatedAnime
                 && other.tags == _anime.tags
+                && other.studios == _anime.studios
+                && other.producers == _anime.producers
     }
 }
