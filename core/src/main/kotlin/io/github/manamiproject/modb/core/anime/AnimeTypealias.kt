@@ -16,11 +16,11 @@ public typealias Tag = String
 public typealias Title = String
 
 /**
- * @since 18.3.0
+ * @since 18.4.0
  */
 public typealias Studio = String
 
 /**
- * @since 18.3.0
+ * @since 18.4.0
  */
 public typealias Producer = String

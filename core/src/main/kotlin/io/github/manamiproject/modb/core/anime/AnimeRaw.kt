@@ -84,14 +84,14 @@ public data class AnimeRaw(
 
     /**
      * List of studio names. May contain duplicates for slightly different writings. All studios names are lower case.
-     * @since 18.3.0
+     * @since 18.4.0
      */
     val studios: HashSet<Studio>
         get() = _studios.toHashSet()
 
     /**
      * List of names of producers. May contain duplicates for slightly different writings. All producer names are lower case.
-     * @since 18.3.0
+     * @since 18.4.0
      */
     val producers: HashSet<Producer>
         get() = _producers.toHashSet()
@@ -158,7 +158,7 @@ public data class AnimeRaw(
      * To further prevent duplicates, the longest studio name wins. Example:
      * When adding `satelight` and `satelight inc.` only `satelight inc.` will remain, because `satelight` is identified
      * as the shorter version of `satelight inc.`.
-     * @since 18.3.0
+     * @since 18.4.0
      * @param studios Studio names to be added.
      * @return Same instance.
      */
@@ -169,7 +169,7 @@ public data class AnimeRaw(
      * To further prevent duplicates, the longest studio name wins. Example:
      * When adding `satelight` and `satelight inc.` only `satelight inc.` will remain, because `satelight` is identified
      * as the shorter version of `satelight inc.`.
-     * @since 18.3.0
+     * @since 18.4.0
      * @param studios List of studio names to be added.
      * @return Same instance.
      */
@@ -196,7 +196,7 @@ public data class AnimeRaw(
      * Duplicates are being ignored. To further prevent duplicates, the longest producer name wins. Example:
      * When adding `satelight` and `satelight inc.` only `satelight inc.` will remain, because `satelight` is identified
      * as the shorter version of `satelight inc.`.
-     * @since 18.3.0
+     * @since 18.4.0
      * @param producers names of producers to be added.
      * @return Same instance.
      */
@@ -207,7 +207,7 @@ public data class AnimeRaw(
      * Duplicates are being ignored. To further prevent duplicates, the longest producer name wins. Example:
      * When adding `satelight` and `satelight inc.` only `satelight inc.` will remain, because `satelight` is identified
      * as the shorter version of `satelight inc.`.
-     * @since 18.3.0
+     * @since 18.4.0
      * @param producers List of names of producers to be added.
      * @return Same instance.
      */
