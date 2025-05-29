@@ -15,6 +15,7 @@ import io.github.manamiproject.modb.test.exceptionExpected
 import io.github.manamiproject.modb.test.shouldNotBeInvoked
 import kotlinx.coroutines.runBlocking
 import org.assertj.core.api.Assertions.assertThat
+import org.junit.jupiter.api.Nested
 import kotlin.test.Test
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.ValueSource
@@ -213,6 +214,23 @@ internal class KitsuDownloaderTest : MockServerTestCase<WireMockServer> by WireM
 
             // then
             assertThat(result).isEqualTo(responseBody)
+        }
+    }
+
+    @Nested
+    inner class CompanionObjectTests {
+
+        @Test
+        fun `instance property always returns same instance`() {
+            // given
+            val previous = KitsuDownloader.instance
+
+            // when
+            val result = KitsuDownloader.instance
+
+            // then
+            assertThat(result).isExactlyInstanceOf(KitsuDownloader::class.java)
+            assertThat(result===previous).isTrue()
         }
     }
 }

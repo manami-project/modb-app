@@ -20,8 +20,6 @@ import io.github.manamiproject.modb.core.extensions.Directory
 import io.github.manamiproject.modb.core.extensions.directoryExists
 import io.github.manamiproject.modb.core.extensions.regularFileExists
 import io.github.manamiproject.modb.kitsu.KitsuConfig
-import io.github.manamiproject.modb.kitsu.KitsuRelationsConfig
-import io.github.manamiproject.modb.kitsu.KitsuTagsConfig
 import io.github.manamiproject.modb.livechart.LivechartConfig
 import io.github.manamiproject.modb.myanimelist.MyanimelistConfig
 import io.github.manamiproject.modb.notify.NotifyConfig
@@ -85,8 +83,7 @@ class AppConfig(
             NotifyConfig,
             SimklConfig,
             SimklPaginationIdRangeSelectorConfig -> currentWeekWorkingDir().resolve(hostname)
-            AnisearchRelationsConfig, KitsuRelationsConfig, NotifyRelationsConfig, NotifyRelationsDatasetDownloaderConfig -> currentWeekWorkingDir().resolve("$hostname-relations")
-            KitsuTagsConfig -> currentWeekWorkingDir().resolve("$hostname-tags")
+            AnisearchRelationsConfig, NotifyRelationsConfig, NotifyRelationsDatasetDownloaderConfig -> currentWeekWorkingDir().resolve("$hostname-relations")
             else -> throw IllegalStateException("No working directory mapping for [${metaDataProviderConfig::class.simpleName}]")
         }
 

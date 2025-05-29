@@ -24,8 +24,6 @@ import io.github.manamiproject.modb.core.extensions.listRegularFiles
 import io.github.manamiproject.modb.core.logging.LoggerDelegate
 import io.github.manamiproject.modb.kitsu.KitsuAnimeConverter
 import io.github.manamiproject.modb.kitsu.KitsuConfig
-import io.github.manamiproject.modb.kitsu.KitsuRelationsConfig
-import io.github.manamiproject.modb.kitsu.KitsuTagsConfig
 import io.github.manamiproject.modb.livechart.LivechartAnimeConverter
 import io.github.manamiproject.modb.livechart.LivechartConfig
 import io.github.manamiproject.modb.myanimelist.MyanimelistAnimeConverter
@@ -120,6 +118,7 @@ class DefaultRawFileConversionService(
             AnidbConfig to AnidbAnimeConverter.instance,
             AnilistConfig to AnilistAnimeConverter.instance,
             AnimePlanetConfig to AnimePlanetAnimeConverter.instance,
+            KitsuConfig to KitsuAnimeConverter.instance,
             LivechartConfig to LivechartAnimeConverter.instance,
             MyanimelistConfig to MyanimelistAnimeConverter.instance,
             SimklConfig to SimklAnimeConverter.instance,
@@ -149,24 +148,6 @@ class DefaultRawFileConversionService(
                         relationsDir = appConfig.workingDir(AnisearchRelationsConfig),
                     ),
                     fileSuffix = AnisearchConfig.fileSuffix(),
-                ),
-            )
-        )
-
-        watchServices.add(
-            DependentConversionWatchService(
-                appConfig = appConfig,
-                mainConfig = KitsuConfig,
-                dependentMetaDataProviderConfigs = listOf(
-                    KitsuRelationsConfig,
-                    KitsuTagsConfig,
-                ),
-                converter = DefaultPathAnimeConverter(
-                    animeConverter = KitsuAnimeConverter(
-                        relationsDir = appConfig.workingDir(KitsuRelationsConfig),
-                        tagsDir = appConfig.workingDir(KitsuTagsConfig),
-                    ),
-                    fileSuffix = KitsuConfig.fileSuffix(),
                 ),
             )
         )
