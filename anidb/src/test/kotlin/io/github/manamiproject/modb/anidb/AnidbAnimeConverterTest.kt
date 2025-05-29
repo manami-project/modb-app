@@ -1720,6 +1720,57 @@ internal class AnidbAnimeConverterTest {
     }
 
     @Nested
+    inner class StudiosTests {
+
+        @Test
+        fun `multiple studios`() {
+            runBlocking {
+                // given
+                val testAnidbConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = AnidbConfig.hostname()
+                    override fun buildAnimeLink(id: AnimeId): URI = AnidbConfig.buildAnimeLink(id)
+                    override fun fileSuffix(): FileSuffix = AnidbConfig.fileSuffix()
+                }
+
+                val testFile = loadTestResource<String>("AnidbAnimeConverterTest/studios/multiple_studios.html")
+
+                val converter = AnidbAnimeConverter(testAnidbConfig)
+
+                // when
+                val result = converter.convert(testFile)
+
+                // then
+                assertThat(result.studios).containsExactlyInAnyOrder(
+                    "satelight",
+                    "hornets",
+                )
+            }
+        }
+
+        @Test
+        fun `no studios`() {
+            runBlocking {
+                // given
+                val testAnidbConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = AnidbConfig.hostname()
+                    override fun buildAnimeLink(id: AnimeId): URI = AnidbConfig.buildAnimeLink(id)
+                    override fun fileSuffix(): FileSuffix = AnidbConfig.fileSuffix()
+                }
+
+                val testFile = loadTestResource<String>("AnidbAnimeConverterTest/studios/no_studios.html")
+
+                val converter = AnidbAnimeConverter(testAnidbConfig)
+
+                // when
+                val result = converter.convert(testFile)
+
+                // then
+                assertThat(result.studios).isEmpty()
+            }
+        }
+    }
+
+    @Nested
     inner class CompanionObjectTests {
 
         @Test
