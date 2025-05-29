@@ -83,7 +83,6 @@ internal class AnimeTest {
             assertThat(result.synonyms).isEmpty()
             assertThat(result.studios).isEmpty()
             assertThat(result.producers).isEmpty()
-            assertThat(result.synonyms).isEmpty()
             assertThat(result.relatedAnime).isEmpty()
             assertThat(result.tags).isEmpty()
         }
