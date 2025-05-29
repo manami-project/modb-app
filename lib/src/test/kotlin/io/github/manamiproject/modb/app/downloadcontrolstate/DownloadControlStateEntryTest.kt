@@ -507,7 +507,67 @@ internal class DownloadControlStateEntryTest {
             val newAnime = downloadControlStateEntry.anime.copy(
                 _tags = hashSetOf(
                     "descriptive tag",
-                    "Additional tag",
+                    "additional tag",
+                ),
+            )
+
+            // when
+            val result = downloadControlStateEntry.update(newAnime)
+
+            // then
+            assertThat(result.weeksWihoutChange).isZero()
+            assertThat(result.lastDownloaded).isEqualTo(WeekOfYear.currentWeek())
+            assertThat(result.nextDownload).isEqualTo(WeekOfYear.currentWeek().plusWeeks(1))
+            assertThat(result.anime).isEqualTo(newAnime)
+        }
+
+        @Test
+        fun `different studios is considered a change`() {
+            // given
+            val downloadControlStateEntry = DownloadControlStateEntry(
+                _weeksWihoutChange = 3,
+                _lastDownloaded = WeekOfYear.currentWeek().minusWeeks(3),
+                _nextDownload = WeekOfYear.currentWeek(),
+                _anime = AnimeRaw(
+                    _title = "title",
+                    _studios = hashSetOf("main studio"),
+                ),
+            )
+
+            val newAnime = downloadControlStateEntry.anime.copy(
+                _studios = hashSetOf(
+                    "main studio",
+                    "additional studio",
+                ),
+            )
+
+            // when
+            val result = downloadControlStateEntry.update(newAnime)
+
+            // then
+            assertThat(result.weeksWihoutChange).isZero()
+            assertThat(result.lastDownloaded).isEqualTo(WeekOfYear.currentWeek())
+            assertThat(result.nextDownload).isEqualTo(WeekOfYear.currentWeek().plusWeeks(1))
+            assertThat(result.anime).isEqualTo(newAnime)
+        }
+
+        @Test
+        fun `different producers is considered a change`() {
+            // given
+            val downloadControlStateEntry = DownloadControlStateEntry(
+                _weeksWihoutChange = 3,
+                _lastDownloaded = WeekOfYear.currentWeek().minusWeeks(3),
+                _nextDownload = WeekOfYear.currentWeek(),
+                _anime = AnimeRaw(
+                    _title = "title",
+                    _producers = hashSetOf("a producers"),
+                ),
+            )
+
+            val newAnime = downloadControlStateEntry.anime.copy(
+                _producers = hashSetOf(
+                    "a producer",
+                    "additional producers",
                 ),
             )
 
