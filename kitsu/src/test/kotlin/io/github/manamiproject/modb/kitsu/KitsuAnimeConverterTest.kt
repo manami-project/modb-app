@@ -786,30 +786,6 @@ internal class KitsuAnimeConverterTest {
     inner class TagsTests {
 
         @Test
-        fun `no tags`() {
-            tempDirectory {
-                // given
-                val testKitsuConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
-                    override fun hostname(): Hostname = KitsuConfig.hostname()
-                    override fun buildAnimeLink(id: AnimeId): URI = KitsuConfig.buildAnimeLink(id)
-                    override fun fileSuffix(): FileSuffix = KitsuConfig.fileSuffix()
-                }
-
-                val testFileContent = loadTestResource<String>("KitsuAnimeConverterTest/tags/no_tags.json")
-
-                val converter = KitsuAnimeConverter(
-                    metaDataProviderConfig = testKitsuConfig,
-                )
-
-                // when
-                val result = converter.convert(testFileContent)
-
-                // then
-                assertThat(result.tags).isEmpty()
-            }
-        }
-
-        @Test
         fun `multiple tags`() {
             tempDirectory {
                 // given
@@ -846,6 +822,30 @@ internal class KitsuAnimeConverterTest {
                     "detective",
                     "sci-fi",
                 )
+            }
+        }
+
+        @Test
+        fun `no tags`() {
+            tempDirectory {
+                // given
+                val testKitsuConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = KitsuConfig.hostname()
+                    override fun buildAnimeLink(id: AnimeId): URI = KitsuConfig.buildAnimeLink(id)
+                    override fun fileSuffix(): FileSuffix = KitsuConfig.fileSuffix()
+                }
+
+                val testFileContent = loadTestResource<String>("KitsuAnimeConverterTest/tags/no_tags.json")
+
+                val converter = KitsuAnimeConverter(
+                    metaDataProviderConfig = testKitsuConfig,
+                )
+
+                // when
+                val result = converter.convert(testFileContent)
+
+                // then
+                assertThat(result.tags).isEmpty()
             }
         }
     }
@@ -1100,6 +1100,119 @@ internal class KitsuAnimeConverterTest {
 
                 // then
                 assertThat(result.scores).isEmpty()
+            }
+        }
+    }
+
+    @Nested
+    inner class StudiosTests {
+
+        @Test
+        fun `multiple studios`() {
+            tempDirectory {
+                // given
+                val testKitsuConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = KitsuConfig.hostname()
+                    override fun buildAnimeLink(id: AnimeId): URI = KitsuConfig.buildAnimeLink(id)
+                    override fun fileSuffix(): FileSuffix = KitsuConfig.fileSuffix()
+                }
+
+                val testFileContent = loadTestResource<String>("KitsuAnimeConverterTest/studios/multiple_studios.json")
+
+                val converter = KitsuAnimeConverter(
+                    metaDataProviderConfig = testKitsuConfig,
+                )
+
+                // when
+                val result = converter.convert(testFileContent)
+
+                // then
+                assertThat(result.studios).containsExactlyInAnyOrder(
+                    "madhouse",
+                )
+            }
+        }
+
+        @Test
+        fun `no studios`() {
+            tempDirectory {
+                // given
+                val testKitsuConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = KitsuConfig.hostname()
+                    override fun buildAnimeLink(id: AnimeId): URI = KitsuConfig.buildAnimeLink(id)
+                    override fun fileSuffix(): FileSuffix = KitsuConfig.fileSuffix()
+                }
+
+                val testFileContent = loadTestResource<String>("KitsuAnimeConverterTest/studios/no_studios.json")
+
+                val converter = KitsuAnimeConverter(
+                    metaDataProviderConfig = testKitsuConfig,
+                )
+
+                // when
+                val result = converter.convert(testFileContent)
+
+                // then
+                assertThat(result.studios).isEmpty()
+            }
+        }
+    }
+
+    @Nested
+    inner class ProducersTests {
+
+        @Test
+        fun `multiple producers`() {
+            tempDirectory {
+                // given
+                val testKitsuConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = KitsuConfig.hostname()
+                    override fun buildAnimeLink(id: AnimeId): URI = KitsuConfig.buildAnimeLink(id)
+                    override fun fileSuffix(): FileSuffix = KitsuConfig.fileSuffix()
+                }
+
+                val testFileContent = loadTestResource<String>("KitsuAnimeConverterTest/producers/multiple_producers.json")
+
+                val converter = KitsuAnimeConverter(
+                    metaDataProviderConfig = testKitsuConfig,
+                )
+
+                // when
+                val result = converter.convert(testFileContent)
+
+                // then
+                assertThat(result.producers).containsExactlyInAnyOrder(
+                    "vap",
+                    "konami",
+                    "nippon television network corporation",
+                    "shueisha",
+                    "madhouse",
+                    "ashi productions",
+                )
+            }
+        }
+
+        @Test
+        fun `no producers`() {
+            tempDirectory {
+                // given
+                val testKitsuConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = KitsuConfig.hostname()
+                    override fun buildAnimeLink(id: AnimeId): URI = KitsuConfig.buildAnimeLink(id)
+                    override fun fileSuffix(): FileSuffix = KitsuConfig.fileSuffix()
+                }
+
+                val testFileContent = loadTestResource<String>("KitsuAnimeConverterTest/producers/no_producers.json")
+
+                val converter = KitsuAnimeConverter(
+                    metaDataProviderConfig = testKitsuConfig,
+                )
+
+                // when
+                val result = converter.convert(testFileContent)
+
+                // then
+                assertThat(result.producers).isEmpty()
             }
         }
     }

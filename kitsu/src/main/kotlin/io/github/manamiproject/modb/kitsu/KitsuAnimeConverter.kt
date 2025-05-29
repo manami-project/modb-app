@@ -60,6 +60,8 @@ public class KitsuAnimeConverter(
             _synonyms = extractSynonyms(data),
             _relatedAnime = extractRelatedAnime(data),
             _tags = extractTags(data),
+            _studios = extractStudios(data),
+            _producers = extractProducers(data),
         ).addScores(extractScore(data))
     }
 
@@ -102,10 +104,10 @@ public class KitsuAnimeConverter(
                data.listNotNull<LinkedHashMap<String, Title>>("titles").first().values.filterNotNull()).toHashSet()
     }
 
-    private suspend fun extractRelatedAnime(data: ExtractionResult): HashSet<URI> = withContext(LIMITED_CPU) {
+    private fun extractRelatedAnime(data: ExtractionResult): HashSet<URI> {
         val included = data.listNotNull<Map<String, Any>>("included")
 
-        return@withContext included.filter { it["type"] == "mediaRelationships" }
+        return included.filter { it["type"] == "mediaRelationships" }
             .map { it as Map<*,*> }
             .map { it["relationships"] as Map<*,*> }
             .map { it["destination"] as Map<*,*> }
@@ -136,7 +138,7 @@ public class KitsuAnimeConverter(
         return Duration(durationInMinutes, MINUTES)
     }
 
-    private suspend fun extractTags(data: ExtractionResult): HashSet<Tag> = withContext(LIMITED_CPU) {
+    private fun extractTags(data: ExtractionResult): HashSet<Tag> {
         val included = data.listNotNull<Map<String, Any>>("included")
 
         val genres = included.filter { it["type"] == "genres" }
@@ -149,7 +151,7 @@ public class KitsuAnimeConverter(
             .map { it["attributes"] as Map<*,*> }
             .map { it["title"] as Tag }
 
-        return@withContext genres.union(categories).toHashSet()
+        return genres.union(categories).toHashSet()
     }
 
     private fun extractAnimeSeason(data: ExtractionResult): AnimeSeason {
@@ -183,6 +185,40 @@ public class KitsuAnimeConverter(
             value = rawScore,
             range = 1.0..100.0,
         )
+    }
+
+    private fun extractStudios(data: ExtractionResult): HashSet<Studio> {
+        val included = data.listNotNull<Map<String, Any>>("included")
+
+        val producers = included.filter { it["type"] == "producers" }
+            .associate { (it["id"] as String) to ((it["attributes"] as Map<*,*>)["name"] as String) }
+
+        val animeProductionsRelationDestinationIds = included.filter { it["type"] == "animeProductions" }
+            .map { it as Map<*,*> }
+            .filter { (it["attributes"] as Map<*,*>)["role"] as String == "studio" }
+            .map { it["relationships"] as Map<*,*> }
+            .map { it["producer"] as Map<*,*> }
+            .map { it["data"] as Map<*,*> }
+            .map { it["id"] as String }
+
+        return animeProductionsRelationDestinationIds.mapNotNull { producers[it] }.toHashSet()
+    }
+
+    private fun extractProducers(data: ExtractionResult): HashSet<Producer> {
+        val included = data.listNotNull<Map<String, Any>>("included")
+
+        val producers = included.filter { it["type"] == "producers" }
+            .associate { (it["id"] as String) to ((it["attributes"] as Map<*,*>)["name"] as String) }
+
+        val animeProductionsRelationDestinationIds = included.filter { it["type"] == "animeProductions" }
+            .map { it as Map<*,*> }
+            .filter { (it["attributes"] as Map<*,*>)["role"] as String == "producer" }
+            .map { it["relationships"] as Map<*,*> }
+            .map { it["producer"] as Map<*,*> }
+            .map { it["data"] as Map<*,*> }
+            .map { it["id"] as String }
+
+        return animeProductionsRelationDestinationIds.mapNotNull { producers[it] }.toHashSet()
     }
 
     public companion object {
