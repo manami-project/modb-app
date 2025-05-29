@@ -43,9 +43,9 @@ public class AnimenewsnetworkAnimeConverter(
         val data = extractor.extract(rawContent, mapOf(
             "source" to "//link[@rel='canonical']/@href",
             "title" to "//h1[@id='page_header']/text()",
-            "numberOfEpisodes" to "//strong[contains(text(), 'Number of episodes:')]/following-sibling::span/text()",
+            "numberOfEpisodes" to "//strong[text()='Number of episodes:']/following-sibling::span/text()",
             "episodeTitles" to "//div[@id='infotype-25']//a/text()",
-            "score" to "//b[contains(text(), 'Arithmetic mean:')]/..",
+            "score" to "//b[text()='Arithmetic mean:']/..",
             "picture" to "//div[@id='infotype-19']//img/@src",
             "year" to "//div[@id='infotype-7']//span/text()",
             "year_list_first" to "//div[@id='infotype-7']//div[1]",

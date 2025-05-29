@@ -48,7 +48,7 @@ public class AnidbAnimeConverter(
             "tags" to "//span[contains(@itemprop, 'genre')]/text()",
             "image" to "//img[contains(@itemprop, 'image')]/@src",
             "source" to "//input[contains(@type, 'hidden')][contains(@name, 'aid')]/@value",
-            "type" to "//tr[contains(@class, 'type')]//th[contains(text(), 'Type')]/following-sibling::*/text()",
+            "type" to "//tr[contains(@class, 'type')]//th[text()='Type']/following-sibling::*/text()",
             "duration" to "//table[contains(@id, 'eplist')]/tbody/tr//td[contains(@class, 'duration')]/text()",
             "season" to "//tr[contains(@class, 'season')]//td[contains(@class, 'value')]/text()",
             "startDate" to "//tr[contains(@class, 'year')]//td[contains(@class, 'value')]//span[contains(@itemprop, 'startDate')]/@content",
