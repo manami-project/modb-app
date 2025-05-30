@@ -1948,7 +1948,7 @@ internal class AnisearchAnimeConverterTest {
                 }
 
                 val testFile = loadTestResource<String>("AnisearchAnimeConverterTest/studios/multiple_studios.html")
-                "<html></html>".writeToFile(tempDir.resolve("14286.${testAnisearchConfig.fileSuffix()}"))
+                "<html></html>".writeToFile(tempDir.resolve("1945.${testAnisearchConfig.fileSuffix()}"))
 
                 val converter = AnisearchAnimeConverter(
                     metaDataProviderConfig = testAnisearchConfig,
@@ -1960,7 +1960,8 @@ internal class AnisearchAnimeConverterTest {
 
                 // then
                 assertThat(result.studios).containsExactlyInAnyOrder(
-                    "satelight inc.",
+                    "pierrot co., ltd.",
+                    "studio deen co., ltd.",
                 )
             }
         }
