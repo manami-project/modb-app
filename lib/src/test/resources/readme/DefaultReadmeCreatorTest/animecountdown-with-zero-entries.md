@@ -18,17 +18,17 @@ The dataset consists of **2** entries _(0% reviewed)_ composed of:
 
 This repository contains various JSON and zip files. The dataset file itself as well as files containing IDs of dead entries for some meta data providers to support the automated process.
 
-| File                                          | Type reference                         | Description                                                                                                                                                                                                            |
-|-----------------------------------------------|----------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `anime-offline-database.json`                 | [Database root](#database-root)        | Contains anime data already merged from different meta data providers. Content is pretty print. Check [modb-extension](https://github.com/manami-project/modb-extension) if you are looking for additional properties. |
-| `anime-offline-database.schema.json`          | [JSON schema](https://json-schema.org) | JSON schema file for validating `anime-offline-database.json`.                                                                                                                                                         |
-| `anime-offline-database-minified.json`        | [Database root](#database-root)        | Minified version of `anime-offline-database.json` which contains the same data, but is smaller in size.                                                                                                                |
-| `anime-offline-database-minified.schema.json` | [JSON schema](https://json-schema.org) | JSON schema file for validating `anime-offline-database-minified.json`.                                                                                                                                                |
-| `anime-offline-database.zip`                  | [Database root](#database-root)        | Zipped file of `anime-offline-database-minified.json` which contains the same data, but is even smaller in size.                                                                                                       |
-| `dead-entries/*.json`                         | [DeadEntries root](#deadentries-root)  | A file where `*` is the name of the respective meta data provider. Contains anime IDs which have been removed from the meta data provider. Pretty print.                                                               |
-| `dead-entries/*-minified.json`                | [DeadEntries root](#deadentries-root)  | A file where `*` is the name of the respective meta data provider. Contains the same data as `dead-entries/*.json`, but is smaller in size.                                                                            |
-| `dead-entries/dead-entries.schema.json`       | [JSON schema](https://json-schema.org) | JSON schema file for validating all the `dead-entries/*-minified.json` and `dead-entries/*.json` files.                                                                                                                |
-| `dead-entries/*.zip`                          | [DeadEntries root](#deadentries-root)  | A file where `*` is the name of the respective meta data provider. Contains the same data as `dead-entries/*-minified.json`, but is even smaller in size.                                                              |
+| File                                          | Type reference                         | Description                                                                                                                                              |
+|-----------------------------------------------|----------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `anime-offline-database.json`                 | [Database root](#database-root)        | Contains anime all anime data. Content is pretty print. Values containing `null` are retained.                                                           |
+| `anime-offline-database.schema.json`          | [JSON schema](https://json-schema.org) | JSON schema file for validating `anime-offline-database.json`.                                                                                           |
+| `anime-offline-database-minified.json`        | [Database root](#database-root)        | Minified version of `anime-offline-database.json`. Values containing `null` are omitted.                                                                 |
+| `anime-offline-database-minified.schema.json` | [JSON schema](https://json-schema.org) | JSON schema file for validating `anime-offline-database-minified.json`.                                                                                  |
+| `anime-offline-database.zip`                  | [Database root](#database-root)        | Zipped file of `anime-offline-database-minified.json`.                                                                                                   |
+| `dead-entries/*.json`                         | [DeadEntries root](#deadentries-root)  | A file where `*` is the name of the respective meta data provider. Contains anime IDs which have been removed from the meta data provider. Pretty print. |
+| `dead-entries/*-minified.json`                | [DeadEntries root](#deadentries-root)  | Minified version of the corresponding `dead-entries/*.json` file where `*` is the name of the respective meta data provider.                             |
+| `dead-entries/dead-entries.schema.json`       | [JSON schema](https://json-schema.org) | JSON schema file for validating all the `dead-entries/*-minified.json` and `dead-entries/*.json` files.                                                  |
+| `dead-entries/*.zip`                          | [DeadEntries root](#deadentries-root)  | Zipped file of the corresponding `dead-entries/*.json` file                                                                                              |
 
 ## Type reference
 
@@ -61,21 +61,23 @@ Here is a description of the types in the JSON files.
 
 ### Anime
 
-| Field          | Type                                              | Nullable | Description                                                                                                      |
-|----------------|---------------------------------------------------|----------|------------------------------------------------------------------------------------------------------------------|
-| `sources`      | `URL[]`                                           | no       | URLs to the pages of the meta data providers for this anime.                                                     |
-| `title`        | `String`                                          | no       | Main title.                                                                                                      |
-| `type`         | `Enum of [TV, MOVIE, OVA, ONA, SPECIAL, UNKNOWN]` | no       | Distribution type.                                                                                               |
-| `episodes`     | `Integer`                                         | no       | Number of episodes, movies or parts.                                                                             |
-| `status`       | `Enum of [FINISHED, ONGOING, UPCOMING, UNKNOWN]`  | no       | Status of distribution.                                                                                          |
-| `animeSeason`  | [AnimeSeason](#animeseason)                       | no       | Data on when the anime was first distributed.                                                                    |
-| `picture`      | `URL`                                             | no       | URL of a picture which represents the anime.                                                                     |
-| `thumbnail`    | `URL`                                             | no       | URL of a smaller version of the picture.                                                                         |
-| `duration`     | [Duration](#duration)                             | yes      | Duration. Normally this is per episode.                                                                          |
-| `score`        | [Score](#score)                                   | yes      | Score calculated using all available scores from meta data providers. Original scores are rescaled if necessary. |
-| `synonyms`     | `String[]`                                        | no       | Alternative titles and spellings under which the anime is also known.                                            |
-| `relatedAnime` | `URL[]`                                           | no       | URLs to the meta data providers for anime that are somehow related to this anime.                                |
-| `tags`         | `String[]`                                        | no       | A non-curated list of tags and genres which describe the anime.                                                  |
+| Field          | Type                                              | Nullable | Description                                                                                                                        |
+|----------------|---------------------------------------------------|----------|------------------------------------------------------------------------------------------------------------------------------------|
+| `sources`      | `URL[]`                                           | no       | URLs to the pages of the meta data providers for this anime.                                                                       |
+| `title`        | `String`                                          | no       | Main title.                                                                                                                        |
+| `type`         | `Enum of [TV, MOVIE, OVA, ONA, SPECIAL, UNKNOWN]` | no       | Distribution type.                                                                                                                 |
+| `episodes`     | `Integer`                                         | no       | Number of episodes, movies or parts.                                                                                               |
+| `status`       | `Enum of [FINISHED, ONGOING, UPCOMING, UNKNOWN]`  | no       | Status of distribution.                                                                                                            |
+| `animeSeason`  | [AnimeSeason](#animeseason)                       | no       | Data on when the anime was first distributed.                                                                                      |
+| `picture`      | `URL`                                             | no       | URL of a picture which represents the anime.                                                                                       |
+| `thumbnail`    | `URL`                                             | no       | URL of a smaller version of the picture.                                                                                           |
+| `duration`     | [Duration](#duration)                             | yes      | Duration. Normally this is per episode.                                                                                            |
+| `score`        | [Score](#score)                                   | yes      | Score calculated using all available scores from meta data providers. Original scores are rescaled if necessary.                   |
+| `synonyms`     | `String[]`                                        | no       | Alternative titles and spellings under which the anime is also known. Duplicate free (case sensitive). Doesn't contain the `title` |
+| `studios`      | `String[]`                                        | no       | Lower case studio names. In general a duplicate free list, but might contain duplicates for different writings.                    |
+| `producers`    | `String[]`                                        | no       | Lower case producers names. Companys only. In general a duplicate free list, but might contain duplicates for different writings.  |
+| `relatedAnime` | `URL[]`                                           | no       | URLs to the meta data providers for anime that are somehow related to this anime.                                                  |
+| `tags`         | `String[]`                                        | no       | A non-curated list of tags and genres which describe the anime. All entries are lower case.                                        |
 
 ### AnimeSeason
 
@@ -138,6 +140,7 @@ Here are some examples showing what the files look like.
         "https://anilist.co/anime/1535",
         "https://anime-planet.com/anime/death-note",
         "https://animecountdown.com/40190",
+        "https://animenewsnetwork.com/encyclopedia/anime.php?id=6592",
         "https://anisearch.com/anime/3633",
         "https://kitsu.app/anime/1376",
         "https://livechart.me/anime/3437",
@@ -195,6 +198,15 @@ Here are some examples showing what the files look like.
         "死亡笔记",
         "死亡筆記本",
         "데스노트"
+      ],
+      "studios": [
+        "madhouse"
+      ],
+      "producers": [
+        "d.n. dream partners",
+        "nippon television network",
+        "shueisha",
+        "vap"
       ],
       "relatedAnime": [
         "https://anidb.net/anime/8146",

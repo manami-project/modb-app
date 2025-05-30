@@ -22,8 +22,8 @@ import io.github.manamiproject.modb.core.anime.Duration.Companion.UNKNOWN as UNK
  * @property duration Duration of an anime having one episode or average duration of an episode if the anime has more than one episode.
  * @property score Score based on the different scores of the meta data providers.
  * @property synonyms Duplicate-free list of alternative titles. Synonyms are case sensitive.
- * @property studios List of studios. May contain duplicates for slightly different writings. All studio names are lower case.
- * @property producers List of producers. May contain duplicates for slightly different writings. All producer names are lower case.
+ * @property studios Lower case studio names. In general a duplicate free list, but might contain duplicates for different writings.
+ * @property producers Lower case producers names. Companys only. In general a duplicate free list, but might contain duplicates for different writings.
  * @property relatedAnime Duplicate-free list of links to related anime.
  * @property tags Duplicate-free list of tags. This contains both genres and tags from meta data providers. All tags are lower case.
  */
