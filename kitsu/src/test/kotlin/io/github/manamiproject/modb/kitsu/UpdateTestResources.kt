@@ -63,16 +63,20 @@ private val files = mapOf(
     "KitsuAnimeConverterTest/related_anime/has_adaption_multiple_relations.json" to "1415",
     "KitsuAnimeConverterTest/related_anime/no_adaption_multiple_relations.json" to "7664",
     "KitsuAnimeConverterTest/related_anime/no_adaption_no_relations.json" to "5989",
+    "KitsuAnimeConverterTest/related_anime/no_property_called_included.json" to "45567",
     "KitsuAnimeConverterTest/related_anime/one_adaption_one_relation.json" to "46232",
 
     "KitsuAnimeConverterTest/tags/multiple_tags.json" to "1",
     "KitsuAnimeConverterTest/tags/no_tags.json" to "43298",
+    "KitsuAnimeConverterTest/tags/no_property_called_included.json" to "45567",
 
     "KitsuAnimeConverterTest/studios/multiple_studios.json" to "1376",
     "KitsuAnimeConverterTest/studios/no_studios.json" to "6337",
+    "KitsuAnimeConverterTest/studios/no_property_called_included.json" to "45567",
 
     "KitsuAnimeConverterTest/producers/multiple_producers.json" to "1376",
     "KitsuAnimeConverterTest/producers/no_producers.json" to "6337",
+    "KitsuAnimeConverterTest/producers/no_property_called_included.json" to "45567",
 )
 
 internal fun main(): Unit = runCoroutine {
