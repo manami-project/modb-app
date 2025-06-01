@@ -1,0 +1,10 @@
+{
+  "data": [],
+  "meta": {
+    "count": 0
+  },
+  "links": {
+    "first": "https://kitsu.app/api/edge/anime?fields%5Bcategories%5D=title&fields%5Bgenres%5D=name&fields%5Bproducers%5D=name&filter%5Bid%5D=49936&include=categories%2Cgenres%2CanimeProductions.producer%2CmediaRelationships.destination&page%5Bnumber%5D=1&page%5Bsize%5D=10",
+    "last": "https://kitsu.app/api/edge/anime?fields%5Bcategories%5D=title&fields%5Bgenres%5D=name&fields%5Bproducers%5D=name&filter%5Bid%5D=49936&include=categories%2Cgenres%2CanimeProductions.producer%2CmediaRelationships.destination&page%5Bnumber%5D=1&page%5Bsize%5D=10"
+  }
+}

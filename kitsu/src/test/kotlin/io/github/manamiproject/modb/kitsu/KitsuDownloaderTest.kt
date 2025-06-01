@@ -12,6 +12,7 @@ import io.github.manamiproject.modb.core.httpclient.APPLICATION_JSON
 import io.github.manamiproject.modb.test.MockServerTestCase
 import io.github.manamiproject.modb.test.WireMockServerCreator
 import io.github.manamiproject.modb.test.exceptionExpected
+import io.github.manamiproject.modb.test.loadTestResource
 import io.github.manamiproject.modb.test.shouldNotBeInvoked
 import kotlinx.coroutines.runBlocking
 import org.assertj.core.api.Assertions.assertThat
@@ -43,6 +44,42 @@ internal class KitsuDownloaderTest : MockServerTestCase<WireMockServer> by WireM
                             .withHeader("Content-Type", "text/html")
                             .withStatus(404)
                             .withBody("<html><head/><body></body></html>")
+                    )
+            )
+
+            var deadEntry = EMPTY
+            val downloader = KitsuDownloader(testKitsuConfig)
+
+            // when
+            downloader.download(id.toString()) {
+                deadEntry = it
+            }
+
+            // then
+            assertThat(deadEntry).isEqualTo(id.toString())
+        }
+    }
+
+    @Test
+    fun `meta count on 0 invokes a dead entry`() {
+        runBlocking {
+            // given
+            val id = 1535
+
+            val testKitsuConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                override fun hostname(): Hostname = "localhost"
+                override fun buildAnimeLink(id: AnimeId): URI = KitsuConfig.buildAnimeLink(id)
+                override fun buildDataDownloadLink(id: String): URI = URI("http://localhost:$port/graphql")
+                override fun fileSuffix(): FileSuffix = KitsuConfig.fileSuffix()
+            }
+
+            serverInstance.stubFor(
+                get(urlPathEqualTo("/graphql"))
+                    .willReturn(
+                        aResponse()
+                            .withHeader("Content-Type", "text/html")
+                            .withStatus(200)
+                            .withBody(loadTestResource<String>("KitsuDownloaderTest/dead-entry.json"))
                     )
             )
 
@@ -107,7 +144,7 @@ internal class KitsuDownloaderTest : MockServerTestCase<WireMockServer> by WireM
                 override fun fileSuffix(): FileSuffix = KitsuConfig.fileSuffix()
             }
 
-            val responseBody = "{ \"kitsuId\": $id }"
+            val responseBody = """{ "kitsuId": $id, "meta": { "count": 1 } }"""
 
             serverInstance.stubFor(
                 get(urlPathEqualTo("/graphql")).willReturn(
@@ -127,6 +164,45 @@ internal class KitsuDownloaderTest : MockServerTestCase<WireMockServer> by WireM
 
             // then
             assertThat(result).isEqualTo(responseBody)
+        }
+    }
+
+    @ParameterizedTest
+    @ValueSource(ints = [-1, 2])
+    fun `throws exception if the meta count is something other than 0 or 1`(value: Int) {
+        runBlocking {
+            // given
+            val id = 1535
+
+            val testKitsuConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                override fun hostname(): Hostname = "localhost"
+                override fun buildAnimeLink(id: AnimeId): URI = KitsuConfig.buildAnimeLink(id)
+                override fun buildDataDownloadLink(id: String): URI = URI("http://localhost:$port/graphql")
+                override fun fileSuffix(): FileSuffix = KitsuConfig.fileSuffix()
+            }
+
+            val responseBody = """{ "kitsuId": $id, "meta": { "count": $value } }"""
+
+            serverInstance.stubFor(
+                get(urlPathEqualTo("/graphql")).willReturn(
+                    aResponse()
+                        .withHeader("Content-Type", APPLICATION_JSON)
+                        .withStatus(200)
+                        .withBody(responseBody)
+                )
+            )
+
+            val downloader = KitsuDownloader(testKitsuConfig)
+
+            // when
+            val result = exceptionExpected<IllegalStateException> {
+                downloader.download(id.toString()) {
+                    shouldNotBeInvoked()
+                }
+            }
+
+            // then
+            assertThat(result.message).isEqualTo("Anime with id [1535] returned [$value] entries.")
         }
     }
 
@@ -191,7 +267,7 @@ internal class KitsuDownloaderTest : MockServerTestCase<WireMockServer> by WireM
                     )
             )
 
-            val responseBody = "{ \"kitsuId\": $id }"
+            val responseBody = """{ "kitsuId": $id, "meta": { "count": 1 } }"""
 
             serverInstance.stubFor(
                 get(urlPathEqualTo("/graphql"))
