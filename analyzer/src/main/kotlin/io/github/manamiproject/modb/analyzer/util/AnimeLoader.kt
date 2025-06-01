@@ -1,5 +1,8 @@
 package io.github.manamiproject.modb.analyzer.util
 
+import io.github.manamiproject.AnimenewsnetworkAnimeConverter
+import io.github.manamiproject.AnimenewsnetworkConfig
+import io.github.manamiproject.AnimenewsnetworkDownloader
 import io.github.manamiproject.modb.anidb.AnidbAnimeConverter
 import io.github.manamiproject.modb.anidb.AnidbConfig
 import io.github.manamiproject.modb.anidb.AnidbDownloader
@@ -18,7 +21,9 @@ import io.github.manamiproject.modb.app.downloadcontrolstate.DefaultDownloadCont
 import io.github.manamiproject.modb.core.coverage.KoverIgnore
 import io.github.manamiproject.modb.core.extensions.writeToFile
 import io.github.manamiproject.modb.core.json.Json
-import io.github.manamiproject.modb.kitsu.*
+import io.github.manamiproject.modb.kitsu.KitsuAnimeConverter
+import io.github.manamiproject.modb.kitsu.KitsuConfig
+import io.github.manamiproject.modb.kitsu.KitsuDownloader
 import io.github.manamiproject.modb.livechart.LivechartAnimeConverter
 import io.github.manamiproject.modb.livechart.LivechartConfig
 import io.github.manamiproject.modb.livechart.LivechartDownloader
@@ -51,6 +56,11 @@ internal object AnimeLoader {
                 val content = AnilistDownloader.instance.download(animeId)
                 content.writeToFile(AppConfig.instance.workingDir(config).resolve("$animeId.${config.fileSuffix()}"))
                 AnilistAnimeConverter.instance.convert(content)
+            }
+            AnimenewsnetworkConfig.hostname() -> {
+                val content = AnimenewsnetworkDownloader.instance.download(animeId)
+                content.writeToFile(AppConfig.instance.workingDir(config).resolve("$animeId.${config.fileSuffix()}"))
+                AnimenewsnetworkAnimeConverter.instance.convert(content)
             }
             AnimePlanetConfig.hostname() -> {
                 val content = AnimePlanetDownloader.instance.download(animeId)
