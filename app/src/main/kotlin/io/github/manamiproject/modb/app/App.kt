@@ -23,7 +23,6 @@ import io.github.manamiproject.modb.core.coroutines.CoroutineManager.runCoroutin
 import io.github.manamiproject.modb.core.coroutines.ModbDispatchers.LIMITED_NETWORK
 import io.github.manamiproject.modb.core.coverage.KoverIgnore
 import io.github.manamiproject.modb.core.extensions.EMPTY
-import io.github.manamiproject.modb.kitsu.KitsuConfig
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import javax.swing.JOptionPane.*
