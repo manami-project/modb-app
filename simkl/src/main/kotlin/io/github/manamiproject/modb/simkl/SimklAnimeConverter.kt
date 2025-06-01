@@ -42,8 +42,7 @@ public class SimklAnimeConverter(
 ): AnimeConverter {
 
     override suspend fun convert(rawContent: String): AnimeRaw = withContext(LIMITED_CPU) {
-        val data = extractor.extract(
-            rawContent, mapOf(
+        val data = extractor.extract(rawContent, mapOf(
                 "title" to "//img[@id='detailPosterImg']/@alt",
                 "episodes" to "//span[@class='episode']/text()",
                 "episodesFallback" to "//td[@class='SimklTVAboutYearCountry']/text()",
@@ -52,7 +51,7 @@ public class SimklAnimeConverter(
                 "airDate" to "//strong[contains(text(),'Air')][contains(text(),'Date')]/../following-sibling::td/text()",
                 "genres" to "//span[@class='TagGenre']/text()",
                 "subgenres" to "//span[@class='adGenres']/a/text()",
-                "type" to "//strong[text()='Type:']/..//following-sibling::*/text()",
+                "type" to "//strong[text()='Type:']/..//following-sibling::td/text()",
                 "duration" to "//meta[@property='og:duration']/@content",
                 "picture" to "//meta[@property='og:image']/@content",
                 "relatedAnime" to "//detail-related-item[@id='tvdetailrelations']//div[@class='tvdetailrelationsitems']//a/@href",
