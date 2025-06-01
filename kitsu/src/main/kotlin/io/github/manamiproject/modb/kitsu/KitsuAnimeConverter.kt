@@ -105,6 +105,10 @@ public class KitsuAnimeConverter(
     }
 
     private fun extractRelatedAnime(data: ExtractionResult): HashSet<URI> {
+        if (data.notFound("included")) {
+            return hashSetOf()
+        }
+
         val included = data.listNotNull<Map<String, Any>>("included")
 
         return included.filter { it["type"] == "mediaRelationships" }
@@ -139,6 +143,10 @@ public class KitsuAnimeConverter(
     }
 
     private fun extractTags(data: ExtractionResult): HashSet<Tag> {
+        if (data.notFound("included")) {
+            return hashSetOf()
+        }
+
         val included = data.listNotNull<Map<String, Any>>("included")
 
         val genres = included.filter { it["type"] == "genres" }
@@ -188,6 +196,10 @@ public class KitsuAnimeConverter(
     }
 
     private fun extractStudios(data: ExtractionResult): HashSet<Studio> {
+        if (data.notFound("included")) {
+            return hashSetOf()
+        }
+
         val included = data.listNotNull<Map<String, Any>>("included")
 
         val producers = included.filter { it["type"] == "producers" }
@@ -205,6 +217,10 @@ public class KitsuAnimeConverter(
     }
 
     private fun extractProducers(data: ExtractionResult): HashSet<Producer> {
+        if (data.notFound("included")) {
+            return hashSetOf()
+        }
+
         val included = data.listNotNull<Map<String, Any>>("included")
 
         val producers = included.filter { it["type"] == "producers" }

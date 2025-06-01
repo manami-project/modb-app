@@ -395,7 +395,7 @@ internal class KitsuAnimeConverterTest {
     }
 
     @Nested
-    inner class RelationsTests {
+    inner class RelatedAnimeTests {
 
         @Test
         fun `no adaption, no relations`() {
@@ -520,6 +520,30 @@ internal class KitsuAnimeConverterTest {
                 }
 
                 val testFileContent = loadTestResource<String>("KitsuAnimeConverterTest/related_anime/has_adaption_but_no_relation.json")
+
+                val converter = KitsuAnimeConverter(
+                    metaDataProviderConfig = testKitsuConfig,
+                )
+
+                // when
+                val result = converter.convert(testFileContent)
+
+                // then
+                assertThat(result.relatedAnime).isEmpty()
+            }
+        }
+
+        @Test
+        fun `no property called 'included'`() {
+            tempDirectory {
+                // given
+                val testKitsuConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = KitsuConfig.hostname()
+                    override fun buildAnimeLink(id: AnimeId): URI = KitsuConfig.buildAnimeLink(id)
+                    override fun fileSuffix(): FileSuffix = KitsuConfig.fileSuffix()
+                }
+
+                val testFileContent = loadTestResource<String>("KitsuAnimeConverterTest/related_anime/no_property_called_included.json")
 
                 val converter = KitsuAnimeConverter(
                     metaDataProviderConfig = testKitsuConfig,
@@ -848,6 +872,30 @@ internal class KitsuAnimeConverterTest {
                 assertThat(result.tags).isEmpty()
             }
         }
+
+        @Test
+        fun `no property called 'included'`() {
+            tempDirectory {
+                // given
+                val testKitsuConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = KitsuConfig.hostname()
+                    override fun buildAnimeLink(id: AnimeId): URI = KitsuConfig.buildAnimeLink(id)
+                    override fun fileSuffix(): FileSuffix = KitsuConfig.fileSuffix()
+                }
+
+                val testFileContent = loadTestResource<String>("KitsuAnimeConverterTest/tags/no_property_called_included.json")
+
+                val converter = KitsuAnimeConverter(
+                    metaDataProviderConfig = testKitsuConfig,
+                )
+
+                // when
+                val result = converter.convert(testFileContent)
+
+                // then
+                assertThat(result.tags).isEmpty()
+            }
+        }
     }
 
     @Nested
@@ -1156,6 +1204,30 @@ internal class KitsuAnimeConverterTest {
                 assertThat(result.studios).isEmpty()
             }
         }
+
+        @Test
+        fun `no property called 'included'`() {
+            tempDirectory {
+                // given
+                val testKitsuConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = KitsuConfig.hostname()
+                    override fun buildAnimeLink(id: AnimeId): URI = KitsuConfig.buildAnimeLink(id)
+                    override fun fileSuffix(): FileSuffix = KitsuConfig.fileSuffix()
+                }
+
+                val testFileContent = loadTestResource<String>("KitsuAnimeConverterTest/studios/no_property_called_included.json")
+
+                val converter = KitsuAnimeConverter(
+                    metaDataProviderConfig = testKitsuConfig,
+                )
+
+                // when
+                val result = converter.convert(testFileContent)
+
+                // then
+                assertThat(result.studios).isEmpty()
+            }
+        }
     }
 
     @Nested
@@ -1203,6 +1275,30 @@ internal class KitsuAnimeConverterTest {
                 }
 
                 val testFileContent = loadTestResource<String>("KitsuAnimeConverterTest/producers/no_producers.json")
+
+                val converter = KitsuAnimeConverter(
+                    metaDataProviderConfig = testKitsuConfig,
+                )
+
+                // when
+                val result = converter.convert(testFileContent)
+
+                // then
+                assertThat(result.producers).isEmpty()
+            }
+        }
+
+        @Test
+        fun `no property called 'included'`() {
+            tempDirectory {
+                // given
+                val testKitsuConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = KitsuConfig.hostname()
+                    override fun buildAnimeLink(id: AnimeId): URI = KitsuConfig.buildAnimeLink(id)
+                    override fun fileSuffix(): FileSuffix = KitsuConfig.fileSuffix()
+                }
+
+                val testFileContent = loadTestResource<String>("KitsuAnimeConverterTest/producers/no_property_called_included.json")
 
                 val converter = KitsuAnimeConverter(
                     metaDataProviderConfig = testKitsuConfig,
