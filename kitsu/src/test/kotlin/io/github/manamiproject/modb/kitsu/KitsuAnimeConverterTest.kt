@@ -1176,7 +1176,8 @@ internal class KitsuAnimeConverterTest {
 
                 // then
                 assertThat(result.studios).containsExactlyInAnyOrder(
-                    "madhouse",
+                    "shin-ei animation",
+                    "studio pierrot",
                 )
             }
         }

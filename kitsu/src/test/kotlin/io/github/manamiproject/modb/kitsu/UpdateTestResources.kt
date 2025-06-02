@@ -70,7 +70,7 @@ private val files = mapOf(
     "KitsuAnimeConverterTest/tags/no_tags.json" to "43298",
     "KitsuAnimeConverterTest/tags/no_property_called_included.json" to "45567",
 
-    "KitsuAnimeConverterTest/studios/multiple_studios.json" to "1376",
+    "KitsuAnimeConverterTest/studios/multiple_studios.json" to "5443",
     "KitsuAnimeConverterTest/studios/no_studios.json" to "6337",
     "KitsuAnimeConverterTest/studios/no_property_called_included.json" to "45567",
 
