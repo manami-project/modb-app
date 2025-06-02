@@ -134,8 +134,8 @@ internal class AnimeAdapter: JsonAdapter<Anime>() {
             !pictureDeserialized -> throw IllegalStateException("Property 'picture' is either missing or null.")
             !thumbnailDeserialized -> throw IllegalStateException("Property 'thumbnail' is either missing or null.")
             !synonymsDeserialized -> throw IllegalStateException("Property 'synonyms' is either missing or null.")
-            //FIXME: activate after migration: !studiosDeserialized -> throw IllegalStateException("Property 'studios' is either missing or null.")
-            //FIXME: activate after migration: !producersDeserialized -> throw IllegalStateException("Property 'producers' is either missing or null.")
+            !studiosDeserialized -> throw IllegalStateException("Property 'studios' is either missing or null.")
+            !producersDeserialized -> throw IllegalStateException("Property 'producers' is either missing or null.")
             !relatedAnimeDeserialized -> throw IllegalStateException("Property 'relatedAnime' is either missing or null.")
             !tagsDeserialized -> throw IllegalStateException("Property 'tags' is either missing or null.")
         }
