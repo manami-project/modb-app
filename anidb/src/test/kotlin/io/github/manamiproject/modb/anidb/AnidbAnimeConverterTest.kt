@@ -1768,6 +1768,28 @@ internal class AnidbAnimeConverterTest {
                 assertThat(result.studios).isEmpty()
             }
         }
+
+        @Test
+        fun `single person, not a company, is mentioned under animation works resulting in an empty list - fixes #466`() {
+            runBlocking {
+                // given
+                val testAnidbConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = AnidbConfig.hostname()
+                    override fun buildAnimeLink(id: AnimeId): URI = AnidbConfig.buildAnimeLink(id)
+                    override fun fileSuffix(): FileSuffix = AnidbConfig.fileSuffix()
+                }
+
+                val testFile = loadTestResource<String>("AnidbAnimeConverterTest/studios/single-person-for-animation-works.html")
+
+                val converter = AnidbAnimeConverter(testAnidbConfig)
+
+                // when
+                val result = converter.convert(testFile)
+
+                // then
+                assertThat(result.studios).isEmpty()
+            }
+        }
     }
 
     @Nested
