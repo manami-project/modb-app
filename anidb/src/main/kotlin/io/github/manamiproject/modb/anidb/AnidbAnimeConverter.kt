@@ -67,6 +67,7 @@ public class AnidbAnimeConverter(
         val animationDataString = rawContent.substringAfter(">Animation Work (")
             .substringBefore("id=\"staffid_")
             .let { if (it.startsWith("<!DOCTYPE html>")) EMPTY else it }
+            .let { if (it.endsWith("</html>")) EMPTY else it }
 
         val animationData = extractor.extract(animationDataString, mapOf(
             "studios" to "//a/text()",
