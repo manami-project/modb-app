@@ -67,6 +67,7 @@ fun main() = runCoroutine {
     listOf(
         NoLockFilesLeftValidationPostProcessor.instance,
         DownloadControlStateWeeksValidationPostProcessor.instance,
+        StudiosAndProducersExtractionChecker.instance,
         DuplicatesValidationPostProcessor.instance,
         DeadEntriesValidationPostProcessor.instance,
         SourcesConsistencyValidationPostProcessor.instance,
