@@ -285,6 +285,7 @@ object Analyzer {
 
     private fun openUrls(sources: Collection<URI>) = sources.forEach { Desktop.getDesktop().browse(it) }
 
+    @KoverIgnore
     private enum class Options(val value: String) {
         DUPLICATES("1"),
         CLUSTER_SIZES("2"),
