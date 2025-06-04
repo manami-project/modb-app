@@ -186,6 +186,10 @@ public data class AnimeRaw(
             union.filter { lookup -> lookup != check }
                 .filter { lookup -> lookup.startsWith(check) }
                 .any { lookup -> lookup.length > check.length }
+        }.filterNot { check ->
+            union.filter { lookup -> lookup != check }
+                .filter { lookup -> lookup.endsWith(check) }
+                .any { lookup -> lookup.length > check.length }
         }.forEach { _studios.add(it) }
 
         return this

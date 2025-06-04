@@ -1324,10 +1324,32 @@ internal class AnimeRawTest {
             }
 
             @Test
-            fun `prevent duplicates between longer and shorter versions of the same studio name`() {
+            fun `prevent duplicates between longer and shorter versions of the same studio name - same prefix`() {
                 // given
                 val studio1 = "satelight"
                 val studio2 = "satelight inc."
+
+                // when
+                val result = AnimeRaw(
+                    _title = "Test",
+                    _studios = hashSetOf(
+                        studio2,
+                        studio1,
+                    ),
+                )
+
+                // then
+                assertThat(result.studios).hasSize(1)
+                assertThat(result.studios).containsExactlyInAnyOrder(
+                    studio2,
+                )
+            }
+
+            @Test
+            fun `prevent duplicates between longer and shorter versions of the same studio name - same suffix`() {
+                // given
+                val studio1 = "gallop"
+                val studio2 = "studio gallop"
 
                 // when
                 val result = AnimeRaw(
@@ -1566,10 +1588,32 @@ internal class AnimeRawTest {
             }
 
             @Test
-            fun `prevent duplicates between longer and shorter versions of the same studio name`() {
+            fun `prevent duplicates between longer and shorter versions of the same studio name - same prefix`() {
                 // given
                 val studio1 = "satelight"
                 val studio2 = "satelight inc."
+                val anime = AnimeRaw("Test")
+
+                // when
+                anime.addStudios(listOf(
+                    studio2,
+                    studio1,
+                    studio1,
+                    studio2,
+                ))
+
+                // then
+                assertThat(anime.studios).hasSize(1)
+                assertThat(anime.studios).containsExactlyInAnyOrder(
+                    studio2,
+                )
+            }
+
+            @Test
+            fun `prevent duplicates between longer and shorter versions of the same studio name - same suffix`() {
+                // given
+                val studio1 = "gallop"
+                val studio2 = "studio gallop"
                 val anime = AnimeRaw("Test")
 
                 // when
@@ -1788,10 +1832,32 @@ internal class AnimeRawTest {
             }
 
             @Test
-            fun `prevent duplicates between longer and shorter versions of the same studio name`() {
+            fun `prevent duplicates between longer and shorter versions of the same studio name - same prefix`() {
                 // given
                 val studio1 = "satelight"
                 val studio2 = "satelight inc."
+                val anime = AnimeRaw("Test")
+
+                // when
+                anime.addStudios(
+                    studio1,
+                    studio2,
+                    studio1,
+                    studio2,
+                )
+
+                // then
+                assertThat(anime.studios).hasSize(1)
+                assertThat(anime.studios).containsExactlyInAnyOrder(
+                    studio2,
+                )
+            }
+
+            @Test
+            fun `prevent duplicates between longer and shorter versions of the same studio name - same suffix`() {
+                // given
+                val studio1 = "gallop"
+                val studio2 = "studio gallop"
                 val anime = AnimeRaw("Test")
 
                 // when
