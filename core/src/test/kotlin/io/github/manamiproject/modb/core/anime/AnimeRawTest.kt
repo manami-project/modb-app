@@ -1299,6 +1299,38 @@ internal class AnimeRawTest {
             }
 
             @Test
+            fun `correctly adds a single value`() {
+                // given
+                val studio = "madhouse"
+
+                // when
+                val result = AnimeRaw(
+                    _title = "Test",
+                    _studios = hashSetOf(
+                        studio,
+                    ),
+                )
+
+                // then
+                assertThat(result.studios).hasSize(1)
+                assertThat(result.studios).containsExactlyInAnyOrder(
+                    studio,
+                )
+            }
+
+            @Test
+            fun `does nothing in case of an empty list`() {
+                // when
+                val result = AnimeRaw(
+                    _title = "Test",
+                    _studios = hashSetOf(),
+                )
+
+                // then
+                assertThat(result.studios).isEmpty()
+            }
+
+            @Test
             fun `prevent duplicates`() {
                 // given
                 val studio1 = "a studio"
@@ -1367,9 +1399,33 @@ internal class AnimeRawTest {
                 )
             }
 
+            @Test
+            fun `prevent overlapping duplicates where the last part of a name and the first part of a name identify duplicates`() {
+                // given
+                val studio1 = "gallop co., ltd."
+                val studio2 = "studio gallop"
+                val studio3 = "gallop"
+
+                // when
+                val result = AnimeRaw(
+                    _title = "Test",
+                    _studios = hashSetOf(
+                        studio2,
+                        studio1,
+                        studio3,
+                    ),
+                )
+
+                // then
+                assertThat(result.studios).hasSize(1)
+                assertThat(result.studios).containsExactlyInAnyOrder(
+                    studio1,
+                )
+            }
+
             @ParameterizedTest
             @ValueSource(strings = [" Death Note", "Death Note ", "  Death   Note  ", "DEATH NOTE", "", " ", "    ", "\u200C"])
-            fun `doesn't fix tags if activateChecks is false`(value: String) {
+            fun `doesn't fix studios if activateChecks is false`(value: String) {
                 // when
                 val obj = AnimeRaw(
                     _title = "デスノート",
@@ -1565,6 +1621,36 @@ internal class AnimeRawTest {
             }
 
             @Test
+            fun `correctly adds a single value`() {
+                // given
+                val studio = "madhouse"
+                val anime = AnimeRaw("Test")
+
+                // when
+                anime.addStudios(listOf(
+                    studio,
+                ))
+
+                // then
+                assertThat(anime.studios).hasSize(1)
+                assertThat(anime.studios).containsExactlyInAnyOrder(
+                    studio,
+                )
+            }
+
+            @Test
+            fun `does nothing in case of an empty list`() {
+                // given
+                val anime = AnimeRaw("Test")
+
+                // when
+                anime.addStudios(listOf())
+
+                // then
+                assertThat(anime.studios).isEmpty()
+            }
+
+            @Test
             fun `prevent duplicates`() {
                 // given
                 val studio1 = "a studio"
@@ -1598,8 +1684,6 @@ internal class AnimeRawTest {
                 anime.addStudios(listOf(
                     studio2,
                     studio1,
-                    studio1,
-                    studio2,
                 ))
 
                 // then
@@ -1620,14 +1704,34 @@ internal class AnimeRawTest {
                 anime.addStudios(listOf(
                     studio2,
                     studio1,
-                    studio1,
-                    studio2,
                 ))
 
                 // then
                 assertThat(anime.studios).hasSize(1)
                 assertThat(anime.studios).containsExactlyInAnyOrder(
                     studio2,
+                )
+            }
+
+            @Test
+            fun `prevent overlapping duplicates where the last part of a name and the first part of a name identify duplicates`() {
+                // given
+                val studio1 = "gallop co., ltd."
+                val studio2 = "studio gallop"
+                val studio3 = "gallop"
+                val anime = AnimeRaw("Test")
+
+                // when
+                anime.addStudios(listOf(
+                    studio2,
+                    studio1,
+                    studio3,
+                ))
+
+                // then
+                assertThat(anime.studios).hasSize(1)
+                assertThat(anime.studios).containsExactlyInAnyOrder(
+                    studio1,
                 )
             }
         }
@@ -1809,6 +1913,36 @@ internal class AnimeRawTest {
             }
 
             @Test
+            fun `correctly adds a single value`() {
+                // given
+                val studio = "madhouse"
+                val anime = AnimeRaw("Test")
+
+                // when
+                anime.addStudios(
+                    studio,
+                )
+
+                // then
+                assertThat(anime.studios).hasSize(1)
+                assertThat(anime.studios).containsExactlyInAnyOrder(
+                    studio,
+                )
+            }
+
+            @Test
+            fun `does nothing in case of an empty list`() {
+                // given
+                val anime = AnimeRaw("Test")
+
+                // when
+                anime.addStudios()
+
+                // then
+                assertThat(anime.studios).isEmpty()
+            }
+
+            @Test
             fun `prevent duplicates`() {
                 // given
                 val studio1 = "a studio"
@@ -1842,8 +1976,6 @@ internal class AnimeRawTest {
                 anime.addStudios(
                     studio1,
                     studio2,
-                    studio1,
-                    studio2,
                 )
 
                 // then
@@ -1864,14 +1996,34 @@ internal class AnimeRawTest {
                 anime.addStudios(
                     studio1,
                     studio2,
-                    studio1,
-                    studio2,
                 )
 
                 // then
                 assertThat(anime.studios).hasSize(1)
                 assertThat(anime.studios).containsExactlyInAnyOrder(
                     studio2,
+                )
+            }
+
+            @Test
+            fun `prevent overlapping duplicates where the last part of a name and the first part of a name identify duplicates`() {
+                // given
+                val studio1 = "gallop co., ltd."
+                val studio2 = "studio gallop"
+                val studio3 = "gallop"
+                val anime = AnimeRaw("Test")
+
+                // when
+                anime.addStudios(
+                    studio3,
+                    studio2,
+                    studio1,
+                )
+
+                // then
+                assertThat(anime.studios).hasSize(1)
+                assertThat(anime.studios).containsExactlyInAnyOrder(
+                    studio1,
                 )
             }
         }
@@ -2089,6 +2241,38 @@ internal class AnimeRawTest {
             }
 
             @Test
+            fun `correctly adds a single value`() {
+                // given
+                val producer = "madhouse"
+
+                // when
+                val result = AnimeRaw(
+                    _title = "Test",
+                    _producers = hashSetOf(
+                        producer,
+                    ),
+                )
+
+                // then
+                assertThat(result.producers).hasSize(1)
+                assertThat(result.producers).containsExactlyInAnyOrder(
+                    producer,
+                )
+            }
+
+            @Test
+            fun `does nothing in case of an empty list`() {
+                // when
+                val result = AnimeRaw(
+                    _title = "Test",
+                    _producers = hashSetOf(),
+                )
+
+                // then
+                assertThat(result.producers).isEmpty()
+            }
+
+            @Test
             fun `prevent duplicates`() {
                 // given
                 val producer1 = "a producer"
@@ -2125,8 +2309,6 @@ internal class AnimeRawTest {
                     _producers = hashSetOf(
                         producer2,
                         producer1,
-                        producer1,
-                        producer2,
                     ),
                 )
 
@@ -2149,8 +2331,6 @@ internal class AnimeRawTest {
                     _producers = hashSetOf(
                         producer2,
                         producer1,
-                        producer1,
-                        producer2,
                     ),
                 )
 
@@ -2161,9 +2341,33 @@ internal class AnimeRawTest {
                 )
             }
 
+            @Test
+            fun `prevent overlapping duplicates where the last part of a name and the first part of a name identify duplicates`() {
+                // given
+                val producer1 = "gallop co., ltd."
+                val producer2 = "studio gallop"
+                val producer3 = "gallop"
+
+                // when
+                val result = AnimeRaw(
+                    _title = "Test",
+                    _producers = hashSetOf(
+                        producer2,
+                        producer3,
+                        producer1,
+                    ),
+                )
+
+                // then
+                assertThat(result.producers).hasSize(1)
+                assertThat(result.producers).containsExactlyInAnyOrder(
+                    producer1,
+                )
+            }
+
             @ParameterizedTest
             @ValueSource(strings = [" Death Note", "Death Note ", "  Death   Note  ", "DEATH NOTE", "", " ", "    ", "\u200C"])
-            fun `doesn't fix tags if activateChecks is false`(value: String) {
+            fun `doesn't fix producers if activateChecks is false`(value: String) {
                 // when
                 val obj = AnimeRaw(
                     _title = "デスノート",
@@ -2359,6 +2563,36 @@ internal class AnimeRawTest {
             }
 
             @Test
+            fun `correctly adds a single value`() {
+                // given
+                val producer = "madhouse"
+                val anime = AnimeRaw("Test")
+
+                // when
+                anime.addProducers(listOf(
+                    producer,
+                ))
+
+                // then
+                assertThat(anime.producers).hasSize(1)
+                assertThat(anime.producers).containsExactlyInAnyOrder(
+                    producer,
+                )
+            }
+
+            @Test
+            fun `does nothing in case of an empty list`() {
+                // given
+                val anime = AnimeRaw("Test")
+
+                // when
+                anime.addProducers(listOf())
+
+                // then
+                assertThat(anime.producers).isEmpty()
+            }
+
+            @Test
             fun `prevent duplicates`() {
                 // given
                 val producer1 = "a producer"
@@ -2390,8 +2624,6 @@ internal class AnimeRawTest {
 
                 // when
                 anime.addProducers(listOf(
-                    producer2,
-                    producer1,
                     producer1,
                     producer2,
                 ))
@@ -2412,8 +2644,6 @@ internal class AnimeRawTest {
 
                 // when
                 anime.addProducers(listOf(
-                    producer2,
-                    producer1,
                     producer1,
                     producer2,
                 ))
@@ -2422,6 +2652,28 @@ internal class AnimeRawTest {
                 assertThat(anime.producers).hasSize(1)
                 assertThat(anime.producers).containsExactlyInAnyOrder(
                     producer2,
+                )
+            }
+
+            @Test
+            fun `prevent overlapping duplicates where the last part of a name and the first part of a name identify duplicates`() {
+                // given
+                val producer1 = "gallop co., ltd."
+                val producer2 = "studio gallop"
+                val producer3 = "gallop"
+                val anime = AnimeRaw("Test")
+
+                // when
+                anime.addProducers(listOf(
+                    producer2,
+                    producer3,
+                    producer1,
+                ))
+
+                // then
+                assertThat(anime.producers).hasSize(1)
+                assertThat(anime.producers).containsExactlyInAnyOrder(
+                    producer1,
                 )
             }
         }
@@ -2603,6 +2855,36 @@ internal class AnimeRawTest {
             }
 
             @Test
+            fun `correctly adds a single value`() {
+                // given
+                val producer = "madhouse"
+                val anime = AnimeRaw("Test")
+
+                // when
+                anime.addProducers(
+                    producer,
+                )
+
+                // then
+                assertThat(anime.producers).hasSize(1)
+                assertThat(anime.producers).containsExactlyInAnyOrder(
+                    producer,
+                )
+            }
+
+            @Test
+            fun `does nothing in case of an empty list`() {
+                // given
+                val anime = AnimeRaw("Test")
+
+                // when
+                anime.addProducers()
+
+                // then
+                assertThat(anime.producers).isEmpty()
+            }
+
+            @Test
             fun `prevent duplicates`() {
                 // given
                 val producer1 = "a producer"
@@ -2636,8 +2918,6 @@ internal class AnimeRawTest {
                 anime.addProducers(
                     producer1,
                     producer2,
-                    producer1,
-                    producer2,
                 )
 
                 // then
@@ -2658,14 +2938,34 @@ internal class AnimeRawTest {
                 anime.addProducers(
                     producer1,
                     producer2,
-                    producer1,
-                    producer2,
                 )
 
                 // then
                 assertThat(anime.producers).hasSize(1)
                 assertThat(anime.producers).containsExactlyInAnyOrder(
                     producer2,
+                )
+            }
+
+            @Test
+            fun `prevent overlapping duplicates where the last part of a name and the first part of a name identify duplicates`() {
+                // given
+                val producer1 = "gallop co., ltd."
+                val producer2 = "studio gallop"
+                val producer3 = "gallop"
+                val anime = AnimeRaw("Test")
+
+                // when
+                anime.addProducers(
+                    producer1,
+                    producer2,
+                    producer3,
+                )
+
+                // then
+                assertThat(anime.producers).hasSize(1)
+                assertThat(anime.producers).containsExactlyInAnyOrder(
+                    producer1,
                 )
             }
         }
