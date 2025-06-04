@@ -180,9 +180,9 @@ public data class AnimeRaw(
             .map { it.lowercase() }
             .toSet()
 
-        val union =_studios.union(newNormalized).sortedBy { it.length }
+        val union =_studios.toHashSet().union(newNormalized).sortedBy { it.length }
 
-        union.filterNot { check -> // prevent duplicates with same prefix
+        val cleanedDuplicatesFirstStage = union.filterNot { check -> // prevent duplicates with same prefix
             union.filter { lookup -> lookup != check }
                 .filter { lookup -> lookup.startsWith(check) }
                 .any { lookup -> lookup.length > check.length }
@@ -190,7 +190,10 @@ public data class AnimeRaw(
             union.filter { lookup -> lookup != check }
                 .filter { lookup -> lookup.endsWith(check) }
                 .any { lookup -> lookup.length > check.length }
-        }.forEach { _studios.add(it) }
+        }
+
+        _studios.clear()
+        removeOverlappingDuplicates(cleanedDuplicatesFirstStage).forEach { _studios.add(it) }
 
         return this
     }
@@ -222,9 +225,9 @@ public data class AnimeRaw(
             .map { it.lowercase() }
             .toSet()
 
-        val union =_producers.union(newNormalized).sortedBy { it.length }
+        val union =_producers.toHashSet().union(newNormalized).sortedBy { it.length }
 
-        union.filterNot { check -> // prevent duplicates with same prefix
+        val cleanedDuplicatesFirstStage = union.filterNot { check -> // prevent duplicates with same prefix
             union.filter { lookup -> lookup != check }
                 .filter { lookup -> lookup.startsWith(check) }
                 .any { lookup -> lookup.length > check.length }
@@ -232,7 +235,10 @@ public data class AnimeRaw(
             union.filter { lookup -> lookup != check }
                 .filter { lookup -> lookup.endsWith(check) }
                 .any { lookup -> lookup.length > check.length }
-        }.forEach { _producers.add(it) }
+        }
+
+        _producers.clear()
+        removeOverlappingDuplicates(cleanedDuplicatesFirstStage).forEach { _producers.add(it) }
 
         return this
     }
@@ -544,5 +550,36 @@ public data class AnimeRaw(
               tags         = ${_tags.sorted()}
             )
         """.trimIndent()
+    }
+
+    private fun removeOverlappingDuplicates(list: Collection<String>): Collection<String> {
+        if (list.isEmpty() || list.size == 1) {
+            return list
+        }
+
+        val ret = hashSetOf<String>()
+
+        for ((outerIndex, outerName) in list.withIndex()) {
+            val last = outerName.split(' ').lastOrNull() ?: continue
+
+            if (outerIndex + 1 == list.size) {
+                ret.add(outerName)
+            }
+
+            for ((_, innerName) in list.withIndex().drop(outerIndex + 1)) {
+                val first = innerName.split(' ').firstOrNull() ?: continue
+
+                if (last == first) {
+                    when {
+                        last.length > first.length -> ret.add(outerName)
+                        else -> ret.add(innerName)
+                    }
+                } else {
+                    ret.add(outerName)
+                }
+            }
+        }
+
+        return ret
     }
 }
