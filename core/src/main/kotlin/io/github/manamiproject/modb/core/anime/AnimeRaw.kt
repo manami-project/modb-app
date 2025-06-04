@@ -182,11 +182,11 @@ public data class AnimeRaw(
 
         val union =_studios.union(newNormalized).sortedBy { it.length }
 
-        union.filterNot { check ->
+        union.filterNot { check -> // prevent duplicates with same prefix
             union.filter { lookup -> lookup != check }
                 .filter { lookup -> lookup.startsWith(check) }
                 .any { lookup -> lookup.length > check.length }
-        }.filterNot { check ->
+        }.filterNot { check -> // prevent duplicates with same suffix
             union.filter { lookup -> lookup != check }
                 .filter { lookup -> lookup.endsWith(check) }
                 .any { lookup -> lookup.length > check.length }
@@ -224,9 +224,13 @@ public data class AnimeRaw(
 
         val union =_producers.union(newNormalized).sortedBy { it.length }
 
-        union.filterNot { check ->
+        union.filterNot { check -> // prevent duplicates with same prefix
             union.filter { lookup -> lookup != check }
                 .filter { lookup -> lookup.startsWith(check) }
+                .any { lookup -> lookup.length > check.length }
+        }.filterNot { check -> // prevent duplicates with same suffix
+            union.filter { lookup -> lookup != check }
+                .filter { lookup -> lookup.endsWith(check) }
                 .any { lookup -> lookup.length > check.length }
         }.forEach { _producers.add(it) }
 
