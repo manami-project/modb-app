@@ -2,6 +2,7 @@ package io.github.manamiproject.modb.app.crawlers.anidb
 
 import io.github.manamiproject.modb.anidb.AnidbConfig
 import io.github.manamiproject.modb.anidb.AnidbDownloader
+import io.github.manamiproject.modb.anidb.AnidbDownloader.Companion.ANIDB_PENDING_FILE_INDICATOR
 import io.github.manamiproject.modb.anidb.CrawlerDetectedException
 import io.github.manamiproject.modb.app.config.AppConfig
 import io.github.manamiproject.modb.app.config.Config
@@ -17,7 +18,10 @@ import io.github.manamiproject.modb.core.config.MetaDataProviderConfig
 import io.github.manamiproject.modb.core.coverage.KoverIgnore
 import io.github.manamiproject.modb.core.downloader.Downloader
 import io.github.manamiproject.modb.core.excludeFromTestContext
+import io.github.manamiproject.modb.core.extensions.createShuffledList
+import io.github.manamiproject.modb.core.extensions.fileName
 import io.github.manamiproject.modb.core.extensions.neitherNullNorBlank
+import io.github.manamiproject.modb.core.extensions.remove
 import io.github.manamiproject.modb.core.extensions.writeToFile
 import io.github.manamiproject.modb.core.logging.LoggerDelegate
 import io.github.manamiproject.modb.core.random
@@ -25,6 +29,7 @@ import kotlinx.coroutines.delay
 import java.net.ConnectException
 import java.net.NoRouteToHostException
 import java.net.UnknownHostException
+import kotlin.io.path.forEachDirectoryEntry
 import kotlin.time.DurationUnit.MILLISECONDS
 import kotlin.time.toDuration
 
@@ -57,11 +62,17 @@ class AnidbCrawler(
     override suspend fun start() {
         log.info { "Starting crawler for [${metaDataProviderConfig.hostname()}]." }
 
-        val idDownloadList = idRangeSelector.idDownloadList()
+        val idDownloadList = idRangeSelector.idDownloadList().toMutableList()
 
-        when {
-            idDownloadList.isEmpty() -> log.info { "No IDs left for [${metaDataProviderConfig.hostname()}] crawler to download." }
-            else -> startDownload(idDownloadList)
+        if (idDownloadList.isNotEmpty()) {
+            appConfig.workingDir(metaDataProviderConfig).forEachDirectoryEntry("*.${ANIDB_PENDING_FILE_SUFFIX}") {
+                idDownloadList.remove(it.fileName().remove(".${ANIDB_PENDING_FILE_SUFFIX}").toInt())
+            }
+
+            when {
+                idDownloadList.isEmpty() -> log.info { "No IDs left for [${metaDataProviderConfig.hostname()}] crawler to download." }
+                else -> startDownload(idDownloadList)
+            }
         }
 
         log.info { "Finished crawling data for [${metaDataProviderConfig.hostname()}]." }
@@ -69,8 +80,6 @@ class AnidbCrawler(
 
     private suspend fun startDownload(idDownloadList: List<Int>) = repeat(idDownloadList.size) { index ->
         val animeId = idDownloadList[index]
-        val file = appConfig.workingDir(metaDataProviderConfig).resolve("$animeId.${metaDataProviderConfig.fileSuffix()}")
-
         wait()
 
         log.debug { "Downloading ${index+1}/${idDownloadList.size}: [anidbId=$animeId]" }
@@ -95,8 +104,15 @@ class AnidbCrawler(
             }
         }
 
-        if (response.neitherNullNorBlank()) {
-            response.writeToFile(file, true)
+        when {
+            response.neitherNullNorBlank() && response != ANIDB_PENDING_FILE_INDICATOR -> {
+                val file = appConfig.workingDir(metaDataProviderConfig).resolve("$animeId.${metaDataProviderConfig.fileSuffix()}")
+                response.writeToFile(file, true)
+            }
+            response == ANIDB_PENDING_FILE_INDICATOR -> {
+                val pendingFile = appConfig.workingDir(metaDataProviderConfig).resolve("$animeId.${ANIDB_PENDING_FILE_SUFFIX}")
+                response.writeToFile(pendingFile, true)
+            }
         }
     }
 
@@ -115,5 +131,11 @@ class AnidbCrawler(
          * @since 1.0.0
          */
         val instance: AnidbCrawler by lazy { AnidbCrawler() }
+
+        /**
+         * Suffix for pending files which have been downloaded, but cannot be converted.
+         * @since 7.0.0
+         */
+        const val ANIDB_PENDING_FILE_SUFFIX: String = "pending"
     }
 }

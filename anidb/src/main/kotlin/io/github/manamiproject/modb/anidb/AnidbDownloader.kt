@@ -13,6 +13,8 @@ import kotlinx.coroutines.withContext
 
 /**
  * Downloads anime data from anidb.net
+ * In case the anime addition is pending, the [download] function will return a static [String] (see [ANIDB_PENDING_FILE_INDICATOR]).
+ * The caller must handle this behavior.
  * @since 1.0.0
  * @property metaDataProviderConfig Configuration for downloading data.
  * @property httpClient To actually download the anime data.
@@ -41,7 +43,7 @@ public class AnidbDownloader(
                 onDeadEntry.invoke(id)
                 EMPTY
             }
-            responseChecker.isAdditionPending() -> EMPTY
+            responseChecker.isAdditionPending() -> ANIDB_PENDING_FILE_INDICATOR
             else -> response.bodyAsText
         }
     }
@@ -54,5 +56,11 @@ public class AnidbDownloader(
          * @since 1.0.0
          */
         public val instance: AnidbDownloader by lazy { AnidbDownloader() }
+
+        /**
+         * Indicator for pending files which have been downloaded, but cannot be converted.
+         * @since 7.0.0
+         */
+        public const val ANIDB_PENDING_FILE_INDICATOR: String = ">pending<"
     }
 }
