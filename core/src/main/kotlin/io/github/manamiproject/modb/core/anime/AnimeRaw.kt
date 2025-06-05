@@ -10,6 +10,8 @@ import io.github.manamiproject.modb.core.anime.AnimeStatus.UNKNOWN as UNKNOWN_ST
 import io.github.manamiproject.modb.core.anime.AnimeType.UNKNOWN as UNKNOWN_TYPE
 import io.github.manamiproject.modb.core.anime.Duration.Companion.UNKNOWN as UNKNOWN_DURATION
 import java.net.URI
+import java.util.concurrent.ConcurrentHashMap
+import java.util.concurrent.ConcurrentMap
 
 
 /**
@@ -557,29 +559,43 @@ public data class AnimeRaw(
             return list
         }
 
-        val ret = hashSetOf<String>()
+        val ret = ConcurrentHashMap.newKeySet<String>(list.size).apply { addAll(list) }
+        var lastSize: Int
 
-        for ((outerIndex, outerName) in list.withIndex()) {
-            val last = outerName.split(' ').lastOrNull() ?: continue
+        do {
+            lastSize = ret.size
 
-            if (outerIndex + 1 == list.size) {
-                ret.add(outerName)
-            }
+            for (outerName in ret) {
+                val last = outerName.split(' ').lastOrNull() ?: continue
 
-            for ((_, innerName) in list.withIndex().drop(outerIndex + 1)) {
-                val first = innerName.split(' ').firstOrNull() ?: continue
+                for (innerName in ret) {
+                    val first = innerName.split(' ').firstOrNull() ?: continue
 
-                if (last == first) {
-                    when {
-                        last.length > first.length -> ret.add(outerName)
-                        else -> ret.add(innerName)
+                    if (last == first && outerName != innerName && last !in falsePostives) {
+                        when {
+                            outerName.length > innerName.length -> ret.remove(innerName)
+                            else -> ret.remove(outerName)
+                        }
                     }
-                } else {
-                    ret.add(outerName)
                 }
             }
-        }
+        } while (lastSize > ret.size)
 
         return ret
+    }
+
+    private companion object {
+        private val falsePostives = hashSetOf<String>(
+            "anime",
+            "studio",
+            "tv",
+            "tokyo",
+            "groove",
+            "media",
+            "production",
+            "animation",
+            "television",
+            "group",
+        )
     }
 }

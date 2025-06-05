@@ -327,8 +327,9 @@ internal class AnimeRawTest {
                 )
 
                 // then
-                assertThat(result.synonyms).hasSize(1)
-                assertThat(result.synonyms.first()).isEqualTo("Caderno da Morte")
+                assertThat(result.synonyms).containsExactly(
+                    "Caderno da Morte",
+                )
             }
 
             @ParameterizedTest
@@ -354,8 +355,9 @@ internal class AnimeRawTest {
                 )
 
                 // then
-                assertThat(result.synonyms).hasSize(1)
-                assertThat(result.synonyms.first()).isEqualTo("Caderno da Morte")
+                assertThat(result.synonyms).containsExactly(
+                    "Caderno da Morte",
+                )
             }
 
             @Test
@@ -901,8 +903,9 @@ internal class AnimeRawTest {
                 )
 
                 // then
-                assertThat(anime.synonyms).hasSize(1)
-                assertThat(anime.synonyms.first()).isEqualTo("Caderno da Morte")
+                assertThat(anime.synonyms).containsExactly(
+                    "Caderno da Morte",
+                )
             }
 
             @ParameterizedTest
@@ -928,8 +931,9 @@ internal class AnimeRawTest {
                 )
 
                 // then
-                assertThat(anime.synonyms).hasSize(1)
-                assertThat(anime.synonyms.first()).isEqualTo("Caderno da Morte")
+                assertThat(anime.synonyms).containsExactly(
+                    "Caderno da Morte",
+                )
             }
 
             @Test
@@ -1312,7 +1316,6 @@ internal class AnimeRawTest {
                 )
 
                 // then
-                assertThat(result.studios).hasSize(1)
                 assertThat(result.studios).containsExactlyInAnyOrder(
                     studio,
                 )
@@ -1348,7 +1351,6 @@ internal class AnimeRawTest {
                 )
 
                 // then
-                assertThat(result.studios).hasSize(2)
                 assertThat(result.studios).containsExactlyInAnyOrder(
                     studio1,
                     studio2,
@@ -1371,7 +1373,6 @@ internal class AnimeRawTest {
                 )
 
                 // then
-                assertThat(result.studios).hasSize(1)
                 assertThat(result.studios).containsExactlyInAnyOrder(
                     studio2,
                 )
@@ -1393,14 +1394,13 @@ internal class AnimeRawTest {
                 )
 
                 // then
-                assertThat(result.studios).hasSize(1)
                 assertThat(result.studios).containsExactlyInAnyOrder(
                     studio2,
                 )
             }
 
             @Test
-            fun `prevent overlapping duplicates where the last part of a name and the first part of a name identify duplicates`() {
+            fun `prevent overlapping duplicates where the last part of a name and the first part of a name identify duplicates - single case`() {
                 // given
                 val studio1 = "gallop co., ltd."
                 val studio2 = "studio gallop"
@@ -1417,9 +1417,346 @@ internal class AnimeRawTest {
                 )
 
                 // then
-                assertThat(result.studios).hasSize(1)
                 assertThat(result.studios).containsExactlyInAnyOrder(
                     studio1,
+                )
+            }
+
+            @Test
+            fun `prevent overlapping duplicates where the last part of a name and the first part of a name identify duplicates - multiple case`() {
+                // given
+                val studio1 = "gallop co., ltd."
+                val studio2 = "studio gallop"
+                val studio3 = "tokyo HQ gallop"
+                val studio4 = "gallop made up"
+
+                // when
+                val result = AnimeRaw(
+                    _title = "Test",
+                    _studios = hashSetOf(
+                        studio2,
+                        studio1,
+                        studio3,
+                        studio4,
+                    ),
+                )
+
+                // then
+                assertThat(result.studios).containsExactlyInAnyOrder(
+                    studio1,
+                )
+            }
+
+            @Test
+            fun `prevent false positive for identifying overlapping duplicates - ANIME`() {
+                // given
+                val studio1 = "anime beans"
+                val studio2 = "tate anime"
+
+                // when
+                val result = AnimeRaw(
+                    _title = "Test",
+                    _studios = hashSetOf(
+                        studio1,
+                        studio2,
+                    ),
+                )
+
+                // then
+                assertThat(result.studios).containsExactlyInAnyOrder(
+                    studio1,
+                    studio2,
+                )
+            }
+
+            @Test
+            fun `prevent false positive for identifying overlapping duplicates - STUDIO`() {
+                // given
+                val studio1 = "studio durian"
+                val studio2 = "wit studio"
+
+                // when
+                val result = AnimeRaw(
+                    _title = "Test",
+                    _studios = hashSetOf(
+                        studio1,
+                        studio2,
+                    ),
+                )
+
+                // then
+                assertThat(result.studios).containsExactlyInAnyOrder(
+                    studio1,
+                    studio2,
+                )
+            }
+
+            @Test
+            fun `prevent false positive for identifying overlapping duplicates - TV`() {
+                // given
+                val studio1 = "sotsu"
+                val studio2 = "square enix"
+                val studio3 = "tv aichi"
+                val studio4 = "tv osaka"
+                val studio5 =  "tv tokyo"
+
+                // when
+                val result = AnimeRaw(
+                    _title = "Test",
+                    _studios = hashSetOf(
+                        studio1,
+                        studio2,
+                        studio3,
+                        studio4,
+                        studio5,
+                    ),
+                )
+
+                // then
+                assertThat(result.studios).containsExactlyInAnyOrder(
+                    studio1,
+                    studio2,
+                    studio3,
+                    studio4,
+                    studio5,
+                )
+            }
+
+            @Test
+            fun `prevent false positive for identifying overlapping duplicates - TOKYO`() {
+                // given
+                val studio1 = "tokyo kids"
+                val studio2 = "tv tokyo"
+
+                // when
+                val result = AnimeRaw(
+                    _title = "Test",
+                    _studios = hashSetOf(
+                        studio1,
+                        studio2,
+                    ),
+                )
+
+                // then
+                assertThat(result.studios).containsExactlyInAnyOrder(
+                    studio1,
+                    studio2,
+                )
+            }
+
+            @Test
+            fun `prevent false positive for identifying overlapping duplicates - GROOVE`() {
+                // given
+                val studio1 = "groove corporation"
+                val studio2 = "group tac"
+                val studio3 = "hitsuji no uta production committee"
+                val studio4 = "inter communications inc."
+                val studio5 = "ken groove"
+                val studio6 = "madhouse"
+
+                // when
+                val result = AnimeRaw(
+                    _title = "Test",
+                    _studios = hashSetOf(
+                        studio1,
+                        studio2,
+                        studio3,
+                        studio4,
+                        studio5,
+                        studio6,
+                    ),
+                )
+
+                // then
+                assertThat(result.studios).containsExactlyInAnyOrder(
+                    studio1,
+                    studio2,
+                    studio3,
+                    studio4,
+                    studio5,
+                    studio6,
+                )
+            }
+
+            @Test
+            fun `prevent false positive for identifying overlapping duplicates - MEDIA`() {
+                // given
+                val studio1 = "kitty media"
+                val studio2 = "media blasters"
+                val studio3 = "on-lead"
+                val studio4 = "venet"
+
+                // when
+                val result = AnimeRaw(
+                    _title = "Test",
+                    _studios = hashSetOf(
+                        studio1,
+                        studio2,
+                        studio3,
+                        studio4,
+                    ),
+                )
+
+                // then
+                assertThat(result.studios).containsExactlyInAnyOrder(
+                    studio1,
+                    studio2,
+                    studio3,
+                    studio4,
+                )
+            }
+
+            @Test
+            fun `prevent false positive for identifying overlapping duplicates - PRODUCTION`() {
+                // given
+                val studio1 = "009 re:cyborg production committee"
+                val studio2 = "amazonlaterna co,ltd."
+                val studio3 = "funimation"
+                val studio4 = "ishimori production"
+                val studio5 = "nippon television network corporation"
+                val studio6 = "production i.g"
+                val studio7 = "sanzigen"
+                val studio8 = "t-joy"
+                val studio9 = "vap"
+
+                // when
+                val result = AnimeRaw(
+                    _title = "Test",
+                    _studios = hashSetOf(
+                        studio1,
+                        studio2,
+                        studio3,
+                        studio4,
+                        studio5,
+                        studio6,
+                        studio7,
+                        studio8,
+                        studio9,
+                    ),
+                )
+
+                // then
+                assertThat(result.studios).containsExactlyInAnyOrder(
+                    studio1,
+                    studio2,
+                    studio3,
+                    studio4,
+                    studio5,
+                    studio6,
+                    studio7,
+                    studio8,
+                    studio9,
+                )
+            }
+
+            @Test
+            fun `prevent false positive for identifying overlapping duplicates - ANIMATION`() {
+                // given
+                val studio1 = "animation do"
+                val studio2 = "chu-2byo production partners"
+                val studio3 = "kyoto animation"
+                val studio4 = "lantis"
+                val studio5 = "pony canyon"
+                val studio6 = "rakuonsha"
+                val studio7 = "tbs"
+                val studio8 = "tokyo broadcasting system"
+
+                // when
+                val result = AnimeRaw(
+                    _title = "Test",
+                    _studios = hashSetOf(
+                        studio1,
+                        studio2,
+                        studio3,
+                        studio4,
+                        studio5,
+                        studio6,
+                        studio7,
+                        studio8,
+                    ),
+                )
+
+                // then
+                assertThat(result.studios).containsExactlyInAnyOrder(
+                    studio1,
+                    studio2,
+                    studio3,
+                    studio4,
+                    studio5,
+                    studio6,
+                    studio7,
+                    studio8,
+                )
+            }
+
+            @Test
+            fun `prevent false positive for identifying overlapping duplicates - TELEVISION`() {
+                // given
+                val studio1 = "chiba television"
+                val studio2 = "geneon universal entertainment"
+                val studio3 = "kbs kyoto"
+                val studio4 = "medil"
+                val studio5 = "mie television broadcasting"
+                val studio6 = "sun tv"
+                val studio7 = "television kanagawa"
+                val studio8 = "television saitama co., ltd."
+                val studio9 = "thefool"
+
+                // when
+                val result = AnimeRaw(
+                    _title = "Test",
+                    _studios = hashSetOf(
+                        studio1,
+                        studio2,
+                        studio3,
+                        studio4,
+                        studio5,
+                        studio6,
+                        studio7,
+                        studio8,
+                        studio9,
+                    ),
+                )
+
+                // then
+                assertThat(result.studios).containsExactlyInAnyOrder(
+                    studio1,
+                    studio2,
+                    studio3,
+                    studio4,
+                    studio5,
+                    studio6,
+                    studio7,
+                    studio8,
+                    studio9,
+                )
+            }
+
+            @Test
+            fun `prevent false positive for identifying overlapping duplicates - GROUP`() {
+                // given
+                val studio1 = "group tac"
+                val studio2 = "nippon herald film group"
+                val studio3 = "the asahi shimbun company"
+                val studio4 = "tv asahi"
+
+                // when
+                val result = AnimeRaw(
+                    _title = "Test",
+                    _studios = hashSetOf(
+                        studio1,
+                        studio2,
+                        studio3,
+                        studio4,
+                    ),
+                )
+
+                // then
+                assertThat(result.studios).containsExactlyInAnyOrder(
+                    studio1,
+                    studio2,
+                    studio3,
+                    studio4,
                 )
             }
 
@@ -1632,7 +1969,6 @@ internal class AnimeRawTest {
                 ))
 
                 // then
-                assertThat(anime.studios).hasSize(1)
                 assertThat(anime.studios).containsExactlyInAnyOrder(
                     studio,
                 )
@@ -1666,7 +2002,6 @@ internal class AnimeRawTest {
                 ))
 
                 // then
-                assertThat(anime.studios).hasSize(2)
                 assertThat(anime.studios).containsExactlyInAnyOrder(
                     studio1,
                     studio2,
@@ -1687,7 +2022,6 @@ internal class AnimeRawTest {
                 ))
 
                 // then
-                assertThat(anime.studios).hasSize(1)
                 assertThat(anime.studios).containsExactlyInAnyOrder(
                     studio2,
                 )
@@ -1707,14 +2041,13 @@ internal class AnimeRawTest {
                 ))
 
                 // then
-                assertThat(anime.studios).hasSize(1)
                 assertThat(anime.studios).containsExactlyInAnyOrder(
                     studio2,
                 )
             }
 
             @Test
-            fun `prevent overlapping duplicates where the last part of a name and the first part of a name identify duplicates`() {
+            fun `prevent overlapping duplicates where the last part of a name and the first part of a name identify duplicates - single case`() {
                 // given
                 val studio1 = "gallop co., ltd."
                 val studio2 = "studio gallop"
@@ -1729,9 +2062,327 @@ internal class AnimeRawTest {
                 ))
 
                 // then
-                assertThat(anime.studios).hasSize(1)
                 assertThat(anime.studios).containsExactlyInAnyOrder(
                     studio1,
+                )
+            }
+
+            @Test
+            fun `prevent overlapping duplicates where the last part of a name and the first part of a name identify duplicates - multiple cases`() {
+                // given
+                val studio1 = "gallop co., ltd."
+                val studio2 = "studio gallop"
+                val studio3 = "tokyo HQ gallop"
+                val studio4 = "gallop made up"
+                val anime = AnimeRaw("Test")
+
+                // when
+                anime.addStudios(listOf(
+                    studio1,
+                    studio2,
+                    studio3,
+                    studio4,
+                ))
+
+                // then
+                assertThat(anime.studios).containsExactlyInAnyOrder(
+                    studio1,
+                )
+            }
+
+            @Test
+            fun `prevent false positive for identifying overlapping duplicates - ANIME`() {
+                // given
+                val studio1 = "anime beans"
+                val studio2 = "tate anime"
+                val anime = AnimeRaw("Test")
+
+                // when
+                anime.addStudios(listOf(
+                    studio1,
+                    studio2,
+                ))
+
+                // then
+                assertThat(anime.studios).containsExactlyInAnyOrder(
+                    studio1,
+                    studio2,
+                )
+            }
+
+            @Test
+            fun `prevent false positive for identifying overlapping duplicates - STUDIO`() {
+                // given
+                val studio1 = "studio durian"
+                val studio2 = "wit studio"
+                val anime = AnimeRaw("Test")
+
+                // when
+                anime.addStudios(listOf(
+                    studio1,
+                    studio2,
+                ))
+
+                // then
+                assertThat(anime.studios).containsExactlyInAnyOrder(
+                    studio1,
+                    studio2,
+                )
+            }
+
+            @Test
+            fun `prevent false positive for identifying overlapping duplicates - TV`() {
+                // given
+                val studio1 = "sotsu"
+                val studio2 = "square enix"
+                val studio3 = "tv aichi"
+                val studio4 = "tv osaka"
+                val studio5 = "tv tokyo"
+                val anime = AnimeRaw("Test")
+
+                // when
+                anime.addStudios(listOf(
+                    studio1,
+                    studio2,
+                    studio3,
+                    studio4,
+                    studio5,
+                ))
+
+                // then
+                assertThat(anime.studios).containsExactlyInAnyOrder(
+                    studio1,
+                    studio2,
+                    studio3,
+                    studio4,
+                    studio5,
+                )
+            }
+
+            @Test
+            fun `prevent false positive for identifying overlapping duplicates - TOKYO`() {
+                // given
+                val studio1 = "tokyo kids"
+                val studio2 = "tv tokyo"
+                val anime = AnimeRaw("Test")
+
+                // when
+                anime.addStudios(listOf(
+                    studio1,
+                    studio2,
+                ))
+
+                // then
+                assertThat(anime.studios).containsExactlyInAnyOrder(
+                    studio1,
+                    studio2,
+                )
+            }
+
+            @Test
+            fun `prevent false positive for identifying overlapping duplicates - GROOVE`() {
+                // given
+                val studio1 = "groove corporation"
+                val studio2 = "group tac"
+                val studio3 = "hitsuji no uta production committee"
+                val studio4 = "inter communications inc."
+                val studio5 = "kenmedia"
+                val studio6 = "ken groove"
+                val studio7 = "madhouse"
+                val anime = AnimeRaw("Test")
+
+                // when
+                anime.addStudios(listOf(
+                    studio1,
+                    studio2,
+                    studio3,
+                    studio4,
+                    studio5,
+                    studio6,
+                    studio7,
+                ))
+
+                // then
+                assertThat(anime.studios).containsExactlyInAnyOrder(
+                    studio1,
+                    studio2,
+                    studio3,
+                    studio4,
+                    studio5,
+                    studio6,
+                    studio7,
+                )
+            }
+
+            @Test
+            fun `prevent false positive for identifying overlapping duplicates - MEDIA`() {
+                // given
+                val studio1 = "kitty media"
+                val studio2 = "media blasters"
+                val studio3 = "on-lead"
+                val studio4 = "venet"
+                val anime = AnimeRaw("Test")
+
+                // when
+                anime.addStudios(listOf(
+                    studio1,
+                    studio2,
+                    studio3,
+                    studio4,
+                ))
+
+                // then
+                assertThat(anime.studios).containsExactlyInAnyOrder(
+                    studio1,
+                    studio2,
+                    studio3,
+                    studio4,
+                )
+            }
+
+            @Test
+            fun `prevent false positive for identifying overlapping duplicates - PRODUCTION`() {
+                // given
+                val studio1 = "009 re:cyborg production committee"
+                val studio2 = "amazonlaterna co,ltd."
+                val studio3 = "funimation"
+                val studio4 = "ishimori production"
+                val studio5 = "nippon television network corporation"
+                val studio6 = "production i.g"
+                val studio7 = "sanzigen"
+                val studio8 = "t-joy"
+                val studio9 = "vap"
+                val anime = AnimeRaw("Test")
+
+                // when
+                anime.addStudios(listOf(
+                    studio1,
+                    studio2,
+                    studio3,
+                    studio4,
+                    studio5,
+                    studio6,
+                    studio7,
+                    studio8,
+                    studio9,
+                ))
+
+                // then
+                assertThat(anime.studios).containsExactlyInAnyOrder(
+                    studio1,
+                    studio2,
+                    studio3,
+                    studio4,
+                    studio5,
+                    studio6,
+                    studio7,
+                    studio8,
+                    studio9,
+                )
+            }
+
+            @Test
+            fun `prevent false positive for identifying overlapping duplicates - ANIMATION`() {
+                // given
+                val studio1 = "animation do"
+                val studio2 = "chu-2byo production partners"
+                val studio3 = "kyoto animation"
+                val studio4 = "lantis"
+                val studio5 = "pony canyon"
+                val studio6 = "rakuonsha"
+                val studio7 = "tbs"
+                val studio8 = "tokyo broadcasting system"
+                val anime = AnimeRaw("Test")
+
+                // when
+                anime.addStudios(listOf(
+                    studio1,
+                    studio2,
+                    studio3,
+                    studio4,
+                    studio5,
+                    studio6,
+                    studio7,
+                    studio8,
+                ))
+
+                // then
+                assertThat(anime.studios).containsExactlyInAnyOrder(
+                    studio1,
+                    studio2,
+                    studio3,
+                    studio4,
+                    studio5,
+                    studio6,
+                    studio7,
+                    studio8,
+                )
+            }
+
+            @Test
+            fun `prevent false positive for identifying overlapping duplicates - TELEVISION`() {
+                // given
+                val studio1 = "chiba television"
+                val studio2 = "geneon universal entertainment"
+                val studio3 = "kbs kyoto"
+                val studio4 = "medil"
+                val studio5 = "mie television broadcasting"
+                val studio6 = "sun tv"
+                val studio7 = "television kanagawa"
+                val studio8 = "television saitama co., ltd."
+                val studio9 = "thefool"
+                val anime = AnimeRaw("Test")
+
+                // when
+                anime.addStudios(listOf(
+                    studio1,
+                    studio2,
+                    studio3,
+                    studio4,
+                    studio5,
+                    studio6,
+                    studio7,
+                    studio8,
+                    studio9,
+                ))
+
+                // then
+                assertThat(anime.studios).containsExactlyInAnyOrder(
+                    studio1,
+                    studio2,
+                    studio3,
+                    studio4,
+                    studio5,
+                    studio6,
+                    studio7,
+                    studio8,
+                    studio9,
+                )
+            }
+
+            @Test
+            fun `prevent false positive for identifying overlapping duplicates - GROUP`() {
+                // given
+                val studio1 = "group tac"
+                val studio2 = "nippon herald film group"
+                val studio3 = "the asahi shimbun company"
+                val studio4 = "tv asahi"
+                val anime = AnimeRaw("Test")
+
+                // when
+                anime.addStudios(listOf(
+                    studio1,
+                    studio2,
+                    studio3,
+                    studio4,
+                ))
+
+                // then
+                assertThat(anime.studios).containsExactlyInAnyOrder(
+                    studio1,
+                    studio2,
+                    studio3,
+                    studio4,
                 )
             }
         }
@@ -1924,7 +2575,6 @@ internal class AnimeRawTest {
                 )
 
                 // then
-                assertThat(anime.studios).hasSize(1)
                 assertThat(anime.studios).containsExactlyInAnyOrder(
                     studio,
                 )
@@ -1958,7 +2608,6 @@ internal class AnimeRawTest {
                 )
 
                 // then
-                assertThat(anime.studios).hasSize(2)
                 assertThat(anime.studios).containsExactlyInAnyOrder(
                     studio1,
                     studio2,
@@ -1979,7 +2628,6 @@ internal class AnimeRawTest {
                 )
 
                 // then
-                assertThat(anime.studios).hasSize(1)
                 assertThat(anime.studios).containsExactlyInAnyOrder(
                     studio2,
                 )
@@ -1999,14 +2647,13 @@ internal class AnimeRawTest {
                 )
 
                 // then
-                assertThat(anime.studios).hasSize(1)
                 assertThat(anime.studios).containsExactlyInAnyOrder(
                     studio2,
                 )
             }
 
             @Test
-            fun `prevent overlapping duplicates where the last part of a name and the first part of a name identify duplicates`() {
+            fun `prevent overlapping duplicates where the last part of a name and the first part of a name identify duplicates - single case`() {
                 // given
                 val studio1 = "gallop co., ltd."
                 val studio2 = "studio gallop"
@@ -2021,9 +2668,327 @@ internal class AnimeRawTest {
                 )
 
                 // then
-                assertThat(anime.studios).hasSize(1)
                 assertThat(anime.studios).containsExactlyInAnyOrder(
                     studio1,
+                )
+            }
+
+            @Test
+            fun `prevent overlapping duplicates where the last part of a name and the first part of a name identify duplicates - multiple cases`() {
+                // given
+                val studio1 = "gallop co., ltd."
+                val studio2 = "studio gallop"
+                val studio3 = "tokyo HQ gallop"
+                val studio4 = "gallop made up"
+                val anime = AnimeRaw("Test")
+
+                // when
+                anime.addStudios(
+                    studio1,
+                    studio2,
+                    studio3,
+                    studio4,
+                )
+
+                // then
+                assertThat(anime.studios).containsExactlyInAnyOrder(
+                    studio1,
+                )
+            }
+
+            @Test
+            fun `prevent false positive for identifying overlapping duplicates - ANIME`() {
+                // given
+                val studio1 = "anime beans"
+                val studio2 = "tate anime"
+                val anime = AnimeRaw("Test")
+
+                // when
+                anime.addStudios(
+                    studio1,
+                    studio2,
+                )
+
+                // then
+                assertThat(anime.studios).containsExactlyInAnyOrder(
+                    studio1,
+                    studio2,
+                )
+            }
+
+            @Test
+            fun `prevent false positive for identifying overlapping duplicates - STUDIO`() {
+                // given
+                val studio1 = "studio durian"
+                val studio2 = "wit studio"
+                val anime = AnimeRaw("Test")
+
+                // when
+                anime.addStudios(
+                    studio1,
+                    studio2,
+                )
+
+                // then
+                assertThat(anime.studios).containsExactlyInAnyOrder(
+                    studio1,
+                    studio2,
+                )
+            }
+
+            @Test
+            fun `prevent false positive for identifying overlapping duplicates - TV`() {
+                // given
+                val studio1 = "sotsu"
+                val studio2 = "square enix"
+                val studio3 = "tv aichi"
+                val studio4 = "tv osaka"
+                val studio5 = "tv tokyo"
+                val anime = AnimeRaw("Test")
+
+                // when
+                anime.addStudios(
+                    studio1,
+                    studio2,
+                    studio3,
+                    studio4,
+                    studio5,
+                )
+
+                // then
+                assertThat(anime.studios).containsExactlyInAnyOrder(
+                    studio1,
+                    studio2,
+                    studio3,
+                    studio4,
+                    studio5,
+                )
+            }
+
+            @Test
+            fun `prevent false positive for identifying overlapping duplicates - TOKYO`() {
+                // given
+                val studio1 = "tokyo kids"
+                val studio2 = "tv tokyo"
+                val anime = AnimeRaw("Test")
+
+                // when
+                anime.addStudios(
+                    studio1,
+                    studio2,
+                )
+
+                // then
+                assertThat(anime.studios).containsExactlyInAnyOrder(
+                    studio1,
+                    studio2,
+                )
+            }
+
+            @Test
+            fun `prevent false positive for identifying overlapping duplicates - GROOVE`() {
+                // given
+                val studio1 = "groove corporation"
+                val studio2 = "group tac"
+                val studio3 = "hitsuji no uta production committee"
+                val studio4 = "inter communications inc."
+                val studio5 = "kenmedia"
+                val studio6 = "ken groove"
+                val studio7 = "madhouse"
+                val anime = AnimeRaw("Test")
+
+                // when
+                anime.addStudios(
+                    studio1,
+                    studio2,
+                    studio3,
+                    studio4,
+                    studio5,
+                    studio6,
+                    studio7,
+                )
+
+                // then
+                assertThat(anime.studios).containsExactlyInAnyOrder(
+                    studio1,
+                    studio2,
+                    studio3,
+                    studio4,
+                    studio5,
+                    studio6,
+                    studio7,
+                )
+            }
+
+            @Test
+            fun `prevent false positive for identifying overlapping duplicates - MEDIA`() {
+                // given
+                val studio1 = "kitty media"
+                val studio2 = "media blasters"
+                val studio3 = "on-lead"
+                val studio4 = "venet"
+                val anime = AnimeRaw("Test")
+
+                // when
+                anime.addStudios(
+                    studio1,
+                    studio2,
+                    studio3,
+                    studio4,
+                )
+
+                // then
+                assertThat(anime.studios).containsExactlyInAnyOrder(
+                    studio1,
+                    studio2,
+                    studio3,
+                    studio4,
+                )
+            }
+
+            @Test
+            fun `prevent false positive for identifying overlapping duplicates - PRODUCTION`() {
+                // given
+                val studio1 = "009 re:cyborg production committee"
+                val studio2 = "amazonlaterna co,ltd."
+                val studio3 = "funimation"
+                val studio4 = "ishimori production"
+                val studio5 = "nippon television network corporation"
+                val studio6 = "production i.g"
+                val studio7 = "sanzigen"
+                val studio8 = "t-joy"
+                val studio9 = "vap"
+                val anime = AnimeRaw("Test")
+
+                // when
+                anime.addStudios(
+                    studio1,
+                    studio2,
+                    studio3,
+                    studio4,
+                    studio5,
+                    studio6,
+                    studio7,
+                    studio8,
+                    studio9,
+                )
+
+                // then
+                assertThat(anime.studios).containsExactlyInAnyOrder(
+                    studio1,
+                    studio2,
+                    studio3,
+                    studio4,
+                    studio5,
+                    studio6,
+                    studio7,
+                    studio8,
+                    studio9,
+                )
+            }
+
+            @Test
+            fun `prevent false positive for identifying overlapping duplicates - ANIMATION`() {
+                // given
+                val studio1 = "animation do"
+                val studio2 = "chu-2byo production partners"
+                val studio3 = "kyoto animation"
+                val studio4 = "lantis"
+                val studio5 = "pony canyon"
+                val studio6 = "rakuonsha"
+                val studio7 = "tbs"
+                val studio8 = "tokyo broadcasting system"
+                val anime = AnimeRaw("Test")
+
+                // when
+                anime.addStudios(
+                    studio1,
+                    studio2,
+                    studio3,
+                    studio4,
+                    studio5,
+                    studio6,
+                    studio7,
+                    studio8,
+                )
+
+                // then
+                assertThat(anime.studios).containsExactlyInAnyOrder(
+                    studio1,
+                    studio2,
+                    studio3,
+                    studio4,
+                    studio5,
+                    studio6,
+                    studio7,
+                    studio8,
+                )
+            }
+
+            @Test
+            fun `prevent false positive for identifying overlapping duplicates - TELEVISION`() {
+                // given
+                val studio1 = "chiba television"
+                val studio2 = "geneon universal entertainment"
+                val studio3 = "kbs kyoto"
+                val studio4 = "medil"
+                val studio5 = "mie television broadcasting"
+                val studio6 = "sun tv"
+                val studio7 = "television kanagawa"
+                val studio8 = "television saitama co., ltd."
+                val studio9 = "thefool"
+                val anime = AnimeRaw("Test")
+
+                // when
+                anime.addStudios(
+                    studio1,
+                    studio2,
+                    studio3,
+                    studio4,
+                    studio5,
+                    studio6,
+                    studio7,
+                    studio8,
+                    studio9,
+                )
+
+                // then
+                assertThat(anime.studios).containsExactlyInAnyOrder(
+                    studio1,
+                    studio2,
+                    studio3,
+                    studio4,
+                    studio5,
+                    studio6,
+                    studio7,
+                    studio8,
+                    studio9,
+                )
+            }
+
+            @Test
+            fun `prevent false positive for identifying overlapping duplicates - GROUP`() {
+                // given
+                val studio1 = "group tac"
+                val studio2 = "nippon herald film group"
+                val studio3 = "the asahi shimbun company"
+                val studio4 = "tv asahi"
+                val anime = AnimeRaw("Test")
+
+                // when
+                anime.addStudios(
+                    studio1,
+                    studio2,
+                    studio3,
+                    studio4,
+                )
+
+                // then
+                assertThat(anime.studios).containsExactlyInAnyOrder(
+                    studio1,
+                    studio2,
+                    studio3,
+                    studio4,
                 )
             }
         }
@@ -2254,7 +3219,6 @@ internal class AnimeRawTest {
                 )
 
                 // then
-                assertThat(result.producers).hasSize(1)
                 assertThat(result.producers).containsExactlyInAnyOrder(
                     producer,
                 )
@@ -2290,7 +3254,6 @@ internal class AnimeRawTest {
                 )
 
                 // then
-                assertThat(result.producers).hasSize(2)
                 assertThat(result.producers).containsExactlyInAnyOrder(
                     producer1,
                     producer2,
@@ -2313,7 +3276,6 @@ internal class AnimeRawTest {
                 )
 
                 // then
-                assertThat(result.producers).hasSize(1)
                 assertThat(result.producers).containsExactlyInAnyOrder(
                     producer2,
                 )
@@ -2335,14 +3297,13 @@ internal class AnimeRawTest {
                 )
 
                 // then
-                assertThat(result.producers).hasSize(1)
                 assertThat(result.producers).containsExactlyInAnyOrder(
                     producer2,
                 )
             }
 
             @Test
-            fun `prevent overlapping duplicates where the last part of a name and the first part of a name identify duplicates`() {
+            fun `prevent overlapping duplicates where the last part of a name and the first part of a name identify duplicates - single case`() {
                 // given
                 val producer1 = "gallop co., ltd."
                 val producer2 = "studio gallop"
@@ -2359,9 +3320,349 @@ internal class AnimeRawTest {
                 )
 
                 // then
-                assertThat(result.producers).hasSize(1)
                 assertThat(result.producers).containsExactlyInAnyOrder(
                     producer1,
+                )
+            }
+
+            @Test
+            fun `prevent overlapping duplicates where the last part of a name and the first part of a name identify duplicates - multiple cases`() {
+                // given
+                val producer1 = "gallop co., ltd."
+                val producer2 = "studio gallop"
+                val producer3 = "tokyo HQ gallop"
+                val producer4 = "gallop made up"
+
+                // when
+                val result = AnimeRaw(
+                    _title = "Test",
+                    _producers = hashSetOf(
+                        producer1,
+                        producer2,
+                        producer3,
+                        producer4,
+                    ),
+                )
+
+                // then
+                assertThat(result.producers).containsExactlyInAnyOrder(
+                    producer1,
+                )
+            }
+
+            @Test
+            fun `prevent false positive for identifying overlapping duplicates - ANIME`() {
+                // given
+                val producer1 = "anime beans"
+                val producer2 = "tate anime"
+
+                // when
+                val result = AnimeRaw(
+                    _title = "Test",
+                    _producers = hashSetOf(
+                        producer1,
+                        producer2,
+                    ),
+                )
+
+                // then
+                assertThat(result.producers).containsExactlyInAnyOrder(
+                    producer1,
+                    producer2,
+                )
+            }
+
+            @Test
+            fun `prevent false positive for identifying overlapping duplicates - STUDIO`() {
+                // given
+                val producer1 = "studio durian"
+                val producer2 = "wit studio"
+
+                // when
+                val result = AnimeRaw(
+                    _title = "Test",
+                    _producers = hashSetOf(
+                        producer1,
+                        producer2,
+                    ),
+                )
+
+                // then
+                assertThat(result.producers).containsExactlyInAnyOrder(
+                    producer1,
+                    producer2,
+                )
+            }
+
+            @Test
+            fun `prevent false positive for identifying overlapping duplicates - TV`() {
+                // given
+                val producer1 = "sotsu"
+                val producer2 = "square enix"
+                val producer3 = "tv aichi"
+                val producer4 = "tv osaka"
+                val producer5 = "tv tokyo"
+
+                // when
+                val result = AnimeRaw(
+                    _title = "Test",
+                    _producers = hashSetOf(
+                        producer1,
+                        producer2,
+                        producer3,
+                        producer4,
+                        producer5,
+                    ),
+                )
+
+                // then
+                assertThat(result.producers).containsExactlyInAnyOrder(
+                    producer1,
+                    producer2,
+                    producer3,
+                    producer4,
+                    producer5,
+                )
+            }
+
+            @Test
+            fun `prevent false positive for identifying overlapping duplicates - TOKYO`() {
+                // given
+                val producer1 = "tokyo kids"
+                val producer2 = "tv tokyo"
+
+                // when
+                val result = AnimeRaw(
+                    _title = "Test",
+                    _producers = hashSetOf(
+                        producer1,
+                        producer2,
+                    ),
+                )
+
+                // then
+                assertThat(result.producers).containsExactlyInAnyOrder(
+                    producer1,
+                    producer2,
+                )
+            }
+
+            @Test
+            fun `prevent false positive for identifying overlapping duplicates - GROOVE`() {
+                // given
+                val producer1 = "groove corporation"
+                val producer2 = "group tac"
+                val producer3 = "hitsuji no uta production committee"
+                val producer4 = "inter communications inc."
+                val producer5 = "kenmedia"
+                val producer6 = "ken groove"
+                val producer7 = "madhouse"
+
+                // when
+                val result = AnimeRaw(
+                    _title = "Test",
+                    _producers = hashSetOf(
+                        producer1,
+                        producer2,
+                        producer3,
+                        producer4,
+                        producer5,
+                        producer6,
+                        producer7,
+                    ),
+                )
+
+                // then
+                assertThat(result.producers).containsExactlyInAnyOrder(
+                    producer1,
+                    producer2,
+                    producer3,
+                    producer4,
+                    producer5,
+                    producer6,
+                    producer7,
+                )
+            }
+
+            @Test
+            fun `prevent false positive for identifying overlapping duplicates - MEDIA`() {
+                // given
+                val producer1 = "kitty media"
+                val producer2 = "media blasters"
+                val producer3 = "on-lead"
+                val producer4 = "venet"
+
+                // when
+                val result = AnimeRaw(
+                    _title = "Test",
+                    _producers = hashSetOf(
+                        producer1,
+                        producer2,
+                        producer3,
+                        producer4,
+                    ),
+                )
+
+                // then
+                assertThat(result.producers).containsExactlyInAnyOrder(
+                    producer1,
+                    producer2,
+                    producer3,
+                    producer4,
+                )
+            }
+
+            @Test
+            fun `prevent false positive for identifying overlapping duplicates - PRODUCTION`() {
+                // given
+                val producer1 = "009 re:cyborg production committee"
+                val producer2 = "amazonlaterna co,ltd."
+                val producer3 = "funimation"
+                val producer4 = "ishimori production"
+                val producer5 = "nippon television network corporation"
+                val producer6 = "production i.g"
+                val producer7 = "sanzigen"
+                val producer8 = "t-joy"
+                val producer9 = "vap"
+
+                // when
+                val result = AnimeRaw(
+                    _title = "Test",
+                    _producers = hashSetOf(
+                        producer1,
+                        producer2,
+                        producer3,
+                        producer4,
+                        producer5,
+                        producer6,
+                        producer7,
+                        producer8,
+                        producer9,
+                    ),
+                )
+
+                // then
+                assertThat(result.producers).containsExactlyInAnyOrder(
+                    producer1,
+                    producer2,
+                    producer3,
+                    producer4,
+                    producer5,
+                    producer6,
+                    producer7,
+                    producer8,
+                    producer9,
+                )
+            }
+
+            @Test
+            fun `prevent false positive for identifying overlapping duplicates - ANIMATION`() {
+                // given
+                val producer1 = "animation do"
+                val producer2 = "chu-2byo production partners"
+                val producer3 = "kyoto animation"
+                val producer4 = "lantis"
+                val producer5 = "pony canyon"
+                val producer6 = "rakuonsha"
+                val producer7 = "tbs"
+                val producer8 = "tokyo broadcasting system"
+
+                // when
+                val result = AnimeRaw(
+                    _title = "Test",
+                    _producers = hashSetOf(
+                        producer1,
+                        producer2,
+                        producer3,
+                        producer4,
+                        producer5,
+                        producer6,
+                        producer7,
+                        producer8,
+                    ),
+                )
+
+                // then
+                assertThat(result.producers).containsExactlyInAnyOrder(
+                    producer1,
+                    producer2,
+                    producer3,
+                    producer4,
+                    producer5,
+                    producer6,
+                    producer7,
+                    producer8,
+                )
+            }
+
+            @Test
+            fun `prevent false positive for identifying overlapping duplicates - TELEVISION`() {
+                // given
+                val producer1 = "chiba television"
+                val producer2 = "geneon universal entertainment"
+                val producer3 = "kbs kyoto"
+                val producer4 = "medil"
+                val producer5 = "mie television broadcasting"
+                val producer6 = "sun tv"
+                val producer7 = "television kanagawa"
+                val producer8 = "television saitama co., ltd."
+                val producer9 = "thefool"
+
+                // when
+                val result = AnimeRaw(
+                    _title = "Test",
+                    _producers = hashSetOf(
+                        producer1,
+                        producer2,
+                        producer3,
+                        producer4,
+                        producer5,
+                        producer6,
+                        producer7,
+                        producer8,
+                        producer9,
+                    ),
+                )
+
+                // then
+                assertThat(result.producers).containsExactlyInAnyOrder(
+                    producer1,
+                    producer2,
+                    producer3,
+                    producer4,
+                    producer5,
+                    producer6,
+                    producer7,
+                    producer8,
+                    producer9,
+                )
+            }
+
+            @Test
+            fun `prevent false positive for identifying overlapping duplicates - GROUP`() {
+                // given
+                val producer1 = "group tac"
+                val producer2 = "nippon herald film group"
+                val producer3 = "the asahi shimbun company"
+                val producer4 = "tv asahi"
+
+                // when
+                val result = AnimeRaw(
+                    _title = "Test",
+                    _producers = hashSetOf(
+                        producer1,
+                        producer2,
+                        producer3,
+                        producer4,
+                    ),
+                )
+
+                // then
+                assertThat(result.producers).containsExactlyInAnyOrder(
+                    producer1,
+                    producer2,
+                    producer3,
+                    producer4,
                 )
             }
 
@@ -2574,7 +3875,6 @@ internal class AnimeRawTest {
                 ))
 
                 // then
-                assertThat(anime.producers).hasSize(1)
                 assertThat(anime.producers).containsExactlyInAnyOrder(
                     producer,
                 )
@@ -2608,7 +3908,6 @@ internal class AnimeRawTest {
                 ))
 
                 // then
-                assertThat(anime.producers).hasSize(2)
                 assertThat(anime.producers).containsExactlyInAnyOrder(
                     producer1,
                     producer2,
@@ -2629,7 +3928,6 @@ internal class AnimeRawTest {
                 ))
 
                 // then
-                assertThat(anime.producers).hasSize(1)
                 assertThat(anime.producers).containsExactlyInAnyOrder(
                     producer2,
                 )
@@ -2649,14 +3947,13 @@ internal class AnimeRawTest {
                 ))
 
                 // then
-                assertThat(anime.producers).hasSize(1)
                 assertThat(anime.producers).containsExactlyInAnyOrder(
                     producer2,
                 )
             }
 
             @Test
-            fun `prevent overlapping duplicates where the last part of a name and the first part of a name identify duplicates`() {
+            fun `prevent overlapping duplicates where the last part of a name and the first part of a name identify duplicates - single case`() {
                 // given
                 val producer1 = "gallop co., ltd."
                 val producer2 = "studio gallop"
@@ -2671,9 +3968,327 @@ internal class AnimeRawTest {
                 ))
 
                 // then
-                assertThat(anime.producers).hasSize(1)
                 assertThat(anime.producers).containsExactlyInAnyOrder(
                     producer1,
+                )
+            }
+
+            @Test
+            fun `prevent overlapping duplicates where the last part of a name and the first part of a name identify duplicates - multiple cases`() {
+                // given
+                val producer1 = "gallop co., ltd."
+                val producer2 = "studio gallop"
+                val producer3 = "tokyo HQ gallop"
+                val producer4 = "gallop made up"
+                val anime = AnimeRaw("Test")
+
+                // when
+                anime.addProducers(listOf(
+                    producer1,
+                    producer2,
+                    producer3,
+                    producer4,
+                ))
+
+                // then
+                assertThat(anime.producers).containsExactlyInAnyOrder(
+                    producer1,
+                )
+            }
+
+            @Test
+            fun `prevent false positive for identifying overlapping duplicates - ANIME`() {
+                // given
+                val producer1 = "anime beans"
+                val producer2 = "tate anime"
+                val anime = AnimeRaw("Test")
+
+                // when
+                anime.addProducers(listOf(
+                    producer1,
+                    producer2,
+                ))
+
+                // then
+                assertThat(anime.producers).containsExactlyInAnyOrder(
+                    producer1,
+                    producer2,
+                )
+            }
+
+            @Test
+            fun `prevent false positive for identifying overlapping duplicates - STUDIO`() {
+                // given
+                val producer1 = "studio durian"
+                val producer2 = "wit studio"
+                val anime = AnimeRaw("Test")
+
+                // when
+                anime.addProducers(listOf(
+                    producer1,
+                    producer2,
+                ))
+
+                // then
+                assertThat(anime.producers).containsExactlyInAnyOrder(
+                    producer1,
+                    producer2,
+                )
+            }
+
+            @Test
+            fun `prevent false positive for identifying overlapping duplicates - TV`() {
+                // given
+                val producer1 = "sotsu"
+                val producer2 = "square enix"
+                val producer3 = "tv aichi"
+                val producer4 = "tv osaka"
+                val producer5 = "tv tokyo"
+                val anime = AnimeRaw("Test")
+
+                // when
+                anime.addProducers(listOf(
+                    producer1,
+                    producer2,
+                    producer3,
+                    producer4,
+                    producer5,
+                ))
+
+                // then
+                assertThat(anime.producers).containsExactlyInAnyOrder(
+                    producer1,
+                    producer2,
+                    producer3,
+                    producer4,
+                    producer5,
+                )
+            }
+
+            @Test
+            fun `prevent false positive for identifying overlapping duplicates - TOKYO`() {
+                // given
+                val producer1 = "tokyo kids"
+                val producer2 = "tv tokyo"
+                val anime = AnimeRaw("Test")
+
+                // when
+                anime.addProducers(listOf(
+                    producer1,
+                    producer2,
+                ))
+
+                // then
+                assertThat(anime.producers).containsExactlyInAnyOrder(
+                    producer1,
+                    producer2,
+                )
+            }
+
+            @Test
+            fun `prevent false positive for identifying overlapping duplicates - GROOVE`() {
+                // given
+                val producer1 = "groove corporation"
+                val producer2 = "group tac"
+                val producer3 = "hitsuji no uta production committee"
+                val producer4 = "inter communications inc."
+                val producer5 = "kenmedia"
+                val producer6 = "ken groove"
+                val producer7 = "madhouse"
+                val anime = AnimeRaw("Test")
+
+                // when
+                anime.addProducers(listOf(
+                    producer1,
+                    producer2,
+                    producer3,
+                    producer4,
+                    producer5,
+                    producer6,
+                    producer7,
+                ))
+
+                // then
+                assertThat(anime.producers).containsExactlyInAnyOrder(
+                    producer1,
+                    producer2,
+                    producer3,
+                    producer4,
+                    producer5,
+                    producer6,
+                    producer7,
+                )
+            }
+
+            @Test
+            fun `prevent false positive for identifying overlapping duplicates - MEDIA`() {
+                // given
+                val producer1 = "kitty media"
+                val producer2 = "media blasters"
+                val producer3 = "on-lead"
+                val producer4 = "venet"
+                val anime = AnimeRaw("Test")
+
+                // when
+                anime.addProducers(listOf(
+                    producer1,
+                    producer2,
+                    producer3,
+                    producer4,
+                ))
+
+                // then
+                assertThat(anime.producers).containsExactlyInAnyOrder(
+                    producer1,
+                    producer2,
+                    producer3,
+                    producer4,
+                )
+            }
+
+            @Test
+            fun `prevent false positive for identifying overlapping duplicates - PRODUCTION`() {
+                // given
+                val producer1 = "009 re:cyborg production committee"
+                val producer2 = "amazonlaterna co,ltd."
+                val producer3 = "funimation"
+                val producer4 = "ishimori production"
+                val producer5 = "nippon television network corporation"
+                val producer6 = "production i.g"
+                val producer7 = "sanzigen"
+                val producer8 = "t-joy"
+                val producer9 = "vap"
+                val anime = AnimeRaw("Test")
+
+                // when
+                anime.addProducers(listOf(
+                    producer1,
+                    producer2,
+                    producer3,
+                    producer4,
+                    producer5,
+                    producer6,
+                    producer7,
+                    producer8,
+                    producer9,
+                ))
+
+                // then
+                assertThat(anime.producers).containsExactlyInAnyOrder(
+                    producer1,
+                    producer2,
+                    producer3,
+                    producer4,
+                    producer5,
+                    producer6,
+                    producer7,
+                    producer8,
+                    producer9,
+                )
+            }
+
+            @Test
+            fun `prevent false positive for identifying overlapping duplicates - ANIMATION`() {
+                // given
+                val producer1 = "animation do"
+                val producer2 = "chu-2byo production partners"
+                val producer3 = "kyoto animation"
+                val producer4 = "lantis"
+                val producer5 = "pony canyon"
+                val producer6 = "rakuonsha"
+                val producer7 = "tbs"
+                val producer8 = "tokyo broadcasting system"
+                val anime = AnimeRaw("Test")
+
+                // when
+                anime.addProducers(listOf(
+                    producer1,
+                    producer2,
+                    producer3,
+                    producer4,
+                    producer5,
+                    producer6,
+                    producer7,
+                    producer8,
+                ))
+
+                // then
+                assertThat(anime.producers).containsExactlyInAnyOrder(
+                    producer1,
+                    producer2,
+                    producer3,
+                    producer4,
+                    producer5,
+                    producer6,
+                    producer7,
+                    producer8,
+                )
+            }
+
+            @Test
+            fun `prevent false positive for identifying overlapping duplicates - TELEVISION`() {
+                // given
+                val producer1 = "chiba television"
+                val producer2 = "geneon universal entertainment"
+                val producer3 = "kbs kyoto"
+                val producer4 = "medil"
+                val producer5 = "mie television broadcasting"
+                val producer6 = "sun tv"
+                val producer7 = "television kanagawa"
+                val producer8 = "television saitama co., ltd."
+                val producer9 = "thefool"
+                val anime = AnimeRaw("Test")
+
+                // when
+                anime.addProducers(listOf(
+                    producer1,
+                    producer2,
+                    producer3,
+                    producer4,
+                    producer5,
+                    producer6,
+                    producer7,
+                    producer8,
+                    producer9,
+                ))
+
+                // then
+                assertThat(anime.producers).containsExactlyInAnyOrder(
+                    producer1,
+                    producer2,
+                    producer3,
+                    producer4,
+                    producer5,
+                    producer6,
+                    producer7,
+                    producer8,
+                    producer9,
+                )
+            }
+
+            @Test
+            fun `prevent false positive for identifying overlapping duplicates - GROUP`() {
+                // given
+                val producer1 = "group tac"
+                val producer2 = "nippon herald film group"
+                val producer3 = "the asahi shimbun company"
+                val producer4 = "tv asahi"
+                val anime = AnimeRaw("Test")
+
+                // when
+                anime.addProducers(listOf(
+                    producer1,
+                    producer2,
+                    producer3,
+                    producer4,
+                ))
+
+                // then
+                assertThat(anime.producers).containsExactlyInAnyOrder(
+                    producer1,
+                    producer2,
+                    producer3,
+                    producer4,
                 )
             }
         }
@@ -2866,7 +4481,6 @@ internal class AnimeRawTest {
                 )
 
                 // then
-                assertThat(anime.producers).hasSize(1)
                 assertThat(anime.producers).containsExactlyInAnyOrder(
                     producer,
                 )
@@ -2900,7 +4514,6 @@ internal class AnimeRawTest {
                 )
 
                 // then
-                assertThat(anime.producers).hasSize(2)
                 assertThat(anime.producers).containsExactlyInAnyOrder(
                     producer1,
                     producer2,
@@ -2921,7 +4534,6 @@ internal class AnimeRawTest {
                 )
 
                 // then
-                assertThat(anime.producers).hasSize(1)
                 assertThat(anime.producers).containsExactlyInAnyOrder(
                     producer2,
                 )
@@ -2941,14 +4553,13 @@ internal class AnimeRawTest {
                 )
 
                 // then
-                assertThat(anime.producers).hasSize(1)
                 assertThat(anime.producers).containsExactlyInAnyOrder(
                     producer2,
                 )
             }
 
             @Test
-            fun `prevent overlapping duplicates where the last part of a name and the first part of a name identify duplicates`() {
+            fun `prevent overlapping duplicates where the last part of a name and the first part of a name identify duplicates - single case`() {
                 // given
                 val producer1 = "gallop co., ltd."
                 val producer2 = "studio gallop"
@@ -2963,9 +4574,327 @@ internal class AnimeRawTest {
                 )
 
                 // then
-                assertThat(anime.producers).hasSize(1)
                 assertThat(anime.producers).containsExactlyInAnyOrder(
                     producer1,
+                )
+            }
+
+            @Test
+            fun `prevent overlapping duplicates where the last part of a name and the first part of a name identify duplicates - multiple case`() {
+                // given
+                val producer1 = "gallop co., ltd."
+                val producer2 = "studio gallop"
+                val producer3 = "tokyo HQ gallop"
+                val producer4 = "gallop made up"
+                val anime = AnimeRaw("Test")
+
+                // when
+                anime.addProducers(
+                    producer1,
+                    producer2,
+                    producer3,
+                    producer4,
+                )
+
+                // then
+                assertThat(anime.producers).containsExactlyInAnyOrder(
+                    producer1,
+                )
+            }
+
+            @Test
+            fun `prevent false positive for identifying overlapping duplicates - ANIME`() {
+                // given
+                val producer1 = "anime beans"
+                val producer2 = "tate anime"
+                val anime = AnimeRaw("Test")
+
+                // when
+                anime.addProducers(
+                    producer1,
+                    producer2,
+                )
+
+                // then
+                assertThat(anime.producers).containsExactlyInAnyOrder(
+                    producer1,
+                    producer2,
+                )
+            }
+
+            @Test
+            fun `prevent false positive for identifying overlapping duplicates - STUDIO`() {
+                // given
+                val producer1 = "studio durian"
+                val producer2 = "wit studio"
+                val anime = AnimeRaw("Test")
+
+                // when
+                anime.addProducers(
+                    producer1,
+                    producer2,
+                )
+
+                // then
+                assertThat(anime.producers).containsExactlyInAnyOrder(
+                    producer1,
+                    producer2,
+                )
+            }
+
+            @Test
+            fun `prevent false positive for identifying overlapping duplicates - TV`() {
+                // given
+                val producer1 = "sotsu"
+                val producer2 = "square enix"
+                val producer3 = "tv aichi"
+                val producer4 = "tv osaka"
+                val producer5 = "tv tokyo"
+                val anime = AnimeRaw("Test")
+
+                // when
+                anime.addProducers(
+                    producer1,
+                    producer2,
+                    producer3,
+                    producer4,
+                    producer5,
+                )
+
+                // then
+                assertThat(anime.producers).containsExactlyInAnyOrder(
+                    producer1,
+                    producer2,
+                    producer3,
+                    producer4,
+                    producer5,
+                )
+            }
+
+            @Test
+            fun `prevent false positive for identifying overlapping duplicates - TOKYO`() {
+                // given
+                val producer1 = "tokyo kids"
+                val producer2 = "tv tokyo"
+                val anime = AnimeRaw("Test")
+
+                // when
+                anime.addProducers(
+                    producer1,
+                    producer2,
+                )
+
+                // then
+                assertThat(anime.producers).containsExactlyInAnyOrder(
+                    producer1,
+                    producer2,
+                )
+            }
+
+            @Test
+            fun `prevent false positive for identifying overlapping duplicates - GROOVE`() {
+                // given
+                val producer1 = "groove corporation"
+                val producer2 = "group tac"
+                val producer3 = "hitsuji no uta production committee"
+                val producer4 = "inter communications inc."
+                val producer5 = "kenmedia"
+                val producer6 = "ken groove"
+                val producer7 = "madhouse"
+                val anime = AnimeRaw("Test")
+
+                // when
+                anime.addProducers(
+                    producer1,
+                    producer2,
+                    producer3,
+                    producer4,
+                    producer5,
+                    producer6,
+                    producer7,
+                )
+
+                // then
+                assertThat(anime.producers).containsExactlyInAnyOrder(
+                    producer1,
+                    producer2,
+                    producer3,
+                    producer4,
+                    producer5,
+                    producer6,
+                    producer7,
+                )
+            }
+
+            @Test
+            fun `prevent false positive for identifying overlapping duplicates - MEDIA`() {
+                // given
+                val producer1 = "kitty media"
+                val producer2 = "media blasters"
+                val producer3 = "on-lead"
+                val producer4 = "venet"
+                val anime = AnimeRaw("Test")
+
+                // when
+                anime.addProducers(
+                    producer1,
+                    producer2,
+                    producer3,
+                    producer4,
+                )
+
+                // then
+                assertThat(anime.producers).containsExactlyInAnyOrder(
+                    producer1,
+                    producer2,
+                    producer3,
+                    producer4,
+                )
+            }
+
+            @Test
+            fun `prevent false positive for identifying overlapping duplicates - PRODUCTION`() {
+                // given
+                val producer1 = "009 re:cyborg production committee"
+                val producer2 = "amazonlaterna co,ltd."
+                val producer3 = "funimation"
+                val producer4 = "ishimori production"
+                val producer5 = "nippon television network corporation"
+                val producer6 = "production i.g"
+                val producer7 = "sanzigen"
+                val producer8 = "t-joy"
+                val producer9 = "vap"
+                val anime = AnimeRaw("Test")
+
+                // when
+                anime.addProducers(
+                    producer1,
+                    producer2,
+                    producer3,
+                    producer4,
+                    producer5,
+                    producer6,
+                    producer7,
+                    producer8,
+                    producer9,
+                )
+
+                // then
+                assertThat(anime.producers).containsExactlyInAnyOrder(
+                    producer1,
+                    producer2,
+                    producer3,
+                    producer4,
+                    producer5,
+                    producer6,
+                    producer7,
+                    producer8,
+                    producer9,
+                )
+            }
+
+            @Test
+            fun `prevent false positive for identifying overlapping duplicates - ANIMATION`() {
+                // given
+                val producer1 = "animation do"
+                val producer2 = "chu-2byo production partners"
+                val producer3 = "kyoto animation"
+                val producer4 = "lantis"
+                val producer5 = "pony canyon"
+                val producer6 = "rakuonsha"
+                val producer7 = "tbs"
+                val producer8 = "tokyo broadcasting system"
+                val anime = AnimeRaw("Test")
+
+                // when
+                anime.addProducers(
+                    producer1,
+                    producer2,
+                    producer3,
+                    producer4,
+                    producer5,
+                    producer6,
+                    producer7,
+                    producer8,
+                )
+
+                // then
+                assertThat(anime.producers).containsExactlyInAnyOrder(
+                    producer1,
+                    producer2,
+                    producer3,
+                    producer4,
+                    producer5,
+                    producer6,
+                    producer7,
+                    producer8,
+                )
+            }
+
+            @Test
+            fun `prevent false positive for identifying overlapping duplicates - TELEVISION`() {
+                // given
+                val producer1 = "chiba television"
+                val producer2 = "geneon universal entertainment"
+                val producer3 = "kbs kyoto"
+                val producer4 = "medil"
+                val producer5 = "mie television broadcasting"
+                val producer6 = "sun tv"
+                val producer7 = "television kanagawa"
+                val producer8 = "television saitama co., ltd."
+                val producer9 = "thefool"
+                val anime = AnimeRaw("Test")
+
+                // when
+                anime.addProducers(
+                    producer1,
+                    producer2,
+                    producer3,
+                    producer4,
+                    producer5,
+                    producer6,
+                    producer7,
+                    producer8,
+                    producer9,
+                )
+
+                // then
+                assertThat(anime.producers).containsExactlyInAnyOrder(
+                    producer1,
+                    producer2,
+                    producer3,
+                    producer4,
+                    producer5,
+                    producer6,
+                    producer7,
+                    producer8,
+                    producer9,
+                )
+            }
+
+            @Test
+            fun `prevent false positive for identifying overlapping duplicates - GROUP`() {
+                // given
+                val producer1 = "group tac"
+                val producer2 = "nippon herald film group"
+                val producer3 = "the asahi shimbun company"
+                val producer4 = "tv asahi"
+                val anime = AnimeRaw("Test")
+
+                // when
+                anime.addProducers(
+                    producer1,
+                    producer2,
+                    producer3,
+                    producer4,
+                )
+
+                // then
+                assertThat(anime.producers).containsExactlyInAnyOrder(
+                    producer1,
+                    producer2,
+                    producer3,
+                    producer4,
                 )
             }
         }
@@ -5023,7 +6952,6 @@ internal class AnimeRawTest {
                 )
 
                 // then
-                assertThat(result.tags).hasSize(2)
                 assertThat(result.tags).containsExactlyInAnyOrder(
                     tag1,
                     tag2,
@@ -5243,7 +7171,6 @@ internal class AnimeRawTest {
                 ))
 
                 // then
-                assertThat(anime.tags).hasSize(2)
                 assertThat(anime.tags).containsExactlyInAnyOrder(
                     tag1,
                     tag2,
@@ -5443,7 +7370,6 @@ internal class AnimeRawTest {
                 )
 
                 // then
-                assertThat(anime.tags).hasSize(2)
                 assertThat(anime.tags).containsExactlyInAnyOrder(
                     tag1,
                     tag2,
