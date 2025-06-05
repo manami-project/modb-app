@@ -2,6 +2,7 @@ package io.github.manamiproject.modb.anidb
 
 import com.github.tomakehurst.wiremock.WireMockServer
 import com.github.tomakehurst.wiremock.client.WireMock.*
+import io.github.manamiproject.modb.anidb.AnidbDownloader.Companion.ANIDB_PENDING_FILE_INDICATOR
 import io.github.manamiproject.modb.core.config.AnimeId
 import io.github.manamiproject.modb.core.config.FileSuffix
 import io.github.manamiproject.modb.core.config.Hostname
@@ -231,11 +232,10 @@ internal class AnidbDownloaderTest : MockServerTestCase<WireMockServer> by WireM
         }
 
         @Test
-        fun `won't invoke onDeadEntry and returns an empty string if the response body indicates that the addition of the anime is pending`() {
+        fun `won't invoke onDeadEntry and returns a static string if the response body indicates that the addition of the anime is pending`() {
             runBlocking {
                 // given
                 val id = "11376"
-                var deadEntry = EMPTY
 
                 val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = "localhost"
@@ -259,46 +259,11 @@ internal class AnidbDownloaderTest : MockServerTestCase<WireMockServer> by WireM
 
                 // when
                 val result = downloader.download(id) {
-                    deadEntry = it
-                }
-
-                // then
-                assertThat(result).isEmpty()
-                assertThat(deadEntry).isEmpty()
-            }
-        }
-
-        @Test
-        fun `return empty string if addition for anime is pending and the response code is 200`() {
-            runBlocking {
-                // given
-                val id = "11376"
-
-                val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
-                    override fun hostname(): Hostname = "localhost"
-                    override fun buildAnimeLink(id: AnimeId): URI = AnidbConfig.buildAnimeLink(id)
-                    override fun buildDataDownloadLink(id: String): URI = URI("http://${hostname()}:$port/anime/$id")
-                    override fun fileSuffix(): FileSuffix = AnidbConfig.fileSuffix()
-                }
-
-                serverInstance.stubFor(
-                    get(urlPathEqualTo("/anime/$id")).willReturn(
-                        aResponse()
-                            .withHeader("Content-Type", "text/html")
-                            .withStatus(200)
-                            .withBody(loadTestResource<String>("AnidbDownloaderTest/addition_pending.html"))
-                    )
-                )
-
-                val downloader = AnidbDownloader(testConfig)
-
-                // when
-                val result = downloader.download(id) {
                     shouldNotBeInvoked()
                 }
 
                 // then
-                assertThat(result).isEqualTo(EMPTY)
+                assertThat(result).isEqualTo(ANIDB_PENDING_FILE_INDICATOR)
             }
         }
 

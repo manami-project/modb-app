@@ -1,6 +1,8 @@
 package io.github.manamiproject.modb.app.crawlers.anidb
 
 import io.github.manamiproject.modb.anidb.AnidbConfig
+import io.github.manamiproject.modb.anidb.AnidbDownloader
+import io.github.manamiproject.modb.anidb.AnidbDownloader.Companion.ANIDB_PENDING_FILE_INDICATOR
 import io.github.manamiproject.modb.anidb.CrawlerDetectedException
 import io.github.manamiproject.modb.app.TestAppConfig
 import io.github.manamiproject.modb.app.TestDeadEntriesAccessor
@@ -8,6 +10,7 @@ import io.github.manamiproject.modb.app.TestDownloader
 import io.github.manamiproject.modb.app.TestNetworkController
 import io.github.manamiproject.modb.app.config.Config
 import io.github.manamiproject.modb.app.crawlers.IdRangeSelector
+import io.github.manamiproject.modb.app.crawlers.anidb.AnidbCrawler.Companion.ANIDB_PENDING_FILE_SUFFIX
 import io.github.manamiproject.modb.app.dataset.DeadEntriesAccessor
 import io.github.manamiproject.modb.app.network.NetworkController
 import io.github.manamiproject.modb.core.config.AnimeId
@@ -16,8 +19,11 @@ import io.github.manamiproject.modb.core.coroutines.ModbDispatchers.LIMITED_CPU
 import io.github.manamiproject.modb.core.downloader.Downloader
 import io.github.manamiproject.modb.core.extensions.Directory
 import io.github.manamiproject.modb.core.extensions.EMPTY
+import io.github.manamiproject.modb.core.extensions.fileName
 import io.github.manamiproject.modb.core.extensions.readFile
+import io.github.manamiproject.modb.core.extensions.writeToFile
 import io.github.manamiproject.modb.test.exceptionExpected
+import io.github.manamiproject.modb.test.shouldNotBeInvoked
 import io.github.manamiproject.modb.test.tempDirectory
 import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.async
@@ -29,6 +35,7 @@ import org.junit.jupiter.api.Nested
 import java.net.ConnectException
 import java.net.NoRouteToHostException
 import java.net.UnknownHostException
+import kotlin.io.path.Path
 import kotlin.io.path.listDirectoryEntries
 import kotlin.test.Test
 
@@ -98,6 +105,54 @@ internal class AnidbCrawlerTest {
                     val result = tempDir.resolve("$id.html").readFile()
                     assertThat(result).isEqualTo("$successfulEntry $id")
                 }
+            }
+        }
+
+        @Test
+        fun `removes IDs of anime which are pending addition and have been downloaded already`() {
+            tempDirectory {
+                // given
+                val testMetaDataProviderConfig = object: MetaDataProviderConfig by AnidbConfig {
+                    override fun isTestContext(): Boolean = true
+                }
+
+                val testAppConfig = object : Config by TestAppConfig {
+                    override fun workingDir(metaDataProviderConfig: MetaDataProviderConfig): Directory = tempDir
+                }
+
+                val testIdRangeSelector = object: IdRangeSelector<Int> {
+                    override suspend fun idDownloadList(): List<Int> = listOf(1535, 23, 1254, 424)
+                }
+
+                val successfulEntry = "successfully loaded content for"
+                val testAnimeDownloader = object: Downloader by TestDownloader {
+                    override suspend fun download(id: AnimeId, onDeadEntry: suspend (AnimeId) -> Unit): String {
+                        return when(id) {
+                            "1254" -> shouldNotBeInvoked()
+                            else -> "$successfulEntry $id"
+                        }
+                    }
+                }
+
+                ANIDB_PENDING_FILE_INDICATOR.writeToFile(tempDir.resolve("1254.${ANIDB_PENDING_FILE_SUFFIX}"))
+
+                val crawler = AnidbCrawler(
+                    appConfig = testAppConfig,
+                    metaDataProviderConfig = testMetaDataProviderConfig,
+                    downloader = testAnimeDownloader,
+                    deadEntriesAccess = TestDeadEntriesAccessor,
+                    idRangeSelector = testIdRangeSelector,
+                    networkController = TestNetworkController,
+                )
+
+                // when
+                crawler.start()
+
+                // then
+                assertThat(tempDir).isDirectoryContaining { it.fileName() == "1535.html" }
+                assertThat(tempDir).isDirectoryContaining { it.fileName() == "23.html" }
+                assertThat(tempDir).isDirectoryContaining { it.fileName() == "424.html" }
+                assertThat(tempDir).isDirectoryNotContaining { it.fileName() == "1254.html" }
             }
         }
 
@@ -426,7 +481,7 @@ internal class AnidbCrawlerTest {
         }
 
         @Test
-        fun `directly throws exception if it's not one of the cases that restart the network controller`() {
+        fun `directly throws an exception if it's not one of the cases that restart the network controller`() {
             tempDirectory {
                 // given
                 val testMetaDataProviderConfig = object: MetaDataProviderConfig by AnidbConfig {
@@ -526,6 +581,82 @@ internal class AnidbCrawlerTest {
                 assertThat(invocations).containsExactlyInAnyOrder(
                     "1000",
                 )
+            }
+        }
+
+        @Test
+        fun `doesn't to anything if downloader returns an empty string`() {
+            tempDirectory {
+                // given
+                val testMetaDataProviderConfig = object: MetaDataProviderConfig by AnidbConfig {
+                    override fun isTestContext(): Boolean = true
+                }
+
+                val testAppConfig = object : Config by TestAppConfig {
+                    override fun workingDir(metaDataProviderConfig: MetaDataProviderConfig): Directory = tempDir
+                }
+
+                val testIdRangeSelector = object: IdRangeSelector<Int> {
+                    override suspend fun idDownloadList(): List<Int> = listOf(1000)
+                }
+
+                val testAnimeDownloader = object: Downloader by TestDownloader {
+                    override suspend fun download(id: AnimeId, onDeadEntry: suspend (AnimeId) -> Unit): String = EMPTY
+                }
+
+                val crawler = AnidbCrawler(
+                    appConfig = testAppConfig,
+                    metaDataProviderConfig = testMetaDataProviderConfig,
+                    downloader = testAnimeDownloader,
+                    deadEntriesAccess = TestDeadEntriesAccessor,
+                    idRangeSelector = testIdRangeSelector,
+                    networkController = TestNetworkController,
+                )
+
+                // when
+                crawler.start()
+
+                // then
+                assertThat(tempDir.listDirectoryEntries()).isEmpty()
+            }
+        }
+
+        @Test
+        fun `creates a file which indicates that the respective anime is pending addition and won't require another download`() {
+            tempDirectory {
+                // given
+                val testMetaDataProviderConfig = object: MetaDataProviderConfig by AnidbConfig {
+                    override fun isTestContext(): Boolean = true
+                }
+
+                val testAppConfig = object : Config by TestAppConfig {
+                    override fun workingDir(metaDataProviderConfig: MetaDataProviderConfig): Directory = tempDir
+                }
+
+                val testIdRangeSelector = object: IdRangeSelector<Int> {
+                    override suspend fun idDownloadList(): List<Int> = listOf(1000)
+                }
+
+                val testAnimeDownloader = object: Downloader by TestDownloader {
+                    override suspend fun download(id: AnimeId, onDeadEntry: suspend (AnimeId) -> Unit): String = ANIDB_PENDING_FILE_INDICATOR
+                }
+
+                val crawler = AnidbCrawler(
+                    appConfig = testAppConfig,
+                    metaDataProviderConfig = testMetaDataProviderConfig,
+                    downloader = testAnimeDownloader,
+                    deadEntriesAccess = TestDeadEntriesAccessor,
+                    idRangeSelector = testIdRangeSelector,
+                    networkController = TestNetworkController,
+                )
+
+                // when
+                crawler.start()
+
+                // then
+                assertThat(tempDir).isDirectoryContaining { file ->
+                    file.fileName() == "1000.pending"
+                }
             }
         }
     }
