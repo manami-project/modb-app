@@ -7,15 +7,19 @@ import io.github.manamiproject.modb.core.extensions.neitherNullNorBlank
 import io.github.manamiproject.modb.core.httpclient.BrowserType.DESKTOP
 import io.github.manamiproject.modb.core.httpclient.HttpProtocol.HTTP_1_1
 import io.github.manamiproject.modb.core.httpclient.HttpProtocol.HTTP_2
+import io.github.manamiproject.modb.core.io.LifecycleAwareInputStream
 import io.github.manamiproject.modb.core.logging.LoggerDelegate
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.isActive
 import kotlinx.coroutines.withContext
 import okhttp3.*
+import okhttp3.Protocol.HTTP_1_1 as OKHTTP_HTTP_1_1
+import okhttp3.Protocol.HTTP_2 as OKHTTP_HTTP_2
 import okhttp3.Headers.Companion.toHeaders
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.RequestBody.Companion.toRequestBody
 import okio.ByteString.Companion.encodeUtf8
+import java.io.InputStream.nullInputStream
 import java.net.Proxy
 import java.net.Proxy.NO_PROXY
 import java.net.SocketException
@@ -249,8 +253,8 @@ public class DefaultHttpClient(
 
         return protocols.map {
             when(it) {
-                HTTP_2 -> okhttp3.Protocol.HTTP_2
-                HTTP_1_1 -> okhttp3.Protocol.HTTP_1_1
+                HTTP_2 -> OKHTTP_HTTP_2
+                HTTP_1_1 -> OKHTTP_HTTP_1_1
             }
         }
     }
@@ -268,6 +272,6 @@ public class DefaultHttpClient(
 
 private fun Response.toHttpResponse() = HttpResponse(
     code = this.code,
-    body = this.body?.bytes() ?: EMPTY.toByteArray(),
+    _body = LifecycleAwareInputStream(this.body?.byteStream() ?: nullInputStream()),
     _headers = this.headers.toMultimap().toMutableMap()
 )

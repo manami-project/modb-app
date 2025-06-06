@@ -2,11 +2,11 @@ package io.github.manamiproject.modb.core
 
 import io.github.manamiproject.modb.core.anime.*
 import io.github.manamiproject.modb.core.anime.AnimeSeason.Companion.UNKNOWN_YEAR
-import io.github.manamiproject.modb.core.anime.AnimeSeason.Season.*
-import io.github.manamiproject.modb.core.anime.AnimeStatus.*
-import io.github.manamiproject.modb.core.anime.AnimeType.*
-import io.github.manamiproject.modb.core.anime.Duration.Companion.UNKNOWN as UNKNOWN_DURATION
-import io.github.manamiproject.modb.core.anime.Duration.TimeUnit.*
+import io.github.manamiproject.modb.core.anime.AnimeSeason.Season.FALL
+import io.github.manamiproject.modb.core.anime.AnimeStatus.FINISHED
+import io.github.manamiproject.modb.core.anime.AnimeType.SPECIAL
+import io.github.manamiproject.modb.core.anime.AnimeType.TV
+import io.github.manamiproject.modb.core.anime.Duration.TimeUnit.MINUTES
 import io.github.manamiproject.modb.core.config.*
 import io.github.manamiproject.modb.core.converter.AnimeConverter
 import io.github.manamiproject.modb.core.extractor.DataExtractor
@@ -16,12 +16,16 @@ import io.github.manamiproject.modb.core.extractor.Selector
 import io.github.manamiproject.modb.core.logging.Logger
 import io.github.manamiproject.modb.test.shouldNotBeInvoked
 import org.slf4j.Marker
-import org.slf4j.Logger as Slf4jLogger
+import java.io.IOException
+import java.io.InputStream
+import java.io.OutputStream
 import java.net.URI
 import java.time.LocalDate
 import java.time.LocalDateTime
 import java.time.OffsetDateTime
 import kotlin.reflect.*
+import io.github.manamiproject.modb.core.anime.Duration.Companion.UNKNOWN as UNKNOWN_DURATION
+import org.slf4j.Logger as Slf4jLogger
 
 internal object TestMetaDataProviderConfig : MetaDataProviderConfig {
     override fun isTestContext(): Boolean = true
@@ -1204,4 +1208,38 @@ internal object TestAnimeObjects {
             {"sources":["https://anidb.net/anime/18603","https://anilist.co/anime/177191","https://anime-planet.com/anime/the-quintessential-quintuplets-specials-2","https://anisearch.com/anime/19242","https://kitsu.app/anime/48807","https://livechart.me/anime/12646","https://myanimelist.net/anime/58755","https://notify.moe/anime/Gk-oD9uIR","https://simkl.com/anime/2448488"],"title":"5-toubun no Hanayome*","type":"SPECIAL","episodes":2,"status":"FINISHED","animeSeason":{"season":"FALL","year":2024},"picture":"https://cdn.myanimelist.net/images/anime/1915/145336.jpg","thumbnail":"https://cdn.myanimelist.net/images/anime/1915/145336t.jpg","duration":{"value":1440,"unit":"SECONDS"},"score":{"arithmeticGeometricMean":7.616175305477198,"arithmeticMean":7.624601113172541,"median":7.7272727272727275},"synonyms":["5-toubun no Hanayome *","Go-Toubun no Hanayome *","Go-Tōbun no Hanayome *","Go-toubun no Hanayome *","The Quintessential Quintuplets *","The Quintessential Quintuplets Movie*","The Quintessential Quintuplets Special 2","The Quintessential Quintuplets Specials 2","The Quintessential Quintuplets*","The Quintessential Quintuplets: Honeymoon Arc","五等分の花嫁*","五等分の花嫁＊","五等分的新娘＊"],"studios":["bibury animation studios"],"producers":["dax production","nichion","pony canyon","tbs"],"relatedAnime":["https://anidb.net/anime/16165","https://anilist.co/anime/131520","https://anime-planet.com/anime/the-quintessential-quintuplets-movie","https://animecountdown.com/1577789","https://anisearch.com/anime/16091","https://kitsu.app/anime/44229","https://livechart.me/anime/10488","https://livechart.me/anime/11921","https://livechart.me/anime/3448","https://livechart.me/anime/9428","https://myanimelist.net/anime/48548","https://notify.moe/anime/e7lfM8QMg","https://simkl.com/anime/1577789"],"tags":["america","based on a manga","comedy","drama","ensemble cast","female harem","harem","heterosexual","japanese production","language barrier","male protagonist","marriage","new","predominantly female cast","present","primarily female cast","romance","school","sequel","shounen","siblings","time","twins"]}
         """.trimIndent()
     }
+}
+
+internal class TestReadOnceInputStream(private val delegate: InputStream): InputStream() {
+    private var closed = false
+
+    override fun read(): Int {
+        if (closed) throw IOException("Stream closed")
+        return delegate.read()
+    }
+
+    override fun close() {
+        closed = true
+        delegate.close()
+    }
+}
+
+internal open class TestInputStream: InputStream() {
+    override fun close(): Unit = shouldNotBeInvoked()
+    override fun read(): Int = shouldNotBeInvoked()
+    override fun read(b: ByteArray?): Int = shouldNotBeInvoked()
+    override fun read(b: ByteArray?, off: Int, len: Int): Int = shouldNotBeInvoked()
+    override fun readAllBytes(): ByteArray? = shouldNotBeInvoked()
+    override fun readNBytes(len: Int): ByteArray? = shouldNotBeInvoked()
+    override fun readNBytes(b: ByteArray?, off: Int, len: Int): Int = shouldNotBeInvoked()
+    override fun skip(n: Long): Long = shouldNotBeInvoked()
+    override fun skipNBytes(n: Long): Unit = shouldNotBeInvoked()
+    override fun available(): Int = shouldNotBeInvoked()
+    override fun mark(readlimit: Int): Unit = shouldNotBeInvoked()
+    override fun markSupported(): Boolean = shouldNotBeInvoked()
+    override fun reset(): Unit = shouldNotBeInvoked()
+    override fun transferTo(out: OutputStream?): Long = shouldNotBeInvoked()
+    override fun equals(other: Any?): Boolean = shouldNotBeInvoked()
+    override fun hashCode(): Int = shouldNotBeInvoked()
+    override fun toString(): String = shouldNotBeInvoked()
 }

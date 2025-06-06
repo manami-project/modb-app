@@ -6,6 +6,7 @@ import io.github.manamiproject.modb.core.TestAnimeRawObjects
 import io.github.manamiproject.modb.core.anime.Anime
 import io.github.manamiproject.modb.core.anime.AnimeRaw
 import io.github.manamiproject.modb.core.extensions.writeToFile
+import io.github.manamiproject.modb.core.io.LifecycleAwareInputStream
 import io.github.manamiproject.modb.core.json.Json.SerializationOptions.DEACTIVATE_PRETTY_PRINT
 import io.github.manamiproject.modb.core.json.Json.SerializationOptions.DEACTIVATE_SERIALIZE_NULL
 import io.github.manamiproject.modb.test.exceptionExpected
@@ -32,7 +33,7 @@ internal class JsonKtTest {
                     val tempFile = tempDir.resolve("${UUID.randomUUID()}.json")
                     TestAnimeRawObjects.AllPropertiesSet.serializedPrettyPrint.writeToFile(tempFile)
 
-                    val inputStream = tempFile.inputStream()
+                    val inputStream = LifecycleAwareInputStream(tempFile.inputStream())
 
                     // when
                     val result = Json.parseJson<AnimeRaw>(inputStream)
@@ -81,7 +82,7 @@ internal class JsonKtTest {
                     val tempFile = tempDir.resolve("${UUID.randomUUID()}.json")
                     TestAnimeObjects.AllPropertiesSet.serializedPrettyPrint.writeToFile(tempFile)
 
-                    val inputStream = tempFile.inputStream()
+                    val inputStream = LifecycleAwareInputStream(tempFile.inputStream())
 
                     // when
                     val result = Json.parseJson<Anime>(inputStream)
