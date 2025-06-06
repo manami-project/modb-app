@@ -4,17 +4,16 @@ import com.squareup.moshi.Moshi
 import com.squareup.moshi.adapter
 import com.squareup.moshi.addAdapter
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
+import io.github.manamiproject.modb.core.anime.Anime
+import io.github.manamiproject.modb.core.anime.AnimeRaw
 import io.github.manamiproject.modb.core.coroutines.ModbDispatchers.LIMITED_CPU
 import io.github.manamiproject.modb.core.coroutines.ModbDispatchers.LIMITED_FS
+import io.github.manamiproject.modb.core.io.LifecycleAwareInputStream
 import io.github.manamiproject.modb.core.json.Json.SerializationOptions.DEACTIVATE_PRETTY_PRINT
 import io.github.manamiproject.modb.core.json.Json.SerializationOptions.DEACTIVATE_SERIALIZE_NULL
-import io.github.manamiproject.modb.core.anime.AnimeRaw
-import io.github.manamiproject.modb.core.anime.Anime
 import kotlinx.coroutines.withContext
 import okio.buffer
 import okio.source
-import java.io.BufferedReader
-import java.io.InputStream
 import com.squareup.moshi.JsonAdapter as MoshiAdapter
 
 /**
@@ -54,15 +53,15 @@ public object Json {
     }
 
     /**
-     * Parse an [InputStream] into an object.
+     * Parse an [LifecycleAwareInputStream] into an object.
      *
      * **WARNING** [Collection]s of a non-nullable type can still contain null.
      * @since 8.0.0
-     * @param json Valid JSON as [InputStream].
+     * @param json Valid JSON as [LifecycleAwareInputStream].
      * @return Deserialized JSON as object of given type [T].
      */
     @OptIn(ExperimentalStdlibApi::class)
-    public suspend inline fun <reified T> parseJson(json: InputStream): T? = withContext(LIMITED_FS) {
+    public suspend inline fun <reified T> parseJson(json: LifecycleAwareInputStream): T? = withContext(LIMITED_FS) {
         return@withContext moshi.adapter<T>().nullSafe().fromJson(json.source().buffer())
     }
 

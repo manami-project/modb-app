@@ -14,6 +14,6 @@ import kotlin.reflect.KClass
  */
 fun HttpResponse.checkedBody(thisRef: KClass<*>): String {
     check(isOk()) { "${thisRef.simpleName}: Response code [${code}] is not 200." }
-    check(bodyAsText.neitherNullNorBlank()) { "${thisRef.simpleName}: Response body was blank." }
-    return bodyAsText
+    check(bodyAsString().neitherNullNorBlank()) { "${thisRef.simpleName}: Response body was blank." }
+    return bodyAsString()
 }

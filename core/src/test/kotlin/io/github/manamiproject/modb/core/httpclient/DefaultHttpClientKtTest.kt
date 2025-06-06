@@ -74,7 +74,7 @@ internal class DefaultHttpClientKtTest : MockServerTestCase<WireMockServer> by W
 
                 // then
                 assertThat(result.code).isEqualTo(httpResponseCode)
-                assertThat(result.bodyAsText).isEqualTo(body)
+                assertThat(result.bodyAsString()).isEqualTo(body)
             }
         }
 
@@ -105,7 +105,7 @@ internal class DefaultHttpClientKtTest : MockServerTestCase<WireMockServer> by W
 
                 // then
                 assertThat(result.code).isEqualTo(httpResponseCode)
-                assertThat(result.bodyAsText).isEqualTo(body)
+                assertThat(result.bodyAsString()).isEqualTo(body)
             }
         }
 
@@ -442,7 +442,7 @@ internal class DefaultHttpClientKtTest : MockServerTestCase<WireMockServer> by W
 
                 // then
                 assertThat(result.code).isEqualTo(200)
-                assertThat(result.bodyAsText).isEqualTo("Success")
+                assertThat(result.bodyAsString()).isEqualTo("Success")
             }
         }
 
@@ -645,7 +645,7 @@ internal class DefaultHttpClientKtTest : MockServerTestCase<WireMockServer> by W
 
                 // then
                 assertThat(result.code).isEqualTo(httpResponseCode)
-                assertThat(result.bodyAsText).isEqualTo(body)
+                assertThat(result.bodyAsString()).isEqualTo(body)
             }
         }
 
@@ -682,7 +682,7 @@ internal class DefaultHttpClientKtTest : MockServerTestCase<WireMockServer> by W
 
                 // then
                 assertThat(result.code).isEqualTo(httpResponseCode)
-                assertThat(result.bodyAsText).isEqualTo(body)
+                assertThat(result.bodyAsString()).isEqualTo(body)
             }
         }
 
@@ -1207,7 +1207,7 @@ internal class DefaultHttpClientKtTest : MockServerTestCase<WireMockServer> by W
 
                 // then
                 assertThat(result.code).isEqualTo(200)
-                assertThat(result.bodyAsText).isEqualTo("Success")
+                assertThat(result.bodyAsString()).isEqualTo("Success")
             }
         }
 
