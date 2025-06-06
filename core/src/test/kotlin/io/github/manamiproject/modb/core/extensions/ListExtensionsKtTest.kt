@@ -1,58 +1,10 @@
 package io.github.manamiproject.modb.core.extensions
 
-import kotlinx.coroutines.runBlocking
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Nested
 import kotlin.test.Test
 
 internal class ListExtensionsKtTest {
-
-    @Nested
-    inner class ShuffleTests {
-
-        @Test
-        fun `create a shuffled list`() {
-            runBlocking {
-                // given
-                val sortedList = mutableListOf("A", "B", "C", "D")
-
-                // when
-                val result = sortedList.createShuffledList()
-
-                // then
-                assertThat(result).containsAll(sortedList)
-                assertThat(result).doesNotContainSequence(sortedList)
-            }
-        }
-
-        @Test
-        fun `list having only one element`() {
-            runBlocking {
-                // given
-                val sortedList = mutableListOf("A")
-
-                // when
-                val result = sortedList.createShuffledList()
-
-                // then
-                assertThat(result).containsExactly("A")
-            }
-        }
-
-        @Test
-        fun `empty list`() {
-            runBlocking {
-                // given
-                val sortedList = emptyList<String>()
-
-                // when
-                val result = sortedList.createShuffledList()
-
-                // then
-                assertThat(result).isEmpty()
-            }
-        }
-    }
 
     @Nested
     inner class ContainsExactlyInTheSameOrderTests {

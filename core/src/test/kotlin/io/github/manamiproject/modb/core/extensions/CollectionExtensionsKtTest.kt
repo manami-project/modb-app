@@ -1,5 +1,6 @@
 package io.github.manamiproject.modb.core.extensions
 
+import kotlinx.coroutines.runBlocking
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.assertThrows
@@ -8,7 +9,7 @@ import kotlin.test.Test
 internal class CollectionExtensionsKtTest {
 
     @Nested
-    inner class PickRandomElementTests {
+    inner class PickRandomTests {
 
         @Test
         fun `throw an error if the list is empty and pickRandom() is called`() {
@@ -48,6 +49,53 @@ internal class CollectionExtensionsKtTest {
             val thirdElementDiffers = result[2] != result[3]
             val elementsAreNotAllTheSame = firstElementDiffers || secondElementDiffers || thirdElementDiffers
             assertThat(elementsAreNotAllTheSame).isTrue()
+        }
+    }
+
+    @Nested
+    inner class CreateShuffledListTests {
+
+        @Test
+        fun `create a shuffled list`() {
+            runBlocking {
+                // given
+                val sortedList = mutableListOf("A", "B", "C", "D")
+
+                // when
+                val result = sortedList.createShuffledList()
+
+                // then
+                assertThat(result).containsAll(sortedList)
+                assertThat(result).doesNotContainSequence(sortedList)
+            }
+        }
+
+        @Test
+        fun `list having only one element`() {
+            runBlocking {
+                // given
+                val sortedList = mutableListOf("A")
+
+                // when
+                val result = sortedList.createShuffledList()
+
+                // then
+                assertThat(result).containsExactly("A")
+            }
+        }
+
+        @Test
+        fun `empty list`() {
+            runBlocking {
+                // given
+                val sortedList = emptyList<String>()
+
+                // when
+                val result = sortedList.createShuffledList()
+
+                // then
+                assertThat(result).isEmpty()
+            }
         }
     }
 }
