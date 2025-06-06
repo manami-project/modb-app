@@ -11,6 +11,9 @@ import io.github.manamiproject.modb.core.json.Json.SerializationOptions.DEACTIVA
 import io.github.manamiproject.modb.core.anime.AnimeRaw
 import io.github.manamiproject.modb.core.anime.Anime
 import kotlinx.coroutines.withContext
+import okio.buffer
+import okio.source
+import java.io.BufferedReader
 import java.io.InputStream
 import com.squareup.moshi.JsonAdapter as MoshiAdapter
 
@@ -60,7 +63,7 @@ public object Json {
      */
     @OptIn(ExperimentalStdlibApi::class)
     public suspend inline fun <reified T> parseJson(json: InputStream): T? = withContext(LIMITED_FS) {
-        return@withContext moshi.adapter<T>().nullSafe().fromJson(json.bufferedReader().readText())
+        return@withContext moshi.adapter<T>().nullSafe().fromJson(json.source().buffer())
     }
 
     /**
