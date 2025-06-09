@@ -34,8 +34,8 @@ class SimpleFileConverter(
         val unconvertedFiles = workingDir.listRegularFiles("*.${metaDataProviderConfig.fileSuffix()}")
             .filterNot { it.changeSuffix(CONVERTED_FILE_SUFFIX).regularFileExists() }
 
-        unconvertedFiles.chunked(250).forEach {
-            val jobs = it.map {
+        unconvertedFiles.chunked(250).forEach { chunk ->
+            val jobs = chunk.map {
                 async {
                     convertFileToConvFile(it)
                 }

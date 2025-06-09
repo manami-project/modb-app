@@ -172,8 +172,7 @@ class DefaultMergeLockAccessor(
             .distinct()
             .sortedBy { it.first() }
 
-        Json.toJson(MergeLockFile(sortedListOfMergeLocks))
-            .writeToFile(mergeLockFile, true)
+        Json.toJson(MergeLockFile(sortedListOfMergeLocks)).writeToFile(mergeLockFile, true)
     }
 
     companion object {

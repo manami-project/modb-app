@@ -68,8 +68,8 @@ class DependentFileConverter @KoverIgnore constructor(
             .filter { fileName -> allRawFilesRequiredForConversionExist(fileName) }
             .map { fileName -> outputDirectory.resolve("$fileName.${metaDataProviderConfig.fileSuffix()}") }
             .chunked(250)
-            .forEach {
-                val jobs = it.map {
+            .forEach { chunk ->
+                val jobs = chunk.map {
                     async {
                         convertFileToConvFile(it)
                     }
