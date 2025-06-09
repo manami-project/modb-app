@@ -3,6 +3,7 @@ package io.github.manamiproject.modb.app.convfiles
 import io.github.manamiproject.modb.app.TestAppConfig
 import io.github.manamiproject.modb.app.TestMetaDataProviderConfig
 import io.github.manamiproject.modb.app.config.Config
+import io.github.manamiproject.modb.app.crawlers.anidb.AnidbCrawler.Companion.ANIDB_PENDING_FILE_SUFFIX
 import io.github.manamiproject.modb.core.config.FileSuffix
 import io.github.manamiproject.modb.core.config.Hostname
 import io.github.manamiproject.modb.core.config.MetaDataProviderConfig
@@ -103,6 +104,41 @@ internal class DefaultRawFileConversionServiceTest {
                         return when(metaDataProviderConfig.hostname()) {
                             testConfig1.hostname() -> dir1
                             testConfig2.hostname() -> dir2
+                            else -> shouldNotBeInvoked()
+                        }
+                    }
+                }
+
+                val defaultRawFileConversionStatusChecker = DefaultRawFileConversionService(
+                    appConfig = testAppConfig,
+                )
+
+                // when
+                val result = defaultRawFileConversionStatusChecker.unconvertedFilesExist()
+
+                // then
+                assertThat(result).isFalse()
+            }
+        }
+
+        @Test
+        fun `ignores anidb pending files`() {
+            tempDirectory {
+                // given
+                val testConfig: MetaDataProviderConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = "example.org"
+                    override fun fileSuffix(): FileSuffix = "json"
+                }
+
+                val dir = tempDir.resolve("provider1").createDirectory()
+                dir.resolve("1.${ANIDB_PENDING_FILE_SUFFIX}").createFile()
+
+
+                val testAppConfig = object: Config by TestAppConfig {
+                    override fun metaDataProviderConfigurations() = setOf(testConfig)
+                    override fun workingDir(metaDataProviderConfig: MetaDataProviderConfig): Directory {
+                        return when(metaDataProviderConfig.hostname()) {
+                            testConfig.hostname() -> dir
                             else -> shouldNotBeInvoked()
                         }
                     }
