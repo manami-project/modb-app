@@ -1,7 +1,7 @@
 package io.github.manamiproject.modb.app.convfiles
 
-import io.github.manamiproject.AnimenewsnetworkConfig
 import io.github.manamiproject.AnimenewsnetworkAnimeConverter
+import io.github.manamiproject.AnimenewsnetworkConfig
 import io.github.manamiproject.modb.anidb.AnidbAnimeConverter
 import io.github.manamiproject.modb.anidb.AnidbConfig
 import io.github.manamiproject.modb.anilist.AnilistAnimeConverter
@@ -13,6 +13,7 @@ import io.github.manamiproject.modb.anisearch.AnisearchConfig
 import io.github.manamiproject.modb.anisearch.AnisearchRelationsConfig
 import io.github.manamiproject.modb.app.config.AppConfig
 import io.github.manamiproject.modb.app.config.Config
+import io.github.manamiproject.modb.app.crawlers.anidb.AnidbCrawler.Companion.ANIDB_PENDING_FILE_SUFFIX
 import io.github.manamiproject.modb.app.crawlers.notify.NotifyAnimeDatasetDownloaderConfig
 import io.github.manamiproject.modb.app.crawlers.notify.NotifyRelationsDatasetDownloaderConfig
 import io.github.manamiproject.modb.core.converter.DefaultPathAnimeConverter
@@ -57,6 +58,7 @@ class DefaultRawFileConversionService(
         appConfig.metaDataProviderConfigurations().forEach { config ->
             appConfig.workingDir(config)
                 .listRegularFiles()
+                .filterNot { it.fileSuffix() == ANIDB_PENDING_FILE_SUFFIX }
                 .forEach { file ->
                     when {
                         file.fileSuffix() == config.fileSuffix() -> unconverted++
