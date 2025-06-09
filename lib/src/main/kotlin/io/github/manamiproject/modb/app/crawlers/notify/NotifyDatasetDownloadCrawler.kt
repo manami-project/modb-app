@@ -59,7 +59,7 @@ class NotifyDatasetDownloadCrawler(
             .toList().forEach {
                 log.debug { "Creating batch of [$CHUNK_SIZE] anime data files." }
                 it.map { (key, content) ->
-                    content.writeToFile(appConfig.workingDir(metaDataProviderConfig).resolve("$key.${metaDataProviderConfig.fileSuffix()}"))
+                    content.writeToFile(appConfig.workingDir(metaDataProviderConfig).resolve("$key.${metaDataProviderConfig.fileSuffix()}"), true)
                 }
                 wait()
             }
@@ -96,7 +96,7 @@ class NotifyDatasetDownloadCrawler(
             .chunked(CHUNK_SIZE).forEach {
                 log.debug { "Creating batch of [$CHUNK_SIZE] anime relations files." }
                 it.map { (key, content) ->
-                    content.writeToFile(appConfig.workingDir(relationsMetaDataProviderConfig).resolve("$key.${relationsMetaDataProviderConfig.fileSuffix()}"))
+                    content.writeToFile(appConfig.workingDir(relationsMetaDataProviderConfig).resolve("$key.${relationsMetaDataProviderConfig.fileSuffix()}"), true)
                 }
                 wait()
             }
@@ -107,7 +107,7 @@ class NotifyDatasetDownloadCrawler(
             .toHashSet()
 
         (animeIdList - relationsIdList).forEach {
-            """{"animeId":"$it","items":[]}""".writeToFile(appConfig.workingDir(relationsMetaDataProviderConfig).resolve("$it.${relationsMetaDataProviderConfig.fileSuffix()}"))
+            """{"animeId":"$it","items":[]}""".writeToFile(appConfig.workingDir(relationsMetaDataProviderConfig).resolve("$it.${relationsMetaDataProviderConfig.fileSuffix()}"), true)
         }
 
         log.info { "Finished crawling data for [${metaDataProviderConfig.hostname()}]." }

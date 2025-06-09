@@ -143,6 +143,73 @@ internal class DependentConversionWatchServiceTest {
                 )
             }
         }
+
+        @Test
+        fun `convert all unconverted files at startup`() {
+            tempDirectory {
+                // given
+                val mainTestConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = "example.org"
+                    override fun fileSuffix(): FileSuffix = "json"
+                }
+
+                val mainWorkingDir = tempDir.resolve("main").apply {
+                    createDirectory()
+                    resolve("1535.${mainTestConfig.fileSuffix()}").createFile()
+                    resolve("dir.$LOCK_FILE_SUFFIX").createDirectory()
+                }
+
+                val dependentTestConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = "example.org"
+                    override fun fileSuffix(): FileSuffix = "json"
+                }
+
+                val dependentWorkingDir = tempDir.resolve("dependent").apply {
+                    createDirectory()
+                    resolve("1535.${mainTestConfig.fileSuffix()}").createFile()
+                    resolve("dir.$LOCK_FILE_SUFFIX").createDirectory()
+                }
+
+                val testAppConfig = object: Config by TestAppConfig {
+                    override fun workingDir(metaDataProviderConfig: MetaDataProviderConfig): Directory {
+                        return when(metaDataProviderConfig.identityHashCode()) {
+                            mainTestConfig.identityHashCode() -> mainWorkingDir
+                            dependentTestConfig.identityHashCode() -> dependentWorkingDir
+                            else -> shouldNotBeInvoked()
+                        }
+                    }
+                }
+
+                val anime = AnimeRaw("Death Note")
+
+                val testConverter = object: PathAnimeConverter by TestPathAnimeConverter {
+                    override suspend fun convert(path: Path): List<AnimeRaw> = listOf(anime)
+                }
+
+                val dependentConversionWatchService = DependentConversionWatchService(
+                    appConfig = testAppConfig,
+                    mainConfig = mainTestConfig,
+                    dependentMetaDataProviderConfigs = listOf(dependentTestConfig),
+                    converter = testConverter
+                )
+
+                // when
+                dependentConversionWatchService.prepare()
+
+                val mainDirContent = mainWorkingDir.listDirectoryEntries().map { it.fileName() }
+                assertThat(mainDirContent).containsExactlyInAnyOrder(
+                    "1535.${mainTestConfig.fileSuffix()}",
+                    "1535.${CONVERTED_FILE_SUFFIX}",
+                    "dir.$LOCK_FILE_SUFFIX",
+                )
+
+                val dependentDirContent = dependentWorkingDir.listDirectoryEntries().map { it.fileName() }
+                assertThat(dependentDirContent).containsExactlyInAnyOrder(
+                    "1535.${dependentTestConfig.fileSuffix()}",
+                    "dir.$LOCK_FILE_SUFFIX",
+                )
+            }
+        }
     }
 
     @Nested
