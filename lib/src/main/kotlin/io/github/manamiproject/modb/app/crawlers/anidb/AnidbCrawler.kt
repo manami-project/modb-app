@@ -20,6 +20,7 @@ import io.github.manamiproject.modb.core.downloader.Downloader
 import io.github.manamiproject.modb.core.excludeFromTestContext
 import io.github.manamiproject.modb.core.extensions.createShuffledList
 import io.github.manamiproject.modb.core.extensions.fileName
+import io.github.manamiproject.modb.core.extensions.listRegularFiles
 import io.github.manamiproject.modb.core.extensions.neitherNullNorBlank
 import io.github.manamiproject.modb.core.extensions.remove
 import io.github.manamiproject.modb.core.extensions.writeToFile
@@ -65,7 +66,7 @@ class AnidbCrawler(
         val idDownloadList = idRangeSelector.idDownloadList().toMutableList()
 
         if (idDownloadList.isNotEmpty()) {
-            appConfig.workingDir(metaDataProviderConfig).forEachDirectoryEntry("*.${ANIDB_PENDING_FILE_SUFFIX}") {
+            appConfig.workingDir(metaDataProviderConfig).listRegularFiles("*.${ANIDB_PENDING_FILE_SUFFIX}").forEach {
                 idDownloadList.remove(it.fileName().remove(".${ANIDB_PENDING_FILE_SUFFIX}").toInt())
             }
 
