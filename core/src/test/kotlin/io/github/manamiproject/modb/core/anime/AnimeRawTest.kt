@@ -510,6 +510,107 @@ internal class AnimeRawTest {
             }
 
             @ParameterizedTest
+            @ValueSource(strings = [
+                "\u02BB",
+                "\u02BC",
+                "\u2018",
+                "\u275B",
+                "\u275C",
+                "\u02B9",
+                "\u02BE",
+                "\u02C8",
+                "\u055A",
+                "\u07F4",
+                "\u07F5",
+                "\u1FBF",
+                "\u2032",
+                "\uA78C",
+                "\uFF07",
+            ])
+            fun `correctly normalized usages of apostrophe`(value: String) {
+                // when
+                val anime = AnimeRaw(
+                    _title = "Main title",
+                    _synonyms = hashSetOf(
+                      "she${value}s, John${value}s, it${value}s",
+                      "the girls$value, the dogs${value}",
+                      "don${value}t, can${value}t",
+                      "I${value}m",
+                      "I${value}d, they${value}d",
+                      "rock ${value}n$value roll",
+                      "he${value}ll, we${value}ll",
+                      "your${value}re",
+                      "I${value}ve",
+                      "${value}ere",
+                      "${value}cause",
+                      "${value}bout",
+                      "${value}fore",
+                    ),
+                )
+
+                // then
+                assertThat(anime.synonyms).containsExactlyInAnyOrder(
+                    "she\u2019s, John\u2019s, it\u2019s",
+                    "the girls\u2019, the dogs\u2019",
+                    "don\u2019t, can\u2019t",
+                    "I\u2019m",
+                    "I\u2019d, they\u2019d",
+                    "rock \u2019n\u2019 roll",
+                    "he\u2019ll, we\u2019ll",
+                    "your\u2019re",
+                    "I\u2019ve",
+                    "\u2019ere",
+                    "\u2019cause",
+                    "\u2019bout",
+                    "\u2019fore",
+                )
+            }
+
+            @ParameterizedTest
+            @ValueSource(strings = [
+                "\u2019",
+                "\u0027",
+            ])
+            fun `doesn't normalize acceptable apostrophes`(value: String) {
+                // when
+                val anime = AnimeRaw(
+                    _title = "Main title",
+                    _synonyms = hashSetOf(
+                        "she${value}s, John${value}s, it${value}s",
+                        "the girls$value, the dogs${value}",
+                        "don${value}t, can${value}t",
+                        "I${value}m",
+                        "I${value}d, they${value}d",
+                        "rock ${value}n$value roll",
+                        "he${value}ll, we${value}ll",
+                        "your${value}re",
+                        "I${value}ve",
+                        "${value}ere",
+                        "${value}cause",
+                        "${value}bout",
+                        "${value}fore",
+                    ),
+                )
+
+                // then
+                assertThat(anime.synonyms).containsExactlyInAnyOrder(
+                    "she${value}s, John${value}s, it${value}s",
+                    "the girls$value, the dogs${value}",
+                    "don${value}t, can${value}t",
+                    "I${value}m",
+                    "I${value}d, they${value}d",
+                    "rock ${value}n$value roll",
+                    "he${value}ll, we${value}ll",
+                    "your${value}re",
+                    "I${value}ve",
+                    "${value}ere",
+                    "${value}cause",
+                    "${value}bout",
+                    "${value}fore",
+                )
+            }
+
+            @ParameterizedTest
             @ValueSource(strings = [" Death Note", "Death Note ", "  Death   Note  ", "", " ", "    ", "\u200C"])
             fun `doesn't fix synonyms if activateChecks is false`(value: String) {
                 // when
@@ -812,6 +913,111 @@ internal class AnimeRawTest {
                     title.lowercase(),
                 )
             }
+
+            @ParameterizedTest
+            @ValueSource(strings = [
+                "\u02BB",
+                "\u02BC",
+                "\u2018",
+                "\u275B",
+                "\u275C",
+                "\u02B9",
+                "\u02BE",
+                "\u02C8",
+                "\u055A",
+                "\u07F4",
+                "\u07F5",
+                "\u1FBF",
+                "\u2032",
+                "\uA78C",
+                "\uFF07",
+            ])
+            fun `normalizes any combination of preceding apostrophe followed by s or s followed by apostrophe`(value: String) {
+                // given
+                val anime = AnimeRaw(
+                    _title = "Main title",
+                )
+
+                // when
+                val result = anime.addSynonyms(listOf(
+                    "she${value}s, John${value}s, it${value}s",
+                    "the girls$value, the dogs${value}",
+                    "don${value}t, can${value}t",
+                    "I${value}m",
+                    "I${value}d, they${value}d",
+                    "rock ${value}n$value roll",
+                    "he${value}ll, we${value}ll",
+                    "your${value}re",
+                    "I${value}ve",
+                    "${value}ere",
+                    "${value}cause",
+                    "${value}bout",
+                    "${value}fore",
+                ))
+
+                // then
+                assertThat(result.synonyms).containsExactlyInAnyOrder(
+                    "she\u2019s, John\u2019s, it\u2019s",
+                    "the girls\u2019, the dogs\u2019",
+                    "don\u2019t, can\u2019t",
+                    "I\u2019m",
+                    "I\u2019d, they\u2019d",
+                    "rock \u2019n\u2019 roll",
+                    "he\u2019ll, we\u2019ll",
+                    "your\u2019re",
+                    "I\u2019ve",
+                    "\u2019ere",
+                    "\u2019cause",
+                    "\u2019bout",
+                    "\u2019fore",
+                )
+            }
+
+            @ParameterizedTest
+            @ValueSource(strings = [
+                "\u2019",
+                "\u0027",
+            ])
+            fun `doesn't normalize acceptable apostrophes`(value: String) {
+                // given
+                val anime = AnimeRaw(
+                    _title = "Main title",
+                )
+
+                // when
+                val result = anime.addSynonyms(listOf(
+                    "she${value}s, John${value}s, it${value}s",
+                    "the girls$value, the dogs${value}",
+                    "don${value}t, can${value}t",
+                    "I${value}m",
+                    "I${value}d, they${value}d",
+                    "rock ${value}n$value roll",
+                    "he${value}ll, we${value}ll",
+                    "your${value}re",
+                    "I${value}ve",
+                    "${value}ere",
+                    "${value}cause",
+                    "${value}bout",
+                    "${value}fore",
+                ))
+
+                // then
+                assertThat(result.synonyms).containsExactlyInAnyOrder(
+                    "she${value}s, John${value}s, it${value}s",
+                    "the girls$value, the dogs${value}",
+                    "don${value}t, can${value}t",
+                    "I${value}m",
+                    "I${value}d, they${value}d",
+                    "rock ${value}n$value roll",
+                    "he${value}ll, we${value}ll",
+                    "your${value}re",
+                    "I${value}ve",
+                    "${value}ere",
+                    "${value}cause",
+                    "${value}bout",
+                    "${value}fore",
+                )
+            }
         }
 
         @Nested
@@ -1086,6 +1292,111 @@ internal class AnimeRawTest {
                     title,
                     title.uppercase(),
                     title.lowercase(),
+                )
+            }
+
+            @ParameterizedTest
+            @ValueSource(strings = [
+                "\u02BB",
+                "\u02BC",
+                "\u2018",
+                "\u275B",
+                "\u275C",
+                "\u02B9",
+                "\u02BE",
+                "\u02C8",
+                "\u055A",
+                "\u07F4",
+                "\u07F5",
+                "\u1FBF",
+                "\u2032",
+                "\uA78C",
+                "\uFF07",
+            ])
+            fun `normalizes any combination of preceding apostrophe followed by s or s followed by apostrophe`(value: String) {
+                // given
+                val anime = AnimeRaw(
+                    _title = "Main title",
+                )
+
+                // when
+                val result = anime.addSynonyms(
+                    "she${value}s, John${value}s, it${value}s",
+                    "the girls$value, the dogs${value}",
+                    "don${value}t, can${value}t",
+                    "I${value}m",
+                    "I${value}d, they${value}d",
+                    "rock ${value}n$value roll",
+                    "he${value}ll, we${value}ll",
+                    "your${value}re",
+                    "I${value}ve",
+                    "${value}ere",
+                    "${value}cause",
+                    "${value}bout",
+                    "${value}fore",
+                )
+
+                // then
+                assertThat(result.synonyms).containsExactlyInAnyOrder(
+                    "she\u2019s, John\u2019s, it\u2019s",
+                    "the girls\u2019, the dogs\u2019",
+                    "don\u2019t, can\u2019t",
+                    "I\u2019m",
+                    "I\u2019d, they\u2019d",
+                    "rock \u2019n\u2019 roll",
+                    "he\u2019ll, we\u2019ll",
+                    "your\u2019re",
+                    "I\u2019ve",
+                    "\u2019ere",
+                    "\u2019cause",
+                    "\u2019bout",
+                    "\u2019fore",
+                )
+            }
+
+            @ParameterizedTest
+            @ValueSource(strings = [
+                "\u2019",
+                "\u0027",
+            ])
+            fun `doesn't normalize acceptable apostrophes`(value: String) {
+                // given
+                val anime = AnimeRaw(
+                    _title = "Main title",
+                )
+
+                // when
+                val result = anime.addSynonyms(
+                    "she${value}s, John${value}s, it${value}s",
+                    "the girls$value, the dogs${value}",
+                    "don${value}t, can${value}t",
+                    "I${value}m",
+                    "I${value}d, they${value}d",
+                    "rock ${value}n$value roll",
+                    "he${value}ll, we${value}ll",
+                    "your${value}re",
+                    "I${value}ve",
+                    "${value}ere",
+                    "${value}cause",
+                    "${value}bout",
+                    "${value}fore",
+                )
+
+                // then
+                assertThat(result.synonyms).containsExactlyInAnyOrder(
+                    "she${value}s, John${value}s, it${value}s",
+                    "the girls$value, the dogs${value}",
+                    "don${value}t, can${value}t",
+                    "I${value}m",
+                    "I${value}d, they${value}d",
+                    "rock ${value}n$value roll",
+                    "he${value}ll, we${value}ll",
+                    "your${value}re",
+                    "I${value}ve",
+                    "${value}ere",
+                    "${value}cause",
+                    "${value}bout",
+                    "${value}fore",
                 )
             }
         }
@@ -1761,6 +2072,107 @@ internal class AnimeRawTest {
             }
 
             @ParameterizedTest
+            @ValueSource(strings = [
+                "\u2019",
+                "\u02BB",
+                "\u02BC",
+                "\u2018",
+                "\u275B",
+                "\u275C",
+                "\u02B9",
+                "\u02BE",
+                "\u02C8",
+                "\u055A",
+                "\u07F4",
+                "\u07F5",
+                "\u1FBF",
+                "\u2032",
+                "\uA78C",
+                "\uFF07",
+            ])
+            fun `normalizes any combination of preceding apostrophe followed by s or s followed by apostrophe`(value: String) {
+                // when
+                val anime = AnimeRaw(
+                    _title = "Main title",
+                    _studios = hashSetOf(
+                        "she${value}s, John${value}s, it${value}s",
+                        "the girls$value, the dogs${value}",
+                        "don${value}t, can${value}t",
+                        "I${value}m",
+                        "I${value}d, they${value}d",
+                        "rock ${value}n$value roll",
+                        "he${value}ll, we${value}ll",
+                        "your${value}re",
+                        "I${value}ve",
+                        "${value}ere",
+                        "${value}cause",
+                        "${value}bout",
+                        "${value}fore",
+                    ),
+                )
+
+                // then
+                assertThat(anime.studios).containsExactlyInAnyOrder(
+                    "she\u0027s, john\u0027s, it\u0027s",
+                    "the girls\u0027, the dogs\u0027",
+                    "don\u0027t, can\u0027t",
+                    "i\u0027m",
+                    "i\u0027d, they\u0027d",
+                    "rock \u0027n\u0027 roll",
+                    "he\u0027ll, we\u0027ll",
+                    "your\u0027re",
+                    "i\u0027ve",
+                    "\u0027ere",
+                    "\u0027cause",
+                    "\u0027bout",
+                    "\u0027fore",
+                )
+            }
+
+            @ParameterizedTest
+            @ValueSource(strings = [
+                "\u0027",
+            ])
+            fun `doesn't normalize acceptable apostrophes`(value: String) {
+                // when
+                val anime = AnimeRaw(
+                    _title = "Main title",
+                    _studios = hashSetOf(
+                        "she${value}s, John${value}s, it${value}s",
+                        "the girls$value, the dogs${value}",
+                        "don${value}t, can${value}t",
+                        "I${value}m",
+                        "I${value}d, they${value}d",
+                        "rock ${value}n$value roll",
+                        "he${value}ll, we${value}ll",
+                        "your${value}re",
+                        "I${value}ve",
+                        "${value}ere",
+                        "${value}cause",
+                        "${value}bout",
+                        "${value}fore",
+                    ),
+                )
+
+                // then
+                assertThat(anime.studios).containsExactlyInAnyOrder(
+                    "she${value}s, john${value}s, it${value}s",
+                    "the girls$value, the dogs${value}",
+                    "don${value}t, can${value}t",
+                    "i${value}m",
+                    "i${value}d, they${value}d",
+                    "rock ${value}n$value roll",
+                    "he${value}ll, we${value}ll",
+                    "your${value}re",
+                    "i${value}ve",
+                    "${value}ere",
+                    "${value}cause",
+                    "${value}bout",
+                    "${value}fore",
+                )
+            }
+
+            @ParameterizedTest
             @ValueSource(strings = [" Death Note", "Death Note ", "  Death   Note  ", "DEATH NOTE", "", " ", "    ", "\u200C"])
             fun `doesn't fix studios if activateChecks is false`(value: String) {
                 // when
@@ -2385,6 +2797,111 @@ internal class AnimeRawTest {
                     studio4,
                 )
             }
+
+            @ParameterizedTest
+            @ValueSource(strings = [
+                "\u2019",
+                "\u02BB",
+                "\u02BC",
+                "\u2018",
+                "\u275B",
+                "\u275C",
+                "\u02B9",
+                "\u02BE",
+                "\u02C8",
+                "\u055A",
+                "\u07F4",
+                "\u07F5",
+                "\u1FBF",
+                "\u2032",
+                "\uA78C",
+                "\uFF07",
+            ])
+            fun `normalizes any combination of preceding apostrophe followed by s or s followed by apostrophe`(value: String) {
+                // given
+                val anime = AnimeRaw(
+                    _title = "Main title",
+                )
+
+                // when
+                val result = anime.addStudios(listOf(
+                    "she${value}s, John${value}s, it${value}s",
+                    "the girls$value, the dogs${value}",
+                    "don${value}t, can${value}t",
+                    "I${value}m",
+                    "I${value}d, they${value}d",
+                    "rock ${value}n$value roll",
+                    "he${value}ll, we${value}ll",
+                    "your${value}re",
+                    "I${value}ve",
+                    "${value}ere",
+                    "${value}cause",
+                    "${value}bout",
+                    "${value}fore",
+                ))
+
+                // then
+                assertThat(result.studios).containsExactlyInAnyOrder(
+                    "she\u0027s, john\u0027s, it\u0027s",
+                    "the girls\u0027, the dogs\u0027",
+                    "don\u0027t, can\u0027t",
+                    "i\u0027m",
+                    "i\u0027d, they\u0027d",
+                    "rock \u0027n\u0027 roll",
+                    "he\u0027ll, we\u0027ll",
+                    "your\u0027re",
+                    "i\u0027ve",
+                    "\u0027ere",
+                    "\u0027cause",
+                    "\u0027bout",
+                    "\u0027fore",
+                )
+            }
+
+            @ParameterizedTest
+            @ValueSource(strings = [
+                "\u0027",
+            ])
+            fun `doesn't normalize acceptable apostrophes`(value: String) {
+                // given
+                val anime = AnimeRaw(
+                    _title = "Main title",
+                )
+
+                // when
+                val result = anime.addStudios(listOf(
+                    "she${value}s, john${value}s, it${value}s",
+                    "the girls$value, the dogs${value}",
+                    "don${value}t, can${value}t",
+                    "i${value}m",
+                    "i${value}d, they${value}d",
+                    "rock ${value}n$value roll",
+                    "he${value}ll, we${value}ll",
+                    "your${value}re",
+                    "i${value}ve",
+                    "${value}ere",
+                    "${value}cause",
+                    "${value}bout",
+                    "${value}fore",
+                ))
+
+                // then
+                assertThat(result.studios).containsExactlyInAnyOrder(
+                    "she${value}s, john${value}s, it${value}s",
+                    "the girls$value, the dogs${value}",
+                    "don${value}t, can${value}t",
+                    "i${value}m",
+                    "i${value}d, they${value}d",
+                    "rock ${value}n$value roll",
+                    "he${value}ll, we${value}ll",
+                    "your${value}re",
+                    "i${value}ve",
+                    "${value}ere",
+                    "${value}cause",
+                    "${value}bout",
+                    "${value}fore",
+                )
+            }
         }
 
         @Nested
@@ -2989,6 +3506,111 @@ internal class AnimeRawTest {
                     studio2,
                     studio3,
                     studio4,
+                )
+            }
+
+            @ParameterizedTest
+            @ValueSource(strings = [
+                "\u2019",
+                "\u02BB",
+                "\u02BC",
+                "\u2018",
+                "\u275B",
+                "\u275C",
+                "\u02B9",
+                "\u02BE",
+                "\u02C8",
+                "\u055A",
+                "\u07F4",
+                "\u07F5",
+                "\u1FBF",
+                "\u2032",
+                "\uA78C",
+                "\uFF07",
+            ])
+            fun `normalizes any combination of preceding apostrophe followed by s or s followed by apostrophe`(value: String) {
+                // given
+                val anime = AnimeRaw(
+                    _title = "Main title",
+                )
+
+                // when
+                val result = anime.addStudios(
+                    "she${value}s, John${value}s, it${value}s",
+                    "the girls$value, the dogs${value}",
+                    "don${value}t, can${value}t",
+                    "I${value}m",
+                    "I${value}d, they${value}d",
+                    "rock ${value}n$value roll",
+                    "he${value}ll, we${value}ll",
+                    "your${value}re",
+                    "I${value}ve",
+                    "${value}ere",
+                    "${value}cause",
+                    "${value}bout",
+                    "${value}fore",
+                )
+
+                // then
+                assertThat(result.studios).containsExactlyInAnyOrder(
+                    "she\u0027s, john\u0027s, it\u0027s",
+                    "the girls\u0027, the dogs\u0027",
+                    "don\u0027t, can\u0027t",
+                    "i\u0027m",
+                    "i\u0027d, they\u0027d",
+                    "rock \u0027n\u0027 roll",
+                    "he\u0027ll, we\u0027ll",
+                    "your\u0027re",
+                    "i\u0027ve",
+                    "\u0027ere",
+                    "\u0027cause",
+                    "\u0027bout",
+                    "\u0027fore",
+                )
+            }
+
+            @ParameterizedTest
+            @ValueSource(strings = [
+                "\u0027",
+            ])
+            fun `doesn't normalize acceptable apostrophes`(value: String) {
+                // given
+                val anime = AnimeRaw(
+                    _title = "Main title",
+                )
+
+                // when
+                val result = anime.addStudios(
+                    "she${value}s, John${value}s, it${value}s",
+                    "the girls$value, the dogs${value}",
+                    "don${value}t, can${value}t",
+                    "I${value}m",
+                    "I${value}d, they${value}d",
+                    "rock ${value}n$value roll",
+                    "he${value}ll, we${value}ll",
+                    "your${value}re",
+                    "I${value}ve",
+                    "${value}ere",
+                    "${value}cause",
+                    "${value}bout",
+                    "${value}fore",
+                )
+
+                // then
+                assertThat(result.studios).containsExactlyInAnyOrder(
+                    "she${value}s, john${value}s, it${value}s",
+                    "the girls$value, the dogs${value}",
+                    "don${value}t, can${value}t",
+                    "i${value}m",
+                    "i${value}d, they${value}d",
+                    "rock ${value}n$value roll",
+                    "he${value}ll, we${value}ll",
+                    "your${value}re",
+                    "i${value}ve",
+                    "${value}ere",
+                    "${value}cause",
+                    "${value}bout",
+                    "${value}fore",
                 )
             }
         }
@@ -3667,6 +4289,107 @@ internal class AnimeRawTest {
             }
 
             @ParameterizedTest
+            @ValueSource(strings = [
+                "\u2019",
+                "\u02BB",
+                "\u02BC",
+                "\u2018",
+                "\u275B",
+                "\u275C",
+                "\u02B9",
+                "\u02BE",
+                "\u02C8",
+                "\u055A",
+                "\u07F4",
+                "\u07F5",
+                "\u1FBF",
+                "\u2032",
+                "\uA78C",
+                "\uFF07",
+            ])
+            fun `normalizes any combination of preceding apostrophe followed by s or s followed by apostrophe`(value: String) {
+                // when
+                val anime = AnimeRaw(
+                    _title = "Main title",
+                    _producers = hashSetOf(
+                        "she${value}s, John${value}s, it${value}s",
+                        "the girls$value, the dogs${value}",
+                        "don${value}t, can${value}t",
+                        "I${value}m",
+                        "I${value}d, they${value}d",
+                        "rock ${value}n$value roll",
+                        "he${value}ll, we${value}ll",
+                        "your${value}re",
+                        "I${value}ve",
+                        "${value}ere",
+                        "${value}cause",
+                        "${value}bout",
+                        "${value}fore",
+                    ),
+                )
+
+                // then
+                assertThat(anime.producers).containsExactlyInAnyOrder(
+                    "she\u0027s, john\u0027s, it\u0027s",
+                    "the girls\u0027, the dogs\u0027",
+                    "don\u0027t, can\u0027t",
+                    "i\u0027m",
+                    "i\u0027d, they\u0027d",
+                    "rock \u0027n\u0027 roll",
+                    "he\u0027ll, we\u0027ll",
+                    "your\u0027re",
+                    "i\u0027ve",
+                    "\u0027ere",
+                    "\u0027cause",
+                    "\u0027bout",
+                    "\u0027fore",
+                )
+            }
+
+            @ParameterizedTest
+            @ValueSource(strings = [
+                "\u0027",
+            ])
+            fun `doesn't normalize acceptable apostrophes`(value: String) {
+                // when
+                val anime = AnimeRaw(
+                    _title = "Main title",
+                    _producers = hashSetOf(
+                        "she${value}s, John${value}s, it${value}s",
+                        "the girls$value, the dogs${value}",
+                        "don${value}t, can${value}t",
+                        "I${value}m",
+                        "I${value}d, they${value}d",
+                        "rock ${value}n$value roll",
+                        "he${value}ll, we${value}ll",
+                        "your${value}re",
+                        "I${value}ve",
+                        "${value}ere",
+                        "${value}cause",
+                        "${value}bout",
+                        "${value}fore",
+                    ),
+                )
+
+                // then
+                assertThat(anime.producers).containsExactlyInAnyOrder(
+                    "she${value}s, john${value}s, it${value}s",
+                    "the girls$value, the dogs${value}",
+                    "don${value}t, can${value}t",
+                    "i${value}m",
+                    "i${value}d, they${value}d",
+                    "rock ${value}n$value roll",
+                    "he${value}ll, we${value}ll",
+                    "your${value}re",
+                    "i${value}ve",
+                    "${value}ere",
+                    "${value}cause",
+                    "${value}bout",
+                    "${value}fore",
+                )
+            }
+
+            @ParameterizedTest
             @ValueSource(strings = [" Death Note", "Death Note ", "  Death   Note  ", "DEATH NOTE", "", " ", "    ", "\u200C"])
             fun `doesn't fix producers if activateChecks is false`(value: String) {
                 // when
@@ -4291,6 +5014,111 @@ internal class AnimeRawTest {
                     producer4,
                 )
             }
+
+            @ParameterizedTest
+            @ValueSource(strings = [
+                "\u2019",
+                "\u02BB",
+                "\u02BC",
+                "\u2018",
+                "\u275B",
+                "\u275C",
+                "\u02B9",
+                "\u02BE",
+                "\u02C8",
+                "\u055A",
+                "\u07F4",
+                "\u07F5",
+                "\u1FBF",
+                "\u2032",
+                "\uA78C",
+                "\uFF07",
+            ])
+            fun `normalizes any combination of preceding apostrophe followed by s or s followed by apostrophe`(value: String) {
+                // given
+                val anime = AnimeRaw(
+                    _title = "Main title",
+                )
+
+                // when
+                val result = anime.addProducers(listOf(
+                    "she${value}s, John${value}s, it${value}s",
+                    "the girls$value, the dogs${value}",
+                    "don${value}t, can${value}t",
+                    "I${value}m",
+                    "I${value}d, they${value}d",
+                    "rock ${value}n$value roll",
+                    "he${value}ll, we${value}ll",
+                    "your${value}re",
+                    "I${value}ve",
+                    "${value}ere",
+                    "${value}cause",
+                    "${value}bout",
+                    "${value}fore",
+                ))
+
+                // then
+                assertThat(result.producers).containsExactlyInAnyOrder(
+                    "she\u0027s, john\u0027s, it\u0027s",
+                    "the girls\u0027, the dogs\u0027",
+                    "don\u0027t, can\u0027t",
+                    "i\u0027m",
+                    "i\u0027d, they\u0027d",
+                    "rock \u0027n\u0027 roll",
+                    "he\u0027ll, we\u0027ll",
+                    "your\u0027re",
+                    "i\u0027ve",
+                    "\u0027ere",
+                    "\u0027cause",
+                    "\u0027bout",
+                    "\u0027fore",
+                )
+            }
+
+            @ParameterizedTest
+            @ValueSource(strings = [
+                "\u0027",
+            ])
+            fun `doesn't normalize acceptable apostrophes`(value: String) {
+                // given
+                val anime = AnimeRaw(
+                    _title = "Main title",
+                )
+
+                // when
+                val result = anime.addProducers(listOf(
+                    "she${value}s, John${value}s, it${value}s",
+                    "the girls$value, the dogs${value}",
+                    "don${value}t, can${value}t",
+                    "I${value}m",
+                    "I${value}d, they${value}d",
+                    "rock ${value}n$value roll",
+                    "he${value}ll, we${value}ll",
+                    "your${value}re",
+                    "I${value}ve",
+                    "${value}ere",
+                    "${value}cause",
+                    "${value}bout",
+                    "${value}fore",
+                ))
+
+                // then
+                assertThat(result.producers).containsExactlyInAnyOrder(
+                    "she${value}s, john${value}s, it${value}s",
+                    "the girls$value, the dogs${value}",
+                    "don${value}t, can${value}t",
+                    "i${value}m",
+                    "i${value}d, they${value}d",
+                    "rock ${value}n$value roll",
+                    "he${value}ll, we${value}ll",
+                    "your${value}re",
+                    "i${value}ve",
+                    "${value}ere",
+                    "${value}cause",
+                    "${value}bout",
+                    "${value}fore",
+                )
+            }
         }
 
         @Nested
@@ -4895,6 +5723,111 @@ internal class AnimeRawTest {
                     producer2,
                     producer3,
                     producer4,
+                )
+            }
+
+            @ParameterizedTest
+            @ValueSource(strings = [
+                "\u2019",
+                "\u02BB",
+                "\u02BC",
+                "\u2018",
+                "\u275B",
+                "\u275C",
+                "\u02B9",
+                "\u02BE",
+                "\u02C8",
+                "\u055A",
+                "\u07F4",
+                "\u07F5",
+                "\u1FBF",
+                "\u2032",
+                "\uA78C",
+                "\uFF07",
+            ])
+            fun `normalizes any combination of preceding apostrophe followed by s or s followed by apostrophe`(value: String) {
+                // given
+                val anime = AnimeRaw(
+                    _title = "Main title",
+                )
+
+                // when
+                val result = anime.addProducers(
+                    "she${value}s, John${value}s, it${value}s",
+                    "the girls$value, the dogs${value}",
+                    "don${value}t, can${value}t",
+                    "I${value}m",
+                    "I${value}d, they${value}d",
+                    "rock ${value}n$value roll",
+                    "he${value}ll, we${value}ll",
+                    "your${value}re",
+                    "I${value}ve",
+                    "${value}ere",
+                    "${value}cause",
+                    "${value}bout",
+                    "${value}fore",
+                )
+
+                // then
+                assertThat(result.producers).containsExactlyInAnyOrder(
+                    "she\u0027s, john\u0027s, it\u0027s",
+                    "the girls\u0027, the dogs\u0027",
+                    "don\u0027t, can\u0027t",
+                    "i\u0027m",
+                    "i\u0027d, they\u0027d",
+                    "rock \u0027n\u0027 roll",
+                    "he\u0027ll, we\u0027ll",
+                    "your\u0027re",
+                    "i\u0027ve",
+                    "\u0027ere",
+                    "\u0027cause",
+                    "\u0027bout",
+                    "\u0027fore",
+                )
+            }
+
+            @ParameterizedTest
+            @ValueSource(strings = [
+                "\u0027",
+            ])
+            fun `doesn't normalize acceptable apostrophes`(value: String) {
+                // given
+                val anime = AnimeRaw(
+                    _title = "Main title",
+                )
+
+                // when
+                val result = anime.addProducers(
+                    "she${value}s, John${value}s, it${value}s",
+                    "the girls$value, the dogs${value}",
+                    "don${value}t, can${value}t",
+                    "I${value}m",
+                    "I${value}d, they${value}d",
+                    "rock ${value}n$value roll",
+                    "he${value}ll, we${value}ll",
+                    "your${value}re",
+                    "I${value}ve",
+                    "${value}ere",
+                    "${value}cause",
+                    "${value}bout",
+                    "${value}fore",
+                )
+
+                // then
+                assertThat(result.producers).containsExactlyInAnyOrder(
+                    "she${value}s, john${value}s, it${value}s",
+                    "the girls$value, the dogs${value}",
+                    "don${value}t, can${value}t",
+                    "i${value}m",
+                    "i${value}d, they${value}d",
+                    "rock ${value}n$value roll",
+                    "he${value}ll, we${value}ll",
+                    "your${value}re",
+                    "i${value}ve",
+                    "${value}ere",
+                    "${value}cause",
+                    "${value}bout",
+                    "${value}fore",
                 )
             }
         }
@@ -6959,6 +7892,107 @@ internal class AnimeRawTest {
             }
 
             @ParameterizedTest
+            @ValueSource(strings = [
+                "\u2019",
+                "\u02BB",
+                "\u02BC",
+                "\u2018",
+                "\u275B",
+                "\u275C",
+                "\u02B9",
+                "\u02BE",
+                "\u02C8",
+                "\u055A",
+                "\u07F4",
+                "\u07F5",
+                "\u1FBF",
+                "\u2032",
+                "\uA78C",
+                "\uFF07",
+            ])
+            fun `normalizes any combination of preceding apostrophe followed by s or s followed by apostrophe`(value: String) {
+                // when
+                val anime = AnimeRaw(
+                    _title = "Main title",
+                    _tags = hashSetOf(
+                        "she${value}s, John${value}s, it${value}s",
+                        "the girls$value, the dogs${value}",
+                        "don${value}t, can${value}t",
+                        "I${value}m",
+                        "I${value}d, they${value}d",
+                        "rock ${value}n$value roll",
+                        "he${value}ll, we${value}ll",
+                        "your${value}re",
+                        "I${value}ve",
+                        "${value}ere",
+                        "${value}cause",
+                        "${value}bout",
+                        "${value}fore",
+                    ),
+                )
+
+                // then
+                assertThat(anime.tags).containsExactlyInAnyOrder(
+                    "she\u0027s, john\u0027s, it\u0027s",
+                    "the girls\u0027, the dogs\u0027",
+                    "don\u0027t, can\u0027t",
+                    "i\u0027m",
+                    "i\u0027d, they\u0027d",
+                    "rock \u0027n\u0027 roll",
+                    "he\u0027ll, we\u0027ll",
+                    "your\u0027re",
+                    "i\u0027ve",
+                    "\u0027ere",
+                    "\u0027cause",
+                    "\u0027bout",
+                    "\u0027fore",
+                )
+            }
+
+            @ParameterizedTest
+            @ValueSource(strings = [
+                "\u0027",
+            ])
+            fun `doesn't normalize acceptable apostrophes`(value: String) {
+                // when
+                val anime = AnimeRaw(
+                    _title = "Main title",
+                    _tags = hashSetOf(
+                        "she${value}s, John${value}s, it${value}s",
+                        "the girls$value, the dogs${value}",
+                        "don${value}t, can${value}t",
+                        "I${value}m",
+                        "I${value}d, they${value}d",
+                        "rock ${value}n$value roll",
+                        "he${value}ll, we${value}ll",
+                        "your${value}re",
+                        "I${value}ve",
+                        "${value}ere",
+                        "${value}cause",
+                        "${value}bout",
+                        "${value}fore",
+                    ),
+                )
+
+                // then
+                assertThat(anime.tags).containsExactlyInAnyOrder(
+                    "she${value}s, john${value}s, it${value}s",
+                    "the girls$value, the dogs${value}",
+                    "don${value}t, can${value}t",
+                    "i${value}m",
+                    "i${value}d, they${value}d",
+                    "rock ${value}n$value roll",
+                    "he${value}ll, we${value}ll",
+                    "your${value}re",
+                    "i${value}ve",
+                    "${value}ere",
+                    "${value}cause",
+                    "${value}bout",
+                    "${value}fore",
+                )
+            }
+
+            @ParameterizedTest
             @ValueSource(strings = [" Death Note", "Death Note ", "  Death   Note  ", "DEATH NOTE", "", " ", "    ", "\u200C"])
             fun `doesn't fix tags if activateChecks is false`(value: String) {
                 // when
@@ -7176,6 +8210,111 @@ internal class AnimeRawTest {
                     tag2,
                 )
             }
+
+            @ParameterizedTest
+            @ValueSource(strings = [
+                "\u2019",
+                "\u02BB",
+                "\u02BC",
+                "\u2018",
+                "\u275B",
+                "\u275C",
+                "\u02B9",
+                "\u02BE",
+                "\u02C8",
+                "\u055A",
+                "\u07F4",
+                "\u07F5",
+                "\u1FBF",
+                "\u2032",
+                "\uA78C",
+                "\uFF07",
+            ])
+            fun `normalizes any combination of preceding apostrophe followed by s or s followed by apostrophe`(value: String) {
+                // given
+                val anime = AnimeRaw(
+                    _title = "Main title",
+                )
+
+                // when
+                val result = anime.addTags(listOf(
+                    "she${value}s, John${value}s, it${value}s",
+                    "the girls$value, the dogs${value}",
+                    "don${value}t, can${value}t",
+                    "I${value}m",
+                    "I${value}d, they${value}d",
+                    "rock ${value}n$value roll",
+                    "he${value}ll, we${value}ll",
+                    "your${value}re",
+                    "I${value}ve",
+                    "${value}ere",
+                    "${value}cause",
+                    "${value}bout",
+                    "${value}fore",
+                ))
+
+                // then
+                assertThat(result.tags).containsExactlyInAnyOrder(
+                    "she\u0027s, john\u0027s, it\u0027s",
+                    "the girls\u0027, the dogs\u0027",
+                    "don\u0027t, can\u0027t",
+                    "i\u0027m",
+                    "i\u0027d, they\u0027d",
+                    "rock \u0027n\u0027 roll",
+                    "he\u0027ll, we\u0027ll",
+                    "your\u0027re",
+                    "i\u0027ve",
+                    "\u0027ere",
+                    "\u0027cause",
+                    "\u0027bout",
+                    "\u0027fore",
+                )
+            }
+
+            @ParameterizedTest
+            @ValueSource(strings = [
+                "\u0027",
+            ])
+            fun `doesn't normalize acceptable apostrophes`(value: String) {
+                // given
+                val anime = AnimeRaw(
+                    _title = "Main title",
+                )
+
+                // when
+                val result = anime.addTags(listOf(
+                    "she${value}s, John${value}s, it${value}s",
+                    "the girls$value, the dogs${value}",
+                    "don${value}t, can${value}t",
+                    "I${value}m",
+                    "I${value}d, they${value}d",
+                    "rock ${value}n$value roll",
+                    "he${value}ll, we${value}ll",
+                    "your${value}re",
+                    "I${value}ve",
+                    "${value}ere",
+                    "${value}cause",
+                    "${value}bout",
+                    "${value}fore",
+                ))
+
+                // then
+                assertThat(result.tags).containsExactlyInAnyOrder(
+                    "she${value}s, john${value}s, it${value}s",
+                    "the girls$value, the dogs${value}",
+                    "don${value}t, can${value}t",
+                    "i${value}m",
+                    "i${value}d, they${value}d",
+                    "rock ${value}n$value roll",
+                    "he${value}ll, we${value}ll",
+                    "your${value}re",
+                    "i${value}ve",
+                    "${value}ere",
+                    "${value}cause",
+                    "${value}bout",
+                    "${value}fore",
+                )
+            }
         }
 
         @Nested
@@ -7373,6 +8512,111 @@ internal class AnimeRawTest {
                 assertThat(anime.tags).containsExactlyInAnyOrder(
                     tag1,
                     tag2,
+                )
+            }
+
+            @ParameterizedTest
+            @ValueSource(strings = [
+                "\u2019",
+                "\u02BB",
+                "\u02BC",
+                "\u2018",
+                "\u275B",
+                "\u275C",
+                "\u02B9",
+                "\u02BE",
+                "\u02C8",
+                "\u055A",
+                "\u07F4",
+                "\u07F5",
+                "\u1FBF",
+                "\u2032",
+                "\uA78C",
+                "\uFF07",
+            ])
+            fun `normalizes any combination of preceding apostrophe followed by s or s followed by apostrophe`(value: String) {
+                // given
+                val anime = AnimeRaw(
+                    _title = "Main title",
+                )
+
+                // when
+                val result = anime.addTags(
+                    "she${value}s, John${value}s, it${value}s",
+                    "the girls$value, the dogs${value}",
+                    "don${value}t, can${value}t",
+                    "I${value}m",
+                    "I${value}d, they${value}d",
+                    "rock ${value}n$value roll",
+                    "he${value}ll, we${value}ll",
+                    "your${value}re",
+                    "I${value}ve",
+                    "${value}ere",
+                    "${value}cause",
+                    "${value}bout",
+                    "${value}fore",
+                )
+
+                // then
+                assertThat(result.tags).containsExactlyInAnyOrder(
+                    "she\u0027s, john\u0027s, it\u0027s",
+                    "the girls\u0027, the dogs\u0027",
+                    "don\u0027t, can\u0027t",
+                    "i\u0027m",
+                    "i\u0027d, they\u0027d",
+                    "rock \u0027n\u0027 roll",
+                    "he\u0027ll, we\u0027ll",
+                    "your\u0027re",
+                    "i\u0027ve",
+                    "\u0027ere",
+                    "\u0027cause",
+                    "\u0027bout",
+                    "\u0027fore",
+                )
+            }
+
+            @ParameterizedTest
+            @ValueSource(strings = [
+                "\u0027",
+            ])
+            fun `doesn't normalize acceptable apostrophes`(value: String) {
+                // given
+                val anime = AnimeRaw(
+                    _title = "Main title",
+                )
+
+                // when
+                val result = anime.addTags(
+                    "she${value}s, John${value}s, it${value}s",
+                    "the girls$value, the dogs${value}",
+                    "don${value}t, can${value}t",
+                    "I${value}m",
+                    "I${value}d, they${value}d",
+                    "rock ${value}n$value roll",
+                    "he${value}ll, we${value}ll",
+                    "your${value}re",
+                    "I${value}ve",
+                    "${value}ere",
+                    "${value}cause",
+                    "${value}bout",
+                    "${value}fore",
+                )
+
+                // then
+                assertThat(result.tags).containsExactlyInAnyOrder(
+                    "she${value}s, john${value}s, it${value}s",
+                    "the girls$value, the dogs${value}",
+                    "don${value}t, can${value}t",
+                    "i${value}m",
+                    "i${value}d, they${value}d",
+                    "rock ${value}n$value roll",
+                    "he${value}ll, we${value}ll",
+                    "your${value}re",
+                    "i${value}ve",
+                    "${value}ere",
+                    "${value}cause",
+                    "${value}bout",
+                    "${value}fore",
                 )
             }
         }

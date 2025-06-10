@@ -2,16 +2,15 @@ package io.github.manamiproject.modb.core.anime
 
 import io.github.manamiproject.modb.core.anime.AnimeMedia.NO_PICTURE
 import io.github.manamiproject.modb.core.anime.AnimeMedia.NO_PICTURE_THUMBNAIL
-import io.github.manamiproject.modb.core.extensions.neitherNullNorBlank
-import io.github.manamiproject.modb.core.extensions.normalize
 import io.github.manamiproject.modb.core.anime.AnimeSeason.Season.UNDEFINED
 import io.github.manamiproject.modb.core.config.Hostname
+import io.github.manamiproject.modb.core.extensions.neitherNullNorBlank
+import io.github.manamiproject.modb.core.extensions.normalize
+import java.net.URI
+import java.util.concurrent.ConcurrentHashMap
 import io.github.manamiproject.modb.core.anime.AnimeStatus.UNKNOWN as UNKNOWN_STATUS
 import io.github.manamiproject.modb.core.anime.AnimeType.UNKNOWN as UNKNOWN_TYPE
 import io.github.manamiproject.modb.core.anime.Duration.Companion.UNKNOWN as UNKNOWN_DURATION
-import java.net.URI
-import java.util.concurrent.ConcurrentHashMap
-import java.util.concurrent.ConcurrentMap
 
 
 /**
@@ -131,6 +130,9 @@ public data class AnimeRaw(
      * Add additional synonyms to the existing list. Duplicates are being ignored.
      * Comparison for this is case sensitive. This will **not** override [synonyms].
      * The value which is present in [title] cannot be added.
+     * Values are normalized using [normalize]. The usage of apostrophes is also normalized for cases with a
+     * preceding s and a following as. Examples `'s` or `s'`. Acceptable is [SIMPLIFIED_APOSTROPHE_NO_TYPOGRAPHY], but
+     * every other type of apostrophe is replaced with [CORRECT_APOSTROPHE_INCLUDING_TYPOGRAPHY].
      * @since 3.1.0
      * @param synonym Synonyms to be added.
      * @return Same instance.
@@ -141,6 +143,9 @@ public data class AnimeRaw(
      * Add additional synonyms to the existing list. Duplicates are being ignored.
      * Comparison for this is case sensitive. This will **not** override [synonyms].
      * The value which is present in [title] cannot be added.
+     * Values are normalized using [normalize]. The usage of apostrophes is also normalized for cases with a
+     * preceding s and a following as. Examples `'s` or `s'`. Acceptable is [SIMPLIFIED_APOSTROPHE_NO_TYPOGRAPHY], but
+     * every other type of apostrophe is replaced with [CORRECT_APOSTROPHE_INCLUDING_TYPOGRAPHY].
      * @since 1.0.0
      * @param synonyms List of synonyms.
      * @return Same instance.
@@ -150,6 +155,7 @@ public data class AnimeRaw(
             .map { it.normalize() }
             .filter { it.neitherNullNorBlank() }
             .filter { it != _title }
+            .map { normalizeApostrophes(it, CORRECT_APOSTROPHE_INCLUDING_TYPOGRAPHY) }
             .forEach { _synonyms.add(it) }
 
         return this
@@ -160,6 +166,9 @@ public data class AnimeRaw(
      * To further prevent duplicates, the longest studio name wins. Example:
      * When adding `satelight` and `satelight inc.` only `satelight inc.` will remain, because `satelight` is identified
      * as the shorter version of `satelight inc.`.
+     * Values are normalized using [normalize]. The usage of apostrophes is also normalized for cases with a
+     * preceding s and a following as. Examples `'s` or `s'`. Every type of apostrophe is replaced with
+     * [SIMPLIFIED_APOSTROPHE_NO_TYPOGRAPHY].
      * @since 18.4.0
      * @param studios Studio names to be added.
      * @return Same instance.
@@ -171,6 +180,9 @@ public data class AnimeRaw(
      * To further prevent duplicates, the longest studio name wins. Example:
      * When adding `satelight` and `satelight inc.` only `satelight inc.` will remain, because `satelight` is identified
      * as the shorter version of `satelight inc.`.
+     * Values are normalized using [normalize]. The usage of apostrophes is also normalized for cases with a
+     * preceding s and a following as. Examples `'s` or `s'`. Every type of apostrophe is replaced with
+     * [SIMPLIFIED_APOSTROPHE_NO_TYPOGRAPHY].
      * @since 18.4.0
      * @param studios List of studio names to be added.
      * @return Same instance.
@@ -180,6 +192,7 @@ public data class AnimeRaw(
             .map { it.normalize() }
             .filter { it.neitherNullNorBlank() }
             .map { it.lowercase() }
+            .map { normalizeApostrophes(it) }
             .toSet()
 
         val union =_studios.toHashSet().union(newNormalized).sortedBy { it.length }
@@ -205,6 +218,9 @@ public data class AnimeRaw(
      * Duplicates are being ignored. To further prevent duplicates, the longest producer name wins. Example:
      * When adding `satelight` and `satelight inc.` only `satelight inc.` will remain, because `satelight` is identified
      * as the shorter version of `satelight inc.`.
+     * Values are normalized using [normalize]. The usage of apostrophes is also normalized for cases with a
+     * preceding s and a following as. Examples `'s` or `s'`. Every type of apostrophe is replaced with
+     * [SIMPLIFIED_APOSTROPHE_NO_TYPOGRAPHY].
      * @since 18.4.0
      * @param producers names of producers to be added.
      * @return Same instance.
@@ -216,6 +232,9 @@ public data class AnimeRaw(
      * Duplicates are being ignored. To further prevent duplicates, the longest producer name wins. Example:
      * When adding `satelight` and `satelight inc.` only `satelight inc.` will remain, because `satelight` is identified
      * as the shorter version of `satelight inc.`.
+     * Values are normalized using [normalize]. The usage of apostrophes is also normalized for cases with a
+     * preceding s and a following as. Examples `'s` or `s'`. Every type of apostrophe is replaced with
+     * [SIMPLIFIED_APOSTROPHE_NO_TYPOGRAPHY].
      * @since 18.4.0
      * @param producers List of names of producers to be added.
      * @return Same instance.
@@ -225,6 +244,7 @@ public data class AnimeRaw(
             .map { it.normalize() }
             .filter { it.neitherNullNorBlank() }
             .map { it.lowercase() }
+            .map { normalizeApostrophes(it) }
             .toSet()
 
         val union =_producers.toHashSet().union(newNormalized).sortedBy { it.length }
@@ -318,6 +338,9 @@ public data class AnimeRaw(
     /**
      * Add additional tags to the existing list. This will **not** override [tags].
      * Duplicates are being ignored.
+     * Values are normalized using [normalize]. The usage of apostrophes is also normalized for cases with a
+     * preceding s and a following as. Examples `'s` or `s'`. Every type of apostrophe is replaced with
+     * [SIMPLIFIED_APOSTROPHE_NO_TYPOGRAPHY].
      * @since 3.1.0
      * @param tags List of tags.
      * @return Same instance.
@@ -327,6 +350,9 @@ public data class AnimeRaw(
     /**
      * Add additional tags to the existing list. This will **not** override [tags].
      * Duplicates are being ignored.
+     * Values are normalized using [normalize]. The usage of apostrophes is also normalized for cases with a
+     * preceding s and a following as. Examples `'s` or `s'`. Every type of apostrophe is replaced with
+     * [SIMPLIFIED_APOSTROPHE_NO_TYPOGRAPHY].
      * @since 1.0.0
      * @param tags List of tags.
      * @return Same instance.
@@ -336,6 +362,7 @@ public data class AnimeRaw(
             .map { it.normalize() }
             .filter { it.neitherNullNorBlank() }
             .map { it.lowercase() }
+            .map { normalizeApostrophes(it) }
             .forEach { _tags.add(it) }
 
         return this
@@ -584,7 +611,41 @@ public data class AnimeRaw(
         return ret
     }
 
+    private fun normalizeApostrophes(value: String, normalizeTo: Char = SIMPLIFIED_APOSTROPHE_NO_TYPOGRAPHY): String {
+        var normalized = value
+
+        val apostropheAsSuffix = when {
+            normalizeTo == SIMPLIFIED_APOSTROPHE_NO_TYPOGRAPHY -> APOSTROPH_SUFFIX_TO_S_INCLUDING_U2019_REGEX
+            else -> APOSTROPH_SUFFIX_TO_S_EXCEPT_U2019_REGEX
+        }
+
+        if (apostropheAsSuffix.containsMatchIn(normalized)) {
+            apostropheAsSuffix.findAll(normalized).map { it.groups["toBeReplaced"]!!.value }.forEach { toBeReplaced ->
+                normalized = normalized.replace(toBeReplaced, normalizeTo.toString())
+            }
+        }
+
+        val apostropheUsage = when {
+            normalizeTo == SIMPLIFIED_APOSTROPHE_NO_TYPOGRAPHY -> APOSTROPH_USAGE_INCLUDING_U2019_REGEX
+            else -> APOSTROPH_USAGE_EXCEPT_U2019_REGEX
+        }
+
+        if (apostropheUsage.containsMatchIn(normalized)) {
+            apostropheUsage.findAll(normalized).map { it.groups["toBeReplaced"]!!.value }.forEach { toBeReplaced ->
+                normalized = normalized.replace(toBeReplaced, normalizeTo.toString())
+            }
+        }
+
+        return normalized
+    }
+
     private companion object {
+        private const val CORRECT_APOSTROPHE_INCLUDING_TYPOGRAPHY: Char = '\u2019'
+        private const val SIMPLIFIED_APOSTROPHE_NO_TYPOGRAPHY: Char = '\u0027'
+        private val APOSTROPH_SUFFIX_TO_S_EXCEPT_U2019_REGEX: Regex = """s(?<toBeReplaced>[\u02BB\u02BC\u2018\u275B\u275C\u02B9\u02BE\u02C8\u055A\u07F4\u07F5\u1FBF\u2032\uA78C\uFF07]) *""".toRegex()
+        private val APOSTROPH_SUFFIX_TO_S_INCLUDING_U2019_REGEX: Regex = """s(?<toBeReplaced>[\u2019\u02BB\u02BC\u2018\u275B\u275C\u02B9\u02BE\u02C8\u055A\u07F4\u07F5\u1FBF\u2032\uA78C\uFF07]) *""".toRegex()
+        private val APOSTROPH_USAGE_EXCEPT_U2019_REGEX: Regex = """(?<toBeReplaced>[\u02BB\u02BC\u2018\u275B\u275C\u02B9\u02BE\u02C8\u055A\u07F4\u07F5\u1FBF\u2032\uA78C\uFF07])[a-z]""".toRegex()
+        private val APOSTROPH_USAGE_INCLUDING_U2019_REGEX: Regex = """(?<toBeReplaced>[\u2019\u02BB\u02BC\u2018\u275B\u275C\u02B9\u02BE\u02C8\u055A\u07F4\u07F5\u1FBF\u2032\uA78C\uFF07])[a-z]""".toRegex()
         private val falsePostives = hashSetOf<String>(
             "anime",
             "studio",
