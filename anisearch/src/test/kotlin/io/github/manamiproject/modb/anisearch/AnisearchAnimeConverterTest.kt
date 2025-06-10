@@ -1205,17 +1205,17 @@ internal class AnisearchAnimeConverterTest {
 
                 // then
                 assertThat(result.synonyms).containsExactlyInAnyOrder(
-                    "Inu x Boku SS Special",
-                    "Inu x Boku SS: Miketsukami-kun Henka / Switch / Omamagoto",
-                    "Inu x Boku Secret Service: Miketsukami-kun‘s Transformations / Switch / Playing House",
-                    "Inu x Boku Secret Service: Miketsukami‘s Metamorphosis / Switch / Playing House",
-                    "Inu × Boku SS Special",
-                    "Inu × Boku Secret Service: Miketsukami-kun‘s Transformations / Switch / Playing House",
-                    "Inu × Boku Secret Service: Miketsukami‘s Metamorphosis",
-                    "Inu × Boku Secret Service: Miketsukami‘s Metamorphosis / Switch / Playing House",
                     "Youko x Boku SS Special",
-                    "Youko × Boku SS Special",
+                    "Inu x Boku Secret Service: Miketsukami-kun’s Transformations / Switch / Playing House",
+                    "Inu x Boku Secret Service: Miketsukami’s Metamorphosis / Switch / Playing House",
+                    "Inu × Boku Secret Service: Miketsukami’s Metamorphosis / Switch / Playing House",
+                    "Inu x Boku SS Special",
                     "妖狐×僕SS 御狐神くん変化 ／ スイッチ ／ おままごと",
+                    "Youko × Boku SS Special",
+                    "Inu × Boku Secret Service: Miketsukami-kun’s Transformations / Switch / Playing House",
+                    "Inu x Boku SS: Miketsukami-kun Henka / Switch / Omamagoto",
+                    "Inu × Boku SS Special",
+                    "Inu × Boku Secret Service: Miketsukami’s Metamorphosis",
                 )
             }
         }
