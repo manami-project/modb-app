@@ -4,6 +4,8 @@ import io.github.manamiproject.AnimenewsnetworkConfig
 import io.github.manamiproject.modb.app.convfiles.AlreadyDownloadedIdsFinder
 import io.github.manamiproject.modb.app.convfiles.DefaultAlreadyDownloadedIdsFinder
 import io.github.manamiproject.modb.app.crawlers.PaginationIdRangeSelector
+import io.github.manamiproject.modb.app.dataset.DeadEntriesAccessor
+import io.github.manamiproject.modb.app.dataset.DefaultDeadEntriesAccessor
 import io.github.manamiproject.modb.app.downloadcontrolstate.DefaultDownloadControlStateScheduler
 import io.github.manamiproject.modb.app.downloadcontrolstate.DownloadControlStateScheduler
 import io.github.manamiproject.modb.app.extensions.checkedBody
@@ -31,6 +33,7 @@ import io.github.manamiproject.modb.core.logging.LoggerDelegate
  * @property extractor Extractor which retrieves the data from raw data.
  * @property downloadControlStateScheduler Allows to check which anime are scheduled for re-download and which are not.
  * @property alreadyDownloadedIdsFinder Fetches all IDs which have already been downloaded.
+ * @property deadEntriesAccessor Access to dead entries files.
  */
 class AnimenewsnetworkPaginationIdRangeSelector(
     private val metaDataProviderConfig: MetaDataProviderConfig = AnimenewsnetworkConfig,
@@ -39,6 +42,7 @@ class AnimenewsnetworkPaginationIdRangeSelector(
     private val extractor: DataExtractor = XmlDataExtractor,
     private val downloadControlStateScheduler: DownloadControlStateScheduler = DefaultDownloadControlStateScheduler.instance,
     private val alreadyDownloadedIdsFinder: AlreadyDownloadedIdsFinder = DefaultAlreadyDownloadedIdsFinder.instance,
+    private val deadEntriesAccessor: DeadEntriesAccessor = DefaultDeadEntriesAccessor.instance,
 ): PaginationIdRangeSelector<String> {
 
     private val entriesNotScheduledForCurrentWeek = hashSetOf<AnimeId>()
@@ -71,6 +75,7 @@ class AnimenewsnetworkPaginationIdRangeSelector(
 
         entriesOnThePage.removeAll(entriesNotScheduledForCurrentWeek)
         entriesOnThePage.removeAll(alreadyDownloadedIdsFinder.alreadyDownloadedIds(metaDataProviderConfig))
+        entriesOnThePage.removeAll(deadEntriesAccessor.fetchDeadEntries(metaDataProviderConfig))
         return entriesOnThePage.toList().createShuffledList()
     }
 

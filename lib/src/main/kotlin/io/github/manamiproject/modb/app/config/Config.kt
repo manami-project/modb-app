@@ -113,6 +113,7 @@ interface Config: ContextAware {
     fun deadEntriesSupported(metaDataProviderConfig: MetaDataProviderConfig): Boolean = setOf(
         AnidbConfig,
         AnilistConfig,
+        AnimenewsnetworkConfig,
         KitsuConfig,
         MyanimelistConfig,
     ).contains(metaDataProviderConfig)
