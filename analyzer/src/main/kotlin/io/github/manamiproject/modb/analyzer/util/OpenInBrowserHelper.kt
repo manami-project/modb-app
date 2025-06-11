@@ -1,5 +1,6 @@
 package io.github.manamiproject.modb.analyzer.util
 
+import io.github.manamiproject.AnimenewsnetworkConfig
 import io.github.manamiproject.modb.anidb.AnidbConfig
 import io.github.manamiproject.modb.anilist.AnilistConfig
 import io.github.manamiproject.modb.animeplanet.AnimePlanetConfig
@@ -47,6 +48,9 @@ internal object OpenInBrowserHelper {
             }
             if (!this.contains(AnilistConfig.hostname())) {
                 searchLink.add(URI("https://${AnilistConfig.hostname()}/search/anime?search=$urlEncodedTitle"))
+            }
+            if (!this.contains(AnimenewsnetworkConfig.hostname())) {
+                searchLink.add(URI("https://www.${AnimenewsnetworkConfig.hostname()}/encyclopedia/search/name?only=anime&q=$urlEncodedTitle"))
             }
             if (!this.contains(AnimePlanetConfig.hostname())) {
                 searchLink.add(URI("https://www.${AnimePlanetConfig.hostname()}/anime/all?name=$urlEncodedTitle"))
