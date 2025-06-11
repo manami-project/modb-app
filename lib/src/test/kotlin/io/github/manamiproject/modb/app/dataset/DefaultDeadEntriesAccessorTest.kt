@@ -203,7 +203,7 @@ internal class DefaultDeadEntriesAccessorTest {
     inner class AddDeadEntryTests {
 
         @ParameterizedTest
-        @ValueSource(classes = [AnidbConfig::class, AnilistConfig::class, KitsuConfig::class, MyanimelistConfig::class])
+        @ValueSource(classes = [AnidbConfig::class, AnilistConfig::class, AnimenewsnetworkConfig::class, KitsuConfig::class, MyanimelistConfig::class])
         fun `successfully save dead entry`(configClass: Class<*>) {
             tempDirectory {
                 // given
@@ -252,7 +252,7 @@ internal class DefaultDeadEntriesAccessorTest {
         }
 
         @ParameterizedTest
-        @ValueSource(classes = [AnidbConfig::class, AnilistConfig::class, KitsuConfig::class, MyanimelistConfig::class])
+        @ValueSource(classes = [AnidbConfig::class, AnilistConfig::class, AnimenewsnetworkConfig::class, KitsuConfig::class, MyanimelistConfig::class])
         fun `appends new entries by overriding existing file`(configClass: Class<*>) {
             tempDirectory {
                 // given
@@ -299,7 +299,7 @@ internal class DefaultDeadEntriesAccessorTest {
         }
 
         @ParameterizedTest
-        @ValueSource(classes = [AnidbConfig::class, AnilistConfig::class, KitsuConfig::class, MyanimelistConfig::class])
+        @ValueSource(classes = [AnidbConfig::class, AnilistConfig::class, AnimenewsnetworkConfig::class, KitsuConfig::class, MyanimelistConfig::class])
         fun `prevent duplicates`(configClass: Class<*>) {
             tempDirectory {
                 // given
@@ -350,7 +350,7 @@ internal class DefaultDeadEntriesAccessorTest {
         }
 
         @ParameterizedTest
-        @ValueSource(classes = [AnidbConfig::class, AnilistConfig::class, KitsuConfig::class, MyanimelistConfig::class])
+        @ValueSource(classes = [AnidbConfig::class, AnilistConfig::class, AnimenewsnetworkConfig::class, KitsuConfig::class, MyanimelistConfig::class])
         fun `creates a new dead entries file if the given does not exist`(configClass: Class<*>) {
             tempDirectory {
                 // given
@@ -390,7 +390,7 @@ internal class DefaultDeadEntriesAccessorTest {
         }
 
         @ParameterizedTest
-        @ValueSource(classes = [AnidbConfig::class, AnilistConfig::class, KitsuConfig::class, MyanimelistConfig::class])
+        @ValueSource(classes = [AnidbConfig::class, AnilistConfig::class, AnimenewsnetworkConfig::class, KitsuConfig::class, MyanimelistConfig::class])
         fun `removes the corresponding file from download control state`(configClass: Class<*>) {
             tempDirectory {
                 // given
@@ -434,7 +434,6 @@ internal class DefaultDeadEntriesAccessorTest {
 
         @ParameterizedTest
         @ValueSource(classes = [
-            AnimenewsnetworkConfig::class,
             AnimePlanetConfig::class,
             AnisearchConfig::class,
             LivechartConfig::class,
@@ -472,7 +471,6 @@ internal class DefaultDeadEntriesAccessorTest {
 
         @ParameterizedTest
         @ValueSource(classes = [
-            AnimenewsnetworkConfig::class,
             AnimePlanetConfig::class,
             AnisearchConfig::class,
             LivechartConfig::class,
@@ -514,7 +512,7 @@ internal class DefaultDeadEntriesAccessorTest {
         }
 
         @ParameterizedTest
-        @ValueSource(classes = [AnidbConfig::class, AnilistConfig::class, KitsuConfig::class, MyanimelistConfig::class])
+        @ValueSource(classes = [AnidbConfig::class, AnilistConfig::class, AnimenewsnetworkConfig::class, KitsuConfig::class, MyanimelistConfig::class])
         fun `triggers initialization if necessary`(configClass: Class<*>) {
             tempDirectory {
                 // given
@@ -558,7 +556,7 @@ internal class DefaultDeadEntriesAccessorTest {
         }
 
         @ParameterizedTest
-        @ValueSource(classes = [AnidbConfig::class, AnilistConfig::class, KitsuConfig::class, MyanimelistConfig::class])
+        @ValueSource(classes = [AnidbConfig::class, AnilistConfig::class, AnimenewsnetworkConfig::class, KitsuConfig::class, MyanimelistConfig::class])
         fun `doesn't trigger init if it has already been triggered`(configClass: Class<*>) {
             tempDirectory {
                 // given
@@ -638,7 +636,7 @@ internal class DefaultDeadEntriesAccessorTest {
         }
 
         @ParameterizedTest
-        @ValueSource(classes = [AnidbConfig::class, AnilistConfig::class, KitsuConfig::class, MyanimelistConfig::class])
+        @ValueSource(classes = [AnidbConfig::class, AnilistConfig::class, AnimenewsnetworkConfig::class, KitsuConfig::class, MyanimelistConfig::class])
         fun `returns a list containing the given ID, because a corresponding id listed in dead entries file`(configClass: Class<*>) {
             tempDirectory {
                 // given
@@ -673,7 +671,6 @@ internal class DefaultDeadEntriesAccessorTest {
 
         @ParameterizedTest
         @ValueSource(classes = [
-            AnimenewsnetworkConfig::class,
             AnimePlanetConfig::class,
             AnisearchConfig::class,
             LivechartConfig::class,
@@ -732,7 +729,7 @@ internal class DefaultDeadEntriesAccessorTest {
             AnilistConfig::class, // supportd
             KitsuConfig::class, // supportd
             MyanimelistConfig::class, // supportd
-            AnimenewsnetworkConfig::class, // unsupported
+            AnimenewsnetworkConfig::class, // supportd
             AnimePlanetConfig::class, // unsupported
             AnisearchConfig::class, // unsupported
             LivechartConfig::class, // unsupported
@@ -789,7 +786,7 @@ internal class DefaultDeadEntriesAccessorTest {
             AnilistConfig::class, // supportd
             KitsuConfig::class, // supportd
             MyanimelistConfig::class, // supportd
-            AnimenewsnetworkConfig::class, // unsupported
+            AnimenewsnetworkConfig::class, // supportd
             AnimePlanetConfig::class, // unsupported
             AnisearchConfig::class, // unsupported
             LivechartConfig::class, // unsupported
@@ -851,7 +848,6 @@ internal class DefaultDeadEntriesAccessorTest {
 
         @ParameterizedTest
         @ValueSource(classes = [
-            AnimenewsnetworkConfig::class,
             AnimePlanetConfig::class,
             AnisearchConfig::class,
             LivechartConfig::class,
@@ -886,7 +882,7 @@ internal class DefaultDeadEntriesAccessorTest {
         }
 
         @ParameterizedTest
-        @ValueSource(classes = [AnidbConfig::class, AnilistConfig::class, KitsuConfig::class, MyanimelistConfig::class])
+        @ValueSource(classes = [AnidbConfig::class, AnilistConfig::class, AnimenewsnetworkConfig::class, KitsuConfig::class, MyanimelistConfig::class])
         fun `correctly parse file and fetch dead entries`(configClass: Class<*>) {
             tempDirectory {
                 // given
@@ -923,7 +919,7 @@ internal class DefaultDeadEntriesAccessorTest {
         }
 
         @ParameterizedTest
-        @ValueSource(classes = [AnidbConfig::class, AnilistConfig::class, KitsuConfig::class, MyanimelistConfig::class])
+        @ValueSource(classes = [AnidbConfig::class, AnilistConfig::class, AnimenewsnetworkConfig::class, KitsuConfig::class, MyanimelistConfig::class])
         fun `triggers initialization if necessary`(configClass: Class<*>) {
             tempDirectory {
                 // given
@@ -967,7 +963,7 @@ internal class DefaultDeadEntriesAccessorTest {
         }
 
         @ParameterizedTest
-        @ValueSource(classes = [AnidbConfig::class, AnilistConfig::class, KitsuConfig::class, MyanimelistConfig::class])
+        @ValueSource(classes = [AnidbConfig::class, AnilistConfig::class, AnimenewsnetworkConfig::class, KitsuConfig::class, MyanimelistConfig::class])
         fun `doesn't trigger init if it has already been triggered`(configClass: Class<*>) {
             tempDirectory {
                 // given

@@ -97,7 +97,7 @@ class DefaultDeadEntriesAccessor(
                 AnidbConfig.hostname() -> containsDeadEntry(uri)
                 AnilistConfig.hostname() -> containsDeadEntry(uri)
                 AnimePlanetConfig.hostname() -> entryNotExistsAsDcsFile(uri)
-                AnimenewsnetworkConfig.hostname() -> entryNotExistsAsDcsFile(uri)
+                AnimenewsnetworkConfig.hostname() -> containsDeadEntry(uri)
                 AnisearchConfig.hostname() -> entryNotExistsAsDcsFile(uri)
                 KitsuConfig.hostname() -> containsDeadEntry(uri)
                 LivechartConfig.hostname() -> entryNotExistsAsDcsFile(uri)
@@ -117,8 +117,9 @@ class DefaultDeadEntriesAccessor(
         return when (metaDataProviderConfig.hostname()) {
             AnidbConfig.hostname() -> deadEntries.anidb
             AnilistConfig.hostname() -> deadEntries.anilist
+            AnimenewsnetworkConfig.hostname() -> deadEntries.animenewsnetwork
             KitsuConfig.hostname() -> deadEntries.kitsu
-            MyanimelistConfig.hostname() -> deadEntries.mal
+            MyanimelistConfig.hostname() -> deadEntries.myanimelist
             else -> throw IllegalArgumentException("Meta data provider [${metaDataProviderConfig.hostname()}] is not supported.")
         }.toSet()
     }
@@ -135,8 +136,9 @@ class DefaultDeadEntriesAccessor(
                         when(metaDataProviderConfig.hostname()) {
                             AnidbConfig.hostname() -> deadEntries.anidb.addAll(parsedEntries.deadEntries)
                             AnilistConfig.hostname() -> deadEntries.anilist.addAll(parsedEntries.deadEntries)
+                            AnimenewsnetworkConfig.hostname() -> deadEntries.animenewsnetwork.addAll(parsedEntries.deadEntries)
                             KitsuConfig.hostname() -> deadEntries.kitsu.addAll(parsedEntries.deadEntries)
-                            MyanimelistConfig.hostname() -> deadEntries.mal.addAll(parsedEntries.deadEntries)
+                            MyanimelistConfig.hostname() -> deadEntries.myanimelist.addAll(parsedEntries.deadEntries)
                             else -> throw IllegalStateException("Meta data provider [${metaDataProviderConfig.hostname()}] is not supported.")
                         }
                     }
@@ -155,13 +157,17 @@ class DefaultDeadEntriesAccessor(
                 deadEntries.anilist.add(animeId)
                 deadEntries.anilist
             }
+            AnimenewsnetworkConfig.hostname() -> {
+                deadEntries.animenewsnetwork.add(animeId)
+                deadEntries.animenewsnetwork
+            }
             KitsuConfig.hostname() -> {
                 deadEntries.kitsu.add(animeId)
                 deadEntries.kitsu
             }
             MyanimelistConfig.hostname() -> {
-                deadEntries.mal.add(animeId)
-                deadEntries.mal
+                deadEntries.myanimelist.add(animeId)
+                deadEntries.myanimelist
             }
             else -> throw IllegalStateException("Meta data provider [${metaDataProviderConfig.hostname()}] is not supported.")
         }
@@ -178,8 +184,9 @@ class DefaultDeadEntriesAccessor(
         return when(config.hostname()) {
             AnidbConfig.hostname() -> deadEntries.anidb.contains(id)
             AnilistConfig.hostname() -> deadEntries.anilist.contains(id)
+            AnimenewsnetworkConfig.hostname() -> deadEntries.animenewsnetwork.contains(id)
             KitsuConfig.hostname() -> deadEntries.kitsu.contains(id)
-            MyanimelistConfig.hostname() -> deadEntries.mal.contains(id)
+            MyanimelistConfig.hostname() -> deadEntries.myanimelist.contains(id)
             else -> throw IllegalStateException("Unable to fetch dead entries: No case defined for given config.")
         }
     }
@@ -206,6 +213,7 @@ class DefaultDeadEntriesAccessor(
 private data class DeadEntriesInMemory(
     val anidb: HashSet<AnimeId> = HashSet(),
     val anilist: HashSet<AnimeId> = HashSet(),
+    val animenewsnetwork: HashSet<AnimeId> = HashSet(),
     val kitsu: HashSet<AnimeId> = HashSet(),
-    val mal: HashSet<AnimeId> = HashSet(),
+    val myanimelist: HashSet<AnimeId> = HashSet(),
 )

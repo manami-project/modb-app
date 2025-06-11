@@ -110,9 +110,7 @@ class AnimenewsnetworkCrawler(
         log.debug { "Downloading ${index+1}/${idDownloadList.size}: [animenewsnetworkId=$animeId]" }
 
         val response = downloader.download(animeId) {
-            if (metaDataProviderConfig is AnimenewsnetworkConfig) {
-                deadEntriesAccessor.addDeadEntry(it, metaDataProviderConfig)
-            }
+            deadEntriesAccessor.addDeadEntry(it, metaDataProviderConfig)
         }
 
         if (response.neitherNullNorBlank()) {
