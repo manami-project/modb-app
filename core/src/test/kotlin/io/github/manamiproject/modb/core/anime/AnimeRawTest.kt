@@ -526,6 +526,7 @@ internal class AnimeRawTest {
                 "\u2032",
                 "\uA78C",
                 "\uFF07",
+                "\u0060",
             ])
             fun `correctly normalized usages of apostrophe`(value: String) {
                 // when
@@ -931,6 +932,7 @@ internal class AnimeRawTest {
                 "\u2032",
                 "\uA78C",
                 "\uFF07",
+                "\u0060",
             ])
             fun `normalizes any combination of preceding apostrophe followed by s or s followed by apostrophe`(value: String) {
                 // given
@@ -1312,6 +1314,7 @@ internal class AnimeRawTest {
                 "\u2032",
                 "\uA78C",
                 "\uFF07",
+                "\u0060",
             ])
             fun `normalizes any combination of preceding apostrophe followed by s or s followed by apostrophe`(value: String) {
                 // given
@@ -2089,6 +2092,7 @@ internal class AnimeRawTest {
                 "\u2032",
                 "\uA78C",
                 "\uFF07",
+                "\u0060",
             ])
             fun `normalizes any combination of preceding apostrophe followed by s or s followed by apostrophe`(value: String) {
                 // when
@@ -2816,6 +2820,7 @@ internal class AnimeRawTest {
                 "\u2032",
                 "\uA78C",
                 "\uFF07",
+                "\u0060",
             ])
             fun `normalizes any combination of preceding apostrophe followed by s or s followed by apostrophe`(value: String) {
                 // given
@@ -3527,6 +3532,7 @@ internal class AnimeRawTest {
                 "\u2032",
                 "\uA78C",
                 "\uFF07",
+                "\u0060",
             ])
             fun `normalizes any combination of preceding apostrophe followed by s or s followed by apostrophe`(value: String) {
                 // given
@@ -4306,6 +4312,7 @@ internal class AnimeRawTest {
                 "\u2032",
                 "\uA78C",
                 "\uFF07",
+                "\u0060",
             ])
             fun `normalizes any combination of preceding apostrophe followed by s or s followed by apostrophe`(value: String) {
                 // when
@@ -5033,6 +5040,7 @@ internal class AnimeRawTest {
                 "\u2032",
                 "\uA78C",
                 "\uFF07",
+                "\u0060",
             ])
             fun `normalizes any combination of preceding apostrophe followed by s or s followed by apostrophe`(value: String) {
                 // given
@@ -5744,6 +5752,7 @@ internal class AnimeRawTest {
                 "\u2032",
                 "\uA78C",
                 "\uFF07",
+                "\u0060",
             ])
             fun `normalizes any combination of preceding apostrophe followed by s or s followed by apostrophe`(value: String) {
                 // given
@@ -7909,6 +7918,7 @@ internal class AnimeRawTest {
                 "\u2032",
                 "\uA78C",
                 "\uFF07",
+                "\u0060",
             ])
             fun `normalizes any combination of preceding apostrophe followed by s or s followed by apostrophe`(value: String) {
                 // when
@@ -8229,6 +8239,7 @@ internal class AnimeRawTest {
                 "\u2032",
                 "\uA78C",
                 "\uFF07",
+                "\u0060",
             ])
             fun `normalizes any combination of preceding apostrophe followed by s or s followed by apostrophe`(value: String) {
                 // given
@@ -8533,6 +8544,7 @@ internal class AnimeRawTest {
                 "\u2032",
                 "\uA78C",
                 "\uFF07",
+                "\u0060",
             ])
             fun `normalizes any combination of preceding apostrophe followed by s or s followed by apostrophe`(value: String) {
                 // given

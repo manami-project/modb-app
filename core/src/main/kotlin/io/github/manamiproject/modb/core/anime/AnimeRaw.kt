@@ -642,10 +642,10 @@ public data class AnimeRaw(
     private companion object {
         private const val CORRECT_APOSTROPHE_INCLUDING_TYPOGRAPHY: Char = '\u2019'
         private const val SIMPLIFIED_APOSTROPHE_NO_TYPOGRAPHY: Char = '\u0027'
-        private val APOSTROPH_SUFFIX_TO_S_EXCEPT_U2019_REGEX: Regex = """s(?<toBeReplaced>[\u02BB\u02BC\u2018\u275B\u275C\u02B9\u02BE\u02C8\u055A\u07F4\u07F5\u1FBF\u2032\uA78C\uFF07]) *""".toRegex()
-        private val APOSTROPH_SUFFIX_TO_S_INCLUDING_U2019_REGEX: Regex = """s(?<toBeReplaced>[\u2019\u02BB\u02BC\u2018\u275B\u275C\u02B9\u02BE\u02C8\u055A\u07F4\u07F5\u1FBF\u2032\uA78C\uFF07]) *""".toRegex()
-        private val APOSTROPH_USAGE_EXCEPT_U2019_REGEX: Regex = """(?<toBeReplaced>[\u02BB\u02BC\u2018\u275B\u275C\u02B9\u02BE\u02C8\u055A\u07F4\u07F5\u1FBF\u2032\uA78C\uFF07])[a-z]""".toRegex()
-        private val APOSTROPH_USAGE_INCLUDING_U2019_REGEX: Regex = """(?<toBeReplaced>[\u2019\u02BB\u02BC\u2018\u275B\u275C\u02B9\u02BE\u02C8\u055A\u07F4\u07F5\u1FBF\u2032\uA78C\uFF07])[a-z]""".toRegex()
+        private val APOSTROPH_SUFFIX_TO_S_EXCEPT_U2019_REGEX: Regex = """s(?<toBeReplaced>[\u02BB\u02BC\u2018\u275B\u275C\u02B9\u02BE\u02C8\u055A\u07F4\u07F5\u1FBF\u2032\uA78C\uFF07\u0060]) *""".toRegex()
+        private val APOSTROPH_SUFFIX_TO_S_INCLUDING_U2019_REGEX: Regex = """s(?<toBeReplaced>[\u2019\u02BB\u02BC\u2018\u275B\u275C\u02B9\u02BE\u02C8\u055A\u07F4\u07F5\u1FBF\u2032\uA78C\uFF07\u0060]) *""".toRegex()
+        private val APOSTROPH_USAGE_EXCEPT_U2019_REGEX: Regex = """(?<toBeReplaced>[\u02BB\u02BC\u2018\u275B\u275C\u02B9\u02BE\u02C8\u055A\u07F4\u07F5\u1FBF\u2032\uA78C\uFF07\u0060])[a-z]""".toRegex()
+        private val APOSTROPH_USAGE_INCLUDING_U2019_REGEX: Regex = """(?<toBeReplaced>[\u2019\u02BB\u02BC\u2018\u275B\u275C\u02B9\u02BE\u02C8\u055A\u07F4\u07F5\u1FBF\u2032\uA78C\uFF07\u0060])[a-z]""".toRegex()
         private val falsePostives = hashSetOf<String>(
             "anime",
             "studio",
