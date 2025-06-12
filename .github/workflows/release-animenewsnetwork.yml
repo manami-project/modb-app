@@ -1,0 +1,15 @@
+name: Release animenewsnetwork
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - animenewsnetwork/release.version
+
+jobs:
+  animenewsnetwork:
+    uses: ./.github/workflows/reusable-release.yml
+    with:
+      module_name: animenewsnetwork
+    secrets: inherit
