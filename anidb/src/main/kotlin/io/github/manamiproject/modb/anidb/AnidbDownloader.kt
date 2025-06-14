@@ -28,10 +28,11 @@ public class AnidbDownloader(
         log.debug { "Downloading [anidbId=$id]" }
 
         val response = httpClient.get(metaDataProviderConfig.buildDataDownloadLink(id).toURL())
+        val responseBody = response.bodyAsString()
 
-        check(response.bodyAsText.neitherNullNorBlank()) { "Response body was blank for [anidbId=$id] with response code [${response.code}]" }
+        check(responseBody.neitherNullNorBlank()) { "Response body was blank for [anidbId=$id] with response code [${response.code}]" }
 
-        val responseChecker = AnidbResponseChecker(response.bodyAsText).apply {
+        val responseChecker = AnidbResponseChecker(responseBody).apply {
             checkIfCrawlerIsDetected()
         }
 
@@ -44,7 +45,7 @@ public class AnidbDownloader(
                 EMPTY
             }
             responseChecker.isAdditionPending() -> ANIDB_PENDING_FILE_INDICATOR
-            else -> response.bodyAsText
+            else -> responseBody
         }
     }
 

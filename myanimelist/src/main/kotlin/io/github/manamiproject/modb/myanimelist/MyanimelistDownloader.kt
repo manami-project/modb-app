@@ -26,7 +26,7 @@ public class MyanimelistDownloader(
     private val httpClient: HttpClient = DefaultHttpClient(isTestContext = metaDataProviderConfig.isTestContext()).apply {
         retryBehavior.addCases(
             HttpResponseRetryCase { it.code == 403 },
-            HttpResponseRetryCase { it.code == 404 && it.bodyAsText.contains("was not found on this server.</p>") },
+            HttpResponseRetryCase { it.code == 404 && it.bodyAsString().contains("was not found on this server.</p>") },
         )
     },
 ) : Downloader {
@@ -42,12 +42,13 @@ public class MyanimelistDownloader(
                 browserType = MOBILE,
             ),
         )
+        val responseBody = response.bodyAsString()
 
-        check(response.bodyAsText.neitherNullNorBlank()) { "Response body was blank for [myanimelistId=$id] with response code [${response.code}]" }
+        check(responseBody.neitherNullNorBlank()) { "Response body was blank for [myanimelistId=$id] with response code [${response.code}]" }
 
         return when(response.code) {
-            200 -> response.bodyAsText
-            404 -> checkDeadEntry(id, onDeadEntry, response.bodyAsText)
+            200 -> responseBody
+            404 -> checkDeadEntry(id, onDeadEntry, responseBody)
             else -> throw IllegalStateException("Unable to determine the correct case for [myanimelistId=$id], [responseCode=${response.code}]")
         }
     }

@@ -43,11 +43,12 @@ public class AnilistDownloader(
             headers = requestHeaders,
             requestBody = requestBody,
         )
+        val responseBody = response.bodyAsString()
 
-        check(response.bodyAsText.neitherNullNorBlank()) { "Response body was blank for [anilistId=$id] with response code [${response.code}]" }
+        check(responseBody.neitherNullNorBlank()) { "Response body was blank for [anilistId=$id] with response code [${response.code}]" }
 
         return when(response.code) {
-            200 -> response.bodyAsText
+            200 -> responseBody
             404 -> {
                 onDeadEntry.invoke(id)
                 EMPTY

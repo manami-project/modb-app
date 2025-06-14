@@ -53,9 +53,10 @@ public class AnilistDefaultTokenRetriever(
     }
 
     private suspend fun extractCsrfToken(response: HttpResponse): String = withContext(LIMITED_CPU) {
-        require(response.bodyAsText.neitherNullNorBlank()) { "Response body must not be empty" }
+        val responseBody = response.bodyAsString()
+        require(responseBody.neitherNullNorBlank()) { "Response body must not be empty" }
 
-        val data = extractor.extract(response.bodyAsText, selection = mapOf(
+        val data = extractor.extract(responseBody, selection = mapOf(
             "script" to "//script[contains(node(), $CSRF_TOKEN_PREFIX)]/node()"
         ))
 

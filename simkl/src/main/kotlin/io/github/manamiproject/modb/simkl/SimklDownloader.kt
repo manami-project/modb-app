@@ -24,12 +24,13 @@ public class SimklDownloader(
         log.debug { "Downloading [simklId=$id]" }
 
         val response = httpClient.get(metaDataProviderConfig.buildDataDownloadLink(id).toURL())
+        val responseBody = response.bodyAsString()
 
-        check(response.bodyAsText.neitherNullNorBlank()) { "Response body was blank for [simklId=$id] with response code [${response.code}]" }
+        check(responseBody.neitherNullNorBlank()) { "Response body was blank for [simklId=$id] with response code [${response.code}]" }
 
         return when {
-            response.code == 200 && !response.bodyAsText.contains(DEAD_ENTRY_INDICATOR) -> response.bodyAsText
-            response.code == 200 && response.bodyAsText.contains(DEAD_ENTRY_INDICATOR) -> {
+            response.code == 200 && !responseBody.contains(DEAD_ENTRY_INDICATOR) -> responseBody
+            response.code == 200 && responseBody.contains(DEAD_ENTRY_INDICATOR) -> {
                 onDeadEntry.invoke(id)
                 EMPTY
             }
