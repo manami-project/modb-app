@@ -22,7 +22,7 @@ import java.time.format.DateTimeFormatter.ISO_DATE
  * @since 5.0.0
  * @param clock Instance of a clock to determine the current date.
  */
-public class AnimeListJsonSerializer(
+public class DatasetJsonSerializer(
     private val clock: Clock = Clock.systemDefaultZone(),
 ) : JsonSerializer<Collection<Anime>, Anime> {
 
@@ -83,9 +83,9 @@ public class AnimeListJsonSerializer(
         private val log by LoggerDelegate()
 
         /**
-         * Singleton of [AnimeListJsonSerializer]
+         * Singleton of [DatasetJsonSerializer]
          * @since 5.2.0
          */
-        public val instance: AnimeListJsonSerializer by lazy { AnimeListJsonSerializer() }
+        public val instance: DatasetJsonSerializer by lazy { DatasetJsonSerializer() }
     }
 }

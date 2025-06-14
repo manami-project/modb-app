@@ -13,7 +13,7 @@ import kotlinx.coroutines.withContext
  * This works for any `*.json` file in the `dead-entries/` directory..
  * @since 5.0.0
  */
-public class DeadEntriesJsonStringDeserializer : JsonDeserializer<DeadEntries> {
+public class DeadEntriesJsonDeserializer : JsonDeserializer<DeadEntries> {
 
     override suspend fun deserialize(json: String): DeadEntries = withContext(LIMITED_CPU) {
         require(json.neitherNullNorBlank()) { "Given JSON string must not be blank." }
@@ -35,9 +35,9 @@ public class DeadEntriesJsonStringDeserializer : JsonDeserializer<DeadEntries> {
         private val log by LoggerDelegate()
 
         /**
-         * Singleton of [DeadEntriesJsonStringDeserializer]
+         * Singleton of [DeadEntriesJsonDeserializer]
          * @since 5.2.0
          */
-        public val instance: DeadEntriesJsonStringDeserializer by lazy { DeadEntriesJsonStringDeserializer() }
+        public val instance: DeadEntriesJsonDeserializer by lazy { DeadEntriesJsonDeserializer() }
     }
 }

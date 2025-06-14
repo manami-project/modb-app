@@ -21,7 +21,7 @@ import io.github.manamiproject.modb.livechart.LivechartConfig
 import io.github.manamiproject.modb.myanimelist.MyanimelistConfig
 import io.github.manamiproject.modb.notify.NotifyConfig
 import io.github.manamiproject.modb.serde.json.DeadEntriesJsonSerializer
-import io.github.manamiproject.modb.serde.json.DeadEntriesJsonStringDeserializer
+import io.github.manamiproject.modb.serde.json.DeadEntriesJsonDeserializer
 import io.github.manamiproject.modb.serde.json.DefaultExternalResourceJsonDeserializer
 import io.github.manamiproject.modb.serde.json.ExternalResourceJsonDeserializer
 import io.github.manamiproject.modb.serde.json.models.DeadEntries
@@ -239,7 +239,7 @@ internal class DefaultDeadEntriesAccessorTest {
                 // then
                 DatasetFileType.entries.forEach {
                     val result = DefaultExternalResourceJsonDeserializer(
-                        deserializer = DeadEntriesJsonStringDeserializer.instance).deserialize(deadEntriesAccessor.deadEntriesFile(testMetaDataProviderConfig, it),
+                        deserializer = DeadEntriesJsonDeserializer.instance).deserialize(deadEntriesAccessor.deadEntriesFile(testMetaDataProviderConfig, it),
                     ).deadEntries
                     assertThat(result).containsExactly(
                         id,
@@ -284,7 +284,7 @@ internal class DefaultDeadEntriesAccessorTest {
                 // then
                 DatasetFileType.entries.forEach {
                     val result = DefaultExternalResourceJsonDeserializer(
-                        deserializer = DeadEntriesJsonStringDeserializer.instance).deserialize(deadEntriesAccessor.deadEntriesFile(testMetaDataProviderConfig, it),
+                        deserializer = DeadEntriesJsonDeserializer.instance).deserialize(deadEntriesAccessor.deadEntriesFile(testMetaDataProviderConfig, it),
                     ).deadEntries
                     assertThat(result).containsExactly(
                         initialId,
@@ -337,7 +337,7 @@ internal class DefaultDeadEntriesAccessorTest {
                 // then
                 DatasetFileType.entries.forEach {
                     val result = DefaultExternalResourceJsonDeserializer(
-                        deserializer = DeadEntriesJsonStringDeserializer.instance).deserialize(deadEntriesAccessor.deadEntriesFile(testMetaDataProviderConfig, it),
+                        deserializer = DeadEntriesJsonDeserializer.instance).deserialize(deadEntriesAccessor.deadEntriesFile(testMetaDataProviderConfig, it),
                     ).deadEntries
                     assertThat(result).containsExactly(
                         initialId,
