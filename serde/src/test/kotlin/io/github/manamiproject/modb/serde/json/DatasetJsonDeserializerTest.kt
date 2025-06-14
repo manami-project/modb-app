@@ -13,7 +13,7 @@ import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.ValueSource
 import kotlin.test.Test
 
-internal class AnimeListJsonStringDeserializerTest {
+internal class DatasetJsonDeserializerTest {
 
     @Nested
     inner class DeserializeStringTests {
@@ -52,7 +52,7 @@ internal class AnimeListJsonStringDeserializerTest {
         ])
         fun `throws exception if the given string is blank`(input: String) {
             // given
-            val deserializer = AnimeListJsonStringDeserializer()
+            val deserializer = DatasetJsonDeserializer()
 
             // when
             val result = exceptionExpected<IllegalArgumentException> {
@@ -67,7 +67,7 @@ internal class AnimeListJsonStringDeserializerTest {
         fun `correctly deserialize dataset string`() {
             runBlocking {
                 // given
-                val deserializer = AnimeListJsonStringDeserializer()
+                val deserializer = DatasetJsonDeserializer()
 
                 val expectedEntries = listOf(
                     TestAnimeObjects.DefaultAnime.obj,
@@ -95,7 +95,7 @@ internal class AnimeListJsonStringDeserializerTest {
         fun `correctly deserialize minified dataset string`() {
             runBlocking {
                 // given
-                val deserializer = AnimeListJsonStringDeserializer()
+                val deserializer = DatasetJsonDeserializer()
 
                 val expectedEntries = listOf(
                     TestAnimeObjects.DefaultAnime.obj,
@@ -126,7 +126,7 @@ internal class AnimeListJsonStringDeserializerTest {
         @Test
         fun `throws exception if the stream is closed`() {
             // given
-            val deserializer = AnimeListJsonStringDeserializer()
+            val deserializer = DatasetJsonDeserializer()
             val inputStream = LifecycleAwareInputStream(TestReadOnceInputStream("test".byteInputStream()))
             inputStream.close()
 
@@ -143,7 +143,7 @@ internal class AnimeListJsonStringDeserializerTest {
         fun `correctly deserialize dataset string`() {
             runBlocking {
                 // given
-                val deserializer = AnimeListJsonStringDeserializer()
+                val deserializer = DatasetJsonDeserializer()
 
                 val expectedEntries = listOf(
                     TestAnimeObjects.DefaultAnime.obj,
@@ -174,7 +174,7 @@ internal class AnimeListJsonStringDeserializerTest {
         fun `correctly deserialize minified dataset string`() {
             runBlocking {
                 // given
-                val deserializer = AnimeListJsonStringDeserializer()
+                val deserializer = DatasetJsonDeserializer()
 
                 val expectedEntries = listOf(
                     TestAnimeObjects.DefaultAnime.obj,
@@ -207,13 +207,13 @@ internal class AnimeListJsonStringDeserializerTest {
         @Test
         fun `instance property always returns same instance`() {
             // given
-            val previous = AnimeListJsonStringDeserializer.instance
+            val previous = DatasetJsonDeserializer.instance
 
             // when
-            val result = AnimeListJsonStringDeserializer.instance
+            val result = DatasetJsonDeserializer.instance
 
             // then
-            assertThat(result).isExactlyInstanceOf(AnimeListJsonStringDeserializer::class.java)
+            assertThat(result).isExactlyInstanceOf(DatasetJsonDeserializer::class.java)
             assertThat(result===previous).isTrue()
         }
     }

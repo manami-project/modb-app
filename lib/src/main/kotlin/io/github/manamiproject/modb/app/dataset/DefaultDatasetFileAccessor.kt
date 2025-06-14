@@ -23,8 +23,8 @@ import io.github.manamiproject.modb.serde.json.models.Dataset
  */
 class DefaultDatasetFileAccessor(
     private val appConfig: Config = AppConfig.instance,
-    private val deserializer: ExternalResourceJsonDeserializer<Dataset> = DefaultExternalResourceJsonDeserializer(deserializer = AnimeListJsonStringDeserializer.instance),
-    private val jsonSerializer: JsonSerializer<Collection<Anime>> = AnimeListJsonSerializer(clock = appConfig.clock()),
+    private val deserializer: ExternalResourceJsonDeserializer<Dataset> = DefaultExternalResourceJsonDeserializer(deserializer = DatasetJsonDeserializer.instance),
+    private val jsonSerializer: JsonSerializer<Collection<Anime>> = DatasetJsonSerializer(clock = appConfig.clock()),
 ): DatasetFileAccessor {
 
     override suspend fun fetchEntries(): List<Anime> {

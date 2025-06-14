@@ -8,8 +8,8 @@ import io.github.manamiproject.modb.app.dataset.DeadEntriesAccessor
 import io.github.manamiproject.modb.app.dataset.DefaultDatasetFileAccessor
 import io.github.manamiproject.modb.app.dataset.DefaultDeadEntriesAccessor
 import io.github.manamiproject.modb.core.logging.LoggerDelegate
-import io.github.manamiproject.modb.serde.json.AnimeListJsonStringDeserializer
-import io.github.manamiproject.modb.serde.json.DeadEntriesJsonStringDeserializer
+import io.github.manamiproject.modb.serde.json.DatasetJsonDeserializer
+import io.github.manamiproject.modb.serde.json.DeadEntriesJsonDeserializer
 import io.github.manamiproject.modb.serde.json.DefaultExternalResourceJsonDeserializer
 
 /**
@@ -28,7 +28,7 @@ class NumberOfEntriesValidationPostProcessor(
     override suspend fun process(): Boolean {
         log.info { "Checking that number of entries is the same in all dataset files." }
 
-        val datasetJsonDeserializer = DefaultExternalResourceJsonDeserializer(deserializer = AnimeListJsonStringDeserializer.instance)
+        val datasetJsonDeserializer = DefaultExternalResourceJsonDeserializer(deserializer = DatasetJsonDeserializer.instance)
         val datasetJson = datasetJsonDeserializer.deserialize(datasetFileAccessor.offlineDatabaseFile(JSON)).data.count()
         val datasetJsonMinified = datasetJsonDeserializer.deserialize(datasetFileAccessor.offlineDatabaseFile(JSON_MINIFIED)).data.count()
         val datasetZip = datasetJsonDeserializer.deserialize(datasetFileAccessor.offlineDatabaseFile(ZIP)).data.count()
@@ -39,7 +39,7 @@ class NumberOfEntriesValidationPostProcessor(
 
         log.info { "Checking that number of dead entries is the same across all files." }
 
-        val deadEntriesJsonDeserializer = DefaultExternalResourceJsonDeserializer(deserializer = DeadEntriesJsonStringDeserializer.instance)
+        val deadEntriesJsonDeserializer = DefaultExternalResourceJsonDeserializer(deserializer = DeadEntriesJsonDeserializer.instance)
 
         appConfig.metaDataProviderConfigurations()
             .filter { appConfig.deadEntriesSupported(it) }

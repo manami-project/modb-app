@@ -12,7 +12,7 @@ import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.ValueSource
 import kotlin.test.Test
 
-internal class DeadEntriesJsonStringDeserializerTest {
+internal class DeadEntriesJsonDeserializerTest {
 
     @Nested
     inner class DeserializeStringTests {
@@ -51,7 +51,7 @@ internal class DeadEntriesJsonStringDeserializerTest {
         ])
         fun `throws exception if the json string is blank`(input: String) {
             // given
-            val deserializer = DeadEntriesJsonStringDeserializer()
+            val deserializer = DeadEntriesJsonDeserializer()
 
             // when
             val result = exceptionExpected<IllegalArgumentException> {
@@ -66,7 +66,7 @@ internal class DeadEntriesJsonStringDeserializerTest {
         fun `return empty list of the json array is empty`() {
             runBlocking {
                 // given
-                val deserializer = DeadEntriesJsonStringDeserializer()
+                val deserializer = DeadEntriesJsonDeserializer()
                 val json = createExpectedDeadEntriesPrettyPrint()
 
                 // when
@@ -81,7 +81,7 @@ internal class DeadEntriesJsonStringDeserializerTest {
         fun `correctly deserialize list of String`() {
             runBlocking {
                 // given
-                val deserializer = DeadEntriesJsonStringDeserializer()
+                val deserializer = DeadEntriesJsonDeserializer()
                 val json = createExpectedDeadEntriesPrettyPrint("""
                     "kj42fc5--",
                     "lkn6--k44",
@@ -108,7 +108,7 @@ internal class DeadEntriesJsonStringDeserializerTest {
         fun `correctly deserialize minified dead entries file`() {
             runBlocking {
                 // given
-                val deserializer = DeadEntriesJsonStringDeserializer()
+                val deserializer = DeadEntriesJsonDeserializer()
                 val json = createExpectedDeadEntriesMinified(""""kj42fc5--","lkn6--k44","l2ht33--1","1kj5g--41","3jl253vv9"""")
 
                 // when
@@ -132,7 +132,7 @@ internal class DeadEntriesJsonStringDeserializerTest {
         @Test
         fun `throws exception if is closed`() {
             // given
-            val deserializer = DeadEntriesJsonStringDeserializer()
+            val deserializer = DeadEntriesJsonDeserializer()
             val inputStream = LifecycleAwareInputStream(TestReadOnceInputStream("test".byteInputStream()))
             inputStream.close()
 
@@ -149,7 +149,7 @@ internal class DeadEntriesJsonStringDeserializerTest {
         fun `return empty list of the json array is empty`() {
             runBlocking {
                 // given
-                val deserializer = DeadEntriesJsonStringDeserializer()
+                val deserializer = DeadEntriesJsonDeserializer()
                 val json = createExpectedDeadEntriesPrettyPrint()
                 val inputStream = LifecycleAwareInputStream(TestReadOnceInputStream(json.byteInputStream()))
 
@@ -165,7 +165,7 @@ internal class DeadEntriesJsonStringDeserializerTest {
         fun `correctly deserialize list of String`() {
             runBlocking {
                 // given
-                val deserializer = DeadEntriesJsonStringDeserializer()
+                val deserializer = DeadEntriesJsonDeserializer()
                 val json = createExpectedDeadEntriesPrettyPrint("""
                     "kj42fc5--",
                     "lkn6--k44",
@@ -193,7 +193,7 @@ internal class DeadEntriesJsonStringDeserializerTest {
         fun `correctly deserialize minified dead entries file`() {
             runBlocking {
                 // given
-                val deserializer = DeadEntriesJsonStringDeserializer()
+                val deserializer = DeadEntriesJsonDeserializer()
                 val json = createExpectedDeadEntriesMinified(""""kj42fc5--","lkn6--k44","l2ht33--1","1kj5g--41","3jl253vv9"""")
                 val inputStream = LifecycleAwareInputStream(TestReadOnceInputStream(json.byteInputStream()))
 
@@ -218,13 +218,13 @@ internal class DeadEntriesJsonStringDeserializerTest {
         @Test
         fun `instance property always returns same instance`() {
             // given
-            val previous = DeadEntriesJsonStringDeserializer.instance
+            val previous = DeadEntriesJsonDeserializer.instance
 
             // when
-            val result = DeadEntriesJsonStringDeserializer.instance
+            val result = DeadEntriesJsonDeserializer.instance
 
             // then
-            assertThat(result).isExactlyInstanceOf(DeadEntriesJsonStringDeserializer::class.java)
+            assertThat(result).isExactlyInstanceOf(DeadEntriesJsonDeserializer::class.java)
             assertThat(result===previous).isTrue()
         }
     }

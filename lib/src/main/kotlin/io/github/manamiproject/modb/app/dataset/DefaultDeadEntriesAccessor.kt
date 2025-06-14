@@ -45,7 +45,7 @@ class DefaultDeadEntriesAccessor(
     private val downloadControlStateAccessor: DownloadControlStateAccessor = DefaultDownloadControlStateAccessor.instance,
     private val jsonSerializer: JsonSerializer<Collection<AnimeId>> = DeadEntriesJsonSerializer.instance,
     private val jsonDeserializer: ExternalResourceJsonDeserializer<DeadEntries> = DefaultExternalResourceJsonDeserializer(
-        deserializer = DeadEntriesJsonStringDeserializer.instance,
+        deserializer = DeadEntriesJsonDeserializer.instance,
     ),
 ): DeadEntriesAccessor {
 

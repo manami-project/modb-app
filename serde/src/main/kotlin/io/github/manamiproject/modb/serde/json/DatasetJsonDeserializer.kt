@@ -15,7 +15,7 @@ import kotlinx.coroutines.withContext
  * + anime-offline-database-minified.json
  * @since 5.0.0
  */
-public class AnimeListJsonStringDeserializer : JsonDeserializer<Dataset> {
+public class DatasetJsonDeserializer : JsonDeserializer<Dataset> {
 
     override suspend fun deserialize(json: String): Dataset = withContext(LIMITED_CPU) {
         require(json.neitherNullNorBlank()) { "Given JSON string must not be blank." }
@@ -37,9 +37,9 @@ public class AnimeListJsonStringDeserializer : JsonDeserializer<Dataset> {
         private val log by LoggerDelegate()
 
         /**
-         * Singleton of [AnimeListJsonStringDeserializer]
+         * Singleton of [DatasetJsonDeserializer]
          * @since 5.2.0
          */
-        public val instance: AnimeListJsonStringDeserializer by lazy { AnimeListJsonStringDeserializer() }
+        public val instance: DatasetJsonDeserializer by lazy { DatasetJsonDeserializer() }
     }
 }

@@ -13,7 +13,7 @@ import java.time.Instant
 import java.time.ZoneOffset.UTC
 import kotlin.test.Test
 
-internal class AnimeListJsonSerializerTest {
+internal class DatasetJsonSerializerTest {
 
     @Nested
     inner class SerializeJsonTests {
@@ -26,7 +26,7 @@ internal class AnimeListJsonSerializerTest {
                 runBlocking {
                     // given
                     val clock = Clock.fixed(Instant.parse("2020-01-01T16:02:42.00Z"), UTC)
-                    val serializer = AnimeListJsonSerializer(clock)
+                    val serializer = DatasetJsonSerializer(clock)
 
                     val animeList = listOf(
                         TestAnimeObjects.DefaultAnime.obj,
@@ -45,7 +45,7 @@ internal class AnimeListJsonSerializerTest {
                 runBlocking {
                     // given
                     val clock = Clock.fixed(Instant.parse("2020-01-01T16:02:42.00Z"), UTC)
-                    val serializer = AnimeListJsonSerializer(clock)
+                    val serializer = DatasetJsonSerializer(clock)
 
                     val animeList = listOf(
                         TestAnimeObjects.DefaultAnime.obj,
@@ -67,7 +67,7 @@ internal class AnimeListJsonSerializerTest {
                 runBlocking {
                     // given
                     val clock = Clock.fixed(Instant.parse("2020-01-01T16:02:42.00Z"), UTC)
-                    val serializer = AnimeListJsonSerializer(clock)
+                    val serializer = DatasetJsonSerializer(clock)
 
                     val animeList = listOf(
                         TestAnimeObjects.AllPropertiesSet.obj,
@@ -86,7 +86,7 @@ internal class AnimeListJsonSerializerTest {
                 runBlocking {
                     // given
                     val clock = Clock.fixed(Instant.parse("2020-01-01T16:02:42.00Z"), UTC)
-                    val serializer = AnimeListJsonSerializer(clock)
+                    val serializer = DatasetJsonSerializer(clock)
 
                     val animeList = listOf(
                         TestAnimeObjects.AllPropertiesSet.obj,
@@ -172,7 +172,7 @@ internal class AnimeListJsonSerializerTest {
                 """.trimIndent())
 
                     val clock = Clock.fixed(Instant.parse("2020-01-01T16:02:42.00Z"), UTC)
-                    val serializer = AnimeListJsonSerializer(clock)
+                    val serializer = DatasetJsonSerializer(clock)
 
                     val animeList = listOf(
                         Anime("B"),
@@ -256,7 +256,7 @@ internal class AnimeListJsonSerializerTest {
                 """.trimIndent())
 
                     val clock = Clock.fixed(Instant.parse("2020-01-01T16:02:42.00Z"), UTC)
-                    val serializer = AnimeListJsonSerializer(clock)
+                    val serializer = DatasetJsonSerializer(clock)
 
                     val animeList = listOf(
                         Anime(
@@ -349,7 +349,7 @@ internal class AnimeListJsonSerializerTest {
                 """.trimIndent())
 
                     val clock = Clock.fixed(Instant.parse("2020-01-01T16:02:42.00Z"), UTC)
-                    val serializer = AnimeListJsonSerializer(clock)
+                    val serializer = DatasetJsonSerializer(clock)
 
                     val animeList = listOf(
                         Anime(
@@ -387,7 +387,7 @@ internal class AnimeListJsonSerializerTest {
             runBlocking {
                 // given
                 val clock = Clock.fixed(Instant.parse("2020-01-01T16:02:42.00Z"), UTC)
-                val serializer = AnimeListJsonSerializer(clock)
+                val serializer = DatasetJsonSerializer(clock)
                 val animeList = listOf(
                     TestAnimeObjects.DefaultAnime.obj,
                     TestAnimeObjects.NullableNotSet.obj,
@@ -424,7 +424,7 @@ internal class AnimeListJsonSerializerTest {
                     """.trimIndent()
 
                     val clock = Clock.fixed(Instant.parse("2020-01-01T16:02:42.00Z"), UTC)
-                    val serializer = AnimeListJsonSerializer(clock)
+                    val serializer = DatasetJsonSerializer(clock)
 
                     val animeList = listOf(
                         Anime("B"),
@@ -452,7 +452,7 @@ internal class AnimeListJsonSerializerTest {
                     """.trimIndent()
 
                     val clock = Clock.fixed(Instant.parse("2020-01-01T16:02:42.00Z"), UTC)
-                    val serializer = AnimeListJsonSerializer(clock)
+                    val serializer = DatasetJsonSerializer(clock)
 
                     val animeList = listOf(
                         Anime(
@@ -489,7 +489,7 @@ internal class AnimeListJsonSerializerTest {
                     """.trimIndent()
 
                     val clock = Clock.fixed(Instant.parse("2020-01-01T16:02:42.00Z"), UTC)
-                    val serializer = AnimeListJsonSerializer(clock)
+                    val serializer = DatasetJsonSerializer(clock)
 
                     val animeList = listOf(
                         Anime(
@@ -525,13 +525,13 @@ internal class AnimeListJsonSerializerTest {
         @Test
         fun `instance property always returns same instance`() {
             // given
-            val previous = AnimeListJsonSerializer.instance
+            val previous = DatasetJsonSerializer.instance
 
             // when
-            val result = AnimeListJsonSerializer.instance
+            val result = DatasetJsonSerializer.instance
 
             // then
-            assertThat(result).isExactlyInstanceOf(AnimeListJsonSerializer::class.java)
+            assertThat(result).isExactlyInstanceOf(DatasetJsonSerializer::class.java)
             assertThat(result===previous).isTrue()
         }
     }
