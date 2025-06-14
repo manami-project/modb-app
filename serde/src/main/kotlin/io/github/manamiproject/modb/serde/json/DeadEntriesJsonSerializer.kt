@@ -23,7 +23,7 @@ import java.time.format.DateTimeFormatter.ISO_DATE
  */
 public class DeadEntriesJsonSerializer(
     private val clock: Clock = Clock.systemDefaultZone(),
-): JsonSerializer<Collection<AnimeId>> {
+): JsonSerializer<Collection<AnimeId>, AnimeId> {
 
     override suspend fun serializeJson(obj: Collection<AnimeId>, minify: Boolean): String = withContext(LIMITED_CPU) {
         log.debug { "Sorting dead entries" }
@@ -46,6 +46,10 @@ public class DeadEntriesJsonSerializer(
             log.info { "Serializing dead entries pretty print." }
             Json.toJson(deadEntriesDocument)
         }
+    }
+
+    override suspend fun serializeJsonLine(obj: Collection<AnimeId>): String {
+        throw UnsupportedOperationException("JSON line is not supported for dead entries. Due to size and structure a minified JSON file and a compressed version is sufficient.")
     }
 
     public companion object {

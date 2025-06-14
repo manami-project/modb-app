@@ -7,6 +7,7 @@ import io.github.manamiproject.modb.core.logging.LoggerDelegate
 import io.github.manamiproject.modb.core.anime.Anime
 import io.github.manamiproject.modb.core.date.WeekOfYear
 import io.github.manamiproject.modb.serde.json.models.Dataset
+import io.github.manamiproject.modb.serde.json.models.DatasetMetaData
 import io.github.manamiproject.modb.serde.json.models.License
 import kotlinx.coroutines.withContext
 import java.net.URI
@@ -23,7 +24,7 @@ import java.time.format.DateTimeFormatter.ISO_DATE
  */
 public class AnimeListJsonSerializer(
     private val clock: Clock = Clock.systemDefaultZone(),
-) : JsonSerializer<Collection<Anime>> {
+) : JsonSerializer<Collection<Anime>, Anime> {
 
     override suspend fun serializeJson(obj: Collection<Anime>, minify: Boolean): String = withContext(LIMITED_CPU) {
         log.debug { "Sorting dataset by title, type and episodes." }
@@ -52,6 +53,30 @@ public class AnimeListJsonSerializer(
             log.info { "Serializing anime list pretty print." }
             Json.toJson(data)
         }
+    }
+
+    override suspend fun serializeJsonLine(obj: Collection<Anime>): String = withContext(LIMITED_CPU) {
+        log.debug { "Sorting dataset by title, type and episodes." }
+
+        val sortedList = obj.toSet().sortedWith(compareBy({ it.title.lowercase() }, {it.type}, { it.episodes }))
+        val currentWeek = WeekOfYear(LocalDate.now(clock))
+
+        val metaData = DatasetMetaData(
+            `$schema` = URI(""), //FIXME
+            license = License().copy(
+                url = "https://github.com/manami-project/anime-offline-database/blob/$currentWeek/LICENSE",
+            ),
+            lastUpdate = LocalDate.now(clock).format(ISO_DATE),
+        )
+
+        log.info { "Serializing anime list as JSON line." }
+
+        val resultBuilder = StringBuilder(Json.toJson(metaData, DEACTIVATE_PRETTY_PRINT, DEACTIVATE_SERIALIZE_NULL))
+        sortedList.map { Json.toJson(it, DEACTIVATE_PRETTY_PRINT, DEACTIVATE_SERIALIZE_NULL) }.forEach {
+            resultBuilder.append("\n").append(it)
+        }
+
+        return@withContext resultBuilder.toString()
     }
 
     public companion object {
