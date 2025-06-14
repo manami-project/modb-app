@@ -2,6 +2,7 @@ package io.github.manamiproject.modb.serde.json
 
 import io.github.manamiproject.modb.serde.createExpectedDeadEntriesMinified
 import io.github.manamiproject.modb.serde.createExpectedDeadEntriesPrettyPrint
+import io.github.manamiproject.modb.test.exceptionExpected
 import kotlinx.coroutines.runBlocking
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Nested
@@ -12,77 +13,106 @@ import kotlin.test.Test
 
 internal class DeadEntriesJsonSerializerTest {
 
-    @Test
-    fun `correctly serialize minified`() {
-        runBlocking {
-            // given
-            val clock = Clock.fixed(Instant.parse("2020-01-01T16:02:42.00Z"), UTC)
-            val serializer = DeadEntriesJsonSerializer(clock = clock)
+    @Nested
+    inner class SerializeJsonTests {
 
-            val expected = createExpectedDeadEntriesMinified("""
+        @Test
+        fun `correctly serialize minified`() {
+            runBlocking {
+                // given
+                val clock = Clock.fixed(Instant.parse("2020-01-01T16:02:42.00Z"), UTC)
+                val serializer = DeadEntriesJsonSerializer(clock = clock)
+
+                val expected = createExpectedDeadEntriesMinified("""
                     "1234","5678"
             """.trimIndent())
 
-            val list = setOf(
-                "1234",
-                "5678",
-            )
+                val list = setOf(
+                    "1234",
+                    "5678",
+                )
 
-            // when
-            val result = serializer.serializeJson(list, minify = true)
+                // when
+                val result = serializer.serializeJson(list, minify = true)
 
-            // then
-            assertThat(result).isEqualTo(expected)
+                // then
+                assertThat(result).isEqualTo(expected)
+            }
         }
-    }
 
-    @Test
-    fun `correctly serialize pretty print`() {
-        runBlocking {
-            // given
-            val clock = Clock.fixed(Instant.parse("2020-01-01T16:02:42.00Z"), UTC)
-            val serializer = DeadEntriesJsonSerializer(clock = clock)
+        @Test
+        fun `correctly serialize pretty print`() {
+            runBlocking {
+                // given
+                val clock = Clock.fixed(Instant.parse("2020-01-01T16:02:42.00Z"), UTC)
+                val serializer = DeadEntriesJsonSerializer(clock = clock)
 
-            val expected = createExpectedDeadEntriesPrettyPrint("""
+                val expected = createExpectedDeadEntriesPrettyPrint("""
                 "1234",
                 "5678"
             """.trimIndent())
 
-            val list = setOf(
-                "1234",
-                "5678",
-            )
+                val list = setOf(
+                    "1234",
+                    "5678",
+                )
 
-            // when
-            val result = serializer.serializeJson(list, minify = false)
+                // when
+                val result = serializer.serializeJson(list, minify = false)
 
-            // then
-            assertThat(result).isEqualTo(expected)
+                // then
+                assertThat(result).isEqualTo(expected)
+            }
         }
-    }
 
-    @Test
-    fun `results are sorted`() {
-        runBlocking {
-            // given
-            val clock = Clock.fixed(Instant.parse("2020-01-01T16:02:42.00Z"), UTC)
-            val serializer = DeadEntriesJsonSerializer(clock = clock)
+        @Test
+        fun `results are sorted`() {
+            runBlocking {
+                // given
+                val clock = Clock.fixed(Instant.parse("2020-01-01T16:02:42.00Z"), UTC)
+                val serializer = DeadEntriesJsonSerializer(clock = clock)
 
-            val expected = createExpectedDeadEntriesPrettyPrint("""
+                val expected = createExpectedDeadEntriesPrettyPrint("""
                 "1234",
                 "5678"
             """.trimIndent())
 
-            val list = setOf(
-                "5678",
-                "1234",
-            )
+                val list = setOf(
+                    "5678",
+                    "1234",
+                )
 
-            // when
-            val result = serializer.serializeJson(list)
+                // when
+                val result = serializer.serializeJson(list)
 
-            // then
-            assertThat(result).isEqualTo(expected)
+                // then
+                assertThat(result).isEqualTo(expected)
+            }
+        }
+    }
+
+    @Nested
+    inner class SerializeJsonLineTests {
+
+        @Test
+        fun `throws exception when called, because JSON line is not supported for dead entries`() {
+            runBlocking {
+                // given
+                val clock = Clock.fixed(Instant.parse("2020-01-01T16:02:42.00Z"), UTC)
+                val serializer = DeadEntriesJsonSerializer(clock = clock)
+                val list = setOf(
+                    "1234",
+                    "5678",
+                )
+
+                // when
+                val result = exceptionExpected<UnsupportedOperationException> {
+                    serializer.serializeJsonLine(list)
+                }
+
+                // then
+                assertThat(result).hasMessage("JSON line is not supported for dead entries. Due to size and structure a minified JSON file and a compressed version is sufficient.")
+            }
         }
     }
 
