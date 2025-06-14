@@ -103,8 +103,9 @@ internal object TestExternalResourceJsonDeserializerDataset: ExternalResourceJso
     override suspend fun deserialize(file: RegularFile): Dataset = shouldNotBeInvoked()
 }
 
-internal object TestJsonSerializerCollectionAnime: JsonSerializer<Collection<Anime>> {
+internal object TestJsonSerializerCollectionAnime: JsonSerializer<Collection<Anime>, Anime> {
     override suspend fun serializeJson(obj: Collection<Anime>, minify: Boolean): String = shouldNotBeInvoked()
+    override suspend fun serializeJsonLine(obj: Collection<Anime>): String = shouldNotBeInvoked()
 }
 
 internal object TestJavaWatchService: JavaWatchService {
@@ -157,8 +158,9 @@ internal object TestExternalResourceJsonDeserializerDeadEntries: ExternalResourc
     override suspend fun deserialize(file: RegularFile): DeadEntries = shouldNotBeInvoked()
 }
 
-internal object TestJsonSerializerCollectionAnimeId: JsonSerializer<Collection<AnimeId>> {
+internal object TestJsonSerializerCollectionAnimeId: JsonSerializer<Collection<AnimeId>, AnimeId> {
     override suspend fun serializeJson(obj: Collection<AnimeId>, minify: Boolean): String = shouldNotBeInvoked()
+    override suspend fun serializeJsonLine(obj: Collection<AnimeId>): String = shouldNotBeInvoked()
 }
 
 internal object TestDeadEntriesAccessor: DeadEntriesAccessor {
@@ -369,7 +371,7 @@ internal object TestAnimeRawObjects {
         """.trimIndent()
 
         val serializedMinified = """
-            {"sources":["https://myanimelist.net/anime/1535"],"title":"Death Note","type":"TV","episodes":37,"status":"FINISHED","animeSeason":{"season":"FALL","year":null},"picture":"https://cdn.myanimelist.net/images/anime/1079/138100.jpg","thumbnail":"https://cdn.myanimelist.net/images/anime/1079/138100t.jpg","duration":null,"scores":[{"hostname":"myanimelist.net","value":8.62,"range":{"minInclusive":1.0,"maxInclusive":10.0}}],"synonyms":["DN","デスノート"],"studios":["madhouse"],"producers":["d.n. dream partners","nippon television network","shueisha","vap"],"relatedAnime":["https://myanimelist.net/anime/2994"],"tags":["psychological","shounen","supernatural","suspense"]}
+            {"sources":["https://myanimelist.net/anime/1535"],"title":"Death Note","type":"TV","episodes":37,"status":"FINISHED","animeSeason":{"season":"FALL"},"picture":"https://cdn.myanimelist.net/images/anime/1079/138100.jpg","thumbnail":"https://cdn.myanimelist.net/images/anime/1079/138100t.jpg","scores":[{"hostname":"myanimelist.net","value":8.62,"range":{"minInclusive":1.0,"maxInclusive":10.0}}],"synonyms":["DN","デスノート"],"studios":["madhouse"],"producers":["d.n. dream partners","nippon television network","shueisha","vap"],"relatedAnime":["https://myanimelist.net/anime/2994"],"tags":["psychological","shounen","supernatural","suspense"]}
         """.trimIndent()
     }
 
@@ -950,7 +952,7 @@ internal object TestAnimeObjects {
         """.trimIndent()
 
         val serializedMinified = """
-            {"sources":["https://myanimelist.net/anime/1535"],"title":"Death Note","type":"TV","episodes":37,"status":"FINISHED","animeSeason":{"season":"FALL","year":null},"picture":"https://cdn.myanimelist.net/images/anime/1079/138100.jpg","thumbnail":"https://cdn.myanimelist.net/images/anime/1079/138100t.jpg","duration":null,"score":null,"synonyms":["DN","デスノート"],"studios":["madhouse"],"producers":["D.N. Dream Partners","nippon television network","shueisha","vap"],"relatedAnime":["https://myanimelist.net/anime/2994"],"tags":["psychological","shounen","supernatural","suspense"]}
+            {"sources":["https://myanimelist.net/anime/1535"],"title":"Death Note","type":"TV","episodes":37,"status":"FINISHED","animeSeason":{"season":"FALL"},"picture":"https://cdn.myanimelist.net/images/anime/1079/138100.jpg","thumbnail":"https://cdn.myanimelist.net/images/anime/1079/138100t.jpg","synonyms":["DN","デスノート"],"studios":["madhouse"],"producers":["D.N. Dream Partners","nippon television network","shueisha","vap"],"relatedAnime":["https://myanimelist.net/anime/2994"],"tags":["psychological","shounen","supernatural","suspense"]}
         """.trimIndent()
     }
 
