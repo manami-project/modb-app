@@ -10,8 +10,11 @@ import io.github.manamiproject.modb.core.anime.Duration.TimeUnit.MINUTES
 import io.github.manamiproject.modb.core.httpclient.HttpClient
 import io.github.manamiproject.modb.core.httpclient.HttpResponse
 import io.github.manamiproject.modb.core.httpclient.RequestBody
+import io.github.manamiproject.modb.core.io.LifecycleAwareInputStream
 import io.github.manamiproject.modb.serde.json.JsonDeserializer
 import io.github.manamiproject.modb.test.shouldNotBeInvoked
+import java.io.IOException
+import java.io.InputStream
 import java.net.URI
 import java.net.URL
 import io.github.manamiproject.modb.core.anime.Duration.Companion.UNKNOWN as UNKNOWN_DURATION
@@ -23,6 +26,21 @@ internal object TestHttpClient : HttpClient {
 
 internal object TestJsonDeserializer : JsonDeserializer<List<Int>> {
     override suspend fun deserialize(json: String): List<Int> = shouldNotBeInvoked()
+    override suspend fun deserialize(jsonInputStream: LifecycleAwareInputStream): List<Int> = shouldNotBeInvoked()
+}
+
+internal class TestReadOnceInputStream(private val delegate: InputStream): InputStream() {
+    private var closed = false
+
+    override fun read(): Int {
+        if (closed) throw IOException("Stream closed")
+        return delegate.read()
+    }
+
+    override fun close() {
+        closed = true
+        delegate.close()
+    }
 }
 
 @Suppress("unused")
