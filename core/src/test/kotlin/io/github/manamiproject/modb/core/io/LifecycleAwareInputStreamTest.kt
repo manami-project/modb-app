@@ -55,6 +55,50 @@ internal class LifecycleAwareInputStreamTest {
     }
 
     @Nested
+    inner class IsNotClosedTests {
+
+        @Test
+        fun `returns false if the stream has been closed`() {
+            // given
+            val inputStream = LifecycleAwareInputStream(TestReadOnceInputStream("test".byteInputStream())).apply {
+                close()
+            }
+
+            // when
+            val result = inputStream.isNotClosed()
+
+            // then
+            assertThat(result).isFalse()
+        }
+
+        @Test
+        fun `returns true if the stream is available`() {
+            // given
+            val inputStream = LifecycleAwareInputStream(TestReadOnceInputStream("test".byteInputStream()))
+
+            // when
+            val result = inputStream.isNotClosed()
+
+            // then
+            assertThat(result).isTrue()
+        }
+
+        @Test
+        fun `returns true if the delegate has been closed outside`() {
+            // given
+            val delegate = TestReadOnceInputStream("test".byteInputStream())
+            val inputStream = LifecycleAwareInputStream(delegate)
+            delegate.close()
+
+            // when
+            val result = inputStream.isNotClosed()
+
+            // then
+            assertThat(result).isTrue()
+        }
+    }
+
+    @Nested
     inner class CloseTests {
 
         @Test

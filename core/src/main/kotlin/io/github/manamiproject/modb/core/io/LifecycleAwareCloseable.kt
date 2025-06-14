@@ -15,5 +15,12 @@ public interface LifecycleAwareCloseable: Closeable {
      * @return `true` if the resource has already been closed.
      */
     public fun isClosed(): Boolean
+
+    /**
+     * Lets the caller check if [close] has already been called.
+     * @since 19.0.0
+     * @return `false` if the resource has already been closed.
+     */
+    public fun isNotClosed(): Boolean
 }
 
