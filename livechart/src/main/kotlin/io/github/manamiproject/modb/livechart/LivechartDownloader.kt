@@ -36,10 +36,11 @@ public class LivechartDownloader(
             url = metaDataProviderConfig.buildDataDownloadLink(id).toURL(),
             headers = mapOf("host" to listOf("www.${metaDataProviderConfig.hostname()}")),
         )
+        val responseBody = response.bodyAsString()
 
-        check(response.bodyAsText.neitherNullNorBlank()) { "Response body was blank for [livechartId=$id] with response code [${response.code}]" }
+        check(responseBody.neitherNullNorBlank()) { "Response body was blank for [livechartId=$id] with response code [${response.code}]" }
 
-        val data = extractor.extract(response.bodyAsText, mapOf(
+        val data = extractor.extract(responseBody, mapOf(
             "pageTitle" to "//title/text()",
         ))
 
@@ -49,7 +50,7 @@ public class LivechartDownloader(
         }
 
         return@withContext when(response.code) {
-            200 -> response.bodyAsText
+            200 -> responseBody
             404 -> {
                 onDeadEntry.invoke(id)
                 EMPTY

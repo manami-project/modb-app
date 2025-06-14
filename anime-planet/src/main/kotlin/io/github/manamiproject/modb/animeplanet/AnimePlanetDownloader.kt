@@ -29,16 +29,17 @@ public class AnimePlanetDownloader(
             url = metaDataProviderConfig.buildDataDownloadLink(id).toURL(),
             headers = mapOf("host" to listOf("www.${metaDataProviderConfig.hostname()}")),
         )
+        val responseBody = response.bodyAsString()
 
-        check(response.bodyAsText.neitherNullNorBlank()) { "Response body was blank for [animePlanetId=$id] with response code [${response.code}]" }
+        check(responseBody.neitherNullNorBlank()) { "Response body was blank for [animePlanetId=$id] with response code [${response.code}]" }
 
-        if (response.bodyAsText.contains("You searched for") && response.bodyAsText.contains("...but we couldn't find anything.")) {
+        if (responseBody.contains("You searched for") && responseBody.contains("...but we couldn't find anything.")) {
             onDeadEntry.invoke(id)
             return@withContext EMPTY
         }
 
         return@withContext when(response.code) {
-            200 -> response.bodyAsText
+            200 -> responseBody
             else -> throw IllegalStateException("Unable to determine the correct case for [animePlanetId=$id], [responseCode=${response.code}]")
         }
     }

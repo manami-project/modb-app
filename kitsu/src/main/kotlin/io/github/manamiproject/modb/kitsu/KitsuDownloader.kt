@@ -34,12 +34,13 @@ public class KitsuDownloader(
         val response = httpClient.get(
             url = metaDataProviderConfig.buildDataDownloadLink(id).toURL(),
         )
+        val responseBody = response.bodyAsString()
 
-        check(response.bodyAsText.neitherNullNorBlank()) { "Response body was blank for [kitsuId=$id] with response code [${response.code}]" }
+        check(responseBody.neitherNullNorBlank()) { "Response body was blank for [kitsuId=$id] with response code [${response.code}]" }
 
         return@withContext when(response.code) {
             200 -> {
-                val data = extractor.extract(response.bodyAsText, mapOf(
+                val data = extractor.extract(responseBody, mapOf(
                     "entries" to "$.meta.count",
                 ))
                 val entries = data.intOrDefault("entries")
@@ -49,11 +50,10 @@ public class KitsuDownloader(
                         EMPTY
                     }
                     1 -> {
-                        response.bodyAsText
+                        responseBody
                     }
                     else -> throw IllegalStateException("Anime with id [${id}] returned [$entries] entries.")
                 }
-                response.bodyAsText
             }
             404 -> {
                 onDeadEntry.invoke(id)

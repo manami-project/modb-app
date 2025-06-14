@@ -29,11 +29,12 @@ public class AnisearchDownloader(
             url = metaDataProviderConfig.buildDataDownloadLink(id).toURL(),
             headers = mapOf("host" to listOf("www.${metaDataProviderConfig.hostname()}")),
         )
+        val responseBody = response.bodyAsString()
 
-        check(response.bodyAsText.neitherNullNorBlank()) { "Response body was blank for [anisearchId=$id] with response code [${response.code}]" }
+        check(responseBody.neitherNullNorBlank()) { "Response body was blank for [anisearchId=$id] with response code [${response.code}]" }
 
         return@withContext when(response.code) {
-            200 -> response.bodyAsText
+            200 -> responseBody
             404 -> {
                 onDeadEntry.invoke(id)
                 EMPTY

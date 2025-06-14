@@ -29,15 +29,16 @@ public class AnimenewsnetworkDownloader(
             url = metaDataProviderConfig.buildDataDownloadLink(id).toURL(),
             headers = mapOf("host" to listOf("www.${metaDataProviderConfig.hostname()}")),
         )
+        val responseBody = response.bodyAsString()
 
-        check(response.bodyAsText.neitherNullNorBlank()) { "Response body was blank for [animenewsnetworkId=$id] with response code [${response.code}]" }
+        check(responseBody.neitherNullNorBlank()) { "Response body was blank for [animenewsnetworkId=$id] with response code [${response.code}]" }
 
         return@withContext when (response.code) {
             404 -> {
                 onDeadEntry.invoke(id)
                 EMPTY
             }
-            200 -> response.bodyAsText
+            200 -> responseBody
             else -> throw IllegalStateException("Unexpected response code [animenewsnetworkId=$id], [responseCode=${response.code}]")
         }
     }
