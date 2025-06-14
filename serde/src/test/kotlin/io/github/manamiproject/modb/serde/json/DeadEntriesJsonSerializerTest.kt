@@ -29,7 +29,7 @@ internal class DeadEntriesJsonSerializerTest {
             )
 
             // when
-            val result = serializer.serialize(list, minify = true)
+            val result = serializer.serializeJson(list, minify = true)
 
             // then
             assertThat(result).isEqualTo(expected)
@@ -54,7 +54,7 @@ internal class DeadEntriesJsonSerializerTest {
             )
 
             // when
-            val result = serializer.serialize(list, minify = false)
+            val result = serializer.serializeJson(list, minify = false)
 
             // then
             assertThat(result).isEqualTo(expected)
@@ -79,7 +79,7 @@ internal class DeadEntriesJsonSerializerTest {
             )
 
             // when
-            val result = serializer.serialize(list)
+            val result = serializer.serializeJson(list)
 
             // then
             assertThat(result).isEqualTo(expected)

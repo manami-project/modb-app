@@ -18,7 +18,7 @@ public interface JsonDeserializer<out T> {
 
     /**
      * Deserializes a valid JSON to objects of type [T].
-     * @since 19.0.0
+     * @since 6.0.0
      * @param jsonInputStream Valid JSON provided via [LifecycleAwareInputStream].
      * @return Object of type [T].
      */
