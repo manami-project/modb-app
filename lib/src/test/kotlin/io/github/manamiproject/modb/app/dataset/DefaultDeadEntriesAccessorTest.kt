@@ -269,7 +269,7 @@ internal class DefaultDeadEntriesAccessorTest {
                     override suspend fun removeDeadEntry(metaDataProviderConfig: MetaDataProviderConfig, animeId: AnimeId) { }
                 }
 
-                DeadEntriesJsonSerializer.instance.serialize(listOf(
+                DeadEntriesJsonSerializer.instance.serializeJson(listOf(
                     initialId,
                 )).writeToFile(tempDir.resolve("dead-entries").createDirectory().resolve("${testMetaDataProviderConfig.hostname().substringBefore('.')}-minified.json"))
 
@@ -315,7 +315,7 @@ internal class DefaultDeadEntriesAccessorTest {
                     override suspend fun removeDeadEntry(metaDataProviderConfig: MetaDataProviderConfig, animeId: AnimeId) { }
                 }
 
-                val content = DeadEntriesJsonSerializer.instance.serialize(listOf(
+                val content = DeadEntriesJsonSerializer.instance.serializeJson(listOf(
                     initialId,
                 ))
 
@@ -651,7 +651,7 @@ internal class DefaultDeadEntriesAccessorTest {
 
                 val ids = listOf(testMetaDataProviderConfig.buildAnimeLink(id))
 
-                DeadEntriesJsonSerializer.instance.serialize(listOf(
+                DeadEntriesJsonSerializer.instance.serializeJson(listOf(
                     id,
                 )).writeToFile(tempDir.resolve("dead-entries").createDirectory().resolve("${testMetaDataProviderConfig.hostname().substringBefore('.')}-minified.json"))
 
@@ -891,7 +891,7 @@ internal class DefaultDeadEntriesAccessorTest {
                 val testMetaDataProviderConfig = configClass.kotlin.objectInstance as MetaDataProviderConfig
 
                 val deadEntriesFile = tempDir.resolve("dead-entries").createDirectory().resolve("${testMetaDataProviderConfig.hostname().substringBefore('.')}-minified.json")
-                DeadEntriesJsonSerializer.instance.serialize(listOf(
+                DeadEntriesJsonSerializer.instance.serializeJson(listOf(
                     entry1,
                     entry2,
                 )).writeToFile(deadEntriesFile)

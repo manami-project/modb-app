@@ -172,8 +172,8 @@ class DefaultDeadEntriesAccessor(
             else -> throw IllegalStateException("Meta data provider [${metaDataProviderConfig.hostname()}] is not supported.")
         }
 
-        jsonSerializer.serialize(deadEntries, minify = false).writeToFile(deadEntriesFile(metaDataProviderConfig, JSON))
-        jsonSerializer.serialize(deadEntries, minify = true).writeToFile(deadEntriesFile(metaDataProviderConfig, JSON_MINIFIED))
+        jsonSerializer.serializeJson(deadEntries, minify = false).writeToFile(deadEntriesFile(metaDataProviderConfig, JSON))
+        jsonSerializer.serializeJson(deadEntries, minify = true).writeToFile(deadEntriesFile(metaDataProviderConfig, JSON_MINIFIED))
         deadEntriesFile(metaDataProviderConfig, ZIP).createZipOf(deadEntriesFile(metaDataProviderConfig, JSON_MINIFIED))
     }
 

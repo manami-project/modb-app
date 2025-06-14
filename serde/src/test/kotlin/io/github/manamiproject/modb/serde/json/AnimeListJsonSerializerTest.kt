@@ -30,7 +30,7 @@ internal class AnimeListJsonSerializerTest {
                 )
 
                 // when
-                val result = serializer.serialize(animeList, minify = false)
+                val result = serializer.serializeJson(animeList, minify = false)
 
                 // then
                 assertThat(result).isEqualTo(createExpectedDatasetPrettyPrint(TestAnimeObjects.DefaultAnime.serializedPrettyPrint))
@@ -49,7 +49,7 @@ internal class AnimeListJsonSerializerTest {
                 )
 
                 // when
-                val result = serializer.serialize(
+                val result = serializer.serializeJson(
                     obj = animeList,
                     minify = true,
                 )
@@ -71,7 +71,7 @@ internal class AnimeListJsonSerializerTest {
                 )
 
                 // when
-                val result = serializer.serialize(animeList, minify = false)
+                val result = serializer.serializeJson(animeList, minify = false)
 
                 // then
                 assertThat(result).isEqualTo(createExpectedDatasetPrettyPrint(TestAnimeObjects.AllPropertiesSet.serializedPrettyPrint))
@@ -90,7 +90,7 @@ internal class AnimeListJsonSerializerTest {
                 )
 
                 // when
-                val result = serializer.serialize(animeList, minify = true)
+                val result = serializer.serializeJson(animeList, minify = true)
 
                 // then
                 assertThat(result).isEqualTo(createExpectedDatasetMinified(TestAnimeObjects.AllPropertiesSet.serializedMinified))
@@ -178,7 +178,7 @@ internal class AnimeListJsonSerializerTest {
                 )
 
                 // when
-                val result = serializer.serialize(animeList, minify = false)
+                val result = serializer.serializeJson(animeList, minify = false)
 
                 // then
                 assertThat(result).isEqualTo(expectedContent)
@@ -271,7 +271,7 @@ internal class AnimeListJsonSerializerTest {
                 )
 
                 // when
-                val result = serializer.serialize(animeList, minify = false)
+                val result = serializer.serializeJson(animeList, minify = false)
 
                 // then
                 assertThat(result).isEqualTo(expectedContent)
@@ -367,7 +367,7 @@ internal class AnimeListJsonSerializerTest {
                 )
 
                 // when
-                val result = serializer.serialize(animeList, minify = false)
+                val result = serializer.serializeJson(animeList, minify = false)
 
                 // then
                 assertThat(result).isEqualTo(expectedContent)

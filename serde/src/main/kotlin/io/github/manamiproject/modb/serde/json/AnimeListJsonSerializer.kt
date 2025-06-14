@@ -15,7 +15,8 @@ import java.time.LocalDate
 import java.time.format.DateTimeFormatter.ISO_DATE
 
 /**
- * Can serialize a [Collection] of [Anime] to the [manami-project/anime-offline-database](https://github.com/manami-project/anime-offline-database) JSON file.
+ * Can serialize a [Collection] of [Anime] to a variety of formats for
+ * [manami-project/anime-offline-database](https://github.com/manami-project/anime-offline-database).
  * The resulting list will be sorted by title, type and episodes in that order.
  * @since 5.0.0
  * @param clock Instance of a clock to determine the current date.
@@ -24,7 +25,7 @@ public class AnimeListJsonSerializer(
     private val clock: Clock = Clock.systemDefaultZone(),
 ) : JsonSerializer<Collection<Anime>> {
 
-    override suspend fun serialize(obj: Collection<Anime>, minify: Boolean): String = withContext(LIMITED_CPU) {
+    override suspend fun serializeJson(obj: Collection<Anime>, minify: Boolean): String = withContext(LIMITED_CPU) {
         log.debug { "Sorting dataset by title, type and episodes." }
 
         val sortedList = obj.toSet().sortedWith(compareBy({ it.title.lowercase() }, {it.type}, { it.episodes }))

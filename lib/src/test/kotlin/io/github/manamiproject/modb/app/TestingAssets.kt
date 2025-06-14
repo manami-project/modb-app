@@ -104,7 +104,7 @@ internal object TestExternalResourceJsonDeserializerDataset: ExternalResourceJso
 }
 
 internal object TestJsonSerializerCollectionAnime: JsonSerializer<Collection<Anime>> {
-    override suspend fun serialize(obj: Collection<Anime>, minify: Boolean): String = shouldNotBeInvoked()
+    override suspend fun serializeJson(obj: Collection<Anime>, minify: Boolean): String = shouldNotBeInvoked()
 }
 
 internal object TestJavaWatchService: JavaWatchService {
@@ -158,7 +158,7 @@ internal object TestExternalResourceJsonDeserializerDeadEntries: ExternalResourc
 }
 
 internal object TestJsonSerializerCollectionAnimeId: JsonSerializer<Collection<AnimeId>> {
-    override suspend fun serialize(obj: Collection<AnimeId>, minify: Boolean): String = shouldNotBeInvoked()
+    override suspend fun serializeJson(obj: Collection<AnimeId>, minify: Boolean): String = shouldNotBeInvoked()
 }
 
 internal object TestDeadEntriesAccessor: DeadEntriesAccessor {

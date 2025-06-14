@@ -41,10 +41,10 @@ class DefaultDatasetFileAccessor(
         )
 
         log.info { "Writing json to file." }
-        jsonSerializer.serialize(sortedList, minify = false).writeToFile(offlineDatabaseFile(JSON))
+        jsonSerializer.serializeJson(sortedList, minify = false).writeToFile(offlineDatabaseFile(JSON))
 
         log.info { "Creating minified json." }
-        jsonSerializer.serialize(sortedList, minify = true).writeToFile(offlineDatabaseFile(JSON_MINIFIED))
+        jsonSerializer.serializeJson(sortedList, minify = true).writeToFile(offlineDatabaseFile(JSON_MINIFIED))
 
         log.info { "Creating zip file." }
         offlineDatabaseFile(ZIP).createZipOf(offlineDatabaseFile(JSON_MINIFIED))

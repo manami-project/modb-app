@@ -25,7 +25,7 @@ public class DeadEntriesJsonSerializer(
     private val clock: Clock = Clock.systemDefaultZone(),
 ): JsonSerializer<Collection<AnimeId>> {
 
-    override suspend fun serialize(obj: Collection<AnimeId>, minify: Boolean): String = withContext(LIMITED_CPU) {
+    override suspend fun serializeJson(obj: Collection<AnimeId>, minify: Boolean): String = withContext(LIMITED_CPU) {
         log.debug { "Sorting dead entries" }
 
         val currentWeek = WeekOfYear(LocalDate.now(clock))

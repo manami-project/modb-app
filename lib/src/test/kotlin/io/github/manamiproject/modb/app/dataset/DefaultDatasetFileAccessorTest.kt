@@ -34,7 +34,7 @@ internal class DefaultDatasetFileAccessorTest {
 
                 var hasBeenInvoked = false
                 val testAnimeListJsonSerializer = object: JsonSerializer<Collection<Anime>> by TestJsonSerializerCollectionAnime {
-                    override suspend fun serialize(obj: Collection<Anime>, minify: Boolean): String {
+                    override suspend fun serializeJson(obj: Collection<Anime>, minify: Boolean): String {
                         hasBeenInvoked = true
                         return "{}"
                     }
