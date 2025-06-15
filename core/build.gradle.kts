@@ -28,6 +28,7 @@ dependencies {
     implementation(libs.jsonpathkt)
     implementation(libs.jsoup)
     implementation(libs.tomlj)
+    implementation(libs.zstandard)
 
     testImplementation(libs.logback.classic)
     testImplementation(project(":test"))

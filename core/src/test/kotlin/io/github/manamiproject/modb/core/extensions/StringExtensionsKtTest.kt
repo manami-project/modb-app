@@ -1,5 +1,6 @@
 package io.github.manamiproject.modb.core.extensions
 
+import com.github.luben.zstd.ZstdInputStream
 import io.github.manamiproject.modb.core.random
 import io.github.manamiproject.modb.test.exceptionExpected
 import io.github.manamiproject.modb.test.tempDirectory
@@ -9,6 +10,7 @@ import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.ValueSource
 import kotlin.io.path.createDirectory
 import kotlin.io.path.createFile
+import kotlin.io.path.inputStream
 import kotlin.test.Test
 
 internal class StringExtensionsKtTest {
@@ -23,12 +25,12 @@ internal class StringExtensionsKtTest {
                 val file = tempDir.resolve("test").createDirectory()
 
                 // when
-                val result = exceptionExpected<Exception> { //exception type varies depending on the OS
+                val result = exceptionExpected<Exception> { // exception type varies depending on the OS
                     "text".writeToFile(file, false)
                 }
 
                 // then
-                assertThat(result).hasMessageContaining(file.toString()) //message varies depending on the OS
+                assertThat(result).hasMessageContaining(file.toString()) // message varies depending on the OS
             }
         }
 
@@ -418,7 +420,7 @@ internal class StringExtensionsKtTest {
                 " ",
             )
             val builder = StringBuilder()
-            for (i in 1..random(4, 8)) {
+            repeat(random(4, 8).toInt()) {
                 builder.append(chars.pickRandom())
             }
 
@@ -515,7 +517,7 @@ internal class StringExtensionsKtTest {
             // given
             val chars = setOf("\u00A0", "\u202F", "\uFEFF", "\u2007", "\u180E", "\u2060", "\u200D", "\u200C", "\r", "\n", "\t", " ")
             val builder = StringBuilder()
-            for (i in 1..random(4, 8)) {
+            repeat(random(4, 8).toInt()) {
                 builder.append(chars.pickRandom())
             }
 
@@ -534,6 +536,156 @@ internal class StringExtensionsKtTest {
 
             // then
             assertThat(result).isTrue()
+        }
+    }
+
+    @Nested
+    inner class WriteToZstandardFileTests {
+
+        @Test
+        fun `throws exception if given Path already exists, but is a directory`() {
+            tempDirectory {
+                // given
+                val file = tempDir.resolve("test.zst").createDirectory()
+
+                // when
+                val result = exceptionExpected<Exception> { // exception type varies depending on the OS
+                    "text".writeToZstandardFile(file, false)
+                }
+
+                // then
+                assertThat(result).hasMessageContaining(file.toString()) // message varies depending on the OS
+            }
+        }
+
+        @Test
+        fun `throws exception if given Path is a regular file, but the suffix is wrong`() {
+            tempDirectory {
+                // given
+                val file = tempDir.resolve("test.txt").createFile()
+
+                // when
+                val result = exceptionExpected<IllegalArgumentException> {
+                    "text".writeToZstandardFile(file, false)
+                }
+
+                // then
+                assertThat(result).hasMessage("File suffix must be *.zst.")
+            }
+        }
+
+        @ParameterizedTest
+        @ValueSource(ints = [-1, 0, 23])
+        fun `throws exception if the compressionLevel is out of range`(value: Int) {
+            tempDirectory {
+                // given
+                val file = tempDir.resolve("test.zst").createFile()
+
+                // when
+                val result = exceptionExpected<IllegalArgumentException> {
+                    "text".writeToZstandardFile(file, false, value)
+                }
+
+                // then
+                assertThat(result).hasMessage("Compression level must be a value between 1 (inclusive) and 22 (inclusive).")
+            }
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = [
+            "",
+            "   ",
+            "\u00A0",
+            "\u202F",
+            "\u200A",
+            "\u205F",
+            "\u2000",
+            "\u2001",
+            "\u2002",
+            "\u2003",
+            "\u2004",
+            "\u2005",
+            "\u2006",
+            "\u2007",
+            "\u2008",
+            "\u2009",
+            "\uFEFF",
+            "\u180E",
+            "\u2060",
+            "\u200D",
+            "\u0090",
+            "\u200C",
+            "\u200B",
+            "\u00AD",
+            "\u000C",
+            "\u2028",
+            "\r",
+            "\n",
+            "\t",
+        ])
+        fun `throws exception if the string is empty`(value: String) {
+            tempDirectory {
+                // given
+                val file = tempDir.resolve("test.txt")
+
+                // when
+                val result = exceptionExpected<IllegalStateException> {
+                    value.writeToZstandardFile(file, false)
+                }
+
+                // then
+                assertThat(result).hasMessage("Tried to write file [$file], but the String was blank.")
+            }
+        }
+
+        @Test
+        fun `successfully write string without lock file`() {
+            tempDirectory {
+                // given
+                val string = "Some content\nfor a test file."
+                val file = tempDir.resolve("test.zst")
+
+                // when
+                string.writeToZstandardFile(file, false, 1)
+
+                // then
+                assertThat(file).exists()
+                assertThat(ZstdInputStream(file.inputStream()).bufferedReader().readText()).isEqualTo(string)
+            }
+        }
+
+        @Test
+        fun `successfully write string with lock file`() {
+            tempDirectory {
+                // given
+                val string = "Some content\nfor a test file."
+                val file = tempDir.resolve("test.zst")
+
+                // when
+                string.writeToZstandardFile(file, true, 1)
+
+                // then
+                assertThat(file).exists()
+                assertThat(ZstdInputStream(file.inputStream()).bufferedReader().readText()).isEqualTo(string)
+            }
+        }
+
+        @Test
+        fun `overrides file if the file already exists`() {
+            tempDirectory {
+                // given
+                val file = tempDir.resolve("test.zst").createFile()
+                "Some content\nfor a test file.".writeToFile(file)
+
+                val string = "Some totally different content."
+
+                // when
+                string.writeToZstandardFile(file, false, 1)
+
+                // then
+                assertThat(file).exists()
+                assertThat(ZstdInputStream(file.inputStream()).bufferedReader().readText()).isEqualTo(string)
+            }
         }
     }
 }

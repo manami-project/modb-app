@@ -65,6 +65,8 @@ companion object {
     * Typealias for `Episodes`
     * Typealias for `Title`
     * Typealias for `Tag`
+    * Typealias for `Studio`
+    * Typealias for `Producer`
     * Enum `Anime.Type`
     * Enum `Anime.Status`
     * Type `AnimeSeason`
@@ -73,6 +75,7 @@ companion object {
     * Type `Duration`
         * Typealias for `Seconds`
         * Enum `TimeUnit`
+    * Type `Score`
 * Const `EMTPY` for empty `String`
 * Const `LOCK_FILE_SUFFIX`  
 * Const `YEAR_OF_THE_FIRST_ANIME` for year of the first anime
@@ -84,35 +87,42 @@ companion object {
 
 * Object class for serializing/deserializing objects to/from JSON
 
+### LifecycleAwareInputStream
+
+`LifecycleAwareInputStream` is a simple wrapper for any `InputStream` implementation that tracks if `close()` has been called.
+It also implements the new interface `LifecycleAwareCloseable` which extens the `Closable`/`AutoCloseable` interfaces.
+This interface allows to check if the `close` function has been called or not.
+
 ### Extension and utility functions
 
-| function                                | description                                                                                                                                    |
-|-----------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------|
-| `loadResource`                          | Conveniently load a file from `src/main/resources`                                                                                             |
-| `resourceFileExists`                    | Checks if a file exists in `src/main/resources`                                                                                                |
-| `random`                                | Pick a a random number from a given interval                                                                                                   |
-| `excludeFromTestContext`                | Won't execute the code within during test execution                                                                                            |
-| `Collection<T>.pickRandom()`            | Picks a random element of a `Collection`                                                                                                       |
-| `Int.toAnimeId`                         | Converts an `Int` to an `AnimeId`                                                                                                              |
-| `List<T>.createShuffledList()`          | Creates a new list from the given `List` and randomizes the order of elements                                                                  |
-| `List<T>.containsExactlyInTheSameOrder` | Checks if a list contains the same elements in the same order as another list                                                                  |
-| `OutputStream.write`                    | Writes a `String` to the `OutputStream` and also flushes the stream                                                                            |
-| `Path.changeSuffix`                     | Changes the file suffix                                                                                                                        |
-| `Path.regularFileExists`                | Checks if a given `Path` exists and is a file                                                                                                  |
-| `Path.directoryExists`                  | Checks if a given `Path` exists and is a directory                                                                                             |
-| `Path.readFile`                         | Read the content of a file into a `String`                                                                                                     |
-| `Path.copyTo`                           | Copy file to file, directory to directory or a file into a directory                                                                           |
-| `Path.fileName`                         | Filename as `String`                                                                                                                           |
-| `Path.fileSuffix`                       | Returns the file suffix as `String`                                                                                                            |
-| `Path.listRegularFiles`                 | Returns a list of files. Optionally with additional glob filter.                                                                               |
-| `Path.createZipOf`                      | Creates a zip file containing one or multiple files.                                                                                           |
-| `ByteArray.writeToFile`                 | Write `ByteArray` to file and optionally write a lock file as indications for other processes that the file is being written                   |
-| `String.writeToFile`                    | Write `String` to file and optionally write a lock file as indications for other processes that the file is being written                      |
-| `String.remove`                         | Remove sequence from a `String`                                                                                                                |
-| `String.normalizeWhitespaces`           | Replaces multiple consecutive whitespaces with a single one. Replaces different kinds of whitespace with the default one and trims the string. |
-| `String.normalize`                      | Replaces tabs, carriage return and line feed with whitespaces and additionally does the same as `String.normalizeWhitespaces`.                 |
-| `String.eitherNullOrBlank`              | Returns true for `null`, empty strings and strings consisting only of non-visible characters.                                                  |
-| `String.neitherNullNorBlank`            | Opposite of `String.eitherNullOrBlank`                                                                                                         |
+| function                                  | description                                                                                                                                      |
+|-------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------|
+| `loadResource`                            | Conveniently load a file from `src/main/resources`                                                                                               |
+| `resourceFileExists`                      | Checks if a file exists in `src/main/resources`                                                                                                  |
+| `random`                                  | Pick a a random number from a given interval                                                                                                     |
+| `excludeFromTestContext`                  | Won't execute the code within during test execution                                                                                              |
+| `ByteArray.writeToFile`                   | Write a `ByteArray` to a file and optionally write a lock file as indicator for other processes that the file is being written                   |
+| `Collection<T>.pickRandom`                | Picks a random element of a `Collection`                                                                                                         |
+| `Collection<T>.createShuffledList`        | Creates a new list from the given `Collection` and randomizes the order of elements                                                              |
+| `InputStream.toLifecycleAwareInputStream` | Wraps any `InputStream` in a `LifecycleAwareInputStream`                                                                                         |
+| `Int.toAnimeId`                           | Converts an `Int` to an `AnimeId`                                                                                                                |
+| `List<T>.containsExactlyInTheSameOrder`   | Checks if a list contains the same elements in the same order as another list                                                                    |
+| `Path.changeSuffix`                       | Changes the file suffix                                                                                                                          |
+| `Path.regularFileExists`                  | Checks if a given `Path` exists and is a file                                                                                                    |
+| `Path.directoryExists`                    | Checks if a given `Path` exists and is a directory                                                                                               |
+| `Path.readFile`                           | Read the content of a file into a `String`                                                                                                       |
+| `Path.copyTo`                             | Copy file to file, directory to directory or a file into a directory                                                                             |
+| `Path.fileName`                           | Filename as `String`                                                                                                                             |
+| `Path.fileSuffix`                         | Returns the file suffix as `String`                                                                                                              |
+| `Path.listRegularFiles`                   | Returns a list of files. Optionally with additional glob filter.                                                                                 |
+| `Path.createZipOf`                        | Creates a zip file containing one or multiple files.                                                                                             |
+| `String.writeToFile`                      | Write a `String` to a file and optionally write a lock file as indicator for other processes that the file is being written                      |
+| `String.writeToZstandardFile`             | Write a `String` to a Zstandard compressed file and optionally write a lock file as indicator for other processes that the file is being written |
+| `String.remove`                           | Remove sequence from a `String`                                                                                                                  |
+| `String.normalizeWhitespaces`             | Replaces multiple consecutive whitespaces with a single one. Replaces different kinds of whitespace with the default one and trims the string.   |
+| `String.normalize`                        | Replaces tabs, carriage return and line feed with whitespaces and additionally does the same as `String.normalizeWhitespaces`.                   |
+| `String.eitherNullOrBlank`                | Returns true for `null`, empty strings and strings consisting only of non-visible characters.                                                    |
+| `String.neitherNullNorBlank`              | Opposite of `String.eitherNullOrBlank`                                                                                                           |
 
 ## Configuration
 
