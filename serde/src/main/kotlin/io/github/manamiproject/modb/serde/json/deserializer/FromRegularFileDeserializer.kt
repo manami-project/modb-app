@@ -27,6 +27,7 @@ public class FromRegularFileDeserializer<out T>(
 
         val inputStream = when (source.fileSuffix()) {
             "json" -> LifecycleAwareInputStream(source.inputStream())
+            "jsonl" -> LifecycleAwareInputStream(source.inputStream())
             "zst" -> LifecycleAwareInputStream(ZstdInputStream(source.inputStream()))
             else -> throw IllegalArgumentException("File of type [${source.fileSuffix()}] is not supported.]")
         }

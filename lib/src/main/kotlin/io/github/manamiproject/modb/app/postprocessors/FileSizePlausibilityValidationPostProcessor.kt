@@ -13,7 +13,7 @@ import kotlin.io.path.fileSize
 
 /**
  * Checks if the file sizes of the different file types are plausible.
- * It is expected that the file size is as follows: json > minified json > zip
+ * It is expected that the file size is as follows: json > minified json > zstd compressed minified json
  * @since 1.0.0
  * @param appConfig Application specific configuration. Uses [AppConfig] by default.
  * @property datasetFileAccessor Access to dataset files.
@@ -29,39 +29,50 @@ class FileSizePlausibilityValidationPostProcessor(
     override suspend fun process(): Boolean {
         log.info { "Checking that sizes of the dataset files are plausible." }
 
-        val json = datasetFileAccessor.offlineDatabaseFile(JSON)
-        check(json.regularFileExists()) { "Dataset *.json file doesn't exist." }
-        val jsonSize = json.fileSize()
+        val jsonPrettyPrint = datasetFileAccessor.offlineDatabaseFile(JSON_PRETTY_PRINT)
+        check(jsonPrettyPrint.regularFileExists()) { "Dataset *.json file doesn't exist." }
+        val jsonPrettyPrintSize = jsonPrettyPrint.fileSize()
 
         val jsonMinified = datasetFileAccessor.offlineDatabaseFile(JSON_MINIFIED)
         check(jsonMinified.regularFileExists()) { "Dataset *-minified.json file doesn't exist." }
         val jsonMinifiedSize = jsonMinified.fileSize()
 
-        val zip = datasetFileAccessor.offlineDatabaseFile(ZIP)
-        check(zip.regularFileExists()) { "Dataset *.zip file doesn't exist." }
-        val zipSize = zip.fileSize()
+        val jsonMinifiedZst = datasetFileAccessor.offlineDatabaseFile(JSON_MINIFIED_ZST)
+        check(jsonMinifiedZst.regularFileExists()) { "Dataset *-minified.json.zst file doesn't exist." }
+        val jsonMinifiedZstSize = jsonMinifiedZst.fileSize()
 
-        check(jsonMinifiedSize in (zipSize + 1)..<jsonSize) { "File sizes for dataset are not plausible: [json=$jsonSize, jsonMinified=$jsonMinifiedSize, zip=$zipSize]" }
+        check(jsonMinifiedZstSize < jsonMinifiedSize && jsonMinifiedSize < jsonPrettyPrintSize) { "File sizes for dataset are not plausible: [jsonPrettyPrint=$jsonPrettyPrintSize, jsonMinified=$jsonMinifiedSize, jsonMinifiedZst=$jsonMinifiedZstSize]" }
+
+        val jsonLines = datasetFileAccessor.offlineDatabaseFile(JSON_LINES)
+        check(jsonLines.regularFileExists()) { "Dataset *.jsonl file doesn't exist." }
+        val jsonLinesSize = jsonLines.fileSize()
+
+        val jsonLinesZst = datasetFileAccessor.offlineDatabaseFile(JSON_LINES_ZST)
+        check(jsonLinesZst.regularFileExists()) { "Dataset *.jsonl.zst file doesn't exist." }
+        val jsonLinesZstSize = jsonLinesZst.fileSize()
+
+        check(jsonLinesZstSize < jsonLinesSize) { "File sizes for dataset are not plausible: [jsonLines=$jsonLinesSize, jsonLinesZst=$jsonLinesZstSize]" }
+        check(jsonMinifiedSize < jsonLinesSize) { "File sizes for dataset are not plausible: [jsonMinified=$jsonMinifiedSize, jsonLines=$jsonLinesSize]" }
 
         log.info { "Checking that sizes of the dead entries files are plausible." }
 
         appConfig.metaDataProviderConfigurations()
             .filter { appConfig.deadEntriesSupported(it) }
             .forEach { currentConfig ->
-                val deadEntriesJson = deadEntriesAccessor.deadEntriesFile(currentConfig, JSON)
-                check(deadEntriesJson.regularFileExists()) { "Dead entries *.json file for [${currentConfig.hostname()}] doesn't exist." }
-                val deadEntriesJsonSize = deadEntriesJson.fileSize()
+                val deadEntriesJsonPrettyPrint = deadEntriesAccessor.deadEntriesFile(currentConfig, JSON_PRETTY_PRINT)
+                check(deadEntriesJsonPrettyPrint.regularFileExists()) { "Dead entries *.json file for [${currentConfig.hostname()}] doesn't exist." }
+                val deadEntriesJsonPrettyPrintSize = deadEntriesJsonPrettyPrint.fileSize()
 
                 val deadEntriesJsonMinified = deadEntriesAccessor.deadEntriesFile(currentConfig, JSON_MINIFIED)
                 check(deadEntriesJsonMinified.regularFileExists()) { "Dead entries *-minified.json file for [${currentConfig.hostname()}] doesn't exist." }
                 val deadEntriesJsonMinifiedSize = deadEntriesJsonMinified.fileSize()
 
-                val deadEntriesZip = deadEntriesAccessor.deadEntriesFile(currentConfig, ZIP)
-                check(deadEntriesZip.regularFileExists()) { "Dead entries *.zip file for [${currentConfig.hostname()}] doesn't exist." }
-                val deadEntriesZipSize = deadEntriesZip.fileSize()
+                val deadEntriesJsonMinifiedZst = deadEntriesAccessor.deadEntriesFile(currentConfig, JSON_MINIFIED_ZST)
+                check(deadEntriesJsonMinifiedZst.regularFileExists()) { "Dead entries *-minified.json.zst file for [${currentConfig.hostname()}] doesn't exist." }
+                val deadEntriesJsonMinifiedZstSize = deadEntriesJsonMinifiedZst.fileSize()
 
-                check(deadEntriesJsonMinifiedSize in (deadEntriesZipSize + 1)..<deadEntriesJsonSize) {
-                    "File sizes for dead entry files of [${currentConfig.hostname()}] are not plausible: [json=$deadEntriesJsonSize, jsonMinified=$deadEntriesJsonMinifiedSize, zip=$deadEntriesZipSize]"
+                check(deadEntriesJsonMinifiedZstSize < deadEntriesJsonMinifiedSize && deadEntriesJsonMinifiedSize < deadEntriesJsonPrettyPrintSize) {
+                    "File sizes for dead entry files of [${currentConfig.hostname()}] are not plausible: [json=$deadEntriesJsonPrettyPrintSize, jsonMinified=$deadEntriesJsonMinifiedSize, jsonMinifiedZst=$deadEntriesJsonMinifiedZstSize]"
                 }
             }
 

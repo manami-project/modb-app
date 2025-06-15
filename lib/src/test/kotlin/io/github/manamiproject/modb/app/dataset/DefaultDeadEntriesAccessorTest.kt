@@ -20,10 +20,10 @@ import io.github.manamiproject.modb.kitsu.KitsuConfig
 import io.github.manamiproject.modb.livechart.LivechartConfig
 import io.github.manamiproject.modb.myanimelist.MyanimelistConfig
 import io.github.manamiproject.modb.notify.NotifyConfig
-import io.github.manamiproject.modb.serde.json.DeadEntriesJsonSerializer
-import io.github.manamiproject.modb.serde.json.DeadEntriesJsonDeserializer
-import io.github.manamiproject.modb.serde.json.DefaultExternalResourceJsonDeserializer
-import io.github.manamiproject.modb.serde.json.ExternalResourceJsonDeserializer
+import io.github.manamiproject.modb.serde.json.serializer.DeadEntriesJsonSerializer
+import io.github.manamiproject.modb.serde.json.deserializer.DeadEntriesFromInputStreamDeserializer
+import io.github.manamiproject.modb.serde.json.deserializer.Deserializer
+import io.github.manamiproject.modb.serde.json.deserializer.FromRegularFileDeserializer
 import io.github.manamiproject.modb.serde.json.models.DeadEntries
 import io.github.manamiproject.modb.simkl.SimklConfig
 import io.github.manamiproject.modb.test.exceptionExpected
@@ -32,6 +32,9 @@ import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.assertThrows
 import org.junit.jupiter.params.ParameterizedTest
+import org.junit.jupiter.params.provider.EnumSource
+import org.junit.jupiter.params.provider.EnumSource.Mode.EXCLUDE
+import org.junit.jupiter.params.provider.EnumSource.Mode.INCLUDE
 import org.junit.jupiter.params.provider.ValueSource
 import java.net.URI
 import kotlin.io.path.createDirectory
@@ -53,14 +56,14 @@ internal class DefaultDeadEntriesAccessorTest {
 
                 val defaultDatasetFileAccessor = DefaultDeadEntriesAccessor(
                     appConfig = TestAppConfig,
-                    jsonDeserializer = TestExternalResourceJsonDeserializerDeadEntries,
-                    jsonSerializer = TestJsonSerializerCollectionAnimeId,
+                    jsonDeserializer = TestDeserializer(),
+                    jsonSerializer = TestJsonSerializer(),
                     downloadControlStateAccessor = TestDownloadControlStateAccessor,
                 )
 
                 // when
                 val result = exceptionExpected<IllegalArgumentException> {
-                    defaultDatasetFileAccessor.deadEntriesFile(testMetaDataProviderConfig, JSON).parent
+                    defaultDatasetFileAccessor.deadEntriesFile(testMetaDataProviderConfig, JSON_PRETTY_PRINT).parent
                 }
 
                 // then
@@ -68,8 +71,9 @@ internal class DefaultDeadEntriesAccessorTest {
             }
         }
 
-        @Test
-        fun `deadEntriesFile resides in offlineDatabaseDirectory`() {
+        @ParameterizedTest
+        @EnumSource(value = DatasetFileType::class, mode = EXCLUDE, names = ["JSON_LINES", "JSON_LINES_ZST"])
+        fun `file resides in offlineDatabaseDirectory`(value: DatasetFileType) {
             tempDirectory {
                 // given
                 val testMetaDataProviderConfig = MyanimelistConfig
@@ -80,21 +84,21 @@ internal class DefaultDeadEntriesAccessorTest {
 
                 val defaultDatasetFileAccessor = DefaultDeadEntriesAccessor(
                     appConfig = testAppConfig,
-                    jsonDeserializer = TestExternalResourceJsonDeserializerDeadEntries,
-                    jsonSerializer = TestJsonSerializerCollectionAnimeId,
+                    jsonDeserializer = TestDeserializer(),
+                    jsonSerializer = TestJsonSerializer(),
                     downloadControlStateAccessor = TestDownloadControlStateAccessor,
                 )
 
                 // when
-                val result = defaultDatasetFileAccessor.deadEntriesFile(testMetaDataProviderConfig, JSON).parent
+                val result = defaultDatasetFileAccessor.deadEntriesFile(testMetaDataProviderConfig, value).parent
 
                 // then
                 assertThat(result).isEqualTo(testAppConfig.outputDirectory().resolve("dead-entries"))
             }
         }
-
+        
         @Test
-        fun `deadEntriesFile returns correct file for type JSON`() {
+        fun `deadEntriesFile returns correct file for type JSON_PRETTY_PRINT`() {
             tempDirectory {
                 // given
                 val testMetaDataProviderConfig = MyanimelistConfig
@@ -105,13 +109,13 @@ internal class DefaultDeadEntriesAccessorTest {
 
                 val databaseAccess = DefaultDeadEntriesAccessor(
                     appConfig = testAppConfig,
-                    jsonDeserializer = TestExternalResourceJsonDeserializerDeadEntries,
-                    jsonSerializer = TestJsonSerializerCollectionAnimeId,
+                    jsonDeserializer = TestDeserializer(),
+                    jsonSerializer = TestJsonSerializer(),
                     downloadControlStateAccessor = TestDownloadControlStateAccessor,
                 )
 
                 // when
-                val result = databaseAccess.deadEntriesFile(testMetaDataProviderConfig, JSON).fileName()
+                val result = databaseAccess.deadEntriesFile(testMetaDataProviderConfig, JSON_PRETTY_PRINT).fileName()
 
                 // then
                 assertThat(result).isEqualTo("myanimelist.json")
@@ -130,8 +134,8 @@ internal class DefaultDeadEntriesAccessorTest {
 
                 val databaseAccess = DefaultDeadEntriesAccessor(
                     appConfig = testAppConfig,
-                    jsonDeserializer = TestExternalResourceJsonDeserializerDeadEntries,
-                    jsonSerializer = TestJsonSerializerCollectionAnimeId,
+                    jsonDeserializer = TestDeserializer(),
+                    jsonSerializer = TestJsonSerializer(),
                     downloadControlStateAccessor = TestDownloadControlStateAccessor,
                 )
 
@@ -144,7 +148,7 @@ internal class DefaultDeadEntriesAccessorTest {
         }
 
         @Test
-        fun `deadEntriesFile returns correct fiel for type ZIP`() {
+        fun `deadEntriesFile returns correct file for type JSON_MINIFIED_ZST`() {
             tempDirectory {
                 // given
                 val testMetaDataProviderConfig = MyanimelistConfig
@@ -155,16 +159,44 @@ internal class DefaultDeadEntriesAccessorTest {
 
                 val databaseAccess = DefaultDeadEntriesAccessor(
                     appConfig = testAppConfig,
-                    jsonDeserializer = TestExternalResourceJsonDeserializerDeadEntries,
-                    jsonSerializer = TestJsonSerializerCollectionAnimeId,
+                    jsonDeserializer = TestDeserializer(),
+                    jsonSerializer = TestJsonSerializer(),
                     downloadControlStateAccessor = TestDownloadControlStateAccessor,
                 )
 
                 // when
-                val result = databaseAccess.deadEntriesFile(testMetaDataProviderConfig, ZIP).fileName()
+                val result = databaseAccess.deadEntriesFile(testMetaDataProviderConfig, JSON_MINIFIED_ZST).fileName()
 
                 // then
-                assertThat(result).isEqualTo("myanimelist.zip")
+                assertThat(result).isEqualTo("myanimelist-minified.json.zst")
+            }
+        }
+
+        @ParameterizedTest
+        @EnumSource(value = DatasetFileType::class, mode = INCLUDE, names = ["JSON_LINES", "JSON_LINES_ZST"])
+        fun `throws exception for type JSON lines types`() {
+            tempDirectory {
+                // given
+                val testMetaDataProviderConfig = MyanimelistConfig
+
+                val testAppConfig = object: Config by TestAppConfig {
+                    override fun outputDirectory(): Directory = tempDir
+                }
+
+                val databaseAccess = DefaultDeadEntriesAccessor(
+                    appConfig = testAppConfig,
+                    jsonDeserializer = TestDeserializer(),
+                    jsonSerializer = TestJsonSerializer(),
+                    downloadControlStateAccessor = TestDownloadControlStateAccessor,
+                )
+
+                // when
+                val result = exceptionExpected<UnsupportedOperationException> {
+                    databaseAccess.deadEntriesFile(testMetaDataProviderConfig, JSON_LINES).fileName()
+                }
+
+                // then
+                assertThat(result).hasMessage("Dead entries don't support JSON line format.")
             }
         }
 
@@ -180,8 +212,8 @@ internal class DefaultDeadEntriesAccessorTest {
 
                 val databaseAccess = DefaultDeadEntriesAccessor(
                     appConfig = testAppConfig,
-                    jsonDeserializer = TestExternalResourceJsonDeserializerDeadEntries,
-                    jsonSerializer = TestJsonSerializerCollectionAnimeId,
+                    jsonDeserializer = TestDeserializer(),
+                    jsonSerializer = TestJsonSerializer(),
                     downloadControlStateAccessor = TestDownloadControlStateAccessor,
                 )
 
@@ -189,7 +221,7 @@ internal class DefaultDeadEntriesAccessorTest {
                 val directoryExistsBefore = directory.directoryExists()
 
                 // when
-                databaseAccess.deadEntriesFile(testMetaDataProviderConfig, JSON).fileName()
+                databaseAccess.deadEntriesFile(testMetaDataProviderConfig, JSON_PRETTY_PRINT).fileName()
 
                 // then
                 assertThat(directoryExistsBefore).isFalse()
@@ -203,7 +235,13 @@ internal class DefaultDeadEntriesAccessorTest {
     inner class AddDeadEntryTests {
 
         @ParameterizedTest
-        @ValueSource(classes = [AnidbConfig::class, AnilistConfig::class, AnimenewsnetworkConfig::class, KitsuConfig::class, MyanimelistConfig::class])
+        @ValueSource(classes = [
+            AnidbConfig::class,
+            AnilistConfig::class,
+            AnimenewsnetworkConfig::class,
+            KitsuConfig::class,
+            MyanimelistConfig::class,
+        ])
         fun `successfully save dead entry`(configClass: Class<*>) {
             tempDirectory {
                 // given
@@ -219,8 +257,8 @@ internal class DefaultDeadEntriesAccessorTest {
                     override suspend fun removeDeadEntry(metaDataProviderConfig: MetaDataProviderConfig, animeId: AnimeId) { }
                 }
 
-                val testExternalResourceJsonDeserializerDeadEntries = object: ExternalResourceJsonDeserializer<DeadEntries> by TestExternalResourceJsonDeserializerDeadEntries {
-                    override suspend fun deserialize(file: RegularFile): DeadEntries = DeadEntries(
+                val testDeserializer = object: Deserializer<RegularFile, DeadEntries> by TestDeserializer() {
+                    override suspend fun deserialize(source: RegularFile): DeadEntries = DeadEntries(
                         `$schema` = URI("https://raw.githubusercontent.com/manami-project/anime-offline-database/refs/heads/master/dead-entries/dead-entries.schema.json"),
                         lastUpdate = "2024-08-01",
                         deadEntries = emptyList(),
@@ -229,7 +267,7 @@ internal class DefaultDeadEntriesAccessorTest {
 
                 val deadEntriesAccessor = DefaultDeadEntriesAccessor(
                     appConfig = testAppConfig,
-                    jsonDeserializer = testExternalResourceJsonDeserializerDeadEntries,
+                    jsonDeserializer = testDeserializer,
                     downloadControlStateAccessor = testDownloadControlStateAccessor,
                 )
 
@@ -237,9 +275,9 @@ internal class DefaultDeadEntriesAccessorTest {
                 deadEntriesAccessor.addDeadEntry(id, testMetaDataProviderConfig)
 
                 // then
-                DatasetFileType.entries.forEach {
-                    val result = DefaultExternalResourceJsonDeserializer(
-                        deserializer = DeadEntriesJsonDeserializer.instance).deserialize(deadEntriesAccessor.deadEntriesFile(testMetaDataProviderConfig, it),
+                setOf(JSON_PRETTY_PRINT, JSON_MINIFIED).forEach {
+                    val result = FromRegularFileDeserializer(
+                        deserializer = DeadEntriesFromInputStreamDeserializer.instance).deserialize(deadEntriesAccessor.deadEntriesFile(testMetaDataProviderConfig, it),
                     ).deadEntries
                     assertThat(result).containsExactly(
                         id,
@@ -252,7 +290,58 @@ internal class DefaultDeadEntriesAccessorTest {
         }
 
         @ParameterizedTest
-        @ValueSource(classes = [AnidbConfig::class, AnilistConfig::class, AnimenewsnetworkConfig::class, KitsuConfig::class, MyanimelistConfig::class])
+        @ValueSource(classes = [
+            AnidbConfig::class,
+            AnilistConfig::class,
+            AnimenewsnetworkConfig::class,
+            KitsuConfig::class,
+            MyanimelistConfig::class,
+        ])
+        fun `zst file is not written, because it will be created in a post-processor due to the processing time on the highest compression level`(configClass: Class<*>) {
+            tempDirectory {
+                // given
+                val id = "123456789"
+                val testMetaDataProviderConfig = configClass.kotlin.objectInstance as MetaDataProviderConfig
+
+                val testAppConfig = object: Config by TestAppConfig {
+                    override fun outputDirectory(): Directory = tempDir
+                    override fun metaDataProviderConfigurations(): Set<MetaDataProviderConfig> = setOf(testMetaDataProviderConfig)
+                }
+
+                val testDownloadControlStateAccessor = object: DownloadControlStateAccessor by TestDownloadControlStateAccessor {
+                    override suspend fun removeDeadEntry(metaDataProviderConfig: MetaDataProviderConfig, animeId: AnimeId) { }
+                }
+
+                val testDeserializer = object: Deserializer<RegularFile, DeadEntries> by TestDeserializer() {
+                    override suspend fun deserialize(source: RegularFile): DeadEntries = DeadEntries(
+                        `$schema` = URI("https://raw.githubusercontent.com/manami-project/anime-offline-database/refs/heads/master/dead-entries/dead-entries.schema.json"),
+                        lastUpdate = "2024-08-01",
+                        deadEntries = emptyList(),
+                    )
+                }
+
+                val deadEntriesAccessor = DefaultDeadEntriesAccessor(
+                    appConfig = testAppConfig,
+                    jsonDeserializer = testDeserializer,
+                    downloadControlStateAccessor = testDownloadControlStateAccessor,
+                )
+
+                // when
+                deadEntriesAccessor.addDeadEntry(id, testMetaDataProviderConfig)
+
+                // then
+                assertThat(deadEntriesAccessor.deadEntriesFile(testMetaDataProviderConfig, JSON_MINIFIED_ZST)).doesNotExist()
+            }
+        }
+
+        @ParameterizedTest
+        @ValueSource(classes = [
+            AnidbConfig::class,
+            AnilistConfig::class,
+            AnimenewsnetworkConfig::class,
+            KitsuConfig::class,
+            MyanimelistConfig::class,
+        ])
         fun `appends new entries by overriding existing file`(configClass: Class<*>) {
             tempDirectory {
                 // given
@@ -269,9 +358,16 @@ internal class DefaultDeadEntriesAccessorTest {
                     override suspend fun removeDeadEntry(metaDataProviderConfig: MetaDataProviderConfig, animeId: AnimeId) { }
                 }
 
-                DeadEntriesJsonSerializer.instance.serializeJson(listOf(
+                val deadEntriesDir = tempDir.resolve("dead-entries").createDirectory()
+                val prettyPrint = deadEntriesDir.resolve("${testMetaDataProviderConfig.hostname().substringBefore('.')}.json")
+                val minified = deadEntriesDir.resolve("${testMetaDataProviderConfig.hostname().substringBefore('.')}-minified.json")
+
+                DeadEntriesJsonSerializer.instance.serialize(listOf(
                     initialId,
-                )).writeToFile(tempDir.resolve("dead-entries").createDirectory().resolve("${testMetaDataProviderConfig.hostname().substringBefore('.')}-minified.json"))
+                )).writeToFile(prettyPrint)
+                DeadEntriesJsonSerializer.instance.serialize(listOf(
+                    initialId,
+                ), minify = true).writeToFile(minified)
 
                 val deadEntriesAccessor = DefaultDeadEntriesAccessor(
                     appConfig = testAppConfig,
@@ -282,9 +378,9 @@ internal class DefaultDeadEntriesAccessorTest {
                 deadEntriesAccessor.addDeadEntry(newId, testMetaDataProviderConfig)
 
                 // then
-                DatasetFileType.entries.forEach {
-                    val result = DefaultExternalResourceJsonDeserializer(
-                        deserializer = DeadEntriesJsonDeserializer.instance).deserialize(deadEntriesAccessor.deadEntriesFile(testMetaDataProviderConfig, it),
+                setOf(JSON_PRETTY_PRINT, JSON_MINIFIED).forEach {
+                    val result = FromRegularFileDeserializer(
+                        deserializer = DeadEntriesFromInputStreamDeserializer.instance).deserialize(deadEntriesAccessor.deadEntriesFile(testMetaDataProviderConfig, it),
                     ).deadEntries
                     assertThat(result).containsExactly(
                         initialId,
@@ -299,7 +395,13 @@ internal class DefaultDeadEntriesAccessorTest {
         }
 
         @ParameterizedTest
-        @ValueSource(classes = [AnidbConfig::class, AnilistConfig::class, AnimenewsnetworkConfig::class, KitsuConfig::class, MyanimelistConfig::class])
+        @ValueSource(classes = [
+            AnidbConfig::class,
+            AnilistConfig::class,
+            AnimenewsnetworkConfig::class,
+            KitsuConfig::class,
+            MyanimelistConfig::class,
+        ])
         fun `prevent duplicates`(configClass: Class<*>) {
             tempDirectory {
                 // given
@@ -315,16 +417,20 @@ internal class DefaultDeadEntriesAccessorTest {
                     override suspend fun removeDeadEntry(metaDataProviderConfig: MetaDataProviderConfig, animeId: AnimeId) { }
                 }
 
-                val content = DeadEntriesJsonSerializer.instance.serializeJson(listOf(
-                    initialId,
-                ))
+                val deadEntriesDir = tempDir.resolve("dead-entries").createDirectory()
+                val prettyPrint = deadEntriesDir.resolve("${testMetaDataProviderConfig.hostname().substringBefore('.')}.json")
+                val minified = deadEntriesDir.resolve("${testMetaDataProviderConfig.hostname().substringBefore('.')}-minified.json")
+                val minifiedZst = deadEntriesDir.resolve("${testMetaDataProviderConfig.hostname().substringBefore('.')}-minified.json.zst")
 
-                val dir = tempDir.resolve("dead-entries").createDirectory()
-                content.writeToFile(dir.resolve("${testMetaDataProviderConfig.hostname().substringBefore('.')}.json"))
-                val minified = dir.resolve("${testMetaDataProviderConfig.hostname().substringBefore('.')}-minified.json").apply {
-                    content.writeToFile(this)
-                }
-                dir.resolve("anidb.zip").createZipOf(minified)
+                DeadEntriesJsonSerializer.instance.serialize(listOf(
+                    initialId,
+                )).writeToFile(prettyPrint)
+                DeadEntriesJsonSerializer.instance.serialize(listOf(
+                    initialId,
+                ), minify = true).writeToFile(minified)
+                DeadEntriesJsonSerializer.instance.serialize(listOf(
+                    initialId,
+                ), minify = true).writeToZstandardFile(minifiedZst)
 
                 val deadEntriesAccessor = DefaultDeadEntriesAccessor(
                     appConfig = testAppConfig,
@@ -335,9 +441,9 @@ internal class DefaultDeadEntriesAccessorTest {
                 deadEntriesAccessor.addDeadEntry(initialId, testMetaDataProviderConfig)
 
                 // then
-                DatasetFileType.entries.forEach {
-                    val result = DefaultExternalResourceJsonDeserializer(
-                        deserializer = DeadEntriesJsonDeserializer.instance).deserialize(deadEntriesAccessor.deadEntriesFile(testMetaDataProviderConfig, it),
+                DatasetFileType.entries.filterNot { it.name.contains("JSON_LINES") }.forEach {
+                    val result = FromRegularFileDeserializer(
+                        deserializer = DeadEntriesFromInputStreamDeserializer.instance).deserialize(deadEntriesAccessor.deadEntriesFile(testMetaDataProviderConfig, it),
                     ).deadEntries
                     assertThat(result).containsExactly(
                         initialId,
@@ -350,7 +456,13 @@ internal class DefaultDeadEntriesAccessorTest {
         }
 
         @ParameterizedTest
-        @ValueSource(classes = [AnidbConfig::class, AnilistConfig::class, AnimenewsnetworkConfig::class, KitsuConfig::class, MyanimelistConfig::class])
+        @ValueSource(classes = [
+            AnidbConfig::class,
+            AnilistConfig::class,
+            AnimenewsnetworkConfig::class,
+            KitsuConfig::class,
+            MyanimelistConfig::class,
+        ])
         fun `creates a new dead entries file if the given does not exist`(configClass: Class<*>) {
             tempDirectory {
                 // given
@@ -365,8 +477,8 @@ internal class DefaultDeadEntriesAccessorTest {
                     override suspend fun removeDeadEntry(metaDataProviderConfig: MetaDataProviderConfig, animeId: AnimeId) { }
                 }
 
-                val testExternalResourceJsonDeserializerDeadEntries = object: ExternalResourceJsonDeserializer<DeadEntries> by TestExternalResourceJsonDeserializerDeadEntries {
-                    override suspend fun deserialize(file: RegularFile): DeadEntries = DeadEntries(
+                val testDeserializer = object: Deserializer<RegularFile, DeadEntries> by TestDeserializer() {
+                    override suspend fun deserialize(source: RegularFile): DeadEntries = DeadEntries(
                         `$schema` = URI("https://raw.githubusercontent.com/manami-project/anime-offline-database/refs/heads/master/dead-entries/dead-entries.schema.json"),
                         lastUpdate = "2024-08-01",
                         deadEntries = emptyList(),
@@ -374,7 +486,7 @@ internal class DefaultDeadEntriesAccessorTest {
                 }
 
                 val deadEntriesAccessor = DefaultDeadEntriesAccessor(
-                    jsonDeserializer = testExternalResourceJsonDeserializerDeadEntries,
+                    jsonDeserializer = testDeserializer,
                     appConfig = testAppConfig,
                     downloadControlStateAccessor = testDownloadControlStateAccessor,
                 )
@@ -383,14 +495,19 @@ internal class DefaultDeadEntriesAccessorTest {
                 deadEntriesAccessor.addDeadEntry("some-id", testMetaDataProviderConfig)
 
                 // then
-                assertThat(deadEntriesAccessor.deadEntriesFile(testMetaDataProviderConfig, JSON)).exists()
+                assertThat(deadEntriesAccessor.deadEntriesFile(testMetaDataProviderConfig, JSON_PRETTY_PRINT)).exists()
                 assertThat(deadEntriesAccessor.deadEntriesFile(testMetaDataProviderConfig, JSON_MINIFIED)).exists()
-                assertThat(deadEntriesAccessor.deadEntriesFile(testMetaDataProviderConfig, ZIP)).exists()
             }
         }
 
         @ParameterizedTest
-        @ValueSource(classes = [AnidbConfig::class, AnilistConfig::class, AnimenewsnetworkConfig::class, KitsuConfig::class, MyanimelistConfig::class])
+        @ValueSource(classes = [
+            AnidbConfig::class,
+            AnilistConfig::class,
+            AnimenewsnetworkConfig::class,
+            KitsuConfig::class,
+            MyanimelistConfig::class,
+        ])
         fun `removes the corresponding file from download control state`(configClass: Class<*>) {
             tempDirectory {
                 // given
@@ -409,8 +526,8 @@ internal class DefaultDeadEntriesAccessorTest {
                     }
                 }
 
-                val testExternalResourceJsonDeserializerDeadEntries = object: ExternalResourceJsonDeserializer<DeadEntries> by TestExternalResourceJsonDeserializerDeadEntries {
-                    override suspend fun deserialize(file: RegularFile): DeadEntries = DeadEntries(
+                val testDeserializer = object: Deserializer<RegularFile, DeadEntries> by TestDeserializer() {
+                    override suspend fun deserialize(source: RegularFile): DeadEntries = DeadEntries(
                         `$schema` = URI("https://raw.githubusercontent.com/manami-project/anime-offline-database/refs/heads/master/dead-entries/dead-entries.schema.json"),
                         lastUpdate = "2024-08-01",
                         deadEntries = emptyList(),
@@ -418,7 +535,7 @@ internal class DefaultDeadEntriesAccessorTest {
                 }
 
                 val deadEntriesAccessor = DefaultDeadEntriesAccessor(
-                    jsonDeserializer = testExternalResourceJsonDeserializerDeadEntries,
+                    jsonDeserializer = testDeserializer,
                     appConfig = testAppConfig,
                     downloadControlStateAccessor = testDownloadControlStateAccessor,
                 )
@@ -428,7 +545,6 @@ internal class DefaultDeadEntriesAccessorTest {
 
                 // then
                 assertThat(hasBeenInvoked).isTrue()
-
             }
         }
 
@@ -455,8 +571,8 @@ internal class DefaultDeadEntriesAccessorTest {
                 }
 
                 val deadEntriesAccessor = DefaultDeadEntriesAccessor(
-                    jsonSerializer = TestJsonSerializerCollectionAnimeId,
-                    jsonDeserializer = TestExternalResourceJsonDeserializerDeadEntries,
+                    jsonSerializer = TestJsonSerializer(),
+                    jsonDeserializer = TestDeserializer(),
                     appConfig = testAppConfig,
                     downloadControlStateAccessor = testDownloadControlStateAccessor,
                 )
@@ -497,7 +613,7 @@ internal class DefaultDeadEntriesAccessorTest {
                 }
 
                 val deadEntriesAccessor = DefaultDeadEntriesAccessor(
-                    jsonDeserializer = TestExternalResourceJsonDeserializerDeadEntries,
+                    jsonDeserializer = TestDeserializer(),
                     appConfig = testAppConfig,
                     downloadControlStateAccessor = testDownloadControlStateAccessor,
                 )
@@ -512,7 +628,13 @@ internal class DefaultDeadEntriesAccessorTest {
         }
 
         @ParameterizedTest
-        @ValueSource(classes = [AnidbConfig::class, AnilistConfig::class, AnimenewsnetworkConfig::class, KitsuConfig::class, MyanimelistConfig::class])
+        @ValueSource(classes = [
+            AnidbConfig::class,
+            AnilistConfig::class,
+            AnimenewsnetworkConfig::class,
+            KitsuConfig::class,
+            MyanimelistConfig::class,
+        ])
         fun `triggers initialization if necessary`(configClass: Class<*>) {
             tempDirectory {
                 // given
@@ -533,8 +655,8 @@ internal class DefaultDeadEntriesAccessorTest {
                     override suspend fun removeDeadEntry(metaDataProviderConfig: MetaDataProviderConfig, animeId: AnimeId) { }
                 }
 
-                val testExternalResourceJsonDeserializerDeadEntries = object: ExternalResourceJsonDeserializer<DeadEntries> by TestExternalResourceJsonDeserializerDeadEntries {
-                    override suspend fun deserialize(file: RegularFile): DeadEntries = DeadEntries(
+                val testDeserializer = object: Deserializer<RegularFile, DeadEntries> by TestDeserializer() {
+                    override suspend fun deserialize(source: RegularFile): DeadEntries = DeadEntries(
                         `$schema` = URI("https://raw.githubusercontent.com/manami-project/anime-offline-database/refs/heads/master/dead-entries/dead-entries.schema.json"),
                         lastUpdate = "2024-08-01",
                         deadEntries = emptyList(),
@@ -543,7 +665,7 @@ internal class DefaultDeadEntriesAccessorTest {
 
                 val deadEntriesAccessor = DefaultDeadEntriesAccessor(
                     appConfig = testAppConfig,
-                    jsonDeserializer = testExternalResourceJsonDeserializerDeadEntries,
+                    jsonDeserializer = testDeserializer,
                     downloadControlStateAccessor = testDownloadControlStateAccessor,
                 )
 
@@ -556,7 +678,13 @@ internal class DefaultDeadEntriesAccessorTest {
         }
 
         @ParameterizedTest
-        @ValueSource(classes = [AnidbConfig::class, AnilistConfig::class, AnimenewsnetworkConfig::class, KitsuConfig::class, MyanimelistConfig::class])
+        @ValueSource(classes = [
+            AnidbConfig::class,
+            AnilistConfig::class,
+            AnimenewsnetworkConfig::class,
+            KitsuConfig::class,
+            MyanimelistConfig::class,
+        ])
         fun `doesn't trigger init if it has already been triggered`(configClass: Class<*>) {
             tempDirectory {
                 // given
@@ -576,8 +704,8 @@ internal class DefaultDeadEntriesAccessorTest {
                     override suspend fun removeDeadEntry(metaDataProviderConfig: MetaDataProviderConfig, animeId: AnimeId) { }
                 }
 
-                val testExternalResourceJsonDeserializerDeadEntries = object: ExternalResourceJsonDeserializer<DeadEntries> by TestExternalResourceJsonDeserializerDeadEntries {
-                    override suspend fun deserialize(file: RegularFile): DeadEntries = DeadEntries(
+                val testDeserializer = object: Deserializer<RegularFile, DeadEntries> by TestDeserializer() {
+                    override suspend fun deserialize(source: RegularFile): DeadEntries = DeadEntries(
                         `$schema` = URI("https://raw.githubusercontent.com/manami-project/anime-offline-database/refs/heads/master/dead-entries/dead-entries.schema.json"),
                         lastUpdate = "2024-08-01",
                         deadEntries = emptyList(),
@@ -586,7 +714,7 @@ internal class DefaultDeadEntriesAccessorTest {
 
                 val deadEntriesAccessor = DefaultDeadEntriesAccessor(
                     appConfig = testAppConfig,
-                    jsonDeserializer = testExternalResourceJsonDeserializerDeadEntries,
+                    jsonDeserializer = testDeserializer,
                     downloadControlStateAccessor = testDownloadControlStateAccessor,
                 )
 
@@ -619,8 +747,8 @@ internal class DefaultDeadEntriesAccessorTest {
                 }
 
                 val deadEntryFinder = DefaultDeadEntriesAccessor(
-                    jsonDeserializer = TestExternalResourceJsonDeserializerDeadEntries,
-                    jsonSerializer = TestJsonSerializerCollectionAnimeId,
+                    jsonDeserializer = TestDeserializer(),
+                    jsonSerializer = TestJsonSerializer(),
                     appConfig = testAppConfig,
                     downloadControlStateAccessor = TestDownloadControlStateAccessor,
                 )
@@ -636,7 +764,13 @@ internal class DefaultDeadEntriesAccessorTest {
         }
 
         @ParameterizedTest
-        @ValueSource(classes = [AnidbConfig::class, AnilistConfig::class, AnimenewsnetworkConfig::class, KitsuConfig::class, MyanimelistConfig::class])
+        @ValueSource(classes = [
+            AnidbConfig::class,
+            AnilistConfig::class,
+            AnimenewsnetworkConfig::class,
+            KitsuConfig::class,
+            MyanimelistConfig::class,
+        ])
         fun `returns a list containing the given ID, because a corresponding id listed in dead entries file`(configClass: Class<*>) {
             tempDirectory {
                 // given
@@ -651,14 +785,14 @@ internal class DefaultDeadEntriesAccessorTest {
 
                 val ids = listOf(testMetaDataProviderConfig.buildAnimeLink(id))
 
-                DeadEntriesJsonSerializer.instance.serializeJson(listOf(
+                DeadEntriesJsonSerializer.instance.serialize(listOf(
                     id,
                 )).writeToFile(tempDir.resolve("dead-entries").createDirectory().resolve("${testMetaDataProviderConfig.hostname().substringBefore('.')}-minified.json"))
 
                 val deadEntriesAccessor = DefaultDeadEntriesAccessor(
                     appConfig = testAppConfig,
                     downloadControlStateAccessor = TestDownloadControlStateAccessor,
-                    jsonSerializer = TestJsonSerializerCollectionAnimeId,
+                    jsonSerializer = TestJsonSerializer(),
                 )
 
                 // when
@@ -757,8 +891,8 @@ internal class DefaultDeadEntriesAccessorTest {
                     override suspend fun removeDeadEntry(metaDataProviderConfig: MetaDataProviderConfig, animeId: AnimeId) { }
                 }
 
-                val testExternalResourceJsonDeserializerDeadEntries = object: ExternalResourceJsonDeserializer<DeadEntries> by TestExternalResourceJsonDeserializerDeadEntries {
-                    override suspend fun deserialize(file: RegularFile): DeadEntries = DeadEntries(
+                val testDeserializer = object: Deserializer<RegularFile, DeadEntries> by TestDeserializer() {
+                    override suspend fun deserialize(source: RegularFile): DeadEntries = DeadEntries(
                         `$schema` = URI("https://raw.githubusercontent.com/manami-project/anime-offline-database/refs/heads/master/dead-entries/dead-entries.schema.json"),
                         lastUpdate = "2024-08-01",
                         deadEntries = emptyList(),
@@ -767,9 +901,9 @@ internal class DefaultDeadEntriesAccessorTest {
 
                 val deadEntriesAccessor = DefaultDeadEntriesAccessor(
                     appConfig = testAppConfig,
-                    jsonDeserializer = testExternalResourceJsonDeserializerDeadEntries,
+                    jsonDeserializer = testDeserializer,
                     downloadControlStateAccessor = testDownloadControlStateAccessor,
-                    jsonSerializer = TestJsonSerializerCollectionAnimeId,
+                    jsonSerializer = TestJsonSerializer(),
                 )
 
                 // when
@@ -813,8 +947,8 @@ internal class DefaultDeadEntriesAccessorTest {
                     override fun downloadControlStateDirectory(metaDataProviderConfig: MetaDataProviderConfig): Directory = tempDir
                 }
 
-                val testExternalResourceJsonDeserializerDeadEntries = object: ExternalResourceJsonDeserializer<DeadEntries> by TestExternalResourceJsonDeserializerDeadEntries {
-                    override suspend fun deserialize(file: RegularFile): DeadEntries = DeadEntries(
+                val testDeserializer = object: Deserializer<RegularFile, DeadEntries> by TestDeserializer() {
+                    override suspend fun deserialize(source: RegularFile): DeadEntries = DeadEntries(
                         `$schema` = URI("https://raw.githubusercontent.com/manami-project/anime-offline-database/refs/heads/master/dead-entries/dead-entries.schema.json"),
                         lastUpdate = "2024-08-01",
                         deadEntries = emptyList(),
@@ -823,9 +957,9 @@ internal class DefaultDeadEntriesAccessorTest {
 
                 val deadEntriesAccessor = DefaultDeadEntriesAccessor(
                     appConfig = testAppConfig,
-                    jsonDeserializer = testExternalResourceJsonDeserializerDeadEntries,
+                    jsonDeserializer = testDeserializer,
                     downloadControlStateAccessor = testDownloadControlStateAccessor,
-                    jsonSerializer = TestJsonSerializerCollectionAnimeId,
+                    jsonSerializer = TestJsonSerializer(),
                 )
 
                 val sources = setOf(testMetaDataProviderConfig.buildAnimeLink("1535"))
@@ -865,10 +999,10 @@ internal class DefaultDeadEntriesAccessorTest {
                 }
 
                 val deadEntriesAccessor = DefaultDeadEntriesAccessor(
-                    jsonDeserializer = TestExternalResourceJsonDeserializerDeadEntries,
+                    jsonDeserializer = TestDeserializer(),
                     appConfig = testAppConfig,
                     downloadControlStateAccessor = TestDownloadControlStateAccessor,
-                    jsonSerializer = TestJsonSerializerCollectionAnimeId,
+                    jsonSerializer = TestJsonSerializer(),
                 )
 
                 // when
@@ -882,7 +1016,13 @@ internal class DefaultDeadEntriesAccessorTest {
         }
 
         @ParameterizedTest
-        @ValueSource(classes = [AnidbConfig::class, AnilistConfig::class, AnimenewsnetworkConfig::class, KitsuConfig::class, MyanimelistConfig::class])
+        @ValueSource(classes = [
+            AnidbConfig::class,
+            AnilistConfig::class,
+            AnimenewsnetworkConfig::class,
+            KitsuConfig::class,
+            MyanimelistConfig::class,
+        ])
         fun `correctly parse file and fetch dead entries`(configClass: Class<*>) {
             tempDirectory {
                 // given
@@ -891,7 +1031,7 @@ internal class DefaultDeadEntriesAccessorTest {
                 val testMetaDataProviderConfig = configClass.kotlin.objectInstance as MetaDataProviderConfig
 
                 val deadEntriesFile = tempDir.resolve("dead-entries").createDirectory().resolve("${testMetaDataProviderConfig.hostname().substringBefore('.')}-minified.json")
-                DeadEntriesJsonSerializer.instance.serializeJson(listOf(
+                DeadEntriesJsonSerializer.instance.serialize(listOf(
                     entry1,
                     entry2,
                 )).writeToFile(deadEntriesFile)
@@ -904,7 +1044,7 @@ internal class DefaultDeadEntriesAccessorTest {
                 val deadEntriesAccessor = DefaultDeadEntriesAccessor(
                     appConfig = testAppConfig,
                     downloadControlStateAccessor = TestDownloadControlStateAccessor,
-                    jsonSerializer = TestJsonSerializerCollectionAnimeId,
+                    jsonSerializer = TestJsonSerializer(),
                 )
 
                 // when
@@ -919,7 +1059,13 @@ internal class DefaultDeadEntriesAccessorTest {
         }
 
         @ParameterizedTest
-        @ValueSource(classes = [AnidbConfig::class, AnilistConfig::class, AnimenewsnetworkConfig::class, KitsuConfig::class, MyanimelistConfig::class])
+        @ValueSource(classes = [
+            AnidbConfig::class,
+            AnilistConfig::class,
+            AnimenewsnetworkConfig::class,
+            KitsuConfig::class,
+            MyanimelistConfig::class,
+        ])
         fun `triggers initialization if necessary`(configClass: Class<*>) {
             tempDirectory {
                 // given
@@ -939,8 +1085,8 @@ internal class DefaultDeadEntriesAccessorTest {
                     override suspend fun removeDeadEntry(metaDataProviderConfig: MetaDataProviderConfig, animeId: AnimeId) { }
                 }
 
-                val testExternalResourceJsonDeserializerDeadEntries = object: ExternalResourceJsonDeserializer<DeadEntries> by TestExternalResourceJsonDeserializerDeadEntries {
-                    override suspend fun deserialize(file: RegularFile): DeadEntries = DeadEntries(
+                val testDeserializer = object: Deserializer<RegularFile, DeadEntries> by TestDeserializer() {
+                    override suspend fun deserialize(source: RegularFile): DeadEntries = DeadEntries(
                         `$schema` = URI("https://raw.githubusercontent.com/manami-project/anime-offline-database/refs/heads/master/dead-entries/dead-entries.schema.json"),
                         lastUpdate = "2024-08-01",
                         deadEntries = emptyList(),
@@ -949,9 +1095,9 @@ internal class DefaultDeadEntriesAccessorTest {
 
                 val deadEntriesAccessor = DefaultDeadEntriesAccessor(
                     appConfig = testAppConfig,
-                    jsonDeserializer = testExternalResourceJsonDeserializerDeadEntries,
+                    jsonDeserializer = testDeserializer,
                     downloadControlStateAccessor = testDownloadControlStateAccessor,
-                    jsonSerializer = TestJsonSerializerCollectionAnimeId,
+                    jsonSerializer = TestJsonSerializer(),
                 )
 
                 // when
@@ -963,7 +1109,13 @@ internal class DefaultDeadEntriesAccessorTest {
         }
 
         @ParameterizedTest
-        @ValueSource(classes = [AnidbConfig::class, AnilistConfig::class, AnimenewsnetworkConfig::class, KitsuConfig::class, MyanimelistConfig::class])
+        @ValueSource(classes = [
+            AnidbConfig::class,
+            AnilistConfig::class,
+            AnimenewsnetworkConfig::class,
+            KitsuConfig::class,
+            MyanimelistConfig::class,
+        ])
         fun `doesn't trigger init if it has already been triggered`(configClass: Class<*>) {
             tempDirectory {
                 // given
@@ -982,8 +1134,8 @@ internal class DefaultDeadEntriesAccessorTest {
                     override suspend fun removeDeadEntry(metaDataProviderConfig: MetaDataProviderConfig, animeId: AnimeId) { }
                 }
 
-                val testExternalResourceJsonDeserializerDeadEntries = object: ExternalResourceJsonDeserializer<DeadEntries> by TestExternalResourceJsonDeserializerDeadEntries {
-                    override suspend fun deserialize(file: RegularFile): DeadEntries = DeadEntries(
+                val testDeserializer = object: Deserializer<RegularFile, DeadEntries> by TestDeserializer() {
+                    override suspend fun deserialize(source: RegularFile): DeadEntries = DeadEntries(
                         `$schema` = URI("https://raw.githubusercontent.com/manami-project/anime-offline-database/refs/heads/master/dead-entries/dead-entries.schema.json"),
                         lastUpdate = "2024-08-01",
                         deadEntries = emptyList(),
@@ -992,9 +1144,9 @@ internal class DefaultDeadEntriesAccessorTest {
 
                 val deadEntriesAccessor = DefaultDeadEntriesAccessor(
                     appConfig = testAppConfig,
-                    jsonDeserializer = testExternalResourceJsonDeserializerDeadEntries,
+                    jsonDeserializer = testDeserializer,
                     downloadControlStateAccessor = testDownloadControlStateAccessor,
-                    jsonSerializer = TestJsonSerializerCollectionAnimeId,
+                    jsonSerializer = TestJsonSerializer(),
                 )
 
                 deadEntriesAccessor.fetchDeadEntries(testMetaDataProviderConfig)

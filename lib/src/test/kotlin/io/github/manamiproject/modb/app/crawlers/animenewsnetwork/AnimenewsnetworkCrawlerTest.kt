@@ -58,7 +58,7 @@ internal class AnimenewsnetworkCrawlerTest {
                     override suspend fun alreadyDownloadedIds(metaDataProviderConfig: MetaDataProviderConfig): Set<AnimeId> = emptySet()
                 }
 
-                val animePlanetCrawler = AnimenewsnetworkCrawler(
+                val crawler = AnimenewsnetworkCrawler(
                     appConfig = testAppConfig,
                     metaDataProviderConfig = testMetaDataProviderConfig,
                     downloadControlStateScheduler = testDownloadControlStateScheduler,
@@ -71,7 +71,7 @@ internal class AnimenewsnetworkCrawlerTest {
 
                 // when
                 assertThatNoException().isThrownBy {
-                    runBlocking { animePlanetCrawler.start() }
+                    runBlocking { crawler.start() }
                 }
 
                 // then
@@ -122,7 +122,7 @@ internal class AnimenewsnetworkCrawlerTest {
                     }
                 }
 
-                val animePlanetCrawler = AnimenewsnetworkCrawler(
+                val crawler = AnimenewsnetworkCrawler(
                     appConfig = testAppConfig,
                     metaDataProviderConfig = testMetaDataProviderConfig,
                     downloadControlStateScheduler = testDownloadControlStateScheduler,
@@ -134,7 +134,7 @@ internal class AnimenewsnetworkCrawlerTest {
                 )
 
                 // when
-                animePlanetCrawler.start()
+                crawler.start()
 
                 // then
                 val idSequence = listOf(
@@ -200,7 +200,7 @@ internal class AnimenewsnetworkCrawlerTest {
                     }
                 }
 
-                val animePlanetCrawler = AnimenewsnetworkCrawler(
+                val crawler = AnimenewsnetworkCrawler(
                     appConfig = testAppConfig,
                     metaDataProviderConfig = testMetaDataProviderConfig,
                     downloadControlStateScheduler = testDownloadControlStateScheduler,
@@ -212,7 +212,7 @@ internal class AnimenewsnetworkCrawlerTest {
                 )
 
                 // when
-                animePlanetCrawler.start()
+                crawler.start()
 
                 // then
                 val idSequence = listOf(
@@ -268,7 +268,7 @@ internal class AnimenewsnetworkCrawlerTest {
                     }
                 }
 
-                val animePlanetCrawler = AnimenewsnetworkCrawler(
+                val crawler = AnimenewsnetworkCrawler(
                     appConfig = testAppConfig,
                     metaDataProviderConfig = testMetaDataProviderConfig,
                     downloadControlStateScheduler = testDownloadControlStateScheduler,
@@ -280,7 +280,7 @@ internal class AnimenewsnetworkCrawlerTest {
                 )
 
                 // when
-                animePlanetCrawler.start()
+                crawler.start()
 
                 // then
                 assertThat(downloadedEntries).containsExactlyInAnyOrder(
@@ -341,7 +341,7 @@ internal class AnimenewsnetworkCrawlerTest {
                     }
                 }
 
-                val animePlanetCrawler = AnimenewsnetworkCrawler(
+                val crawler = AnimenewsnetworkCrawler(
                     appConfig = testAppConfig,
                     metaDataProviderConfig = testMetaDataProviderConfig,
                     downloadControlStateScheduler = testDownloadControlStateScheduler,
@@ -353,7 +353,7 @@ internal class AnimenewsnetworkCrawlerTest {
                 )
 
                 // when
-                animePlanetCrawler.start()
+                crawler.start()
 
                 // then
                 assertThat(downloadedEntries).containsExactlyInAnyOrder(
@@ -410,7 +410,7 @@ internal class AnimenewsnetworkCrawlerTest {
                     }
                 }
 
-                val animePlanetCrawler = AnimenewsnetworkCrawler(
+                val crawler = AnimenewsnetworkCrawler(
                     appConfig = testAppConfig,
                     metaDataProviderConfig = testMetaDataProviderConfig,
                     downloadControlStateScheduler = testDownloadControlStateScheduler,
@@ -422,7 +422,7 @@ internal class AnimenewsnetworkCrawlerTest {
                 )
 
                 // when
-                animePlanetCrawler.start()
+                crawler.start()
 
                 // then
                 assertThat(downloadedEntries).containsExactlyInAnyOrder(
@@ -477,7 +477,7 @@ internal class AnimenewsnetworkCrawlerTest {
                     }
                 }
 
-                val animePlanetCrawler = AnimenewsnetworkCrawler(
+                val crawler = AnimenewsnetworkCrawler(
                     appConfig = testAppConfig,
                     metaDataProviderConfig = testMetaDataProviderConfig,
                     downloadControlStateScheduler = testDownloadControlStateScheduler,
@@ -489,7 +489,7 @@ internal class AnimenewsnetworkCrawlerTest {
                 )
 
                 // when
-                animePlanetCrawler.start()
+                crawler.start()
 
                 // then
                 assertThat(invocations).containsExactly("w", "x", "y", "z")
@@ -537,7 +537,7 @@ internal class AnimenewsnetworkCrawlerTest {
                     }
                 }
 
-                val animePlanetCrawler = AnimenewsnetworkCrawler(
+                val crawler = AnimenewsnetworkCrawler(
                     appConfig = testAppConfig,
                     metaDataProviderConfig = testMetaDataProviderConfig,
                     downloadControlStateScheduler = testDownloadControlStateScheduler,
@@ -549,7 +549,7 @@ internal class AnimenewsnetworkCrawlerTest {
                 )
 
                 // when
-                animePlanetCrawler.start()
+                crawler.start()
 
                 // then
                 assertThat(invocations).containsExactly("w", "x", "y", "z")
@@ -598,7 +598,7 @@ internal class AnimenewsnetworkCrawlerTest {
                     }
                 }
 
-                val animePlanetCrawler = AnimenewsnetworkCrawler(
+                val crawler = AnimenewsnetworkCrawler(
                     appConfig = testAppConfig,
                     metaDataProviderConfig = AnimenewsnetworkConfig,
                     downloadControlStateScheduler = testDownloadControlStateScheduler,
@@ -610,7 +610,7 @@ internal class AnimenewsnetworkCrawlerTest {
                 )
 
                 // when
-                animePlanetCrawler.start()
+                crawler.start()
 
                 // then
                 assertThat(invocations).containsExactly("re-download-1")
@@ -660,7 +660,7 @@ internal class AnimenewsnetworkCrawlerTest {
                     override suspend fun download(id: AnimeId, onDeadEntry: suspend (AnimeId) -> Unit): String = EMPTY
                 }
 
-                val animePlanetCrawler = AnimenewsnetworkCrawler(
+                val crawler = AnimenewsnetworkCrawler(
                     appConfig = testAppConfig,
                     metaDataProviderConfig = testMetaDataProviderConfig,
                     downloadControlStateScheduler = testDownloadControlStateScheduler,
@@ -672,7 +672,7 @@ internal class AnimenewsnetworkCrawlerTest {
                 )
 
                 // when
-                animePlanetCrawler.start()
+                crawler.start()
 
                 // then
                 assertThat(tempDir).isEmptyDirectory()
@@ -771,7 +771,7 @@ internal class AnimenewsnetworkCrawlerTest {
                     override suspend fun alreadyDownloadedIds(metaDataProviderConfig: MetaDataProviderConfig): Set<AnimeId> = emptySet()
                 }
 
-                val animePlanetCrawler = AnimenewsnetworkCrawler(
+                val crawler = AnimenewsnetworkCrawler(
                     appConfig = testAppConfig,
                     metaDataProviderConfig = testMetaDataProviderConfig,
                     downloadControlStateScheduler = testDownloadControlStateScheduler,
@@ -783,7 +783,7 @@ internal class AnimenewsnetworkCrawlerTest {
                 )
 
                 // when
-                animePlanetCrawler.start()
+                crawler.start()
 
                 // then
                 assertThat(invocations).containsExactly(
@@ -847,7 +847,7 @@ internal class AnimenewsnetworkCrawlerTest {
                     override suspend fun alreadyDownloadedIds(metaDataProviderConfig: MetaDataProviderConfig): Set<AnimeId> = emptySet()
                 }
 
-                val animePlanetCrawler = AnimenewsnetworkCrawler(
+                val crawler = AnimenewsnetworkCrawler(
                     appConfig = testAppConfig,
                     metaDataProviderConfig = testMetaDataProviderConfig,
                     downloadControlStateScheduler = testDownloadControlStateScheduler,
@@ -860,7 +860,7 @@ internal class AnimenewsnetworkCrawlerTest {
 
                 // when
                 val result = exceptionExpected<IllegalStateException> {
-                    animePlanetCrawler.start()
+                    crawler.start()
                 }
 
                 // then
