@@ -13,14 +13,21 @@ import io.github.manamiproject.modb.app.downloadcontrolstate.DefaultDownloadCont
 import io.github.manamiproject.modb.app.downloadcontrolstate.DownloadControlStateAccessor
 import io.github.manamiproject.modb.core.config.AnimeId
 import io.github.manamiproject.modb.core.config.MetaDataProviderConfig
-import io.github.manamiproject.modb.core.extensions.*
+import io.github.manamiproject.modb.core.extensions.RegularFile
+import io.github.manamiproject.modb.core.extensions.directoryExists
+import io.github.manamiproject.modb.core.extensions.regularFileExists
+import io.github.manamiproject.modb.core.extensions.writeToFile
 import io.github.manamiproject.modb.core.logging.LoggerDelegate
 import io.github.manamiproject.modb.kitsu.KitsuConfig
 import io.github.manamiproject.modb.livechart.LivechartConfig
 import io.github.manamiproject.modb.myanimelist.MyanimelistConfig
 import io.github.manamiproject.modb.notify.NotifyConfig
-import io.github.manamiproject.modb.serde.json.*
+import io.github.manamiproject.modb.serde.json.deserializer.DeadEntriesFromInputStreamDeserializer
+import io.github.manamiproject.modb.serde.json.deserializer.Deserializer
+import io.github.manamiproject.modb.serde.json.deserializer.FromRegularFileDeserializer
 import io.github.manamiproject.modb.serde.json.models.DeadEntries
+import io.github.manamiproject.modb.serde.json.serializer.DeadEntriesJsonSerializer
+import io.github.manamiproject.modb.serde.json.serializer.JsonSerializer
 import io.github.manamiproject.modb.simkl.SimklConfig
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
@@ -44,9 +51,7 @@ class DefaultDeadEntriesAccessor(
     private val appConfig: Config = AppConfig.instance,
     private val downloadControlStateAccessor: DownloadControlStateAccessor = DefaultDownloadControlStateAccessor.instance,
     private val jsonSerializer: JsonSerializer<Collection<AnimeId>> = DeadEntriesJsonSerializer.instance,
-    private val jsonDeserializer: ExternalResourceJsonDeserializer<DeadEntries> = DefaultExternalResourceJsonDeserializer(
-        deserializer = DeadEntriesJsonDeserializer.instance,
-    ),
+    private val jsonDeserializer: Deserializer<RegularFile, DeadEntries> = FromRegularFileDeserializer(deserializer = DeadEntriesFromInputStreamDeserializer.instance),
 ): DeadEntriesAccessor {
 
     private val deadEntries = DeadEntriesInMemory()
@@ -65,9 +70,11 @@ class DefaultDeadEntriesAccessor(
         }
 
         return when (type) {
-            JSON -> deadEntriesFolder.resolve("$hostnameWithoutTld.json")
+            JSON_PRETTY_PRINT -> deadEntriesFolder.resolve("$hostnameWithoutTld.json")
             JSON_MINIFIED -> deadEntriesFolder.resolve("$hostnameWithoutTld-minified.json")
-            ZIP -> deadEntriesFolder.resolve("$hostnameWithoutTld.zip")
+            JSON_MINIFIED_ZST -> deadEntriesFolder.resolve("$hostnameWithoutTld-minified.json.zst")
+            JSON_LINES -> throw UnsupportedOperationException("Dead entries don't support JSON line format.")
+            JSON_LINES_ZST -> throw UnsupportedOperationException("Dead entries don't support JSON line format.")
         }
     }
 
@@ -172,9 +179,8 @@ class DefaultDeadEntriesAccessor(
             else -> throw IllegalStateException("Meta data provider [${metaDataProviderConfig.hostname()}] is not supported.")
         }
 
-        jsonSerializer.serializeJson(deadEntries, minify = false).writeToFile(deadEntriesFile(metaDataProviderConfig, JSON))
-        jsonSerializer.serializeJson(deadEntries, minify = true).writeToFile(deadEntriesFile(metaDataProviderConfig, JSON_MINIFIED))
-        deadEntriesFile(metaDataProviderConfig, ZIP).createZipOf(deadEntriesFile(metaDataProviderConfig, JSON_MINIFIED))
+        jsonSerializer.serialize(deadEntries, minify = false).writeToFile(deadEntriesFile(metaDataProviderConfig, JSON_PRETTY_PRINT))
+        jsonSerializer.serialize(deadEntries, minify = true).writeToFile(deadEntriesFile(metaDataProviderConfig, JSON_MINIFIED))
     }
 
     private fun containsDeadEntry(uri: URI): Boolean {

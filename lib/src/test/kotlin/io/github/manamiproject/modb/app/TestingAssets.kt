@@ -42,10 +42,8 @@ import io.github.manamiproject.modb.core.anime.Duration.TimeUnit.MINUTES
 import io.github.manamiproject.modb.core.anime.MetaDataProviderScoreValue
 import io.github.manamiproject.modb.core.anime.NoScore
 import io.github.manamiproject.modb.core.anime.ScoreValue
-import io.github.manamiproject.modb.serde.json.ExternalResourceJsonDeserializer
-import io.github.manamiproject.modb.serde.json.JsonSerializer
-import io.github.manamiproject.modb.serde.json.models.Dataset
-import io.github.manamiproject.modb.serde.json.models.DeadEntries
+import io.github.manamiproject.modb.serde.json.deserializer.Deserializer
+import io.github.manamiproject.modb.serde.json.serializer.JsonSerializer
 import io.github.manamiproject.modb.test.shouldNotBeInvoked
 import kotlinx.coroutines.Deferred
 import java.net.URI
@@ -98,14 +96,8 @@ internal object TestPathAnimeConverter: PathAnimeConverter {
     override suspend fun convert(path: Path): Collection<AnimeRaw> = shouldNotBeInvoked()
 }
 
-internal object TestExternalResourceJsonDeserializerDataset: ExternalResourceJsonDeserializer<Dataset> {
-    override suspend fun deserialize(url: URL): Dataset = shouldNotBeInvoked()
-    override suspend fun deserialize(file: RegularFile): Dataset = shouldNotBeInvoked()
-}
-
-internal object TestJsonSerializerCollectionAnime: JsonSerializer<Collection<Anime>, Anime> {
-    override suspend fun serializeJson(obj: Collection<Anime>, minify: Boolean): String = shouldNotBeInvoked()
-    override suspend fun serializeJsonLine(obj: Collection<Anime>): String = shouldNotBeInvoked()
+internal class TestDeserializer<in IN, out OUT>: Deserializer<IN, OUT> {
+    override suspend fun deserialize(source: IN): OUT = shouldNotBeInvoked()
 }
 
 internal object TestJavaWatchService: JavaWatchService {
@@ -153,14 +145,8 @@ internal object TestMergeLockAccessor: MergeLockAccessor {
     override suspend fun allSourcesInAllMergeLockEntries(): Set<URI> = shouldNotBeInvoked()
 }
 
-internal object TestExternalResourceJsonDeserializerDeadEntries: ExternalResourceJsonDeserializer<DeadEntries> {
-    override suspend fun deserialize(url: URL): DeadEntries = shouldNotBeInvoked()
-    override suspend fun deserialize(file: RegularFile): DeadEntries = shouldNotBeInvoked()
-}
-
-internal object TestJsonSerializerCollectionAnimeId: JsonSerializer<Collection<AnimeId>, AnimeId> {
-    override suspend fun serializeJson(obj: Collection<AnimeId>, minify: Boolean): String = shouldNotBeInvoked()
-    override suspend fun serializeJsonLine(obj: Collection<AnimeId>): String = shouldNotBeInvoked()
+internal class TestJsonSerializer<T>: JsonSerializer<T> {
+    override suspend fun serialize(obj: T, minify: Boolean): String = shouldNotBeInvoked()
 }
 
 internal object TestDeadEntriesAccessor: DeadEntriesAccessor {

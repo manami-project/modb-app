@@ -27,6 +27,7 @@ public class FromUrlDeserializer<out T>(
 
         val inputStream = when (response.headers["content-type"]?.joinToString()) {
             "application/json" -> LifecycleAwareInputStream(response.bodyAsStream())
+            "application/jsonl", "application/jsonlines", "application/x-ndjson", "application/x-jsonlines" -> LifecycleAwareInputStream(response.bodyAsStream())
             "application/zstd" -> LifecycleAwareInputStream(ZstdInputStream(response.bodyAsStream()))
             else -> throw IllegalStateException("Unsupported content-type: ${response.headers["content-type"]}")
         }

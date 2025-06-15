@@ -11,6 +11,8 @@ import io.github.manamiproject.modb.serde.json.models.Dataset
 import io.github.manamiproject.modb.test.exceptionExpected
 import kotlinx.coroutines.runBlocking
 import org.assertj.core.api.Assertions.assertThat
+import org.junit.jupiter.params.ParameterizedTest
+import org.junit.jupiter.params.provider.ValueSource
 import java.io.ByteArrayInputStream
 import java.io.ByteArrayOutputStream
 import java.net.URI
@@ -74,6 +76,49 @@ internal class FromUrlDeserializerTest {
                 override suspend fun get(url: URL, headers: Map<String, Collection<String>>): HttpResponse = HttpResponse(
                     code = 200,
                     headers = mutableMapOf("content-type" to listOf("application/json")),
+                    body = """{ "test": true }""",
+                )
+            }
+
+            var invokedWith = EMPTY
+            val testDeserializer = object : Deserializer<LifecycleAwareInputStream, Dataset> by TestDeserializer() {
+                override suspend fun deserialize(source: LifecycleAwareInputStream): Dataset {
+                    invokedWith = source.use { it.bufferedReader().readText() }
+                    return Dataset(
+                        `$schema` = URI("https://example.org"),
+                        lastUpdate = "2020-01-01",
+                        data = emptyList(),
+                    )
+                }
+            }
+
+            val deserializer = FromUrlDeserializer(
+                httpClient = testHttpClient,
+                deserializer = testDeserializer,
+            )
+
+            // when
+            deserializer.deserialize(URI("http://localhost/anime-offline-database.json").toURL())
+
+            // then
+            assertThat(invokedWith).isEqualTo("""{ "test": true }""")
+        }
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = [
+        "application/jsonl",
+        "application/jsonlines",
+        "application/x-ndjson",
+        "application/x-jsonlines",
+    ])
+    fun `correctly delegates call for JSON lines`(input: String) {
+        runBlocking {
+            // given
+            val testHttpClient = object: HttpClient by TestHttpClient {
+                override suspend fun get(url: URL, headers: Map<String, Collection<String>>): HttpResponse = HttpResponse(
+                    code = 200,
+                    headers = mutableMapOf("content-type" to listOf(input)),
                     body = """{ "test": true }""",
                 )
             }

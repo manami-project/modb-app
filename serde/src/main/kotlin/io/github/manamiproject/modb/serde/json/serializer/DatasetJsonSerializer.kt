@@ -2,6 +2,7 @@ package io.github.manamiproject.modb.serde.json.serializer
 
 import io.github.manamiproject.modb.core.anime.Anime
 import io.github.manamiproject.modb.core.coroutines.ModbDispatchers
+import io.github.manamiproject.modb.core.coroutines.ModbDispatchers.LIMITED_CPU
 import io.github.manamiproject.modb.core.date.WeekOfYear
 import io.github.manamiproject.modb.core.json.Json
 import io.github.manamiproject.modb.core.json.Json.SerializationOptions.*
@@ -26,7 +27,7 @@ public class DatasetJsonSerializer(
 ) : JsonSerializer<Collection<Anime>> {
 
     override suspend fun serialize(obj: Collection<Anime>, minify: Boolean): String =
-        withContext(ModbDispatchers.LIMITED_CPU) {
+        withContext(LIMITED_CPU) {
             log.debug { "Sorting dataset by title, type and episodes." }
 
             val sortedList = obj.toSet().sortedWith(compareBy({ it.title.lowercase() }, { it.type }, { it.episodes }))

@@ -7,12 +7,15 @@ import io.github.manamiproject.modb.app.TestMetaDataProviderConfig
 import io.github.manamiproject.modb.app.config.Config
 import io.github.manamiproject.modb.app.dataset.DatasetFileAccessor
 import io.github.manamiproject.modb.app.dataset.DatasetFileType
+import io.github.manamiproject.modb.app.dataset.DatasetFileType.*
 import io.github.manamiproject.modb.app.dataset.DeadEntriesAccessor
 import io.github.manamiproject.modb.core.config.Hostname
 import io.github.manamiproject.modb.core.config.MetaDataProviderConfig
 import io.github.manamiproject.modb.core.extensions.RegularFile
 import io.github.manamiproject.modb.core.extensions.writeToFile
+import io.github.manamiproject.modb.core.extensions.writeToZstandardFile
 import io.github.manamiproject.modb.test.exceptionExpected
+import io.github.manamiproject.modb.test.shouldNotBeInvoked
 import io.github.manamiproject.modb.test.tempDirectory
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Nested
@@ -29,27 +32,35 @@ internal class FileSizePlausibilityValidationPostProcessorTest {
         inner class DatasetFilesTests {
 
             @Test
-            fun `throws exception if minified json file size is greater than json file size`() {
+            fun `throws exception if JSON_MINIFIED file size is greater than JSON_PRETTY_PRINT file size`() {
                 tempDirectory {
                     // given
                     val testAppConfig = object: Config by TestAppConfig {
                         override fun metaDataProviderConfigurations(): Set<MetaDataProviderConfig> = emptySet()
                     }
 
-                    val json = tempDir.resolve("json.txt").createFile()
-                    "text\n".repeat(100).writeToFile(json)
+                    val jsonPrettyPrint = tempDir.resolve("json.txt").createFile()
+                    "text\n".repeat(100).writeToFile(jsonPrettyPrint)
 
                     val jsonMinified = tempDir.resolve("jsonMinified.txt").createFile()
                     "text\n".repeat(1000).writeToFile(jsonMinified)
 
-                    val zip = tempDir.resolve("zip.txt").createFile()
-                    "text\n".repeat(1).writeToFile(zip)
+                    val jsonMinifiedZst = tempDir.resolve("jsonMinified.zst").createFile()
+                    "text\n".repeat(1000).writeToZstandardFile(jsonMinifiedZst, compressionLevel = 1)
+
+                    val jsonLines = tempDir.resolve("jsonLines.txt").createFile()
+                    "text\n".repeat(1000).writeToFile(jsonLines)
+
+                    val jsonLinesZst = tempDir.resolve("jsonLines.zst").createFile()
+                    "text\n".repeat(1000).writeToZstandardFile(jsonLinesZst, compressionLevel = 1)
 
                     val testDatasetFileAccessor = object: DatasetFileAccessor by TestDatasetFileAccessor {
                         override fun offlineDatabaseFile(type: DatasetFileType): RegularFile = when(type) {
-                            DatasetFileType.JSON -> json
-                            DatasetFileType.JSON_MINIFIED -> jsonMinified
-                            DatasetFileType.ZIP -> zip
+                            JSON_PRETTY_PRINT -> jsonPrettyPrint
+                            JSON_MINIFIED -> jsonMinified
+                            JSON_MINIFIED_ZST -> jsonMinifiedZst
+                            JSON_LINES -> jsonLines
+                            JSON_LINES_ZST -> jsonLinesZst
                         }
                     }
 
@@ -65,32 +76,40 @@ internal class FileSizePlausibilityValidationPostProcessorTest {
                     }
 
                     // then
-                    assertThat(result).hasMessage("File sizes for dataset are not plausible: [json=${json.fileSize()}, jsonMinified=${jsonMinified.fileSize()}, zip=${zip.fileSize()}]")
+                    assertThat(result).hasMessage("File sizes for dataset are not plausible: [jsonPrettyPrint=${jsonPrettyPrint.fileSize()}, jsonMinified=${jsonMinified.fileSize()}, jsonMinifiedZst=${jsonMinifiedZst.fileSize()}]")
                 }
             }
 
             @Test
-            fun `throws exception if zip json file size is greater than minified json file size`() {
+            fun `throws exception if JSON_MINIFIED_ZST file size is greater than JSON_MINIFIED file size`() {
                 tempDirectory {
                     // given
                     val testAppConfig = object: Config by TestAppConfig {
                         override fun metaDataProviderConfigurations(): Set<MetaDataProviderConfig> = emptySet()
                     }
 
-                    val json = tempDir.resolve("json.txt").createFile()
-                    "text\n".repeat(1000).writeToFile(json)
+                    val jsonPrettyPrint = tempDir.resolve("json.txt").createFile()
+                    "text\n".repeat(1000).writeToFile(jsonPrettyPrint)
 
                     val jsonMinified = tempDir.resolve("jsonMinified.txt").createFile()
                     "text\n".repeat(1).writeToFile(jsonMinified)
 
-                    val zip = tempDir.resolve("zip.txt").createFile()
-                    "text\n".repeat(100).writeToFile(zip)
+                    val jsonMinifiedZst = tempDir.resolve("jsonMinified.zst").createFile()
+                    "text\n".repeat(1000).writeToZstandardFile(jsonMinifiedZst, compressionLevel = 1)
+
+                    val jsonLines = tempDir.resolve("jsonLines.txt").createFile()
+                    "text\n".repeat(1000).writeToFile(jsonLines)
+
+                    val jsonLinesZst = tempDir.resolve("jsonLines.zst").createFile()
+                    "text\n".repeat(1000).writeToZstandardFile(jsonLinesZst, compressionLevel = 1)
 
                     val testDatasetFileAccessor = object: DatasetFileAccessor by TestDatasetFileAccessor {
                         override fun offlineDatabaseFile(type: DatasetFileType): RegularFile = when(type) {
-                            DatasetFileType.JSON -> json
-                            DatasetFileType.JSON_MINIFIED -> jsonMinified
-                            DatasetFileType.ZIP -> zip
+                            JSON_PRETTY_PRINT -> jsonPrettyPrint
+                            JSON_MINIFIED -> jsonMinified
+                            JSON_MINIFIED_ZST -> jsonMinifiedZst
+                            JSON_LINES -> jsonLines
+                            JSON_LINES_ZST -> jsonLinesZst
                         }
                     }
 
@@ -106,32 +125,40 @@ internal class FileSizePlausibilityValidationPostProcessorTest {
                     }
 
                     // then
-                    assertThat(result).hasMessage("File sizes for dataset are not plausible: [json=${json.fileSize()}, jsonMinified=${jsonMinified.fileSize()}, zip=${zip.fileSize()}]")
+                    assertThat(result).hasMessage("File sizes for dataset are not plausible: [jsonPrettyPrint=${jsonPrettyPrint.fileSize()}, jsonMinified=${jsonMinified.fileSize()}, jsonMinifiedZst=${jsonMinifiedZst.fileSize()}]")
                 }
             }
 
             @Test
-            fun `throws exception if zip json file size is greater than json file size`() {
+            fun `throws exception if JSON_LINES_ZST file size is greater than JSON_LINES file size`() {
                 tempDirectory {
                     // given
                     val testAppConfig = object: Config by TestAppConfig {
                         override fun metaDataProviderConfigurations(): Set<MetaDataProviderConfig> = emptySet()
                     }
 
-                    val json = tempDir.resolve("json.txt").createFile()
-                    "text\n".repeat(100).writeToFile(json)
+                    val jsonPrettyPrint = tempDir.resolve("json.txt").createFile()
+                    "text\n".repeat(1000).writeToFile(jsonPrettyPrint)
 
                     val jsonMinified = tempDir.resolve("jsonMinified.txt").createFile()
-                    "text\n".repeat(1).writeToFile(jsonMinified)
+                    "text\n".repeat(500).writeToFile(jsonMinified)
 
-                    val zip = tempDir.resolve("zip.txt").createFile()
-                    "text\n".repeat(1000).writeToFile(zip)
+                    val jsonMinifiedZst = tempDir.resolve("jsonMinified.zst").createFile()
+                    "text\n".repeat(500).writeToZstandardFile(jsonMinifiedZst, compressionLevel = 1)
+
+                    val jsonLines = tempDir.resolve("jsonLines.txt").createFile()
+                    "text\n".repeat(1).writeToFile(jsonLines)
+
+                    val jsonLinesZst = tempDir.resolve("jsonLines.zst").createFile()
+                    "text\n".repeat(10000).writeToZstandardFile(jsonLinesZst, compressionLevel = 1)
 
                     val testDatasetFileAccessor = object: DatasetFileAccessor by TestDatasetFileAccessor {
                         override fun offlineDatabaseFile(type: DatasetFileType): RegularFile = when(type) {
-                            DatasetFileType.JSON -> json
-                            DatasetFileType.JSON_MINIFIED -> jsonMinified
-                            DatasetFileType.ZIP -> zip
+                            JSON_PRETTY_PRINT -> jsonPrettyPrint
+                            JSON_MINIFIED -> jsonMinified
+                            JSON_MINIFIED_ZST -> jsonMinifiedZst
+                            JSON_LINES -> jsonLines
+                            JSON_LINES_ZST -> jsonLinesZst
                         }
                     }
 
@@ -147,31 +174,86 @@ internal class FileSizePlausibilityValidationPostProcessorTest {
                     }
 
                     // then
-                    assertThat(result).hasMessage("File sizes for dataset are not plausible: [json=${json.fileSize()}, jsonMinified=${jsonMinified.fileSize()}, zip=${zip.fileSize()}]")
+                    assertThat(result).hasMessage("File sizes for dataset are not plausible: [jsonLines=${jsonLines.fileSize()}, jsonLinesZst=${jsonLinesZst.fileSize()}]")
                 }
             }
 
             @Test
-            fun `throws exception if dataset json file doesn't exist`() {
+            fun `throws exception if JSON_MINIFIED file size is greater than JSON_LINES file size`() {
                 tempDirectory {
                     // given
                     val testAppConfig = object: Config by TestAppConfig {
                         override fun metaDataProviderConfigurations(): Set<MetaDataProviderConfig> = emptySet()
                     }
 
-                    val json = tempDir.resolve("json.txt")
+                    val jsonPrettyPrint = tempDir.resolve("json.txt").createFile()
+                    "text\n".repeat(1500).writeToFile(jsonPrettyPrint)
 
                     val jsonMinified = tempDir.resolve("jsonMinified.txt").createFile()
-                    "text\n".repeat(100).writeToFile(jsonMinified)
+                    "text\n".repeat(1000).writeToFile(jsonMinified)
 
-                    val zip = tempDir.resolve("zip.txt").createFile()
-                    "text\n".repeat(1).writeToFile(zip)
+                    val jsonMinifiedZst = tempDir.resolve("jsonMinified.zst").createFile()
+                    "text\n".repeat(1000).writeToZstandardFile(jsonMinifiedZst, compressionLevel = 1)
+
+                    val jsonLines = tempDir.resolve("jsonLines.txt").createFile()
+                    "text\n".repeat(500).writeToFile(jsonLines)
+
+                    val jsonLinesZst = tempDir.resolve("jsonLines.zst").createFile()
+                    "text\n".repeat(500).writeToZstandardFile(jsonLinesZst, compressionLevel = 1)
 
                     val testDatasetFileAccessor = object: DatasetFileAccessor by TestDatasetFileAccessor {
                         override fun offlineDatabaseFile(type: DatasetFileType): RegularFile = when(type) {
-                            DatasetFileType.JSON -> json
-                            DatasetFileType.JSON_MINIFIED -> jsonMinified
-                            DatasetFileType.ZIP -> zip
+                            JSON_PRETTY_PRINT -> jsonPrettyPrint
+                            JSON_MINIFIED -> jsonMinified
+                            JSON_MINIFIED_ZST -> jsonMinifiedZst
+                            JSON_LINES -> jsonLines
+                            JSON_LINES_ZST -> jsonLinesZst
+                        }
+                    }
+
+                    val fileSizePlausibilityValidationPostProcessor = FileSizePlausibilityValidationPostProcessor(
+                        appConfig = testAppConfig,
+                        datasetFileAccessor = testDatasetFileAccessor,
+                        deadEntriesAccessor = TestDeadEntriesAccessor,
+                    )
+
+                    // when
+                    val result = exceptionExpected<IllegalStateException> {
+                        fileSizePlausibilityValidationPostProcessor.process()
+                    }
+
+                    // then
+                    assertThat(result).hasMessage("File sizes for dataset are not plausible: [jsonMinified=${jsonMinified.fileSize()}, jsonLines=${jsonLines.fileSize()}]")
+                }
+            }
+
+            @Test
+            fun `throws exception if JSON_PRETTY_PRINT file doesn't exist`() {
+                tempDirectory {
+                    // given
+                    val testAppConfig = object: Config by TestAppConfig {
+                        override fun metaDataProviderConfigurations(): Set<MetaDataProviderConfig> = emptySet()
+                    }
+
+                    val jsonMinified = tempDir.resolve("jsonMinified.txt").createFile()
+                    "text\n".repeat(1000).writeToFile(jsonMinified)
+
+                    val jsonMinifiedZst = tempDir.resolve("jsonMinified.zst").createFile()
+                    "text\n".repeat(1000).writeToZstandardFile(jsonMinifiedZst, compressionLevel = 1)
+
+                    val jsonLines = tempDir.resolve("jsonLines.txt").createFile()
+                    "text\n".repeat(500).writeToFile(jsonLines)
+
+                    val jsonLinesZst = tempDir.resolve("jsonLines.zst").createFile()
+                    "text\n".repeat(500).writeToZstandardFile(jsonLinesZst, compressionLevel = 1)
+
+                    val testDatasetFileAccessor = object: DatasetFileAccessor by TestDatasetFileAccessor {
+                        override fun offlineDatabaseFile(type: DatasetFileType): RegularFile = when(type) {
+                            JSON_PRETTY_PRINT -> tempDir.resolve("json.txt")
+                            JSON_MINIFIED -> jsonMinified
+                            JSON_MINIFIED_ZST -> jsonMinifiedZst
+                            JSON_LINES -> jsonLines
+                            JSON_LINES_ZST -> jsonLinesZst
                         }
                     }
 
@@ -192,26 +274,32 @@ internal class FileSizePlausibilityValidationPostProcessorTest {
             }
 
             @Test
-            fun `throws exception if dataset minified json file doesn't exist`() {
+            fun `throws exception if JSON_MINIFIED file doesn't exist`() {
                 tempDirectory {
                     // given
                     val testAppConfig = object: Config by TestAppConfig {
                         override fun metaDataProviderConfigurations(): Set<MetaDataProviderConfig> = emptySet()
                     }
 
-                    val json = tempDir.resolve("json.txt").createFile()
-                    "text\n".repeat(1000).writeToFile(json)
+                    val jsonPrettyPrint = tempDir.resolve("json.txt").createFile()
+                    "text\n".repeat(1000).writeToFile(jsonPrettyPrint)
 
-                    val jsonMinified = tempDir.resolve("jsonMinified.txt")
+                    val jsonMinifiedZst = tempDir.resolve("jsonMinified.zst").createFile()
+                    "text\n".repeat(1000).writeToZstandardFile(jsonMinifiedZst, compressionLevel = 1)
 
-                    val zip = tempDir.resolve("zip.txt").createFile()
-                    "text\n".repeat(1).writeToFile(zip)
+                    val jsonLines = tempDir.resolve("jsonLines.txt").createFile()
+                    "text\n".repeat(500).writeToFile(jsonLines)
+
+                    val jsonLinesZst = tempDir.resolve("jsonLines.zst").createFile()
+                    "text\n".repeat(500).writeToZstandardFile(jsonLinesZst, compressionLevel = 1)
 
                     val testDatasetFileAccessor = object: DatasetFileAccessor by TestDatasetFileAccessor {
                         override fun offlineDatabaseFile(type: DatasetFileType): RegularFile = when(type) {
-                            DatasetFileType.JSON -> json
-                            DatasetFileType.JSON_MINIFIED -> jsonMinified
-                            DatasetFileType.ZIP -> zip
+                            JSON_PRETTY_PRINT -> jsonPrettyPrint
+                            JSON_MINIFIED -> tempDir.resolve("jsonMinified.txt")
+                            JSON_MINIFIED_ZST -> jsonMinifiedZst
+                            JSON_LINES -> jsonLines
+                            JSON_LINES_ZST -> jsonLinesZst
                         }
                     }
 
@@ -232,26 +320,32 @@ internal class FileSizePlausibilityValidationPostProcessorTest {
             }
 
             @Test
-            fun `throws exception if zip file doesn't exist`() {
+            fun `throws exception if JSON_MINIFIED_ZST file doesn't exist`() {
                 tempDirectory {
                     // given
                     val testAppConfig = object: Config by TestAppConfig {
                         override fun metaDataProviderConfigurations(): Set<MetaDataProviderConfig> = emptySet()
                     }
 
-                    val json = tempDir.resolve("json.txt").createFile()
-                    "text\n".repeat(1000).writeToFile(json)
+                    val jsonPrettyPrint = tempDir.resolve("json.txt").createFile()
+                    "text\n".repeat(1000).writeToFile(jsonPrettyPrint)
 
                     val jsonMinified = tempDir.resolve("jsonMinified.txt").createFile()
-                    "text\n".repeat(100).writeToFile(jsonMinified)
+                    "text\n".repeat(1000).writeToFile(jsonMinified)
 
-                    val zip = tempDir.resolve("zip.txt")
+                    val jsonLines = tempDir.resolve("jsonLines.txt").createFile()
+                    "text\n".repeat(500).writeToFile(jsonLines)
+
+                    val jsonLinesZst = tempDir.resolve("jsonLines.zst").createFile()
+                    "text\n".repeat(500).writeToZstandardFile(jsonLinesZst, compressionLevel = 1)
 
                     val testDatasetFileAccessor = object: DatasetFileAccessor by TestDatasetFileAccessor {
                         override fun offlineDatabaseFile(type: DatasetFileType): RegularFile = when(type) {
-                            DatasetFileType.JSON -> json
-                            DatasetFileType.JSON_MINIFIED -> jsonMinified
-                            DatasetFileType.ZIP -> zip
+                            JSON_PRETTY_PRINT -> jsonPrettyPrint
+                            JSON_MINIFIED -> jsonMinified
+                            JSON_MINIFIED_ZST -> tempDir.resolve("jsonMinified.zst")
+                            JSON_LINES -> jsonLines
+                            JSON_LINES_ZST -> jsonLinesZst
                         }
                     }
 
@@ -267,32 +361,132 @@ internal class FileSizePlausibilityValidationPostProcessorTest {
                     }
 
                     // then
-                    assertThat(result).hasMessage("Dataset *.zip file doesn't exist.")
+                    assertThat(result).hasMessage("Dataset *-minified.json.zst file doesn't exist.")
                 }
             }
 
             @Test
-            fun `returns true if dataset sizes are valid`() {
+            fun `throws exception if JSON_LINES file doesn't exist`() {
                 tempDirectory {
                     // given
                     val testAppConfig = object: Config by TestAppConfig {
                         override fun metaDataProviderConfigurations(): Set<MetaDataProviderConfig> = emptySet()
                     }
 
-                    val json = tempDir.resolve("json.txt").createFile()
-                    "text\n".repeat(1000).writeToFile(json)
+                    val jsonPrettyPrint = tempDir.resolve("json.txt").createFile()
+                    "text\n".repeat(1000).writeToFile(jsonPrettyPrint)
 
                     val jsonMinified = tempDir.resolve("jsonMinified.txt").createFile()
-                    "text\n".repeat(100).writeToFile(jsonMinified)
+                    "text\n".repeat(500).writeToFile(jsonMinified)
 
-                    val zip = tempDir.resolve("zip.txt").createFile()
-                    "text\n".repeat(1).writeToFile(zip)
+                    val jsonMinifiedZst = tempDir.resolve("jsonMinified.zst").createFile()
+                    "text\n".repeat(500).writeToZstandardFile(jsonMinifiedZst, compressionLevel = 1)
+
+                    val jsonLinesZst = tempDir.resolve("jsonLines.zst").createFile()
+                    "text\n".repeat(1000).writeToZstandardFile(jsonLinesZst, compressionLevel = 1)
 
                     val testDatasetFileAccessor = object: DatasetFileAccessor by TestDatasetFileAccessor {
                         override fun offlineDatabaseFile(type: DatasetFileType): RegularFile = when(type) {
-                            DatasetFileType.JSON -> json
-                            DatasetFileType.JSON_MINIFIED -> jsonMinified
-                            DatasetFileType.ZIP -> zip
+                            JSON_PRETTY_PRINT -> jsonPrettyPrint
+                            JSON_MINIFIED -> jsonMinified
+                            JSON_MINIFIED_ZST -> jsonMinifiedZst
+                            JSON_LINES -> tempDir.resolve("jsonLines.txt")
+                            JSON_LINES_ZST -> jsonLinesZst
+                        }
+                    }
+
+                    val fileSizePlausibilityValidationPostProcessor = FileSizePlausibilityValidationPostProcessor(
+                        appConfig = testAppConfig,
+                        datasetFileAccessor = testDatasetFileAccessor,
+                        deadEntriesAccessor = TestDeadEntriesAccessor,
+                    )
+
+                    // when
+                    val result = exceptionExpected<IllegalStateException> {
+                        fileSizePlausibilityValidationPostProcessor.process()
+                    }
+
+                    // then
+                    assertThat(result).hasMessage("Dataset *.jsonl file doesn't exist.")
+                }
+            }
+
+            @Test
+            fun `throws exception if JSON_LINES_ZST file doesn't exist`() {
+                tempDirectory {
+                    // given
+                    val testAppConfig = object: Config by TestAppConfig {
+                        override fun metaDataProviderConfigurations(): Set<MetaDataProviderConfig> = emptySet()
+                    }
+
+                    val jsonPrettyPrint = tempDir.resolve("json.txt").createFile()
+                    "text\n".repeat(1000).writeToFile(jsonPrettyPrint)
+
+                    val jsonMinified = tempDir.resolve("jsonMinified.txt").createFile()
+                    "text\n".repeat(500).writeToFile(jsonMinified)
+
+                    val jsonMinifiedZst = tempDir.resolve("jsonMinified.zst").createFile()
+                    "text\n".repeat(500).writeToZstandardFile(jsonMinifiedZst, compressionLevel = 1)
+
+                    val jsonLines = tempDir.resolve("jsonLines.txt").createFile()
+                    "text\n".repeat(1000).writeToFile(jsonLines)
+
+                    val testDatasetFileAccessor = object: DatasetFileAccessor by TestDatasetFileAccessor {
+                        override fun offlineDatabaseFile(type: DatasetFileType): RegularFile = when(type) {
+                            JSON_PRETTY_PRINT -> jsonPrettyPrint
+                            JSON_MINIFIED -> jsonMinified
+                            JSON_MINIFIED_ZST -> jsonMinifiedZst
+                            JSON_LINES -> jsonLines
+                            JSON_LINES_ZST -> tempDir.resolve("jsonLines.zst")
+                        }
+                    }
+
+                    val fileSizePlausibilityValidationPostProcessor = FileSizePlausibilityValidationPostProcessor(
+                        appConfig = testAppConfig,
+                        datasetFileAccessor = testDatasetFileAccessor,
+                        deadEntriesAccessor = TestDeadEntriesAccessor,
+                    )
+
+                    // when
+                    val result = exceptionExpected<IllegalStateException> {
+                        fileSizePlausibilityValidationPostProcessor.process()
+                    }
+
+                    // then
+                    assertThat(result).hasMessage("Dataset *.jsonl.zst file doesn't exist.")
+                }
+            }
+
+            @Test
+            fun `returns true if dataset file sizes are valid`() {
+                tempDirectory {
+                    // given
+                    val testAppConfig = object: Config by TestAppConfig {
+                        override fun metaDataProviderConfigurations(): Set<MetaDataProviderConfig> = emptySet()
+                    }
+
+                    val jsonPrettyPrint = tempDir.resolve("json.txt").createFile()
+                    "text\n".repeat(1000).writeToFile(jsonPrettyPrint)
+
+                    val jsonMinified = tempDir.resolve("jsonMinified.txt").createFile()
+                    "text\n".repeat(500).writeToFile(jsonMinified)
+
+                    val jsonMinifiedZst = tempDir.resolve("jsonMinified.zst").createFile()
+                    "text\n".repeat(500).writeToZstandardFile(jsonMinifiedZst, compressionLevel = 1)
+
+                    val jsonLines = tempDir.resolve("jsonLines.txt").createFile()
+                    "text\n".repeat(1000).writeToFile(jsonLines)
+
+                    val jsonLinesZst = tempDir.resolve("jsonLines.zst").createFile()
+                    "text\n".repeat(1000).writeToZstandardFile(jsonLinesZst, compressionLevel = 1)
+
+                    val testDatasetFileAccessor = object: DatasetFileAccessor by TestDatasetFileAccessor {
+                        override fun offlineDatabaseFile(type: DatasetFileType): RegularFile = when(type) {
+                            JSON_PRETTY_PRINT -> jsonPrettyPrint
+                            JSON_MINIFIED -> jsonMinified
+                            JSON_MINIFIED_ZST -> jsonMinifiedZst
+                            JSON_LINES -> jsonLines
+                            JSON_LINES_ZST -> jsonLinesZst
                         }
                     }
 
@@ -315,7 +509,7 @@ internal class FileSizePlausibilityValidationPostProcessorTest {
         inner class DeadEntriesFilesTests {
 
             @Test
-            fun `throws exception if minified json file size for dead entries is greater than json file size`() {
+            fun `throws exception if JSON_MINIFIED file size is greater than JSON_PRETTY_PRINT file size`() {
                 tempDirectory {
                     // given
                     val testMetaDataProviderConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
@@ -327,37 +521,46 @@ internal class FileSizePlausibilityValidationPostProcessorTest {
                         override fun deadEntriesSupported(metaDataProviderConfig: MetaDataProviderConfig): Boolean = true
                     }
 
-                    val json = tempDir.resolve("json.txt").createFile()
-                    "text\n".repeat(1000).writeToFile(json)
+                    val jsonPrettyPrint = tempDir.resolve("json.txt").createFile()
+                    "text\n".repeat(1000).writeToFile(jsonPrettyPrint)
 
                     val jsonMinified = tempDir.resolve("jsonMinified.txt").createFile()
-                    "text\n".repeat(100).writeToFile(jsonMinified)
+                    "text\n".repeat(500).writeToFile(jsonMinified)
 
-                    val zip = tempDir.resolve("zip.txt").createFile()
-                    "text\n".repeat(1).writeToFile(zip)
+                    val jsonMinifiedZst = tempDir.resolve("jsonMinified.zst").createFile()
+                    "text\n".repeat(500).writeToZstandardFile(jsonMinifiedZst, compressionLevel = 1)
+
+                    val jsonLines = tempDir.resolve("jsonLines.txt").createFile()
+                    "text\n".repeat(1000).writeToFile(jsonLines)
+
+                    val jsonLinesZst = tempDir.resolve("jsonLines.zst").createFile()
+                    "text\n".repeat(1000).writeToZstandardFile(jsonLinesZst, compressionLevel = 1)
 
                     val testDatasetFileAccessor = object: DatasetFileAccessor by TestDatasetFileAccessor {
                         override fun offlineDatabaseFile(type: DatasetFileType): RegularFile = when(type) {
-                            DatasetFileType.JSON -> json
-                            DatasetFileType.JSON_MINIFIED -> jsonMinified
-                            DatasetFileType.ZIP -> zip
+                            JSON_PRETTY_PRINT -> jsonPrettyPrint
+                            JSON_MINIFIED -> jsonMinified
+                            JSON_MINIFIED_ZST -> jsonMinifiedZst
+                            JSON_LINES -> jsonLines
+                            JSON_LINES_ZST -> jsonLinesZst
                         }
                     }
 
-                    val deadEntriesJson = tempDir.resolve("dead-entries-json.txt").createFile()
-                    "text\n".repeat(100).writeToFile(deadEntriesJson)
+                    val deadEntriesJsonPrettyPrint = tempDir.resolve("dead-entries.txt").createFile()
+                    "text\n".repeat(100).writeToFile(deadEntriesJsonPrettyPrint)
 
-                    val deadEntriesJsonMinified = tempDir.resolve("dead-entries-jsonMinified.txt").createFile()
+                    val deadEntriesJsonMinified = tempDir.resolve("dead-entries-minified.txt").createFile()
                     "text\n".repeat(1000).writeToFile(deadEntriesJsonMinified)
 
-                    val deadEntriesZip = tempDir.resolve("dead-entries-zip.txt").createFile()
-                    "text\n".repeat(1).writeToFile(deadEntriesZip)
+                    val deadEntriesJsonMinifiedZst = tempDir.resolve("dead-entries.zst").createFile()
+                    "text\n".repeat(1).writeToZstandardFile(deadEntriesJsonMinifiedZst, compressionLevel = 1)
 
                     val testDeadEntriesAccessor = object: DeadEntriesAccessor by TestDeadEntriesAccessor {
                         override fun deadEntriesFile(metaDataProviderConfig: MetaDataProviderConfig, type: DatasetFileType): RegularFile = when(type) {
-                            DatasetFileType.JSON -> deadEntriesJson
-                            DatasetFileType.JSON_MINIFIED -> deadEntriesJsonMinified
-                            DatasetFileType.ZIP -> deadEntriesZip
+                            JSON_PRETTY_PRINT -> deadEntriesJsonPrettyPrint
+                            JSON_MINIFIED -> deadEntriesJsonMinified
+                            JSON_MINIFIED_ZST -> deadEntriesJsonMinifiedZst
+                            else -> shouldNotBeInvoked()
                         }
                     }
 
@@ -373,12 +576,12 @@ internal class FileSizePlausibilityValidationPostProcessorTest {
                     }
 
                     // then
-                    assertThat(result).hasMessage("File sizes for dead entry files of [example.org] are not plausible: [json=500, jsonMinified=5000, zip=5]")
+                    assertThat(result).hasMessage("File sizes for dead entry files of [example.org] are not plausible: [json=${deadEntriesJsonPrettyPrint.fileSize()}, jsonMinified=${deadEntriesJsonMinified.fileSize()}, jsonMinifiedZst=${deadEntriesJsonMinifiedZst.fileSize()}]")
                 }
             }
 
             @Test
-            fun `throws exception if zip json file size for dead entries is greater than minified json file size`() {
+            fun `throws exception if JSON_MINIFIED_ZST file size is greater than JSON_MINIFIED file size`() {
                 tempDirectory {
                     // given
                     val testMetaDataProviderConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
@@ -390,37 +593,46 @@ internal class FileSizePlausibilityValidationPostProcessorTest {
                         override fun deadEntriesSupported(metaDataProviderConfig: MetaDataProviderConfig): Boolean = true
                     }
 
-                    val json = tempDir.resolve("json.txt").createFile()
-                    "text\n".repeat(1000).writeToFile(json)
+                    val jsonPrettyPrint = tempDir.resolve("json.txt").createFile()
+                    "text\n".repeat(1000).writeToFile(jsonPrettyPrint)
 
                     val jsonMinified = tempDir.resolve("jsonMinified.txt").createFile()
-                    "text\n".repeat(100).writeToFile(jsonMinified)
+                    "text\n".repeat(500).writeToFile(jsonMinified)
 
-                    val zip = tempDir.resolve("zip.txt").createFile()
-                    "text\n".repeat(1).writeToFile(zip)
+                    val jsonMinifiedZst = tempDir.resolve("jsonMinified.zst").createFile()
+                    "text\n".repeat(500).writeToZstandardFile(jsonMinifiedZst, compressionLevel = 1)
+
+                    val jsonLines = tempDir.resolve("jsonLines.txt").createFile()
+                    "text\n".repeat(1000).writeToFile(jsonLines)
+
+                    val jsonLinesZst = tempDir.resolve("jsonLines.zst").createFile()
+                    "text\n".repeat(1000).writeToZstandardFile(jsonLinesZst, compressionLevel = 1)
 
                     val testDatasetFileAccessor = object: DatasetFileAccessor by TestDatasetFileAccessor {
                         override fun offlineDatabaseFile(type: DatasetFileType): RegularFile = when(type) {
-                            DatasetFileType.JSON -> json
-                            DatasetFileType.JSON_MINIFIED -> jsonMinified
-                            DatasetFileType.ZIP -> zip
+                            JSON_PRETTY_PRINT -> jsonPrettyPrint
+                            JSON_MINIFIED -> jsonMinified
+                            JSON_MINIFIED_ZST -> jsonMinifiedZst
+                            JSON_LINES -> jsonLines
+                            JSON_LINES_ZST -> jsonLinesZst
                         }
                     }
 
-                    val deadEntriesJson = tempDir.resolve("dead-entries-json.txt").createFile()
-                    "text\n".repeat(1000).writeToFile(deadEntriesJson)
+                    val deadEntriesJsonPrettyPrint = tempDir.resolve("dead-entries.txt").createFile()
+                    "text\n".repeat(100).writeToFile(deadEntriesJsonPrettyPrint)
 
-                    val deadEntriesJsonMinified = tempDir.resolve("dead-entries-jsonMinified.txt").createFile()
+                    val deadEntriesJsonMinified = tempDir.resolve("dead-entries-minified.txt").createFile()
                     "text\n".repeat(1).writeToFile(deadEntriesJsonMinified)
 
-                    val deadEntriesZip = tempDir.resolve("dead-entries-zip.txt").createFile()
-                    "text\n".repeat(100).writeToFile(deadEntriesZip)
+                    val deadEntriesJsonMinifiedZst = tempDir.resolve("dead-entries.zst").createFile()
+                    "text\n".repeat(10000).writeToZstandardFile(deadEntriesJsonMinifiedZst, compressionLevel = 1)
 
                     val testDeadEntriesAccessor = object: DeadEntriesAccessor by TestDeadEntriesAccessor {
                         override fun deadEntriesFile(metaDataProviderConfig: MetaDataProviderConfig, type: DatasetFileType): RegularFile = when(type) {
-                            DatasetFileType.JSON -> deadEntriesJson
-                            DatasetFileType.JSON_MINIFIED -> deadEntriesJsonMinified
-                            DatasetFileType.ZIP -> deadEntriesZip
+                            JSON_PRETTY_PRINT -> deadEntriesJsonPrettyPrint
+                            JSON_MINIFIED -> deadEntriesJsonMinified
+                            JSON_MINIFIED_ZST -> deadEntriesJsonMinifiedZst
+                            else -> shouldNotBeInvoked()
                         }
                     }
 
@@ -436,70 +648,7 @@ internal class FileSizePlausibilityValidationPostProcessorTest {
                     }
 
                     // then
-                    assertThat(result).hasMessage("File sizes for dead entry files of [example.org] are not plausible: [json=5000, jsonMinified=5, zip=500]")
-                }
-            }
-
-            @Test
-            fun `throws exception if zip json file size for dead entries is greater than json file size`() {
-                tempDirectory {
-                    // given
-                    val testMetaDataProviderConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
-                        override fun hostname(): Hostname = "example.org"
-                    }
-
-                    val testAppConfig = object: Config by TestAppConfig {
-                        override fun metaDataProviderConfigurations(): Set<MetaDataProviderConfig> = setOf(testMetaDataProviderConfig)
-                        override fun deadEntriesSupported(metaDataProviderConfig: MetaDataProviderConfig): Boolean = true
-                    }
-
-                    val json = tempDir.resolve("json.txt").createFile()
-                    "text\n".repeat(1000).writeToFile(json)
-
-                    val jsonMinified = tempDir.resolve("jsonMinified.txt").createFile()
-                    "text\n".repeat(100).writeToFile(jsonMinified)
-
-                    val zip = tempDir.resolve("zip.txt").createFile()
-                    "text\n".repeat(1).writeToFile(zip)
-
-                    val testDatasetFileAccessor = object: DatasetFileAccessor by TestDatasetFileAccessor {
-                        override fun offlineDatabaseFile(type: DatasetFileType): RegularFile = when(type) {
-                            DatasetFileType.JSON -> json
-                            DatasetFileType.JSON_MINIFIED -> jsonMinified
-                            DatasetFileType.ZIP -> zip
-                        }
-                    }
-
-                    val deadEntriesJson = tempDir.resolve("dead-entries-json.txt").createFile()
-                    "text\n".repeat(100).writeToFile(deadEntriesJson)
-
-                    val deadEntriesJsonMinified = tempDir.resolve("dead-entries-jsonMinified.txt").createFile()
-                    "text\n".repeat(1).writeToFile(deadEntriesJsonMinified)
-
-                    val deadEntriesZip = tempDir.resolve("dead-entries-zip.txt").createFile()
-                    "text\n".repeat(1000).writeToFile(deadEntriesZip)
-
-                    val testDeadEntriesAccessor = object: DeadEntriesAccessor by TestDeadEntriesAccessor {
-                        override fun deadEntriesFile(metaDataProviderConfig: MetaDataProviderConfig, type: DatasetFileType): RegularFile = when(type) {
-                            DatasetFileType.JSON -> deadEntriesJson
-                            DatasetFileType.JSON_MINIFIED -> deadEntriesJsonMinified
-                            DatasetFileType.ZIP -> deadEntriesZip
-                        }
-                    }
-
-                    val fileSizePlausibilityValidationPostProcessor = FileSizePlausibilityValidationPostProcessor(
-                        appConfig = testAppConfig,
-                        datasetFileAccessor = testDatasetFileAccessor,
-                        deadEntriesAccessor = testDeadEntriesAccessor,
-                    )
-
-                    // when
-                    val result = exceptionExpected<IllegalStateException> {
-                        fileSizePlausibilityValidationPostProcessor.process()
-                    }
-
-                    // then
-                    assertThat(result).hasMessage("File sizes for dead entry files of [example.org] are not plausible: [json=500, jsonMinified=5, zip=5000]")
+                    assertThat(result).hasMessage("File sizes for dead entry files of [example.org] are not plausible: [json=${deadEntriesJsonPrettyPrint.fileSize()}, jsonMinified=${deadEntriesJsonMinified.fileSize()}, jsonMinifiedZst=${deadEntriesJsonMinifiedZst.fileSize()}]")
                 }
             }
 
@@ -516,37 +665,46 @@ internal class FileSizePlausibilityValidationPostProcessorTest {
                         override fun deadEntriesSupported(metaDataProviderConfig: MetaDataProviderConfig): Boolean = true
                     }
 
-                    val json = tempDir.resolve("json.txt").createFile()
-                    "text\n".repeat(1000).writeToFile(json)
+                    val jsonPrettyPrint = tempDir.resolve("json.txt").createFile()
+                    "text\n".repeat(1000).writeToFile(jsonPrettyPrint)
 
                     val jsonMinified = tempDir.resolve("jsonMinified.txt").createFile()
-                    "text\n".repeat(100).writeToFile(jsonMinified)
+                    "text\n".repeat(500).writeToFile(jsonMinified)
 
-                    val zip = tempDir.resolve("zip.txt").createFile()
-                    "text\n".repeat(1).writeToFile(zip)
+                    val jsonMinifiedZst = tempDir.resolve("jsonMinified.zst").createFile()
+                    "text\n".repeat(500).writeToZstandardFile(jsonMinifiedZst, compressionLevel = 1)
+
+                    val jsonLines = tempDir.resolve("jsonLines.txt").createFile()
+                    "text\n".repeat(1000).writeToFile(jsonLines)
+
+                    val jsonLinesZst = tempDir.resolve("jsonLines.zst").createFile()
+                    "text\n".repeat(1000).writeToZstandardFile(jsonLinesZst, compressionLevel = 1)
 
                     val testDatasetFileAccessor = object: DatasetFileAccessor by TestDatasetFileAccessor {
                         override fun offlineDatabaseFile(type: DatasetFileType): RegularFile = when(type) {
-                            DatasetFileType.JSON -> json
-                            DatasetFileType.JSON_MINIFIED -> jsonMinified
-                            DatasetFileType.ZIP -> zip
+                            JSON_PRETTY_PRINT -> jsonPrettyPrint
+                            JSON_MINIFIED -> jsonMinified
+                            JSON_MINIFIED_ZST -> jsonMinifiedZst
+                            JSON_LINES -> jsonLines
+                            JSON_LINES_ZST -> jsonLinesZst
                         }
                     }
 
-                    val deadEntriesJson = tempDir.resolve("dead-entries-json.txt").createFile()
-                    "text\n".repeat(1000).writeToFile(deadEntriesJson)
+                    val deadEntriesJsonPrettyPrint = tempDir.resolve("dead-entries.txt").createFile()
+                    "text\n".repeat(1000).writeToFile(deadEntriesJsonPrettyPrint)
 
-                    val deadEntriesJsonMinified = tempDir.resolve("dead-entries-jsonMinified.txt").createFile()
-                    "text\n".repeat(100).writeToFile(deadEntriesJsonMinified)
+                    val deadEntriesJsonMinified = tempDir.resolve("dead-entries-minified.txt").createFile()
+                    "text\n".repeat(500).writeToFile(deadEntriesJsonMinified)
 
-                    val deadEntriesZip = tempDir.resolve("dead-entries-zip.txt").createFile()
-                    "text\n".repeat(1).writeToFile(deadEntriesZip)
+                    val deadEntriesJsonMinifiedZst = tempDir.resolve("dead-entries.zst").createFile()
+                    "text\n".repeat(500).writeToZstandardFile(deadEntriesJsonMinifiedZst, compressionLevel = 1)
 
                     val testDeadEntriesAccessor = object: DeadEntriesAccessor by TestDeadEntriesAccessor {
                         override fun deadEntriesFile(metaDataProviderConfig: MetaDataProviderConfig, type: DatasetFileType): RegularFile = when(type) {
-                            DatasetFileType.JSON -> deadEntriesJson
-                            DatasetFileType.JSON_MINIFIED -> deadEntriesJsonMinified
-                            DatasetFileType.ZIP -> deadEntriesZip
+                            JSON_PRETTY_PRINT -> deadEntriesJsonPrettyPrint
+                            JSON_MINIFIED -> deadEntriesJsonMinified
+                            JSON_MINIFIED_ZST -> deadEntriesJsonMinifiedZst
+                            else -> shouldNotBeInvoked()
                         }
                     }
 
@@ -577,37 +735,37 @@ internal class FileSizePlausibilityValidationPostProcessorTest {
                         override fun deadEntriesSupported(metaDataProviderConfig: MetaDataProviderConfig): Boolean = false
                     }
 
-                    val json = tempDir.resolve("json.txt").createFile()
-                    "text\n".repeat(1000).writeToFile(json)
+                    val jsonPrettyPrint = tempDir.resolve("json.txt").createFile()
+                    "text\n".repeat(1000).writeToFile(jsonPrettyPrint)
 
                     val jsonMinified = tempDir.resolve("jsonMinified.txt").createFile()
-                    "text\n".repeat(100).writeToFile(jsonMinified)
+                    "text\n".repeat(500).writeToFile(jsonMinified)
 
-                    val zip = tempDir.resolve("zip.txt").createFile()
-                    "text\n".repeat(1).writeToFile(zip)
+                    val jsonMinifiedZst = tempDir.resolve("jsonMinified.zst").createFile()
+                    "text\n".repeat(500).writeToZstandardFile(jsonMinifiedZst, compressionLevel = 1)
+
+                    val jsonLines = tempDir.resolve("jsonLines.txt").createFile()
+                    "text\n".repeat(1000).writeToFile(jsonLines)
+
+                    val jsonLinesZst = tempDir.resolve("jsonLines.zst").createFile()
+                    "text\n".repeat(1000).writeToZstandardFile(jsonLinesZst, compressionLevel = 1)
 
                     val testDatasetFileAccessor = object: DatasetFileAccessor by TestDatasetFileAccessor {
                         override fun offlineDatabaseFile(type: DatasetFileType): RegularFile = when(type) {
-                            DatasetFileType.JSON -> json
-                            DatasetFileType.JSON_MINIFIED -> jsonMinified
-                            DatasetFileType.ZIP -> zip
+                            JSON_PRETTY_PRINT -> jsonPrettyPrint
+                            JSON_MINIFIED -> jsonMinified
+                            JSON_MINIFIED_ZST -> jsonMinifiedZst
+                            JSON_LINES -> jsonLines
+                            JSON_LINES_ZST -> jsonLinesZst
                         }
                     }
 
-                    val deadEntriesJson = tempDir.resolve("dead-entries-json.txt").createFile()
-                    "text\n".repeat(100).writeToFile(deadEntriesJson)
-
-                    val deadEntriesJsonMinified = tempDir.resolve("dead-entries-jsonMinified.txt").createFile()
-                    "text\n".repeat(1000).writeToFile(deadEntriesJsonMinified)
-
-                    val deadEntriesZip = tempDir.resolve("dead-entries-zip.txt").createFile()
-                    "text\n".repeat(1).writeToFile(deadEntriesZip)
-
                     val testDeadEntriesAccessor = object: DeadEntriesAccessor by TestDeadEntriesAccessor {
                         override fun deadEntriesFile(metaDataProviderConfig: MetaDataProviderConfig, type: DatasetFileType): RegularFile = when(type) {
-                            DatasetFileType.JSON -> deadEntriesJson
-                            DatasetFileType.JSON_MINIFIED -> deadEntriesJsonMinified
-                            DatasetFileType.ZIP -> deadEntriesZip
+                            JSON_PRETTY_PRINT -> shouldNotBeInvoked()
+                            JSON_MINIFIED -> shouldNotBeInvoked()
+                            JSON_MINIFIED_ZST -> shouldNotBeInvoked()
+                            else -> shouldNotBeInvoked()
                         }
                     }
 
@@ -626,7 +784,7 @@ internal class FileSizePlausibilityValidationPostProcessorTest {
             }
 
             @Test
-            fun `throws exception if dead entries json file doesn't exist`() {
+            fun `throws exception if JSON_PRETTY_PRINT file doesn't exist`() {
                 tempDirectory {
                     // given
                     val testMetaDataProviderConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
@@ -638,36 +796,43 @@ internal class FileSizePlausibilityValidationPostProcessorTest {
                         override fun deadEntriesSupported(metaDataProviderConfig: MetaDataProviderConfig): Boolean = true
                     }
 
-                    val json = tempDir.resolve("json.txt").createFile()
-                    "text\n".repeat(1000).writeToFile(json)
+                    val jsonPrettyPrint = tempDir.resolve("json.txt").createFile()
+                    "text\n".repeat(1000).writeToFile(jsonPrettyPrint)
 
                     val jsonMinified = tempDir.resolve("jsonMinified.txt").createFile()
-                    "text\n".repeat(100).writeToFile(jsonMinified)
+                    "text\n".repeat(500).writeToFile(jsonMinified)
 
-                    val zip = tempDir.resolve("zip.txt").createFile()
-                    "text\n".repeat(1).writeToFile(zip)
+                    val jsonMinifiedZst = tempDir.resolve("jsonMinified.zst").createFile()
+                    "text\n".repeat(500).writeToZstandardFile(jsonMinifiedZst, compressionLevel = 1)
+
+                    val jsonLines = tempDir.resolve("jsonLines.txt").createFile()
+                    "text\n".repeat(1000).writeToFile(jsonLines)
+
+                    val jsonLinesZst = tempDir.resolve("jsonLines.zst").createFile()
+                    "text\n".repeat(1000).writeToZstandardFile(jsonLinesZst, compressionLevel = 1)
 
                     val testDatasetFileAccessor = object: DatasetFileAccessor by TestDatasetFileAccessor {
                         override fun offlineDatabaseFile(type: DatasetFileType): RegularFile = when(type) {
-                            DatasetFileType.JSON -> json
-                            DatasetFileType.JSON_MINIFIED -> jsonMinified
-                            DatasetFileType.ZIP -> zip
+                            JSON_PRETTY_PRINT -> jsonPrettyPrint
+                            JSON_MINIFIED -> jsonMinified
+                            JSON_MINIFIED_ZST -> jsonMinifiedZst
+                            JSON_LINES -> jsonLines
+                            JSON_LINES_ZST -> jsonLinesZst
                         }
                     }
 
-                    val deadEntriesJson = tempDir.resolve("dead-entries-json.txt")
+                    val deadEntriesJsonMinified = tempDir.resolve("dead-entries-minified.txt").createFile()
+                    "text\n".repeat(500).writeToFile(deadEntriesJsonMinified)
 
-                    val deadEntriesJsonMinified = tempDir.resolve("dead-entries-jsonMinified.txt").createFile()
-                    "text\n".repeat(100).writeToFile(deadEntriesJsonMinified)
-
-                    val deadEntriesZip = tempDir.resolve("dead-entries-zip.txt").createFile()
-                    "text\n".repeat(1).writeToFile(deadEntriesZip)
+                    val deadEntriesJsonMinifiedZst = tempDir.resolve("dead-entries.zst").createFile()
+                    "text\n".repeat(500).writeToZstandardFile(deadEntriesJsonMinifiedZst, compressionLevel = 1)
 
                     val testDeadEntriesAccessor = object: DeadEntriesAccessor by TestDeadEntriesAccessor {
                         override fun deadEntriesFile(metaDataProviderConfig: MetaDataProviderConfig, type: DatasetFileType): RegularFile = when(type) {
-                            DatasetFileType.JSON -> deadEntriesJson
-                            DatasetFileType.JSON_MINIFIED -> deadEntriesJsonMinified
-                            DatasetFileType.ZIP -> deadEntriesZip
+                            JSON_PRETTY_PRINT -> tempDir.resolve("dead-entries.txt")
+                            JSON_MINIFIED -> deadEntriesJsonMinified
+                            JSON_MINIFIED_ZST -> deadEntriesJsonMinifiedZst
+                            else -> shouldNotBeInvoked()
                         }
                     }
 
@@ -688,7 +853,7 @@ internal class FileSizePlausibilityValidationPostProcessorTest {
             }
 
             @Test
-            fun `throws exception if dead endtries minified json file doesn't exist`() {
+            fun `throws exception if JSON_MINIFIED file doesn't exist`() {
                 tempDirectory {
                     // given
                     val testMetaDataProviderConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
@@ -700,36 +865,43 @@ internal class FileSizePlausibilityValidationPostProcessorTest {
                         override fun deadEntriesSupported(metaDataProviderConfig: MetaDataProviderConfig): Boolean = true
                     }
 
-                    val json = tempDir.resolve("json.txt").createFile()
-                    "text\n".repeat(1000).writeToFile(json)
+                    val jsonPrettyPrint = tempDir.resolve("json.txt").createFile()
+                    "text\n".repeat(1000).writeToFile(jsonPrettyPrint)
 
                     val jsonMinified = tempDir.resolve("jsonMinified.txt").createFile()
-                    "text\n".repeat(100).writeToFile(jsonMinified)
+                    "text\n".repeat(500).writeToFile(jsonMinified)
 
-                    val zip = tempDir.resolve("zip.txt").createFile()
-                    "text\n".repeat(1).writeToFile(zip)
+                    val jsonMinifiedZst = tempDir.resolve("jsonMinified.zst").createFile()
+                    "text\n".repeat(500).writeToZstandardFile(jsonMinifiedZst, compressionLevel = 1)
+
+                    val jsonLines = tempDir.resolve("jsonLines.txt").createFile()
+                    "text\n".repeat(1000).writeToFile(jsonLines)
+
+                    val jsonLinesZst = tempDir.resolve("jsonLines.zst").createFile()
+                    "text\n".repeat(1000).writeToZstandardFile(jsonLinesZst, compressionLevel = 1)
 
                     val testDatasetFileAccessor = object: DatasetFileAccessor by TestDatasetFileAccessor {
                         override fun offlineDatabaseFile(type: DatasetFileType): RegularFile = when(type) {
-                            DatasetFileType.JSON -> json
-                            DatasetFileType.JSON_MINIFIED -> jsonMinified
-                            DatasetFileType.ZIP -> zip
+                            JSON_PRETTY_PRINT -> jsonPrettyPrint
+                            JSON_MINIFIED -> jsonMinified
+                            JSON_MINIFIED_ZST -> jsonMinifiedZst
+                            JSON_LINES -> jsonLines
+                            JSON_LINES_ZST -> jsonLinesZst
                         }
                     }
 
-                    val deadEntriesJson = tempDir.resolve("dead-entries-json.txt").createFile()
-                    "text\n".repeat(1000).writeToFile(deadEntriesJson)
+                    val deadEntriesJsonPrettyPrint = tempDir.resolve("dead-entries.txt").createFile()
+                    "text\n".repeat(1000).writeToFile(deadEntriesJsonPrettyPrint)
 
-                    val deadEntriesJsonMinified = tempDir.resolve("dead-entries-jsonMinified.txt")
-
-                    val deadEntriesZip = tempDir.resolve("dead-entries-zip.txt").createFile()
-                    "text\n".repeat(1).writeToFile(deadEntriesZip)
+                    val deadEntriesJsonMinifiedZst = tempDir.resolve("dead-entries.zst").createFile()
+                    "text\n".repeat(500).writeToZstandardFile(deadEntriesJsonMinifiedZst, compressionLevel = 1)
 
                     val testDeadEntriesAccessor = object: DeadEntriesAccessor by TestDeadEntriesAccessor {
                         override fun deadEntriesFile(metaDataProviderConfig: MetaDataProviderConfig, type: DatasetFileType): RegularFile = when(type) {
-                            DatasetFileType.JSON -> deadEntriesJson
-                            DatasetFileType.JSON_MINIFIED -> deadEntriesJsonMinified
-                            DatasetFileType.ZIP -> deadEntriesZip
+                            JSON_PRETTY_PRINT -> deadEntriesJsonPrettyPrint
+                            JSON_MINIFIED -> tempDir.resolve("dead-entries-minified.txt")
+                            JSON_MINIFIED_ZST -> deadEntriesJsonMinifiedZst
+                            else -> shouldNotBeInvoked()
                         }
                     }
 
@@ -750,7 +922,7 @@ internal class FileSizePlausibilityValidationPostProcessorTest {
             }
 
             @Test
-            fun `throws exception if dead entries zip file doesn't exist`() {
+            fun `throws exception if JSON_MINIFIED_ZST file doesn't exist`() {
                 tempDirectory {
                     // given
                     val testMetaDataProviderConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
@@ -762,36 +934,43 @@ internal class FileSizePlausibilityValidationPostProcessorTest {
                         override fun deadEntriesSupported(metaDataProviderConfig: MetaDataProviderConfig): Boolean = true
                     }
 
-                    val json = tempDir.resolve("json.txt").createFile()
-                    "text\n".repeat(1000).writeToFile(json)
+                    val jsonPrettyPrint = tempDir.resolve("json.txt").createFile()
+                    "text\n".repeat(1000).writeToFile(jsonPrettyPrint)
 
                     val jsonMinified = tempDir.resolve("jsonMinified.txt").createFile()
-                    "text\n".repeat(100).writeToFile(jsonMinified)
+                    "text\n".repeat(500).writeToFile(jsonMinified)
 
-                    val zip = tempDir.resolve("zip.txt").createFile()
-                    "text\n".repeat(1).writeToFile(zip)
+                    val jsonMinifiedZst = tempDir.resolve("jsonMinified.zst").createFile()
+                    "text\n".repeat(500).writeToZstandardFile(jsonMinifiedZst, compressionLevel = 1)
+
+                    val jsonLines = tempDir.resolve("jsonLines.txt").createFile()
+                    "text\n".repeat(1000).writeToFile(jsonLines)
+
+                    val jsonLinesZst = tempDir.resolve("jsonLines.zst").createFile()
+                    "text\n".repeat(1000).writeToZstandardFile(jsonLinesZst, compressionLevel = 1)
 
                     val testDatasetFileAccessor = object: DatasetFileAccessor by TestDatasetFileAccessor {
                         override fun offlineDatabaseFile(type: DatasetFileType): RegularFile = when(type) {
-                            DatasetFileType.JSON -> json
-                            DatasetFileType.JSON_MINIFIED -> jsonMinified
-                            DatasetFileType.ZIP -> zip
+                            JSON_PRETTY_PRINT -> jsonPrettyPrint
+                            JSON_MINIFIED -> jsonMinified
+                            JSON_MINIFIED_ZST -> jsonMinifiedZst
+                            JSON_LINES -> jsonLines
+                            JSON_LINES_ZST -> jsonLinesZst
                         }
                     }
 
-                    val deadEntriesJson = tempDir.resolve("dead-entries-json.txt").createFile()
-                    "text\n".repeat(1000).writeToFile(deadEntriesJson)
+                    val deadEntriesJsonPrettyPrint = tempDir.resolve("dead-entries.txt").createFile()
+                    "text\n".repeat(1000).writeToFile(deadEntriesJsonPrettyPrint)
 
-                    val deadEntriesJsonMinified = tempDir.resolve("dead-entries-jsonMinified.txt").createFile()
-                    "text\n".repeat(100).writeToFile(deadEntriesJsonMinified)
-
-                    val deadEntriesZip = tempDir.resolve("dead-entries-zip.txt")
+                    val deadEntriesJsonMinified = tempDir.resolve("dead-entries-minified.txt").createFile()
+                    "text\n".repeat(500).writeToFile(deadEntriesJsonMinified)
 
                     val testDeadEntriesAccessor = object: DeadEntriesAccessor by TestDeadEntriesAccessor {
                         override fun deadEntriesFile(metaDataProviderConfig: MetaDataProviderConfig, type: DatasetFileType): RegularFile = when(type) {
-                            DatasetFileType.JSON -> deadEntriesJson
-                            DatasetFileType.JSON_MINIFIED -> deadEntriesJsonMinified
-                            DatasetFileType.ZIP -> deadEntriesZip
+                            JSON_PRETTY_PRINT -> deadEntriesJsonPrettyPrint
+                            JSON_MINIFIED -> deadEntriesJsonMinified
+                            JSON_MINIFIED_ZST -> tempDir.resolve("dead-entries.zst")
+                            else -> shouldNotBeInvoked()
                         }
                     }
 
@@ -807,7 +986,7 @@ internal class FileSizePlausibilityValidationPostProcessorTest {
                     }
 
                     // then
-                    assertThat(result).hasMessage("Dead entries *.zip file for [example.org] doesn't exist.")
+                    assertThat(result).hasMessage("Dead entries *-minified.json.zst file for [example.org] doesn't exist.")
                 }
             }
         }

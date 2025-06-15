@@ -5,11 +5,12 @@ package io.github.manamiproject.modb.app.dataset
  * @since 1.0.0
  */
 enum class DatasetFileType {
+
     /**
      * Pretty print JSON file.
      * @since 1.0.0
      */
-    JSON,
+    JSON_PRETTY_PRINT,
 
     /**
      * Minified JSON file.
@@ -18,8 +19,20 @@ enum class DatasetFileType {
     JSON_MINIFIED,
 
     /**
-     * Zipped minified JSON file.
+     * Minified JSON file compressed using Zstandard.
      * @since 1.0.0
      */
-    ZIP;
+    JSON_MINIFIED_ZST,
+
+    /**
+     * JSON lines format.
+     * @since 1.10.0
+     */
+    JSON_LINES,
+
+    /**
+     * JSON lines format compressed using Zstandard.
+     * @since 1.10.0
+     */
+    JSON_LINES_ZST;
 }

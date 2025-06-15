@@ -107,6 +107,37 @@ internal class FromRegularFileDeserializerTest {
         }
 
         @Test
+        fun `delegates input stream for JSON lines deserialization`() {
+            tempDirectory {
+                // given
+                val testFile = tempDir.resolve("test.jsonl")
+                """{ "test": true }""".writeToFile(testFile)
+
+                var invokedWith = EMPTY
+                val testDeserializer = object : Deserializer<LifecycleAwareInputStream, Dataset> by TestDeserializer() {
+                    override suspend fun deserialize(source: LifecycleAwareInputStream): Dataset {
+                        invokedWith = source.bufferedReader().readText()
+                        return Dataset(
+                            `$schema` = URI("https://example.org"),
+                            lastUpdate = "2020-01-01",
+                            data = emptyList(),
+                        )
+                    }
+                }
+
+                val deserializer = FromRegularFileDeserializer(
+                    deserializer = testDeserializer,
+                )
+
+                // when
+                deserializer.deserialize(testFile)
+
+                // then
+                assertThat(invokedWith).isEqualTo("""{ "test": true }""")
+            }
+        }
+
+        @Test
         fun `delegates input stream for ZST deserialization`() {
             tempDirectory {
                 // given

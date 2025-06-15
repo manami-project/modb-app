@@ -7,10 +7,15 @@ import io.github.manamiproject.modb.app.dataset.DatasetFileType.*
 import io.github.manamiproject.modb.app.dataset.DeadEntriesAccessor
 import io.github.manamiproject.modb.app.dataset.DefaultDatasetFileAccessor
 import io.github.manamiproject.modb.app.dataset.DefaultDeadEntriesAccessor
+import io.github.manamiproject.modb.core.extensions.RegularFile
 import io.github.manamiproject.modb.core.logging.LoggerDelegate
-import io.github.manamiproject.modb.serde.json.DatasetJsonDeserializer
-import io.github.manamiproject.modb.serde.json.DeadEntriesJsonDeserializer
-import io.github.manamiproject.modb.serde.json.DefaultExternalResourceJsonDeserializer
+import io.github.manamiproject.modb.serde.json.deserializer.DatasetFromJsonInputStreamDeserializer
+import io.github.manamiproject.modb.serde.json.deserializer.DatasetFromJsonLinesInputStreamDeserializer
+import io.github.manamiproject.modb.serde.json.deserializer.DeadEntriesFromInputStreamDeserializer
+import io.github.manamiproject.modb.serde.json.deserializer.Deserializer
+import io.github.manamiproject.modb.serde.json.deserializer.FromRegularFileDeserializer
+import io.github.manamiproject.modb.serde.json.models.Dataset
+import io.github.manamiproject.modb.serde.json.models.DeadEntries
 
 /**
  * Verifies that the number of entries across dataset files as well as dead entries files are equal.
@@ -21,35 +26,38 @@ import io.github.manamiproject.modb.serde.json.DefaultExternalResourceJsonDeseri
  */
 class NumberOfEntriesValidationPostProcessor(
     private val appConfig: Config = AppConfig.instance,
-    private val deadEntriesAccessor: DeadEntriesAccessor = DefaultDeadEntriesAccessor.instance,
     private val datasetFileAccessor: DatasetFileAccessor = DefaultDatasetFileAccessor.instance,
+    private val deadEntriesAccessor: DeadEntriesAccessor = DefaultDeadEntriesAccessor.instance,
+    private val datasetJsonDeserializer: Deserializer<RegularFile, Dataset> = FromRegularFileDeserializer(deserializer = DatasetFromJsonInputStreamDeserializer.instance),
+    private val datasetJsonLinesDeserializer: Deserializer<RegularFile, Dataset> = FromRegularFileDeserializer(deserializer = DatasetFromJsonLinesInputStreamDeserializer.instance),
+    private val deadEntriesDeserializer: Deserializer<RegularFile, DeadEntries> = FromRegularFileDeserializer(deserializer = DeadEntriesFromInputStreamDeserializer.instance),
 ): PostProcessor {
 
     override suspend fun process(): Boolean {
         log.info { "Checking that number of entries is the same in all dataset files." }
 
-        val datasetJsonDeserializer = DefaultExternalResourceJsonDeserializer(deserializer = DatasetJsonDeserializer.instance)
-        val datasetJson = datasetJsonDeserializer.deserialize(datasetFileAccessor.offlineDatabaseFile(JSON)).data.count()
+        val datasetJsonPrettyPrint = datasetJsonDeserializer.deserialize(datasetFileAccessor.offlineDatabaseFile(JSON_PRETTY_PRINT)).data.count()
         val datasetJsonMinified = datasetJsonDeserializer.deserialize(datasetFileAccessor.offlineDatabaseFile(JSON_MINIFIED)).data.count()
-        val datasetZip = datasetJsonDeserializer.deserialize(datasetFileAccessor.offlineDatabaseFile(ZIP)).data.count()
+        val datasetJsonMinifiedZst = datasetJsonDeserializer.deserialize(datasetFileAccessor.offlineDatabaseFile(JSON_MINIFIED_ZST)).data.count()
+        val datasetJsonLines = datasetJsonLinesDeserializer.deserialize(datasetFileAccessor.offlineDatabaseFile(JSON_LINES)).data.count()
+        val datasetJsonLinesZst = datasetJsonLinesDeserializer.deserialize(datasetFileAccessor.offlineDatabaseFile(JSON_LINES_ZST)).data.count()
 
-        check(datasetJson == datasetJsonMinified && datasetJson == datasetZip) {
-            "Number of dataset files differ: [json=$datasetJson, jsonMinified=$datasetJsonMinified, zip=$datasetZip]"
+
+        check(listOf(datasetJsonPrettyPrint, datasetJsonMinified, datasetJsonMinifiedZst, datasetJsonLines, datasetJsonLinesZst).distinct().size == 1) {
+            "Number of dataset files differ: [jsonPrettyPrint=$datasetJsonPrettyPrint, jsonMinified=$datasetJsonMinified, jsonMinifiedZst=$datasetJsonMinifiedZst, datasetJsonLines=$datasetJsonLines, datasetJsonLinesZst=$datasetJsonLinesZst]"
         }
 
         log.info { "Checking that number of dead entries is the same across all files." }
 
-        val deadEntriesJsonDeserializer = DefaultExternalResourceJsonDeserializer(deserializer = DeadEntriesJsonDeserializer.instance)
-
         appConfig.metaDataProviderConfigurations()
             .filter { appConfig.deadEntriesSupported(it) }
             .forEach { currentConfig ->
-                val deadEntriesJson = deadEntriesJsonDeserializer.deserialize(deadEntriesAccessor.deadEntriesFile(currentConfig, JSON)).deadEntries.count()
-                val deadEntriesJsonMinified = deadEntriesJsonDeserializer.deserialize(deadEntriesAccessor.deadEntriesFile(currentConfig, JSON_MINIFIED)).deadEntries.count()
-                val deadEntriesZip = deadEntriesJsonDeserializer.deserialize(deadEntriesAccessor.deadEntriesFile(currentConfig, ZIP)).deadEntries.count()
+                val deadEntriesJsonPrettyPrint = deadEntriesDeserializer.deserialize(deadEntriesAccessor.deadEntriesFile(currentConfig, JSON_PRETTY_PRINT)).deadEntries.count()
+                val deadEntriesJsonMinified = deadEntriesDeserializer.deserialize(deadEntriesAccessor.deadEntriesFile(currentConfig, JSON_MINIFIED)).deadEntries.count()
+                val deadEntriesJsonMinifiedZst = deadEntriesDeserializer.deserialize(deadEntriesAccessor.deadEntriesFile(currentConfig, JSON_MINIFIED_ZST)).deadEntries.count()
 
-                check(deadEntriesJson == deadEntriesJsonMinified && deadEntriesJson == deadEntriesZip) {
-                    "Number of dead entries files differ for [${currentConfig.hostname()}]: [json=$deadEntriesJson, jsonMinified=$deadEntriesJsonMinified, zip=$deadEntriesZip]"
+                check(deadEntriesJsonPrettyPrint == deadEntriesJsonMinified && deadEntriesJsonPrettyPrint == deadEntriesJsonMinifiedZst) {
+                    "Number of dead entries files differ for [${currentConfig.hostname()}]: [jsonPrettyPrint=$deadEntriesJsonPrettyPrint, jsonMinified=$deadEntriesJsonMinified, JsonMinifiedZst=$deadEntriesJsonMinifiedZst]"
                 }
             }
 
