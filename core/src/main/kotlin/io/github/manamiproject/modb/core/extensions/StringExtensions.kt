@@ -1,11 +1,13 @@
 package io.github.manamiproject.modb.core.extensions
 
+import com.github.luben.zstd.ZstdOutputStream
 import io.github.manamiproject.modb.core.coroutines.ModbDispatchers.LIMITED_FS
 import kotlinx.coroutines.withContext
 import kotlin.contracts.ExperimentalContracts
 import kotlin.contracts.contract
 import kotlin.io.path.createFile
 import kotlin.io.path.deleteIfExists
+import kotlin.io.path.outputStream
 import kotlin.io.path.writeText
 
 /**
@@ -166,4 +168,43 @@ public fun String?.neitherNullNorBlank(): Boolean {
     }
 
     return !this.eitherNullOrBlank()
+}
+
+/**
+ * Writes a [String] into a Zstandard compressed file .If the file already exists it will be overwritten.
+ * @since 19.0.0
+ * @param file The file to which you want to write the given [String].
+ * @param writeLockFile You can choose to write an empty lock file which indicates that the file is currently being created.
+ * First the empty lock file is created using [LOCK_FILE_SUFFIX]. Then the actual file is being written. After that the lock file is deleted again.
+ * **Default** is `false`.
+ * @param compressionLevel Level of compression as defined by Zstandard. This can be a value between `1` (inclusive) and `22` (inclusive).
+ * @throws IllegalStateException if the given [String] is blank.
+ * @throws IllegalArgumentException if the file suffix is incorrect or the [compressionLevel] level is out of range.
+ * @receiver Any non-nullable [String].
+ */
+public suspend fun String.writeToZstandardFile(file: RegularFile, writeLockFile: Boolean = false, compressionLevel: Int = 22) {
+    val content = this
+
+    withContext(LIMITED_FS) {
+        check(content.neitherNullNorBlank()) { "Tried to write file [$file], but the String was blank." }
+        require(file.fileSuffix() == "zst") { "File suffix must be *.zst." }
+        require(compressionLevel in 1..22) { "Compression level must be a value between 1 (inclusive) and 22 (inclusive)." }
+
+
+        val lockFile = file.changeSuffix(LOCK_FILE_SUFFIX)
+
+        if (writeLockFile) {
+            lockFile.createFile()
+        }
+
+        file.outputStream().use { fos ->
+            ZstdOutputStream(fos, compressionLevel).use { zstOut ->
+                zstOut.write(content.toByteArray())
+            }
+        }
+
+        if (lockFile.regularFileExists() && writeLockFile) {
+            lockFile.deleteIfExists()
+        }
+    }
 }
