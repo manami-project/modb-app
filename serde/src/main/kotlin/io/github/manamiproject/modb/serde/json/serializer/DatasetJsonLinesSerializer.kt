@@ -14,7 +14,7 @@ import java.time.Clock
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter.ISO_DATE
 
-public class AnimeJsonLinesSerializer(
+public class DatasetJsonLinesSerializer(
     private val clock: Clock = Clock.systemDefaultZone(),
 ): JsonLinesSerializer<Anime> {
 
@@ -27,7 +27,7 @@ public class AnimeJsonLinesSerializer(
         val metaData = DatasetMetaData(
             `$schema` = URI(""), //FIXME
             license = License().copy(
-                url = "https://github.com/manami-project/anime-offline-database/blob/$currentWeek/LICENSE",
+                url = URI("https://github.com/manami-project/anime-offline-database/blob/$currentWeek/LICENSE"),
             ),
             lastUpdate = LocalDate.now(clock).format(ISO_DATE),
         )
@@ -51,9 +51,9 @@ public class AnimeJsonLinesSerializer(
         private val log by LoggerDelegate()
 
         /**
-         * Singleton of [AnimeJsonLinesSerializer]
+         * Singleton of [DatasetJsonLinesSerializer]
          * @since 6.0.0
          */
-        public val instance: AnimeJsonLinesSerializer by lazy { AnimeJsonLinesSerializer() }
+        public val instance: DatasetJsonLinesSerializer by lazy { DatasetJsonLinesSerializer() }
     }
 }

@@ -10,8 +10,7 @@ import io.github.manamiproject.modb.core.anime.Duration.TimeUnit.MINUTES
 import io.github.manamiproject.modb.core.httpclient.HttpClient
 import io.github.manamiproject.modb.core.httpclient.HttpResponse
 import io.github.manamiproject.modb.core.httpclient.RequestBody
-import io.github.manamiproject.modb.core.io.LifecycleAwareInputStream
-import io.github.manamiproject.modb.serde.json.JsonDeserializer
+import io.github.manamiproject.modb.serde.json.deserializer.Deserializer
 import io.github.manamiproject.modb.test.shouldNotBeInvoked
 import java.io.IOException
 import java.io.InputStream
@@ -19,14 +18,13 @@ import java.net.URI
 import java.net.URL
 import io.github.manamiproject.modb.core.anime.Duration.Companion.UNKNOWN as UNKNOWN_DURATION
 
-internal object TestHttpClient : HttpClient {
+internal object TestHttpClient: HttpClient {
     override suspend fun get(url: URL, headers: Map<String, Collection<String>>): HttpResponse = shouldNotBeInvoked()
     override suspend fun post(url: URL, requestBody: RequestBody, headers: Map<String, Collection<String>>): HttpResponse = shouldNotBeInvoked()
 }
 
-internal object TestJsonDeserializer : JsonDeserializer<List<Int>> {
-    override suspend fun deserialize(json: String): List<Int> = shouldNotBeInvoked()
-    override suspend fun deserialize(jsonInputStream: LifecycleAwareInputStream): List<Int> = shouldNotBeInvoked()
+internal class TestDeserializer<in IN, out OUT>: Deserializer<IN, OUT> {
+    override suspend fun deserialize(source: IN): OUT = shouldNotBeInvoked()
 }
 
 internal class TestReadOnceInputStream(private val delegate: InputStream): InputStream() {

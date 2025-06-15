@@ -11,7 +11,7 @@ import java.time.Instant
 import java.time.ZoneOffset.UTC
 import kotlin.test.Test
 
-internal class AnimeJsonLinesSerializerTest {
+internal class DatasetJsonLinesSerializerTest {
 
     @Nested
     inner class SerializeTests {
@@ -21,7 +21,7 @@ internal class AnimeJsonLinesSerializerTest {
             runBlocking {
                 // given
                 val clock = Clock.fixed(Instant.parse("2020-01-01T16:02:42.00Z"), UTC)
-                val serializer = DatasetJsonSerializer(clock)
+                val serializer = DatasetJsonLinesSerializer(clock)
                 val animeList = listOf(
                     TestAnimeObjects.DefaultAnime.obj,
                     TestAnimeObjects.NullableNotSet.obj,
@@ -58,7 +58,7 @@ internal class AnimeJsonLinesSerializerTest {
                      """.trimIndent()
 
                     val clock = Clock.fixed(Instant.parse("2020-01-01T16:02:42.00Z"), UTC)
-                    val serializer = DatasetJsonSerializer(clock)
+                    val serializer = DatasetJsonLinesSerializer(clock)
 
                     val animeList = listOf(
                         Anime("B"),
@@ -86,7 +86,7 @@ internal class AnimeJsonLinesSerializerTest {
                      """.trimIndent()
 
                     val clock = Clock.fixed(Instant.parse("2020-01-01T16:02:42.00Z"), UTC)
-                    val serializer = DatasetJsonSerializer(clock)
+                    val serializer = DatasetJsonLinesSerializer(clock)
 
                     val animeList = listOf(
                         Anime(
@@ -123,7 +123,7 @@ internal class AnimeJsonLinesSerializerTest {
                      """.trimIndent()
 
                     val clock = Clock.fixed(Instant.parse("2020-01-01T16:02:42.00Z"), UTC)
-                    val serializer = DatasetJsonSerializer(clock)
+                    val serializer = DatasetJsonLinesSerializer(clock)
 
                     val animeList = listOf(
                         Anime(
@@ -159,13 +159,13 @@ internal class AnimeJsonLinesSerializerTest {
         @Test
         fun `instance property always returns same instance`() {
             // given
-            val previous = AnimeJsonLinesSerializer.instance
+            val previous = DatasetJsonLinesSerializer.instance
 
             // when
-            val result = AnimeJsonLinesSerializer.instance
+            val result = DatasetJsonLinesSerializer.instance
 
             // then
-            assertThat(result).isExactlyInstanceOf(AnimeJsonLinesSerializer::class.java)
+            assertThat(result).isExactlyInstanceOf(DatasetJsonLinesSerializer::class.java)
             assertThat(result === previous).isTrue()
         }
     }

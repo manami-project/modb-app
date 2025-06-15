@@ -9,12 +9,12 @@ import kotlinx.coroutines.flow.asFlow
 import kotlinx.coroutines.flow.map
 
 /**
- * Deserialzes JSON lines file of [Anime] provided by a [LifecycleAwareInputStream].
- * [manami-project/anime-offline-database](https://github.com/manami-project/anime-offline-database).
+ * Deserialzes JSON lines of [Anime] provided by a [LifecycleAwareInputStream].
+ * This class cannot handle a default JSON. This class can only process JSON lines content.
  * @since 6.0.0
  * @throws IllegalArgumentException if the given [LifecycleAwareInputStream] is closed.
  */
-public class AnimeFromJsonLinesDeserializer: Deserializer<LifecycleAwareInputStream, Flow<Anime>> {
+public class AnimeFromJsonLinesInputStreamDeserializer: Deserializer<LifecycleAwareInputStream, Flow<Anime>> {
 
     override suspend fun deserialize(source: LifecycleAwareInputStream): Flow<Anime> {
         require(source.isNotClosed()) { "Stream must not be closed." }
@@ -32,9 +32,9 @@ public class AnimeFromJsonLinesDeserializer: Deserializer<LifecycleAwareInputStr
         private val log by LoggerDelegate()
 
         /**
-         * Singleton of [AnimeFromJsonLinesDeserializer]
+         * Singleton of [AnimeFromJsonLinesInputStreamDeserializer]
          * @since 6.0.0
          */
-        public val instance: AnimeFromJsonLinesDeserializer by lazy { AnimeFromJsonLinesDeserializer() }
+        public val instance: AnimeFromJsonLinesInputStreamDeserializer by lazy { AnimeFromJsonLinesInputStreamDeserializer() }
     }
 }

@@ -1,5 +1,7 @@
 package io.github.manamiproject.modb.serde.json.models
 
+import java.net.URI
+
 /**
  * License info as seen in the github repository.
  * @since 5.0.0
@@ -8,5 +10,5 @@ package io.github.manamiproject.modb.serde.json.models
  */
 public data class License(
     val name: String = "Open Data Commons Open Database License (ODbL) v1.0 + Database Contents License (DbCL) v1.0",
-    val url: String = "https://github.com/manami-project/anime-offline-database/blob/master/LICENSE",
+    val url: URI = URI("https://github.com/manami-project/anime-offline-database/blob/master/LICENSE"),
 )
