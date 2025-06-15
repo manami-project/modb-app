@@ -8,12 +8,12 @@ import io.github.manamiproject.modb.serde.json.models.Dataset
 import kotlinx.coroutines.withContext
 
 /**
- * Can deserialize the dataset JSON file provided by a [LifecycleAwareInputStream].
- * [manami-project/anime-offline-database](https://github.com/manami-project/anime-offline-database).
+ * Can deserialize the dataset JSON provided by a [LifecycleAwareInputStream].
+ * This class cannot handle JSON lines content. This class can only process default JSON.
  * @since 6.0.0
  * @throws IllegalArgumentException if the given [LifecycleAwareInputStream] is closed.
  */
-public class DatasetFromInputStreamDeserializer: Deserializer<LifecycleAwareInputStream, Dataset> {
+public class DatasetFromJsonInputStreamDeserializer: Deserializer<LifecycleAwareInputStream, Dataset> {
 
     override suspend fun deserialize(source: LifecycleAwareInputStream): Dataset = withContext(LIMITED_CPU) {
         require(source.isNotClosed()) { "Stream must not be closed." }
@@ -27,9 +27,9 @@ public class DatasetFromInputStreamDeserializer: Deserializer<LifecycleAwareInpu
         private val log by LoggerDelegate()
 
         /**
-         * Singleton of [DatasetFromInputStreamDeserializer]
+         * Singleton of [DatasetFromJsonInputStreamDeserializer]
          * @since 6.0.0
          */
-        public val instance: DatasetFromInputStreamDeserializer by lazy { DatasetFromInputStreamDeserializer() }
+        public val instance: DatasetFromJsonInputStreamDeserializer by lazy { DatasetFromJsonInputStreamDeserializer() }
     }
 }

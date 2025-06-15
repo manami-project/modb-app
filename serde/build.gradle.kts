@@ -22,6 +22,8 @@ dependencies {
     api(libs.kotlin.stdlib)
     api(project(":core"))
 
+    implementation(libs.zstandard)
+
     testImplementation(libs.logback.classic)
     testImplementation(project(":test"))
 }

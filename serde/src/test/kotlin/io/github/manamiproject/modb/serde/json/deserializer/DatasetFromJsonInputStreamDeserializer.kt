@@ -11,7 +11,7 @@ import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Nested
 import kotlin.test.Test
 
-internal class DatasetFromInputStreamDeserializerTest {
+internal class DatasetFromJsonInputStreamDeserializerTest {
 
     @Nested
     inner class DeserializeTests {
@@ -19,7 +19,7 @@ internal class DatasetFromInputStreamDeserializerTest {
         @Test
         fun `throws exception if the stream is closed`() {
             // given
-            val deserializer = DatasetFromInputStreamDeserializer()
+            val deserializer = DatasetFromJsonInputStreamDeserializer()
             val inputStream = LifecycleAwareInputStream(TestReadOnceInputStream("test".byteInputStream()))
             inputStream.close()
 
@@ -36,7 +36,7 @@ internal class DatasetFromInputStreamDeserializerTest {
         fun `correctly deserialize dataset string`() {
             runBlocking {
                 // given
-                val deserializer = DatasetFromInputStreamDeserializer()
+                val deserializer = DatasetFromJsonInputStreamDeserializer()
 
                 val expectedEntries = listOf(
                     TestAnimeObjects.DefaultAnime.obj,
@@ -52,8 +52,7 @@ internal class DatasetFromInputStreamDeserializerTest {
                     TestAnimeObjects.NullableNotSet.serializedPrettyPrint,
                 )
 
-                val inputStream =
-                    LifecycleAwareInputStream(TestReadOnceInputStream(prettyPrintDataset.byteInputStream()))
+                val inputStream = LifecycleAwareInputStream(TestReadOnceInputStream(prettyPrintDataset.byteInputStream()))
 
 
                 // when
@@ -68,7 +67,7 @@ internal class DatasetFromInputStreamDeserializerTest {
         fun `correctly deserialize minified dataset string`() {
             runBlocking {
                 // given
-                val deserializer = DatasetFromInputStreamDeserializer()
+                val deserializer = DatasetFromJsonInputStreamDeserializer()
 
                 val expectedEntries = listOf(
                     TestAnimeObjects.DefaultAnime.obj,
@@ -101,13 +100,13 @@ internal class DatasetFromInputStreamDeserializerTest {
         @Test
         fun `instance property always returns same instance`() {
             // given
-            val previous = DatasetFromInputStreamDeserializer.instance
+            val previous = DatasetFromJsonInputStreamDeserializer.instance
 
             // when
-            val result = DatasetFromInputStreamDeserializer.instance
+            val result = DatasetFromJsonInputStreamDeserializer.instance
 
             // then
-            assertThat(result).isExactlyInstanceOf(DatasetFromInputStreamDeserializer::class.java)
+            assertThat(result).isExactlyInstanceOf(DatasetFromJsonInputStreamDeserializer::class.java)
             assertThat(result === previous).isTrue()
         }
     }

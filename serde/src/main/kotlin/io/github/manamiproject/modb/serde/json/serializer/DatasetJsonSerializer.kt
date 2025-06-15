@@ -40,7 +40,7 @@ public class DatasetJsonSerializer(
             val data = Dataset(
                 `$schema` = schemaLink,
                 license = License().copy(
-                    url = "https://github.com/manami-project/anime-offline-database/blob/$currentWeek/LICENSE",
+                    url = URI("https://github.com/manami-project/anime-offline-database/blob/$currentWeek/LICENSE"),
                 ),
                 data = sortedList,
                 lastUpdate = LocalDate.now(clock).format(DateTimeFormatter.ISO_DATE),
