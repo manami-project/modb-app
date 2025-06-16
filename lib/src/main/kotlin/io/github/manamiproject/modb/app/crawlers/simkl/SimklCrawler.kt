@@ -118,10 +118,12 @@ class SimklCrawler(
         )
 
         check(response.isOk()) { "Response code is not 200." }
-        val skipToNextYear = response.bodyAsText == NO_MORE_CONTENT_FOR_OFFSET || response.bodyAsText.eitherNullOrBlank()
+
+        val responseBody = response.bodyAsString()
+        val skipToNextYear = responseBody == NO_MORE_CONTENT_FOR_OFFSET || responseBody.eitherNullOrBlank()
 
         val data = xmlDataExtractor.extract(
-            response.bodyAsText, mapOf(
+            responseBody, mapOf(
                 "animeList" to "//div[@class='SimklTVPosterImage']/a/@href",
             )
         )
