@@ -47,8 +47,9 @@ class NotifyDatasetDownloadCrawler(
             throw IllegalStateException("Unhandled response code [${animeResponse.code}] when downloading anime data.")
         }
 
-        animeResponse.bodyAsText.split("\n")
-            .asSequence()
+        animeResponse.bodyAsStream()
+            .bufferedReader()
+            .lineSequence()
             .chunked(2) {
                 it.first() to it.last()
             }
@@ -87,7 +88,9 @@ class NotifyDatasetDownloadCrawler(
             throw IllegalStateException("Unhandled response code [${relationsResponse.code}] when downloading relations.")
         }
 
-        relationsResponse.bodyAsText.split("\n")
+        relationsResponse.bodyAsStream()
+            .bufferedReader()
+            .lineSequence()
             .chunked(2) {
                 it.first() to it.last()
             }
