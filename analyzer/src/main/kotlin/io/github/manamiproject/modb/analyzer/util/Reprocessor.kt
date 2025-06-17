@@ -28,6 +28,7 @@ internal object Reprocessor {
             DuplicatesValidationPostProcessor.instance,
             DeadEntriesValidationPostProcessor.instance,
             SourcesConsistencyValidationPostProcessor.instance,
+            ZstandardFilesForDeadEntriesCreatorPostProcessor.instance,
             NumberOfEntriesValidationPostProcessor.instance,
             FileSizePlausibilityValidationPostProcessor.instance,
             DeleteOldDownloadDirectoriesPostProcessor.instance,
