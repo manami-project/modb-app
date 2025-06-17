@@ -43,7 +43,7 @@ internal class DefaultAlreadyDownloadedIdsFinderTest {
                 tempDir.resolve("anime-title.conv").createFile()
                 tempDir.resolve("200.json").createFile()
                 tempDir.resolve("something-else.txt").createFile()
-                tempDir.resolve("folder").createDirectory()
+                tempDir.resolve("directory").createDirectory()
 
                 // when
                 val result = defaultAlreadyDownloadedIdsFinder.alreadyDownloadedIds(testMetaDataProviderConfig)

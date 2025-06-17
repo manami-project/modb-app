@@ -201,7 +201,7 @@ internal class DefaultDeadEntriesAccessorTest {
         }
 
         @Test
-        fun `creates folder if it doesn't exist yet`() {
+        fun `creates directory if it doesn't exist yet`() {
             tempDirectory {
                 // given
                 val testMetaDataProviderConfig = MyanimelistConfig
@@ -826,8 +826,8 @@ internal class DefaultDeadEntriesAccessorTest {
                 val existingEntry = testMetaDataProviderConfig.buildAnimeLink("1535")
                 val deadEntry = testMetaDataProviderConfig.buildAnimeLink("9999")
 
-                val dcsSubfolder = testAppConfig.downloadControlStateDirectory().resolve(existingEntry.host).createDirectory()
-                val dcsFile = dcsSubfolder.resolve("1535.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
+                val dcsSubDirectory = testAppConfig.downloadControlStateDirectory().resolve(existingEntry.host).createDirectory()
+                val dcsFile = dcsSubDirectory.resolve("1535.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
 
                 val anime = AnimeRaw(
                     _title = "Test",
@@ -836,7 +836,7 @@ internal class DefaultDeadEntriesAccessorTest {
                 Json.toJson(anime).writeToFile(dcsFile)
 
                 val testDownloadControlStateAccessor = object: DownloadControlStateAccessor by TestDownloadControlStateAccessor {
-                    override fun downloadControlStateDirectory(metaDataProviderConfig: MetaDataProviderConfig): Directory = dcsSubfolder
+                    override fun downloadControlStateDirectory(metaDataProviderConfig: MetaDataProviderConfig): Directory = dcsSubDirectory
                 }
 
                 val deadEntriesAccessor = DefaultDeadEntriesAccessor(
