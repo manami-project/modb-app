@@ -106,9 +106,9 @@ internal class UpdateTestResourcesTest {
     @Test
     fun `verify that all test resources a part of the update sequence`() {
         // given
-        val testResourcesFolder = "LivechartAnimeConverterTest"
+        val testResourcesDirectory = "LivechartAnimeConverterTest"
 
-        val filesInTestResources = Files.walk(testResource(testResourcesFolder))
+        val filesInTestResources = Files.walk(testResource(testResourcesDirectory))
             .filter { it.isRegularFile() }
             .filter { it.fileSuffix() == LivechartConfig.fileSuffix() }
             .map { it.toString() }
@@ -116,7 +116,7 @@ internal class UpdateTestResourcesTest {
 
         // when
         val filesInList = files.keys.map {
-            it.replace(testResourcesFolder, testResource(testResourcesFolder).toString())
+            it.replace(testResourcesDirectory, testResource(testResourcesDirectory).toString())
         }
 
         // then

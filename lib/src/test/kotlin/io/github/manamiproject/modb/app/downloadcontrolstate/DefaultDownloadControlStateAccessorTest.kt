@@ -1556,11 +1556,11 @@ internal class DefaultDownloadControlStateAccessorTest {
                     override suspend fun isPartOfMergeLock(uri: URI): Boolean = false
                 }
 
-                val dcsSubFolder = tempDir.resolve(testMetaDataProviderConfig.hostname()).createDirectory()
-                val oldFile = dcsSubFolder.resolve("177191.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX")
+                val dcsSubDirectory = tempDir.resolve(testMetaDataProviderConfig.hostname()).createDirectory()
+                val oldFile = dcsSubDirectory.resolve("177191.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX")
                 createExpectedDcsEntry(TestAnimeRawObjects.AllPropertiesSet.serializedPrettyPrint)
                     .writeToFile(oldFile)
-                val newFile = dcsSubFolder.resolve("new-id.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX")
+                val newFile = dcsSubDirectory.resolve("new-id.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX")
 
                 val downloadControlStateAccessor = DefaultDownloadControlStateAccessor(
                     appConfig = testAppConfig,
@@ -1602,10 +1602,10 @@ internal class DefaultDownloadControlStateAccessorTest {
                     override suspend fun isPartOfMergeLock(uri: URI): Boolean = false
                 }
 
-                val dcsSubFolder = tempDir.resolve(testMetaDataProviderConfig.hostname()).createDirectory()
-                val oldFile = dcsSubFolder.resolve("previous-id.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
+                val dcsSubDirectory = tempDir.resolve(testMetaDataProviderConfig.hostname()).createDirectory()
+                val oldFile = dcsSubDirectory.resolve("previous-id.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
                 "override with this".writeToFile(oldFile)
-                val newFile = dcsSubFolder.resolve("new-id.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
+                val newFile = dcsSubDirectory.resolve("new-id.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
                 "to be overwritten".writeToFile(newFile)
 
                 val downloadControlStateAccessor = DefaultDownloadControlStateAccessor(
@@ -1650,9 +1650,9 @@ internal class DefaultDownloadControlStateAccessorTest {
                     }
                 }
 
-                val dcsSubFolder = tempDir.resolve(testMetaDataProviderConfig.hostname()).createDirectory()
-                dcsSubFolder.resolve("previous-id.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
-                val newFile = dcsSubFolder.resolve("new-id.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX")
+                val dcsSubDirectory = tempDir.resolve(testMetaDataProviderConfig.hostname()).createDirectory()
+                dcsSubDirectory.resolve("previous-id.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
+                val newFile = dcsSubDirectory.resolve("new-id.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX")
 
                 val downloadControlStateAccessor = DefaultDownloadControlStateAccessor(
                     appConfig = testAppConfig,
@@ -1698,9 +1698,9 @@ internal class DefaultDownloadControlStateAccessorTest {
                     override suspend fun isPartOfMergeLock(uri: URI): Boolean = false
                 }
 
-                val dcsSubFolder = tempDir.resolve(testMetaDataProviderConfig.hostname()).createDirectory()
-                dcsSubFolder.resolve("$previousId.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
-                dcsSubFolder.resolve("$newId.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX")
+                val dcsSubDirectory = tempDir.resolve(testMetaDataProviderConfig.hostname()).createDirectory()
+                dcsSubDirectory.resolve("$previousId.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
+                dcsSubDirectory.resolve("$newId.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX")
 
                 val downloadControlStateAccessor = DefaultDownloadControlStateAccessor(
                     appConfig = testAppConfig,
@@ -1746,8 +1746,8 @@ internal class DefaultDownloadControlStateAccessorTest {
                     override suspend fun isPartOfMergeLock(uri: URI): Boolean = false
                 }
 
-                val dcsSubFolder = tempDir.resolve(testMetaDataProviderConfig.hostname()).createDirectory()
-                dcsSubFolder.resolve("previous-id.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
+                val dcsSubDirectory = tempDir.resolve(testMetaDataProviderConfig.hostname()).createDirectory()
+                dcsSubDirectory.resolve("previous-id.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
 
                 val downloadControlStateAccessor = DefaultDownloadControlStateAccessor(
                     appConfig = testAppConfig,
@@ -1789,9 +1789,9 @@ internal class DefaultDownloadControlStateAccessorTest {
                     override suspend fun isPartOfMergeLock(uri: URI): Boolean = false
                 }
 
-                val dcsSubFolder = tempDir.resolve(testMetaDataProviderConfig.hostname()).createDirectory()
-                dcsSubFolder.resolve("previous-id1.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
-                dcsSubFolder.resolve("previous-id2.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
+                val dcsSubDirectory = tempDir.resolve(testMetaDataProviderConfig.hostname()).createDirectory()
+                dcsSubDirectory.resolve("previous-id1.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
+                dcsSubDirectory.resolve("previous-id2.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX").createFile()
 
                 val downloadControlStateAccessor = DefaultDownloadControlStateAccessor(
                     appConfig = testAppConfig,

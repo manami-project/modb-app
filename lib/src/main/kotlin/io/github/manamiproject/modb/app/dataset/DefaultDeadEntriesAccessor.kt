@@ -63,16 +63,16 @@ class DefaultDeadEntriesAccessor(
         require(appConfig.deadEntriesSupported(metaDataProviderConfig)) { "Meta data provider [${metaDataProviderConfig.hostname()}] doesn't support dead entry files." }
 
         val hostnameWithoutTld = metaDataProviderConfig.hostname().split('.').first()
-        val deadEntriesFolder = appConfig.outputDirectory().resolve("dead-entries")
+        val deadEntriesDirectory = appConfig.outputDirectory().resolve("dead-entries")
 
-        if (!deadEntriesFolder.directoryExists()) {
-            deadEntriesFolder.createDirectories()
+        if (!deadEntriesDirectory.directoryExists()) {
+            deadEntriesDirectory.createDirectories()
         }
 
         return when (type) {
-            JSON_PRETTY_PRINT -> deadEntriesFolder.resolve("$hostnameWithoutTld.json")
-            JSON_MINIFIED -> deadEntriesFolder.resolve("$hostnameWithoutTld-minified.json")
-            JSON_MINIFIED_ZST -> deadEntriesFolder.resolve("$hostnameWithoutTld-minified.json.zst")
+            JSON_PRETTY_PRINT -> deadEntriesDirectory.resolve("$hostnameWithoutTld.json")
+            JSON_MINIFIED -> deadEntriesDirectory.resolve("$hostnameWithoutTld-minified.json")
+            JSON_MINIFIED_ZST -> deadEntriesDirectory.resolve("$hostnameWithoutTld-minified.json.zst")
             JSON_LINES -> throw UnsupportedOperationException("Dead entries don't support JSON line format.")
             JSON_LINES_ZST -> throw UnsupportedOperationException("Dead entries don't support JSON line format.")
         }

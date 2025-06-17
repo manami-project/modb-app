@@ -135,9 +135,9 @@ internal class UpdateTestResourcesTest {
     @Test
     fun `verify that all test resources a part of the update sequence`() {
         // given
-        val testResourcesFolder = "AnidbAnimeConverterTest"
+        val testResourcesDirectory = "AnidbAnimeConverterTest"
 
-        val filesInTestResources = Files.walk(testResource(testResourcesFolder))
+        val filesInTestResources = Files.walk(testResource(testResourcesDirectory))
             .filter { it.isRegularFile() }
             .filter { it.fileSuffix() == AnidbConfig.fileSuffix() }
             .map { it.toString() }
@@ -145,7 +145,7 @@ internal class UpdateTestResourcesTest {
 
         // when
         val filesInList = files.keys.map {
-            it.replace(testResourcesFolder, testResource(testResourcesFolder).toString())
+            it.replace(testResourcesDirectory, testResource(testResourcesDirectory).toString())
         }
 
         // then
