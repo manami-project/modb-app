@@ -3,6 +3,13 @@
 # anime-offline-database
 The purpose of this repository is to create a dataset containing anime meta data aggregated by different anime meta data providers (such as myanimelist.net, anidb.net, kitsu.app and more) and allow cross references between those meta data providers. This dataset is supposed to be used by and created for [manami](https://github.com/manami-project/manami).
 
+> [!IMPORTANT]  
+> After the _2025-25_ update the dataset files will be removed from the repo and moved to releases instead.
+> The reason is that this project is close to hitting the limits of github free plan and my assumption is
+> that under the free plan even git LFS won't last long. There will be a **latest** release available always
+> containing the most recent files as well as a named release like **2025-25** which not only contains
+> the files for that specific week, but also release notes if necessary.
+
 ## Statistics
 Update **week 02 [2020]**
 
