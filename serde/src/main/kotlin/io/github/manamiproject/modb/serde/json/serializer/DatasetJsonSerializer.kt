@@ -1,11 +1,11 @@
 package io.github.manamiproject.modb.serde.json.serializer
 
 import io.github.manamiproject.modb.core.anime.Anime
-import io.github.manamiproject.modb.core.coroutines.ModbDispatchers
 import io.github.manamiproject.modb.core.coroutines.ModbDispatchers.LIMITED_CPU
 import io.github.manamiproject.modb.core.date.WeekOfYear
 import io.github.manamiproject.modb.core.json.Json
-import io.github.manamiproject.modb.core.json.Json.SerializationOptions.*
+import io.github.manamiproject.modb.core.json.Json.SerializationOptions.DEACTIVATE_PRETTY_PRINT
+import io.github.manamiproject.modb.core.json.Json.SerializationOptions.DEACTIVATE_SERIALIZE_NULL
 import io.github.manamiproject.modb.core.logging.LoggerDelegate
 import io.github.manamiproject.modb.serde.json.models.Dataset
 import io.github.manamiproject.modb.serde.json.models.License
@@ -19,7 +19,7 @@ import java.time.format.DateTimeFormatter
  * Can serialize a [Collection] of [Anime] to JSON.
  * [manami-project/anime-offline-database](https://github.com/manami-project/anime-offline-database).
  * The resulting list will be sorted by title, type and episodes in that order.
- * @since 5.0.0
+ * @since 6.0.0
  * @property clock Instance of a clock to determine the current date.
  */
 public class DatasetJsonSerializer(
@@ -34,8 +34,8 @@ public class DatasetJsonSerializer(
             val currentWeek = WeekOfYear(LocalDate.now(clock))
 
             val schemaLink = when (minify) {
-                true -> URI("https://raw.githubusercontent.com/manami-project/anime-offline-database/refs/tags/$currentWeek/anime-offline-database-minified.schema.json")
-                else -> URI("https://raw.githubusercontent.com/manami-project/anime-offline-database/refs/tags/$currentWeek/anime-offline-database.schema.json")
+                true -> URI("https://raw.githubusercontent.com/manami-project/anime-offline-database/refs/tags/$currentWeek/schemas/anime-offline-database-minified.schema.json")
+                else -> URI("https://raw.githubusercontent.com/manami-project/anime-offline-database/refs/tags/$currentWeek/schemas/anime-offline-database.schema.json")
             }
 
             val data = Dataset(
@@ -52,7 +52,7 @@ public class DatasetJsonSerializer(
                 Json.toJson(
                     obj = data,
                     DEACTIVATE_PRETTY_PRINT,
-                    DEACTIVATE_SERIALIZE_NULL
+                    DEACTIVATE_SERIALIZE_NULL,
                 )
             } else {
                 log.info { "Serializing anime list pretty print." }
@@ -65,7 +65,7 @@ public class DatasetJsonSerializer(
 
         /**
          * Singleton of [DatasetJsonSerializer]
-         * @since 5.2.0
+         * @since 6.0.0
          */
         public val instance: DatasetJsonSerializer by lazy { DatasetJsonSerializer() }
     }

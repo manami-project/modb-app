@@ -162,9 +162,11 @@ public data class HttpResponse(
 
     override fun hashCode(): Int {
         var result = code
-        if (_body.isClosed() && body.isInitialized()) {
-            result = 31 * result + MessageDigest.getInstance("SHA-256").digest(body.value).contentHashCode()
-        }
+
+        result = if (_body.isClosed() && body.isInitialized()) {
+            31 * result + MessageDigest.getInstance("SHA-256").digest(body.value).contentHashCode()
+        } else 31 * result + _body.hashCode()
+
         result = 31 * result + _headers.hashCode()
         return result
     }

@@ -3,7 +3,6 @@ package io.github.manamiproject.modb.serde.json.serializer
 import io.github.manamiproject.modb.serde.createExpectedDeadEntriesMinified
 import io.github.manamiproject.modb.serde.createExpectedDeadEntriesPrettyPrint
 import kotlinx.coroutines.runBlocking
-import org.assertj.core.api.Assertions
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Nested
 import java.time.Clock
@@ -109,8 +108,8 @@ internal class DeadEntriesJsonSerializerTest {
             val result = DeadEntriesJsonSerializer.instance
 
             // then
-            Assertions.assertThat(result).isExactlyInstanceOf(DeadEntriesJsonSerializer::class.java)
-            Assertions.assertThat(result === previous).isTrue()
+            assertThat(result).isExactlyInstanceOf(DeadEntriesJsonSerializer::class.java)
+            assertThat(result === previous).isTrue()
         }
     }
 }

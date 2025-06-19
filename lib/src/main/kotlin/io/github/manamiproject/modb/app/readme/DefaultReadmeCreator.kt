@@ -44,7 +44,7 @@ class DefaultReadmeCreator(
 
     private fun createHeaderBlock(): String {
         return """
-            ![Check JSON files](https://github.com/manami-project/anime-offline-database/actions/workflows/json_lint.yml/badge.svg) [![License: ODbL-1.0](https://img.shields.io/badge/license-ODbL--1.0-orange)](https://github.com/manami-project/anime-offline-database/blob/${getWeekAndYear().second}-${getWeekAndYear().first}/LICENSE)
+            [![License: ODbL-1.0](https://img.shields.io/badge/license-ODbL--1.0-orange)](https://github.com/manami-project/anime-offline-database/blob/${getWeekAndYear().second}-${getWeekAndYear().first}/LICENSE)
             
             # anime-offline-database
             The purpose of this repository is to create a dataset containing anime meta data aggregated by different anime meta data providers (such as myanimelist.net, anidb.net, kitsu.app and more) and allow cross references between those meta data providers. This dataset is supposed to be used by and created for [manami](https://github.com/manami-project/manami).
@@ -61,9 +61,9 @@ class DefaultReadmeCreator(
             > [!IMPORTANT]  
             > After the _2025-25_ update the dataset files will be removed from the repo and moved to releases instead.
             > The reason is that this project is close to hitting the limits of github free plan and my assumption is
-            > that under the free plan even git LFS won't last long. There will be a **latest** release available always
-            > containing the most recent files as well as a named release like **2025-25** which not only contains
-            > the files for that specific week, but also release notes if necessary.
+            > that even git LFS won't last long under the free plan. There is a **latest** release available, always
+            > containing the most recent version of the files. Additionally named releases like **2025-25** are created
+            > which contain the files for that specific week.
 
             ## Statistics
             Update **week ${weekAndYear.first} [${weekAndYear.second}]**
@@ -101,14 +101,17 @@ class DefaultReadmeCreator(
             | File                                          | Type reference                         | Description                                                                                                                                              |
             |-----------------------------------------------|----------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------|
             | `anime-offline-database.json`                 | [Database root](#database-root)        | Contains anime all anime data. Content is pretty print. Values containing `null` are retained.                                                           |
-            | `anime-offline-database.schema.json`          | [JSON schema](https://json-schema.org) | JSON schema file for validating `anime-offline-database.json`.                                                                                           |
+            | `anime-offline-database.schema.json`          | [JSON schema](https://json-schema.org) | JSON schema file for validating `anime-offline-database.json` (not published).                                                                           |
             | `anime-offline-database-minified.json`        | [Database root](#database-root)        | Minified version of `anime-offline-database.json`. Values containing `null` are omitted.                                                                 |
             | `anime-offline-database-minified.schema.json` | [JSON schema](https://json-schema.org) | JSON schema file for validating `anime-offline-database-minified.json`.                                                                                  |
-            | `anime-offline-database.zip`                  | [Database root](#database-root)        | Zipped file of `anime-offline-database-minified.json`.                                                                                                   |
+            | `anime-offline-database-minified.json.zst`    | [Database root](#database-root)        | Zstandard compressed file of `anime-offline-database-minified.json`.                                                                                     |
+            | `anime-offline-database.jsonl`                | [Anime](#anime)                        | [JSON lines](https://jsonlines.org) file containing anime. First line contains meta data. Each line is an anime object.                                  |
+            | `anime-offline-database.jsonl.schema.json`    | [JSON schema](https://json-schema.org) | JSON schema file for validating each line within `anime-offline-database.jsonl`                                                                          |
+            | `anime-offline-database.jsonl.zst`            | [Anime](#anime)                        | Zstandard compressed file of `anime-offline-database.jsonl`                                                                                              |
             | `dead-entries/*.json`                         | [DeadEntries root](#deadentries-root)  | A file where `*` is the name of the respective meta data provider. Contains anime IDs which have been removed from the meta data provider. Pretty print. |
-            | `dead-entries/*-minified.json`                | [DeadEntries root](#deadentries-root)  | Minified version of the corresponding `dead-entries/*.json` file where `*` is the name of the respective meta data provider.                             |
             | `dead-entries/dead-entries.schema.json`       | [JSON schema](https://json-schema.org) | JSON schema file for validating all the `dead-entries/*-minified.json` and `dead-entries/*.json` files.                                                  |
-            | `dead-entries/*.zip`                          | [DeadEntries root](#deadentries-root)  | Zipped file of the corresponding `dead-entries/*.json` file                                                                                              |
+            | `dead-entries/*-minified.json`                | [DeadEntries root](#deadentries-root)  | Minified version of the corresponding `dead-entries/*.json` file where `*` is the name of the respective meta data provider.                             |
+            | `dead-entries/*-minified.json.zst`            | [DeadEntries root](#deadentries-root)  | Zstandard compressed file of the corresponding `dead-entries/*.json` file.                                                                               |
             
             ## Type reference
             

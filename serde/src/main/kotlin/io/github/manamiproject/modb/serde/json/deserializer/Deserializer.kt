@@ -2,7 +2,7 @@ package io.github.manamiproject.modb.serde.json.deserializer
 
 /**
  * Deserializes any given type [IN] to [OUT].
- * @since 5.0.0
+ * @since 6.0.0
  */
 public interface Deserializer<in IN, out OUT> {
 

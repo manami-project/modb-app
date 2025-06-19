@@ -2,7 +2,7 @@ package io.github.manamiproject.modb.serde.json.serializer
 
 /**
  * Serializes objects to [JSON lines](https://jsonlines.org).
- * @since 5.0.0
+ * @since 6.0.0
  */
 public interface JsonLinesSerializer<in T> {
 

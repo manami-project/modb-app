@@ -6,7 +6,7 @@ import io.github.manamiproject.modb.serde.TestAnimeObjects
 import io.github.manamiproject.modb.serde.createExpectedDatasetMinified
 import io.github.manamiproject.modb.serde.createExpectedDatasetPrettyPrint
 import kotlinx.coroutines.runBlocking
-import org.assertj.core.api.Assertions
+import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Nested
 import java.time.Clock
 import java.time.Instant
@@ -36,7 +36,7 @@ internal class DatasetJsonSerializerTest {
                     val result = serializer.serialize(animeList, minify = false)
 
                     // then
-                    Assertions.assertThat(result).isEqualTo(createExpectedDatasetPrettyPrint(TestAnimeObjects.DefaultAnime.serializedPrettyPrint))
+                    assertThat(result).isEqualTo(createExpectedDatasetPrettyPrint(TestAnimeObjects.DefaultAnime.serializedPrettyPrint))
                 }
             }
 
@@ -58,8 +58,7 @@ internal class DatasetJsonSerializerTest {
                     )
 
                     // then
-                    Assertions.assertThat(result)
-                        .isEqualTo(createExpectedDatasetMinified(TestAnimeObjects.DefaultAnime.serializedMinified))
+                    assertThat(result).isEqualTo(createExpectedDatasetMinified(TestAnimeObjects.DefaultAnime.serializedMinified))
                 }
             }
 
@@ -78,7 +77,7 @@ internal class DatasetJsonSerializerTest {
                     val result = serializer.serialize(animeList, minify = false)
 
                     // then
-                    Assertions.assertThat(result).isEqualTo(createExpectedDatasetPrettyPrint(TestAnimeObjects.AllPropertiesSet.serializedPrettyPrint))
+                    assertThat(result).isEqualTo(createExpectedDatasetPrettyPrint(TestAnimeObjects.AllPropertiesSet.serializedPrettyPrint))
                 }
             }
 
@@ -97,7 +96,7 @@ internal class DatasetJsonSerializerTest {
                     val result = serializer.serialize(animeList, minify = true)
 
                     // then
-                    Assertions.assertThat(result).isEqualTo(createExpectedDatasetMinified(TestAnimeObjects.AllPropertiesSet.serializedMinified))
+                    assertThat(result).isEqualTo(createExpectedDatasetMinified(TestAnimeObjects.AllPropertiesSet.serializedMinified))
                 }
             }
         }
@@ -187,7 +186,7 @@ internal class DatasetJsonSerializerTest {
                     val result = serializer.serialize(animeList, minify = false)
 
                     // then
-                    Assertions.assertThat(result).isEqualTo(expectedContent)
+                    assertThat(result).isEqualTo(expectedContent)
                 }
             }
 
@@ -282,7 +281,7 @@ internal class DatasetJsonSerializerTest {
                     val result = serializer.serialize(animeList, minify = false)
 
                     // then
-                    Assertions.assertThat(result).isEqualTo(expectedContent)
+                    assertThat(result).isEqualTo(expectedContent)
                 }
             }
 
@@ -380,7 +379,7 @@ internal class DatasetJsonSerializerTest {
                     val result = serializer.serialize(animeList, minify = false)
 
                     // then
-                    Assertions.assertThat(result).isEqualTo(expectedContent)
+                    assertThat(result).isEqualTo(expectedContent)
                 }
             }
         }
@@ -398,8 +397,8 @@ internal class DatasetJsonSerializerTest {
             val result = DatasetJsonSerializer.instance
 
             // then
-            Assertions.assertThat(result).isExactlyInstanceOf(DatasetJsonSerializer::class.java)
-            Assertions.assertThat(result === previous).isTrue()
+            assertThat(result).isExactlyInstanceOf(DatasetJsonSerializer::class.java)
+            assertThat(result === previous).isTrue()
         }
     }
 }
