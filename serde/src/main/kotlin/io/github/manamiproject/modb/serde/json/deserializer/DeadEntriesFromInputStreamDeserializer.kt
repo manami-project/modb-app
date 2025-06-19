@@ -10,7 +10,7 @@ import kotlinx.coroutines.withContext
 /**
  * Deserializes dead entry files from [manami-project/anime-offline-database](https://github.com/manami-project/anime-offline-database).
  * This works for any `*.json` file in the `dead-entries/` directory.
- * @since 5.0.0
+ * @since 6.0.0
  */
 public class DeadEntriesFromInputStreamDeserializer : Deserializer<LifecycleAwareInputStream, DeadEntries> {
 
@@ -27,7 +27,7 @@ public class DeadEntriesFromInputStreamDeserializer : Deserializer<LifecycleAwar
 
         /**
          * Singleton of [DeadEntriesFromInputStreamDeserializer]
-         * @since 5.2.0
+         * @since 6.0.0
          */
         public val instance: DeadEntriesFromInputStreamDeserializer by lazy { DeadEntriesFromInputStreamDeserializer() }
     }

@@ -14,6 +14,12 @@ import java.time.Clock
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter.ISO_DATE
 
+/**
+ * Serializes a [Collection] of [Anime] into a JSON lines file.
+ * Each line is a minified JSON of an [Anime] object except for the first line which is of type [DatasetMetaData].
+ * @since 6.0.0
+ * @property clock Instance of a clock to determine the current date.
+ */
 public class DatasetJsonLinesSerializer(
     private val clock: Clock = Clock.systemDefaultZone(),
 ): JsonLinesSerializer<Anime> {
@@ -25,7 +31,7 @@ public class DatasetJsonLinesSerializer(
         val currentWeek = WeekOfYear(LocalDate.now(clock))
 
         val metaData = DatasetMetaData(
-            `$schema` = URI(""), //FIXME
+            `$schema` = URI("https://raw.githubusercontent.com/manami-project/anime-offline-database/refs/tags/$currentWeek/schemas/anime-offline-database.jsonl.schema.json"),
             license = License().copy(
                 url = URI("https://github.com/manami-project/anime-offline-database/blob/$currentWeek/LICENSE"),
             ),

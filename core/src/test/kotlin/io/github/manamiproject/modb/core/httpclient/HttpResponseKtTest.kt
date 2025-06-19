@@ -876,6 +876,32 @@ internal class HttpResponseKtTest {
         }
 
         @Test
+        fun `returns false if body hasn't been read yet and instances of the InputStream differ`() {
+            // given
+            val inputStream1 = LifecycleAwareInputStream("<html></html>".byteInputStream())
+            val inputStream2 = LifecycleAwareInputStream("<html></html>".byteInputStream())
+
+            val obj1 = HttpResponse(
+                code = 200,
+                _body = inputStream1,
+                _headers = mutableMapOf("content-type" to listOf("text/html")),
+            )
+
+            val obj2 = HttpResponse(
+                code = 200,
+                _body = inputStream2,
+                _headers = mutableMapOf("content-type" to listOf("text/html")),
+            )
+
+            // when
+            val result = obj1.equals(obj2)
+
+            // then
+            assertThat(result).isFalse()
+            assertThat(obj1.hashCode()).isNotEqualTo(obj2.hashCode())
+        }
+
+        @Test
         fun `returns true if body hasn't been read yet and instance of the InputStream is the same`() {
             // given
             val inputStream = LifecycleAwareInputStream("<html></html>".byteInputStream())

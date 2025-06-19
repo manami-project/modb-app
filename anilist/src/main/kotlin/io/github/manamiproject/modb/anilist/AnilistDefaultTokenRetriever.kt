@@ -40,7 +40,7 @@ public class AnilistDefaultTokenRetriever(
 
         return@withContext AnilistToken(
             cookie = cookie,
-            csrfToken = csrfToken
+            csrfToken = csrfToken,
         )
     }
 

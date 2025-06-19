@@ -2,7 +2,7 @@ package io.github.manamiproject.modb.serde.json.serializer
 
 /**
  * Serializes objects to JSON.
- * @since 5.0.0
+ * @since 6.0.0
  */
 public interface JsonSerializer<in T> {
 

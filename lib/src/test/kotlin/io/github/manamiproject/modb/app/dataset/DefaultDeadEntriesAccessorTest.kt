@@ -174,7 +174,7 @@ internal class DefaultDeadEntriesAccessorTest {
 
         @ParameterizedTest
         @EnumSource(value = DatasetFileType::class, mode = INCLUDE, names = ["JSON_LINES", "JSON_LINES_ZST"])
-        fun `throws exception for type JSON lines types`() {
+        fun `throws exception for type JSON lines types`(input: DatasetFileType) {
             tempDirectory {
                 // given
                 val testMetaDataProviderConfig = MyanimelistConfig
@@ -192,7 +192,7 @@ internal class DefaultDeadEntriesAccessorTest {
 
                 // when
                 val result = exceptionExpected<UnsupportedOperationException> {
-                    databaseAccess.deadEntriesFile(testMetaDataProviderConfig, JSON_LINES).fileName()
+                    databaseAccess.deadEntriesFile(testMetaDataProviderConfig, input).fileName()
                 }
 
                 // then
