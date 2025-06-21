@@ -75,6 +75,7 @@ fun main() = runCoroutine {
         NumberOfEntriesValidationPostProcessor.instance,
         FileSizePlausibilityValidationPostProcessor.instance,
         DeleteOldDownloadDirectoriesPostProcessor.instance,
+        ReleaseInfoFileCreatorPostProcessor.instance
     ).forEach { it.process() }
 }
 

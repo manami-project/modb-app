@@ -629,7 +629,7 @@ internal class DefaultDownloadControlStateUpdaterTest {
 
                 // then
                 assertThat(result).isExactlyInstanceOf(DefaultDownloadControlStateUpdater::class.java)
-                assertThat(result===previous).isTrue()
+                assertThat(result === previous).isTrue()
             }
         }
     }

@@ -1944,7 +1944,7 @@ internal class DefaultDownloadControlStateAccessorTest {
 
                 // then
                 assertThat(result).isExactlyInstanceOf(DefaultDownloadControlStateAccessor::class.java)
-                assertThat(result===previous).isTrue()
+                assertThat(result === previous).isTrue()
             }
         }
     }

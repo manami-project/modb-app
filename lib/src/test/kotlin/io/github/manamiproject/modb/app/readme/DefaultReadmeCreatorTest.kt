@@ -786,7 +786,7 @@ internal class DefaultReadmeCreatorTest {
 
                 // then
                 assertThat(result).isExactlyInstanceOf(DefaultReadmeCreator::class.java)
-                assertThat(result===previous).isTrue()
+                assertThat(result === previous).isTrue()
             }
         }
     }

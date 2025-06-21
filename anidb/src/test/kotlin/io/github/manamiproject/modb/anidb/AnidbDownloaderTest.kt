@@ -314,7 +314,7 @@ internal class AnidbDownloaderTest : MockServerTestCase<WireMockServer> by WireM
 
                 // then
                 assertThat(result).isExactlyInstanceOf(AnidbDownloader::class.java)
-                assertThat(result===previous).isTrue()
+                assertThat(result === previous).isTrue()
             }
         }
     }

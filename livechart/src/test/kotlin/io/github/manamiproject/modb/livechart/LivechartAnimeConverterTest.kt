@@ -1398,7 +1398,7 @@ internal class LivechartAnimeConverterTest {
 
             // then
             assertThat(result).isExactlyInstanceOf(LivechartAnimeConverter::class.java)
-            assertThat(result===previous).isTrue()
+            assertThat(result === previous).isTrue()
         }
     }
 }

@@ -1327,7 +1327,7 @@ internal class KitsuAnimeConverterTest {
 
             // then
             assertThat(result).isExactlyInstanceOf(KitsuAnimeConverter::class.java)
-            assertThat(result===previous).isTrue()
+            assertThat(result === previous).isTrue()
         }
     }
 }

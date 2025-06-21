@@ -76,7 +76,7 @@ internal class ZstandardFilesForDeadEntriesCreatorPostProcessorTest {
 
                 // then
                 assertThat(result).isExactlyInstanceOf(ZstandardFilesForDeadEntriesCreatorPostProcessor::class.java)
-                assertThat(result===previous).isTrue()
+                assertThat(result === previous).isTrue()
             }
         }
     }

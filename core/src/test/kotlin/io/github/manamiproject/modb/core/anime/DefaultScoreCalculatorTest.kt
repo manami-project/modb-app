@@ -208,7 +208,7 @@ internal class DefaultScoreCalculatorTest {
 
                 // then
                 assertThat(result).isExactlyInstanceOf(DefaultScoreCalculator::class.java)
-                assertThat(result===previous).isTrue()
+                assertThat(result === previous).isTrue()
             }
         }
     }

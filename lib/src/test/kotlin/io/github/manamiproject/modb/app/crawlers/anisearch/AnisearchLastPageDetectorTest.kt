@@ -306,7 +306,7 @@ internal class AnisearchLastPageDetectorTest {
 
                 // then
                 assertThat(result).isExactlyInstanceOf(AnisearchLastPageDetector::class.java)
-                assertThat(result===previous).isTrue()
+                assertThat(result === previous).isTrue()
             }
         }
     }

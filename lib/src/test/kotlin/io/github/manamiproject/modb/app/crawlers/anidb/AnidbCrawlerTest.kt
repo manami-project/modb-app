@@ -675,7 +675,7 @@ internal class AnidbCrawlerTest {
 
                 // then
                 assertThat(result).isExactlyInstanceOf(AnidbCrawler::class.java)
-                assertThat(result===previous).isTrue()
+                assertThat(result === previous).isTrue()
             }
         }
     }

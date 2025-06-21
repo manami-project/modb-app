@@ -1949,7 +1949,7 @@ internal class MyanimelistAnimeConverterTest {
 
             // then
             assertThat(result).isExactlyInstanceOf(MyanimelistAnimeConverter::class.java)
-            assertThat(result===previous).isTrue()
+            assertThat(result === previous).isTrue()
         }
     }
 }

@@ -63,7 +63,7 @@ internal class KitsuHighestIdDetectorTest {
 
                 // then
                 assertThat(result).isExactlyInstanceOf(KitsuHighestIdDetector::class.java)
-                assertThat(result===previous).isTrue()
+                assertThat(result === previous).isTrue()
             }
         }
     }

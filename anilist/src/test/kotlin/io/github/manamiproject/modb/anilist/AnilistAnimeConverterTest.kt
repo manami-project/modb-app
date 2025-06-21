@@ -1080,7 +1080,7 @@ internal class AnilistAnimeConverterTest {
 
             // then
             assertThat(result).isExactlyInstanceOf(AnilistAnimeConverter::class.java)
-            assertThat(result===previous).isTrue()
+            assertThat(result === previous).isTrue()
         }
     }
 }

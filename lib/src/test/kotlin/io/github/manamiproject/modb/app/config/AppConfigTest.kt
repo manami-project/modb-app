@@ -726,7 +726,7 @@ internal class AppConfigTest {
 
                 // then
                 assertThat(result).isExactlyInstanceOf(AppConfig::class.java)
-                assertThat(result===previous).isTrue()
+                assertThat(result === previous).isTrue()
             }
         }
     }

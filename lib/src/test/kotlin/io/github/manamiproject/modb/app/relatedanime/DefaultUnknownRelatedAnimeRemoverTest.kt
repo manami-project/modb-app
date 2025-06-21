@@ -84,7 +84,7 @@ internal class DefaultUnknownRelatedAnimeRemoverTest {
 
                 // then
                 assertThat(result).isExactlyInstanceOf(DefaultUnknownRelatedAnimeRemover::class.java)
-                assertThat(result===previous).isTrue()
+                assertThat(result === previous).isTrue()
             }
         }
     }

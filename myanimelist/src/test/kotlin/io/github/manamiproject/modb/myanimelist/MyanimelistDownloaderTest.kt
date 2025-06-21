@@ -457,7 +457,7 @@ internal class MyanimelistDownloaderTest : MockServerTestCase<WireMockServer> by
 
                 // then
                 assertThat(result).isExactlyInstanceOf(MyanimelistDownloader::class.java)
-                assertThat(result===previous).isTrue()
+                assertThat(result === previous).isTrue()
             }
         }
     }

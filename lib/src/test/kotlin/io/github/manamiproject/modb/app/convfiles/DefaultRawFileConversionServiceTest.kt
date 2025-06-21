@@ -311,7 +311,7 @@ internal class DefaultRawFileConversionServiceTest {
 
                 // then
                 assertThat(result).isExactlyInstanceOf(DefaultRawFileConversionService::class.java)
-                assertThat(result===previous).isTrue()
+                assertThat(result === previous).isTrue()
             }
         }
     }

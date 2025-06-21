@@ -1035,7 +1035,7 @@ internal class DefaultGoldenRecordAccessorTest {
 
                 // then
                 assertThat(result).isExactlyInstanceOf(DefaultGoldenRecordAccessor::class.java)
-                assertThat(result===previous).isTrue()
+                assertThat(result === previous).isTrue()
             }
         }
     }

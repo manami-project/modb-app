@@ -139,7 +139,7 @@ internal class AnimePlanetLastPageDetectorTest {
 
                 // then
                 assertThat(result).isExactlyInstanceOf(AnimePlanetLastPageDetector::class.java)
-                assertThat(result===previous).isTrue()
+                assertThat(result === previous).isTrue()
             }
         }
     }

@@ -381,7 +381,7 @@ internal class AnilistHttpClientTest {
 
                 // then
                 assertThat(result).isExactlyInstanceOf(AnilistHttpClient::class.java)
-                assertThat(result===previous).isTrue()
+                assertThat(result === previous).isTrue()
             }
         }
     }

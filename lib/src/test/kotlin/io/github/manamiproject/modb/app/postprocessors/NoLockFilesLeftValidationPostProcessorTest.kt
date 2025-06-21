@@ -137,7 +137,7 @@ internal class NoLockFilesLeftValidationPostProcessorTest {
 
                 // then
                 assertThat(result).isExactlyInstanceOf(NoLockFilesLeftValidationPostProcessor::class.java)
-                assertThat(result===previous).isTrue()
+                assertThat(result === previous).isTrue()
             }
         }
     }

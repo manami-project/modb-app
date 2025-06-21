@@ -1176,7 +1176,7 @@ internal class DefaultDeadEntriesAccessorTest {
 
                 // then
                 assertThat(result).isExactlyInstanceOf(DefaultDeadEntriesAccessor::class.java)
-                assertThat(result===previous).isTrue()
+                assertThat(result === previous).isTrue()
             }
         }
     }

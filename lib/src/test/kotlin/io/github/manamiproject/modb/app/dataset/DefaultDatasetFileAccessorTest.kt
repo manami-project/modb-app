@@ -263,7 +263,7 @@ internal class DefaultDatasetFileAccessorTest {
 
             // then
             assertThat(result).isExactlyInstanceOf(DefaultDatasetFileAccessor::class.java)
-            assertThat(result===previous).isTrue()
+            assertThat(result === previous).isTrue()
         }
     }
 }

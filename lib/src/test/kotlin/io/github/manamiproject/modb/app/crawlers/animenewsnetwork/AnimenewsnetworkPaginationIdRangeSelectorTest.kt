@@ -402,7 +402,7 @@ internal class AnimenewsnetworkPaginationIdRangeSelectorTest {
 
                 // then
                 assertThat(result).isExactlyInstanceOf(AnimenewsnetworkPaginationIdRangeSelector::class.java)
-                assertThat(result===previous).isTrue()
+                assertThat(result === previous).isTrue()
             }
         }
     }

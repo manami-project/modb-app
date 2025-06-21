@@ -493,7 +493,7 @@ internal class NotifyDatasetDownloadCrawlerTest {
 
                 // then
                 assertThat(result).isExactlyInstanceOf(NotifyDatasetDownloadCrawler::class.java)
-                assertThat(result===previous).isTrue()
+                assertThat(result === previous).isTrue()
             }
         }
     }

@@ -1887,7 +1887,7 @@ internal class AnimenewsnetworkAnimeConverterTest {
 
                 // then
                 assertThat(result).isExactlyInstanceOf(AnimenewsnetworkAnimeConverter::class.java)
-                assertThat(result===previous).isTrue()
+                assertThat(result === previous).isTrue()
             }
         }
     }

@@ -746,7 +746,7 @@ internal class AnimePlanetCrawlerTest {
 
                 // then
                 assertThat(result).isExactlyInstanceOf(AnimePlanetCrawler::class.java)
-                assertThat(result===previous).isTrue()
+                assertThat(result === previous).isTrue()
             }
         }
     }

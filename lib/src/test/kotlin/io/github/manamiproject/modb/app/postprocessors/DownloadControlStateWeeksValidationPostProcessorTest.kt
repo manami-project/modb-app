@@ -138,7 +138,7 @@ internal class DownloadControlStateWeeksValidationPostProcessorTest {
 
                 // then
                 assertThat(result).isExactlyInstanceOf(DownloadControlStateWeeksValidationPostProcessor::class.java)
-                assertThat(result===previous).isTrue()
+                assertThat(result === previous).isTrue()
             }
         }
     }

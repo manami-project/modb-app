@@ -1535,7 +1535,7 @@ internal class DefaultConfigRegistryTest {
 
             // then
             assertThat(result).isExactlyInstanceOf(DefaultConfigRegistry::class.java)
-            assertThat(result===previous).isTrue()
+            assertThat(result === previous).isTrue()
         }
     }
 }

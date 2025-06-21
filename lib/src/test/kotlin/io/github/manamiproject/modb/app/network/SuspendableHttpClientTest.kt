@@ -128,7 +128,7 @@ internal class SuspendableHttpClientTest {
 
                 // then
                 assertThat(result).isExactlyInstanceOf(SuspendableHttpClient::class.java)
-                assertThat(result===previous).isTrue()
+                assertThat(result === previous).isTrue()
             }
         }
     }
