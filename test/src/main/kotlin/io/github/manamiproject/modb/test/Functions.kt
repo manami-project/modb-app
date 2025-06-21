@@ -2,6 +2,7 @@ package io.github.manamiproject.modb.test
 
 import kotlinx.coroutines.*
 import java.io.BufferedReader
+import java.io.InputStream
 import java.lang.ClassLoader.getSystemResourceAsStream
 import java.nio.file.Files
 import java.nio.file.Path
@@ -35,7 +36,7 @@ public fun testResource(path: String): Path {
 }
 
 /**
- * Reads the content of a file from _src/test/resources_ into a [String].
+ * Reads the content of a file from _src/test/resources_ into a [String], [ByteArray] or [InputStream].
  * Line separators will always be converted to `\n`
  *
  * **Example**:
@@ -67,7 +68,8 @@ public inline fun <reified T> loadTestResource(path: String): T {
             ?.replace(System.lineSeparator(), "\n") as T
             ?: throw IllegalStateException("Unable to load file [$path]")
         ByteArray::class -> file.readBytes() as T
-        else -> throw IllegalStateException("Unsupported file type. String and ByteArray are supported.")
+        InputStream::class -> getSystemResourceAsStream(path) as T ?: throw IllegalStateException("Unable to load file [$path]")
+        else -> throw IllegalStateException("Unsupported file type. String, ByteArray and InputStream are supported.")
     }
 }
 
