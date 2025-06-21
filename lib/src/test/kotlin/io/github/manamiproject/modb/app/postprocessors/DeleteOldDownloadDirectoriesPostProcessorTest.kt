@@ -226,7 +226,7 @@ internal class DeleteOldDownloadDirectoriesPostProcessorTest {
 
                 // then
                 assertThat(result).isExactlyInstanceOf(DeleteOldDownloadDirectoriesPostProcessor::class.java)
-                assertThat(result===previous).isTrue()
+                assertThat(result === previous).isTrue()
             }
         }
     }

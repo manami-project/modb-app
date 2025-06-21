@@ -518,7 +518,7 @@ internal class SourcesConsistencyValidationPostProcessorTest {
 
                 // then
                 assertThat(result).isExactlyInstanceOf(SourcesConsistencyValidationPostProcessor::class.java)
-                assertThat(result===previous).isTrue()
+                assertThat(result === previous).isTrue()
             }
         }
     }

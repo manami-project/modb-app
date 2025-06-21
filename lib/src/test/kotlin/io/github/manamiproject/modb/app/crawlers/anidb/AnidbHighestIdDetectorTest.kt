@@ -394,7 +394,7 @@ internal class AnidbHighestIdDetectorTest {
 
                 // then
                 assertThat(result).isExactlyInstanceOf(AnidbHighestIdDetector::class.java)
-                assertThat(result===previous).isTrue()
+                assertThat(result === previous).isTrue()
             }
         }
     }

@@ -363,7 +363,7 @@ internal class DeadEntriesValidationPostProcessorTest {
 
                 // then
                 assertThat(result).isExactlyInstanceOf(DeadEntriesValidationPostProcessor::class.java)
-                assertThat(result===previous).isTrue()
+                assertThat(result === previous).isTrue()
             }
         }
     }

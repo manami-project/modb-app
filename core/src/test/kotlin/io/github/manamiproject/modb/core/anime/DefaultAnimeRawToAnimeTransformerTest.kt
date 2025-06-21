@@ -102,7 +102,7 @@ internal class DefaultAnimeRawToAnimeTransformerTest {
 
                 // then
                 assertThat(result).isExactlyInstanceOf(DefaultAnimeRawToAnimeTransformer::class.java)
-                assertThat(result===previous).isTrue()
+                assertThat(result === previous).isTrue()
             }
         }
     }

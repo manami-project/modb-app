@@ -63,7 +63,7 @@ internal class AnilistHighestIdDetectorTest {
 
                 // then
                 assertThat(result).isExactlyInstanceOf(AnilistHighestIdDetector::class.java)
-                assertThat(result===previous).isTrue()
+                assertThat(result === previous).isTrue()
             }
         }
     }

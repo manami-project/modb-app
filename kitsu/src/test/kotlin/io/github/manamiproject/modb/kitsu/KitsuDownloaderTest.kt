@@ -306,7 +306,7 @@ internal class KitsuDownloaderTest : MockServerTestCase<WireMockServer> by WireM
 
             // then
             assertThat(result).isExactlyInstanceOf(KitsuDownloader::class.java)
-            assertThat(result===previous).isTrue()
+            assertThat(result === previous).isTrue()
         }
     }
 }

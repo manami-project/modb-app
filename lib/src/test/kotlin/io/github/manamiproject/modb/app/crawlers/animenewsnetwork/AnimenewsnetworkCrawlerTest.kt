@@ -883,7 +883,7 @@ internal class AnimenewsnetworkCrawlerTest {
 
                 // then
                 assertThat(result).isExactlyInstanceOf(AnimenewsnetworkCrawler::class.java)
-                assertThat(result===previous).isTrue()
+                assertThat(result === previous).isTrue()
             }
         }
     }

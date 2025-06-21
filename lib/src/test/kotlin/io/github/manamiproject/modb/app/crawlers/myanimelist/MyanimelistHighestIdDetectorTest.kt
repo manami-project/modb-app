@@ -138,7 +138,7 @@ internal class MyanimelistHighestIdDetectorTest {
 
                 // then
                 assertThat(result).isExactlyInstanceOf(MyanimelistHighestIdDetector::class.java)
-                assertThat(result===previous).isTrue()
+                assertThat(result === previous).isTrue()
             }
         }
     }

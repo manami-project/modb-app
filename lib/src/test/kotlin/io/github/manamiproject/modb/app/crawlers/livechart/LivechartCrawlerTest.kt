@@ -814,7 +814,7 @@ internal class LivechartCrawlerTest {
 
                 // then
                 assertThat(result).isExactlyInstanceOf(LivechartCrawler::class.java)
-                assertThat(result===previous).isTrue()
+                assertThat(result === previous).isTrue()
             }
         }
     }

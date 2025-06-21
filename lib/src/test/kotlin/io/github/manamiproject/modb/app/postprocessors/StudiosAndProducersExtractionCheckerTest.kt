@@ -133,7 +133,7 @@ internal class StudiosAndProducersExtractionCheckerTest {
 
                 // then
                 assertThat(result).isExactlyInstanceOf(StudiosAndProducersExtractionChecker::class.java)
-                assertThat(result===previous).isTrue()
+                assertThat(result === previous).isTrue()
             }
         }
     }

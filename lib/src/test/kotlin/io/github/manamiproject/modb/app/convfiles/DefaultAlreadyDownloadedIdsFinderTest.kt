@@ -73,7 +73,7 @@ internal class DefaultAlreadyDownloadedIdsFinderTest {
 
                 // then
                 assertThat(result).isExactlyInstanceOf(DefaultAlreadyDownloadedIdsFinder::class.java)
-                assertThat(result===previous).isTrue()
+                assertThat(result === previous).isTrue()
             }
         }
     }

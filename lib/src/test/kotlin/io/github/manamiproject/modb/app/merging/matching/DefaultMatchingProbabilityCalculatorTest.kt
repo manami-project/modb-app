@@ -820,7 +820,7 @@ internal class DefaultMatchingProbabilityCalculatorTest {
 
                 // then
                 assertThat(result).isExactlyInstanceOf(DefaultMatchingProbabilityCalculator::class.java)
-                assertThat(result===previous).isTrue()
+                assertThat(result === previous).isTrue()
             }
         }
     }

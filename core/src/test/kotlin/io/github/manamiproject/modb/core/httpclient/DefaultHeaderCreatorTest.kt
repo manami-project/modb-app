@@ -444,7 +444,7 @@ internal class DefaultHeaderCreatorTest {
 
                 // then
                 assertThat(result).isExactlyInstanceOf(DefaultHeaderCreator::class.java)
-                assertThat(result===previous).isTrue()
+                assertThat(result === previous).isTrue()
             }
         }
     }

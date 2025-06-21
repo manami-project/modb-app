@@ -152,7 +152,7 @@ internal class MyanimelistCrawlerTest {
 
                 // then
                 assertThat(result).isExactlyInstanceOf(MyanimelistCrawler::class.java)
-                assertThat(result===previous).isTrue()
+                assertThat(result === previous).isTrue()
             }
         }
     }

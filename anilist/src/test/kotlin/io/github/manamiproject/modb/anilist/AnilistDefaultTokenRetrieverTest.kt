@@ -199,7 +199,7 @@ internal class AnilistDefaultTokenRetrieverTest : MockServerTestCase<WireMockSer
 
             // then
             assertThat(result).isExactlyInstanceOf(AnilistDefaultTokenRetriever::class.java)
-            assertThat(result===previous).isTrue()
+            assertThat(result === previous).isTrue()
         }
     }
 }

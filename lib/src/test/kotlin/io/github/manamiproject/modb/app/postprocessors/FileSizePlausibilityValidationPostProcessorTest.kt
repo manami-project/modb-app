@@ -1006,7 +1006,7 @@ internal class FileSizePlausibilityValidationPostProcessorTest {
 
                 // then
                 assertThat(result).isExactlyInstanceOf(FileSizePlausibilityValidationPostProcessor::class.java)
-                assertThat(result===previous).isTrue()
+                assertThat(result === previous).isTrue()
             }
         }
     }

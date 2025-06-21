@@ -357,7 +357,7 @@ internal class LivechartPaginationIdRangeSelectorTest {
 
                 // then
                 assertThat(result).isExactlyInstanceOf(LivechartPaginationIdRangeSelector::class.java)
-                assertThat(result===previous).isTrue()
+                assertThat(result === previous).isTrue()
             }
         }
     }

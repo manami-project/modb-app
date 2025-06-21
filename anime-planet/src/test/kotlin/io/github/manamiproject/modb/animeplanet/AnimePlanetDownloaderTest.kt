@@ -224,7 +224,7 @@ internal class AnimePlanetDownloaderTest : MockServerTestCase<WireMockServer> by
 
                 // then
                 assertThat(result).isExactlyInstanceOf(AnimePlanetDownloader::class.java)
-                assertThat(result===previous).isTrue()
+                assertThat(result === previous).isTrue()
             }
         }
     }

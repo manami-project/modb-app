@@ -315,7 +315,7 @@ internal class DefaultDownloadControlStateSchedulerTest {
 
                 // then
                 assertThat(result).isExactlyInstanceOf(DefaultDownloadControlStateScheduler::class.java)
-                assertThat(result===previous).isTrue()
+                assertThat(result === previous).isTrue()
             }
         }
     }

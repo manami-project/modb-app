@@ -379,7 +379,7 @@ internal class DuplicatesValidationPostProcessorTest {
 
                 // then
                 assertThat(result).isExactlyInstanceOf(DuplicatesValidationPostProcessor::class.java)
-                assertThat(result===previous).isTrue()
+                assertThat(result === previous).isTrue()
             }
         }
     }

@@ -1253,7 +1253,7 @@ internal class AnimePlanetAnimeConverterTest {
 
                 // then
                 assertThat(result).isExactlyInstanceOf(AnimePlanetAnimeConverter::class.java)
-                assertThat(result===previous).isTrue()
+                assertThat(result === previous).isTrue()
             }
         }
     }

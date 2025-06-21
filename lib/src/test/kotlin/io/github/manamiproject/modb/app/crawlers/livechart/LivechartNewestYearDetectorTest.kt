@@ -103,7 +103,7 @@ internal class LivechartNewestYearDetectorTest {
 
                 // then
                 assertThat(result).isExactlyInstanceOf(LivechartNewestYearDetector::class.java)
-                assertThat(result===previous).isTrue()
+                assertThat(result === previous).isTrue()
             }
         }
     }

@@ -1805,7 +1805,7 @@ internal class AnidbAnimeConverterTest {
 
             // then
             assertThat(result).isExactlyInstanceOf(AnidbAnimeConverter::class.java)
-            assertThat(result===previous).isTrue()
+            assertThat(result === previous).isTrue()
         }
     }
 }

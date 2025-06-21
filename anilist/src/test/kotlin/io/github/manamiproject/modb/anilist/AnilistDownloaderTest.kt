@@ -183,7 +183,7 @@ internal class AnilistDownloaderTest {
 
                 // then
                 assertThat(result).isExactlyInstanceOf(AnilistDownloader::class.java)
-                assertThat(result===previous).isTrue()
+                assertThat(result === previous).isTrue()
             }
         }
     }

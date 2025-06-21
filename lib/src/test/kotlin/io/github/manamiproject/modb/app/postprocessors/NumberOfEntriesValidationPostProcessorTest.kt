@@ -1245,7 +1245,7 @@ internal class NumberOfEntriesValidationPostProcessorTest {
 
                 // then
                 assertThat(result).isExactlyInstanceOf(NumberOfEntriesValidationPostProcessor::class.java)
-                assertThat(result===previous).isTrue()
+                assertThat(result === previous).isTrue()
             }
         }
     }

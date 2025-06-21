@@ -1414,7 +1414,7 @@ internal class DefaultHttpClientKtTest : MockServerTestCase<WireMockServer> by W
 
                 // then
                 assertThat(result).isExactlyInstanceOf(DefaultHttpClient::class.java)
-                assertThat(result===previous).isTrue()
+                assertThat(result === previous).isTrue()
             }
         }
     }

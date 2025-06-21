@@ -430,7 +430,7 @@ internal class LinuxNetworkControllerTest {
 
                 // then
                 assertThat(result).isExactlyInstanceOf(LinuxNetworkController::class.java)
-                assertThat(result===previous).isTrue()
+                assertThat(result === previous).isTrue()
             }
         }
     }

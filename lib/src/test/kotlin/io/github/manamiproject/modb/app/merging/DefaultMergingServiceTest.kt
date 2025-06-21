@@ -536,7 +536,7 @@ internal class DefaultMergingServiceTest {
 
                 // then
                 assertThat(result).isExactlyInstanceOf(DefaultMergingService::class.java)
-                assertThat(result===previous).isTrue()
+                assertThat(result === previous).isTrue()
             }
         }
     }

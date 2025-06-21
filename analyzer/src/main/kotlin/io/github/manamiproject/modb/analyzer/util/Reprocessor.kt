@@ -32,6 +32,7 @@ internal object Reprocessor {
             NumberOfEntriesValidationPostProcessor.instance,
             FileSizePlausibilityValidationPostProcessor.instance,
             DeleteOldDownloadDirectoriesPostProcessor.instance,
+            // Doesn't need ReleaseInfoFileCreatorPostProcessor, because reprocessing using analyzer never creates weekly updates, but delta updates.
         ).forEach { it.process() }
     }
 }

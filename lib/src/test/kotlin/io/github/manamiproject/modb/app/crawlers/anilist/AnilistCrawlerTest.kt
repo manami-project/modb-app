@@ -152,7 +152,7 @@ internal class AnilistCrawlerTest {
 
                 // then
                 assertThat(result).isExactlyInstanceOf(AnilistCrawler::class.java)
-                assertThat(result===previous).isTrue()
+                assertThat(result === previous).isTrue()
             }
         }
     }

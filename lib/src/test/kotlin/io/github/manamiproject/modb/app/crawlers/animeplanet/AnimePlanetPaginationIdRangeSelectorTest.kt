@@ -386,7 +386,7 @@ internal class AnimePlanetPaginationIdRangeSelectorTest {
 
                 // then
                 assertThat(result).isExactlyInstanceOf(AnimePlanetPaginationIdRangeSelector::class.java)
-                assertThat(result===previous).isTrue()
+                assertThat(result === previous).isTrue()
             }
         }
     }
