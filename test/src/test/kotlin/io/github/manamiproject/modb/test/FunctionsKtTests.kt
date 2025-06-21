@@ -7,6 +7,7 @@ import org.junit.jupiter.api.assertThrows
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.ValueSource
 import org.opentest4j.AssertionFailedError
+import java.io.InputStream
 import java.nio.file.Files
 
 internal class FunctionsKtTests {
@@ -148,6 +149,33 @@ internal class FunctionsKtTests {
 
             // then
             assertThat(result).isEqualTo("File in\n\nroot directory.".toByteArray())
+        }
+
+        @Test
+        fun `load test resource as ByteArray from subdirectory`() {
+            // when
+            val result = loadTestResource<ByteArray>("test_resource_tests/subdirectory/other-test-file.txt")
+
+            // then
+            assertThat(result).isEqualTo("File in\nsubdirectory.".toByteArray())
+        }
+
+        @Test
+        fun `load test resource as InputStream from root directory`() {
+            // when
+            val result = loadTestResource<InputStream>("test_resource_tests/test-file.txt")
+
+            // then
+            assertThat(result.readAllBytes()).isEqualTo("File in\n\nroot directory.".toByteArray())
+        }
+
+        @Test
+        fun `load test resource as InputStream from subdirectory`() {
+            // when
+            val result = loadTestResource<InputStream>("test_resource_tests/subdirectory/other-test-file.txt")
+
+            // then
+            assertThat(result.readAllBytes()).isEqualTo("File in\nsubdirectory.".toByteArray())
         }
 
         @Test

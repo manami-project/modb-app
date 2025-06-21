@@ -174,7 +174,12 @@ internal class ConfigTest {
     inner class DeadEntriesSupportedTests {
 
         @ParameterizedTest
-        @ValueSource(classes = [AnidbConfig::class, AnilistConfig::class, KitsuConfig::class, MyanimelistConfig::class])
+        @ValueSource(classes = [
+            AnidbConfig::class,
+            AnilistConfig::class,
+            KitsuConfig::class,
+            MyanimelistConfig::class,
+        ])
         fun `returns true for all supported meta data provider`(configClass: Class<*>) {
             // given
             val testMetaDataProviderConfig = configClass.kotlin.objectInstance as MetaDataProviderConfig
