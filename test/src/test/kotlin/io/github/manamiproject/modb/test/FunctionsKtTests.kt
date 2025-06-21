@@ -7,6 +7,7 @@ import org.junit.jupiter.api.assertThrows
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.ValueSource
 import org.opentest4j.AssertionFailedError
+import java.io.InputStream
 import java.nio.file.Files
 
 internal class FunctionsKtTests {
@@ -151,6 +152,33 @@ internal class FunctionsKtTests {
         }
 
         @Test
+        fun `load test resource as ByteArray from subdirectory`() {
+            // when
+            val result = loadTestResource<ByteArray>("test_resource_tests/subdirectory/other-test-file.txt")
+
+            // then
+            assertThat(result).isEqualTo("File in\nsubdirectory.".toByteArray())
+        }
+
+        @Test
+        fun `load test resource as InputStream from root directory`() {
+            // when
+            val result = loadTestResource<InputStream>("test_resource_tests/test-file.txt")
+
+            // then
+            assertThat(result.readAllBytes()).isEqualTo("File in\n\nroot directory.".toByteArray())
+        }
+
+        @Test
+        fun `load test resource as InputStream from subdirectory`() {
+            // when
+            val result = loadTestResource<InputStream>("test_resource_tests/subdirectory/other-test-file.txt")
+
+            // then
+            assertThat(result.readAllBytes()).isEqualTo("File in\nsubdirectory.".toByteArray())
+        }
+
+        @Test
         fun `throws an exception if the the given path is a directory`() {
             val path = "test_resource_tests"
 
@@ -186,7 +214,7 @@ internal class FunctionsKtTests {
             }
 
             // then
-            assertThat(result).hasMessage("Unsupported file type. String and ByteArray are supported.")
+            assertThat(result).hasMessage("Unsupported file type. String, ByteArray and InputStream are supported.")
         }
 
         @ParameterizedTest
