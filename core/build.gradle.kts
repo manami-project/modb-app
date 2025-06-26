@@ -21,9 +21,10 @@ repositories {
 dependencies {
     api(libs.kotlin.stdlib)
     api(libs.kotlinx.coroutines.core.jvm)
-    api(libs.okhttp)
 
+    implementation(libs.okhttp)
     implementation(libs.slf4j.api)
+    implementation(libs.slf4j.jul.to.slf4j)
     implementation(libs.moshi)
     implementation(libs.jsonpathkt)
     implementation(libs.jsoup)
