@@ -7,6 +7,7 @@ import io.github.manamiproject.modb.app.dataset.DatasetFileType.*
 import io.github.manamiproject.modb.app.dataset.DeadEntriesAccessor
 import io.github.manamiproject.modb.app.dataset.DefaultDatasetFileAccessor
 import io.github.manamiproject.modb.app.dataset.DefaultDeadEntriesAccessor
+import io.github.manamiproject.modb.app.difference
 import io.github.manamiproject.modb.core.extensions.regularFileExists
 import io.github.manamiproject.modb.core.logging.LoggerDelegate
 import kotlin.io.path.fileSize
@@ -51,8 +52,8 @@ class FileSizePlausibilityValidationPostProcessor(
         check(jsonLinesZst.regularFileExists()) { "Dataset *.jsonl.zst file doesn't exist." }
         val jsonLinesZstSize = jsonLinesZst.fileSize()
 
-        check(jsonLinesZstSize < jsonLinesSize) { "File sizes for dataset are not plausible: [jsonLines=$jsonLinesSize, jsonLinesZst=$jsonLinesZstSize]" }
-        check(jsonMinifiedSize < jsonLinesSize) { "File sizes for dataset are not plausible: [jsonMinified=$jsonMinifiedSize, jsonLines=$jsonLinesSize]" }
+        check(jsonLinesZstSize < jsonLinesSize) { "File sizes for dataset are not plausible: [jsonLinesZst=$jsonLinesZstSize, jsonLines=$jsonLinesSize]" }
+        check(difference(jsonLinesSize.toInt(), jsonMinifiedSize.toInt()) < 100) { "File sizes for dataset are not plausible: [jsonLines=$jsonLinesSize, jsonMinified=$jsonMinifiedSize]" }
 
         log.info { "Checking that sizes of the dead entries files are plausible." }
 
