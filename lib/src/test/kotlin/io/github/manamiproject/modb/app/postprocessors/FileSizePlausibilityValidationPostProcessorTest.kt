@@ -174,7 +174,7 @@ internal class FileSizePlausibilityValidationPostProcessorTest {
                     }
 
                     // then
-                    assertThat(result).hasMessage("File sizes for dataset are not plausible: [jsonLines=${jsonLines.fileSize()}, jsonLinesZst=${jsonLinesZst.fileSize()}]")
+                    assertThat(result).hasMessage("File sizes for dataset are not plausible: [jsonLinesZst=${jsonLinesZst.fileSize()}, jsonLines=${jsonLines.fileSize()}]")
                 }
             }
 
@@ -223,7 +223,7 @@ internal class FileSizePlausibilityValidationPostProcessorTest {
                     }
 
                     // then
-                    assertThat(result).hasMessage("File sizes for dataset are not plausible: [jsonMinified=${jsonMinified.fileSize()}, jsonLines=${jsonLines.fileSize()}]")
+                    assertThat(result).hasMessage("File sizes for dataset are not plausible: [jsonLines=${jsonLines.fileSize()}, jsonMinified=${jsonMinified.fileSize()}]")
                 }
             }
 
@@ -475,10 +475,10 @@ internal class FileSizePlausibilityValidationPostProcessorTest {
                     "text\n".repeat(500).writeToZstandardFile(jsonMinifiedZst, compressionLevel = 1)
 
                     val jsonLines = tempDir.resolve("jsonLines.txt").createFile()
-                    "text\n".repeat(1000).writeToFile(jsonLines)
+                    "text\n".repeat(499).writeToFile(jsonLines)
 
                     val jsonLinesZst = tempDir.resolve("jsonLines.zst").createFile()
-                    "text\n".repeat(1000).writeToZstandardFile(jsonLinesZst, compressionLevel = 1)
+                    "text\n".repeat(499).writeToZstandardFile(jsonLinesZst, compressionLevel = 1)
 
                     val testDatasetFileAccessor = object: DatasetFileAccessor by TestDatasetFileAccessor {
                         override fun offlineDatabaseFile(type: DatasetFileType): RegularFile = when(type) {
@@ -531,10 +531,10 @@ internal class FileSizePlausibilityValidationPostProcessorTest {
                     "text\n".repeat(500).writeToZstandardFile(jsonMinifiedZst, compressionLevel = 1)
 
                     val jsonLines = tempDir.resolve("jsonLines.txt").createFile()
-                    "text\n".repeat(1000).writeToFile(jsonLines)
+                    "text\n".repeat(499).writeToFile(jsonLines)
 
                     val jsonLinesZst = tempDir.resolve("jsonLines.zst").createFile()
-                    "text\n".repeat(1000).writeToZstandardFile(jsonLinesZst, compressionLevel = 1)
+                    "text\n".repeat(499).writeToZstandardFile(jsonLinesZst, compressionLevel = 1)
 
                     val testDatasetFileAccessor = object: DatasetFileAccessor by TestDatasetFileAccessor {
                         override fun offlineDatabaseFile(type: DatasetFileType): RegularFile = when(type) {
@@ -603,10 +603,10 @@ internal class FileSizePlausibilityValidationPostProcessorTest {
                     "text\n".repeat(500).writeToZstandardFile(jsonMinifiedZst, compressionLevel = 1)
 
                     val jsonLines = tempDir.resolve("jsonLines.txt").createFile()
-                    "text\n".repeat(1000).writeToFile(jsonLines)
+                    "text\n".repeat(499).writeToFile(jsonLines)
 
                     val jsonLinesZst = tempDir.resolve("jsonLines.zst").createFile()
-                    "text\n".repeat(1000).writeToZstandardFile(jsonLinesZst, compressionLevel = 1)
+                    "text\n".repeat(499).writeToZstandardFile(jsonLinesZst, compressionLevel = 1)
 
                     val testDatasetFileAccessor = object: DatasetFileAccessor by TestDatasetFileAccessor {
                         override fun offlineDatabaseFile(type: DatasetFileType): RegularFile = when(type) {
@@ -675,10 +675,10 @@ internal class FileSizePlausibilityValidationPostProcessorTest {
                     "text\n".repeat(500).writeToZstandardFile(jsonMinifiedZst, compressionLevel = 1)
 
                     val jsonLines = tempDir.resolve("jsonLines.txt").createFile()
-                    "text\n".repeat(1000).writeToFile(jsonLines)
+                    "text\n".repeat(499).writeToFile(jsonLines)
 
                     val jsonLinesZst = tempDir.resolve("jsonLines.zst").createFile()
-                    "text\n".repeat(1000).writeToZstandardFile(jsonLinesZst, compressionLevel = 1)
+                    "text\n".repeat(499).writeToZstandardFile(jsonLinesZst, compressionLevel = 1)
 
                     val testDatasetFileAccessor = object: DatasetFileAccessor by TestDatasetFileAccessor {
                         override fun offlineDatabaseFile(type: DatasetFileType): RegularFile = when(type) {
@@ -745,10 +745,10 @@ internal class FileSizePlausibilityValidationPostProcessorTest {
                     "text\n".repeat(500).writeToZstandardFile(jsonMinifiedZst, compressionLevel = 1)
 
                     val jsonLines = tempDir.resolve("jsonLines.txt").createFile()
-                    "text\n".repeat(1000).writeToFile(jsonLines)
+                    "text\n".repeat(499).writeToFile(jsonLines)
 
                     val jsonLinesZst = tempDir.resolve("jsonLines.zst").createFile()
-                    "text\n".repeat(1000).writeToZstandardFile(jsonLinesZst, compressionLevel = 1)
+                    "text\n".repeat(499).writeToZstandardFile(jsonLinesZst, compressionLevel = 1)
 
                     val testDatasetFileAccessor = object: DatasetFileAccessor by TestDatasetFileAccessor {
                         override fun offlineDatabaseFile(type: DatasetFileType): RegularFile = when(type) {
@@ -806,10 +806,10 @@ internal class FileSizePlausibilityValidationPostProcessorTest {
                     "text\n".repeat(500).writeToZstandardFile(jsonMinifiedZst, compressionLevel = 1)
 
                     val jsonLines = tempDir.resolve("jsonLines.txt").createFile()
-                    "text\n".repeat(1000).writeToFile(jsonLines)
+                    "text\n".repeat(499).writeToFile(jsonLines)
 
                     val jsonLinesZst = tempDir.resolve("jsonLines.zst").createFile()
-                    "text\n".repeat(1000).writeToZstandardFile(jsonLinesZst, compressionLevel = 1)
+                    "text\n".repeat(499).writeToZstandardFile(jsonLinesZst, compressionLevel = 1)
 
                     val testDatasetFileAccessor = object: DatasetFileAccessor by TestDatasetFileAccessor {
                         override fun offlineDatabaseFile(type: DatasetFileType): RegularFile = when(type) {
@@ -875,10 +875,10 @@ internal class FileSizePlausibilityValidationPostProcessorTest {
                     "text\n".repeat(500).writeToZstandardFile(jsonMinifiedZst, compressionLevel = 1)
 
                     val jsonLines = tempDir.resolve("jsonLines.txt").createFile()
-                    "text\n".repeat(1000).writeToFile(jsonLines)
+                    "text\n".repeat(499).writeToFile(jsonLines)
 
                     val jsonLinesZst = tempDir.resolve("jsonLines.zst").createFile()
-                    "text\n".repeat(1000).writeToZstandardFile(jsonLinesZst, compressionLevel = 1)
+                    "text\n".repeat(499).writeToZstandardFile(jsonLinesZst, compressionLevel = 1)
 
                     val testDatasetFileAccessor = object: DatasetFileAccessor by TestDatasetFileAccessor {
                         override fun offlineDatabaseFile(type: DatasetFileType): RegularFile = when(type) {
@@ -944,10 +944,10 @@ internal class FileSizePlausibilityValidationPostProcessorTest {
                     "text\n".repeat(500).writeToZstandardFile(jsonMinifiedZst, compressionLevel = 1)
 
                     val jsonLines = tempDir.resolve("jsonLines.txt").createFile()
-                    "text\n".repeat(1000).writeToFile(jsonLines)
+                    "text\n".repeat(499).writeToFile(jsonLines)
 
                     val jsonLinesZst = tempDir.resolve("jsonLines.zst").createFile()
-                    "text\n".repeat(1000).writeToZstandardFile(jsonLinesZst, compressionLevel = 1)
+                    "text\n".repeat(499).writeToZstandardFile(jsonLinesZst, compressionLevel = 1)
 
                     val testDatasetFileAccessor = object: DatasetFileAccessor by TestDatasetFileAccessor {
                         override fun offlineDatabaseFile(type: DatasetFileType): RegularFile = when(type) {
