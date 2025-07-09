@@ -43,6 +43,7 @@ public class AnilistDownloader(
             headers = requestHeaders,
             requestBody = requestBody,
         )
+
         val responseBody = response.bodyAsString()
 
         check(responseBody.neitherNullNorBlank()) { "Response body was blank for [anilistId=$id] with response code [${response.code}]" }

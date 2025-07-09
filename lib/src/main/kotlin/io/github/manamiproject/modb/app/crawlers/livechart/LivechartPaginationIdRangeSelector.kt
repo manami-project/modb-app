@@ -52,35 +52,36 @@ class LivechartPaginationIdRangeSelector(
 
         wait()
 
-        val response = httpClient.get(
+        return httpClient.get(
             url = metaDataProviderConfig.buildDataDownloadLink(page).toURL(),
             headers = mapOf("host" to listOf("www.${metaDataProviderConfig.hostname()}")),
-        )
+        ).use { response ->
+            if (response.code == 404) {
+                log.warn { "404 on LivechartPaginationIdRangeSelector" }
+                return emptyList()
+            }
 
-        if (response.code == 404) {
-            return emptyList()
+            val data = extractor.extract(response.checkedBody(this::class), mapOf(
+                "animeIdList" to "//article[@class='anime']/@data-anime-id",
+                "emptyMessage" to "//section[@data-anime-card-list-target='emptyMessage']/text()",
+            ))
+
+            if (data.notFound("animeIdList") && !data.notFound("emptyMessage") && data.stringOrDefault("emptyMessage").contains("We don't have any anime to display here.")) {
+                return emptyList()
+            }
+
+            if (data.notFound("animeIdList")) {
+                throw IllegalStateException("Unable to extract animeIdList.")
+            }
+
+            val entriesOnThePage = data.listNotNull<String>("animeIdList")
+                .map { it.trim() }
+                .toHashSet()
+
+            entriesOnThePage.removeAll(entriesNotScheduledForCurrentWeek)
+            entriesOnThePage.removeAll(alreadyDownloadedIdsFinder.alreadyDownloadedIds(metaDataProviderConfig))
+            entriesOnThePage.toList().createShuffledList()
         }
-
-        val data = extractor.extract(response.checkedBody(this::class), mapOf(
-            "animeIdList" to "//article[@class='anime']/@data-anime-id",
-            "emptyMessage" to "//section[@data-anime-card-list-target='emptyMessage']/text()",
-        ))
-
-        if (data.notFound("animeIdList") && !data.notFound("emptyMessage") && data.stringOrDefault("emptyMessage").contains("We don't have any anime to display here.")) {
-            return emptyList()
-        }
-
-        if (data.notFound("animeIdList")) {
-            throw IllegalStateException("Unable to extract animeIdList.")
-        }
-
-        val entriesOnThePage = data.listNotNull<String>("animeIdList")
-            .map { it.trim() }
-            .toHashSet()
-
-        entriesOnThePage.removeAll(entriesNotScheduledForCurrentWeek)
-        entriesOnThePage.removeAll(alreadyDownloadedIdsFinder.alreadyDownloadedIds(metaDataProviderConfig))
-        return entriesOnThePage.toList().createShuffledList()
     }
 
     @KoverIgnore

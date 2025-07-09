@@ -27,6 +27,7 @@ public class AnilistHttpClient(
             return initialResponse
         }
 
+        initialResponse.close()
         return delegate.post(url, requestBody, renewTokenInHeaders(headers))
     }
 
@@ -37,6 +38,7 @@ public class AnilistHttpClient(
             return initialResponse
         }
 
+        initialResponse.close()
         return delegate.get(url, renewTokenInHeaders(headers))
     }
 

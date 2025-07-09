@@ -154,6 +154,7 @@ public class DefaultHttpClient(
                 log.debug { "Retry [$attempt/${retryBehavior.maxAttempts}] for [${request.method} ${request.url}]." }
 
                 if ((responseOrException is HttpResponse) && (responseOrException.code == 103)) {
+                    responseOrException.close()
                     log.warn { "Received HTTP status code 103. Deactivating HTTP/2." }
                     protocols.remove(HTTP_2)
                 }
@@ -192,15 +193,28 @@ public class DefaultHttpClient(
                 retryCase.executeAfter()
             }
 
-            if (requiresRetry(responseOrException)) {
-                retryCase = fetchRetryCase(responseOrException)
+            when (requiresRetry(responseOrException)) {
+                true -> {
+                    log.debug { "[${request.method} ${request.url}] Requires retry." }
+
+                    if (responseOrException is HttpResponse) {
+                        responseOrException.close()
+                    }
+
+                    retryCase = fetchRetryCase(responseOrException)
+                }
+                else -> {
+                    retryCase = NoRetry
+                }
             }
+
             attempt++
         } while (retryCase !is NoRetry && attempt <= retryBehavior.maxAttempts && isActive)
 
         return@withContext when (responseOrException) {
             is HttpResponse -> {
                 if (responseOrException.isNotOk() && retryCase !is NoRetry && attempt >= retryBehavior.maxAttempts) {
+                    responseOrException.close()
                     throw FailedAfterRetryException("Execution failed despite [${attempt-1}] retry attempts. Last invocation of [${request.method} ${request.url}] returned http status code [${responseOrException.code}]")
                 }
                 responseOrException
