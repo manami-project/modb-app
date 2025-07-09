@@ -1,6 +1,7 @@
 package io.github.manamiproject.modb.core.httpclient
 
 import io.github.manamiproject.modb.core.io.LifecycleAwareInputStream
+import java.io.Closeable
 import java.io.InputStream
 import java.io.InputStream.nullInputStream
 import java.security.MessageDigest
@@ -28,7 +29,7 @@ public data class HttpResponse(
     public val code: HttpResponseCode,
     private val _body: LifecycleAwareInputStream = LifecycleAwareInputStream(nullInputStream()),
     private val _headers: MutableMap<String, Collection<String>> = mutableMapOf(),
-) {
+): Closeable by _body {
 
     /**
      * Data representing a HTTP response.

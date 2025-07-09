@@ -699,6 +699,76 @@ internal class HttpResponseKtTest {
     }
 
     @Nested
+    inner class CloseTests {
+
+        @Test
+        fun `correctly closes internal InputStream in case close is called directly`() {
+            // given
+            val body = """
+                Here is some text.
+                Including multiple lines.
+            """.trimIndent()
+
+            val httpResponse = HttpResponse(
+                code = 200,
+                _body = LifecycleAwareInputStream(TestReadOnceInputStream(body.byteInputStream())),
+            )
+
+            val before = httpResponse.isBodyInputStreamAvailable()
+
+            // when
+            httpResponse.close()
+
+            // then
+            assertThat(before).isTrue()
+            assertThat(httpResponse.isBodyInputStreamExhausted()).isTrue()
+        }
+
+        @Test
+        fun `correctly closes internal InputStream if you autoclose it by using USE`() {
+            // given
+            val body = """
+                Here is some text.
+                Including multiple lines.
+            """.trimIndent()
+
+            val httpResponse = HttpResponse(
+                code = 200,
+                _body = LifecycleAwareInputStream(TestReadOnceInputStream(body.byteInputStream())),
+            )
+
+            val before = httpResponse.isBodyInputStreamAvailable()
+
+            // when
+            httpResponse.use { }
+
+            // then
+            assertThat(before).isTrue()
+            assertThat(httpResponse.isBodyInputStreamExhausted()).isTrue()
+        }
+
+        @Test
+        fun `can combine bodyAsString with USE`() {
+            // given
+            val body = """
+                Here is some text.
+                Including multiple lines.
+            """.trimIndent()
+
+            val httpResponse = HttpResponse(
+                code = 200,
+                _body = LifecycleAwareInputStream(TestReadOnceInputStream(body.byteInputStream())),
+            )
+
+            // when
+            val result = httpResponse.use { it.bodyAsString() }
+
+            // then
+            assertThat(result).isEqualTo(body)
+        }
+    }
+
+    @Nested
     inner class EqualityTests {
 
         @Test

@@ -22,8 +22,10 @@ public class LifecycleAwareInputStream(private val delegate: InputStream): Input
     override fun isNotClosed(): Boolean = !isClosed
 
     override fun close() {
-        isClosed = true
-        delegate.close()
+        if (!isClosed) {
+            isClosed = true
+            delegate.close()
+        }
     }
 
     override fun read(): Int = delegate.read()

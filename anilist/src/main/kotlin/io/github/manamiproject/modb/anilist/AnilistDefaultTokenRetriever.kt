@@ -31,17 +31,17 @@ public class AnilistDefaultTokenRetriever(
     override suspend fun retrieveToken(): AnilistToken = withContext(LIMITED_NETWORK) {
         log.info { "Fetching token for anilist." }
 
-        val response = httpClient.get(
+        return@withContext httpClient.get(
             url = metaDataProviderConfig.buildDataDownloadLink().toURL(),
-        )
+        ).use { response ->
+            val cookie = extractCookie(response)
+            val csrfToken = extractCsrfToken(response)
 
-        val cookie = extractCookie(response)
-        val csrfToken = extractCsrfToken(response)
-
-        return@withContext AnilistToken(
-            cookie = cookie,
-            csrfToken = csrfToken,
-        )
+            AnilistToken(
+                cookie = cookie,
+                csrfToken = csrfToken,
+            )
+        }
     }
 
     private fun extractCookie(response: HttpResponse): String {
