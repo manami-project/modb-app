@@ -25,23 +25,22 @@ public class DatasetFromJsonLinesInputStreamDeserializer: Deserializer<Lifecycle
 
         log.info { "Deserializing dataset" }
 
-        val reader = source.bufferedReader()
-        val datasetMetaData = Json.parseJson<DatasetMetaData>(reader.readLine())!!
+        return@withContext source.bufferedReader().use { reader ->
+            val datasetMetaData = Json.parseJson<DatasetMetaData>(reader.readLine())!!
 
-        val data = reader.lineSequence().asFlow().map {
-            Json.parseJson<Anime>(it)!!
-        }.toList()
+            val data = reader.lineSequence().asFlow().map {
+                Json.parseJson<Anime>(it)!!
+            }.toList()
 
-        val dataset = Dataset(
-            `$schema` = datasetMetaData.`$schema`,
-            license = datasetMetaData.license,
-            repository = datasetMetaData.repository,
-            scoreRange = datasetMetaData.scoreRange,
-            lastUpdate = datasetMetaData.lastUpdate,
-            data = data,
-        )
-
-        return@withContext dataset
+            Dataset(
+                `$schema` = datasetMetaData.`$schema`,
+                license = datasetMetaData.license,
+                repository = datasetMetaData.repository,
+                scoreRange = datasetMetaData.scoreRange,
+                lastUpdate = datasetMetaData.lastUpdate,
+                data = data,
+            )
+        }
     }
 
     public companion object {

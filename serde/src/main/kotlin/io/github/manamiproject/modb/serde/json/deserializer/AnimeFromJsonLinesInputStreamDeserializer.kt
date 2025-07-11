@@ -7,6 +7,7 @@ import io.github.manamiproject.modb.core.logging.LoggerDelegate
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.asFlow
 import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.onCompletion
 
 /**
  * Deserialzes JSON lines of [Anime] provided by a [LifecycleAwareInputStream].
@@ -25,6 +26,7 @@ public class AnimeFromJsonLinesInputStreamDeserializer: Deserializer<LifecycleAw
             .lineSequence()
             .drop(1)
             .asFlow()
+            .onCompletion { source.close() }
             .map { Json.parseJson<Anime>(it)!! }
     }
 

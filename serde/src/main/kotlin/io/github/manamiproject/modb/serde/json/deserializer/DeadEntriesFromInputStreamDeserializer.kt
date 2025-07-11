@@ -19,7 +19,7 @@ public class DeadEntriesFromInputStreamDeserializer : Deserializer<LifecycleAwar
 
         log.info { "Parsing dead entries" }
 
-        return@withContext Json.parseJson(source)!!
+        return@withContext source.use { Json.parseJson(source)!! }
     }
 
     public companion object {

@@ -21,7 +21,7 @@ public class AnimeFromJsonInputStreamDeserializer: Deserializer<LifecycleAwareIn
 
         log.info { "Deserializing JSON lines." }
 
-        return Json.parseJson<Dataset>(source)!!.data.asFlow()
+        return source.use { Json.parseJson<Dataset>(source)!!.data.asFlow() }
     }
 
     public companion object {
