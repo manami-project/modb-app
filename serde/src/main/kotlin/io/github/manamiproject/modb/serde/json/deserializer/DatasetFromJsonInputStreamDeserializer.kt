@@ -20,7 +20,7 @@ public class DatasetFromJsonInputStreamDeserializer: Deserializer<LifecycleAware
 
         log.info { "Deserializing dataset" }
 
-        return@withContext Json.parseJson<Dataset>(source)!!
+        return@withContext source.use { Json.parseJson<Dataset>(source)!! }
     }
 
     public companion object {
