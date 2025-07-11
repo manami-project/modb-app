@@ -1,6 +1,7 @@
 package io.github.manamiproject.modb.anisearch
 
 import io.github.manamiproject.modb.core.anime.*
+import io.github.manamiproject.modb.core.anime.AnimeMedia.NO_PICTURE
 import io.github.manamiproject.modb.core.anime.AnimeMedia.NO_PICTURE_THUMBNAIL
 import io.github.manamiproject.modb.core.anime.AnimeSeason.Season.*
 import io.github.manamiproject.modb.core.anime.AnimeStatus.*
@@ -73,14 +74,14 @@ public class AnisearchAnimeConverter(
             "ratingCount" to ".aggregateRating.ratingCount",
         ))
         
-        val thumbnail = extractThumbnail(data)
+        val picture = extractPicture(data)
 
         return@withContext AnimeRaw(
             _title = extractTitle(jsonData, data),
             episodes = extractEpisodes(jsonData),
             type = extractType(data),
-            picture = generatePicture(thumbnail),
-            thumbnail = thumbnail,
+            picture = picture,
+            thumbnail = generateThummbnail(picture),
             status = extractStatus(data),
             duration = extractDuration(data),
             animeSeason = extractAnimeSeason(jsonData),
@@ -125,19 +126,27 @@ public class AnisearchAnimeConverter(
         }
     }
 
-    private fun extractThumbnail(data: ExtractionResult): URI {
+    private fun extractPicture(data: ExtractionResult): URI {
         // links in JSON are invalid (http 404) for a few weeks now. Have to solely rely on meta tag again
-        return if (data.notFound("image")) {
-            NO_PICTURE_THUMBNAIL
-        } else {
-            URI(data.string("image").trim())
+        if (data.notFound("image")) {
+            return NO_PICTURE_THUMBNAIL
+        }
+
+        val url = data.string("image")
+
+        return when (url) {
+            DEFAULT_IMAGE -> NO_PICTURE
+            else -> URI(data.string("image").trim())
         }
     }
 
-    private fun generatePicture(picture: URI): URI {
+    private fun generateThummbnail(picture: URI): URI {
+        if (picture == NO_PICTURE) {
+            return NO_PICTURE_THUMBNAIL
+        }
+
         val value = picture.toString()
-            .remove("/full")
-            .replace(".webp", "_300.webp")
+            .replace("_600.webp", "_300.webp")
         return URI(value)
     }
 
@@ -304,5 +313,10 @@ public class AnisearchAnimeConverter(
         } else {
             data.listNotNull<Studio>("studios").toHashSet()
         }
+    }
+
+    private companion object {
+        private const val DEFAULT_IMAGE = "https://cdn.anisearch.com/images/anime/cover/0_600.webp"
+        private const val DEFAULT_THUMBNAIL = "https://cdn.anisearch.com/images/anime/cover/0_300.webp"
     }
 }
