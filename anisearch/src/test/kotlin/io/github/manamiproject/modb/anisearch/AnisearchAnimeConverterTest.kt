@@ -468,7 +468,7 @@ internal class AnisearchAnimeConverterTest {
                     "adventure",
                     "alternative world",
                     "comedy",
-                    "demons",
+                    "demon",
                     "ecchi",
                     "fantasy",
                     "guns",
@@ -476,7 +476,7 @@ internal class AnisearchAnimeConverterTest {
                     "knight",
                     "magic",
                     "parody",
-                    "robots & androids",
+                    "robots & android",
                     "science-fiction",
                     "swords & co",
                 )
@@ -520,7 +520,7 @@ internal class AnisearchAnimeConverterTest {
                 }
 
                 val testFile = loadTestResource<String>("AnisearchAnimeConverterTest/tags/no_tags.html")
-                "<html></html>".writeToFile(tempDir.resolve("17467.${testAnisearchConfig.fileSuffix()}"))
+                "<html></html>".writeToFile(tempDir.resolve("20713.${testAnisearchConfig.fileSuffix()}"))
 
                 val converter = AnisearchAnimeConverter(
                     metaDataProviderConfig = testAnisearchConfig,
