@@ -1,5 +1,7 @@
 package io.github.manamiproject.modb.anisearch
 
+import io.github.manamiproject.modb.core.anime.AnimeMedia.NO_PICTURE
+import io.github.manamiproject.modb.core.anime.AnimeMedia.NO_PICTURE_THUMBNAIL
 import io.github.manamiproject.modb.core.anime.AnimeSeason.Season.*
 import io.github.manamiproject.modb.core.anime.AnimeStatus.*
 import io.github.manamiproject.modb.core.anime.AnimeType.*
@@ -97,7 +99,7 @@ internal class AnisearchAnimeConverterTest {
                 }
 
                 val testFile = loadTestResource<String>("AnisearchAnimeConverterTest/picture_and_thumbnail/neither_picture_nor_thumbnail.html")
-                "<html></html>".writeToFile(tempDir.resolve("15237.${testAnisearchConfig.fileSuffix()}"))
+                "<html></html>".writeToFile(tempDir.resolve("20713.${testAnisearchConfig.fileSuffix()}"))
 
                 val converter = AnisearchAnimeConverter(
                     metaDataProviderConfig = testAnisearchConfig,
@@ -108,8 +110,8 @@ internal class AnisearchAnimeConverterTest {
                 val result = converter.convert(testFile)
 
                 // then
-                assertThat(result.picture).isEqualTo(URI("https://www.anisearch.com/images/anime/cover/0_300.webp"))
-                assertThat(result.thumbnail).isEqualTo(URI("https://www.anisearch.com/images/anime/cover/full/0.webp"))
+                assertThat(result.picture).isEqualTo(NO_PICTURE)
+                assertThat(result.thumbnail).isEqualTo(NO_PICTURE_THUMBNAIL)
             }
         }
 
@@ -135,8 +137,8 @@ internal class AnisearchAnimeConverterTest {
                 val result = converter.convert(testFile)
 
                 // then
-                assertThat(result.picture).isEqualTo(URI("https://www.anisearch.com/images/anime/cover/3/3633_300.webp"))
-                assertThat(result.thumbnail).isEqualTo(URI("https://www.anisearch.com/images/anime/cover/full/3/3633.webp"))
+                assertThat(result.picture).isEqualTo(URI("https://cdn.anisearch.com/images/anime/cover/3/3633_600.webp"))
+                assertThat(result.thumbnail).isEqualTo(URI("https://cdn.anisearch.com/images/anime/cover/3/3633_300.webp"))
             }
         }
     }

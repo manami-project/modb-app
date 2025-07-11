@@ -53,7 +53,7 @@ private val mainConfigFiles = mapOf(
     "AnisearchAnimeConverterTest/episodes/type-is-double.html" to "16804",
     "AnisearchAnimeConverterTest/episodes/unknown.html" to "16578",
 
-    "AnisearchAnimeConverterTest/picture_and_thumbnail/neither_picture_nor_thumbnail.html" to "15237",
+    "AnisearchAnimeConverterTest/picture_and_thumbnail/neither_picture_nor_thumbnail.html" to "20713",
     "AnisearchAnimeConverterTest/picture_and_thumbnail/picture_and_thumbnail_available.html" to "3633",
 
     "AnisearchAnimeConverterTest/scores/no-score.html" to "12224",
