@@ -50,7 +50,7 @@ public class AnisearchAnimeConverter(
             "type" to "//ul[@class='xlist row simple infoblock']//div[@class='type']",
             "status" to "//div[@class='status']",
             "duration" to "//ul[@class='xlist row simple infoblock']//time",
-            "tags" to "//section[@id='description']//ul[@class='cloud']//li//a/text()",
+            "tags" to "//section[@id='genres-tags']//ul[@class='cloud']//li//a/text()",
             "source" to "//div[@id='content-outer']/@data-id",
             "synonymsByLanguage" to "//div[@class='title']//strong/text()",
             "synonymsBySubheader" to "//div[@class='title']//div[@class='grey']/text()",

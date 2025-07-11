@@ -86,7 +86,7 @@ private val mainConfigFiles = mapOf(
     "AnisearchAnimeConverterTest/synonyms/synonyms_contain_named_parts.html" to "15599",
 
     "AnisearchAnimeConverterTest/tags/multiple_tags.html" to "15073",
-    "AnisearchAnimeConverterTest/tags/no_tags.html" to "17467",
+    "AnisearchAnimeConverterTest/tags/no_tags.html" to "20713",
     "AnisearchAnimeConverterTest/tags/one_tag.html" to "613",
 
     "AnisearchAnimeConverterTest/title/special_chars.html" to "15159",
