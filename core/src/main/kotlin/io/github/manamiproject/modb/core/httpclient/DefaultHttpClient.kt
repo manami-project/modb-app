@@ -19,11 +19,11 @@ import okhttp3.Headers.Companion.toHeaders
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.RequestBody.Companion.toRequestBody
 import okio.ByteString.Companion.encodeUtf8
-import java.io.InputStream.nullInputStream
 import java.net.Proxy
 import java.net.Proxy.NO_PROXY
 import java.net.SocketException
 import java.net.SocketTimeoutException
+import java.net.URI
 import java.net.URL
 import java.util.concurrent.TimeUnit.*
 
@@ -51,11 +51,16 @@ import java.util.concurrent.TimeUnit.*
  */
 public class DefaultHttpClient(
     proxy: Proxy = NO_PROXY,
+    useCustomRedirectInterceptor: Boolean = false,
     private val protocols: MutableList<HttpProtocol> = mutableListOf(HTTP_2, HTTP_1_1),
     private var okhttpClient: Call.Factory = OkHttpClient.Builder()
-        .retryOnConnectionFailure(true)
+        .followRedirects(!useCustomRedirectInterceptor)
+        .followSslRedirects(!useCustomRedirectInterceptor)
+        .addInterceptor(RedirectInterceptor(useCustomRedirectInterceptor))
         .connectTimeout(5L, SECONDS)
+        .protocols(mapHttpProtocols(protocols))
         .readTimeout(60L, SECONDS)
+        .proxy(proxy)
         .build(),
     private val isTestContext: Boolean = false,
     private val headerCreator: HeaderCreator = DefaultHeaderCreator.instance,
@@ -63,13 +68,6 @@ public class DefaultHttpClient(
 ) : HttpClient {
 
     init {
-        if (okhttpClient is OkHttpClient) {
-            okhttpClient = (okhttpClient as OkHttpClient).newBuilder()
-                .protocols(mapHttpProtocols())
-                .proxy(proxy)
-                .build()
-        }
-
         retryBehavior.addCases(
             // Server errors based on https://http.dev/status#5xx-server-error
             HttpResponseRetryCase { it.code == 500 },
@@ -172,13 +170,7 @@ public class DefaultHttpClient(
                     */
                     val currentClient = (okhttpClient as OkHttpClient)
                     currentClient.connectionPool.evictAll()
-                    okhttpClient = OkHttpClient.Builder()
-                        .retryOnConnectionFailure(currentClient.retryOnConnectionFailure)
-                        .connectTimeout(currentClient.connectTimeoutMillis.toLong(), MILLISECONDS)
-                        .readTimeout(currentClient.readTimeoutMillis.toLong(), MILLISECONDS)
-                        .protocols(currentClient.protocols)
-                        .proxy(currentClient.proxy)
-                        .build()
+                    okhttpClient = currentClient.newBuilder().build()
                 }
 
                 wait(request, retryCase, attempt)
@@ -262,19 +254,20 @@ public class DefaultHttpClient(
         }
     }
 
-    private fun mapHttpProtocols(): List<Protocol> {
-        require(protocols.isNotEmpty()) { "Requires at least one http protocol version." }
-
-        return protocols.map {
-            when(it) {
-                HTTP_2 -> OKHTTP_HTTP_2
-                HTTP_1_1 -> OKHTTP_HTTP_1_1
-            }
-        }
-    }
 
     public companion object {
         private val log by LoggerDelegate()
+
+        private fun mapHttpProtocols(protocols: Collection<HttpProtocol>): List<Protocol> {
+            require(protocols.isNotEmpty()) { "Requires at least one http protocol version." }
+
+            return protocols.map {
+                when(it) {
+                    HTTP_2 -> OKHTTP_HTTP_2
+                    HTTP_1_1 -> OKHTTP_HTTP_1_1
+                }
+            }
+        }
 
         /**
          * Singleton of [DefaultHttpClient]
@@ -286,6 +279,31 @@ public class DefaultHttpClient(
 
 private fun Response.toHttpResponse() = HttpResponse(
     code = this.code,
-    _body = LifecycleAwareInputStream(this.body?.byteStream() ?: nullInputStream()),
+    _body = LifecycleAwareInputStream(this.body.byteStream()),
     _headers = this.headers.toMultimap().toMutableMap()
 )
+
+private class RedirectInterceptor(private val active: Boolean): Interceptor {
+    override fun intercept(chain: Interceptor.Chain): Response {
+        var response = chain.proceed(chain.request())
+
+        if (response.isRedirect && active) {
+            response.close()
+            val location = URI(response.headers["location"]!!)
+
+            val newReq = chain.request()
+                .newBuilder()
+                .url(location.toURL())
+
+            response.headers.filter {
+                it.first.startsWith("x-")
+            }.forEach { newReq.addHeader(it.first, it.second) }
+
+            newReq.removeHeader("host")
+            newReq.addHeader("host", location.host)
+
+            response = chain.proceed(newReq.build())
+        }
+        return response
+    }
+}
