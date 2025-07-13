@@ -132,10 +132,10 @@ public data class HttpResponse(
      * the stream for the caller.
      * Use this to process the stream on your own. To retrieve textual payload use [bodyAsString] or [bodyAsByteArray] for binary data.
      * @since 19.0.0
-     * @return Response body as [InputStream]
+     * @return Response body as [LifecycleAwareInputStream]
      * @throws java.io.IOException if the stream has been consumed either using [bodyAsByteArray] or [bodyAsString].
      */
-    public fun bodyAsStream(): InputStream = _body
+    public fun bodyAsStream(): LifecycleAwareInputStream = _body
 
     private fun lowerCaseHeaders() {
         val lowerCaseKeyMap = _headers.map {

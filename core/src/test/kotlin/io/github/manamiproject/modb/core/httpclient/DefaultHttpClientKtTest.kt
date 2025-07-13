@@ -10,6 +10,7 @@ import io.github.manamiproject.modb.test.*
 import kotlinx.coroutines.runBlocking
 import okhttp3.*
 import okhttp3.Protocol.HTTP_2
+import okhttp3.internal.http.HTTP_PERM_REDIRECT
 import okio.Timeout
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Nested
@@ -1396,6 +1397,156 @@ internal class DefaultHttpClientKtTest : MockServerTestCase<WireMockServer> by W
                 // then
                 assertThat(executeBeforeHasBeenInvoked).isTrue()
                 assertThat(executeAfterHasBeenInvoked).isTrue()
+            }
+        }
+    }
+
+    @Nested
+    inner class CustomRedirectTests {
+
+        @Test
+        fun `successful retrieve response`() {
+            runBlocking {
+                // given
+                val path = "anime/1535"
+                val httpResponseCode = 200
+                val body = "Successful"
+
+                serverInstance.stubFor(
+                    get(urlPathEqualTo("/$path")).willReturn(
+                        aResponse()
+                            .withHeader("Content-Type", "text/plain")
+                            .withStatus(httpResponseCode)
+                            .withBody(body)
+                    )
+                )
+
+                val url = URI("http://localhost:$port/$path").toURL()
+                val client = DefaultHttpClient(
+                    useCustomRedirectInterceptor = true,
+                    isTestContext = true,
+                )
+
+                // when
+                val result = client.get(url)
+
+                // then
+                assertThat(result.code).isEqualTo(httpResponseCode)
+                assertThat(result.bodyAsString()).isEqualTo(body)
+            }
+        }
+
+        @ParameterizedTest
+        @ValueSource(ints = [
+            300,
+            301,
+            302,
+            303,
+            307,
+            308,
+        ])
+        fun `uses custom redirect interceptor in case the initial response returns a respective status code`(value: Int) {
+            runBlocking {
+                // given
+                val url = URI("http://localhost:$port/file.txt").toURL()
+
+                serverInstance.stubFor(
+                    get(urlPathEqualTo("/file.txt"))
+                        .inScenario("Client follows redirect")
+                        .whenScenarioStateIs(STARTED)
+                        .willReturn(
+                            aResponse()
+                                .withHeader("Content-Type", "text/plain")
+                                .withHeader("location", "http://localhost:$port/something/else/here.txt")
+                                .withStatus(value)
+                        )
+                        .willSetStateTo("Redirect")
+                )
+
+                serverInstance.stubFor(
+                    get(urlPathEqualTo("/something/else/here.txt"))
+                        .inScenario("Client follows redirect")
+                        .whenScenarioStateIs("Redirect")
+                        .willReturn(
+                            aResponse()
+                                .withHeader("Content-Type", "text/plain")
+                                .withStatus(200)
+                                .withBody("Success")
+                        )
+                )
+
+                val client = DefaultHttpClient(
+                    useCustomRedirectInterceptor = true,
+                    isTestContext = true,
+                )
+
+                // when
+                val result = client.get(url)
+
+                // then
+                assertThat(result.code).isEqualTo(200)
+                assertThat(result.bodyAsString()).isEqualTo("Success")
+            }
+        }
+
+        @ParameterizedTest
+        @ValueSource(ints = [
+            300,
+            301,
+            302,
+            303,
+            307,
+            308,
+        ])
+        fun `correctly sets passes host header and all x- prefixed headers`(value: Int) {
+            runBlocking {
+                // given
+                val url = URI("http://localhost:$port/file.txt").toURL()
+
+                serverInstance.stubFor(
+                    get(urlPathEqualTo("/file.txt"))
+                        .inScenario("Client follows redirect")
+                        .whenScenarioStateIs(STARTED)
+                        .willReturn(
+                            aResponse()
+                                .withHeader("Content-Type", "text/plain")
+                                .withHeader("location", "http://localhost:$port/something/else/here.txt")
+                                .withHeader("x-test-1", "1")
+                                .withHeader("x-some-more", "false")
+                                .withStatus(value)
+                        )
+                        .willSetStateTo("Redirect")
+                )
+
+                serverInstance.stubFor(
+                    get(urlPathEqualTo("/something/else/here.txt"))
+                        .inScenario("Client follows redirect")
+                        .withHeader("host", matching("localhost"))
+                        .withHeader("x-test-1", matching("1"))
+                        .withHeader("x-some-more", matching("false"))
+                        .whenScenarioStateIs("Redirect")
+                        .willReturn(
+                            aResponse()
+                                .withHeader("Content-Type", "text/plain")
+                                .withStatus(200)
+                                .withBody("Success")
+                        )
+                )
+
+                val client = DefaultHttpClient(
+                    useCustomRedirectInterceptor = true,
+                    isTestContext = true,
+                )
+
+                // when
+                val result = client.get(
+                    url = url,
+                    headers = mapOf("host" to listOf("example.org")),
+                )
+
+                // then
+                assertThat(result.code).isEqualTo(200)
+                assertThat(result.bodyAsString()).isEqualTo("Success")
             }
         }
     }

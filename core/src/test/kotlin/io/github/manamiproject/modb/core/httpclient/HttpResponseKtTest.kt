@@ -143,7 +143,7 @@ internal class HttpResponseKtTest {
             )
 
             // then
-            assertThat(result.bodyAsStream().readAllBytes().toString(UTF_8)).isEqualTo(body)
+            assertThat(result.bodyAsStream().use { it.readBytes().toString(UTF_8) }).isEqualTo(body)
         }
 
         @Test
@@ -226,7 +226,7 @@ internal class HttpResponseKtTest {
             )
 
             // then
-            assertThat(result.bodyAsStream().readAllBytes().toString(UTF_8)).isEqualTo(body)
+            assertThat(result.bodyAsStream().use { it.readBytes().toString(UTF_8) }).isEqualTo(body)
         }
 
         @Test
