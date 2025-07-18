@@ -1,5 +1,7 @@
 package io.github.manamiproject.modb.core.logging
 
+import java.util.concurrent.ConcurrentHashMap
+import kotlin.reflect.KClass
 import kotlin.reflect.KProperty
 
 /**
@@ -20,12 +22,16 @@ import kotlin.reflect.KProperty
  */
 public class LoggerDelegate(private val logLevel: LogLevelValue = LogLevelValue.NotSet) {
 
+    private val cache = ConcurrentHashMap<KClass<*>, Logger>()
+
     /**
      * Creates the [Logger] for use in delegation.
      * @since 7.0.0
      * @return Actual instance of the logger to use.
      */
     public operator fun getValue(thisRef: Any, property: KProperty<*>): Logger {
-        return ModbLogger(ref = thisRef::class, logLevel = logLevel)
+        return cache.computeIfAbsent(thisRef::class) {
+            ModbLogger(ref = thisRef::class, logLevel = logLevel)
+        }
     }
 }

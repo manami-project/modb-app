@@ -2,6 +2,7 @@ package io.github.manamiproject.modb.core.logging
 
 import org.slf4j.LoggerFactory
 import org.slf4j.bridge.SLF4JBridgeHandler
+import java.util.concurrent.atomic.AtomicBoolean
 import kotlin.reflect.KClass
 
 internal class Slf4jLogger(
@@ -10,7 +11,10 @@ internal class Slf4jLogger(
 ): Logger {
 
     init {
-        SLF4JBridgeHandler.install()
+        if (bridgeInstalled.compareAndSet(false, true)) {
+            SLF4JBridgeHandler.removeHandlersForRootLogger()
+            SLF4JBridgeHandler.install()
+        }
     }
 
     override fun error(message: () -> String) = slf4jLogger.error(message.invoke())
@@ -26,4 +30,8 @@ internal class Slf4jLogger(
     override fun debug(message: () -> String) = slf4jLogger.debug(message.invoke())
 
     override fun trace(message: () -> String) = slf4jLogger.trace(message.invoke())
+
+    private companion object {
+        private val bridgeInstalled = AtomicBoolean(false)
+    }
 }
