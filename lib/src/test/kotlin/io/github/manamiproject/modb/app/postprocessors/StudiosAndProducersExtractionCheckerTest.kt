@@ -66,7 +66,7 @@ internal class StudiosAndProducersExtractionCheckerTest {
                 // given
                 val testAnime = TestAnimeObjects.DefaultAnime.obj.copy(
                     sources = hashSetOf(URI("https://example.org/anime/994")),
-                    studios = (1..16).map { it.toString() }.toHashSet(),
+                    studios = (1..21).map { it.toString() }.toHashSet(),
                 )
 
                 val testDatasetFileAccessor = object: DatasetFileAccessor by TestDatasetFileAccessor {
@@ -85,7 +85,7 @@ internal class StudiosAndProducersExtractionCheckerTest {
                 }
 
                 // then
-                assertThat(result).hasMessage("Entries having more than [15] studios: [[https://example.org/anime/994]]")
+                assertThat(result).hasMessage("Entries having more than [20] studios: [[https://example.org/anime/994]]")
             }
         }
 

@@ -34,7 +34,7 @@ class StudiosAndProducersExtractionChecker(
 
     companion object {
         private val log by LoggerDelegate()
-        private const val STUDIOS_THRESHOLD = 15
+        private const val STUDIOS_THRESHOLD = 20
         private const val PRODUCERS_THRESHOLD = 30
 
         /**
