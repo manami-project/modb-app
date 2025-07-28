@@ -10,6 +10,7 @@ import io.github.manamiproject.modb.core.anime.Duration.TimeUnit.MINUTES
 import io.github.manamiproject.modb.core.httpclient.HttpClient
 import io.github.manamiproject.modb.core.httpclient.HttpResponse
 import io.github.manamiproject.modb.core.httpclient.RequestBody
+import io.github.manamiproject.modb.core.httpclient.RetryCase
 import io.github.manamiproject.modb.serde.json.deserializer.Deserializer
 import io.github.manamiproject.modb.test.shouldNotBeInvoked
 import java.io.IOException
@@ -21,6 +22,7 @@ import io.github.manamiproject.modb.core.anime.Duration.Companion.UNKNOWN as UNK
 internal object TestHttpClient: HttpClient {
     override suspend fun get(url: URL, headers: Map<String, Collection<String>>): HttpResponse = shouldNotBeInvoked()
     override suspend fun post(url: URL, requestBody: RequestBody, headers: Map<String, Collection<String>>): HttpResponse = shouldNotBeInvoked()
+    override fun addRetryCases(vararg retryCases: RetryCase): HttpClient = shouldNotBeInvoked()
 }
 
 internal class TestDeserializer<in IN, out OUT>: Deserializer<IN, OUT> {

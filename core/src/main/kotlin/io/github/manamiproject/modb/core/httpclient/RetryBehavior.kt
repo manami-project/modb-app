@@ -8,10 +8,10 @@ package io.github.manamiproject.modb.core.httpclient
  * @property httpResponseRetryCases Contains all cases based on a [HttpResponse] for which a retry will be performed.
  * @property throwableRetryCases Contains all cases based on a [ThrowableRetryCase] for which a retry will be performed.
  */
-public data class RetryBehavior(
+internal data class RetryBehavior(
     val maxAttempts: Int = 5,
-    private val httpResponseRetryCases: MutableMap<(HttpResponse) -> Boolean, HttpResponseRetryCase> = mutableMapOf(),
-    private val throwableRetryCases: MutableMap<(Throwable) -> Boolean, ThrowableRetryCase> = mutableMapOf(),
+    private val httpResponseRetryCases: MutableList<HttpResponseRetryCase> = mutableListOf(),
+    private val throwableRetryCases: MutableList<ThrowableRetryCase> = mutableListOf(),
 ) {
 
     /**
@@ -21,11 +21,11 @@ public data class RetryBehavior(
      * @param retryCases Can take a single or multiple [HttpResponseRetryCase]s.
      * @return Same instance.
      */
-    public fun addCases(vararg retryCases: RetryCase): RetryBehavior {
+    fun addCases(vararg retryCases: RetryCase): RetryBehavior {
         retryCases.forEach {
             when (it) {
-                is HttpResponseRetryCase -> httpResponseRetryCases[it.retryIf] = it
-                is ThrowableRetryCase -> throwableRetryCases[it.retryIf] = it
+                is HttpResponseRetryCase -> httpResponseRetryCases.add(it)
+                is ThrowableRetryCase -> throwableRetryCases.add(it)
                 NoRetry -> {}
             }
         }
@@ -39,7 +39,7 @@ public data class RetryBehavior(
      * @param httpResponse The response object which is used to check whether a retry is necessary or not.
      * @return `true` if the given [HttpResponse] matches one of the cases triggering a retry.
      */
-    public fun requiresRetry(httpResponse: HttpResponse): Boolean = httpResponseRetryCases.keys.any { it.invoke(httpResponse) }
+    fun requiresRetry(httpResponse: HttpResponse): Boolean = httpResponseRetryCases.reversed().any { it.retryIf.invoke(httpResponse) }
 
     /**
      * Checks whether an Exception (any [Throwable]) requires to perform a retry.
@@ -47,7 +47,7 @@ public data class RetryBehavior(
      * @param throwable An exception instance that has been thrown.
      * @return `true` if the given exception (any [Throwable]) matches one of the cases triggering a retry.
      */
-    public fun requiresRetry(throwable: Throwable): Boolean = throwableRetryCases.keys.any { it.invoke(throwable) }
+    fun requiresRetry(throwable: Throwable): Boolean = throwableRetryCases.reversed().any { it.retryIf.invoke(throwable) }
 
     /**
      * Fetch the retry based on a [HttpResponse].
@@ -57,7 +57,7 @@ public data class RetryBehavior(
      * @throws NoSuchElementException in case there is no [RetryCase] for the given [httpResponse]. Use [requiresRetry] to prevent this exception.
      * @see requiresRetry
      */
-    public fun retryCase(httpResponse: HttpResponse): HttpResponseRetryCase = httpResponseRetryCases.values.first { it.retryIf.invoke(httpResponse) }
+    fun retryCase(httpResponse: HttpResponse): HttpResponseRetryCase = httpResponseRetryCases.reversed().first { it.retryIf.invoke(httpResponse) }
 
 
     /**
@@ -68,5 +68,5 @@ public data class RetryBehavior(
      * @throws NoSuchElementException in case there is no [RetryCase] for the given [throwable]. Use [requiresRetry] to prevent this exception.
      * @see requiresRetry
      */
-    public fun retryCase(throwable: Throwable): ThrowableRetryCase = throwableRetryCases.values.first { it.retryIf.invoke(throwable) }
+    fun retryCase(throwable: Throwable): ThrowableRetryCase = throwableRetryCases.reversed().first { it.retryIf.invoke(throwable) }
 }

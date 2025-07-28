@@ -206,7 +206,6 @@ internal class DefaultHttpClientKtTest : MockServerTestCase<WireMockServer> by W
         @ParameterizedTest
         @ValueSource(ints = [500, 501, 502, 503, 504, 505, 506, 507, 508, 509, 510, 511, 520, 521, 522, 523, 524, 525, 526, 527, 529, 530, 561, 598, 599, 425, 429])
         fun `performs retry for a variety of status codes`(value: Int) {
-
             runBlocking {
                 // given
                 val path = "anime/1535"
@@ -565,7 +564,7 @@ internal class DefaultHttpClientKtTest : MockServerTestCase<WireMockServer> by W
                         .willReturn(
                             aResponse()
                                 .withHeader("Content-Type", "text/plain")
-                                .withStatus(429)
+                                .withStatus(418)
                         )
                         .willSetStateTo("Retry")
                 )
@@ -591,12 +590,11 @@ internal class DefaultHttpClientKtTest : MockServerTestCase<WireMockServer> by W
 
                 val client = DefaultHttpClient(
                     isTestContext = true,
-                    retryBehavior = RetryBehavior().addCases(
-                        HttpResponseRetryCase(
-                            executeBefore = testExecuteBefore,
-                            executeAfter = testExecuteAfter,
-                        ) { it.isNotOk() },
-                    ),
+                ).addRetryCases(
+                    HttpResponseRetryCase(
+                        executeBefore = testExecuteBefore,
+                        executeAfter = testExecuteAfter,
+                    ) { it.code == 418 },
                 )
 
                 // when
@@ -1348,7 +1346,7 @@ internal class DefaultHttpClientKtTest : MockServerTestCase<WireMockServer> by W
                         .willReturn(
                             aResponse()
                                 .withHeader("Content-Type", "text/plain")
-                                .withStatus(429)
+                                .withStatus(418)
                         )
                         .willSetStateTo("Retry")
                 )
@@ -1375,12 +1373,11 @@ internal class DefaultHttpClientKtTest : MockServerTestCase<WireMockServer> by W
 
                 val client = DefaultHttpClient(
                     isTestContext = true,
-                    retryBehavior = RetryBehavior().addCases(
-                        HttpResponseRetryCase(
-                            executeBefore = testExecuteBefore,
-                            executeAfter = testExecuteAfter,
-                        ) { it.isNotOk() },
-                    ),
+                ).addRetryCases(
+                    HttpResponseRetryCase(
+                        executeBefore = testExecuteBefore,
+                        executeAfter = testExecuteAfter,
+                    ) { it.code == 418 },
                 )
 
                 // when
@@ -1546,6 +1543,161 @@ internal class DefaultHttpClientKtTest : MockServerTestCase<WireMockServer> by W
                 // then
                 assertThat(result.code).isEqualTo(200)
                 assertThat(result.bodyAsString()).isEqualTo("Success")
+            }
+        }
+    }
+
+    @Nested
+    inner class AddRetryCasesTests {
+
+        @Test
+        fun `status code - correctly adds new retry case`() {
+            runBlocking {
+                // given
+                val path = "anime/1535"
+
+                serverInstance.stubFor(
+                    get(urlPathEqualTo("/$path"))
+                        .inScenario("Fail until last retry")
+                        .whenScenarioStateIs(STARTED)
+                        .willReturn(
+                            aResponse()
+                                .withHeader("Content-Type", "text/plain")
+                                .withStatus(418)
+                                .withBody(EMPTY)
+                        )
+                        .willSetStateTo("Retry")
+                )
+                serverInstance.stubFor(
+                    get(urlPathEqualTo("/$path"))
+                        .inScenario("Fail until last retry")
+                        .whenScenarioStateIs("Retry")
+                        .willReturn(
+                            aResponse()
+                                .withHeader("Content-Type", "text/plain")
+                                .withStatus(200)
+                                .withBody(EMPTY)
+                        )
+                )
+
+                val url = URI("http://localhost:$port/$path").toURL()
+
+                val client = DefaultHttpClient(
+                    isTestContext = true,
+                ).addRetryCases(
+                    HttpResponseRetryCase { it.code == 418 },
+                )
+
+                // when
+                val result = client.get(url)
+
+                // then
+                assertThat(result.code).isEqualTo(200)
+            }
+        }
+
+        @Test
+        fun `status code - last added case wins`() {
+            runBlocking {
+                // given
+                val path = "anime/1535"
+
+                serverInstance.stubFor(
+                    get(urlPathEqualTo("/$path"))
+                        .inScenario("Fail until last retry")
+                        .whenScenarioStateIs(STARTED)
+                        .willReturn(
+                            aResponse()
+                                .withHeader("Content-Type", "text/plain")
+                                .withStatus(500)
+                                .withBody(EMPTY)
+                        )
+                        .willSetStateTo("Retry")
+                )
+                serverInstance.stubFor(
+                    get(urlPathEqualTo("/$path"))
+                        .inScenario("Fail until last retry")
+                        .whenScenarioStateIs("Retry")
+                        .willReturn(
+                            aResponse()
+                                .withHeader("Content-Type", "text/plain")
+                                .withStatus(200)
+                                .withBody(EMPTY)
+                        )
+                )
+
+                val url = URI("http://localhost:$port/$path").toURL()
+
+                var executeBeforeHasBeenInvoked = false
+                val testExecuteBefore = { executeBeforeHasBeenInvoked = true }
+
+                val client = DefaultHttpClient(
+                    isTestContext = true,
+                ).addRetryCases(
+                    HttpResponseRetryCase(executeBefore = testExecuteBefore) { it.code == 500 },
+                )
+
+                // when
+                val result = client.get(url)
+
+                // then
+                assertThat(result.code).isEqualTo(200)
+                assertThat(executeBeforeHasBeenInvoked).isTrue()
+            }
+        }
+
+        @Test
+        fun `throwable - last added case wins`() {
+            runBlocking {
+                // given
+                val path = "anime/1535"
+
+                serverInstance.stubFor(
+                    get(urlPathEqualTo("/$path"))
+                        .inScenario("SocketTimeoutException triggers retry")
+                        .whenScenarioStateIs(STARTED)
+                        .willReturn(
+                            aResponse()
+                                .withHeader("Content-Type", "text/plain")
+                                .withStatus(200)
+                                .withFixedDelay(6000)
+                        )
+                        .willSetStateTo("Retry")
+                )
+                serverInstance.stubFor(
+                    get(urlPathEqualTo("/$path"))
+                        .inScenario("SocketTimeoutException triggers retry")
+                        .whenScenarioStateIs("Retry")
+                        .willReturn(
+                            aResponse()
+                                .withHeader("Content-Type", "text/plain")
+                                .withStatus(200)
+                                .withBody("Success")
+                        )
+                )
+
+                val url = URI("http://localhost:$port/$path").toURL()
+
+                var executeBeforeHasBeenInvoked = false
+                val testExecuteBefore = { executeBeforeHasBeenInvoked = true }
+
+                val client = DefaultHttpClient(
+                    isTestContext = true,
+                    okhttpClient = OkHttpClient.Builder()
+                        .retryOnConnectionFailure(true)
+                        .connectTimeout(1L, SECONDS)
+                        .readTimeout(5L, SECONDS)
+                        .build(),
+                ).addRetryCases(
+                    ThrowableRetryCase(executeBefore = testExecuteBefore) { it is  SocketTimeoutException }
+                )
+
+                // when
+                val result = client.get(url)
+
+                // then
+                assertThat(result.code).isEqualTo(200)
+                assertThat(executeBeforeHasBeenInvoked).isTrue()
             }
         }
     }

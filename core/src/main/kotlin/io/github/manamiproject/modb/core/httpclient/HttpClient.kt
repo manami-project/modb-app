@@ -30,4 +30,12 @@ public interface HttpClient {
      * @return The server's response.
      */
     public suspend fun get(url: URL, headers: Map<String, Collection<String>> = emptyMap()): HttpResponse
+
+    /**
+     * Add definitions for which the [HttpClient] will create a retry.
+     * @since 19.1.0
+     * @param retryCases Any number of cases in which the client will perform a retry.
+     * @return Self.
+     */
+    public fun addRetryCases(vararg retryCases: RetryCase): HttpClient
 }

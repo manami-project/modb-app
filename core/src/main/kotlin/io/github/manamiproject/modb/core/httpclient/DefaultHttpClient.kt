@@ -47,7 +47,6 @@ import java.util.concurrent.TimeUnit.*
  * @property okhttpClient Instance of the OKHTTP client on which this client is based.
  * @property isTestContext Whether this runs in the unit test context or not.
  * @property headerCreator Creates default headers based on the selected browser type.
- * @property retryBehavior [RetryBehavior] to use for each request.
  */
 public class DefaultHttpClient(
     proxy: Proxy = NO_PROXY,
@@ -64,8 +63,9 @@ public class DefaultHttpClient(
         .build(),
     private val isTestContext: Boolean = false,
     private val headerCreator: HeaderCreator = DefaultHeaderCreator.instance,
-    public val retryBehavior: RetryBehavior = RetryBehavior(),
 ) : HttpClient {
+
+    private val retryBehavior: RetryBehavior = RetryBehavior()
 
     init {
         retryBehavior.addCases(
@@ -140,6 +140,11 @@ public class DefaultHttpClient(
             .build()
 
         retry(request)
+    }
+
+    override fun addRetryCases(vararg retryCases: RetryCase): HttpClient {
+        retryBehavior.addCases(*retryCases)
+        return this
     }
 
     private suspend fun retry(request: Request): HttpResponse = withContext(LIMITED_NETWORK) {
