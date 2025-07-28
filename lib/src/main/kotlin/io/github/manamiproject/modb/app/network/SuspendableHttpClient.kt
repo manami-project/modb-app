@@ -8,6 +8,7 @@ import io.github.manamiproject.modb.core.httpclient.DefaultHttpClient
 import io.github.manamiproject.modb.core.httpclient.HttpClient
 import io.github.manamiproject.modb.core.httpclient.HttpResponse
 import io.github.manamiproject.modb.core.httpclient.RequestBody
+import io.github.manamiproject.modb.core.httpclient.RetryCase
 import io.github.manamiproject.modb.core.logging.LoggerDelegate
 import kotlinx.coroutines.Dispatchers.Default
 import kotlinx.coroutines.delay
@@ -38,6 +39,11 @@ class SuspendableHttpClient(
     override suspend fun post(url: URL, requestBody: RequestBody, headers: Map<String, Collection<String>>): HttpResponse {
         suspendIfNecessary()
         return httpClient.post(url, requestBody, headers)
+    }
+
+    override fun addRetryCases(vararg retryCases: RetryCase): HttpClient {
+        httpClient.addRetryCases(*retryCases)
+        return this
     }
 
     private suspend fun suspendIfNecessary() = withContext(Default) {

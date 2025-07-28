@@ -7,6 +7,7 @@ import io.github.manamiproject.modb.core.config.MetaDataProviderConfig
 import io.github.manamiproject.modb.core.httpclient.HttpClient
 import io.github.manamiproject.modb.core.httpclient.HttpResponse
 import io.github.manamiproject.modb.core.httpclient.RequestBody
+import io.github.manamiproject.modb.core.httpclient.RetryCase
 import io.github.manamiproject.modb.test.shouldNotBeInvoked
 import java.net.URI
 import java.net.URL
@@ -22,4 +23,5 @@ internal object TestMetaDataProviderConfig : MetaDataProviderConfig {
 internal object TestHttpClient : HttpClient {
     override suspend fun get(url: URL, headers: Map<String, Collection<String>>): HttpResponse = shouldNotBeInvoked()
     override suspend fun post(url: URL, requestBody: RequestBody, headers: Map<String, Collection<String>>): HttpResponse = shouldNotBeInvoked()
+    override fun addRetryCases(vararg retryCases: RetryCase): HttpClient = shouldNotBeInvoked()
 }
