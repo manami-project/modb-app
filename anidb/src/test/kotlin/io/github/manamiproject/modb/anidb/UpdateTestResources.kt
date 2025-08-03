@@ -107,10 +107,6 @@ private val files = mapOf(
     "AnidbAnimeConverterTest/type/tv_special.html" to "12519",
     "AnidbAnimeConverterTest/type/unknown.html" to "7608",
     "AnidbAnimeConverterTest/type/web.html" to "11788",
-
-    "AnidbAnimeConverterTest/studios/multiple_studios.html" to "14785",
-    "AnidbAnimeConverterTest/studios/no_studios.html" to "12881",
-    "AnidbAnimeConverterTest/studios/single-person-for-animation-works.html" to "6993",
 )
 
 internal fun main(): Unit = runCoroutine {
