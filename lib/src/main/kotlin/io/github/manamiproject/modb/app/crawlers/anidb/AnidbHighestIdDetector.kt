@@ -12,6 +12,7 @@ import io.github.manamiproject.modb.core.extensions.remove
 import io.github.manamiproject.modb.core.extractor.DataExtractor
 import io.github.manamiproject.modb.core.extractor.XmlDataExtractor
 import io.github.manamiproject.modb.core.httpclient.HttpClient
+import io.github.manamiproject.modb.core.httpclient.ThrowableRetryCase
 import io.github.manamiproject.modb.core.logging.LoggerDelegate
 import java.net.ConnectException
 import java.net.NoRouteToHostException
@@ -23,6 +24,7 @@ import java.net.UnknownHostException
  * @property metaDataProviderConfig Configuration for a specific meta data provider.
  * @property httpClient Implementation of [HttpClient] which is used to retrieve the highest id.
  * @property extractor Extractor which retrieves the data from raw data.
+ * @property networkController Access to the network controller which allows to perform a restart.
  */
 class AnidbHighestIdDetector(
     private val metaDataProviderConfig: MetaDataProviderConfig = AnidbHighestIdDetectorConfig,
@@ -30,6 +32,13 @@ class AnidbHighestIdDetector(
     private val extractor: DataExtractor = XmlDataExtractor,
     private val networkController: NetworkController = LinuxNetworkController.instance,
 ): HighestIdDetector {
+
+    init {
+        val restart = suspend { networkController.restartAsync().join() }
+        httpClient.addRetryCases(ThrowableRetryCase(executeBefore = restart){ it is ConnectException})
+        httpClient.addRetryCases(ThrowableRetryCase(executeBefore = restart){ it is UnknownHostException})
+        httpClient.addRetryCases(ThrowableRetryCase(executeBefore = restart){ it is NoRouteToHostException})
+    }
 
     override suspend fun detectHighestId(): Int {
         log.info { "Fetching highest id for [${metaDataProviderConfig.hostname()}]." }
@@ -40,9 +49,6 @@ class AnidbHighestIdDetector(
             response
         } catch (e: Throwable) {
             when(e) {
-                is ConnectException,
-                is UnknownHostException,
-                is NoRouteToHostException,
                 is CrawlerDetectedException -> {
                     networkController.restartAsync().await()
                     val response = httpClient.get(metaDataProviderConfig.buildDataDownloadLink().toURL()).checkedBody(this::class)

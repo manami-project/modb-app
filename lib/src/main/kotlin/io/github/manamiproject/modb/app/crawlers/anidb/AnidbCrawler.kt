@@ -18,19 +18,15 @@ import io.github.manamiproject.modb.core.config.MetaDataProviderConfig
 import io.github.manamiproject.modb.core.coverage.KoverIgnore
 import io.github.manamiproject.modb.core.downloader.Downloader
 import io.github.manamiproject.modb.core.excludeFromTestContext
-import io.github.manamiproject.modb.core.extensions.createShuffledList
-import io.github.manamiproject.modb.core.extensions.fileName
-import io.github.manamiproject.modb.core.extensions.listRegularFiles
-import io.github.manamiproject.modb.core.extensions.neitherNullNorBlank
-import io.github.manamiproject.modb.core.extensions.remove
-import io.github.manamiproject.modb.core.extensions.writeToFile
+import io.github.manamiproject.modb.core.extensions.*
+import io.github.manamiproject.modb.core.httpclient.HttpClient
+import io.github.manamiproject.modb.core.httpclient.ThrowableRetryCase
 import io.github.manamiproject.modb.core.logging.LoggerDelegate
 import io.github.manamiproject.modb.core.random
 import kotlinx.coroutines.delay
 import java.net.ConnectException
 import java.net.NoRouteToHostException
 import java.net.UnknownHostException
-import kotlin.io.path.forEachDirectoryEntry
 import kotlin.time.DurationUnit.MILLISECONDS
 import kotlin.time.toDuration
 
@@ -43,6 +39,7 @@ import kotlin.time.toDuration
  * @property metaDataProviderConfig Configuration for a specific meta data provider.
  * @property deadEntriesAccess Access to dead entries files.
  * @property idRangeSelector Delivers the IDs to download.
+ * @property httpClient To actually download the anime data.
  * @property downloader Downloader for a specific meta data provider.
  */
 class AnidbCrawler(
@@ -53,12 +50,21 @@ class AnidbCrawler(
         metaDataProviderConfig = metaDataProviderConfig,
         highestIdDetector = AnidbHighestIdDetector.instance,
     ),
+    private val httpClient: HttpClient = SuspendableHttpClient(),
     private val downloader: Downloader = AnidbDownloader(
         metaDataProviderConfig = metaDataProviderConfig,
-        httpClient = SuspendableHttpClient(),
+        httpClient = httpClient,
     ),
     private val networkController: NetworkController = LinuxNetworkController.instance,
 ): Crawler {
+
+    init {
+        val restart = suspend { networkController.restartAsync().join() }
+        httpClient.addRetryCases(ThrowableRetryCase(executeBefore = restart) { it is ConnectException})
+        httpClient.addRetryCases(ThrowableRetryCase(executeBefore = restart) { it is UnknownHostException})
+        httpClient.addRetryCases(ThrowableRetryCase(executeBefore = restart) { it is NoRouteToHostException})
+        httpClient.addRetryCases(ThrowableRetryCase(executeBefore = restart) { it is CrawlerDetectedException})
+    }
 
     override suspend fun start() {
         log.info { "Starting crawler for [${metaDataProviderConfig.hostname()}]." }
@@ -85,24 +91,8 @@ class AnidbCrawler(
 
         log.debug { "Downloading ${index+1}/${idDownloadList.size}: [anidbId=$animeId]" }
 
-        val response = try {
-            downloader.download(animeId.toString()) {
-                deadEntriesAccess.addDeadEntry(it, metaDataProviderConfig)
-            }
-        } catch (e: Throwable) {
-            when(e) {
-                is ConnectException,
-                is UnknownHostException,
-                is NoRouteToHostException,
-                is CrawlerDetectedException
-                    -> {
-                    networkController.restartAsync().await()
-                    downloader.download(animeId.toString()) {
-                        deadEntriesAccess.addDeadEntry(it, metaDataProviderConfig)
-                    }
-                }
-                else -> throw e
-            }
+        val response = downloader.download(animeId.toString()) {
+            deadEntriesAccess.addDeadEntry(it, metaDataProviderConfig)
         }
 
         when {
