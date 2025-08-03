@@ -229,7 +229,7 @@ public class AnidbAnimeConverter(
     }
 
     private fun releaseDateToStatus(startDate: LocalDate, endDate: LocalDate = startDate): AnimeStatus {
-        if (startDate != endDate) {
+        if (!startDate.isEqual(endDate)) {
             return when {
                 endDate.isBefore(currentDate) -> FINISHED
                 startDate.isBefore(currentDate) && endDate.isAfter(currentDate) -> ONGOING
