@@ -29,6 +29,15 @@ public class FromUrlDeserializer<out T>(
             "application/json" -> LifecycleAwareInputStream(response.bodyAsStream())
             "application/jsonl", "application/jsonlines", "application/x-ndjson", "application/x-jsonlines" -> LifecycleAwareInputStream(response.bodyAsStream())
             "application/zstd" -> LifecycleAwareInputStream(ZstdInputStream(response.bodyAsStream()))
+            "application/octet-stream" -> {
+                when {
+                    source.path.endsWith(".json") -> LifecycleAwareInputStream(response.bodyAsStream())
+                    source.path.endsWith(".jsonl") -> LifecycleAwareInputStream(response.bodyAsStream())
+                    source.path.endsWith(".zst") -> LifecycleAwareInputStream(ZstdInputStream(response.bodyAsStream()))
+                    else  -> throw IllegalStateException("Unable to determine strategy for [$source] with content type ${response.headers["content-type"]}")
+                }
+
+            }
             else -> throw IllegalStateException("Unsupported content-type: ${response.headers["content-type"]}")
         }
 

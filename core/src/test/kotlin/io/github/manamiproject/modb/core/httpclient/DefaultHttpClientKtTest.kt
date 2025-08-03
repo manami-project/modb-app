@@ -10,7 +10,6 @@ import io.github.manamiproject.modb.test.*
 import kotlinx.coroutines.runBlocking
 import okhttp3.*
 import okhttp3.Protocol.HTTP_2
-import okhttp3.internal.http.HTTP_PERM_REDIRECT
 import okio.Timeout
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Nested
