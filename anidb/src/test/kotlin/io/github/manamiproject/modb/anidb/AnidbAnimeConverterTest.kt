@@ -1723,7 +1723,7 @@ internal class AnidbAnimeConverterTest {
     inner class StudiosTests {
 
         @Test
-        fun `multiple studios`() {
+        fun `always empty, because they mix up persons and actual studios`() {
             runBlocking {
                 // given
                 val testAnidbConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
@@ -1732,32 +1732,7 @@ internal class AnidbAnimeConverterTest {
                     override fun fileSuffix(): FileSuffix = AnidbConfig.fileSuffix()
                 }
 
-                val testFile = loadTestResource<String>("AnidbAnimeConverterTest/studios/multiple_studios.html")
-
-                val converter = AnidbAnimeConverter(testAnidbConfig)
-
-                // when
-                val result = converter.convert(testFile)
-
-                // then
-                assertThat(result.studios).containsExactlyInAnyOrder(
-                    "satelight",
-                    "hornets",
-                )
-            }
-        }
-
-        @Test
-        fun `no studios`() {
-            runBlocking {
-                // given
-                val testAnidbConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
-                    override fun hostname(): Hostname = AnidbConfig.hostname()
-                    override fun buildAnimeLink(id: AnimeId): URI = AnidbConfig.buildAnimeLink(id)
-                    override fun fileSuffix(): FileSuffix = AnidbConfig.fileSuffix()
-                }
-
-                val testFile = loadTestResource<String>("AnidbAnimeConverterTest/studios/no_studios.html")
+                val testFile = loadTestResource<String>("AnidbAnimeConverterTest/sources/11221.html")
 
                 val converter = AnidbAnimeConverter(testAnidbConfig)
 
@@ -1768,9 +1743,13 @@ internal class AnidbAnimeConverterTest {
                 assertThat(result.studios).isEmpty()
             }
         }
+    }
+
+    @Nested
+    inner class ProducersTests {
 
         @Test
-        fun `single person, not a company, is mentioned under animation works resulting in an empty list - fixes #466`() {
+        fun `always empty, because they mix up persons and actual studios and list them under different headings`() {
             runBlocking {
                 // given
                 val testAnidbConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
@@ -1779,7 +1758,7 @@ internal class AnidbAnimeConverterTest {
                     override fun fileSuffix(): FileSuffix = AnidbConfig.fileSuffix()
                 }
 
-                val testFile = loadTestResource<String>("AnidbAnimeConverterTest/studios/single-person-for-animation-works.html")
+                val testFile = loadTestResource<String>("AnidbAnimeConverterTest/sources/11221.html")
 
                 val converter = AnidbAnimeConverter(testAnidbConfig)
 
@@ -1787,7 +1766,7 @@ internal class AnidbAnimeConverterTest {
                 val result = converter.convert(testFile)
 
                 // then
-                assertThat(result.studios).isEmpty()
+                assertThat(result.producers).isEmpty()
             }
         }
     }

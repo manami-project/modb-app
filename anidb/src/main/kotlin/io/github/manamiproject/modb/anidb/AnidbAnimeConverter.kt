@@ -64,15 +64,6 @@ public class AnidbAnimeConverter(
             "score" to "//span[@data-label='Rating'][contains(@class, 'tmpanime')]/a/span/text()",
         ))
 
-        val animationDataString = rawContent.substringAfter(">Animation Work (")
-            .substringBefore("id=\"staffid_")
-            .let { if (it.startsWith("<!DOCTYPE html>")) EMPTY else it }
-            .let { if (it.endsWith("</html>")) EMPTY else it }
-
-        val animationData = extractor.extract(animationDataString, mapOf(
-            "studios" to "//a/text()",
-        ))
-
         val picture = extractPicture(data)
 
         return@withContext AnimeRaw(
@@ -88,7 +79,7 @@ public class AnidbAnimeConverter(
             _synonyms = extractSynonyms(data),
             _relatedAnime = extractRelatedAnime(data),
             _tags = extractTags(data),
-            _studios = extractStudios(animationData),
+            _studios = hashSetOf(), // often missing, can be found under different names or is mixed up with persons
             _producers = hashSetOf(), // often missing, can be found under different names or is mixed up with persons
         ).addScores(extractScore(data))
     }
@@ -369,14 +360,6 @@ public class AnidbAnimeConverter(
             value = rawScore,
             range = 1.0..10.0,
         )
-    }
-
-    private fun extractStudios(data: ExtractionResult): HashSet<Studio> {
-        return if (data.notFound("studios")) {
-            hashSetOf()
-        } else {
-            data.listNotNull<Studio>("studios").toHashSet()
-        }
     }
 
     public companion object {
