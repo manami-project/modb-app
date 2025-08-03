@@ -23,7 +23,7 @@ import kotlinx.coroutines.withContext
 public class KitsuDownloader(
     private val metaDataProviderConfig: MetaDataProviderConfig = KitsuConfig,
     private val httpClient: HttpClient = DefaultHttpClient(isTestContext = metaDataProviderConfig.isTestContext()).apply {
-        retryBehavior.addCases(HttpResponseRetryCase { it.code == 400 })
+        addRetryCases(HttpResponseRetryCase { it.code == 400 })
     },
     private val extractor: DataExtractor = JsonDataExtractor,
 ) : Downloader {
