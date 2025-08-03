@@ -5,6 +5,7 @@ import io.github.manamiproject.kommand.CommandLineConfig
 import io.github.manamiproject.modb.app.config.Config
 import io.github.manamiproject.modb.app.convfiles.AlreadyDownloadedIdsFinder
 import io.github.manamiproject.modb.app.crawlers.HighestIdDetector
+import io.github.manamiproject.modb.app.crawlers.IdRangeSelector
 import io.github.manamiproject.modb.app.crawlers.LastPageMemorizer
 import io.github.manamiproject.modb.app.crawlers.PaginationIdRangeSelector
 import io.github.manamiproject.modb.app.dataset.DatasetFileAccessor
@@ -221,6 +222,10 @@ internal object TestPaginationIdRangeSelectorString: PaginationIdRangeSelector<S
 
 internal object TestDataExtractor: DataExtractor {
     override suspend fun extract(rawContent: String, selection: Map<OutputKey, Selector>): ExtractionResult = shouldNotBeInvoked()
+}
+
+internal object TestIdRangeSelectorInt: IdRangeSelector<Int> {
+    override suspend fun idDownloadList(): List<Int> = shouldNotBeInvoked()
 }
 
 @Suppress("unused")
