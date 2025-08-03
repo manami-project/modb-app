@@ -18,6 +18,7 @@ import io.github.manamiproject.modb.core.extensions.remove
 import io.github.manamiproject.modb.core.extractor.DataExtractor
 import io.github.manamiproject.modb.core.extractor.XmlDataExtractor
 import io.github.manamiproject.modb.core.httpclient.HttpClient
+import io.github.manamiproject.modb.core.httpclient.ThrowableRetryCase
 import io.github.manamiproject.modb.core.logging.LoggerDelegate
 import java.net.ConnectException
 import java.net.NoRouteToHostException
@@ -49,6 +50,13 @@ class AnisearchPaginationIdRangeSelector(
 
     private val entriesNotScheduledForCurrentWeek = hashSetOf<AnimeId>()
 
+    init {
+        val restart = suspend { networkController.restartAsync().join() }
+        httpClient.addRetryCases(ThrowableRetryCase(executeBefore = restart) { it is ConnectException})
+        httpClient.addRetryCases(ThrowableRetryCase(executeBefore = restart) { it is UnknownHostException})
+        httpClient.addRetryCases(ThrowableRetryCase(executeBefore = restart) { it is NoRouteToHostException})
+    }
+
     override suspend fun idDownloadList(page: Int): List<AnimeId> {
         log.info { "Retrieving IDs for [${metaDataProviderConfig.hostname()}] from page [$page]" }
 
@@ -56,19 +64,7 @@ class AnisearchPaginationIdRangeSelector(
             entriesNotScheduledForCurrentWeek.addAll(downloadControlStateScheduler.findEntriesNotScheduledForCurrentWeek(metaDataProviderConfig))
         }
 
-        val resonse = try {
-            downloadPage(page)
-        } catch (e: Throwable) {
-            when(e) {
-                is ConnectException,
-                is UnknownHostException,
-                is NoRouteToHostException -> {
-                    networkController.restartAsync().await()
-                    downloadPage(page)
-                }
-                else -> throw e
-            }
-        }
+        val resonse = downloadPage(page)
 
         val data = extractor.extract(resonse, mapOf(
             "entriesOnThePage" to "//table[@class='responsive-table mtC']//tbody//th//a/@href",

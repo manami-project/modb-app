@@ -42,6 +42,10 @@ import io.github.manamiproject.modb.core.anime.Duration.TimeUnit.MINUTES
 import io.github.manamiproject.modb.core.anime.MetaDataProviderScoreValue
 import io.github.manamiproject.modb.core.anime.NoScore
 import io.github.manamiproject.modb.core.anime.ScoreValue
+import io.github.manamiproject.modb.core.extractor.DataExtractor
+import io.github.manamiproject.modb.core.extractor.ExtractionResult
+import io.github.manamiproject.modb.core.extractor.OutputKey
+import io.github.manamiproject.modb.core.extractor.Selector
 import io.github.manamiproject.modb.core.httpclient.RetryCase
 import io.github.manamiproject.modb.serde.json.deserializer.Deserializer
 import io.github.manamiproject.modb.serde.json.serializer.JsonSerializer
@@ -213,6 +217,10 @@ internal object TestPaginationIdRangeSelectorInt: PaginationIdRangeSelector<Int>
 
 internal object TestPaginationIdRangeSelectorString: PaginationIdRangeSelector<String> {
     override suspend fun idDownloadList(page: String): List<AnimeId> = shouldNotBeInvoked()
+}
+
+internal object TestDataExtractor: DataExtractor {
+    override suspend fun extract(rawContent: String, selection: Map<OutputKey, Selector>): ExtractionResult = shouldNotBeInvoked()
 }
 
 @Suppress("unused")

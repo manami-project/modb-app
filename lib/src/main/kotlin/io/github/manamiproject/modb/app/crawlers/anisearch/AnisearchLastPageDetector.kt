@@ -9,6 +9,7 @@ import io.github.manamiproject.modb.core.config.MetaDataProviderConfig
 import io.github.manamiproject.modb.core.extractor.DataExtractor
 import io.github.manamiproject.modb.core.extractor.XmlDataExtractor
 import io.github.manamiproject.modb.core.httpclient.HttpClient
+import io.github.manamiproject.modb.core.httpclient.ThrowableRetryCase
 import io.github.manamiproject.modb.core.logging.LoggerDelegate
 import java.net.ConnectException
 import java.net.NoRouteToHostException
@@ -29,22 +30,17 @@ class AnisearchLastPageDetector(
     private val extractor: DataExtractor = XmlDataExtractor,
 ): HighestIdDetector {
 
+    init {
+        val restart = suspend { networkController.restartAsync().join() }
+        httpClient.addRetryCases(ThrowableRetryCase(executeBefore = restart) { it is ConnectException})
+        httpClient.addRetryCases(ThrowableRetryCase(executeBefore = restart) { it is UnknownHostException})
+        httpClient.addRetryCases(ThrowableRetryCase(executeBefore = restart) { it is NoRouteToHostException})
+    }
+
     override suspend fun detectHighestId(): Int {
         log.info { "Fetching max number of pages for [${metaDataProviderConfig.hostname()}]." }
 
-        val response = try {
-            download()
-        } catch (e: Throwable) {
-            when(e) {
-                is ConnectException,
-                is UnknownHostException,
-                is NoRouteToHostException -> {
-                    networkController.restartAsync().await()
-                    download()
-                }
-                else -> throw e
-            }
-        }
+        val response = download()
 
         val data = extractor.extract(response, mapOf(
             "lastPageNavEntry" to "//a[@class='pagenav-last']/@title",
