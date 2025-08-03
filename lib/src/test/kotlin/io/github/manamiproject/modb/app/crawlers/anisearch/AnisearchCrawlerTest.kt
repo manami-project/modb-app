@@ -12,18 +12,19 @@ import io.github.manamiproject.modb.app.downloadcontrolstate.DownloadControlStat
 import io.github.manamiproject.modb.app.network.NetworkController
 import io.github.manamiproject.modb.core.config.AnimeId
 import io.github.manamiproject.modb.core.config.MetaDataProviderConfig
-import io.github.manamiproject.modb.core.coroutines.ModbDispatchers.LIMITED_CPU
 import io.github.manamiproject.modb.core.downloader.Downloader
 import io.github.manamiproject.modb.core.extensions.Directory
 import io.github.manamiproject.modb.core.extensions.EMPTY
 import io.github.manamiproject.modb.core.extensions.fileName
 import io.github.manamiproject.modb.core.extensions.listRegularFiles
+import io.github.manamiproject.modb.core.httpclient.HttpClient
+import io.github.manamiproject.modb.core.httpclient.RetryCase
+import io.github.manamiproject.modb.core.httpclient.ThrowableRetryCase
 import io.github.manamiproject.modb.test.exceptionExpected
 import io.github.manamiproject.modb.test.tempDirectory
 import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.async
 import kotlinx.coroutines.runBlocking
-import kotlinx.coroutines.withContext
 import org.assertj.core.api.Assertions.assertThat
 import org.assertj.core.api.Assertions.assertThatNoException
 import org.junit.jupiter.api.Nested
@@ -33,6 +34,65 @@ import java.net.UnknownHostException
 import kotlin.test.Test
 
 internal class AnisearchCrawlerTest {
+
+    @Nested
+    inner class ConstructorTests {
+
+        @Test
+        fun `adds RetryCases for ConnectException, UnknownHostException and NoRouteToHostException with restarting the NetworkController`() {
+            tempDirectory {
+                // given
+                val cases = mutableListOf<RetryCase>()
+                val testHttpClient = object: HttpClient by TestHttpClient {
+                    override fun addRetryCases(vararg retryCases: RetryCase): HttpClient {
+                        cases.addAll(retryCases)
+                        return this
+                    }
+                }
+
+                var restartInvocations = 0
+                val testNetworkController = object: NetworkController by TestNetworkController {
+                    override suspend fun restartAsync(): Deferred<Boolean> {
+                        restartInvocations++
+                        return runBlocking { async { true } }
+                    }
+                }
+
+                // when
+                AnisearchCrawler(
+                    appConfig = TestAppConfig,
+                    metaDataProviderConfig = TestMetaDataProviderConfig,
+                    downloadControlStateScheduler = TestDownloadControlStateScheduler,
+                    downloadControlStateAccessor = TestDownloadControlStateAccessor,
+                    lastPageMemorizer = TestLastPageMemorizerInt,
+                    lastPageDetector = TestHighestIdDetector,
+                    paginationIdRangeSelector = TestPaginationIdRangeSelectorInt,
+                    alreadyDownloadedIdsFinder = TestAlreadyDownloadedIdsFinder,
+                    httpClient = testHttpClient,
+                    downloader = TestDownloader,
+                    networkController = testNetworkController,
+                )
+
+                // then
+                assertThat(cases).hasSize(3)
+
+                val connectException = cases.find { (it as ThrowableRetryCase).retryIf(ConnectException()) }
+                assertThat(connectException).isNotNull()
+                connectException!!.executeBefore.invoke()
+                assertThat(restartInvocations).isEqualTo(1)
+
+                val unknownHostException = cases.find { (it as ThrowableRetryCase).retryIf(UnknownHostException()) }
+                assertThat(unknownHostException).isNotNull()
+                unknownHostException!!.executeBefore.invoke()
+                assertThat(restartInvocations).isEqualTo(2)
+
+                val noRouteToHostException = cases.find { (it as ThrowableRetryCase).retryIf(NoRouteToHostException()) }
+                assertThat(noRouteToHostException).isNotNull()
+                noRouteToHostException!!.executeBefore.invoke()
+                assertThat(restartInvocations).isEqualTo(3)
+            }
+        }
+    }
 
     @Nested
     inner class StartTests {
@@ -814,323 +874,6 @@ internal class AnisearchCrawlerTest {
 
                 // then
                 assertThat(tempDir).isEmptyDirectory()
-            }
-        }
-
-        @Test
-        fun `initiates a restart of the network controller if a ConnectException is thrown`() {
-            tempDirectory {
-                // given
-                val testMetaDataProviderConfig = object: MetaDataProviderConfig by AnisearchConfig {
-                    override fun isTestContext(): Boolean = true
-                }
-
-                val testAppConfig = object: Config by TestAppConfig {
-                    override fun workingDir(metaDataProviderConfig: MetaDataProviderConfig): Directory = tempDir
-                }
-
-                val testDownloadControlStateScheduler = object: DownloadControlStateScheduler by TestDownloadControlStateScheduler {
-                    override suspend fun findEntriesScheduledForCurrentWeek(metaDataProviderConfig: MetaDataProviderConfig): Set<AnimeId> = setOf(
-                        "1",
-                    )
-                    override suspend fun findEntriesNotScheduledForCurrentWeek(metaDataProviderConfig: MetaDataProviderConfig): Set<AnimeId> = emptySet()
-                }
-
-                val testLastPageMemorizer = object: LastPageMemorizer<Int> by TestLastPageMemorizerInt {
-                    override suspend fun retrieveLastPage(): Int = 1
-                    override suspend fun memorizeLastPage(page: Int) {}
-                }
-
-                val testLastPageDetector = object: HighestIdDetector by TestHighestIdDetector {
-                    override suspend fun detectHighestId(): Int = 1
-                }
-
-                val testPaginationIdRangeSelector = object: PaginationIdRangeSelector<Int> by TestPaginationIdRangeSelectorInt {
-                    override suspend fun idDownloadList(page: Int): List<AnimeId> = emptyList()
-                }
-
-                val testAlreadyDownloadedIdsFinder = object: AlreadyDownloadedIdsFinder by TestAlreadyDownloadedIdsFinder {
-                    override suspend fun alreadyDownloadedIds(metaDataProviderConfig: MetaDataProviderConfig): Set<AnimeId> = emptySet()
-                }
-
-                var hasBeenInvoked = false
-                val downloadedEntries = mutableListOf<AnimeId>()
-                val testDownloader = object: Downloader by TestDownloader {
-                    override suspend fun download(id: AnimeId, onDeadEntry: suspend (AnimeId) -> Unit): String {
-                        return if (hasBeenInvoked) {
-                            downloadedEntries.add(id)
-                            id
-                        } else {
-                            throw ConnectException()
-                        }
-                    }
-                }
-
-                val testNetworkController = object: NetworkController by TestNetworkController {
-                    override suspend fun restartAsync(): Deferred<Boolean> = withContext(LIMITED_CPU) {
-                        hasBeenInvoked = true
-                        return@withContext async { true }
-                    }
-                }
-
-                val anisearchCrawler = AnisearchCrawler(
-                    appConfig = testAppConfig,
-                    metaDataProviderConfig = testMetaDataProviderConfig,
-                    downloadControlStateScheduler = testDownloadControlStateScheduler,
-                    downloadControlStateAccessor = TestDownloadControlStateAccessor,
-                    lastPageMemorizer = testLastPageMemorizer,
-                    lastPageDetector = testLastPageDetector,
-                    paginationIdRangeSelector = testPaginationIdRangeSelector,
-                    alreadyDownloadedIdsFinder = testAlreadyDownloadedIdsFinder,
-                    downloader = testDownloader,
-                    networkController = testNetworkController,
-                )
-
-                // when
-                anisearchCrawler.start()
-
-                // then
-                assertThat(hasBeenInvoked).isTrue()
-                assertThat(downloadedEntries).containsExactlyInAnyOrder("1")
-                assertThat(tempDir.listRegularFiles("*.html").map { it.fileName() }).containsExactlyInAnyOrder(
-                    "1.html",
-                )
-            }
-        }
-
-        @Test
-        fun `initiates a restart of the network controller if a UnknownHostException is thrown`() {
-            tempDirectory {
-                // given
-                val testMetaDataProviderConfig = object: MetaDataProviderConfig by AnisearchConfig {
-                    override fun isTestContext(): Boolean = true
-                }
-
-                val testAppConfig = object: Config by TestAppConfig {
-                    override fun workingDir(metaDataProviderConfig: MetaDataProviderConfig): Directory = tempDir
-                }
-
-                val testDownloadControlStateScheduler = object: DownloadControlStateScheduler by TestDownloadControlStateScheduler {
-                    override suspend fun findEntriesScheduledForCurrentWeek(metaDataProviderConfig: MetaDataProviderConfig): Set<AnimeId> = setOf(
-                        "1",
-                    )
-                    override suspend fun findEntriesNotScheduledForCurrentWeek(metaDataProviderConfig: MetaDataProviderConfig): Set<AnimeId> = emptySet()
-                }
-
-                val testLastPageMemorizer = object: LastPageMemorizer<Int> by TestLastPageMemorizerInt {
-                    override suspend fun retrieveLastPage(): Int = 1
-                    override suspend fun memorizeLastPage(page: Int) {}
-                }
-
-                val testLastPageDetector = object: HighestIdDetector by TestHighestIdDetector {
-                    override suspend fun detectHighestId(): Int = 1
-                }
-
-                val testPaginationIdRangeSelector = object: PaginationIdRangeSelector<Int> by TestPaginationIdRangeSelectorInt {
-                    override suspend fun idDownloadList(page: Int): List<AnimeId> = emptyList()
-                }
-
-                val testAlreadyDownloadedIdsFinder = object: AlreadyDownloadedIdsFinder by TestAlreadyDownloadedIdsFinder {
-                    override suspend fun alreadyDownloadedIds(metaDataProviderConfig: MetaDataProviderConfig): Set<AnimeId> = emptySet()
-                }
-
-                var hasBeenInvoked = false
-                val downloadedEntries = mutableListOf<AnimeId>()
-                val testDownloader = object: Downloader by TestDownloader {
-                    override suspend fun download(id: AnimeId, onDeadEntry: suspend (AnimeId) -> Unit): String {
-                        return if (hasBeenInvoked) {
-                            downloadedEntries.add(id)
-                            id
-                        } else {
-                            throw UnknownHostException()
-                        }
-                    }
-                }
-
-                val testNetworkController = object: NetworkController by TestNetworkController {
-                    override suspend fun restartAsync(): Deferred<Boolean> = withContext(LIMITED_CPU) {
-                        hasBeenInvoked = true
-                        return@withContext async { true }
-                    }
-                }
-
-                val anisearchCrawler = AnisearchCrawler(
-                    appConfig = testAppConfig,
-                    metaDataProviderConfig = testMetaDataProviderConfig,
-                    downloadControlStateScheduler = testDownloadControlStateScheduler,
-                    downloadControlStateAccessor = TestDownloadControlStateAccessor,
-                    lastPageMemorizer = testLastPageMemorizer,
-                    lastPageDetector = testLastPageDetector,
-                    paginationIdRangeSelector = testPaginationIdRangeSelector,
-                    alreadyDownloadedIdsFinder = testAlreadyDownloadedIdsFinder,
-                    downloader = testDownloader,
-                    networkController = testNetworkController,
-                )
-
-                // when
-                anisearchCrawler.start()
-
-                // then
-                assertThat(hasBeenInvoked).isTrue()
-                assertThat(downloadedEntries).containsExactlyInAnyOrder("1")
-                assertThat(tempDir.listRegularFiles("*.html").map { it.fileName() }).containsExactlyInAnyOrder(
-                    "1.html",
-                )
-            }
-        }
-
-        @Test
-        fun `initiates a restart of the network controller if a NoRouteToHostException is thrown`() {
-            tempDirectory {
-                // given
-                val testMetaDataProviderConfig = object: MetaDataProviderConfig by AnisearchConfig {
-                    override fun isTestContext(): Boolean = true
-                }
-
-                val testAppConfig = object: Config by TestAppConfig {
-                    override fun workingDir(metaDataProviderConfig: MetaDataProviderConfig): Directory = tempDir
-                }
-
-                val testDownloadControlStateScheduler = object: DownloadControlStateScheduler by TestDownloadControlStateScheduler {
-                    override suspend fun findEntriesScheduledForCurrentWeek(metaDataProviderConfig: MetaDataProviderConfig): Set<AnimeId> = setOf(
-                        "1",
-                    )
-                    override suspend fun findEntriesNotScheduledForCurrentWeek(metaDataProviderConfig: MetaDataProviderConfig): Set<AnimeId> = emptySet()
-                }
-
-                val testLastPageMemorizer = object: LastPageMemorizer<Int> by TestLastPageMemorizerInt {
-                    override suspend fun retrieveLastPage(): Int = 1
-                    override suspend fun memorizeLastPage(page: Int) {}
-                }
-
-                val testLastPageDetector = object: HighestIdDetector by TestHighestIdDetector {
-                    override suspend fun detectHighestId(): Int = 1
-                }
-
-                val testPaginationIdRangeSelector = object: PaginationIdRangeSelector<Int> by TestPaginationIdRangeSelectorInt {
-                    override suspend fun idDownloadList(page: Int): List<AnimeId> = emptyList()
-                }
-
-                val testAlreadyDownloadedIdsFinder = object: AlreadyDownloadedIdsFinder by TestAlreadyDownloadedIdsFinder {
-                    override suspend fun alreadyDownloadedIds(metaDataProviderConfig: MetaDataProviderConfig): Set<AnimeId> = emptySet()
-                }
-
-                var hasBeenInvoked = false
-                val downloadedEntries = mutableListOf<AnimeId>()
-                val testDownloader = object: Downloader by TestDownloader {
-                    override suspend fun download(id: AnimeId, onDeadEntry: suspend (AnimeId) -> Unit): String {
-                        return if (hasBeenInvoked) {
-                            downloadedEntries.add(id)
-                            id
-                        } else {
-                            throw NoRouteToHostException()
-                        }
-                    }
-                }
-
-                val testNetworkController = object: NetworkController by TestNetworkController {
-                    override suspend fun restartAsync(): Deferred<Boolean> = withContext(LIMITED_CPU) {
-                        hasBeenInvoked = true
-                        return@withContext async { true }
-                    }
-                }
-
-                val anisearchCrawler = AnisearchCrawler(
-                    appConfig = testAppConfig,
-                    metaDataProviderConfig = testMetaDataProviderConfig,
-                    downloadControlStateScheduler = testDownloadControlStateScheduler,
-                    downloadControlStateAccessor = TestDownloadControlStateAccessor,
-                    lastPageMemorizer = testLastPageMemorizer,
-                    lastPageDetector = testLastPageDetector,
-                    paginationIdRangeSelector = testPaginationIdRangeSelector,
-                    alreadyDownloadedIdsFinder = testAlreadyDownloadedIdsFinder,
-                    downloader = testDownloader,
-                    networkController = testNetworkController,
-                )
-
-                // when
-                anisearchCrawler.start()
-
-                // then
-                assertThat(hasBeenInvoked).isTrue()
-                assertThat(downloadedEntries).containsExactlyInAnyOrder("1")
-                assertThat(tempDir.listRegularFiles("*.html").map { it.fileName() }).containsExactlyInAnyOrder(
-                    "1.html",
-                )
-            }
-        }
-
-        @Test
-        fun `throws an exception if a restart of the network controller didn't help`() {
-            tempDirectory {
-                // given
-                val testMetaDataProviderConfig = object: MetaDataProviderConfig by AnisearchConfig {
-                    override fun isTestContext(): Boolean = true
-                }
-
-                val testAppConfig = object: Config by TestAppConfig {
-                    override fun workingDir(metaDataProviderConfig: MetaDataProviderConfig): Directory = tempDir
-                }
-
-                val testDownloadControlStateScheduler = object: DownloadControlStateScheduler by TestDownloadControlStateScheduler {
-                    override suspend fun findEntriesScheduledForCurrentWeek(metaDataProviderConfig: MetaDataProviderConfig): Set<AnimeId> = setOf(
-                        "1",
-                    )
-                    override suspend fun findEntriesNotScheduledForCurrentWeek(metaDataProviderConfig: MetaDataProviderConfig): Set<AnimeId> = emptySet()
-                }
-
-                val testLastPageMemorizer = object: LastPageMemorizer<Int> by TestLastPageMemorizerInt {
-                    override suspend fun retrieveLastPage(): Int = 1
-                    override suspend fun memorizeLastPage(page: Int) {}
-                }
-
-                val testLastPageDetector = object: HighestIdDetector by TestHighestIdDetector {
-                    override suspend fun detectHighestId(): Int = 1
-                }
-
-                val testPaginationIdRangeSelector = object: PaginationIdRangeSelector<Int> by TestPaginationIdRangeSelectorInt {
-                    override suspend fun idDownloadList(page: Int): List<AnimeId> = emptyList()
-                }
-
-                val testAlreadyDownloadedIdsFinder = object: AlreadyDownloadedIdsFinder by TestAlreadyDownloadedIdsFinder {
-                    override suspend fun alreadyDownloadedIds(metaDataProviderConfig: MetaDataProviderConfig): Set<AnimeId> = emptySet()
-                }
-
-                var hasBeenInvoked = false
-                val testDownloader = object: Downloader by TestDownloader {
-                    override suspend fun download(id: AnimeId, onDeadEntry: suspend (AnimeId) -> Unit): String {
-                        throw NoRouteToHostException("junit test")
-                    }
-                }
-
-                val testNetworkController = object: NetworkController by TestNetworkController {
-                    override suspend fun restartAsync(): Deferred<Boolean> = withContext(LIMITED_CPU) {
-                        hasBeenInvoked = true
-                        return@withContext async { true }
-                    }
-                }
-
-                val anisearchCrawler = AnisearchCrawler(
-                    appConfig = testAppConfig,
-                    metaDataProviderConfig = testMetaDataProviderConfig,
-                    downloadControlStateScheduler = testDownloadControlStateScheduler,
-                    downloadControlStateAccessor = TestDownloadControlStateAccessor,
-                    lastPageMemorizer = testLastPageMemorizer,
-                    lastPageDetector = testLastPageDetector,
-                    paginationIdRangeSelector = testPaginationIdRangeSelector,
-                    alreadyDownloadedIdsFinder = testAlreadyDownloadedIdsFinder,
-                    downloader = testDownloader,
-                    networkController = testNetworkController,
-                )
-
-                // when
-                val result = exceptionExpected<NoRouteToHostException> {
-                    anisearchCrawler.start()
-                }
-
-                // then
-                assertThat(hasBeenInvoked).isTrue()
-                assertThat(result).hasMessage("junit test")
             }
         }
 

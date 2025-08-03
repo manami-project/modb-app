@@ -22,6 +22,8 @@ import io.github.manamiproject.modb.core.excludeFromTestContext
 import io.github.manamiproject.modb.core.extensions.createShuffledList
 import io.github.manamiproject.modb.core.extensions.neitherNullNorBlank
 import io.github.manamiproject.modb.core.extensions.writeToFile
+import io.github.manamiproject.modb.core.httpclient.HttpClient
+import io.github.manamiproject.modb.core.httpclient.ThrowableRetryCase
 import io.github.manamiproject.modb.core.logging.LoggerDelegate
 import io.github.manamiproject.modb.core.random
 import kotlinx.coroutines.delay
@@ -45,6 +47,7 @@ import kotlin.time.toDuration
  * @property lastPageDetector Allows to identify the last page of a meta data provider.
  * @property paginationIdRangeSelector Creates a list of anime IDs found on pages of the meta data provider.
  * @property alreadyDownloadedIdsFinder Fetches all IDs which have already been downloaded.
+ * @property httpClient To actually download the anime data.
  * @property downloader Downloader for a specific meta data provider.
  * @property networkController Access to the network controller which allows to perform a restart.
  */
@@ -57,12 +60,20 @@ class AnisearchCrawler(
     private val lastPageDetector: HighestIdDetector = AnisearchLastPageDetector.instance,
     private val paginationIdRangeSelector: PaginationIdRangeSelector<Int> = AnisearchPaginationIdRangeSelector(metaDataProviderConfig = metaDataProviderConfig),
     private val alreadyDownloadedIdsFinder: AlreadyDownloadedIdsFinder = DefaultAlreadyDownloadedIdsFinder.instance,
+    private val httpClient: HttpClient = SuspendableHttpClient(),
     private val downloader: Downloader = AnisearchDownloader(
         metaDataProviderConfig = metaDataProviderConfig,
-        httpClient = SuspendableHttpClient(),
+        httpClient = httpClient,
     ),
     private val networkController: NetworkController = LinuxNetworkController.instance,
 ): Crawler {
+
+    init {
+        val restart = suspend { networkController.restartAsync().join() }
+        httpClient.addRetryCases(ThrowableRetryCase(executeBefore = restart) { it is ConnectException})
+        httpClient.addRetryCases(ThrowableRetryCase(executeBefore = restart) { it is UnknownHostException})
+        httpClient.addRetryCases(ThrowableRetryCase(executeBefore = restart) { it is NoRouteToHostException})
+    }
 
     override suspend fun start() {
         log.info { "Starting crawler for [${metaDataProviderConfig.hostname()}]." }
@@ -110,19 +121,7 @@ class AnisearchCrawler(
 
         log.debug { "Downloading ${index+1}/${idDownloadList.size}: [anisearchId=$animeId]" }
 
-        val response = try {
-            download(animeId)
-        } catch (e: Throwable) {
-            when(e) {
-                is ConnectException,
-                is UnknownHostException,
-                is NoRouteToHostException -> {
-                    networkController.restartAsync().await()
-                    download(animeId)
-                }
-                else -> throw e
-            }
-        }
+        val response = download(animeId)
 
         if (response.neitherNullNorBlank()) {
             response.writeToFile(file, true)

@@ -1,12 +1,16 @@
 package io.github.manamiproject.modb.app.crawlers.anisearch
 
+import io.github.manamiproject.modb.app.TestDataExtractor
 import io.github.manamiproject.modb.app.TestHttpClient
+import io.github.manamiproject.modb.app.TestMetaDataProviderConfig
 import io.github.manamiproject.modb.app.TestNetworkController
 import io.github.manamiproject.modb.app.crawlers.myanimelist.MyanimelistHighestIdDetectorConfig
 import io.github.manamiproject.modb.app.network.NetworkController
 import io.github.manamiproject.modb.core.config.MetaDataProviderConfig
 import io.github.manamiproject.modb.core.httpclient.HttpClient
 import io.github.manamiproject.modb.core.httpclient.HttpResponse
+import io.github.manamiproject.modb.core.httpclient.RetryCase
+import io.github.manamiproject.modb.core.httpclient.ThrowableRetryCase
 import io.github.manamiproject.modb.test.exceptionExpected
 import io.github.manamiproject.modb.test.loadTestResource
 import io.github.manamiproject.modb.test.tempDirectory
@@ -21,6 +25,58 @@ import kotlin.test.Test
 internal class AnisearchLastPageDetectorTest {
 
     @Nested
+    inner class ConstructorTests {
+
+        @Test
+        fun `adds RetryCases for ConnectException, UnknownHostException and NoRouteToHostException with restarting the NetworkController`() {
+            runBlocking {
+                // given
+                val cases = mutableListOf<RetryCase>()
+                val testHttpClient = object : HttpClient by TestHttpClient {
+                    override fun addRetryCases(vararg retryCases: RetryCase): HttpClient {
+                        cases.addAll(retryCases)
+                        return this
+                    }
+                }
+
+                var restartInvocations = 0
+                val testNetworkController = object: NetworkController by TestNetworkController {
+                    override suspend fun restartAsync(): Deferred<Boolean> {
+                        restartInvocations++
+                        return runBlocking { async { true } }
+                    }
+                }
+
+                // when
+                AnisearchLastPageDetector(
+                    metaDataProviderConfig = TestMetaDataProviderConfig,
+                    httpClient = testHttpClient,
+                    networkController = testNetworkController,
+                    extractor = TestDataExtractor,
+                )
+
+                // then
+                assertThat(cases).hasSize(3)
+
+                val connectException = cases.find { (it as ThrowableRetryCase).retryIf(ConnectException()) }
+                assertThat(connectException).isNotNull()
+                connectException!!.executeBefore.invoke()
+                assertThat(restartInvocations).isEqualTo(1)
+
+                val unknownHostException = cases.find { (it as ThrowableRetryCase).retryIf(UnknownHostException()) }
+                assertThat(unknownHostException).isNotNull()
+                unknownHostException!!.executeBefore.invoke()
+                assertThat(restartInvocations).isEqualTo(2)
+
+                val noRouteToHostException = cases.find { (it as ThrowableRetryCase).retryIf(NoRouteToHostException()) }
+                assertThat(noRouteToHostException).isNotNull()
+                noRouteToHostException!!.executeBefore.invoke()
+                assertThat(restartInvocations).isEqualTo(3)
+            }
+        }
+    }
+
+    @Nested
     inner class DetectHighestIdTests {
 
         @Test
@@ -32,6 +88,7 @@ internal class AnisearchLastPageDetectorTest {
                 }
 
                 val testHttpClient = object : HttpClient by TestHttpClient {
+                    override fun addRetryCases(vararg retryCases: RetryCase): HttpClient = this
                     override suspend fun get(url: URL, headers: Map<String, Collection<String>>): HttpResponse = HttpResponse(
                         code = 200,
                         body = loadTestResource<ByteArray>("crawler/anisearch/AnisearchLastPageDetectorTest/page-1.html"),
@@ -68,6 +125,7 @@ internal class AnisearchLastPageDetectorTest {
                 """.trimIndent()
 
                 val testHttpClient = object : HttpClient by TestHttpClient {
+                    override fun addRetryCases(vararg retryCases: RetryCase): HttpClient = this
                     override suspend fun get(url: URL, headers: Map<String, Collection<String>>): HttpResponse = HttpResponse(
                         code = 200,
                         body = content,
@@ -91,177 +149,6 @@ internal class AnisearchLastPageDetectorTest {
         }
 
         @Test
-        fun `initiates a restart of the network controller if a ConnectException is thrown`() {
-            runBlocking {
-                // given
-                val testMetaDataProviderConfig = object : MetaDataProviderConfig by MyanimelistHighestIdDetectorConfig {
-                    override fun buildDataDownloadLink(id: String): URI = URI("http://localhost:8080/highest-id")
-                }
-
-                var hasBeenInvoked = false
-                val testNetworkController = object: NetworkController by TestNetworkController {
-                    override suspend fun restartAsync(): Deferred<Boolean> {
-                        hasBeenInvoked = true
-                        return async { true }
-                    }
-                }
-
-                val testHttpClient = object : HttpClient by TestHttpClient {
-                    override suspend fun get(url: URL, headers: Map<String, Collection<String>>): HttpResponse {
-                        return if (hasBeenInvoked) {
-                            HttpResponse(
-                                code = 200,
-                                body = loadTestResource<ByteArray>("crawler/anisearch/AnisearchLastPageDetectorTest/page-1.html"),
-                            )
-                        } else {
-                            throw ConnectException()
-                        }
-                    }
-                }
-
-                val anisearchLastPageDetector = AnisearchLastPageDetector(
-                    metaDataProviderConfig = testMetaDataProviderConfig,
-                    httpClient = testHttpClient,
-                    networkController = testNetworkController,
-                )
-
-                // when
-                val result = anisearchLastPageDetector.detectHighestId()
-
-                // then
-                assertThat(hasBeenInvoked).isTrue()
-                assertThat(result).isEqualTo(190)
-            }
-        }
-
-        @Test
-        fun `initiates a restart of the network controller if a UnknownHostException is thrown`() {
-            runBlocking {
-                // given
-                val testMetaDataProviderConfig = object : MetaDataProviderConfig by MyanimelistHighestIdDetectorConfig {
-                    override fun buildDataDownloadLink(id: String): URI = URI("http://localhost:8080/highest-id")
-                }
-
-                var hasBeenInvoked = false
-                val testNetworkController = object: NetworkController by TestNetworkController {
-                    override suspend fun restartAsync(): Deferred<Boolean> {
-                        hasBeenInvoked = true
-                        return async { true }
-                    }
-                }
-
-                val testHttpClient = object : HttpClient by TestHttpClient {
-                    override suspend fun get(url: URL, headers: Map<String, Collection<String>>): HttpResponse {
-                        return if (hasBeenInvoked) {
-                            HttpResponse(
-                                code = 200,
-                                body = loadTestResource<ByteArray>("crawler/anisearch/AnisearchLastPageDetectorTest/page-1.html"),
-                            )
-                        } else {
-                            throw UnknownHostException()
-                        }
-                    }
-                }
-
-                val anisearchLastPageDetector = AnisearchLastPageDetector(
-                    metaDataProviderConfig = testMetaDataProviderConfig,
-                    httpClient = testHttpClient,
-                    networkController = testNetworkController,
-                )
-
-                // when
-                val result = anisearchLastPageDetector.detectHighestId()
-
-                // then
-                assertThat(hasBeenInvoked).isTrue()
-                assertThat(result).isEqualTo(190)
-            }
-        }
-
-        @Test
-        fun `initiates a restart of the network controller if a NoRouteToHostException is thrown`() {
-            runBlocking {
-                // given
-                val testMetaDataProviderConfig = object : MetaDataProviderConfig by MyanimelistHighestIdDetectorConfig {
-                    override fun buildDataDownloadLink(id: String): URI = URI("http://localhost:8080/highest-id")
-                }
-
-                var hasBeenInvoked = false
-                val testNetworkController = object: NetworkController by TestNetworkController {
-                    override suspend fun restartAsync(): Deferred<Boolean> {
-                        hasBeenInvoked = true
-                        return async { true }
-                    }
-                }
-
-                val testHttpClient = object : HttpClient by TestHttpClient {
-                    override suspend fun get(url: URL, headers: Map<String, Collection<String>>): HttpResponse {
-                        return if (hasBeenInvoked) {
-                            HttpResponse(
-                                code = 200,
-                                body = loadTestResource<ByteArray>("crawler/anisearch/AnisearchLastPageDetectorTest/page-1.html"),
-                            )
-                        } else {
-                            throw NoRouteToHostException()
-                        }
-                    }
-                }
-
-                val anisearchLastPageDetector = AnisearchLastPageDetector(
-                    metaDataProviderConfig = testMetaDataProviderConfig,
-                    httpClient = testHttpClient,
-                    networkController = testNetworkController,
-                )
-
-                // when
-                val result = anisearchLastPageDetector.detectHighestId()
-
-                // then
-                assertThat(hasBeenInvoked).isTrue()
-                assertThat(result).isEqualTo(190)
-            }
-        }
-
-        @Test
-        fun `throws an exception if a restart of the network controller didn't help`() {
-            runBlocking {
-                // given
-                val testMetaDataProviderConfig = object : MetaDataProviderConfig by MyanimelistHighestIdDetectorConfig {
-                    override fun buildDataDownloadLink(id: String): URI = URI("http://localhost:8080/highest-id")
-                }
-
-                var hasBeenInvoked = false
-                val testNetworkController = object: NetworkController by TestNetworkController {
-                    override suspend fun restartAsync(): Deferred<Boolean> {
-                        hasBeenInvoked = true
-                        return async { true }
-                    }
-                }
-
-                val testHttpClient = object : HttpClient by TestHttpClient {
-                    override suspend fun get(url: URL, headers: Map<String, Collection<String>>): HttpResponse {
-                        throw NoRouteToHostException("junit test")
-                    }
-                }
-
-                val anisearchLastPageDetector = AnisearchLastPageDetector(
-                    metaDataProviderConfig = testMetaDataProviderConfig,
-                    httpClient = testHttpClient,
-                    networkController = testNetworkController,
-                )
-
-                // when
-                val result = exceptionExpected<NoRouteToHostException> {
-                    anisearchLastPageDetector.detectHighestId()
-                }
-
-                // then
-                assertThat(hasBeenInvoked).isTrue()
-                assertThat(result).hasMessage("junit test")
-            }
-        }
-
-        @Test
         fun `directly throws exception if it's not one of the cases that restart the network controller`() {
             runBlocking {
                 // given
@@ -270,6 +157,7 @@ internal class AnisearchLastPageDetectorTest {
                 }
 
                 val testHttpClient = object : HttpClient by TestHttpClient {
+                    override fun addRetryCases(vararg retryCases: RetryCase): HttpClient = this
                     override suspend fun get(url: URL, headers: Map<String, Collection<String>>): HttpResponse {
                         throw NullPointerException("junit test")
                     }
