@@ -148,6 +148,47 @@ internal class FromUrlDeserializerTest {
         }
     }
 
+    @ParameterizedTest
+    @ValueSource(strings = [
+        "json",
+        "jsonl",
+    ])
+    fun `correctly delegates call for octet-stream with plain text files as path`(input: String) {
+        runBlocking {
+            // given
+            val testHttpClient = object: HttpClient by TestHttpClient {
+                override suspend fun get(url: URL, headers: Map<String, Collection<String>>): HttpResponse = HttpResponse(
+                    code = 200,
+                    headers = mutableMapOf("content-type" to listOf("application/octet-stream")),
+                    body = """{ "test": true }""",
+                )
+            }
+
+            var invokedWith = EMPTY
+            val testDeserializer = object : Deserializer<LifecycleAwareInputStream, Dataset> by TestDeserializer() {
+                override suspend fun deserialize(source: LifecycleAwareInputStream): Dataset {
+                    invokedWith = source.use { it.bufferedReader().readText() }
+                    return Dataset(
+                        `$schema` = URI("https://example.org"),
+                        lastUpdate = "2020-01-01",
+                        data = emptyList(),
+                    )
+                }
+            }
+
+            val deserializer = FromUrlDeserializer(
+                httpClient = testHttpClient,
+                deserializer = testDeserializer,
+            )
+
+            // when
+            deserializer.deserialize(URI("http://localhost/anime-offline-database.$input").toURL())
+
+            // then
+            assertThat(invokedWith).isEqualTo("""{ "test": true }""")
+        }
+    }
+
     @Test
     fun `correctly delegates call for ZSTD`() {
         runBlocking {
@@ -190,6 +231,78 @@ internal class FromUrlDeserializerTest {
 
             // then
             assertThat(invokedWith).isEqualTo("compressed data")
+        }
+    }
+
+    @Test
+    fun `correctly delegates call for ZSTD having octet-stream as content type with zst file suffix in path`() {
+        runBlocking {
+            // given
+            val bos = ByteArrayOutputStream()
+            bos.use { fos ->
+                ZstdOutputStream(fos, 22).use { zstOut ->
+                    zstOut.write("compressed data".toByteArray())
+                }
+            }
+            val bais = ByteArrayInputStream(bos.toByteArray())
+
+            val testHttpClient = object: HttpClient by TestHttpClient {
+                override suspend fun get(url: URL, headers: Map<String, Collection<String>>): HttpResponse = HttpResponse(
+                    code = 200,
+                    _headers = mutableMapOf("content-type" to listOf("application/octet-stream")),
+                    _body = LifecycleAwareInputStream(bais),
+                )
+            }
+
+            var invokedWith = EMPTY
+            val testDeserializer = object : Deserializer<LifecycleAwareInputStream, Dataset> by TestDeserializer() {
+                override suspend fun deserialize(source: LifecycleAwareInputStream): Dataset {
+                    invokedWith = source.use { it.bufferedReader().readText() }
+                    return Dataset(
+                        `$schema` = URI("https://example.org"),
+                        lastUpdate = "2020-01-01",
+                        data = emptyList(),
+                    )
+                }
+            }
+
+            val deserializer = FromUrlDeserializer(
+                httpClient = testHttpClient,
+                deserializer = testDeserializer,
+            )
+
+            // when
+            deserializer.deserialize(URI("http://localhost/anime-offline-database.json.zst").toURL())
+
+            // then
+            assertThat(invokedWith).isEqualTo("compressed data")
+        }
+    }
+
+    @Test
+    fun `throws exception if content type is octet-stream, but there is no fitting file extension in the path`() {
+        runBlocking {
+            // given
+            val testHttpClient = object: HttpClient by TestHttpClient {
+                override suspend fun get(url: URL, headers: Map<String, Collection<String>>): HttpResponse = HttpResponse(
+                    code = 200,
+                    headers = mutableMapOf("content-type" to listOf("application/octet-stream")),
+                    body = """{ "test": true }""",
+                )
+            }
+
+            val deserializer = FromUrlDeserializer(
+                httpClient = testHttpClient,
+                deserializer = TestDeserializer<LifecycleAwareInputStream, Dataset>(),
+            )
+
+            // when
+            val result = exceptionExpected<IllegalStateException> {
+                deserializer.deserialize(URI("http://localhost").toURL())
+            }
+
+            // then
+            assertThat(result).hasMessage("Unable to determine strategy for [http://localhost] with content type [application/octet-stream]")
         }
     }
 }
