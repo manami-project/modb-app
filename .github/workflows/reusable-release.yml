@@ -29,7 +29,7 @@ jobs:
         env:
           GH_PACKAGES_READ_TOKEN: ${{ secrets.PACKAGES_READ_TOKEN }}
           GH_PACKAGES_RELEASE_TOKEN: ${{ secrets.PACKAGES_RELEASE_TOKEN }}
-        run: ./gradlew :${{ inputs.module_name }}:test :${{ inputs.module_name }}:publish -Prelease.version=${{ steps.extract_release_version.outputs.RELEASE_VERSION }}
+        run: ./gradlew --no-configuration-cache :${{ inputs.module_name }}:test :${{ inputs.module_name }}:publish -Prelease.version=${{ steps.extract_release_version.outputs.RELEASE_VERSION }}
 
       - name: Remove outdated pre-releases
         uses: actions/delete-package-versions@v5
