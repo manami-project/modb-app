@@ -3,6 +3,7 @@ package io.github.manamiproject.modb.app.crawlers.anidb
 import io.github.manamiproject.modb.anidb.AnidbConfig
 import io.github.manamiproject.modb.anidb.AnidbDownloader
 import io.github.manamiproject.modb.anidb.AnidbDownloader.Companion.ANIDB_PENDING_FILE_INDICATOR
+import io.github.manamiproject.modb.anidb.AnidbResponseChecker
 import io.github.manamiproject.modb.anidb.CrawlerDetectedException
 import io.github.manamiproject.modb.app.config.AppConfig
 import io.github.manamiproject.modb.app.config.Config
@@ -11,6 +12,7 @@ import io.github.manamiproject.modb.app.crawlers.IdRangeSelector
 import io.github.manamiproject.modb.app.crawlers.IntegerBasedIdRangeSelector
 import io.github.manamiproject.modb.app.dataset.DeadEntriesAccessor
 import io.github.manamiproject.modb.app.dataset.DefaultDeadEntriesAccessor
+import io.github.manamiproject.modb.app.extensions.checkedBody
 import io.github.manamiproject.modb.app.network.LinuxNetworkController
 import io.github.manamiproject.modb.app.network.NetworkController
 import io.github.manamiproject.modb.app.network.SuspendableHttpClient
@@ -63,7 +65,6 @@ class AnidbCrawler(
         httpClient.addRetryCases(ThrowableRetryCase(executeBefore = restart) { it is ConnectException})
         httpClient.addRetryCases(ThrowableRetryCase(executeBefore = restart) { it is UnknownHostException})
         httpClient.addRetryCases(ThrowableRetryCase(executeBefore = restart) { it is NoRouteToHostException})
-        httpClient.addRetryCases(ThrowableRetryCase(executeBefore = restart) { it is CrawlerDetectedException})
     }
 
     override suspend fun start() {
@@ -91,8 +92,22 @@ class AnidbCrawler(
 
         log.debug { "Downloading ${index+1}/${idDownloadList.size}: [anidbId=$animeId]" }
 
-        val response = downloader.download(animeId.toString()) {
-            deadEntriesAccess.addDeadEntry(it, metaDataProviderConfig)
+        val response = try {
+            downloader.download(animeId.toString()) {
+                deadEntriesAccess.addDeadEntry(it, metaDataProviderConfig)
+            }
+        } catch (e: Throwable) {
+            when(e) {
+                is CrawlerDetectedException -> {
+                    networkController.restartAsync().await()
+                    val response = downloader.download(animeId.toString()) {
+                        deadEntriesAccess.addDeadEntry(it, metaDataProviderConfig)
+                    }
+                    AnidbResponseChecker(response).checkIfCrawlerIsDetected()
+                    response
+                }
+                else -> throw e
+            }
         }
 
         when {
