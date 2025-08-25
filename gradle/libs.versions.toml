@@ -2,7 +2,7 @@
 assertj-core = "3.27.4"
 commons-text = "1.14.0"
 jsonpathkt = "2.0.1"
-jsoup = "1.21.1"
+jsoup = "1.21.2"
 junit-jupiter = "5.13.4"
 junit-platform-launcher = "1.13.4"
 kommand = "1.4.7"
