@@ -15,7 +15,7 @@ okhttp = "5.1.0"
 slf4j-api = "2.0.17"
 tomlj = "1.1.1"
 wiremock = "3.13.1"
-zstandard = "1.5.7-4"
+zstandard = "1.5.7-5"
 slf4j-jul-to-slf4j = "2.0.17"
 
 
