@@ -11,6 +11,7 @@ group = "io.github.manamiproject"
 version = project.findProperty("release.version") as String? ?: ""
 
 val githubUsername = "manami-project"
+val kotlinVersion = org.jetbrains.kotlin.gradle.dsl.KotlinVersion.KOTLIN_2_2 // most recent stable kotlin version for language and std lib
 
 repositories {
     mavenCentral()
@@ -64,8 +65,8 @@ kover {
 tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach {
     compilerOptions {
         jvmTarget.set(JvmTarget.JVM_21)
-        apiVersion.set(org.jetbrains.kotlin.gradle.dsl.KotlinVersion.KOTLIN_2_0)
-        languageVersion.set(org.jetbrains.kotlin.gradle.dsl.KotlinVersion.KOTLIN_2_0)
+        apiVersion.set(kotlinVersion)
+        languageVersion.set(kotlinVersion)
     }
 }
 
