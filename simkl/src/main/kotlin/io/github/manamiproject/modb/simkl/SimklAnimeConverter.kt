@@ -25,6 +25,7 @@ import io.github.manamiproject.modb.core.extensions.normalize
 import io.github.manamiproject.modb.core.anime.Duration.Companion.UNKNOWN as UNKNOWN_DURATION
 import kotlinx.coroutines.withContext
 import java.net.URI
+import java.time.Clock
 import java.time.Instant
 import java.time.LocalDate
 import java.time.ZoneId
@@ -39,6 +40,7 @@ import java.time.format.DateTimeFormatter
 public class SimklAnimeConverter(
     private val metaDataProviderConfig: MetaDataProviderConfig = SimklConfig,
     private val extractor: DataExtractor = XmlDataExtractor,
+    private val clock: Clock = Clock.systemDefaultZone(),
 ): AnimeConverter {
 
     override suspend fun convert(rawContent: String): AnimeRaw = withContext(LIMITED_CPU) {
@@ -123,7 +125,7 @@ public class SimklAnimeConverter(
         val instant = Instant.parse(startDate)
         val localDate = instant.atZone(ZoneId.of("UTC")).toLocalDate()
 
-        if (localDate.isBefore(LocalDate.now())) {
+        if (localDate.isBefore(LocalDate.now(clock))) {
             return 1
         }
 
@@ -174,7 +176,7 @@ public class SimklAnimeConverter(
         }
         val startDateString = data.stringOrDefault("startDate")
 
-        val today = LocalDate.now()
+        val today = LocalDate.now(clock)
         var startDate: LocalDate? = null
         if (startDateString.neitherNullNorBlank()) {
             val instant = Instant.parse(startDateString)

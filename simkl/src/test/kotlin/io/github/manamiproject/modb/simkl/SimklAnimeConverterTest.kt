@@ -19,6 +19,9 @@ import org.junit.jupiter.api.Nested
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.ValueSource
 import java.net.URI
+import java.time.Clock
+import java.time.Instant
+import java.time.ZoneOffset.UTC
 import kotlin.test.Test
 
 internal class SimklAnimeConverterTest {
@@ -108,7 +111,10 @@ internal class SimklAnimeConverterTest {
 
                 val testFile = loadTestResource<String>("SimklAnimeConverterTest/episodes/unknown.html")
 
-                val converter = SimklAnimeConverter(testSimklConfig)
+                val converter = SimklAnimeConverter(
+                    metaDataProviderConfig = testSimklConfig,
+                    clock = Clock.fixed(Instant.parse("2025-01-01T16:02:42.00Z"), UTC)
+                )
 
                 // when
                 val result = converter.convert(testFile)
@@ -496,7 +502,10 @@ internal class SimklAnimeConverterTest {
 
                 val testFile = loadTestResource<String>("SimklAnimeConverterTest/status/upcoming.html")
 
-                val converter = SimklAnimeConverter(testSimklConfig)
+                val converter = SimklAnimeConverter(
+                    metaDataProviderConfig = testSimklConfig,
+                    clock = Clock.fixed(Instant.parse("2020-05-01T16:02:42.00Z"), UTC),
+                )
 
                 // when
                 val result = converter.convert(testFile)
