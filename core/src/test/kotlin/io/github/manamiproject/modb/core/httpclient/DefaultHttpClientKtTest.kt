@@ -21,6 +21,7 @@ import java.net.URI
 import java.net.UnknownHostException
 import java.util.concurrent.TimeUnit.MILLISECONDS
 import java.util.concurrent.TimeUnit.SECONDS
+import kotlin.reflect.KClass
 import kotlin.test.Test
 
 
@@ -493,6 +494,10 @@ internal class DefaultHttpClientKtTest : MockServerTestCase<WireMockServer> by W
                     override fun isExecuted(): Boolean = shouldNotBeInvoked()
                     override fun request(): Request = shouldNotBeInvoked()
                     override fun timeout(): Timeout = shouldNotBeInvoked()
+                    override fun <T : Any> tag(type: KClass<T>): T = shouldNotBeInvoked()
+                    override fun <T> tag(type: Class<out T>): T = shouldNotBeInvoked()
+                    override fun <T : Any> tag(type: KClass<T>, computeIfAbsent: () -> T): T = shouldNotBeInvoked()
+                    override fun <T : Any> tag(type: Class<T>, computeIfAbsent: () -> T): T = shouldNotBeInvoked()
                     override fun execute(): Response = Response.Builder()
                         .protocol(HTTP_2)
                         .message(EMPTY)
@@ -513,6 +518,10 @@ internal class DefaultHttpClientKtTest : MockServerTestCase<WireMockServer> by W
                     override fun isExecuted(): Boolean = shouldNotBeInvoked()
                     override fun request(): Request = shouldNotBeInvoked()
                     override fun timeout(): Timeout = shouldNotBeInvoked()
+                    override fun <T : Any> tag(type: KClass<T>): T = shouldNotBeInvoked()
+                    override fun <T> tag(type: Class<out T>): T = shouldNotBeInvoked()
+                    override fun <T : Any> tag(type: KClass<T>, computeIfAbsent: () -> T): T = shouldNotBeInvoked()
+                    override fun <T : Any> tag(type: Class<T>, computeIfAbsent: () -> T): T = shouldNotBeInvoked()
                     override fun execute(): Response = Response.Builder()
                         .protocol(Protocol.HTTP_1_1)
                         .message(EMPTY)
@@ -1268,6 +1277,10 @@ internal class DefaultHttpClientKtTest : MockServerTestCase<WireMockServer> by W
                     override fun isExecuted(): Boolean = shouldNotBeInvoked()
                     override fun request(): Request = shouldNotBeInvoked()
                     override fun timeout(): Timeout = shouldNotBeInvoked()
+                    override fun <T : Any> tag(type: KClass<T>): T = shouldNotBeInvoked()
+                    override fun <T> tag(type: Class<out T>): T = shouldNotBeInvoked()
+                    override fun <T : Any> tag(type: KClass<T>, computeIfAbsent: () -> T): T = shouldNotBeInvoked()
+                    override fun <T : Any> tag(type: Class<T>, computeIfAbsent: () -> T): T = shouldNotBeInvoked()
                     override fun execute(): Response = Response.Builder()
                         .protocol(HTTP_2)
                         .message(EMPTY)
@@ -1288,6 +1301,10 @@ internal class DefaultHttpClientKtTest : MockServerTestCase<WireMockServer> by W
                     override fun isExecuted(): Boolean = shouldNotBeInvoked()
                     override fun request(): Request = shouldNotBeInvoked()
                     override fun timeout(): Timeout = shouldNotBeInvoked()
+                    override fun <T : Any> tag(type: KClass<T>): T = shouldNotBeInvoked()
+                    override fun <T> tag(type: Class<out T>): T = shouldNotBeInvoked()
+                    override fun <T : Any> tag(type: KClass<T>, computeIfAbsent: () -> T): T = shouldNotBeInvoked()
+                    override fun <T : Any> tag(type: Class<T>, computeIfAbsent: () -> T): T = shouldNotBeInvoked()
                     override fun execute(): Response = Response.Builder()
                         .protocol(Protocol.HTTP_1_1)
                         .message(EMPTY)
