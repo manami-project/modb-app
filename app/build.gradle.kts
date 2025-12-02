@@ -89,7 +89,7 @@ fun parameter(name: String, default: String = ""): String {
     }
 
     val property = project.findProperty(name) as String? ?: ""
-    if (property.isNotEmpty()) {
+    if (property.isNotBlank()) {
         return property
     }
 
