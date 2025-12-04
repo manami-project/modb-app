@@ -47,7 +47,7 @@ internal class SimklAnimeConverterTest {
                 val result = converter.convert(testFile)
 
                 // then
-                assertThat(result.title).isEqualTo("Hagane no Renkinjutsushi")
+                assertThat(result.title).isEqualTo("Fullmetal Alchemist: Brotherhood")
             }
         }
 
@@ -91,7 +91,7 @@ internal class SimklAnimeConverterTest {
                 val result = converter.convert(testFile)
 
                 // then
-                assertThat(result.title).isEqualTo("Go-Toubun no Hanayome~")
+                assertThat(result.title).isEqualTo("The Quintessential Quintuplets~")
             }
         }
     }
@@ -235,7 +235,7 @@ internal class SimklAnimeConverterTest {
         }
 
         @Test
-        fun `correctly extracts 130 on an ongoing anime whose last episode was 107 and next is 108`() {
+        fun `correctly extracts 130 on an ongoing anime whose last episode was 162 and next is 163`() {
             runBlocking {
                 // given
                 val testSimklConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
@@ -252,7 +252,7 @@ internal class SimklAnimeConverterTest {
                 val result = converter.convert(testFile)
 
                 // then
-                assertThat(result.episodes).isEqualTo(130)
+                assertThat(result.episodes).isEqualTo(164)
             }
         }
 
