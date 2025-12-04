@@ -53,7 +53,7 @@ public class SimklAnimeConverter(
                 "source" to "//meta[@property='og:url']/@content",
                 "airDate" to "//strong[contains(text(),'Air')][contains(text(),'Date')]/../following-sibling::td/text()",
                 "genres" to "//span[@class='TagGenre']/text()",
-                "subgenres" to "//span[@class='adGenres']/a/text()",
+                "subgenres" to "//a[@class='tag ajList']/text()",
                 "type" to "//strong[text()='Type:']/..//following-sibling::*/text()",
                 "duration" to "//meta[@property='og:duration']/@content",
                 "picture" to "//meta[@property='og:image']/@content",
