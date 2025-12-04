@@ -83,7 +83,7 @@ class AnilistCrawler(
     @KoverIgnore
     private suspend fun waitAfterDeadEntry() {
         excludeFromTestContext(metaDataProviderConfig) {
-            delay(random(10000, 20000).toDuration(MILLISECONDS))
+            delay(random(1000, 1500).toDuration(MILLISECONDS))
         }
     }
 
