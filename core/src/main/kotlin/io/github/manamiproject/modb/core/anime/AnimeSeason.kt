@@ -44,7 +44,7 @@ public data class AnimeSeason(
 
     private fun validateYear(value: Year) {
         val isYearAfterVeryFirstAnimeRelease = value >= YEAR_OF_THE_FIRST_ANIME
-        val isYearNotTooFarInTheFuture = value <= LocalDate.now().year + 5
+        val isYearNotTooFarInTheFuture = value <= LocalDate.now().year + 10
         val isYearWithinRange = isYearAfterVeryFirstAnimeRelease && isYearNotTooFarInTheFuture
         val isYearUnknown = value == UNKNOWN_YEAR
 

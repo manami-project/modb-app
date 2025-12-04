@@ -97,7 +97,7 @@ internal class AnimeSeasonKtTest {
                 // when
                 val result = assertThrows<IllegalArgumentException> {
                     AnimeSeason(
-                        year = 1899
+                        year = 1899,
                     )
                 }
 
@@ -109,7 +109,7 @@ internal class AnimeSeasonKtTest {
             fun `year can be from 1907 on, because that is the year of the first anime in japan`() {
                 // when
                 val result = AnimeSeason(
-                    year = 1907
+                    year = 1907,
                 )
 
                 // then
@@ -118,14 +118,14 @@ internal class AnimeSeasonKtTest {
             }
 
             @Test
-            fun `year cannot be more than 6 years from now`() {
+            fun `year cannot be 11 or more years in the future`() {
                 // given
-                val year = LocalDate.now().year + 6
+                val year = LocalDate.now().year + 11
 
                 // when
                 val result = assertThrows<IllegalArgumentException> {
                     AnimeSeason(
-                        year = year
+                        year = year,
                     )
                 }
 
@@ -134,13 +134,13 @@ internal class AnimeSeasonKtTest {
             }
 
             @Test
-            fun `year can be up to five years from now`() {
+            fun `year can be up to 10 years from now`() {
                 // given
-                val year = LocalDate.now().year + 5
+                val year = LocalDate.now().year + 10
 
                 // when
                 val result = AnimeSeason(
-                    year = year
+                    year = year,
                 )
 
                 // then
