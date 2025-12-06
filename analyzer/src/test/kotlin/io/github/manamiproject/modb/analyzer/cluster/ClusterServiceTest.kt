@@ -37,7 +37,7 @@ internal class ClusterServiceTest {
                 ),
                 Anime(
                     title = "1 - five",
-                    sources = hashSetOf(URI("https://notify.moe/anime/xpIt5Fiig")),
+                    sources = hashSetOf(URI("https://simkl.com/anime/37947")),
                 ),
                 Anime(
                     title = "2 - one",
@@ -57,14 +57,14 @@ internal class ClusterServiceTest {
                     title = "2 - three",
                     sources = hashSetOf(
                         URI("https://myanimelist.net/anime/48"),
-                        URI("https://notify.moe/anime/xpIt5Fiig"),
+                        URI("https://simkl.com/anime/37947"),
                     ),
                 ),
                 Anime(
                     title = "2 - four",
                     sources = hashSetOf(
                         URI("https://anidb.net/anime/24"),
-                        URI("https://notify.moe/anime/xpIt5Fiig"),
+                        URI("https://simkl.com/anime/37947"),
                     ),
                 ),
                 Anime(
@@ -80,7 +80,7 @@ internal class ClusterServiceTest {
                     sources = hashSetOf(
                         URI("https://kitsu.app/anime/30"),
                         URI("https://myanimelist.net/anime/48"),
-                        URI("https://notify.moe/anime/xpIt5Fiig"),
+                        URI("https://simkl.com/anime/37947"),
                     ),
                 ),
                 Anime(
@@ -88,7 +88,7 @@ internal class ClusterServiceTest {
                     sources = hashSetOf(
                         URI("https://anidb.net/anime/24"),
                         URI("https://kitsu.app/anime/30"),
-                        URI("https://notify.moe/anime/xpIt5Fiig"),
+                        URI("https://simkl.com/anime/37947"),
                     ),
                 ),
                 Anime(
@@ -97,7 +97,7 @@ internal class ClusterServiceTest {
                         URI("https://anilist.co/anime/48"),
                         URI("https://kitsu.app/anime/30"),
                         URI("https://myanimelist.net/anime/48"),
-                        URI("https://notify.moe/anime/xpIt5Fiig"),
+                        URI("https://simkl.com/anime/37947"),
                     ),
                 ),
                 Anime(
@@ -116,7 +116,7 @@ internal class ClusterServiceTest {
                         URI("https://anilist.co/anime/48"),
                         URI("https://kitsu.app/anime/30"),
                         URI("https://myanimelist.net/anime/48"),
-                        URI("https://notify.moe/anime/xpIt5Fiig"),
+                        URI("https://simkl.com/anime/37947"),
                     ),
                 ),
             )
@@ -171,7 +171,7 @@ internal class ClusterServiceTest {
                 ),
                 Anime(
                     title = "1 - five",
-                    sources = hashSetOf(URI("https://notify.moe/anime/xpIt5Fiig")),
+                    sources = hashSetOf(URI("https://simkl.com/anime/37947")),
                 ),
             )
 
@@ -224,14 +224,14 @@ internal class ClusterServiceTest {
                     title = "2 - three",
                     sources = hashSetOf(
                         URI("https://myanimelist.net/anime/48"),
-                        URI("https://notify.moe/anime/xpIt5Fiig"),
+                        URI("https://simkl.com/anime/37947"),
                     ),
                 ),
                 Anime(
                     title = "2 - four",
                     sources = hashSetOf(
                         URI("https://anidb.net/anime/24"),
-                        URI("https://notify.moe/anime/xpIt5Fiig"),
+                        URI("https://simkl.com/anime/37947"),
                     ),
                 ),
             )
@@ -287,7 +287,7 @@ internal class ClusterServiceTest {
                 ),
                 Anime(
                     title = "1 - five",
-                    sources = hashSetOf(URI("https://notify.moe/anime/xpIt5Fiig")),
+                    sources = hashSetOf(URI("https://simkl.com/anime/37947")),
                 ),
             )
 
@@ -345,7 +345,7 @@ internal class ClusterServiceTest {
                     URI("https://anilist.co/anime/48"),
                     URI("https://kitsu.app/anime/30"),
                     URI("https://myanimelist.net/anime/48"),
-                    URI("https://notify.moe/anime/xpIt5Fiig"),
+                    URI("https://simkl.com/anime/37947"),
                 ),
             )
 
@@ -378,7 +378,7 @@ internal class ClusterServiceTest {
                 ),
                 Anime(
                     title = "1 - five",
-                    sources = hashSetOf(URI("https://notify.moe/anime/xpIt5Fiig")),
+                    sources = hashSetOf(URI("https://simkl.com/anime/37947")),
                 ),
                 Anime(
                     title = "2 - one",
@@ -398,14 +398,14 @@ internal class ClusterServiceTest {
                     title = "2 - three",
                     sources = hashSetOf(
                         URI("https://myanimelist.net/anime/48"),
-                        URI("https://notify.moe/anime/xpIt5Fiig"),
+                        URI("https://simkl.com/anime/37947"),
                     ),
                 ),
                 Anime(
                     title = "2 - four",
                     sources = hashSetOf(
                         URI("https://anidb.net/anime/24"),
-                        URI("https://notify.moe/anime/xpIt5Fiig"),
+                        URI("https://simkl.com/anime/37947"),
                     ),
                 ),
                 Anime(
@@ -421,7 +421,7 @@ internal class ClusterServiceTest {
                     sources = hashSetOf(
                         URI("https://kitsu.app/anime/30"),
                         URI("https://myanimelist.net/anime/48"),
-                        URI("https://notify.moe/anime/xpIt5Fiig"),
+                        URI("https://simkl.com/anime/37947"),
                     ),
                 ),
                 Anime(
@@ -429,7 +429,7 @@ internal class ClusterServiceTest {
                     sources = hashSetOf(
                         URI("https://anidb.net/anime/24"),
                         URI("https://kitsu.app/anime/30"),
-                        URI("https://notify.moe/anime/xpIt5Fiig"),
+                        URI("https://simkl.com/anime/37947"),
                     ),
                 ),
                 expectedEntryOne,
@@ -441,7 +441,7 @@ internal class ClusterServiceTest {
                         URI("https://anilist.co/anime/48"),
                         URI("https://kitsu.app/anime/30"),
                         URI("https://myanimelist.net/anime/48"),
-                        URI("https://notify.moe/anime/xpIt5Fiig"),
+                        URI("https://simkl.com/anime/37947"),
                     ),
                 )
             )

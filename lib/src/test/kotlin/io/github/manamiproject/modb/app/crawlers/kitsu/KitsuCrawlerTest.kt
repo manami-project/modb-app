@@ -13,7 +13,6 @@ import io.github.manamiproject.modb.core.extensions.Directory
 import io.github.manamiproject.modb.core.extensions.EMPTY
 import io.github.manamiproject.modb.core.extensions.readFile
 import io.github.manamiproject.modb.kitsu.KitsuConfig
-import io.github.manamiproject.modb.notify.NotifyConfig
 import io.github.manamiproject.modb.test.tempDirectory
 import kotlinx.coroutines.runBlocking
 import org.assertj.core.api.Assertions.assertThat
@@ -30,7 +29,7 @@ internal class KitsuCrawlerTest {
         @Test
         fun `doesn't do anything if the list of IDs is empty`() {
             // given
-            val testMetaDataProviderConfig = object: MetaDataProviderConfig by NotifyConfig {
+            val testMetaDataProviderConfig = object: MetaDataProviderConfig by KitsuConfig {
                 override fun isTestContext(): Boolean = true
             }
 
