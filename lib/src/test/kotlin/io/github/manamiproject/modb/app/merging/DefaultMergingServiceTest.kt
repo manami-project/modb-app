@@ -248,7 +248,6 @@ internal class DefaultMergingServiceTest {
                     _sources = hashSetOf(
                         URI("https://kitsu.app/anime/4550"),
                         URI("https://myanimelist.net/anime/6408"),
-                        URI("https://notify.moe/anime/UUie5KimR")
                     ),
                     _title = "\"Bungaku Shoujo\" Movie",
                     type = MOVIE,
@@ -267,8 +266,6 @@ internal class DefaultMergingServiceTest {
                         URI("https://kitsu.app/anime/5352"),
                         URI("https://myanimelist.net/anime/7669"),
                         URI("https://myanimelist.net/anime/8481"),
-                        URI("https://notify.moe/anime/UBTmtKiiR"),
-                        URI("https://notify.moe/anime/oTdkpKiig"),
                     ),
                 )
 

@@ -240,14 +240,12 @@ internal class DefaultMergeLockAccessorTest {
                     URI("https://anilist.co/anime/15487"),
                     URI("https://kitsu.app/anime/7262"),
                     URI("https://myanimelist.net/anime/15487"),
-                    URI("https://notify.moe/anime/WPjdpKiiR"),
                 )
 
                 val expectedMergeLock2 = listOf(
                     URI("https://anilist.co/anime/98703"),
                     URI("https://kitsu.app/anime/8717"),
                     URI("https://myanimelist.net/anime/22673"),
-                    URI("https://notify.moe/anime/7-PJpFmmR"),
                 )
 
                 val defaultMergeLockAccess = DefaultMergeLockAccessor(
@@ -258,23 +256,19 @@ internal class DefaultMergeLockAccessorTest {
                 val result1 = defaultMergeLockAccess.getMergeLock(URI("https://anilist.co/anime/15487"))
                 val result2 = defaultMergeLockAccess.getMergeLock(URI("https://kitsu.app/anime/7262"))
                 val result3 = defaultMergeLockAccess.getMergeLock(URI("https://myanimelist.net/anime/15487"))
-                val result4 = defaultMergeLockAccess.getMergeLock(URI("https://notify.moe/anime/WPjdpKiiR"))
 
                 val result5 = defaultMergeLockAccess.getMergeLock(URI("https://anilist.co/anime/98703"))
                 val result6 = defaultMergeLockAccess.getMergeLock(URI("https://kitsu.app/anime/8717"))
                 val result7 = defaultMergeLockAccess.getMergeLock(URI("https://myanimelist.net/anime/22673"))
-                val result8 = defaultMergeLockAccess.getMergeLock(URI("https://notify.moe/anime/7-PJpFmmR"))
 
                 // then
                 assertThat(result1).containsExactlyInAnyOrder(*expectedMergeLock1.toTypedArray())
                 assertThat(result2).containsExactlyInAnyOrder(*expectedMergeLock1.toTypedArray())
                 assertThat(result3).containsExactlyInAnyOrder(*expectedMergeLock1.toTypedArray())
-                assertThat(result4).containsExactlyInAnyOrder(*expectedMergeLock1.toTypedArray())
 
                 assertThat(result5).containsExactlyInAnyOrder(*expectedMergeLock2.toTypedArray())
                 assertThat(result6).containsExactlyInAnyOrder(*expectedMergeLock2.toTypedArray())
                 assertThat(result7).containsExactlyInAnyOrder(*expectedMergeLock2.toTypedArray())
-                assertThat(result8).containsExactlyInAnyOrder(*expectedMergeLock2.toTypedArray())
             }
         }
     }
@@ -378,11 +372,9 @@ internal class DefaultMergeLockAccessorTest {
                     URI("https://anilist.co/anime/15487"),
                     URI("https://kitsu.app/anime/7262"),
                     URI("https://myanimelist.net/anime/15487"),
-                    URI("https://notify.moe/anime/WPjdpKiiR"),
                     URI("https://anilist.co/anime/98703"),
                     URI("https://kitsu.app/anime/8717"),
                     URI("https://myanimelist.net/anime/22673"),
-                    URI("https://notify.moe/anime/7-PJpFmmR"),
                 )
             }
         }
@@ -507,7 +499,6 @@ internal class DefaultMergeLockAccessorTest {
                     URI("https://anilist.co/anime/1535"),
                     URI("https://kitsu.app/anime/1376"),
                     URI("https://myanimelist.net/anime/1535"),
-                    URI("https://notify.moe/anime/0-A-5Fimg"),
                 )
 
                 // when
@@ -539,7 +530,6 @@ internal class DefaultMergeLockAccessorTest {
                     URI("https://anilist.co/anime/1535"),
                     URI("https://kitsu.app/anime/1376"),
                     URI("https://myanimelist.net/anime/1535"),
-                    URI("https://notify.moe/anime/0-A-5Fimg")
                 )
 
                 // when
@@ -566,7 +556,6 @@ internal class DefaultMergeLockAccessorTest {
                     URI("https://anilist.co/anime/15487"),
                     URI("https://kitsu.app/anime/7262"),
                     URI("https://myanimelist.net/anime/15487"),
-                    URI("https://notify.moe/anime/WPjdpKiiR"),
                 )
 
                 val defaultMergeLockAccess = DefaultMergeLockAccessor(
@@ -624,7 +613,6 @@ internal class DefaultMergeLockAccessorTest {
                     URI("https://anilist.co/anime/15487"),
                     URI("https://kitsu.app/anime/7262"),
                     URI("https://myanimelist.net/anime/15487"),
-                    URI("https://notify.moe/anime/WPjdpKiiR"),
                     URI("https://anidb.net/anime/8681"),
                 )
 
@@ -718,7 +706,6 @@ internal class DefaultMergeLockAccessorTest {
                     URI("https://anilist.co/anime/21829"),
                     URI("https://kitsu.app/anime/12654"),
                     URI("https://myanimelist.net/anime/33363"),
-                    URI("https://notify.moe/anime/cLhmhFiiR"),
                 )
 
                 // when
@@ -752,7 +739,6 @@ internal class DefaultMergeLockAccessorTest {
                     URI("https://anilist.co/anime/21829"),
                     URI("https://kitsu.app/anime/12654"),
                     URI("https://myanimelist.net/anime/33363"),
-                    URI("https://notify.moe/anime/cLhmhFiiR"),
                 )
                 defaultMergeLockAccess.addMergeLock(newMergeLockEntry)
 
@@ -812,7 +798,6 @@ internal class DefaultMergeLockAccessorTest {
                     URI("https://anilist.co/anime/98703"),
                     URI("https://kitsu.app/anime/8717"),
                     URI("https://myanimelist.net/anime/22673"),
-                    URI("https://notify.moe/anime/7-PJpFmmR"),
                 )
                 defaultMergeLockAccess.addMergeLock(one)
 
@@ -821,7 +806,6 @@ internal class DefaultMergeLockAccessorTest {
                     URI("https://anilist.co/anime/21829"),
                     URI("https://kitsu.app/anime/12654"),
                     URI("https://myanimelist.net/anime/33363"),
-                    URI("https://notify.moe/anime/cLhmhFiiR"),
                 )
                 defaultMergeLockAccess.addMergeLock(two)
 
@@ -829,7 +813,6 @@ internal class DefaultMergeLockAccessorTest {
                     URI("https://anilist.co/anime/15487"),
                     URI("https://kitsu.app/anime/7262"),
                     URI("https://myanimelist.net/anime/15487"),
-                    URI("https://notify.moe/anime/WPjdpKiiR"),
                 )
 
                 // when
@@ -923,7 +906,6 @@ internal class DefaultMergeLockAccessorTest {
                     URI("https://kitsu.app/anime/1376"),
                     URI("https://livechart.me/anime/3437"),
                     URI("https://myanimelist.net/anime/1535"),
-                    URI("https://notify.moe/anime/0-A-5Fimg"),
                 )
                 defaultMergeLockAccess.addMergeLock(mergeLockEntry1)
 
@@ -938,7 +920,6 @@ internal class DefaultMergeLockAccessorTest {
                     URI("https://kitsu.app/anime/11460"),
                     URI("https://livechart.me/anime/1889"),
                     URI("https://myanimelist.net/anime/31931"),
-                    URI("https://notify.moe/anime/B7njtFiiR"),
                 )
 
                 defaultMergeLockAccess.addMergeLock(mergeLockEntry2)
@@ -957,14 +938,12 @@ internal class DefaultMergeLockAccessorTest {
                 assertThat(currentFile).contains("https://kitsu.app/anime/1376")
                 assertThat(currentFile).contains("https://livechart.me/anime/3437")
                 assertThat(currentFile).contains("https://myanimelist.net/anime/1535")
-                assertThat(currentFile).contains("https://notify.moe/anime/0-A-5Fimg")
                 assertThat(currentFile).contains("https://anidb.net/anime/11731")
                 assertThat(currentFile).contains("https://anilist.co/anime/21451")
                 assertThat(currentFile).contains("https://anisearch.com/anime/10974")
                 assertThat(currentFile).contains("https://kitsu.app/anime/11460")
                 assertThat(currentFile).contains("https://livechart.me/anime/1889")
                 assertThat(currentFile).contains("https://myanimelist.net/anime/31931")
-                assertThat(currentFile).contains("https://notify.moe/anime/B7njtFiiR")
 
                 val inMemoryMergeLockList = defaultMergeLockAccess.allSourcesInAllMergeLockEntries()
                 assertThat(inMemoryMergeLockList).doesNotContain(oldUri)
@@ -977,14 +956,12 @@ internal class DefaultMergeLockAccessorTest {
                     URI("https://kitsu.app/anime/1376"),
                     URI("https://livechart.me/anime/3437"),
                     URI("https://myanimelist.net/anime/1535"),
-                    URI("https://notify.moe/anime/0-A-5Fimg"),
                     URI("https://anidb.net/anime/11731"),
                     URI("https://anilist.co/anime/21451"),
                     URI("https://anisearch.com/anime/10974"),
                     URI("https://kitsu.app/anime/11460"),
                     URI("https://livechart.me/anime/1889"),
                     URI("https://myanimelist.net/anime/31931"),
-                    URI("https://notify.moe/anime/B7njtFiiR"),
                 )
             }
         }
@@ -1070,7 +1047,6 @@ internal class DefaultMergeLockAccessorTest {
                     URI("https://kitsu.app/anime/1376"),
                     URI("https://livechart.me/anime/3437"),
                     URI("https://myanimelist.net/anime/1535"),
-                    URI("https://notify.moe/anime/0-A-5Fimg"),
                 )
                 defaultMergeLockAccess.addMergeLock(mergeLockEntry1)
 
@@ -1084,7 +1060,6 @@ internal class DefaultMergeLockAccessorTest {
                     URI("https://kitsu.app/anime/11460"),
                     URI("https://livechart.me/anime/1889"),
                     URI("https://myanimelist.net/anime/31931"),
-                    URI("https://notify.moe/anime/B7njtFiiR"),
                 )
                 defaultMergeLockAccess.addMergeLock(mergeLockEntry2)
 
@@ -1101,14 +1076,12 @@ internal class DefaultMergeLockAccessorTest {
                 assertThat(currentFile).contains("https://kitsu.app/anime/1376")
                 assertThat(currentFile).contains("https://livechart.me/anime/3437")
                 assertThat(currentFile).contains("https://myanimelist.net/anime/1535")
-                assertThat(currentFile).contains("https://notify.moe/anime/0-A-5Fimg")
                 assertThat(currentFile).contains("https://anidb.net/anime/11731")
                 assertThat(currentFile).contains("https://anilist.co/anime/21451")
                 assertThat(currentFile).contains("https://anisearch.com/anime/10974")
                 assertThat(currentFile).contains("https://kitsu.app/anime/11460")
                 assertThat(currentFile).contains("https://livechart.me/anime/1889")
                 assertThat(currentFile).contains("https://myanimelist.net/anime/31931")
-                assertThat(currentFile).contains("https://notify.moe/anime/B7njtFiiR")
 
                 val inMemoryMergeLockList = defaultMergeLockAccess.allSourcesInAllMergeLockEntries()
                 assertThat(inMemoryMergeLockList).doesNotContain(entryToBeRemoved)
@@ -1120,14 +1093,12 @@ internal class DefaultMergeLockAccessorTest {
                     URI("https://kitsu.app/anime/1376"),
                     URI("https://livechart.me/anime/3437"),
                     URI("https://myanimelist.net/anime/1535"),
-                    URI("https://notify.moe/anime/0-A-5Fimg"),
                     URI("https://anidb.net/anime/11731"),
                     URI("https://anilist.co/anime/21451"),
                     URI("https://anisearch.com/anime/10974"),
                     URI("https://kitsu.app/anime/11460"),
                     URI("https://livechart.me/anime/1889"),
                     URI("https://myanimelist.net/anime/31931"),
-                    URI("https://notify.moe/anime/B7njtFiiR"),
                 )
             }
         }

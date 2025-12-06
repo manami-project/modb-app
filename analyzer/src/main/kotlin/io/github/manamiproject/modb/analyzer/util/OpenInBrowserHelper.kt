@@ -12,7 +12,6 @@ import io.github.manamiproject.modb.core.anime.Anime
 import io.github.manamiproject.modb.kitsu.KitsuConfig
 import io.github.manamiproject.modb.livechart.LivechartConfig
 import io.github.manamiproject.modb.myanimelist.MyanimelistConfig
-import io.github.manamiproject.modb.notify.NotifyConfig
 import io.github.manamiproject.modb.simkl.SimklConfig
 import java.net.URI
 import java.net.URLEncoder
@@ -66,9 +65,6 @@ internal object OpenInBrowserHelper {
             }
             if (!this.contains(MyanimelistConfig.hostname())) {
                 searchLink.add(URI("https://${MyanimelistConfig.hostname()}/anime.php?q=$urlEncodedTitle&cat=anime"))
-            }
-            if (!this.contains(NotifyConfig.hostname())) {
-                searchLink.add(URI("https://${NotifyConfig.hostname()}/search/$urlEncodedTitle"))
             }
             if (!this.contains(SimklConfig.hostname())) {
                 searchLink.add(URI("https://${SimklConfig.hostname()}/search/?type=anime&q=$urlEncodedTitle"))

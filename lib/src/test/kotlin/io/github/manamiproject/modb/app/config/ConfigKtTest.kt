@@ -13,7 +13,6 @@ import io.github.manamiproject.modb.core.extensions.Directory
 import io.github.manamiproject.modb.kitsu.KitsuConfig
 import io.github.manamiproject.modb.livechart.LivechartConfig
 import io.github.manamiproject.modb.myanimelist.MyanimelistConfig
-import io.github.manamiproject.modb.notify.NotifyConfig
 import io.github.manamiproject.modb.simkl.SimklConfig
 import io.github.manamiproject.modb.test.shouldNotBeInvoked
 import org.assertj.core.api.Assertions.assertThat
@@ -60,7 +59,6 @@ internal class ConfigTest {
                 KitsuConfig,
                 LivechartConfig,
                 MyanimelistConfig,
-                NotifyConfig,
                 SimklConfig,
             )
             val config = object : Config {
@@ -204,7 +202,6 @@ internal class ConfigTest {
             AnisearchConfig::class,
             AnimePlanetConfig::class,
             LivechartConfig::class,
-            NotifyConfig::class,
             SimklConfig::class,
         ])
         fun `returns false for all meta data provider which are not supported`(configClass: Class<*>) {
