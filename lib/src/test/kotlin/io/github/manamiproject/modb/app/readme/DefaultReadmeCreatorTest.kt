@@ -20,7 +20,6 @@ import io.github.manamiproject.modb.core.anime.AnimeRaw
 import io.github.manamiproject.modb.kitsu.KitsuConfig
 import io.github.manamiproject.modb.livechart.LivechartConfig
 import io.github.manamiproject.modb.myanimelist.MyanimelistConfig
-import io.github.manamiproject.modb.notify.NotifyConfig
 import io.github.manamiproject.modb.simkl.SimklConfig
 import io.github.manamiproject.modb.test.loadTestResource
 import io.github.manamiproject.modb.test.shouldNotBeInvoked
@@ -98,17 +97,6 @@ internal class DefaultReadmeCreatorTest {
                     AnimeRaw("anisearch 6"),
                 )
 
-                val testNotifyConfig = object: MetaDataProviderConfig by NotifyConfig {
-                    override fun isTestContext(): Boolean = true
-                }
-                val notifyTestEntries = listOf(
-                    AnimeRaw("notify 1"),
-                    AnimeRaw("notify 2"),
-                    AnimeRaw("notify 3"),
-                    AnimeRaw("notify 4"),
-                    AnimeRaw("notify 5"),
-                )
-
                 val testAnilistConfig = object: MetaDataProviderConfig by AnilistConfig {
                     override fun isTestContext(): Boolean = true
                 }
@@ -151,7 +139,6 @@ internal class DefaultReadmeCreatorTest {
                         testAnimePlanetConfig,
                         testKitsuConfig,
                         testAnisearchConfig,
-                        testNotifyConfig,
                         testAnilistConfig,
                         testAnidbConfig,
                         testLivechartConfig,
@@ -174,7 +161,6 @@ internal class DefaultReadmeCreatorTest {
                         testAnimePlanetConfig.hostname() -> animePlanetTestEntries
                         testKitsuConfig.hostname() -> kitsuTestEntries
                         testAnisearchConfig.hostname() -> anisearchTestEntries
-                        testNotifyConfig.hostname() -> notifyTestEntries
                         testAnilistConfig.hostname() -> anilistTestEntries
                         testAnidbConfig.hostname() -> anidbTestEntries
                         testLivechartConfig.hostname() -> livechartTestEntries
@@ -263,17 +249,6 @@ internal class DefaultReadmeCreatorTest {
                     AnimeRaw("anisearch 6"),
                 )
 
-                val testNotifyConfig = object: MetaDataProviderConfig by NotifyConfig {
-                    override fun isTestContext(): Boolean = true
-                }
-                val notifyTestEntries = listOf(
-                    AnimeRaw("notify 1"),
-                    AnimeRaw("notify 2"),
-                    AnimeRaw("notify 3"),
-                    AnimeRaw("notify 4"),
-                    AnimeRaw("notify 5"),
-                )
-
                 val testAnilistConfig = object: MetaDataProviderConfig by AnilistConfig {
                     override fun isTestContext(): Boolean = true
                 }
@@ -316,7 +291,6 @@ internal class DefaultReadmeCreatorTest {
                         testAnimePlanetConfig,
                         testKitsuConfig,
                         testAnisearchConfig,
-                        testNotifyConfig,
                         testAnilistConfig,
                         testAnidbConfig,
                         testLivechartConfig,
@@ -339,7 +313,6 @@ internal class DefaultReadmeCreatorTest {
                         testAnimePlanetConfig.hostname() -> animePlanetTestEntries
                         testKitsuConfig.hostname() -> kitsuTestEntries
                         testAnisearchConfig.hostname() -> anisearchTestEntries
-                        testNotifyConfig.hostname() -> notifyTestEntries
                         testAnilistConfig.hostname() -> anilistTestEntries
                         testAnidbConfig.hostname() -> anidbTestEntries
                         testLivechartConfig.hostname() -> livechartTestEntries
@@ -428,17 +401,6 @@ internal class DefaultReadmeCreatorTest {
                     AnimeRaw("anisearch 6"),
                 )
 
-                val testNotifyConfig = object: MetaDataProviderConfig by NotifyConfig {
-                    override fun isTestContext(): Boolean = true
-                }
-                val notifyTestEntries = listOf(
-                    AnimeRaw("notify 1"),
-                    AnimeRaw("notify 2"),
-                    AnimeRaw("notify 3"),
-                    AnimeRaw("notify 4"),
-                    AnimeRaw("notify 5"),
-                )
-
                 val testAnilistConfig = object: MetaDataProviderConfig by AnilistConfig {
                     override fun isTestContext(): Boolean = true
                 }
@@ -481,7 +443,6 @@ internal class DefaultReadmeCreatorTest {
                         testAnimePlanetConfig,
                         testKitsuConfig,
                         testAnisearchConfig,
-                        testNotifyConfig,
                         testAnilistConfig,
                         testAnidbConfig,
                         testLivechartConfig,
@@ -509,7 +470,6 @@ internal class DefaultReadmeCreatorTest {
                         testAnimePlanetConfig.hostname() -> animePlanetTestEntries
                         testKitsuConfig.hostname() -> kitsuTestEntries
                         testAnisearchConfig.hostname() -> anisearchTestEntries
-                        testNotifyConfig.hostname() -> notifyTestEntries
                         testAnilistConfig.hostname() -> anilistTestEntries
                         testAnidbConfig.hostname() -> anidbTestEntries
                         testLivechartConfig.hostname() -> livechartTestEntries
@@ -598,17 +558,6 @@ internal class DefaultReadmeCreatorTest {
                     AnimeRaw("anisearch 6"),
                 )
 
-                val testNotifyConfig = object: MetaDataProviderConfig by NotifyConfig {
-                    override fun isTestContext(): Boolean = true
-                }
-                val notifyTestEntries = listOf(
-                    AnimeRaw("notify 1"),
-                    AnimeRaw("notify 2"),
-                    AnimeRaw("notify 3"),
-                    AnimeRaw("notify 4"),
-                    AnimeRaw("notify 5"),
-                )
-
                 val testAnilistConfig = object: MetaDataProviderConfig by AnilistConfig {
                     override fun isTestContext(): Boolean = true
                 }
@@ -651,7 +600,6 @@ internal class DefaultReadmeCreatorTest {
                         testAnimePlanetConfig,
                         testKitsuConfig,
                         testAnisearchConfig,
-                        testNotifyConfig,
                         testAnilistConfig,
                         testAnidbConfig,
                         testLivechartConfig,
@@ -674,7 +622,6 @@ internal class DefaultReadmeCreatorTest {
                         testAnimePlanetConfig.hostname() -> animePlanetTestEntries
                         testKitsuConfig.hostname() -> kitsuTestEntries
                         testAnisearchConfig.hostname() -> anisearchTestEntries
-                        testNotifyConfig.hostname() -> notifyTestEntries
                         testAnilistConfig.hostname() -> anilistTestEntries
                         testAnidbConfig.hostname() -> anidbTestEntries
                         testLivechartConfig.hostname() -> livechartTestEntries

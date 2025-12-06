@@ -36,7 +36,6 @@ dependencies {
     api(project(":kitsu"))
     api(project(":livechart"))
     api(project(":myanimelist"))
-    api(project(":notify"))
     api(project(":serde"))
     api(project(":simkl"))
 

@@ -8,8 +8,6 @@ import io.github.manamiproject.modb.anisearch.AnisearchConfig
 import io.github.manamiproject.modb.anisearch.AnisearchRelationsConfig
 import io.github.manamiproject.modb.app.crawlers.animeplanet.AnimePlanetPaginationIdRangeSelectorConfig
 import io.github.manamiproject.modb.app.crawlers.livechart.LivechartPaginationIdRangeSelectorConfig
-import io.github.manamiproject.modb.app.crawlers.notify.NotifyAnimeDatasetDownloaderConfig
-import io.github.manamiproject.modb.app.crawlers.notify.NotifyRelationsDatasetDownloaderConfig
 import io.github.manamiproject.modb.app.crawlers.simkl.SimklPaginationIdRangeSelectorConfig
 import io.github.manamiproject.modb.core.date.weekOfYear
 import io.github.manamiproject.modb.core.config.ConfigRegistry
@@ -22,8 +20,6 @@ import io.github.manamiproject.modb.core.extensions.regularFileExists
 import io.github.manamiproject.modb.kitsu.KitsuConfig
 import io.github.manamiproject.modb.livechart.LivechartConfig
 import io.github.manamiproject.modb.myanimelist.MyanimelistConfig
-import io.github.manamiproject.modb.notify.NotifyConfig
-import io.github.manamiproject.modb.notify.NotifyRelationsConfig
 import io.github.manamiproject.modb.simkl.SimklConfig
 import java.time.LocalDate
 import kotlin.io.path.Path
@@ -79,11 +75,9 @@ class AppConfig(
             LivechartConfig,
             LivechartPaginationIdRangeSelectorConfig,
             MyanimelistConfig,
-            NotifyAnimeDatasetDownloaderConfig,
-            NotifyConfig,
             SimklConfig,
             SimklPaginationIdRangeSelectorConfig -> currentWeekWorkingDir().resolve(hostname)
-            AnisearchRelationsConfig, NotifyRelationsConfig, NotifyRelationsDatasetDownloaderConfig -> currentWeekWorkingDir().resolve("$hostname-relations")
+            AnisearchRelationsConfig -> currentWeekWorkingDir().resolve("$hostname-relations")
             else -> throw IllegalStateException("No working directory mapping for [${metaDataProviderConfig::class.simpleName}]")
         }
 

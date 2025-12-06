@@ -1,6 +1,7 @@
 package io.github.manamiproject.modb.app.downloadcontrolstate
 
 import io.github.manamiproject.modb.anilist.AnilistConfig
+import io.github.manamiproject.modb.animeplanet.AnimePlanetConfig
 import io.github.manamiproject.modb.app.*
 import io.github.manamiproject.modb.app.config.Config
 import io.github.manamiproject.modb.app.convfiles.CONVERTED_FILE_SUFFIX
@@ -13,7 +14,6 @@ import io.github.manamiproject.modb.core.config.MetaDataProviderConfig
 import io.github.manamiproject.modb.core.date.WeekOfYear
 import io.github.manamiproject.modb.core.extensions.*
 import io.github.manamiproject.modb.myanimelist.MyanimelistConfig
-import io.github.manamiproject.modb.notify.NotifyConfig
 import io.github.manamiproject.modb.test.exceptionExpected
 import io.github.manamiproject.modb.test.tempDirectory
 import org.assertj.core.api.Assertions.assertThat
@@ -1843,7 +1843,7 @@ internal class DefaultDownloadControlStateAccessorTest {
             tempDirectory {
                 // given
                 val testAppConfig = object: Config by TestAppConfig {
-                    override fun metaDataProviderConfigurations(): Set<MetaDataProviderConfig> = setOf(NotifyConfig)
+                    override fun metaDataProviderConfigurations(): Set<MetaDataProviderConfig> = setOf(AnimePlanetConfig)
                     override fun downloadControlStateDirectory(): Directory = tempDir
                     override fun findMetaDataProviderConfig(host: Hostname): MetaDataProviderConfig = super.findMetaDataProviderConfig(host)
                 }
@@ -1859,13 +1859,13 @@ internal class DefaultDownloadControlStateAccessorTest {
                     _weeksWihoutChange = 0,
                     _anime = AnimeRaw(
                         _title = "test1",
-                        _sources = hashSetOf(NotifyConfig.buildAnimeLink("3g6kj9l26")),
+                        _sources = hashSetOf(AnimePlanetConfig.buildAnimeLink("3g6kj9l26")),
                     ),
                 )
-                defaultDownloadControlStateAccessor.createOrUpdate(NotifyConfig, "3g6kj9l26", downloadControlStateEntry)
+                defaultDownloadControlStateAccessor.createOrUpdate(AnimePlanetConfig, "3g6kj9l26", downloadControlStateEntry)
 
                 // when
-                val result = defaultDownloadControlStateAccessor.highestIdAlreadyInDataset(NotifyConfig)
+                val result = defaultDownloadControlStateAccessor.highestIdAlreadyInDataset(AnimePlanetConfig)
 
                 // then
                 assertThat(result).isZero()

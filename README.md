@@ -15,7 +15,6 @@ _[modb](https://github.com/manami-project?tab=repositories&q=modb&type=source)_ 
 * **lib:** A library that drives the applications "app" and "analyzer".
 * **livechart:** Config, downloader and converter for [livechart.me](https://livechart.me)
 * **myanimelist:** Config, downloader and converter for [myanimelist.net](https://myanimelist.net)
-* **notify:** Config, downloader and converter for [notify.moe](https://notify.moe)
 * **serde:** Serialization and deserialization of the finalized dataset files.
 * **simkl:** Config, downloader and converter for [simkl.com](https://simkl.com/anime/) as well as config for [animecountdown.com](https://animecountdown.com).
 * **test:** All essential dependencies as well as some convenience functions and classes for creating tests.

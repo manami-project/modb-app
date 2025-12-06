@@ -10,8 +10,6 @@ import io.github.manamiproject.modb.app.TestConfigRegistry
 import io.github.manamiproject.modb.app.TestMetaDataProviderConfig
 import io.github.manamiproject.modb.app.crawlers.animeplanet.AnimePlanetPaginationIdRangeSelectorConfig
 import io.github.manamiproject.modb.app.crawlers.livechart.LivechartPaginationIdRangeSelectorConfig
-import io.github.manamiproject.modb.app.crawlers.notify.NotifyAnimeDatasetDownloaderConfig
-import io.github.manamiproject.modb.app.crawlers.notify.NotifyRelationsDatasetDownloaderConfig
 import io.github.manamiproject.modb.app.crawlers.simkl.SimklPaginationIdRangeSelectorConfig
 import io.github.manamiproject.modb.core.date.WeekOfYear
 import io.github.manamiproject.modb.core.config.ConfigRegistry
@@ -20,8 +18,6 @@ import io.github.manamiproject.modb.core.config.MetaDataProviderConfig
 import io.github.manamiproject.modb.kitsu.KitsuConfig
 import io.github.manamiproject.modb.livechart.LivechartConfig
 import io.github.manamiproject.modb.myanimelist.MyanimelistConfig
-import io.github.manamiproject.modb.notify.NotifyConfig
-import io.github.manamiproject.modb.notify.NotifyRelationsConfig
 import io.github.manamiproject.modb.simkl.SimklConfig
 import io.github.manamiproject.modb.test.exceptionExpected
 import io.github.manamiproject.modb.test.tempDirectory
@@ -438,90 +434,6 @@ internal class AppConfigTest {
                 // then
                 assertThat(result).exists()
                 assertThat(result.fileName.toString()).isEqualTo("myanimelist.net")
-            }
-        }
-
-        @Test
-        fun `check that name of working directory for NotifyConfig is correct`() {
-            tempDirectory {
-                // given
-                val testConfigRegistry = object: ConfigRegistry by TestConfigRegistry {
-                    override fun string(key: String): String = tempDir.toAbsolutePath().toString()
-                }
-
-                val appConfig = AppConfig(
-                    configRegistry = testConfigRegistry,
-                )
-
-                // when
-                val result = appConfig.workingDir(NotifyConfig)
-
-                // then
-                assertThat(result).exists()
-                assertThat(result.fileName.toString()).isEqualTo("notify.moe")
-            }
-        }
-
-        @Test
-        fun `check that name of working directory for NotifyDatasetDownloaderConfig is correct`() {
-            tempDirectory {
-                // given
-                val testConfigRegistry = object: ConfigRegistry by TestConfigRegistry {
-                    override fun string(key: String): String = tempDir.toAbsolutePath().toString()
-                }
-
-                val appConfig = AppConfig(
-                    configRegistry = testConfigRegistry,
-                )
-
-                // when
-                val result = appConfig.workingDir(NotifyAnimeDatasetDownloaderConfig)
-
-                // then
-                assertThat(result).exists()
-                assertThat(result.fileName.toString()).isEqualTo("notify.moe")
-            }
-        }
-
-        @Test
-        fun `check that name of working directory for NotifyRelationsConfig is correct`() {
-            tempDirectory {
-                // given
-                val testConfigRegistry = object: ConfigRegistry by TestConfigRegistry {
-                    override fun string(key: String): String = tempDir.toAbsolutePath().toString()
-                }
-
-                val appConfig = AppConfig(
-                    configRegistry = testConfigRegistry,
-                )
-
-                // when
-                val result = appConfig.workingDir(NotifyRelationsConfig)
-
-                // then
-                assertThat(result).exists()
-                assertThat(result.fileName.toString()).isEqualTo("notify.moe-relations")
-            }
-        }
-
-        @Test
-        fun `check that name of working directory for NotifyRelationsDatasetDownloaderConfig is correct`() {
-            tempDirectory {
-                // given
-                val testConfigRegistry = object: ConfigRegistry by TestConfigRegistry {
-                    override fun string(key: String): String = tempDir.toAbsolutePath().toString()
-                }
-
-                val appConfig = AppConfig(
-                    configRegistry = testConfigRegistry,
-                )
-
-                // when
-                val result = appConfig.workingDir(NotifyRelationsDatasetDownloaderConfig)
-
-                // then
-                assertThat(result).exists()
-                assertThat(result.fileName.toString()).isEqualTo("notify.moe-relations")
             }
         }
 
