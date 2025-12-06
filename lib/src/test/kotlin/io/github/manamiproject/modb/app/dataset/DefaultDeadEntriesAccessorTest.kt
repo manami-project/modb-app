@@ -10,21 +10,20 @@ import io.github.manamiproject.modb.app.config.Config
 import io.github.manamiproject.modb.app.dataset.DatasetFileType.*
 import io.github.manamiproject.modb.app.downloadcontrolstate.DOWNLOAD_CONTROL_STATE_FILE_SUFFIX
 import io.github.manamiproject.modb.app.downloadcontrolstate.DownloadControlStateAccessor
+import io.github.manamiproject.modb.core.anime.AnimeRaw
 import io.github.manamiproject.modb.core.config.AnimeId
 import io.github.manamiproject.modb.core.config.Hostname
 import io.github.manamiproject.modb.core.config.MetaDataProviderConfig
 import io.github.manamiproject.modb.core.extensions.*
 import io.github.manamiproject.modb.core.json.Json
-import io.github.manamiproject.modb.core.anime.AnimeRaw
 import io.github.manamiproject.modb.kitsu.KitsuConfig
 import io.github.manamiproject.modb.livechart.LivechartConfig
 import io.github.manamiproject.modb.myanimelist.MyanimelistConfig
-import io.github.manamiproject.modb.notify.NotifyConfig
-import io.github.manamiproject.modb.serde.json.serializer.DeadEntriesJsonSerializer
 import io.github.manamiproject.modb.serde.json.deserializer.DeadEntriesFromInputStreamDeserializer
 import io.github.manamiproject.modb.serde.json.deserializer.Deserializer
 import io.github.manamiproject.modb.serde.json.deserializer.FromRegularFileDeserializer
 import io.github.manamiproject.modb.serde.json.models.DeadEntries
+import io.github.manamiproject.modb.serde.json.serializer.DeadEntriesJsonSerializer
 import io.github.manamiproject.modb.simkl.SimklConfig
 import io.github.manamiproject.modb.test.exceptionExpected
 import io.github.manamiproject.modb.test.tempDirectory
@@ -553,7 +552,6 @@ internal class DefaultDeadEntriesAccessorTest {
             AnimePlanetConfig::class,
             AnisearchConfig::class,
             LivechartConfig::class,
-            NotifyConfig::class,
             SimklConfig::class,
         ])
         fun `doesn't create a dead entry for unsupported meta data provider, because either all IDs are collected upfront or download is done via pagination`(configClass: Class<*>) {
@@ -590,7 +588,6 @@ internal class DefaultDeadEntriesAccessorTest {
             AnimePlanetConfig::class,
             AnisearchConfig::class,
             LivechartConfig::class,
-            NotifyConfig::class,
             SimklConfig::class,
         ])
         fun `invokes removal of dcs file for unsupported meta data provider`(configClass: Class<*>) {
@@ -808,7 +805,6 @@ internal class DefaultDeadEntriesAccessorTest {
             AnimePlanetConfig::class,
             AnisearchConfig::class,
             LivechartConfig::class,
-            NotifyConfig::class,
             SimklConfig::class,
         ])
         fun `marks an URI as dead entry for unsupported meta data providers if the corresponding DCS file doesn't exist`(configClass: Class<*>)   {
@@ -867,7 +863,6 @@ internal class DefaultDeadEntriesAccessorTest {
             AnimePlanetConfig::class, // unsupported
             AnisearchConfig::class, // unsupported
             LivechartConfig::class, // unsupported
-            NotifyConfig::class, // unsupported
             SimklConfig::class, // unsupported
         ])
         fun `triggers initialization if necessary`(configClass: Class<*>) {
@@ -924,7 +919,6 @@ internal class DefaultDeadEntriesAccessorTest {
             AnimePlanetConfig::class, // unsupported
             AnisearchConfig::class, // unsupported
             LivechartConfig::class, // unsupported
-            NotifyConfig::class, // unsupported
             SimklConfig::class, // unsupported
         ])
         fun `doesn't trigger init if it has already been triggered`(configClass: Class<*>) {
@@ -985,7 +979,6 @@ internal class DefaultDeadEntriesAccessorTest {
             AnimePlanetConfig::class,
             AnisearchConfig::class,
             LivechartConfig::class,
-            NotifyConfig::class,
             SimklConfig::class,
         ])
         fun `throws exception for unsupported meta data provider`(configClass: Class<*>) {

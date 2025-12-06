@@ -132,7 +132,6 @@ internal class DefaultGoldenRecordAccessorTest {
                 hashSetOf(
                     URI("https://anilist.co/anime/101343"),
                     URI("https://kitsu.app/anime/41080"),
-                    URI("https://notify.moe/anime/8tIKhKimg"),
                     anime.sources.first(),
                 )
             )!!

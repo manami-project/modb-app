@@ -20,13 +20,13 @@ public typealias FileSuffix = String
 public typealias AnimeId = String
 
 /**
- * Configuration for a specific meta data provider. A meta data provider is a website providing data about anime such as `myanimelist.net`, `kitsu.io` or `notify.moe`.
+ * Configuration for a specific meta data provider. A meta data provider is a website providing data about anime such as `myanimelist.net` or `kitsu.app`.
  * @since 1.0.0
  */
 public interface MetaDataProviderConfig: ContextAware {
 
     /**
-     * Hostname of the meta data provider. **Example:** `notify.moe`.
+     * Hostname of the meta data provider. **Example:** `myanimelist.net`.
      * @since 1.0.0
      * @return Hostname without protocol or leading `www`.
      */

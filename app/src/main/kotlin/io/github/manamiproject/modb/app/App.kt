@@ -11,7 +11,6 @@ import io.github.manamiproject.modb.app.crawlers.anisearch.AnisearchCrawler
 import io.github.manamiproject.modb.app.crawlers.kitsu.KitsuCrawler
 import io.github.manamiproject.modb.app.crawlers.livechart.LivechartCrawler
 import io.github.manamiproject.modb.app.crawlers.myanimelist.MyanimelistCrawler
-import io.github.manamiproject.modb.app.crawlers.notify.NotifyDatasetDownloadCrawler
 import io.github.manamiproject.modb.app.crawlers.simkl.SimklCrawler
 import io.github.manamiproject.modb.app.downloadcontrolstate.DefaultDownloadControlStateAccessor
 import io.github.manamiproject.modb.app.downloadcontrolstate.DefaultDownloadControlStateUpdater
@@ -47,7 +46,6 @@ fun main() = runCoroutine {
         launch { KitsuCrawler.instance.start() }
         launch { LivechartCrawler.instance.start() }
         launch { MyanimelistCrawler.instance.start() }
-        launch { NotifyDatasetDownloadCrawler.instance.start() }
         launch { SimklCrawler.instance.start() }
     }.join()
 

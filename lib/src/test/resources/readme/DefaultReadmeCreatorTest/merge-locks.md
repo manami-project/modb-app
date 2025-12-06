@@ -21,7 +21,6 @@ The dataset consists of **2** entries _(50% reviewed)_ composed of:
 | 8 | [anime-planet.com](https://anime-planet.com) |
 | 7 | [kitsu.app](https://kitsu.app) |
 | 6 | [anisearch.com](https://anisearch.com) |
-| 5 | [notify.moe](https://notify.moe) |
 | 4 | [anilist.co](https://anilist.co) |
 | 3 | [anidb.net](https://anidb.net) |
 | 2 | [livechart.me](https://livechart.me) |
@@ -163,7 +162,6 @@ Here are some examples showing what the files look like.
         "https://kitsu.app/anime/1376",
         "https://livechart.me/anime/3437",
         "https://myanimelist.net/anime/1535",
-        "https://notify.moe/anime/0-A-5Fimg",
         "https://simkl.com/anime/40190"
       ],
       "title": "Death Note",
@@ -240,7 +238,6 @@ Here are some examples showing what the files look like.
         "https://kitsu.app/anime/2707",
         "https://livechart.me/anime/3808",
         "https://myanimelist.net/anime/2994",
-        "https://notify.moe/anime/DBBU5Kimg",
         "https://simkl.com/anime/36687",
         "https://simkl.com/anime/40690"
       ],

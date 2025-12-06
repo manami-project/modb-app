@@ -21,7 +21,6 @@ import io.github.manamiproject.modb.core.logging.LoggerDelegate
 import io.github.manamiproject.modb.kitsu.KitsuConfig
 import io.github.manamiproject.modb.livechart.LivechartConfig
 import io.github.manamiproject.modb.myanimelist.MyanimelistConfig
-import io.github.manamiproject.modb.notify.NotifyConfig
 import io.github.manamiproject.modb.serde.json.deserializer.DeadEntriesFromInputStreamDeserializer
 import io.github.manamiproject.modb.serde.json.deserializer.Deserializer
 import io.github.manamiproject.modb.serde.json.deserializer.FromRegularFileDeserializer
@@ -109,7 +108,6 @@ class DefaultDeadEntriesAccessor(
                 KitsuConfig.hostname() -> containsDeadEntry(uri)
                 LivechartConfig.hostname() -> entryNotExistsAsDcsFile(uri)
                 MyanimelistConfig.hostname() -> containsDeadEntry(uri)
-                NotifyConfig.hostname() -> entryNotExistsAsDcsFile(uri)
                 SimklConfig.hostname() -> entryNotExistsAsDcsFile(uri)
                 else -> throw IllegalArgumentException("Unable to fetch dead entries: No case defined for [${uri.host}].")
             }

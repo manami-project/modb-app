@@ -30,10 +30,6 @@ import io.github.manamiproject.modb.livechart.LivechartDownloader
 import io.github.manamiproject.modb.myanimelist.MyanimelistAnimeConverter
 import io.github.manamiproject.modb.myanimelist.MyanimelistConfig
 import io.github.manamiproject.modb.myanimelist.MyanimelistDownloader
-import io.github.manamiproject.modb.notify.NotifyAnimeConverter
-import io.github.manamiproject.modb.notify.NotifyConfig
-import io.github.manamiproject.modb.notify.NotifyDownloader
-import io.github.manamiproject.modb.notify.NotifyRelationsConfig
 import io.github.manamiproject.modb.simkl.SimklAnimeConverter
 import io.github.manamiproject.modb.simkl.SimklConfig
 import io.github.manamiproject.modb.simkl.SimklDownloader
@@ -88,13 +84,6 @@ internal object AnimeLoader {
                 val content = MyanimelistDownloader.instance.download(animeId)
                 content.writeToFile(AppConfig.instance.workingDir(config).resolve("$animeId.${config.fileSuffix()}"))
                 MyanimelistAnimeConverter.instance.convert(content)
-            }
-            NotifyConfig.hostname() -> {
-                val relationsWorkingDir = AppConfig.instance.workingDir(NotifyRelationsConfig)
-                NotifyDownloader(metaDataProviderConfig = NotifyRelationsConfig).download(animeId).writeToFile(relationsWorkingDir.resolve("$animeId.${NotifyRelationsConfig.fileSuffix()}"))
-                val raw = NotifyDownloader(metaDataProviderConfig = NotifyConfig).download(animeId)
-                raw.writeToFile(AppConfig.instance.workingDir(config).resolve("$animeId.${config.fileSuffix()}"))
-                NotifyAnimeConverter(relationsDir = relationsWorkingDir).convert(raw)
             }
             SimklConfig.hostname() -> {
                 val content = SimklDownloader.instance.download(animeId)
