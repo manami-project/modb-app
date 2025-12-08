@@ -44,9 +44,6 @@ class DefaultDatasetFileAccessor(
                 .thenBy { it.sources.first() }
         )
 
-        log.info { "Writing pretty print JSON to file." }
-        jsonSerializer.serialize(sortedList, minify = false).writeToFile(offlineDatabaseFile(JSON_PRETTY_PRINT))
-
         log.info { "Creating minified JSON file and its Zstandard compressed version." }
         jsonSerializer.serialize(sortedList, minify = true).apply {
             writeToFile(offlineDatabaseFile(JSON_MINIFIED))
@@ -61,7 +58,6 @@ class DefaultDatasetFileAccessor(
     }
 
     override fun offlineDatabaseFile(type: DatasetFileType): RegularFile = when (type) {
-        JSON_PRETTY_PRINT -> appConfig.outputDirectory().resolve("anime-offline-database.json")
         JSON_MINIFIED -> appConfig.outputDirectory().resolve("anime-offline-database-minified.json")
         JSON_MINIFIED_ZST -> appConfig.outputDirectory().resolve("anime-offline-database-minified.json.zst")
         JSON_LINES -> appConfig.outputDirectory().resolve("anime-offline-database.jsonl")
