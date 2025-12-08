@@ -35,17 +35,29 @@ _[modb](https://github.com/manami-project?tab=repositories&q=modb&type=source)_ 
 ## Requirements
 
 * JDK/JVM 21 (LTS) or higher
-* Linux/Unix system supporting `ifconfig`
+* Linux/Unix system supporting
+  * `make`
+  * `bash`
+  * `set`
+  * `echo`
+  * `rm`
+  * `jsonschema` (https://github.com/sourcemeta/jsonschema)
+  * `gh`
+  * `git`
+  * `ifconfig`
 * ipv6 based internet connection with SLAAC enabled
 
 ## Getting started
 
 Setup is identical for app and analyzer.
-
-### Setup configuration
-
-Create a [configuration file](core/README.md#configuration-management).
-Set all the properties from the "Configuration" section down below which don't offer a default value.
+* Clone `https://github.com/manami-project/anime-offline-database`
+  * Run `make check-requirements` in that directory to see if you've got all requirements installed
+  * Run `make init-or-reset` in that directory
+* Create a separate directory for the `*.jar` files and place the [latest releases](https://github.com/manami-project/modb-app/releases) in that directory
+* Create a third directory for DCS files
+* Create a fourth directory for raw download files
+* Create a [configuration file](core/README.md#configuration-management).
+  * Set all the properties from the "Configuration" section down below which don't offer a default value.
 
 ### Optional: Logback configuration
 
