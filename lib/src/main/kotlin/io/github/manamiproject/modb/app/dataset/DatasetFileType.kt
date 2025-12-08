@@ -7,12 +7,6 @@ package io.github.manamiproject.modb.app.dataset
 enum class DatasetFileType {
 
     /**
-     * Pretty print JSON file.
-     * @since 1.0.0
-     */
-    JSON_PRETTY_PRINT,
-
-    /**
      * Minified JSON file.
      * @since 1.0.0
      */

@@ -69,7 +69,6 @@ class DefaultDeadEntriesAccessor(
         }
 
         return when (type) {
-            JSON_PRETTY_PRINT -> deadEntriesDirectory.resolve("$hostnameWithoutTld.json")
             JSON_MINIFIED -> deadEntriesDirectory.resolve("$hostnameWithoutTld-minified.json")
             JSON_MINIFIED_ZST -> deadEntriesDirectory.resolve("$hostnameWithoutTld-minified.json.zst")
             JSON_LINES -> throw UnsupportedOperationException("Dead entries don't support JSON line format.")
@@ -177,7 +176,6 @@ class DefaultDeadEntriesAccessor(
             else -> throw IllegalStateException("Meta data provider [${metaDataProviderConfig.hostname()}] is not supported.")
         }
 
-        jsonSerializer.serialize(deadEntries, minify = false).writeToFile(deadEntriesFile(metaDataProviderConfig, JSON_PRETTY_PRINT))
         jsonSerializer.serialize(deadEntries, minify = true).writeToFile(deadEntriesFile(metaDataProviderConfig, JSON_MINIFIED))
     }
 

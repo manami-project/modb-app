@@ -53,12 +53,12 @@ internal class NoLockFilesLeftValidationPostProcessorTest {
                 }
 
                 // then
-                assertThat(result).hasMessage("Lock file found in workingdir.")
+                assertThat(result).hasMessage("Lock file found in working dir.")
             }
         }
 
         @Test
-        fun `throws exception if there is a lock file in downloadcontrolstatedir`() {
+        fun `throws exception if there is a lock file in downloadControlStateDirectory`() {
             tempDirectory {
                 // given
                 val testMetaDataProviderConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {

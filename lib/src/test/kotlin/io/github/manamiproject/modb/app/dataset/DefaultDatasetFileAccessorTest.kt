@@ -59,7 +59,6 @@ internal class DefaultDatasetFileAccessorTest {
 
                 // then
                 assertThat(hasBeenInvoked).isTrue()
-                assertThat(tempDir.resolve("anime-offline-database.json")).exists()
                 assertThat(tempDir.resolve("anime-offline-database-minified.json")).exists()
                 assertThat(tempDir.resolve("anime-offline-database-minified.json.zst")).exists()
                 assertThat(tempDir.resolve("anime-offline-database.jsonl")).exists()
@@ -131,29 +130,6 @@ internal class DefaultDatasetFileAccessorTest {
 
                 // then
                 assertThat(result).isEqualTo(testAppConfig.outputDirectory())
-            }
-        }
-
-        @Test
-        fun `return correct database file based on type JSON_PRETTY_PRINT`() {
-            tempDirectory {
-                // given
-                val testAppConfig = object: Config by TestAppConfig {
-                    override fun outputDirectory(): Directory = tempDir
-                    override fun clock(): Clock = Clock.fixed(Instant.parse("2020-01-01T16:02:42.00Z"), UTC)
-                }
-
-                val databaseAccess = DefaultDatasetFileAccessor(
-                    appConfig = testAppConfig,
-                    deserializer = TestDeserializer(),
-                    jsonSerializer = TestJsonSerializer(),
-                )
-
-                // when
-                val result = databaseAccess.offlineDatabaseFile(JSON_PRETTY_PRINT).fileName.toString()
-
-                // then
-                assertThat(result).isEqualTo("anime-offline-database.json")
             }
         }
 
