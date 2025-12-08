@@ -62,7 +62,7 @@ internal class DefaultDeadEntriesAccessorTest {
 
                 // when
                 val result = exceptionExpected<IllegalArgumentException> {
-                    defaultDatasetFileAccessor.deadEntriesFile(testMetaDataProviderConfig, JSON_PRETTY_PRINT).parent
+                    defaultDatasetFileAccessor.deadEntriesFile(testMetaDataProviderConfig, JSON_MINIFIED).parent
                 }
 
                 // then
@@ -93,31 +93,6 @@ internal class DefaultDeadEntriesAccessorTest {
 
                 // then
                 assertThat(result).isEqualTo(testAppConfig.outputDirectory().resolve("dead-entries"))
-            }
-        }
-        
-        @Test
-        fun `deadEntriesFile returns correct file for type JSON_PRETTY_PRINT`() {
-            tempDirectory {
-                // given
-                val testMetaDataProviderConfig = MyanimelistConfig
-
-                val testAppConfig = object: Config by TestAppConfig {
-                    override fun outputDirectory(): Directory = tempDir
-                }
-
-                val databaseAccess = DefaultDeadEntriesAccessor(
-                    appConfig = testAppConfig,
-                    jsonDeserializer = TestDeserializer(),
-                    jsonSerializer = TestJsonSerializer(),
-                    downloadControlStateAccessor = TestDownloadControlStateAccessor,
-                )
-
-                // when
-                val result = databaseAccess.deadEntriesFile(testMetaDataProviderConfig, JSON_PRETTY_PRINT).fileName()
-
-                // then
-                assertThat(result).isEqualTo("myanimelist.json")
             }
         }
 
@@ -220,7 +195,7 @@ internal class DefaultDeadEntriesAccessorTest {
                 val directoryExistsBefore = directory.directoryExists()
 
                 // when
-                databaseAccess.deadEntriesFile(testMetaDataProviderConfig, JSON_PRETTY_PRINT).fileName()
+                databaseAccess.deadEntriesFile(testMetaDataProviderConfig, JSON_MINIFIED).fileName()
 
                 // then
                 assertThat(directoryExistsBefore).isFalse()
@@ -274,7 +249,7 @@ internal class DefaultDeadEntriesAccessorTest {
                 deadEntriesAccessor.addDeadEntry(id, testMetaDataProviderConfig)
 
                 // then
-                setOf(JSON_PRETTY_PRINT, JSON_MINIFIED).forEach {
+                setOf(JSON_MINIFIED, JSON_MINIFIED).forEach {
                     val result = FromRegularFileDeserializer(
                         deserializer = DeadEntriesFromInputStreamDeserializer.instance).deserialize(deadEntriesAccessor.deadEntriesFile(testMetaDataProviderConfig, it),
                     ).deadEntries
@@ -358,12 +333,8 @@ internal class DefaultDeadEntriesAccessorTest {
                 }
 
                 val deadEntriesDir = tempDir.resolve("dead-entries").createDirectory()
-                val prettyPrint = deadEntriesDir.resolve("${testMetaDataProviderConfig.hostname().substringBefore('.')}.json")
                 val minified = deadEntriesDir.resolve("${testMetaDataProviderConfig.hostname().substringBefore('.')}-minified.json")
 
-                DeadEntriesJsonSerializer.instance.serialize(listOf(
-                    initialId,
-                )).writeToFile(prettyPrint)
                 DeadEntriesJsonSerializer.instance.serialize(listOf(
                     initialId,
                 ), minify = true).writeToFile(minified)
@@ -377,7 +348,7 @@ internal class DefaultDeadEntriesAccessorTest {
                 deadEntriesAccessor.addDeadEntry(newId, testMetaDataProviderConfig)
 
                 // then
-                setOf(JSON_PRETTY_PRINT, JSON_MINIFIED).forEach {
+                setOf(JSON_MINIFIED, JSON_MINIFIED).forEach {
                     val result = FromRegularFileDeserializer(
                         deserializer = DeadEntriesFromInputStreamDeserializer.instance).deserialize(deadEntriesAccessor.deadEntriesFile(testMetaDataProviderConfig, it),
                     ).deadEntries
@@ -417,13 +388,10 @@ internal class DefaultDeadEntriesAccessorTest {
                 }
 
                 val deadEntriesDir = tempDir.resolve("dead-entries").createDirectory()
-                val prettyPrint = deadEntriesDir.resolve("${testMetaDataProviderConfig.hostname().substringBefore('.')}.json")
                 val minified = deadEntriesDir.resolve("${testMetaDataProviderConfig.hostname().substringBefore('.')}-minified.json")
                 val minifiedZst = deadEntriesDir.resolve("${testMetaDataProviderConfig.hostname().substringBefore('.')}-minified.json.zst")
 
-                DeadEntriesJsonSerializer.instance.serialize(listOf(
-                    initialId,
-                )).writeToFile(prettyPrint)
+
                 DeadEntriesJsonSerializer.instance.serialize(listOf(
                     initialId,
                 ), minify = true).writeToFile(minified)
@@ -494,7 +462,7 @@ internal class DefaultDeadEntriesAccessorTest {
                 deadEntriesAccessor.addDeadEntry("some-id", testMetaDataProviderConfig)
 
                 // then
-                assertThat(deadEntriesAccessor.deadEntriesFile(testMetaDataProviderConfig, JSON_PRETTY_PRINT)).exists()
+                assertThat(deadEntriesAccessor.deadEntriesFile(testMetaDataProviderConfig, JSON_MINIFIED)).exists()
                 assertThat(deadEntriesAccessor.deadEntriesFile(testMetaDataProviderConfig, JSON_MINIFIED)).exists()
             }
         }

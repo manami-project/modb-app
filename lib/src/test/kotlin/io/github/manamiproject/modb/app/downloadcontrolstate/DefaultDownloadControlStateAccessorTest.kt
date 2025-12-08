@@ -116,7 +116,6 @@ internal class DefaultDownloadControlStateAccessorTest {
         fun `throws exception if the file name and the actual id from the source link don't match`() {
             tempDirectory {
                 // given
-                // given
                 val dir = tempDir.resolve(AnilistConfig.hostname()).createDirectory()
                 createExpectedDcsEntry(TestAnimeRawObjects.AllPropertiesSet.serializedPrettyPrint)
                     .writeToFile(dir.resolve("10294.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX"))
