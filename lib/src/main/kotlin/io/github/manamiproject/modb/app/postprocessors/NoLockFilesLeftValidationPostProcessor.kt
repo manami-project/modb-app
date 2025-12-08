@@ -34,7 +34,7 @@ class NoLockFilesLeftValidationPostProcessor(
             downloadControlStateAccessor.downloadControlStateDirectory(config).listRegularFiles("*.$LOCK_FILE_SUFFIX").count()
         }
 
-        check(numberOfLockFilesInWorkingDir.none { it > 0 }) { "Lock file found in workingdir." }
+        check(numberOfLockFilesInWorkingDir.none { it > 0 }) { "Lock file found in working dir." }
         check(numberOfLockFilesInDcsDir.none { it > 0 }) { "Lock file found in dcs dir." }
 
         return@withContext true
