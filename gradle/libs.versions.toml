@@ -1,6 +1,6 @@
 [versions]
 assertj-core = "3.27.6"
-commons-text = "1.14.0"
+commons-text = "1.15.0"
 jsonpathkt = "2.0.1"
 jsoup = "1.21.2"
 junit-jupiter = "6.0.1"
