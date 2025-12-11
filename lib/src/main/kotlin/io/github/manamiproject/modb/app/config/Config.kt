@@ -43,7 +43,7 @@ interface Config: ContextAware {
 
     /**
      * Retrieve the current working directory for a specific meta data provider.
-     * This direcory contains the raw and converted files.
+     * This directory contains the raw and converted files.
      * @since 1.0.0
      * @param metaDataProviderConfig Configuration for a specific meta data provider.
      * @see currentWeekWorkingDir
