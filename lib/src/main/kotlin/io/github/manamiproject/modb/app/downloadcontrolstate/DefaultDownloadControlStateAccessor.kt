@@ -9,6 +9,7 @@ import io.github.manamiproject.modb.core.anime.AnimeRaw
 import io.github.manamiproject.modb.core.config.AnimeId
 import io.github.manamiproject.modb.core.config.MetaDataProviderConfig
 import io.github.manamiproject.modb.core.coroutines.ModbDispatchers.LIMITED_FS
+import io.github.manamiproject.modb.core.coverage.KoverIgnore
 import io.github.manamiproject.modb.core.date.WeekOfYear
 import io.github.manamiproject.modb.core.extensions.*
 import io.github.manamiproject.modb.core.json.Json
@@ -18,6 +19,8 @@ import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 import kotlinx.coroutines.withContext
+import kotlin.concurrent.atomics.AtomicReference
+import kotlin.concurrent.atomics.ExperimentalAtomicApi
 import kotlin.io.path.createDirectories
 import kotlin.io.path.deleteIfExists
 import kotlin.io.path.moveTo
@@ -25,21 +28,20 @@ import kotlin.io.path.moveTo
 private typealias InternalKey = String
 
 /**
- * Default implemenation that allows access to DCS files.
- * If the meta data provider specific DCS directory doesn't exist, it will be created.
- * Files are parsed each time you call functions.
+ * Default implementation that allows access to DCS files.
+ * If the metadata provider specific DCS directory doesn't exist, it will be created.
  * @since 1.0.0
  * @property appConfig Application specific configuration. Uses [AppConfig] by default.
  * @property mergeLockAccess Access to merge locks.
  */
+@OptIn(ExperimentalAtomicApi::class)
 class DefaultDownloadControlStateAccessor(
     private val appConfig: Config = AppConfig.instance,
     private val mergeLockAccess: MergeLockAccessor = DefaultMergeLockAccessor.instance,
 ): DownloadControlStateAccessor {
 
-    private val downloadControlStateEntries = HashMap<InternalKey, DownloadControlStateEntry>()
+    private val downloadControlStateEntries = AtomicReference<Map<InternalKey, DownloadControlStateEntry>>(emptyMap())
     private val initializationMutex = Mutex()
-    private val writeAccess = Mutex()
     private var isInitialized = false
 
     override fun downloadControlStateDirectory(metaDataProviderConfig: MetaDataProviderConfig): Directory {
@@ -57,7 +59,7 @@ class DefaultDownloadControlStateAccessor(
             init()
         }
 
-        return downloadControlStateEntries.values.map { originalDcs ->
+        return downloadControlStateEntries.load().values.map { originalDcs ->
             originalDcs.copy(
                 _lastDownloaded = originalDcs.lastDownloaded.copy(),
                 _nextDownload = originalDcs.nextDownload.copy(),
@@ -102,7 +104,7 @@ class DefaultDownloadControlStateAccessor(
             init()
         }
 
-        return downloadControlStateEntries.containsKey(internalKey(metaDataProviderConfig, animeId))
+        return downloadControlStateEntries.load().containsKey(internalKey(metaDataProviderConfig, animeId))
     }
 
     override suspend fun dcsEntry(metaDataProviderConfig: MetaDataProviderConfig, animeId: AnimeId): DownloadControlStateEntry {
@@ -112,7 +114,7 @@ class DefaultDownloadControlStateAccessor(
 
         val internalKey = internalKey(metaDataProviderConfig, animeId)
         check(dcsEntryExists(metaDataProviderConfig, animeId)) { "Requested DCS entry with internal id [$internalKey] doesnt exist." }
-        return downloadControlStateEntries[internalKey]!!.copy()
+        return downloadControlStateEntries.load()[internalKey]!!.copy()
     }
 
     override suspend fun createOrUpdate(metaDataProviderConfig: MetaDataProviderConfig, animeId: AnimeId, downloadControlStateEntry: DownloadControlStateEntry): Boolean {
@@ -120,30 +122,30 @@ class DefaultDownloadControlStateAccessor(
             init()
         }
 
-        writeAccess.withLock {
-            val subDir = downloadControlStateDirectory(metaDataProviderConfig)
-            val downloadControlStateFile = subDir.resolve("$animeId.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX")
+        val subDir = downloadControlStateDirectory(metaDataProviderConfig)
+        val downloadControlStateFile = subDir.resolve("$animeId.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX")
 
-            if (!dcsEntryExists(metaDataProviderConfig, animeId)) {
-                log.debug { "Creating new DCS entry for [$animeId] of [${metaDataProviderConfig.hostname()}]." }
-                Json.toJson(downloadControlStateEntry).writeToFile(downloadControlStateFile)
-                downloadControlStateEntries[internalKey(metaDataProviderConfig, animeId)] = downloadControlStateEntry
-                return true
-            }
-
-            val currentDownloadControlStateEntry = dcsEntry(metaDataProviderConfig, animeId)
-
-            if (currentDownloadControlStateEntry.lastDownloaded == WeekOfYear.currentWeek()) {
-                log.debug { "Not updating DCS file for [${animeId}] of [${metaDataProviderConfig.hostname()}], because it has been updated already." }
-                return false
-            }
-
-            log.info { "Updating DCS entry for [$animeId] of [${metaDataProviderConfig.hostname()}]." }
-
+        if (!dcsEntryExists(metaDataProviderConfig, animeId)) {
+            log.debug { "Creating new DCS entry for [$animeId] of [${metaDataProviderConfig.hostname()}]." }
             Json.toJson(downloadControlStateEntry).writeToFile(downloadControlStateFile)
-            downloadControlStateEntries[internalKey(metaDataProviderConfig, animeId)] = downloadControlStateEntry
+            val newMap = downloadControlStateEntries.load().toMutableMap().also { it[internalKey(metaDataProviderConfig, animeId)] = downloadControlStateEntry }
+            safelyStore(newMap)
             return true
         }
+
+        val currentDownloadControlStateEntry = dcsEntry(metaDataProviderConfig, animeId)
+
+        if (currentDownloadControlStateEntry.lastDownloaded == WeekOfYear.currentWeek()) {
+            log.debug { "Not updating DCS file for [${animeId}] of [${metaDataProviderConfig.hostname()}], because it has been updated already." }
+            return false
+        }
+
+        log.info { "Updating DCS entry for [$animeId] of [${metaDataProviderConfig.hostname()}]." }
+
+        Json.toJson(downloadControlStateEntry).writeToFile(downloadControlStateFile)
+        val newMap = downloadControlStateEntries.load().toMutableMap().also { it[internalKey(metaDataProviderConfig, animeId)] = downloadControlStateEntry }
+        safelyStore(newMap)
+        return true
     }
 
     override suspend fun removeDeadEntry(metaDataProviderConfig: MetaDataProviderConfig, animeId: AnimeId) {
@@ -151,23 +153,22 @@ class DefaultDownloadControlStateAccessor(
             init()
         }
 
-        writeAccess.withLock {
-            val hasBeenDeleted = downloadControlStateDirectory(metaDataProviderConfig)
-                .resolve("$animeId.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX")
-                .deleteIfExists()
+        val hasBeenDeleted = downloadControlStateDirectory(metaDataProviderConfig)
+            .resolve("$animeId.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX")
+            .deleteIfExists()
 
-            if (hasBeenDeleted) {
-                log.debug { "Removed [${metaDataProviderConfig.hostname()}] DCS file for [$animeId]" }
-            }
+        if (hasBeenDeleted) {
+            log.debug { "Removed [${metaDataProviderConfig.hostname()}] DCS file for [$animeId]" }
+        }
 
-            downloadControlStateEntries.remove(internalKey(metaDataProviderConfig, animeId))
+        val newMap = downloadControlStateEntries.load().toMutableMap().also { it.remove(internalKey(metaDataProviderConfig, animeId)) }
+        safelyStore(newMap)
 
-            val uri = metaDataProviderConfig.buildAnimeLink(animeId)
+        val uri = metaDataProviderConfig.buildAnimeLink(animeId)
 
-            if (mergeLockAccess.isPartOfMergeLock(uri)) {
-                log.debug { "Removing merge.lock entry [$animeId] of [${metaDataProviderConfig.hostname()}]" }
-                mergeLockAccess.removeEntry(uri)
-            }
+        if (mergeLockAccess.isPartOfMergeLock(uri)) {
+            log.debug { "Removing merge.lock entry [$animeId] of [${metaDataProviderConfig.hostname()}]" }
+            mergeLockAccess.removeEntry(uri)
         }
     }
 
@@ -176,39 +177,39 @@ class DefaultDownloadControlStateAccessor(
             init()
         }
 
-        return writeAccess.withLock {
-            require(appConfig.canChangeAnimeIds(metaDataProviderConfig)) {
-                "Called changeId for [${metaDataProviderConfig.hostname()}] which is not configured as a meta data provider that changes IDs."
-            }
-
-            log.debug { "Updating [$oldId] to [$newId] of [${metaDataProviderConfig.hostname()}]." }
-
-            val file = downloadControlStateDirectory(metaDataProviderConfig).resolve("$oldId.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX")
-            check(file.regularFileExists()) { "[${metaDataProviderConfig.hostname()}] file [${file.fileName()}] doesn't exist." }
-
-            log.debug { "Renaming [*.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX] file from [$oldId.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX] to [$newId.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX]." }
-
-            val newFile = file.parent.resolve("$newId.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX")
-            file.moveTo(newFile, true)
-
-            downloadControlStateEntries[internalKey(metaDataProviderConfig, oldId)]?.apply {
-                downloadControlStateEntries[internalKey(metaDataProviderConfig, newId)] = this
-                downloadControlStateEntries.remove(internalKey(metaDataProviderConfig, oldId))
-            }
-
-            val oldUri = metaDataProviderConfig.buildAnimeLink(oldId)
-            if (mergeLockAccess.isPartOfMergeLock(oldUri)) {
-                mergeLockAccess.replaceUri(oldUri, metaDataProviderConfig.buildAnimeLink(newId))
-            }
-
-            log.debug { "Removing [*.$CONVERTED_FILE_SUFFIX] file." }
-            appConfig.workingDir(metaDataProviderConfig).resolve("$oldId.$CONVERTED_FILE_SUFFIX").deleteIfExists()
-
-            log.debug { "Removing [${metaDataProviderConfig.fileSuffix()}] file." }
-            appConfig.workingDir(metaDataProviderConfig).resolve("$oldId.${metaDataProviderConfig.fileSuffix()}").deleteIfExists()
-
-            newFile
+        require(appConfig.canChangeAnimeIds(metaDataProviderConfig)) {
+            "Called changeId for [${metaDataProviderConfig.hostname()}] which is not configured as a meta data provider that changes IDs."
         }
+
+        log.debug { "Updating [$oldId] to [$newId] of [${metaDataProviderConfig.hostname()}]." }
+
+        val file = downloadControlStateDirectory(metaDataProviderConfig).resolve("$oldId.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX")
+        check(file.regularFileExists()) { "[${metaDataProviderConfig.hostname()}] file [${file.fileName()}] doesn't exist." }
+
+        log.debug { "Renaming [*.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX] file from [$oldId.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX] to [$newId.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX]." }
+
+        val newFile = file.parent.resolve("$newId.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX")
+        file.moveTo(newFile, true)
+
+        downloadControlStateEntries.load()[internalKey(metaDataProviderConfig, oldId)]?.let { entry ->
+            val newMap = downloadControlStateEntries.load().toMutableMap()
+            newMap[internalKey(metaDataProviderConfig, newId)] = entry
+            newMap.remove(internalKey(metaDataProviderConfig, oldId))
+            safelyStore(newMap)
+        }
+
+        val oldUri = metaDataProviderConfig.buildAnimeLink(oldId)
+        if (mergeLockAccess.isPartOfMergeLock(oldUri)) {
+            mergeLockAccess.replaceUri(oldUri, metaDataProviderConfig.buildAnimeLink(newId))
+        }
+
+        log.debug { "Removing [*.$CONVERTED_FILE_SUFFIX] file." }
+        appConfig.workingDir(metaDataProviderConfig).resolve("$oldId.$CONVERTED_FILE_SUFFIX").deleteIfExists()
+
+        log.debug { "Removing [${metaDataProviderConfig.fileSuffix()}] file." }
+        appConfig.workingDir(metaDataProviderConfig).resolve("$oldId.${metaDataProviderConfig.fileSuffix()}").deleteIfExists()
+
+        return newFile
     }
 
     override suspend fun highestIdAlreadyInDataset(metaDataProviderConfig: MetaDataProviderConfig): Int {
@@ -242,9 +243,13 @@ class DefaultDownloadControlStateAccessor(
                         }
                     }.flatten()
 
+                val entries = mutableMapOf<InternalKey, DownloadControlStateEntry>()
+
                 awaitAll(*jobs.toTypedArray()).forEach { downloadControlStateEntry ->
-                    downloadControlStateEntries[internalKey(downloadControlStateEntry)] = downloadControlStateEntry
+                    entries[internalKey(downloadControlStateEntry)] = downloadControlStateEntry
                 }
+
+                safelyStore(entries)
 
                 isInitialized = true
             }
@@ -270,6 +275,14 @@ class DefaultDownloadControlStateAccessor(
         val metaDataProviderConfig = appConfig.findMetaDataProviderConfig(source.host)
         val animeId = metaDataProviderConfig.extractAnimeId(source)
         return internalKey(metaDataProviderConfig, animeId)
+    }
+
+    @KoverIgnore
+    private fun safelyStore(newMap: Map<InternalKey, DownloadControlStateEntry>) {
+        while (true) {
+            val current = downloadControlStateEntries.load()
+            if (downloadControlStateEntries.compareAndSet(current, newMap)) break
+        }
     }
 
     companion object {
