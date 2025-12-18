@@ -20,6 +20,21 @@
         "patch"
       ],
       "automerge": true
+    },
+    {
+      "description": "Group all Kotlin org.jetbrains.kotlin updates into one PR (monorepo style)",
+      "matchManagers": [
+        "gradle"
+      ],
+      "matchPackagePatterns": [
+        "^org\\.jetbrains\\.kotlin"
+      ],
+      "matchFiles": [
+        "gradle/libs.versions.toml"
+      ],
+      "groupName": "kotlin monorepo",
+      "groupSlug": "kotlin-monorepo",
+      "separateMultipleMajor": false
     }
   ]
 }
