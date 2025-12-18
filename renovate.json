@@ -22,7 +22,7 @@
       "automerge": true
     },
     {
-      "description": "Group all Kotlin org.jetbrains.kotlin updates into one PR (monorepo style)",
+      "description": "Create a single PR (monorepo style) for dependencies of the same group id.",
       "matchManagers": [
         "gradle"
       ],
