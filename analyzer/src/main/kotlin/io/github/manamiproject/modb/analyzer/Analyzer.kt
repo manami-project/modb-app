@@ -1,9 +1,14 @@
 package io.github.manamiproject.modb.analyzer
 
+import io.github.manamiproject.AnimenewsnetworkConfig
 import io.github.manamiproject.modb.analyzer.Analyzer.Options.*
 import io.github.manamiproject.modb.analyzer.cluster.ClusterService
 import io.github.manamiproject.modb.analyzer.util.*
+import io.github.manamiproject.modb.anidb.AnidbConfig
+import io.github.manamiproject.modb.anilist.AnilistConfig
 import io.github.manamiproject.modb.animecountdown.AnimeCountdownConfig
+import io.github.manamiproject.modb.animeplanet.AnimePlanetConfig
+import io.github.manamiproject.modb.anisearch.AnisearchConfig
 import io.github.manamiproject.modb.app.config.AppConfig
 import io.github.manamiproject.modb.app.dataset.DefaultDatasetFileAccessor
 import io.github.manamiproject.modb.app.merging.DefaultReviewedIsolatedEntriesAccessor
@@ -13,6 +18,12 @@ import io.github.manamiproject.modb.core.coverage.KoverIgnore
 import io.github.manamiproject.modb.core.extensions.EMPTY
 import io.github.manamiproject.modb.core.json.Json
 import io.github.manamiproject.modb.core.anime.Anime
+import io.github.manamiproject.modb.core.extensions.neitherNullNorBlank
+import io.github.manamiproject.modb.core.extensions.remove
+import io.github.manamiproject.modb.kitsu.KitsuConfig
+import io.github.manamiproject.modb.livechart.LivechartConfig
+import io.github.manamiproject.modb.myanimelist.MyanimelistConfig
+import io.github.manamiproject.modb.simkl.SimklConfig
 import java.awt.Desktop
 import java.net.URI
 import kotlin.system.exitProcess
@@ -138,9 +149,10 @@ object Analyzer {
     private suspend fun markAsDeadEntry() {
         print("\nSource: ")
         val input = waitForUserInput()
+        val cleanedUpUrl = toCleanedUpUrl(input)
 
         when {
-            isValidUrl(input) -> DeadEntryCreator.markAsDeadEntry(URI(input))
+            isValidUrl(cleanedUpUrl.second!!) -> DeadEntryCreator.markAsDeadEntry(cleanedUpUrl.second!!)
             else -> println("Invalid URL.")
         }
     }
@@ -148,9 +160,10 @@ object Analyzer {
     private suspend fun loadAnime() {
         print("\nSource: ")
         val input = waitForUserInput()
+        val cleanedUpUrl = toCleanedUpUrl(input)
 
         when {
-            isValidUrl(input) -> AnimeLoader.load(URI(input))
+            isValidUrl(cleanedUpUrl.second!!) -> AnimeLoader.load(cleanedUpUrl.second!!)
             else -> println("Invalid URL.")
         }
     }
@@ -165,6 +178,7 @@ object Analyzer {
 
         print("\nOption: ")
         val input = waitForUserInput()
+        val cleanedUpUrl = toCleanedUpUrl(input)
 
         return when {
             input == "keep" -> currentEntryUris.toSet()
@@ -174,8 +188,8 @@ object Analyzer {
                 DefaultReviewedIsolatedEntriesAccessor.instance.addCheckedEntry(currentEntryUris.first())
                 emptySet()
             }
-            isValidUrl(input) -> {
-                val urlToBeAdded = URI(input)
+            cleanedUpUrl.second != null && isValidUrl(cleanedUpUrl.second!!) -> {
+                val urlToBeAdded = cleanedUpUrl.second!!
                 currentEntryUris.add(urlToBeAdded)
 
                 if (DefaultMergeLockAccessor.instance.isPartOfMergeLock(urlToBeAdded)) {
@@ -201,24 +215,26 @@ object Analyzer {
         print("URL to be added: ")
 
         val urlToBeAddedUserInput = urlToBeAdded ?: waitForUserInput()
+        val cleanedUpUrlToBeAddedUserInput = toCleanedUpUrl(urlToBeAddedUserInput)
 
         when {
             urlToBeAddedUserInput == "exit" -> mainMenu()
-            isValidUrl(urlToBeAddedUserInput) -> {
+            cleanedUpUrlToBeAddedUserInput.second != null && isValidUrl(cleanedUpUrlToBeAddedUserInput.second!!) -> {
                 println("\n[a valid URL] (= Any URL of an existing merge lock)    [exit] (= back to main menu)")
                 print("Any URL from the existing merge lock: ")
 
                 val mergeLockUrlUserInput = waitForUserInput()
+                val cleanedUpMergeLockUrlUserInput = toCleanedUpUrl(mergeLockUrlUserInput)
 
                 when {
                     mergeLockUrlUserInput == "exit" -> mainMenu()
-                    isValidUrl(mergeLockUrlUserInput) -> {
+                    cleanedUpMergeLockUrlUserInput.second != null && isValidUrl(cleanedUpMergeLockUrlUserInput.second!!) -> {
                         val mergeLockUri = URI(mergeLockUrlUserInput)
 
                         when {
                             DefaultMergeLockAccessor.instance.isPartOfMergeLock(mergeLockUri) -> {
                                 val newMergeLock = DefaultMergeLockAccessor.instance.getMergeLock(mergeLockUri).toHashSet().apply {
-                                    add(URI(urlToBeAddedUserInput))
+                                    add(cleanedUpUrlToBeAddedUserInput.second!!)
                                 }
 
                                 println("\n${Json.toJson(newMergeLock.toList().sorted())}")
@@ -229,16 +245,16 @@ object Analyzer {
                                 when (userInput) {
                                     "keep" -> DefaultMergeLockAccessor.instance.addMergeLock(newMergeLock)
                                     "exit" -> mainMenu()
-                                    else -> extendExistingMergeLock(urlToBeAddedUserInput)
+                                    else -> extendExistingMergeLock(cleanedUpUrlToBeAddedUserInput.first)
                                 }
                             }
                             else -> {
                                 println("Merge lock doesn't exist for [$mergeLockUrlUserInput]")
-                                extendExistingMergeLock(urlToBeAddedUserInput)
+                                extendExistingMergeLock(cleanedUpUrlToBeAddedUserInput.first)
                             }
                         }
                     }
-                    else -> extendExistingMergeLock(urlToBeAddedUserInput)
+                    else -> extendExistingMergeLock(cleanedUpUrlToBeAddedUserInput.first)
                 }
             }
             else -> extendExistingMergeLock()
@@ -251,12 +267,13 @@ object Analyzer {
 
         print("\nSelect: ")
         val input = waitForUserInput()
+        val cleanedUpUrl = toCleanedUpUrl(input)
 
         return when {
             input == "keep" -> sourcesOfCurrentEntry
             input == "exit" -> mainMenu()
-            isValidUrl(input) -> {
-                createNewMergeLockFromScratch(sourcesOfCurrentEntry + URI(input))
+            cleanedUpUrl.second != null && isValidUrl(cleanedUpUrl.second!!) -> {
+                createNewMergeLockFromScratch(sourcesOfCurrentEntry + cleanedUpUrl.second!!)
             }
             else -> createNewMergeLockFromScratch(sourcesOfCurrentEntry)
         }
@@ -278,14 +295,65 @@ object Analyzer {
         )
     }
 
-    private fun isValidUrl(value: String): Boolean {
+    private fun isValidUrl(value: URI): Boolean {
         return AppConfig.instance.metaDataProviderConfigurations()
-            .any { value.startsWith(it.buildAnimeLink(EMPTY).toString()) }
+            .any { value.toString().startsWith(it.buildAnimeLink(EMPTY).toString()) }
     }
 
     private fun waitForUserInput() = readlnOrNull()?.trim() ?: throw IllegalStateException("Invalid input")
 
     private fun openUrls(sources: Collection<URI>) = sources.forEach { Desktop.getDesktop().browse(it) }
+
+    private fun toCleanedUpUrl(value: String): Pair<String, URI?> {
+        return when {
+            value.contains(AnidbConfig.hostname()) -> {
+                val id = Regex("/\\d+/?").find(value)?.value?.remove("/") ?: EMPTY
+                check(id.neitherNullNorBlank())
+                Pair(value, AnidbConfig.buildAnimeLink(id))
+            }
+            value.contains(AnilistConfig.hostname()) -> {
+                val id = Regex("/\\d+/?").find(value)?.value?.remove("/") ?: EMPTY
+                check(id.neitherNullNorBlank())
+                Pair(value, AnilistConfig.buildAnimeLink(id))
+            }
+            value.contains(AnimePlanetConfig.hostname()) -> {
+                val id = value.substringAfterLast('/')
+                check(id.neitherNullNorBlank())
+                Pair(value, AnimePlanetConfig.buildAnimeLink(id))
+            }
+            value.contains(AnimenewsnetworkConfig.hostname()) -> {
+                val id = Regex("anime\\.php\\?id=\\d+").find(value)?.value?.remove("anime.php?id=") ?: EMPTY
+                check(id.neitherNullNorBlank())
+                Pair(value, AnimenewsnetworkConfig.buildAnimeLink(id))
+            }
+            value.contains(AnisearchConfig.hostname()) -> {
+                val id = Regex("/\\d+/?").find(value)?.value?.remove("/") ?: EMPTY
+                check(id.neitherNullNorBlank())
+                Pair(value, AnisearchConfig.buildAnimeLink(id))
+            }
+            value.contains(KitsuConfig.hostname()) -> {
+                val id = Regex("/\\d+/?").find(value)?.value?.remove("/") ?: EMPTY
+                check(id.neitherNullNorBlank())
+                Pair(value, KitsuConfig.buildAnimeLink(id))
+            }
+            value.contains(LivechartConfig.hostname()) -> {
+                val id = Regex("/\\d+/?").find(value)?.value?.remove("/") ?: EMPTY
+                check(id.neitherNullNorBlank())
+                Pair(value, LivechartConfig.buildAnimeLink(id))
+            }
+            value.contains(MyanimelistConfig.hostname()) -> {
+                val id = Regex("/\\d+/?").find(value)?.value?.remove("/") ?: EMPTY
+                check(id.neitherNullNorBlank())
+                Pair(value, MyanimelistConfig.buildAnimeLink(id))
+            }
+            value.contains(SimklConfig.hostname()) -> {
+                val id = Regex("/\\d+/?").find(value)?.value?.remove("/") ?: EMPTY
+                check(id.neitherNullNorBlank())
+                Pair(value, SimklConfig.buildAnimeLink(id))
+            }
+            else -> Pair(value, null)
+        }
+    }
 
     @KoverIgnore
     private enum class Options(val value: String) {
