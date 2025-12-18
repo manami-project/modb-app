@@ -26,15 +26,15 @@
       "matchManagers": [
         "gradle"
       ],
-      "matchPackagePatterns": [
-        "^org\\.jetbrains\\.kotlin"
-      ],
-      "matchFiles": [
+      "matchFileNames": [
         "gradle/libs.versions.toml"
       ],
       "groupName": "kotlin monorepo",
       "groupSlug": "kotlin-monorepo",
-      "separateMultipleMajor": false
+      "separateMultipleMajor": false,
+      "matchPackageNames": [
+        "/^org\\.jetbrains\\.kotlin/"
+      ]
     }
   ]
 }
