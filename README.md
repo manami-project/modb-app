@@ -1,4 +1,4 @@
-[![Tests](https://github.com/manami-project/modb-app/actions/workflows/tests.yml/badge.svg)](https://github.com/manami-project/modb-app/actions/workflows/tests.yml) [![codecov](https://codecov.io/gh/manami-project/modb-app/graph/badge.svg?token=66LR8JA8KE)](https://codecov.io/gh/manami-project/modb-app) ![jdk21](https://img.shields.io/badge/jdk-21-informational)
+[![Tests](https://github.com/manami-project/modb-app/actions/workflows/tests.yml/badge.svg)](https://github.com/manami-project/modb-app/actions/workflows/tests.yml) [![codecov](https://codecov.io/gh/manami-project/modb-app/graph/badge.svg?token=66LR8JA8KE)](https://codecov.io/gh/manami-project/modb-app) ![jdk25](https://img.shields.io/badge/jdk-25-informational)
 # modb-app
 
 _[modb](https://github.com/manami-project?tab=repositories&q=modb&type=source)_ stands for _**M**anami **O**ffline **D**ata**B**ase_. The applications and libraries of this repository are used to create the [manami-project/anime-offline-database](https://github.com/manami-project/anime-offline-database). Don't use these libraries and applications to crawl the websites entirely. Instead check whether the dataset already offers the data that you need.
@@ -33,7 +33,7 @@ _[modb](https://github.com/manami-project?tab=repositories&q=modb&type=source)_ 
 
 ## Requirements
 
-* JDK/JVM 21 (LTS) or higher
+* JDK/JVM 25 (LTS) or higher
 * Linux/Unix system supporting
   * `make`
   * `bash`
