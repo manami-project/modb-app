@@ -12,6 +12,7 @@ import io.github.manamiproject.modb.core.config.Hostname
 import io.github.manamiproject.modb.core.config.MetaDataProviderConfig
 import io.github.manamiproject.modb.core.date.WeekOfYear
 import io.github.manamiproject.modb.core.extensions.*
+import io.github.manamiproject.modb.core.json.Json
 import io.github.manamiproject.modb.myanimelist.MyanimelistConfig
 import io.github.manamiproject.modb.notify.NotifyConfig
 import io.github.manamiproject.modb.test.exceptionExpected
@@ -20,6 +21,7 @@ import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Nested
 import java.net.URI
 import java.time.LocalDate
+import kotlin.Int
 import kotlin.io.path.createDirectories
 import kotlin.io.path.createDirectory
 import kotlin.io.path.createFile
@@ -36,6 +38,9 @@ internal class DefaultDownloadControlStateAccessorTest {
                 // given
                 val testAppConfig = object: Config by TestAppConfig {
                     override fun downloadControlStateDirectory(): Directory = tempDir
+                    override fun metaDataProviderConfigurations(): Set<MetaDataProviderConfig> = setOf(
+                        MyanimelistConfig,
+                    )
                 }
 
                 val defaultDownloadControlStateAccessor = DefaultDownloadControlStateAccessor(
@@ -57,6 +62,9 @@ internal class DefaultDownloadControlStateAccessorTest {
                 // given
                 val testAppConfig = object: Config by TestAppConfig {
                     override fun downloadControlStateDirectory(): Directory = tempDir
+                    override fun metaDataProviderConfigurations(): Set<MetaDataProviderConfig> = setOf(
+                        MyanimelistConfig,
+                    )
                 }
 
                 testAppConfig.downloadControlStateDirectory().resolve(MyanimelistConfig.hostname()).createDirectories()
@@ -80,6 +88,9 @@ internal class DefaultDownloadControlStateAccessorTest {
                 // given
                 val testAppConfig = object: Config by TestAppConfig {
                     override fun downloadControlStateDirectory(): Directory = tempDir
+                    override fun metaDataProviderConfigurations(): Set<MetaDataProviderConfig> = setOf(
+                        MyanimelistConfig,
+                    )
                 }
 
                 testAppConfig.downloadControlStateDirectory().resolve(MyanimelistConfig.hostname()).createDirectories()
@@ -181,11 +192,10 @@ internal class DefaultDownloadControlStateAccessorTest {
         fun `triggers initialization if necessary`() {
             tempDirectory {
                 // given
-                var initHasBeenInvoked = false
+                var initHasBeenInvoked = 0
                 val testAppConfig = object: Config by TestAppConfig {
                     override fun metaDataProviderConfigurations(): Set<MetaDataProviderConfig> {
-                        check(!initHasBeenInvoked)
-                        initHasBeenInvoked = true
+                        initHasBeenInvoked++
                         return emptySet()
                     }
                     override fun downloadControlStateDirectory(): Directory = tempDir
@@ -200,7 +210,7 @@ internal class DefaultDownloadControlStateAccessorTest {
                 defaultDownloadControlStateAccessor.allDcsEntries()
 
                 // then
-                assertThat(initHasBeenInvoked).isTrue()
+                assertThat(initHasBeenInvoked).isEqualTo(3) // once for downloadControlStateEntries and twice in init()
             }
         }
 
@@ -227,7 +237,7 @@ internal class DefaultDownloadControlStateAccessorTest {
                 defaultDownloadControlStateAccessor.allDcsEntries()
 
                 // then
-                assertThat(initHasBeenInvoked).isOne()
+                assertThat(initHasBeenInvoked).isEqualTo(3) // once for downloadControlStateEntries and twice in init()
             }
         }
 
@@ -346,11 +356,10 @@ internal class DefaultDownloadControlStateAccessorTest {
         fun `triggers initialization if necessary`() {
             tempDirectory {
                 // given
-                var initHasBeenInvoked = false
+                var initHasBeenInvoked = 0
                 val testAppConfig = object: Config by TestAppConfig {
                     override fun metaDataProviderConfigurations(): Set<MetaDataProviderConfig> {
-                        check(!initHasBeenInvoked)
-                        initHasBeenInvoked = true
+                        initHasBeenInvoked++
                         return emptySet()
                     }
                     override fun downloadControlStateDirectory(): Directory = tempDir
@@ -365,7 +374,7 @@ internal class DefaultDownloadControlStateAccessorTest {
                 defaultDownloadControlStateAccessor.allDcsEntries(AnilistConfig)
 
                 // then
-                assertThat(initHasBeenInvoked).isTrue()
+                assertThat(initHasBeenInvoked).isEqualTo(3) // once for downloadControlStateEntries and twice in init()
             }
         }
 
@@ -392,7 +401,7 @@ internal class DefaultDownloadControlStateAccessorTest {
                 defaultDownloadControlStateAccessor.allDcsEntries(AnilistConfig)
 
                 // then
-                assertThat(initHasBeenInvoked).isOne()
+                assertThat(initHasBeenInvoked).isEqualTo(3) // once for downloadControlStateEntries and twice in init()
             }
         }
 
@@ -509,11 +518,10 @@ internal class DefaultDownloadControlStateAccessorTest {
         fun `triggers initialization if necessary`() {
             tempDirectory {
                 // given
-                var initHasBeenInvoked = false
+                var initHasBeenInvoked = 0
                 val testAppConfig = object: Config by TestAppConfig {
                     override fun metaDataProviderConfigurations(): Set<MetaDataProviderConfig> {
-                        check(!initHasBeenInvoked)
-                        initHasBeenInvoked = true
+                        initHasBeenInvoked++
                         return emptySet()
                     }
                     override fun downloadControlStateDirectory(): Directory = tempDir
@@ -528,7 +536,7 @@ internal class DefaultDownloadControlStateAccessorTest {
                 defaultDownloadControlStateAccessor.allAnime()
 
                 // then
-                assertThat(initHasBeenInvoked).isTrue()
+                assertThat(initHasBeenInvoked).isEqualTo(3) // once for downloadControlStateEntries and twice in init()
             }
         }
 
@@ -555,7 +563,7 @@ internal class DefaultDownloadControlStateAccessorTest {
                 defaultDownloadControlStateAccessor.allAnime()
 
                 // then
-                assertThat(initHasBeenInvoked).isOne()
+                assertThat(initHasBeenInvoked).isEqualTo(3) // once for downloadControlStateEntries and twice in init()
             }
         }
 
@@ -667,11 +675,10 @@ internal class DefaultDownloadControlStateAccessorTest {
         fun `triggers initialization if necessary`() {
             tempDirectory {
                 // given
-                var initHasBeenInvoked = false
+                var initHasBeenInvoked = 0
                 val testAppConfig = object: Config by TestAppConfig {
                     override fun metaDataProviderConfigurations(): Set<MetaDataProviderConfig> {
-                        check(!initHasBeenInvoked)
-                        initHasBeenInvoked = true
+                        initHasBeenInvoked++
                         return emptySet()
                     }
                     override fun downloadControlStateDirectory(): Directory = tempDir
@@ -686,7 +693,7 @@ internal class DefaultDownloadControlStateAccessorTest {
                 defaultDownloadControlStateAccessor.allAnime(AnilistConfig)
 
                 // then
-                assertThat(initHasBeenInvoked).isTrue()
+                assertThat(initHasBeenInvoked).isEqualTo(3) // once for downloadControlStateEntries and twice in init()
             }
         }
 
@@ -713,7 +720,7 @@ internal class DefaultDownloadControlStateAccessorTest {
                 defaultDownloadControlStateAccessor.allAnime(AnilistConfig)
 
                 // then
-                assertThat(initHasBeenInvoked).isOne()
+                assertThat(initHasBeenInvoked).isEqualTo(3) // once for downloadControlStateEntries and twice in init()
             }
         }
 
@@ -820,11 +827,10 @@ internal class DefaultDownloadControlStateAccessorTest {
         fun `triggers initialization if necessary`() {
             tempDirectory {
                 // given
-                var initHasBeenInvoked = false
+                var initHasBeenInvoked = 0
                 val testAppConfig = object: Config by TestAppConfig {
                     override fun metaDataProviderConfigurations(): Set<MetaDataProviderConfig> {
-                        check(!initHasBeenInvoked)
-                        initHasBeenInvoked = true
+                        initHasBeenInvoked++
                         return emptySet()
                     }
                     override fun downloadControlStateDirectory(): Directory = tempDir
@@ -840,7 +846,7 @@ internal class DefaultDownloadControlStateAccessorTest {
 
                 // then
                 assertThat(result).isFalse()
-                assertThat(initHasBeenInvoked).isTrue()
+                assertThat(initHasBeenInvoked).isEqualTo(3) // once for downloadControlStateEntries and twice in init()
             }
         }
 
@@ -868,7 +874,7 @@ internal class DefaultDownloadControlStateAccessorTest {
 
                 // then
                 assertThat(result).isFalse()
-                assertThat(initHasBeenInvoked).isOne()
+                assertThat(initHasBeenInvoked).isEqualTo(3) // once for downloadControlStateEntries and twice in init()
             }
         }
     }
@@ -935,7 +941,7 @@ internal class DefaultDownloadControlStateAccessorTest {
                 }
 
                 // then
-                assertThat(result).hasMessage("Requested DCS entry with internal id [myanimelist.net-1029] doesnt exist.")
+                assertThat(result).hasMessage("Requested DCS entry with id [1029] for [myanimelist.net] doesn't exist.")
             }
         }
 
@@ -947,11 +953,10 @@ internal class DefaultDownloadControlStateAccessorTest {
                 createExpectedDcsEntry(TestAnimeRawObjects.AllPropertiesSet.serializedPrettyPrint)
                     .writeToFile(dir.resolve("177191.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX"))
 
-                var initHasBeenInvoked = false
+                var initHasBeenInvoked = 0
                 val testAppConfig = object: Config by TestAppConfig {
                     override fun metaDataProviderConfigurations(): Set<MetaDataProviderConfig> {
-                        check(!initHasBeenInvoked)
-                        initHasBeenInvoked = true
+                        initHasBeenInvoked++
                         return setOf(AnilistConfig)
                     }
                     override fun downloadControlStateDirectory(): Directory = tempDir
@@ -967,7 +972,7 @@ internal class DefaultDownloadControlStateAccessorTest {
                 defaultDownloadControlStateAccessor.dcsEntry(AnilistConfig, "177191")
 
                 // then
-                assertThat(initHasBeenInvoked).isTrue()
+                assertThat(initHasBeenInvoked).isEqualTo(3) // once for downloadControlStateEntries and twice in init()
             }
         }
 
@@ -999,7 +1004,7 @@ internal class DefaultDownloadControlStateAccessorTest {
                 defaultDownloadControlStateAccessor.dcsEntry(AnilistConfig, "177191")
 
                 // then
-                assertThat(initHasBeenInvoked).isOne()
+                assertThat(initHasBeenInvoked).isEqualTo(3) // once for downloadControlStateEntries and twice in init()
             }
         }
 
@@ -1163,11 +1168,10 @@ internal class DefaultDownloadControlStateAccessorTest {
         fun `triggers initialization if necessary`() {
             tempDirectory {
                 // given
-                var initHasBeenInvoked = false
+                var initHasBeenInvoked = 0
                 val testAppConfig = object: Config by TestAppConfig {
                     override fun metaDataProviderConfigurations(): Set<MetaDataProviderConfig> {
-                        check(!initHasBeenInvoked)
-                        initHasBeenInvoked = true
+                        initHasBeenInvoked++
                         return setOf(AnilistConfig)
                     }
                     override fun downloadControlStateDirectory(): Directory = tempDir
@@ -1190,7 +1194,7 @@ internal class DefaultDownloadControlStateAccessorTest {
                 defaultDownloadControlStateAccessor.createOrUpdate(AnilistConfig, "177191", dcsEntry)
 
                 // then
-                assertThat(initHasBeenInvoked).isTrue()
+                assertThat(initHasBeenInvoked).isEqualTo(3) // once for downloadControlStateEntries and twice in init()
             }
         }
 
@@ -1234,7 +1238,7 @@ internal class DefaultDownloadControlStateAccessorTest {
                 defaultDownloadControlStateAccessor.createOrUpdate(AnilistConfig, "177191", dcsEntry)
 
                 // then
-                assertThat(initHasBeenInvoked).isOne()
+                assertThat(initHasBeenInvoked).isEqualTo(3) // once for downloadControlStateEntries and twice in init()
             }
         }
     }
@@ -1395,6 +1399,54 @@ internal class DefaultDownloadControlStateAccessorTest {
         }
 
         @Test
+        fun `removed entry from internal representation`() {
+            tempDirectory {
+                // given
+                val testMetaDataProviderConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = "anilist.co"
+                    override fun buildAnimeLink(id: AnimeId): URI = super.buildAnimeLink(id)
+                    override fun extractAnimeId(uri: URI): AnimeId = super.extractAnimeId(uri)
+                }
+
+                val testAppConfig = object: Config by TestAppConfig {
+                    override fun downloadControlStateDirectory(): Directory = tempDir
+                    override fun metaDataProviderConfigurations(): Set<MetaDataProviderConfig> = setOf(testMetaDataProviderConfig)
+                    override fun findMetaDataProviderConfig(host: Hostname): MetaDataProviderConfig = testMetaDataProviderConfig
+                }
+
+                val testMergeLockAccess = object: MergeLockAccessor by TestMergeLockAccessor {
+                    override suspend fun isPartOfMergeLock(uri: URI): Boolean = false
+                }
+
+                val testDownloadControlStateEntry = DownloadControlStateEntry(
+                    _weeksWihoutChange = 0,
+                    _lastDownloaded = WeekOfYear(LocalDate.now().minusWeeks(1)),
+                    _nextDownload = WeekOfYear.currentWeek(),
+                    _anime = TestAnimeRawObjects.AllPropertiesSet.obj,
+                )
+
+                tempDir.resolve(testMetaDataProviderConfig.hostname()).createDirectory()
+                Json.toJson(testDownloadControlStateEntry).writeToFile(tempDir.resolve(testMetaDataProviderConfig.hostname()).resolve("177191.dcs").createFile())
+
+                val defaultDownloadControlStateAccessor = DefaultDownloadControlStateAccessor(
+                    appConfig = testAppConfig,
+                    mergeLockAccess = testMergeLockAccess,
+                )
+
+                defaultDownloadControlStateAccessor.createOrUpdate(testMetaDataProviderConfig, "177191", testDownloadControlStateEntry)
+                val allDcsEntriesWasNotEmpty = defaultDownloadControlStateAccessor.allDcsEntries().isNotEmpty() && defaultDownloadControlStateAccessor.allDcsEntries(testMetaDataProviderConfig).isNotEmpty()
+
+                // when
+                defaultDownloadControlStateAccessor.removeDeadEntry(testMetaDataProviderConfig, "177191")
+
+                // then
+                assertThat(allDcsEntriesWasNotEmpty).isTrue()
+                assertThat(defaultDownloadControlStateAccessor.allDcsEntries()).isEmpty()
+                assertThat(defaultDownloadControlStateAccessor.allDcsEntries(testMetaDataProviderConfig)).isEmpty()
+            }
+        }
+
+        @Test
         fun `triggers initialization if necessary`() {
             tempDirectory {
                 // given
@@ -1404,11 +1456,10 @@ internal class DefaultDownloadControlStateAccessorTest {
                     override fun extractAnimeId(uri: URI): AnimeId = super.extractAnimeId(uri)
                 }
 
-                var initHasBeenInvoked = false
+                var initHasBeenInvoked = 0
                 val testAppConfig = object: Config by TestAppConfig {
                     override fun metaDataProviderConfigurations(): Set<MetaDataProviderConfig> {
-                        check(!initHasBeenInvoked)
-                        initHasBeenInvoked = true
+                        initHasBeenInvoked++
                         return emptySet()
                     }
                     override fun downloadControlStateDirectory(): Directory = tempDir
@@ -1430,7 +1481,7 @@ internal class DefaultDownloadControlStateAccessorTest {
                 defaultDownloadControlStateAccessor.removeDeadEntry(testMetaDataProviderConfig, "177191")
 
                 // then
-                assertThat(initHasBeenInvoked).isTrue()
+                assertThat(initHasBeenInvoked).isEqualTo(3) // once for downloadControlStateEntries and twice in init()
             }
         }
 
@@ -1470,7 +1521,7 @@ internal class DefaultDownloadControlStateAccessorTest {
                 defaultDownloadControlStateAccessor.removeDeadEntry(testMetaDataProviderConfig, "177191")
 
                 // then
-                assertThat(initHasBeenInvoked).isOne()
+                assertThat(initHasBeenInvoked).isEqualTo(3) // once for downloadControlStateEntries and twice in init()
             }
         }
     }
@@ -1730,14 +1781,13 @@ internal class DefaultDownloadControlStateAccessorTest {
 
                 val workingDir = tempDir.resolve("workingDir").createDirectory()
 
-                var initHasBeenInvoked = false
+                var initHasBeenInvoked = 0
                 val testAppConfig = object: Config by TestAppConfig {
                     override fun downloadControlStateDirectory(): Directory = tempDir
                     override fun workingDir(metaDataProviderConfig: MetaDataProviderConfig): Directory = workingDir
                     override fun canChangeAnimeIds(metaDataProviderConfig: MetaDataProviderConfig): Boolean = true
                     override fun metaDataProviderConfigurations(): Set<MetaDataProviderConfig> {
-                        check(!initHasBeenInvoked)
-                        initHasBeenInvoked = true
+                        initHasBeenInvoked++
                         return emptySet()
                     }
                 }
@@ -1758,7 +1808,7 @@ internal class DefaultDownloadControlStateAccessorTest {
                 downloadControlStateAccessor.changeId("previous-id", "new-id", testMetaDataProviderConfig)
 
                 // then
-                assertThat(initHasBeenInvoked).isTrue()
+                assertThat(initHasBeenInvoked).isEqualTo(3) // once for downloadControlStateEntries and twice in init()
             }
         }
 
@@ -1803,7 +1853,7 @@ internal class DefaultDownloadControlStateAccessorTest {
                 downloadControlStateAccessor.changeId("previous-id2", "new-id2", testMetaDataProviderConfig)
 
                 // then
-                assertThat(initHasBeenInvoked).isOne()
+                assertThat(initHasBeenInvoked).isEqualTo(3) // once for downloadControlStateEntries and twice in init()
             }
         }
     }

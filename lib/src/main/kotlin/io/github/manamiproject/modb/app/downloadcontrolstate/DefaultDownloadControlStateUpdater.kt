@@ -14,6 +14,8 @@ import io.github.manamiproject.modb.core.anime.AnimeRaw
 import io.github.manamiproject.modb.core.date.WeekOfYear
 import kotlinx.coroutines.async
 import kotlinx.coroutines.awaitAll
+import kotlinx.coroutines.joinAll
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 
@@ -46,9 +48,9 @@ class DefaultDownloadControlStateUpdater(
         checkForExtractionProblems(animeToProvider)
         updateChangedIds(convFileAnimeToFilename)
 
-        animeToProvider.forEach { (anime, metaDataProviderConfig) ->
-            handleUpdate(anime, metaDataProviderConfig)
-        }
+        animeToProvider.map { (anime, metaDataProviderConfig) ->
+            launch { handleUpdate(anime, metaDataProviderConfig) }
+        }.joinAll()
     }
 
     private suspend fun fetchAnimeFromConvFiles(): List<Pair<AnimeRaw, String>> = withContext(LIMITED_FS) {
