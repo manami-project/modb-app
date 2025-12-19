@@ -19,13 +19,12 @@ import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 import kotlinx.coroutines.withContext
+import kotlin.collections.associateWith
 import kotlin.concurrent.atomics.AtomicReference
 import kotlin.concurrent.atomics.ExperimentalAtomicApi
 import kotlin.io.path.createDirectories
 import kotlin.io.path.deleteIfExists
 import kotlin.io.path.moveTo
-
-private typealias InternalKey = String
 
 /**
  * Default implementation that allows access to DCS files.
@@ -40,7 +39,7 @@ class DefaultDownloadControlStateAccessor(
     private val mergeLockAccess: MergeLockAccessor = DefaultMergeLockAccessor.instance,
 ): DownloadControlStateAccessor {
 
-    private val downloadControlStateEntries = AtomicReference<Map<InternalKey, DownloadControlStateEntry>>(emptyMap())
+    private val downloadControlStateEntries = appConfig.metaDataProviderConfigurations().associateWith { AtomicReference<Map<AnimeId, DownloadControlStateEntry>>(emptyMap()) }
     private val initializationMutex = Mutex()
     private var isInitialized = false
 
@@ -59,20 +58,21 @@ class DefaultDownloadControlStateAccessor(
             init()
         }
 
-        return downloadControlStateEntries.load().values.map { originalDcs ->
-            originalDcs.copy(
-                _lastDownloaded = originalDcs.lastDownloaded.copy(),
-                _nextDownload = originalDcs.nextDownload.copy(),
-                _anime = originalDcs.anime.copy(
-                    _sources = originalDcs.anime.sources.toHashSet(),
-                    _synonyms = originalDcs.anime.synonyms.toHashSet(),
-                    _relatedAnime = originalDcs.anime.relatedAnime.toHashSet(),
-                    _tags = originalDcs.anime.tags.toHashSet(),
-                ),
-            ).apply {
-                anime.addScores(originalDcs.anime.scores)
-            }
-        }.toList()
+        return downloadControlStateEntries.values.flatMap { it.load().values }
+            .map { originalDcs ->
+                originalDcs.copy(
+                    _lastDownloaded = originalDcs.lastDownloaded.copy(),
+                    _nextDownload = originalDcs.nextDownload.copy(),
+                    _anime = originalDcs.anime.copy(
+                        _sources = originalDcs.anime.sources.toHashSet(),
+                        _synonyms = originalDcs.anime.synonyms.toHashSet(),
+                        _relatedAnime = originalDcs.anime.relatedAnime.toHashSet(),
+                        _tags = originalDcs.anime.tags.toHashSet(),
+                    ),
+                ).apply {
+                    anime.addScores(originalDcs.anime.scores)
+                }
+            }.toList()
     }
 
     override suspend fun allDcsEntries(metaDataProviderConfig: MetaDataProviderConfig): List<DownloadControlStateEntry> {
@@ -104,7 +104,7 @@ class DefaultDownloadControlStateAccessor(
             init()
         }
 
-        return downloadControlStateEntries.load().containsKey(internalKey(metaDataProviderConfig, animeId))
+        return downloadControlStateEntries[metaDataProviderConfig]?.load()?.containsKey(animeId) ?: false
     }
 
     override suspend fun dcsEntry(metaDataProviderConfig: MetaDataProviderConfig, animeId: AnimeId): DownloadControlStateEntry {
@@ -112,9 +112,8 @@ class DefaultDownloadControlStateAccessor(
             init()
         }
 
-        val internalKey = internalKey(metaDataProviderConfig, animeId)
-        check(dcsEntryExists(metaDataProviderConfig, animeId)) { "Requested DCS entry with internal id [$internalKey] doesnt exist." }
-        return downloadControlStateEntries.load()[internalKey]!!.copy()
+        check(dcsEntryExists(metaDataProviderConfig, animeId)) { "Requested DCS entry with id [$animeId] for [${metaDataProviderConfig.hostname()}] doesn't exist." }
+        return downloadControlStateEntries[metaDataProviderConfig]!!.load()[animeId]!!.copy()
     }
 
     override suspend fun createOrUpdate(metaDataProviderConfig: MetaDataProviderConfig, animeId: AnimeId, downloadControlStateEntry: DownloadControlStateEntry): Boolean {
@@ -128,8 +127,8 @@ class DefaultDownloadControlStateAccessor(
         if (!dcsEntryExists(metaDataProviderConfig, animeId)) {
             log.debug { "Creating new DCS entry for [$animeId] of [${metaDataProviderConfig.hostname()}]." }
             Json.toJson(downloadControlStateEntry).writeToFile(downloadControlStateFile)
-            val newMap = downloadControlStateEntries.load().toMutableMap().also { it[internalKey(metaDataProviderConfig, animeId)] = downloadControlStateEntry }
-            safelyStore(newMap)
+            val newMap = downloadControlStateEntries[metaDataProviderConfig]?.load()?.toMutableMap()?.also { it[animeId] = downloadControlStateEntry } ?: return false
+            safelyStore(metaDataProviderConfig, newMap)
             return true
         }
 
@@ -143,8 +142,8 @@ class DefaultDownloadControlStateAccessor(
         log.info { "Updating DCS entry for [$animeId] of [${metaDataProviderConfig.hostname()}]." }
 
         Json.toJson(downloadControlStateEntry).writeToFile(downloadControlStateFile)
-        val newMap = downloadControlStateEntries.load().toMutableMap().also { it[internalKey(metaDataProviderConfig, animeId)] = downloadControlStateEntry }
-        safelyStore(newMap)
+        val newMap = downloadControlStateEntries[metaDataProviderConfig]?.load()?.toMutableMap()?.also { it[animeId] = downloadControlStateEntry } ?: return false
+        safelyStore(metaDataProviderConfig, newMap)
         return true
     }
 
@@ -161,8 +160,10 @@ class DefaultDownloadControlStateAccessor(
             log.debug { "Removed [${metaDataProviderConfig.hostname()}] DCS file for [$animeId]" }
         }
 
-        val newMap = downloadControlStateEntries.load().toMutableMap().also { it.remove(internalKey(metaDataProviderConfig, animeId)) }
-        safelyStore(newMap)
+        downloadControlStateEntries[metaDataProviderConfig]?.load()?.toMutableMap()?.also {
+            it.remove(animeId)
+            safelyStore(metaDataProviderConfig, it)
+        }
 
         val uri = metaDataProviderConfig.buildAnimeLink(animeId)
 
@@ -191,11 +192,11 @@ class DefaultDownloadControlStateAccessor(
         val newFile = file.parent.resolve("$newId.$DOWNLOAD_CONTROL_STATE_FILE_SUFFIX")
         file.moveTo(newFile, true)
 
-        downloadControlStateEntries.load()[internalKey(metaDataProviderConfig, oldId)]?.let { entry ->
-            val newMap = downloadControlStateEntries.load().toMutableMap()
-            newMap[internalKey(metaDataProviderConfig, newId)] = entry
-            newMap.remove(internalKey(metaDataProviderConfig, oldId))
-            safelyStore(newMap)
+        downloadControlStateEntries[metaDataProviderConfig]?.load()[oldId]?.let { entry ->
+            val newMap = downloadControlStateEntries[metaDataProviderConfig]!!.load().toMutableMap()
+            newMap[newId] = entry
+            newMap.remove(oldId)
+            safelyStore(metaDataProviderConfig, newMap)
         }
 
         val oldUri = metaDataProviderConfig.buildAnimeLink(oldId)
@@ -243,13 +244,20 @@ class DefaultDownloadControlStateAccessor(
                         }
                     }.flatten()
 
-                val entries = mutableMapOf<InternalKey, DownloadControlStateEntry>()
+                val partitions = appConfig.metaDataProviderConfigurations().associateWith {
+                    mutableMapOf<AnimeId, DownloadControlStateEntry>()
+                }.toMutableMap()
 
                 awaitAll(*jobs.toTypedArray()).forEach { downloadControlStateEntry ->
-                    entries[internalKey(downloadControlStateEntry)] = downloadControlStateEntry
+                    val url = downloadControlStateEntry.anime.sources.first()
+                    val metaDataProviderConfig = appConfig.findMetaDataProviderConfig(url.host)
+                    val animeId = metaDataProviderConfig.extractAnimeId(url)
+                    partitions[metaDataProviderConfig]!![animeId] = downloadControlStateEntry
                 }
 
-                safelyStore(entries)
+                partitions.forEach { (metaDataProviderConfig, mapping) ->
+                    safelyStore(metaDataProviderConfig, mapping)
+                }
 
                 isInitialized = true
             }
@@ -268,20 +276,12 @@ class DefaultDownloadControlStateAccessor(
         return dcsEntry
     }
 
-    private fun internalKey(metaDataProviderConfig: MetaDataProviderConfig, animeId: AnimeId): InternalKey = "${metaDataProviderConfig.hostname()}-$animeId"
-
-    private fun internalKey(downloadControlStateEntry: DownloadControlStateEntry): InternalKey {
-        val source = downloadControlStateEntry.anime.sources.first()
-        val metaDataProviderConfig = appConfig.findMetaDataProviderConfig(source.host)
-        val animeId = metaDataProviderConfig.extractAnimeId(source)
-        return internalKey(metaDataProviderConfig, animeId)
-    }
-
     @KoverIgnore
-    private fun safelyStore(newMap: Map<InternalKey, DownloadControlStateEntry>) {
+    private fun safelyStore(metaDataProviderConfig: MetaDataProviderConfig, newMap: Map<AnimeId, DownloadControlStateEntry>) {
         while (true) {
-            val current = downloadControlStateEntries.load()
-            if (downloadControlStateEntries.compareAndSet(current, newMap)) break
+            val atomicRef = downloadControlStateEntries[metaDataProviderConfig]!!
+            val current = atomicRef.load()
+            if (atomicRef.compareAndSet(current, newMap)) break
         }
     }
 
