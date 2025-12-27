@@ -8,7 +8,7 @@ import io.github.manamiproject.modb.core.httpclient.HttpResponse
 import io.github.manamiproject.modb.test.exceptionExpected
 import io.github.manamiproject.modb.test.loadTestResource
 import io.github.manamiproject.modb.test.tempDirectory
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.test.runTest
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Nested
 import java.net.URI
@@ -22,7 +22,7 @@ internal class AnimePlanetLastPageDetectorTest {
 
         @Test
         fun `correctly extracts last page`() {
-            runBlocking {
+            runTest {
                 // given
                 val testMetaDataProviderConfig = object : MetaDataProviderConfig by MyanimelistHighestIdDetectorConfig {
                     override fun buildDataDownloadLink(id: String): URI = URI("http://localhost:8080/highest-id")
@@ -50,7 +50,7 @@ internal class AnimePlanetLastPageDetectorTest {
 
         @Test
         fun `throws exception, because the element couldn't be found`() {
-            runBlocking {
+            runTest {
                 // given
                 val testMetaDataProviderConfig = object : MetaDataProviderConfig by MyanimelistHighestIdDetectorConfig {
                     override fun buildDataDownloadLink(id: String): URI = URI("http://localhost:8080/highest-id")
@@ -87,7 +87,7 @@ internal class AnimePlanetLastPageDetectorTest {
 
         @Test
         fun `throws exception if value found is not an integer`() {
-            runBlocking {
+            runTest {
                 // given
                 val testMetaDataProviderConfig = object : MetaDataProviderConfig by MyanimelistHighestIdDetectorConfig {
                     override fun buildDataDownloadLink(id: String): URI = URI("http://localhost:8080/highest-id")

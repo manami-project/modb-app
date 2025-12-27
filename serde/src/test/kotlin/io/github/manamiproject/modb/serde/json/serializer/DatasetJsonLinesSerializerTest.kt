@@ -3,7 +3,7 @@ package io.github.manamiproject.modb.serde.json.serializer
 import io.github.manamiproject.modb.core.anime.Anime
 import io.github.manamiproject.modb.core.anime.AnimeType.*
 import io.github.manamiproject.modb.serde.TestAnimeObjects
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.test.runTest
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Nested
 import java.time.Clock
@@ -18,7 +18,7 @@ internal class DatasetJsonLinesSerializerTest {
 
         @Test
         fun `correctly serialize anime`() {
-            runBlocking {
+            runTest {
                 // given
                 val clock = Clock.fixed(Instant.parse("2020-01-01T16:02:42.00Z"), UTC)
                 val serializer = DatasetJsonLinesSerializer(clock)
@@ -48,7 +48,7 @@ internal class DatasetJsonLinesSerializerTest {
 
             @Test
             fun `prio 1 - sort by title`() {
-                runBlocking {
+                runTest {
                     // given
                     val expectedContent = """
                          {"${"$"}schema":"https://raw.githubusercontent.com/manami-project/anime-offline-database/refs/tags/2020-01/schemas/anime-offline-database.jsonl.schema.json","license":{"name":"Open Data Commons Open Database License (ODbL) v1.0 + Database Contents License (DbCL) v1.0","url":"https://github.com/manami-project/anime-offline-database/blob/2020-01/LICENSE"},"repository":"https://github.com/manami-project/anime-offline-database","scoreRange":{"minInclusive":1.0,"maxInclusive":10.0},"lastUpdate":"2020-01-01"}
@@ -76,7 +76,7 @@ internal class DatasetJsonLinesSerializerTest {
 
             @Test
             fun `prio 2 - sort by type`() {
-                runBlocking {
+                runTest {
                     // given
                     val expectedContent = """
                          {"${"$"}schema":"https://raw.githubusercontent.com/manami-project/anime-offline-database/refs/tags/2020-01/schemas/anime-offline-database.jsonl.schema.json","license":{"name":"Open Data Commons Open Database License (ODbL) v1.0 + Database Contents License (DbCL) v1.0","url":"https://github.com/manami-project/anime-offline-database/blob/2020-01/LICENSE"},"repository":"https://github.com/manami-project/anime-offline-database","scoreRange":{"minInclusive":1.0,"maxInclusive":10.0},"lastUpdate":"2020-01-01"}
@@ -113,7 +113,7 @@ internal class DatasetJsonLinesSerializerTest {
 
             @Test
             fun `prio 3 - sort by episodes`() {
-                runBlocking {
+                runTest {
                     // given
                     val expectedContent = """
                          {"${"$"}schema":"https://raw.githubusercontent.com/manami-project/anime-offline-database/refs/tags/2020-01/schemas/anime-offline-database.jsonl.schema.json","license":{"name":"Open Data Commons Open Database License (ODbL) v1.0 + Database Contents License (DbCL) v1.0","url":"https://github.com/manami-project/anime-offline-database/blob/2020-01/LICENSE"},"repository":"https://github.com/manami-project/anime-offline-database","scoreRange":{"minInclusive":1.0,"maxInclusive":10.0},"lastUpdate":"2020-01-01"}

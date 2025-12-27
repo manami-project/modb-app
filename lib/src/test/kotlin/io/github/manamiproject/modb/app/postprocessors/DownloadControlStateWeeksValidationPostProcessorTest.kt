@@ -8,7 +8,7 @@ import io.github.manamiproject.modb.app.minusWeeks
 import io.github.manamiproject.modb.core.anime.AnimeRaw
 import io.github.manamiproject.modb.test.exceptionExpected
 import io.github.manamiproject.modb.test.tempDirectory
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.test.runTest
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Nested
 import org.junit.jupiter.params.ParameterizedTest
@@ -93,7 +93,7 @@ internal class DownloadControlStateWeeksValidationPostProcessorTest {
         @ParameterizedTest
         @ValueSource(ints = [0, 1])
         fun `returns true if everything is valid`(numberOfWeeks: Int) {
-            runBlocking {
+            runTest {
                 // given
                 val list = listOf(
                     DownloadControlStateEntry(

@@ -11,7 +11,7 @@ import io.github.manamiproject.modb.core.anime.Anime
 import io.github.manamiproject.modb.core.anime.AnimeRaw
 import io.github.manamiproject.modb.test.exceptionExpected
 import io.github.manamiproject.modb.test.tempDirectory
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.test.runTest
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Nested
 import java.net.URI
@@ -24,7 +24,7 @@ internal class DeadEntriesValidationPostProcessorTest {
 
         @Test
         fun `returns true if no dead entries have been found`() {
-            runBlocking {
+            runTest {
                 // given
                 val testAnimeRaw = AnimeRaw(
                     _title = "Death Note",
@@ -69,7 +69,7 @@ internal class DeadEntriesValidationPostProcessorTest {
 
         @Test
         fun `throws exception if dcs entry contains dead entry`() {
-            runBlocking {
+            runTest {
                 // given
                 val testAnime = Anime(
                     title = "Death Note",
@@ -124,7 +124,7 @@ internal class DeadEntriesValidationPostProcessorTest {
 
         @Test
         fun `throws exception if merge locks contain dead entry`() {
-            runBlocking {
+            runTest {
                 // given
                 val testAnime = Anime(
                     title = "Death Note",
@@ -179,7 +179,7 @@ internal class DeadEntriesValidationPostProcessorTest {
 
         @Test
         fun `throws exception if dataset contains dead entry`() {
-            runBlocking {
+            runTest {
                 // given
                 val testAnime = Anime(
                     title = "Death Note",
@@ -234,7 +234,7 @@ internal class DeadEntriesValidationPostProcessorTest {
 
         @Test
         fun `returns true if DCS contains sources which would normally be dead entries, but are ignored by using ignoreMetaDataConfiguration`() {
-            runBlocking {
+            runTest {
                 // given
                 val testAnime = Anime(
                     title = "Death Note",
@@ -292,7 +292,7 @@ internal class DeadEntriesValidationPostProcessorTest {
 
         @Test
         fun `returns true if dataset contains sources which would normally be dead entries, but are ignored by using ignoreMetaDataConfiguration`() {
-            runBlocking {
+            runTest {
                 // given
                 val testAnime = Anime(
                     title = "Death Note",

@@ -10,7 +10,7 @@ import io.github.manamiproject.modb.core.anime.Anime
 import io.github.manamiproject.modb.core.anime.AnimeRaw
 import io.github.manamiproject.modb.test.exceptionExpected
 import io.github.manamiproject.modb.test.tempDirectory
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.test.runTest
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Nested
 import java.net.URI
@@ -303,7 +303,7 @@ internal class DuplicatesValidationPostProcessorTest {
 
         @Test
         fun `returns true if everything is valid`() {
-            runBlocking {
+            runTest {
                 // given
                 val animeRawA = AnimeRaw(
                     _title = "example",

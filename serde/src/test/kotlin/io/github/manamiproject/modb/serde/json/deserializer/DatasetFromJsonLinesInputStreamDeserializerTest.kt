@@ -6,7 +6,7 @@ import io.github.manamiproject.modb.serde.TestReadOnceInputStream
 import io.github.manamiproject.modb.serde.json.models.Dataset
 import io.github.manamiproject.modb.serde.json.models.License
 import io.github.manamiproject.modb.test.exceptionExpected
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.test.runTest
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Nested
 import java.net.URI
@@ -35,7 +35,7 @@ internal class DatasetFromJsonLinesInputStreamDeserializerTest {
 
         @Test
         fun `correctly deserialize dataset string`() {
-            runBlocking {
+            runTest {
                 // given
                 val deserializer = DatasetFromJsonLinesInputStreamDeserializer()
 
@@ -72,7 +72,7 @@ internal class DatasetFromJsonLinesInputStreamDeserializerTest {
 
         @Test
         fun `correctly deserialize empty dataset`() {
-            runBlocking {
+            runTest {
                 // given
                 val deserializer = DatasetFromJsonLinesInputStreamDeserializer()
 

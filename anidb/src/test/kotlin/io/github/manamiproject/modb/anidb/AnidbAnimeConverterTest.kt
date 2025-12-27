@@ -10,7 +10,7 @@ import io.github.manamiproject.modb.core.config.FileSuffix
 import io.github.manamiproject.modb.core.config.Hostname
 import io.github.manamiproject.modb.core.config.MetaDataProviderConfig
 import io.github.manamiproject.modb.test.loadTestResource
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.test.runTest
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Nested
 import org.junit.jupiter.params.ParameterizedTest
@@ -30,7 +30,7 @@ internal class AnidbAnimeConverterTest {
 
         @Test
         fun `title containing special chars`() {
-            runBlocking {
+            runTest {
                 // given
                 val testAnidbConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnidbConfig.hostname()
@@ -55,7 +55,7 @@ internal class AnidbAnimeConverterTest {
 
         @Test
         fun `1 episode, although more entries are listed - the selector returns null`() {
-            runBlocking {
+            runTest {
                 // given
                 val testAnidbConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnidbConfig.hostname()
@@ -77,7 +77,7 @@ internal class AnidbAnimeConverterTest {
 
         @Test
         fun `1 episode -  the selector returns null`() {
-            runBlocking {
+            runTest {
                 // given
                 val testAnidbConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnidbConfig.hostname()
@@ -99,7 +99,7 @@ internal class AnidbAnimeConverterTest {
 
         @Test
         fun `10 episodes`() {
-            runBlocking {
+            runTest {
                 // given
                 val testAnidbConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnidbConfig.hostname()
@@ -121,7 +121,7 @@ internal class AnidbAnimeConverterTest {
 
         @Test
         fun `100 episodes`() {
-            runBlocking {
+            runTest {
                 // given
                 val testAnidbConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnidbConfig.hostname()
@@ -143,7 +143,7 @@ internal class AnidbAnimeConverterTest {
 
         @Test
         fun `1818 episodes`() {
-            runBlocking {
+            runTest {
                 // given
                 val testAnidbConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnidbConfig.hostname()
@@ -165,7 +165,7 @@ internal class AnidbAnimeConverterTest {
 
         @Test
         fun `unknown number of episodes`() {
-            runBlocking {
+            runTest {
                 // given
                 val testAnidbConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnidbConfig.hostname()
@@ -191,7 +191,7 @@ internal class AnidbAnimeConverterTest {
 
         @Test
         fun `type is Movie`() {
-            runBlocking {
+            runTest {
                 // given
                 val testAnidbConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnidbConfig.hostname()
@@ -213,7 +213,7 @@ internal class AnidbAnimeConverterTest {
 
         @Test
         fun `type 'Music Video' is mapped to 'Special'`() {
-            runBlocking {
+            runTest {
                 // given
                 val testAnidbConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnidbConfig.hostname()
@@ -235,7 +235,7 @@ internal class AnidbAnimeConverterTest {
 
         @Test
         fun `type 'Other' is mapped to 'Special'`() {
-            runBlocking {
+            runTest {
                 // given
                 val testAnidbConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnidbConfig.hostname()
@@ -257,7 +257,7 @@ internal class AnidbAnimeConverterTest {
 
         @Test
         fun `type is OVA`() {
-            runBlocking {
+            runTest {
                 // given
                 val testAnidbConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnidbConfig.hostname()
@@ -279,7 +279,7 @@ internal class AnidbAnimeConverterTest {
 
         @Test
         fun `type 'TV Series' is mapped to 'TV'`() {
-            runBlocking {
+            runTest {
                 // given
                 val testAnidbConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnidbConfig.hostname()
@@ -301,7 +301,7 @@ internal class AnidbAnimeConverterTest {
 
         @Test
         fun `type 'TV Special' is mapped to 'Special'`() {
-            runBlocking {
+            runTest {
                 // given
                 val testAnidbConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnidbConfig.hostname()
@@ -323,7 +323,7 @@ internal class AnidbAnimeConverterTest {
 
         @Test
         fun `type 'Unknown' is mapped to 'UNKNOWN'`() {
-            runBlocking {
+            runTest {
                 // given
                 val testAnidbConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnidbConfig.hostname()
@@ -345,7 +345,7 @@ internal class AnidbAnimeConverterTest {
 
         @Test
         fun `type 'Web' is mapped to 'ONA'`() {
-            runBlocking {
+            runTest {
                 // given
                 val testAnidbConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnidbConfig.hostname()
@@ -371,7 +371,7 @@ internal class AnidbAnimeConverterTest {
 
         @Test
         fun `neither picture nor thumbnail`() {
-            runBlocking {
+            runTest {
                 // given
                 val testAnidbConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnidbConfig.hostname()
@@ -395,7 +395,7 @@ internal class AnidbAnimeConverterTest {
 
         @Test
         fun `picture and thumbnail`() {
-            runBlocking {
+            runTest {
                 // given
                 val testAnidbConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnidbConfig.hostname()
@@ -419,7 +419,7 @@ internal class AnidbAnimeConverterTest {
 
         @Test
         fun `eu cdn is replaced by default cdn for both picture and thumbnail`() {
-            runBlocking {
+            runTest {
                 // given
                 val testAnidbConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnidbConfig.hostname()
@@ -443,7 +443,7 @@ internal class AnidbAnimeConverterTest {
 
         @Test
         fun `us cdn is replaced by default cdn for both picture and thumbnail`() {
-            runBlocking {
+            runTest {
                 // given
                 val testAnidbConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnidbConfig.hostname()
@@ -471,7 +471,7 @@ internal class AnidbAnimeConverterTest {
 
         @Test
         fun `extract id 11221`() {
-            runBlocking {
+            runTest {
                 // given
                 val testAnidbConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnidbConfig.hostname()
@@ -497,7 +497,7 @@ internal class AnidbAnimeConverterTest {
 
         @Test
         fun `no relations`() {
-            runBlocking {
+            runTest {
                 // given
                 val testAnidbConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnidbConfig.hostname()
@@ -519,7 +519,7 @@ internal class AnidbAnimeConverterTest {
 
         @Test
         fun `multiple relations`() {
-            runBlocking {
+            runTest {
                 // given
                 val testAnidbConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnidbConfig.hostname()
@@ -555,7 +555,7 @@ internal class AnidbAnimeConverterTest {
 
         @Test
         fun `gather all possible synonyms from info and titles tab`() {
-            runBlocking {
+            runTest {
                 // given
                 val testAnidbConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnidbConfig.hostname()
@@ -616,7 +616,7 @@ internal class AnidbAnimeConverterTest {
 
         @Test
         fun `FINISHED by date published`() {
-            runBlocking {
+            runTest {
                 // given
                 val fixedClock = Clock.fixed(Instant.parse("2019-11-17T15:00:00.00Z"), UTC)
 
@@ -643,7 +643,7 @@ internal class AnidbAnimeConverterTest {
 
         @Test
         fun `ONGOING by date published`() {
-            runBlocking {
+            runTest {
                 // given
                 val fixedClock = Clock.fixed(Instant.parse("2013-06-13T15:00:00.00Z"), UTC)
 
@@ -670,7 +670,7 @@ internal class AnidbAnimeConverterTest {
 
         @Test
         fun `UPCOMING by date published`() {
-            runBlocking {
+            runTest {
                 // given
                 val fixedClock = Clock.fixed(Instant.parse("2012-11-17T15:00:00.00Z"), UTC)
 
@@ -697,7 +697,7 @@ internal class AnidbAnimeConverterTest {
 
         @Test
         fun `FINISHED by start to end`() {
-            runBlocking {
+            runTest {
                 // given
                 val fixedClock = Clock.fixed(Instant.parse("2019-11-17T15:00:00.00Z"), UTC)
 
@@ -724,7 +724,7 @@ internal class AnidbAnimeConverterTest {
 
         @Test
         fun `ONGOING by start to end`() {
-            runBlocking {
+            runTest {
                 // given
                 val fixedClock = Clock.fixed(Instant.parse("2006-05-17T15:00:00.00Z"), UTC)
 
@@ -751,7 +751,7 @@ internal class AnidbAnimeConverterTest {
 
         @Test
         fun `UPCOMING by start to end`() {
-            runBlocking {
+            runTest {
                 // given
                 val fixedClock = Clock.fixed(Instant.parse("2005-11-17T15:00:00.00Z"), UTC)
 
@@ -778,7 +778,7 @@ internal class AnidbAnimeConverterTest {
 
         @Test
         fun `ONGOING by start to unknown`() {
-            runBlocking {
+            runTest {
                 // given
                 val fixedClock = Clock.fixed(Instant.parse("2023-10-17T15:00:00.00Z"), UTC)
 
@@ -805,7 +805,7 @@ internal class AnidbAnimeConverterTest {
 
         @Test
         fun `UPCOMING by start to unknown`() {
-            runBlocking {
+            runTest {
                 // given
                 val fixedClock = Clock.fixed(Instant.parse("2022-10-17T15:00:00.00Z"), UTC)
 
@@ -832,7 +832,7 @@ internal class AnidbAnimeConverterTest {
 
         @Test
         fun `Neither time period nor date published is mapped to UNKNOWN`() {
-            runBlocking {
+            runTest {
                 // given
                 val fixedClock = Clock.fixed(Instant.parse("2019-11-17T15:00:00.00Z"), UTC)
 
@@ -863,7 +863,7 @@ internal class AnidbAnimeConverterTest {
 
         @Test
         fun `extract multiple ignorig the link to find similar anime`() {
-            runBlocking {
+            runTest {
                 // given
                 val testAnidbConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnidbConfig.hostname()
@@ -891,7 +891,7 @@ internal class AnidbAnimeConverterTest {
 
         @Test
         fun `empty list of no tags are available`() {
-            runBlocking {
+            runTest {
                 // given
                 val testAnidbConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnidbConfig.hostname()
@@ -913,7 +913,7 @@ internal class AnidbAnimeConverterTest {
 
         @Test
         fun `extract multiple titles if the link to search for similar anime is not present`() {
-            runBlocking {
+            runTest {
                 // given
                 val testAnidbConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnidbConfig.hostname()
@@ -938,7 +938,7 @@ internal class AnidbAnimeConverterTest {
 
         @Test
         fun `extract exactly one tag`() {
-            runBlocking {
+            runTest {
                 // given
                 val testAnidbConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnidbConfig.hostname()
@@ -966,7 +966,7 @@ internal class AnidbAnimeConverterTest {
 
         @Test
         fun `null results in 0 seconds`() {
-            runBlocking {
+            runTest {
                 // given
                 val testAnidbConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnidbConfig.hostname()
@@ -988,7 +988,7 @@ internal class AnidbAnimeConverterTest {
 
         @Test
         fun `0 minutes - anidb does not provide seconds`() {
-            runBlocking {
+            runTest {
                 // given
                 val testAnidbConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnidbConfig.hostname()
@@ -1010,7 +1010,7 @@ internal class AnidbAnimeConverterTest {
 
         @Test
         fun `1 minute`() {
-            runBlocking {
+            runTest {
                 // given
                 val testAnidbConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnidbConfig.hostname()
@@ -1032,7 +1032,7 @@ internal class AnidbAnimeConverterTest {
 
         @Test
         fun `25 minutes`() {
-            runBlocking {
+            runTest {
                 // given
                 val testAnidbConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnidbConfig.hostname()
@@ -1054,7 +1054,7 @@ internal class AnidbAnimeConverterTest {
 
         @Test
         fun `1 hour`() {
-            runBlocking {
+            runTest {
                 // given
                 val testAnidbConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnidbConfig.hostname()
@@ -1076,7 +1076,7 @@ internal class AnidbAnimeConverterTest {
 
         @Test
         fun `2 hours`() {
-            runBlocking {
+            runTest {
                 // given
                 val testAnidbConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnidbConfig.hostname()
@@ -1105,7 +1105,7 @@ internal class AnidbAnimeConverterTest {
 
             @Test
             fun `2017-10-03 - unknown`() {
-                runBlocking {
+                runTest {
                     // given
                     val testAnidbConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                         override fun hostname(): Hostname = AnidbConfig.hostname()
@@ -1128,7 +1128,7 @@ internal class AnidbAnimeConverterTest {
 
             @Test
             fun `2019-07-07 - 2019-09-22`() {
-                runBlocking {
+                runTest {
                     // given
                     val testAnidbConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                         override fun hostname(): Hostname = AnidbConfig.hostname()
@@ -1151,7 +1151,7 @@ internal class AnidbAnimeConverterTest {
 
             @Test
             fun `2019-08-23`() {
-                runBlocking {
+                runTest {
                     // given
                     val testAnidbConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                         override fun hostname(): Hostname = AnidbConfig.hostname()
@@ -1174,7 +1174,7 @@ internal class AnidbAnimeConverterTest {
 
             @Test
             fun `2017-10-14 - 2020`() {
-                runBlocking {
+                runTest {
                     // given
                     val testAnidbConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                         override fun hostname(): Hostname = AnidbConfig.hostname()
@@ -1196,7 +1196,7 @@ internal class AnidbAnimeConverterTest {
 
             @Test
             fun `2019-10-05 - 2020-03`() {
-                runBlocking {
+                runTest {
                     // given
                     val testAnidbConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                         override fun hostname(): Hostname = AnidbConfig.hostname()
@@ -1218,7 +1218,7 @@ internal class AnidbAnimeConverterTest {
 
             @Test
             fun `2004`() {
-                runBlocking {
+                runTest {
                     // given
                     val testAnidbConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                         override fun hostname(): Hostname = AnidbConfig.hostname()
@@ -1240,7 +1240,7 @@ internal class AnidbAnimeConverterTest {
 
             @Test
             fun `1986-06`() {
-                runBlocking {
+                runTest {
                     // given
                     val testAnidbConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                         override fun hostname(): Hostname = AnidbConfig.hostname()
@@ -1262,7 +1262,7 @@ internal class AnidbAnimeConverterTest {
 
             @Test
             fun `2020 - unknown`() {
-                runBlocking {
+                runTest {
                     // given
                     val testAnidbConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                         override fun hostname(): Hostname = AnidbConfig.hostname()
@@ -1284,7 +1284,7 @@ internal class AnidbAnimeConverterTest {
 
             @Test
             fun `not available`() {
-                runBlocking {
+                runTest {
                     // given
                     val testAnidbConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                         override fun hostname(): Hostname = AnidbConfig.hostname()
@@ -1306,7 +1306,7 @@ internal class AnidbAnimeConverterTest {
 
             @Test
             fun `unknown date with year - unknown`() {
-                runBlocking {
+                runTest {
                     // given
                     val testAnidbConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                         override fun hostname(): Hostname = AnidbConfig.hostname()
@@ -1328,7 +1328,7 @@ internal class AnidbAnimeConverterTest {
 
             @Test
             fun `time period but using date published`() {
-                runBlocking {
+                runTest {
                     // given
                     val testAnidbConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                         override fun hostname(): Hostname = AnidbConfig.hostname()
@@ -1357,7 +1357,7 @@ internal class AnidbAnimeConverterTest {
 
                 @Test
                 fun `season is 'spring'`() {
-                    runBlocking {
+                    runTest {
                         // given
                         val testAnidbConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                             override fun hostname(): Hostname = AnidbConfig.hostname()
@@ -1380,7 +1380,7 @@ internal class AnidbAnimeConverterTest {
 
                 @Test
                 fun `season is 'summer'`() {
-                    runBlocking {
+                    runTest {
                         // given
                         val testAnidbConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                             override fun hostname(): Hostname = AnidbConfig.hostname()
@@ -1403,7 +1403,7 @@ internal class AnidbAnimeConverterTest {
 
                 @Test
                 fun `season is 'fall'`() {
-                    runBlocking {
+                    runTest {
                         // given
                         val testAnidbConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                             override fun hostname(): Hostname = AnidbConfig.hostname()
@@ -1426,7 +1426,7 @@ internal class AnidbAnimeConverterTest {
 
                 @Test
                 fun `season is 'winter'`() {
-                    runBlocking {
+                    runTest {
                         // given
                         val testAnidbConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                             override fun hostname(): Hostname = AnidbConfig.hostname()
@@ -1454,7 +1454,7 @@ internal class AnidbAnimeConverterTest {
                 @ParameterizedTest
                 @ValueSource(strings = ["date_published_cell_apr", "date_published_cell_may"])
                 fun `season is 'spring'`(file: String) {
-                    runBlocking {
+                    runTest {
                         // given
                         val testAnidbConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                             override fun hostname(): Hostname = AnidbConfig.hostname()
@@ -1478,7 +1478,7 @@ internal class AnidbAnimeConverterTest {
                 @ParameterizedTest
                 @ValueSource(strings = ["date_published_cell_jul", "date_published_cell_aug", "date_published_cell_sep"])
                 fun `season is 'summer'`(file: String) {
-                    runBlocking {
+                    runTest {
                         // given
                         val testAnidbConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                             override fun hostname(): Hostname = AnidbConfig.hostname()
@@ -1502,7 +1502,7 @@ internal class AnidbAnimeConverterTest {
                 @ParameterizedTest
                 @ValueSource(strings = ["date_published_cell_oct", "date_published_cell_nov", "date_published_cell_dec"])
                 fun `season is 'fall'`(file: String) {
-                    runBlocking {
+                    runTest {
                         // given
                         val testAnidbConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                             override fun hostname(): Hostname = AnidbConfig.hostname()
@@ -1525,7 +1525,7 @@ internal class AnidbAnimeConverterTest {
                 @ParameterizedTest
                 @ValueSource(strings = ["date_published_cell_jan", "date_published_cell_feb", "date_published_cell_mar"])
                 fun `season is 'winter'`(file: String) {
-                    runBlocking {
+                    runTest {
                         // given
                         val testAnidbConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                             override fun hostname(): Hostname = AnidbConfig.hostname()
@@ -1553,7 +1553,7 @@ internal class AnidbAnimeConverterTest {
                 @ParameterizedTest
                 @ValueSource(strings = ["start_date_cell_apr", "start_date_cell_may", "start_date_cell_jun"])
                 fun `season is 'spring'`(file: String) {
-                    runBlocking {
+                    runTest {
                         // given
                         val testAnidbConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                             override fun hostname(): Hostname = AnidbConfig.hostname()
@@ -1577,7 +1577,7 @@ internal class AnidbAnimeConverterTest {
                 @ParameterizedTest
                 @ValueSource(strings = ["start_date_cell_jul", "start_date_cell_aug", "start_date_cell_sep"])
                 fun `season is 'summer'`(file: String) {
-                    runBlocking {
+                    runTest {
                         // given
                         val testAnidbConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                             override fun hostname(): Hostname = AnidbConfig.hostname()
@@ -1601,7 +1601,7 @@ internal class AnidbAnimeConverterTest {
                 @ParameterizedTest
                 @ValueSource(strings = ["start_date_cell_oct", "start_date_cell_nov", "start_date_cell_dec"])
                 fun `season is 'fall'`(file: String) {
-                    runBlocking {
+                    runTest {
                         // given
                         val testAnidbConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                             override fun hostname(): Hostname = AnidbConfig.hostname()
@@ -1624,7 +1624,7 @@ internal class AnidbAnimeConverterTest {
                 @ParameterizedTest
                 @ValueSource(strings = ["start_date_cell_jan", "start_date_cell_feb"])
                 fun `season is 'winter'`(file: String) {
-                    runBlocking {
+                    runTest {
                         // given
                         val testAnidbConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                             override fun hostname(): Hostname = AnidbConfig.hostname()
@@ -1648,7 +1648,7 @@ internal class AnidbAnimeConverterTest {
 
             @Test
             fun `neither startDate nor datePublished exist therefore season is 'undefined'`() {
-                runBlocking {
+                runTest {
                     // given
                     val testAnidbConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                         override fun hostname(): Hostname = AnidbConfig.hostname()
@@ -1675,7 +1675,7 @@ internal class AnidbAnimeConverterTest {
 
         @Test
         fun `successfully extracts score`() {
-            runBlocking {
+            runTest {
                 // given
                 val testAnidbConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnidbConfig.hostname()
@@ -1698,7 +1698,7 @@ internal class AnidbAnimeConverterTest {
 
         @Test
         fun `returns NoMetaDataProviderScore`() {
-            runBlocking {
+            runTest {
                 // given
                 val testAnidbConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnidbConfig.hostname()
@@ -1724,7 +1724,7 @@ internal class AnidbAnimeConverterTest {
 
         @Test
         fun `always empty, because they mix up persons and actual studios`() {
-            runBlocking {
+            runTest {
                 // given
                 val testAnidbConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnidbConfig.hostname()
@@ -1750,7 +1750,7 @@ internal class AnidbAnimeConverterTest {
 
         @Test
         fun `always empty, because they mix up persons and actual studios and list them under different headings`() {
-            runBlocking {
+            runTest {
                 // given
                 val testAnidbConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnidbConfig.hostname()

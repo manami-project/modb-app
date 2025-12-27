@@ -10,7 +10,7 @@ import io.github.manamiproject.modb.core.config.MetaDataProviderConfig
 import io.github.manamiproject.modb.core.extensions.EMPTY
 import io.github.manamiproject.modb.core.extensions.toAnimeId
 import io.github.manamiproject.modb.test.*
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.test.runTest
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Nested
 import java.net.URI
@@ -23,7 +23,7 @@ internal class AnidbDownloaderTest : MockServerTestCase<WireMockServer> by WireM
 
         @Test
         fun `successfully download an anime`() {
-            runBlocking {
+            runTest {
                 // given
                 val id = "11376"
 
@@ -157,7 +157,7 @@ internal class AnidbDownloaderTest : MockServerTestCase<WireMockServer> by WireM
 
         @Test
         fun `invoke onDeadEntry if the response body indicates a hentai`() {
-            runBlocking {
+            runTest {
                 // given
                 val id = "11376"
                 var deadEntry = EMPTY
@@ -195,7 +195,7 @@ internal class AnidbDownloaderTest : MockServerTestCase<WireMockServer> by WireM
 
         @Test
         fun `invoke onDeadEntry if the response body indicates a deleted entry`() {
-            runBlocking {
+            runTest {
                 // given
                 val id = "11376"
                 var deadEntry = EMPTY
@@ -233,7 +233,7 @@ internal class AnidbDownloaderTest : MockServerTestCase<WireMockServer> by WireM
 
         @Test
         fun `won't invoke onDeadEntry and returns a static string if the response body indicates that the addition of the anime is pending`() {
-            runBlocking {
+            runTest {
                 // given
                 val id = "11376"
 

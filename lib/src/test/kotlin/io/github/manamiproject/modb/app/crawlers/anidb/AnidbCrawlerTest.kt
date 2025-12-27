@@ -23,6 +23,7 @@ import io.github.manamiproject.modb.test.tempDirectory
 import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.async
 import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.test.runTest
 import kotlinx.coroutines.withContext
 import org.assertj.core.api.Assertions.assertThat
 import org.assertj.core.api.Assertions.assertThatNoException
@@ -110,7 +111,7 @@ internal class AnidbCrawlerTest {
 
             // when
             assertThatNoException().isThrownBy {
-                runBlocking { crawler.start() }
+                runTest { crawler.start() }
             }
         }
 

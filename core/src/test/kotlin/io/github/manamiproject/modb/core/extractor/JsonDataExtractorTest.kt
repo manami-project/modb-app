@@ -1,6 +1,6 @@
 package io.github.manamiproject.modb.core.extractor
 
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.test.runTest
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.ValueSource
@@ -41,7 +41,7 @@ internal class JsonDataExtractorTest {
         "\t",
     ])
     fun `contains NotFound for the OutputKey if raw content is blank`(input: String) {
-        runBlocking {
+        runTest {
             // when
             val result = JsonDataExtractor.extract(input, mapOf("result" to "$.propertyName"))
 
@@ -52,7 +52,7 @@ internal class JsonDataExtractorTest {
 
     @Test
     fun `contains NotFound for the OutputKey if selector cannot be found`() {
-        runBlocking {
+        runTest {
             // given
             val raw = """
                 {
@@ -70,7 +70,7 @@ internal class JsonDataExtractorTest {
 
     @Test
     fun `returns empty map if selector is empty`() {
-        runBlocking {
+        runTest {
             // given
             val raw = """
                 {
@@ -88,7 +88,7 @@ internal class JsonDataExtractorTest {
 
     @Test
     fun `correctly extracts strings`() {
-        runBlocking {
+        runTest {
             // given
             val raw = """
                 {
@@ -106,7 +106,7 @@ internal class JsonDataExtractorTest {
 
     @Test
     fun `correctly extracts integer`() {
-        runBlocking {
+        runTest {
             // given
             val raw = """
                 {
@@ -124,7 +124,7 @@ internal class JsonDataExtractorTest {
 
     @Test
     fun `correctly extracts double`() {
-        runBlocking {
+        runTest {
             // given
             val raw = """
                 {
@@ -142,7 +142,7 @@ internal class JsonDataExtractorTest {
 
     @Test
     fun `correctly extracts array of strings`() {
-        runBlocking {
+        runTest {
             // given
             val raw = """
                 {
@@ -163,7 +163,7 @@ internal class JsonDataExtractorTest {
 
     @Test
     fun `correctly extracts array of integers`() {
-        runBlocking {
+        runTest {
             // given
             val raw = """
                 {
@@ -185,7 +185,7 @@ internal class JsonDataExtractorTest {
 
     @Test
     fun `correctly extracts objects`() {
-        runBlocking {
+        runTest {
             // given
             val raw = """
                 {
@@ -211,7 +211,7 @@ internal class JsonDataExtractorTest {
 
     @Test
     fun `correctly extracts nested string`() {
-        runBlocking {
+        runTest {
             // given
             val raw = """
                 {
@@ -233,7 +233,7 @@ internal class JsonDataExtractorTest {
 
     @Test
     fun `correctly extracts nested integer`() {
-        runBlocking {
+        runTest {
             // given
             val raw = """
                 {
@@ -255,7 +255,7 @@ internal class JsonDataExtractorTest {
 
     @Test
     fun `correctly extracts nested double`() {
-        runBlocking {
+        runTest {
             // given
             val raw = """
                 {
@@ -277,7 +277,7 @@ internal class JsonDataExtractorTest {
 
     @Test
     fun `correctly extracts specific array element`() {
-        runBlocking {
+        runTest {
             // given
             val raw = """
                 {

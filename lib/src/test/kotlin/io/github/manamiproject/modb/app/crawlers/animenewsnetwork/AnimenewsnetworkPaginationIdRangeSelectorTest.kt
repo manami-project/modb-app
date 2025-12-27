@@ -15,7 +15,7 @@ import io.github.manamiproject.modb.core.httpclient.HttpResponse
 import io.github.manamiproject.modb.test.exceptionExpected
 import io.github.manamiproject.modb.test.loadTestResource
 import io.github.manamiproject.modb.test.tempDirectory
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.test.runTest
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Nested
 import java.net.URL
@@ -25,7 +25,7 @@ internal class AnimenewsnetworkPaginationIdRangeSelectorTest {
 
     @Test
     fun `correctly extracts page content`() {
-        runBlocking {
+        runTest {
             // given
             val testHttpClient = object: HttpClient by TestHttpClient {
                 override suspend fun get(url: URL, headers: Map<String, Collection<String>>): HttpResponse = HttpResponse(
@@ -94,7 +94,7 @@ internal class AnimenewsnetworkPaginationIdRangeSelectorTest {
 
     @Test
     fun `removes anime not scheduled for the current week`() {
-        runBlocking {
+        runTest {
             // given
             val testHttpClient = object: HttpClient by TestHttpClient {
                 override suspend fun get(url: URL, headers: Map<String, Collection<String>>): HttpResponse = HttpResponse(
@@ -164,7 +164,7 @@ internal class AnimenewsnetworkPaginationIdRangeSelectorTest {
 
     @Test
     fun `removes anime have already been downloaded`() {
-        runBlocking {
+        runTest {
             // given
             val testHttpClient = object: HttpClient by TestHttpClient {
                 override suspend fun get(url: URL, headers: Map<String, Collection<String>>): HttpResponse = HttpResponse(
@@ -234,7 +234,7 @@ internal class AnimenewsnetworkPaginationIdRangeSelectorTest {
 
     @Test
     fun `removes dead entries`() {
-        runBlocking {
+        runTest {
             // given
             val testHttpClient = object: HttpClient by TestHttpClient {
                 override suspend fun get(url: URL, headers: Map<String, Collection<String>>): HttpResponse = HttpResponse(
@@ -304,7 +304,7 @@ internal class AnimenewsnetworkPaginationIdRangeSelectorTest {
 
     @Test
     fun `retrieves anime IDs which are not scheduled for redownload this week only once`() {
-        runBlocking {
+        runTest {
             // given
             val testHttpClient = object: HttpClient by TestHttpClient {
                 override suspend fun get(url: URL, headers: Map<String, Collection<String>>): HttpResponse = HttpResponse(
@@ -351,7 +351,7 @@ internal class AnimenewsnetworkPaginationIdRangeSelectorTest {
 
     @Test
     fun `throws exception if entries on the page cannot be extracted`() {
-        runBlocking {
+        runTest {
             // given
             val testHttpClient = object: HttpClient by TestHttpClient {
                 override suspend fun get(url: URL, headers: Map<String, Collection<String>>): HttpResponse = HttpResponse(

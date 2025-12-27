@@ -2,7 +2,7 @@ package io.github.manamiproject.modb.serde.json.serializer
 
 import io.github.manamiproject.modb.serde.createExpectedDeadEntriesMinified
 import io.github.manamiproject.modb.serde.createExpectedDeadEntriesPrettyPrint
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.test.runTest
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Nested
 import java.time.Clock
@@ -17,7 +17,7 @@ internal class DeadEntriesJsonSerializerTest {
 
         @Test
         fun `correctly serialize minified`() {
-            runBlocking {
+            runTest {
                 // given
                 val clock = Clock.fixed(Instant.parse("2020-01-01T16:02:42.00Z"), ZoneOffset.UTC)
                 val serializer = DeadEntriesJsonSerializer(clock = clock)
@@ -43,7 +43,7 @@ internal class DeadEntriesJsonSerializerTest {
 
         @Test
         fun `correctly serialize pretty print`() {
-            runBlocking {
+            runTest {
                 // given
                 val clock = Clock.fixed(Instant.parse("2020-01-01T16:02:42.00Z"), ZoneOffset.UTC)
                 val serializer = DeadEntriesJsonSerializer(clock = clock)
@@ -70,7 +70,7 @@ internal class DeadEntriesJsonSerializerTest {
 
         @Test
         fun `results are sorted`() {
-            runBlocking {
+            runTest {
                 // given
                 val clock = Clock.fixed(Instant.parse("2020-01-01T16:02:42.00Z"), ZoneOffset.UTC)
                 val serializer = DeadEntriesJsonSerializer(clock = clock)
