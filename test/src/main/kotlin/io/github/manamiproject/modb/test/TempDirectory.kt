@@ -1,6 +1,6 @@
 package io.github.manamiproject.modb.test
 
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.test.runTest
 import java.io.Closeable
 import java.nio.file.Files
 import java.nio.file.Path
@@ -40,7 +40,7 @@ public fun tempDirectory(action: suspend TempDirectory.() -> Unit) {
     val tempDir = TempDirectory()
 
     tempDir.use {
-        runBlocking {
+        runTest {
             it.action()
         }
     }
