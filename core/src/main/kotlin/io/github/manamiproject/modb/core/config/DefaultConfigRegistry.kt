@@ -46,7 +46,7 @@ import kotlin.io.path.Path
  * @since 15.0.0
  * @property classPathFile Path of the config file within the classpath.
  * @property localFile Path to a configuration file in the local file system.
- * @property environmentVariables Initially loads the environent variables. Because these are immutable and impossible
+ * @property environmentVariables Initially loads the environment variables. Because these are immutable and impossible
  * to set via reflection without override parameter for the JVM those can be accessed and changed later on.
  * @property systemProperties System properties passed to the app which take precedence over any other declaration.
  */

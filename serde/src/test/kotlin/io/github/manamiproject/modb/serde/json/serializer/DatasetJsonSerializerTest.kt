@@ -5,7 +5,7 @@ import io.github.manamiproject.modb.core.anime.AnimeType
 import io.github.manamiproject.modb.serde.TestAnimeObjects
 import io.github.manamiproject.modb.serde.createExpectedDatasetMinified
 import io.github.manamiproject.modb.serde.createExpectedDatasetPrettyPrint
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.test.runTest
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Nested
 import java.time.Clock
@@ -23,7 +23,7 @@ internal class DatasetJsonSerializerTest {
 
             @Test
             fun `serialize default anime - pretty print`() {
-                runBlocking {
+                runTest {
                     // given
                     val clock = Clock.fixed(Instant.parse("2020-01-01T16:02:42.00Z"), ZoneOffset.UTC)
                     val serializer = DatasetJsonSerializer(clock)
@@ -42,7 +42,7 @@ internal class DatasetJsonSerializerTest {
 
             @Test
             fun `serialize default anime - minified`() {
-                runBlocking {
+                runTest {
                     // given
                     val clock = Clock.fixed(Instant.parse("2020-01-01T16:02:42.00Z"), ZoneOffset.UTC)
                     val serializer = DatasetJsonSerializer(clock)
@@ -64,7 +64,7 @@ internal class DatasetJsonSerializerTest {
 
             @Test
             fun `serialize anime having all properties set - pretty print`() {
-                runBlocking {
+                runTest {
                     // given
                     val clock = Clock.fixed(Instant.parse("2020-01-01T16:02:42.00Z"), ZoneOffset.UTC)
                     val serializer = DatasetJsonSerializer(clock)
@@ -83,7 +83,7 @@ internal class DatasetJsonSerializerTest {
 
             @Test
             fun `serialize anime having all properties set - minified`() {
-                runBlocking {
+                runTest {
                     // given
                     val clock = Clock.fixed(Instant.parse("2020-01-01T16:02:42.00Z"), ZoneOffset.UTC)
                     val serializer = DatasetJsonSerializer(clock)
@@ -106,7 +106,7 @@ internal class DatasetJsonSerializerTest {
 
             @Test
             fun `prio 1 - sort by title`() {
-                runBlocking {
+                runTest {
                     // given
                     val expectedContent = createExpectedDatasetPrettyPrint(
                         """
@@ -192,7 +192,7 @@ internal class DatasetJsonSerializerTest {
 
             @Test
             fun `prio 2 - sort by type`() {
-                runBlocking {
+                runTest {
                     // given
                     val expectedContent = createExpectedDatasetPrettyPrint(
                         """
@@ -287,7 +287,7 @@ internal class DatasetJsonSerializerTest {
 
             @Test
             fun `prio 3 - sort by episodes`() {
-                runBlocking {
+                runTest {
                     // given
                     val expectedContent = createExpectedDatasetPrettyPrint(
                         """

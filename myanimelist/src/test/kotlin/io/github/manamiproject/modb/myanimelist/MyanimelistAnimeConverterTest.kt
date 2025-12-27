@@ -10,7 +10,7 @@ import io.github.manamiproject.modb.core.config.FileSuffix
 import io.github.manamiproject.modb.core.config.Hostname
 import io.github.manamiproject.modb.core.config.MetaDataProviderConfig
 import io.github.manamiproject.modb.test.loadTestResource
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.test.runTest
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Nested
 import org.junit.jupiter.params.ParameterizedTest
@@ -26,7 +26,7 @@ internal class MyanimelistAnimeConverterTest {
 
         @Test
         fun `title containing special chars`() {
-            runBlocking {
+            runTest {
                 // given
                 val testMyanimelistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = MyanimelistConfig.hostname()
@@ -48,7 +48,7 @@ internal class MyanimelistAnimeConverterTest {
 
         @Test
         fun `anime has original and english title in header`() {
-            runBlocking {
+            runTest {
                 // given
                 val testMyanimelistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = MyanimelistConfig.hostname()
@@ -74,7 +74,7 @@ internal class MyanimelistAnimeConverterTest {
 
         @Test
         fun `type is TV`() {
-            runBlocking {
+            runTest {
                 // given
                 val testMyanimelistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = MyanimelistConfig.hostname()
@@ -96,7 +96,7 @@ internal class MyanimelistAnimeConverterTest {
 
         @Test
         fun `'Unknown' is mapped to 'UNKNOWN'`() {
-            runBlocking {
+            runTest {
                 // given
                 val testMyanimelistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = MyanimelistConfig.hostname()
@@ -118,7 +118,7 @@ internal class MyanimelistAnimeConverterTest {
 
         @Test
         fun `type is Movie`() {
-            runBlocking {
+            runTest {
                 // given
                 val testMyanimelistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = MyanimelistConfig.hostname()
@@ -140,7 +140,7 @@ internal class MyanimelistAnimeConverterTest {
 
         @Test
         fun `type is music is mapped to special`() {
-            runBlocking {
+            runTest {
                 // given
                 val testMyanimelistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = MyanimelistConfig.hostname()
@@ -162,7 +162,7 @@ internal class MyanimelistAnimeConverterTest {
 
         @Test
         fun `type is ONA`() {
-            runBlocking {
+            runTest {
                 // given
                 val testMyanimelistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = MyanimelistConfig.hostname()
@@ -184,7 +184,7 @@ internal class MyanimelistAnimeConverterTest {
 
         @Test
         fun `type is OVA`() {
-            runBlocking {
+            runTest {
                 // given
                 val testMyanimelistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = MyanimelistConfig.hostname()
@@ -206,7 +206,7 @@ internal class MyanimelistAnimeConverterTest {
 
         @Test
         fun `type is Special`() {
-            runBlocking {
+            runTest {
                 // given
                 val testMyanimelistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = MyanimelistConfig.hostname()
@@ -228,7 +228,7 @@ internal class MyanimelistAnimeConverterTest {
 
         @Test
         fun `type PV is mapped to SPECIAL`() {
-            runBlocking {
+            runTest {
                 // given
                 val testMyanimelistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = MyanimelistConfig.hostname()
@@ -250,7 +250,7 @@ internal class MyanimelistAnimeConverterTest {
 
         @Test
         fun `type CM is mapped to SPECIAL`() {
-            runBlocking {
+            runTest {
                 // given
                 val testMyanimelistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = MyanimelistConfig.hostname()
@@ -272,7 +272,7 @@ internal class MyanimelistAnimeConverterTest {
 
         @Test
         fun `type 'TV Special' is mapped to SPECIAL`() {
-            runBlocking {
+            runTest {
                 // given
                 val testMyanimelistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = MyanimelistConfig.hostname()
@@ -294,7 +294,7 @@ internal class MyanimelistAnimeConverterTest {
 
         @Test
         fun `type Music but without a link is mapped to SPECIAL`() {
-            runBlocking {
+            runTest {
                 // given
                 val testMyanimelistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = MyanimelistConfig.hostname()
@@ -316,7 +316,7 @@ internal class MyanimelistAnimeConverterTest {
 
         @Test
         fun `movie case which resulted in containsOwn`() {
-            runBlocking {
+            runTest {
                 // given
                 val testMyanimelistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = MyanimelistConfig.hostname()
@@ -342,7 +342,7 @@ internal class MyanimelistAnimeConverterTest {
 
         @Test
         fun `unknown number of episodes`() {
-            runBlocking {
+            runTest {
                 // given
                 val testMyanimelistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = MyanimelistConfig.hostname()
@@ -364,7 +364,7 @@ internal class MyanimelistAnimeConverterTest {
 
         @Test
         fun `1 episode`() {
-            runBlocking {
+            runTest {
                 // given
                 val testMyanimelistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = MyanimelistConfig.hostname()
@@ -386,7 +386,7 @@ internal class MyanimelistAnimeConverterTest {
 
         @Test
         fun `10 episodes`() {
-            runBlocking {
+            runTest {
                 // given
                 val testMyanimelistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = MyanimelistConfig.hostname()
@@ -408,7 +408,7 @@ internal class MyanimelistAnimeConverterTest {
 
         @Test
         fun `100 episodes`() {
-            runBlocking {
+            runTest {
                 // given
                 val testMyanimelistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = MyanimelistConfig.hostname()
@@ -430,7 +430,7 @@ internal class MyanimelistAnimeConverterTest {
 
         @Test
         fun `1818 episodes`() {
-            runBlocking {
+            runTest {
                 // given
                 val testMyanimelistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = MyanimelistConfig.hostname()
@@ -456,7 +456,7 @@ internal class MyanimelistAnimeConverterTest {
 
         @Test
         fun `neither picture nor thumbnail`() {
-            runBlocking {
+            runTest {
                 // given
                 val testMyanimelistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = MyanimelistConfig.hostname()
@@ -479,7 +479,7 @@ internal class MyanimelistAnimeConverterTest {
 
         @Test
         fun `picture and thumbnail`() {
-            runBlocking {
+            runTest {
                 // given
                 val testMyanimelistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = MyanimelistConfig.hostname()
@@ -506,7 +506,7 @@ internal class MyanimelistAnimeConverterTest {
 
         @Test
         fun `no synonyms`() {
-            runBlocking {
+            runTest {
                 // given
                 val testMyanimelistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = MyanimelistConfig.hostname()
@@ -528,7 +528,7 @@ internal class MyanimelistAnimeConverterTest {
 
         @Test
         fun `one synonym`() {
-            runBlocking {
+            runTest {
                 // given
                 val testMyanimelistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = MyanimelistConfig.hostname()
@@ -550,7 +550,7 @@ internal class MyanimelistAnimeConverterTest {
 
         @Test
         fun `multiple languages, one synonym each`() {
-            runBlocking {
+            runTest {
                 // given
                 val testMyanimelistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = MyanimelistConfig.hostname()
@@ -577,7 +577,7 @@ internal class MyanimelistAnimeConverterTest {
 
         @Test
         fun `synonym containing comma`() {
-            runBlocking {
+            runTest {
                 // given
                 val testMyanimelistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = MyanimelistConfig.hostname()
@@ -604,7 +604,7 @@ internal class MyanimelistAnimeConverterTest {
 
         @Test
         fun `multiple synonyms for one language`() {
-            runBlocking {
+            runTest {
                 // given
                 val testMyanimelistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = MyanimelistConfig.hostname()
@@ -633,7 +633,7 @@ internal class MyanimelistAnimeConverterTest {
 
         @Test
         fun `multiple synonyms with comma in one language section`() {
-            runBlocking {
+            runTest {
                 // given
                 val testMyanimelistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = MyanimelistConfig.hostname()
@@ -662,7 +662,7 @@ internal class MyanimelistAnimeConverterTest {
 
         @Test
         fun `one synonym with multiple commas`() {
-            runBlocking {
+            runTest {
                 // given
                 val testMyanimelistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = MyanimelistConfig.hostname()
@@ -688,7 +688,7 @@ internal class MyanimelistAnimeConverterTest {
 
         @Test
         fun `semicolon in synonym wihtout whitespaces`() {
-            runBlocking {
+            runTest {
                 // given
                 val testMyanimelistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = MyanimelistConfig.hostname()
@@ -718,7 +718,7 @@ internal class MyanimelistAnimeConverterTest {
 
         @Test
         fun `semicolon in synonym with whitespace`() {
-            runBlocking {
+            runTest {
                 // given
                 val testMyanimelistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = MyanimelistConfig.hostname()
@@ -743,7 +743,7 @@ internal class MyanimelistAnimeConverterTest {
 
         @Test
         fun `semicolon in title but not in synonyms`() {
-            runBlocking {
+            runTest {
                 // given
                 val testMyanimelistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = MyanimelistConfig.hostname()
@@ -774,7 +774,7 @@ internal class MyanimelistAnimeConverterTest {
 
         @Test
         fun `extract id 16498`() {
-            runBlocking {
+            runTest {
                 // given
                 val testMyanimelistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = MyanimelistConfig.hostname()
@@ -800,7 +800,7 @@ internal class MyanimelistAnimeConverterTest {
 
         @Test
         fun `no adaption, no relations`() {
-            runBlocking {
+            runTest {
                 // given
                 val testMyanimelistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = MyanimelistConfig.hostname()
@@ -822,7 +822,7 @@ internal class MyanimelistAnimeConverterTest {
 
         @Test
         fun `no adaption, multiple relations`() {
-            runBlocking {
+            runTest {
                 // given
                 val testMyanimelistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = MyanimelistConfig.hostname()
@@ -850,7 +850,7 @@ internal class MyanimelistAnimeConverterTest {
 
         @Test
         fun `one adaption, one relation`() {
-            runBlocking {
+            runTest {
                 // given
                 val testMyanimelistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = MyanimelistConfig.hostname()
@@ -874,7 +874,7 @@ internal class MyanimelistAnimeConverterTest {
 
         @Test
         fun `has adaption, multiple relations`() {
-            runBlocking {
+            runTest {
                 // given
                 val testMyanimelistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = MyanimelistConfig.hostname()
@@ -914,7 +914,7 @@ internal class MyanimelistAnimeConverterTest {
 
         @Test
         fun `has adaption, no relations`() {
-            runBlocking {
+            runTest {
                 // given
                 val testMyanimelistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = MyanimelistConfig.hostname()
@@ -940,7 +940,7 @@ internal class MyanimelistAnimeConverterTest {
 
         @Test
         fun `'currently airing' is mapped to 'ONGOING'`() {
-            runBlocking {
+            runTest {
                 // given
                 val testMyanimelistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = MyanimelistConfig.hostname()
@@ -962,7 +962,7 @@ internal class MyanimelistAnimeConverterTest {
 
         @Test
         fun `'Not yet aired' is mapped to 'UPCOMING'`() {
-            runBlocking {
+            runTest {
                 // given
                 val testMyanimelistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = MyanimelistConfig.hostname()
@@ -984,7 +984,7 @@ internal class MyanimelistAnimeConverterTest {
 
         @Test
         fun `'Finished Airing' is mapped to 'FINISHED'`() {
-            runBlocking {
+            runTest {
                 // given
                 val testMyanimelistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = MyanimelistConfig.hostname()
@@ -1010,7 +1010,7 @@ internal class MyanimelistAnimeConverterTest {
 
         @Test
         fun `extract multiple tags`() {
-            runBlocking {
+            runTest {
                 // given
                 val testMyanimelistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = MyanimelistConfig.hostname()
@@ -1039,7 +1039,7 @@ internal class MyanimelistAnimeConverterTest {
 
         @Test
         fun `extract exactly one tag`() {
-            runBlocking {
+            runTest {
                 // given
                 val testMyanimelistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = MyanimelistConfig.hostname()
@@ -1061,7 +1061,7 @@ internal class MyanimelistAnimeConverterTest {
 
         @Test
         fun `no tags available`() {
-            runBlocking {
+            runTest {
                 // given
                 val testMyanimelistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = MyanimelistConfig.hostname()
@@ -1087,7 +1087,7 @@ internal class MyanimelistAnimeConverterTest {
 
         @Test
         fun `1 hr`() {
-            runBlocking {
+            runTest {
                 // given
                 val testMyanimelistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = MyanimelistConfig.hostname()
@@ -1109,7 +1109,7 @@ internal class MyanimelistAnimeConverterTest {
 
         @Test
         fun `1 hr 11 min`() {
-            runBlocking {
+            runTest {
                 // given
                 val testMyanimelistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = MyanimelistConfig.hostname()
@@ -1131,7 +1131,7 @@ internal class MyanimelistAnimeConverterTest {
 
         @Test
         fun `1 hr 11 min per ep`() {
-            runBlocking {
+            runTest {
                 // given
                 val testMyanimelistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = MyanimelistConfig.hostname()
@@ -1153,7 +1153,7 @@ internal class MyanimelistAnimeConverterTest {
 
         @Test
         fun `2 hr`() {
-            runBlocking {
+            runTest {
                 // given
                 val testMyanimelistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = MyanimelistConfig.hostname()
@@ -1175,7 +1175,7 @@ internal class MyanimelistAnimeConverterTest {
 
         @Test
         fun `2 hr 15 min`() {
-            runBlocking {
+            runTest {
                 // given
                 val testMyanimelistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = MyanimelistConfig.hostname()
@@ -1197,7 +1197,7 @@ internal class MyanimelistAnimeConverterTest {
 
         @Test
         fun `10 min`() {
-            runBlocking {
+            runTest {
                 // given
                 val testMyanimelistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = MyanimelistConfig.hostname()
@@ -1219,7 +1219,7 @@ internal class MyanimelistAnimeConverterTest {
 
         @Test
         fun `10 min per ep`() {
-            runBlocking {
+            runTest {
                 // given
                 val testMyanimelistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = MyanimelistConfig.hostname()
@@ -1241,7 +1241,7 @@ internal class MyanimelistAnimeConverterTest {
 
         @Test
         fun `10 sec`() {
-            runBlocking {
+            runTest {
                 // given
                 val testMyanimelistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = MyanimelistConfig.hostname()
@@ -1263,7 +1263,7 @@ internal class MyanimelistAnimeConverterTest {
 
         @Test
         fun `10 sec per ep`() {
-            runBlocking {
+            runTest {
                 // given
                 val testMyanimelistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = MyanimelistConfig.hostname()
@@ -1285,7 +1285,7 @@ internal class MyanimelistAnimeConverterTest {
 
         @Test
         fun `unknown duration`() {
-            runBlocking {
+            runTest {
                 // given
                 val testMyanimelistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = MyanimelistConfig.hostname()
@@ -1314,7 +1314,7 @@ internal class MyanimelistAnimeConverterTest {
 
             @Test
             fun `'UNDEFINED', because anime season link is not available`() {
-                runBlocking {
+                runTest {
                     // given
                     val testMyanimelistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                         override fun hostname(): Hostname = MyanimelistConfig.hostname()
@@ -1336,7 +1336,7 @@ internal class MyanimelistAnimeConverterTest {
 
             @Test
             fun `season is 'FALL'`() {
-                runBlocking {
+                runTest {
                     // given
                     val testMyanimelistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                         override fun hostname(): Hostname = MyanimelistConfig.hostname()
@@ -1358,7 +1358,7 @@ internal class MyanimelistAnimeConverterTest {
 
             @Test
             fun `season is 'SPRING'`() {
-                runBlocking {
+                runTest {
                     // given
                     val testMyanimelistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                         override fun hostname(): Hostname = MyanimelistConfig.hostname()
@@ -1380,7 +1380,7 @@ internal class MyanimelistAnimeConverterTest {
 
             @Test
             fun `season is 'SUMMER'`() {
-                runBlocking {
+                runTest {
                     // given
                     val testMyanimelistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                         override fun hostname(): Hostname = MyanimelistConfig.hostname()
@@ -1402,7 +1402,7 @@ internal class MyanimelistAnimeConverterTest {
 
             @Test
             fun `season is 'WINTER'`() {
-                runBlocking {
+                runTest {
                     // given
                     val testMyanimelistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                         override fun hostname(): Hostname = MyanimelistConfig.hostname()
@@ -1425,7 +1425,7 @@ internal class MyanimelistAnimeConverterTest {
             @ParameterizedTest
             @ValueSource(strings = ["apr", "may", "jun"])
             fun `season is 'SPRING' by aired because premiered is not set`(value: String) {
-                runBlocking {
+                runTest {
                     // given
                     val testMyanimelistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                         override fun hostname(): Hostname = MyanimelistConfig.hostname()
@@ -1448,7 +1448,7 @@ internal class MyanimelistAnimeConverterTest {
             @ParameterizedTest
             @ValueSource(strings = ["jul", "aug", "sep"])
             fun `season is 'SUMMER' by aired because premiered is not set`(value: String) {
-                runBlocking {
+                runTest {
                     // given
                     val testMyanimelistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                         override fun hostname(): Hostname = MyanimelistConfig.hostname()
@@ -1471,7 +1471,7 @@ internal class MyanimelistAnimeConverterTest {
             @ParameterizedTest
             @ValueSource(strings = ["oct", "nov", "dec"])
             fun `season is 'FALL' by aired because premiered is not set`(value: String) {
-                runBlocking {
+                runTest {
                     // given
                     val testMyanimelistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                         override fun hostname(): Hostname = MyanimelistConfig.hostname()
@@ -1494,7 +1494,7 @@ internal class MyanimelistAnimeConverterTest {
             @ParameterizedTest
             @ValueSource(strings = ["jan", "feb", "mar"])
             fun `season is 'WINTER' by aired because premiered is not set`(value: String) {
-                runBlocking {
+                runTest {
                     // given
                     val testMyanimelistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                         override fun hostname(): Hostname = MyanimelistConfig.hostname()
@@ -1520,7 +1520,7 @@ internal class MyanimelistAnimeConverterTest {
 
             @Test
             fun `extract from 'aired', because anime season is not set - year only`() {
-                runBlocking {
+                runTest {
                     // given
                     val testMyanimelistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                         override fun hostname(): Hostname = MyanimelistConfig.hostname()
@@ -1542,7 +1542,7 @@ internal class MyanimelistAnimeConverterTest {
 
             @Test
             fun `extract from 'aired', because anime season is not set - year to unknown`() {
-                runBlocking {
+                runTest {
                     // given
                     val testMyanimelistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                         override fun hostname(): Hostname = MyanimelistConfig.hostname()
@@ -1564,7 +1564,7 @@ internal class MyanimelistAnimeConverterTest {
 
             @Test
             fun `extract from 'aired', because anime season is not set - unavailable`() {
-                runBlocking {
+                runTest {
                     // given
                     val testMyanimelistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                         override fun hostname(): Hostname = MyanimelistConfig.hostname()
@@ -1586,7 +1586,7 @@ internal class MyanimelistAnimeConverterTest {
 
             @Test
             fun `extract from 'aired', because anime season is not set - exact day to unknown`() {
-                runBlocking {
+                runTest {
                     // given
                     val testMyanimelistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                         override fun hostname(): Hostname = MyanimelistConfig.hostname()
@@ -1608,7 +1608,7 @@ internal class MyanimelistAnimeConverterTest {
 
             @Test
             fun `extract from 'aired', because anime season is not set - year to year`() {
-                runBlocking {
+                runTest {
                     // given
                     val testMyanimelistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                         override fun hostname(): Hostname = MyanimelistConfig.hostname()
@@ -1630,7 +1630,7 @@ internal class MyanimelistAnimeConverterTest {
 
             @Test
             fun `extract from 'aired', because anime season is not set - month of year to year`() {
-                runBlocking {
+                runTest {
                     // given
                     val testMyanimelistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                         override fun hostname(): Hostname = MyanimelistConfig.hostname()
@@ -1652,7 +1652,7 @@ internal class MyanimelistAnimeConverterTest {
 
             @Test
             fun `extract from 'aired', because anime season is not set - month of year to unknown`() {
-                runBlocking {
+                runTest {
                     // given
                     val testMyanimelistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                         override fun hostname(): Hostname = MyanimelistConfig.hostname()
@@ -1674,7 +1674,7 @@ internal class MyanimelistAnimeConverterTest {
 
             @Test
             fun `extract from 'aired', because anime season is not set - exact day`() {
-                runBlocking {
+                runTest {
                     // given
                     val testMyanimelistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                         override fun hostname(): Hostname = MyanimelistConfig.hostname()
@@ -1696,7 +1696,7 @@ internal class MyanimelistAnimeConverterTest {
 
             @Test
             fun `extract from 'aired', because anime season is not set - exact day to exact day`() {
-                runBlocking {
+                runTest {
                     // given
                     val testMyanimelistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                         override fun hostname(): Hostname = MyanimelistConfig.hostname()
@@ -1718,7 +1718,7 @@ internal class MyanimelistAnimeConverterTest {
 
             @Test
             fun `extract from 'aired', because anime season is not set - year to exact day`() {
-                runBlocking {
+                runTest {
                     // given
                     val testMyanimelistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                         override fun hostname(): Hostname = MyanimelistConfig.hostname()
@@ -1740,7 +1740,7 @@ internal class MyanimelistAnimeConverterTest {
 
             @Test
             fun `extract from 'aired', because anime season is not set - exact day to year`() {
-                runBlocking {
+                runTest {
                     // given
                     val testMyanimelistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                         override fun hostname(): Hostname = MyanimelistConfig.hostname()
@@ -1762,7 +1762,7 @@ internal class MyanimelistAnimeConverterTest {
 
             @Test
             fun `extract from anime season link which exists in mobile version, but not on desktop version`() {
-                runBlocking {
+                runTest {
                     // given
                     val testMyanimelistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                         override fun hostname(): Hostname = MyanimelistConfig.hostname()
@@ -1789,7 +1789,7 @@ internal class MyanimelistAnimeConverterTest {
 
         @Test
         fun `successfully load score`() {
-            runBlocking {
+            runTest {
                 // given
                 val testMyanimelistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = MyanimelistConfig.hostname()
@@ -1810,7 +1810,7 @@ internal class MyanimelistAnimeConverterTest {
 
         @Test
         fun `returns NoMetaDataProviderScore`() {
-            runBlocking {
+            runTest {
                 // given
                 val testMyanimelistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = MyanimelistConfig.hostname()
@@ -1834,7 +1834,7 @@ internal class MyanimelistAnimeConverterTest {
 
         @Test
         fun `multiple studios`() {
-            runBlocking {
+            runTest {
                 // given
                 val testMyanimelistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = MyanimelistConfig.hostname()
@@ -1859,7 +1859,7 @@ internal class MyanimelistAnimeConverterTest {
 
         @Test
         fun `no studios`() {
-            runBlocking {
+            runTest {
                 // given
                 val testMyanimelistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = MyanimelistConfig.hostname()
@@ -1885,7 +1885,7 @@ internal class MyanimelistAnimeConverterTest {
 
         @Test
         fun `multiple producers`() {
-            runBlocking {
+            runTest {
                 // given
                 val testMyanimelistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = MyanimelistConfig.hostname()
@@ -1915,7 +1915,7 @@ internal class MyanimelistAnimeConverterTest {
 
         @Test
         fun `no producers`() {
-            runBlocking {
+            runTest {
                 // given
                 val testMyanimelistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = MyanimelistConfig.hostname()

@@ -13,7 +13,7 @@ import io.github.manamiproject.modb.core.anime.AnimeType.*
 import io.github.manamiproject.modb.core.anime.Duration.TimeUnit.*
 import io.github.manamiproject.modb.core.config.Hostname
 import io.github.manamiproject.modb.test.loadTestResource
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.test.runTest
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Nested
 import org.junit.jupiter.params.ParameterizedTest
@@ -31,7 +31,7 @@ internal class SimklAnimeConverterTest {
 
         @Test
         fun `correctly extracts primary title`() {
-            runBlocking {
+            runTest {
                 // given
                 val testSimklConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = SimklConfig.hostname()
@@ -53,7 +53,7 @@ internal class SimklAnimeConverterTest {
 
         @Test
         fun `extract title from alt tag, because SimklLoginBgTitle may return other text than the title like 'Blue Box'`() {
-            runBlocking {
+            runTest {
                 // given
                 val testSimklConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = SimklConfig.hostname()
@@ -75,7 +75,7 @@ internal class SimklAnimeConverterTest {
 
         @Test
         fun `correctly extracts title including special chars`() {
-            runBlocking {
+            runTest {
                 // given
                 val testSimklConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = SimklConfig.hostname()
@@ -101,7 +101,7 @@ internal class SimklAnimeConverterTest {
         
         @Test
         fun `unknown number of episodes`() {
-            runBlocking {
+            runTest {
                 // given
                 val testSimklConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = SimklConfig.hostname()
@@ -126,7 +126,7 @@ internal class SimklAnimeConverterTest {
 
         @Test
         fun `1 episode`() {
-            runBlocking {
+            runTest {
                 // given
                 val testSimklConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = SimklConfig.hostname()
@@ -148,7 +148,7 @@ internal class SimklAnimeConverterTest {
 
         @Test
         fun `10 episodes`() {
-            runBlocking {
+            runTest {
                 // given
                 val testSimklConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = SimklConfig.hostname()
@@ -170,7 +170,7 @@ internal class SimklAnimeConverterTest {
 
         @Test
         fun `100 episodes`() {
-            runBlocking {
+            runTest {
                 // given
                 val testSimklConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = SimklConfig.hostname()
@@ -192,7 +192,7 @@ internal class SimklAnimeConverterTest {
 
         @Test
         fun `1818 episodes`() {
-            runBlocking {
+            runTest {
                 // given
                 val testSimklConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = SimklConfig.hostname()
@@ -214,7 +214,7 @@ internal class SimklAnimeConverterTest {
 
         @Test
         fun `2 episodes retrieved from fallback`() {
-            runBlocking {
+            runTest {
                 // given
                 val testSimklConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = SimklConfig.hostname()
@@ -236,7 +236,7 @@ internal class SimklAnimeConverterTest {
 
         @Test
         fun `correctly extracts 130 on an ongoing anime whose last episode was 162 and next is 163`() {
-            runBlocking {
+            runTest {
                 // given
                 val testSimklConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = SimklConfig.hostname()
@@ -258,7 +258,7 @@ internal class SimklAnimeConverterTest {
 
         @Test
         fun `correctly extracts episodes for a series that ended and is missing the info in the header`() {
-            runBlocking {
+            runTest {
                 // given
                 val testSimklConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = SimklConfig.hostname()
@@ -284,7 +284,7 @@ internal class SimklAnimeConverterTest {
 
         @Test
         fun `type is Movie`() {
-            runBlocking {
+            runTest {
                 // given
                 val testSimklConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = SimklConfig.hostname()
@@ -306,7 +306,7 @@ internal class SimklAnimeConverterTest {
 
         @Test
         fun `type is OVA`() {
-            runBlocking {
+            runTest {
                 // given
                 val testSimklConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = SimklConfig.hostname()
@@ -328,7 +328,7 @@ internal class SimklAnimeConverterTest {
 
         @Test
         fun `type is TV`() {
-            runBlocking {
+            runTest {
                 // given
                 val testSimklConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = SimklConfig.hostname()
@@ -350,7 +350,7 @@ internal class SimklAnimeConverterTest {
 
         @Test
         fun `type is ONA`() {
-            runBlocking {
+            runTest {
                 // given
                 val testSimklConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = SimklConfig.hostname()
@@ -372,7 +372,7 @@ internal class SimklAnimeConverterTest {
 
         @Test
         fun `type is SPECIAL`() {
-            runBlocking {
+            runTest {
                 // given
                 val testSimklConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = SimklConfig.hostname()
@@ -394,7 +394,7 @@ internal class SimklAnimeConverterTest {
 
         @Test
         fun `'Music Video' is mapped to SPECIAL`() {
-            runBlocking {
+            runTest {
                 // given
                 val testSimklConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = SimklConfig.hostname()
@@ -420,7 +420,7 @@ internal class SimklAnimeConverterTest {
 
         @Test
         fun `neither picture nor thumbnail available`() {
-            runBlocking {
+            runTest {
                 // given
                 val testSimklConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = SimklConfig.hostname()
@@ -443,7 +443,7 @@ internal class SimklAnimeConverterTest {
 
         @Test
         fun `picture and thumbnail`() {
-            runBlocking {
+            runTest {
                 // given
                 val testSimklConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = SimklConfig.hostname()
@@ -470,7 +470,7 @@ internal class SimklAnimeConverterTest {
 
         @Test
         fun `correctly extracts ONGOING anime`() {
-            runBlocking {
+            runTest {
                 // given
                 val testSimklConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = SimklConfig.hostname()
@@ -492,7 +492,7 @@ internal class SimklAnimeConverterTest {
 
         @Test
         fun `correctly extracts UPCOMING anime`() {
-            runBlocking {
+            runTest {
                 // given
                 val testSimklConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = SimklConfig.hostname()
@@ -517,7 +517,7 @@ internal class SimklAnimeConverterTest {
 
         @Test
         fun `correctly extracts FINISHED anime`() {
-            runBlocking {
+            runTest {
                 // given
                 val testSimklConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = SimklConfig.hostname()
@@ -539,7 +539,7 @@ internal class SimklAnimeConverterTest {
 
         @Test
         fun `airdate in the past is mapped to FINISHED`() {
-            runBlocking {
+            runTest {
                 // given
                 val testSimklConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = SimklConfig.hostname()
@@ -569,7 +569,7 @@ internal class SimklAnimeConverterTest {
             @ParameterizedTest
             @ValueSource(ints = [1, 2, 3])
             fun `season is 'WINTER'`(value: Int) {
-                runBlocking {
+                runTest {
                     // given
                     val testSimklConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                         override fun hostname(): Hostname = SimklConfig.hostname()
@@ -592,7 +592,7 @@ internal class SimklAnimeConverterTest {
             @ParameterizedTest
             @ValueSource(ints = [4, 5, 6])
             fun `season is 'SPRING'`(value: Int) {
-                runBlocking {
+                runTest {
                     // given
                     val testSimklConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                         override fun hostname(): Hostname = SimklConfig.hostname()
@@ -615,7 +615,7 @@ internal class SimklAnimeConverterTest {
             @ParameterizedTest
             @ValueSource(ints = [7, 8, 9])
             fun `season is 'SUMMER'`(value: Int) {
-                runBlocking {
+                runTest {
                     // given
                     val testSimklConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                         override fun hostname(): Hostname = SimklConfig.hostname()
@@ -638,7 +638,7 @@ internal class SimklAnimeConverterTest {
             @ParameterizedTest
             @ValueSource(ints = [10, 11, 12])
             fun `season is 'FALL'`(value: Int) {
-                runBlocking {
+                runTest {
                     // given
                     val testSimklConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                         override fun hostname(): Hostname = SimklConfig.hostname()
@@ -664,7 +664,7 @@ internal class SimklAnimeConverterTest {
 
             @Test
             fun `correctly extract the year of premiere if start and end year are the same`() {
-                runBlocking {
+                runTest {
                     // given
                     val testSimklConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                         override fun hostname(): Hostname = SimklConfig.hostname()
@@ -686,7 +686,7 @@ internal class SimklAnimeConverterTest {
 
             @Test
             fun `correctly extract the year of premiere`() {
-                runBlocking {
+                runTest {
                     // given
                     val testSimklConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                         override fun hostname(): Hostname = SimklConfig.hostname()
@@ -708,7 +708,7 @@ internal class SimklAnimeConverterTest {
 
             @Test
             fun `correctly adjusts the year of premiere of it is set in year before the first official anime release`() {
-                runBlocking {
+                runTest {
                     // given
                     val testSimklConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                         override fun hostname(): Hostname = SimklConfig.hostname()
@@ -731,7 +731,7 @@ internal class SimklAnimeConverterTest {
 
         @Test
         fun `both unknown`() {
-            runBlocking {
+            runTest {
                 // given
                 val testSimklConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = SimklConfig.hostname()
@@ -758,7 +758,7 @@ internal class SimklAnimeConverterTest {
 
         @Test
         fun `correctly extracts id 41586`() {
-            runBlocking {
+            runTest {
                 // given
                 val testSimklConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = SimklConfig.hostname()
@@ -786,7 +786,7 @@ internal class SimklAnimeConverterTest {
 
         @Test
         fun `correctly extracts both genres and subgenres`() {
-            runBlocking {
+            runTest {
                 // given
                 val testSimklConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = SimklConfig.hostname()
@@ -824,7 +824,7 @@ internal class SimklAnimeConverterTest {
 
         @Test
         fun `correctly extracts both directly and indirectly related anime`() {
-            runBlocking {
+            runTest {
                 // given
                 val testSimklConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = SimklConfig.hostname()
@@ -854,7 +854,7 @@ internal class SimklAnimeConverterTest {
 
         @Test
         fun `correctly extracts multiple synoynms`() {
-            runBlocking {
+            runTest {
                 // given
                 val testSimklConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = SimklConfig.hostname()
@@ -880,7 +880,7 @@ internal class SimklAnimeConverterTest {
 
         @Test
         fun `no synonyms`() {
-            runBlocking {
+            runTest {
                 // given
                 val testSimklConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = SimklConfig.hostname()
@@ -906,7 +906,7 @@ internal class SimklAnimeConverterTest {
 
         @Test
         fun `correctly extracts minutes`() {
-            runBlocking {
+            runTest {
                 // given
                 val testSimklConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = SimklConfig.hostname()
@@ -931,7 +931,7 @@ internal class SimklAnimeConverterTest {
 
         @Test
         fun `correctly extracts hours`() {
-            runBlocking {
+            runTest {
                 // given
                 val testSimklConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = SimklConfig.hostname()
@@ -960,7 +960,7 @@ internal class SimklAnimeConverterTest {
 
         @Test
         fun `successfully extracts score`() {
-            runBlocking {
+            runTest {
                 // given
                 val testSimklConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = SimklConfig.hostname()
@@ -983,7 +983,7 @@ internal class SimklAnimeConverterTest {
 
         @Test
         fun `returns NoMetaDataProviderScore`() {
-            runBlocking {
+            runTest {
                 // given
                 val testAnidbConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = SimklConfig.hostname()
@@ -1009,7 +1009,7 @@ internal class SimklAnimeConverterTest {
 
         @Test
         fun `multiple studios`() {
-            runBlocking {
+            runTest {
                 // given
                 val testSimklConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = SimklConfig.hostname()
@@ -1034,7 +1034,7 @@ internal class SimklAnimeConverterTest {
 
         @Test
         fun `no studios`() {
-            runBlocking {
+            runTest {
                 // given
                 val testSimklConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = SimklConfig.hostname()
@@ -1060,7 +1060,7 @@ internal class SimklAnimeConverterTest {
 
         @Test
         fun `multiple producers`() {
-            runBlocking {
+            runTest {
                 // given
                 val testSimklConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = SimklConfig.hostname()
@@ -1090,7 +1090,7 @@ internal class SimklAnimeConverterTest {
 
         @Test
         fun `no producers`() {
-            runBlocking {
+            runTest {
                 // given
                 val testSimklConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = SimklConfig.hostname()

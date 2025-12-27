@@ -7,7 +7,7 @@ import io.github.manamiproject.modb.core.httpclient.HttpClient
 import io.github.manamiproject.modb.core.httpclient.HttpResponse
 import io.github.manamiproject.modb.test.loadTestResource
 import io.github.manamiproject.modb.test.tempDirectory
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.test.runTest
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Nested
 import java.net.URI
@@ -21,7 +21,7 @@ internal class KitsuHighestIdDetectorTest {
 
         @Test
         fun `correctly extracts highest id`() {
-            runBlocking {
+            runTest {
                 // given
                 val testMetaDataProviderConfig = object : MetaDataProviderConfig by KitsuHighestIdDetectorConfig {
                     override fun hostname(): Hostname = "localhost"

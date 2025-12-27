@@ -5,7 +5,7 @@ import io.github.manamiproject.modb.core.config.Hostname
 import io.github.manamiproject.modb.core.config.MetaDataProviderConfig
 import io.github.manamiproject.modb.test.exceptionExpected
 import io.github.manamiproject.modb.test.loadTestResource
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.test.runTest
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Nested
 import kotlin.test.Test
@@ -135,7 +135,7 @@ internal class AnidbResponseCheckerTest {
 
         @Test
         fun `isHentai returns false on regular entry`() {
-            runBlocking {
+            runTest {
                 // given
                 val responseBody = loadTestResource<String>("AnidbAnimeConverterTest/title/special_chars.html")
 
@@ -151,7 +151,7 @@ internal class AnidbResponseCheckerTest {
 
         @Test
         fun `isHentai returns true`() {
-            runBlocking {
+            runTest {
                 // given
                 val responseBody = loadTestResource<String>("AnidbDownloaderTest/hentai.html")
 
@@ -171,7 +171,7 @@ internal class AnidbResponseCheckerTest {
 
         @Test
         fun `isAdditionPending returns false on regular entry`() {
-            runBlocking {
+            runTest {
                 // given
                 val responseBody = loadTestResource<String>("AnidbAnimeConverterTest/title/special_chars.html")
 
@@ -187,7 +187,7 @@ internal class AnidbResponseCheckerTest {
 
         @Test
         fun `isAdditionPending returns true`() {
-            runBlocking {
+            runTest {
                 // given
                 val responseBody = loadTestResource<String>("AnidbDownloaderTest/addition_pending.html")
 
@@ -207,7 +207,7 @@ internal class AnidbResponseCheckerTest {
 
         @Test
         fun `isRemovedFromAnidb returns false on regular entry`() {
-            runBlocking {
+            runTest {
                 // given
                 val responseBody = loadTestResource<String>("AnidbAnimeConverterTest/title/special_chars.html")
 
@@ -223,7 +223,7 @@ internal class AnidbResponseCheckerTest {
 
         @Test
         fun `isRemovedFromAnidb returns true`() {
-            runBlocking {
+            runTest {
                 // given
                 val responseBody = loadTestResource<String>("AnidbDownloaderTest/deleted_entry.html")
 

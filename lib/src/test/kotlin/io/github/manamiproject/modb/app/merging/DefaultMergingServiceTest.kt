@@ -17,7 +17,7 @@ import io.github.manamiproject.modb.core.anime.AnimeType.*
 import io.github.manamiproject.modb.core.anime.Duration
 import io.github.manamiproject.modb.core.anime.Duration.TimeUnit.*
 import io.github.manamiproject.modb.test.tempDirectory
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.test.runTest
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Nested
 import java.net.URI
@@ -30,7 +30,7 @@ internal class DefaultMergingServiceTest {
 
         @Test
         fun `merge three equal anime with slightly different titles`() {
-            runBlocking {
+            runTest {
                 // given
                 val aniList11Eyes = AnimeRaw(
                     _sources = hashSetOf(
@@ -143,7 +143,7 @@ internal class DefaultMergingServiceTest {
 
         @Test
         fun `don't merge two totally different anime`() {
-            runBlocking {
+            runTest {
                 // given
                 val anidb = AnimeRaw(
                     _sources = hashSetOf(
@@ -222,7 +222,7 @@ internal class DefaultMergingServiceTest {
 
         @Test
         fun `merge two totally different anime, because they are part of a merge lock`() {
-            runBlocking {
+            runTest {
                 // given
                 val aniList11Eyes = AnimeRaw(
                     _sources = hashSetOf(
@@ -303,7 +303,7 @@ internal class DefaultMergingServiceTest {
 
         @Test
         fun `multiple golden records`() {
-            runBlocking {
+            runTest {
                 // given
                 val entry1 = AnimeRaw(
                     _sources = hashSetOf(
@@ -404,7 +404,7 @@ internal class DefaultMergingServiceTest {
 
         @Test
         fun `found multiple potential golden records, but none returns sufficient probability and therefore the entries set for retry`() {
-            runBlocking {
+            runTest {
                 // given
                 val malCowboyBebop = AnimeRaw(
                     _sources = hashSetOf(

@@ -14,7 +14,7 @@ import io.github.manamiproject.modb.core.extensions.EMPTY
 import io.github.manamiproject.modb.core.extensions.readFile
 import io.github.manamiproject.modb.myanimelist.MyanimelistConfig
 import io.github.manamiproject.modb.test.tempDirectory
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.test.runTest
 import org.assertj.core.api.Assertions.assertThat
 import org.assertj.core.api.Assertions.assertThatNoException
 import org.junit.jupiter.api.Nested
@@ -42,7 +42,7 @@ internal class MyanimelistCrawlerTest {
 
             // when
             assertThatNoException().isThrownBy {
-                runBlocking { crawler.start() }
+                runTest { crawler.start() }
             }
         }
 

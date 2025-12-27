@@ -6,7 +6,7 @@ import io.github.manamiproject.modb.serde.TestReadOnceInputStream
 import io.github.manamiproject.modb.test.exceptionExpected
 import kotlinx.coroutines.flow.count
 import kotlinx.coroutines.flow.toList
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.test.runTest
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Nested
 import kotlin.test.Test
@@ -34,7 +34,7 @@ internal class AnimeFromJsonLinesInputStreamDeserializerTest {
 
         @Test
         fun `correctly deserializes JSON lines`() {
-            runBlocking {
+            runTest {
                 // given
                 val deserializer = AnimeFromJsonLinesInputStreamDeserializer()
 
@@ -63,7 +63,7 @@ internal class AnimeFromJsonLinesInputStreamDeserializerTest {
 
         @Test
         fun `returns empty list if there is not data`() {
-            runBlocking {
+            runTest {
                 // given
                 val deserializer = AnimeFromJsonLinesInputStreamDeserializer()
 

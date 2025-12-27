@@ -7,7 +7,7 @@ import com.github.tomakehurst.wiremock.stubbing.Scenario.STARTED
 import io.github.manamiproject.modb.core.extensions.EMPTY
 import io.github.manamiproject.modb.core.httpclient.HttpProtocol.HTTP_1_1
 import io.github.manamiproject.modb.test.*
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.test.runTest
 import okhttp3.*
 import okhttp3.Protocol.HTTP_2
 import okio.Timeout
@@ -50,7 +50,7 @@ internal class DefaultHttpClientKtTest : MockServerTestCase<WireMockServer> by W
 
         @Test
         fun `successful retrieve response`() {
-            runBlocking {
+            runTest {
                 // given
                 val path = "anime/1535"
                 val httpResponseCode = 200
@@ -81,7 +81,7 @@ internal class DefaultHttpClientKtTest : MockServerTestCase<WireMockServer> by W
 
         @Test
         fun `receive an error`() {
-            runBlocking {
+            runTest {
                 // given
                 val path = "anime/1535"
                 val httpResponseCode = 400
@@ -112,7 +112,7 @@ internal class DefaultHttpClientKtTest : MockServerTestCase<WireMockServer> by W
 
         @Test
         fun `headers can be overridden - override User-Agent`() {
-            runBlocking {
+            runTest {
                 // given
                 val header = mapOf(
                     "User-Agent" to listOf("Test-Agent")
@@ -142,7 +142,7 @@ internal class DefaultHttpClientKtTest : MockServerTestCase<WireMockServer> by W
 
         @Test
         fun `add additional header to GET request`() {
-            runBlocking {
+            runTest {
                 // given
                 val header = mapOf(
                     "Additional-Header" to listOf("Some value")
@@ -175,7 +175,7 @@ internal class DefaultHttpClientKtTest : MockServerTestCase<WireMockServer> by W
 
         @Test
         fun `multiple values of a header are joined by a comma`() {
-            runBlocking {
+            runTest {
                 // given
                 serverInstance.stubFor(
                     get(urlPathEqualTo("/test")).willReturn(
@@ -207,7 +207,7 @@ internal class DefaultHttpClientKtTest : MockServerTestCase<WireMockServer> by W
         @ParameterizedTest
         @ValueSource(ints = [500, 501, 502, 503, 504, 505, 506, 507, 508, 509, 510, 511, 520, 521, 522, 523, 524, 525, 526, 527, 529, 530, 561, 598, 599, 425, 429])
         fun `performs retry for a variety of status codes`(value: Int) {
-            runBlocking {
+            runTest {
                 // given
                 val path = "anime/1535"
 
@@ -251,7 +251,7 @@ internal class DefaultHttpClientKtTest : MockServerTestCase<WireMockServer> by W
 
         @Test
         fun `status code - initial execution fails, all retries fail except the last retry which is successful`() {
-            runBlocking {
+            runTest {
                 // given
                 val path = "anime/1535"
 
@@ -343,7 +343,7 @@ internal class DefaultHttpClientKtTest : MockServerTestCase<WireMockServer> by W
 
         @Test
         fun `status code - throws exception, because it still fails after max attempts retries`() {
-            runBlocking {
+            runTest {
                 // given
                 val path = "anime/1535"
 
@@ -374,7 +374,7 @@ internal class DefaultHttpClientKtTest : MockServerTestCase<WireMockServer> by W
 
         @Test
         fun `throwable - exception without a retry case is thrown as-is`() {
-            runBlocking {
+            runTest {
                 // given
                 val url = URI("http://localhost:$port/test").toURL()
                 val exception = UnknownHostException("invoked by test")
@@ -399,7 +399,7 @@ internal class DefaultHttpClientKtTest : MockServerTestCase<WireMockServer> by W
 
         @Test
         fun `throwable - performs a retry for a SocketTimeoutException`() {
-            runBlocking {
+            runTest {
                 // given
                 val path = "anime/1535"
 
@@ -448,7 +448,7 @@ internal class DefaultHttpClientKtTest : MockServerTestCase<WireMockServer> by W
 
         @Test
         fun `throwable - re-throws SocketTimeoutException after maximum of attempts has been reached`() {
-            runBlocking {
+            runTest {
                 serverInstance.stubFor(
                     get(urlPathEqualTo("/test")).willReturn(
                         aResponse()
@@ -482,7 +482,7 @@ internal class DefaultHttpClientKtTest : MockServerTestCase<WireMockServer> by W
 
         @Test
         fun `status code 103 - leads to removing HTTP 2 from protocols and performs a retry`() {
-            runBlocking {
+            runTest {
                 // given
                 val url = URI("http://localhost:$port/anime/1535").toURL()
 
@@ -562,7 +562,7 @@ internal class DefaultHttpClientKtTest : MockServerTestCase<WireMockServer> by W
 
         @Test
         fun `executes higher order functions before and after retry`() {
-            runBlocking {
+            runTest {
                 // given
                 val path = "anime/1535"
 
@@ -621,7 +621,7 @@ internal class DefaultHttpClientKtTest : MockServerTestCase<WireMockServer> by W
 
         @Test
         fun `successfully retrieve response`() {
-            runBlocking {
+            runTest {
                 // given
                 val path = "graphql"
                 val httpResponseCode = 200
@@ -658,7 +658,7 @@ internal class DefaultHttpClientKtTest : MockServerTestCase<WireMockServer> by W
 
         @Test
         fun `receive an error`() {
-            runBlocking {
+            runTest {
                 // given
                 val path = "anime/1535"
                 val httpResponseCode = 400
@@ -695,7 +695,7 @@ internal class DefaultHttpClientKtTest : MockServerTestCase<WireMockServer> by W
 
         @Test
         fun `headers can be overridden - override User-Agent`() {
-            runBlocking {
+            runTest {
                 // given
                 val header = mapOf(
                     "User-Agent" to listOf("Test-Agent")
@@ -732,7 +732,7 @@ internal class DefaultHttpClientKtTest : MockServerTestCase<WireMockServer> by W
 
         @Test
         fun `send accept encoding gzip for POST requests`() {
-            runBlocking {
+            runTest {
                 // given
                 serverInstance.stubFor(
                     post(urlPathEqualTo("/test")).willReturn(
@@ -764,7 +764,7 @@ internal class DefaultHttpClientKtTest : MockServerTestCase<WireMockServer> by W
 
         @Test
         fun `headers can be overridden - override content-type`() {
-            runBlocking {
+            runTest {
                 // given
                 serverInstance.stubFor(
                     post(urlPathEqualTo("/test")).willReturn(
@@ -796,7 +796,7 @@ internal class DefaultHttpClientKtTest : MockServerTestCase<WireMockServer> by W
 
         @Test
         fun `add additional header to POST request`() {
-            runBlocking {
+            runTest {
                 // given
                 val header = mapOf(
                     "Additional-Header" to listOf("Some value")
@@ -833,7 +833,7 @@ internal class DefaultHttpClientKtTest : MockServerTestCase<WireMockServer> by W
 
         @Test
         fun `multiple values of a header are joined by a comma`() {
-            runBlocking {
+            runTest {
                 // given
                 serverInstance.stubFor(
                     post(urlPathEqualTo("/test")).willReturn(
@@ -865,7 +865,7 @@ internal class DefaultHttpClientKtTest : MockServerTestCase<WireMockServer> by W
 
         @Test
         fun `body is sent correctly for POST request`() {
-            runBlocking {
+            runTest {
                 // given
                 serverInstance.stubFor(
                     post(urlPathEqualTo("/test")).willReturn(
@@ -944,7 +944,7 @@ internal class DefaultHttpClientKtTest : MockServerTestCase<WireMockServer> by W
         @ParameterizedTest
         @ValueSource(ints = [500, 501, 502, 503, 504, 505, 506, 507, 508, 509, 510, 511, 520, 521, 522, 523, 524, 525, 526, 527, 529, 530, 561, 598, 599, 425, 429])
         fun `performs retry for a variety of status codes`(value: Int) {
-            runBlocking {
+            runTest {
                 // given
                 val path = "graphql"
                 val body = "{ \"key\": \"some-value\" }"
@@ -995,7 +995,7 @@ internal class DefaultHttpClientKtTest : MockServerTestCase<WireMockServer> by W
 
         @Test
         fun `status code - initial execution fails, all retries fail except the last retry which is successful`() {
-            runBlocking {
+            runTest {
                 // given
                 val path = "graphql"
                 val body = "{ \"key\": \"some-value\" }"
@@ -1094,7 +1094,7 @@ internal class DefaultHttpClientKtTest : MockServerTestCase<WireMockServer> by W
 
         @Test
         fun `status code - throws exception, because it still fails after max attempts retries`() {
-            runBlocking {
+            runTest {
                 // given
                 val path = "graphql"
                 val body = "{ \"key\": \"some-value\" }"
@@ -1133,7 +1133,7 @@ internal class DefaultHttpClientKtTest : MockServerTestCase<WireMockServer> by W
 
         @Test
         fun `throwable - exception without a retry case is thrown as-is`() {
-            runBlocking {
+            runTest {
                 // given
                 val url = URI("http://localhost:$port/test").toURL()
                 val exception = UnknownHostException("invoked by test")
@@ -1163,7 +1163,7 @@ internal class DefaultHttpClientKtTest : MockServerTestCase<WireMockServer> by W
 
         @Test
         fun `throwable - performs a retry for a SocketTimeoutException`() {
-            runBlocking {
+            runTest {
                 // given
                 val path = "anime/1535"
 
@@ -1220,7 +1220,7 @@ internal class DefaultHttpClientKtTest : MockServerTestCase<WireMockServer> by W
 
         @Test
         fun `throwable - re-throws SocketTimeoutException after maximum of attempts has been reached`() {
-            runBlocking {
+            runTest {
                 // given
                 val path = "anime/1535"
 
@@ -1264,7 +1264,7 @@ internal class DefaultHttpClientKtTest : MockServerTestCase<WireMockServer> by W
 
         @Test
         fun `status code 103 - leads to removing HTTP 2 from protocols and performs a retry`() {
-            runBlocking {
+            runTest {
                 // given
                 val body = "{ \"key\": \"some-value\" }"
                 val url = URI("http://localhost:$port/graphql").toURL()
@@ -1352,7 +1352,7 @@ internal class DefaultHttpClientKtTest : MockServerTestCase<WireMockServer> by W
 
         @Test
         fun `executes higher order functions before and after retry`() {
-            runBlocking {
+            runTest {
                 // given
                 val path = "anime/1535"
 
@@ -1419,7 +1419,7 @@ internal class DefaultHttpClientKtTest : MockServerTestCase<WireMockServer> by W
 
         @Test
         fun `successful retrieve response`() {
-            runBlocking {
+            runTest {
                 // given
                 val path = "anime/1535"
                 val httpResponseCode = 200
@@ -1459,7 +1459,7 @@ internal class DefaultHttpClientKtTest : MockServerTestCase<WireMockServer> by W
             308,
         ])
         fun `uses custom redirect interceptor in case the initial response returns a respective status code`(value: Int) {
-            runBlocking {
+            runTest {
                 // given
                 val url = URI("http://localhost:$port/file.txt").toURL()
 
@@ -1512,7 +1512,7 @@ internal class DefaultHttpClientKtTest : MockServerTestCase<WireMockServer> by W
             308,
         ])
         fun `correctly sets passes host header and all x- prefixed headers`(value: Int) {
-            runBlocking {
+            runTest {
                 // given
                 val url = URI("http://localhost:$port/file.txt").toURL()
 
@@ -1569,7 +1569,7 @@ internal class DefaultHttpClientKtTest : MockServerTestCase<WireMockServer> by W
 
         @Test
         fun `status code - correctly adds new retry case`() {
-            runBlocking {
+            runTest {
                 // given
                 val path = "anime/1535"
 
@@ -1615,7 +1615,7 @@ internal class DefaultHttpClientKtTest : MockServerTestCase<WireMockServer> by W
 
         @Test
         fun `status code - last added case wins`() {
-            runBlocking {
+            runTest {
                 // given
                 val path = "anime/1535"
 
@@ -1665,7 +1665,7 @@ internal class DefaultHttpClientKtTest : MockServerTestCase<WireMockServer> by W
 
         @Test
         fun `throwable - last added case wins`() {
-            runBlocking {
+            runTest {
                 // given
                 val path = "anime/1535"
 
