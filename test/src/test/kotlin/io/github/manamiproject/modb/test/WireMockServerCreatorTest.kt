@@ -2,7 +2,7 @@ package io.github.manamiproject.modb.test
 
 import com.github.tomakehurst.wiremock.WireMockServer
 import com.github.tomakehurst.wiremock.client.WireMock.*
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.test.runTest
 import org.assertj.core.api.Assertions.assertThat
 import java.net.HttpURLConnection
 import java.net.HttpURLConnection.HTTP_OK
@@ -35,7 +35,7 @@ internal class WireMockServerCreatorTest : MockServerTestCase<WireMockServer> by
 
     @Test
     fun `templating is enabled`() {
-        runBlocking {
+        runTest {
             // given
             val path = "graphql"
             val httpResponseCode = 200

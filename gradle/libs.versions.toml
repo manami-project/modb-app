@@ -7,7 +7,7 @@ junit-jupiter = "6.0.2"
 junit-platform-launcher = "6.0.2"
 kommand = "1.5.0"
 kotlin = "2.3.0"
-kotlinx-coroutines-core-jvm = "1.10.2"
+kotlinx-coroutines = "1.10.2"
 kover = "0.9.4"
 logback-classic = "1.5.25"
 moshi = "1.15.2"
@@ -31,7 +31,8 @@ kommand = { module = "io.github.manamiproject:kommand", version.ref = "kommand" 
 kotlin-reflect = { module = "org.jetbrains.kotlin:kotlin-reflect", version.ref = "kotlin" }
 kotlin-stdlib = { module = "org.jetbrains.kotlin:kotlin-stdlib", version.ref = "kotlin" }
 kotlin-test-junit5 = { module = "org.jetbrains.kotlin:kotlin-test-junit5", version.ref = "kotlin" }
-kotlinx-coroutines-core-jvm = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm", version.ref = "kotlinx-coroutines-core-jvm" }
+kotlinx-coroutines-core-jvm = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm", version.ref = "kotlinx-coroutines" }
+kotlinx-coroutines-test-jvm = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test-jvm", version.ref = "kotlinx-coroutines" }
 logback-classic = { module = "ch.qos.logback:logback-classic", version.ref = "logback-classic" }
 moshi = { module = "com.squareup.moshi:moshi-kotlin", version.ref = "moshi" }
 okhttp = { module = "com.squareup.okhttp3:okhttp", version.ref = "okhttp" }

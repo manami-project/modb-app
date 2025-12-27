@@ -1,6 +1,7 @@
 package io.github.manamiproject.modb.test
 
 import kotlinx.coroutines.*
+import kotlinx.coroutines.test.runTest
 import java.io.BufferedReader
 import java.io.InputStream
 import java.lang.ClassLoader.getSystemResourceAsStream
@@ -94,7 +95,7 @@ public inline fun <reified T: Throwable> exceptionExpected(noinline func: suspen
         result = throwable
     }
 
-    runBlocking {
+    runTest {
         CoroutineScope(Job() + CoroutineName("UnitTest") + exceptionHandler).launch {
             func.invoke(this)
         }.join()
