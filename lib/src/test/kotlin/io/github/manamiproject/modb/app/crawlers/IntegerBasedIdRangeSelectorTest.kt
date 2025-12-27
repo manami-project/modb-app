@@ -9,7 +9,7 @@ import io.github.manamiproject.modb.core.config.AnimeId
 import io.github.manamiproject.modb.core.config.Hostname
 import io.github.manamiproject.modb.core.config.MetaDataProviderConfig
 import io.github.manamiproject.modb.test.exceptionExpected
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.test.runTest
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Nested
 import org.junit.jupiter.params.ParameterizedTest
@@ -86,7 +86,7 @@ internal class IntegerBasedIdRangeSelectorTest {
 
         @Test
         fun `correctly generates sequence of IDs`() {
-            runBlocking {
+            runTest {
                 // given
                 val testMetaDataProviderConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = "example.org"
@@ -140,7 +140,7 @@ internal class IntegerBasedIdRangeSelectorTest {
 
         @Test
         fun `result is in random order`() {
-            runBlocking {
+            runTest {
                 // given
                 val testMetaDataProviderConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = "example.org"
@@ -196,7 +196,7 @@ internal class IntegerBasedIdRangeSelectorTest {
 
         @Test
         fun `removes IDs which are in dead entries lists from generated sequence`() {
-            runBlocking {
+            runTest {
                 // given
                 val testMetaDataProviderConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = "example.org"
@@ -248,7 +248,7 @@ internal class IntegerBasedIdRangeSelectorTest {
 
         @Test
         fun `removes IDs which are not scheduled for current week from generated sequence`() {
-            runBlocking {
+            runTest {
                 // given
                 val testMetaDataProviderConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = "example.org"
@@ -300,7 +300,7 @@ internal class IntegerBasedIdRangeSelectorTest {
 
         @Test
         fun `removes IDs which have already been downloaded from generated sequence`() {
-            runBlocking {
+            runTest {
                 // given
                 val testMetaDataProviderConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = "example.org"

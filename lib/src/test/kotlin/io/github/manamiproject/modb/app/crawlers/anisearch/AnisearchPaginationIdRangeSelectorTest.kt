@@ -15,7 +15,7 @@ import io.github.manamiproject.modb.test.exceptionExpected
 import io.github.manamiproject.modb.test.loadTestResource
 import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.async
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.test.runTest
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Nested
 import java.net.ConnectException
@@ -31,7 +31,7 @@ internal class AnisearchPaginationIdRangeSelectorTest {
 
         @Test
         fun `adds RetryCases for ConnectException, UnknownHostException and NoRouteToHostException with restarting the NetworkController`() {
-            runBlocking {
+            runTest {
                 // given
                 val cases = mutableListOf<RetryCase>()
                 val testHttpClient = object : HttpClient by TestHttpClient {
@@ -45,7 +45,7 @@ internal class AnisearchPaginationIdRangeSelectorTest {
                 val testNetworkController = object: NetworkController by TestNetworkController {
                     override suspend fun restartAsync(): Deferred<Boolean> {
                         restartInvocations++
-                        return runBlocking { async { true } }
+                        return async { true }
                     }
                 }
 
@@ -86,7 +86,7 @@ internal class AnisearchPaginationIdRangeSelectorTest {
 
         @Test
         fun `correctly extracts page content`() {
-            runBlocking {
+            runTest {
                 // given
                 val testHttpClient = object: HttpClient by TestHttpClient {
                     override fun addRetryCases(vararg retryCases: RetryCase): HttpClient = this
@@ -223,7 +223,7 @@ internal class AnisearchPaginationIdRangeSelectorTest {
 
         @Test
         fun `removes anime not scheduled for the current week`() {
-            runBlocking {
+            runTest {
                 // given
                 val testHttpClient = object: HttpClient by TestHttpClient {
                     override fun addRetryCases(vararg retryCases: RetryCase): HttpClient = this
@@ -361,7 +361,7 @@ internal class AnisearchPaginationIdRangeSelectorTest {
 
         @Test
         fun `removes anime have already been downloaded`() {
-            runBlocking {
+            runTest {
                 // given
                 val testHttpClient = object: HttpClient by TestHttpClient {
                     override fun addRetryCases(vararg retryCases: RetryCase): HttpClient = this
@@ -499,7 +499,7 @@ internal class AnisearchPaginationIdRangeSelectorTest {
 
         @Test
         fun `retrieves anime IDs which are not scheduled for redownload this week only once`() {
-            runBlocking {
+            runTest {
                 // given
                 val testHttpClient = object: HttpClient by TestHttpClient {
                     override fun addRetryCases(vararg retryCases: RetryCase): HttpClient = this
@@ -540,7 +540,7 @@ internal class AnisearchPaginationIdRangeSelectorTest {
 
         @Test
         fun `throws exception if entries on the page cannot be extracted`() {
-            runBlocking {
+            runTest {
                 // given
                 val testHttpClient = object: HttpClient by TestHttpClient {
                     override fun addRetryCases(vararg retryCases: RetryCase): HttpClient = this
@@ -574,7 +574,7 @@ internal class AnisearchPaginationIdRangeSelectorTest {
 
         @Test
         fun `directly throws exception if it's not one of the cases that restart the network controller`() {
-            runBlocking {
+            runTest {
                 // given
                 val testDownloadControlStateScheduler = object: DownloadControlStateScheduler by TestDownloadControlStateScheduler {
                     override suspend fun findEntriesNotScheduledForCurrentWeek(metaDataProviderConfig: MetaDataProviderConfig): Set<AnimeId> = emptySet()

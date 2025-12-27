@@ -1,6 +1,6 @@
 package io.github.manamiproject.modb.core.extensions
 
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.test.runTest
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.assertThrows
@@ -57,7 +57,7 @@ internal class CollectionExtensionsKtTest {
 
         @Test
         fun `create a shuffled list`() {
-            runBlocking {
+            runTest {
                 // given
                 val sortedList = mutableListOf("A", "B", "C", "D")
 
@@ -72,7 +72,7 @@ internal class CollectionExtensionsKtTest {
 
         @Test
         fun `list having only one element`() {
-            runBlocking {
+            runTest {
                 // given
                 val sortedList = mutableListOf("A")
 
@@ -86,7 +86,7 @@ internal class CollectionExtensionsKtTest {
 
         @Test
         fun `empty list`() {
-            runBlocking {
+            runTest {
                 // given
                 val sortedList = emptyList<String>()
 

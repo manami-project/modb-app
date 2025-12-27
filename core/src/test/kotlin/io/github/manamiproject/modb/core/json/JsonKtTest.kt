@@ -11,7 +11,7 @@ import io.github.manamiproject.modb.core.json.Json.SerializationOptions.DEACTIVA
 import io.github.manamiproject.modb.core.json.Json.SerializationOptions.DEACTIVATE_SERIALIZE_NULL
 import io.github.manamiproject.modb.test.exceptionExpected
 import io.github.manamiproject.modb.test.tempDirectory
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.test.runTest
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Nested
 import java.util.*
@@ -27,7 +27,7 @@ internal class JsonKtTest {
         inner class AnimeRawTests {
 
             @Test
-            fun `deserialize AnimeRaw - using inputstream, all properties set`() {
+            fun `deserialize AnimeRaw - using InputStream, all properties set`() {
                 tempDirectory {
                     // given
                     val tempFile = tempDir.resolve("${UUID.randomUUID()}.json")
@@ -45,7 +45,7 @@ internal class JsonKtTest {
 
             @Test
             fun `deserialize AnimeRaw - using string, all properties set`() {
-                runBlocking {
+                runTest {
                     // given
                     val json = TestAnimeRawObjects.AllPropertiesSet.serializedPrettyPrint
 
@@ -59,7 +59,7 @@ internal class JsonKtTest {
 
             @Test
             fun `deserialize AnimeRaw - default properties`() {
-                runBlocking {
+                runTest {
                     // given
                     val json = TestAnimeRawObjects.DefaultAnime.serializedPrettyPrint
 
@@ -94,7 +94,7 @@ internal class JsonKtTest {
 
             @Test
             fun `deserialize Anime - using string, all properties set`() {
-                runBlocking {
+                runTest {
                     // given
                     val json = TestAnimeObjects.AllPropertiesSet.serializedPrettyPrint
 
@@ -108,7 +108,7 @@ internal class JsonKtTest {
 
             @Test
             fun `deserialize Anime - default properties`() {
-                runBlocking {
+                runTest {
                     // given
                     val json = TestAnimeObjects.DefaultAnime.serializedPrettyPrint
 
@@ -142,7 +142,7 @@ internal class JsonKtTest {
 
         @Test
         fun `deserialize an array - non nullable types with default value can contain null`() {
-            runBlocking {
+            runTest {
                 // given
                 val json = """
                     {
@@ -164,7 +164,7 @@ internal class JsonKtTest {
 
         @Test
         fun `deserialize an array - Although the type of the list is non-nullable and copy is called on a list containing null, no exception is being thrown`() {
-            runBlocking {
+            runTest {
                 // given
                 val json = """
                     {
@@ -196,7 +196,7 @@ internal class JsonKtTest {
 
                 @Test
                 fun `serialize AnimeRaw - all properties set`() {
-                    runBlocking {
+                    runTest {
                         // given
                         val anime = TestAnimeRawObjects.AllPropertiesSet.obj
 
@@ -210,7 +210,7 @@ internal class JsonKtTest {
 
                 @Test
                 fun `serialize AnimeRaw - default properties`() {
-                    runBlocking {
+                    runTest {
                         // given
                         val anime = TestAnimeRawObjects.DefaultAnime.obj
 
@@ -228,7 +228,7 @@ internal class JsonKtTest {
 
                 @Test
                 fun `serialize Anime - all properties set`() {
-                    runBlocking {
+                    runTest {
                         // given
                         val anime = TestAnimeObjects.AllPropertiesSet.obj
 
@@ -242,7 +242,7 @@ internal class JsonKtTest {
 
                 @Test
                 fun `serialize Anime - default properties`() {
-                    runBlocking {
+                    runTest {
                         // given
                         val anime = TestAnimeObjects.DefaultAnime.obj
 
@@ -257,7 +257,7 @@ internal class JsonKtTest {
 
             @Test
             fun `serialize - option serialize null is activated by default`() {
-                runBlocking {
+                runTest {
                     // given
                     val expectedJson = """
                         {
@@ -283,7 +283,7 @@ internal class JsonKtTest {
 
                 @Test
                 fun `serialize AnimeRaw - deactivate pretty print`() {
-                    runBlocking {
+                    runTest {
                         // given
                         val anime = TestAnimeRawObjects.AllPropertiesSet.obj
 
@@ -297,7 +297,7 @@ internal class JsonKtTest {
 
                 @Test
                 fun `serialize AnimeRaw - deactivate serialize null`() {
-                    runBlocking {
+                    runTest {
                         // given
                         val anime = TestAnimeRawObjects.NullableNotSet.obj
 
@@ -364,7 +364,7 @@ internal class JsonKtTest {
 
                 @Test
                 fun `serialize Anime - deactivate pretty print`() {
-                    runBlocking {
+                    runTest {
                         // given
                         val anime = TestAnimeObjects.AllPropertiesSet.obj
 
@@ -378,7 +378,7 @@ internal class JsonKtTest {
 
                 @Test
                 fun `serialize Anime - deactivate serialize null`() {
-                    runBlocking {
+                    runTest {
                         // given
                         val anime = TestAnimeObjects.NullableNotSet.obj
 

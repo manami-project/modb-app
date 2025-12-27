@@ -9,7 +9,7 @@ import io.github.manamiproject.modb.core.config.AnimeId
 import io.github.manamiproject.modb.core.config.Hostname
 import io.github.manamiproject.modb.core.config.MetaDataProviderConfig
 import io.github.manamiproject.modb.test.loadTestResource
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.test.runTest
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Nested
 import java.net.URI
@@ -24,7 +24,7 @@ internal class AnilistAnimeConverterTest {
 
         @Test
         fun `title containing special chars`() {
-            runBlocking {
+            runTest {
                 // given
                 val testAnilistConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnilistConfig.hostname()
@@ -48,7 +48,7 @@ internal class AnilistAnimeConverterTest {
 
         @Test
         fun `type is tv`() {
-            runBlocking {
+            runTest {
                 // given
                 val testAnilistConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnilistConfig.hostname()
@@ -68,7 +68,7 @@ internal class AnilistAnimeConverterTest {
 
         @Test
         fun `type is tv_short and is mapped to tv`() {
-            runBlocking {
+            runTest {
                 // given
                 val testAnilistConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnilistConfig.hostname()
@@ -88,7 +88,7 @@ internal class AnilistAnimeConverterTest {
 
         @Test
         fun `type is special`() {
-            runBlocking {
+            runTest {
                 // given
                 val testAnilistConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnilistConfig.hostname()
@@ -108,7 +108,7 @@ internal class AnilistAnimeConverterTest {
 
         @Test
         fun `type is ova`() {
-            runBlocking {
+            runTest {
                 // given
                 val testAnilistConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnilistConfig.hostname()
@@ -128,7 +128,7 @@ internal class AnilistAnimeConverterTest {
 
         @Test
         fun `type is ona`() {
-            runBlocking {
+            runTest {
                 // given
                 val testAnilistConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnilistConfig.hostname()
@@ -148,7 +148,7 @@ internal class AnilistAnimeConverterTest {
 
         @Test
         fun `type is movie`() {
-            runBlocking {
+            runTest {
                 // given
                 val testAnilistConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnilistConfig.hostname()
@@ -168,7 +168,7 @@ internal class AnilistAnimeConverterTest {
 
         @Test
         fun `type is music is mapped to special`() {
-            runBlocking {
+            runTest {
                 // given
                 val testAnilistConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnilistConfig.hostname()
@@ -188,7 +188,7 @@ internal class AnilistAnimeConverterTest {
 
         @Test
         fun `type is null and is mapped to UNKNOWN`() {
-            runBlocking {
+            runTest {
                 // given
                 val testAnilistConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnilistConfig.hostname()
@@ -212,7 +212,7 @@ internal class AnilistAnimeConverterTest {
 
         @Test
         fun `fixed number of episodes`() {
-            runBlocking {
+            runTest {
                 // given
                 val testAnilistConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnilistConfig.hostname()
@@ -232,7 +232,7 @@ internal class AnilistAnimeConverterTest {
 
         @Test
         fun `neither episodes nor nextairingepisode is set`() {
-            runBlocking {
+            runTest {
                 // given
                 val testAnilistConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnilistConfig.hostname()
@@ -252,7 +252,7 @@ internal class AnilistAnimeConverterTest {
 
         @Test
         fun `ongoing series for which the value has to be taken from nextairingepisode`() {
-            runBlocking {
+            runTest {
                 // given
                 val testAnilistConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnilistConfig.hostname()
@@ -276,7 +276,7 @@ internal class AnilistAnimeConverterTest {
 
         @Test
         fun `picture is available, but anilist never provides a thumbnail so the thumbnail is the same as the picture`() {
-            runBlocking {
+            runTest {
                 // given
                 val testAnilistConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnilistConfig.hostname()
@@ -297,7 +297,7 @@ internal class AnilistAnimeConverterTest {
 
         @Test
         fun `picture is unavailable`() {
-            runBlocking {
+            runTest {
                 // given
                 val testAnilistConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnilistConfig.hostname()
@@ -322,7 +322,7 @@ internal class AnilistAnimeConverterTest {
 
         @Test
         fun `synonyms taken from titles and synonyms, ignoring null`() {
-            runBlocking {
+            runTest {
                 // given
                 val testAnilistConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnilistConfig.hostname()
@@ -351,7 +351,7 @@ internal class AnilistAnimeConverterTest {
 
         @Test
         fun `extract correct id and build anime link correctly`() {
-            runBlocking {
+            runTest {
                 // given
                 val testAnilistConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnilistConfig.hostname()
@@ -375,7 +375,7 @@ internal class AnilistAnimeConverterTest {
 
         @Test
         fun `no adaption, no relations`() {
-            runBlocking {
+            runTest {
                 // given
                 val testAnilistConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnilistConfig.hostname()
@@ -395,7 +395,7 @@ internal class AnilistAnimeConverterTest {
 
         @Test
         fun `no adaption, multiple relations`() {
-            runBlocking {
+            runTest {
                 // given
                 val testAnilistConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnilistConfig.hostname()
@@ -419,7 +419,7 @@ internal class AnilistAnimeConverterTest {
 
         @Test
         fun `one adaption, one relation`() {
-            runBlocking {
+            runTest {
                 // given
                 val testAnilistConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnilistConfig.hostname()
@@ -441,7 +441,7 @@ internal class AnilistAnimeConverterTest {
 
         @Test
         fun `has adaption, multiple relations`() {
-            runBlocking {
+            runTest {
                 // given
                 val testAnilistConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnilistConfig.hostname()
@@ -474,7 +474,7 @@ internal class AnilistAnimeConverterTest {
 
         @Test
         fun `has adaption, no relations`() {
-            runBlocking {
+            runTest {
                 // given
                 val testAnilistConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnilistConfig.hostname()
@@ -498,7 +498,7 @@ internal class AnilistAnimeConverterTest {
 
         @Test
         fun `'FINISHED' is mapped to 'FINISHED'`() {
-            runBlocking {
+            runTest {
                 // given
                 val testAnilistConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnilistConfig.hostname()
@@ -518,7 +518,7 @@ internal class AnilistAnimeConverterTest {
 
         @Test
         fun `'RELEASING' is mapped to 'ONGOING'`() {
-            runBlocking {
+            runTest {
                 // given
                 val testAnilistConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnilistConfig.hostname()
@@ -538,7 +538,7 @@ internal class AnilistAnimeConverterTest {
 
         @Test
         fun `'NOT_YET_RELEASED' is mapped to 'UPCOMING'`() {
-            runBlocking {
+            runTest {
                 // given
                 val testAnilistConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnilistConfig.hostname()
@@ -558,7 +558,7 @@ internal class AnilistAnimeConverterTest {
 
         @Test
         fun `'CANCELLED' is mapped to 'UNKNOWN'`() {
-            runBlocking {
+            runTest {
                 // given
                 val testAnilistConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnilistConfig.hostname()
@@ -578,7 +578,7 @@ internal class AnilistAnimeConverterTest {
 
         @Test
         fun `null is mapped to 'UNKNOWN'`() {
-            runBlocking {
+            runTest {
                 // given
                 val testAnilistConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnilistConfig.hostname()
@@ -602,7 +602,7 @@ internal class AnilistAnimeConverterTest {
 
         @Test
         fun `put names of genres and tags as distinct list into the anime's tags`() {
-            runBlocking {
+            runTest {
                 // given
                 val testAnilistConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnilistConfig.hostname()
@@ -656,7 +656,7 @@ internal class AnilistAnimeConverterTest {
 
         @Test
         fun `duration is not set and therefore 0`() {
-            runBlocking {
+            runTest {
                 // given
                 val testAnilistConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnilistConfig.hostname()
@@ -676,7 +676,7 @@ internal class AnilistAnimeConverterTest {
 
         @Test
         fun `duration is set to 0`() {
-            runBlocking {
+            runTest {
                 // given
                 val testAnilistConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnilistConfig.hostname()
@@ -696,7 +696,7 @@ internal class AnilistAnimeConverterTest {
 
         @Test
         fun `anilist only uses minutes for duration - so this entry although 15 seconds long is set to 1 min`() {
-            runBlocking {
+            runTest {
                 // given
                 val testAnilistConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnilistConfig.hostname()
@@ -716,7 +716,7 @@ internal class AnilistAnimeConverterTest {
 
         @Test
         fun `duration of 24 minutes`() {
-            runBlocking {
+            runTest {
                 // given
                 val testAnilistConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnilistConfig.hostname()
@@ -736,7 +736,7 @@ internal class AnilistAnimeConverterTest {
 
         @Test
         fun `duration of 2 hours`() {
-            runBlocking {
+            runTest {
                 // given
                 val testAnilistConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnilistConfig.hostname()
@@ -763,7 +763,7 @@ internal class AnilistAnimeConverterTest {
 
             @Test
             fun `season is 'undefined'`() {
-                runBlocking {
+                runTest {
                     // given
                     val testAnilistConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
                         override fun hostname(): Hostname = AnilistConfig.hostname()
@@ -783,7 +783,7 @@ internal class AnilistAnimeConverterTest {
 
             @Test
             fun `season is 'spring'`() {
-                runBlocking {
+                runTest {
                     // given
                     val testAnilistConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
                         override fun hostname(): Hostname = AnilistConfig.hostname()
@@ -803,7 +803,7 @@ internal class AnilistAnimeConverterTest {
 
             @Test
             fun `season is 'summer'`() {
-                runBlocking {
+                runTest {
                     // given
                     val testAnilistConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
                         override fun hostname(): Hostname = AnilistConfig.hostname()
@@ -823,7 +823,7 @@ internal class AnilistAnimeConverterTest {
 
             @Test
             fun `season is 'fall'`() {
-                runBlocking {
+                runTest {
                     // given
                     val testAnilistConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
                         override fun hostname(): Hostname = AnilistConfig.hostname()
@@ -843,7 +843,7 @@ internal class AnilistAnimeConverterTest {
 
             @Test
             fun `season is 'wimter'`() {
-                runBlocking {
+                runTest {
                     // given
                     val testAnilistConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
                         override fun hostname(): Hostname = AnilistConfig.hostname()
@@ -867,7 +867,7 @@ internal class AnilistAnimeConverterTest {
 
             @Test
             fun `seasonYear is set`() {
-                runBlocking {
+                runTest {
                     // given
                     val testAnilistConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
                         override fun hostname(): Hostname = AnilistConfig.hostname()
@@ -887,7 +887,7 @@ internal class AnilistAnimeConverterTest {
 
             @Test
             fun `year is not set and default is 0`() {
-                runBlocking {
+                runTest {
                     // given
                     val testAnilistConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
                         override fun hostname(): Hostname = AnilistConfig.hostname()
@@ -907,7 +907,7 @@ internal class AnilistAnimeConverterTest {
 
             @Test
             fun `year is 2006 - seasonYear is null but start date is set`() {
-                runBlocking {
+                runTest {
                     // given
                     val testAnilistConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
                         override fun hostname(): Hostname = AnilistConfig.hostname()
@@ -932,7 +932,7 @@ internal class AnilistAnimeConverterTest {
 
         @Test
         fun `successfully load score`() {
-            runBlocking {
+            runTest {
                 // given
                 val testAnilistConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnilistConfig.hostname()
@@ -951,7 +951,7 @@ internal class AnilistAnimeConverterTest {
 
         @Test
         fun `returns NoMetaDataProviderScore`() {
-            runBlocking {
+            runTest {
                 // given
                 val testAnilistConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnilistConfig.hostname()
@@ -973,7 +973,7 @@ internal class AnilistAnimeConverterTest {
 
         @Test
         fun `multiple studios`() {
-            runBlocking {
+            runTest {
                 // given
                 val testAnilistConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnilistConfig.hostname()
@@ -996,7 +996,7 @@ internal class AnilistAnimeConverterTest {
 
         @Test
         fun `no studios`() {
-            runBlocking {
+            runTest {
                 // given
                 val testAnilistConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnilistConfig.hostname()
@@ -1020,7 +1020,7 @@ internal class AnilistAnimeConverterTest {
 
         @Test
         fun `multiple producers`() {
-            runBlocking {
+            runTest {
                 // given
                 val testAnilistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnilistConfig.hostname()
@@ -1048,7 +1048,7 @@ internal class AnilistAnimeConverterTest {
 
         @Test
         fun `no producers`() {
-            runBlocking {
+            runTest {
                 // given
                 val testAnilistConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnilistConfig.hostname()

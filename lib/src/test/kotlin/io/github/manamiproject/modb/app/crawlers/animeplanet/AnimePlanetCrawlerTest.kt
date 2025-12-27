@@ -17,7 +17,7 @@ import io.github.manamiproject.modb.core.extensions.EMPTY
 import io.github.manamiproject.modb.core.extensions.fileName
 import io.github.manamiproject.modb.core.extensions.listRegularFiles
 import io.github.manamiproject.modb.test.tempDirectory
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.test.runTest
 import org.assertj.core.api.Assertions.assertThat
 import org.assertj.core.api.Assertions.assertThatNoException
 import org.junit.jupiter.api.Nested
@@ -76,7 +76,7 @@ internal class AnimePlanetCrawlerTest {
 
                 // when
                 assertThatNoException().isThrownBy {
-                    runBlocking { animePlanetCrawler.start() }
+                    runTest { animePlanetCrawler.start() }
                 }
                 assertThat(tempDir).isEmptyDirectory()
             }

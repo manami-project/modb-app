@@ -2,7 +2,7 @@ package io.github.manamiproject.modb.app.convfiles
 
 import io.github.manamiproject.modb.app.TestJavaWatchService
 import io.github.manamiproject.modb.app.TestWatchKey
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.test.runTest
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Nested
 import java.nio.file.ClosedWatchServiceException
@@ -18,71 +18,69 @@ internal class JavaWatchServiceExtensionsKtTest {
 
         @Test
         fun `returns null if ClosedWatchServiceException if thrown`() {
-            // given
-            val watchService = object: JavaWatchService by TestJavaWatchService {
-                override fun poll(): WatchKey = throw ClosedWatchServiceException()
-            }
+            runTest {
+                // given
+                val watchService = object: JavaWatchService by TestJavaWatchService {
+                    override fun poll(): WatchKey = throw ClosedWatchServiceException()
+                }
 
-            // when
-            val result = runBlocking {
-                watchService.longPoll()
-            }
+                // when
+                val result = watchService.longPoll()
 
-            // then
-            assertThat(result).isNull()
+                // then
+                assertThat(result).isNull()
+            }
         }
 
         @Test
         fun `correctly returns item`() {
-            // given
-            val watchService = object: JavaWatchService by TestJavaWatchService {
-                override fun poll(): WatchKey = TestWatchKey
-            }
+            runTest {
+                // given
+                val watchService = object: JavaWatchService by TestJavaWatchService {
+                    override fun poll(): WatchKey = TestWatchKey
+                }
 
-            // when
-            val result = runBlocking {
-                watchService.longPoll()
-            }
+                // when
+                val result = watchService.longPoll()
 
-            // then
-            assertThat(result).isNotNull()
+                // then
+                assertThat(result).isNotNull()
+            }
         }
 
         @Test
         fun `increases suspension time when waiting for non-null items`() {
-            // given
-            val noWaitingWatchService = object: JavaWatchService by TestJavaWatchService {
-                override fun poll(): WatchKey = TestWatchKey
-            }
-            val timeNoWaiting = runBlocking {
-                measureTimeMillis {
+            runTest {
+                // given
+                val noWaitingWatchService = object: JavaWatchService by TestJavaWatchService {
+                    override fun poll(): WatchKey = TestWatchKey
+                }
+                val timeNoWaiting = measureTimeMillis {
                     noWaitingWatchService.longPoll()
                 }
-            }
 
-            var invocation = 0
-            val watchService = object: JavaWatchService by TestJavaWatchService {
-                override fun poll(): WatchKey? {
-                    invocation++
+                var invocation = 0
+                val watchService = object: JavaWatchService by TestJavaWatchService {
+                    override fun poll(): WatchKey? {
+                        invocation++
 
-                    return if (invocation < 8) {
-                        null
-                    } else {
-                        TestWatchKey
+                        return if (invocation < 8) {
+                            null
+                        } else {
+                            TestWatchKey
+                        }
                     }
                 }
-            }
 
-            // when
-            val result = runBlocking {
-                measureTimeMillis {
+                // when
+                val result = measureTimeMillis {
                     watchService.longPoll()
                 }
-            }
 
-            // then
-            assertThat(timeNoWaiting).isLessThan(result)
-            assertThat(result).isGreaterThan(1000)
+                // then
+                assertThat(timeNoWaiting).isLessThan(result)
+                assertThat(result).isGreaterThan(1000)
+            }
         }
     }
 }

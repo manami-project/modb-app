@@ -10,7 +10,7 @@ import io.github.manamiproject.modb.test.MockServerTestCase
 import io.github.manamiproject.modb.test.WireMockServerCreator
 import io.github.manamiproject.modb.test.exceptionExpected
 import io.github.manamiproject.modb.test.loadTestResource
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.test.runTest
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Nested
 import org.junit.jupiter.params.ParameterizedTest
@@ -151,7 +151,7 @@ internal class AnilistDefaultTokenRetrieverTest : MockServerTestCase<WireMockSer
 
     @Test
     fun `correctly retrieve token`() {
-        runBlocking {
+        runTest {
             // given
             val testAnilistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                 override fun hostname(): Hostname = "localhost"

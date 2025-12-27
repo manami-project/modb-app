@@ -264,7 +264,7 @@ internal class DefaultRawFileConversionServiceTest {
                 }
 
                 // then
-                assertThat(result).hasMessage("Timed out waiting for 10000 ms")
+                assertThat(result).hasMessage("Timed out after 10s of _virtual_ (kotlinx.coroutines.test) time. To use the real time, wrap 'withTimeout' in 'withContext(Dispatchers.Default.limitedParallelism(1))'")
             }
         }
     }
@@ -284,14 +284,14 @@ internal class DefaultRawFileConversionServiceTest {
                     appConfig = testAppConfig,
                 )
 
-                val initallyStarted = defaultRawFileConversionService.start()
+                val initiallyStarted = defaultRawFileConversionService.start()
 
                 // when
                 val result = defaultRawFileConversionService.start()
 
                 // then
                 defaultRawFileConversionService.shutdown()
-                assertThat(initallyStarted).isTrue()
+                assertThat(initiallyStarted).isTrue()
                 assertThat(result).isFalse()
             }
         }

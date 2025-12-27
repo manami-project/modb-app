@@ -3,7 +3,7 @@ package io.github.manamiproject.modb.core.extractor
 import io.github.manamiproject.modb.core.anime.Tag
 import io.github.manamiproject.modb.core.anime.Title
 import io.github.manamiproject.modb.test.loadTestResource
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.test.runTest
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Nested
 import kotlin.test.Test
@@ -12,7 +12,7 @@ internal class JsoupXPathDataExtractorTest {
 
     @Test
     fun `return NotFound if selector was not found`() {
-        runBlocking {
+        runTest {
             // when
             val result = JsoupXPathDataExtractor.extract(
                 rawContent = loadTestResource("DataExtractorTest/myanimelist/most_cases.html"),
@@ -35,7 +35,7 @@ internal class JsoupXPathDataExtractorTest {
 
             @Test
             fun `correctly parse most cases`() {
-                runBlocking {
+                runTest {
                     // given
                     val html = loadTestResource<String>("DataExtractorTest/anidb/most_cases.html")
 
@@ -120,7 +120,7 @@ internal class JsoupXPathDataExtractorTest {
 
             @Test
             fun `date published cases`() {
-                runBlocking {
+                runTest {
                     // given
                     val html = loadTestResource<String>("DataExtractorTest/anidb/date_published_cases.html")
 
@@ -142,7 +142,7 @@ internal class JsoupXPathDataExtractorTest {
 
             @Test
             fun `correctly parse most cases`() {
-                runBlocking {
+                runTest {
                     // given
                     val html = loadTestResource<String>("DataExtractorTest/anime-planet/most_cases.html")
 
@@ -205,7 +205,7 @@ internal class JsoupXPathDataExtractorTest {
 
             @Test
             fun `correctly parse most cases`() {
-                runBlocking {
+                runTest {
                     // given
                     val html = loadTestResource<String>("DataExtractorTest/anisearch/most_cases.html")
 
@@ -262,7 +262,7 @@ internal class JsoupXPathDataExtractorTest {
 
             @Test
             fun `synonyms cases`() {
-                runBlocking {
+                runTest {
                     // given
                     val html = loadTestResource<String>("DataExtractorTest/anisearch/synonyms_cases.html")
 
@@ -293,7 +293,7 @@ internal class JsoupXPathDataExtractorTest {
 
             @Test
             fun `correctly parse most cases`() {
-                runBlocking {
+                runTest {
                     // given
                     val html = loadTestResource<String>("DataExtractorTest/livechart/most_cases.html")
 
@@ -341,7 +341,7 @@ internal class JsoupXPathDataExtractorTest {
 
             @Test
             fun `episodes countdown case`() {
-                runBlocking {
+                runTest {
                     // given
                     val html = loadTestResource<String>("DataExtractorTest/livechart/episodes_countdown_case.html")
 
@@ -363,7 +363,7 @@ internal class JsoupXPathDataExtractorTest {
 
             @Test
             fun `correctly parse most cases`() {
-                runBlocking {
+                runTest {
                     // given
                     val html = loadTestResource<String>("DataExtractorTest/myanimelist/most_cases.html")
 

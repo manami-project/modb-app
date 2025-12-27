@@ -5,23 +5,21 @@ import io.github.manamiproject.modb.app.TestMetaDataProviderConfig
 import io.github.manamiproject.modb.app.TestPathAnimeConverter
 import io.github.manamiproject.modb.app.config.Config
 import io.github.manamiproject.modb.app.waitFor
+import io.github.manamiproject.modb.core.anime.AnimeRaw
 import io.github.manamiproject.modb.core.config.FileSuffix
 import io.github.manamiproject.modb.core.config.Hostname
 import io.github.manamiproject.modb.core.config.MetaDataProviderConfig
 import io.github.manamiproject.modb.core.converter.PathAnimeConverter
-import io.github.manamiproject.modb.core.coroutines.ModbDispatchers.LIMITED_FS
 import io.github.manamiproject.modb.core.extensions.Directory
 import io.github.manamiproject.modb.core.extensions.LOCK_FILE_SUFFIX
 import io.github.manamiproject.modb.core.extensions.fileName
 import io.github.manamiproject.modb.core.extensions.regularFileExists
-import io.github.manamiproject.modb.core.anime.AnimeRaw
 import io.github.manamiproject.modb.test.exceptionExpected
 import io.github.manamiproject.modb.test.shouldNotBeInvoked
 import io.github.manamiproject.modb.test.tempDirectory
 import kotlinx.coroutines.cancelAndJoin
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
+import kotlinx.coroutines.test.runTest
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Nested
 import java.nio.file.Path
@@ -30,6 +28,7 @@ import kotlin.io.path.createFile
 import kotlin.io.path.deleteIfExists
 import kotlin.io.path.listDirectoryEntries
 import kotlin.test.Test
+import kotlin.time.DurationUnit.MILLISECONDS
 import kotlin.time.DurationUnit.SECONDS
 import kotlin.time.toDuration
 
@@ -218,7 +217,7 @@ internal class DependentConversionWatchServiceTest {
         @Test
         fun `don't invoke converter, because the dependent file is missing`() {
             tempDirectory {
-                withContext(LIMITED_FS) {
+                runTest {
                     // given
                     var converterHasBeenInvoked = false
 
@@ -263,7 +262,8 @@ internal class DependentConversionWatchServiceTest {
                     val watchService = launch {
                         dependentConversionWatchService.watch()
                     }
-                    delay(1500) // allow WatchService to complete the prepare task
+
+                    testScheduler.advanceTimeBy(1500.toDuration(MILLISECONDS))
 
                     val lockFile = mainWorkingDir.resolve("1535.$LOCK_FILE_SUFFIX").createFile()
                     mainWorkingDir.resolve("1535.${mainTestConfig.fileSuffix()}").createFile()
@@ -272,7 +272,6 @@ internal class DependentConversionWatchServiceTest {
                     lockFile.deleteIfExists()
 
                     // then
-                    delay(10.toDuration(SECONDS)) // cannot do it any other way as this is a negative test
                     dependentConversionWatchService.stop()
                     watchService.cancelAndJoin()
 
@@ -284,7 +283,7 @@ internal class DependentConversionWatchServiceTest {
         @Test
         fun `don't invoke converter, because the main file is missing`() {
             tempDirectory {
-                withContext(LIMITED_FS) {
+                runTest {
                     // given
                     var converterHasBeenInvoked = false
 
@@ -329,7 +328,7 @@ internal class DependentConversionWatchServiceTest {
                     val watchService = launch {
                         dependentConversionWatchService.watch()
                     }
-                    delay(1500) // allow WatchService to complete the prepare task
+                    testScheduler.advanceTimeBy(1500.toDuration(MILLISECONDS))
 
                     val lockFile = dependentWorkingDir.resolve("1535.$LOCK_FILE_SUFFIX").createFile()
                     dependentWorkingDir.resolve("1535.${dependentTestConfig.fileSuffix()}").createFile()
@@ -339,7 +338,6 @@ internal class DependentConversionWatchServiceTest {
                     lockFile.deleteIfExists()
 
                     // then
-                    delay(10.toDuration(SECONDS)) // cannot do it any other way as this is a negative test
                     dependentConversionWatchService.stop()
                     watchService.cancelAndJoin()
 
@@ -351,7 +349,7 @@ internal class DependentConversionWatchServiceTest {
         @Test
         fun `invoke converter as soon as the missing dependent file is created`() {
             tempDirectory {
-                withContext(LIMITED_FS) {
+                runTest {
                     // given
                     var converterHasBeenInvoked = false
                     var canBeInvoked = false
@@ -402,7 +400,7 @@ internal class DependentConversionWatchServiceTest {
                     val watchService = launch {
                         dependentConversionWatchService.watch()
                     }
-                    delay(1500) // allow WatchService to complete the prepare task
+                    testScheduler.advanceTimeBy(1500.toDuration(MILLISECONDS))
 
                     val lockFile = dependentWorkingDir.resolve("1535.$LOCK_FILE_SUFFIX").createFile()
                     dependentWorkingDir.resolve("1535.${dependentTestConfig.fileSuffix()}").createFile()
@@ -432,7 +430,7 @@ internal class DependentConversionWatchServiceTest {
         @Test
         fun `invoke converter as soon as the missing main file is created`() {
             tempDirectory {
-                withContext(LIMITED_FS) {
+                runTest {
                     // given
                     var converterHasBeenInvoked = false
                     var canBeInvoked = false
@@ -483,7 +481,7 @@ internal class DependentConversionWatchServiceTest {
                     val watchService = launch {
                         dependentConversionWatchService.watch()
                     }
-                    delay(1500) // allow WatchService to complete the prepare task
+                    testScheduler.advanceTimeBy(1500.toDuration(MILLISECONDS))
 
                     val lockFile = mainWorkingDir.resolve("1535.$LOCK_FILE_SUFFIX").createFile()
                     mainWorkingDir.resolve("1535.${mainTestConfig.fileSuffix()}").createFile()

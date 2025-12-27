@@ -3,7 +3,7 @@ package io.github.manamiproject.modb.core
 import io.github.manamiproject.modb.core.config.MetaDataProviderConfig
 import io.github.manamiproject.modb.test.exceptionExpected
 import io.github.manamiproject.modb.test.testResource
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.test.runTest
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.assertThrows
@@ -20,7 +20,7 @@ internal class FunctionsKtTest {
 
         @Test
         fun `load test resource from root directory`() {
-            runBlocking {
+            runTest {
                 // when
                 val result = loadResource("FunctionsKtTest/load_resource_tests/test-file.txt")
 
@@ -31,7 +31,7 @@ internal class FunctionsKtTest {
 
         @Test
         fun `load test resource from subdirectory`() {
-            runBlocking {
+            runTest {
                 // when
                 val result = loadResource("FunctionsKtTest/load_resource_tests/subdirectory/other-test-file.txt")
 
@@ -42,7 +42,7 @@ internal class FunctionsKtTest {
 
         @Test
         fun `returns a list of the names of the elements if the given path is a directory`() {
-            runBlocking {
+            runTest {
                 val path = "FunctionsKtTest/load_resource_tests"
 
                 // when
@@ -338,7 +338,7 @@ internal class FunctionsKtTest {
 
         @Test
         fun `execute code if current context is not test context`() {
-            runBlocking {
+            runTest {
                 // given
                 var hasBeenInvoked = false
 
@@ -356,7 +356,7 @@ internal class FunctionsKtTest {
 
         @Test
         fun `don't execute code if current context is test context`() {
-            runBlocking {
+            runTest {
                 // given
                 var hasBeenInvoked = false
 
