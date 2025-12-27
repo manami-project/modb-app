@@ -13,7 +13,7 @@ import io.github.manamiproject.modb.test.MockServerTestCase
 import io.github.manamiproject.modb.test.WireMockServerCreator
 import io.github.manamiproject.modb.test.exceptionExpected
 import io.github.manamiproject.modb.test.shouldNotBeInvoked
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.test.runTest
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Nested
 import java.net.URI
@@ -23,7 +23,7 @@ internal class SimklDownloaderTest : MockServerTestCase<WireMockServer> by WireM
 
     @Test
     fun `successfully download an anime`() {
-        runBlocking {
+        runTest {
             // given
             val testConfig = object : MetaDataProviderConfig by SimklConfig {
                 override fun hostname(): Hostname = "localhost"
@@ -55,7 +55,7 @@ internal class SimklDownloaderTest : MockServerTestCase<WireMockServer> by WireM
 
     @Test
     fun `correctly identify dead entries`() {
-        runBlocking {
+        runTest {
             // given
             val testConfig = object : MetaDataProviderConfig by SimklConfig {
                 override fun hostname(): Hostname = "localhost"

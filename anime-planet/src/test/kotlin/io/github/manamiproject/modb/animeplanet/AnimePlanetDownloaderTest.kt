@@ -11,7 +11,7 @@ import io.github.manamiproject.modb.core.extensions.EMPTY
 import io.github.manamiproject.modb.core.extensions.toAnimeId
 import io.github.manamiproject.modb.core.httpclient.APPLICATION_JSON
 import io.github.manamiproject.modb.test.*
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.test.runTest
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Nested
 import org.junit.jupiter.params.ParameterizedTest
@@ -26,7 +26,7 @@ internal class AnimePlanetDownloaderTest : MockServerTestCase<WireMockServer> by
 
         @Test
         fun `successfully download an anime`() {
-            runBlocking {
+            runTest {
                 // given
                 val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = "localhost"
@@ -124,7 +124,7 @@ internal class AnimePlanetDownloaderTest : MockServerTestCase<WireMockServer> by
         @ParameterizedTest
         @ValueSource(ints = [429, 500, 502, 521, 525])
         fun `pause and retry on response code`(responseCode: Int) {
-            runBlocking {
+            runTest {
                 // given
                 val id = 1535
 
@@ -176,7 +176,7 @@ internal class AnimePlanetDownloaderTest : MockServerTestCase<WireMockServer> by
 
         @Test
         fun `invoke lambda on finding a dead entry`() {
-            runBlocking {
+            runTest {
                 // given
                 val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = "localhost"

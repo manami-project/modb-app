@@ -16,7 +16,7 @@ import io.github.manamiproject.modb.test.loadTestResource
 import io.github.manamiproject.modb.test.tempDirectory
 import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.async
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.test.runTest
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Nested
 import java.net.*
@@ -29,7 +29,7 @@ internal class AnisearchLastPageDetectorTest {
 
         @Test
         fun `adds RetryCases for ConnectException, UnknownHostException and NoRouteToHostException with restarting the NetworkController`() {
-            runBlocking {
+            runTest {
                 // given
                 val cases = mutableListOf<RetryCase>()
                 val testHttpClient = object : HttpClient by TestHttpClient {
@@ -43,7 +43,7 @@ internal class AnisearchLastPageDetectorTest {
                 val testNetworkController = object: NetworkController by TestNetworkController {
                     override suspend fun restartAsync(): Deferred<Boolean> {
                         restartInvocations++
-                        return runBlocking { async { true } }
+                        return async { true }
                     }
                 }
 
@@ -81,7 +81,7 @@ internal class AnisearchLastPageDetectorTest {
 
         @Test
         fun `correctly extracts last page`() {
-            runBlocking {
+            runTest {
                 // given
                 val testMetaDataProviderConfig = object : MetaDataProviderConfig by AnisearchLastPageDetectorConfig {
                     override fun buildDataDownloadLink(id: String): URI = URI("http://localhost:8080/highest-id")
@@ -111,7 +111,7 @@ internal class AnisearchLastPageDetectorTest {
 
         @Test
         fun `throws exception, because the element couldn't be found`() {
-            runBlocking {
+            runTest {
                 // given
                 val testMetaDataProviderConfig = object : MetaDataProviderConfig by MyanimelistHighestIdDetectorConfig {
                     override fun buildDataDownloadLink(id: String): URI = URI("http://localhost:8080/highest-id")
@@ -150,7 +150,7 @@ internal class AnisearchLastPageDetectorTest {
 
         @Test
         fun `directly throws exception if it's not one of the cases that restart the network controller`() {
-            runBlocking {
+            runTest {
                 // given
                 val testMetaDataProviderConfig = object : MetaDataProviderConfig by MyanimelistHighestIdDetectorConfig {
                     override fun buildDataDownloadLink(id: String): URI = URI("http://localhost:8080/highest-id")

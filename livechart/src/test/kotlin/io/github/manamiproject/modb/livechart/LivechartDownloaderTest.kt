@@ -9,7 +9,7 @@ import io.github.manamiproject.modb.core.config.MetaDataProviderConfig
 import io.github.manamiproject.modb.core.extensions.EMPTY
 import io.github.manamiproject.modb.core.extensions.toAnimeId
 import io.github.manamiproject.modb.test.*
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.test.runTest
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Nested
 import java.net.URI
@@ -19,7 +19,7 @@ internal class LivechartDownloaderTest : MockServerTestCase<WireMockServer> by W
 
     @Test
     fun `successfully load an entry`() {
-        runBlocking {
+        runTest {
             // given
             val id = 1535
 
@@ -53,7 +53,7 @@ internal class LivechartDownloaderTest : MockServerTestCase<WireMockServer> by W
 
     @Test
     fun `responding 404 indicating dead entry - add to dead entry list and return empty string`() {
-        runBlocking {
+        runTest {
             // given
             val id = 1535
             var hasDeadEntryBeenInvoked = false
@@ -89,7 +89,7 @@ internal class LivechartDownloaderTest : MockServerTestCase<WireMockServer> by W
 
     @Test
     fun `excluded from database page - add to dead entry list and return empty string`() {
-        runBlocking {
+        runTest {
             // given
             val id = 1535
             var hasDeadEntryBeenInvoked = false

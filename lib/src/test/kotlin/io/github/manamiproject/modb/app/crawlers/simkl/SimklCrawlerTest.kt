@@ -19,7 +19,7 @@ import io.github.manamiproject.modb.core.httpclient.RequestBody
 import io.github.manamiproject.modb.simkl.SimklConfig
 import io.github.manamiproject.modb.test.loadTestResource
 import io.github.manamiproject.modb.test.tempDirectory
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.test.runTest
 import org.assertj.core.api.Assertions.assertThat
 import org.assertj.core.api.Assertions.assertThatNoException
 import org.junit.jupiter.api.Nested
@@ -89,7 +89,7 @@ internal class SimklCrawlerTest {
 
                 // when
                 assertThatNoException().isThrownBy {
-                    runBlocking { simklCrawler.start() }
+                    runTest { simklCrawler.start() }
                 }
 
                 // then
@@ -160,7 +160,7 @@ internal class SimklCrawlerTest {
 
                 // when
                 assertThatNoException().isThrownBy {
-                    runBlocking { simklCrawler.start() }
+                    runTest { simklCrawler.start() }
                 }
 
                 // then
@@ -239,7 +239,7 @@ internal class SimklCrawlerTest {
 
                 // when
                 assertThatNoException().isThrownBy {
-                    runBlocking { simklCrawler.start() }
+                    runTest { simklCrawler.start() }
                 }
 
                 // then
@@ -308,7 +308,7 @@ internal class SimklCrawlerTest {
 
                 // when
                 assertThatNoException().isThrownBy {
-                    runBlocking { simklCrawler.start() }
+                    runTest { simklCrawler.start() }
                 }
 
                 // then
@@ -390,7 +390,7 @@ internal class SimklCrawlerTest {
 
                 // when
                 assertThatNoException().isThrownBy {
-                    runBlocking { simklCrawler.start() }
+                    runTest { simklCrawler.start() }
                 }
 
                 // then
@@ -485,7 +485,7 @@ internal class SimklCrawlerTest {
 
                 // when
                 assertThatNoException().isThrownBy {
-                    runBlocking { simklCrawler.start() }
+                    runTest { simklCrawler.start() }
                 }
 
                 // then
@@ -576,7 +576,7 @@ internal class SimklCrawlerTest {
 
                 // when
                 assertThatNoException().isThrownBy {
-                    runBlocking { simklCrawler.start() }
+                    runTest { simklCrawler.start() }
                 }
 
                 // then
@@ -653,7 +653,7 @@ internal class SimklCrawlerTest {
 
                 // when
                 assertThatNoException().isThrownBy {
-                    runBlocking { simklCrawler.start() }
+                    runTest { simklCrawler.start() }
                 }
 
                 // then
@@ -726,7 +726,7 @@ internal class SimklCrawlerTest {
 
                 // when
                 assertThatNoException().isThrownBy {
-                    runBlocking { simklCrawler.start() }
+                    runTest { simklCrawler.start() }
                 }
 
                 // then
@@ -807,7 +807,7 @@ internal class SimklCrawlerTest {
 
                 // when
                 assertThatNoException().isThrownBy {
-                    runBlocking { simklCrawler.start() }
+                    runTest { simklCrawler.start() }
                 }
 
                 // then
@@ -875,7 +875,7 @@ internal class SimklCrawlerTest {
 
                 // when
                 assertThatNoException().isThrownBy {
-                    runBlocking { simklCrawler.start() }
+                    runTest { simklCrawler.start() }
                 }
 
                 // then

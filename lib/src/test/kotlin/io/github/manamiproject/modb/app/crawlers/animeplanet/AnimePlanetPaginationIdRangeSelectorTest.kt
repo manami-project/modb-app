@@ -12,7 +12,7 @@ import io.github.manamiproject.modb.core.httpclient.HttpResponse
 import io.github.manamiproject.modb.test.exceptionExpected
 import io.github.manamiproject.modb.test.loadTestResource
 import io.github.manamiproject.modb.test.tempDirectory
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.test.runTest
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Nested
 import java.net.URL
@@ -54,7 +54,7 @@ internal class AnimePlanetPaginationIdRangeSelectorTest {
 
         @Test
         fun `correctly extracts anime IDs from page`() {
-            runBlocking {
+            runTest {
                 // given
                 val testHttpClient = object: HttpClient by TestHttpClient {
                     override suspend fun get(url: URL, headers: Map<String, Collection<String>>): HttpResponse = HttpResponse(
@@ -123,7 +123,7 @@ internal class AnimePlanetPaginationIdRangeSelectorTest {
 
         @Test
         fun `retrieves anime IDs which are not scheduled for redownload this week only once`() {
-            runBlocking {
+            runTest {
                 // given
                 val testHttpClient = object: HttpClient by TestHttpClient {
                     override suspend fun get(url: URL, headers: Map<String, Collection<String>>): HttpResponse = HttpResponse(
@@ -162,7 +162,7 @@ internal class AnimePlanetPaginationIdRangeSelectorTest {
 
         @Test
         fun `result is in random order`() {
-            runBlocking {
+            runTest {
                 // given
                 val testHttpClient = object: HttpClient by TestHttpClient {
                     override suspend fun get(url: URL, headers: Map<String, Collection<String>>): HttpResponse = HttpResponse(
@@ -233,7 +233,7 @@ internal class AnimePlanetPaginationIdRangeSelectorTest {
 
         @Test
         fun `anime IDs which have been downloaded already are excluded from the result`() {
-            runBlocking {
+            runTest {
                 // given
                 val testHttpClient = object: HttpClient by TestHttpClient {
                     override suspend fun get(url: URL, headers: Map<String, Collection<String>>): HttpResponse = HttpResponse(
@@ -303,7 +303,7 @@ internal class AnimePlanetPaginationIdRangeSelectorTest {
 
         @Test
         fun `anime not scheduled for redownload this week are removed from the result`() {
-            runBlocking {
+            runTest {
                 // given
                 val testHttpClient = object: HttpClient by TestHttpClient {
                     override suspend fun get(url: URL, headers: Map<String, Collection<String>>): HttpResponse = HttpResponse(

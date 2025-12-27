@@ -9,7 +9,7 @@ import io.github.manamiproject.modb.serde.TestDeserializer
 import io.github.manamiproject.modb.serde.TestHttpClient
 import io.github.manamiproject.modb.serde.json.models.Dataset
 import io.github.manamiproject.modb.test.exceptionExpected
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.test.runTest
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.ValueSource
@@ -70,7 +70,7 @@ internal class FromUrlDeserializerTest {
 
     @Test
     fun `correctly delegates call for JSON`() {
-        runBlocking {
+        runTest {
             // given
             val testHttpClient = object: HttpClient by TestHttpClient {
                 override suspend fun get(url: URL, headers: Map<String, Collection<String>>): HttpResponse = HttpResponse(
@@ -113,7 +113,7 @@ internal class FromUrlDeserializerTest {
         "application/x-jsonlines",
     ])
     fun `correctly delegates call for JSON lines`(input: String) {
-        runBlocking {
+        runTest {
             // given
             val testHttpClient = object: HttpClient by TestHttpClient {
                 override suspend fun get(url: URL, headers: Map<String, Collection<String>>): HttpResponse = HttpResponse(
@@ -154,7 +154,7 @@ internal class FromUrlDeserializerTest {
         "jsonl",
     ])
     fun `correctly delegates call for octet-stream with plain text files as path`(input: String) {
-        runBlocking {
+        runTest {
             // given
             val testHttpClient = object: HttpClient by TestHttpClient {
                 override suspend fun get(url: URL, headers: Map<String, Collection<String>>): HttpResponse = HttpResponse(
@@ -191,7 +191,7 @@ internal class FromUrlDeserializerTest {
 
     @Test
     fun `correctly delegates call for ZSTD`() {
-        runBlocking {
+        runTest {
             // given
             val bos = ByteArrayOutputStream()
             bos.use { fos ->
@@ -236,7 +236,7 @@ internal class FromUrlDeserializerTest {
 
     @Test
     fun `correctly delegates call for ZSTD having octet-stream as content type with zst file suffix in path`() {
-        runBlocking {
+        runTest {
             // given
             val bos = ByteArrayOutputStream()
             bos.use { fos ->
@@ -281,7 +281,7 @@ internal class FromUrlDeserializerTest {
 
     @Test
     fun `throws exception if content type is octet-stream, but there is no fitting file extension in the path`() {
-        runBlocking {
+        runTest {
             // given
             val testHttpClient = object: HttpClient by TestHttpClient {
                 override suspend fun get(url: URL, headers: Map<String, Collection<String>>): HttpResponse = HttpResponse(

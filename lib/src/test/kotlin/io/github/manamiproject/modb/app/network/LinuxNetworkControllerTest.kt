@@ -12,6 +12,7 @@ import io.github.manamiproject.modb.test.loadTestResource
 import io.github.manamiproject.modb.test.shouldNotBeInvoked
 import io.github.manamiproject.modb.test.tempDirectory
 import kotlinx.coroutines.*
+import kotlinx.coroutines.test.runTest
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Nested
 import java.time.Clock
@@ -31,7 +32,7 @@ internal class LinuxNetworkControllerTest {
 
         @Test
         fun `throws exception if it's not possible to find an active device`() {
-            runBlocking {
+            runTest {
                 // given
                 val clock = Clock.fixed(Instant.parse("2021-01-31T16:02:42.00Z"), UTC)
 
@@ -62,7 +63,7 @@ internal class LinuxNetworkControllerTest {
 
         @Test
         fun `successfully restart the network controller`() {
-            runBlocking {
+            runTest {
                 // given
                 var clock = Clock.fixed(Instant.parse("2021-01-31T16:02:42.00Z"), UTC)
 
@@ -126,7 +127,7 @@ internal class LinuxNetworkControllerTest {
 
         @Test
         fun `throws exception if timeout hits while waiting for device changing status`() {
-            runBlocking {
+            runTest {
                 // given
                 var clock = Clock.fixed(Instant.parse("2021-01-31T16:02:42.00Z"), UTC)
 
@@ -168,7 +169,7 @@ internal class LinuxNetworkControllerTest {
 
         @Test
         fun `throws exception if there are more than maxNumberOfRestarts within timeRangeForMaxRestarts`() {
-            runBlocking {
+            runTest {
                 // given
                 var clock = Clock.fixed(Instant.parse("2021-01-31T16:02:42.00Z"), UTC)
                 val testAppConfig = object: Config by TestAppConfig {
@@ -233,7 +234,7 @@ internal class LinuxNetworkControllerTest {
 
         @Test
         fun `successfully surpasses maxNumberOfRestarts if they are executed in a longer time frame than timeRangeForMaxRestarts`() {
-            runBlocking {
+            runTest {
                 // given
                 var clock = Clock.fixed(Instant.parse("2021-01-31T16:02:42.00Z"), UTC)
                 val testAppConfig = object: Config by TestAppConfig {
@@ -295,8 +296,8 @@ internal class LinuxNetworkControllerTest {
         }
 
         @Test
-        fun `ignores restart if the last restart occured not even a minute ago`() {
-            runBlocking {
+        fun `ignores restart if the last restart occurred not even a minute ago`() {
+            runTest {
                 // given
                 val clock = Clock.fixed(Instant.parse("2021-01-31T16:02:42.00Z"), UTC)
 
@@ -351,7 +352,7 @@ internal class LinuxNetworkControllerTest {
 
         @Test
         fun `return true of it's active`() {
-            runBlocking {
+            runTest {
                 // given
                 val testAppConfig = object: Config by TestAppConfig {
                     override fun isTestContext(): Boolean = true
@@ -371,8 +372,8 @@ internal class LinuxNetworkControllerTest {
         }
 
         @Test
-        @OptIn(DelicateCoroutinesApi::class)
-        fun `return false it's inactive`() {
+        @OptIn(DelicateCoroutinesApi::class, ExperimentalCoroutinesApi::class)
+        fun `return false if it's inactive`() {
             runBlocking {
                 // given
                 var clock = Clock.fixed(Instant.parse("2021-01-31T16:02:42.00Z"), UTC)

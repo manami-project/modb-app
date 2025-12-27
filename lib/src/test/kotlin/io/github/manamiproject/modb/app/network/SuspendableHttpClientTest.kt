@@ -10,7 +10,7 @@ import io.github.manamiproject.modb.core.httpclient.RequestBody
 import io.github.manamiproject.modb.test.shouldNotBeInvoked
 import io.github.manamiproject.modb.test.tempDirectory
 import kotlinx.coroutines.Deferred
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.test.runTest
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Nested
 import java.net.URI
@@ -24,7 +24,7 @@ internal class SuspendableHttpClientTest {
 
         @Test
         fun `suspend GET call if network controller is inactive`() {
-            runBlocking {
+            runTest {
                 // given
                 val testAppConfig = object : Config by TestAppConfig {
                     override fun isTestContext(): Boolean = true
@@ -71,7 +71,7 @@ internal class SuspendableHttpClientTest {
 
         @Test
         fun `suspend POST call if network controller is inactive`() {
-            runBlocking {
+            runTest {
                 // given
                 val testAppConfig = object : Config by TestAppConfig {
                     override fun isTestContext(): Boolean = true

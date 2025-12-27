@@ -12,7 +12,7 @@ import io.github.manamiproject.modb.core.config.Hostname
 import io.github.manamiproject.modb.core.config.MetaDataProviderConfig
 import io.github.manamiproject.modb.test.loadTestResource
 import io.github.manamiproject.modb.test.tempDirectory
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.test.runTest
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Nested
 import org.junit.jupiter.params.ParameterizedTest
@@ -30,7 +30,7 @@ internal class AnimenewsnetworkAnimeConverterTest {
 
         @Test
         fun `extract id 6592`() {
-            runBlocking {
+            runTest {
                 // given
                 val testAnimenewsnetworkConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnimenewsnetworkConfig.hostname()
@@ -56,7 +56,7 @@ internal class AnimenewsnetworkAnimeConverterTest {
 
         @Test
         fun `title with special chars`() {
-            runBlocking {
+            runTest {
                 // given
                 val testAnimenewsnetworkConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnimenewsnetworkConfig.hostname()
@@ -78,7 +78,7 @@ internal class AnimenewsnetworkAnimeConverterTest {
 
         @Test
         fun `title with type is reduced to title only`() {
-            runBlocking {
+            runTest {
                 // given
                 val testAnimenewsnetworkConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnimenewsnetworkConfig.hostname()
@@ -100,7 +100,7 @@ internal class AnimenewsnetworkAnimeConverterTest {
 
         @Test
         fun `title with type and number is reduced to title only`() {
-            runBlocking {
+            runTest {
                 // given
                 val testAnimenewsnetworkConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnimenewsnetworkConfig.hostname()
@@ -126,7 +126,7 @@ internal class AnimenewsnetworkAnimeConverterTest {
 
         @Test
         fun `correctly extract 12 episodes from 'number of episodes'`() {
-            runBlocking {
+            runTest {
                 // given
                 val testAnimenewsnetworkConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnimenewsnetworkConfig.hostname()
@@ -148,7 +148,7 @@ internal class AnimenewsnetworkAnimeConverterTest {
 
         @Test
         fun `'number of episodes' is missing so take the value from 'episode titles' instead`() {
-            runBlocking {
+            runTest {
                 // given
                 val testAnimenewsnetworkConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnimenewsnetworkConfig.hostname()
@@ -170,7 +170,7 @@ internal class AnimenewsnetworkAnimeConverterTest {
 
         @Test
         fun `no indicator for episodes, but 'movie' in title`() {
-            runBlocking {
+            runTest {
                 // given
                 val testAnimenewsnetworkConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnimenewsnetworkConfig.hostname()
@@ -192,7 +192,7 @@ internal class AnimenewsnetworkAnimeConverterTest {
 
         @Test
         fun `no indicator for episodes`() {
-            runBlocking {
+            runTest {
                 // given
                 val testAnimenewsnetworkConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnimenewsnetworkConfig.hostname()
@@ -218,7 +218,7 @@ internal class AnimenewsnetworkAnimeConverterTest {
 
         @Test
         fun `title contains TV in brackets`() {
-            runBlocking {
+            runTest {
                 // given
                 val testAnimenewsnetworkConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnimenewsnetworkConfig.hostname()
@@ -240,7 +240,7 @@ internal class AnimenewsnetworkAnimeConverterTest {
 
         @Test
         fun `title contains MOVIE in brackets`() {
-            runBlocking {
+            runTest {
                 // given
                 val testAnimenewsnetworkConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnimenewsnetworkConfig.hostname()
@@ -262,7 +262,7 @@ internal class AnimenewsnetworkAnimeConverterTest {
 
         @Test
         fun `title contains OVA in brackets`() {
-            runBlocking {
+            runTest {
                 // given
                 val testAnimenewsnetworkConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnimenewsnetworkConfig.hostname()
@@ -284,7 +284,7 @@ internal class AnimenewsnetworkAnimeConverterTest {
 
         @Test
         fun `title contains ONA in brackets`() {
-            runBlocking {
+            runTest {
                 // given
                 val testAnimenewsnetworkConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnimenewsnetworkConfig.hostname()
@@ -306,7 +306,7 @@ internal class AnimenewsnetworkAnimeConverterTest {
 
         @Test
         fun `title contains SPECIAL in brackets`() {
-            runBlocking {
+            runTest {
                 // given
                 val testAnimenewsnetworkConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnimenewsnetworkConfig.hostname()
@@ -328,7 +328,7 @@ internal class AnimenewsnetworkAnimeConverterTest {
 
         @Test
         fun `title contains motion picture`() {
-            runBlocking {
+            runTest {
                 // given
                 val testAnimenewsnetworkConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnimenewsnetworkConfig.hostname()
@@ -350,7 +350,7 @@ internal class AnimenewsnetworkAnimeConverterTest {
 
         @Test
         fun `title contains ova`() {
-            runBlocking {
+            runTest {
                 // given
                 val testAnimenewsnetworkConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnimenewsnetworkConfig.hostname()
@@ -376,7 +376,7 @@ internal class AnimenewsnetworkAnimeConverterTest {
 
         @Test
         fun `score exists`() {
-            runBlocking {
+            runTest {
                 // given
                 val testAnimenewsnetworkConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnimenewsnetworkConfig.hostname()
@@ -400,7 +400,7 @@ internal class AnimenewsnetworkAnimeConverterTest {
 
         @Test
         fun `no score`() {
-            runBlocking {
+            runTest {
                 // given
                 val testAnimenewsnetworkConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnimenewsnetworkConfig.hostname()
@@ -426,7 +426,7 @@ internal class AnimenewsnetworkAnimeConverterTest {
 
         @Test
         fun `picture and thumbnail`() {
-            runBlocking {
+            runTest {
                 // given
                 val testAnimenewsnetworkConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnimenewsnetworkConfig.hostname()
@@ -449,7 +449,7 @@ internal class AnimenewsnetworkAnimeConverterTest {
 
         @Test
         fun `neither picture nor thumbnail`() {
-            runBlocking {
+            runTest {
                 // given
                 val testAnimenewsnetworkConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnimenewsnetworkConfig.hostname()
@@ -479,7 +479,7 @@ internal class AnimenewsnetworkAnimeConverterTest {
 
             @Test
             fun `vintage - single date range`() {
-                runBlocking {
+                runTest {
                     // given
                     val testAnimenewsnetworkConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                         override fun hostname(): Hostname = AnimenewsnetworkConfig.hostname()
@@ -501,7 +501,7 @@ internal class AnimenewsnetworkAnimeConverterTest {
 
             @Test
             fun `vintage - year`() {
-                runBlocking {
+                runTest {
                     // given
                     val testAnimenewsnetworkConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                         override fun hostname(): Hostname = AnimenewsnetworkConfig.hostname()
@@ -523,7 +523,7 @@ internal class AnimenewsnetworkAnimeConverterTest {
 
             @Test
             fun `vintage - year-month-day`() {
-                runBlocking {
+                runTest {
                     // given
                     val testAnimenewsnetworkConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                         override fun hostname(): Hostname = AnimenewsnetworkConfig.hostname()
@@ -545,7 +545,7 @@ internal class AnimenewsnetworkAnimeConverterTest {
 
             @Test
             fun `vintage - multiple entries`() {
-                runBlocking {
+                runTest {
                     // given
                     val testAnimenewsnetworkConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                         override fun hostname(): Hostname = AnimenewsnetworkConfig.hostname()
@@ -567,7 +567,7 @@ internal class AnimenewsnetworkAnimeConverterTest {
 
             @Test
             fun `vintage - multiple entries with a range`() {
-                runBlocking {
+                runTest {
                     // given
                     val testAnimenewsnetworkConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                         override fun hostname(): Hostname = AnimenewsnetworkConfig.hostname()
@@ -589,7 +589,7 @@ internal class AnimenewsnetworkAnimeConverterTest {
 
             @Test
             fun `vintage - missing`() {
-                runBlocking {
+                runTest {
                     // given
                     val testAnimenewsnetworkConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                         override fun hostname(): Hostname = AnimenewsnetworkConfig.hostname()
@@ -611,7 +611,7 @@ internal class AnimenewsnetworkAnimeConverterTest {
 
             @Test
             fun `vintage - year followed by text`() {
-                runBlocking {
+                runTest {
                     // given
                     val testAnimenewsnetworkConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                         override fun hostname(): Hostname = AnimenewsnetworkConfig.hostname()
@@ -638,7 +638,7 @@ internal class AnimenewsnetworkAnimeConverterTest {
             @ParameterizedTest
             @ValueSource(strings = ["01", "02", "03"])
             fun `mapped to WINTER`(input: String) {
-                runBlocking {
+                runTest {
                     // given
                     val testAnimenewsnetworkConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                         override fun hostname(): Hostname = AnimenewsnetworkConfig.hostname()
@@ -661,7 +661,7 @@ internal class AnimenewsnetworkAnimeConverterTest {
             @ParameterizedTest
             @ValueSource(strings = ["04", "05", "06"])
             fun `mapped to SPRING`(input: String) {
-                runBlocking {
+                runTest {
                     // given
                     val testAnimenewsnetworkConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                         override fun hostname(): Hostname = AnimenewsnetworkConfig.hostname()
@@ -684,7 +684,7 @@ internal class AnimenewsnetworkAnimeConverterTest {
             @ParameterizedTest
             @ValueSource(strings = ["07", "08", "09"])
             fun `mapped to SUMMER`(input: String) {
-                runBlocking {
+                runTest {
                     // given
                     val testAnimenewsnetworkConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                         override fun hostname(): Hostname = AnimenewsnetworkConfig.hostname()
@@ -707,7 +707,7 @@ internal class AnimenewsnetworkAnimeConverterTest {
             @ParameterizedTest
             @ValueSource(strings = ["10", "11", "12"])
             fun `mapped to FALL`(input: String) {
-                runBlocking {
+                runTest {
                     // given
                     val testAnimenewsnetworkConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                         override fun hostname(): Hostname = AnimenewsnetworkConfig.hostname()
@@ -734,7 +734,7 @@ internal class AnimenewsnetworkAnimeConverterTest {
 
         @Test
         fun `multiple synonyms different languages`() {
-            runBlocking {
+            runTest {
                 // given
                 val testAnimenewsnetworkConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnimenewsnetworkConfig.hostname()
@@ -761,7 +761,7 @@ internal class AnimenewsnetworkAnimeConverterTest {
 
         @Test
         fun `no synonyms`() {
-            runBlocking {
+            runTest {
                 // given
                 val testAnimenewsnetworkConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnimenewsnetworkConfig.hostname()
@@ -783,7 +783,7 @@ internal class AnimenewsnetworkAnimeConverterTest {
 
         @Test
         fun `synonyms with nested brackets`() {
-            runBlocking {
+            runTest {
                 // given
                 val testAnimenewsnetworkConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnimenewsnetworkConfig.hostname()
@@ -819,7 +819,7 @@ internal class AnimenewsnetworkAnimeConverterTest {
 
         @Test
         fun `synonyms with multiple meta info brackets`() {
-            runBlocking {
+            runTest {
                 // given
                 val testAnimenewsnetworkConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnimenewsnetworkConfig.hostname()
@@ -856,7 +856,7 @@ internal class AnimenewsnetworkAnimeConverterTest {
 
         @Test
         fun `synonym with brackets in title without language info`() {
-            runBlocking {
+            runTest {
                 // given
                 val testAnimenewsnetworkConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnimenewsnetworkConfig.hostname()
@@ -880,7 +880,7 @@ internal class AnimenewsnetworkAnimeConverterTest {
 
         @Test
         fun `synonym with brackets in title with language info`() {
-            runBlocking {
+            runTest {
                 // given
                 val testAnimenewsnetworkConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnimenewsnetworkConfig.hostname()
@@ -919,7 +919,7 @@ internal class AnimenewsnetworkAnimeConverterTest {
 
         @Test
         fun `neither genres nor themes`() {
-            runBlocking {
+            runTest {
                 // given
                 val testAnimenewsnetworkConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnimenewsnetworkConfig.hostname()
@@ -941,7 +941,7 @@ internal class AnimenewsnetworkAnimeConverterTest {
 
         @Test
         fun `multiple genres and multiple themes`() {
-            runBlocking {
+            runTest {
                 // given
                 val testAnimenewsnetworkConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnimenewsnetworkConfig.hostname()
@@ -986,7 +986,7 @@ internal class AnimenewsnetworkAnimeConverterTest {
 
         @Test
         fun `no related anime, but relation in brackets`() {
-            runBlocking {
+            runTest {
                 // given
                 val testAnimenewsnetworkConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnimenewsnetworkConfig.hostname()
@@ -1010,7 +1010,7 @@ internal class AnimenewsnetworkAnimeConverterTest {
 
         @Test
         fun `no related anime, no-relation in-brackets, but an adaption`() {
-            runBlocking {
+            runTest {
                 // given
                 val testAnimenewsnetworkConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnimenewsnetworkConfig.hostname()
@@ -1032,7 +1032,7 @@ internal class AnimenewsnetworkAnimeConverterTest {
 
         @Test
         fun `related anime`() {
-            runBlocking {
+            runTest {
                 // given
                 val testAnimenewsnetworkConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnimenewsnetworkConfig.hostname()
@@ -1057,7 +1057,7 @@ internal class AnimenewsnetworkAnimeConverterTest {
 
         @Test
         fun `related anime and relation in brackets`() {
-            runBlocking {
+            runTest {
                 // given
                 val testAnimenewsnetworkConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnimenewsnetworkConfig.hostname()
@@ -1083,7 +1083,7 @@ internal class AnimenewsnetworkAnimeConverterTest {
 
         @Test
         fun `ignore manga in related anime`() {
-            runBlocking {
+            runTest {
                 // given
                 val testAnimenewsnetworkConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnimenewsnetworkConfig.hostname()
@@ -1118,7 +1118,7 @@ internal class AnimenewsnetworkAnimeConverterTest {
 
         @Test
         fun `80 minutes`() {
-            runBlocking {
+            runTest {
                 // given
                 val testAnimenewsnetworkConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnimenewsnetworkConfig.hostname()
@@ -1145,7 +1145,7 @@ internal class AnimenewsnetworkAnimeConverterTest {
 
         @Test
         fun `24 minutes per episode`() {
-            runBlocking {
+            runTest {
                 // given
                 val testAnimenewsnetworkConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnimenewsnetworkConfig.hostname()
@@ -1172,7 +1172,7 @@ internal class AnimenewsnetworkAnimeConverterTest {
 
         @Test
         fun `half hour`() {
-            runBlocking {
+            runTest {
                 // given
                 val testAnimenewsnetworkConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnimenewsnetworkConfig.hostname()
@@ -1199,7 +1199,7 @@ internal class AnimenewsnetworkAnimeConverterTest {
 
         @Test
         fun `half hour per episode`() {
-            runBlocking {
+            runTest {
                 // given
                 val testAnimenewsnetworkConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnimenewsnetworkConfig.hostname()
@@ -1226,7 +1226,7 @@ internal class AnimenewsnetworkAnimeConverterTest {
 
         @Test
         fun `one hour`() {
-            runBlocking {
+            runTest {
                 // given
                 val testAnimenewsnetworkConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnimenewsnetworkConfig.hostname()
@@ -1253,7 +1253,7 @@ internal class AnimenewsnetworkAnimeConverterTest {
 
         @Test
         fun `one hour per episode`() {
-            runBlocking {
+            runTest {
                 // given
                 val testAnimenewsnetworkConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnimenewsnetworkConfig.hostname()
@@ -1280,7 +1280,7 @@ internal class AnimenewsnetworkAnimeConverterTest {
 
         @Test
         fun `numeric with error`() {
-            runBlocking {
+            runTest {
                 // given
                 val testAnimenewsnetworkConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnimenewsnetworkConfig.hostname()
@@ -1307,7 +1307,7 @@ internal class AnimenewsnetworkAnimeConverterTest {
 
         @Test
         fun `text with error`() {
-            runBlocking {
+            runTest {
                 // given
                 val testAnimenewsnetworkConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnimenewsnetworkConfig.hostname()
@@ -1338,7 +1338,7 @@ internal class AnimenewsnetworkAnimeConverterTest {
 
         @Test
         fun `vintage - no range, year only - UPCOMING`() {
-            runBlocking {
+            runTest {
                 // given
                 val testAnimenewsnetworkConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnimenewsnetworkConfig.hostname()
@@ -1365,7 +1365,7 @@ internal class AnimenewsnetworkAnimeConverterTest {
 
         @Test
         fun `vintage - no range, year only - ONGOING`() {
-            runBlocking {
+            runTest {
                 // given
                 val testAnimenewsnetworkConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnimenewsnetworkConfig.hostname()
@@ -1392,7 +1392,7 @@ internal class AnimenewsnetworkAnimeConverterTest {
 
         @Test
         fun `vintage - no range, year only - FINISHED`() {
-            runBlocking {
+            runTest {
                 // given
                 val testAnimenewsnetworkConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnimenewsnetworkConfig.hostname()
@@ -1419,7 +1419,7 @@ internal class AnimenewsnetworkAnimeConverterTest {
 
         @Test
         fun `vintage - no range, year-month - UPCOMING`() {
-            runBlocking {
+            runTest {
                 // given
                 val testAnimenewsnetworkConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnimenewsnetworkConfig.hostname()
@@ -1446,7 +1446,7 @@ internal class AnimenewsnetworkAnimeConverterTest {
 
         @Test
         fun `vintage - no range, year-month - ONGOING only for first of month`() {
-            runBlocking {
+            runTest {
                 // given
                 val testAnimenewsnetworkConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnimenewsnetworkConfig.hostname()
@@ -1473,7 +1473,7 @@ internal class AnimenewsnetworkAnimeConverterTest {
 
         @Test
         fun `vintage - no range, year-month - FINISHED`() {
-            runBlocking {
+            runTest {
                 // given
                 val testAnimenewsnetworkConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnimenewsnetworkConfig.hostname()
@@ -1500,7 +1500,7 @@ internal class AnimenewsnetworkAnimeConverterTest {
 
         @Test
         fun `vintage - no range, year-month-day - UPCOMING`() {
-            runBlocking {
+            runTest {
                 // given
                 val testAnimenewsnetworkConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnimenewsnetworkConfig.hostname()
@@ -1527,7 +1527,7 @@ internal class AnimenewsnetworkAnimeConverterTest {
 
         @Test
         fun `vintage - no range, year-month-day - ONGOING`() {
-            runBlocking {
+            runTest {
                 // given
                 val testAnimenewsnetworkConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnimenewsnetworkConfig.hostname()
@@ -1554,7 +1554,7 @@ internal class AnimenewsnetworkAnimeConverterTest {
 
         @Test
         fun `vintage - no range, year-month-day - FINISHED`() {
-            runBlocking {
+            runTest {
                 // given
                 val testAnimenewsnetworkConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnimenewsnetworkConfig.hostname()
@@ -1581,7 +1581,7 @@ internal class AnimenewsnetworkAnimeConverterTest {
 
         @Test
         fun `vintage - no range, year-month - FINISHED special case where the suffix contains 'to', but not to set a range`() {
-            runBlocking {
+            runTest {
                 // given
                 val testAnimenewsnetworkConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnimenewsnetworkConfig.hostname()
@@ -1608,7 +1608,7 @@ internal class AnimenewsnetworkAnimeConverterTest {
 
         @Test
         fun `vintage - range - UPCOMING`() {
-            runBlocking {
+            runTest {
                 // given
                 val testAnimenewsnetworkConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnimenewsnetworkConfig.hostname()
@@ -1636,7 +1636,7 @@ internal class AnimenewsnetworkAnimeConverterTest {
         @ParameterizedTest
         @ValueSource(strings = ["1991-09-21", "1991-10-21"])
         fun `vintage - range - ONGOING`(input: String) {
-            runBlocking {
+            runTest {
                 // given
                 val testAnimenewsnetworkConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnimenewsnetworkConfig.hostname()
@@ -1663,7 +1663,7 @@ internal class AnimenewsnetworkAnimeConverterTest {
 
         @Test
         fun `vintage - range - FINISHED`() {
-            runBlocking {
+            runTest {
                 // given
                 val testAnimenewsnetworkConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnimenewsnetworkConfig.hostname()
@@ -1690,7 +1690,7 @@ internal class AnimenewsnetworkAnimeConverterTest {
 
         @Test
         fun `list - range - UPCOMING`() {
-            runBlocking {
+            runTest {
                 // given
                 val testAnimenewsnetworkConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnimenewsnetworkConfig.hostname()
@@ -1718,7 +1718,7 @@ internal class AnimenewsnetworkAnimeConverterTest {
         @ParameterizedTest
         @ValueSource(strings = ["1972-10-01", "1974-09-29"])
         fun `list - range - ONGOING`(input: String) {
-            runBlocking {
+            runTest {
                 // given
                 val testAnimenewsnetworkConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnimenewsnetworkConfig.hostname()
@@ -1745,7 +1745,7 @@ internal class AnimenewsnetworkAnimeConverterTest {
 
         @Test
         fun `list - range - FINISHED`() {
-            runBlocking {
+            runTest {
                 // given
                 val testAnimenewsnetworkConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnimenewsnetworkConfig.hostname()
@@ -1776,7 +1776,7 @@ internal class AnimenewsnetworkAnimeConverterTest {
 
         @Test
         fun `multiple studios`() {
-            runBlocking {
+            runTest {
                 // given
                 val testAnimenewsnetworkConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnimenewsnetworkConfig.hostname()
@@ -1800,7 +1800,7 @@ internal class AnimenewsnetworkAnimeConverterTest {
 
         @Test
         fun `no studios`() {
-            runBlocking {
+            runTest {
                 // given
                 val testAnimenewsnetworkConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnimenewsnetworkConfig.hostname()
@@ -1825,7 +1825,7 @@ internal class AnimenewsnetworkAnimeConverterTest {
 
         @Test
         fun `multiple producers`() {
-            runBlocking {
+            runTest {
                 // given
                 val testAnimenewsnetworkConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnimenewsnetworkConfig.hostname()
@@ -1853,7 +1853,7 @@ internal class AnimenewsnetworkAnimeConverterTest {
 
         @Test
         fun `no producers`() {
-            runBlocking {
+            runTest {
                 // given
                 val testAnimenewsnetworkConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = AnimenewsnetworkConfig.hostname()

@@ -12,7 +12,7 @@ import io.github.manamiproject.modb.test.MockServerTestCase
 import io.github.manamiproject.modb.test.WireMockServerCreator
 import io.github.manamiproject.modb.test.exceptionExpected
 import io.github.manamiproject.modb.test.shouldNotBeInvoked
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.test.runTest
 import org.assertj.core.api.Assertions.assertThat
 import java.net.URI
 import kotlin.test.Test
@@ -21,7 +21,7 @@ internal class AnimenewsnetworkDownloaderTest : MockServerTestCase<WireMockServe
 
     @Test
     fun `successfully download an anime`() {
-        runBlocking {
+        runTest {
             // given
             val id = "11376"
 
@@ -119,7 +119,7 @@ internal class AnimenewsnetworkDownloaderTest : MockServerTestCase<WireMockServe
 
     @Test
     fun `invokes onDeadEntry for response code 404 and returns empty string`() {
-        runBlocking {
+        runTest {
             // given
             val id = "11376"
             var deadEntry = EMPTY
