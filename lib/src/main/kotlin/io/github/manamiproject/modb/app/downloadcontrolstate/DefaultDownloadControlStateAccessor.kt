@@ -19,6 +19,7 @@ import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 import kotlinx.coroutines.withContext
+import kotlinx.coroutines.yield
 import kotlin.collections.associateWith
 import kotlin.concurrent.atomics.AtomicReference
 import kotlin.concurrent.atomics.ExperimentalAtomicApi
@@ -277,11 +278,12 @@ class DefaultDownloadControlStateAccessor(
     }
 
     @KoverIgnore
-    private fun safelyStore(metaDataProviderConfig: MetaDataProviderConfig, newMap: Map<AnimeId, DownloadControlStateEntry>) {
+    private suspend fun safelyStore(metaDataProviderConfig: MetaDataProviderConfig, newMap: Map<AnimeId, DownloadControlStateEntry>) {
         while (true) {
             val atomicRef = downloadControlStateEntries[metaDataProviderConfig]!!
             val current = atomicRef.load()
             if (atomicRef.compareAndSet(current, newMap)) break
+            yield()
         }
     }
 
