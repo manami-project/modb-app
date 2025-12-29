@@ -1249,14 +1249,15 @@ internal class DefaultDownloadControlStateAccessorTest {
             tempDirectory {
                 // given
                 val testMetaDataProviderConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
-                    override fun hostname(): Hostname = "example.org"
+                    override fun hostname(): Hostname = "anilist.co"
                     override fun buildAnimeLink(id: AnimeId): URI = super.buildAnimeLink(id)
                     override fun extractAnimeId(uri: URI): AnimeId = super.extractAnimeId(uri)
                 }
 
                 val testAppConfig = object: Config by TestAppConfig {
                     override fun downloadControlStateDirectory(): Directory = tempDir
-                    override fun metaDataProviderConfigurations(): Set<MetaDataProviderConfig> = emptySet()
+                    override fun metaDataProviderConfigurations(): Set<MetaDataProviderConfig> = setOf(testMetaDataProviderConfig)
+                    override fun findMetaDataProviderConfig(host: Hostname): MetaDataProviderConfig = testMetaDataProviderConfig
                 }
 
                 val testMergeLockAccess = object: MergeLockAccessor by TestMergeLockAccessor {
@@ -1266,6 +1267,15 @@ internal class DefaultDownloadControlStateAccessorTest {
                 tempDir.resolve(testMetaDataProviderConfig.hostname()).createDirectory()
                 val file = tempDir.resolve(testMetaDataProviderConfig.hostname()).resolve("177191.dcs").createFile()
                 val fileExistedPreviously = file.regularFileExists()
+
+                val testEntry = DownloadControlStateEntry(
+                    _weeksWihoutChange = 0,
+                    _lastDownloaded = WeekOfYear(LocalDate.now().minusWeeks(1)),
+                    _nextDownload = WeekOfYear.currentWeek(),
+                    _anime = TestAnimeRawObjects.AllPropertiesSet.obj,
+                )
+
+                Json.toJson(testEntry).writeToFile(file)
 
                 val defaultDownloadControlStateAccessor = DefaultDownloadControlStateAccessor(
                     appConfig = testAppConfig,
@@ -1286,14 +1296,15 @@ internal class DefaultDownloadControlStateAccessorTest {
             tempDirectory {
                 // given
                 val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
-                    override fun hostname(): Hostname = "example.org"
+                    override fun hostname(): Hostname = "anilist.co"
                     override fun buildAnimeLink(id: AnimeId): URI = super.buildAnimeLink(id)
                     override fun extractAnimeId(uri: URI): AnimeId = super.extractAnimeId(uri)
                 }
 
                 val testAppConfig = object: Config by TestAppConfig {
                     override fun downloadControlStateDirectory(): Directory = tempDir
-                    override fun metaDataProviderConfigurations(): Set<MetaDataProviderConfig> = emptySet()
+                    override fun metaDataProviderConfigurations(): Set<MetaDataProviderConfig> = setOf(testConfig)
+                    override fun findMetaDataProviderConfig(host: Hostname): MetaDataProviderConfig = testConfig
                 }
 
                 var hasMergeLockEntryRemovalBeingInvoked = false
@@ -1305,7 +1316,16 @@ internal class DefaultDownloadControlStateAccessorTest {
                 }
 
                 tempDir.resolve(testConfig.hostname()).createDirectory()
-                tempDir.resolve(testConfig.hostname()).resolve("177191.dcs").createFile()
+                val file = tempDir.resolve(testConfig.hostname()).resolve("177191.dcs").createFile()
+
+                val testEntry = DownloadControlStateEntry(
+                    _weeksWihoutChange = 0,
+                    _lastDownloaded = WeekOfYear(LocalDate.now().minusWeeks(1)),
+                    _nextDownload = WeekOfYear.currentWeek(),
+                    _anime = TestAnimeRawObjects.AllPropertiesSet.obj,
+                )
+
+                Json.toJson(testEntry).writeToFile(file)
 
                 val defaultDownloadControlStateAccessor = DefaultDownloadControlStateAccessor(
                     appConfig = testAppConfig,
@@ -1332,7 +1352,7 @@ internal class DefaultDownloadControlStateAccessorTest {
 
                 val testAppConfig = object: Config by TestAppConfig {
                     override fun downloadControlStateDirectory(): Directory = tempDir
-                    override fun metaDataProviderConfigurations(): Set<MetaDataProviderConfig> = emptySet()
+                    override fun metaDataProviderConfigurations(): Set<MetaDataProviderConfig> = setOf(testConfig)
                 }
 
                 var hasMergeLockEntryRemovalBeingInvoked = false
@@ -1370,7 +1390,7 @@ internal class DefaultDownloadControlStateAccessorTest {
 
                 val testAppConfig = object: Config by TestAppConfig {
                     override fun downloadControlStateDirectory(): Directory = tempDir
-                    override fun metaDataProviderConfigurations(): Set<MetaDataProviderConfig> = emptySet()
+                    override fun metaDataProviderConfigurations(): Set<MetaDataProviderConfig> = setOf(testConfig)
                 }
 
                 var hasMergeLockEntryRemovalBeingInvoked = false
@@ -1449,7 +1469,7 @@ internal class DefaultDownloadControlStateAccessorTest {
             tempDirectory {
                 // given
                 val testMetaDataProviderConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
-                    override fun hostname(): Hostname = "example.org"
+                    override fun hostname(): Hostname = "anilist.co"
                     override fun buildAnimeLink(id: AnimeId): URI = super.buildAnimeLink(id)
                     override fun extractAnimeId(uri: URI): AnimeId = super.extractAnimeId(uri)
                 }
@@ -1458,9 +1478,10 @@ internal class DefaultDownloadControlStateAccessorTest {
                 val testAppConfig = object: Config by TestAppConfig {
                     override fun metaDataProviderConfigurations(): Set<MetaDataProviderConfig> {
                         initHasBeenInvoked++
-                        return emptySet()
+                        return setOf(testMetaDataProviderConfig)
                     }
                     override fun downloadControlStateDirectory(): Directory = tempDir
+                    override fun findMetaDataProviderConfig(host: Hostname): MetaDataProviderConfig = testMetaDataProviderConfig
                 }
 
                 val testMergeLockAccess = object: MergeLockAccessor by TestMergeLockAccessor {
@@ -1468,7 +1489,16 @@ internal class DefaultDownloadControlStateAccessorTest {
                 }
 
                 tempDir.resolve(testMetaDataProviderConfig.hostname()).createDirectory()
-                tempDir.resolve(testMetaDataProviderConfig.hostname()).resolve("177191.dcs").createFile()
+                val file = tempDir.resolve(testMetaDataProviderConfig.hostname()).resolve("177191.dcs").createFile()
+
+                val testEntry = DownloadControlStateEntry(
+                    _weeksWihoutChange = 0,
+                    _lastDownloaded = WeekOfYear(LocalDate.now().minusWeeks(1)),
+                    _nextDownload = WeekOfYear.currentWeek(),
+                    _anime = TestAnimeRawObjects.AllPropertiesSet.obj,
+                )
+
+                Json.toJson(testEntry).writeToFile(file)
 
                 val defaultDownloadControlStateAccessor = DefaultDownloadControlStateAccessor(
                     appConfig = testAppConfig,
@@ -1488,7 +1518,7 @@ internal class DefaultDownloadControlStateAccessorTest {
             tempDirectory {
                 // given
                 val testMetaDataProviderConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
-                    override fun hostname(): Hostname = "example.org"
+                    override fun hostname(): Hostname = "anilist.co"
                     override fun buildAnimeLink(id: AnimeId): URI = super.buildAnimeLink(id)
                     override fun extractAnimeId(uri: URI): AnimeId = super.extractAnimeId(uri)
                 }
@@ -1497,9 +1527,10 @@ internal class DefaultDownloadControlStateAccessorTest {
                 val testAppConfig = object: Config by TestAppConfig {
                     override fun metaDataProviderConfigurations(): Set<MetaDataProviderConfig> {
                         initHasBeenInvoked++
-                        return emptySet()
+                        return setOf(testMetaDataProviderConfig)
                     }
                     override fun downloadControlStateDirectory(): Directory = tempDir
+                    override fun findMetaDataProviderConfig(host: Hostname): MetaDataProviderConfig = testMetaDataProviderConfig
                 }
 
                 val testMergeLockAccess = object: MergeLockAccessor by TestMergeLockAccessor {
@@ -1507,7 +1538,16 @@ internal class DefaultDownloadControlStateAccessorTest {
                 }
 
                 tempDir.resolve(testMetaDataProviderConfig.hostname()).createDirectory()
-                tempDir.resolve(testMetaDataProviderConfig.hostname()).resolve("177191.dcs").createFile()
+                val file = tempDir.resolve(testMetaDataProviderConfig.hostname()).resolve("177191.dcs").createFile()
+
+                val testEntry = DownloadControlStateEntry(
+                    _weeksWihoutChange = 0,
+                    _lastDownloaded = WeekOfYear(LocalDate.now().minusWeeks(1)),
+                    _nextDownload = WeekOfYear.currentWeek(),
+                    _anime = TestAnimeRawObjects.AllPropertiesSet.obj,
+                )
+
+                Json.toJson(testEntry).writeToFile(file)
 
                 val defaultDownloadControlStateAccessor = DefaultDownloadControlStateAccessor(
                     appConfig = testAppConfig,

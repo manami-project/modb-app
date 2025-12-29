@@ -128,8 +128,11 @@ class DefaultDownloadControlStateAccessor(
         if (!dcsEntryExists(metaDataProviderConfig, animeId)) {
             log.debug { "Creating new DCS entry for [$animeId] of [${metaDataProviderConfig.hostname()}]." }
             Json.toJson(downloadControlStateEntry).writeToFile(downloadControlStateFile)
-            val newMap = downloadControlStateEntries[metaDataProviderConfig]?.load()?.toMutableMap()?.also { it[animeId] = downloadControlStateEntry } ?: return false
-            safelyStore(metaDataProviderConfig, newMap)
+            safelyStore(metaDataProviderConfig) {
+                it.toMutableMap().apply {
+                    put(animeId, downloadControlStateEntry)
+                }
+            }
             return true
         }
 
@@ -143,8 +146,11 @@ class DefaultDownloadControlStateAccessor(
         log.info { "Updating DCS entry for [$animeId] of [${metaDataProviderConfig.hostname()}]." }
 
         Json.toJson(downloadControlStateEntry).writeToFile(downloadControlStateFile)
-        val newMap = downloadControlStateEntries[metaDataProviderConfig]?.load()?.toMutableMap()?.also { it[animeId] = downloadControlStateEntry } ?: return false
-        safelyStore(metaDataProviderConfig, newMap)
+        safelyStore(metaDataProviderConfig) {
+            it.toMutableMap().apply {
+                put(animeId, downloadControlStateEntry)
+            }
+        }
         return true
     }
 
@@ -161,9 +167,10 @@ class DefaultDownloadControlStateAccessor(
             log.debug { "Removed [${metaDataProviderConfig.hostname()}] DCS file for [$animeId]" }
         }
 
-        downloadControlStateEntries[metaDataProviderConfig]?.load()?.toMutableMap()?.also {
-            it.remove(animeId)
-            safelyStore(metaDataProviderConfig, it)
+        safelyStore(metaDataProviderConfig) {
+            it.toMutableMap().apply {
+                remove(animeId)
+            }
         }
 
         val uri = metaDataProviderConfig.buildAnimeLink(animeId)
@@ -194,10 +201,12 @@ class DefaultDownloadControlStateAccessor(
         file.moveTo(newFile, true)
 
         downloadControlStateEntries[metaDataProviderConfig]?.load()[oldId]?.let { entry ->
-            val newMap = downloadControlStateEntries[metaDataProviderConfig]!!.load().toMutableMap()
-            newMap[newId] = entry
-            newMap.remove(oldId)
-            safelyStore(metaDataProviderConfig, newMap)
+            safelyStore(metaDataProviderConfig) {
+                it.toMutableMap().apply {
+                    put(newId, entry)
+                    remove(oldId)
+                }
+            }
         }
 
         val oldUri = metaDataProviderConfig.buildAnimeLink(oldId)
@@ -257,7 +266,9 @@ class DefaultDownloadControlStateAccessor(
                 }
 
                 partitions.forEach { (metaDataProviderConfig, mapping) ->
-                    safelyStore(metaDataProviderConfig, mapping)
+                    safelyStore(metaDataProviderConfig) {
+                        mapping
+                    }
                 }
 
                 isInitialized = true
@@ -278,10 +289,11 @@ class DefaultDownloadControlStateAccessor(
     }
 
     @KoverIgnore
-    private suspend fun safelyStore(metaDataProviderConfig: MetaDataProviderConfig, newMap: Map<AnimeId, DownloadControlStateEntry>) {
+    private suspend fun safelyStore(metaDataProviderConfig: MetaDataProviderConfig, merge: (Map<AnimeId, DownloadControlStateEntry>) -> Map<AnimeId, DownloadControlStateEntry>) {
         while (true) {
-            val atomicRef = downloadControlStateEntries[metaDataProviderConfig]!!
+            val atomicRef = downloadControlStateEntries[metaDataProviderConfig] ?: throw IllegalStateException("Unable to find MetaDataProviderConfig [$metaDataProviderConfig].")
             val current = atomicRef.load()
+            val newMap = merge(current)
             if (atomicRef.compareAndSet(current, newMap)) break
             yield()
         }
