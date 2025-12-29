@@ -25,6 +25,7 @@ import io.github.manamiproject.modb.test.tempDirectory
 import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.async
 import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.test.runTest
 import org.assertj.core.api.Assertions.assertThat
 import org.assertj.core.api.Assertions.assertThatNoException
 import org.junit.jupiter.api.Nested
@@ -146,7 +147,7 @@ internal class AnisearchCrawlerTest {
 
                 // when
                 assertThatNoException().isThrownBy {
-                    runBlocking { anisearchCrawler.start() }
+                    runTest { anisearchCrawler.start() }
                 }
                 assertThat(tempDir).isEmptyDirectory()
             }

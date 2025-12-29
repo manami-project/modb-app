@@ -6,7 +6,7 @@ import io.github.manamiproject.modb.core.httpclient.HttpResponse
 import io.github.manamiproject.modb.core.httpclient.RequestBody
 import io.github.manamiproject.modb.test.shouldNotBeInvoked
 import io.github.manamiproject.modb.test.tempDirectory
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.test.runTest
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Nested
 import java.net.URI
@@ -20,7 +20,7 @@ internal class AnilistHttpClientTest {
 
         @Test
         fun `successfully loads an entry and retrieves a token upon first call`() {
-            runBlocking {
+            runTest {
                 // given
                 var delegateCallTimes = 0
                 val testHttpClient = object: HttpClient by TestHttpClient {
@@ -81,7 +81,7 @@ internal class AnilistHttpClientTest {
 
         @Test
         fun `updates token if http response code is 403`() {
-            runBlocking {
+            runTest {
                 // given
                 var delegateCallTimes = 0
                 val testHttpClient = object: HttpClient by TestHttpClient {
@@ -141,7 +141,7 @@ internal class AnilistHttpClientTest {
 
         @Test
         fun `doesn't trigger token renewal if status code is 200`() {
-            runBlocking {
+            runTest {
                 // given
                 var delegateCallTimes = 0
                 val testHttpClient = object: HttpClient by TestHttpClient {
@@ -190,7 +190,7 @@ internal class AnilistHttpClientTest {
 
         @Test
         fun `successfully loads an entry and retrieves a token upon first call`() {
-            runBlocking {
+            runTest {
                 // given
                 var delegateCallTimes = 0
                 val testHttpClient = object: HttpClient by TestHttpClient {
@@ -255,7 +255,7 @@ internal class AnilistHttpClientTest {
 
         @Test
         fun `updates token if http response code is 403`() {
-            runBlocking {
+            runTest {
                 // given
                 var delegateCallTimes = 0
                 val testHttpClient = object: HttpClient by TestHttpClient {
@@ -319,7 +319,7 @@ internal class AnilistHttpClientTest {
 
         @Test
         fun `doesn't trigger token renewal if status code is 200`() {
-            runBlocking {
+            runTest {
                 // given
                 var delegateCallTimes = 0
                 val testHttpClient = object: HttpClient by TestHttpClient {

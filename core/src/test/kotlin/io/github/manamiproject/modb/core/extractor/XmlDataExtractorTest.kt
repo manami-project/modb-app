@@ -1,7 +1,7 @@
 package io.github.manamiproject.modb.core.extractor
 
 import io.github.manamiproject.modb.test.exceptionExpected
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.test.runTest
 import org.assertj.core.api.Assertions.assertThat
 import kotlin.test.Test
 
@@ -9,7 +9,7 @@ internal class XmlDataExtractorTest {
 
     @Test
     fun `successfully uses JsoupCssSelectorDataExtractor`() {
-        runBlocking {
+        runTest {
             // given
             val testFileContent = """
                 <!DOCTYPE html>
@@ -43,7 +43,7 @@ internal class XmlDataExtractorTest {
 
     @Test
     fun `if JsoupCssSelectorDataExtractor throws an exception fallback to JsoupXPathDataExtractor`() {
-        runBlocking {
+        runTest {
             // given
             val testFileContent = """
                 <!DOCTYPE html>

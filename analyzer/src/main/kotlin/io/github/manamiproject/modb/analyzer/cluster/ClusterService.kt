@@ -10,7 +10,7 @@ import kotlinx.coroutines.runBlocking
 /**
  * Access to clusters of anime.
  * A cluster is defined by the number of URLs in `sources`.
- * @sice 1.0.0
+ * @since 1.0.0
  * @property reviewedIsolatedEntriesAccessor
  * @property mergeLockAccessor
  */

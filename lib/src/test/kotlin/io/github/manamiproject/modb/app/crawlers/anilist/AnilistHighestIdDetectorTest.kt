@@ -8,7 +8,7 @@ import io.github.manamiproject.modb.core.httpclient.HttpResponse
 import io.github.manamiproject.modb.core.httpclient.RequestBody
 import io.github.manamiproject.modb.test.loadTestResource
 import io.github.manamiproject.modb.test.tempDirectory
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.test.runTest
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Nested
 import java.net.URI
@@ -22,7 +22,7 @@ internal class AnilistHighestIdDetectorTest {
 
         @Test
         fun `correctly extracts highest id`() {
-            runBlocking {
+            runTest {
                 // given
                 val testMetaDataProviderConfig = object : MetaDataProviderConfig by AnilistConfig {
                     override fun buildDataDownloadLink(id: String): URI = URI("http://localhost:8080/highest-id")

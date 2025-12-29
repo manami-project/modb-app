@@ -17,6 +17,7 @@ import io.github.manamiproject.modb.test.tempDirectory
 import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.async
 import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.test.runTest
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Nested
 import java.net.*
@@ -29,49 +30,51 @@ internal class AnidbHighestIdDetectorTest {
 
         @Test
         fun `adds RetryCases for ConnectException, UnknownHostException and NoRouteToHostException with restarting the NetworkController`() {
-            tempDirectory {
-                // given
-                val cases = mutableListOf<RetryCase>()
-                val testHttpClient = object: HttpClient by TestHttpClient {
-                    override fun addRetryCases(vararg retryCases: RetryCase): HttpClient {
-                        cases.addAll(retryCases)
-                        return this
+            runTest {
+                tempDirectory {
+                    // given
+                    val cases = mutableListOf<RetryCase>()
+                    val testHttpClient = object: HttpClient by TestHttpClient {
+                        override fun addRetryCases(vararg retryCases: RetryCase): HttpClient {
+                            cases.addAll(retryCases)
+                            return this
+                        }
                     }
-                }
 
-                var restartInvocations = 0
-                val testNetworkController = object: NetworkController by TestNetworkController {
-                    override suspend fun restartAsync(): Deferred<Boolean> {
-                        restartInvocations++
-                        return runBlocking { async { true } }
+                    var restartInvocations = 0
+                    val testNetworkController = object: NetworkController by TestNetworkController {
+                        override suspend fun restartAsync(): Deferred<Boolean> {
+                            restartInvocations++
+                            return runBlocking { async { true } }
+                        }
                     }
+
+                    // when
+                    AnidbHighestIdDetector(
+                        metaDataProviderConfig = TestMetaDataProviderConfig,
+                        httpClient = testHttpClient,
+                        extractor = TestDataExtractor,
+                        networkController = testNetworkController,
+                    )
+
+                    // then
+                    assertThat(cases).hasSize(3)
+
+                    val connectException = cases.find { (it as ThrowableRetryCase).retryIf(ConnectException()) }
+                    assertThat(connectException).isNotNull()
+                    connectException!!.executeBefore.invoke()
+                    assertThat(restartInvocations).isEqualTo(1)
+
+                    val unknownHostException = cases.find { (it as ThrowableRetryCase).retryIf(UnknownHostException()) }
+                    assertThat(unknownHostException).isNotNull()
+                    unknownHostException!!.executeBefore.invoke()
+                    assertThat(restartInvocations).isEqualTo(2)
+
+                    val noRouteToHostException = cases.find { (it as ThrowableRetryCase).retryIf(NoRouteToHostException()) }
+                    assertThat(noRouteToHostException).isNotNull()
+                    noRouteToHostException!!.executeBefore.invoke()
+                    assertThat(restartInvocations).isEqualTo(3)
                 }
-
-                // when
-                AnidbHighestIdDetector(
-                    metaDataProviderConfig = TestMetaDataProviderConfig,
-                    httpClient = testHttpClient,
-                    extractor = TestDataExtractor,
-                    networkController = testNetworkController,
-                )
-
-                // then
-                assertThat(cases).hasSize(3)
-
-                val connectException = cases.find { (it as ThrowableRetryCase).retryIf(ConnectException()) }
-                assertThat(connectException).isNotNull()
-                connectException!!.executeBefore.invoke()
-                assertThat(restartInvocations).isEqualTo(1)
-
-                val unknownHostException = cases.find { (it as ThrowableRetryCase).retryIf(UnknownHostException()) }
-                assertThat(unknownHostException).isNotNull()
-                unknownHostException!!.executeBefore.invoke()
-                assertThat(restartInvocations).isEqualTo(2)
-
-                val noRouteToHostException = cases.find { (it as ThrowableRetryCase).retryIf(NoRouteToHostException()) }
-                assertThat(noRouteToHostException).isNotNull()
-                noRouteToHostException!!.executeBefore.invoke()
-                assertThat(restartInvocations).isEqualTo(3)
             }
         }
     }
@@ -81,7 +84,7 @@ internal class AnidbHighestIdDetectorTest {
 
         @Test
         fun `correctly extracts highest id`() {
-            runBlocking {
+            runTest {
                 // given
                 val testMetaDataProviderConfig = object : MetaDataProviderConfig by AnidbHighestIdDetectorConfig {
                     override fun buildDataDownloadLink(id: String): URI = URI("http://localhost:8080/highest-id")
@@ -111,7 +114,7 @@ internal class AnidbHighestIdDetectorTest {
 
         @Test
         fun `throws exception, because the element couldn't be found`() {
-            runBlocking {
+            runTest {
                 // given
                 val testMetaDataProviderConfig = object : MetaDataProviderConfig by AnidbHighestIdDetectorConfig {
                     override fun buildDataDownloadLink(id: String): URI = URI("http://localhost:8080/highest-id")
@@ -150,7 +153,7 @@ internal class AnidbHighestIdDetectorTest {
 
         @Test
         fun `throws exception if value found is not an integer`() {
-            runBlocking {
+            runTest {
                 // given
                 val testMetaDataProviderConfig = object : MetaDataProviderConfig by AnidbHighestIdDetectorConfig {
                     override fun buildDataDownloadLink(id: String): URI = URI("http://localhost:8080/highest-id")
@@ -195,7 +198,7 @@ internal class AnidbHighestIdDetectorTest {
 
         @Test
         fun `initiates a restart of the network controller if a CrawlerDetectedException is thrown`() {
-            runBlocking {
+            runTest {
                 // given
                 val testMetaDataProviderConfig = object : MetaDataProviderConfig by AnidbHighestIdDetectorConfig {
                     override fun buildDataDownloadLink(id: String): URI = URI("http://localhost:8080/highest-id")
@@ -240,7 +243,7 @@ internal class AnidbHighestIdDetectorTest {
 
         @Test
         fun `throws an exception if a restart of the network controller didn't help`() {
-            runBlocking {
+            runTest {
                 // given
                 val testMetaDataProviderConfig = object : MetaDataProviderConfig by AnidbHighestIdDetectorConfig {
                     override fun buildDataDownloadLink(id: String): URI = URI("http://localhost:8080/highest-id")
@@ -271,7 +274,7 @@ internal class AnidbHighestIdDetectorTest {
 
         @Test
         fun `directly throws exception if it's not one of the cases that restart the network controller`() {
-            runBlocking {
+            runTest {
                 // given
                 val testMetaDataProviderConfig = object : MetaDataProviderConfig by AnidbHighestIdDetectorConfig {
                     override fun buildDataDownloadLink(id: String): URI = URI("http://localhost:8080/highest-id")

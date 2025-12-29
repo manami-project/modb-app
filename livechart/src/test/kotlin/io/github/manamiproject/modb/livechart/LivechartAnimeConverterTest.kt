@@ -10,7 +10,7 @@ import io.github.manamiproject.modb.core.config.FileSuffix
 import io.github.manamiproject.modb.core.config.Hostname
 import io.github.manamiproject.modb.core.config.MetaDataProviderConfig
 import io.github.manamiproject.modb.test.loadTestResource
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.test.runTest
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Nested
 import java.net.URI
@@ -24,7 +24,7 @@ internal class LivechartAnimeConverterTest {
 
         @Test
         fun `title containing special chars`() {
-            runBlocking {
+            runTest {
                 // given
                 val testLivechartConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = LivechartConfig.hostname()
@@ -48,7 +48,7 @@ internal class LivechartAnimeConverterTest {
 
         @Test
         fun `title containing encoded special chars`() {
-            runBlocking {
+            runTest {
                 // given
                 val testLivechartConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = LivechartConfig.hostname()
@@ -76,7 +76,7 @@ internal class LivechartAnimeConverterTest {
 
         @Test
         fun `no synonyms`() {
-            runBlocking {
+            runTest {
                 // given
                 val testLivechartConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = LivechartConfig.hostname()
@@ -100,7 +100,7 @@ internal class LivechartAnimeConverterTest {
 
         @Test
         fun `one synonym`() {
-            runBlocking {
+            runTest {
                 // given
                 val testLivechartConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = LivechartConfig.hostname()
@@ -124,7 +124,7 @@ internal class LivechartAnimeConverterTest {
 
         @Test
         fun `multiple synonyms`() {
-            runBlocking {
+            runTest {
                 // given
                 val testLivechartConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = LivechartConfig.hostname()
@@ -151,7 +151,7 @@ internal class LivechartAnimeConverterTest {
 
         @Test
         fun `synonym containing encoded special char`() {
-            runBlocking {
+            runTest {
                 // given
                 val testLivechartConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = LivechartConfig.hostname()
@@ -179,7 +179,7 @@ internal class LivechartAnimeConverterTest {
 
         @Test
         fun `unknown number of episodes`() {
-            runBlocking {
+            runTest {
                 // given
                 val testLivechartConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = LivechartConfig.hostname()
@@ -203,7 +203,7 @@ internal class LivechartAnimeConverterTest {
 
         @Test
         fun `1 episode`() {
-            runBlocking {
+            runTest {
                 // given
                 val testLivechartConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = LivechartConfig.hostname()
@@ -227,7 +227,7 @@ internal class LivechartAnimeConverterTest {
 
         @Test
         fun `10 episodes`() {
-            runBlocking {
+            runTest {
                 // given
                 val testLivechartConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = LivechartConfig.hostname()
@@ -251,7 +251,7 @@ internal class LivechartAnimeConverterTest {
 
         @Test
         fun `100 episodes`() {
-            runBlocking {
+            runTest {
                 // given
                 val testLivechartConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = LivechartConfig.hostname()
@@ -275,7 +275,7 @@ internal class LivechartAnimeConverterTest {
 
         @Test
         fun `number episodes unknown, but currently running`() {
-            runBlocking {
+            runTest {
                 // given
                 val testLivechartConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = LivechartConfig.hostname()
@@ -299,7 +299,7 @@ internal class LivechartAnimeConverterTest {
 
         @Test
         fun `number episodes known and currently running`() {
-            runBlocking {
+            runTest {
                 // given
                 val testLivechartConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = LivechartConfig.hostname()
@@ -327,7 +327,7 @@ internal class LivechartAnimeConverterTest {
 
         @Test
         fun `extract id 3437`() {
-            runBlocking {
+            runTest {
                 // given
                 val testLivechartConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = LivechartConfig.hostname()
@@ -355,7 +355,7 @@ internal class LivechartAnimeConverterTest {
 
         @Test
         fun `neither picture nor thumbnail`() {
-            runBlocking {
+            runTest {
                 // given
                 val testLivechartConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = LivechartConfig.hostname()
@@ -380,7 +380,7 @@ internal class LivechartAnimeConverterTest {
 
         @Test
         fun `picture and thumbnail`() {
-            runBlocking {
+            runTest {
                 // given
                 val testLivechartConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = LivechartConfig.hostname()
@@ -409,7 +409,7 @@ internal class LivechartAnimeConverterTest {
 
         @Test
         fun `type is TV`() {
-            runBlocking {
+            runTest {
                 // given
                 val testLivechartConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = LivechartConfig.hostname()
@@ -433,7 +433,7 @@ internal class LivechartAnimeConverterTest {
 
         @Test
         fun `Unknown is mapped to 'UNKNOWN'`() {
-            runBlocking {
+            runTest {
                 // given
                 val testLivechartConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = LivechartConfig.hostname()
@@ -457,7 +457,7 @@ internal class LivechartAnimeConverterTest {
         
         @Test
         fun `type 'tv short' is mapped to 'TV'`() {
-            runBlocking {
+            runTest {
                 // given
                 val testLivechartConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = LivechartConfig.hostname()
@@ -481,7 +481,7 @@ internal class LivechartAnimeConverterTest {
         
         @Test
         fun `type is Movie`() {
-            runBlocking {
+            runTest {
                 // given
                 val testLivechartConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = LivechartConfig.hostname()
@@ -505,7 +505,7 @@ internal class LivechartAnimeConverterTest {
 
         @Test
         fun `type 'web short' is mapped to 'ONA'`() {
-            runBlocking {
+            runTest {
                 // given
                 val testLivechartConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = LivechartConfig.hostname()
@@ -529,7 +529,7 @@ internal class LivechartAnimeConverterTest {
 
         @Test
         fun `type 'web' is mapped to 'ONA'`() {
-            runBlocking {
+            runTest {
                 // given
                 val testLivechartConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = LivechartConfig.hostname()
@@ -553,7 +553,7 @@ internal class LivechartAnimeConverterTest {
 
         @Test
         fun `type is OVA`() {
-            runBlocking {
+            runTest {
                 // given
                 val testLivechartConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = LivechartConfig.hostname()
@@ -577,7 +577,7 @@ internal class LivechartAnimeConverterTest {
 
         @Test
         fun `type is Special`() {
-            runBlocking {
+            runTest {
                 // given
                 val testLivechartConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = LivechartConfig.hostname()
@@ -605,7 +605,7 @@ internal class LivechartAnimeConverterTest {
 
         @Test
         fun `1 hr`() {
-            runBlocking {
+            runTest {
                 // given
                 val testLivechartConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = LivechartConfig.hostname()
@@ -629,7 +629,7 @@ internal class LivechartAnimeConverterTest {
 
         @Test
         fun `1 hr 11 min`() {
-            runBlocking {
+            runTest {
                 // given
                 val testLivechartConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = LivechartConfig.hostname()
@@ -653,7 +653,7 @@ internal class LivechartAnimeConverterTest {
 
         @Test
         fun `2 hr`() {
-            runBlocking {
+            runTest {
                 // given
                 val testLivechartConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = LivechartConfig.hostname()
@@ -677,7 +677,7 @@ internal class LivechartAnimeConverterTest {
 
         @Test
         fun `2 hr 15 min`() {
-            runBlocking {
+            runTest {
                 // given
                 val testLivechartConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = LivechartConfig.hostname()
@@ -701,7 +701,7 @@ internal class LivechartAnimeConverterTest {
 
         @Test
         fun `10 min`() {
-            runBlocking {
+            runTest {
                 // given
                 val testLivechartConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = LivechartConfig.hostname()
@@ -725,7 +725,7 @@ internal class LivechartAnimeConverterTest {
 
         @Test
         fun `30 sec`() {
-            runBlocking {
+            runTest {
                 // given
                 val testLivechartConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = LivechartConfig.hostname()
@@ -749,7 +749,7 @@ internal class LivechartAnimeConverterTest {
 
         @Test
         fun `unknown duration`() {
-            runBlocking {
+            runTest {
                 // given
                 val testLivechartConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = LivechartConfig.hostname()
@@ -777,7 +777,7 @@ internal class LivechartAnimeConverterTest {
 
         @Test
         fun `extract multiple tags`() {
-            runBlocking {
+            runTest {
                 // given
                 val testLivechartConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = LivechartConfig.hostname()
@@ -809,7 +809,7 @@ internal class LivechartAnimeConverterTest {
 
         @Test
         fun `extract exactly one tag`() {
-            runBlocking {
+            runTest {
                 // given
                 val testLivechartConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = LivechartConfig.hostname()
@@ -833,7 +833,7 @@ internal class LivechartAnimeConverterTest {
 
         @Test
         fun `no tags available`() {
-            runBlocking {
+            runTest {
                 // given
                 val testLivechartConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = LivechartConfig.hostname()
@@ -864,7 +864,7 @@ internal class LivechartAnimeConverterTest {
 
             @Test
             fun `season is 'UNDEFINED'`() {
-                runBlocking {
+                runTest {
                     // given
                     val testLivechartConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                         override fun hostname(): Hostname = LivechartConfig.hostname()
@@ -888,7 +888,7 @@ internal class LivechartAnimeConverterTest {
 
             @Test
             fun `season is 'FALL'`() {
-                runBlocking {
+                runTest {
                     // given
                     val testLivechartConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                         override fun hostname(): Hostname = LivechartConfig.hostname()
@@ -912,7 +912,7 @@ internal class LivechartAnimeConverterTest {
 
             @Test
             fun `season is 'SPRING'`() {
-                runBlocking {
+                runTest {
                     // given
                     val testLivechartConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                         override fun hostname(): Hostname = LivechartConfig.hostname()
@@ -936,7 +936,7 @@ internal class LivechartAnimeConverterTest {
 
             @Test
             fun `season is 'SUMMER'`() {
-                runBlocking {
+                runTest {
                     // given
                     val testLivechartConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                         override fun hostname(): Hostname = LivechartConfig.hostname()
@@ -960,7 +960,7 @@ internal class LivechartAnimeConverterTest {
 
             @Test
             fun `season is 'WINTER'`() {
-                runBlocking {
+                runTest {
                     // given
                     val testLivechartConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                         override fun hostname(): Hostname = LivechartConfig.hostname()
@@ -984,7 +984,7 @@ internal class LivechartAnimeConverterTest {
 
             @Test
             fun `season is 'UNDEFINED' because there is no element containing season info`() {
-                runBlocking {
+                runTest {
                     // given
                     val testLivechartConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                         override fun hostname(): Hostname = LivechartConfig.hostname()
@@ -1012,7 +1012,7 @@ internal class LivechartAnimeConverterTest {
 
             @Test
             fun `season set completely`() {
-                runBlocking {
+                runTest {
                     // given
                     val testLivechartConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                         override fun hostname(): Hostname = LivechartConfig.hostname()
@@ -1036,7 +1036,7 @@ internal class LivechartAnimeConverterTest {
 
             @Test
             fun `season is not set, but premiere`() {
-                runBlocking {
+                runTest {
                     // given
                     val testLivechartConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                         override fun hostname(): Hostname = LivechartConfig.hostname()
@@ -1060,7 +1060,7 @@ internal class LivechartAnimeConverterTest {
 
             @Test
             fun `both season and premiere are not set`() {
-                runBlocking {
+                runTest {
                     // given
                     val testLivechartConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                         override fun hostname(): Hostname = LivechartConfig.hostname()
@@ -1089,7 +1089,7 @@ internal class LivechartAnimeConverterTest {
 
         @Test
         fun `status is ongoing`() {
-            runBlocking {
+            runTest {
                 // given
                 val testLivechartConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = LivechartConfig.hostname()
@@ -1113,7 +1113,7 @@ internal class LivechartAnimeConverterTest {
 
         @Test
         fun `status is upcoming`() {
-            runBlocking {
+            runTest {
                 // given
                 val testLivechartConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = LivechartConfig.hostname()
@@ -1137,7 +1137,7 @@ internal class LivechartAnimeConverterTest {
 
         @Test
         fun `status is finished`() {
-            runBlocking {
+            runTest {
                 // given
                 val testLivechartConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = LivechartConfig.hostname()
@@ -1165,7 +1165,7 @@ internal class LivechartAnimeConverterTest {
 
         @Test
         fun `no related anime`() {
-            runBlocking {
+            runTest {
                 // given
                 val testLivechartConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = LivechartConfig.hostname()
@@ -1189,7 +1189,7 @@ internal class LivechartAnimeConverterTest {
 
         @Test
         fun `one related anime`() {
-            runBlocking {
+            runTest {
                 // given
                 val testLivechartConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = LivechartConfig.hostname()
@@ -1215,7 +1215,7 @@ internal class LivechartAnimeConverterTest {
 
         @Test
         fun `multiple related anime no scrolling`() {
-            runBlocking {
+            runTest {
                 // given
                 val testLivechartConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = LivechartConfig.hostname()
@@ -1243,7 +1243,7 @@ internal class LivechartAnimeConverterTest {
 
         @Test
         fun `multiple related anime with scrolling`() {
-            runBlocking {
+            runTest {
                 // given
                 val testLivechartConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = LivechartConfig.hostname()
@@ -1287,7 +1287,7 @@ internal class LivechartAnimeConverterTest {
 
         @Test
         fun `successfully load score`() {
-            runBlocking {
+            runTest {
                 // given
                 val testLivechartConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = LivechartConfig.hostname()
@@ -1310,7 +1310,7 @@ internal class LivechartAnimeConverterTest {
 
         @Test
         fun `returns NoMetaDataProviderScore`() {
-            runBlocking {
+            runTest {
                 // given
                 val testLivechartConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = LivechartConfig.hostname()
@@ -1335,7 +1335,7 @@ internal class LivechartAnimeConverterTest {
 
         @Test
         fun `multiple studios`() {
-            runBlocking {
+            runTest {
                 // given
                 val testLivechartConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = LivechartConfig.hostname()
@@ -1362,7 +1362,7 @@ internal class LivechartAnimeConverterTest {
 
         @Test
         fun `no studios`() {
-            runBlocking {
+            runTest {
                 // given
                 val testLivechartConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = LivechartConfig.hostname()

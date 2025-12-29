@@ -12,7 +12,7 @@ import io.github.manamiproject.modb.test.MockServerTestCase
 import io.github.manamiproject.modb.test.WireMockServerCreator
 import io.github.manamiproject.modb.test.exceptionExpected
 import io.github.manamiproject.modb.test.shouldNotBeInvoked
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.test.runTest
 import org.assertj.core.api.Assertions.assertThat
 import kotlin.test.Test
 import java.net.URI
@@ -21,7 +21,7 @@ internal class AnisearchDownloaderTest : MockServerTestCase<WireMockServer> by W
 
     @Test
     fun `successfully load an entry`() {
-        runBlocking {
+        runTest {
             // given
             val id = 1535
 
@@ -57,7 +57,7 @@ internal class AnisearchDownloaderTest : MockServerTestCase<WireMockServer> by W
 
     @Test
     fun `invokes lambda in case of a dead entry`() {
-        runBlocking {
+        runTest {
             // given
             val id = 1535
 
