@@ -56,7 +56,7 @@ class DefaultDownloadControlStateUpdater(
     private suspend fun fetchAnimeFromConvFiles(): List<Pair<AnimeRaw, String>> = withContext(LIMITED_FS) {
         log.info { "Loading [*.$CONVERTED_FILE_SUFFIX] files." }
 
-        val jobs = appConfig.metaDataProviderConfigurations()
+        val jobsResults = appConfig.metaDataProviderConfigurations()
             .map { metaDataProviderConfig ->
                 appConfig.workingDir(metaDataProviderConfig)
             }
@@ -66,9 +66,9 @@ class DefaultDownloadControlStateUpdater(
                         Json.parseJson<AnimeRaw>(file.readFile())!! to file.fileName()
                     }
                 }
-            }.flatten()
+            }.flatten().awaitAll()
 
-        return@withContext awaitAll(*jobs.toTypedArray())
+        return@withContext jobsResults
     }
 
     private suspend fun checkForExtractionProblems(convFileAnime: List<Pair<AnimeRaw, MetaDataProviderConfig>>) {
