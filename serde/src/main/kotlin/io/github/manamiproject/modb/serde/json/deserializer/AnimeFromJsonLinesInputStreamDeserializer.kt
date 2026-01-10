@@ -10,7 +10,7 @@ import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.onCompletion
 
 /**
- * Deserialzes JSON lines of [Anime] provided by a [LifecycleAwareInputStream].
+ * Deserializes JSON lines of [Anime] provided by a [LifecycleAwareInputStream].
  * This class cannot handle a default JSON. This class can only process JSON lines content.
  * @since 6.0.0
  * @throws IllegalArgumentException if the given [LifecycleAwareInputStream] is closed.

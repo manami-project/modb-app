@@ -19,7 +19,7 @@ It allows you to create the JSON which is used in "anime-offline-database" proje
 A different interface is `JsonLinesSerializer` with a single implementation:
 * `JsonLinesSerializer`
 
-This will create a [JSON lines](https://jsonlines.org) where the first line is meta data followed by one serialized `Anime` per line.
+This will create a [JSON lines](https://jsonlines.org) where the first line is metadata followed by one serialized `Anime` per line.
 
 ### Deserialization
 
@@ -38,8 +38,8 @@ All of the above `Deserialzer` implementations require an `InputStream` as sourc
 
 # Deserialize files and HTTP responses
 
-Wrap the instances above in either `FromRegularFileDeserializer` for deserialing files or `FromUrlDeserializer` if you want
-to download a file and directly deserialze it. Both implementations can handle raw text files for JSON as well as Zstandard compressed files.
+Wrap the instances above in either `FromRegularFileDeserializer` for deserializing files or `FromUrlDeserializer` if you want
+to download a file and directly deserialize it. Both implementations can handle raw text files for JSON as well as Zstandard compressed files.
 
 **Example:**
 

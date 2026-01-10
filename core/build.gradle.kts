@@ -102,7 +102,7 @@ publishing {
             pom {
                 packaging = "jar"
                 name.set(moduleName)
-                description.set("This lib is the base for every specific meta data provider module. It contains the API for downloaders and converters, defines the anime model and provides basic functionality.")
+                description.set("This lib is the base for every specific metadata provider module. It contains the API for downloaders and converters, defines the anime model and provides basic functionality.")
                 url.set("https://github.com/$githubUsername/$projectName")
 
                 licenses {

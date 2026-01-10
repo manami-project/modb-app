@@ -24,7 +24,7 @@ public enum class AnimeType {
      */
     ONA,
     /**
-     * Basically anything else. Could be music videos, advertisements, manner movies or actual speical episodes.
+     * Basically anything else. Could be music videos, advertisements, manner movies or actual special episodes.
      * @since 1.0.0
      */
     SPECIAL,
@@ -36,7 +36,7 @@ public enum class AnimeType {
 
     public companion object {
         /**
-         * Creates [AnimeType] from a [String]. Tolerant by ignoreing leading and trailing whitespaces as well as case.
+         * Creates [AnimeType] from a [String]. Tolerant by ignoring leading and trailing whitespaces as well as case.
          * @since 11.0.0
          * @param value The value being mapped to a [AnimeType].
          */

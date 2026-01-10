@@ -35,10 +35,10 @@ import kotlin.io.path.createDirectories
 
 /**
  * Handles the access to dead entries files.
- * Each supported meta data provider has its own dead entries file.
- * Not every meta data provider supports dead entries.
- * For some all IDs are loaded upfront and for some pagination is used. Those meta data providers are not supported for
- * most functions. Based on the existence of a DCS file they can howver return a value
+ * Each supported metadata provider has its own dead entries file.
+ * Not every metadata provider supports dead entries.
+ * For some all IDs are loaded upfront and for some pagination is used. Those metadata providers are not supported for
+ * most functions. Based on the existence of a DCS file they can however return a value
  * for [DeadEntriesAccessor.determineDeadEntries].
  * @since 1.0.0
  * @property appConfig Application specific configuration. Uses [AppConfig] by default.
@@ -59,7 +59,7 @@ class DefaultDeadEntriesAccessor(
     private var isInitialized = false
 
     override fun deadEntriesFile(metaDataProviderConfig: MetaDataProviderConfig, type: DatasetFileType): RegularFile {
-        require(appConfig.deadEntriesSupported(metaDataProviderConfig)) { "Meta data provider [${metaDataProviderConfig.hostname()}] doesn't support dead entry files." }
+        require(appConfig.deadEntriesSupported(metaDataProviderConfig)) { "Metadata provider [${metaDataProviderConfig.hostname()}] doesn't support dead entry files." }
 
         val hostnameWithoutTld = metaDataProviderConfig.hostname().split('.').first()
         val deadEntriesDirectory = appConfig.outputDirectory().resolve("dead-entries")
@@ -124,7 +124,7 @@ class DefaultDeadEntriesAccessor(
             AnimenewsnetworkConfig.hostname() -> deadEntries.animenewsnetwork
             KitsuConfig.hostname() -> deadEntries.kitsu
             MyanimelistConfig.hostname() -> deadEntries.myanimelist
-            else -> throw IllegalArgumentException("Meta data provider [${metaDataProviderConfig.hostname()}] is not supported.")
+            else -> throw IllegalArgumentException("Metadata provider [${metaDataProviderConfig.hostname()}] is not supported.")
         }.toSet()
     }
 
@@ -143,7 +143,7 @@ class DefaultDeadEntriesAccessor(
                             AnimenewsnetworkConfig.hostname() -> deadEntries.animenewsnetwork.addAll(parsedEntries.deadEntries)
                             KitsuConfig.hostname() -> deadEntries.kitsu.addAll(parsedEntries.deadEntries)
                             MyanimelistConfig.hostname() -> deadEntries.myanimelist.addAll(parsedEntries.deadEntries)
-                            else -> throw IllegalStateException("Meta data provider [${metaDataProviderConfig.hostname()}] is not supported.")
+                            else -> throw IllegalStateException("Metadata provider [${metaDataProviderConfig.hostname()}] is not supported.")
                         }
                     }
                 isInitialized = true
@@ -173,7 +173,7 @@ class DefaultDeadEntriesAccessor(
                 deadEntries.myanimelist.add(animeId)
                 deadEntries.myanimelist
             }
-            else -> throw IllegalStateException("Meta data provider [${metaDataProviderConfig.hostname()}] is not supported.")
+            else -> throw IllegalStateException("Metadata provider [${metaDataProviderConfig.hostname()}] is not supported.")
         }
 
         jsonSerializer.serialize(deadEntries, minify = true).writeToFile(deadEntriesFile(metaDataProviderConfig, JSON_MINIFIED))

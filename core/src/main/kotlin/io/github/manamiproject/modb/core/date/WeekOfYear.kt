@@ -38,7 +38,7 @@ public data class WeekOfYear(
      * Create an instance of [WeekOfYear] based on a date.
      * @since 18.1.0
      * @param localDate Date for which the week of the year should be determined.
-     * @param zoneId Id of the time zone used for the date.
+     * @param zoneId ID of the time zone used for the date.
      */
     public constructor(localDate: LocalDate, zoneId: ZoneId = ZoneId.systemDefault()): this(
         year = determineYear(localDate, zoneId),

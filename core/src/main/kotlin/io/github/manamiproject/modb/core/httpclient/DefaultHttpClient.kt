@@ -30,7 +30,7 @@ import java.util.concurrent.TimeUnit.*
 
 /**
  * Default HTTP client based on OKHTTP.
- * Handles individual retry behavior for a HTTP request.
+ * Handles individual retry behavior for an HTTP request.
  *
  * # Trigger
  * A retry will always execute the request first.

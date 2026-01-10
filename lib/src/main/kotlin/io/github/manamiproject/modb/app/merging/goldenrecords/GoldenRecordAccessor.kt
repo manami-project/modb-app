@@ -6,8 +6,8 @@ import java.net.URI
 import java.util.*
 
 /**
- * Manages golden records. During the merge prorcess which checks one DCS entry after another a golden record represents
- * a temporary entry for the dataset. A golden record is either a single unmergable anime or an anime consisting of
+ * Manages golden records. During the merge process which checks one DCS entry after another a golden record represents
+ * a temporary entry for the dataset. A golden record is either a single not mergeable anime or an anime consisting of
  * multiple DCS anime instances merged together.
  *
  * Golden records only exist within this class. Outside of this class the instances are referred to as
@@ -23,7 +23,7 @@ interface GoldenRecordAccessor {
     /**
      * Creates a new golden record.
      * @since 1.0.0
-     * @param anime Anime for which a new folden record will be created.
+     * @param anime Anime for which a new folder record will be created.
      */
     fun createGoldenRecord(anime: AnimeRaw)
 

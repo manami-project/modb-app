@@ -127,7 +127,7 @@ internal class ConfigTest {
     inner class CanChangeAnimeIdsTests {
 
         @Test
-        fun `returns true if IDs of a meta data provider can change`() {
+        fun `returns true if IDs of a metadata provider can change`() {
             // given
             val testConfig = object: Config {
                 override fun downloadsDirectory(): Directory = shouldNotBeInvoked()
@@ -145,7 +145,7 @@ internal class ConfigTest {
         }
 
         @Test
-        fun `returns false if IDs of a meta data provider cannot change`() {
+        fun `returns false if IDs of a metadata provider cannot change`() {
             // given
             val testMetaDataProviderConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
                 override fun hostname(): Hostname = "example.org"
@@ -178,7 +178,7 @@ internal class ConfigTest {
             KitsuConfig::class,
             MyanimelistConfig::class,
         ])
-        fun `returns true for all supported meta data provider`(configClass: Class<*>) {
+        fun `returns true for all supported metadata provider`(configClass: Class<*>) {
             // given
             val testMetaDataProviderConfig = configClass.kotlin.objectInstance as MetaDataProviderConfig
 
@@ -204,7 +204,7 @@ internal class ConfigTest {
             LivechartConfig::class,
             SimklConfig::class,
         ])
-        fun `returns false for all meta data provider which are not supported`(configClass: Class<*>) {
+        fun `returns false for all metadata provider which are not supported`(configClass: Class<*>) {
             // given
             val testMetaDataProviderConfig = configClass.kotlin.objectInstance as MetaDataProviderConfig
 

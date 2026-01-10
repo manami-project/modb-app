@@ -43,7 +43,7 @@ class DefaultGoldenRecordAccessor: GoldenRecordAccessor {
     override fun findPossibleGoldenRecords(anime: AnimeRaw): Set<PotentialGoldenRecord> {
         var entries = findByTitle(anime.title)
 
-        // anime-planet usually provides a title which is very unique across all meta data provider. In case we couldn't find anything using that title we retry using the first synonym
+        // anime-planet usually provides a title which is unique across all metadata provider. In case we couldn't find anything using that title we retry using the first synonym
         if (entries.isEmpty() && anime.sources.size == 1 && anime.sources.first().host == AnimePlanetConfig.hostname() && anime.synonyms.isNotEmpty()) {
             entries = findByTitle(anime.synonyms.first())
         }

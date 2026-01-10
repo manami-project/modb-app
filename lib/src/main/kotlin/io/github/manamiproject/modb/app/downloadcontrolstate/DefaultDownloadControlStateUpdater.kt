@@ -25,13 +25,13 @@ import kotlinx.coroutines.withContext
  *
  * This class can only be executed once in a meaningful way per weekly update.
  * The reason is that before actually updating the DCS entries it also checks the newly created conv filed against
- * the already existing DCS files for possible problems in the converter classes. This is the only point of time where
+ * the already existing DCS files for possible problems in the converter classes. This is the only point of time when
  * it is possible and only before the update took place. That's way it is baked into the [updateAll] function instead of
  * being offered as a public function and then orchestrated elsewhere.
  * This is also the where the anime are checked for IDs being updated. Conv files are already accessed here and it's
  * supposed to be done prior to updating the DCS files. That's why it's also part of the [updateAll].
  *
- * Therefore this class is mostly a quality gate and process orchestrator for [DownloadControlStateAccessor].
+ * Therefore, this class is mostly a quality gate and process orchestrator for [DownloadControlStateAccessor].
  * @since 1.0.0
  * @property appConfig Application specific configuration. Uses [AppConfig] by default.
  * @property downloadControlStateAccessor Access to DCS files.

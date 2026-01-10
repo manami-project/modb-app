@@ -11,7 +11,7 @@ import java.util.*
  * The merging process runs through every DCS entry. So the lifecycle of a golden record starts with a single anime
  * which is then merged each time with fitting other anime.
  *
- * Golden records only exist inside [GoldenRecordAccessor]. Outside of the class they are referred to
+ * Golden records only exist inside [GoldenRecordAccessor]. Outside the class they are referred to
  * as [PotentialGoldenRecord].
  * @since 1.0.0
  * @param id Randomly generated ID to be able to identify this golden record in the current run.

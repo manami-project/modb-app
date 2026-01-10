@@ -13,7 +13,7 @@ import io.github.manamiproject.modb.core.logging.LoggerDelegate
 /**
  * Detects the highest anime id based on the page showing latest additions.
  * @since 1.0.0
- * @property metaDataProviderConfig Configuration for a specific meta data provider.
+ * @property metaDataProviderConfig Configuration for a specific metadata provider.
  * @property httpClient Implementation of [HttpClient] which is used to retrieve the highest id.
  * @property extractor Extractor which retrieves the data from raw data.
  */

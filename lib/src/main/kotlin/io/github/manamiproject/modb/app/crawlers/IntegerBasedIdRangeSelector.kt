@@ -13,14 +13,14 @@ import io.github.manamiproject.modb.core.extensions.createShuffledList
 import io.github.manamiproject.modb.core.logging.LoggerDelegate
 
 /**
- * Generates a sequence of anime IDs of type [Int] for a specific meta data provider.
- * 1. First the highest anime ID that the meta data provider has to offer is fetched.
+ * Generates a sequence of anime IDs of type [Int] for a specific metadata provider.
+ * 1. First the highest anime ID that the metadata provider has to offer is fetched.
  * 2. A sequence from 1 (inclusive) to the highest id (inclusive) is generated.
  * 3. Dead entries, anime which are not scheduled for the current week as well as already downloaded anime are removed
  * 4. Resulting list is shuffled and returned.
  * @since 1.0.0
- * @property metaDataProviderConfig Configuration for a specific meta data provider.
- * @property highestIdDetector Allows to retrieve the highest anime ID currently available on the meta data provider website.
+ * @property metaDataProviderConfig Configuration for a specific metadata provider.
+ * @property highestIdDetector Allows to retrieve the highest anime ID currently available on the metadata provider website.
  * @property deadEntriesAccessor Access to dead entries files.
  * @property downloadControlStateAccessor Access to DCS files.
  * @property downloadControlStateScheduler Allows to check which anime are scheduled for re-download and which are not.

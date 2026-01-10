@@ -377,7 +377,7 @@ internal object TestAnimeRawObjects {
     }
 
     /**
-     * A special with multiple episodes. Single meta data provider only.
+     * A special with multiple episodes. Single metadata provider only.
      */
     object AllPropertiesSet {
 
@@ -508,7 +508,7 @@ internal object TestAnimeRawObjects {
     }
 
     /**
-     * A special with multiple episodes. Contains a fully merged anime object with all meta data providers.
+     * A special with multiple episodes. Contains a fully merged anime object with all metadata providers.
      */
     object FullyMergedAllPropertiesSet {
 
@@ -941,7 +941,7 @@ internal object TestAnimeObjects {
     }
 
     /**
-     * A special with multiple episodes. Single meta data provider only.
+     * A special with multiple episodes. Single metadata provider only.
      */
     object AllPropertiesSet {
 
@@ -1048,7 +1048,7 @@ internal object TestAnimeObjects {
     }
 
     /**
-     * A special with multiple episodes. Contains a fully merged anime object with all meta data providers.
+     * A special with multiple episodes. Contains a fully merged anime object with all metadata providers.
      */
     object FullyMergedAllPropertiesSet {
 

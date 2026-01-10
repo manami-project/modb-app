@@ -81,7 +81,7 @@ public class AnisearchAnimeConverter(
             episodes = extractEpisodes(jsonData),
             type = extractType(data),
             picture = picture,
-            thumbnail = generateThummbnail(picture),
+            thumbnail = generateThumbnail(picture),
             status = extractStatus(data),
             duration = extractDuration(data),
             animeSeason = extractAnimeSeason(jsonData),
@@ -140,7 +140,7 @@ public class AnisearchAnimeConverter(
         }
     }
 
-    private fun generateThummbnail(picture: URI): URI {
+    private fun generateThumbnail(picture: URI): URI {
         if (picture == NO_PICTURE) {
             return NO_PICTURE_THUMBNAIL
         }

@@ -128,7 +128,7 @@ internal class KitsuDownloaderTest : MockServerTestCase<WireMockServer> by WireM
         }
 
         // then
-        assertThat(result).hasMessage("Unable to determine the correct case for [kitsutId=$id], [responseCode=402]")
+        assertThat(result).hasMessage("Unable to determine the correct case for [kitsuId=$id], [responseCode=402]")
     }
 
     @Test

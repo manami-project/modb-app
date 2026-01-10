@@ -82,7 +82,7 @@ internal class DefaultDownloadControlStateAccessorTest {
         }
 
         @Test
-        fun `each meta data provider is a subdirectory of dcs directory`() {
+        fun `each metadata provider is a subdirectory of dcs directory`() {
             tempDirectory {
                 // given
                 val testAppConfig = object: Config by TestAppConfig {
@@ -313,7 +313,7 @@ internal class DefaultDownloadControlStateAccessorTest {
         }
 
         @Test
-        fun `correctly returns only dcs entries for the requested meta data provider`() {
+        fun `correctly returns only dcs entries for the requested metadata provider`() {
             tempDirectory {
                 // given
                 val dir1 = tempDir.resolve(AnilistConfig.hostname()).createDirectory()
@@ -638,7 +638,7 @@ internal class DefaultDownloadControlStateAccessorTest {
         }
 
         @Test
-        fun `correctly returns only anime for the requested meta data provider`() {
+        fun `correctly returns only anime for the requested metadata provider`() {
             tempDirectory {
                 // given
                 val dir1 = tempDir.resolve(AnilistConfig.hostname()).createDirectory()
@@ -1568,7 +1568,7 @@ internal class DefaultDownloadControlStateAccessorTest {
     inner class ChangeIdTests {
 
         @Test
-        fun `throws exception if meta data provider is not supported`() {
+        fun `throws exception if metadata provider is not supported`() {
             tempDirectory {
                 // given
                 val testMetaDataProviderConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
@@ -1592,7 +1592,7 @@ internal class DefaultDownloadControlStateAccessorTest {
                 }
 
                 // then
-                assertThat(result).hasMessage("Called changeId for [example.org] which is not configured as a meta data provider that changes IDs.")
+                assertThat(result).hasMessage("Called changeId for [example.org] which is not configured as a metadata provider that changes IDs.")
             }
         }
 
@@ -1927,7 +1927,7 @@ internal class DefaultDownloadControlStateAccessorTest {
         }
 
         @Test
-        fun `return zero if the meta data provider doesn't use integer for anime IDs`() {
+        fun `return zero if the metadata provider doesn't use integer for anime IDs`() {
             tempDirectory {
                 // given
                 val testAppConfig = object: Config by TestAppConfig {

@@ -13,10 +13,10 @@ public sealed class Score
 public data object NoScore: Score()
 
 /**
- * Aggregated score across all available meta data providers.
+ * Aggregated score across all available metadata providers.
  * @since 17.0.0
  * @property arithmeticGeometricMean arithmetic-geometric-mean
- * @property arithmeticMean aithmetic mean
+ * @property arithmeticMean arithmetic mean
  * @property median median
  */
 public data class ScoreValue(

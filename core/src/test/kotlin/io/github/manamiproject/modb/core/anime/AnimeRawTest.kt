@@ -466,7 +466,7 @@ internal class AnimeRawTest {
             }
 
             @Test
-            fun `synonym comparison to title is not case sensitive`() {
+            fun `synonym comparison to title is not case-sensitive`() {
                 // given
                 val title  =  "Death Note"
 
@@ -487,7 +487,7 @@ internal class AnimeRawTest {
             }
 
             @Test
-            fun `synonym comparison is not case sensitive`() {
+            fun `synonym comparison is not case-sensitive`() {
                 // given
                 val title  =  "Death Note"
 
@@ -874,7 +874,7 @@ internal class AnimeRawTest {
             }
 
             @Test
-            fun `synonym comparison to title is not case sensitive`() {
+            fun `synonym comparison to title is not case-sensitive`() {
                 // given
                 val title  =  "Death Note"
                 val anime = AnimeRaw(title)
@@ -893,7 +893,7 @@ internal class AnimeRawTest {
             }
 
             @Test
-            fun `synonym comparison is not case sensitive`() {
+            fun `synonym comparison is not case-sensitive`() {
                 // given
                 val title  =  "Death Note"
                 val anime = AnimeRaw(
@@ -1258,7 +1258,7 @@ internal class AnimeRawTest {
             }
 
             @Test
-            fun `synonym comparison to title is case sensitive`() {
+            fun `synonym comparison to title is case-sensitive`() {
                 // given
                 val title  =  "Death Note"
                 val anime = AnimeRaw(title)
@@ -1277,7 +1277,7 @@ internal class AnimeRawTest {
             }
 
             @Test
-            fun `synonym comparison is not case sensitive`() {
+            fun `synonym comparison is not case-sensitive`() {
                 // given
                 val title  =  "Death Note"
                 val anime = AnimeRaw("デスノート")

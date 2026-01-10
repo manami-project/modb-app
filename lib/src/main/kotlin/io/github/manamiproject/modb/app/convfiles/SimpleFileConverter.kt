@@ -15,10 +15,10 @@ import kotlinx.coroutines.withContext
 import java.nio.file.Path
 
 /**
- * A simple [FileConverter] which allows the conversion of raw files for a specific meta data provider.
+ * A simple [FileConverter] which allows the conversion of raw files for a specific metadata provider.
  * @since 1.0.0
  * @property appConfig Application specific configuration. Uses [AppConfig] by default.
- * @property metaDataProviderConfig Configuration for a specific meta data provider.
+ * @property metaDataProviderConfig Configuration for a specific metadata provider.
  * @property converter Converts a [Path] to instances of [AnimeRaw]. Must match [metaDataProviderConfig].
  */
 class SimpleFileConverter(

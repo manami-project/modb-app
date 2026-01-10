@@ -8,7 +8,7 @@ package io.github.manamiproject.modb.core.anime
 public interface AnimeRawToAnimeTransformer {
 
     /**
-     * Converts an [AnimeRaw] to an [Anime]. This also includes calcuation of the score.
+     * Converts an [AnimeRaw] to an [Anime]. This also includes calculation of the score.
      * @since 17.0.0
      * @param obj The [AnimeRaw] after merging and any additional adjustments have been done.
      * @return The finalized version which used for the dataset.

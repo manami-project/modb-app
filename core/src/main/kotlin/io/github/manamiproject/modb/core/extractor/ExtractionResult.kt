@@ -22,7 +22,7 @@ public class ExtractionResult(private val delegate: Map<OutputKey, Any> = emptyM
     /**
      * @since 12.0.0
      * @param identifier The output key to check.
-     * @return True if the key exsists in the map and is not of type [NotFound].
+     * @return True if the key exists in the map and is not of type [NotFound].
      */
     public fun notFound(identifier: OutputKey): Boolean =
         !delegate.containsKey(identifier) || delegate[identifier] == NotFound
@@ -196,7 +196,7 @@ public class ExtractionResult(private val delegate: Map<OutputKey, Any> = emptyM
     }
 
     /**
-     * Same as [listNotNull], but allows add a transformator which allows to transform elements from [String] to [T].
+     * Same as [listNotNull], but allows to add a transformator which allows to transform elements from [String] to [T].
      * @since 12.0.0
      * @param identifier The output key for the value to retrieve.
      * @param extractionResult Parameter required by inline function. Normally you don't need to set this.

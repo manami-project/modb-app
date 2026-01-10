@@ -10,17 +10,17 @@ import io.github.manamiproject.modb.core.config.MetaDataProviderConfig
 interface DownloadControlStateScheduler {
 
     /**
-     * Determine which anime are not supposed to be downloaded for a specific meta data provider in the current week.
+     * Determine which anime are not supposed to be downloaded for a specific metadata provider in the current week.
      * @since 1.0.0
-     * @param metaDataProviderConfig Configuration for a specific meta data provider.
+     * @param metaDataProviderConfig Configuration for a specific metadata provider.
      * @return Set of IDs for anime which are not supposed to be downloaded this week.
      */
     suspend fun findEntriesNotScheduledForCurrentWeek(metaDataProviderConfig: MetaDataProviderConfig): Set<AnimeId>
 
     /**
-     * Determine which anime are supposed to be downloaded for a specific meta data provider in the current week.
+     * Determine which anime are supposed to be downloaded for a specific metadata provider in the current week.
      * @since 1.0.0
-     * @param metaDataProviderConfig Configuration for a specific meta data provider.
+     * @param metaDataProviderConfig Configuration for a specific metadata provider.
      * @return Set of IDs for anime which are supposed to be downloaded this week.
      */
     suspend fun findEntriesScheduledForCurrentWeek(metaDataProviderConfig: MetaDataProviderConfig): Set<AnimeId>

@@ -24,13 +24,13 @@ import kotlin.io.path.Path
  * 1. Loads `config.toml` from classpath if it exists.
  * 2. Loads configuration from `config.toml` if it exists in the same directory of the file system and overrides
  * existing properties.
- * 3. If environment variable `modb.core.config.location` is set and directs to a valid `confg.toml` then this file will
+ * 3. If environment variable `modb.core.config.location` is set and directs to a valid `config.toml` then this file will
  * be loaded even if there is a `config.toml` in the same directory. Setting a system property with the same key will
  * take precedence over the environment variable. Loading that file will override any existing properties as well.
  * 4. If you request a property then the implementation checks if an environment variable with that key exists and
- * returns the value instead of the value defined in any of the steps before..
+ * returns the value instead of the value defined in any of the steps before.
  * 5. System properties have the highest precedence. If you request a property whose key has been passed as a system
- * property then this value will be used instead of any value defined in any previrous step.
+ * property then this value will be used instead of any value defined in any previous step.
  *
  * The files are loaded once when the class is initialized. The existence of environment variables and system properties
  * are checked with each function call.
@@ -46,7 +46,7 @@ import kotlin.io.path.Path
  * @since 15.0.0
  * @property classPathFile Path of the config file within the classpath.
  * @property localFile Path to a configuration file in the local file system.
- * @property environmentVariables Initially loads the environent variables. Because these are immutable and impossible
+ * @property environmentVariables Initially loads the environment variables. Because these are immutable and impossible
  * to set via reflection without override parameter for the JVM those can be accessed and changed later on.
  * @property systemProperties System properties passed to the app which take precedence over any other declaration.
  */

@@ -45,7 +45,7 @@ public object Json {
      * **WARNING** [Collection]s of a non-nullable type can still contain null.
      * @since 8.0.0
      * @param json Valid JSON as [String].
-     * @return Deserialzed JSON as object of given type [T].
+     * @return Deserialized JSON as object of given type [T].
      */
     @OptIn(ExperimentalStdlibApi::class)
     public suspend inline fun <reified T> parseJson(json: String): T? = withContext(LIMITED_CPU) {
@@ -97,12 +97,12 @@ public object Json {
      */
     public enum class SerializationOptions {
         /**
-         * By default the output JSON string is formatted. Using this option will create a minified string instead.
+         * By default, the output JSON string is formatted. Using this option will create a minified string instead.
          * @since 11.0.0
          */
         DEACTIVATE_PRETTY_PRINT,
         /**
-         * By default a property providing `null` as value will be serialized. Using this option will omit these properties.
+         * By default, a property providing `null` as value will be serialized. Using this option will omit these properties.
          * @since 11.0.0
          */
         DEACTIVATE_SERIALIZE_NULL;
@@ -110,7 +110,7 @@ public object Json {
 }
 
 private class SerializationSettings(val options: Set<Json.SerializationOptions>) {
-    /** Prettyprint is activated by default. */
+    /** Pretty-print is activated by default. */
     val prettyPrintActivated: Boolean = false.takeIf { options.contains(DEACTIVATE_PRETTY_PRINT)} ?: true
     /** Serialize null is activated by default. */
     val serializeNullActivated: Boolean = false.takeIf { options.contains(DEACTIVATE_SERIALIZE_NULL)} ?: true

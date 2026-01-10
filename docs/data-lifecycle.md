@@ -10,13 +10,13 @@
 ## What does the lifecycle look like?
 
 Each crawler is given a list of anime IDs. Downloading the raw data can lead to a "not found" (removed entry or not
-publicly available). In this case the anime ID is added to the dead entries list of the respective meta data provider if
+publicly available). In this case the anime ID is added to the dead entries list of the respective metadata provider if
 supported, the respective DCS file is being removed if one existed before and the source is removed from the merge lock
-file if was part of a merge lock. Otherwise the raw data is downloaded in the current weeks working directory.
-The file system watcher picks up any newly written file. The meta data specific converter then extracts the data
+file if was part of a merge lock. Otherwise, the raw data is downloaded in the current weeks working directory.
+The file system watcher picks up any newly written file. The metadata specific converter then extracts the data
 and writes it to a temporary JSON file alongside the raw file.
 After all crawlers have finished the existing DCS files are updated based on the conv files or new DCS files are
-created if none existed for the anime ID of that meta data provider.
+created if none existed for the anime ID of that metadata provider.
 Both merge lock files and DCS files are then input for the merging process. The dataset files are always overwritten
 with the result of the merging process. So they are basically stateless. The only stateful files are the merge lock file,
 the DCS files as well as the dead entries files.

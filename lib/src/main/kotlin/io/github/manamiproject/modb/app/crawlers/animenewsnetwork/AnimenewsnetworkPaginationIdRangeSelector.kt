@@ -27,8 +27,8 @@ import io.github.manamiproject.modb.core.logging.LoggerDelegate
  * which have been downloaded already. If the crawler downloads the IDs which have been scheduled for re-download
  * first then the resulting list of this class will only contain completely new entries. The list is shuffled.
  * @since 1.7.0
- * @property metaDataProviderConfig Configuration for a specific meta data provider.
- * @property paginationIdRangeSelectorConfig Configuration which allows to download a specific page of a meta data provider.
+ * @property metaDataProviderConfig Configuration for a specific metadata provider.
+ * @property paginationIdRangeSelectorConfig Configuration which allows to download a specific page of a metadata provider.
  * @property httpClient Implementation of [HttpClient] which is used to download the selected pages.
  * @property extractor Extractor which retrieves the data from raw data.
  * @property downloadControlStateScheduler Allows to check which anime are scheduled for re-download and which are not.
@@ -54,12 +54,12 @@ class AnimenewsnetworkPaginationIdRangeSelector(
             entriesNotScheduledForCurrentWeek.addAll(downloadControlStateScheduler.findEntriesNotScheduledForCurrentWeek(metaDataProviderConfig))
         }
 
-        val resonse = httpClient.get(
+        val response = httpClient.get(
             url = paginationIdRangeSelectorConfig.buildDataDownloadLink(page).toURL(),
             headers = mapOf("host" to listOf("www.${metaDataProviderConfig.hostname()}")),
         ).checkedBody(this::class)
 
-        val data = extractor.extract(resonse, mapOf(
+        val data = extractor.extract(response, mapOf(
             "entriesOnThePage" to "//div[@id='content-zone']//a[@class='HOVERLINE']/@href",
         ))
 

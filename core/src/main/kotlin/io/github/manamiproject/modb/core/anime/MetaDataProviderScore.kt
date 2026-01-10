@@ -4,7 +4,7 @@ import io.github.manamiproject.modb.core.config.Hostname
 import io.github.manamiproject.modb.core.extensions.neitherNullNorBlank
 
 /**
- * Generic return type for meta data provider score.
+ * Generic return type for metadata provider score.
  * @since 17.0.0
  */
 public sealed class MetaDataProviderScore
@@ -16,11 +16,11 @@ public sealed class MetaDataProviderScore
 public data object NoMetaDataProviderScore: MetaDataProviderScore()
 
 /**
- * Represents the score as it is found on the site of the meta data provider.
+ * Represents the score as it is found on the site of the metadata provider.
  * @since 17.0.0
- * @property hostname Hostname of the meta data provider which was the source of this score.
+ * @property hostname Hostname of the metadata provider which was the source of this score.
  * @property value Score as-is
- * @property range The range in which scores can be represented on the meta data provider site.
+ * @property range The range in which scores can be represented on the metadata provider site.
  */
 public data class MetaDataProviderScoreValue(
     val hostname: Hostname,
@@ -40,7 +40,7 @@ public data class MetaDataProviderScoreValue(
     /**
      * Returns the original value rescaled to a score system from 1 to 10.
      * @since 17.0.0
-     * @return A value between 1 to 10 representing the score of an anime where 1 is the worst rating and 10 the best.
+     * @return A value between 1 and 10 representing the score of an anime where 1 is the worst rating and 10 the best.
      */
     public fun scaledValue(): Double = rescale(value, range, 1.0..10.0)
 

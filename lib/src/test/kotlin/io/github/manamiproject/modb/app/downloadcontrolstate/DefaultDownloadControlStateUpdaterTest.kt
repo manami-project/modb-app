@@ -229,7 +229,7 @@ internal class DefaultDownloadControlStateUpdaterTest {
         inner class UpdateChangedIdsTests {
 
             @Test
-            fun `throws exception if id changed although id change is not supported for this meta data provider`() {
+            fun `throws exception if id changed although id change is not supported for this metadata provider`() {
                 tempDirectory {
                     // given
                     val testConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {

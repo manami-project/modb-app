@@ -4,7 +4,7 @@ package io.github.manamiproject.modb.core.httpclient
  * Configuration to individualize the behavior of [DefaultHttpClient].
  * You can determine when a retry is performed and how long to wait before the next attempt.
  * @since 9.0.0
- * @property maxAttempts Number of times a request should be retried before failing completly.
+ * @property maxAttempts Number of times a request should be retried before failing completely.
  * @property httpResponseRetryCases Contains all cases based on a [HttpResponse] for which a retry will be performed.
  * @property throwableRetryCases Contains all cases based on a [ThrowableRetryCase] for which a retry will be performed.
  */

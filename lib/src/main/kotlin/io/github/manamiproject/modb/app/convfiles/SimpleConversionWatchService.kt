@@ -20,13 +20,13 @@ import kotlin.io.path.deleteIfExists
 import kotlin.io.path.isRegularFile
 
 /**
- * Used for meta data provider which only require a single file in order to convert raw data into an [AnimeRaw] object.
+ * Used for metadata provider which only require a single file in order to convert raw data into an [AnimeRaw] object.
  * Watches the directory of a [MetaDataProviderConfig] for changes and uses a [SimpleFileConverter] to convert the
  * raw data into the intermediate format.
  * @since 1.0.0
  * @param appConfig Application specific configuration. Uses [AppConfig] by default.
  * @param converter Instance used to convert multiple files into the intermediate format which represents an [AnimeRaw].
- * @property metaDataProviderConfig Configuration for a specific meta data provider.
+ * @property metaDataProviderConfig Configuration for a specific metadata provider.
  */
 class SimpleConversionWatchService @KoverIgnore constructor(
     appConfig: Config = AppConfig.instance,
