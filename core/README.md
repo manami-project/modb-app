@@ -2,7 +2,7 @@
 
 ## What does this lib do?
 
-This lib is the base for every specific meta data provider module. It contains the API for downloaders and converters, defines the anime model and provides basic functionality.
+This lib is the base for every specific metadata provider module. It contains the API for downloaders and converters, defines the anime model and provides basic functionality.
 
 ## Features
 
@@ -22,7 +22,7 @@ This lib contains the following features.
 
 ### HttpClient
 
-* Leightweight interface for creating HTTP calls including helpers for creating headers and setting user agents
+* Lightweight interface for creating HTTP calls including helpers for creating headers and setting user agents
 
 #### DefaultHttpClient
 
@@ -90,7 +90,7 @@ companion object {
 ### LifecycleAwareInputStream
 
 `LifecycleAwareInputStream` is a simple wrapper for any `InputStream` implementation that tracks if `close()` has been called.
-It also implements the new interface `LifecycleAwareCloseable` which extens the `Closable`/`AutoCloseable` interfaces.
+It also implements the new interface `LifecycleAwareCloseable` which extends the `Closable`/`AutoCloseable` interfaces.
 This interface allows to check if the `close` function has been called or not.
 
 ### Extension and utility functions

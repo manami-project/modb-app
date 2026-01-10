@@ -672,7 +672,7 @@ internal class AnisearchCrawlerTest {
         }
 
         @Test
-        fun `removes DCS file if dead entry has been has been triggered and meta data provider config is AnisearchConfig`() {
+        fun `removes DCS file if dead entry has been has been triggered and metadata provider config is AnisearchConfig`() {
             tempDirectory {
                 // given
                 val testAppConfig = object: Config by TestAppConfig {
@@ -739,7 +739,7 @@ internal class AnisearchCrawlerTest {
         }
 
         @Test
-        fun `doesn't remove DCS file if meta data provider config is not AnisearchConfig`() {
+        fun `doesn't remove DCS file if metadata provider config is not AnisearchConfig`() {
             tempDirectory {
                 // given
                 val testMetaDataProviderConfig = object: MetaDataProviderConfig by AnisearchConfig {

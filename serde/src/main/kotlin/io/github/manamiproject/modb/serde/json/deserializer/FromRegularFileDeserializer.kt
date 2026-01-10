@@ -11,10 +11,10 @@ import kotlinx.coroutines.withContext
 import kotlin.io.path.inputStream
 
 /**
- * Deserializes content retrieved from a [RegularFile] to a any type [T].
+ * Deserializes content retrieved from a [RegularFile] to any type [T].
  * This class handles the files and delegates the actual deserialization to another instance.
  * @since 6.0.0
- * @property deserializer The deserializer used to actually deserialze the data.
+ * @property deserializer The deserializer used to actually deserialize the data.
  */
 public class FromRegularFileDeserializer<out T>(
     private val deserializer: Deserializer<LifecycleAwareInputStream, T>,

@@ -18,7 +18,7 @@ import java.net.UnknownHostException
 /**
  * Determines the total number of pages by finding the number of the last page.
  * @since 1.0.0
- * @property metaDataProviderConfig Configuration for a specific meta data provider.
+ * @property metaDataProviderConfig Configuration for a specific metadata provider.
  * @property httpClient Implementation of [HttpClient] which is used to retrieve the number of the last page.
  * @property networkController Access to the network controller which allows to perform a restart.
  * @property extractor Extractor which retrieves the data from raw data.

@@ -1,7 +1,7 @@
 package io.github.manamiproject.modb.app.postprocessors
 
 /**
- * Processor which runs after crawling, merging and creating the dataset files..
+ * Processor which runs after crawling, merging and creating the dataset files.
  * @since 1.0.0
  */
 interface PostProcessor {

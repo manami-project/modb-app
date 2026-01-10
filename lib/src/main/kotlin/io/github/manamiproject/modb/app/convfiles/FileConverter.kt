@@ -25,7 +25,7 @@ interface FileConverter {
     /**
      * Converts a specific raw file to into the generic intermediate format.
      * @since 1.0.0
-     * @param file Raw file which is supposed the be converted to the intermediate format.
+     * @param file Raw file which is supposed to be converted to the intermediate format.
      */
     suspend fun convertFileToConvFile(file: RegularFile)
 }

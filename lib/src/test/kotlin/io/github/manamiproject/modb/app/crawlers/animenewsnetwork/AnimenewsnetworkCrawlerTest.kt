@@ -557,7 +557,7 @@ internal class AnimenewsnetworkCrawlerTest {
         }
 
         @Test
-        fun `removes DCS file if dead entry has been has been triggered and meta data provider config is AnimenewsnetworkConfig`() {
+        fun `removes DCS file if dead entry has been has been triggered and metadata provider config is AnimenewsnetworkConfig`() {
             tempDirectory {
                 // given
                 val testAppConfig = object: Config by TestAppConfig {

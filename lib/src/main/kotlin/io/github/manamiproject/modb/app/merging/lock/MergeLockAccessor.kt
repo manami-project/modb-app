@@ -56,7 +56,7 @@ interface MergeLockAccessor {
      * Does nothing if you try to add the exact same merge lock multiple times.
      * @since 1.0.0
      * @param mergeLock Merge lock to create.
-     * @throws IllegalStateException if you try add a duplicate. In this case this means a merge lock containing a URI that is already part of another merge lock.
+     * @throws IllegalStateException if you try to add a duplicate. In this case this means a merge lock containing a URI that is already part of another merge lock.
      */
     suspend fun addMergeLock(mergeLock: MergeLock)
 
@@ -82,7 +82,7 @@ interface MergeLockAccessor {
      * Returns a list with all URIs that are part of a merge lock.
      * This function can be useful of you otherwise would have to make multiple calls to [isPartOfMergeLock].
      * @since 1.0.0
-     * @return A [Set] containing all URIs wich are part of a merge lock
+     * @return A [Set] containing all URIs which are part of a merge lock
      */
     suspend fun allSourcesInAllMergeLockEntries(): Set<URI>
 }

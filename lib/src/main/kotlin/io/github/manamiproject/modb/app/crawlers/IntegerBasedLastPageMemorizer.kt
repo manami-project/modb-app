@@ -10,7 +10,7 @@ import io.github.manamiproject.modb.core.extensions.neitherNullNorBlank
  * [LastPageMemorizer] which uses [Int] to identify pages.
  * @since 1.0.0
  * @param appConfig Application specific configuration. Uses [AppConfig] by default.
- * @property metaDataProviderConfig Configuration for a specific meta data provider.
+ * @property metaDataProviderConfig Configuration for a specific metadata provider.
  */
 class IntegerBasedLastPageMemorizer @KoverIgnore constructor(
     appConfig: Config = AppConfig.instance,

@@ -22,13 +22,13 @@ import java.nio.file.WatchService as JavaWatchService
 private typealias IdentityHashCode = String
 
 /**
- * Used for meta data provider which require multiple files in order to convert raw data into an [AnimeRaw] object.
+ * Used for metadata provider which require multiple files in order to convert raw data into an [AnimeRaw] object.
  * Watches multiple directories for changes based on the different [MetaDataProviderConfig]s.
  * As soon as all data is available a [DependentFileConverter] is used to convert the files.
  * @since 1.0.0
  * @param converter Instance used to convert multiple files into the intermediate format which represents an [AnimeRaw].
  * @property appConfig Application specific configuration. Uses [AppConfig] by default.
- * @property mainConfig Configuration for a specific meta data provider. This is the "main" config.
+ * @property mainConfig Configuration for a specific metadata provider. This is the "main" config.
  * @property dependentMetaDataProviderConfigs Additional configuration used for additional data like tags or related anime.
  */
 class DependentConversionWatchService(
@@ -53,7 +53,7 @@ class DependentConversionWatchService(
     )
 
     init {
-        require(setOf(mainConfig).union(dependentMetaDataProviderConfigs).map { it.hostname() }.toSet().size == 1) { "All configs must be from the same meta data provider." }
+        require(setOf(mainConfig).union(dependentMetaDataProviderConfigs).map { it.hostname() }.toSet().size == 1) { "All configs must be from the same metadata provider." }
     }
 
     override suspend fun prepare() = withContext(LIMITED_FS) {

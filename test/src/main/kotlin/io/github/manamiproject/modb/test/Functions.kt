@@ -83,7 +83,7 @@ public fun shouldNotBeInvoked(): Nothing = fail("should not be invoked")
 /**
  * Allows to test suspend functions which are expected to throw an exception.
  * @since 1.4.0
- * @param func Suspend function to be testet.
+ * @param func Suspend function to be tested.
  * @return The exception that has been thrown
  * @throws AssertionError In case no exception has been thrown or the exception is it of the expected type.
  */
@@ -102,7 +102,7 @@ public inline fun <reified T: Throwable> exceptionExpected(noinline func: suspen
 
     return when (result) {
         null -> fail("No exception has been thrown")
-        !is T -> fail("Expected [${T::class.simpleName}] to be thrown, but [${result!!::class.simpleName}] was thrown.")
+        !is T -> fail("Expected [${T::class.simpleName}] to be thrown, but [${result::class.simpleName}] was thrown.")
         else -> result!!
     }
 }

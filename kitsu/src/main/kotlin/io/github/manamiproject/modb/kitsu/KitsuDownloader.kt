@@ -59,7 +59,7 @@ public class KitsuDownloader(
                 onDeadEntry.invoke(id)
                 EMPTY
             }
-            else -> throw IllegalStateException("Unable to determine the correct case for [kitsutId=$id], [responseCode=${response.code}]")
+            else -> throw IllegalStateException("Unable to determine the correct case for [kitsuId=$id], [responseCode=${response.code}]")
         }
     }
 

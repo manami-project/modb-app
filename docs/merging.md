@@ -1,15 +1,15 @@
 # Merging
 
 + List of all DCS files is the base.
-+ Merging is done per meta data provider sorted by number of anime in descending order
-+ First run initially populates the golden record list with the meta data provider having the most anime
-+ Next run checks anime for each remaining meta data provider one by one.
++ Merging is done per metadata provider sorted by number of anime in descending order
++ First run initially populates the golden record list with the metadata provider having the most anime
++ Next run checks anime for each remaining metadata provider one by one.
 + After that there are two more runs checking any anime which couldn't be merged so far.
 + Merge process first checks for merge locks
 + If none exists a lookup via title is made to find potential golden records
 + Then the probability is calculated which states how likely it is that these two anime should be merged together
 + In case probability is `>=80%` then the anime is merged with golden record offering the highest probability
-+ Otherwise the anime will be checked in the next run-through again or a new golden record is created if this was the last run-through
++ Otherwise, the anime will be checked in the next run-through again or a new golden record is created if this was the last run-through
 
 ## What does the merging process look like?
 
@@ -17,10 +17,10 @@ An important key factor for the merging logic of this project is that the aim is
 It is preferable to avoid merging two entries rather than risk merging them incorrectly.
 
 Merging is done in multiple run-throughs.
-The first run-through is done with the anime of the meta data provider which has the most anime.
+The first run-through is done with the anime of the metadata provider which has the most anime.
 This initially populates the golden records list. During the merging step, a golden record serves as a provisional final
 version of an entry. Once the entire merging process is complete, these golden records form the foundation for the
-entries in the finalized dataset. Consecutive run-throughs check anime per meta data provider sorted by the number of
+entries in the finalized dataset. Consecutive run-throughs check anime per metadata provider sorted by the number of
 anime in descending order.
 
 While merging entries either a merge lock exists which means that the merging logic is skipped or a list of potential
@@ -38,7 +38,7 @@ for this anime.
 
 ## How is the probability being calculated?
 
-There are there properties which are always taken into consideration: `title`, `type` and `episodes`.
+There are properties which are always taken into consideration: `title`, `type` and `episodes`.
 Each property creates a value between `0.0` and `1.0`. Where `0.0` means that the values are completely different and 
 `1.0` means that they are equal.
 
@@ -48,8 +48,8 @@ Each property creates a value between `0.0` and `1.0`. Where `0.0` means that th
 
 **Background on episodes:**
 For anime there are often differences in episodes and years. Although they should be the same, because they describe the
-same anime, those can differ between meta data providers. An example for episodes is if the number of episodes includes
-a recap episode on one meta data provider whereas it's not part of the entry on the other meta data provider.
+same anime, those can differ between metadata providers. An example for episodes is if the number of episodes includes
+a recap episode on one metadata provider whereas it's not part of the entry on the other metadata provider.
 For years this can especially happen for the winter season overlapping in years or if they use release dates from
 different countries.
 

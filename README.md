@@ -1,7 +1,7 @@
 [![Tests](https://github.com/manami-project/modb-app/actions/workflows/tests.yml/badge.svg)](https://github.com/manami-project/modb-app/actions/workflows/tests.yml) [![codecov](https://codecov.io/gh/manami-project/modb-app/graph/badge.svg?token=66LR8JA8KE)](https://codecov.io/gh/manami-project/modb-app) ![jdk25](https://img.shields.io/badge/jdk-25-informational)
 # modb-app
 
-_[modb](https://github.com/manami-project?tab=repositories&q=modb&type=source)_ stands for _**M**anami **O**ffline **D**ata**B**ase_. The applications and libraries of this repository are used to create the [manami-project/anime-offline-database](https://github.com/manami-project/anime-offline-database). Don't use these libraries and applications to crawl the websites entirely. Instead check whether the dataset already offers the data that you need.
+_[modb](https://github.com/manami-project?tab=repositories&q=modb&type=source)_ stands for _**M**anami **O**ffline **D**ata**B**ase_. The applications and libraries of this repository are used to create the [manami-project/anime-offline-database](https://github.com/manami-project/anime-offline-database). Don't use these libraries and applications to crawl the websites entirely. Instead, check whether the dataset already offers the data that you need.
 
 * **analyzer:** Allows to review the entries of the dataset and create merge locks.
 * **anidb:** Config, downloader and converter for [anidb.net](https://anidb.net)
@@ -21,6 +21,8 @@ _[modb](https://github.com/manami-project?tab=repositories&q=modb&type=source)_ 
 
 ## Documentation
 
+* General
+  * [Data quality](docs/data-quality.md)
 * Downloading
   * [Download Control State (DCS)](docs/dcs.md)
   * [Data lifecycle](docs/data-lifecycle.md)

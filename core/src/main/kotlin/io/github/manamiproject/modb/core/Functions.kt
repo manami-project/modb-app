@@ -106,7 +106,7 @@ public fun random(number1: Int, number2: Int): Long {
 /**
  * Only executes the given function if the current context is not the test context.
  * @since 14.0.0
- * @param contextAwareImpl Config of a meta data provider.
+ * @param contextAwareImpl Config of a metadata provider.
  * @param func Function to be executed if the current context is not the test context.
  */
 public suspend fun excludeFromTestContext(contextAwareImpl: ContextAware, func: suspend () -> Unit): Unit = withContext(LIMITED_CPU) {

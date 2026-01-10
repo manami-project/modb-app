@@ -15,7 +15,7 @@ import java.net.URI
 /**
  * Default implementation for accessing `merge.lock` file.
  * Location of the file is expected to be in the [Config.downloadControlStateDirectory].
- * It lazy loads the file and keeps the data in memory.
+ * It lazy-loads the file and keeps the data in memory.
  * @since 1.0.0
  * @param appConfig Application specific configuration. Uses [AppConfig] by default.
  */

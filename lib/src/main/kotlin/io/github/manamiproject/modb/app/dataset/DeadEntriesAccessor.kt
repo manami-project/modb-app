@@ -12,19 +12,19 @@ import java.net.URI
 interface DeadEntriesAccessor {
 
     /**
-     * Retrieve the dead entries file for a specific meta data provider.
+     * Retrieve the dead entries file for a specific metadata provider.
      * @since 1.0.0
-     * @param metaDataProviderConfig Configuration for a specific meta data provider.
+     * @param metaDataProviderConfig Configuration for a specific metadata provider.
      * @param type Type of dataset file.
-     * @return Dead entries file for a specific meta data provider from the dataset.
+     * @return Dead entries file for a specific metadata provider from the dataset.
      */
     fun deadEntriesFile(metaDataProviderConfig: MetaDataProviderConfig, type: DatasetFileType): RegularFile
 
     /**
-     * Add entry to dead entries file of a specific meta data provider.
+     * Add entry to dead entries file of a specific metadata provider.
      * @since 1.0.0
-     * @param animeId Id of the anime as defined by the meta data provider.
-     * @param metaDataProviderConfig Configuration for a specific meta data provider.
+     * @param animeId ID of the anime as defined by the metadata provider.
+     * @param metaDataProviderConfig Configuration for a specific metadata provider.
      */
     suspend fun addDeadEntry(animeId: AnimeId, metaDataProviderConfig: MetaDataProviderConfig)
 
@@ -37,10 +37,10 @@ interface DeadEntriesAccessor {
     suspend fun determineDeadEntries(sources: Collection<URI>): Set<URI>
 
     /**
-     * Fetch all dead entries for a specific meta data provider fromt the dataset.
+     * Fetch all dead entries for a specific metadata provider from the dataset.
      * @since 1.0.0
-     * @param metaDataProviderConfig Configuration for a specific meta data provider.
-     * @return All dead entries for a specific meta data provider.
+     * @param metaDataProviderConfig Configuration for a specific metadata provider.
+     * @return All dead entries for a specific metadata provider.
      */
     suspend fun fetchDeadEntries(metaDataProviderConfig: MetaDataProviderConfig): Set<AnimeId>
 }

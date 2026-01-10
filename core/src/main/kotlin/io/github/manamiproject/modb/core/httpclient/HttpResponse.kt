@@ -13,16 +13,16 @@ import kotlin.text.Charsets.UTF_8
 public typealias HttpResponseCode = Int
 
 /**
- * Data representing a HTTP response.
- * You can access the repsponse body either as [InputStream] for which the caller are responsible.
+ * Data representing an HTTP response.
+ * You can access the response body either as [InputStream] for which the caller are responsible.
  * Or you can access it lazy loaded as [ByteArray] or [String]. The latter two options load the response into a
  * property of the class, allowing it to access it multiple times. But this also leads to the content being held in
  * memory. You can only use one of the two options [InputStream] vs [ByteArray]/[String], because the latter will read
- * the [InputStream] and then close it. If you read the [InputStream] yourself then the conent cannot be loaded
- * internally into memory anmyore. Possibly throwing an exception stating that the stream has already been closed.
+ * the [InputStream] and then close it. If you read the [InputStream] yourself then the content cannot be loaded
+ * internally into memory anymore. Possibly throwing an exception stating that the stream has already been closed.
  * @since 19.0.0
  * @property code Numerical HTTP response code.
- * @property _body Raw response body as [InputStream]. You have different options to access the responde body. Either as a [bodyAsString], [bodyAsByteArray] and [bodyAsStream].
+ * @property _body Raw response body as [InputStream]. You have different options to access the response body. Either as a [bodyAsString], [bodyAsByteArray] and [bodyAsStream].
  * @property _headers All HTTP header sent by the server.
  */
 public data class HttpResponse(
@@ -32,7 +32,7 @@ public data class HttpResponse(
 ): Closeable by _body {
 
     /**
-     * Data representing a HTTP response.
+     * Data representing an HTTP response.
      * @since 18.2.0
      * @param code Numerical HTTP response code.
      * @param body Raw response body as [String].
@@ -45,7 +45,7 @@ public data class HttpResponse(
     ) : this(code, LifecycleAwareInputStream(body.byteInputStream()), headers)
 
     /**
-     * Data representing a HTTP response.
+     * Data representing an HTTP response.
      * @since 18.2.0
      * @param code Numerical HTTP response code.
      * @param body Raw response body as [ByteArray].
@@ -93,7 +93,7 @@ public data class HttpResponse(
     public fun isNotOk(): Boolean = code != 200
 
     /**
-     * Returns the respone body as [String]. Use this to retrieve JSON or HTML as [String]. To retrieve binary payload use [bodyAsByteArray] or [bodyAsStream] to process it as [InputStream].
+     * Returns the response body as [String]. Use this to retrieve JSON or HTML as [String]. To retrieve binary payload use [bodyAsByteArray] or [bodyAsStream] to process it as [InputStream].
      * @since 19.0.0
      * @return Response body as [String].
      * @throws java.io.IOException if the stream has been consumed using [bodyAsStream].
@@ -101,7 +101,7 @@ public data class HttpResponse(
     public fun bodyAsString(): String = body.value.toString(UTF_8)
 
     /**
-     * Returns the respone body as [ByteArray]. Use this to retrieve binary files. To retrieve textual payload use [bodyAsString] or [bodyAsStream] to process it as [InputStream].
+     * Returns the response body as [ByteArray]. Use this to retrieve binary files. To retrieve textual payload use [bodyAsString] or [bodyAsStream] to process it as [InputStream].
      * @since 19.0.0
      * @return Response body as [ByteArray].
      * @throws java.io.IOException if the stream has been consumed using [bodyAsStream].
@@ -119,15 +119,15 @@ public data class HttpResponse(
     /**
      * Check if the [InputStream] has already been consumed.
      * If you consumed the stream implicitly by calling [bodyAsByteArray] or [bodyAsString] you can still call these
-     * to retrieve the content. If you handled the stream yourself callig [bodyAsStream] then calling any of the
+     * to retrieve the content. If you handled the stream yourself calling [bodyAsStream] then calling any of the
      * mentioned functions will throw an exception.
      * @since 19.0.0
-     * @return `true` if the stream has already been closed..
+     * @return `true` if the stream has already been closed.
      */
     public fun isBodyInputStreamExhausted(): Boolean = _body.isClosed()
 
     /**
-     * Returns the respone body as [InputStream].
+     * Returns the response body as [InputStream].
      * The stream can be read multiple times. This function works on the same stream, but it also handles the reset of
      * the stream for the caller.
      * Use this to process the stream on your own. To retrieve textual payload use [bodyAsString] or [bodyAsByteArray] for binary data.

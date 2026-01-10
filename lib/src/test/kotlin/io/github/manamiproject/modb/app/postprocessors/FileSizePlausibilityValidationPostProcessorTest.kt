@@ -508,7 +508,7 @@ internal class FileSizePlausibilityValidationPostProcessorTest {
             }
 
             @Test
-            fun `ignores meta data providers which don't support dead entries`() {
+            fun `ignores metadata providers which don't support dead entries`() {
                 tempDirectory {
                     // given
                     val testMetaDataProviderConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {

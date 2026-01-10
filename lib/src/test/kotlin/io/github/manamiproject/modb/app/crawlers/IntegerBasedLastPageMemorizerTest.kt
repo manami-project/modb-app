@@ -20,7 +20,7 @@ internal class IntegerBasedLastPageMemorizerTest {
     inner class MemorizeLastPageTests {
 
         @Test
-        fun `memorize last page in workingDir for the specifc meta data provider`() {
+        fun `memorize last page in workingDir for the specific metadata provider`() {
             tempDirectory {
                 // given
                 val testAppConfig = object: Config by TestAppConfig {

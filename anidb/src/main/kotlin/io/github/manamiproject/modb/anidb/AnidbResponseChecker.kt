@@ -14,7 +14,7 @@ import java.awt.Desktop
 import java.net.URI
 
 /**
- * Thrown in case a the crawler has been detected.
+ * Thrown in case the crawler has been detected.
  * @since 2.1.0
  */
 public object CrawlerDetectedException : RuntimeException("Crawler has been detected") {

@@ -27,19 +27,19 @@ import kotlin.time.toDuration
 
 /**
  * Implementation of [Crawler] for `anime-planet.com`.
- * Uses [DownloadControlStateScheduler] to to download all anime scheduled for re-download and
+ * Uses [DownloadControlStateScheduler] to download all anime scheduled for re-download and
  * [PaginationIdRangeSelector] for downloading new entries.
- * Includes a hard coded random waiting time to reduce pressure on the meta data provider.
+ * Includes a hard coded random waiting time to reduce pressure on the metadata provider.
  * @since 1.0.0
  * @property appConfig Application specific configuration. Uses [AppConfig] by default.
- * @property metaDataProviderConfig Configuration for a specific meta data provider.
+ * @property metaDataProviderConfig Configuration for a specific metadata provider.
  * @property downloadControlStateScheduler Allows to check which anime are scheduled for re-download and which are not.
  * @property downloadControlStateAccessor Access to DCS files.
  * @property lastPageMemorizer Access to the last which has been crawled.
- * @property lastPageDetector Allows to identify the last page of a meta data provider.
- * @property paginationIdRangeSelector Creates a list of anime IDs found on pages of the meta data provider.
+ * @property lastPageDetector Allows to identify the last page of a metadata provider.
+ * @property paginationIdRangeSelector Creates a list of anime IDs found on pages of the metadata provider.
  * @property alreadyDownloadedIdsFinder Fetches all IDs which have already been downloaded.
- * @property downloader Downloader for a specific meta data provider.
+ * @property downloader Downloader for a specific metadata provider.
  */
 class AnimePlanetCrawler(
     private val appConfig: Config = AppConfig.instance,

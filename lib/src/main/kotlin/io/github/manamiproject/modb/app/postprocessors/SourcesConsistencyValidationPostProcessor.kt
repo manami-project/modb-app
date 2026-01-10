@@ -22,7 +22,7 @@ import kotlinx.coroutines.withContext
 import java.net.URI
 
 /**
- * Verifies that source exist consistently over files of the intermediate format (`*.conv`), download control state
+ * Verifies that source exists consistently over files of the intermediate format (`*.conv`), download control state
  * files (`*.dcs`) as well as dataset files.
  * @since 1.0.0
  * @property appConfig Application specific configuration. Uses [AppConfig] by default.

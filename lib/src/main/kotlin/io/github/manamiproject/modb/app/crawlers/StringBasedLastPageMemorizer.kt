@@ -14,7 +14,7 @@ import kotlin.io.path.readLines
  * [LastPageMemorizer] which uses [String] to identify pages.
  * @since 1.0.0
  * @property appConfig Application specific configuration. Uses [AppConfig] by default.
- * @property metaDataProviderConfig Configuration for a specific meta data provider.
+ * @property metaDataProviderConfig Configuration for a specific metadata provider.
  */
 class StringBasedLastPageMemorizer(
     private val appConfig: Config = AppConfig.instance,

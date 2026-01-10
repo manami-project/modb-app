@@ -22,13 +22,13 @@ import io.github.manamiproject.modb.core.anime.AnimeType.UNKNOWN as UNKNOWN_TYPE
  *
  * **Example:** If there haven't been any changes after 3 weeks, it will be downloaded again in 6 weeks. This is limited
  * to 12 weeks. The time until the next download takes place cannot exceed 12 weeks, because every anime must be
- * downloaded from each meta data provider at least once per quarter.
- * Anime in a DCS entry are always bound to a specific meta data provider. Merging takes place in a later step.
+ * downloaded from each metadata provider at least once per quarter.
+ * Anime in a DCS entry are always bound to a specific metadata provider. Merging takes place in a later step.
  * @since 1.0.0
  * @property _weeksWihoutChange Number of weeks in which the anime has been downloaded without any changes.
  * @property _lastDownloaded Week of year in which the anime has been downloaded the last time.
  * @property _nextDownload Week of year in which the anime should be downloaded again.
- * @property _anime The anime. The entry only contains data from a single meta data privider.
+ * @property _anime The anime. The entry only contains data from a single metadata provider.
  * @throws IllegalArgumentException if [_weeksWihoutChange] is negative.
  */
 data class DownloadControlStateEntry(
@@ -94,7 +94,7 @@ data class DownloadControlStateEntry(
 
     /**
      * Calculates a score between the [DownloadControlStateEntry.anime] and the [AnimeRaw] that has been created with the
-     * current run of the application. Using this score over all anime entries of the respective meta data provider it
+     * current run of the application. Using this score over all anime entries of the respective metadata provider it
      * is possible to detect problems in the [AnimeConverter].
      * @since 1.0.0
      * @param currentAnime New or more recent version of the anime.

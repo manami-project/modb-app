@@ -19,7 +19,7 @@ import io.github.manamiproject.modb.core.anime.Duration.Companion.UNKNOWN as UNK
  *
  * Each property taking into consideration has a span from `0.0` (not equal, very unlikely) up to `1.0` (value is
  * identical).
- * The basic check starts with 3 properites (`title`, `type` and `episodes`). Therefore the max reachable score is
+ * The basic check starts with 3 properties (`title`, `type` and `episodes`). Therefore, the max reachable score is
  * `3.0`. In case the additional properties (`status`, `yearOfPremiere` and `duration`) are available the maximum
  * reachable score increases accordingly.
  *

@@ -9,7 +9,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.asFlow
 
 /**
- * Deserialzes default JSON of [Anime] provided by a [LifecycleAwareInputStream].
+ * Deserializes default JSON of [Anime] provided by a [LifecycleAwareInputStream].
  * This class cannot handle JSON lines. This class can only process default JSON.
  * @since 6.0.0
  * @throws IllegalArgumentException if the given [LifecycleAwareInputStream] is closed.

@@ -10,7 +10,7 @@ import kotlinx.coroutines.runBlocking
 /**
  * Access to clusters of anime.
  * A cluster is defined by the number of URLs in `sources`.
- * @sice 1.0.0
+ * @since 1.0.0
  * @property reviewedIsolatedEntriesAccessor
  * @property mergeLockAccessor
  */
@@ -20,7 +20,7 @@ internal class ClusterService(
 ) {
 
     /**
-     * Returns the number of database entries and unreviewd entries grouped by the number of sources.
+     * Returns the number of database entries and unreviewed entries grouped by the number of sources.
      * @since 1.0.0
      * @param datasetEntries All anime to be clustered.
      * @return A [Map] having the number of sources as key. The value is a Pair where the first value is the number of
@@ -56,7 +56,7 @@ internal class ClusterService(
     /**
      * Finds anime in a given list whose number of `sources` is equal to the cluster size provided as parameter.
      * @since 1.0.0
-     * @param datasetEntries All anime in which to look for entries where the the number `sources` matches [cluster].
+     * @param datasetEntries All anime in which to look for entries where the number `sources` matches [cluster].
      * @param cluster Number of entries in `sources` to look for.
      */
     fun fetchCluster(datasetEntries: List<Anime>, cluster: Int): List<Anime> {

@@ -12,7 +12,6 @@ import io.github.manamiproject.modb.app.crawlers.IdRangeSelector
 import io.github.manamiproject.modb.app.crawlers.IntegerBasedIdRangeSelector
 import io.github.manamiproject.modb.app.dataset.DeadEntriesAccessor
 import io.github.manamiproject.modb.app.dataset.DefaultDeadEntriesAccessor
-import io.github.manamiproject.modb.app.extensions.checkedBody
 import io.github.manamiproject.modb.app.network.LinuxNetworkController
 import io.github.manamiproject.modb.app.network.NetworkController
 import io.github.manamiproject.modb.app.network.SuspendableHttpClient
@@ -35,14 +34,14 @@ import kotlin.time.toDuration
 /**
  * Implementation of [Crawler] for `anidb.net`.
  * Uses [IntegerBasedIdRangeSelector] to determine which data to download.
- * Includes a hard coded random waiting time to reduce pressure on the meta data provider.
+ * Includes a hard coded random waiting time to reduce pressure on the metadata provider.
  * @since 1.0.0
  * @property appConfig Application specific configuration. Uses [AppConfig] by default.
- * @property metaDataProviderConfig Configuration for a specific meta data provider.
+ * @property metaDataProviderConfig Configuration for a specific metadata provider.
  * @property deadEntriesAccess Access to dead entries files.
  * @property idRangeSelector Delivers the IDs to download.
  * @property httpClient To actually download the anime data.
- * @property downloader Downloader for a specific meta data provider.
+ * @property downloader Downloader for a specific metadata provider.
  */
 class AnidbCrawler(
     private val appConfig: Config = AppConfig.instance,

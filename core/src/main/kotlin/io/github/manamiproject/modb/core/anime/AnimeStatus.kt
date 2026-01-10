@@ -28,7 +28,7 @@ public enum class AnimeStatus {
 
     public companion object {
         /**
-         * Creates [AnimeStatus] from a [String]. Tolerant by ignoreing leading and trailing whitespaces as well as case.
+         * Creates [AnimeStatus] from a [String]. Tolerant by ignoring leading and trailing whitespaces as well as case.
          * @since 11.0.0
          * @param value The value being mapped to a [AnimeStatus]
          */

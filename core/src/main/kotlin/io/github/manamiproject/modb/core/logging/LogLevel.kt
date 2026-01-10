@@ -64,7 +64,7 @@ public enum class LogLevel: LogLevelValue {
     public companion object {
         /**
          * @since 7.0.0
-         * @param value Name of the log level as [String]. The check is case insensitive.
+         * @param value Name of the log level as [String]. The check is case-insensitive.
          * @return The respective log level that matches the [value] or `null` if there is no match for the [value].
          */
         public fun of(value: String): LogLevel? {

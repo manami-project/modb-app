@@ -46,7 +46,7 @@ internal class DefaultDeadEntriesAccessorTest {
     inner class DeadEntriesFileTests {
 
         @Test
-        fun `throws exception if meta data provider is not supported`() {
+        fun `throws exception if metadata provider is not supported`() {
             tempDirectory {
                 // given
                 val testMetaDataProviderConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
@@ -66,7 +66,7 @@ internal class DefaultDeadEntriesAccessorTest {
                 }
 
                 // then
-                assertThat(result).hasMessage("Meta data provider [example.org] doesn't support dead entry files.")
+                assertThat(result).hasMessage("Metadata provider [example.org] doesn't support dead entry files.")
             }
         }
 
@@ -522,7 +522,7 @@ internal class DefaultDeadEntriesAccessorTest {
             LivechartConfig::class,
             SimklConfig::class,
         ])
-        fun `doesn't create a dead entry for unsupported meta data provider, because either all IDs are collected upfront or download is done via pagination`(configClass: Class<*>) {
+        fun `doesn't create a dead entry for unsupported metadata provider, because either all IDs are collected upfront or download is done via pagination`(configClass: Class<*>) {
             tempDirectory {
                 // given
                 val testMetaDataProviderConfig: MetaDataProviderConfig = configClass.kotlin.objectInstance as MetaDataProviderConfig
@@ -558,7 +558,7 @@ internal class DefaultDeadEntriesAccessorTest {
             LivechartConfig::class,
             SimklConfig::class,
         ])
-        fun `invokes removal of dcs file for unsupported meta data provider`(configClass: Class<*>) {
+        fun `invokes removal of dcs file for unsupported metadata provider`(configClass: Class<*>) {
             tempDirectory {
                 // given
                 val testMetaDataProviderConfig: MetaDataProviderConfig = configClass.kotlin.objectInstance as MetaDataProviderConfig
@@ -775,7 +775,7 @@ internal class DefaultDeadEntriesAccessorTest {
             LivechartConfig::class,
             SimklConfig::class,
         ])
-        fun `marks an URI as dead entry for unsupported meta data providers if the corresponding DCS file doesn't exist`(configClass: Class<*>)   {
+        fun `marks an URI as dead entry for unsupported metadata providers if the corresponding DCS file doesn't exist`(configClass: Class<*>)   {
             tempDirectory {
                 // given
                 val testMetaDataProviderConfig = configClass.kotlin.objectInstance as MetaDataProviderConfig
@@ -949,7 +949,7 @@ internal class DefaultDeadEntriesAccessorTest {
             LivechartConfig::class,
             SimklConfig::class,
         ])
-        fun `throws exception for unsupported meta data provider`(configClass: Class<*>) {
+        fun `throws exception for unsupported metadata provider`(configClass: Class<*>) {
             tempDirectory {
                 // given
                 val testMetaDataProviderConfig = configClass.kotlin.objectInstance as MetaDataProviderConfig
@@ -972,7 +972,7 @@ internal class DefaultDeadEntriesAccessorTest {
                 }
 
                 // then
-                assertThat(result).hasMessage("Meta data provider [${testMetaDataProviderConfig.hostname()}] is not supported.")
+                assertThat(result).hasMessage("Metadata provider [${testMetaDataProviderConfig.hostname()}] is not supported.")
             }
         }
 

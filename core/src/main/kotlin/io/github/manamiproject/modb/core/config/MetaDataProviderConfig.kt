@@ -20,13 +20,13 @@ public typealias FileSuffix = String
 public typealias AnimeId = String
 
 /**
- * Configuration for a specific meta data provider. A meta data provider is a website providing data about anime such as `myanimelist.net` or `kitsu.app`.
+ * Configuration for a specific metadata provider. A metadata provider is a website providing data about anime such as `myanimelist.net` or `kitsu.app`.
  * @since 1.0.0
  */
 public interface MetaDataProviderConfig: ContextAware {
 
     /**
-     * Hostname of the meta data provider. **Example:** `myanimelist.net`.
+     * Hostname of the metadata provider. **Example:** `myanimelist.net`.
      * @since 1.0.0
      * @return Hostname without protocol or leading `www`.
      */
@@ -35,8 +35,8 @@ public interface MetaDataProviderConfig: ContextAware {
     /**
      * Builds the [URI] which is a direct link to an anime on the mata data provider's website.
      * @since 3.0.0
-     * @param id Id of the anime on the meta data provider's website.
-     * @return Direct link to the anime on the website of the meta data provider.
+     * @param id ID of the anime on the metadata provider's website.
+     * @return Direct link to the anime on the website of the metadata provider.
      * @see extractAnimeId
      */
     public fun buildAnimeLink(id: AnimeId): URI = URI("https://${hostname()}/anime/$id")

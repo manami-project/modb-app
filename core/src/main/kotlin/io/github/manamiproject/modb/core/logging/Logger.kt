@@ -52,7 +52,7 @@ public interface Logger {
     /**
      * Log a warning.
      * @since 7.0.0
-     * @param exception Exception causing the need to log the warning..
+     * @param exception Exception causing the need to log the warning.
      * @param message Message that will be logged.
      */
     public fun warn(exception: Throwable, message: () -> String)

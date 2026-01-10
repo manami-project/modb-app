@@ -24,10 +24,10 @@ public object CoroutineManager {
      * Wraps [runBlocking] and executes an [action] in a try-catch block. In case any [Throwable] is thrown it will be
      * logged and the dispatcher pools from [ModbDispatchers] will be shut down.
      *
-     * It' recommended to only use this function at the highest level when starting coroutines from main thread.
+     * It's recommended to only use this function at the highest level when starting coroutines from main thread.
      *
      * @since 8.0.0
-     * @param isTestContext Set this to true in case you use this in unit tests. Otherwise the tests will fail with a task rejected exception.
+     * @param isTestContext Set this to true in case you use this in unit tests. Otherwise, the tests will fail with a task rejected exception.
      * @param action Any function containing suspend function calls.
      */
     public inline fun <reified T> runCoroutine(isTestContext: Boolean = false, noinline action: suspend CoroutineScope.() -> T): T = runBlocking {

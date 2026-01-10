@@ -18,7 +18,7 @@ public const val YEAR_OF_THE_FIRST_ANIME: Year = 1907
  * Defines the season in which an anime premiered or has been published.
  * @since 1.0.0
  * @property season **Default** is [UNDEFINED]
- * @property year Year in the format `YYYY`. Requires a value between [YEAR_OF_THE_FIRST_ANIME] and the current year + 5. Otherwise an exception is thrown.
+ * @property year Year in the format `YYYY`. Requires a value between [YEAR_OF_THE_FIRST_ANIME] and the current year + 5. Otherwise, an exception is thrown.
  * **Default** is `0` indicating unknown year.
  */
 public data class AnimeSeason(
@@ -83,7 +83,7 @@ public data class AnimeSeason(
 
         public companion object {
             /**
-             * Creates [AnimeSeason.Season] from a [String]. Tolerant by ignoreing leading and trailing whitespaces as well as case.
+             * Creates [AnimeSeason.Season] from a [String]. Tolerant by ignoring leading and trailing whitespaces as well as case.
              * @since 1.0.0
              * @param value The value being mapped to a [AnimeSeason.Season].
              */

@@ -187,7 +187,7 @@ class DefaultDownloadControlStateAccessor(
         }
 
         require(appConfig.canChangeAnimeIds(metaDataProviderConfig)) {
-            "Called changeId for [${metaDataProviderConfig.hostname()}] which is not configured as a meta data provider that changes IDs."
+            "Called changeId for [${metaDataProviderConfig.hostname()}] which is not configured as a metadata provider that changes IDs."
         }
 
         log.debug { "Updating [$oldId] to [$newId] of [${metaDataProviderConfig.hostname()}]." }

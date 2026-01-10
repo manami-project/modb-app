@@ -16,7 +16,7 @@ import io.github.manamiproject.modb.simkl.SimklConfig
 import java.time.Clock
 
 /**
- * Configuration options that are specifc for the application.
+ * Configuration options that are specific for the application.
  * @since 1.0.0
  */
 interface Config: ContextAware {
@@ -32,28 +32,28 @@ interface Config: ContextAware {
 
     /**
      * Subdirectory of [downloadsDirectory]. Contains raw data and the converted files for the current week of the year.
-     * This directory doesn't contain files. It contains directories for each meta data provider.
+     * This directory doesn't contain files. It contains directories for each metadata provider.
      * @since 1.0.0
      * @see downloadsDirectory
      * @see workingDir
-     * @return Directory containing a directory for every meta data provider.
+     * @return Directory containing a directory for every metadata provider.
      */
     fun currentWeekWorkingDir(): Directory
 
     /**
-     * Retrieve the current working directory for a specific meta data provider.
+     * Retrieve the current working directory for a specific metadata provider.
      * This directory contains the raw and converted files.
      * @since 1.0.0
-     * @param metaDataProviderConfig Configuration for a specific meta data provider.
+     * @param metaDataProviderConfig Configuration for a specific metadata provider.
      * @see currentWeekWorkingDir
      * @return
      */
     fun workingDir(metaDataProviderConfig: MetaDataProviderConfig): Directory
 
     /**
-     * List of all configurations for all meta data provider.
+     * List of all configurations for all metadata provider.
      * @since 1.0.0
-     * @return Duplicate free list of all meta data provider configs.
+     * @return Duplicate free list of all metadata provider configs.
      */
     fun metaDataProviderConfigurations(): Set<MetaDataProviderConfig> = setOf(
         AnidbConfig,
@@ -70,7 +70,7 @@ interface Config: ContextAware {
     /**
      * Finds a specific [MetaDataProviderConfig] for a given hostname.
      * @since 1.0.0
-     * @param host Hostname of a meta data provider
+     * @param host Hostname of a metadata provider
      * @return The corresponding [MetaDataProviderConfig]
      * @throws IllegalArgumentException if no [MetaDataProviderConfig] can be found for the given [host].
      */
@@ -80,7 +80,7 @@ interface Config: ContextAware {
      * Directory for the git repository of anime-offline-database.
      * This is the target directory in which the finalized files are being written to.
      * @since 1.0.0
-     * @return The directory in which the JSON files and the `README.md` are saved..
+     * @return The directory in which the JSON files and the `README.md` are saved.
      */
     fun outputDirectory(): Directory
 
@@ -92,21 +92,21 @@ interface Config: ContextAware {
     fun downloadControlStateDirectory(): Directory
 
     /**
-     * Determines if anime of a specific meta data provider can change their Ids.
+     * Determines if anime of a specific metadata provider can change their Ids.
      * This is most likely to happen if the ID is a SEO optimized title.
      * @since 1.0.0
-     * @param metaDataProviderConfig Configuration for a specific meta data provider.
-     * @return `true` if the anime ids can change for the given meta data provider.
+     * @param metaDataProviderConfig Configuration for a specific metadata provider.
+     * @return `true` if the anime ids can change for the given metadata provider.
      */
     fun canChangeAnimeIds(metaDataProviderConfig: MetaDataProviderConfig): Boolean = setOf(
         AnimePlanetConfig
     ).contains(metaDataProviderConfig)
 
     /**
-     * Checks if tracking IDs for anime which cannot be downloaded is supported for a specific meta data provider.
+     * Checks if tracking IDs for anime which cannot be downloaded is supported for a specific metadata provider.
      * @since 1.0.0
-     * @param metaDataProviderConfig Configuration for a specific meta data provider.
-     * @return `true` if the meta data provider has its own dead entries file.
+     * @param metaDataProviderConfig Configuration for a specific metadata provider.
+     * @return `true` if the metadata provider has its own dead entries file.
      */
     fun deadEntriesSupported(metaDataProviderConfig: MetaDataProviderConfig): Boolean = setOf(
         AnidbConfig,

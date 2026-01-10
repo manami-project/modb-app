@@ -14,8 +14,8 @@ import io.github.manamiproject.modb.core.anime.Duration.Companion.UNKNOWN as UNK
 
 
 /**
- * This class represents an anime directly converted from raw data of a meta data provider.
- * It is also the type used to merge multiple anime of different meta data providers.
+ * This class represents an anime directly converted from raw data of a metadata provider.
+ * It is also the type used to merge multiple anime of different metadata providers.
  * @since 3.1.0
  * @param _title Main title. Must not be blank.
  * @property title Main title.
@@ -28,18 +28,18 @@ import io.github.manamiproject.modb.core.anime.Duration.Companion.UNKNOWN as UNK
  * @property picture [URI] to a (large) poster/cover. **Default** is a self created "not found" pic.
  * @property thumbnail [URI] to a thumbnail poster/cover. **Default** is a self created "not found" pic.
  * @property duration Duration of an anime having one episode or average duration of an episode if the anime has more than one episode.
- * @property scores List of scores provided by meta data providers.
- * @param _synonyms Duplicate-free list of alternative titles. Synonyms are case sensitive.
- * @property synonyms Duplicate-free list of alternative titles. Synonyms are case sensitive.
- * @param _studios List of studio names as provided by the meta data providers.
+ * @property scores List of scores provided by metadata providers.
+ * @param _synonyms Duplicate-free list of alternative titles. Synonyms are case-sensitive.
+ * @property synonyms Duplicate-free list of alternative titles. Synonyms are case-sensitive.
+ * @param _studios List of studio names as provided by the metadata providers.
  * @property studios List of studio names. May contain duplicates for slightly different writings. All studio names are lower case.
- * @param _producers List of names of producers as provided by the meta data providers.
+ * @param _producers List of names of producers as provided by the metadata providers.
  * @property producers List of names of producers. May contain duplicates for slightly different writings. All producer names are lower case.
  * @param _relatedAnime Duplicate-free list of links to related anime.
  * @property relatedAnime Duplicate-free list of links to related anime.
- * @param _tags Duplicate-free list of tags. This contains both genres and tags from meta data providers. All tags transformed to lower case.
- * @property tags Duplicate-free list of tags. This contains both genres and tags from meta data providers. All tags are lower case.
- * @property metaDataProviderScores Contains a score for each meta data provider. The property will not be serialized as-is. It's serialized using backing field [scores].
+ * @param _tags Duplicate-free list of tags. This contains both genres and tags from metadata providers. All tags transformed to lower case.
+ * @property tags Duplicate-free list of tags. This contains both genres and tags from metadata providers. All tags are lower case.
+ * @property metaDataProviderScores Contains a score for each metadata provider. The property will not be serialized as-is. It's serialized using backing field [scores].
  * @property activateChecks Disable any checks upon creating the object. This is only supposed to be used during safe deserialization. If created using `false` you can call [performChecks] manually. The property will not be serialized
  * @throws IllegalArgumentException if _title is blank or number of episodes is negative.
  */
@@ -77,7 +77,7 @@ public data class AnimeRaw(
         get() = _sources.toHashSet()
 
     /**
-     * Duplicate-free list of alternative titles. Synonyms are case sensitive.
+     * Duplicate-free list of alternative titles. Synonyms are case-sensitive.
      * @since 16.6.0
      */
     val synonyms: HashSet<Title>
@@ -105,7 +105,7 @@ public data class AnimeRaw(
         get() = _relatedAnime.toHashSet()
 
     /**
-     * Duplicate-free list of tags. This contains both genres and tags from meta data providers. All tags are lower case.
+     * Duplicate-free list of tags. This contains both genres and tags from metadata providers. All tags are lower case.
      * @since 16.6.0
      */
     val tags: HashSet<Tag>
@@ -128,7 +128,7 @@ public data class AnimeRaw(
 
     /**
      * Add additional synonyms to the existing list. Duplicates are being ignored.
-     * Comparison for this is case sensitive. This will **not** override [synonyms].
+     * Comparison for this is case-sensitive. This will **not** override [synonyms].
      * The value which is present in [title] cannot be added.
      * Values are normalized using [normalize]. The usage of apostrophes is also normalized for cases with a
      * preceding s and a following as. Examples `'s` or `s'`. Acceptable is [SIMPLIFIED_APOSTROPHE_NO_TYPOGRAPHY], but
@@ -141,7 +141,7 @@ public data class AnimeRaw(
 
     /**
      * Add additional synonyms to the existing list. Duplicates are being ignored.
-     * Comparison for this is case sensitive. This will **not** override [synonyms].
+     * Comparison for this is case-sensitive. This will **not** override [synonyms].
      * The value which is present in [title] cannot be added.
      * Values are normalized using [normalize]. The usage of apostrophes is also normalized for cases with a
      * preceding s and a following as. Examples `'s` or `s'`. Acceptable is [SIMPLIFIED_APOSTROPHE_NO_TYPOGRAPHY], but
@@ -369,19 +369,19 @@ public data class AnimeRaw(
     }
 
     /**
-     * Adds scores provided by meta data providers. Ignores [NoMetaDataProviderScore].
-     * Only one instance of a score per meta data provider is supported. Latest score added wins.
+     * Adds scores provided by metadata providers. Ignores [NoMetaDataProviderScore].
+     * Only one instance of a score per metadata provider is supported. Latest score added wins.
      * @since 17.0.0
-     * @param scores List of scores provided by meta data providers.
+     * @param scores List of scores provided by metadata providers.
      * @return Same instance.
      */
     public fun addScores(vararg scores: MetaDataProviderScore): AnimeRaw = addScores(scores.toHashSet())
 
     /**
-     * Adds scores provided by meta data providers. Ignores [NoMetaDataProviderScore].
-     * Only one instance of a score per meta data provider is supported. Latest score added wins.
+     * Adds scores provided by metadata providers. Ignores [NoMetaDataProviderScore].
+     * Only one instance of a score per metadata provider is supported. Latest score added wins.
      * @since 17.0.0
-     * @param scores A score of a meta data provider.
+     * @param scores A score of a metadata provider.
      * @return Same instance.
      */
     public fun addScores(scores: Collection<MetaDataProviderScore>): AnimeRaw {
@@ -405,9 +405,9 @@ public data class AnimeRaw(
      * + In case the duration of this instance is [Duration.UNKNOWN], the value of the given [AnimeRaw] will be applied.
      * + In case the season of this instance's [animeSeason] is [UNDEFINED], the season of the given [AnimeRaw] will be applied.
      * + In case the year of this instance's [animeSeason] is [AnimeSeason.UNKNOWN_YEAR], the year if the given [AnimeRaw] will be applied.
-     * + All scores are collected. However, only one instance per meta data provider is kept. Latest score added wins.
+     * + All scores are collected. However, only one instance per metadata provider is kept. Latest score added wins.
      * @since 1.0.0
-     * @param anime [AnimeRaw] which is being merged into the this instance.
+     * @param anime [AnimeRaw] which is being merged into this instance.
      * @return New instance of the merged anime.
      */
     public fun mergeWith(anime: AnimeRaw): AnimeRaw {
@@ -598,7 +598,7 @@ public data class AnimeRaw(
                 for (innerName in ret) {
                     val first = innerName.split(' ').firstOrNull() ?: continue
 
-                    if (last == first && outerName != innerName && last !in falsePostives) {
+                    if (last == first && outerName != innerName && last !in falsePositives) {
                         when {
                             outerName.length > innerName.length -> ret.remove(innerName)
                             else -> ret.remove(outerName)
@@ -646,7 +646,7 @@ public data class AnimeRaw(
         private val APOSTROPH_SUFFIX_TO_S_INCLUDING_U2019_REGEX: Regex = """s(?<toBeReplaced>[\u2019\u02BB\u02BC\u2018\u275B\u275C\u02B9\u02BE\u02C8\u055A\u07F4\u07F5\u1FBF\u2032\uA78C\uFF07\u0060]) *""".toRegex()
         private val APOSTROPH_USAGE_EXCEPT_U2019_REGEX: Regex = """(?<toBeReplaced>[\u02BB\u02BC\u2018\u275B\u275C\u02B9\u02BE\u02C8\u055A\u07F4\u07F5\u1FBF\u2032\uA78C\uFF07\u0060])[a-z]""".toRegex()
         private val APOSTROPH_USAGE_INCLUDING_U2019_REGEX: Regex = """(?<toBeReplaced>[\u2019\u02BB\u02BC\u2018\u275B\u275C\u02B9\u02BE\u02C8\u055A\u07F4\u07F5\u1FBF\u2032\uA78C\uFF07\u0060])[a-z]""".toRegex()
-        private val falsePostives = hashSetOf<String>(
+        private val falsePositives = hashSetOf<String>(
             "anime",
             "studio",
             "tv",

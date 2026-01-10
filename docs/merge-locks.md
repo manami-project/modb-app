@@ -10,9 +10,9 @@
 
 The application merges anime automatically. There are three cases resulting from merging in an automated process:
 
-1. Perfect match. Anime from different meta data provider which belong together are merged together
-2. Anime are not merged together altough they could be merged to one anime.
-3. Two or more anime from different meta data provider are merged into a single anime altough they should not be, because they describe different releases.
+1. Perfect match. Anime from different metadata provider which belong together are merged together
+2. Anime are not merged together, although they could be merged to one anime.
+3. Two or more anime from different metadata provider are merged into a single anime although they should not be, because they describe different releases.
 
 The third case is very likely to happen if anime have the same title and very few other data to help to distinguish
 them. Especially for this case it's necessary to create a manual override which prevents merging entries which should

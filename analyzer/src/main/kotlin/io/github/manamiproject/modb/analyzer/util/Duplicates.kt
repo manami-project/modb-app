@@ -10,7 +10,7 @@ import java.net.URI
 internal object Duplicates {
 
     suspend fun showDuplicates(mergedAnime: List<Anime>) {
-        println("\nEntries with multiple sources of the same meta data provider:")
+        println("\nEntries with multiple sources of the same metadata provider:")
 
         val duplicates: MutableList<List<URI>> = mutableListOf()
 

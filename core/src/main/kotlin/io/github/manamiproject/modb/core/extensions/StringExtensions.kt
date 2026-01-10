@@ -56,8 +56,8 @@ public suspend fun String.writeToFile(file: RegularFile, writeLockFile: Boolean 
  * Removes all occurrences of [value] in a given [String].
  * @since 5.3.0
  * @param value The value that is supposed to be removed from the given [String].
- * @param ignoreCase Whether to operate case sensitive or not. **Default:** `false`.
- * @param normalizeWhitespaces If set to true multiple consective whitespaces will be replaced with a single one.
+ * @param ignoreCase Whether to operate case-sensitive or not. **Default:** `false`.
+ * @param normalizeWhitespaces If set to true multiple consecutive whitespaces will be replaced with a single one.
  * @return The [String] without the occurrences of [value].
  * @receiver Any non-nullable [String].
  */

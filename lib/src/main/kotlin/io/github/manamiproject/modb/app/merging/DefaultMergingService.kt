@@ -18,8 +18,8 @@ import io.github.manamiproject.modb.core.anime.AnimeRaw
  * Implementation of [MergingService].
  *
  * Merging is done in multiple run-throughs.
- * First run-through is done with the anime of the meta data provider which has the most anime.
- * This initially populates the golden records list. Next run-throughs check anime per meta data provider sorted by
+ * First run-through is done with the anime of the metadata provider which has the most anime.
+ * This initially populates the golden records list. Next run-throughs check anime per metadata provider sorted by
  * the number of anime in descending order.
  *
  * Either a merge lock exists which means that the merging logic is skipped or a list of potential golden records is

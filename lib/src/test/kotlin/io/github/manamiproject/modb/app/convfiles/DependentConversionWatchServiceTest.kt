@@ -40,7 +40,7 @@ internal class DependentConversionWatchServiceTest {
     inner class ConstructorTests {
 
         @Test
-        fun `throws exception if configurations represent different meta data providers`() {
+        fun `throws exception if configurations represent different metadata providers`() {
             tempDirectory {
                 // given
                 val mainTestConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
@@ -68,7 +68,7 @@ internal class DependentConversionWatchServiceTest {
                 }
 
                 // then
-                assertThat(result).hasMessage("All configs must be from the same meta data provider.")
+                assertThat(result).hasMessage("All configs must be from the same metadata provider.")
             }
         }
     }
