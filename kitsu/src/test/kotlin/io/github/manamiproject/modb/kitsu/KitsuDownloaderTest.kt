@@ -14,7 +14,7 @@ import io.github.manamiproject.modb.test.WireMockServerCreator
 import io.github.manamiproject.modb.test.exceptionExpected
 import io.github.manamiproject.modb.test.loadTestResource
 import io.github.manamiproject.modb.test.shouldNotBeInvoked
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.test.runTest
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Nested
 import kotlin.test.Test
@@ -26,7 +26,7 @@ internal class KitsuDownloaderTest : MockServerTestCase<WireMockServer> by WireM
 
     @Test
     fun `responding 404 indicating dead entry - add to dead entry list`() {
-        runBlocking {
+        runTest {
             // given
             val id = 1535
 
@@ -62,7 +62,7 @@ internal class KitsuDownloaderTest : MockServerTestCase<WireMockServer> by WireM
 
     @Test
     fun `meta count on 0 invokes a dead entry`() {
-        runBlocking {
+        runTest {
             // given
             val id = 1535
 
@@ -133,7 +133,7 @@ internal class KitsuDownloaderTest : MockServerTestCase<WireMockServer> by WireM
 
     @Test
     fun `successfully load an entry`() {
-        runBlocking {
+        runTest {
             // given
             val id = 1535
 
@@ -170,7 +170,7 @@ internal class KitsuDownloaderTest : MockServerTestCase<WireMockServer> by WireM
     @ParameterizedTest
     @ValueSource(ints = [-1, 2])
     fun `throws exception if the meta count is something other than 0 or 1`(value: Int) {
-        runBlocking {
+        runTest {
             // given
             val id = 1535
 
@@ -243,7 +243,7 @@ internal class KitsuDownloaderTest : MockServerTestCase<WireMockServer> by WireM
     @ParameterizedTest
     @ValueSource(ints = [400, 500, 502, 520, 522, 525])
     fun `pause and retry on response code`(responseCode: Int) {
-        runBlocking {
+        runTest {
             // given
             val id = 1535
 

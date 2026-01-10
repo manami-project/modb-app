@@ -7,7 +7,7 @@ import io.github.manamiproject.modb.core.config.MetaDataProviderConfig
 import io.github.manamiproject.modb.core.extensions.EMPTY
 import io.github.manamiproject.modb.core.httpclient.*
 import io.github.manamiproject.modb.test.*
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.test.runTest
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Nested
 import kotlin.test.Test
@@ -22,7 +22,7 @@ internal class AnilistDownloaderTest {
 
         @Test
         fun `throws exception if the repsonse body is blank`() {
-            runBlocking {
+            runTest {
                 // given
                 val testAnilistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = "localhost"
@@ -59,7 +59,7 @@ internal class AnilistDownloaderTest {
 
         @Test
         fun `successfully return http response`() {
-            runBlocking {
+            runTest {
                 // given
                 val testAnilistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = "localhost"
@@ -94,7 +94,7 @@ internal class AnilistDownloaderTest {
 
         @Test
         fun `creates dead entry on http response code 404`() {
-            runBlocking {
+            runTest {
                 // given
                 val testAnilistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = "localhost"
@@ -133,7 +133,7 @@ internal class AnilistDownloaderTest {
 
         @Test
         fun `throws exception in case of an unhandled http response code`() {
-            runBlocking {
+            runTest {
                 // given
                 val testAnilistConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
                     override fun hostname(): Hostname = "localhost"

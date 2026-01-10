@@ -10,7 +10,7 @@ import io.github.manamiproject.modb.core.config.MetaDataProviderConfig
 import io.github.manamiproject.modb.core.extensions.EMPTY
 import io.github.manamiproject.modb.core.extensions.toAnimeId
 import io.github.manamiproject.modb.test.*
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.test.runTest
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Nested
 import java.net.URI
@@ -23,7 +23,7 @@ internal class MyanimelistDownloaderTest : MockServerTestCase<WireMockServer> by
 
         @Test
         fun `response is 403 which indicates that a crawler has been detected - therefore pause and retry`() {
-            runBlocking {
+            runTest {
                 // given
                 val id = 1535
 
@@ -73,7 +73,7 @@ internal class MyanimelistDownloaderTest : MockServerTestCase<WireMockServer> by
 
         @Test
         fun `falsely returning 404 - therefore pause and retry - successfully retrieve anime after retry`() {
-            runBlocking {
+            runTest {
                 // given
                 val id = 1535
 
@@ -123,7 +123,7 @@ internal class MyanimelistDownloaderTest : MockServerTestCase<WireMockServer> by
 
         @Test
         fun `response is 429 'too many connections' - therefore has to pause and retry to download`() {
-            runBlocking {
+            runTest {
                 // given
                 val id = 1535
 
@@ -173,7 +173,7 @@ internal class MyanimelistDownloaderTest : MockServerTestCase<WireMockServer> by
 
         @Test
         fun `response is 500 'internal server error' - therefore has to pause and retry to download`() {
-            runBlocking {
+            runTest {
                 // given
                 val id = 1535
 
@@ -223,7 +223,7 @@ internal class MyanimelistDownloaderTest : MockServerTestCase<WireMockServer> by
 
         @Test
         fun `response is 504 'gateway timeout' - therefore has to pause and retry to download`() {
-            runBlocking {
+            runTest {
                 // given
                 val id = 1535
 
@@ -344,7 +344,7 @@ internal class MyanimelistDownloaderTest : MockServerTestCase<WireMockServer> by
 
     @Test
     fun `successfully load an entry`() {
-        runBlocking {
+        runTest {
             // given
             val id = 1535
 
@@ -378,7 +378,7 @@ internal class MyanimelistDownloaderTest : MockServerTestCase<WireMockServer> by
 
     @Test
     fun `responding 404 indicating dead entry - add to dead entry list and return empty string`() {
-        runBlocking {
+        runTest {
             // given
             val id = 1535
             var hasDeadEntryBeenInvoked = false

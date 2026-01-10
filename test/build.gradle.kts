@@ -28,6 +28,7 @@ dependencies {
     api(libs.assertj.core)
     api(libs.wiremock)
     api(libs.kotlinx.coroutines.core.jvm)
+    api(libs.kotlinx.coroutines.test.jvm)
 }
 
 kotlin {

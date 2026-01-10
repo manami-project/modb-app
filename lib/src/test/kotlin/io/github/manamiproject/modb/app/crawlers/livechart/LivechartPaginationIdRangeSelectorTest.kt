@@ -12,7 +12,7 @@ import io.github.manamiproject.modb.core.httpclient.HttpResponse
 import io.github.manamiproject.modb.test.exceptionExpected
 import io.github.manamiproject.modb.test.loadTestResource
 import io.github.manamiproject.modb.test.tempDirectory
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.test.runTest
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Nested
 import java.net.URL
@@ -25,7 +25,7 @@ internal class LivechartPaginationIdRangeSelectorTest {
 
         @Test
         fun `correctly extracts page content`() {
-            runBlocking {
+            runTest {
                 // given
                 val testMetaDataProviderConfig = object: MetaDataProviderConfig by LivechartPaginationIdRangeSelectorConfig {
                     override fun isTestContext(): Boolean = true
@@ -79,7 +79,7 @@ internal class LivechartPaginationIdRangeSelectorTest {
 
         @Test
         fun `removes anime not scheduled for the current week`() {
-            runBlocking {
+            runTest {
                 // given
                 val testMetaDataProviderConfig = object: MetaDataProviderConfig by LivechartPaginationIdRangeSelectorConfig {
                     override fun isTestContext(): Boolean = true
@@ -134,7 +134,7 @@ internal class LivechartPaginationIdRangeSelectorTest {
 
         @Test
         fun `removes anime have already been downloaded`() {
-            runBlocking {
+            runTest {
                 // given
                 val testMetaDataProviderConfig = object: MetaDataProviderConfig by LivechartPaginationIdRangeSelectorConfig {
                     override fun isTestContext(): Boolean = true
@@ -189,7 +189,7 @@ internal class LivechartPaginationIdRangeSelectorTest {
 
         @Test
         fun `retrieves anime IDs which are not scheduled for redownload this week only once`() {
-            runBlocking {
+            runTest {
                 // given
                 val testMetaDataProviderConfig = object: MetaDataProviderConfig by LivechartPaginationIdRangeSelectorConfig {
                     override fun isTestContext(): Boolean = true
@@ -232,7 +232,7 @@ internal class LivechartPaginationIdRangeSelectorTest {
 
         @Test
         fun `throws exception if entries on the page cannot be extracted`() {
-            runBlocking {
+            runTest {
                 // given
                 val testMetaDataProviderConfig = object: MetaDataProviderConfig by LivechartPaginationIdRangeSelectorConfig {
                     override fun isTestContext(): Boolean = true
@@ -268,7 +268,7 @@ internal class LivechartPaginationIdRangeSelectorTest {
 
         @Test
         fun `returns empty list if http response code is 404`() {
-            runBlocking {
+            runTest {
                 // given
                 val testMetaDataProviderConfig = object: MetaDataProviderConfig by LivechartPaginationIdRangeSelectorConfig {
                     override fun isTestContext(): Boolean = true
@@ -306,7 +306,7 @@ internal class LivechartPaginationIdRangeSelectorTest {
 
         @Test
         fun `returns empty list if html contains an empty list and a note that there are no anime to show`() {
-            runBlocking {
+            runTest {
                 // given
                 val testMetaDataProviderConfig = object: MetaDataProviderConfig by LivechartPaginationIdRangeSelectorConfig {
                     override fun isTestContext(): Boolean = true

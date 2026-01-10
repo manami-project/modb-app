@@ -5,7 +5,7 @@ import io.github.manamiproject.modb.serde.TestReadOnceInputStream
 import io.github.manamiproject.modb.serde.createExpectedDeadEntriesMinified
 import io.github.manamiproject.modb.serde.createExpectedDeadEntriesPrettyPrint
 import io.github.manamiproject.modb.test.exceptionExpected
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.test.runTest
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Nested
 import kotlin.test.Test
@@ -33,7 +33,7 @@ internal class DeadEntriesFromInputStreamDeserializerTest {
 
         @Test
         fun `return empty list of the json array is empty`() {
-            runBlocking {
+            runTest {
                 // given
                 val deserializer = DeadEntriesFromInputStreamDeserializer()
                 val json = createExpectedDeadEntriesPrettyPrint()
@@ -49,7 +49,7 @@ internal class DeadEntriesFromInputStreamDeserializerTest {
 
         @Test
         fun `correctly deserialize list of String`() {
-            runBlocking {
+            runTest {
                 // given
                 val deserializer = DeadEntriesFromInputStreamDeserializer()
                 val json = createExpectedDeadEntriesPrettyPrint(
@@ -79,7 +79,7 @@ internal class DeadEntriesFromInputStreamDeserializerTest {
 
         @Test
         fun `correctly deserialize minified dead entries file`() {
-            runBlocking {
+            runTest {
                 // given
                 val deserializer = DeadEntriesFromInputStreamDeserializer()
                 val json =

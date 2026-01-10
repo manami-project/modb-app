@@ -6,7 +6,7 @@ import io.github.manamiproject.modb.app.dataset.DatasetFileAccessor
 import io.github.manamiproject.modb.core.anime.Anime
 import io.github.manamiproject.modb.test.exceptionExpected
 import io.github.manamiproject.modb.test.tempDirectory
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.test.runTest
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Nested
 import java.net.URI
@@ -19,7 +19,7 @@ internal class StudiosAndProducersExtractionCheckerTest {
 
         @Test
         fun `returns true for an empty list`() {
-            runBlocking {
+            runTest {
                 // given
                 val testDatasetFileAccessor = object: DatasetFileAccessor by TestDatasetFileAccessor {
                     override suspend fun fetchEntries(): List<Anime> = emptyList()
@@ -39,7 +39,7 @@ internal class StudiosAndProducersExtractionCheckerTest {
 
         @Test
         fun `returns true if everything is fine`() {
-            runBlocking {
+            runTest {
                 // given
                 val testDatasetFileAccessor = object: DatasetFileAccessor by TestDatasetFileAccessor {
                     override suspend fun fetchEntries(): List<Anime> = listOf(
@@ -62,7 +62,7 @@ internal class StudiosAndProducersExtractionCheckerTest {
 
         @Test
         fun `throws exception if number of studios exceeds threshold`() {
-            runBlocking {
+            runTest {
                 // given
                 val testAnime = TestAnimeObjects.DefaultAnime.obj.copy(
                     sources = hashSetOf(URI("https://example.org/anime/994")),
@@ -91,7 +91,7 @@ internal class StudiosAndProducersExtractionCheckerTest {
 
         @Test
         fun `throws exception if number of producers exceeds threshold`() {
-            runBlocking {
+            runTest {
                 // given
                 val testAnime = TestAnimeObjects.DefaultAnime.obj.copy(
                     sources = hashSetOf(URI("https://example.org/anime/994")),

@@ -14,7 +14,7 @@ import io.github.manamiproject.modb.serde.json.deserializer.Deserializer
 import io.github.manamiproject.modb.serde.json.serializer.JsonSerializer
 import io.github.manamiproject.modb.serde.json.models.Dataset
 import io.github.manamiproject.modb.test.tempDirectory
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.test.runTest
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Nested
 import org.junit.jupiter.params.ParameterizedTest
@@ -72,7 +72,7 @@ internal class DefaultDatasetFileAccessorTest {
 
         @Test
         fun `retrieves data from the minified JSON`() {
-            runBlocking {
+            runTest {
                 // given
                 val testAppConfig = object: Config by TestAppConfig {
                     override fun outputDirectory(): Directory = Path(".")
