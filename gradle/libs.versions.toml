@@ -1,5 +1,5 @@
 [versions]
-assertj-core = "3.27.6"
+assertj-core = "3.27.7"
 commons-text = "1.15.0"
 jsonpathkt = "2.0.1"
 jsoup = "1.22.1"
