@@ -229,7 +229,7 @@ object Analyzer {
                 when {
                     mergeLockUrlUserInput == "exit" -> mainMenu()
                     cleanedUpMergeLockUrlUserInput.second != null && isValidUrl(cleanedUpMergeLockUrlUserInput.second!!) -> {
-                        val mergeLockUri = URI(mergeLockUrlUserInput)
+                        val mergeLockUri = cleanedUpMergeLockUrlUserInput.second!!
 
                         when {
                             DefaultMergeLockAccessor.instance.isPartOfMergeLock(mergeLockUri) -> {
