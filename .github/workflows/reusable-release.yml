@@ -47,7 +47,7 @@ jobs:
           min-versions-to-keep: 10
 
       - name: Create release
-        uses: softprops/action-gh-release@v2
+        uses: softprops/action-gh-release@v3
         with:
           name: ${{ inputs.module_name }}/${{ steps.extract_release_version.outputs.RELEASE_VERSION }}
           tag_name: ${{ inputs.module_name }}/${{ steps.extract_release_version.outputs.RELEASE_VERSION }}
