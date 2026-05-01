@@ -36,7 +36,7 @@ jobs:
           ./gradlew :app:shadowJar -Prelease.version=${{ steps.extract_release_version.outputs.RELEASE_VERSION }}
 
       - name: Create release
-        uses: softprops/action-gh-release@v2
+        uses: softprops/action-gh-release@v3
         with:
           name: ${{ steps.extract_release_version.outputs.RELEASE_VERSION }}
           tag_name: ${{ steps.extract_release_version.outputs.RELEASE_VERSION }}
