@@ -6,6 +6,7 @@ import io.github.manamiproject.modb.core.anime.AnimeType.*
 import io.github.manamiproject.modb.core.anime.Duration
 import io.github.manamiproject.modb.core.anime.Duration.TimeUnit.HOURS
 import io.github.manamiproject.modb.core.anime.Duration.TimeUnit.MINUTES
+import io.github.manamiproject.modb.core.anime.Duration.TimeUnit.SECONDS
 import io.github.manamiproject.modb.core.config.AnimeId
 import io.github.manamiproject.modb.core.config.FileSuffix
 import io.github.manamiproject.modb.core.config.Hostname
@@ -1273,6 +1274,33 @@ internal class AnimenewsnetworkAnimeConverterTest {
                     Duration(
                         value = 1,
                         unit = HOURS,
+                    )
+                )
+            }
+        }
+
+        @Test
+        fun `1 min 30s minutes`() {
+            runTest {
+                // given
+                val testAnimenewsnetworkConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = AnimenewsnetworkConfig.hostname()
+                    override fun buildAnimeLink(id: AnimeId): URI = AnimenewsnetworkConfig.buildAnimeLink(id)
+                    override fun fileSuffix(): FileSuffix = AnimenewsnetworkConfig.fileSuffix()
+                }
+
+                val converter = AnimenewsnetworkAnimeConverter(testAnimenewsnetworkConfig)
+
+                val testFile = loadTestResource<String>("AnimenewsnetworkAnimeConverterTest/duration/1min-30s-minutes.html")
+
+                // when
+                val result = converter.convert(testFile)
+
+                // then
+                assertThat(result.duration).isEqualTo(
+                    Duration(
+                        value = 90,
+                        unit = SECONDS,
                     )
                 )
             }
