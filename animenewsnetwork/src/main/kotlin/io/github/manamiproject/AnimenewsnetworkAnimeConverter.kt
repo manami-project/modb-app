@@ -7,6 +7,7 @@ import io.github.manamiproject.modb.core.anime.AnimeSeason.Companion.UNKNOWN_YEA
 import io.github.manamiproject.modb.core.anime.AnimeSeason.Season.*
 import io.github.manamiproject.modb.core.anime.AnimeStatus.*
 import io.github.manamiproject.modb.core.anime.AnimeType.*
+import io.github.manamiproject.modb.core.anime.Duration.TimeUnit
 import io.github.manamiproject.modb.core.anime.Duration.TimeUnit.HOURS
 import io.github.manamiproject.modb.core.anime.Duration.TimeUnit.MINUTES
 import io.github.manamiproject.modb.core.config.MetaDataProviderConfig
@@ -22,6 +23,9 @@ import kotlinx.coroutines.withContext
 import java.net.URI
 import java.time.Clock
 import java.time.LocalDate
+import kotlin.time.DurationUnit
+import kotlin.time.DurationUnit.SECONDS
+import kotlin.time.toDuration
 import io.github.manamiproject.modb.core.anime.AnimeStatus.UNKNOWN as UNKNOWN_STATUS
 import io.github.manamiproject.modb.core.anime.AnimeType.UNKNOWN as UNKNOWN_TYPE
 import io.github.manamiproject.modb.core.anime.Duration.Companion.UNKNOWN as UNKNOWN_DURATION
@@ -319,6 +323,34 @@ public class AnimenewsnetworkAnimeConverter(
             )
         }
 
+        if (durationMinSecondsRegex.matches(value)) {
+            val groups = durationMinSecondsRegex.matchEntire(value)
+                ?.groups
+
+            val minutes = Duration(
+                value = groups
+                    ?.get("minutes")
+                    ?.value
+                    ?.toIntOrNull()
+                    ?: 0,
+                unit = MINUTES,
+            )
+
+            val seconds = Duration(
+                value = groups
+                    ?.get("seconds")
+                    ?.value
+                    ?.toIntOrNull()
+                    ?: 0,
+                unit = TimeUnit.SECONDS,
+            )
+
+            return Duration(
+                value = minutes.duration + seconds.duration,
+                unit = TimeUnit.SECONDS,
+            )
+        }
+
         throw IllegalStateException("Unknown value [$value] for duration.")
     }
 
@@ -414,5 +446,6 @@ public class AnimenewsnetworkAnimeConverter(
         private val durationMinutesRegex = """^.*?(?<minutes>\d+) minutes ?.*?$""".toRegex()
         private val durationHalfHourTextRegex = """^.*?half hour ?.*?$""".toRegex()
         private val durationOneHourTextRegex = """^.*?one hour ?.*?$""".toRegex()
+        private val durationMinSecondsRegex = """^(?<minutes>\d+) +min\. +(?<seconds>\d+)s +minutes$""".toRegex()
     }
 }

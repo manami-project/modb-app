@@ -78,6 +78,7 @@ private val files = mapOf(
     "AnimenewsnetworkAnimeConverterTest/related_anime/related-anime-and-relation-in-brackets.html" to "10216",
     "AnimenewsnetworkAnimeConverterTest/related_anime/related-anime.html" to "26334",
 
+    "AnimenewsnetworkAnimeConverterTest/duration/1min-30s-minutes.html" to "33781",
     "AnimenewsnetworkAnimeConverterTest/duration/24-minutes-per-episode.html" to "11827",
     "AnimenewsnetworkAnimeConverterTest/duration/80-minutes.html" to "1725",
     "AnimenewsnetworkAnimeConverterTest/duration/half-hour-per-episode.html" to "20285",
