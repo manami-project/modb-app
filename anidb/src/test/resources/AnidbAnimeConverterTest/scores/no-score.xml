@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?><anime id="19977" restricted="false">
+    <type>TV Series</type>
+    <episodecount>0</episodecount>
+    <startdate>2027-10</startdate>
+    <titles>
+        <title xml:lang="x-jat" type="main">Sousou no Frieren (2027)</title>
+        <title xml:lang="en" type="synonym">Frieren: Beyond Journey`s End (2027)</title>
+        <title xml:lang="ja" type="official">葬送のフリーレン (2027)</title>
+    </titles>
+    <relatedanime>
+        <anime id="18886" type="Prequel">Sousou no Frieren (2026)</anime>
+    </relatedanime>
+    <url>https://frieren-anime.jp/</url>
+    <description>* Based on an action-adventure fantasy manga written by http://anidb.net/cr68714 [Yamada Kanehito] and drawn by http://anidb.net/cr68715 [Abe Tsukasa].</description>
+    <picture>325059.jpg</picture>
+    <resources>
+        <resource type="2">
+            <externalentity>
+                <identifier>63816</identifier>
+            </externalentity>
+        </resource>
+        <resource type="4">
+            <externalentity>
+                <url>https://frieren-anime.jp/</url>
+            </externalentity>
+        </resource>
+        <resource type="6">
+            <externalentity>
+                <identifier>Frieren_(TV_series)</identifier>
+            </externalentity>
+        </resource>
+        <resource type="7">
+            <externalentity>
+                <identifier>葬送のフリーレン</identifier>
+            </externalentity>
+        </resource>
+        <resource type="23">
+            <externalentity>
+                <identifier>Anime_Frieren/</identifier>
+            </externalentity>
+        </resource>
+    </resources>
+    <tags>
+        <tag id="6173" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-09-24">
+            <name>origin</name>
+        </tag>
+        <tag id="7885" parentid="6173" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2021-11-07">
+            <name>Japanese production</name>
+        </tag>
+    </tags>
+</anime>

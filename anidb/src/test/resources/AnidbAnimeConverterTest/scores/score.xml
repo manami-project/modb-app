@@ -1,0 +1,378 @@
+<?xml version="1.0" encoding="UTF-8"?><anime id="17862" restricted="false">
+    <type>Movie</type>
+    <episodecount>1</episodecount>
+    <startdate>2023-12-01</startdate>
+    <enddate>2023-12-01</enddate>
+    <titles>
+        <title xml:lang="x-jat" type="main">Seishun Buta Yarou wa Ransel Girl no Yume o Minai</title>
+        <title xml:lang="x-jat" type="synonym">Seishun Buta Yarou wa Randoseru Girl no Yume wo Minai</title>
+        <title xml:lang="x-jat" type="short">bgs movie 3</title>
+        <title xml:lang="x-jat" type="short">aobuta movie 3</title>
+        <title xml:lang="ja" type="official">青春ブタ野郎はランドセルガールの夢を見ない</title>
+        <title xml:lang="en" type="official">Rascal Does Not Dream of a Knapsack Kid</title>
+        <title xml:lang="de" type="official">Rascal Does Not Dream of a Knapsack Kid</title>
+        <title xml:lang="zh-Hant" type="official">青春豬頭少年不會夢到紅書包女孩</title>
+        <title xml:lang="zh-Hans" type="official">青春猪头少年不会梦到红书包女孩</title>
+    </titles>
+    <relatedanime>
+        <anime id="18300" type="Sequel">Seishun Buta Yarou wa Santa Claus no Yume o Minai</anime>
+        <anime id="17640" type="Prequel">Seishun Buta Yarou wa Odekake Sister no Yume o Minai</anime>
+    </relatedanime>
+    <url>https://ao-buta.com/knapsack/</url>
+    <creators>
+        <name id="54910" type="Work">Clover Works</name>
+        <name id="6192" type="Direction">Masui Souichi</name>
+        <name id="21210" type="Character Design">Tamura Satomi</name>
+        <name id="32834" type="Original Work">Kamoshida Hajime</name>
+        <name id="3527" type="Series Composition">Yokotani Masahiro</name>
+        <name id="21210" type="Chief Animation Direction">Tamura Satomi</name>
+        <name id="55636" type="Music">Fox Capture Plan</name>
+    </creators>
+    <description>* Based on the 9th volume of the Seishun Buta Yarou light novel series written by http://anidb.net/cr32834 [Kamoshida Hajime] and illustrated by http://anidb.net/cr28844 [Mizoguchi Keiji].
+Finally, the day of http://anidb.net/ch94420 [Mai]`s high school graduation has arrived. While http://anidb.net/ch94422 [Sakuta] eagerly waits for his girlfriend, an elementary schooler who looks exactly like her appears before him. Suspicious, and for all the wrong reasons... Meanwhile, Sakuta and http://anidb.net/ch94421 [Kaede]`s http://anidb.net/ch99775 [father] suddenly calls, saying that their http://anidb.net/ch100146 [mother] wants to see her daughter. She was hospitalized because Kaede`s condition had been too much for her to bear, so what could she possibly want now?
+Source: Yen Press</description>
+    <ratings>
+        <permanent count="415">7.47</permanent>
+        <temporary count="419">7.61</temporary>
+    </ratings>
+    <picture>294395.jpg</picture>
+    <resources>
+        <resource type="1">
+            <externalentity>
+                <identifier>27636</identifier>
+            </externalentity>
+        </resource>
+        <resource type="2">
+            <externalentity>
+                <identifier>54870</identifier>
+            </externalentity>
+        </resource>
+        <resource type="4">
+            <externalentity>
+                <url>https://ao-buta.com/knapsack/</url>
+            </externalentity>
+        </resource>
+        <resource type="6">
+            <externalentity>
+                <identifier>Rascal_Does_Not_Dream_of_a_Knapsack_Kid</identifier>
+            </externalentity>
+        </resource>
+        <resource type="7">
+            <externalentity>
+                <identifier>青春ブタ野郎シリーズ_(アニメ)</identifier>
+            </externalentity>
+        </resource>
+        <resource type="8">
+            <externalentity>
+                <identifier>6887</identifier>
+            </externalentity>
+        </resource>
+        <resource type="9">
+            <externalentity>
+                <identifier>386272</identifier>
+            </externalentity>
+        </resource>
+        <resource type="10">
+            <externalentity>
+                <identifier>25204</identifier>
+            </externalentity>
+        </resource>
+        <resource type="23">
+            <externalentity>
+                <identifier>aobuta_anime</identifier>
+            </externalentity>
+        </resource>
+        <resource type="26">
+            <externalentity>
+                <identifier>watch?v=MO6W_p1J-F4</identifier>
+            </externalentity>
+            <externalentity>
+                <identifier>watch?v=cz5lQQ7Jd2c</identifier>
+            </externalentity>
+            <externalentity>
+                <identifier>watch?v=hgtPI5tpgic</identifier>
+            </externalentity>
+            <externalentity>
+                <identifier>watch?v=dNxfHUwQRt8</identifier>
+            </externalentity>
+        </resource>
+        <resource type="28">
+            <externalentity>
+                <identifier>GYW4MG9G6</identifier>
+            </externalentity>
+        </resource>
+        <resource type="43">
+            <externalentity>
+                <identifier>tt28036417</identifier>
+            </externalentity>
+        </resource>
+        <resource type="44">
+            <externalentity>
+                <identifier>1086591</identifier>
+                <identifier>movie</identifier>
+            </externalentity>
+        </resource>
+    </resources>
+    <tags>
+        <tag id="1802" parentid="2606" infobox="true" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2016-01-24">
+            <name>seinen</name>
+            <description>Seinen, literally "young man", is one of the main demographic classifications applied to manga, and, by extension, to anime, especially manga-based ones. As the name implies, seinen works are marketed primarily to an audience of young men; the age range commonly understood to be the target of such works goes roughly from 17 to somewhere in the 40s.</description>
+            <picurl>181651.jpg</picurl>
+        </tag>
+        <tag id="2606" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2018-11-05">
+            <name>target audience</name>
+            <description>Anime, like everything else in the modern world, is targeted towards specific audiences, both implicitly by the creators and overtly by the marketing. While categories are associated with specific sex and age groups, this is not a bar on the anime being enjoyed by people who don`t fit into that band; not only do crossover titles exist, but the categories also have a considerable following outside their main demographic, and a person might as well enjoy anime from all categories. Still, does not invalidate the usefulness of marking a title as one of the categories; the same themes will likely be treated differently in anime geared for different audiences. Only one should not jump the gun and assume that a title will be more or less serious or present content in this or that way due to its target audience, or conversely assume the target audience on the content and its presentation alone. As such, the audience categories help form a broad impression of how a title might work with the announced themes, but offer little to no in-depth information about specific content or its treatment.
+The audience categories originate from manga magazines, which group titles of a same intended audience into a magazine that is advertised as belonging to that category, and so manga-based anime will have the category from their parent work. As for anime based on other works, the audience is often debatable, but comparing information such as time slot to the manga-based anime generally helps figure out the most likely possibility.
+If the parent material was classified under multiple audiences over time (for example, it was originally shounen, but then as the plot changed and became more mature, it was reclassified as seinen), and the anime adapts parent material time periods covering multiple audiences, we tag all audiences covered by the anime adaptation.</description>
+        </tag>
+        <tag id="2609" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2018-09-01">
+            <name>original work</name>
+            <description>What the anime is based on! This is given as the original work credit in the OP. Mostly of academic interest, but a useful bit of info, hinting at the possible depth of story.</description>
+        </tag>
+        <tag id="2611" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-09-08">
+            <name>elements</name>
+            <description>Next to Themes setting the backdrop for the protagonists in anime, there are the more detailed plot Elements that centre on character interactions: "What do characters do to each other or what is done to them?". Is it violent Action, an awe-inspiring Adventure in a foreign place, the gripping life of a Detective, a slapstick Comedy, an Ecchi Harem anime, a SciFi epic, or some Fantasy travelling adventure?</description>
+        </tag>
+        <tag id="2799" parentid="2609" infobox="true" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2019-08-13">
+            <name>novel</name>
+            <description>A novel is a relatively long work of narrative fiction, normally written in prose form, and which is typically published as a book. Manga, comics, or visual novels do not fit this description and are not considered novels; including a small number of illustrations, however, is still permissible, which means that light novels are considered novels.</description>
+        </tag>
+        <tag id="2858" parentid="2611" infobox="true" weight="500" localspoiler="false" globalspoiler="false" verified="true" update="2017-12-01">
+            <name>romance</name>
+            <description>Romance describes a story that deals with love between two or more characters typically also having an optimistic ending. Romance is also a difficulty encountered when creating a harem.</description>
+            <picurl>210061.jpg</picurl>
+        </tag>
+        <tag id="6173" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-09-24">
+            <name>origin</name>
+        </tag>
+        <tag id="7885" parentid="6173" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2021-11-07">
+            <name>Japanese production</name>
+        </tag>
+    </tags>
+    <characters>
+        <character id="94420" type="main character in" update="2022-11-28">
+            <rating votes="235">6.88</rating>
+            <name>Sakurajima Mai</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <description>Sakurajima Mai is a 3rd year student at Minegahara High School—well known, famous actress, who is currently on hiatus. Because her life had always revolved around her work in entertainment, she remains isolated at school. She`s serious and polite, but has a strong will. She`s overall levelheaded and very kind and helpful, denouncing Sakuta`s bad reputation as false and also having a very soft spot for Kaede. While she can be snarky, she`s pure-hearted, and sometimes even shy around Sakuta`s lewd jokes. Like Sakuta, she`s also very selfless, sacrificing herself to save her boyfriend`s life and become Shoko`s heart donor, though she will be saved by Sakuta.
+Source: Official site &amp; Wikipedia</description>
+            <picture>224429.jpg</picture>
+            <seiyuu id="21733" picture="264575.jpg">Seto Asami</seiyuu>
+        </character>
+        <character id="94421" type="secondary cast in" update="2018-10-21">
+            <rating votes="87">6.61</rating>
+            <name>Azusagawa Kaede</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <description>Azusagawa Kaede is http://anidb.net/ch94422 [Sakuta]`s younger sister. As a result of bullying in the past, she`s unable to leave the house and always house-sitting. She loves pandas and her older brother, while consistently striving to become the ideal little sister. Her daily routine includes waking up Sakuta every morning.
+Source: Official site</description>
+            <picture>224430.jpg</picture>
+            <seiyuu id="28392" picture="224735.jpg">Kubo Yurika</seiyuu>
+        </character>
+        <character id="94422" type="main character in" update="2021-01-02">
+            <rating votes="111">5.73</rating>
+            <name>Azusagawa Sakuta</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <description>Azusagawa Sakuta is a strange 2nd year student in high school, who doesn`t have a cellphone in this day and age. He`s currently an outcast at school due to rumors of a violent past... but he doesn`t seem to care.
+Sakuta is a nice and helpful person, but also very snarky. He`s definitely blunt, honest and straightforward towards Mai, and prone to lewd jokes that even intimidate her, despite her tendency to tease the guy.
+Sakuta is a typically selfless hero, and his Hero Syndrome is essentially a consequence of the Adolescence Syndrome that involved his sister Kaede first of all, and later all the other main girls of every arc.
+Source: Official site &amp; Wikipedia</description>
+            <picture>224428.jpg</picture>
+            <seiyuu id="34296" picture="225238.jpg">Ishikawa Kaito</seiyuu>
+        </character>
+        <character id="96609" type="secondary cast in" update="2018-10-21">
+            <rating votes="134">6.70</rating>
+            <name>Futaba Rio</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <description>Futaba Rio is http://anidb.net/ch94422 [Sakuta]`s classmate who is always cool and calm, the sole member of the Science Club and known as an eccentric person at the school. She`s actually one of the Sakuta`s only friends, and is always willing to give various advice on the Puberty Syndrome.
+Source: Official site</description>
+            <picture>224431.jpg</picture>
+            <seiyuu id="32751" picture="264509.jpg">Tanezaki Atsumi</seiyuu>
+        </character>
+        <character id="96610" type="secondary cast in" update="2018-10-21">
+            <rating votes="149">7.38</rating>
+            <name>Koga Tomoe</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <description>Koga Tomoe is a 1st year student at Minegahara High School, a typical high-school girl who can take hints, but is slightly scatterbrained. Being overly concerned about how people look at her, she hides here Hakata accent, which comes out when she panics or is relaxed.
+Source: Official site</description>
+            <picture>224432.jpg</picture>
+            <seiyuu id="21312" picture="232438.jpg">Touyama Nao</seiyuu>
+        </character>
+        <character id="96611" type="appears in" update="2019-12-01">
+            <rating votes="39">7.10</rating>
+            <name>Makinohara Shouko</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <description>Makinohara Shouko is a shy middle school girl, but reliable and kind. She bumps into http://anidb.net/ch94422 [Sakuta], while holding an umbrella over an abandoned cat in the rain.
+Source: Official site</description>
+            <picture>224433.jpg</picture>
+            <seiyuu id="21013" picture="323455.jpg">Minase Inori</seiyuu>
+        </character>
+        <character id="97309" type="appears in" update="2018-10-21">
+            <rating votes="59">5.49</rating>
+            <name>Toyohama Nodoka</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <description>Toyohama Nodoka is http://anidb.net/ch94420 [Mai]`s half-sister, related through her father, a member of the idol group Sweet Palette and designated as the most fashionable within the group. Despite her flashy looks, she attends an elite all girls` high school. She`s confident and can be competitive.
+Source: Official site</description>
+            <picture>224434.jpg</picture>
+            <seiyuu id="22366" picture="272800.jpg">Uchida Maaya</seiyuu>
+        </character>
+        <character id="98525" type="appears in" update="2018-11-14">
+            <rating votes="9">7.60</rating>
+            <name>Kunimi Yuuma</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>226773.jpg</picture>
+            <seiyuu id="38579" picture="303417.jpg">Uchida Yuuma</seiyuu>
+        </character>
+        <character id="98526" type="appears in" update="2018-12-02">
+            <rating votes="20">5.00</rating>
+            <name>Kamisato Saki</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>227311.jpg</picture>
+        </character>
+        <character id="98646" type="appears in" update="2018-10-15">
+            <rating votes="10">4.13</rating>
+            <name>Mai no Haha</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>225588.jpg</picture>
+            <seiyuu id="40614" picture="185784.jpg">Ootsu Airi</seiyuu>
+        </character>
+        <character id="99266" type="appears in" update="2018-11-14">
+            <rating votes="3">4.24</rating>
+            <name>Yoneyama Nana</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>226772.jpg</picture>
+        </character>
+        <character id="99463" type="appears in" update="2018-11-25">
+            <rating votes="5">7.37</rating>
+            <name>Nasuno</name>
+            <gender>unknown</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>227122.jpg</picture>
+        </character>
+        <character id="99775" type="secondary cast in" update="2018-12-12">
+            <rating votes="8">5.70</rating>
+            <name>Sakuta Chichi</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>227613.jpg</picture>
+            <seiyuu id="78" picture="249042.jpg">Shimura Tomoyuki</seiyuu>
+        </character>
+        <character id="100144" type="appears in" update="2019-01-01">
+            <rating votes="5">6.41</rating>
+            <name>Kano Kotomi</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>228583.jpg</picture>
+            <seiyuu id="54819" picture="245730.jpg">Okasaki Miho</seiyuu>
+        </character>
+        <character id="100145" type="appears in" update="2019-01-01">
+            <rating votes="4">5.18</rating>
+            <name>Tomobe Miwako</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>228584.jpg</picture>
+            <seiyuu id="424" picture="224027.jpg">Endou Aya</seiyuu>
+        </character>
+        <character id="100146" type="secondary cast in" update="2019-01-01">
+            <rating votes="7">4.51</rating>
+            <name>Sakuta Haha</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>228585.jpg</picture>
+            <seiyuu id="3786" picture="223623.jpg">Kameoka Mami</seiyuu>
+        </character>
+        <character id="135945" type="main character in" update="2025-03-22">
+            <rating votes="6">6.85</rating>
+            <name>Ransel Girl</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <description>A mysterious girl carrying a knapsack on her back. Sakuta encounters her at Shichirigahama beach as he waits for Mai`s graduation ceremony to finish. She looks just like Mai did when Mai was a child actress.
+Source: Official page</description>
+            <picture>295884.jpg</picture>
+            <seiyuu id="21733" picture="264575.jpg">Seto Asami</seiyuu>
+        </character>
+        <character id="136960" type="appears in" update="2025-03-22">
+            <rating votes="5">8.11</rating>
+            <name>Akagi Ikumi</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <description>A first-year student in the nursing department at the same university as Sakuta. She was Sakuta`s classmate in middle school, and they met again at the university entrance ceremony. She is a diligent and honest honor student, and started a volunteer group at the university to provide academic support to children who are not attending school. She seems to still be worried about Sakuta after he was isolated for speaking out about the existence of Puberty Syndrome in middle school…
+Source: Official page</description>
+            <picture>314317.jpg</picture>
+            <seiyuu id="55724" picture="306027.jpg">Yamane Aya</seiyuu>
+        </character>
+    </characters>
+    <episodes>
+        <episode id="269266" update="2024-04-02">
+            <epno type="1">1</epno>
+            <length>75</length>
+            <airdate>2023-12-01</airdate>
+            <rating votes="4">8.86</rating>
+            <title xml:lang="en">Complete Movie</title>
+            <resources>
+                <resource type="28">
+                    <externalentity>
+                        <identifier>GWDU73EX8</identifier>
+                    </externalentity>
+                </resource>
+            </resources>
+        </episode>
+        <episode id="293603" update="2025-02-23">
+            <epno type="4">T1</epno>
+            <length>1</length>
+            <airdate>2023-07-16</airdate>
+            <title xml:lang="ja">特報</title>
+            <title xml:lang="en">PV (0:45)</title>
+        </episode>
+        <episode id="293604" update="2025-02-23">
+            <epno type="4">T2</epno>
+            <length>2</length>
+            <airdate>2023-09-17</airdate>
+            <title xml:lang="ja">予告第1弾</title>
+            <title xml:lang="en">Trailer 1 (1:10)</title>
+        </episode>
+        <episode id="293605" update="2025-02-23">
+            <epno type="4">T3</epno>
+            <length>2</length>
+            <airdate>2023-10-22</airdate>
+            <title xml:lang="ja">本予告</title>
+            <title xml:lang="en">Official Trailer (1:34)</title>
+        </episode>
+        <episode id="293606" update="2025-12-20">
+            <epno type="4">T4</epno>
+            <length>1</length>
+            <title xml:lang="en">CM (0:30)</title>
+        </episode>
+        <episode id="293607" update="2025-12-20">
+            <epno type="4">T5</epno>
+            <length>1</length>
+            <title xml:lang="en">CM (0:30)</title>
+        </episode>
+        <episode id="293608" update="2025-02-23">
+            <epno type="2">S1</epno>
+            <length>2</length>
+            <airdate>2023-12-22</airdate>
+            <title xml:lang="ja">「不可思議のカルテ」Music Video</title>
+            <title xml:lang="en">Fukashigi no Karte Music Video</title>
+            <title xml:lang="x-jat">"Fukashigi no Karte" Music Video</title>
+        </episode>
+        <episode id="293609" update="2025-12-20">
+            <epno type="2">S2</epno>
+            <length>35</length>
+            <airdate>2024-06-26</airdate>
+            <title xml:lang="ja">公開記念舞台挨拶</title>
+            <title xml:lang="en">Premiere Commemoration Stage Greeting</title>
+            <title xml:lang="x-jat">Koukai Kinen Butai Aisatsu</title>
+        </episode>
+    </episodes>
+</anime>

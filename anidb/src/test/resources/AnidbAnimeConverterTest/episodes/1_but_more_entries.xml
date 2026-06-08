@@ -1,0 +1,773 @@
+<?xml version="1.0" encoding="UTF-8"?><anime id="7" restricted="false">
+    <type>Movie</type>
+    <episodecount>1</episodecount>
+    <startdate>1997-07-12</startdate>
+    <enddate>1997-07-12</enddate>
+    <titles>
+        <title xml:lang="x-jat" type="main">Mononoke-hime</title>
+        <title xml:lang="en" type="synonym">Mononoke Princess</title>
+        <title xml:lang="ru" type="synonym">Принцесса Мононокэ</title>
+        <title xml:lang="ko" type="synonym">원령공주</title>
+        <title xml:lang="ar" type="synonym">الأميرة مونونوكي</title>
+        <title xml:lang="ar" type="synonym">الأميرة مونونوكيه</title>
+        <title xml:lang="vi" type="synonym">Công chúa sói</title>
+        <title xml:lang="uk" type="synonym">Принцеса Мононоке</title>
+        <title xml:lang="uk" type="synonym">Принцеса-мононоке</title>
+        <title xml:lang="sr" type="synonym">Принцеза Мононоке</title>
+        <title xml:lang="zh-Hans" type="synonym">幽灵公主</title>
+        <title xml:lang="x-jat" type="short">mononoke (1997)</title>
+        <title xml:lang="ja" type="official">もののけ姫</title>
+        <title xml:lang="en" type="official">Princess Mononoke</title>
+        <title xml:lang="de" type="official">Prinzessin Mononoke</title>
+        <title xml:lang="fr" type="official">Princesse Mononoké</title>
+        <title xml:lang="it" type="official">La Principessa Mononoke</title>
+        <title xml:lang="es" type="official">La Princesa Mononoke</title>
+        <title xml:lang="ru" type="official">Принцесса Мононоке</title>
+        <title xml:lang="ko" type="official">모노노케 히메</title>
+        <title xml:lang="pl" type="official">Księżniczka Mononoke</title>
+        <title xml:lang="sv" type="official">Prinsessan Mononoke</title>
+        <title xml:lang="pt" type="official">A Princesa Mononoke</title>
+        <title xml:lang="no" type="official">Prinsesse Mononoke</title>
+        <title xml:lang="pt-BR" type="official">Princesa Mononoke</title>
+        <title xml:lang="cs" type="official">Princezna Mononoke</title>
+        <title xml:lang="da" type="official">Prinsesse Mononoke</title>
+        <title xml:lang="nl" type="official">Princess Mononoke</title>
+        <title xml:lang="fi" type="official">Prinsessa Mononoke</title>
+        <title xml:lang="el" type="official">Πριγκίπισσα Μονονόκε</title>
+        <title xml:lang="he" type="official">הנסיכה מונונוקי</title>
+        <title xml:lang="hu" type="official">A vadon hercegnője</title>
+        <title xml:lang="lt" type="official">Princesė Mononokė</title>
+        <title xml:lang="th" type="official">เจ้าหญิงจิตวิญญาณแห่งพงไพร</title>
+        <title xml:lang="tr" type="official">Prenses Mononoke</title>
+        <title xml:lang="ro" type="official">Prinţesa Mononoke</title>
+        <title xml:lang="my" type="official">Princess Mononoke</title>
+        <title xml:lang="sk" type="official">Princezná Mononoke</title>
+        <title xml:lang="sl" type="official">Princesa Mononoke</title>
+        <title xml:lang="lv" type="official">Princese Mononoke</title>
+        <title xml:lang="vi" type="official">Công chúa Mononoke</title>
+        <title xml:lang="id" type="official">Princess Mononoke</title>
+        <title xml:lang="bg" type="official">Принцеса Мононоке</title>
+        <title xml:lang="et" type="official">Printsess Mononoke</title>
+        <title xml:lang="hr" type="official">Princeza Mononoke</title>
+        <title xml:lang="zh-Hant" type="official">幽靈公主</title>
+        <title xml:lang="zh-Hans" type="official">魔法公主</title>
+        <title xml:lang="es-419" type="official">La princesa Mononoke</title>
+        <title xml:lang="fa" type="official">شاهزاده مونونوکه</title>
+        <title xml:lang="tl" type="official">Princess Mononoke</title>
+        <title xml:lang="mn" type="official">Мононокэ Гүнж</title>
+        <title xml:lang="hi" type="official">राजकुमारी मोनोनोके</title>
+    </titles>
+    <similaranime>
+        <anime id="275" approval="150" total="159">Kaze no Tani no Nausicaa</anime>
+        <anime id="112" approval="84" total="133">Sen to Chihiro no Kamikakushi</anime>
+        <anime id="4193" approval="42" total="68">Ged Senki</anime>
+        <anime id="331" approval="36" total="71">Tenkuu no Shiro Laputa</anime>
+        <anime id="8073" approval="26" total="41">Hoshi o Ou Kodomo</anime>
+        <anime id="1218" approval="15" total="38">Howl no Ugoku Shiro</anime>
+        <anime id="7621" approval="15" total="24">Onigamiden</anime>
+        <anime id="3385" approval="11" total="23">Gin`iro no Kami no Agito</anime>
+        <anime id="5297" approval="10" total="18">Miyori no Mori</anime>
+        <anime id="6187" approval="7" total="16">Kemono no Souja Erin</anime>
+        <anime id="14167" approval="6" total="6">Shika no Ou: Yuna to Yakusoku no Tabi</anime>
+        <anime id="334" approval="5" total="18">Heisei Tanuki Gassen Ponpoko</anime>
+        <anime id="9515" approval="1" total="11">Kaguya-hime no Monogatari</anime>
+        <anime id="4860" approval="1" total="5">Murder Princess</anime>
+        <anime id="2200" approval="1" total="4">Anju to Zushiou Maru</anime>
+    </similaranime>
+    <recommendations total="49">
+        <recommendation type="For Fans" uid="262118">this is the best movie ever seen because you have a prince from far lands and a girl born from humans but raise by a wolf family unil Ashitaka and san meet each other at a river side.with out a word the girl leaves with her mother and brothers but not long til these two charaters along with a few others have to join so the prince and wolf girl can save the Forest of Gods. this movie taught me that you can different but soon you have to help each other  but not always will this happen. Again i love this movie and i cant wait to see it soon!!!!&lt;br /&gt;plez read this carefully!!!!!</recommendation>
+        <recommendation type="For Fans" uid="647482">Miyazaki`s best film</recommendation>
+        <recommendation type="Recommended" uid="473348">masterpiece, absolutely bloody beautiful!</recommendation>
+        <recommendation type="Recommended" uid="364604">Hands down THE BEST ANIME EVER! If you dont like Princess Mononoke you are just not gonna like anime. 
+A must see for people who are new to anime.</recommendation>
+        <recommendation type="Recommended" uid="242914">IMO best of all the anime I have ever watched. And best of all Studio Ghibli`s movie.</recommendation>
+        <recommendation type="Recommended" uid="601050">This is by far one of my favorite anime films. The story is good, the music is good, the animation is good (even tough some say it has aged, it still is very pleasant to me).
+Needless to say that the musical atmosphere of this movie is great, as expected from a Ghibli film. But I am very fond of this one since it reflects so much sadness, yet with a little touch of hope. Throughout the movie we always think that the movie will actually end in a good way (which is up to you to decide...).
+The character animation is still up to date if you ask me, and I think that it adds to the overall atmosphere of the movie (it is just like any Ghibli movie, maybe a little less `european` than others), giving a rough, natural feel.
+There is nothing much to say about this movie except that you HAVE to watch it. It is a very family-friendly movie, and it is certain to captivate anyone`s attention.</recommendation>
+        <recommendation type="Recommended" uid="371579">A true masterpiece. Enjoyed every second of it.</recommendation>
+        <recommendation type="Recommended" uid="17171">In my opinion this is one of the best Anime movies out there. I`ve recommended this movie to everyone I know who watches anime but hasn`t yet seen it.</recommendation>
+        <recommendation type="Must See" uid="721720">This is another masterpiece from Miyazaki. It has a powerful natural conservation message, and unlike totoro, kiki, ponyo, and others is not a good movie for young ones. This is for the older ones once they have cut their teeth on the aforementioned. It is a great movie though, and you need to see it.</recommendation>
+        <recommendation type="Must See" uid="492032">Anime about humans` spirit and soul.</recommendation>
+        <recommendation type="Must See" uid="447340">Fantastic movie.  By far one of the best.  A must see.</recommendation>
+        <recommendation type="Must See" uid="471794">I must say that it is a duty to everyone who apreciate anime in general and the art of Studio Ghibli of story telling to watch Mononoke Hime. A true masterpiece of animation in every aspect.</recommendation>
+        <recommendation type="Must See" uid="90098">Without any doubt the best Ghibli/Miyazaki film ever made. Watch it, you wont regret it</recommendation>
+        <recommendation type="Must See" uid="77646">It truly started it all for me ...</recommendation>
+        <recommendation type="Must See" uid="269108">The best movie that I`ve ever seen !!!</recommendation>
+        <recommendation type="Must See" uid="291869">Great thing...</recommendation>
+        <recommendation type="Must See" uid="558725">This is one of Miyazaki`s best creations. It`s a story set in a historycal fantasy world, mostly based on the relationship between humans and nature. It`s an epic anime and a definitely must see.</recommendation>
+        <recommendation type="Must See" uid="193967">For me this one is the best of the best. This movie opened my eyes to the world of anime. This beauty of animations, story, dynamics, drama and love... I just can`t describe it so you better watch every single second of this masterpiece. You won`t regret it, but more likely - you will truly love it!</recommendation>
+        <recommendation type="Must See" uid="112260">epic</recommendation>
+        <recommendation type="Must See" uid="550869">One of The Best Classic Anime Movies Period !!!</recommendation>
+        <recommendation type="Must See" uid="84121">Epic anime</recommendation>
+        <recommendation type="Must See" uid="329385">Great movie</recommendation>
+        <recommendation type="Must See" uid="537909">the embodiment of awesomeness</recommendation>
+        <recommendation type="Must See" uid="330812">A wonderful movie that everyone have to see.</recommendation>
+        <recommendation type="Must See" uid="292607">This is a must see for anyone who likes anime. One of the best anime movies I have ever seen.</recommendation>
+    </recommendations>
+    <url>https://www.ghibli.jp/works/mononoke/</url>
+    <creators>
+        <name id="40" type="Direction">Miyazaki Hayao</name>
+        <name id="40" type="Original Work">Miyazaki Hayao</name>
+        <name id="1947" type="Music">Hisaishi Jou</name>
+        <name id="729" type="Work">Studio Ghibli</name>
+    </creators>
+    <description>While fighting to save his village from the attack of a demon-god http://anidb.net/ch8724 [Ashitaka] comes in contact with it and is inflicted with a deadly curse. In his search for a cure he is forced to leave his village forever and journey to the forest inhabited by animal gods. There he finds himself in the middle of a war between the forest gods and a village led by lady http://anidb.net/ch8725 [Eboshi].</description>
+    <ratings>
+        <permanent count="14468">8.81</permanent>
+        <temporary count="14595">8.55</temporary>
+        <review count="11">8.95</review>
+    </ratings>
+    <picture>221219.jpg</picture>
+    <resources>
+        <resource type="1">
+            <externalentity>
+                <identifier>197</identifier>
+            </externalentity>
+        </resource>
+        <resource type="2">
+            <externalentity>
+                <identifier>164</identifier>
+            </externalentity>
+        </resource>
+        <resource type="3">
+            <externalentity>
+                <identifier>299</identifier>
+                <identifier>mdcnma</identifier>
+            </externalentity>
+        </resource>
+        <resource type="4">
+            <externalentity>
+                <url>https://www.ghibli.jp/works/mononoke/</url>
+            </externalentity>
+        </resource>
+        <resource type="5">
+            <externalentity>
+                <url>http://www.nausicaa.net/miyazaki/mh/</url>
+            </externalentity>
+        </resource>
+        <resource type="6">
+            <externalentity>
+                <identifier>Princess_Mononoke</identifier>
+            </externalentity>
+        </resource>
+        <resource type="7">
+            <externalentity>
+                <identifier>もののけ姫</identifier>
+            </externalentity>
+        </resource>
+        <resource type="8">
+            <externalentity>
+                <identifier>6509</identifier>
+            </externalentity>
+        </resource>
+        <resource type="9">
+            <externalentity>
+                <identifier>159561</identifier>
+            </externalentity>
+        </resource>
+        <resource type="10">
+            <externalentity>
+                <identifier>1391</identifier>
+            </externalentity>
+        </resource>
+        <resource type="19">
+            <externalentity>
+                <identifier>모노노케_히메</identifier>
+            </externalentity>
+        </resource>
+        <resource type="20">
+            <externalentity>
+                <identifier>魔法公主</identifier>
+            </externalentity>
+        </resource>
+        <resource type="31">
+            <externalentity>
+                <identifier>6050</identifier>
+            </externalentity>
+        </resource>
+        <resource type="41">
+            <externalentity>
+                <identifier>28630857</identifier>
+            </externalentity>
+        </resource>
+        <resource type="43">
+            <externalentity>
+                <identifier>tt0119698</identifier>
+            </externalentity>
+        </resource>
+        <resource type="44">
+            <externalentity>
+                <identifier>128</identifier>
+                <identifier>movie</identifier>
+            </externalentity>
+        </resource>
+    </resources>
+    <tags>
+        <tag id="36" parentid="2607" weight="200" localspoiler="false" globalspoiler="false" verified="true" update="2018-01-21">
+            <name>military</name>
+            <description>The military, also known as the armed forces, are forces authorized and legally entitled to use deadly force so as to support the interests of the state and its citizens. The task of the military is usually defined as defence of the state and its citizens and the prosecution of war against foreign powers. The military may also have additional functions within a society, including construction, emergency services, social ceremonies, and guarding critical areas.
+Source: Wikipedia</description>
+            <picurl>212184.jpg</picurl>
+        </tag>
+        <tag id="1589" parentid="2622" infobox="true" weight="400" localspoiler="false" globalspoiler="false" verified="true" update="2020-02-08">
+            <name>samurai</name>
+            <picurl>244341.jpg</picurl>
+        </tag>
+        <tag id="2094" parentid="2849" weight="200" localspoiler="false" globalspoiler="false" verified="true" update="2015-10-25">
+            <name>magic</name>
+            <description>Magic is the art of purportedly manipulating aspects of reality either by supernatural means or through knowledge of unknown occult laws.</description>
+            <picurl>178878.jpg</picurl>
+        </tag>
+        <tag id="2282" parentid="2841" weight="200" localspoiler="false" globalspoiler="false" verified="true" update="2017-12-18">
+            <name>martial arts</name>
+            <description>Various sports or skills, mainly of Japanese origin, that originated as forms of self-defense or attack, such as judo, karate, and kendo.</description>
+            <picurl>210947.jpg</picurl>
+        </tag>
+        <tag id="2568" parentid="2849" weight="100" localspoiler="false" globalspoiler="false" verified="true" update="2010-04-06">
+            <name>deity</name>
+            <description>Some religions say that there is a supernatural being called God. Other religions say there is more than one god. A supernatural being is also sometimes called a deity. Many religions believe that a deity created everything that exists. In most religions, a god is believed to be immortal (cannot die), and to have powers to control nature far beyond the powers of humans.</description>
+            <picurl>32415.jpg</picurl>
+        </tag>
+        <tag id="2604" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2018-11-08">
+            <name>content indicators</name>
+            <description>The content indicators branch is intended to be a less geographically specific tool than the `age rating` used by convention, for warning about things that might cause offence. Obviously there is still a degree of subjectivity involved, but hopefully it will prove useful for parents with delicate children, or children with delicate parents.
+Note: Refer to further guidance on http://wiki.anidb.net/w/Categories:Content_Indicators [the Wiki page] for how to apply tag weights for content indicators.</description>
+        </tag>
+        <tag id="2605" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-09-28">
+            <name>dynamic</name>
+            <description>Some of the central structural elements in anime are: 
+Plot Continuity 
+How does the plot or several plots unfold. Are they a strictly linear retelling of one big continuing story, a serial, possibly with several side stories, or is the content chopped into a set of unconnected episodes, only sharing the same setting and characters?
+Stereotype Characters
+Then there is the question of the character set presentation. Is it completely original, or is it your usual stereotypical character cast. Both choices have their merit, for example it would not really make much sense to reinvent the wheel for a harem anime. Fans of that genre come to expect their favourite stereotype protagonists.
+Plot Twists
+Finally there is the question of how complex the plot / the story unfolds. Are there side-plots that merge into the main plot leading to unexpected plot twists, or is the anime quite predictable? The latter would not be appropriate for detective stories. In harem anime on the other hand a foreseeable outcome is actually something the fans will come to expect.</description>
+        </tag>
+        <tag id="2606" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2018-11-05">
+            <name>target audience</name>
+            <description>Anime, like everything else in the modern world, is targeted towards specific audiences, both implicitly by the creators and overtly by the marketing. While categories are associated with specific sex and age groups, this is not a bar on the anime being enjoyed by people who don`t fit into that band; not only do crossover titles exist, but the categories also have a considerable following outside their main demographic, and a person might as well enjoy anime from all categories. Still, does not invalidate the usefulness of marking a title as one of the categories; the same themes will likely be treated differently in anime geared for different audiences. Only one should not jump the gun and assume that a title will be more or less serious or present content in this or that way due to its target audience, or conversely assume the target audience on the content and its presentation alone. As such, the audience categories help form a broad impression of how a title might work with the announced themes, but offer little to no in-depth information about specific content or its treatment.
+The audience categories originate from manga magazines, which group titles of a same intended audience into a magazine that is advertised as belonging to that category, and so manga-based anime will have the category from their parent work. As for anime based on other works, the audience is often debatable, but comparing information such as time slot to the manga-based anime generally helps figure out the most likely possibility.
+If the parent material was classified under multiple audiences over time (for example, it was originally shounen, but then as the plot changed and became more mature, it was reclassified as seinen), and the anime adapts parent material time periods covering multiple audiences, we tag all audiences covered by the anime adaptation.</description>
+        </tag>
+        <tag id="2607" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2009-04-29">
+            <name>themes</name>
+            <description>Themes describe the very central elements important to the anime stories. They set the backdrop against which the protagonists must face their challenges. Be it School Life, present Daily Life, Military action, Cyberpunk, Law and Order detective work, Sports, or the Underworld. These are only but a few of the more typical backgrounds for anime plots. Add to that a Conspiracy setting with a possible tragic outcome, the Themes span most of the imaginable subject matter relevant to anime.</description>
+        </tag>
+        <tag id="2609" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2018-09-01">
+            <name>original work</name>
+            <description>What the anime is based on! This is given as the original work credit in the OP. Mostly of academic interest, but a useful bit of info, hinting at the possible depth of story.</description>
+        </tag>
+        <tag id="2610" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2009-04-22">
+            <name>setting</name>
+            <description>The setting describes in what time and place an anime takes place. To a certain extent it describes what you can expect from the world in the anime.</description>
+        </tag>
+        <tag id="2611" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-09-08">
+            <name>elements</name>
+            <description>Next to Themes setting the backdrop for the protagonists in anime, there are the more detailed plot Elements that centre on character interactions: "What do characters do to each other or what is done to them?". Is it violent Action, an awe-inspiring Adventure in a foreign place, the gripping life of a Detective, a slapstick Comedy, an Ecchi Harem anime, a SciFi epic, or some Fantasy travelling adventure?</description>
+        </tag>
+        <tag id="2612" parentid="2610" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2016-09-04">
+            <name>time</name>
+            <description>This placeholder lists different epochs in human history and more vague but important timelines such as the future, the present and the past.</description>
+        </tag>
+        <tag id="2613" parentid="2610" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2016-09-04">
+            <name>place</name>
+            <description>The places the anime can take place in. Includes more specific places such as a country on Earth, as well as more general places such as a dystopia or a mirror world.</description>
+        </tag>
+        <tag id="2616" parentid="2606" infobox="true" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-09-07">
+            <name>mina</name>
+            <description>In the context of manga and associated media, the word mina refers to a broad audience, which can be said to be "the entire family", from the grumpy grandpa to the newborn baby. In Japanese, the word means simply "everyone", and has no anime/manga-related connotations at all. It does not comprise a style or a genre per se, but rather indicates the publisher`s intended target demographic. Mina works are deliberately targeted at a range of people as wide as possible, and are commonly associated with high-budget releases that require a very large audience to be financially viable. They usually bring mildly philosophical themes so that the adults can be interested, but do so without bringing objectionable content so that the children can be allowed to watch, and indeed also feature content specifically geared to spark their interest.</description>
+        </tag>
+        <tag id="2622" parentid="2841" weight="200" localspoiler="false" globalspoiler="false" verified="true" update="2017-12-26">
+            <name>swordplay</name>
+            <description>The act or art of using a sword or similar weapon skillfully.</description>
+            <picurl>211286.jpg</picurl>
+        </tag>
+        <tag id="2623" parentid="2611" weight="100" localspoiler="false" globalspoiler="false" verified="true" update="2018-01-21">
+            <name>super power</name>
+            <description>Be it an ancient Greek Heracles, a cybernetic muscle-man, or a fourteen year-old girl in a mini-skirted sailor suit. As long as they have super powers, they`re in the show.</description>
+            <picurl>212182.jpg</picurl>
+        </tag>
+        <tag id="2625" parentid="2612" weight="600" localspoiler="false" globalspoiler="false" verified="true" update="2009-05-15">
+            <name>past</name>
+            <description>Anime that takes place in the past or clearly seems to take place in the past in case of an alternative universe. This category should almost always go together with one of its sub-categories, because the past can either be a depiction of a historical event(s) or not, in which case it would be alternative past.</description>
+        </tag>
+        <tag id="2630" parentid="2613" weight="600" localspoiler="false" globalspoiler="false" verified="true" update="2012-10-13">
+            <name>Earth</name>
+            <description>The Earth is the third planet from the Sun, and the densest and fifth-largest of the eight planets in the Solar System. It is in effect a ball of hot mud, but on the surface it`s cold enough, so most of us live on it (or are supposed to). It is circa 4.5 billion years old, and, unless we humans succeed in destroying it over the next couple of centuries, it is expected to last for quite another while, though the changes in the Sun`s emissions due to its aging will likely cause the extinction of everything; the species of earthlings are guaranteed to die, even if we fail to kill them -- unless, of course, we find ourselves another planet and figure out a way to take everything there. Our little planet on a corner of this galaxy may mean nothing in the grand scheme of things, but to its inhabitants it is their home, so, as a species, we cherish it dearly, to the point many cultures even to this day deify it. Being the home to the human civilizations, the Earth is the main setting of most fiction, be it anime or otherwise, but not only are many titles set in other places, such as unrelated fantasy worlds, in a considerable number of fictional titles the Earth is actually destroyed by aggressive alien invaders.</description>
+            <picurl>126792.jpg</picurl>
+        </tag>
+        <tag id="2641" parentid="2625" weight="200" localspoiler="false" globalspoiler="false" verified="true" update="2009-05-18">
+            <name>historical</name>
+            <description>Historical anime have clear ties to our history and usually occur in a particular epoch.</description>
+        </tag>
+        <tag id="2646" parentid="2849" weight="100" localspoiler="false" globalspoiler="false" verified="true" update="2014-09-24">
+            <name>demon</name>
+            <description>In Western lore, demons are often described as minions from Hell, generally known to attack humans and feast on their flesh or possess the bodies of those with weak souls. In Eastern lore, on the other hand, they are generally supernatural, often but not always malevolent beings who can be more mischievous than actually evil, or simply supernatural spirits of no specific alignment.</description>
+        </tag>
+        <tag id="2672" parentid="2834" weight="600" localspoiler="false" globalspoiler="false" verified="true" update="2018-03-05">
+            <name>Japan</name>
+            <description>Japan is a sovereign island nation in East Asia. Located in the Pacific Ocean, it lies off the eastern coast of the Asian mainland and stretches from the Sea of Okhotsk in the north to the East China Sea and China in the southwest.
+Source: Wikipedia</description>
+            <picurl>65689.png</picurl>
+        </tag>
+        <tag id="2750" parentid="2604" weight="200" localspoiler="false" globalspoiler="false" verified="true" update="2018-11-08">
+            <name>violence</name>
+            <description>Violence is the use of physical force against oneself or another entity, compelling action against one`s will on pain of being hurt.
+Note: Refer to further guidance on http://wiki.anidb.net/w/Categories:Content_Indicators [the Wiki page] for how to apply tag weights for content indicators.</description>
+        </tag>
+        <tag id="2772" parentid="36" weight="300" localspoiler="false" globalspoiler="false" verified="true" update="2016-09-04">
+            <name>feudal warfare</name>
+            <description>Feudal Warfare is the warfare of the Middle Ages and therefore the setting must take place in a time line similar to that of Middle Ages or its Asian/American counterparts, or in a fantasy world. Generally it can be described the same way as the Military category, just that the weapons used are swords, spears, bows, catapults, cannons and other weapons used in the Middle Ages.
+Note: Just because the anime contains a guy or a couple of guys with swords wondering about, doesn`t make it applicable for this category, unless there are larger military organizations/groups involved in armed conflict with each other, you might not want to add this genre.</description>
+        </tag>
+        <tag id="2797" parentid="2609" infobox="true" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2009-05-18">
+            <name>new</name>
+            <description>Not based on anything, the story is a new work, usually made up by the people involved in creating the anime. Generally if an original work (原作) credit is given, it will be to the studio, or director, or other members of the production team.</description>
+        </tag>
+        <tag id="2834" parentid="2630" weight="600" localspoiler="false" globalspoiler="false" verified="true" update="2016-10-04">
+            <name>Asia</name>
+            <description>Asia is Earth`s largest and most populous continent, located primarily in the eastern and northern hemispheres and sharing the continental landmass of Eurasia with the continent of Europe. Asia covers an area of 44,579,000 square kilometers, about 30% of Earth`s total land area and 8.7% of the Earth`s total surface area. The continent, which has long been home to the majority of the human population, was the site of many of the first civilizations. Asia is notable for not only its overall large size and population, but also dense and large settlements as well as vast barely populated regions within the continent of 4.4 billion people.
+Source: Wikipedia</description>
+            <picurl>192245.jpg</picurl>
+        </tag>
+        <tag id="2841" parentid="2611" infobox="true" weight="400" localspoiler="false" globalspoiler="false" verified="true" update="2017-12-26">
+            <name>action</name>
+            <description>Action anime usually involve a fairly straightforward story of good guys versus bad guys, where most disputes are resolved by using physical force. It often contains a lot of shooting, explosions and fighting.</description>
+            <picurl>211261.jpg</picurl>
+        </tag>
+        <tag id="2844" parentid="2611" weight="200" localspoiler="false" globalspoiler="false" verified="true" update="2018-01-21">
+            <name>angst</name>
+            <description>A feeling of general discomfort and uneasiness is present due to either trivial or more serious reasons, often accompanied by depression.
+Warning: may contain copious amounts of brooding and sighing.
+Etymology: "Angst" is a German word meaning fear or anxiety.</description>
+            <picurl>212183.jpg</picurl>
+        </tag>
+        <tag id="2849" parentid="7050" infobox="true" weight="400" localspoiler="false" globalspoiler="false" verified="true" update="2005-05-07">
+            <name>fantasy</name>
+            <description>Fantasy is a genre of fiction that uses magic and other supernatural phenomena as a primary element of plot, theme, or setting. Many works within the genre take place in fictional worlds where magic is common. Fantasy is generally distinguished from science fiction and horror by the expectation that it steers clear of (pseudo-)scientific and macabre themes, respectively, though there is a great deal of overlap between the three (which are subgenres of speculative fiction).
+In popular culture, the genre of fantasy is dominated by its medievalist form, especially since the worldwide success of The Lord of the Rings books by J. R. R. Tolkien. In its broadest sense however, fantasy comprises works by many writers, artists, filmmakers, and musicians, from ancient myths and legends to many recent works embraced by a wide audience today.
+Fantasy is a vibrant area of academic study in a number of disciplines (English, cultural studies, comparative literature, history, medieval studies). Work in this area ranges widely, from the structuralist theory of Tzvetan Todorov, which emphasizes the fantastic as a liminal space, to work on the connections (political, historical, literary) between medievalism and popular culture
+Source: Wiki</description>
+            <picurl>68768.jpg</picurl>
+        </tag>
+        <tag id="2850" parentid="2611" infobox="true" weight="500" localspoiler="false" globalspoiler="false" verified="true" update="2015-10-25">
+            <name>adventure</name>
+            <description>Adventures are exciting stories, with new experiences or exotic locales. Adventures are designed to provide an action-filled, energetic experience for the viewer. Rather than the predominant emphasis on violence and fighting that is found in pure action anime, however, the viewer of adventures can live vicariously through the travels, conquests, explorations, creation of empires, struggles and situations that confront the main characters, actual historical figures or protagonists. Under the category of adventures, we can include traditional swashbucklers, serialized films, and historical spectacles, searches or expeditions for lost continents, "jungle" and "desert" epics, treasure hunts and quests, disaster films, and heroic journeys or searches for the unknown. Adventure films are often, but not always, set in an historical period, and may include adapted stories of historical or literary adventure heroes, kings, battles, rebellion, or piracy.</description>
+            <picurl>178879.jpg</picurl>
+        </tag>
+        <tag id="2851" parentid="7050" weight="200" localspoiler="false" globalspoiler="false" verified="true" update="2018-03-11">
+            <name>horror</name>
+            <description>The horror cinematic genre is characterized by the attempt to make the viewer experience dread, fear, terror, or horror. Often their plots involve the intrusion of an evil force, event or personage, sometimes of supernatural origin, on the mundane world and the consequences thereof.</description>
+            <picurl>214682.jpg</picurl>
+        </tag>
+        <tag id="2853" parentid="2611" weight="100" localspoiler="false" globalspoiler="false" verified="true" update="2017-02-13">
+            <name>comedy</name>
+            <description>Anime whose central struggle causes hilarious results. These stories are built upon funny characters, situations and events. A comedy anime is laced with humour and sets out to provoke laughter from the audience.
+Japanese humour can be a bit strange to westerners, so if you`re new to this type of humour, just bear with it; it`ll most likely grow on you if you`re a fan of other kinds of comedy.</description>
+            <picurl>198104.jpg</picurl>
+        </tag>
+        <tag id="2857" parentid="2611" weight="300" localspoiler="false" globalspoiler="false" verified="true" update="2020-10-04">
+            <name>anthropomorphism</name>
+            <description>Anthropomorphism is the attribution of uniquely human characteristics to non-human beings, inanimate objects, or natural or supernatural phenomena. If it`s an animal or an object (AI excluded) and it speaks and/or does other human-like things (dresses up) then we`re dealing with anthropomorphism.
+Anthropomorphism leans more on the animal-looking side when compared to http://anidb.net/t7 [juujin], which leans more on the human-looking side.
+Usage the tag image for reference, when tagging characters:
+
+* This is a juujin.
+* This is split between juujin and anthropomorphism, to be decided on a case-by-case basis, but most likely leans on the human-looking juujin side in most cases.
+* This is anthropomorphism; tag both anthropomorphism and the respective animal type.
+* This is anthropomorphism; tag both anthropomorphism and the respective animal type.
+* This is just a regular animal; do not tag juujin or anthropomorphism — only tag the actual animal type.
+</description>
+            <picurl>252666.jpg</picurl>
+        </tag>
+        <tag id="2858" parentid="2611" weight="200" localspoiler="false" globalspoiler="false" verified="true" update="2017-12-01">
+            <name>romance</name>
+            <description>Romance describes a story that deals with love between two or more characters typically also having an optimistic ending. Romance is also a difficulty encountered when creating a harem.</description>
+            <picurl>210061.jpg</picurl>
+        </tag>
+        <tag id="2871" parentid="2607" weight="200" localspoiler="false" globalspoiler="false" verified="true" update="2012-10-07">
+            <name>anti-war</name>
+            <description>The anime portrays the insanity of war.</description>
+            <picurl>70855.jpg</picurl>
+        </tag>
+        <tag id="2874" parentid="2607" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2018-05-07">
+            <name>disaster</name>
+            <description>A disaster is a large-scale situation that causes great loss of or damage or threat to life, health, property, society, or the environment, irrespective of its source or cause. Disasters have substantial, long-lasting negative repercussions, and great effort must be spent in order to undo or mitigate their effects.</description>
+        </tag>
+        <tag id="2877" parentid="2607" weight="200" localspoiler="false" globalspoiler="false" verified="true" update="2014-02-27">
+            <name>revenge</name>
+            <description>A primary factor that drives the plot forward, is the almost obsessive desire of one of the characters to get back at someone else.</description>
+        </tag>
+        <tag id="2887" parentid="2611" weight="200" localspoiler="false" globalspoiler="false" verified="true" update="2009-05-16">
+            <name>tragedy</name>
+            <description>Tragedy is a form of drama characterized by seriousness and dignity, usually involving a conflict between a character and some higher power, such as the law, the gods, fate, or society.</description>
+        </tag>
+        <tag id="2888" parentid="2607" weight="200" localspoiler="false" globalspoiler="false" verified="true" update="2009-05-16">
+            <name>coming of age</name>
+            <description>In the strict sense the Coming of age describes a young person`s transition from adolescence to adulthood. In anime the term is used in a more general sense where the protagonists have to face a challenge, make an important decision in their life, take on responsibility, or learn a lesson, and by overcoming these obstacles they reach a higher level of maturity.</description>
+        </tag>
+        <tag id="2925" parentid="2874" weight="400" localspoiler="false" globalspoiler="false" verified="true" update="2012-10-07">
+            <name>war</name>
+            <description>War is a phenomenon of organized violent conflict, typified by extreme aggression, societal disruption and adaptation, and high mortality. The objective of warfare differs in accord with a group`s role in a conflict: The goals of offensive warfare are typically the submission, assimilation or destruction of another group, while the goals of defensive warfare are simply the repulsion of the offensive force and, often, survival itself. Relative to each other, combatants in warfare are called enemies. The terms military, militant, and militarism each refer to fundamental aspects of war, i.e. the organized group, the combative individual, and the supportive ethos (respectively).
+Source: wiki</description>
+            <picurl>56441.jpg</picurl>
+        </tag>
+        <tag id="2931" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2016-12-04">
+            <name>unsorted</name>
+            <description>a bunch of tags that still need to be either deleted or moved into proper places.</description>
+        </tag>
+        <tag id="3055" parentid="3876" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-10-21">
+            <name>fairy tale</name>
+            <description>This anime is either based on or contains parts of fairy tales. Usually those parts are highly modified or twisted when compared with the original source.</description>
+        </tag>
+        <tag id="3314" parentid="2607" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2011-05-10">
+            <name>fate</name>
+            <description>Fate — The predestined path of all things. The outcome is inevitable and the consequences predetermined. Whether or not the protagonist ultimately decides to follow this path shall weigh heavily on their soul.</description>
+        </tag>
+        <tag id="3394" parentid="2607" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2008-06-25">
+            <name>environmentalism</name>
+            <description>Environmental protection is a practice of protecting the natural environment on individual, organizational or governmental levels, for the benefit of both the natural environment and humans. Due to the pressures of population and technology, the biophysical environment is being degraded, sometimes permanently. This has been recognized, and governments have begun placing restraints on activities that cause environmental degradation. Since the 1960s, activity of environmental movements has created awareness of the various environmental issues.
+(Source: Wikipedia)</description>
+        </tag>
+        <tag id="3597" parentid="2607" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2013-02-26">
+            <name>mythology</name>
+            <description>The anime gets inspirations from many forms of mythologies (either Greek, Egyptian, Nord, etc.) to form its story and setting.</description>
+        </tag>
+        <tag id="3650" parentid="2931" weight="0" localspoiler="false" globalspoiler="false" verified="false" update="2011-08-10">
+            <name>living together with god</name>
+            <description>Divine roommate</description>
+        </tag>
+        <tag id="3822" parentid="6230" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2010-03-15">
+            <name>strong male lead</name>
+            <description>The lead male protagonist in this anime shows backbone, is competent, and does not shy away from seemingly insurmountable objectives.</description>
+        </tag>
+        <tag id="3876" parentid="3597" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-10-21">
+            <name>folklore</name>
+            <description>Folklore, or simply Lore, are the traditions of a culture, subculture, or group, in the form of legends, music, proverbs, jokes, popular beliefs, fairy tales, stories, tall tales and customs. In usage, there is a continuum between folklore and mythology.
+Folklore is generally divided into four areas of study: physical artifacts, transmissible entities and stories, culture and technologies, and behaviors and rituals.
+[From Wikipedia]</description>
+        </tag>
+        <tag id="4022" parentid="6230" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2010-11-29">
+            <name>strong female lead</name>
+            <description>The lead female character has a strong personality and plays a part that is not the typical damsel-in-distress role. 
+This is the exact opposite of the “damsel in distress” tag.</description>
+        </tag>
+        <tag id="4278" parentid="6151" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2018-01-15">
+            <name>stand-alone movie</name>
+            <description>You can watch this movie without having to watch something else first. This tag should not used for sequels, side stories, or summary movies, but may be used if the movie is either the first anime in a franchise or a remake.
+The movie must be feature-length. For shorts, use the `short movie` tag. In general, a "show-in-show" would not qualify as standalone. For example, an anime has a cartoon show within it. If the show within was released as an OVA or movie, it would not be considered standalone.</description>
+        </tag>
+        <tag id="5151" parentid="3394" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2008-12-31">
+            <name>man vs nature</name>
+        </tag>
+        <tag id="5585" parentid="2607" weight="300" localspoiler="false" globalspoiler="false" verified="true" update="2015-01-29">
+            <name>curse</name>
+            <description>A "curse" in this manner depicts an adversity placed upon a person or object by a supernatural power often represented by unique designs and symbols found on the inflicted. While not all curses have negative effects, the majority are meant to remain forever hexing to the receiving victim`s soul.
+A common portrayal is that which is conjured by an individual that has been caused great suffering and thereby extracts revenge against the accuser in the form of a curse. This abuser will then have their soul spirited away to hell to suffer endlessly for the rest of eternity. In some instances (such as in `Jigoku Shoujo`) the character who extracts revenge also condemns their own soul to Hell upon death.</description>
+        </tag>
+        <tag id="5651" parentid="3314" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2013-06-22">
+            <name>against destiny</name>
+            <description>Screw destiny and all the others who try to discourage them; they`re not going to fulfill the prophecy of world destruction because they`re the Big Bad`s descendant, or become a sacrificial magician. They`re going to become who they want to be. (source: TV Tropes)</description>
+        </tag>
+        <tag id="6151" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-09-10">
+            <name>technical aspects</name>
+            <description>It may sometimes be useful to know about technical aspects of a show, such as information about its broadcasting or censorship. Such information can be found here.</description>
+        </tag>
+        <tag id="6173" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-09-24">
+            <name>origin</name>
+        </tag>
+        <tag id="6230" parentid="2605" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-10-20">
+            <name>cast</name>
+        </tag>
+        <tag id="6710" parentid="2641" weight="100" localspoiler="false" globalspoiler="false" verified="true" update="2016-07-20">
+            <name>Muromachi period</name>
+            <description>The Muromachi period is a division of Japanese history running from approximately 1336 to 1573. The period marks the governance of the Muromachi or Ashikaga shogunate, which was officially established in 1338 by the first Muromachi shogun, Ashikaga Takauji, two years after the brief Kenmu Restoration (1333-36) of imperial rule was brought to a close. The period ended in 1573 when the 15th and last shogun of this line, Ashikaga Yoshiaki, was driven out of the capital in Kyoto by Oda Nobunaga.
+From a cultural perspective, the period can be divided into the Kitayama and Higashiyama periods (later 15th - early 16th century). The early years from 1336 to 1392 of the Muromachi period are known as the Nanboku-chou or Northern and Southern Court period. This period is marked by the continued resistance of the supporters of Emperor Go-Daigo, the emperor behind the Kenmu Restoration. The years from 1465 to the end of the Muromachi period are also known as the Sengoku period or Warring States period.
+Source: Wikipedia</description>
+            <picurl>188943.jpg</picurl>
+        </tag>
+        <tag id="7050" parentid="2611" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2019-04-18">
+            <name>speculative fiction</name>
+            <description>Speculative fiction is an umbrella genre encompassing fiction with certain elements that do not exist in the real world, often in the context of supernatural, futuristic or other imaginative themes. This includes, but is not limited to, science fiction, fantasy, superhero fiction, horror, utopian and dystopian fiction, fairytale fantasy, supernatural fiction, as well as combinations thereof.
+Source: Wikipedia</description>
+        </tag>
+        <tag id="7885" parentid="6173" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2021-11-07">
+            <name>Japanese production</name>
+        </tag>
+    </tags>
+    <characters>
+        <character id="7559" type="main character in" update="2014-12-14">
+            <rating votes="106">8.84</rating>
+            <name>San</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <description>When San (サン) was a baby, the wolf goddess Moro attacked her parents, who were found damaging the forest. San`s parents threw her to Moro as a sacrifice to save their own lives. Moro raised San as her own daughter, and in turn San treats Moro as her mother and Moro`s two natural pups as brothers. The wolf pups accept San as a sister.
+San`s primary concern is protecting the forest and the animals she lives with. San rejects her own humanity and even thinks of herself as a wolf, even resorting to her animal instincts when she is frightened or angry. She has attempted to assassinate Eboshi of Irontown many times, as San believes that Eboshi`s death will result in the end of Irontown and human growth into the surrounding forest. It is only by Ashitaka`s affection for her that she slowly comes to acknowledge her human side as well.
+After the battle for the Forest Spirit`s head, San tells Ashitaka that he is very dear to her, but since she cannot forgive the human race for what they have done to the forest, she will continue to live apart from the humans. San returns to the forest and Ashitaka remains in Irontown.</description>
+            <picture>26316.jpg</picture>
+            <seiyuu id="4195" picture="29471.jpg">Ishida Yuriko</seiyuu>
+        </character>
+        <character id="8724" type="main character in" update="2011-04-07">
+            <rating votes="89">9.12</rating>
+            <name>Ashitaka</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <description>Ashitaka is an Emishi prince who was meant to become leader of his tribe. While rescuing his village from Nago, the demon boar god, Ashitaka`s arm is afflicted with a curse that will eventually consume and kill him. Under the effect of the curse, Ashitaka gains superhuman strength, but causes him to grow weaker as time passes. Ashitaka is exiled from his village and goes westward to find the cause of the demon`s corruption as well as a cure for his curse, despite being told there is no such thing.</description>
+            <picture>28069.jpg</picture>
+            <seiyuu id="4573" picture="11172.jpeg">Matsuda Youji</seiyuu>
+        </character>
+        <character id="8725" type="secondary cast in" update="2014-12-14">
+            <rating votes="46">6.71</rating>
+            <name>Eboshi</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <description>Eboshi was the strong-willed and independent leader of Irontown. Though seemingly callous and distant to others, she actually cared a lot about the welfare of her people; the guns they produce are primarily intended to secure their independence from hostile parties. She also takes in lepers, treating them as humans instead of parasites, and helps them with their wounds - a fact which Ashitaka acknowledges to the point that he cannot condemn her for inflicting him (indirectly) with the curse.
+Eboshi had many enemies, including San, other humans, and the animal gods. Eboshi and her ishibiya troops were responsible for the cursed iron bullet in Nago, which eventually affected Ashitaka. She shot the Shishigami`s head off, causing it to turn into a God of death and sending forth a dark liquid that killed anything it touched. The liquid fell on Moro`s body, separating her head from her body. After Eboshi threw the Shishigami`s head to Jigo, Moro`s head resurrected long enough to bite off Eboshi`s right arm. This event redeemed her, and she decided to rebuild Irontown not as an industrial center, but as a modest settlement.</description>
+            <picture>28070.jpg</picture>
+            <seiyuu id="4842" picture="201464.jpg">Tanaka Yuuko</seiyuu>
+        </character>
+        <character id="8727" type="secondary cast in" update="2014-12-14">
+            <rating votes="24">4.17</rating>
+            <name>Jigo-bou</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <description>Jigo, known in Japanese as Monk Jiko, is an Imperial agent traveling in the disguise of a monk who was assigned by the Emperor to capture the forest spirit`s head, in return for an entire hill of gold. The Emperor believed that the forest spirit`s head would give him immortality. Jigo used a pack of skilled hunters, and a group of his own men, to help him hunt down the forest spirit. He also manipulated Lady Eboshi to kill the forest spirit for him, in exchange for tracking it down for her.</description>
+            <picture>45010.jpg</picture>
+            <seiyuu id="4896" picture="28243.jpg">Kobayashi Kaoru</seiyuu>
+        </character>
+        <character id="8728" type="appears in" update="2014-04-20">
+            <rating votes="10">5.41</rating>
+            <name>Shishigami</name>
+            <gender>unknown</gender>
+            <charactertype id="1">Character</charactertype>
+            <description>The Forest Spirit, known in the Japanese version as Shishigami, is the ancient spirit of the forest. During the day, the Forest Spirit resembles a great elegant stag with many antlers, bird-like feet, and a long deer-like face with features similar to those of a baboon. The Forest Spirit is protected by the Wolf Clan. As he walks, flowers bloom up at his feet, though they quickly wither and die. He is capable of both giving life and taking it away, which includes healing wounds.
+At sunset, the Forest Spirit becomes the Nightwalker (known as Daidarabotchi in the Japanese version), a huge god in a humanoid form that appears to be made out of stars, with a long pointed face and tentacle-like spikes on the back.</description>
+            <picture>154599.jpg</picture>
+        </character>
+        <character id="8729" type="appears in" update="2009-07-25">
+            <rating votes="27">7.43</rating>
+            <name>Moro</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <description>Years ago, Moro found two adults chopping down the animal`s forest. Moro was furious, and she was about to attack them when they threw their baby at her feet as they fled. That baby was then named San, and raised by her.
+As the years went by, Moro taught San the wolf life, how to run like one, and even act like one. When "The Iron Works" was established, Moro had a tendency to tell San to attack the villagers, since they were defiling the forest. One rainy day, Moro attacked the villagers, while Eboshi was there. Eboshi then used her iron gun, and shot Moro, making Moro loose her immortality.</description>
+            <picture>31998.jpg</picture>
+            <seiyuu id="4895" picture="28242.jpg">Miwa Akihiro</seiyuu>
+        </character>
+        <character id="8730" type="appears in" update="2011-01-16">
+            <rating votes="12">4.51</rating>
+            <name>Okkotonushi</name>
+            <gender>unknown</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>63461.jpg</picture>
+            <seiyuu id="4849" picture="41055.jpg">Morishige Hisaya</seiyuu>
+        </character>
+        <character id="8731" type="appears in" update="2011-04-29">
+            <rating votes="9">5.19</rating>
+            <name>Kaya</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <description>Kaya is a girl from Ashitaka`s vilage. She loves Ashitaka and is the only person to see him off after he is banished from his tribe. Her parting gift to Ashitaka is a dagger which should protect him from any dangers to come. The dagger is also a symbol of betrothing in the village and is supposed to show that Kaya is determined to marry Ashitaka in the future.</description>
+            <picture>39263.jpg</picture>
+            <seiyuu id="4195" picture="29471.jpg">Ishida Yuriko</seiyuu>
+        </character>
+        <character id="8732" type="appears in" update="2011-01-16">
+            <rating votes="8">3.18</rating>
+            <name>Kouroku</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>63460.jpg</picture>
+            <seiyuu id="4845" picture="137818.jpg">Nishimura Masahiko</seiyuu>
+        </character>
+        <character id="8733" type="appears in" update="2011-01-16">
+            <rating votes="11">2.62</rating>
+            <name>Gonza</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>63464.jpg</picture>
+            <seiyuu id="4843" picture="47884.jpg">Kamijou Tsunehiko</seiyuu>
+        </character>
+        <character id="8734" type="appears in" update="2009-11-29">
+            <rating votes="14">4.40</rating>
+            <name>Toki</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>39264.jpg</picture>
+            <seiyuu id="508" picture="140061.jpg">Shimamoto Sumi</seiyuu>
+        </character>
+        <character id="8735" type="appears in" update="2009-06-08">
+            <name>Yamainu</name>
+            <gender>unknown</gender>
+            <charactertype id="1">Character</charactertype>
+            <seiyuu id="4844" picture="41565.jpg">Watanabe Tetsu</seiyuu>
+        </character>
+        <character id="33064" type="appears in" update="2011-06-05">
+            <rating votes="16">5.97</rating>
+            <name>Kodama</name>
+            <gender>unknown</gender>
+            <charactertype id="1">Character</charactertype>
+            <description>Kodama means "echo" (its literal meaning is a "tree spirit"). However, since its name is written in Katakana, not in Kanji, it could also mean "small ball" or "small spirit". They (there are many, in various sizes and shapes) are a kind of spirit who live in the forest. Although Kodama (a tree spirit) appears in many Japanese folktales, Kodama as a little white creature is Miyazaki`s creation.</description>
+            <picture>72863.jpg</picture>
+        </character>
+        <character id="66929" type="appears in" update="2014-04-20">
+            <rating votes="4">2.72</rating>
+            <name>Hii-sama</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>154598.jpg</picture>
+            <seiyuu id="34257" picture="127266.jpg">Mori Mitsuko</seiyuu>
+        </character>
+    </characters>
+    <episodes>
+        <episode id="6585" update="2016-01-11">
+            <epno type="1">1</epno>
+            <length>135</length>
+            <airdate>1997-07-12</airdate>
+            <rating votes="28">8.96</rating>
+            <title xml:lang="en">Complete Movie</title>
+        </episode>
+        <episode id="8130" update="2011-10-20">
+            <epno type="1">2</epno>
+            <length>70</length>
+            <airdate>1997-07-12</airdate>
+            <rating votes="5">10.00</rating>
+            <title xml:lang="en">Part 1 of 2</title>
+        </episode>
+        <episode id="8131" update="2011-10-20">
+            <epno type="1">3</epno>
+            <length>70</length>
+            <airdate>1997-07-12</airdate>
+            <rating votes="5">9.90</rating>
+            <title xml:lang="en">Part 2 of 2</title>
+        </episode>
+        <episode id="11942" update="2011-10-20">
+            <epno type="1">4</epno>
+            <length>45</length>
+            <airdate>1997-07-12</airdate>
+            <rating votes="2">9.99</rating>
+            <title xml:lang="en">Part 1 of 3</title>
+        </episode>
+        <episode id="11950" update="2011-10-20">
+            <epno type="1">5</epno>
+            <length>45</length>
+            <airdate>1997-07-12</airdate>
+            <rating votes="2">10.00</rating>
+            <title xml:lang="en">Part 2 of 3</title>
+        </episode>
+        <episode id="11951" update="2011-10-20">
+            <epno type="1">6</epno>
+            <length>45</length>
+            <airdate>1997-07-12</airdate>
+            <rating votes="2">9.99</rating>
+            <title xml:lang="en">Part 3 of 3</title>
+        </episode>
+        <episode id="92808" update="2008-08-30">
+            <epno type="4">T1</epno>
+            <length>2</length>
+            <rating votes="1">10.00</rating>
+            <title xml:lang="ja">劇場用本予告</title>
+            <title xml:lang="en">Trailer</title>
+        </episode>
+        <episode id="92809" update="2008-08-30">
+            <epno type="2">S1</epno>
+            <length>5</length>
+            <title xml:lang="en">Behind the Microphone</title>
+        </episode>
+        <episode id="157408" update="2014-01-16">
+            <epno type="2">S3</epno>
+            <length>20</length>
+            <airdate>2013-12-04</airdate>
+            <title xml:lang="ja">もののけ姫 in USA</title>
+            <title xml:lang="en">Princess Mononoke in USA</title>
+            <title xml:lang="x-jat">Mononoke Hime in USA</title>
+        </episode>
+        <episode id="157409" update="2014-01-16">
+            <epno type="2">S2</epno>
+            <length>135</length>
+            <airdate>2001-11-21</airdate>
+            <title xml:lang="ja">絵コンテ</title>
+            <title xml:lang="en">Storyboards</title>
+            <title xml:lang="x-jat">E Konte</title>
+        </episode>
+        <episode id="254314" update="2022-04-15">
+            <epno type="2">S4</epno>
+            <length>135</length>
+            <title xml:lang="ja">「もののけ姫」はこうして生まれた 第1章 紙の上のドラマ</title>
+            <title xml:lang="en">The Birth of "Princess Mononoke" Part 1: A Drama On Paper</title>
+        </episode>
+        <episode id="254315" update="2022-04-15">
+            <epno type="2">S5</epno>
+            <length>135</length>
+            <title xml:lang="ja">「もののけ姫」はこうして生まれた 第2章 ～生命が吹きこまれた！</title>
+            <title xml:lang="en">The Birth of "Princess Mononoke" Part 2</title>
+        </episode>
+        <episode id="254316" update="2022-04-15">
+            <epno type="2">S6</epno>
+            <length>135</length>
+            <title xml:lang="ja">「もののけ姫」はこうして生まれた。』 第3章～記録を超えた日</title>
+            <title xml:lang="en">The Birth of "Princess Mononoke" Part 3</title>
+        </episode>
+        <episode id="257133" update="2022-07-10">
+            <epno type="4">T2</epno>
+            <length>1</length>
+            <title xml:lang="ja">TVスポット第1弾</title>
+            <title xml:lang="en">TV spot 1 (0:30)</title>
+            <summary>Begins with forest images with Studio Ghibli logo and Japanese text on top. Then there`s Ashitaka riding with a bow and arrow in his hands, and finally the movie`s logo and other text.</summary>
+        </episode>
+        <episode id="257134" update="2022-07-10">
+            <epno type="4">T3</epno>
+            <length>1</length>
+            <title xml:lang="ja">劇場用特報第1弾</title>
+            <title xml:lang="en">Theatrical Trailer 1 (0:30)</title>
+        </episode>
+        <episode id="257137" update="2022-07-10">
+            <epno type="4">T4</epno>
+            <length>1</length>
+            <title xml:lang="ja">劇場用特報第2弾</title>
+            <title xml:lang="en">Theatrical Trailer 2 (1:00)</title>
+        </episode>
+        <episode id="257138" update="2022-07-10">
+            <epno type="4">T5</epno>
+            <length>5</length>
+            <title xml:lang="ja">プロモーションフィルム</title>
+            <title xml:lang="en">Promotional Film (4:16)</title>
+        </episode>
+        <episode id="257410" update="2022-07-23">
+            <epno type="4">T6</epno>
+            <length>1</length>
+            <title xml:lang="ja">劇場用特報第3弾</title>
+            <title xml:lang="en">Theatrical Trailer 3 (1:00)</title>
+        </episode>
+        <episode id="257411" update="2022-07-23">
+            <epno type="4">T7</epno>
+            <length>1</length>
+            <title xml:lang="ja">TVスポットAタイプ (12秒)</title>
+            <title xml:lang="en">TV spot A (0:12)</title>
+        </episode>
+        <episode id="257412" update="2022-07-23">
+            <epno type="4">T8</epno>
+            <length>1</length>
+            <title xml:lang="ja">TVスポットAタイプ (15秒)</title>
+            <title xml:lang="en">TV spot A (0:15)</title>
+        </episode>
+        <episode id="257413" update="2022-07-23">
+            <epno type="4">T9</epno>
+            <length>1</length>
+            <title xml:lang="ja">TVスポットAタイプ (30秒)</title>
+            <title xml:lang="en">TV spot A (0:30)</title>
+        </episode>
+        <episode id="257414" update="2022-07-23">
+            <epno type="4">T10</epno>
+            <length>1</length>
+            <title xml:lang="ja">TVスポットBタイプ</title>
+            <title xml:lang="en">TV spot B</title>
+        </episode>
+        <episode id="257415" update="2022-07-23">
+            <epno type="4">T11</epno>
+            <length>1</length>
+            <title xml:lang="ja">追告TVスポット</title>
+            <title xml:lang="en">Follow-up TV spot</title>
+        </episode>
+    </episodes>
+</anime>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?><anime id="10075" restricted="false">
+    <type>Movie</type>
+    <episodecount>1</episodecount>
+    <titles>
+        <title xml:lang="x-jat" type="main">Mint</title>
+        <title xml:lang="ja" type="official">MINT</title>
+    </titles>
+    <url>http://www.negadesignworks.com/mint/</url>
+    <creators>
+        <name id="27969" type="Direction">Oku Shuutarou</name>
+        <name id="24686" type="Music">Meguro Shouji</name>
+    </creators>
+    <picture>142712.jpg</picture>
+    <resources>
+        <resource type="2">
+            <externalentity>
+                <identifier>20715</identifier>
+            </externalentity>
+        </resource>
+        <resource type="4">
+            <externalentity>
+                <url>http://www.negadesignworks.com/mint/</url>
+            </externalentity>
+        </resource>
+    </resources>
+    <tags>
+        <tag id="30" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-09-10">
+            <name>maintenance tags</name>
+            <description>These tags are used for maintenance.</description>
+        </tag>
+        <tag id="3955" parentid="30" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-09-08">
+            <name>DESCRIPTION MISSING</name>
+            <description>The description for this entry is missing. e.g plot, biography...
+Please help by adding it, and remove this tag afterwards. Thank you.</description>
+        </tag>
+        <tag id="6004" parentid="6173" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-09-10">
+            <name>development hell</name>
+            <description>Due to unforeseen circumstances, the production or release of this anime has been pushed back, stalled, or cancelled one or more times from when it was first announced.
+While some of them have eventually been completed, others might have only had a trailer released or have been changed into another format (e.g. a TV series turned into an OVA).
+Common reasons for a work to become stuck in development hell include creative differences, legal issues, financial problems, scheduling conflicts or the death of an involved creator.</description>
+        </tag>
+        <tag id="6173" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-09-24">
+            <name>origin</name>
+        </tag>
+        <tag id="7885" parentid="6173" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2021-11-07">
+            <name>Japanese production</name>
+        </tag>
+    </tags>
+</anime>

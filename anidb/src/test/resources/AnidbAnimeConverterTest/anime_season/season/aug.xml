@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?><anime id="14464" restricted="false">
+    <type>Music Video</type>
+    <episodecount>1</episodecount>
+    <startdate>2015-08-05</startdate>
+    <enddate>2015-08-05</enddate>
+    <titles>
+        <title xml:lang="x-jat" type="main">Ame to Kusari</title>
+        <title xml:lang="en" type="synonym">Candy and Chains</title>
+        <title xml:lang="ja" type="official">飴と鎖</title>
+    </titles>
+    <description>Singer Megurine Luka, Megurine Luka (巡音ルカ), codinome CV03, is a VOCALOID developed and distributed by the Crypton Future Media, Inc.</description>
+    <ratings>
+        <permanent count="6">5.69</permanent>
+        <temporary count="6">5.66</temporary>
+    </ratings>
+    <resources>
+        <resource type="26">
+            <externalentity>
+                <identifier>watch?v=6j8mQXkpdmg</identifier>
+            </externalentity>
+        </resource>
+    </resources>
+    <tags>
+        <tag id="6173" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-09-24">
+            <name>origin</name>
+        </tag>
+        <tag id="7885" parentid="6173" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2021-11-07">
+            <name>Japanese production</name>
+        </tag>
+    </tags>
+    <episodes>
+        <episode id="211621" update="2019-01-01">
+            <epno type="1">1</epno>
+            <length>3</length>
+            <airdate>2015-05-08</airdate>
+            <title xml:lang="en">Musicvideo</title>
+        </episode>
+    </episodes>
+</anime>

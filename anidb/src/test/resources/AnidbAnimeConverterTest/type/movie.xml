@@ -1,0 +1,763 @@
+<?xml version="1.0" encoding="UTF-8"?><anime id="112" restricted="false">
+    <type>Movie</type>
+    <episodecount>1</episodecount>
+    <startdate>2001-07-20</startdate>
+    <enddate>2001-07-20</enddate>
+    <titles>
+        <title xml:lang="x-jat" type="main">Sen to Chihiro no Kamikakushi</title>
+        <title xml:lang="en" type="synonym">Sen and Chihiro`s Spiriting Away</title>
+        <title xml:lang="pl" type="synonym">W Krainie Bogów</title>
+        <title xml:lang="ar" type="synonym">شيهيرو</title>
+        <title xml:lang="vi" type="synonym">Vùng đất linh hồn</title>
+        <title xml:lang="uk" type="synonym">Сен та Чіхіро в полоні у духів</title>
+        <title xml:lang="en" type="short">SA</title>
+        <title xml:lang="x-jat" type="short">StCnK</title>
+        <title xml:lang="x-jat" type="short">Sen to Chihiro</title>
+        <title xml:lang="x-jat" type="short">Chihiro</title>
+        <title xml:lang="uk" type="short">Сен та Чіхіро</title>
+        <title xml:lang="ja" type="official">千と千尋の神隠し</title>
+        <title xml:lang="en" type="official">Spirited Away</title>
+        <title xml:lang="de" type="official">Chihiros Reise ins Zauberland</title>
+        <title xml:lang="fr" type="official">Le voyage de Chihiro</title>
+        <title xml:lang="it" type="official">La Città Incantata</title>
+        <title xml:lang="es" type="official">El Viaje de Chihiro</title>
+        <title xml:lang="ru" type="official">Унесённые призраками</title>
+        <title xml:lang="ko" type="official">센과 치히로의 행방불명</title>
+        <title xml:lang="pl" type="official">Spirited Away: W krainie bogów</title>
+        <title xml:lang="sv" type="official">Spirited Away</title>
+        <title xml:lang="pt" type="official">A Viagem de Chihiro</title>
+        <title xml:lang="no" type="official">Chihiro Og Heksene</title>
+        <title xml:lang="pt-BR" type="official">A Viagem de Chihiro</title>
+        <title xml:lang="cs" type="official">Cesta do fantazie</title>
+        <title xml:lang="da" type="official">Chihiro Og Heksene</title>
+        <title xml:lang="nl" type="official">De reis van Chihiro</title>
+        <title xml:lang="fi" type="official">Henkien kätkemä</title>
+        <title xml:lang="el" type="official">Ταξίδι στη Χώρα των Θαυμάτων</title>
+        <title xml:lang="he" type="official">המסע המופלא</title>
+        <title xml:lang="hu" type="official">Chihiro Szellemországban</title>
+        <title xml:lang="lt" type="official">Stebuklingi Šihiros nuotykiai Dvasių pasaulyje</title>
+        <title xml:lang="th" type="official">มิติวิญญาณมหัศจรรย์</title>
+        <title xml:lang="tr" type="official">Ruhların Kaçışı</title>
+        <title xml:lang="ro" type="official">Călătoria lui Chihiro</title>
+        <title xml:lang="my" type="official">Spirited Away</title>
+        <title xml:lang="sk" type="official">Cesta do fantázie</title>
+        <title xml:lang="sl" type="official">Čudežno potovanje</title>
+        <title xml:lang="lv" type="official">Gariem līdzi</title>
+        <title xml:lang="id" type="official">Spirited Away</title>
+        <title xml:lang="bg" type="official">Отнесени от Духове</title>
+        <title xml:lang="et" type="official">Vaimudest viidud</title>
+        <title xml:lang="uk" type="official">Віднесені привидами</title>
+        <title xml:lang="hr" type="official">Avanture male Chihiro</title>
+        <title xml:lang="sr" type="official">Začarani grad</title>
+        <title xml:lang="zh-Hant" type="official">千與千尋</title>
+        <title xml:lang="zh-Hans" type="official">千与千寻</title>
+        <title xml:lang="es-419" type="official">El Viaje de Chihiro</title>
+        <title xml:lang="tl" type="official">Spirited Away</title>
+        <title xml:lang="hi" type="official">स्पिरिटेड अवे</title>
+    </titles>
+    <similaranime>
+        <anime id="1218" approval="130" total="146">Howl no Ugoku Shiro</anime>
+        <anime id="7" approval="84" total="133">Mononoke-hime</anime>
+        <anime id="303" approval="66" total="90">Tonari no Totoro</anime>
+        <anime id="331" approval="52" total="93">Tenkuu no Shiro Laputa</anime>
+        <anime id="286" approval="52" total="73">Majo no Takkyuubin</anime>
+        <anime id="3195" approval="47" total="76">Kamichu!</anime>
+        <anime id="679" approval="34" total="49">Neko no Ongaeshi</anime>
+        <anime id="10967" approval="16" total="31">Bakemono no Ko</anime>
+        <anime id="8073" approval="8" total="21">Hoshi o Ou Kodomo</anime>
+        <anime id="336" approval="6" total="34">Mimi o Sumaseba</anime>
+        <anime id="271" approval="6" total="33">Haibane Renmei</anime>
+        <anime id="1424" approval="4" total="6">Siu Sin</anime>
+        <anime id="291" approval="3" total="15">Hanada Shounen-shi</anime>
+        <anime id="12380" approval="3" total="8">Dalbitkungkwol</anime>
+        <anime id="9515" approval="3" total="5">Kaguya-hime no Monogatari</anime>
+        <anime id="13545" approval="3" total="4">Kimitachi wa Dou Ikiru ka</anime>
+        <anime id="7621" approval="1" total="5">Onigamiden</anime>
+    </similaranime>
+    <recommendations total="35">
+        <recommendation type="Recommended" uid="488989">Masterpiece</recommendation>
+        <recommendation type="Recommended" uid="291869">Almost everyone like that crappy stuff...</recommendation>
+        <recommendation type="Recommended" uid="32523">One of the best anime movies i`ve seen</recommendation>
+        <recommendation type="Recommended" uid="332060">A relaxing anime, there doesn`t exist a better movie on the moment.</recommendation>
+        <recommendation type="Must See" uid="172058">You don`t need to like anime to love this. Absolutely briliant, pure awesomeness.</recommendation>
+        <recommendation type="Must See" uid="264842">Every few weeks I check to see if there`s a 1080p version available. I watch it at least once a year, I always encounter something new. If you want to introduce someone to anime this is one of the movies to watch with them.</recommendation>
+        <recommendation type="Must See" uid="338974">This movies is very good...</recommendation>
+        <recommendation type="Must See" uid="472363">Dreamy, transcendental. Impeccable animation, beautiful, melancholic soundtrack. Do not miss.</recommendation>
+        <recommendation type="Must See" uid="211996">Just watched it, holy hell that was a good movie! Everyone needs to watch this one.</recommendation>
+        <recommendation type="Must See" uid="391848">Extremely entertaining and very original story! This is one reason I love watching animated works. The creativity gone into this with excellent screenplay/direction makes this just about a masterpiece!</recommendation>
+        <recommendation type="Must See" uid="439175">After watching this movie 4 times i still get the chills.
+
+There is a big difference between the english dub version and the original.. people that seen both probably know what i mean.</recommendation>
+        <recommendation type="Must See" uid="77972">Best of Miyazaki film.</recommendation>
+    </recommendations>
+    <url>https://www.ghibli.jp/works/chihiro/</url>
+    <creators>
+        <name id="40" type="Direction">Miyazaki Hayao</name>
+        <name id="1947" type="Music">Hisaishi Jou</name>
+        <name id="729" type="Work">Studio Ghibli</name>
+        <name id="40" type="Original Work">Miyazaki Hayao</name>
+    </creators>
+    <description>For the 10-year-old http://anidb.net/ch8759 [Chihiro] and her family, a mysterious tunnel and haunted town located in everyday Japan lead to the Land of Spirits, inhabited by gods and monsters and ruled by the greedy witch http://anidb.net/ch10026 [Yubaaba]. Chihiro`s parents are transformed into pigs; to rescue them, she must surrender her name and serve in this world. Luckily she finds friends and allies, including the handsome but mysterious boy http://anidb.net/ch10025 [Haku]. Initially sulky and listless, Chihiro (or Sen, as she is now called) finds inner strength and establishes an identity in this strange world. But can she win back her name and return home?
+Source: AnimeNfo</description>
+    <ratings>
+        <permanent count="15664">8.77</permanent>
+        <temporary count="15765">8.51</temporary>
+        <review count="12">8.69</review>
+    </ratings>
+    <picture>224521.jpg</picture>
+    <resources>
+        <resource type="1">
+            <externalentity>
+                <identifier>377</identifier>
+            </externalentity>
+        </resource>
+        <resource type="2">
+            <externalentity>
+                <identifier>199</identifier>
+            </externalentity>
+        </resource>
+        <resource type="3">
+            <externalentity>
+                <identifier>534</identifier>
+                <identifier>lvsptg</identifier>
+            </externalentity>
+        </resource>
+        <resource type="4">
+            <externalentity>
+                <url>https://www.ghibli.jp/works/chihiro/</url>
+            </externalentity>
+        </resource>
+        <resource type="5">
+            <externalentity>
+                <url>http://www.nausicaa.net/miyazaki/sen/</url>
+            </externalentity>
+        </resource>
+        <resource type="6">
+            <externalentity>
+                <identifier>Spirited_Away</identifier>
+            </externalentity>
+        </resource>
+        <resource type="7">
+            <externalentity>
+                <identifier>千と千尋の神隠し</identifier>
+            </externalentity>
+        </resource>
+        <resource type="8">
+            <externalentity>
+                <identifier>2613</identifier>
+            </externalentity>
+        </resource>
+        <resource type="9">
+            <externalentity>
+                <identifier>163027</identifier>
+            </externalentity>
+        </resource>
+        <resource type="10">
+            <externalentity>
+                <identifier>4704</identifier>
+            </externalentity>
+        </resource>
+        <resource type="11">
+            <externalentity>
+                <identifier>mediadb/media/794</identifier>
+            </externalentity>
+        </resource>
+        <resource type="31">
+            <externalentity>
+                <identifier>7586</identifier>
+            </externalentity>
+        </resource>
+        <resource type="41">
+            <externalentity>
+                <identifier>60023642</identifier>
+            </externalentity>
+        </resource>
+        <resource type="43">
+            <externalentity>
+                <identifier>tt0245429</identifier>
+            </externalentity>
+        </resource>
+        <resource type="44">
+            <externalentity>
+                <identifier>129</identifier>
+                <identifier>movie</identifier>
+            </externalentity>
+        </resource>
+    </resources>
+    <tags>
+        <tag id="2094" parentid="2849" infobox="true" weight="400" localspoiler="false" globalspoiler="false" verified="true" update="2015-10-25">
+            <name>magic</name>
+            <description>Magic is the art of purportedly manipulating aspects of reality either by supernatural means or through knowledge of unknown occult laws.</description>
+            <picurl>178878.jpg</picurl>
+        </tag>
+        <tag id="2355" parentid="2849" weight="200" localspoiler="false" globalspoiler="false" verified="true" update="2009-05-28">
+            <name>dragon</name>
+            <description>Very intelligent mythical beings - a cross between a very large lizard and a dinosaur - that breath fire, and have a knack for kidnapping damsels, thus distressing them. In Fantasy anime this perceptive species often lives secluded from human civilisation, protectors of long lost knowledge. Dragons seem to be on the verge of extinction.</description>
+            <picurl>32579.jpg</picurl>
+        </tag>
+        <tag id="2604" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2018-11-08">
+            <name>content indicators</name>
+            <description>The content indicators branch is intended to be a less geographically specific tool than the `age rating` used by convention, for warning about things that might cause offence. Obviously there is still a degree of subjectivity involved, but hopefully it will prove useful for parents with delicate children, or children with delicate parents.
+Note: Refer to further guidance on http://wiki.anidb.net/w/Categories:Content_Indicators [the Wiki page] for how to apply tag weights for content indicators.</description>
+        </tag>
+        <tag id="2605" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-09-28">
+            <name>dynamic</name>
+            <description>Some of the central structural elements in anime are: 
+Plot Continuity 
+How does the plot or several plots unfold. Are they a strictly linear retelling of one big continuing story, a serial, possibly with several side stories, or is the content chopped into a set of unconnected episodes, only sharing the same setting and characters?
+Stereotype Characters
+Then there is the question of the character set presentation. Is it completely original, or is it your usual stereotypical character cast. Both choices have their merit, for example it would not really make much sense to reinvent the wheel for a harem anime. Fans of that genre come to expect their favourite stereotype protagonists.
+Plot Twists
+Finally there is the question of how complex the plot / the story unfolds. Are there side-plots that merge into the main plot leading to unexpected plot twists, or is the anime quite predictable? The latter would not be appropriate for detective stories. In harem anime on the other hand a foreseeable outcome is actually something the fans will come to expect.</description>
+        </tag>
+        <tag id="2606" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2018-11-05">
+            <name>target audience</name>
+            <description>Anime, like everything else in the modern world, is targeted towards specific audiences, both implicitly by the creators and overtly by the marketing. While categories are associated with specific sex and age groups, this is not a bar on the anime being enjoyed by people who don`t fit into that band; not only do crossover titles exist, but the categories also have a considerable following outside their main demographic, and a person might as well enjoy anime from all categories. Still, does not invalidate the usefulness of marking a title as one of the categories; the same themes will likely be treated differently in anime geared for different audiences. Only one should not jump the gun and assume that a title will be more or less serious or present content in this or that way due to its target audience, or conversely assume the target audience on the content and its presentation alone. As such, the audience categories help form a broad impression of how a title might work with the announced themes, but offer little to no in-depth information about specific content or its treatment.
+The audience categories originate from manga magazines, which group titles of a same intended audience into a magazine that is advertised as belonging to that category, and so manga-based anime will have the category from their parent work. As for anime based on other works, the audience is often debatable, but comparing information such as time slot to the manga-based anime generally helps figure out the most likely possibility.
+If the parent material was classified under multiple audiences over time (for example, it was originally shounen, but then as the plot changed and became more mature, it was reclassified as seinen), and the anime adapts parent material time periods covering multiple audiences, we tag all audiences covered by the anime adaptation.</description>
+        </tag>
+        <tag id="2607" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2009-04-29">
+            <name>themes</name>
+            <description>Themes describe the very central elements important to the anime stories. They set the backdrop against which the protagonists must face their challenges. Be it School Life, present Daily Life, Military action, Cyberpunk, Law and Order detective work, Sports, or the Underworld. These are only but a few of the more typical backgrounds for anime plots. Add to that a Conspiracy setting with a possible tragic outcome, the Themes span most of the imaginable subject matter relevant to anime.</description>
+        </tag>
+        <tag id="2609" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2018-09-01">
+            <name>original work</name>
+            <description>What the anime is based on! This is given as the original work credit in the OP. Mostly of academic interest, but a useful bit of info, hinting at the possible depth of story.</description>
+        </tag>
+        <tag id="2610" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2009-04-22">
+            <name>setting</name>
+            <description>The setting describes in what time and place an anime takes place. To a certain extent it describes what you can expect from the world in the anime.</description>
+        </tag>
+        <tag id="2611" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-09-08">
+            <name>elements</name>
+            <description>Next to Themes setting the backdrop for the protagonists in anime, there are the more detailed plot Elements that centre on character interactions: "What do characters do to each other or what is done to them?". Is it violent Action, an awe-inspiring Adventure in a foreign place, the gripping life of a Detective, a slapstick Comedy, an Ecchi Harem anime, a SciFi epic, or some Fantasy travelling adventure?</description>
+        </tag>
+        <tag id="2612" parentid="2610" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2016-09-04">
+            <name>time</name>
+            <description>This placeholder lists different epochs in human history and more vague but important timelines such as the future, the present and the past.</description>
+        </tag>
+        <tag id="2613" parentid="2610" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2016-09-04">
+            <name>place</name>
+            <description>The places the anime can take place in. Includes more specific places such as a country on Earth, as well as more general places such as a dystopia or a mirror world.</description>
+        </tag>
+        <tag id="2616" parentid="2606" infobox="true" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-09-07">
+            <name>mina</name>
+            <description>In the context of manga and associated media, the word mina refers to a broad audience, which can be said to be "the entire family", from the grumpy grandpa to the newborn baby. In Japanese, the word means simply "everyone", and has no anime/manga-related connotations at all. It does not comprise a style or a genre per se, but rather indicates the publisher`s intended target demographic. Mina works are deliberately targeted at a range of people as wide as possible, and are commonly associated with high-budget releases that require a very large audience to be financially viable. They usually bring mildly philosophical themes so that the adults can be interested, but do so without bringing objectionable content so that the children can be allowed to watch, and indeed also feature content specifically geared to spark their interest.</description>
+        </tag>
+        <tag id="2624" parentid="2612" weight="600" localspoiler="false" globalspoiler="false" verified="true" update="2017-02-20">
+            <name>present</name>
+            <description>Somewhere between past and future.</description>
+        </tag>
+        <tag id="2628" parentid="2613" weight="600" localspoiler="false" globalspoiler="false" verified="true" update="2018-08-31">
+            <name>fictional location</name>
+            <description>A fictional location is a place or world which is run by different set of rules than our common and ordinary world. This may include completely fictional worlds with no semblance of Earth, computer-generated worlds, fantasy worlds, magical worlds, parallel worlds accessible through portals, and so on. Or it may be fictional places like floating islands, dungeons or planets, which can co-exist with ordinary Earth, but are otherwise separate from it.
+A world that generally shares the characteristics of, and/or is generally indistinguishable from the real world (bar research on a "more than cursory" level), would NOT be considered a fictional world. A good example is http://anidb.net/a4521 [Code Geass]. It contains several real world nationalities, such as http://anidb.net/a4521 [China], http://anidb.net/t2672 [Japan] (now Area 11), http://anidb.net/t5091 [India], etc, along with fictional nationalities such as http://anidb.net/t2361 [Britannia]. China, Japan, and India are easily identified with a cursory look. The location is unmistakably the planet Earth, even though national borders have been redrawn.
+The fictional world should only be tagged if it plays a materially important role in the plot and setting; generally, an episodic occurrence of a fictional world should not be tagged.
+A fantasy world is a type of fictional world, part of a fictional universe. Typical worlds involve, but are not limited to: magic or magical abilities, and/or a medieval theme. Some examples include: a parallel world tenuously connected to Earth via magical portals or items; a fictional Earth-like planet in the remote past or future; or an entirely independent world set in another universe. Many fantasy worlds draw heavily on real world history, geography, and sociology, and also on folklore.</description>
+        </tag>
+        <tag id="2630" parentid="2613" weight="100" localspoiler="false" globalspoiler="false" verified="true" update="2012-10-13">
+            <name>Earth</name>
+            <description>The Earth is the third planet from the Sun, and the densest and fifth-largest of the eight planets in the Solar System. It is in effect a ball of hot mud, but on the surface it`s cold enough, so most of us live on it (or are supposed to). It is circa 4.5 billion years old, and, unless we humans succeed in destroying it over the next couple of centuries, it is expected to last for quite another while, though the changes in the Sun`s emissions due to its aging will likely cause the extinction of everything; the species of earthlings are guaranteed to die, even if we fail to kill them -- unless, of course, we find ourselves another planet and figure out a way to take everything there. Our little planet on a corner of this galaxy may mean nothing in the grand scheme of things, but to its inhabitants it is their home, so, as a species, we cherish it dearly, to the point many cultures even to this day deify it. Being the home to the human civilizations, the Earth is the main setting of most fiction, be it anime or otherwise, but not only are many titles set in other places, such as unrelated fantasy worlds, in a considerable number of fictional titles the Earth is actually destroyed by aggressive alien invaders.</description>
+            <picurl>126792.jpg</picurl>
+        </tag>
+        <tag id="2648" parentid="2849" weight="200" localspoiler="false" globalspoiler="false" verified="true" update="2014-11-04">
+            <name>contemporary fantasy</name>
+            <description>Contemporary fantasy, also known as modern fantasy or indigenous fantasy, is a sub-genre of fantasy, set in the present day. It is perhaps most popular for its sub-genre, urban fantasy.
+These terms are used to describe stories set in the putative real world (often referred to as consensus reality) in contemporary times, in which magic and magical creatures exist, either living in the interstices of our world or leaking over from alternate worlds. It thus has much in common with, and sometimes overlaps with secret history; a work of fantasy in which the magic could not remain secret or does not have any known relationship to known history would not fit into this subgenre. Occasionally certain contemporary fantasy novels will make reference to pop culture.
+Novels in which modern characters travel into alternate worlds, and all the magical action takes place there (except for the portal required to transport them), are not considered contemporary fantasy. Thus, C.S. Lewis`s The Lion, the Witch and the Wardrobe, where all fantasy events take place in the land of Narnia which is reached via a magic wardrobe, would not count as contemporary fantasy; on the other hand, the part of The Magician`s Nephew, where the Empress Jadis gets to London, tries to take over the Earth and clashes with police and a crowd of cockneys, would qualify as such.
+Contemporary fantasy is also to be distinguished from horror fiction, which also often has contemporary settings. When encountering magical events and creatures, the protagonist of a horror novel is horrified, while the protagonist of a fantasy novel (contemporary or otherwise) is filled with a sense of joy and wonder. Horrifying events may happen, but the fundamental distinction is vital.
+In his preface to That Hideous Strength, one of the earlier works falling within this sub-genre, C.S. Lewis explained why, when writing a tale about "magicians, devils, pantomime animals and planetary angels", he chose to start it with a detailed depiction of narrow-minded academic politics at a provincial English university and the schemes of crooked real estate developers: "I am following the traditional fairy-tale. We do not always notice its method, because the cottages, castles, woodcutters and petty kings with which a fairy tale opens have become for us as remote as the witches and ogres to which it proceeds. But they were not remote at all to the men who first made and enjoyed the tales". The same is true for many of the later works in the genre, which often begin with a seemingly normal scene of modern daily life to then disclose supernatural and magical beings and events hidden behind the scenes.
+Source: wiki</description>
+        </tag>
+        <tag id="2672" parentid="2834" weight="100" localspoiler="false" globalspoiler="false" verified="true" update="2018-03-05">
+            <name>Japan</name>
+            <description>Japan is a sovereign island nation in East Asia. Located in the Pacific Ocean, it lies off the eastern coast of the Asian mainland and stretches from the Sea of Okhotsk in the north to the East China Sea and China in the southwest.
+Source: Wikipedia</description>
+            <picurl>65689.png</picurl>
+        </tag>
+        <tag id="2750" parentid="2604" weight="300" localspoiler="false" globalspoiler="false" verified="true" update="2018-11-08">
+            <name>violence</name>
+            <description>Violence is the use of physical force against oneself or another entity, compelling action against one`s will on pain of being hurt.
+Note: Refer to further guidance on http://wiki.anidb.net/w/Categories:Content_Indicators [the Wiki page] for how to apply tag weights for content indicators.</description>
+        </tag>
+        <tag id="2797" parentid="2609" infobox="true" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2009-05-18">
+            <name>new</name>
+            <description>Not based on anything, the story is a new work, usually made up by the people involved in creating the anime. Generally if an original work (原作) credit is given, it will be to the studio, or director, or other members of the production team.</description>
+        </tag>
+        <tag id="2834" parentid="2630" weight="100" localspoiler="false" globalspoiler="false" verified="true" update="2016-10-04">
+            <name>Asia</name>
+            <description>Asia is Earth`s largest and most populous continent, located primarily in the eastern and northern hemispheres and sharing the continental landmass of Eurasia with the continent of Europe. Asia covers an area of 44,579,000 square kilometers, about 30% of Earth`s total land area and 8.7% of the Earth`s total surface area. The continent, which has long been home to the majority of the human population, was the site of many of the first civilizations. Asia is notable for not only its overall large size and population, but also dense and large settlements as well as vast barely populated regions within the continent of 4.4 billion people.
+Source: Wikipedia</description>
+            <picurl>192245.jpg</picurl>
+        </tag>
+        <tag id="2838" parentid="2628" infobox="true" weight="600" localspoiler="false" globalspoiler="false" verified="true" update="2018-08-31">
+            <name>parallel world</name>
+            <description>A parallel world, parallel universe, or alternative reality is a self-contained separate reality coexisting with our own. Because "alternative reality" sometimes implies that the reality is a variant of our own, like for example a mirror world, we use the term "parallel world/universe" which is more general, without any connotations implying a relationship (or lack thereof) with our own world/universe (meaning a fictional world can just as well have an alternative reality, it doesn`t need to be our reality). To put it more simply, this category is to show if more than 1 world/universe/reality is present in the anime.
+Multiple timelines of the same world/universe/reality are NOT considered parallel worlds. For example, in http://anidb.net/a7729 [Steins;Gate] the cast travels through multiple "World Lines", which are defined as parallel timelines of the same universe had various events occurred with differing outcomes.</description>
+        </tag>
+        <tag id="2849" parentid="7050" infobox="true" weight="600" localspoiler="false" globalspoiler="false" verified="true" update="2005-05-07">
+            <name>fantasy</name>
+            <description>Fantasy is a genre of fiction that uses magic and other supernatural phenomena as a primary element of plot, theme, or setting. Many works within the genre take place in fictional worlds where magic is common. Fantasy is generally distinguished from science fiction and horror by the expectation that it steers clear of (pseudo-)scientific and macabre themes, respectively, though there is a great deal of overlap between the three (which are subgenres of speculative fiction).
+In popular culture, the genre of fantasy is dominated by its medievalist form, especially since the worldwide success of The Lord of the Rings books by J. R. R. Tolkien. In its broadest sense however, fantasy comprises works by many writers, artists, filmmakers, and musicians, from ancient myths and legends to many recent works embraced by a wide audience today.
+Fantasy is a vibrant area of academic study in a number of disciplines (English, cultural studies, comparative literature, history, medieval studies). Work in this area ranges widely, from the structuralist theory of Tzvetan Todorov, which emphasizes the fantastic as a liminal space, to work on the connections (political, historical, literary) between medievalism and popular culture
+Source: Wiki</description>
+            <picurl>68768.jpg</picurl>
+        </tag>
+        <tag id="2853" parentid="2611" weight="200" localspoiler="false" globalspoiler="false" verified="true" update="2017-02-13">
+            <name>comedy</name>
+            <description>Anime whose central struggle causes hilarious results. These stories are built upon funny characters, situations and events. A comedy anime is laced with humour and sets out to provoke laughter from the audience.
+Japanese humour can be a bit strange to westerners, so if you`re new to this type of humour, just bear with it; it`ll most likely grow on you if you`re a fan of other kinds of comedy.</description>
+            <picurl>198104.jpg</picurl>
+        </tag>
+        <tag id="2858" parentid="2611" weight="200" localspoiler="false" globalspoiler="false" verified="true" update="2017-12-01">
+            <name>romance</name>
+            <description>Romance describes a story that deals with love between two or more characters typically also having an optimistic ending. Romance is also a difficulty encountered when creating a harem.</description>
+            <picurl>210061.jpg</picurl>
+        </tag>
+        <tag id="2931" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2016-12-04">
+            <name>unsorted</name>
+            <description>a bunch of tags that still need to be either deleted or moved into proper places.</description>
+        </tag>
+        <tag id="3055" parentid="3876" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-10-21">
+            <name>fairy tale</name>
+            <description>This anime is either based on or contains parts of fairy tales. Usually those parts are highly modified or twisted when compared with the original source.</description>
+        </tag>
+        <tag id="3597" parentid="2607" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2013-02-26">
+            <name>mythology</name>
+            <description>The anime gets inspirations from many forms of mythologies (either Greek, Egyptian, Nord, etc.) to form its story and setting.</description>
+        </tag>
+        <tag id="3876" parentid="3597" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-10-21">
+            <name>folklore</name>
+            <description>Folklore, or simply Lore, are the traditions of a culture, subculture, or group, in the form of legends, music, proverbs, jokes, popular beliefs, fairy tales, stories, tall tales and customs. In usage, there is a continuum between folklore and mythology.
+Folklore is generally divided into four areas of study: physical artifacts, transmissible entities and stories, culture and technologies, and behaviors and rituals.
+[From Wikipedia]</description>
+        </tag>
+        <tag id="4022" parentid="6230" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2010-11-29">
+            <name>strong female lead</name>
+            <description>The lead female character has a strong personality and plays a part that is not the typical damsel-in-distress role. 
+This is the exact opposite of the “damsel in distress” tag.</description>
+        </tag>
+        <tag id="4048" parentid="3597" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-09-17">
+            <name>Japanese mythology</name>
+            <description>Japanese mythology is a system of beliefs that embraces Shinto and Buddhist traditions as well as agriculture-based folk religion. The Shinto pantheon alone consists of an uncountable number of kami (Japanese for "gods" or "spirits").
+(Source: Wikipedia)</description>
+        </tag>
+        <tag id="4278" parentid="6151" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2018-01-15">
+            <name>stand-alone movie</name>
+            <description>You can watch this movie without having to watch something else first. This tag should not used for sequels, side stories, or summary movies, but may be used if the movie is either the first anime in a franchise or a remake.
+The movie must be feature-length. For shorts, use the `short movie` tag. In general, a "show-in-show" would not qualify as standalone. For example, an anime has a cartoon show within it. If the show within was released as an OVA or movie, it would not be considered standalone.</description>
+        </tag>
+        <tag id="4327" parentid="2607" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2019-02-18">
+            <name>be careful what you wish for</name>
+            <description>Be careful what you wish for... your wish may actually come true. This is an age-old philosophical problem of what human beings think they want and what is actually good for them. The power to wish for anything can be very dangerous and usually — as a moral lesson — yields unexpected / unwanted results.
+A contract with the devil is a specific case of this; receiving great power, especially from a devil, is usually a double edged sword.</description>
+            <picurl>230309.jpg</picurl>
+        </tag>
+        <tag id="4564" parentid="2931" weight="0" localspoiler="false" globalspoiler="false" verified="false" update="2011-06-01">
+            <name>spirits</name>
+            <description>Spirits will appear throughout this anime. These will often be depicted as small orbs of glowing light, or transparent images of the deceased.
+Not to be mistaken with "I see dead people", these spirits will usually appear at the location of their departure when the characters have gotten close to the truth surrounding their death. Or as plot element, when a spirit will often stay close to a character as a sort of "Guardian Angel". Although they are never actually seen, their presence is sometimes felt.</description>
+        </tag>
+        <tag id="5585" parentid="2607" weight="400" localspoiler="false" globalspoiler="false" verified="true" update="2015-01-29">
+            <name>curse</name>
+            <description>A "curse" in this manner depicts an adversity placed upon a person or object by a supernatural power often represented by unique designs and symbols found on the inflicted. While not all curses have negative effects, the majority are meant to remain forever hexing to the receiving victim`s soul.
+A common portrayal is that which is conjured by an individual that has been caused great suffering and thereby extracts revenge against the accuser in the form of a curse. This abuser will then have their soul spirited away to hell to suffer endlessly for the rest of eternity. In some instances (such as in `Jigoku Shoujo`) the character who extracts revenge also condemns their own soul to Hell upon death.</description>
+        </tag>
+        <tag id="6151" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-09-10">
+            <name>technical aspects</name>
+            <description>It may sometimes be useful to know about technical aspects of a show, such as information about its broadcasting or censorship. Such information can be found here.</description>
+        </tag>
+        <tag id="6173" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-09-24">
+            <name>origin</name>
+        </tag>
+        <tag id="6230" parentid="2605" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-10-20">
+            <name>cast</name>
+        </tag>
+        <tag id="6744" parentid="2607" infobox="true" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2020-12-05">
+            <name>isekai</name>
+            <description>An isekai story is one in which the lead characters are transferred to and become stuck or trapped in another world, one completely different from the world they lived in up until the transfer. The new world is commonly a http://anidb.net/t2628 [fictional world], such as a http://anidb.net/t2838 [parallel world] or http://anidb.net/t2839 [virtual world]; other fictional world types can also apply. Once transferred, they must use the abilities and knowledge brought from their former world as well as any that may have been bestowed upon them by their brave new world. In some cases, they will seek and eventually find a way to return; in others, they will gleefully embrace their new life.
+The misnomer "reverse isekai" is sometimes used to describe when characters from another world are sent to Earth, in an inaccurate usage likely born out of a mistaken notion that isekai is designed solely around transfers of earthlings. Rather, isekai is about the transfer itself; the identity of the origin and destination worlds, or the direction in which the transfer occurs, are not relevant. What defines isekai is that the characters are sent to another world, often but not always a parallel one, and that they generally cannot come back permanently without meeting a highly specific goal.
+Broadly speaking, the following major characteristics, from most to least important, define the isekai theme:
+1. The characters are trapped in a new world that is not the one they lived in up to then. This new world is usually unknown to them, at least in part, but that is not strictly mandatory. Generally speaking, while exceptions may apply, pure time travel does not qualify; there must be a change of location.
+2. The trapping is, at least initially, permanent; there must be no quick and easy escape route back to their home world. A known way back may exist from the outset, but it requires effort, such as clearing the 100th floor of a difficult dungeon or defeating the demon lord; alternatively, it may be eventually found or developed.
+3. The transfer to the isekai world was not intentional on the part of those being transferred. For example, it may have been orchestrated by a third party (malicious or otherwise), it may have been an accident, and the universe itself could be the actor responsible.</description>
+            <picurl>210952.jpg</picurl>
+        </tag>
+        <tag id="7050" parentid="2611" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2019-04-18">
+            <name>speculative fiction</name>
+            <description>Speculative fiction is an umbrella genre encompassing fiction with certain elements that do not exist in the real world, often in the context of supernatural, futuristic or other imaginative themes. This includes, but is not limited to, science fiction, fantasy, superhero fiction, horror, utopian and dystopian fiction, fairytale fantasy, supernatural fiction, as well as combinations thereof.
+Source: Wikipedia</description>
+        </tag>
+        <tag id="7885" parentid="6173" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2021-11-07">
+            <name>Japanese production</name>
+        </tag>
+    </tags>
+    <characters>
+        <character id="8759" type="main character in" update="2009-06-09">
+            <rating votes="68">7.76</rating>
+            <name>Ogino Chihiro</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <description>Chihiro is in the process of moving to a new town when her family stumbles upon the entrance to the spirit world. During her adventure she matures from a whiny, self-centered, and pessimistic child to a hard-working, responsible, optimistic young girl who has learned to care for others. She is renamed "Sen" (千, sen?, lit. "a thousand") by the proprietor of the bathhouse, Yubaba.</description>
+            <picture>28097.jpg</picture>
+            <seiyuu id="4822" picture="28107.jpg">Hiiragi Rumi</seiyuu>
+        </character>
+        <character id="10025" type="main character in" update="2009-06-28">
+            <rating votes="37">7.35</rating>
+            <name>Nigihayami Kohaku Nushi</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <description>Haku/Nigihayami Kohaku Nushi, a young boy who helps Chihiro after her parents have transformed into pigs. Haku works as Yubaba`s direct subordinate, often running errands and performing missions for her. He has the ability to fly and his true form is a dragon. Toward the end of the story Chihiro recalls falling into the Kohaku (コハク) river, of which Haku is the spirit; she thus frees him from Yubaba`s service by helping him remember his real name and past, which he had forgotten due to the name change and the curse which Yubaba has placed on him. Haku had entered the spirit world seeking to learn magic from Yubaba, and as a result became an apprentice who followed her every command. When Yubaba is nearby, Haku is as sharp-voiced to Chihiro as to anyone else.</description>
+            <picture>30227.jpg</picture>
+            <seiyuu id="470" picture="266725.jpg">Irino Miyu</seiyuu>
+        </character>
+        <character id="10026" type="main character in" update="2009-06-28">
+            <rating votes="25">3.52</rating>
+            <name>Yubaaba</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <description>Yubaba, lit. "bath crone" is an old witch with an inhumanly large head and nose, who supervises the bathhouse. She reluctantly signs Chihiro into a contract. Yubaba then takes Chihiro`s name and renames her "Sen" in order to hold power over her for the duration of the contract. She also does this to her other workers, so she can keep them in service forever. Yubaba has an over-bearing and authoritarian personality, but does show a soft side toward her giant baby, Boh. In contrast to her simple and hospitable sister Zeniba, Yubaba lives in opulent quarters and is only interested in taking care of guests for money.</description>
+            <picture>30229.jpg</picture>
+            <seiyuu id="5767" picture="30231.jpg">Natsuki Mari</seiyuu>
+        </character>
+        <character id="10028" type="secondary cast in" update="2009-06-28">
+            <rating votes="19">6.90</rating>
+            <name>Kamajii</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <description>Kamajii (lit. "boiler geezer") is an old man with six arms, who operates the boiler room of the bathhouse. These arms can apparently extend indefinitely, so as to allow him access to the upper cabinets from his original position. A number of Susuwatari work for him by carrying coal into his furnace. He has a large cabinet where he keeps all the herbs that are used in the baths. After some persuasion, he allows Chihiro to work at the bathhouse and even pretends to be her grandfather to protect her, though this ruse does not stand for long. He later takes an injured Haku into his boiler room and cares for him while Chihiro, given train tickets by Kamajii, journeys to Zeniba`s cottage. At first he seems cold and uncaring, but by the end of the film he seems to have grown a soft spot for Chihiro and for anyone whom she calls her friend.</description>
+            <picture>30232.jpg</picture>
+            <seiyuu id="5841" picture="30308.jpg">Sugawara Bunta</seiyuu>
+        </character>
+        <character id="10029" type="secondary cast in" update="2009-06-28">
+            <rating votes="33">6.47</rating>
+            <name>Kaonashi</name>
+            <gender>none/does not apply</gender>
+            <charactertype id="1">Character</charactertype>
+            <description>No Face (lit. "without face"), an odd spirit who takes an interest in Chihiro. Seeing No Face standing outside in the rain, Chihiro takes pity on the creature and lets him into the bathhouse to take shelter from the storm. At first, he is a strange, cloaked, masked wraith that merely breathes and smiles. No Face is a lonely being who seems to sustain itself on the emotions of those he encounters, particularly their emotional reception to his gifts. He is helpful to Chihiro because she helped him, whereas after observing the bathhouse staff`s reaction to gold and his own attempts to win them over with more gold, he reacts to their greed by becoming a grotesque monster which eats lots of food and some of the staff. After Chihiro feeds him the final piece of the medicine ball given to her by the River Spirit, No Face regurgitates everything he consumed, including the bathhouse staff members, all of whom are alive and well. Once he has emptied himself of these foreign influences and left the bathhouse, No Face reverts to his former state. At the end, he stays with Zeniba as a helper.</description>
+            <picture>30234.jpg</picture>
+            <seiyuu id="2894" picture="276526.jpg">Nakamura Akio</seiyuu>
+        </character>
+        <character id="10030" type="secondary cast in" update="2009-06-28">
+            <rating votes="19">5.46</rating>
+            <name>Rin</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <description>Lin is a worker at the bathhouse who becomes Chihiro`s caretaker. Although aloof at first, she warms up to Chihiro and grows a strong bond with her. At the end, she is happy for Chihiro when the latter finally goes home. Lin states that she wishes to leave the bathouse for some better life.</description>
+            <picture>30236.jpg</picture>
+            <seiyuu id="5862" picture="41324.jpg">Tamai Yuumi</seiyuu>
+        </character>
+        <character id="10031" type="secondary cast in" update="2009-06-28">
+            <rating votes="14">2.08</rating>
+            <name>Bou</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <description>Boh is Yubaba`s son. Although he has the appearance of a young baby, he is twice Yubaba`s size. He is also very strong and can be dangerous. Yubaba goes out of her way to give him whatever he wants. When Zeniba turns Boh into a mouse, he becomes good friends with Chihiro and eventually stands up to Yubaba to protect Chihiro.</description>
+            <picture>30237.jpg</picture>
+            <seiyuu id="3785" picture="71854.jpg">Kamiki Ryuunosuke</seiyuu>
+        </character>
+        <character id="10032" type="appears in" update="2009-06-28">
+            <rating votes="12">6.82</rating>
+            <name>Zeniiba</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <description>Zeniba is Yubaba`s older twin sister and rival. Although identical in appearance, their personalities are almost polar opposites. At first she appears no kinder than Yubaba when she becomes enraged at Haku for stealing her magic seal and threatens to take it back, regardless of what happens to Haku. Hoping to gain Zeniba`s forgiveness, Chihiro journeys to Zeniba`s cottage to return it and apologize. It is then that Zeniba reveals her true character as that of a kind, grandmotherly figure. She forgives Haku for stealing her seal and tells him to look after Chihiro. She then sees everyone off, assuring Chihiro that she will be well.</description>
+            <picture>30238.jpg</picture>
+            <seiyuu id="5767" picture="30231.jpg">Natsuki Mari</seiyuu>
+        </character>
+        <character id="10034" type="appears in" update="2009-06-28">
+            <rating votes="36">7.26</rating>
+            <name>Susuwatari</name>
+            <gender>none/does not apply</gender>
+            <charactertype id="1">Character</charactertype>
+            <description>Susuwatari (lit. meaning "travelling soot") are the "dust bunnies" or "soot sprites" that appear in two Studio Ghibli anime movies, My Neighbour Totoro (1988) and Spirited Away (2001). They are shy, slightly frightful creatures that live in abandoned buildings such as old houses.</description>
+            <picture>30239.jpg</picture>
+        </character>
+    </characters>
+    <episodes>
+        <episode id="585" update="2016-01-11">
+            <epno type="1">1</epno>
+            <length>125</length>
+            <airdate>2001-07-20</airdate>
+            <rating votes="30">9.42</rating>
+            <title xml:lang="en">Complete Movie</title>
+        </episode>
+        <episode id="2552" update="2009-09-09">
+            <epno type="1">2</epno>
+            <length>65</length>
+            <airdate>2001-07-20</airdate>
+            <rating votes="6">9.67</rating>
+            <title xml:lang="en">Part 1 of 2</title>
+        </episode>
+        <episode id="2553" update="2007-06-12">
+            <epno type="1">3</epno>
+            <length>60</length>
+            <airdate>2001-07-20</airdate>
+            <rating votes="6">9.74</rating>
+            <title xml:lang="en">Part 2 of 2</title>
+        </episode>
+        <episode id="9104" update="2007-10-20">
+            <epno type="6">O1</epno>
+            <length>0</length>
+            <title xml:lang="en">Subtitles</title>
+        </episode>
+        <episode id="24396" update="2010-04-16">
+            <epno type="1">4</epno>
+            <length>45</length>
+            <airdate>2001-07-20</airdate>
+            <rating votes="1">3.07</rating>
+            <title xml:lang="en">Part 1 of 3</title>
+        </episode>
+        <episode id="24397" update="2010-04-16">
+            <epno type="1">5</epno>
+            <length>40</length>
+            <airdate>2001-07-20</airdate>
+            <rating votes="1">6.91</rating>
+            <title xml:lang="en">Part 2 of 3</title>
+        </episode>
+        <episode id="24399" update="2010-04-16">
+            <epno type="1">6</epno>
+            <length>40</length>
+            <airdate>2001-07-20</airdate>
+            <rating votes="1">9.99</rating>
+            <title xml:lang="en">Part 3 of 3</title>
+        </episode>
+        <episode id="30525" update="2005-08-22">
+            <epno type="2">S1</epno>
+            <length>6</length>
+            <rating votes="1">10.00</rating>
+            <title xml:lang="en">Spirited Away Extra - Behind the microphone</title>
+        </episode>
+        <episode id="30527" update="2011-10-20">
+            <epno type="2">S2</epno>
+            <length>15</length>
+            <rating votes="1">10.00</rating>
+            <title xml:lang="en">Spirited Away Extra - Storyboard-To-Scene-Selection</title>
+        </episode>
+        <episode id="30529" update="2005-08-22">
+            <epno type="2">S3</epno>
+            <length>15</length>
+            <rating votes="1">10.00</rating>
+            <title xml:lang="en">Spirited Away Extra - The Art of Spirited Away</title>
+        </episode>
+        <episode id="45040" update="2009-12-14">
+            <epno type="4">T1</epno>
+            <length>1</length>
+            <rating votes="1">9.99</rating>
+            <title xml:lang="en">Commercial 1: Tickets PR Spot</title>
+        </episode>
+        <episode id="90311" update="2009-12-13">
+            <epno type="4">T3</epno>
+            <length>5</length>
+            <title xml:lang="ja">プロモーションフィルム</title>
+            <title xml:lang="en">Promotion Film (4:47)</title>
+        </episode>
+        <episode id="90844" update="2010-04-16">
+            <epno type="1">10</epno>
+            <length>35</length>
+            <airdate>2001-07-20</airdate>
+            <rating votes="1">9.99</rating>
+            <title xml:lang="en">Part 4 of 4</title>
+        </episode>
+        <episode id="90845" update="2010-04-16">
+            <epno type="1">7</epno>
+            <length>30</length>
+            <airdate>2001-07-20</airdate>
+            <rating votes="1">3.07</rating>
+            <title xml:lang="en">Part 1 of 4</title>
+        </episode>
+        <episode id="90846" update="2010-04-16">
+            <epno type="1">8</epno>
+            <length>35</length>
+            <airdate>2001-07-20</airdate>
+            <rating votes="1">6.91</rating>
+            <title xml:lang="en">Part 2 of 4</title>
+        </episode>
+        <episode id="90847" update="2010-04-16">
+            <epno type="1">9</epno>
+            <length>30</length>
+            <airdate>2001-07-20</airdate>
+            <rating votes="1">6.91</rating>
+            <title xml:lang="en">Part 3 of 4</title>
+        </episode>
+        <episode id="92881" update="2011-10-20">
+            <epno type="2">S6</epno>
+            <length>45</length>
+            <title xml:lang="en">Nippon Television Special</title>
+        </episode>
+        <episode id="92882" update="2008-09-05">
+            <epno type="2">S5</epno>
+            <length>2</length>
+            <title xml:lang="en">Meet Hayao Miyazaki</title>
+        </episode>
+        <episode id="92883" update="2008-09-05">
+            <epno type="2">S4</epno>
+            <length>1</length>
+            <title xml:lang="en">Introduction with John Lasseter</title>
+        </episode>
+        <episode id="112052" update="2009-12-13">
+            <epno type="4">T2</epno>
+            <length>1</length>
+            <rating votes="1">9.99</rating>
+            <title xml:lang="en">Commercial 2: DVD PR Spot</title>
+        </episode>
+        <episode id="228834" update="2021-06-14">
+            <epno type="4">T4</epno>
+            <length>2</length>
+            <title xml:lang="en">Disney Trailer (1:35)</title>
+        </episode>
+        <episode id="229173" update="2020-05-20">
+            <epno type="4">T5</epno>
+            <length>1</length>
+            <title xml:lang="ja">劇場用特報第1弾</title>
+            <title xml:lang="en">Theatrical Trailer 1 (0:46)</title>
+        </episode>
+        <episode id="229174" update="2020-05-20">
+            <epno type="4">T6</epno>
+            <length>2</length>
+            <title xml:lang="ja">劇場用特報第2弾</title>
+            <title xml:lang="en">Theatrical Trailer 2 (1:07)</title>
+        </episode>
+        <episode id="229175" update="2020-05-20">
+            <epno type="4">T7</epno>
+            <length>2</length>
+            <title xml:lang="ja">劇場用特報第3弾</title>
+            <title xml:lang="en">Theatrical Trailer 3 (1:12)</title>
+        </episode>
+        <episode id="229176" update="2020-05-20">
+            <epno type="4">T8</epno>
+            <length>2</length>
+            <title xml:lang="ja">劇場用特報第4弾</title>
+            <title xml:lang="en">Theatrical Trailer 4 (1:20)</title>
+        </episode>
+        <episode id="229177" update="2020-05-20">
+            <epno type="4">T9</epno>
+            <length>3</length>
+            <title xml:lang="ja">劇場用特報Aタイプ</title>
+            <title xml:lang="en">Theatrical Trailer Type A (2:26)</title>
+        </episode>
+        <episode id="229178" update="2020-05-20">
+            <epno type="4">T10</epno>
+            <length>3</length>
+            <title xml:lang="ja">劇場用特報Bタイプ</title>
+            <title xml:lang="en">Theatrical Trailer Type B (2:55)</title>
+        </episode>
+        <episode id="229179" update="2020-05-20">
+            <epno type="4">T11</epno>
+            <length>1</length>
+            <title xml:lang="en">Trailer 1 (1:02)</title>
+            <summary>Pan of the bathhouse, Sen meeting Faceless at the bathhouse bridge, shots of activities within the bathhouse (mostly cleaning), Sen leaving the door open for Faceless, the dragon flying, Faceless giving bath tokens to Sen and gold to the frog (and then eating him), Faceless offering gold to Sen who rejects its, Sen running away from Faceless, Zenibaba appearing from the floor, more shots of Faceless rampaging.</summary>
+        </episode>
+        <episode id="229180" update="2020-05-20">
+            <epno type="4">T12</epno>
+            <length>1</length>
+            <title xml:lang="en">Trailer 2 (1:02)</title>
+            <summary>Chihiro and her parents in the car, arriving at the tunnel. Then a pan of the bathhouse, then shots of Chihiro meeting Haku, seeing her father turned into a pig, asking Yubaba for work, carrying coal in the basement. Then shots of Sen and Rin, Sen leaving the door open for Faceless, looking at her farewell card with Haku, then Chihiro picking up coal, Faceless giving Sen bath tokens, the baby crying, and Sen exiting Kamaji`s basement.</summary>
+        </episode>
+        <episode id="229181" update="2020-05-20">
+            <epno type="4">T13</epno>
+            <length>4</length>
+            <title xml:lang="ja">劇場用本予告</title>
+            <title xml:lang="en">Theater Book Notice (3:51)</title>
+        </episode>
+        <episode id="229182" update="2020-05-20">
+            <epno type="4">T14</epno>
+            <length>1</length>
+            <title xml:lang="en">Theatrical Trailer 1, English Version (0:46)</title>
+            <summary>Theatrical Trailer 1 with English text, and an English "Spirited Away" title screen at the end instead of "千と千尋の神隠し".</summary>
+        </episode>
+        <episode id="229183" update="2020-05-20">
+            <epno type="4">T15</epno>
+            <length>1</length>
+            <title xml:lang="ja">TVスポットAタイプ (15秒)</title>
+            <title xml:lang="en">TV Spot 1 (0:17)</title>
+            <summary>Zoom to a door, Yubaba`s hand beckoning, Chihiro running among shadowy spirits, shot of Chihiro and Rin, Chihiro`s name lifting off paper, Chihiro and Rin in the elevator. Yubaba telling Chihiro her name is now Sen.</summary>
+        </episode>
+        <episode id="229184" update="2020-05-20">
+            <epno type="4">T16</epno>
+            <length>1</length>
+            <title xml:lang="ja">TVスポットAタイプ (30秒)</title>
+            <title xml:lang="en">TV Spot 2 (0:32)</title>
+            <summary>Zoom to a door, Yubaba`s hand beckoning, Chihiro running among shadowy spirits, a shot of Chihiro and Rin, Haku climbing stairs, Chihiro and Rin in the elevator, bouncing heads, Chihiro asking Yubaba for work and her name lifting off the paper, a shot of Kamaji, then Sen with water flowing off her, Yubaba lighting up her finger and Chihiro`s name lifting off the paper while Yubaba tells her her name is now Sen.</summary>
+        </episode>
+        <episode id="229185" update="2020-05-20">
+            <epno type="4">T17</epno>
+            <length>1</length>
+            <title xml:lang="ja">TVスポットBタイプ (15秒)</title>
+            <title xml:lang="en">TV Spot 3 (0:17)</title>
+            <summary>Sen cleaning a floor and the big bathtub, pouring water out the door with a shot of Faceless, the dragon flying, Faceless offering Sen gold which she rejects, Zenibaba appearing from the floor, Faceless rampaging, Sen running.</summary>
+        </episode>
+        <episode id="229186" update="2020-05-20">
+            <epno type="4">T18</epno>
+            <length>1</length>
+            <title xml:lang="ja">TVスポットBタイプ (30秒)</title>
+            <title xml:lang="en">TV Spot 4 (0:32)</title>
+            <summary>Sen meeting Faceless at the bathhouse bridge, cleaning a floor, carrying off weeds, cleaning the big bathtub, and leaving the door open for Faceless, then Faceless offering Sen gold which she rejects, the dragon flying, Faceless rampaging, Zenibaba appearing from the floor, Faceless rampaging some more, Sen running.</summary>
+        </episode>
+        <episode id="229187" update="2020-05-20">
+            <epno type="4">T19</epno>
+            <length>1</length>
+            <title xml:lang="ja">TVスポットCタイプ (15秒)</title>
+            <title xml:lang="en">TV Spot 5 (0:17)</title>
+            <summary>Faceless offering Sen first bath tokens and then gold, both which she rejects, Sen confronting Faceless after his feast.</summary>
+        </episode>
+        <episode id="229188" update="2020-05-20">
+            <epno type="4">T20</epno>
+            <length>1</length>
+            <title xml:lang="ja">TVスポットDタイプ (15秒)</title>
+            <title xml:lang="en">TV Spot 6 (0:17)</title>
+            <summary>Sen flying with Haku, interleaved with Yubaba dancing, then bathhouse staff and guests celebrating, interleaved with Zenibaba talking to Faceless, Chihiro leaving the bathhouse, reducing zoom of Zenibaba and Faceless, a shot of Chihiro and Haku.</summary>
+        </episode>
+        <episode id="229189" update="2020-05-20">
+            <epno type="4">T21</epno>
+            <length>1</length>
+            <title xml:lang="ja">TVスポットEタイプ (15秒)</title>
+            <title xml:lang="en">TV Spot 7 (0:17)</title>
+            <summary>Alternates between Sen flying with Haku, and at the table with Zenibaba and Faceless.</summary>
+        </episode>
+        <episode id="229190" update="2020-05-20">
+            <epno type="4">T22</epno>
+            <length>1</length>
+            <title xml:lang="ja">TVスポットFタイプ (12秒)</title>
+            <title xml:lang="en">TV Spot 8 (0:14)</title>
+            <summary>Shots from Sen`s train trip with Faceless, the hamster and the small bird.</summary>
+        </episode>
+        <episode id="229191" update="2020-05-20">
+            <epno type="4">T23</epno>
+            <length>1</length>
+            <title xml:lang="ja">TVスポットFタイプ (15秒)</title>
+            <title xml:lang="en">TV Spot 9 (0:17)</title>
+            <summary>Shots from Sen`s train trip with Faceless, the hamster and the small bird.</summary>
+        </episode>
+        <episode id="229192" update="2020-05-20">
+            <epno type="4">T24</epno>
+            <length>1</length>
+            <title xml:lang="ja">TVスポットGタイプ (15秒)</title>
+            <title xml:lang="en">TV Spot 10 (0:16)</title>
+            <summary>Text screens with voice over of Sen saying her real name is Chihiro, then Sen talking with Zenibaba, then flying with Haku, and a receding zoom of Zenibaba and Faceless.</summary>
+        </episode>
+        <episode id="240990" update="2021-06-13">
+            <epno type="4">T25</epno>
+            <length>3</length>
+            <title xml:lang="en">Disney Trailer (2:18)</title>
+        </episode>
+        <episode id="257416" update="2022-07-23">
+            <epno type="2">S7</epno>
+            <length>125</length>
+            <title xml:lang="ja">絵コンテ</title>
+            <title xml:lang="en">Storyboards</title>
+        </episode>
+        <episode id="257420" update="2022-07-23">
+            <epno type="4">T26</epno>
+            <length>1</length>
+            <title xml:lang="ja">劇場用特報第5弾</title>
+            <title xml:lang="en">Theatrical Trailer 5</title>
+        </episode>
+        <episode id="257421" update="2022-07-23">
+            <epno type="4">T27</epno>
+            <length>1</length>
+            <title xml:lang="ja">劇場用特報第6弾</title>
+            <title xml:lang="en">Theatrical Trailer 6</title>
+        </episode>
+    </episodes>
+</anime>

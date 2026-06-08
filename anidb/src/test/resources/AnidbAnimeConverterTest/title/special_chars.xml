@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="UTF-8"?><anime id="5459" restricted="false">
+    <type>Movie</type>
+    <episodecount>1</episodecount>
+    <startdate>2007-12-22</startdate>
+    <enddate>2007-12-22</enddate>
+    <titles>
+        <title xml:lang="x-jat" type="main">.hack//G.U. Trilogy</title>
+        <title xml:lang="en" type="synonym">dot hack gu trilogy</title>
+        <title xml:lang="uk" type="synonym">.hack//G.U. Трилогія</title>
+        <title xml:lang="en" type="short">gu trilogy</title>
+        <title xml:lang="x-jat" type="short">hack: gu trilogy</title>
+        <title xml:lang="ja" type="official">.hack//G.U. Trilogy</title>
+        <title xml:lang="en" type="official">.hack//G.U. Trilogy</title>
+        <title xml:lang="fr" type="official">.hack//G.U. Trilogy</title>
+    </titles>
+    <relatedanime>
+        <anime id="5391" type="Sequel">.hack//G.U. Returner</anime>
+        <anime id="4324" type="Prequel">.hack//Roots</anime>
+    </relatedanime>
+    <recommendations total="5">
+        <recommendation type="For Fans" uid="105266">fans of the  games dont miss this :D</recommendation>
+        <recommendation type="For Fans" uid="153140">Unfortunately, this movie is really butchered. The plot is really "partial" compared to the games trilogy, missing a lot of plots, like Sakaki`s scheme, etc, which were essential to the plot. So then, I wouldn`t recommend it to anyone who had play the games.</recommendation>
+        <recommendation type="Recommended" uid="301834">Realy nice made suggest everyone to see =]</recommendation>
+        <recommendation type="Recommended" uid="377550">A bit of a disappointment for me, for I found the animation a bit cheap. Still! Watch it if you liked Roots of if there was something that you didn`t understand. This`ll explain things a little.</recommendation>
+    </recommendations>
+    <url>http://www.hack.channel.or.jp/trilogy/</url>
+    <creators>
+        <name id="28215" type="Animation Work">CyberConnect2 sai</name>
+        <name id="8909" type="Character Design">Hosokawa Seiichirou</name>
+        <name id="22969" type="Direction">Matsuyama Hiroshi</name>
+        <name id="46652" type="Music">Fukuda Chikayo</name>
+    </creators>
+    <description>* Based on the CyberConnect2 hit game.
+The Movie will be placed in the storyline of each .hack//G.U. games trilogy. The story follows Haseo, a player in the online MMORPG called The World:R2 at first depicted as a PKK (Player Killer Killer) known as the "Terror of Death", a former member of the disbanded Twilight Brigade guild. Haseo encounters Azure Kite (believing him to be Tri-Edge and blaming him for what happened to Shino) but is hopelessly outmatched. Azure Kite easily defeats Haseo and Data Drains him, reducing his level from 133 to 1 and leaving him without any items, weapons, or member addresses. He is left with a mystery on his hands as to the nature of the Data Drain and why Azure Kite is in possession of such a skill.
+Eventually Haseo gains the "Avatar" of Skeith. Acquiring the ability to call Skeith and wield his abilities, such as Data Drain. With Skeith as his strength, Haseo begins the quest for a way to save Shino.
+He is seen seeking out a PK (Player Killer) known as Tri-Edge, whose victims supposedly are unable to return to The World after he PKs them. Haseo`s friend, Shino, was attacked six months prior to the events of the game by Tri-Edge, and the player herself, Shino Nanao, was left in a coma.
+by XellosPL</description>
+    <ratings>
+        <permanent count="1163">4.97</permanent>
+        <temporary count="1185">6.78</temporary>
+        <review count="1">6.50</review>
+    </ratings>
+    <picture>289990.jpg</picture>
+    <resources>
+        <resource type="1">
+            <externalentity>
+                <identifier>8719</identifier>
+            </externalentity>
+        </resource>
+        <resource type="2">
+            <externalentity>
+                <identifier>4469</identifier>
+            </externalentity>
+            <externalentity>
+                <identifier>3269</identifier>
+            </externalentity>
+        </resource>
+        <resource type="3">
+            <externalentity>
+                <identifier>4171</identifier>
+                <identifier>kvoasf</identifier>
+            </externalentity>
+        </resource>
+        <resource type="4">
+            <externalentity>
+                <url>http://www.hack.channel.or.jp/trilogy/</url>
+            </externalentity>
+        </resource>
+        <resource type="7">
+            <externalentity>
+                <identifier>.hack//G.U._TRILOGY</identifier>
+            </externalentity>
+        </resource>
+        <resource type="8">
+            <externalentity>
+                <identifier>1783</identifier>
+            </externalentity>
+        </resource>
+        <resource type="9">
+            <externalentity>
+                <identifier>328944</identifier>
+            </externalentity>
+        </resource>
+        <resource type="10">
+            <externalentity>
+                <identifier>9686</identifier>
+            </externalentity>
+        </resource>
+        <resource type="32">
+            <externalentity>
+                <identifier>B010NU7G80</identifier>
+            </externalentity>
+        </resource>
+        <resource type="43">
+            <externalentity>
+                <identifier>tt1164545</identifier>
+            </externalentity>
+        </resource>
+    </resources>
+    <tags>
+        <tag id="2094" parentid="2849" weight="100" localspoiler="false" globalspoiler="false" verified="true" update="2015-10-25">
+            <name>magic</name>
+            <description>Magic is the art of purportedly manipulating aspects of reality either by supernatural means or through knowledge of unknown occult laws.</description>
+            <picurl>178878.jpg</picurl>
+        </tag>
+        <tag id="2609" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2018-09-01">
+            <name>original work</name>
+            <description>What the anime is based on! This is given as the original work credit in the OP. Mostly of academic interest, but a useful bit of info, hinting at the possible depth of story.</description>
+        </tag>
+        <tag id="2610" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2009-04-22">
+            <name>setting</name>
+            <description>The setting describes in what time and place an anime takes place. To a certain extent it describes what you can expect from the world in the anime.</description>
+        </tag>
+        <tag id="2611" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-09-08">
+            <name>elements</name>
+            <description>Next to Themes setting the backdrop for the protagonists in anime, there are the more detailed plot Elements that centre on character interactions: "What do characters do to each other or what is done to them?". Is it violent Action, an awe-inspiring Adventure in a foreign place, the gripping life of a Detective, a slapstick Comedy, an Ecchi Harem anime, a SciFi epic, or some Fantasy travelling adventure?</description>
+        </tag>
+        <tag id="2613" parentid="2610" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2016-09-04">
+            <name>place</name>
+            <description>The places the anime can take place in. Includes more specific places such as a country on Earth, as well as more general places such as a dystopia or a mirror world.</description>
+        </tag>
+        <tag id="2623" parentid="2611" infobox="true" weight="400" localspoiler="false" globalspoiler="false" verified="true" update="2018-01-21">
+            <name>super power</name>
+            <description>Be it an ancient Greek Heracles, a cybernetic muscle-man, or a fourteen year-old girl in a mini-skirted sailor suit. As long as they have super powers, they`re in the show.</description>
+            <picurl>212182.jpg</picurl>
+        </tag>
+        <tag id="2628" parentid="2613" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2018-08-31">
+            <name>fictional location</name>
+            <description>A fictional location is a place or world which is run by different set of rules than our common and ordinary world. This may include completely fictional worlds with no semblance of Earth, computer-generated worlds, fantasy worlds, magical worlds, parallel worlds accessible through portals, and so on. Or it may be fictional places like floating islands, dungeons or planets, which can co-exist with ordinary Earth, but are otherwise separate from it.
+A world that generally shares the characteristics of, and/or is generally indistinguishable from the real world (bar research on a "more than cursory" level), would NOT be considered a fictional world. A good example is http://anidb.net/a4521 [Code Geass]. It contains several real world nationalities, such as http://anidb.net/a4521 [China], http://anidb.net/t2672 [Japan] (now Area 11), http://anidb.net/t5091 [India], etc, along with fictional nationalities such as http://anidb.net/t2361 [Britannia]. China, Japan, and India are easily identified with a cursory look. The location is unmistakably the planet Earth, even though national borders have been redrawn.
+The fictional world should only be tagged if it plays a materially important role in the plot and setting; generally, an episodic occurrence of a fictional world should not be tagged.
+A fantasy world is a type of fictional world, part of a fictional universe. Typical worlds involve, but are not limited to: magic or magical abilities, and/or a medieval theme. Some examples include: a parallel world tenuously connected to Earth via magical portals or items; a fictional Earth-like planet in the remote past or future; or an entirely independent world set in another universe. Many fantasy worlds draw heavily on real world history, geography, and sociology, and also on folklore.</description>
+        </tag>
+        <tag id="2797" parentid="2609" infobox="true" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2009-05-18">
+            <name>new</name>
+            <description>Not based on anything, the story is a new work, usually made up by the people involved in creating the anime. Generally if an original work (原作) credit is given, it will be to the studio, or director, or other members of the production team.</description>
+        </tag>
+        <tag id="2800" parentid="2609" infobox="true" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2009-04-20">
+            <name>game</name>
+            <description>Based on an interactive (even if minimally so) form of entertainment software, generally available for PCs, consoles or arcade machines.</description>
+        </tag>
+        <tag id="2801" parentid="2800" infobox="true" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-09-07">
+            <name>RPG</name>
+            <description>Any anime that is based on a role-playing game aka RPG. A role-playing video game is a video game which includes elements of non-electronic role-playing games. The player assumes control of one or several fictional characters (a party) who have joined forces in order to perform quests and overcome a great number of challenges and enemies, usually monsters inspired by fantasy, and, to a lesser extent, science fiction and classic mythology. During the course of the game the characters, or avatars, which are generally defined by quantized characteristics, evolve and improve in that their various attributes increase, as well as by gaining more powerful artefacts.</description>
+        </tag>
+        <tag id="2839" parentid="2628" infobox="true" weight="600" localspoiler="false" globalspoiler="false" verified="true" update="2019-02-05">
+            <name>virtual world</name>
+            <description>A virtual world is a place where the character interacts with a computer (or some other device)-simulated environment, be it real or imagined. The condition for a virtual reality to exist is the existence of an originating "real" (source/anchor) world for the character. In some cases, a virtual reality where characters can get harmed physically is depicted.</description>
+        </tag>
+        <tag id="2841" parentid="2611" infobox="true" weight="600" localspoiler="false" globalspoiler="false" verified="true" update="2017-12-26">
+            <name>action</name>
+            <description>Action anime usually involve a fairly straightforward story of good guys versus bad guys, where most disputes are resolved by using physical force. It often contains a lot of shooting, explosions and fighting.</description>
+            <picurl>211261.jpg</picurl>
+        </tag>
+        <tag id="2846" parentid="7050" infobox="true" weight="500" localspoiler="false" globalspoiler="false" verified="true" update="2018-10-04">
+            <name>science fiction</name>
+            <description>Science fiction stories usually focus on how situations could be different in the future when we are more technologically advanced; due to either our own achievements or having met with other civilizations whom we have learned from.</description>
+            <picurl>212180.jpg</picurl>
+        </tag>
+        <tag id="2849" parentid="7050" infobox="true" weight="500" localspoiler="false" globalspoiler="false" verified="true" update="2005-05-07">
+            <name>fantasy</name>
+            <description>Fantasy is a genre of fiction that uses magic and other supernatural phenomena as a primary element of plot, theme, or setting. Many works within the genre take place in fictional worlds where magic is common. Fantasy is generally distinguished from science fiction and horror by the expectation that it steers clear of (pseudo-)scientific and macabre themes, respectively, though there is a great deal of overlap between the three (which are subgenres of speculative fiction).
+In popular culture, the genre of fantasy is dominated by its medievalist form, especially since the worldwide success of The Lord of the Rings books by J. R. R. Tolkien. In its broadest sense however, fantasy comprises works by many writers, artists, filmmakers, and musicians, from ancient myths and legends to many recent works embraced by a wide audience today.
+Fantasy is a vibrant area of academic study in a number of disciplines (English, cultural studies, comparative literature, history, medieval studies). Work in this area ranges widely, from the structuralist theory of Tzvetan Todorov, which emphasizes the fantastic as a liminal space, to work on the connections (political, historical, literary) between medievalism and popular culture
+Source: Wiki</description>
+            <picurl>68768.jpg</picurl>
+        </tag>
+        <tag id="2861" parentid="2846" infobox="true" weight="600" localspoiler="false" globalspoiler="false" verified="true" update="2017-12-26">
+            <name>cyberpunk</name>
+            <description>Cyberpunk focuses on computers or information technology, usually coupled with some degree of breakdown in social order. The plot often centres on a conflict among hackers, artificial intelligences, and mega corporations, tending to be set within a near-future dystopian Earth.</description>
+            <picurl>211264.jpg</picurl>
+        </tag>
+        <tag id="2931" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2016-12-04">
+            <name>unsorted</name>
+            <description>a bunch of tags that still need to be either deleted or moved into proper places.</description>
+        </tag>
+        <tag id="3721" parentid="2931" weight="0" localspoiler="false" globalspoiler="false" verified="false" update="2012-10-07">
+            <name>RPG aspects</name>
+            <description>The anime shows elements of a `R`ole `P`laying `G`ame, either as part of a parody or because the anime is actually based on an RPG.
+Typical elements: When collecting items, beating opponents, or levelling up a distinct (often childishly sounding) sound cue is played. A HUD (`H`eads `U`p `D`isplay) may also be presenting in combat, showing vital player and "enemy" statistics.</description>
+        </tag>
+        <tag id="4064" parentid="6151" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2018-08-13">
+            <name>CGI</name>
+            <description>Computer-generated imagery (CGI) or computer animation is the art of creating moving images via the use of computers. It is a subfield of computer graphics and animation. Increasingly it is created by means of 3D computer graphics, though 2D computer graphics are still widely used for stylistic, low bandwidth, and faster real-time rendering needs. Sometimes the target of the animation is the computer itself, but sometimes the target is another medium, such as film.</description>
+            <picurl>222249.jpg</picurl>
+        </tag>
+        <tag id="6151" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-09-10">
+            <name>technical aspects</name>
+            <description>It may sometimes be useful to know about technical aspects of a show, such as information about its broadcasting or censorship. Such information can be found here.</description>
+        </tag>
+        <tag id="6173" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-09-24">
+            <name>origin</name>
+        </tag>
+        <tag id="7050" parentid="2611" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2019-04-18">
+            <name>speculative fiction</name>
+            <description>Speculative fiction is an umbrella genre encompassing fiction with certain elements that do not exist in the real world, often in the context of supernatural, futuristic or other imaginative themes. This includes, but is not limited to, science fiction, fantasy, superhero fiction, horror, utopian and dystopian fiction, fairytale fantasy, supernatural fiction, as well as combinations thereof.
+Source: Wikipedia</description>
+        </tag>
+        <tag id="7885" parentid="6173" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2021-11-07">
+            <name>Japanese production</name>
+        </tag>
+    </tags>
+    <characters>
+        <character id="9970" type="main character in" update="2009-06-27">
+            <rating votes="15">7.97</rating>
+            <name>Haseo</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>30118.jpg</picture>
+            <seiyuu id="225" picture="259982.jpg">Sakurai Takahiro</seiyuu>
+        </character>
+        <character id="9971" type="secondary cast in" update="2009-06-27">
+            <rating votes="5">6.33</rating>
+            <name>Kuhn</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>30119.jpg</picture>
+            <seiyuu id="233" picture="228661.jpg">Miki Shin`ichirou</seiyuu>
+        </character>
+        <character id="9972" type="secondary cast in" update="2009-06-27">
+            <rating votes="10">8.86</rating>
+            <name>Ovan</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>30121.jpg</picture>
+            <seiyuu id="451" picture="266875.jpg">Touchi Hiroki</seiyuu>
+        </character>
+        <character id="9974" type="appears in" update="2009-06-27">
+            <rating votes="23">7.75</rating>
+            <name>Shino</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>30125.jpg</picture>
+            <seiyuu id="308" picture="44975.jpg">Nazuka Kaori</seiyuu>
+        </character>
+        <character id="9982" type="secondary cast in" update="2009-06-27">
+            <rating votes="6">5.66</rating>
+            <name>Yata</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>30135.jpg</picture>
+            <seiyuu id="374" picture="17220.jpg">Yamazaki Takumi</seiyuu>
+        </character>
+        <character id="9989" type="secondary cast in" update="2009-06-27">
+            <rating votes="12">6.80</rating>
+            <name>Pai</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>30136.jpg</picture>
+            <seiyuu id="333" picture="18379.jpg">Kobayashi Sanae</seiyuu>
+        </character>
+        <character id="18762" type="secondary cast in" update="2010-06-13">
+            <rating votes="9">8.91</rating>
+            <name>Atoli</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>49597.jpg</picture>
+            <seiyuu id="12" picture="263458.jpg">Kawasumi Ayako</seiyuu>
+        </character>
+    </characters>
+    <episodes>
+        <episode id="85437" update="2007-11-28">
+            <epno type="4">T1</epno>
+            <length>2</length>
+            <rating votes="1">4.11</rating>
+            <title xml:lang="en">Trailer 01</title>
+        </episode>
+        <episode id="85438" update="2010-10-19">
+            <epno type="4">T2</epno>
+            <length>3</length>
+            <rating votes="1">4.11</rating>
+            <title xml:lang="en">Trailer 02</title>
+        </episode>
+        <episode id="86291" update="2010-10-19">
+            <epno type="4">T3</epno>
+            <length>2</length>
+            <rating votes="1">6.70</rating>
+            <title xml:lang="en">Trailer 03</title>
+        </episode>
+        <episode id="86587" update="2011-10-20">
+            <epno type="2">S1</epno>
+            <length>25</length>
+            <rating votes="1">2.59</rating>
+            <title xml:lang="en">The Making of</title>
+        </episode>
+        <episode id="88986" update="2018-01-18">
+            <epno type="1">1</epno>
+            <length>95</length>
+            <airdate>2008-03-26</airdate>
+            <rating votes="9">5.68</rating>
+            <title xml:lang="en">Complete Movie</title>
+            <summary>After one of his friends falls into a coma playing an online game called The World, Haseo logs in to find the man responsible. But before he can unravel The World’s many mysteries, he’ll have to awaken the secret power hidden in the code of his character.
+Source: crunchyroll</summary>
+        </episode>
+        <episode id="90314" update="2013-03-12">
+            <epno type="2">S2</epno>
+            <length>6</length>
+            <airdate>2008-03-25</airdate>
+            <rating votes="7">3.55</rating>
+            <title xml:lang="ja">パロディモード</title>
+            <title xml:lang="en">Parody Mode</title>
+            <title xml:lang="x-jat">Parody Mode</title>
+        </episode>
+    </episodes>
+</anime>

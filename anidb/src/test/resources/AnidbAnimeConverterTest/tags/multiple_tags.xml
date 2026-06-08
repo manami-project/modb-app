@@ -1,0 +1,2525 @@
+<?xml version="1.0" encoding="UTF-8"?><anime id="4563" restricted="false">
+    <type>TV Series</type>
+    <episodecount>37</episodecount>
+    <startdate>2006-10-04</startdate>
+    <enddate>2007-06-27</enddate>
+    <titles>
+        <title xml:lang="x-jat" type="main">Death Note</title>
+        <title xml:lang="ja" type="synonym">デスノート</title>
+        <title xml:lang="it" type="synonym">Quaderno della Morte</title>
+        <title xml:lang="pl" type="synonym">Notes Śmierci</title>
+        <title xml:lang="ar" type="synonym">ديث نوت</title>
+        <title xml:lang="ar" type="synonym">مدونة الموت</title>
+        <title xml:lang="ar" type="synonym">مذكرة الموت</title>
+        <title xml:lang="ar" type="synonym">دفتر الموت</title>
+        <title xml:lang="pt-BR" type="synonym">Caderno da Morte</title>
+        <title xml:lang="he" type="synonym">מחברת המוות</title>
+        <title xml:lang="lt" type="synonym">Mirties Užrašai</title>
+        <title xml:lang="tr" type="synonym">Ölüm Defteri</title>
+        <title xml:lang="bg" type="synonym">Тетрадка на Смъртта</title>
+        <title xml:lang="uk" type="synonym">Записник Смерті</title>
+        <title xml:lang="sr" type="synonym">Свеска Смрти</title>
+        <title xml:lang="sr" type="synonym">Sveska Smrti</title>
+        <title xml:lang="fa" type="synonym">دفترچه مرگ</title>
+        <title xml:lang="ur" type="synonym">موت نوٹ</title>
+        <title xml:lang="x-jat" type="short">DN</title>
+        <title xml:lang="ja" type="official">DEATH NOTE</title>
+        <title xml:lang="en" type="official">Death Note</title>
+        <title xml:lang="de" type="official">Death Note</title>
+        <title xml:lang="fr" type="official">Death Note</title>
+        <title xml:lang="it" type="official">Death Note</title>
+        <title xml:lang="es" type="official">Death Note</title>
+        <title xml:lang="ru" type="official">Тетрадь cмерти</title>
+        <title xml:lang="ko" type="official">데스노트</title>
+        <title xml:lang="pl" type="official">Notatnik śmierci</title>
+        <title xml:lang="ar" type="official">مفكرة الموت</title>
+        <title xml:lang="pt" type="official">Death Note</title>
+        <title xml:lang="pt-BR" type="official">Death Note</title>
+        <title xml:lang="es-CA" type="official">Death Note</title>
+        <title xml:lang="cs" type="official">Death Note - Zápisník smrti</title>
+        <title xml:lang="fi" type="official">Death Note</title>
+        <title xml:lang="el" type="official">Τετράδιο Θανάτου</title>
+        <title xml:lang="hu" type="official">Death Note - A halállista</title>
+        <title xml:lang="th" type="official">สมุดโน้ตกระชากวิญญาณ</title>
+        <title xml:lang="ro" type="official">Death Note - Carnetul morţii</title>
+        <title xml:lang="sk" type="official">Death Note - Zápisník smrti</title>
+        <title xml:lang="vi" type="official">Cuốn sổ tử thần</title>
+        <title xml:lang="bg" type="official">Бележник на Смъртта</title>
+        <title xml:lang="hr" type="official">Bilježnica smrti</title>
+        <title xml:lang="zh-Hant" type="official">死亡筆記本</title>
+        <title xml:lang="zh-Hans" type="official">死亡笔记</title>
+        <title xml:lang="es-419" type="official">Death Note</title>
+        <title xml:lang="fa" type="official">دفترچه یادداشت مرگ</title>
+        <title xml:lang="mn" type="official">Үхлийн Тэмдэглэл</title>
+        <title xml:lang="hi" type="official">डेथ नोट</title>
+    </titles>
+    <relatedanime>
+        <anime id="8146" type="Summary">Death Note: R - Genshi Suru Kami</anime>
+        <anime id="8147" type="Summary">Death Note: R2 - L o Tsugu Mono</anime>
+    </relatedanime>
+    <similaranime>
+        <anime id="4521" approval="634" total="738">Code Geass: Hangyaku no Lelouch</anime>
+        <anime id="10537" approval="30" total="60">Zankyou no Terror</anime>
+        <anime id="1539" approval="26" total="57">Monster</anime>
+        <anime id="6551" approval="23" total="52">DreamNote</anime>
+        <anime id="15492" approval="21" total="38">Munou na Nana</anime>
+        <anime id="8395" approval="17" total="54">Mirai Nikki (2011)</anime>
+        <anime id="6139" approval="11" total="33">One Outs</anime>
+        <anime id="3446" approval="11" total="33">Touhai Densetsu Akagi: Yami ni Maiorita Tensai</anime>
+        <anime id="584" approval="10" total="64">Ginga Eiyuu Densetsu</anime>
+        <anime id="12653" approval="8" total="20">Inuyashiki</anime>
+        <anime id="14051" approval="7" total="27">Yakusoku no Neverland</anime>
+        <anime id="3291" approval="6" total="27">Jigoku Shoujo</anime>
+        <anime id="8370" approval="6" total="24">Kamisama no Memo-chou: It`s the Only NEET Thing to Do.</anime>
+        <anime id="10938" approval="6" total="23">Rokka no Yuusha</anime>
+        <anime id="11822" approval="4" total="12">Ren`ai Boukun</anime>
+        <anime id="6048" approval="3" total="29">Kuroshitsuji</anime>
+        <anime id="5406" approval="2" total="66">Ookami to Koushinryou</anime>
+        <anime id="8855" approval="2" total="39">Hyouka</anime>
+        <anime id="13283" approval="1" total="16">Devils` Line</anime>
+        <anime id="4925" approval="1" total="8">Skull Man</anime>
+    </similaranime>
+    <recommendations total="162">
+        <recommendation type="For Fans" uid="247340">Great story, great action... overly fanboyed. Really enjoyed this but I would recommend (if you have not seen it already) that you read the manga instead. Give it a watch if you have read the manga, though.</recommendation>
+        <recommendation type="For Fans" uid="600468">6/10
+The only great was L Lawliet</recommendation>
+        <recommendation type="Recommended" uid="256304">just great!</recommendation>
+        <recommendation type="Recommended" uid="386823">Brilliant Thriller&lt;br /&gt;The battle of wits is brilliant</recommendation>
+        <recommendation type="Recommended" uid="324715">One of the best anime series I have EVER SEEN!</recommendation>
+        <recommendation type="Recommended" uid="215397">Something everyone should for its plot...</recommendation>
+        <recommendation type="Recommended" uid="100485">On of the best anime of 2007.</recommendation>
+        <recommendation type="Recommended" uid="31560">A very good Anime with a lot of depth.</recommendation>
+        <recommendation type="Recommended" uid="12641">You will symphatize with evil while hating yourself  for it.</recommendation>
+        <recommendation type="Recommended" uid="372933">Awesome! A classic to watch</recommendation>
+        <recommendation type="Recommended" uid="144655">A well thought and plot-based anime.But it could be better with a few less eps</recommendation>
+        <recommendation type="Recommended" uid="329320">Realy must see anime! I say it`s a real masterpiece. Gr8 animation and OP / Ed`s btw</recommendation>
+        <recommendation type="Recommended" uid="101149">My favorite anime!</recommendation>
+        <recommendation type="Recommended" uid="208373">Mind sizzling show!</recommendation>
+        <recommendation type="Recommended" uid="64882">Actually the BEST anime serie I watched, the only one that made me say "I think I have enough time to watch another episode.." and stay awake all night.</recommendation>
+        <recommendation type="Recommended" uid="229727">first part is amazing</recommendation>
+        <recommendation type="Recommended" uid="370136">An excellent series, cleverly constructed with great characters</recommendation>
+        <recommendation type="Recommended" uid="292852">Best anime ever. its the perfect anime for you if you are an anime fan or not</recommendation>
+        <recommendation type="Recommended" uid="302824">Excellent. Reminds me somewhat of Sherlock Holmes.</recommendation>
+        <recommendation type="Recommended" uid="472569">This is the first anime i watched after 16. and i have to say it was great and i enjoyed most of the episodes
+but after some times it turns to a cycle of "light does something, and the next episode L discovers"
+but even with this boring problem, this one worth watching</recommendation>
+        <recommendation type="Recommended" uid="464550">awesome and yet kinda of twisted. one of the best pyschological animes around.</recommendation>
+        <recommendation type="Recommended" uid="338795">Demonstration of what power can do to a man - corrupt and twist him to a state of genious craze. 
+It`s a great entertainment to watch and you won`t be disappointed by this series - at least I wasn`t.</recommendation>
+        <recommendation type="Recommended" uid="558171">A must see masterpiece.</recommendation>
+        <recommendation type="Recommended" uid="457158">This is a legendary tale!</recommendation>
+        <recommendation type="Recommended" uid="468468">Very good, still somehow in the middle i got board.
+NOT because it was bad, or not exciting enough, or anything like that.
+It just became so predictable. Really. I was not suprised by anything that followed after episode 14 or so.
+Anyway it`s still definatly worth watching and I feel like you still would miss out on something if you never did. So that`s why i recommand it.</recommendation>
+        <recommendation type="Recommended" uid="551809">Very strong thriller until about episode 25, when it quite simply falls off a cliff. The last ten episodes or so are a real disappointment.</recommendation>
+        <recommendation type="Recommended" uid="101924">Even though the ending is not fitting for the quality of  the beginning, this is an anime I easily recommend  with smart characters and plot ( those who like action go see another thing, this is for the ones who likes smart character). ps. I recommend to watch until episode 26, then stop watching.</recommendation>
+        <recommendation type="Recommended" uid="707367">Must see Anime! Especially if you like clever characters and a complicated storyline involving strategic mastermoves.</recommendation>
+        <recommendation type="Recommended" uid="139195">Intelligent/Breath taking.</recommendation>
+        <recommendation type="Recommended" uid="199844">*First, check to see if we share similar anime tastes.* If you enjoy battle-of-wits anime, then you might enjoy this one. Very clever writing had me drawn into the story as opposed to the usual anime lure of non-stop boobs, guns, and explosions (which I still enjoy [I`m only human]).</recommendation>
+        <recommendation type="Must See" uid="415427">The best anime ever created. A masterpiece beyond words.</recommendation>
+        <recommendation type="Must See" uid="834921">An excellent psychological-thriller for newfags and veterans alike.</recommendation>
+        <recommendation type="Must See" uid="471794">Watching this one gives me the same sentation of reading a good suspense book. Once you begin you can`t wait to see what will happen next.</recommendation>
+        <recommendation type="Must See" uid="312971">AWESOME, BRILLIANT</recommendation>
+        <recommendation type="Must See" uid="562257">One can simply not explain the epicness of this anime through mere words.</recommendation>
+        <recommendation type="Must See" uid="297796">Just super fantastic!!</recommendation>
+        <recommendation type="Must See" uid="421194">Exiting Anime, with a complex story line that keeps going until the very end.</recommendation>
+        <recommendation type="Must See" uid="607018">Very intelligent script and excellent direction. Watch it for the cleverly crafted tactics.</recommendation>
+        <recommendation type="Must See" uid="344788">Just watch it.</recommendation>
+        <recommendation type="Must See" uid="739815">Well written, great characters. Great plot. Great for everyone.</recommendation>
+        <recommendation type="Must See" uid="298033">One of the absolute best anime! Very catching storyline.</recommendation>
+        <recommendation type="Must See" uid="241399">Mindblowing! a must see for everyone and probably the best anime in recent history</recommendation>
+        <recommendation type="Must See" uid="359130">The best anime that I`ve ever seen; that`s not an exaggeration either.  Love the storyline the most and the characters are awesome!</recommendation>
+        <recommendation type="Must See" uid="260880">It`s such so clever..-Which side are you with?</recommendation>
+        <recommendation type="Must See" uid="605092">If you`ve ever considered watching an anime, it should be this one. School, evil, romance, and detective like mind games, with a complex paranormal undertone.  It`s masterpiece start to finish.</recommendation>
+        <recommendation type="Must See" uid="143965">Death Note is an astonishing anime. Very unique in it`s theme and a MUST see for the ones wanting a more "mature" kind of anime. Must see! A splendid MUST SEE!</recommendation>
+        <recommendation type="Must See" uid="391848">Thrills, suspense, mystery with a touch of the supernatural taken to great heights. I like detective stuff and adding a little supernatural flavor to it along with amazing twists and a very intelligent and cunning main character as a villain just made it absolutely incredible and entertaining.</recommendation>
+        <recommendation type="Must See" uid="778565">That serie is anime 404, so i`d like to recommend this anime to people who loves genuis mc, and battle of intelligence.</recommendation>
+        <recommendation type="Must See" uid="190587">THAT`S IT / AWESOME STORY / AWESOME CHARACTERS / AWESOME GRAPHICS / AWESOME MUSIC</recommendation>
+        <recommendation type="Must See" uid="558725">The only anime series that kept me as interested in the beginning as it did towards the end. Great plot and characters, graphics and music. Everything about it is perfect except the end, which in my opinion is a bit weak. Other than that it`s great. Too bad there aren`t many anime series like this one, but i guess that`s what makes it unique.</recommendation>
+        <recommendation type="Must See" uid="9461">An ethical journey with our inner beast in form of a genius detective thriller.</recommendation>
+        <recommendation type="Must See" uid="260239">ABSOLUTELY A MUST SEE FOR EVERYONE!!</recommendation>
+        <recommendation type="Must See" uid="5957">read the manga also it was amazing, a must see and read!</recommendation>
+        <recommendation type="Must See" uid="232437">Exciting to watch and it asks the moral question if it`s okay to kill for the good of humanity. &lt;br /&gt;So, would you kill criminals to make the world a better place?</recommendation>
+        <recommendation type="Must See" uid="132589">It`s already been said. This anime is on masterpiece status.</recommendation>
+        <recommendation type="Must See" uid="282280">Excellent ANIME! There`s not much to ask for other than give us more!</recommendation>
+        <recommendation type="Must See" uid="550869">The Definition of Masterpiece.</recommendation>
+        <recommendation type="Must See" uid="256254">One of the best anime in the last years.</recommendation>
+        <recommendation type="Must See" uid="484892">Death Note isn`t the most popular anime for no reason.  This anime deals with the main protagonist and his overall slide into mania because of his power to use the death note and "change the world for the better."  Overall, this anime is one of the best Thriller animes I have seen.  Also, don`t be discouraged by the fact that this was from Weekly Shounen Jump.  It may`ve been from a shounen manga, but the content of this anime is very Seinen.  So if you are looking for an excellent Seinen Thriller anime, then by all means watch Death Note.  I guarantee you you won`t regret it.</recommendation>
+        <recommendation type="Must See" uid="492032">YOU MUST WATCH IT !!! I think that is enough. This is my top favorite anime. You`ll just addict to it. I like the anime no matter wich episode and I think it`s the best. So definitely I recommend it as "must see".</recommendation>
+        <recommendation type="Must See" uid="180379">Master Piece</recommendation>
+        <recommendation type="Must See" uid="291869">At the beginning, was one of the best ever...</recommendation>
+        <recommendation type="Must See" uid="556152">Definition of Masterpiece</recommendation>
+        <recommendation type="Must See" uid="13780">Deadly to Watch...
+For any fan or newbie in watching anime!!!</recommendation>
+        <recommendation type="Must See" uid="101458">A brilliant idea in a superb anime</recommendation>
+        <recommendation type="Must See" uid="526796">This is what you get if you bake Showtime`s Dexter and occultism in an anime-making oven.
+
+Fun fact: While Dexter debuted some time after Death Note manga, both the series and the anime debuted only 3 days apart.</recommendation>
+        <recommendation type="Must See" uid="422068">Why are you still reading recommendations? Just watch it. This anime is a masterpiece!</recommendation>
+        <recommendation type="Must See" uid="244867">Total must see anime</recommendation>
+        <recommendation type="Must See" uid="510632">Definitely a great anime. Great tension, interesting characters and an engaging plot. 
+
+Probably not for all, but it is so good that everyone should at least check it out. Though you should probably skip the last third because it becomes quite bad.</recommendation>
+        <recommendation type="Must See" uid="271621">Its a mind blowing anime.</recommendation>
+        <recommendation type="Must See" uid="481279">A witty thriller with a classical theme of hubris: a rarity by today`s standards.
+This series keeps you guessing till the very end because you never know how things are going to go till they happen. Also the concept behind the "Death Notebook" is very intriguing and deep, making you think of how you would use it if you had one. Animation quality, music, and character development are also above par for sure.
+A must see if you enjoy intelligent and/or dark animes.</recommendation>
+        <recommendation type="Must See" uid="180353">Brain and the death note combined together. dont miss this anime!</recommendation>
+        <recommendation type="Must See" uid="400353">A must see</recommendation>
+    </recommendations>
+    <url>http://www.ntv.co.jp/deathnote/</url>
+    <creators>
+        <name id="731" type="Animation Work">Madhouse</name>
+        <name id="1499" type="Original Work">Obata Takeshi</name>
+        <name id="1498" type="Original Work">Ooba Tsugumi</name>
+        <name id="1523" type="Direction">Araki Tetsurou</name>
+        <name id="2211" type="Chief Animation Direction">Kagami Takahiro</name>
+        <name id="6188" type="Chief Animation Direction">Kitao Masaru</name>
+        <name id="6910" type="Music">Taniuchi Hideki</name>
+        <name id="3719" type="Series Composition">Inoue Toshiki</name>
+        <name id="4393" type="Music">Hirano Yoshihisa</name>
+        <name id="6188" type="Character Design">Kitao Masaru</name>
+    </creators>
+    <description>Bored with his deteriorating world and the laconic way of his fellows, shinigami http://anidb.net/ch413 [Ryuk] drops his Death Note on Earth and watches to see if it stirs up anything interesting. His plan succeeds beyond his wildest expectations when the Death Note is found by brilliant high school senior http://anidb.net/ch301 [Yagami Light], who is also bored with a world he considers rotten.
+Although initially he regards the book as a prank, Light soon discovers, through experimentation, that the book`s claim is true: picture a person in your mind as you write the person`s name in the Death Note, and that person dies 40 seconds later of of a heart attack (although a different time frame and manner of death can be specified). Armed with that power, Light sets out on a quest he sees as noble: make the world a better place by eliminating all its criminals using the Death Note.
+Soon cast as the mysterious "Kira" (a Japanese pronunciation of the English "killer") in the media and on the Internet, some take exception to his playing god, most notably the police and the enigmatic master detective http://anidb.net/ch299 [L], who resolves to do everything in his power to stop Kira. Light counters by doing everything in his power to prevent people from identifying or interfering with him, even if that means getting rid of people investigating him.
+Note: The first episode received an early screening at a special event on 28 September 2006 at an unspecified location. The regular TV broadcast started on 4 October 2006.</description>
+    <ratings>
+        <permanent count="21658">8.58</permanent>
+        <temporary count="22501">8.62</temporary>
+        <review count="24">7.86</review>
+    </ratings>
+    <picture>221544.jpg</picture>
+    <resources>
+        <resource type="1">
+            <externalentity>
+                <identifier>6592</identifier>
+            </externalentity>
+        </resource>
+        <resource type="2">
+            <externalentity>
+                <identifier>1535</identifier>
+            </externalentity>
+        </resource>
+        <resource type="3">
+            <externalentity>
+                <identifier>3755</identifier>
+                <identifier>jpxpss</identifier>
+            </externalentity>
+        </resource>
+        <resource type="4">
+            <externalentity>
+                <url>http://www.ntv.co.jp/deathnote/</url>
+            </externalentity>
+        </resource>
+        <resource type="5">
+            <externalentity>
+                <url>https://www.viz.com/death-note</url>
+            </externalentity>
+        </resource>
+        <resource type="6">
+            <externalentity>
+                <identifier>Death_Note</identifier>
+            </externalentity>
+        </resource>
+        <resource type="7">
+            <externalentity>
+                <identifier>DEATH_NOTE_(アニメ)</identifier>
+            </externalentity>
+        </resource>
+        <resource type="8">
+            <externalentity>
+                <identifier>945</identifier>
+            </externalentity>
+        </resource>
+        <resource type="9">
+            <externalentity>
+                <identifier>326072</identifier>
+            </externalentity>
+        </resource>
+        <resource type="10">
+            <externalentity>
+                <identifier>8420</identifier>
+            </externalentity>
+        </resource>
+        <resource type="20">
+            <externalentity>
+                <identifier>死亡筆記_(動畫)</identifier>
+            </externalentity>
+        </resource>
+        <resource type="26">
+            <externalentity>
+                <identifier>playlist?list=PLDDFkfLheQ9hzlWtnCSla1DicLZkllriY</identifier>
+            </externalentity>
+        </resource>
+        <resource type="28">
+            <externalentity>
+                <identifier>G6QWD3EE6</identifier>
+            </externalentity>
+        </resource>
+        <resource type="31">
+            <externalentity>
+                <identifier>12443</identifier>
+            </externalentity>
+        </resource>
+        <resource type="32">
+            <externalentity>
+                <identifier>B07Z9XD3G5</identifier>
+            </externalentity>
+        </resource>
+        <resource type="41">
+            <externalentity>
+                <identifier>70204970</identifier>
+            </externalentity>
+        </resource>
+        <resource type="45">
+            <externalentity>
+                <identifier>death-note-2</identifier>
+            </externalentity>
+        </resource>
+    </resources>
+    <tags>
+        <tag id="30" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-09-10">
+            <name>maintenance tags</name>
+            <description>These tags are used for maintenance.</description>
+        </tag>
+        <tag id="178" parentid="6149" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2017-10-28">
+            <name>insane</name>
+            <description>Insanity, craziness, or madness is a spectrum of behaviors characterized by certain abnormal mental or behavioral patterns. Insanity may manifest as violations of societal norms, including a person becoming a danger to themselves or others, though not all such acts are considered insanity; likewise, not all acts showing indifference toward societal norms are acts of insanity.
+In modern usage, insanity is most commonly encountered as an informal unscientific term denoting mental instability, or in the narrow legal context of the insanity defense.
+A more informal use of the term insanity is to denote something or someone considered highly unique, passionate or extreme, including in a positive sense. The term may also be used as an attempt to discredit or criticise particular ideas, beliefs, principles, desires, personal feelings, attitudes, or their proponents, such as in politics and religion.
+Source: Wikipedia</description>
+        </tag>
+        <tag id="308" parentid="2611" infobox="true" weight="400" localspoiler="false" globalspoiler="false" verified="true" update="2017-12-17">
+            <name>detective</name>
+            <description>A detective is an investigator, generally either a member of a law enforcement agency or as an individual working in the capacity of private investigators, tasked with solving crimes and other mysteries, such as disappearances, by examining and evaluating clues and records in order to solve the mystery; for a crime, this would mean uncovering the criminal`s identity and/or whereabouts. In some police systems, a detective position is achieved by passing a written test after a person completes the requirements for being a police officer; in others, detectives are college graduates who join directly from civilian life without first serving as uniformed officers.
+Source: Wikipedia</description>
+            <picurl>210906.jpg</picurl>
+        </tag>
+        <tag id="428" parentid="6149" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2009-12-25">
+            <name>contractor</name>
+        </tag>
+        <tag id="922" parentid="2606" infobox="true" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2015-02-04">
+            <name>shounen</name>
+            <description>In the context of manga and associated media, shounen, literally meaning "youth" and often also specifically "boy", refers to a male audience roughly between the ages of 10 and 18.
+Source: Wikipedia</description>
+        </tag>
+        <tag id="1760" parentid="2608" weight="100" localspoiler="false" globalspoiler="false" verified="true" update="2023-02-05">
+            <name>bishounen</name>
+            <description>A bishounen is a Japanese term literally meaning "beautiful youth (boy)" and describes an aesthetic that can be found in disparate areas in East Asia: a young man of effeminate beauty. While the beauty transcends gender, the character clearly has a male body; their gender is not ambiguous and there the character is not http://anidb.net/t2561 [androgynous].</description>
+        </tag>
+        <tag id="2605" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-09-28">
+            <name>dynamic</name>
+            <description>Some of the central structural elements in anime are: 
+Plot Continuity 
+How does the plot or several plots unfold. Are they a strictly linear retelling of one big continuing story, a serial, possibly with several side stories, or is the content chopped into a set of unconnected episodes, only sharing the same setting and characters?
+Stereotype Characters
+Then there is the question of the character set presentation. Is it completely original, or is it your usual stereotypical character cast. Both choices have their merit, for example it would not really make much sense to reinvent the wheel for a harem anime. Fans of that genre come to expect their favourite stereotype protagonists.
+Plot Twists
+Finally there is the question of how complex the plot / the story unfolds. Are there side-plots that merge into the main plot leading to unexpected plot twists, or is the anime quite predictable? The latter would not be appropriate for detective stories. In harem anime on the other hand a foreseeable outcome is actually something the fans will come to expect.</description>
+        </tag>
+        <tag id="2606" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2018-11-05">
+            <name>target audience</name>
+            <description>Anime, like everything else in the modern world, is targeted towards specific audiences, both implicitly by the creators and overtly by the marketing. While categories are associated with specific sex and age groups, this is not a bar on the anime being enjoyed by people who don`t fit into that band; not only do crossover titles exist, but the categories also have a considerable following outside their main demographic, and a person might as well enjoy anime from all categories. Still, does not invalidate the usefulness of marking a title as one of the categories; the same themes will likely be treated differently in anime geared for different audiences. Only one should not jump the gun and assume that a title will be more or less serious or present content in this or that way due to its target audience, or conversely assume the target audience on the content and its presentation alone. As such, the audience categories help form a broad impression of how a title might work with the announced themes, but offer little to no in-depth information about specific content or its treatment.
+The audience categories originate from manga magazines, which group titles of a same intended audience into a magazine that is advertised as belonging to that category, and so manga-based anime will have the category from their parent work. As for anime based on other works, the audience is often debatable, but comparing information such as time slot to the manga-based anime generally helps figure out the most likely possibility.
+If the parent material was classified under multiple audiences over time (for example, it was originally shounen, but then as the plot changed and became more mature, it was reclassified as seinen), and the anime adapts parent material time periods covering multiple audiences, we tag all audiences covered by the anime adaptation.</description>
+        </tag>
+        <tag id="2607" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2009-04-29">
+            <name>themes</name>
+            <description>Themes describe the very central elements important to the anime stories. They set the backdrop against which the protagonists must face their challenges. Be it School Life, present Daily Life, Military action, Cyberpunk, Law and Order detective work, Sports, or the Underworld. These are only but a few of the more typical backgrounds for anime plots. Add to that a Conspiracy setting with a possible tragic outcome, the Themes span most of the imaginable subject matter relevant to anime.</description>
+        </tag>
+        <tag id="2608" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2021-07-27">
+            <name>fetishes</name>
+            <description>For non-porn anime, the fetish must be a major element of the show; incidental appearances of the fetish is not sufficient for a fetish tag. Please do not add fetish tags to anime that do not pander to the fetish in question in any meaningful way. For example, there`s some ecchi in http://anidb.net/a22 [Shinseiki Evangelion], but the fact you get to see http://anidb.net/ch39 [Asuka]`s pantsu is not sufficient to warrant applying the http://anidb.net/t2894 [school girl] fetish tag. See also the http://wiki.anidb.net/Tags#Minimum_Relevance_Rule [minimum relevancy rule].
+For porn anime, the application of fetish tags are fairly straightforward, as porn will fully play out most fetishes.</description>
+        </tag>
+        <tag id="2609" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2018-09-01">
+            <name>original work</name>
+            <description>What the anime is based on! This is given as the original work credit in the OP. Mostly of academic interest, but a useful bit of info, hinting at the possible depth of story.</description>
+        </tag>
+        <tag id="2610" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2009-04-22">
+            <name>setting</name>
+            <description>The setting describes in what time and place an anime takes place. To a certain extent it describes what you can expect from the world in the anime.</description>
+        </tag>
+        <tag id="2611" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-09-08">
+            <name>elements</name>
+            <description>Next to Themes setting the backdrop for the protagonists in anime, there are the more detailed plot Elements that centre on character interactions: "What do characters do to each other or what is done to them?". Is it violent Action, an awe-inspiring Adventure in a foreign place, the gripping life of a Detective, a slapstick Comedy, an Ecchi Harem anime, a SciFi epic, or some Fantasy travelling adventure?</description>
+        </tag>
+        <tag id="2612" parentid="2610" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2016-09-04">
+            <name>time</name>
+            <description>This placeholder lists different epochs in human history and more vague but important timelines such as the future, the present and the past.</description>
+        </tag>
+        <tag id="2613" parentid="2610" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2016-09-04">
+            <name>place</name>
+            <description>The places the anime can take place in. Includes more specific places such as a country on Earth, as well as more general places such as a dystopia or a mirror world.</description>
+        </tag>
+        <tag id="2624" parentid="2612" weight="600" localspoiler="false" globalspoiler="false" verified="true" update="2017-02-20">
+            <name>present</name>
+            <description>Somewhere between past and future.</description>
+        </tag>
+        <tag id="2630" parentid="2613" weight="600" localspoiler="false" globalspoiler="false" verified="true" update="2012-10-13">
+            <name>Earth</name>
+            <description>The Earth is the third planet from the Sun, and the densest and fifth-largest of the eight planets in the Solar System. It is in effect a ball of hot mud, but on the surface it`s cold enough, so most of us live on it (or are supposed to). It is circa 4.5 billion years old, and, unless we humans succeed in destroying it over the next couple of centuries, it is expected to last for quite another while, though the changes in the Sun`s emissions due to its aging will likely cause the extinction of everything; the species of earthlings are guaranteed to die, even if we fail to kill them -- unless, of course, we find ourselves another planet and figure out a way to take everything there. Our little planet on a corner of this galaxy may mean nothing in the grand scheme of things, but to its inhabitants it is their home, so, as a species, we cherish it dearly, to the point many cultures even to this day deify it. Being the home to the human civilizations, the Earth is the main setting of most fiction, be it anime or otherwise, but not only are many titles set in other places, such as unrelated fantasy worlds, in a considerable number of fictional titles the Earth is actually destroyed by aggressive alien invaders.</description>
+            <picurl>126792.jpg</picurl>
+        </tag>
+        <tag id="2642" parentid="2624" weight="600" localspoiler="false" globalspoiler="false" verified="true" update="2009-09-28">
+            <name>alternative present</name>
+            <description>Anime that fit in the alternative present category usually have technology and society that is very similar to ours, but with differences in both, history and culture, which sometimes are blatantly obvious, but sometimes harder to place; this one can at times be very subjective.</description>
+        </tag>
+        <tag id="2648" parentid="2849" infobox="true" weight="400" localspoiler="false" globalspoiler="false" verified="true" update="2014-11-04">
+            <name>contemporary fantasy</name>
+            <description>Contemporary fantasy, also known as modern fantasy or indigenous fantasy, is a sub-genre of fantasy, set in the present day. It is perhaps most popular for its sub-genre, urban fantasy.
+These terms are used to describe stories set in the putative real world (often referred to as consensus reality) in contemporary times, in which magic and magical creatures exist, either living in the interstices of our world or leaking over from alternate worlds. It thus has much in common with, and sometimes overlaps with secret history; a work of fantasy in which the magic could not remain secret or does not have any known relationship to known history would not fit into this subgenre. Occasionally certain contemporary fantasy novels will make reference to pop culture.
+Novels in which modern characters travel into alternate worlds, and all the magical action takes place there (except for the portal required to transport them), are not considered contemporary fantasy. Thus, C.S. Lewis`s The Lion, the Witch and the Wardrobe, where all fantasy events take place in the land of Narnia which is reached via a magic wardrobe, would not count as contemporary fantasy; on the other hand, the part of The Magician`s Nephew, where the Empress Jadis gets to London, tries to take over the Earth and clashes with police and a crowd of cockneys, would qualify as such.
+Contemporary fantasy is also to be distinguished from horror fiction, which also often has contemporary settings. When encountering magical events and creatures, the protagonist of a horror novel is horrified, while the protagonist of a fantasy novel (contemporary or otherwise) is filled with a sense of joy and wonder. Horrifying events may happen, but the fundamental distinction is vital.
+In his preface to That Hideous Strength, one of the earlier works falling within this sub-genre, C.S. Lewis explained why, when writing a tale about "magicians, devils, pantomime animals and planetary angels", he chose to start it with a detailed depiction of narrow-minded academic politics at a provincial English university and the schemes of crooked real estate developers: "I am following the traditional fairy-tale. We do not always notice its method, because the cottages, castles, woodcutters and petty kings with which a fairy tale opens have become for us as remote as the witches and ogres to which it proceeds. But they were not remote at all to the men who first made and enjoyed the tales". The same is true for many of the later works in the genre, which often begin with a seemingly normal scene of modern daily life to then disclose supernatural and magical beings and events hidden behind the scenes.
+Source: wiki</description>
+        </tag>
+        <tag id="2667" parentid="2869" weight="200" localspoiler="false" globalspoiler="false" verified="true" update="2018-12-29">
+            <name>university</name>
+            <description>Since college/university students are typically at least eighteen years old, with stories covering mature everyday life topics, you will find the college setting quite often in seinen and josei anime.
+Topics that can now be covered - as compared to High School settings - are higher education (i.e. coping with higher intellectual stress), the more adult party life (i.e. alcohol, smoking, sex), the issues of daily life vs. studying - especially when having to work to pay for bills, and finally the possible friction between those in and out of college.</description>
+        </tag>
+        <tag id="2672" parentid="2834" weight="600" localspoiler="false" globalspoiler="false" verified="true" update="2018-03-05">
+            <name>Japan</name>
+            <description>Japan is a sovereign island nation in East Asia. Located in the Pacific Ocean, it lies off the eastern coast of the Asian mainland and stretches from the Sea of Okhotsk in the north to the East China Sea and China in the southwest.
+Source: Wikipedia</description>
+            <picurl>65689.png</picurl>
+        </tag>
+        <tag id="2790" parentid="2605" weight="600" localspoiler="false" globalspoiler="false" verified="true" update="2010-01-17">
+            <name>plot continuity</name>
+            <description>Consistency of the characteristics of persons, plot, objects, places and events seen by the viewer.
+A single linear focused plot is highly continuous.
+A truly random plot is highly discontinuous.</description>
+        </tag>
+        <tag id="2798" parentid="2609" infobox="true" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2019-02-14">
+            <name>manga</name>
+            <description>Manga is the lifeblood that drives the anime industry. Everything and its mother is based on manga. However! There are exceptions where the manga was not the basis for the anime.
+It`s common practice to make manga adaptations of many popular anime, there`s a manga based on Evangelion, and two (one shounen and one shoujo) based on each of Escaflowne and Mahou Tsukai Tai. Also it`s quite common to release manga and anime versions of a story in parallel, for instance Nadesico and Shoujo Kakumei Utena. There are also cases where an anime continues in a manga, as in the case of Angel Beats! and Angel Beats: Heaven`s Door, or reverse.
+See also http://anidb.net/t6493 [manhua] and http://anidb.net/t5010 [manhwa].</description>
+            <picurl>215593.jpg</picurl>
+        </tag>
+        <tag id="2812" parentid="2832" weight="200" localspoiler="false" globalspoiler="false" verified="true" update="2013-03-15">
+            <name>United States</name>
+            <description>The United States of America (commonly referred to as the United States, the U.S., the USA, or America) is a federal constitutional republic comprising fifty states and a federal district. The country is situated mostly in central North America, where its forty-eight contiguous states and Washington, D.C., the capital district, lie between the Pacific and Atlantic Oceans, bordered by Canada to the north and Mexico to the south. The state of Alaska is in the north-west of the continent, with Canada to the east and Russia to the west across the Bering Strait. The state of Hawaii is an archipelago in the mid-Pacific. The country also possesses several territories in the Caribbean and Pacific.
+Source: wiki</description>
+            <picurl>45504.jpg</picurl>
+        </tag>
+        <tag id="2832" parentid="2630" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2016-10-04">
+            <name>Americas</name>
+            <description>The Americas, also collectively called America, encompass the totality of the continents of North America and South America. Together they make up most of Earth`s western hemisphere and comprise the New World.
+Source: Wikipedia</description>
+            <picurl>192247.jpg</picurl>
+        </tag>
+        <tag id="2834" parentid="2630" weight="600" localspoiler="false" globalspoiler="false" verified="true" update="2016-10-04">
+            <name>Asia</name>
+            <description>Asia is Earth`s largest and most populous continent, located primarily in the eastern and northern hemispheres and sharing the continental landmass of Eurasia with the continent of Europe. Asia covers an area of 44,579,000 square kilometers, about 30% of Earth`s total land area and 8.7% of the Earth`s total surface area. The continent, which has long been home to the majority of the human population, was the site of many of the first civilizations. Asia is notable for not only its overall large size and population, but also dense and large settlements as well as vast barely populated regions within the continent of 4.4 billion people.
+Source: Wikipedia</description>
+            <picurl>192245.jpg</picurl>
+        </tag>
+        <tag id="2849" parentid="7050" weight="300" localspoiler="false" globalspoiler="false" verified="true" update="2005-05-07">
+            <name>fantasy</name>
+            <description>Fantasy is a genre of fiction that uses magic and other supernatural phenomena as a primary element of plot, theme, or setting. Many works within the genre take place in fictional worlds where magic is common. Fantasy is generally distinguished from science fiction and horror by the expectation that it steers clear of (pseudo-)scientific and macabre themes, respectively, though there is a great deal of overlap between the three (which are subgenres of speculative fiction).
+In popular culture, the genre of fantasy is dominated by its medievalist form, especially since the worldwide success of The Lord of the Rings books by J. R. R. Tolkien. In its broadest sense however, fantasy comprises works by many writers, artists, filmmakers, and musicians, from ancient myths and legends to many recent works embraced by a wide audience today.
+Fantasy is a vibrant area of academic study in a number of disciplines (English, cultural studies, comparative literature, history, medieval studies). Work in this area ranges widely, from the structuralist theory of Tzvetan Todorov, which emphasizes the fantastic as a liminal space, to work on the connections (political, historical, literary) between medievalism and popular culture
+Source: Wiki</description>
+            <picurl>68768.jpg</picurl>
+        </tag>
+        <tag id="2852" parentid="2611" infobox="true" weight="600" localspoiler="false" globalspoiler="false" verified="true" update="2018-03-11">
+            <name>thriller</name>
+            <description>The thriller is a genre of fiction in which tough, resourceful, but essentially ordinary heroes are pitted against villains determined to destroy them, their country, or the stability of the free world. The hero of a typical thriller faces danger alone or in the company of a small band of companions. The protagonist may be a law enforcement agent, a journalist, or a soldier, but typically he or she is cut off from the resources of "their" organization. More often the hero is an ordinary citizen drawn into danger and intrigue by circumstances beyond their control.
+Source: Wikipedia</description>
+            <picurl>214683.jpg</picurl>
+        </tag>
+        <tag id="2858" parentid="2611" weight="200" localspoiler="false" globalspoiler="false" verified="true" update="2017-12-01">
+            <name>romance</name>
+            <description>Romance describes a story that deals with love between two or more characters typically also having an optimistic ending. Romance is also a difficulty encountered when creating a harem.</description>
+            <picurl>210061.jpg</picurl>
+        </tag>
+        <tag id="2869" parentid="2607" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2017-12-01">
+            <name>school life</name>
+            <description>Since a large part of the anime audience still takes part in school life or is visiting college, it is only natural to choose a setting the audience can identify with, be it elementary, middle, or high school. For the older viewers a college setting with more mature real-life problems is appropriate. And since clubs take up so much time in the lives of students, these are obviously also important.</description>
+            <picurl>210062.jpg</picurl>
+        </tag>
+        <tag id="2885" parentid="2607" weight="200" localspoiler="false" globalspoiler="false" verified="true" update="2019-09-21">
+            <name>law and order</name>
+            <description>Where there is "wealth", there are criminals. It is up to the civil law enforcement, i.e. detectives, Police or Special Squads, to keep the lawless activities in the real world or in cyberspace under control.
+Note: Do not confuse this with Military presence.</description>
+            <picurl>238616.jpg</picurl>
+        </tag>
+        <tag id="2897" parentid="2885" weight="200" localspoiler="false" globalspoiler="false" verified="true" update="2019-09-21">
+            <name>police</name>
+            <description>The police (civil servants) are the good guys in the battle against crime. Though they try hard, they are usually outclassed by super-criminals or criminal organizations in anime, requiring the help of special units or some lone hero.</description>
+            <picurl>238615.jpg</picurl>
+        </tag>
+        <tag id="2931" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2016-12-04">
+            <name>unsorted</name>
+            <description>a bunch of tags that still need to be either deleted or moved into proper places.</description>
+        </tag>
+        <tag id="3028" parentid="6151" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2012-10-17">
+            <name>real-world location</name>
+            <description>Places seen in the show exist in reality.
+Note: This could be sometime in the future, though names and certain places will still be recognizable.</description>
+        </tag>
+        <tag id="3088" parentid="2931" weight="0" localspoiler="false" globalspoiler="false" verified="false" update="2012-10-31">
+            <name>manipulation</name>
+            <description>When someone else is pulling the strings.</description>
+        </tag>
+        <tag id="3149" parentid="2607" weight="200" localspoiler="false" globalspoiler="false" verified="true" update="2016-09-15">
+            <name>journalism</name>
+            <description>Journalism is the work and distribution of reports on the interaction of events, facts, ideas, and people that are the "news of the day" and that informs society to at least some degree. The word applies to the occupation (professional or not), the methods of gathering information, and the organizing literary styles. Journalistic media include: print, television, radio, Internet and, in the past, newsreels.
+Source: Wikipedia</description>
+        </tag>
+        <tag id="3245" parentid="2931" weight="0" localspoiler="false" globalspoiler="false" verified="false" update="2010-02-05">
+            <name>strategy</name>
+            <description>Instead of blindly running into a battle or trap, at least one of the protagonists devises a clever strategy to significantly improve the odds of victory.</description>
+        </tag>
+        <tag id="3267" parentid="6242" weight="0" localspoiler="false" globalspoiler="true" verified="true" update="2009-05-22">
+            <name>everybody dies</name>
+            <description>Not necessarily everyone, but a good portion of the characters kick the bucket.</description>
+        </tag>
+        <tag id="3278" parentid="2931" weight="0" localspoiler="true" globalspoiler="false" verified="false">
+            <name>deception</name>
+        </tag>
+        <tag id="3295" parentid="2607" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-09-29">
+            <name>world domination</name>
+            <description>"Gee, Brain, what do you want to do tonight?"
+"The same thing we do every night, Pinky: try to take over the world!"
+A main objective for one of the characters is absolute control of not just one country, but a whole planet!</description>
+            <picurl>38878.jpg</picurl>
+        </tag>
+        <tag id="3379" parentid="2931" weight="0" localspoiler="false" globalspoiler="false" verified="false" update="2008-06-25">
+            <name>killing criminals</name>
+        </tag>
+        <tag id="3453" parentid="6232" weight="0" localspoiler="false" globalspoiler="false" verified="false" update="2013-04-25">
+            <name>vile protagonist</name>
+            <description>The protagonist of this anime is portrayed as highly unsympathetic, cruel or even evil.</description>
+        </tag>
+        <tag id="4073" parentid="6149" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2019-08-15">
+            <name>unusual weapons -- TO BE SPLIT AND DELETED</name>
+            <description>This anime tag is set to be split into multiple character tags. If you are sure of what existing tag to use, please apply it to the relevant characters and remove this one from the anime. On the other hand, if you know why this tag is applied and either expect a new tag will be necessary or don`t know how to handle the retagging, simply remove it from the anime and explain the case to the mod.</description>
+        </tag>
+        <tag id="4078" parentid="6233" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2011-10-09">
+            <name>grail in the garbage</name>
+            <description>It`s an artifact of earth-shaking power. Its value is immeasurable, its history is the stuff of legends. It`s... being offered at a clearance price at the local discount store. (e.g. Chii in Chobits, Saito`s sword in Zero no Tsukaima)</description>
+        </tag>
+        <tag id="4153" parentid="2931" weight="0" localspoiler="false" globalspoiler="false" verified="false" update="2010-03-15">
+            <name>dark</name>
+            <description>Describes the overall mood in this anime. Dark colours, a non-happy, often tragic story, dark lighting, many night scenes or constantly dark skies, and continuous rain all contribute to setting this mood.
+The anime will often be quite depressing to watch.</description>
+        </tag>
+        <tag id="4170" parentid="5626" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2009-08-08">
+            <name>police are useless</name>
+            <description>The civilian law enforcement representatives do not seem to be of much use, when trying to take on the usually vastly superior foes.
+The "helpless" and often clumsy antics of the police can be used as a comedy element.</description>
+        </tag>
+        <tag id="4224" parentid="7242" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2019-03-03">
+            <name>adapted into JDrama</name>
+            <description>This anime is a http://anidb.net/t2797 [new original work], and it has been adapted into a JDrama.
+A JDrama (Japanese drama), also called "terebi dorama" ("television drama") or "dorama" for short, is a Japanese live action television series.
+Japan produces many drama series every year, from a huge variety of genres. Like anime, they generally air in three-month seasons or multiples thereof, with new shows airing every season. Some kinds of drama, especially the morning or afternoon ones, tend to be broadcast daily, while evening ones tend to be broadcast weekly, also like anime.
+In exceedingly rare instances, a specific episode of a new original work anime can also be adapted.</description>
+        </tag>
+        <tag id="4281" parentid="2931" weight="0" localspoiler="false" globalspoiler="false" verified="false" update="2010-04-11">
+            <name>mind games</name>
+            <description>An act or series of acts of calculated psychological manipulation, especially in order to confuse or intimidate.</description>
+        </tag>
+        <tag id="4314" parentid="2931" weight="0" localspoiler="false" globalspoiler="false" verified="false" update="2010-04-11">
+            <name>psychological</name>
+            <description>Directed toward dealing with or affecting the mind, especially as a function of awareness, feeling, or motivation.</description>
+        </tag>
+        <tag id="4316" parentid="6242" weight="200" localspoiler="false" globalspoiler="false" verified="true" update="2018-11-11">
+            <name>murder</name>
+            <description>To murder means to bring about someone else`s death, by a voluntary act. Whether it comes from the killer`s own hand or by exposing the victim to life-threatening circumstances, the result is foreseeable and sought by the perpetrator. Someone who murders as their profession/job is an http://anidb.net/t2399 [assassin or hitman].</description>
+        </tag>
+        <tag id="4343" parentid="2931" weight="0" localspoiler="false" globalspoiler="true" verified="false" update="2009-09-21">
+            <name>main character dies</name>
+            <description>At least one of the main characters in the anime dies.</description>
+        </tag>
+        <tag id="4398" parentid="6230" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2019-02-23">
+            <name>antihero</name>
+            <description>An antihero is a main character in a story who lacks conventional heroic qualities and attributes such as idealism, courage and morality. Although antiheroes may sometimes perform actions that are morally correct, it is not always for the right reasons, often acting primarily out of self-interest or in ways that defy conventional ethical codes.
+A villain protagonist is where the leading character of the story (the protagonist) is also a villain; this is a fairly rare occurrence.</description>
+            <picurl>70856.jpg</picurl>
+        </tag>
+        <tag id="4537" parentid="2605" weight="0" localspoiler="true" globalspoiler="false" verified="true" update="2014-02-15">
+            <name>time skip</name>
+            <description>The plot features at least one skip or jump in time.
+Example: A skip from the present into the past, or time skips in increments, e.g. every hour there is a time skip by a day.</description>
+        </tag>
+        <tag id="5604" parentid="2607" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-09-04">
+            <name>following one`s dream</name>
+            <description>No matter what the hardships may be, at least one of the protagonists in this anime is following her/his dream.
+Examples: To become a professional athlete, a musician, a painter or the ruler of this world!</description>
+        </tag>
+        <tag id="5626" parentid="6233" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2018-03-22">
+            <name>adults are useless</name>
+            <description>For when adults can`t do anything right.</description>
+        </tag>
+        <tag id="5826" parentid="2607" weight="300" localspoiler="false" globalspoiler="false" verified="true" update="2011-04-12">
+            <name>rivalry</name>
+            <description>Quite broadly used term describing a conflict, contest, struggle, or opposition of some sort.
+Typical examples: The mostly comedic rivalry for the love of a protagonist in a harem anime (love polygon), the more "mindless" battles between wannabe delinquents in a school fighting anime, or the struggle between good &amp; evil in an epic conflict for world domination.</description>
+        </tag>
+        <tag id="5863" parentid="2798" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2018-10-06">
+            <name>Weekly Shounen Jump</name>
+            <description>The Weekly Shounen Jump is a Japanese manga magazine released on a weekly basis. Its main target audience consists of young males and it features several manga titles. The magazine was created by http://anidb.net/cr780 [Shueisha] in July, 1968, and was originally only called Shounen Jump, because it was not published every week at the time. A number of very famous shounen manga were or are published in it, such as http://anidb.net/a386 [Hokuto no Ken], http://anidb.net/a231 [Dragon Ball], http://anidb.net/a942 [City Hunter], http://anidb.net/a826 [Saint Seiya], http://anidb.net/a590 [Slam Dunk], http://anidb.net/a312 [Yuu Yuu Hakushou], http://anidb.net/a69 [One Piece], http://anidb.net/a239 [Naruto], http://anidb.net/a2369 [Bleach], http://anidb.net/a4563 [Death Note], http://anidb.net/a3468 [Gintama], to name a few of the most well-known.</description>
+            <picurl>66685.png</picurl>
+        </tag>
+        <tag id="5882" parentid="6149" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2009-06-01">
+            <name>secret identity</name>
+            <description>The (usually main) protagonist has a secret identity that he or she desperately tries to keep secret.
+This can lead to all sorts of amusing misunderstandings, thus is used as comedy element in some anime.</description>
+        </tag>
+        <tag id="6005" parentid="2607" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2011-10-17">
+            <name>battle of wits</name>
+            <description>There is some intellectual battle between the characters. They each might attempt to discern what the other knows and/or could be planning. Then, rather than simply relying on the use of raw power, try to deduce an effective strategy to foil their opponent(s). The battle of wits can be in the center of the intrigue or just a side story.
+Examples: Death Note, Code Geass</description>
+        </tag>
+        <tag id="6018" parentid="6230" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2011-11-27">
+            <name>predominantly adult cast</name>
+            <description>This show features mostly adults. That means children and teenagers are relatively rare and unlikely to hold significance to the plot.
+That is a rare trait in anime, as most shows spin around children or teenagers.</description>
+        </tag>
+        <tag id="6029" parentid="6233" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2020-04-08">
+            <name>mundane made awesome</name>
+            <description>Sometimes normal just doesn`t cut it. Eating: you put food in your mouth and chew. Playing sports: you throw a ball around. You need to make it awesome, no matter how mundane it is.
+Let`s throw in some gripping orchestral music, lighting changes, different camera angles, something! Don`t write like a man, write like an evil overlord! Exaggerate your expressions and gestures, speak with excessive intonation, and if all else fails, throw in some close-ups, slow motion, and ominous Latin chanting! With practice, even you can turn something like eating chips into an epic battle of light and dark, blinding the viewer with sheer awesomeness.
+[Source: TV Tropes]</description>
+            <picurl>149443.jpg</picurl>
+        </tag>
+        <tag id="6070" parentid="2611" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2010-03-15">
+            <name>mystery</name>
+            <description>The mystery film is a sub-genre of the more general category of crime film. It focuses on the efforts of the detective, private investigator or amateur sleuth to solve the mysterious circumstances of a crime by means of clues, investigation, and clever deduction. (Source: Wikipedia)</description>
+        </tag>
+        <tag id="6072" parentid="6233" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2017-12-25">
+            <name>just as planned</name>
+            <description>A term usually used to describe a situation, where a seemingly smart and cunning villain sets up a plan that seems grand and impressive, but is actually long winding, ridiculous, and convoluted. And all of that just to trick his opponent(s), like the hero or anybody else, into doing things exactly as he planned. Suffice to say that the villain could have reached his goal by much shorter and easier means, it just wouldn`t seem as awesome anymore.
+The phrase is also known as the original Japanese "keikaku doori" where keikaku stands translated for "plan" or "schedule", and doori for "in accordance with ..." or "following ...".
+The phrase is a reference to http://anidb.net/ch301 [Yagami Light] from http://anidb.net/a4563 [Death Note], and his love for plans.</description>
+            <picurl>211219.jpg</picurl>
+        </tag>
+        <tag id="6149" parentid="30" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-09-10">
+            <name>TO BE MOVED TO CHARACTER</name>
+            <description>Tags under this parent tag are going to be moved to character tags and removed from the anime they`re currently assigned to. They will be blocked from the anime system once that move is complete. Please help with that job if you know what characters they should be assigned to.</description>
+        </tag>
+        <tag id="6151" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-09-10">
+            <name>technical aspects</name>
+            <description>It may sometimes be useful to know about technical aspects of a show, such as information about its broadcasting or censorship. Such information can be found here.</description>
+        </tag>
+        <tag id="6173" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-09-24">
+            <name>origin</name>
+        </tag>
+        <tag id="6230" parentid="2605" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-10-20">
+            <name>cast</name>
+        </tag>
+        <tag id="6232" parentid="2931" weight="0" localspoiler="false" globalspoiler="false" verified="false" update="2014-10-21">
+            <name>character related tags which need deleting or merging</name>
+        </tag>
+        <tag id="6233" parentid="2611" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2015-08-11">
+            <name>tropes</name>
+            <description>A trope is a commonly recurring literary and rhetorical devices, motifs or clichés in creative works. This use is a broader redefining of a literary trope, the use of figurative language, via word, phrase, or even an image, for artistic effect, such as using a figure of speech.
+Source: Wikipedia</description>
+        </tag>
+        <tag id="6242" parentid="2607" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2019-07-24">
+            <name>death</name>
+            <description>Death is the state of no longer being alive or the process of ceasing to be alive.</description>
+        </tag>
+        <tag id="7050" parentid="2611" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2019-04-18">
+            <name>speculative fiction</name>
+            <description>Speculative fiction is an umbrella genre encompassing fiction with certain elements that do not exist in the real world, often in the context of supernatural, futuristic or other imaginative themes. This includes, but is not limited to, science fiction, fantasy, superhero fiction, horror, utopian and dystopian fiction, fairytale fantasy, supernatural fiction, as well as combinations thereof.
+Source: Wikipedia</description>
+        </tag>
+        <tag id="7075" parentid="7242" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2019-05-07">
+            <name>adapted into Japanese movie</name>
+            <description>This anime is a http://anidb.net/t2797 [new original work], and it has been adapted into a Japanese movie.
+In exceedingly rare instances, a specific episode of a new original work anime can also be adapted.</description>
+        </tag>
+        <tag id="7242" parentid="6151" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2019-03-03">
+            <name>adapted into other media</name>
+            <description>This anime is a http://anidb.net/t2797 [new original work], and it has been adapted into other media formats.
+In exceedingly rare instances, a specific episode of a new original work anime can also be adapted.</description>
+        </tag>
+        <tag id="7885" parentid="6173" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2021-11-07">
+            <name>Japanese production</name>
+        </tag>
+    </tags>
+    <characters>
+        <character id="299" type="main character in" update="2022-02-16">
+            <rating votes="1222">8.84</rating>
+            <name>L Lawliet</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <description>The primary antagonist of the series, L is the world`s top-rated detective and tasked with tracking down and arresting Kira. As such, he is Light`s arch-enemy. He often takes drastic strategies to confuse and force the hand of his opponents, and his dishevelled appearance disguises his brilliance. He enjoys sugar, and in nearly every scene including him, he is found eating cake or confectionery and drinking highly sweetened tea.</description>
+            <picture>169998.jpg</picture>
+            <seiyuu id="254" picture="10967.jpeg">Yamaguchi Kappei</seiyuu>
+        </character>
+        <character id="301" type="main character in" update="2019-04-01">
+            <rating votes="1897">8.39</rating>
+            <name>Yagami Light</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <description>The main character of Death Note, Light is an extremely intelligent but bored 17-year old student. When he finds the Death Note, dropped in the human world by the shinigami Ryuk, he decides to use it to kill all criminals and earns the title Kira. His ultimate goal is to cleanse the world of evil to create a world without criminals and then reign over this new world as its "god."</description>
+            <picture>231916.jpg</picture>
+            <seiyuu id="255" picture="11273.jpeg">Miyano Mamoru</seiyuu>
+        </character>
+        <character id="305" type="secondary cast in" update="2024-04-13">
+            <rating votes="131">2.94</rating>
+            <name>Mello</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <description>Mello, a character present in the anime and manga versions, was an orphan who grew up with Near and Matt in Wammy`s House, Watari`s shelter for "gifted" children. Like Near and Matt, Mello was one of the candidates to become L`s successor. Similar to L`s fondness for sweets, he is often seen eating bars of chocolate. Although Mello is quite intelligent, he often lets his emotions get the better of him.</description>
+            <picture>302867.jpg</picture>
+            <seiyuu id="270" picture="11505.jpeg">Sasaki Nozomu</seiyuu>
+        </character>
+        <character id="307" type="secondary cast in" update="2024-04-13">
+            <rating votes="165">2.72</rating>
+            <name>Near</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <description>A calm and stoic character that appears in the second half of the series. In the anime and manga versions, Near is a primary candidate to become L`s successor and calls himself N during the course of his investigations. He shares a number of similarities with L. Much like how L plays with things such as sugar cubes and forks, Near is frequently shown playing with toys or hair, and he is constantly shown sitting in an unusual manner. After L`s death, he was asked to join forces with Mello, who refused (it is explained that Near lacks the emotional insight to beat L, while Mello is too emotional and impulsive). Near then gained the support of the Government of the United States and formed the Secret Provision for Kira (SPK). In the `extra` manga story, set after the end of the series, Near states that, while he respects Light`s drive for justice, he can never find his `Kira` actions excusable. His real name is Nate River.
+In the film L: Change the World, L grants the name "Near" to a Thai boy who is a mathematical genius; L intends for Near to succeed him.</description>
+            <picture>302843.jpg</picture>
+            <seiyuu id="268" picture="267814.jpg">Hidaka Noriko</seiyuu>
+        </character>
+        <character id="308" type="secondary cast in" update="2019-10-13">
+            <rating votes="471">4.53</rating>
+            <name>Amane Misa</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <description>A girl with an immense crush on Kira, Misa is a popular Japanese idol. She is immature and tends to refer to herself in the third person in an attempt to be cute. She is completely devoted to Light, saying that she loved him at first sight, although the feeling is hardly mutual- since Light merely views her as a rather annoying asset.</description>
+            <picture>169997.jpg</picture>
+            <seiyuu id="4" picture="177060.jpg">Hirano Aya</seiyuu>
+        </character>
+        <character id="311" type="appears in" update="2024-04-13">
+            <rating votes="61">6.31</rating>
+            <name>Mikami Teru</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <description>Criminal prosecutor, fanatical supporter of Kira, and the fourth Kira. Mikami is selected as the new Kira by Light, purely based on his intuition, when he needs a new Kira proxy to hide his identity. He has a sense of righteousness that stems from his childhood, though his perspective was warped over the years. Mikami wishes to punish those he considers to be evil, (which, to Light`s dismay, includes unproductive people and reformed criminals), and worships Kira as a God.</description>
+            <picture>302844.jpg</picture>
+            <seiyuu id="263" picture="287327.jpg">Matsukaze Masaya</seiyuu>
+        </character>
+        <character id="312" type="appears in" update="2024-04-13">
+            <rating votes="43">4.96</rating>
+            <name>Takada Kiyomi</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <description>Kiyomi Takada first appears for a short period as Light`s classmate and girlfriend; Light appeared with Takada in public to disguise the fact that he also conversed with Misa. Takada is a popular girl also known as "Miss To-Oh", short for To-Oh University, or "`Refined` Takada". She returns later in the story as an announcer of NHN chosen by Mikami to be Kira`s spokesperson to the world. Light eventually romances her in order to covertly deliver messages to Mikami, and have her use pages of the Death Note to judge criminals as part of Light`s plan. Takada dislikes Misa and suggests to Light that he should kill Misa on several occasions.</description>
+            <picture>302846.jpg</picture>
+            <seiyuu id="52444" picture="209176.jpg">Okamura Masumi</seiyuu>
+            <seiyuu id="227" picture="205854.jpg">Sakamoto Maaya</seiyuu>
+        </character>
+        <character id="313" type="secondary cast in" update="2015-02-20">
+            <rating votes="109">7.05</rating>
+            <name>Yagami Souichirou</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <description>Yagami Souichirou is Light`s father and a police officer that initially leads the Kira investigation team that later joins with L. When L begins to suspect Light of being Kira, Souichirou is unwilling to believe his son would be capable of such a thing.</description>
+            <picture>10446.gif</picture>
+            <seiyuu id="266" picture="17091.jpg">Uchida Naoya</seiyuu>
+        </character>
+        <character id="314" type="secondary cast in" update="2008-12-10">
+            <rating votes="85">4.47</rating>
+            <name>Matsuda Touta</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <description>Touta Matsuda is the youngest member of the Kira investigation team. Matsuda has the drive to match the other members of the team, but his lack of experience sometimes hinders the investigation. He is described as a "typical young man" who is "easy to get along with" and feels "very excited about trends and gossip;" often listening in on Light`s intimate conversations with Misa and later Takada for the sake of gossip rather than the investigation.</description>
+            <picture>14616.jpg</picture>
+            <seiyuu id="272" picture="233512.jpg">Naitou Ryou</seiyuu>
+        </character>
+        <character id="315" type="appears in" update="2008-12-10">
+            <rating votes="62">3.46</rating>
+            <name>Aizawa Shuuichi</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <description>Shuichi Aizawa is a member of the Kira investigation team that leaves the team under the guise of needing to support his family because the Japanese police cut their funding.</description>
+            <picture>14617.jpg</picture>
+            <seiyuu id="168" picture="246304.jpg">Fujiwara Keiji</seiyuu>
+        </character>
+        <character id="316" type="appears in" update="2008-12-10">
+            <rating votes="23">4.48</rating>
+            <name>Mogi Kanzou</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <description>Kanzo Mogi is one of the most dedicated members of the Kira investigation team, but also one of the most reserved. Mogi rarely speaks, even when someone presents an opinion he agrees with. He is shown to be an excellent actor, becoming an excited and cheery manager for Misa on demand and in seeming contradiction to his usual demeanour.</description>
+            <picture>14620.jpg</picture>
+            <seiyuu id="259" picture="10976.jpeg">Nakai Kazuya</seiyuu>
+        </character>
+        <character id="317" type="appears in" update="2008-12-10">
+            <rating votes="17">3.57</rating>
+            <name>Ide Hideki</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <description>Hideki Ide, appearing in the anime and manga, is one of the few police officers who remains with Soichiro during the Kira Investigation. He initially leaves when he disagrees with L`s methods. Ide later returns and plays a relatively minor role in the Kira investigative team. He helps coordinate their efforts, and performs actions such as organizing a blockade of police cars to trap Higuchi.</description>
+            <picture>14618.jpg</picture>
+            <seiyuu id="258" picture="17080.jpg">Ishikawa Hideo</seiyuu>
+        </character>
+        <character id="318" type="appears in" update="2008-12-10">
+            <rating votes="8">2.97</rating>
+            <name>Ukita Hirokazu</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <description>Hirokazu Ukita is a member of the Kira investigation team that is led by L. He is characterized as being "young" and "brave" and he smokes a lot of cigarettes.</description>
+            <picture>14619.jpg</picture>
+            <seiyuu id="280" picture="265956.jpg">Kiuchi Hidenobu</seiyuu>
+        </character>
+        <character id="319" type="appears in" update="2008-12-10">
+            <rating votes="6">3.30</rating>
+            <name>Kitamura Koreyoshi</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <description>Koreyoshi Kitamura, the NPA deputy director, is Soichiro`s superior. He feels weighted by Yotsuba`s pressure.</description>
+            <picture>14621.jpg</picture>
+            <seiyuu id="261" picture="151648.jpg">Ikeda Masaru</seiyuu>
+        </character>
+        <character id="320" type="appears in" update="2023-11-18">
+            <rating votes="44">5.27</rating>
+            <name>Yagami Sayu</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <description>Light`s younger sister. Often asks Light for help with her homework. Becomes catatonic after the trauma of being kidnapped by the Mafia.</description>
+            <picture>10444.gif</picture>
+            <seiyuu id="257" picture="17078.jpg">Kudou Haruka</seiyuu>
+        </character>
+        <character id="321" type="appears in" update="2013-04-05">
+            <rating votes="11">3.32</rating>
+            <name>Yagami Sachiko</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <description>Light`s mother. Extremely proud of her son.</description>
+            <picture>10445.gif</picture>
+            <seiyuu id="256" picture="188450.jpg">Satou Ai</seiyuu>
+        </character>
+        <character id="350" type="appears in" update="2008-12-10">
+            <rating votes="5">3.10</rating>
+            <name>Takimura Kanichi</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <description>Head of the Japanese police. He`s kidnapped by Mello as a bargaining chip but is ultimately killed by Kira.</description>
+            <picture>14674.jpg</picture>
+        </character>
+        <character id="354" type="appears in" update="2008-12-10">
+            <rating votes="23">4.75</rating>
+            <name>Raye Penber</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <description>FBI agent. On L`s order, the FBI investigates NPA personnel and their families. He tracks Light and is confronted by him during the hijacking of a bus.</description>
+            <picture>14675.jpg</picture>
+            <seiyuu id="258" picture="17080.jpg">Ishikawa Hideo</seiyuu>
+        </character>
+        <character id="358" type="appears in" update="2016-02-03">
+            <rating votes="57">7.37</rating>
+            <name>Misora Naomi</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <description>Raye Penber`s fiancée and former FBI agent. She becomes suspicious of the circumstances surrounding the bus hijacking that Raye was involved in.</description>
+            <picture>182162.jpg</picture>
+            <seiyuu id="291" picture="17122.jpg">Matsui Naoko</seiyuu>
+        </character>
+        <character id="364" type="appears in" update="2008-12-10">
+            <rating votes="24">3.68</rating>
+            <name>Tierry Morrello</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <description>A con man who operates throughout the world. Although a professional in the underworld, he often helps L conduct illegal investigations.</description>
+            <picture>14668.jpg</picture>
+            <seiyuu id="294" picture="53586.jpg">Kirimoto Takuya</seiyuu>
+        </character>
+        <character id="365" type="secondary cast in" update="2008-12-10">
+            <rating votes="48">6.45</rating>
+            <name>Quillsh Wammy</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <description>Watari is L`s assistant, providing logistics to the investigation team. Before the team is formed, he is the only person who has seen L, and the only one capable of contacting L directly. Like L, he represents himself with an Old English "W" on computer screens. He is also a fatherly figure to L. On the surface he is Quillsh Wammy, a famous inventor and founder of Wammy`s House, an orphanage for gifted children in Winchester, England. Watari is well trained in espionage and marksmanship.</description>
+            <picture>14669.jpg</picture>
+            <seiyuu id="37" picture="11292.jpeg">Kobayashi Kiyoshi</seiyuu>
+        </character>
+        <character id="367" type="appears in" update="2013-04-05">
+            <rating votes="17">5.62</rating>
+            <name>Merrie Kenwood</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <description>A thief and expert at break-ins. Her skills are trusted by L.</description>
+            <picture>10447.gif</picture>
+            <seiyuu id="290" picture="24139.jpg">Nagasawa Miki</seiyuu>
+        </character>
+        <character id="375" type="appears in" update="2008-12-10">
+            <rating votes="13">5.46</rating>
+            <name>Matt</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <description>A young man from Wammy`s house. At the orphanage, he was the smartest kid after Near and Mello. He agrees to help Mello.</description>
+            <picture>14677.jpg</picture>
+            <seiyuu id="296" picture="17124.jpg">Nishimura Tomohiro</seiyuu>
+        </character>
+        <character id="380" type="appears in" update="2008-12-10">
+            <rating votes="11">5.15</rating>
+            <name>Roger Ruvie</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <description>The manager of Wammy`s House when Watari isn`t around. When something happens to L or Watari, he will know about it.</description>
+            <picture>14671.jpg</picture>
+            <seiyuu id="278" picture="44088.jpg">Ootake Hiroshi</seiyuu>
+        </character>
+        <character id="384" type="appears in" update="2008-12-10">
+            <rating votes="10">3.49</rating>
+            <name>Shimura Suguru</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <description>Shimura is the Head of Personnel. Shimura`s ability to pay attention to small details allowed him to join the meetings; he noticed subtle changes in "poker-faced" Namikawa`s face.</description>
+            <picture>14680.jpg</picture>
+            <seiyuu id="279" picture="17108.jpg">Yokoo Hiroyuki</seiyuu>
+        </character>
+        <character id="385" type="appears in" update="2008-12-10">
+            <rating votes="8">2.88</rating>
+            <name>Kida Masahiko</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <description>The Vice President of Rights and Planning, Kida controls the finances of the committee and contacts "Eraldo Coil." How to Read 13 describes him as "calm and collected." However he is not able to "deal with surprises," leading him to panic when "Eraldo Coil" asks for more money.</description>
+            <picture>14685.jpg</picture>
+            <seiyuu id="260" picture="17083.jpg">Aizawa Masaki</seiyuu>
+        </character>
+        <character id="386" type="appears in" update="2008-12-10">
+            <rating votes="8">3.38</rating>
+            <name>Hatori Arayoshi</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <description>The Vice President of Marketing, Hatori is the illegitimate son of the company president and uses this fact to benefit himself. How to Read 13 states that he "appears to be something of a lightweight" and that he cannot handle the pressures of the meetings. After Hatori makes a "careless outburst" the Yotsuba Kira kills him.</description>
+            <picture>14691.jpg</picture>
+            <seiyuu id="298" picture="216156.jpg">Tokumoto Yukitoshi</seiyuu>
+        </character>
+        <character id="387" type="appears in" update="2008-12-10">
+            <rating votes="41">2.43</rating>
+            <name>Higuchi Kyousuke</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <description>Higuchi is the head of Technology Development, and is secretly the Yotsuba Kira. Eventually, he is betrayed by the others, who are assisted by L`s task force. This leads to his defeat, and death.</description>
+            <picture>14690.jpg</picture>
+            <seiyuu id="281" picture="151723.jpg">Futamata Issei</seiyuu>
+        </character>
+        <character id="388" type="appears in" update="2008-12-10">
+            <rating votes="16">4.23</rating>
+            <name>Namikawa Reiji</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <description>Namikawa is the Vice President of Sales. He initially encourages the Yotsuba Kira. After receiving a telephone call from Light he ceases participation and observes the scenario. How to Read describes him as the "most talented" of the board members who has the potential to "make it to the top" without Kira. He has a talent in shogi at the professional 4-dan level.</description>
+            <picture>14686.jpg</picture>
+            <seiyuu id="214" picture="11274.jpeg">Nojima Hirofumi</seiyuu>
+        </character>
+        <character id="389" type="appears in" update="2008-12-10">
+            <rating votes="10">2.82</rating>
+            <name>Ooi Takeshi</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <description>Ooi is the Vice President of VT Enterprises. He is the eldest and "most influential" member and he "appears" to control the conferences. He individually contacts the members of the committee. How to Read 13 states that Ooi is "seemingly" a "tough guy who doesn`t sweat the details."</description>
+            <picture>14688.jpg</picture>
+            <seiyuu id="287" picture="280202.jpg">Yanada Kiyoyuki</seiyuu>
+        </character>
+        <character id="390" type="appears in" update="2008-12-10">
+            <rating votes="9">3.94</rating>
+            <name>Midou Shingo</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <description>The Vice President of Rights and Planning, Kida controls the finances of the committee and contacts "Eraldo Coil." How to Read 13 describes him as "calm and collected." However he is not able to "deal with surprises," leading him to panic when "Eraldo Coil" asks for more money.</description>
+            <picture>14689.jpg</picture>
+            <seiyuu id="277" picture="223606.jpg">Hanawa Eiji</seiyuu>
+        </character>
+        <character id="391" type="appears in" update="2008-12-10">
+            <rating votes="8">2.88</rating>
+            <name>Takahashi Eiichi</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <description>Takahashi is the Vice President of Yotsuba Material Planning Division and Yotsuba Homes. How to Read 13 states that he "never had what it takes to be a true leader" and that he was selected to attend the meetings to "make Higuchi look good." The book adds that other members view Takahashi as "foolish" because he does not "seem to put much thought into his comments."</description>
+            <picture>14682.jpg</picture>
+            <seiyuu id="292" picture="68967.jpg">Nishi Rintarou</seiyuu>
+        </character>
+        <character id="392" type="appears in" update="2008-12-10">
+            <rating votes="10">2.81</rating>
+            <name>Ellickson Gardner</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <description>A member of the SPK. Becomes a victim of the Death Note because of the SPK leak.</description>
+            <picture>14698.jpg</picture>
+        </character>
+        <character id="393" type="appears in" update="2008-12-10">
+            <rating votes="6">2.99</rating>
+            <name>John McEnroe</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <description>An FBI officer and SPK member. It`s assumed he died when most of the members were purged.</description>
+            <picture>14692.jpg</picture>
+            <seiyuu id="299" picture="17128.jpg">Koyanagi Motoi</seiyuu>
+        </character>
+        <character id="394" type="appears in" update="2008-12-10">
+            <rating votes="10">3.77</rating>
+            <name>Ill Ratt</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <description>A member of the SPK and also a spy for Mello.</description>
+            <picture>14697.jpg</picture>
+        </character>
+        <character id="395" type="appears in" update="2008-12-10">
+            <rating votes="33">5.88</rating>
+            <name>Halle Lidner</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <description>Halle Lidner is a former Secret Service agent who works for Near as part of the SPK, and is the only female member of this organisation. She joined the SPK to avenge one of her relatives who has been killed by Higuchi at the time when he acted as Kira. She states being on neither Near`s or Mello`s side in the competition to catch Kira, and even leaks information to Mello about the investigation, as her only purpose left is to catch Kira.</description>
+            <picture>14679.jpg</picture>
+            <seiyuu id="192" picture="41287.jpg">Watanabe Akeno</seiyuu>
+        </character>
+        <character id="396" type="appears in" update="2008-12-10">
+            <rating votes="17">5.78</rating>
+            <name>Stephen Gevanni</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <description>Stephen Gevanni, whose real name is Stephen Loud, works for Near as part of his investigation team. Gevanni is assigned to follow Mikami for much of the case, and it is his meticulous analysis of Mikami`s personal habits which allow him to find Mikami`s Death Note and swap it with a fake. Gevanni skilfully follows and monitors suspects and has abilities such as the skill of picking locks.</description>
+            <picture>14694.jpg</picture>
+            <seiyuu id="52" picture="264189.jpg">Takahashi Hiroki</seiyuu>
+        </character>
+        <character id="397" type="appears in" update="2008-12-10">
+            <rating votes="22">3.74</rating>
+            <name>Anthony Rester</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <description>Commander Anthony Rester, real name Anthony Carter, is the second-in-command and the lead crime scene investigator. Rester follows Near except in emergency situations. Near trusts Rester and sometimes reveals certain information solely to Rester. How to Read states that Rester`s "quiet personality" and physical capabilities serve useful functions in the SPK. The book also states that Rester is "far below" Near in terms of intellectual prowress.</description>
+            <picture>14693.jpg</picture>
+            <seiyuu id="260" picture="17083.jpg">Aizawa Masaki</seiyuu>
+        </character>
+        <character id="398" type="appears in" update="2008-12-10">
+            <rating votes="5">4.33</rating>
+            <name>Rod Ross</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <description>The boss of an American crime syndicate, who teams up with Mello to get the Death Note.</description>
+            <picture>14696.jpg</picture>
+            <seiyuu id="260" picture="17083.jpg">Aizawa Masaki</seiyuu>
+        </character>
+        <character id="399" type="appears in" update="2008-12-10">
+            <rating votes="6">2.38</rating>
+            <name>Jack Neylon</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <description>He was one of Ross` low-ranking thugs until he acquired the Death Note.</description>
+            <picture>14700.jpg</picture>
+            <seiyuu id="16701" picture="33550.jpg">Matsuyama Takashi</seiyuu>
+        </character>
+        <character id="406" type="appears in" update="2008-12-10">
+            <rating votes="27">2.42</rating>
+            <name>Demegawa Hitoshi</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <description>Publicity hound and director of Sakura TV. He initially appears when Amane Misa sends four videotapes to Sakura TV in order to gain attention from the real Kira, and approves of broadcasting the tapes on live TV. However, he is forced to hand the tapes over to Soichiro, who crashes a police wagon into the studio and threatens him at gunpoint.</description>
+            <picture>14701.jpg</picture>
+            <seiyuu id="173" picture="150067.jpg">Chafuurin</seiyuu>
+        </character>
+        <character id="407" type="appears in" update="2008-12-10">
+            <rating votes="11">2.29</rating>
+            <name>Steve Mason</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <description>Steve Mason is the head of the Federal Bureau of Investigation. He assists L in investigating the Japanese police and withdraws FBI involvement after the agents die. At a later point he helps Near create the SPK.</description>
+            <picture>14699.jpg</picture>
+            <seiyuu id="264" picture="228626.jpg">Ogata Mitsuru</seiyuu>
+        </character>
+        <character id="408" type="appears in" update="2008-12-10">
+            <rating votes="11">3.32</rating>
+            <name>David Hoope</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <description>David Hoope is the President of the United States of America in the storyline. He assists in the formation of Near`s SPK, and provides information and funding to Mello under threats of the Death Note. He turns to Light, believing that he is the real L, who manipulates him into providing assistance and attacking Mello`s hideout.
+In the anime, he does not commit suicide as the character was merged with that of George Sairas.</description>
+            <picture>14702.jpg</picture>
+            <seiyuu id="275" picture="17102.jpg">Tahara Aruno</seiyuu>
+        </character>
+        <character id="409" type="appears in" update="2008-12-10">
+            <rating votes="7">2.28</rating>
+            <name>Shibuimaru Takuo</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <description>Shibuimaru Takuo is the second person that Light kills. Shibuimaru rides a motorcycle and travels with a group of bikers. After Light sees him chasing a woman, Light writes his name down with a death by traffic accident. A truck slams into Shibuimaru`s motorcycle, killing him.</description>
+            <picture>14703.jpg</picture>
+            <seiyuu id="296" picture="17124.jpg">Nishimura Tomohiro</seiyuu>
+        </character>
+        <character id="410" type="appears in" update="2008-12-10">
+            <rating votes="6">2.28</rating>
+            <name>Otoharada Kurou</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <description>An unemployed 42-year old man, Otoharada Kurou is the first criminal that Light kills in the anime and manga versions. Otoharada`s name is announced on television as he holds eight hostages in a nursery school.</description>
+            <picture>14704.jpg</picture>
+        </character>
+        <character id="411" type="appears in" update="2011-01-25">
+            <rating votes="6">2.48</rating>
+            <name>Osoreda Kiichiro</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <description>Osoreda Kiichirou is a drug addict and criminal used by Light to trick Raye into revealing his FBI badge to Light. Osoreda had failed in an attempt to rob a bank, shooting a teller and two customers as he escaped. Light writes Osoreda`s name in the Death Note, dictating his actions.</description>
+            <picture>14705.jpg</picture>
+            <seiyuu id="282" picture="266829.jpg">Houki Katsuhisa</seiyuu>
+        </character>
+        <character id="412" type="appears in" update="2008-12-10">
+            <rating votes="13">2.83</rating>
+            <name>Lind L. Tailor</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <description>Lind L. Tailor is a convicted criminal sentenced to die; this information was kept secret from the public. L places Tailor as a dummy on television.</description>
+            <picture>14706.jpg</picture>
+            <seiyuu id="298" picture="216156.jpg">Tokumoto Yukitoshi</seiyuu>
+        </character>
+        <character id="413" type="secondary cast in" update="2015-03-14">
+            <rating votes="575">7.45</rating>
+            <name>Ryuk</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <description>Ryuk is the main Shinigami of the Death Note series. Bored with the activities (or lack thereof) of the Shinigami realm, Ryuk obtains a second Death Note and drops it in the human realm for someone to find, hoping to amuse himself. He deliberately writes the instructions on the front page (in English, which he assumed to be the most popular language in the human realm) so people would understand its purpose. The Death Note is discovered by Yagami Light, and Ryuk follows him around for much of the series to see how Light uses it. Ryuuk has a fairly humanoid appearance. His skin is grey, or a purple-ish colour and his limbs are abnormally long and he has bulging yellow eyes with red irises.</description>
+            <picture>169999.jpg</picture>
+            <seiyuu id="273" picture="29202.jpg">Nakamura Shidou</seiyuu>
+        </character>
+        <character id="414" type="secondary cast in" update="2012-10-14">
+            <rating votes="69">5.03</rating>
+            <name>Rem</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <description>Rem is the Shinigami who gives Misa her Death Note. Like Ryuk, Rem possesses two Death Notes; however, Rem did not get hers through trickery. The Shinigami Gelus, who had fallen in love with Misa, sacrificed himself to kill her destined murderer. In doing so he was reduced to dust, leaving only his Death Note. Touched by this act, Rem delivered Gelus` Death Note to Misa, since it was her life he saved. Her appearance is quite skeletal, with long, spinal cord-like arms and bone-like skin.</description>
+            <picture>14708.jpg</picture>
+            <seiyuu id="36" picture="228350.jpg">Saitou Kimiko</seiyuu>
+        </character>
+        <character id="415" type="appears in" update="2015-03-14">
+            <rating votes="16">5.11</rating>
+            <name>Gelus</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <description>Gelus appears in a flashback when Rem explains how to kill a Shinigami. He is a small, doll-like Shinigami whose appearance suggests that he was poorly sewn together from mismatched fabric. He only has one eye, despite having two eye sockets.
+In the flashback, Rem recalls Gelus watching over a younger Amane Misa in the human world. Knowing that it was Misa`s final day, she watches with him. Having fallen in love with Misa, Gelus uses his Death Note to kill Misa`s destined murderer, against Rem`s protests. Gelus is reduced to a pile of dust as punishment for extending a human life, leaving behind only his Death Note. Rem delivers his Death Note to Misa because it was her that he saved. In the film, he simply drops it and it lands near Misa.</description>
+            <picture>170009.jpg</picture>
+            <seiyuu id="285" picture="17116.jpg">Matsuyama Ken`ichi</seiyuu>
+        </character>
+        <character id="416" type="appears in" update="2008-12-10">
+            <rating votes="13">5.01</rating>
+            <name>Shidou</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <description>Sidoh is the Shinigami whose Death Note was stolen by Ryuk. By the time he realises this, however, the note has already changed hands several times, ending up in the hands of Mello`s gang (more specifically, Mello`s subordinate, Jack Neylon). After repeatedly hounding Ryuk for its return, he tracks down the gang to get it back. In order to regain his Note, Sidoh agrees to help Mello`s gang against Near`s SPK and the Kira investigation team. He wears heavy clothing, obscuring most of his features, and his head is wrapped in bandages.</description>
+            <picture>14710.jpg</picture>
+            <seiyuu id="283" picture="267791.jpg">Yao Kazuki</seiyuu>
+        </character>
+        <character id="417" type="appears in" update="2008-12-10">
+            <rating votes="13">4.82</rating>
+            <name>Deridovely</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <description>Deridovely is a Shinigami who spends his time gambling. He is humanoid in appearance, but wears a bone mask over his face. He carries a scythe, making him thematically similar to the classical depiction of the Grim Reaper. He usually gambles with Gukku.</description>
+            <picture>14711.jpg</picture>
+            <seiyuu id="300" picture="226467.jpg">Gotou Tetsuo</seiyuu>
+        </character>
+        <character id="418" type="appears in" update="2008-12-10">
+            <rating votes="13">4.94</rating>
+            <name>Gukku</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <description>Guuku is a lazy Shinigami whose most prominent feature is his animal mask. Like Deridovely, he too enjoys gambling. Despite gambling with Deridovely much of the time, he is a poor gambler. Obata said that, as Guuku appears in the first chapter, he wanted for Guuku to look like a monster to keep it simple. Obata decided to use a cattle skull in the design as he felt that using a regular skull would be boring.</description>
+            <picture>14712.jpg</picture>
+            <seiyuu id="301" picture="186193.jpg">Oonishi Takeharu</seiyuu>
+        </character>
+        <character id="419" type="appears in" update="2008-12-10">
+            <rating votes="8">4.39</rating>
+            <name>Zellogi</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <description>Zellogi wears a Native American headdress and has a hook in place of his left hand. He takes an interest in Ryuk`s activities in the human world, and humans in particular after learning that Ryuk`s Death Note is in a human`s possession. Despite his feeble appearance, he has a highly inquisitive nature. His interests are in furry items and he dislikes moist temperature.</description>
+            <picture>14714.jpg</picture>
+            <seiyuu id="2245">Tokumei Kibo</seiyuu>
+        </character>
+        <character id="37885" type="appears in" update="2011-10-20">
+            <rating votes="4">2.19</rating>
+            <name>Ryuuga Hideki</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <description>Character from TV serial.</description>
+            <picture>70771.jpg</picture>
+            <seiyuu id="10990" picture="273560.jpg">Nishi Kensuke</seiyuu>
+        </character>
+        <character id="91200" type="appears in" update="2017-08-31">
+            <rating votes="2">8.47</rating>
+            <name>Yuri</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>206708.jpg</picture>
+            <seiyuu id="51" picture="264016.jpg">Koshimizu Ami</seiyuu>
+        </character>
+        <character id="114013" type="appears in" update="2020-11-23">
+            <name>Kyouko</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>254474.jpg</picture>
+            <seiyuu id="30757" picture="82468.jpg">Kondou Kanako</seiyuu>
+        </character>
+        <character id="114014" type="appears in" update="2020-11-23">
+            <rating votes="2">6.20</rating>
+            <name>Yuujin</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>254475.jpg</picture>
+            <seiyuu id="595" picture="17993.jpg">Kimoto Orie</seiyuu>
+        </character>
+        <character id="114015" type="appears in" update="2020-11-23">
+            <name>Yoshi</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>254476.jpg</picture>
+            <seiyuu id="4035" picture="77628.jpg">Shioyama Yuka</seiyuu>
+        </character>
+        <character id="114040" type="appears in" update="2020-11-24">
+            <name>Aizawa Eriko</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>254497.jpg</picture>
+            <seiyuu id="63310" picture="76940.png">Inagaki Miwako</seiyuu>
+        </character>
+        <character id="114041" type="appears in" update="2020-11-24">
+            <name>Aizawa Yumi</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>254496.jpg</picture>
+            <seiyuu id="2036" picture="76962.png">Arishima Moyu</seiyuu>
+        </character>
+        <character id="114111" type="appears in" update="2020-11-27">
+            <rating votes="1">5.73</rating>
+            <name>Misa no Kouhai</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>254598.jpg</picture>
+            <seiyuu id="30757" picture="82468.jpg">Kondou Kanako</seiyuu>
+        </character>
+    </characters>
+    <episodes>
+        <episode id="63217" update="2020-08-19">
+            <epno type="1">1</epno>
+            <length>25</length>
+            <airdate>2006-10-04</airdate>
+            <rating votes="128">8.68</rating>
+            <title xml:lang="ja">新生</title>
+            <title xml:lang="en">Rebirth</title>
+            <title xml:lang="de">Wiedergeburt</title>
+            <title xml:lang="fr">Renaissance</title>
+            <title xml:lang="it">Rinascita</title>
+            <title xml:lang="pl">Odrodzenie</title>
+            <title xml:lang="cs">Znovuzrození</title>
+            <title xml:lang="fi">Uudelleensyntymä</title>
+            <title xml:lang="hu">Új élet</title>
+            <title xml:lang="lt">Atgimimas</title>
+            <title xml:lang="tr">Yeniden Doğuş</title>
+            <title xml:lang="x-jat">Shinsei</title>
+            <title xml:lang="sr">Ponovo Rođeni</title>
+            <summary>Brilliant but bored high school student Light Yagami suddenly finds himself holding the power of life and death in his hands—the power of the Death Note.
+Source: crunchyroll</summary>
+            <resources>
+                <resource type="28">
+                    <externalentity>
+                        <identifier>GYW4WKJN6</identifier>
+                    </externalentity>
+                </resource>
+            </resources>
+        </episode>
+        <episode id="63650" update="2020-08-19">
+            <epno type="1">2</epno>
+            <length>25</length>
+            <airdate>2006-10-11</airdate>
+            <rating votes="83">9.02</rating>
+            <title xml:lang="ja">対決</title>
+            <title xml:lang="en">Confrontation</title>
+            <title xml:lang="de">Konfrontation</title>
+            <title xml:lang="fr">Confrontation</title>
+            <title xml:lang="it">Confronto</title>
+            <title xml:lang="pl">Rozgrywka</title>
+            <title xml:lang="cs">Konfrontace</title>
+            <title xml:lang="fi">Yhteenotto</title>
+            <title xml:lang="hu">Összecsapás</title>
+            <title xml:lang="lt">Dvikova</title>
+            <title xml:lang="tr">Yüzleşme</title>
+            <title xml:lang="x-jat">Taiketsu</title>
+            <title xml:lang="sr">Obračun</title>
+            <summary>While the world’s criminals continue to drop dead, L meets by computer with representatives from various nations.
+Source: crunchyroll</summary>
+            <resources>
+                <resource type="28">
+                    <externalentity>
+                        <identifier>GR79X4GV6</identifier>
+                    </externalentity>
+                </resource>
+            </resources>
+        </episode>
+        <episode id="63651" update="2020-08-19">
+            <epno type="1">3</epno>
+            <length>25</length>
+            <airdate>2006-10-18</airdate>
+            <rating votes="62">8.82</rating>
+            <title xml:lang="ja">取引</title>
+            <title xml:lang="en">Dealings</title>
+            <title xml:lang="de">Ein Geschäft</title>
+            <title xml:lang="fr">Pacte</title>
+            <title xml:lang="it">Scambio</title>
+            <title xml:lang="pl">Wymiana</title>
+            <title xml:lang="cs">Dohoda</title>
+            <title xml:lang="fi">Sopimuksia</title>
+            <title xml:lang="hu">Az alku</title>
+            <title xml:lang="lt">Sandėris</title>
+            <title xml:lang="tr">Takas</title>
+            <title xml:lang="x-jat">Torihiki</title>
+            <title xml:lang="sr">Razmena</title>
+            <summary>Ryuk, the Shinigami, or god of death, who dropped the Death Note into the human world, warns Light that someone is on his trail.
+Source: crunchyroll</summary>
+            <resources>
+                <resource type="28">
+                    <externalentity>
+                        <identifier>GY1XWGDQY</identifier>
+                    </externalentity>
+                </resource>
+            </resources>
+        </episode>
+        <episode id="63677" update="2006-09-30">
+            <epno type="4">T1</epno>
+            <length>1</length>
+            <airdate>2006-09-17</airdate>
+            <rating votes="3">8.53</rating>
+            <title xml:lang="en">Promo</title>
+        </episode>
+        <episode id="63943" update="2020-02-09">
+            <epno type="3">C1</epno>
+            <length>2</length>
+            <airdate>2006-10-04</airdate>
+            <rating votes="8">9.76</rating>
+            <title xml:lang="en">Opening 1a</title>
+        </episode>
+        <episode id="63981" update="2018-04-01">
+            <epno type="3">C5</epno>
+            <length>2</length>
+            <airdate>2006-10-04</airdate>
+            <rating votes="9">9.25</rating>
+            <title xml:lang="en">Ending 1</title>
+        </episode>
+        <episode id="64277" update="2020-08-19">
+            <epno type="1">4</epno>
+            <length>25</length>
+            <airdate>2006-10-25</airdate>
+            <rating votes="60">9.05</rating>
+            <title xml:lang="ja">追跡</title>
+            <title xml:lang="en">Pursuit</title>
+            <title xml:lang="de">Verfolgt</title>
+            <title xml:lang="fr">Poursuite</title>
+            <title xml:lang="it">Inseguimento</title>
+            <title xml:lang="pl">Poszukiwanie</title>
+            <title xml:lang="cs">Pronásledování</title>
+            <title xml:lang="fi">Takaa-ajo</title>
+            <title xml:lang="hu">Üldözés</title>
+            <title xml:lang="lt">Persekiojimas</title>
+            <title xml:lang="tr">Takip</title>
+            <title xml:lang="x-jat">Tsuiseki</title>
+            <title xml:lang="sr">Potera</title>
+            <summary>Light—now known to the world as Kira—tests the Death Note to understand the scope of its powers by killing off six convicts in various ways…
+Source: crunchyroll</summary>
+            <resources>
+                <resource type="28">
+                    <externalentity>
+                        <identifier>GYQWD3NQY</identifier>
+                    </externalentity>
+                </resource>
+            </resources>
+        </episode>
+        <episode id="64278" update="2020-08-19">
+            <epno type="1">5</epno>
+            <length>25</length>
+            <airdate>2006-11-01</airdate>
+            <rating votes="58">8.79</rating>
+            <title xml:lang="ja">駆引</title>
+            <title xml:lang="en">Tactics</title>
+            <title xml:lang="de">Strategien</title>
+            <title xml:lang="fr">Tactique</title>
+            <title xml:lang="it">Strategia</title>
+            <title xml:lang="pl">Taktyki</title>
+            <title xml:lang="fi">Taktiikoita</title>
+            <title xml:lang="hu">Taktikázás</title>
+            <title xml:lang="lt">Taktikos</title>
+            <title xml:lang="tr">Taktik</title>
+            <title xml:lang="x-jat">Kahiki</title>
+            <title xml:lang="sr">Diplomatija</title>
+            <summary>Soichiro Yagami demands to meet with L in person when he finds out that L has secretly brought FBI agents into Japan.
+Source: crunchyroll</summary>
+            <resources>
+                <resource type="28">
+                    <externalentity>
+                        <identifier>G60X5WKWR</identifier>
+                    </externalentity>
+                </resource>
+            </resources>
+        </episode>
+        <episode id="64279" update="2020-08-19">
+            <epno type="1">6</epno>
+            <length>25</length>
+            <airdate>2006-11-08</airdate>
+            <rating votes="50">9.06</rating>
+            <title xml:lang="ja">綻び</title>
+            <title xml:lang="en">Unraveling</title>
+            <title xml:lang="de">Das Detail</title>
+            <title xml:lang="fr">Déchirure</title>
+            <title xml:lang="it">Strappo</title>
+            <title xml:lang="pl">Otwarta Rana</title>
+            <title xml:lang="fi">Vyyhti purkautuu</title>
+            <title xml:lang="hu">Forró nyomon</title>
+            <title xml:lang="lt">Sezamas Atsiveria</title>
+            <title xml:lang="tr">Çözülme</title>
+            <title xml:lang="x-jat">Hokorobi</title>
+            <title xml:lang="sr">Otvorena Ivica</title>
+            <summary>Light meets a woman at the Police Department with an urgent message for the Kira task force.
+Source: crunchyroll</summary>
+            <resources>
+                <resource type="28">
+                    <externalentity>
+                        <identifier>GRW4WK50Y</identifier>
+                    </externalentity>
+                </resource>
+            </resources>
+        </episode>
+        <episode id="65023" update="2020-08-19">
+            <epno type="1">7</epno>
+            <length>25</length>
+            <airdate>2006-11-15</airdate>
+            <rating votes="70">9.71</rating>
+            <title xml:lang="ja">曇天</title>
+            <title xml:lang="en">Overcast</title>
+            <title xml:lang="de">Wolkenverhangen</title>
+            <title xml:lang="fr">Temps couvert</title>
+            <title xml:lang="it">Cielo coperto</title>
+            <title xml:lang="pl">Pokusa</title>
+            <title xml:lang="cs">Změna situace</title>
+            <title xml:lang="fi">Synkkä taivas</title>
+            <title xml:lang="hu">Borús ég</title>
+            <title xml:lang="tr">Bulutlu Gökyüzü</title>
+            <title xml:lang="x-jat">Donten</title>
+            <title xml:lang="sr">Iskušenje</title>
+            <summary>Light uses the Death Note to try to get rid of the woman who could get him captured, and is shocked when it doesn`t work.
+Source: crunchyroll</summary>
+            <resources>
+                <resource type="28">
+                    <externalentity>
+                        <identifier>G679X4GZY</identifier>
+                    </externalentity>
+                </resource>
+            </resources>
+        </episode>
+        <episode id="65024" update="2020-08-19">
+            <epno type="1">8</epno>
+            <length>25</length>
+            <airdate>2006-11-22</airdate>
+            <rating votes="51">9.07</rating>
+            <title xml:lang="ja">目線</title>
+            <title xml:lang="en">Glare</title>
+            <title xml:lang="de">Blickwinkel</title>
+            <title xml:lang="fr">Regard</title>
+            <title xml:lang="it">Sguardo</title>
+            <title xml:lang="pl">Zasięg wzroku</title>
+            <title xml:lang="fi">Näkymiä</title>
+            <title xml:lang="hu">Nézőpont</title>
+            <title xml:lang="tr">Bakış</title>
+            <title xml:lang="x-jat">Mesen</title>
+            <summary>L insists on setting up bugs and cameras in the homes of Chief Yagami and Deputy Director Kitamura...
+Source: crunchyroll</summary>
+            <resources>
+                <resource type="28">
+                    <externalentity>
+                        <identifier>GYXJG2W86</identifier>
+                    </externalentity>
+                </resource>
+            </resources>
+        </episode>
+        <episode id="65025" update="2020-08-19">
+            <epno type="1">9</epno>
+            <length>25</length>
+            <airdate>2006-11-29</airdate>
+            <rating votes="52">8.65</rating>
+            <title xml:lang="ja">接触</title>
+            <title xml:lang="en">Encounter</title>
+            <title xml:lang="de">Kontakt</title>
+            <title xml:lang="fr">Contact</title>
+            <title xml:lang="it">Contatto</title>
+            <title xml:lang="pl">Kontakt</title>
+            <title xml:lang="fi">Kontakti</title>
+            <title xml:lang="hu">Találkozás</title>
+            <title xml:lang="tr">Temas</title>
+            <title xml:lang="x-jat">Sesshoku</title>
+            <summary>The murders continue, and L grows suspicious of Light`s too-perfect behavior and decides to investigate him on his own.
+Source: crunchyroll</summary>
+            <resources>
+                <resource type="28">
+                    <externalentity>
+                        <identifier>GR1XWGDER</identifier>
+                    </externalentity>
+                </resource>
+            </resources>
+        </episode>
+        <episode id="65381" update="2020-08-19">
+            <epno type="1">10</epno>
+            <length>25</length>
+            <airdate>2006-12-06</airdate>
+            <rating votes="44">7.98</rating>
+            <title xml:lang="ja">疑惑</title>
+            <title xml:lang="en">Doubt</title>
+            <title xml:lang="de">Der Verdacht</title>
+            <title xml:lang="fr">Doute</title>
+            <title xml:lang="it">Sospetto</title>
+            <title xml:lang="pl">Podejrzenie</title>
+            <title xml:lang="fi">Epäilys</title>
+            <title xml:lang="hu">Gyanú</title>
+            <title xml:lang="tr">Şüphe</title>
+            <title xml:lang="x-jat">Giwaku</title>
+            <summary>L`s suspicion of Light deepens, compelling him to invite Light into the investigation.
+Source: crunchyroll</summary>
+            <resources>
+                <resource type="28">
+                    <externalentity>
+                        <identifier>GYNVN3DGR</identifier>
+                    </externalentity>
+                </resource>
+            </resources>
+        </episode>
+        <episode id="65385" update="2020-08-19">
+            <epno type="1">11</epno>
+            <length>25</length>
+            <airdate>2006-12-13</airdate>
+            <rating votes="51">9.15</rating>
+            <title xml:lang="ja">突入</title>
+            <title xml:lang="en">Assault</title>
+            <title xml:lang="de">Offensive</title>
+            <title xml:lang="fr">Assaut</title>
+            <title xml:lang="it">Irruzione</title>
+            <title xml:lang="pl">Wejście</title>
+            <title xml:lang="fi">Hyökkäys</title>
+            <title xml:lang="hu">Behatolás</title>
+            <title xml:lang="tr">Saldırı</title>
+            <title xml:lang="x-jat">Totsunyuu</title>
+            <summary>As predicted on the tapes sent to Sakura TV, news anchors and commentators who expressed doubt about Kira die one by one.
+Source: crunchyroll</summary>
+            <resources>
+                <resource type="28">
+                    <externalentity>
+                        <identifier>G6MEJ3X7R</identifier>
+                    </externalentity>
+                </resource>
+            </resources>
+        </episode>
+        <episode id="65386" update="2020-08-19">
+            <epno type="1">12</epno>
+            <length>25</length>
+            <airdate>2006-12-27</airdate>
+            <rating votes="47">8.68</rating>
+            <title xml:lang="ja">恋心</title>
+            <title xml:lang="en">Love</title>
+            <title xml:lang="de">Liebe</title>
+            <title xml:lang="fr">Amour</title>
+            <title xml:lang="it">Amore</title>
+            <title xml:lang="pl">Miłość</title>
+            <title xml:lang="fi">Rakkaus</title>
+            <title xml:lang="hu">Szerelem</title>
+            <title xml:lang="tr">Aşk</title>
+            <title xml:lang="x-jat">Koigokoro</title>
+            <summary>With a second Kira now on the loose, L asks Light to join the task force and pose as the real Kira in order to catch the copycat.
+Source: crunchyroll</summary>
+            <resources>
+                <resource type="28">
+                    <externalentity>
+                        <identifier>G63K0EN46</identifier>
+                    </externalentity>
+                </resource>
+            </resources>
+        </episode>
+        <episode id="65387" update="2011-10-20">
+            <epno type="2">S1</epno>
+            <length>25</length>
+            <airdate>2006-12-20</airdate>
+            <rating votes="5">3.81</rating>
+            <title xml:lang="ja">DEATH NOTE特別編</title>
+            <title xml:lang="en">Death Note Special Compilation</title>
+            <title xml:lang="x-jat">Death Note Tokubetsu Hen</title>
+        </episode>
+        <episode id="65582" update="2020-08-19">
+            <epno type="1">13</epno>
+            <length>25</length>
+            <airdate>2007-01-10</airdate>
+            <rating votes="39">9.05</rating>
+            <title xml:lang="ja">告白</title>
+            <title xml:lang="en">Confession</title>
+            <title xml:lang="de">Das Geständnis</title>
+            <title xml:lang="fr">Confession</title>
+            <title xml:lang="it">Dichiarazione</title>
+            <title xml:lang="pl">Wyznanie</title>
+            <title xml:lang="fi">Tunnustus</title>
+            <title xml:lang="hu">Vallomás</title>
+            <title xml:lang="tr">İtiraf</title>
+            <title xml:lang="x-jat">Kokuhaku</title>
+            <summary>Light goes to Aoyama to discover the identity of the second Kira before L becomes more suspicious.
+Source: crunchyroll</summary>
+            <resources>
+                <resource type="28">
+                    <externalentity>
+                        <identifier>GR24G0JP6</identifier>
+                    </externalentity>
+                </resource>
+            </resources>
+        </episode>
+        <episode id="65674" update="2020-08-19">
+            <epno type="1">14</epno>
+            <length>25</length>
+            <airdate>2007-01-17</airdate>
+            <rating votes="40">8.62</rating>
+            <title xml:lang="ja">友達</title>
+            <title xml:lang="en">Friend</title>
+            <title xml:lang="de">Freunde</title>
+            <title xml:lang="fr">Ami</title>
+            <title xml:lang="it">Amico</title>
+            <title xml:lang="pl">Przyjaciel</title>
+            <title xml:lang="fi">Ystävä</title>
+            <title xml:lang="hu">Jóbarát</title>
+            <title xml:lang="tr">Arkadaş</title>
+            <title xml:lang="x-jat">Tomodachi</title>
+            <summary>Light and Misa show each other their Death Notes, and Light asks Misa to have her shinigami Rem get rid of L.
+Source: crunchyroll</summary>
+            <resources>
+                <resource type="28">
+                    <externalentity>
+                        <identifier>GRZJEKV46</identifier>
+                    </externalentity>
+                </resource>
+            </resources>
+        </episode>
+        <episode id="65756" update="2020-08-19">
+            <epno type="1">15</epno>
+            <length>25</length>
+            <airdate>2007-01-24</airdate>
+            <rating votes="42">9.42</rating>
+            <title xml:lang="ja">賭け</title>
+            <title xml:lang="en">Wager</title>
+            <title xml:lang="de">Das Duell</title>
+            <title xml:lang="fr">Pari</title>
+            <title xml:lang="it">Scommessa</title>
+            <title xml:lang="pl">Zakład</title>
+            <title xml:lang="fi">Uhkapeliä</title>
+            <title xml:lang="hu">A tét</title>
+            <title xml:lang="tr">Kumar</title>
+            <title xml:lang="x-jat">Kake</title>
+            <summary>Evidence turns up that points to Misa Amane as the second Kira.
+Srouce: crunchyroll</summary>
+            <resources>
+                <resource type="28">
+                    <externalentity>
+                        <identifier>G6QWD37Q6</identifier>
+                    </externalentity>
+                </resource>
+            </resources>
+        </episode>
+        <episode id="65757" update="2020-08-19">
+            <epno type="1">16</epno>
+            <length>25</length>
+            <airdate>2007-01-31</airdate>
+            <rating votes="41">9.58</rating>
+            <title xml:lang="ja">決断</title>
+            <title xml:lang="en">Decision</title>
+            <title xml:lang="de">Das Urteil</title>
+            <title xml:lang="fr">Décision</title>
+            <title xml:lang="it">Decisione</title>
+            <title xml:lang="pl">Decyzja</title>
+            <title xml:lang="fi">Päätös</title>
+            <title xml:lang="hu">A döntés</title>
+            <title xml:lang="tr">Karar</title>
+            <title xml:lang="x-jat">Ketsudan</title>
+            <summary>Misa is in confinement, though her memories of the Death Note have been completely wiped away.
+Source: crunchyroll</summary>
+            <resources>
+                <resource type="28">
+                    <externalentity>
+                        <identifier>GYW4WKN06</identifier>
+                    </externalentity>
+                </resource>
+            </resources>
+        </episode>
+        <episode id="66641" update="2020-08-19">
+            <epno type="1">17</epno>
+            <length>25</length>
+            <airdate>2007-02-07</airdate>
+            <rating votes="41">9.03</rating>
+            <title xml:lang="ja">執行</title>
+            <title xml:lang="en">Execution</title>
+            <title xml:lang="de">Vollstreckung</title>
+            <title xml:lang="fr">Exécution</title>
+            <title xml:lang="it">Esecuzione</title>
+            <title xml:lang="pl">Egzekucja</title>
+            <title xml:lang="fi">Teloitus</title>
+            <title xml:lang="hu">A kivégzés</title>
+            <title xml:lang="tr">İdam</title>
+            <title xml:lang="x-jat">Shikkou</title>
+            <summary>After fifty days of confinement the killings continue, and Misa and Light are released.
+Source: crunchyroll</summary>
+            <resources>
+                <resource type="28">
+                    <externalentity>
+                        <identifier>GR0X5W4WY</identifier>
+                    </externalentity>
+                </resource>
+            </resources>
+        </episode>
+        <episode id="66912" update="2020-08-19">
+            <epno type="1">18</epno>
+            <length>25</length>
+            <airdate>2007-02-14</airdate>
+            <rating votes="40">5.61</rating>
+            <title xml:lang="ja">仲間</title>
+            <title xml:lang="en">Ally</title>
+            <title xml:lang="de">Kollegen</title>
+            <title xml:lang="fr">Allié</title>
+            <title xml:lang="it">Compagni</title>
+            <title xml:lang="pl">Towarzysze</title>
+            <title xml:lang="fi">Toverit</title>
+            <title xml:lang="hu">Társak</title>
+            <title xml:lang="tr">Yoldaş</title>
+            <title xml:lang="x-jat">Nakama</title>
+            <summary>Though L is still suspicious, Light and Misa, their memories of being Kira wiped clean, return to headquarters...
+Source: crunchyroll</summary>
+            <resources>
+                <resource type="28">
+                    <externalentity>
+                        <identifier>GR79X43Z6</identifier>
+                    </externalentity>
+                </resource>
+            </resources>
+        </episode>
+        <episode id="66913" update="2020-08-19">
+            <epno type="1">19</epno>
+            <length>25</length>
+            <airdate>2007-02-21</airdate>
+            <rating votes="39">5.50</rating>
+            <title xml:lang="ja">松田</title>
+            <title xml:lang="en">Matsuda</title>
+            <title xml:lang="de">Matsuda</title>
+            <title xml:lang="fr">Matsuda</title>
+            <title xml:lang="it">Matsuda</title>
+            <title xml:lang="pl">Matsuda</title>
+            <title xml:lang="fi">Matsuda</title>
+            <title xml:lang="hu">Matsuda</title>
+            <title xml:lang="tr">Matsuda</title>
+            <title xml:lang="x-jat">Matsuda</title>
+            <summary>Matsuda, the task force member assigned to watch Misa, is eager to distinguish himself...
+Source: crunchyroll</summary>
+            <resources>
+                <resource type="28">
+                    <externalentity>
+                        <identifier>G6XJG2K8R</identifier>
+                    </externalentity>
+                </resource>
+            </resources>
+        </episode>
+        <episode id="66985" update="2020-08-19">
+            <epno type="1">20</epno>
+            <length>25</length>
+            <airdate>2007-02-28</airdate>
+            <rating votes="39">6.93</rating>
+            <title xml:lang="ja">姑息</title>
+            <title xml:lang="en">Makeshift</title>
+            <title xml:lang="de">Das Provisorium</title>
+            <title xml:lang="fr">Expédient</title>
+            <title xml:lang="it">Espediente</title>
+            <title xml:lang="pl">Zastępstwo</title>
+            <title xml:lang="fi">Hätäratkaisu</title>
+            <title xml:lang="hu">A hamisítvány</title>
+            <title xml:lang="tr">Geçici Önlem</title>
+            <title xml:lang="x-jat">Kosoku</title>
+            <summary>L`s team discover that the Yotsuba Group meet in secret to discuss the elimination of individuals who are troublesome to their company...
+Source: crunchyroll</summary>
+            <resources>
+                <resource type="28">
+                    <externalentity>
+                        <identifier>GY1XWG1EY</identifier>
+                    </externalentity>
+                </resource>
+            </resources>
+        </episode>
+        <episode id="67386" update="2020-08-19">
+            <epno type="1">21</epno>
+            <length>25</length>
+            <airdate>2007-03-07</airdate>
+            <rating votes="36">8.10</rating>
+            <title xml:lang="ja">活躍</title>
+            <title xml:lang="en">Performance</title>
+            <title xml:lang="de">Aktivitäten</title>
+            <title xml:lang="fr">Performance</title>
+            <title xml:lang="it">Recita</title>
+            <title xml:lang="pl">Aktywność</title>
+            <title xml:lang="fi">Toimeliaisuutta</title>
+            <title xml:lang="hu">Akcióban</title>
+            <title xml:lang="tr">Rol Yapmak</title>
+            <title xml:lang="x-jat">Katsuyaku</title>
+            <summary>The Yotsuba Group hires Eraldo Coil to uncover L`s identity
+Source: crunchyroll</summary>
+            <resources>
+                <resource type="28">
+                    <externalentity>
+                        <identifier>G6NVN3GGY</identifier>
+                    </externalentity>
+                </resource>
+            </resources>
+        </episode>
+        <episode id="67468" update="2020-08-19">
+            <epno type="1">22</epno>
+            <length>25</length>
+            <airdate>2007-03-14</airdate>
+            <rating votes="41">8.70</rating>
+            <title xml:lang="ja">誘導</title>
+            <title xml:lang="en">Guidance</title>
+            <title xml:lang="de">Hinführung</title>
+            <title xml:lang="fr">Conduite</title>
+            <title xml:lang="it">Guida</title>
+            <title xml:lang="pl">Kierownictwo</title>
+            <title xml:lang="fi">Juonittelua</title>
+            <title xml:lang="hu">Csapdába űzve</title>
+            <title xml:lang="tr">Tavsiye</title>
+            <title xml:lang="x-jat">Yuudou</title>
+            <summary>Misa succeeds in narrowing down the Kira suspects in the Yotsuba Group to one: Higuchi.
+Source: crunchyroll</summary>
+            <resources>
+                <resource type="28">
+                    <externalentity>
+                        <identifier>GRMEJ3W7Y</identifier>
+                    </externalentity>
+                </resource>
+            </resources>
+        </episode>
+        <episode id="67469" update="2020-08-19">
+            <epno type="1">23</epno>
+            <length>25</length>
+            <airdate>2007-03-21</airdate>
+            <rating votes="42">9.51</rating>
+            <title xml:lang="ja">狂騒</title>
+            <title xml:lang="en">Frenzy</title>
+            <title xml:lang="de">Tumult</title>
+            <title xml:lang="fr">Frénésie</title>
+            <title xml:lang="it">Frenesia</title>
+            <title xml:lang="pl">Szaleństwo</title>
+            <title xml:lang="fi">Raivo</title>
+            <title xml:lang="hu">Őrült hajsza</title>
+            <title xml:lang="tr">Delilik</title>
+            <title xml:lang="x-jat">Kyousou</title>
+            <summary>Higuchi of the Yotsuba Group attempts to kill Matsuda of the task force, and is surprised when he doesn`t die after 40 seconds.
+Source: crunchyroll</summary>
+            <resources>
+                <resource type="28">
+                    <externalentity>
+                        <identifier>GR3K0E04R</identifier>
+                    </externalentity>
+                </resource>
+            </resources>
+        </episode>
+        <episode id="67709" update="2020-08-19">
+            <epno type="1">24</epno>
+            <length>25</length>
+            <airdate>2007-03-28</airdate>
+            <rating votes="52">9.51</rating>
+            <title xml:lang="ja">復活</title>
+            <title xml:lang="en">Revival</title>
+            <title xml:lang="de">Das Comeback</title>
+            <title xml:lang="fr">Résurrection</title>
+            <title xml:lang="it">Resurrezione</title>
+            <title xml:lang="pl">Zmartwychwstanie</title>
+            <title xml:lang="fi">Muistikuvia</title>
+            <title xml:lang="hu">Feltámadás</title>
+            <title xml:lang="tr">Ele Geçirme</title>
+            <title xml:lang="x-jat">Fukkatsu</title>
+            <summary>Higuchi is captured and tells the investigators about the Death Note.
+Source: crunchyroll</summary>
+            <resources>
+                <resource type="28">
+                    <externalentity>
+                        <identifier>GY24G0GPR</identifier>
+                    </externalentity>
+                </resource>
+            </resources>
+        </episode>
+        <episode id="68303" update="2020-08-19">
+            <epno type="1">25</epno>
+            <length>25</length>
+            <airdate>2007-04-04</airdate>
+            <rating votes="73">9.82</rating>
+            <title xml:lang="ja">沈黙</title>
+            <title xml:lang="en">Silence</title>
+            <title xml:lang="de">Schweigen</title>
+            <title xml:lang="fr">Silence</title>
+            <title xml:lang="it">Silenzio</title>
+            <title xml:lang="pl">Cisza</title>
+            <title xml:lang="fi">Hiljaisuus</title>
+            <title xml:lang="hu">Némaság</title>
+            <title xml:lang="tr">Sessizlik</title>
+            <title xml:lang="x-jat">Chinmoku</title>
+            <summary>Light, his memory recovered, orders Misa to begin killing after Higuchi dies.
+Source: crunchyroll</summary>
+            <resources>
+                <resource type="28">
+                    <externalentity>
+                        <identifier>GYZJEKE4R</identifier>
+                    </externalentity>
+                </resource>
+            </resources>
+        </episode>
+        <episode id="68520" update="2020-08-19">
+            <epno type="1">26</epno>
+            <length>25</length>
+            <airdate>2007-04-11</airdate>
+            <rating votes="47">5.59</rating>
+            <title xml:lang="ja">再生</title>
+            <title xml:lang="en">Renewal</title>
+            <title xml:lang="de">Erneuerung</title>
+            <title xml:lang="fr">Reprise</title>
+            <title xml:lang="it">Rigenerazione</title>
+            <title xml:lang="pl">Reinkarnacja</title>
+            <title xml:lang="fi">Jälleensyntyminen</title>
+            <title xml:lang="hu">Újjászületés</title>
+            <title xml:lang="tr">Diriliş</title>
+            <title xml:lang="x-jat">Saisei</title>
+            <summary>Light has removed everyone in his way and is closer to achieving his perfect world.
+Source: crunchyroll</summary>
+            <resources>
+                <resource type="28">
+                    <externalentity>
+                        <identifier>GRQWD3DQR</identifier>
+                    </externalentity>
+                </resource>
+            </resources>
+        </episode>
+        <episode id="68521" update="2020-08-19">
+            <epno type="1">27</epno>
+            <length>25</length>
+            <airdate>2007-04-18</airdate>
+            <rating votes="37">6.66</rating>
+            <title xml:lang="ja">誘拐</title>
+            <title xml:lang="en">Abduction</title>
+            <title xml:lang="de">Die Entführung</title>
+            <title xml:lang="fr">Enlèvement</title>
+            <title xml:lang="it">Rapimento</title>
+            <title xml:lang="pl">Porwanie</title>
+            <title xml:lang="fi">Sieppaus</title>
+            <title xml:lang="hu">Emberrablás</title>
+            <title xml:lang="tr">Adam Kaçırma</title>
+            <title xml:lang="x-jat">Yuukai</title>
+            <summary>A new investigator steps forward—Near, a central figure in the SPK, an organization that is trying to catch Kira without relying on L.
+Source: crunchyroll</summary>
+            <resources>
+                <resource type="28">
+                    <externalentity>
+                        <identifier>G6W4WKW0R</identifier>
+                    </externalentity>
+                </resource>
+            </resources>
+        </episode>
+        <episode id="71898" update="2020-08-19">
+            <epno type="1">28</epno>
+            <length>25</length>
+            <airdate>2007-04-25</airdate>
+            <rating votes="40">7.10</rating>
+            <title xml:lang="ja">焦燥</title>
+            <title xml:lang="en">Impatience</title>
+            <title xml:lang="de">Ungeduld</title>
+            <title xml:lang="fr">Impatience</title>
+            <title xml:lang="it">Impazienza</title>
+            <title xml:lang="pl">Niecierpliwość</title>
+            <title xml:lang="fi">Kärsimättömyys</title>
+            <title xml:lang="hu">Fejetlenség</title>
+            <title xml:lang="tr">Sabırsızlık</title>
+            <title xml:lang="x-jat">Shousou</title>
+            <summary>Light, acting as L, reveals to Near that his sister Sayu has been kidnapped by someone wanting to trade her for the Death Note.
+Source: crunchyroll</summary>
+            <resources>
+                <resource type="28">
+                    <externalentity>
+                        <identifier>GY0X5W5W6</identifier>
+                    </externalentity>
+                </resource>
+            </resources>
+        </episode>
+        <episode id="71930" update="2020-08-19">
+            <epno type="1">29</epno>
+            <length>25</length>
+            <airdate>2007-05-02</airdate>
+            <rating votes="38">8.61</rating>
+            <title xml:lang="ja">父親</title>
+            <title xml:lang="en">Father</title>
+            <title xml:lang="de">Vater</title>
+            <title xml:lang="fr">Père</title>
+            <title xml:lang="it">Padre</title>
+            <title xml:lang="pl">Ojciec</title>
+            <title xml:lang="fi">Isä</title>
+            <title xml:lang="hu">Apa</title>
+            <title xml:lang="tr">Baba</title>
+            <title xml:lang="x-jat">Chichioya</title>
+            <summary>Light tries to discover where Mello and his Mafia associates are hiding and uses Misa`s eyes to find the Death Note`s current owner.
+Source: crunchyroll</summary>
+            <resources>
+                <resource type="28">
+                    <externalentity>
+                        <identifier>GY79X4XZR</identifier>
+                    </externalentity>
+                </resource>
+            </resources>
+        </episode>
+        <episode id="71931" update="2020-08-19">
+            <epno type="1">30</epno>
+            <length>25</length>
+            <airdate>2007-05-09</airdate>
+            <rating votes="38">7.18</rating>
+            <title xml:lang="ja">正義</title>
+            <title xml:lang="en">Justice</title>
+            <title xml:lang="de">Gerechtigkeit</title>
+            <title xml:lang="fr">Justice</title>
+            <title xml:lang="it">Giustizia</title>
+            <title xml:lang="pl">Sprawiedliwość</title>
+            <title xml:lang="fi">Oikeus</title>
+            <title xml:lang="hu">Igazság</title>
+            <title xml:lang="tr">Adalet</title>
+            <title xml:lang="x-jat">Seigi</title>
+            <summary>Mello busts into SPK headquarters to retrieve a photograph of himself to make sure he won`t be killed by Kira.
+Source: crunchyroll</summary>
+            <resources>
+                <resource type="28">
+                    <externalentity>
+                        <identifier>GRXJG2G8Y</identifier>
+                    </externalentity>
+                </resource>
+            </resources>
+        </episode>
+        <episode id="71932" update="2020-08-19">
+            <epno type="1">31</epno>
+            <length>25</length>
+            <airdate>2007-05-16</airdate>
+            <rating votes="37">8.44</rating>
+            <title xml:lang="ja">移譲</title>
+            <title xml:lang="en">Transfer</title>
+            <title xml:lang="de">Übertragung</title>
+            <title xml:lang="fr">Transfert</title>
+            <title xml:lang="it">Passaggio di consegne</title>
+            <title xml:lang="pl">Transfer</title>
+            <title xml:lang="fi">Siirto</title>
+            <title xml:lang="hu">Megbízatás</title>
+            <title xml:lang="tr">Transfer</title>
+            <title xml:lang="x-jat">Ijou</title>
+            <summary>Near contacts the Japanese task force and determines that Kira is among their members.
+Source: crunchyroll</summary>
+            <resources>
+                <resource type="28">
+                    <externalentity>
+                        <identifier>G61XWGWE6</identifier>
+                    </externalentity>
+                </resource>
+            </resources>
+        </episode>
+        <episode id="72066" update="2020-08-19">
+            <epno type="1">32</epno>
+            <length>25</length>
+            <airdate>2007-05-23</airdate>
+            <rating votes="35">8.60</rating>
+            <title xml:lang="ja">選択</title>
+            <title xml:lang="en">Selection</title>
+            <title xml:lang="de">Die Auswahl</title>
+            <title xml:lang="fr">Sélection</title>
+            <title xml:lang="it">Scelta</title>
+            <title xml:lang="pl">Selekcja</title>
+            <title xml:lang="fi">Valinta</title>
+            <title xml:lang="hu">Választás</title>
+            <title xml:lang="tr">Seçim</title>
+            <title xml:lang="x-jat">Sentaku</title>
+            <summary>Star newscaster Kiyomi Takada becomes Kira`s spokesperson to the world...
+Source: crunchyroll</summary>
+            <resources>
+                <resource type="28">
+                    <externalentity>
+                        <identifier>GRNVN3NG6</identifier>
+                    </externalentity>
+                </resource>
+            </resources>
+        </episode>
+        <episode id="72067" update="2020-08-19">
+            <epno type="1">33</epno>
+            <length>25</length>
+            <airdate>2007-05-30</airdate>
+            <rating votes="32">4.48</rating>
+            <title xml:lang="ja">嘲笑</title>
+            <title xml:lang="en">Scorn</title>
+            <title xml:lang="de">Hohngelächter</title>
+            <title xml:lang="fr">Arrogance</title>
+            <title xml:lang="it">Beffa</title>
+            <title xml:lang="pl">Pośmiewisko</title>
+            <title xml:lang="fi">Halveksunta</title>
+            <title xml:lang="hu">Gúnykacaj</title>
+            <title xml:lang="tr">Alay</title>
+            <title xml:lang="x-jat">Choushou</title>
+            <summary>Light pretends to investigate Kiyomi...
+Source: crunchyroll</summary>
+            <resources>
+                <resource type="28">
+                    <externalentity>
+                        <identifier>GYMEJ3J76</identifier>
+                    </externalentity>
+                </resource>
+            </resources>
+        </episode>
+        <episode id="73591" update="2020-08-19">
+            <epno type="1">34</epno>
+            <length>25</length>
+            <airdate>2007-06-06</airdate>
+            <rating votes="32">5.62</rating>
+            <title xml:lang="ja">虎視</title>
+            <title xml:lang="en">Vigilance</title>
+            <title xml:lang="de">Lauern</title>
+            <title xml:lang="fr">Embuscade</title>
+            <title xml:lang="it">Sorveglianza</title>
+            <title xml:lang="pl">Czujność</title>
+            <title xml:lang="fi">Valppaus</title>
+            <title xml:lang="hu">Vigyázó szemek</title>
+            <title xml:lang="tr">Nöbet</title>
+            <title xml:lang="x-jat">Koshi</title>
+            <summary>Aizawa figures out what`s going on and tells Near, who already knows about the notes.
+Source: crunchyroll</summary>
+            <resources>
+                <resource type="28">
+                    <externalentity>
+                        <identifier>GY3K0EQ4Y</identifier>
+                    </externalentity>
+                </resource>
+            </resources>
+        </episode>
+        <episode id="73592" update="2020-08-19">
+            <epno type="1">35</epno>
+            <length>25</length>
+            <airdate>2007-06-13</airdate>
+            <rating votes="31">6.62</rating>
+            <title xml:lang="ja">殺意</title>
+            <title xml:lang="en">Malice</title>
+            <title xml:lang="de">Tötungsabsicht</title>
+            <title xml:lang="fr">Tueur</title>
+            <title xml:lang="it">Intento omicida</title>
+            <title xml:lang="pl">Morderczy zamiar</title>
+            <title xml:lang="fi">Murhanhimo</title>
+            <title xml:lang="hu">Gyilkos szándék</title>
+            <title xml:lang="tr">Ölümcül Niyet</title>
+            <title xml:lang="x-jat">Satsui</title>
+            <summary>Light gives Kiyomi the order to finish off Near.
+Source: crunchyroll</summary>
+            <resources>
+                <resource type="28">
+                    <externalentity>
+                        <identifier>G624G08PY</identifier>
+                    </externalentity>
+                </resource>
+            </resources>
+        </episode>
+        <episode id="73674" update="2020-08-19">
+            <epno type="1">36</epno>
+            <length>25</length>
+            <airdate>2007-06-20</airdate>
+            <rating votes="53">9.28</rating>
+            <title xml:lang="ja">1.28</title>
+            <title xml:lang="en">1.28</title>
+            <title xml:lang="de">1.28</title>
+            <title xml:lang="fr">1,28</title>
+            <title xml:lang="it">28/01</title>
+            <title xml:lang="pl">1.28</title>
+            <title xml:lang="fi">28. tammikuuta</title>
+            <title xml:lang="hu">1.28</title>
+            <title xml:lang="tr">28 Ocak</title>
+            <title xml:lang="x-jat">1.28</title>
+            <summary>Near, along with the SPK, meets Light and the task force at a warehouse for the final showdown.
+Source: crunchyroll</summary>
+            <resources>
+                <resource type="28">
+                    <externalentity>
+                        <identifier>G6ZJEK84Y</identifier>
+                    </externalentity>
+                </resource>
+            </resources>
+        </episode>
+        <episode id="73675" update="2020-08-19">
+            <epno type="1">37</epno>
+            <length>25</length>
+            <airdate>2007-06-27</airdate>
+            <rating votes="76">4.62</rating>
+            <title xml:lang="ja">新世界</title>
+            <title xml:lang="en">New World</title>
+            <title xml:lang="de">Eine neue Welt</title>
+            <title xml:lang="fr">Nouveau monde</title>
+            <title xml:lang="it">Nuovo mondo</title>
+            <title xml:lang="pl">Nowy Świat</title>
+            <title xml:lang="fi">Uusi maailma</title>
+            <title xml:lang="hu">Új világ</title>
+            <title xml:lang="tr">Yeni Dünya</title>
+            <title xml:lang="x-jat">Shinsekai</title>
+            <summary>Though Mikami has written all the investigators` names in the Death Note, a minute passes and everyone is still alive.
+Source: crunchyroll</summary>
+            <resources>
+                <resource type="28">
+                    <externalentity>
+                        <identifier>GYQWD31QY</identifier>
+                    </externalentity>
+                </resource>
+            </resources>
+        </episode>
+        <episode id="78965" update="2018-03-31">
+            <epno type="3">C4</epno>
+            <length>2</length>
+            <airdate>2007-02-28</airdate>
+            <rating votes="7">7.83</rating>
+            <title xml:lang="en">Opening 2</title>
+        </episode>
+        <episode id="78966" update="2018-03-31">
+            <epno type="3">C6</epno>
+            <length>2</length>
+            <airdate>2007-02-28</airdate>
+            <rating votes="4">8.81</rating>
+            <title xml:lang="en">Ending 2</title>
+        </episode>
+        <episode id="95905" update="2015-10-26">
+            <epno type="4">T2</epno>
+            <length>1</length>
+            <airdate>2006-10-04</airdate>
+            <rating votes="2">10.00</rating>
+            <title xml:lang="en">Preview of Episode 2</title>
+        </episode>
+        <episode id="95906" update="2015-10-26">
+            <epno type="4">T3</epno>
+            <length>1</length>
+            <airdate>2006-10-11</airdate>
+            <rating votes="2">8.21</rating>
+            <title xml:lang="en">Preview of Episode 3</title>
+        </episode>
+        <episode id="95907" update="2015-10-26">
+            <epno type="4">T4</epno>
+            <length>1</length>
+            <airdate>2006-10-18</airdate>
+            <rating votes="1">6.91</rating>
+            <title xml:lang="en">Preview of Episode 4</title>
+        </episode>
+        <episode id="95908" update="2015-10-26">
+            <epno type="4">T5</epno>
+            <length>1</length>
+            <airdate>2006-10-25</airdate>
+            <rating votes="1">9.99</rating>
+            <title xml:lang="en">Preview of Episode 5</title>
+        </episode>
+        <episode id="95909" update="2015-10-26">
+            <epno type="4">T36</epno>
+            <length>1</length>
+            <airdate>2007-06-13</airdate>
+            <rating votes="1">6.91</rating>
+            <title xml:lang="en">Preview of Episode 36</title>
+        </episode>
+        <episode id="95910" update="2015-10-26">
+            <epno type="4">T37</epno>
+            <length>1</length>
+            <airdate>2007-06-20</airdate>
+            <rating votes="1">9.99</rating>
+            <title xml:lang="en">Preview of Episode 37</title>
+        </episode>
+        <episode id="95912" update="2015-10-26">
+            <epno type="4">T30</epno>
+            <length>1</length>
+            <airdate>2007-05-02</airdate>
+            <rating votes="1">6.91</rating>
+            <title xml:lang="en">Preview of Episode 30</title>
+        </episode>
+        <episode id="95913" update="2015-10-26">
+            <epno type="4">T31</epno>
+            <length>1</length>
+            <airdate>2007-05-09</airdate>
+            <rating votes="1">6.91</rating>
+            <title xml:lang="en">Preview of Episode 31</title>
+        </episode>
+        <episode id="95914" update="2015-10-26">
+            <epno type="4">T32</epno>
+            <length>1</length>
+            <airdate>2007-05-16</airdate>
+            <rating votes="1">6.91</rating>
+            <title xml:lang="en">Preview of Episode 32</title>
+        </episode>
+        <episode id="95915" update="2015-10-26">
+            <epno type="4">T33</epno>
+            <length>1</length>
+            <airdate>2007-05-23</airdate>
+            <rating votes="1">6.91</rating>
+            <title xml:lang="en">Preview of Episode 33</title>
+        </episode>
+        <episode id="95916" update="2015-10-26">
+            <epno type="4">T34</epno>
+            <length>1</length>
+            <airdate>2007-05-30</airdate>
+            <rating votes="1">6.91</rating>
+            <title xml:lang="en">Preview of Episode 34</title>
+        </episode>
+        <episode id="95917" update="2015-10-26">
+            <epno type="4">T35</epno>
+            <length>1</length>
+            <airdate>2007-06-06</airdate>
+            <rating votes="1">6.91</rating>
+            <title xml:lang="en">Preview of Episode 35</title>
+        </episode>
+        <episode id="95918" update="2015-10-26">
+            <epno type="4">T17</epno>
+            <length>1</length>
+            <airdate>2007-01-31</airdate>
+            <rating votes="1">6.91</rating>
+            <title xml:lang="en">Preview of Episode 17</title>
+        </episode>
+        <episode id="95919" update="2015-10-26">
+            <epno type="4">T18</epno>
+            <length>1</length>
+            <airdate>2007-02-07</airdate>
+            <rating votes="1">6.91</rating>
+            <title xml:lang="en">Preview of Episode 18</title>
+        </episode>
+        <episode id="95920" update="2015-10-26">
+            <epno type="4">T19</epno>
+            <length>1</length>
+            <airdate>2007-02-14</airdate>
+            <rating votes="1">6.91</rating>
+            <title xml:lang="en">Preview of Episode 19</title>
+        </episode>
+        <episode id="95921" update="2015-10-26">
+            <epno type="4">T20</epno>
+            <length>1</length>
+            <airdate>2007-02-21</airdate>
+            <rating votes="1">6.91</rating>
+            <title xml:lang="en">Preview of Episode 20</title>
+        </episode>
+        <episode id="95922" update="2015-10-26">
+            <epno type="4">T21</epno>
+            <length>1</length>
+            <airdate>2007-02-28</airdate>
+            <rating votes="1">6.91</rating>
+            <title xml:lang="en">Preview of Episode 21</title>
+        </episode>
+        <episode id="95923" update="2015-10-26">
+            <epno type="4">T22</epno>
+            <length>1</length>
+            <airdate>2007-03-07</airdate>
+            <rating votes="1">9.99</rating>
+            <title xml:lang="en">Preview of Episode 22</title>
+        </episode>
+        <episode id="95924" update="2015-10-26">
+            <epno type="4">T23</epno>
+            <length>1</length>
+            <airdate>2007-03-14</airdate>
+            <rating votes="1">6.91</rating>
+            <title xml:lang="en">Preview of Episode 23</title>
+        </episode>
+        <episode id="95925" update="2015-10-26">
+            <epno type="4">T24</epno>
+            <length>1</length>
+            <airdate>2007-03-21</airdate>
+            <rating votes="1">6.91</rating>
+            <title xml:lang="en">Preview of Episode 24</title>
+        </episode>
+        <episode id="95926" update="2015-10-26">
+            <epno type="4">T25</epno>
+            <length>1</length>
+            <airdate>2007-03-28</airdate>
+            <rating votes="1">6.91</rating>
+            <title xml:lang="en">Preview of Episode 25</title>
+        </episode>
+        <episode id="95927" update="2015-10-26">
+            <epno type="4">T26</epno>
+            <length>1</length>
+            <airdate>2007-04-04</airdate>
+            <rating votes="1">9.99</rating>
+            <title xml:lang="en">Preview of Episode 26</title>
+        </episode>
+        <episode id="95928" update="2015-10-26">
+            <epno type="4">T27</epno>
+            <length>1</length>
+            <airdate>2007-04-11</airdate>
+            <rating votes="1">6.91</rating>
+            <title xml:lang="en">Preview of Episode 27</title>
+        </episode>
+        <episode id="95929" update="2015-10-26">
+            <epno type="4">T28</epno>
+            <length>1</length>
+            <airdate>2007-04-18</airdate>
+            <rating votes="1">9.99</rating>
+            <title xml:lang="en">Preview of Episode 28</title>
+        </episode>
+        <episode id="95930" update="2015-10-26">
+            <epno type="4">T29</epno>
+            <length>1</length>
+            <airdate>2007-04-25</airdate>
+            <rating votes="1">6.91</rating>
+            <title xml:lang="en">Preview of Episode 29</title>
+        </episode>
+        <episode id="95931" update="2015-10-26">
+            <epno type="4">T6</epno>
+            <length>1</length>
+            <airdate>2006-11-01</airdate>
+            <rating votes="1">9.99</rating>
+            <title xml:lang="en">Preview of Episode 6</title>
+        </episode>
+        <episode id="95932" update="2015-10-26">
+            <epno type="4">T7</epno>
+            <length>1</length>
+            <airdate>2006-11-08</airdate>
+            <rating votes="1">6.91</rating>
+            <title xml:lang="en">Preview of Episode 7</title>
+        </episode>
+        <episode id="95933" update="2015-10-26">
+            <epno type="4">T8</epno>
+            <length>1</length>
+            <airdate>2006-11-15</airdate>
+            <rating votes="1">9.99</rating>
+            <title xml:lang="en">Preview of Episode 8</title>
+        </episode>
+        <episode id="95934" update="2015-10-26">
+            <epno type="4">T9</epno>
+            <length>1</length>
+            <airdate>2006-11-22</airdate>
+            <rating votes="1">6.91</rating>
+            <title xml:lang="en">Preview of Episode 9</title>
+        </episode>
+        <episode id="95935" update="2015-10-26">
+            <epno type="4">T10</epno>
+            <length>1</length>
+            <airdate>2006-11-29</airdate>
+            <rating votes="1">6.91</rating>
+            <title xml:lang="en">Preview of Episode 10</title>
+        </episode>
+        <episode id="95936" update="2015-10-26">
+            <epno type="4">T11</epno>
+            <length>1</length>
+            <airdate>2006-12-06</airdate>
+            <rating votes="1">6.91</rating>
+            <title xml:lang="en">Preview of Episode 11</title>
+        </episode>
+        <episode id="95937" update="2015-10-26">
+            <epno type="4">T12</epno>
+            <length>1</length>
+            <airdate>2006-12-13</airdate>
+            <rating votes="1">6.91</rating>
+            <title xml:lang="en">Preview of Episode 12</title>
+        </episode>
+        <episode id="95938" update="2015-10-26">
+            <epno type="4">T13</epno>
+            <length>1</length>
+            <airdate>2006-12-27</airdate>
+            <rating votes="1">6.91</rating>
+            <title xml:lang="en">Preview of Episode 13</title>
+        </episode>
+        <episode id="95939" update="2015-10-26">
+            <epno type="4">T14</epno>
+            <length>1</length>
+            <airdate>2007-01-10</airdate>
+            <rating votes="1">6.91</rating>
+            <title xml:lang="en">Preview of Episode 14</title>
+        </episode>
+        <episode id="95940" update="2015-10-26">
+            <epno type="4">T15</epno>
+            <length>1</length>
+            <airdate>2007-01-17</airdate>
+            <rating votes="2">2.28</rating>
+            <title xml:lang="en">Preview of Episode 15</title>
+        </episode>
+        <episode id="95941" update="2015-10-26">
+            <epno type="4">T16</epno>
+            <length>1</length>
+            <airdate>2007-01-24</airdate>
+            <rating votes="1">6.91</rating>
+            <title xml:lang="en">Preview of Episode 16</title>
+        </episode>
+        <episode id="197623" update="2018-03-31">
+            <epno type="2">S2</epno>
+            <length>2</length>
+            <airdate>2007-06-27</airdate>
+            <rating votes="1">9.99</rating>
+            <title xml:lang="en">Ending of Episode 37</title>
+        </episode>
+        <episode id="197624" update="2020-02-09">
+            <epno type="3">C3</epno>
+            <length>2</length>
+            <airdate>2007-01-10</airdate>
+            <rating votes="1">9.99</rating>
+            <title xml:lang="en">Opening 1c</title>
+        </episode>
+        <episode id="197625" update="2020-02-09">
+            <epno type="3">C2</epno>
+            <length>2</length>
+            <airdate>2006-11-22</airdate>
+            <rating votes="1">9.99</rating>
+            <title xml:lang="en">Opening 1b</title>
+        </episode>
+        <episode id="268790" update="2023-07-05">
+            <epno type="2">S3</epno>
+            <length>12</length>
+            <title xml:lang="en">Series Director and Character Designer Interview</title>
+        </episode>
+        <episode id="268791" update="2023-07-05">
+            <epno type="2">S4</epno>
+            <length>12</length>
+            <title xml:lang="en">Series Director and Character Designer Interview: Part 2</title>
+        </episode>
+        <episode id="268792" update="2023-07-05">
+            <epno type="2">S5</epno>
+            <length>26</length>
+            <title xml:lang="ja">攻略マニュアル</title>
+            <title xml:lang="en">Strategy Manual</title>
+        </episode>
+        <episode id="271052" update="2023-09-12">
+            <epno type="2">S6</epno>
+            <length>15</length>
+            <title xml:lang="en">Behind the Scenes 1</title>
+        </episode>
+        <episode id="271053" update="2023-09-12">
+            <epno type="2">S7</epno>
+            <length>10</length>
+            <title xml:lang="en">Behind the Scenes 2</title>
+        </episode>
+        <episode id="271054" update="2023-09-12">
+            <epno type="2">S8</epno>
+            <length>10</length>
+            <title xml:lang="en">Behind the Scenes 3</title>
+        </episode>
+        <episode id="271055" update="2023-09-12">
+            <epno type="2">S9</epno>
+            <length>10</length>
+            <title xml:lang="en">Behind the Scenes 4</title>
+        </episode>
+        <episode id="271056" update="2023-09-12">
+            <epno type="2">S10</epno>
+            <length>11</length>
+            <title xml:lang="en">Behind the Scenes 5</title>
+        </episode>
+        <episode id="271057" update="2023-09-12">
+            <epno type="2">S11</epno>
+            <length>10</length>
+            <title xml:lang="en">Behind the Scenes 6</title>
+        </episode>
+        <episode id="271058" update="2023-09-12">
+            <epno type="2">S12</epno>
+            <length>11</length>
+            <title xml:lang="en">Behind the Scenes 7</title>
+        </episode>
+        <episode id="271059" update="2023-09-12">
+            <epno type="2">S13</epno>
+            <length>11</length>
+            <title xml:lang="en">Behind the Scenes 8</title>
+        </episode>
+        <episode id="271060" update="2023-09-12">
+            <epno type="2">S14</epno>
+            <length>15</length>
+            <title xml:lang="en">Behind the Scenes 9</title>
+        </episode>
+        <episode id="271061" update="2023-09-12">
+            <epno type="2">S15</epno>
+            <length>20</length>
+            <title xml:lang="en">Bringing Death Note to Life: A Conversation with the Japanese Cast and Crew</title>
+        </episode>
+    </episodes>
+</anime>

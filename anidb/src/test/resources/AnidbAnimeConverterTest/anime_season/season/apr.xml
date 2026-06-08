@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="UTF-8"?><anime id="7537" restricted="false">
+    <type>OVA</type>
+    <episodecount>1</episodecount>
+    <startdate>2010-04-17</startdate>
+    <enddate>2010-04-17</enddate>
+    <titles>
+        <title xml:lang="x-jat" type="main">Meitantei Conan Magic File 4: Osaka Okonomiyaki Odyssey</title>
+        <title xml:lang="en" type="synonym">Detective Conan Magic File 4</title>
+        <title xml:lang="de" type="synonym">Detektiv Conan: Osaka Okonomiyaki-Odyssee</title>
+        <title xml:lang="ja" type="official">名探偵コナンMAGIC FILE 4 ~大阪お好み焼きオデッセイ~</title>
+        <title xml:lang="zh-Hans" type="official">名侦探柯南 MAGIC FILE 4 ～通往大阪什锦煎饼的艰辛之路～</title>
+    </titles>
+    <relatedanime>
+        <anime id="7250" type="Sequel">Meitantei Conan: Tenkuu no Lost Ship</anime>
+        <anime id="266" type="Parent Story">Meitantei Conan</anime>
+    </relatedanime>
+    <url>http://www.conan-movie.jp/info/dvd_m_file4.html</url>
+    <creators>
+        <name id="3743" type="Character Design">Sudou Masatomo</name>
+        <name id="4487" type="Direction">Yamamoto Yasuichirou</name>
+        <name id="4325" type="Music">Oono Katsuo</name>
+        <name id="782" type="Animation Work">Tokyo Movie</name>
+        <name id="474" type="Original Work">Aoyama Goushou</name>
+    </creators>
+    <description>After the events in http://anidb.net/a7250 [The Lost Ship in The Sky], Hattori Heiji invites Conan to an Okonomiyaki Dinner.</description>
+    <ratings>
+        <permanent count="279">6.52</permanent>
+        <temporary count="283">6.92</temporary>
+    </ratings>
+    <picture>47975.jpg</picture>
+    <resources>
+        <resource type="1">
+            <externalentity>
+                <identifier>11693</identifier>
+            </externalentity>
+        </resource>
+        <resource type="2">
+            <externalentity>
+                <identifier>8331</identifier>
+            </externalentity>
+        </resource>
+        <resource type="4">
+            <externalentity>
+                <url>http://www.conan-movie.jp/info/dvd_m_file4.html</url>
+            </externalentity>
+        </resource>
+    </resources>
+    <tags>
+        <tag id="922" parentid="2606" infobox="true" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2015-02-04">
+            <name>shounen</name>
+            <description>In the context of manga and associated media, shounen, literally meaning "youth" and often also specifically "boy", refers to a male audience roughly between the ages of 10 and 18.
+Source: Wikipedia</description>
+        </tag>
+        <tag id="2606" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2018-11-05">
+            <name>target audience</name>
+            <description>Anime, like everything else in the modern world, is targeted towards specific audiences, both implicitly by the creators and overtly by the marketing. While categories are associated with specific sex and age groups, this is not a bar on the anime being enjoyed by people who don`t fit into that band; not only do crossover titles exist, but the categories also have a considerable following outside their main demographic, and a person might as well enjoy anime from all categories. Still, does not invalidate the usefulness of marking a title as one of the categories; the same themes will likely be treated differently in anime geared for different audiences. Only one should not jump the gun and assume that a title will be more or less serious or present content in this or that way due to its target audience, or conversely assume the target audience on the content and its presentation alone. As such, the audience categories help form a broad impression of how a title might work with the announced themes, but offer little to no in-depth information about specific content or its treatment.
+The audience categories originate from manga magazines, which group titles of a same intended audience into a magazine that is advertised as belonging to that category, and so manga-based anime will have the category from their parent work. As for anime based on other works, the audience is often debatable, but comparing information such as time slot to the manga-based anime generally helps figure out the most likely possibility.
+If the parent material was classified under multiple audiences over time (for example, it was originally shounen, but then as the plot changed and became more mature, it was reclassified as seinen), and the anime adapts parent material time periods covering multiple audiences, we tag all audiences covered by the anime adaptation.</description>
+        </tag>
+        <tag id="2609" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2018-09-01">
+            <name>original work</name>
+            <description>What the anime is based on! This is given as the original work credit in the OP. Mostly of academic interest, but a useful bit of info, hinting at the possible depth of story.</description>
+        </tag>
+        <tag id="2610" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2009-04-22">
+            <name>setting</name>
+            <description>The setting describes in what time and place an anime takes place. To a certain extent it describes what you can expect from the world in the anime.</description>
+        </tag>
+        <tag id="2612" parentid="2610" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2016-09-04">
+            <name>time</name>
+            <description>This placeholder lists different epochs in human history and more vague but important timelines such as the future, the present and the past.</description>
+        </tag>
+        <tag id="2613" parentid="2610" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2016-09-04">
+            <name>place</name>
+            <description>The places the anime can take place in. Includes more specific places such as a country on Earth, as well as more general places such as a dystopia or a mirror world.</description>
+        </tag>
+        <tag id="2624" parentid="2612" weight="600" localspoiler="false" globalspoiler="false" verified="true" update="2017-02-20">
+            <name>present</name>
+            <description>Somewhere between past and future.</description>
+        </tag>
+        <tag id="2630" parentid="2613" weight="600" localspoiler="false" globalspoiler="false" verified="true" update="2012-10-13">
+            <name>Earth</name>
+            <description>The Earth is the third planet from the Sun, and the densest and fifth-largest of the eight planets in the Solar System. It is in effect a ball of hot mud, but on the surface it`s cold enough, so most of us live on it (or are supposed to). It is circa 4.5 billion years old, and, unless we humans succeed in destroying it over the next couple of centuries, it is expected to last for quite another while, though the changes in the Sun`s emissions due to its aging will likely cause the extinction of everything; the species of earthlings are guaranteed to die, even if we fail to kill them -- unless, of course, we find ourselves another planet and figure out a way to take everything there. Our little planet on a corner of this galaxy may mean nothing in the grand scheme of things, but to its inhabitants it is their home, so, as a species, we cherish it dearly, to the point many cultures even to this day deify it. Being the home to the human civilizations, the Earth is the main setting of most fiction, be it anime or otherwise, but not only are many titles set in other places, such as unrelated fantasy worlds, in a considerable number of fictional titles the Earth is actually destroyed by aggressive alien invaders.</description>
+            <picurl>126792.jpg</picurl>
+        </tag>
+        <tag id="2672" parentid="2834" weight="600" localspoiler="false" globalspoiler="false" verified="true" update="2018-03-05">
+            <name>Japan</name>
+            <description>Japan is a sovereign island nation in East Asia. Located in the Pacific Ocean, it lies off the eastern coast of the Asian mainland and stretches from the Sea of Okhotsk in the north to the East China Sea and China in the southwest.
+Source: Wikipedia</description>
+            <picurl>65689.png</picurl>
+        </tag>
+        <tag id="2677" parentid="2672" weight="500" localspoiler="false" globalspoiler="false" verified="true" update="2018-03-06">
+            <name>Osaka</name>
+            <description>Osaka Prefecture is a prefecture located in the Kansai region on Honshu, the main island of Japan. The capital is the city of Osaka. It is the center of Osaka-Kobe-Kyoto area.
+Source: Wikipedia</description>
+            <picurl>214384.jpg</picurl>
+        </tag>
+        <tag id="2798" parentid="2609" infobox="true" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2019-02-14">
+            <name>manga</name>
+            <description>Manga is the lifeblood that drives the anime industry. Everything and its mother is based on manga. However! There are exceptions where the manga was not the basis for the anime.
+It`s common practice to make manga adaptations of many popular anime, there`s a manga based on Evangelion, and two (one shounen and one shoujo) based on each of Escaflowne and Mahou Tsukai Tai. Also it`s quite common to release manga and anime versions of a story in parallel, for instance Nadesico and Shoujo Kakumei Utena. There are also cases where an anime continues in a manga, as in the case of Angel Beats! and Angel Beats: Heaven`s Door, or reverse.
+See also http://anidb.net/t6493 [manhua] and http://anidb.net/t5010 [manhwa].</description>
+            <picurl>215593.jpg</picurl>
+        </tag>
+        <tag id="2834" parentid="2630" weight="600" localspoiler="false" globalspoiler="false" verified="true" update="2016-10-04">
+            <name>Asia</name>
+            <description>Asia is Earth`s largest and most populous continent, located primarily in the eastern and northern hemispheres and sharing the continental landmass of Eurasia with the continent of Europe. Asia covers an area of 44,579,000 square kilometers, about 30% of Earth`s total land area and 8.7% of the Earth`s total surface area. The continent, which has long been home to the majority of the human population, was the site of many of the first civilizations. Asia is notable for not only its overall large size and population, but also dense and large settlements as well as vast barely populated regions within the continent of 4.4 billion people.
+Source: Wikipedia</description>
+            <picurl>192245.jpg</picurl>
+        </tag>
+        <tag id="6173" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-09-24">
+            <name>origin</name>
+        </tag>
+        <tag id="7885" parentid="6173" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2021-11-07">
+            <name>Japanese production</name>
+        </tag>
+    </tags>
+    <characters>
+        <character id="2260" type="main character in" update="2012-02-12">
+            <rating votes="1800">6.57</rating>
+            <name>Edogawa Conan</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>81480.jpg</picture>
+            <seiyuu id="393" picture="46104.jpg">Takayama Minami</seiyuu>
+        </character>
+        <character id="2343" type="appears in" update="2018-02-03">
+            <rating votes="1200">7.05</rating>
+            <name>Mouri Ran</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <description>Mouri Ran is one of the main characters in Detective Conan. She is the daughter of Mouri Kogoro, a famous but lazy detective. She is also friends with Kudo Shinichi, another famous detective, who is still in high school. She is the captain of the high school karate team, and is very strong willed.</description>
+            <picture>65742.png</picture>
+            <seiyuu id="321" picture="17158.jpg">Yamazaki Wakana</seiyuu>
+        </character>
+        <character id="8164" type="cameo appearance in" update="2011-01-15">
+            <rating votes="255">3.92</rating>
+            <name>Agasa Hiroshi</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <description>Agasa Hiroshi  is a good friend of Shin`ichi / Conan who invents several devices to help him out, such as the voice changing bowtie or the watch with which Conan can tranquilize people.
+Note: His name Hiroshi is written with the kanji 博士, which can also be read `Hakase` (Professor)</description>
+            <picture>27247.jpg</picture>
+        </character>
+        <character id="8165" type="appears in" update="2009-06-03">
+            <rating votes="1238">8.10</rating>
+            <name>Haibara Ai</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>27248.jpg</picture>
+            <seiyuu id="13" picture="16583.jpg">Hayashibara Megumi</seiyuu>
+        </character>
+        <character id="8167" type="appears in" update="2009-08-23">
+            <rating votes="311">5.28</rating>
+            <name>Yoshida Ayumi</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>27250.jpg</picture>
+            <seiyuu id="1623" picture="171605.jpg">Iwai Yukiko</seiyuu>
+        </character>
+        <character id="8168" type="appears in" update="2009-08-23">
+            <rating votes="224">4.07</rating>
+            <name>Tsuburaya Mitsuhiko</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>27251.jpg</picture>
+            <seiyuu id="7" picture="11402.jpeg">Ootani Ikue</seiyuu>
+        </character>
+        <character id="8169" type="appears in" update="2009-08-23">
+            <rating votes="232">2.73</rating>
+            <name>Kojima Genta</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>27252.jpg</picture>
+            <seiyuu id="335" picture="64826.jpg">Takagi Wataru</seiyuu>
+        </character>
+        <character id="8170" type="appears in" update="2013-05-23">
+            <rating votes="394">5.24</rating>
+            <name>Suzuki Sonoko</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <description>Sonoko is Mouri Ran`s best friend and is the girlfriend of http://anidb.net/ch8180 [Kyougoku Makoto].
+Source: detectiveconanworld.com</description>
+            <picture>28515.jpg</picture>
+            <seiyuu id="291" picture="17122.jpg">Matsui Naoko</seiyuu>
+        </character>
+        <character id="8173" type="main character in" update="2019-11-30">
+            <rating votes="122">5.29</rating>
+            <name>Tooyama Kazuha</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <description>Kazuha is a girl from Osaka. She`s been childhood friends with Heiji, and could be referred to as his girlfriend - even though they`re too shy / childish to admit it already.
+When she meets Ran for the first time (episode 118) she directly explains to her that Heiji is off limits, and that the girl/woman that wants to get to him has to go through her fast - which makes her either protective or possessive of Heiji.
+Later on Ran and Kazuha become really good girl friends.
+Kazuha`s father, like Heiji`s, also works for the Osaka police.</description>
+            <picture>27256.jpg</picture>
+            <seiyuu id="164" picture="11507.jpeg">Miyamura Yuuko</seiyuu>
+        </character>
+        <character id="8178" type="main character in" update="2010-01-31">
+            <rating votes="144">6.93</rating>
+            <name>Hattori Heiji</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>27262.jpg</picture>
+            <seiyuu id="132" picture="16806.jpg">Horikawa Ryou</seiyuu>
+        </character>
+        <character id="8193" type="appears in" update="2009-06-03">
+            <name>Ootaki Gorou</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>27281.jpg</picture>
+            <seiyuu id="2" picture="265617.jpg">Wakamoto Norio</seiyuu>
+        </character>
+        <character id="9190" type="appears in" update="2009-06-28">
+            <rating votes="14">3.61</rating>
+            <name>Suzuki Jirokichi</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>30223.jpg</picture>
+            <seiyuu id="201" picture="71210.png">Nagai Ichirou</seiyuu>
+        </character>
+        <character id="18940" type="appears in" update="2010-06-18">
+            <rating votes="1">5.73</rating>
+            <name>Kinjou no Oba-han</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>49908.jpg</picture>
+            <seiyuu id="4101" picture="297829.jpg">Adachi Mari</seiyuu>
+        </character>
+        <character id="18941" type="appears in" update="2010-06-18">
+            <name>Konishi Hikaru</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>49909.jpg</picture>
+            <seiyuu id="6096" picture="186251.jpg">Harada Masao</seiyuu>
+        </character>
+        <character id="18942" type="appears in" update="2010-06-18">
+            <name>Konishi Kaoru</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>49910.jpg</picture>
+            <seiyuu id="590" picture="269819.jpg">Taketatsu Ayana</seiyuu>
+        </character>
+        <character id="18943" type="appears in" update="2010-06-18">
+            <rating votes="3">5.58</rating>
+            <name>Konishi Kasumi</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>49911.jpg</picture>
+            <seiyuu id="271" picture="171555.jpg">Yukino Satsuki</seiyuu>
+        </character>
+    </characters>
+    <episodes>
+        <episode id="118457" update="2011-10-20">
+            <epno type="1">1</epno>
+            <length>30</length>
+            <airdate>2010-04-17</airdate>
+            <rating votes="2">5.31</rating>
+            <title xml:lang="en">OVA</title>
+        </episode>
+        <episode id="260933" update="2022-11-04">
+            <epno type="2">S1</epno>
+            <length>30</length>
+            <title xml:lang="en">Release Commemoration Special Program</title>
+        </episode>
+    </episodes>
+</anime>

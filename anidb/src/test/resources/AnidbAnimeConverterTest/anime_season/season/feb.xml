@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8"?><anime id="2365" restricted="false">
+    <type>OVA</type>
+    <episodecount>1</episodecount>
+    <startdate>1985-02-25</startdate>
+    <enddate>1985-02-25</enddate>
+    <titles>
+        <title xml:lang="x-jat" type="main">Ginga Hyouryuu Vifam: Kieta 12-nin</title>
+        <title xml:lang="en" type="synonym">Round Vernian Vifam OVA 3</title>
+        <title xml:lang="x-jat" type="synonym">Ginga Hyouryuu Vifam: Kieta Juuninin</title>
+        <title xml:lang="x-jat" type="short">vifam ova 3</title>
+        <title xml:lang="ja" type="official">銀河漂流バイファム 消えた12人</title>
+    </titles>
+    <relatedanime>
+        <anime id="2361" type="Parent Story">Ginga Hyouryuu Vifam</anime>
+    </relatedanime>
+    <url>http://www.sunrise-anime.jp/sunrise-inc/works/detail.php?cid=162</url>
+    <creators>
+        <name id="726" type="Animation Production">Sunrise</name>
+        <name id="147" type="Original Plan">Tomino Yoshiyuki</name>
+        <name id="1352" type="Original Plan">Yatate Hajime</name>
+        <name id="5084" type="Direction">Kanda Takeyuki</name>
+        <name id="3489" type="Character Design">Ashida Toyoo</name>
+        <name id="5084" type="Original Work">Kanda Takeyuki</name>
+        <name id="4508" type="Music">Watanabe Toshiyuki</name>
+    </creators>
+    <description>The 1980s was before the era when it became common for entire television series to be released on home video. During that time, Nippon Sunrise had a common practice where some time after one of their shows concluded, they would release a short series of recap/digest videos. Assuming those videos sold well enough, they would then release one or more OVAs featuring new animation.
+Such was the case with Vifam, where the two "Variety of Vifam" recap videos were followed by two all new stories. This is the first of those two, it is a standalone story set during the main series.
+Source: The Skaro Hunting Society
+Aboard the Janus it looks to be another regular day, en route to the planet Taut. That is, until the captain (accused of peeking) leaves the ship in a huff. Then strange things start to happen, like the the AI board computer acting up, an unmanned enemy ship showing up and everyone seeing ghostly appearances and glowing eyes. To top that off people are disappearing...
+What is going on?
+Source: BakaBT</description>
+    <ratings>
+        <permanent count="60">5.57</permanent>
+        <temporary count="60">5.90</temporary>
+    </ratings>
+    <picture>134917.jpg</picture>
+    <resources>
+        <resource type="1">
+            <externalentity>
+                <identifier>7426</identifier>
+            </externalentity>
+        </resource>
+        <resource type="2">
+            <externalentity>
+                <identifier>9389</identifier>
+            </externalentity>
+        </resource>
+        <resource type="4">
+            <externalentity>
+                <url>http://www.sunrise-anime.jp/datacard/detail.php?cid=162</url>
+            </externalentity>
+            <externalentity>
+                <url>http://www.sunrise-anime.jp/sunrise-inc/works/detail.php?cid=162</url>
+            </externalentity>
+        </resource>
+        <resource type="7">
+            <externalentity>
+                <identifier>銀河漂流バイファム#OVA</identifier>
+            </externalentity>
+        </resource>
+        <resource type="8">
+            <externalentity>
+                <identifier>2900</identifier>
+            </externalentity>
+        </resource>
+        <resource type="9">
+            <externalentity>
+                <identifier>149864</identifier>
+            </externalentity>
+        </resource>
+        <resource type="10">
+            <externalentity>
+                <identifier>11195</identifier>
+            </externalentity>
+        </resource>
+    </resources>
+    <tags>
+        <tag id="922" parentid="2606" infobox="true" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2015-02-04">
+            <name>shounen</name>
+            <description>In the context of manga and associated media, shounen, literally meaning "youth" and often also specifically "boy", refers to a male audience roughly between the ages of 10 and 18.
+Source: Wikipedia</description>
+        </tag>
+        <tag id="2202" parentid="2846" infobox="true" weight="400" localspoiler="false" globalspoiler="false" verified="true" update="2018-08-12">
+            <name>alien</name>
+            <description>This entity or creature was born on another world than the main characters.</description>
+            <picurl>222176.jpg</picurl>
+        </tag>
+        <tag id="2274" parentid="2638" weight="600" localspoiler="false" globalspoiler="false" verified="true" update="2018-03-30">
+            <name>robot</name>
+            <description>A robot is an automatically guided machine, able to do tasks on its own. Another common characteristic is that by its appearance or movements, a robot often conveys a sense that it has intent or agency of its own.
+Not to be confused with android (human-like robot).</description>
+            <picurl>36563.jpg</picurl>
+        </tag>
+        <tag id="2605" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-09-28">
+            <name>dynamic</name>
+            <description>Some of the central structural elements in anime are: 
+Plot Continuity 
+How does the plot or several plots unfold. Are they a strictly linear retelling of one big continuing story, a serial, possibly with several side stories, or is the content chopped into a set of unconnected episodes, only sharing the same setting and characters?
+Stereotype Characters
+Then there is the question of the character set presentation. Is it completely original, or is it your usual stereotypical character cast. Both choices have their merit, for example it would not really make much sense to reinvent the wheel for a harem anime. Fans of that genre come to expect their favourite stereotype protagonists.
+Plot Twists
+Finally there is the question of how complex the plot / the story unfolds. Are there side-plots that merge into the main plot leading to unexpected plot twists, or is the anime quite predictable? The latter would not be appropriate for detective stories. In harem anime on the other hand a foreseeable outcome is actually something the fans will come to expect.</description>
+        </tag>
+        <tag id="2606" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2018-11-05">
+            <name>target audience</name>
+            <description>Anime, like everything else in the modern world, is targeted towards specific audiences, both implicitly by the creators and overtly by the marketing. While categories are associated with specific sex and age groups, this is not a bar on the anime being enjoyed by people who don`t fit into that band; not only do crossover titles exist, but the categories also have a considerable following outside their main demographic, and a person might as well enjoy anime from all categories. Still, does not invalidate the usefulness of marking a title as one of the categories; the same themes will likely be treated differently in anime geared for different audiences. Only one should not jump the gun and assume that a title will be more or less serious or present content in this or that way due to its target audience, or conversely assume the target audience on the content and its presentation alone. As such, the audience categories help form a broad impression of how a title might work with the announced themes, but offer little to no in-depth information about specific content or its treatment.
+The audience categories originate from manga magazines, which group titles of a same intended audience into a magazine that is advertised as belonging to that category, and so manga-based anime will have the category from their parent work. As for anime based on other works, the audience is often debatable, but comparing information such as time slot to the manga-based anime generally helps figure out the most likely possibility.
+If the parent material was classified under multiple audiences over time (for example, it was originally shounen, but then as the plot changed and became more mature, it was reclassified as seinen), and the anime adapts parent material time periods covering multiple audiences, we tag all audiences covered by the anime adaptation.</description>
+        </tag>
+        <tag id="2609" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2018-09-01">
+            <name>original work</name>
+            <description>What the anime is based on! This is given as the original work credit in the OP. Mostly of academic interest, but a useful bit of info, hinting at the possible depth of story.</description>
+        </tag>
+        <tag id="2610" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2009-04-22">
+            <name>setting</name>
+            <description>The setting describes in what time and place an anime takes place. To a certain extent it describes what you can expect from the world in the anime.</description>
+        </tag>
+        <tag id="2611" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-09-08">
+            <name>elements</name>
+            <description>Next to Themes setting the backdrop for the protagonists in anime, there are the more detailed plot Elements that centre on character interactions: "What do characters do to each other or what is done to them?". Is it violent Action, an awe-inspiring Adventure in a foreign place, the gripping life of a Detective, a slapstick Comedy, an Ecchi Harem anime, a SciFi epic, or some Fantasy travelling adventure?</description>
+        </tag>
+        <tag id="2612" parentid="2610" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2016-09-04">
+            <name>time</name>
+            <description>This placeholder lists different epochs in human history and more vague but important timelines such as the future, the present and the past.</description>
+        </tag>
+        <tag id="2613" parentid="2610" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2016-09-04">
+            <name>place</name>
+            <description>The places the anime can take place in. Includes more specific places such as a country on Earth, as well as more general places such as a dystopia or a mirror world.</description>
+        </tag>
+        <tag id="2626" parentid="2612" weight="600" localspoiler="false" globalspoiler="false" verified="true" update="2009-05-15">
+            <name>future</name>
+            <description>Anime that fall under the future category are the ones that have a society that could have originated from ours. In most cases it should go hand to hand with sci-fi since we expect the future to consist of advanced technology, however, in the case where it`s explicitly stated in the story that the anime takes place "x years into the future", the state of technology doesn`t matter as long as it`s long into the future. The anime can be set in an alternative universe not tied with our own, as long as it has a futuristic feel to it.
+This category sports quite a lot of anime, mostly stemming from SciFi, but not necessarily only from there.</description>
+        </tag>
+        <tag id="2627" parentid="2613" weight="600" localspoiler="false" globalspoiler="false" verified="true" update="2019-12-27">
+            <name>space</name>
+            <description>The final frontier.</description>
+            <picurl>242357.jpg</picurl>
+        </tag>
+        <tag id="2638" parentid="2846" infobox="true" weight="600" localspoiler="false" globalspoiler="false" verified="true" update="2005-05-07">
+            <name>mecha</name>
+            <description>Mecha in Japanese basically means mechanical things; everything from an electric whisk or a car to a spaceship or a robot. Here however we limit it to the more exotic things usually referred to as mecha anime: robots, whether controlled by a human or not, and their ilk. See Androids, Piloted Robots, Power Suits, Robot Helpers, Transforming Robots for a more specific classification.</description>
+            <picurl>42077.jpg</picurl>
+        </tag>
+        <tag id="2639" parentid="2846" infobox="true" weight="600" localspoiler="false" globalspoiler="false" verified="true" update="2019-12-27">
+            <name>space travel</name>
+            <description>Space Travel usually refers going to space or travelling there with or without a spacecraft. There are different forms of space travel like Interplanetary travel, Interstellar travel or Intergalactic travel. Since it isn`t possible to travel faster than light, most anime series involve some sort "sub-space travel mechanism" as a way to travel faster than light.</description>
+            <picurl>242375.jpg</picurl>
+        </tag>
+        <tag id="2645" parentid="2274" infobox="true" weight="600" localspoiler="false" globalspoiler="false" verified="true" update="2018-08-12">
+            <name>piloted robot</name>
+            <description>Piloted Robots are, as the name suggests, robots that cannot control themselves; they need to be steered from somewhere, this can be from a human sitting inside or a remote controlled option.</description>
+            <picurl>222199.jpg</picurl>
+        </tag>
+        <tag id="2661" parentid="2627" weight="600" localspoiler="false" globalspoiler="false" verified="true" update="2009-05-18">
+            <name>shipboard</name>
+            <description>Beam me up, Scotty! Space stations (think Death Star) also count. Basically, this category is to tell if the setting takes place onboard a spaceship in space. This category is not applicable if the spaceship lies on a planet and never actually gets into space.</description>
+        </tag>
+        <tag id="2775" parentid="2202" infobox="true" weight="400" localspoiler="false" globalspoiler="false" verified="true" update="2013-03-15">
+            <name>humanoid alien</name>
+            <description>Humanoids are aliens, intelligent beings who do not originate from Earth, but have a striking similarity to humans or at least show the basic body layout, i.e. two arms and legs, head with two eyes and ears, one nose and mouth. Though the latter - head-related features - may vary. As "DearS" shows some aliens actually exhibit super-human beauty, or as in the case of "Onegai Teacher" they are genetically compatible to humans for some strange reason.</description>
+        </tag>
+        <tag id="2797" parentid="2609" infobox="true" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2009-05-18">
+            <name>new</name>
+            <description>Not based on anything, the story is a new work, usually made up by the people involved in creating the anime. Generally if an original work (原作) credit is given, it will be to the studio, or director, or other members of the production team.</description>
+        </tag>
+        <tag id="2841" parentid="2611" infobox="true" weight="400" localspoiler="false" globalspoiler="false" verified="true" update="2017-12-26">
+            <name>action</name>
+            <description>Action anime usually involve a fairly straightforward story of good guys versus bad guys, where most disputes are resolved by using physical force. It often contains a lot of shooting, explosions and fighting.</description>
+            <picurl>211261.jpg</picurl>
+        </tag>
+        <tag id="2846" parentid="7050" infobox="true" weight="600" localspoiler="false" globalspoiler="false" verified="true" update="2018-10-04">
+            <name>science fiction</name>
+            <description>Science fiction stories usually focus on how situations could be different in the future when we are more technologically advanced; due to either our own achievements or having met with other civilizations whom we have learned from.</description>
+            <picurl>212180.jpg</picurl>
+        </tag>
+        <tag id="2851" parentid="7050" weight="100" localspoiler="false" globalspoiler="false" verified="true" update="2018-03-11">
+            <name>horror</name>
+            <description>The horror cinematic genre is characterized by the attempt to make the viewer experience dread, fear, terror, or horror. Often their plots involve the intrusion of an evil force, event or personage, sometimes of supernatural origin, on the mundane world and the consequences thereof.</description>
+            <picurl>214682.jpg</picurl>
+        </tag>
+        <tag id="2853" parentid="2611" infobox="true" weight="400" localspoiler="false" globalspoiler="false" verified="true" update="2017-02-13">
+            <name>comedy</name>
+            <description>Anime whose central struggle causes hilarious results. These stories are built upon funny characters, situations and events. A comedy anime is laced with humour and sets out to provoke laughter from the audience.
+Japanese humour can be a bit strange to westerners, so if you`re new to this type of humour, just bear with it; it`ll most likely grow on you if you`re a fan of other kinds of comedy.</description>
+            <picurl>198104.jpg</picurl>
+        </tag>
+        <tag id="2931" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2016-12-04">
+            <name>unsorted</name>
+            <description>a bunch of tags that still need to be either deleted or moved into proper places.</description>
+        </tag>
+        <tag id="3023" parentid="2853" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2012-02-19">
+            <name>funny expressions</name>
+            <description>The facial expressions of the characters may change so quickly or unexpectedly distort that hilarity will ensue.</description>
+        </tag>
+        <tag id="4251" parentid="6230" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2018-11-20">
+            <name>ensemble cast</name>
+            <description>A show with an ensemble cast focuses on a larger group of main characters in a single plot narrative; anime containing several segmented plot narratives (such as episodic or arc-based plots) are excluded. As such, it doesn`t really have a "main" or "lead" character; instead, every member of the central main character group plays an important part in the show`s grander scheme; no single character is more important or prominent than the others (equality of importance). Further, subplots (if any) lead by each character in the ensemble have equal weighting in importance (or lack of weight).
+
+* In a show where no single main character is more important or prominent than the others, 4+ main characters is almost always an ensemble cast.
+* A show with 3 main characters of equal importance is likely also an ensemble cast; equality of importance must be considered carefully.
+* A show with 2 main characters of equal importance is generally not an ensemble cast situation; however, on an exception basis where neither main character is considered an antagonist, a 2-main-character anime may be considered an ensemble (e.g. http://anidb.net/a11829 [Kimi no Na wa.]).
+
+Pictured: http://anidb.net/a9043 [K (anime)]</description>
+            <picurl>94914.jpg</picurl>
+        </tag>
+        <tag id="4254" parentid="2931" weight="0" localspoiler="false" globalspoiler="false" verified="false" update="2012-01-24">
+            <name>ghost hunting</name>
+            <description>Ghost Hunting is the process of investigating locations that are reported to be haunted by ghosts. Typically, a ghost hunting team will attempt to collect evidence claimed to be supportive of paranormal activity. Ghost hunters often utilize a variety of electronic equipment.
+Traditional techniques such as conducting interviews and researching the history of a site are also employed. Some ghost hunters refer to themselves as a paranormal investigator.
+While many groups claim to utilize scientific methods in their search for the ghosts, no scientific body has been able to confirm the existence of ghosts. Ghost hunting can be classified as a pseudoscience.
+Source: Wikipedia</description>
+        </tag>
+        <tag id="4404" parentid="2274" weight="600" localspoiler="false" globalspoiler="false" verified="true" update="2008-06-28">
+            <name>real robot</name>
+            <description>A smaller form of mecha with no special abilities. They are mostly used by deploying them in battle just like modern tanks. They can be mass produced and their pilots (usually military officers or soldiers) are (mostly) interchangeable. Tanks are often a threat to them and they are more easily destroyed than their bigger counterparts.</description>
+            <picurl>42787.jpg</picurl>
+        </tag>
+        <tag id="6173" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-09-24">
+            <name>origin</name>
+        </tag>
+        <tag id="6230" parentid="2605" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-10-20">
+            <name>cast</name>
+        </tag>
+        <tag id="7050" parentid="2611" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2019-04-18">
+            <name>speculative fiction</name>
+            <description>Speculative fiction is an umbrella genre encompassing fiction with certain elements that do not exist in the real world, often in the context of supernatural, futuristic or other imaginative themes. This includes, but is not limited to, science fiction, fantasy, superhero fiction, horror, utopian and dystopian fiction, fairytale fantasy, supernatural fiction, as well as combinations thereof.
+Source: Wikipedia</description>
+        </tag>
+        <tag id="7885" parentid="6173" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2021-11-07">
+            <name>Japanese production</name>
+        </tag>
+    </tags>
+    <characters>
+        <character id="46901" type="main character in" update="2012-07-15">
+            <rating votes="6">6.91</rating>
+            <name>Pench Eliza</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>90955.jpg</picture>
+            <seiyuu id="30725" picture="248148.jpg">Akiyama Runa</seiyuu>
+        </character>
+    </characters>
+    <episodes>
+        <episode id="22183" update="2009-08-12">
+            <epno type="1">1</epno>
+            <length>60</length>
+            <airdate>1985-02-25</airdate>
+            <rating votes="1">3.07</rating>
+            <title xml:lang="en">OVA</title>
+        </episode>
+    </episodes>
+</anime>

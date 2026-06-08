@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?><anime id="13077" restricted="false">
+    <type>Music Video</type>
+    <episodecount>1</episodecount>
+    <startdate>2009-09-25</startdate>
+    <enddate>2009-09-25</enddate>
+    <titles>
+        <title xml:lang="x-jat" type="main">Ai think so,</title>
+        <title xml:lang="ja" type="official">愛 think so,</title>
+    </titles>
+    <description>Music video for DECO*27`s song "Ai think so,".</description>
+    <ratings>
+        <permanent count="63">4.06</permanent>
+        <temporary count="64">5.08</temporary>
+    </ratings>
+    <picture>200620.jpg</picture>
+    <resources>
+        <resource type="2">
+            <externalentity>
+                <identifier>31908</identifier>
+            </externalentity>
+        </resource>
+    </resources>
+    <tags>
+        <tag id="6173" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-09-24">
+            <name>origin</name>
+        </tag>
+        <tag id="7885" parentid="6173" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2021-11-07">
+            <name>Japanese production</name>
+        </tag>
+    </tags>
+    <episodes>
+        <episode id="186764" update="2017-04-06">
+            <epno type="1">1</epno>
+            <length>5</length>
+            <airdate>2009-09-25</airdate>
+            <rating votes="1">4.58</rating>
+            <title xml:lang="en">Music Video</title>
+        </episode>
+    </episodes>
+</anime>

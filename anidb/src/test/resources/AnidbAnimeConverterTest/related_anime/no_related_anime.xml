@@ -1,0 +1,1135 @@
+<?xml version="1.0" encoding="UTF-8"?><anime id="14453" restricted="false">
+    <type>TV Series</type>
+    <episodecount>12</episodecount>
+    <startdate>2019-10-10</startdate>
+    <enddate>2019-12-26</enddate>
+    <titles>
+        <title xml:lang="x-jat" type="main">Assassins Pride</title>
+        <title xml:lang="ru" type="synonym">Гордость убийцы</title>
+        <title xml:lang="x-jat" type="short">asspri</title>
+        <title xml:lang="ja" type="official">アサシンズプライド</title>
+        <title xml:lang="en" type="official">Assassins Pride</title>
+        <title xml:lang="ru" type="official">ГОРДОСТЬ УБИЙЦ</title>
+        <title xml:lang="ko" type="official">어새신즈 프라이드</title>
+        <title xml:lang="ar" type="official">فخر المغتال</title>
+        <title xml:lang="zh-Hans" type="official">刺客守则</title>
+    </titles>
+    <recommendations total="2">
+        <recommendation type="For Fans" uid="391064">a romantic story for preteen girls about love between a preteen girl and a cool, strong and romantic guy, who is defenetly, absolutely, completely not lolicon. and he plays doctor with her... aem... to check if her body is O.K. yes.
+
+do not watch it unless you are a preteen girl. or lolicon. just do not expect any fanservice.</recommendation>
+    </recommendations>
+    <url>https://assassinspride-anime.com/</url>
+    <creators>
+        <name id="56528" type="Original Work">Amagi Kei</name>
+        <name id="43522" type="Animation Work">EMT Squared</name>
+        <name id="17732" type="Character Design">Yoshikawa Maho</name>
+        <name id="4556" type="Series Composition">Akao Deko</name>
+        <name id="49012" type="Direction">Aiura Kazuya</name>
+        <name id="3020" type="Music">Monaca</name>
+        <name id="6577" type="Chief Animation Direction">Yatsu Miyako</name>
+        <name id="17732" type="Chief Animation Direction">Yoshikawa Maho</name>
+        <name id="41903" type="Chief Animation Direction">Saitou Yoshiko</name>
+    </creators>
+    <description>* Based on a light novel series written by http://anidb.net/cr56528 [Amagi Kei] and illustrated by http://anidb.net/cr56529 [Ninomotonino].
+In a world where only nobles wield the sacred power of mana to wage war against the creatures of darkness, a curious absence of ability places young http://anidb.net/ch103633 [Melida] in a precarious position. Under the guise of tutelage, http://anidb.net/ch103632 [Kufa], a ruthless assassin, is sent to assess Melida`s abilities and determine if she is the true-born heir of the prestigious Angel family. If she does not measure up to her family`s expectations, another, more ruthless plan will be set in motion...
+Source: Sentai Filmworks</description>
+    <ratings>
+        <permanent count="1376">2.57</permanent>
+        <temporary count="1390">5.43</temporary>
+    </ratings>
+    <picture>237995.jpg</picture>
+    <resources>
+        <resource type="1">
+            <externalentity>
+                <identifier>22217</identifier>
+            </externalentity>
+        </resource>
+        <resource type="2">
+            <externalentity>
+                <identifier>38572</identifier>
+            </externalentity>
+        </resource>
+        <resource type="4">
+            <externalentity>
+                <url>https://assassinspride-anime.com/</url>
+            </externalentity>
+        </resource>
+        <resource type="6">
+            <externalentity>
+                <identifier>Assassin's_Pride</identifier>
+            </externalentity>
+        </resource>
+        <resource type="7">
+            <externalentity>
+                <identifier>アサシンズプライド</identifier>
+            </externalentity>
+        </resource>
+        <resource type="8">
+            <externalentity>
+                <identifier>5424</identifier>
+            </externalentity>
+        </resource>
+        <resource type="9">
+            <externalentity>
+                <identifier>368367</identifier>
+            </externalentity>
+        </resource>
+        <resource type="10">
+            <externalentity>
+                <identifier>22266</identifier>
+            </externalentity>
+        </resource>
+        <resource type="23">
+            <externalentity>
+                <identifier>assassins_anime</identifier>
+            </externalentity>
+        </resource>
+        <resource type="26">
+            <externalentity>
+                <identifier>watch?v=to4JXAQ3578</identifier>
+            </externalentity>
+            <externalentity>
+                <identifier>watch?v=j5paOgPW3h0</identifier>
+            </externalentity>
+        </resource>
+        <resource type="28">
+            <externalentity>
+                <identifier>G60X4P8GR</identifier>
+            </externalentity>
+        </resource>
+        <resource type="42">
+            <externalentity>
+                <identifier>tv/assassins-pride</identifier>
+            </externalentity>
+        </resource>
+        <resource type="43">
+            <externalentity>
+                <identifier>tt10973152</identifier>
+            </externalentity>
+        </resource>
+    </resources>
+    <tags>
+        <tag id="308" parentid="2611" weight="200" localspoiler="false" globalspoiler="false" verified="true" update="2017-12-17">
+            <name>detective</name>
+            <description>A detective is an investigator, generally either a member of a law enforcement agency or as an individual working in the capacity of private investigators, tasked with solving crimes and other mysteries, such as disappearances, by examining and evaluating clues and records in order to solve the mystery; for a crime, this would mean uncovering the criminal`s identity and/or whereabouts. In some police systems, a detective position is achieved by passing a written test after a person completes the requirements for being a police officer; in others, detectives are college graduates who join directly from civilian life without first serving as uniformed officers.
+Source: Wikipedia</description>
+            <picurl>210906.jpg</picurl>
+        </tag>
+        <tag id="1152" parentid="2849" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2010-04-23">
+            <name>undead</name>
+        </tag>
+        <tag id="1279" parentid="2869" weight="300" localspoiler="false" globalspoiler="false" verified="true" update="2011-11-18">
+            <name>all-girls school</name>
+            <description>This school is only for female students. There may be a few male teachers though.</description>
+            <picurl>70853.jpg</picurl>
+        </tag>
+        <tag id="1363" parentid="2856" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2019-09-21">
+            <name>breast fondling</name>
+            <description>Breast fondling is the act of touching, groping, or fondling the breasts of a person, typically female.</description>
+            <picurl>238325.jpg</picurl>
+        </tag>
+        <tag id="1409" parentid="1152" weight="300" localspoiler="false" globalspoiler="false" verified="true" update="2019-03-20">
+            <name>vampire</name>
+            <description>A vampire is a mythological or folkloric nocturnal undead. Vampires use long fangs to penetrate the necks of people, usually young females, to drink their blood, both as a form of nourishment and to turn the targets into slaves.
+In the classic vampire stories, they are thought to have no reflection in mirrors, are able to shapeshift into bats (sometimes also wolves or some form of fog), have unlimited lifespan and superhuman strength, reflexes and senses, and may only be killed by silver bullets, silver blades, a stake through the heart, fire, or exposure to sunlight; on the other hand, they cannot tolerate garlic, holy water, or Christian crosses (sometimes expanded to religious symbols in general).
+In modern anime, these limitations are usually dropped, and they become far more powerful and fearsome opponents than usual. A human bitten, or sometimes even scratched, by a vampire typically becomes a slave, eventually dying as if poisoned, and becoming a vampire, ghoul, zombie, or other form of undead after death, often staying under the command of the vampire who originally bit them.</description>
+            <picurl>231496.jpg</picurl>
+        </tag>
+        <tag id="1589" parentid="2622" weight="100" localspoiler="false" globalspoiler="false" verified="true" update="2020-02-08">
+            <name>samurai</name>
+            <picurl>244341.jpg</picurl>
+        </tag>
+        <tag id="1802" parentid="2606" infobox="true" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2016-01-24">
+            <name>seinen</name>
+            <description>Seinen, literally "young man", is one of the main demographic classifications applied to manga, and, by extension, to anime, especially manga-based ones. As the name implies, seinen works are marketed primarily to an audience of young men; the age range commonly understood to be the target of such works goes roughly from 17 to somewhere in the 40s.</description>
+            <picurl>181651.jpg</picurl>
+        </tag>
+        <tag id="2008" parentid="2891" weight="200" localspoiler="false" globalspoiler="false" verified="true" update="2021-08-29">
+            <name>small breasts</name>
+            <description>Small breasts (flat chested) are breasts that would be considered below the average size for real life http://anidb.net/t7871 [medium breasts].</description>
+            <picurl>162720.jpg</picurl>
+        </tag>
+        <tag id="2094" parentid="2849" weight="100" localspoiler="false" globalspoiler="false" verified="true" update="2015-10-25">
+            <name>magic</name>
+            <description>Magic is the art of purportedly manipulating aspects of reality either by supernatural means or through knowledge of unknown occult laws.</description>
+            <picurl>178878.jpg</picurl>
+        </tag>
+        <tag id="2282" parentid="2841" weight="100" localspoiler="false" globalspoiler="false" verified="true" update="2017-12-18">
+            <name>martial arts</name>
+            <description>Various sports or skills, mainly of Japanese origin, that originated as forms of self-defense or attack, such as judo, karate, and kendo.</description>
+            <picurl>210947.jpg</picurl>
+        </tag>
+        <tag id="2604" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2018-11-08">
+            <name>content indicators</name>
+            <description>The content indicators branch is intended to be a less geographically specific tool than the `age rating` used by convention, for warning about things that might cause offence. Obviously there is still a degree of subjectivity involved, but hopefully it will prove useful for parents with delicate children, or children with delicate parents.
+Note: Refer to further guidance on http://wiki.anidb.net/w/Categories:Content_Indicators [the Wiki page] for how to apply tag weights for content indicators.</description>
+        </tag>
+        <tag id="2605" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-09-28">
+            <name>dynamic</name>
+            <description>Some of the central structural elements in anime are: 
+Plot Continuity 
+How does the plot or several plots unfold. Are they a strictly linear retelling of one big continuing story, a serial, possibly with several side stories, or is the content chopped into a set of unconnected episodes, only sharing the same setting and characters?
+Stereotype Characters
+Then there is the question of the character set presentation. Is it completely original, or is it your usual stereotypical character cast. Both choices have their merit, for example it would not really make much sense to reinvent the wheel for a harem anime. Fans of that genre come to expect their favourite stereotype protagonists.
+Plot Twists
+Finally there is the question of how complex the plot / the story unfolds. Are there side-plots that merge into the main plot leading to unexpected plot twists, or is the anime quite predictable? The latter would not be appropriate for detective stories. In harem anime on the other hand a foreseeable outcome is actually something the fans will come to expect.</description>
+        </tag>
+        <tag id="2606" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2018-11-05">
+            <name>target audience</name>
+            <description>Anime, like everything else in the modern world, is targeted towards specific audiences, both implicitly by the creators and overtly by the marketing. While categories are associated with specific sex and age groups, this is not a bar on the anime being enjoyed by people who don`t fit into that band; not only do crossover titles exist, but the categories also have a considerable following outside their main demographic, and a person might as well enjoy anime from all categories. Still, does not invalidate the usefulness of marking a title as one of the categories; the same themes will likely be treated differently in anime geared for different audiences. Only one should not jump the gun and assume that a title will be more or less serious or present content in this or that way due to its target audience, or conversely assume the target audience on the content and its presentation alone. As such, the audience categories help form a broad impression of how a title might work with the announced themes, but offer little to no in-depth information about specific content or its treatment.
+The audience categories originate from manga magazines, which group titles of a same intended audience into a magazine that is advertised as belonging to that category, and so manga-based anime will have the category from their parent work. As for anime based on other works, the audience is often debatable, but comparing information such as time slot to the manga-based anime generally helps figure out the most likely possibility.
+If the parent material was classified under multiple audiences over time (for example, it was originally shounen, but then as the plot changed and became more mature, it was reclassified as seinen), and the anime adapts parent material time periods covering multiple audiences, we tag all audiences covered by the anime adaptation.</description>
+        </tag>
+        <tag id="2607" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2009-04-29">
+            <name>themes</name>
+            <description>Themes describe the very central elements important to the anime stories. They set the backdrop against which the protagonists must face their challenges. Be it School Life, present Daily Life, Military action, Cyberpunk, Law and Order detective work, Sports, or the Underworld. These are only but a few of the more typical backgrounds for anime plots. Add to that a Conspiracy setting with a possible tragic outcome, the Themes span most of the imaginable subject matter relevant to anime.</description>
+        </tag>
+        <tag id="2608" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2021-07-27">
+            <name>fetishes</name>
+            <description>For non-porn anime, the fetish must be a major element of the show; incidental appearances of the fetish is not sufficient for a fetish tag. Please do not add fetish tags to anime that do not pander to the fetish in question in any meaningful way. For example, there`s some ecchi in http://anidb.net/a22 [Shinseiki Evangelion], but the fact you get to see http://anidb.net/ch39 [Asuka]`s pantsu is not sufficient to warrant applying the http://anidb.net/t2894 [school girl] fetish tag. See also the http://wiki.anidb.net/Tags#Minimum_Relevance_Rule [minimum relevancy rule].
+For porn anime, the application of fetish tags are fairly straightforward, as porn will fully play out most fetishes.</description>
+        </tag>
+        <tag id="2609" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2018-09-01">
+            <name>original work</name>
+            <description>What the anime is based on! This is given as the original work credit in the OP. Mostly of academic interest, but a useful bit of info, hinting at the possible depth of story.</description>
+        </tag>
+        <tag id="2610" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2009-04-22">
+            <name>setting</name>
+            <description>The setting describes in what time and place an anime takes place. To a certain extent it describes what you can expect from the world in the anime.</description>
+        </tag>
+        <tag id="2611" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-09-08">
+            <name>elements</name>
+            <description>Next to Themes setting the backdrop for the protagonists in anime, there are the more detailed plot Elements that centre on character interactions: "What do characters do to each other or what is done to them?". Is it violent Action, an awe-inspiring Adventure in a foreign place, the gripping life of a Detective, a slapstick Comedy, an Ecchi Harem anime, a SciFi epic, or some Fantasy travelling adventure?</description>
+        </tag>
+        <tag id="2612" parentid="2610" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2016-09-04">
+            <name>time</name>
+            <description>This placeholder lists different epochs in human history and more vague but important timelines such as the future, the present and the past.</description>
+        </tag>
+        <tag id="2613" parentid="2610" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2016-09-04">
+            <name>place</name>
+            <description>The places the anime can take place in. Includes more specific places such as a country on Earth, as well as more general places such as a dystopia or a mirror world.</description>
+        </tag>
+        <tag id="2617" parentid="2841" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2013-10-15">
+            <name>calling your attacks</name>
+            <description>"GIGAAAAAA DRIIIIIILLL BREAKEEEEEERRR"
+If you can do something more impressive than just throw a punch, your attack(s) must have an equally impressive name. More than that, you have to call it out as you launch the attack. It doesn`t matter if it`s a martial arts move, a magical spell or your secret superweapon, if you can`t say its name, it just isn`t nearly as cool or effective.
+Having a special attack is always a must, but not impressive enough. Every special attack needs a name. A really awesome and outstanding name which is easy to remember and even easier and impressive to yell. Because it just is not enough to name your attack. No, to unleash the full power of your attack, you have to call its name in your most MANLY and LOUDEST voice.
+It does not matter whether it is a martial arts move, a magical spell or flying drills from your mecha, if you can`t call its name, it just isn`t nearly as cool or effective. Not a requirement but wearing shades while calling your attack makes it at least twice as cool, moreover giving your mecha or magical companion shades too results in an immeasurable level of awesomeness, bringing down every enemy just through the POWER OF YOUR VOICE.
+A standard feature of practically every mecha, mahou shoujo, high fantasy, or martial arts anime.
+[Source: TV Tropes]</description>
+            <picurl>144260.jpg</picurl>
+        </tag>
+        <tag id="2618" parentid="2841" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2012-10-07">
+            <name>collateral damage</name>
+            <description>The usually action orientated anime does not only show large amounts of combat and weapon use, but also the incidental massive destruction of property, often due to the inability of the protagonists to aim properly.
+Example: Mecha duking it out in a densely populated urban area.</description>
+        </tag>
+        <tag id="2622" parentid="2841" weight="200" localspoiler="false" globalspoiler="false" verified="true" update="2017-12-26">
+            <name>swordplay</name>
+            <description>The act or art of using a sword or similar weapon skillfully.</description>
+            <picurl>211286.jpg</picurl>
+        </tag>
+        <tag id="2626" parentid="2612" weight="200" localspoiler="false" globalspoiler="false" verified="true" update="2009-05-15">
+            <name>future</name>
+            <description>Anime that fall under the future category are the ones that have a society that could have originated from ours. In most cases it should go hand to hand with sci-fi since we expect the future to consist of advanced technology, however, in the case where it`s explicitly stated in the story that the anime takes place "x years into the future", the state of technology doesn`t matter as long as it`s long into the future. The anime can be set in an alternative universe not tied with our own, as long as it has a futuristic feel to it.
+This category sports quite a lot of anime, mostly stemming from SciFi, but not necessarily only from there.</description>
+        </tag>
+        <tag id="2628" parentid="2613" weight="100" localspoiler="false" globalspoiler="false" verified="true" update="2018-08-31">
+            <name>fictional location</name>
+            <description>A fictional location is a place or world which is run by different set of rules than our common and ordinary world. This may include completely fictional worlds with no semblance of Earth, computer-generated worlds, fantasy worlds, magical worlds, parallel worlds accessible through portals, and so on. Or it may be fictional places like floating islands, dungeons or planets, which can co-exist with ordinary Earth, but are otherwise separate from it.
+A world that generally shares the characteristics of, and/or is generally indistinguishable from the real world (bar research on a "more than cursory" level), would NOT be considered a fictional world. A good example is http://anidb.net/a4521 [Code Geass]. It contains several real world nationalities, such as http://anidb.net/a4521 [China], http://anidb.net/t2672 [Japan] (now Area 11), http://anidb.net/t5091 [India], etc, along with fictional nationalities such as http://anidb.net/t2361 [Britannia]. China, Japan, and India are easily identified with a cursory look. The location is unmistakably the planet Earth, even though national borders have been redrawn.
+The fictional world should only be tagged if it plays a materially important role in the plot and setting; generally, an episodic occurrence of a fictional world should not be tagged.
+A fantasy world is a type of fictional world, part of a fictional universe. Typical worlds involve, but are not limited to: magic or magical abilities, and/or a medieval theme. Some examples include: a parallel world tenuously connected to Earth via magical portals or items; a fictional Earth-like planet in the remote past or future; or an entirely independent world set in another universe. Many fantasy worlds draw heavily on real world history, geography, and sociology, and also on folklore.</description>
+        </tag>
+        <tag id="2636" parentid="2846" weight="100" localspoiler="false" globalspoiler="false" verified="true" update="2018-09-16">
+            <name>human enhancement</name>
+            <description>Human enhancement can take various forms: It can be something comparatively non-intrusive as a power-up drug, a form of machine implantation or cyberization (http://anidb.net/a4414 [SAC Solid State Society]), or outright - possibly atrocious - genetic manipulation (http://anidb.net/a361 [Ao no 6 Gou]). Plot-wise enhanced protagonists in anime usually have to pay a price for their enhancements, be it physical or mental.</description>
+            <picurl>223945.jpg</picurl>
+        </tag>
+        <tag id="2649" parentid="2849" weight="100" localspoiler="false" globalspoiler="false" verified="true" update="2021-06-16">
+            <name>dark fantasy</name>
+            <description>Focus set on darker themes in a fantasy setting, sometimes leaning towards horror elements. Bleak and pessimistic tones often dominate. Dark supernatural beings like vampires may play a significant role.</description>
+            <picurl>261313.jpg</picurl>
+        </tag>
+        <tag id="2653" parentid="2853" weight="100" localspoiler="false" globalspoiler="false" verified="true" update="2009-05-04">
+            <name>slapstick</name>
+            <description>Slapstick humour is generally recognized by lots of physical abuse, horseplay and practical jokes. Also often seen are impossible situations, using sounds to illustrate impossible stunts that aren`t shown on-screen and to create tension for audience anticipation.</description>
+        </tag>
+        <tag id="2671" parentid="2869" weight="100" localspoiler="false" globalspoiler="false" verified="true" update="2018-09-03">
+            <name>school dormitory</name>
+            <description>A school dormitory or residence hall is the student living quarters at an elite academy, boarding school, or military school. The main characters may live or work at the dormitory, and it often becomes the backdrop for a reoccurring part of the story.</description>
+            <picurl>223167.jpg</picurl>
+        </tag>
+        <tag id="2750" parentid="2604" weight="200" localspoiler="false" globalspoiler="false" verified="true" update="2018-11-08">
+            <name>violence</name>
+            <description>Violence is the use of physical force against oneself or another entity, compelling action against one`s will on pain of being hurt.
+Note: Refer to further guidance on http://wiki.anidb.net/w/Categories:Content_Indicators [the Wiki page] for how to apply tag weights for content indicators.</description>
+        </tag>
+        <tag id="2786" parentid="2858" weight="100" localspoiler="false" globalspoiler="false" verified="true" update="2018-01-21">
+            <name>love polygon</name>
+            <description>A love polygon refers to a romantic relationship involving n people. Although a love triangle is not limited to just heterosexual relationships, in anime, it usually deals with two females liking one male and vice versa.</description>
+            <picurl>10989.gif</picurl>
+        </tag>
+        <tag id="2790" parentid="2605" weight="500" localspoiler="false" globalspoiler="false" verified="true" update="2010-01-17">
+            <name>plot continuity</name>
+            <description>Consistency of the characteristics of persons, plot, objects, places and events seen by the viewer.
+A single linear focused plot is highly continuous.
+A truly random plot is highly discontinuous.</description>
+        </tag>
+        <tag id="2791" parentid="6230" weight="300" localspoiler="false" globalspoiler="false" verified="true" update="2011-12-25">
+            <name>stereotypes</name>
+            <description>This show presents stereotypes, which are generalizations about a group of people. Examples would be saying that people from a certain country or with a certain hair color are stupid. If the show deals with comedy, the stereotypes are likely to be played on for laughs; if the show is a parody, the stereotypes will be exaggerated to have their flaws exposed and may be used as a form of social commentary.</description>
+        </tag>
+        <tag id="2799" parentid="2609" infobox="true" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2019-08-13">
+            <name>novel</name>
+            <description>A novel is a relatively long work of narrative fiction, normally written in prose form, and which is typically published as a book. Manga, comics, or visual novels do not fit this description and are not considered novels; including a small number of illustrations, however, is still permissible, which means that light novels are considered novels.</description>
+        </tag>
+        <tag id="2841" parentid="2611" weight="300" localspoiler="false" globalspoiler="false" verified="true" update="2017-12-26">
+            <name>action</name>
+            <description>Action anime usually involve a fairly straightforward story of good guys versus bad guys, where most disputes are resolved by using physical force. It often contains a lot of shooting, explosions and fighting.</description>
+            <picurl>211261.jpg</picurl>
+        </tag>
+        <tag id="2846" parentid="7050" weight="100" localspoiler="false" globalspoiler="false" verified="true" update="2018-10-04">
+            <name>science fiction</name>
+            <description>Science fiction stories usually focus on how situations could be different in the future when we are more technologically advanced; due to either our own achievements or having met with other civilizations whom we have learned from.</description>
+            <picurl>212180.jpg</picurl>
+        </tag>
+        <tag id="2849" parentid="7050" weight="300" localspoiler="false" globalspoiler="false" verified="true" update="2005-05-07">
+            <name>fantasy</name>
+            <description>Fantasy is a genre of fiction that uses magic and other supernatural phenomena as a primary element of plot, theme, or setting. Many works within the genre take place in fictional worlds where magic is common. Fantasy is generally distinguished from science fiction and horror by the expectation that it steers clear of (pseudo-)scientific and macabre themes, respectively, though there is a great deal of overlap between the three (which are subgenres of speculative fiction).
+In popular culture, the genre of fantasy is dominated by its medievalist form, especially since the worldwide success of The Lord of the Rings books by J. R. R. Tolkien. In its broadest sense however, fantasy comprises works by many writers, artists, filmmakers, and musicians, from ancient myths and legends to many recent works embraced by a wide audience today.
+Fantasy is a vibrant area of academic study in a number of disciplines (English, cultural studies, comparative literature, history, medieval studies). Work in this area ranges widely, from the structuralist theory of Tzvetan Todorov, which emphasizes the fantastic as a liminal space, to work on the connections (political, historical, literary) between medievalism and popular culture
+Source: Wiki</description>
+            <picurl>68768.jpg</picurl>
+        </tag>
+        <tag id="2851" parentid="7050" weight="200" localspoiler="false" globalspoiler="false" verified="true" update="2018-03-11">
+            <name>horror</name>
+            <description>The horror cinematic genre is characterized by the attempt to make the viewer experience dread, fear, terror, or horror. Often their plots involve the intrusion of an evil force, event or personage, sometimes of supernatural origin, on the mundane world and the consequences thereof.</description>
+            <picurl>214682.jpg</picurl>
+        </tag>
+        <tag id="2853" parentid="2611" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2017-02-13">
+            <name>comedy</name>
+            <description>Anime whose central struggle causes hilarious results. These stories are built upon funny characters, situations and events. A comedy anime is laced with humour and sets out to provoke laughter from the audience.
+Japanese humour can be a bit strange to westerners, so if you`re new to this type of humour, just bear with it; it`ll most likely grow on you if you`re a fan of other kinds of comedy.</description>
+            <picurl>198104.jpg</picurl>
+        </tag>
+        <tag id="2856" parentid="2611" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-09-05">
+            <name>ecchi</name>
+            <description>Fan service is found in many anime, in many forms. When the service has a distinctly sexual slant to it, and it appears to be a major focus of the show, then it`s safe to assume you`re watching ecchi.
+The word "ecchi" is used by English-speaking anime fans to refer to refer to soft-core pornographic or sexually suggestive anime and manga. This is a western invention; in Japanese, it is a catch-all term for all things anyhow sexual in nature, not being limited to porn, but also not really considered a "milder" term, as it may also refer to sexual intercourse itself. The term "ecchi" in Japanese comes from the pronunciation of the letter "H" in English, which is rendered into Japanese syllabary as エッチ, which in turn is transliterated in the English alphabet as "ecchi" or "etchi". It is not, as many believe, short for "hentai" -- that, too, seems to be a western invention. It is, however, nearly as misunderstood and misapplied a term as "hentai".
+The line between ecchi and hentai, from the western perspective over these terms, can be hard to draw at times; one good rule of thumb is: if it was aired on Japanese public TV at all, it probably wasn`t hentai. Ecchi usually features all the specifics to human anatomy that can only be found in anime, and generally avoids full nudity, instead abusing of panty shots. Hentai, on the other hand, will usually show full frontal nudity in some explicit form, including genitalia, and full, intimate sex scenes. At its mildest, ecchi is composed of double entendres, big misunderstandings, and sexual farce; at its most explicit, it is still in the realm of softcore pornography, with full breast shots, full back nudity and similar content, but no display of genitalia. Another good way to distinguish the two is looking for animated sex scenes; if one is found, you have generally left the genre entirely, though a few borderline exceptions apply here. For AniDB`s purposes, the distinction between explicit ecchi and actual hentai is simple: if it was sold with a 18+ restriction in its country of origin, it is hentai; if it was sold without it, it is ecchi.
+Source: TV Tropes</description>
+            <picurl>32416.jpg</picurl>
+        </tag>
+        <tag id="2858" parentid="2611" weight="200" localspoiler="false" globalspoiler="false" verified="true" update="2017-12-01">
+            <name>romance</name>
+            <description>Romance describes a story that deals with love between two or more characters typically also having an optimistic ending. Romance is also a difficulty encountered when creating a harem.</description>
+            <picurl>210061.jpg</picurl>
+        </tag>
+        <tag id="2869" parentid="2607" weight="300" localspoiler="false" globalspoiler="false" verified="true" update="2017-12-01">
+            <name>school life</name>
+            <description>Since a large part of the anime audience still takes part in school life or is visiting college, it is only natural to choose a setting the audience can identify with, be it elementary, middle, or high school. For the older viewers a college setting with more mature real-life problems is appropriate. And since clubs take up so much time in the lives of students, these are obviously also important.</description>
+            <picurl>210062.jpg</picurl>
+        </tag>
+        <tag id="2874" parentid="2607" weight="200" localspoiler="false" globalspoiler="false" verified="true" update="2018-05-07">
+            <name>disaster</name>
+            <description>A disaster is a large-scale situation that causes great loss of or damage or threat to life, health, property, society, or the environment, irrespective of its source or cause. Disasters have substantial, long-lasting negative repercussions, and great effort must be spent in order to undo or mitigate their effects.</description>
+        </tag>
+        <tag id="2882" parentid="2952" infobox="true" weight="400" localspoiler="false" globalspoiler="false" verified="true" update="2012-12-17">
+            <name>dystopia</name>
+            <description>A dystopia (from Ancient Greek: δυσ-, "bad, ill", and Ancient Greek: τόπος, "place, landscape"; alternatively cacotopia, or anti-utopia) is, in literature, an often futuristic society that has degraded into a repressive and controlled state, often under the guise of being utopian. Dystopian literature has underlying cautionary tones, warning society that if we continue to live how we do, this will be the consequence. A dystopia, thus, is regarded as a sort of negative utopia and is often characterized by an authoritarian or totalitarian form of government. Dystopias usually feature different kinds of repressive social control systems, a lack or total absence of individual freedoms and expressions and constant states of warfare or violence. Dystopias often explore the concept of humans abusing technology and how humans individually and collectively cope with technology that has evolved too quickly such as the car, the flamethrower or the microwave. A dystopian society is also often characterized by widespread poverty and brutal political controls such as a large military-like police.</description>
+            <picurl>69879.jpg</picurl>
+        </tag>
+        <tag id="2891" parentid="2608" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2024-07-25">
+            <name>breasts</name>
+            <description>The female bust size matters! Or does it? The subcategories spell out the the range of breast sizes.</description>
+            <picurl>161015.jpg</picurl>
+        </tag>
+        <tag id="2907" parentid="2636" weight="100" localspoiler="false" globalspoiler="false" verified="true" update="2018-09-16">
+            <name>genetic modification</name>
+            <description>Story-wise, genetic modification is usually centred on humans, probably the most subtle and creepy way of messing with mankind. Playing with the fear of the unknown, genetically altered humans are technically a new species, that may not only surpass but actually replace unaltered humans. The level of modification will vary from subtle changes in "look" (e.g. super-human beauty), to mental enhancements (PSI powers), to more or less atrocious adaptations to extreme environments (breath under water, radiation resistance). Note that changes in Aliens would be difficult to pinpoint, after all they are alien.</description>
+            <picurl>223941.jpg</picurl>
+        </tag>
+        <tag id="2923" parentid="2874" weight="200" localspoiler="false" globalspoiler="false" verified="true" update="2014-06-25">
+            <name>post-apocalyptic</name>
+            <description>An anime that takes place on future Earth (or it could be an alternative universe) after a major cataclysm has occurred. World War III, an alien invasion, plague, global warming or some other general disaster are common themes to build a post-apocalyptic world upon, where the effects were severe enough that mankind barely survived.
+The time frame may be immediately after the catastrophe, focusing on the travails or psychology of survivors, or considerably later, often including the theme that the existence of pre-catastrophe civilization has been forgotten (or mythologised). Post-apocalyptic stories often take place in an agrarian, non-technological future world, or a world where only scattered elements of technology remain. There is a considerable degree of blurring between post-apocalyptic fiction and that which deals with false utopias or dystopian societies.</description>
+            <picurl>42081.jpg</picurl>
+        </tag>
+        <tag id="2931" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2016-12-04">
+            <name>unsorted</name>
+            <description>a bunch of tags that still need to be either deleted or moved into proper places.</description>
+        </tag>
+        <tag id="2952" parentid="2607" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2015-12-06">
+            <name>rotten world</name>
+            <description>A rotten world is a setting or situation where the jaded notion that "anything that can go wrong will go horribly wrong" almost always applies. Oppression, perpetual warfare, lawlessness, despair or other forms of mental instability, and other highly undesirable factors tend to be rampant.</description>
+        </tag>
+        <tag id="3004" parentid="6232" weight="0" localspoiler="false" globalspoiler="false" verified="false" update="2009-10-17">
+            <name>skilled main character</name>
+            <description>The main character in the show is very skilled in one or more tasks, often to the amazement of those around him/her.</description>
+        </tag>
+        <tag id="3023" parentid="2853" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2012-02-19">
+            <name>funny expressions</name>
+            <description>The facial expressions of the characters may change so quickly or unexpectedly distort that hilarity will ensue.</description>
+        </tag>
+        <tag id="3040" parentid="6230" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2018-11-01">
+            <name>male protagonist</name>
+            <description>This anime has a male protagonist.</description>
+        </tag>
+        <tag id="3150" parentid="4522" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2016-09-04">
+            <name>social class issues</name>
+            <description>A character`s standing in society is cause of many issues. More generally, the society`s class structure is the source of many problems in the anime.
+A common example is class division; a strong and rigid class division between rich/elite and poor/commoners, with the elites having disproportionately more privilege than the common class.
+This can be applied not only when royalty and nobility are present, but also dystopian societies display often these divisions.
+Another example is a division between employees and management, with employees akin to the common class, and management akin to the elite class.</description>
+        </tag>
+        <tag id="3411" parentid="2841" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2017-12-26">
+            <name>fighting</name>
+            <description>For some reason or other one faction has to take it out on some opponent via fight or battle. Typical examples of this are all the anime with "endless pointless fighting" tag.</description>
+            <picurl>211266.jpg</picurl>
+        </tag>
+        <tag id="3436" parentid="2846" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-03-23">
+            <name>human experimentation</name>
+            <description>Genetic, biological, chemical or psychological experimentation on human beings are portrayed or their aftermath is shown.</description>
+        </tag>
+        <tag id="3508" parentid="2869" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2008-09-26">
+            <name>school for the rich elite</name>
+        </tag>
+        <tag id="3536" parentid="2931" weight="0" localspoiler="false" globalspoiler="false" verified="false" update="2011-05-20">
+            <name>undercover</name>
+            <description>Be it the spy, the criminal or the police, someone pretends to be a person they aren`t in order to obtain information or something of value.</description>
+        </tag>
+        <tag id="3741" parentid="2607" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-10-25">
+            <name>bullying</name>
+            <description>Bullying is the use of force, threat, or coercion to abuse, intimidate, or aggressively dominate others. One who engages in bullying is known as a bully.
+Source: Wikipedia</description>
+        </tag>
+        <tag id="3772" parentid="2931" weight="0" localspoiler="false" globalspoiler="false" verified="false" update="2011-09-03">
+            <name>library</name>
+            <description>In a traditional sense, a library is a large collection of books, and can refer to the place in which the collection is housed.</description>
+        </tag>
+        <tag id="3805" parentid="2611" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2018-01-13">
+            <name>European stylised</name>
+            <description>The anime`s setting is crafted in some classic European style. Imagine an architectural and cultural mix of London, Paris, Rome, Berlin, Prague, and other cities as they were at any point in the 19th century or earlier.</description>
+        </tag>
+        <tag id="3822" parentid="6230" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2010-03-15">
+            <name>strong male lead</name>
+            <description>The lead male protagonist in this anime shows backbone, is competent, and does not shy away from seemingly insurmountable objectives.</description>
+        </tag>
+        <tag id="3831" parentid="2607" weight="100" localspoiler="false" globalspoiler="false" verified="true" update="2015-05-13">
+            <name>training</name>
+            <description>Training is extensive, serious practising a person undergoes in order to develop skills and abilities, such as handling weapons, playing instruments, playing sports, and so on.</description>
+        </tag>
+        <tag id="3898" parentid="2849" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2009-11-11">
+            <name>science and magic coexist</name>
+            <description>In this anime science and magic do not exclude each other. Magic here is actually very advanced, artefact- and/or ritual-based science.</description>
+        </tag>
+        <tag id="4064" parentid="6151" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2018-08-13">
+            <name>CGI</name>
+            <description>Computer-generated imagery (CGI) or computer animation is the art of creating moving images via the use of computers. It is a subfield of computer graphics and animation. Increasingly it is created by means of 3D computer graphics, though 2D computer graphics are still widely used for stylistic, low bandwidth, and faster real-time rendering needs. Sometimes the target of the animation is the computer itself, but sometimes the target is another medium, such as film.</description>
+            <picurl>222249.jpg</picurl>
+        </tag>
+        <tag id="4182" parentid="2931" weight="0" localspoiler="false" globalspoiler="false" verified="false" update="2014-01-22">
+            <name>hidden power</name>
+            <description>For some reason or another a character has powers (or potential) he or she can`t access and may not even know about. 
+In some anime these hidden powers are used quite frequently to overcome an enemy or threat (e.g. Naruto, Bleach).</description>
+        </tag>
+        <tag id="4333" parentid="6230" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2015-07-06">
+            <name>predominantly female cast</name>
+            <description>A show with a predominantly female cast has mostly females as main and secondary cast members while few if any male characters have major roles. This also applies when a male lead is surrounded by females of lesser individual plot relevance, such as in a harem setting.</description>
+            <picurl>70752.jpg</picurl>
+        </tag>
+        <tag id="4455" parentid="6249" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2013-03-15">
+            <name>dysfunctional family</name>
+            <description>When the nuclear family (Mother, Father and child(ren)) goes boom due to conflicts between family members, sometimes resulting in the breakup of the family or even violence.</description>
+        </tag>
+        <tag id="4479" parentid="2931" weight="0" localspoiler="false" globalspoiler="false" verified="false" update="2009-02-03">
+            <name>sense of foreboding</name>
+            <description>The anime starts off quietly, everything seems to be fine, but from episode to episode the signs that something ominous is about to happen increase. E.g. a typical mystery setting.</description>
+        </tag>
+        <tag id="4522" parentid="2611" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2021-04-12">
+            <name>social commentary</name>
+            <description>Social commentary is the act of using rhetorical means to provide commentary on issues in a society. This is often done with the idea of implementing or promoting change by informing the general populace about a given problem and appealing to people`s sense of justice. Social commentary can be practiced through all forms of communication, from printed form, to conversations to computerized communication.
+Since this is anime, usually, the mores of Japan and the Japanese society are scrutinised, but not restricted to that.
+This tag should only apply to anime where social commentary is major theme that is explored thoroughly as a main (sub-)plot element. As social commentary, the anime should send a message to the viewers, criticising our society through fiction; merely portraying complex social elements such as racism is not sufficient.
+Examples of anime that provide social commentary:
+http://anidb.net/a812 [Roujin Z]: criticism of our healthcare system for the elderly and our growing reliance on artificial intelligence in medicine.
+http://anidb.net/a191 [GTO (Great Teacher Onizuka)]: many episodes criticise our education system in schools, as well as the ethics and struggles of teaching, showing the negative effects of bullying in schools.
+http://anidb.net/a4121 [NHK ni Youkoso!]: criticises the Otaku culture.
+Non-examples:
+http://anidb.net/a10401 [Tokyo Ghoul]: depicts two different living species hating each other (a common trope in fiction, including anime) as an excuse for action and violence, as well as resolving conflicts between the two species that are irrelevant to our social issues.
+Source: Wikipedia</description>
+        </tag>
+        <tag id="4812" parentid="2931" weight="0" localspoiler="false" globalspoiler="false" verified="false" update="2012-07-04">
+            <name>dark past</name>
+            <description>Way back when, something horrible happened - like murder, betrayal, rape or cataclysm. It may have happened to a character, or been caused by a character. It may be some powerful evil that was vanquished long ago.
+Whatever it was, that past event will echo in the plotline of this story, providing motivation or peril for the protagonists.</description>
+        </tag>
+        <tag id="5030" parentid="2931" weight="0" localspoiler="false" globalspoiler="false" verified="false" update="2011-09-03">
+            <name>pact</name>
+            <description>A pact, from Latin pactum ("something agreed upon"), is a formal agreement. Within anime as a medium is usually entails some sort of sacrifice on one`s part in the exchange for power.</description>
+        </tag>
+        <tag id="5463" parentid="2869" weight="300" localspoiler="false" globalspoiler="false" verified="true" update="2010-04-25">
+            <name>boarding school</name>
+        </tag>
+        <tag id="5679" parentid="2931" weight="0" localspoiler="false" globalspoiler="false" verified="false" update="2012-07-04">
+            <name>machiavellian intrigues</name>
+            <description>Named after Niccolò di Bernardo dei Machiavelli (3 May 1469 - 21 June 1527). Machiavelli is considered one of the founders of modern political science, and was a philosopher and diplomat.
+He is famous for his political treatise `The Prince`, which is essentially a manual about the acquisition and maintenance of power, including the need for deceit and the application of armed force.
+It is the use of deceit from which the term `Machievellian` derives. This term generally applies to a person who uses deceit to manipulate others for their own amoral (and usually power hungry) ends.
+This anime contains at least one character whose intrigues drive the plot.</description>
+        </tag>
+        <tag id="5773" parentid="2607" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2017-06-14">
+            <name>secret organisation</name>
+            <description>A secret organisation or secret society is an organisation whose activities and inner functioning are concealed from non-members. The society may or may not attempt to conceal its existence itself. Examples of historical and existing secret societies include Freemasonry, the Knights Templar, the Rosicrucians, Skull and Bones, the Thule Society, and the Illuminati.</description>
+            <picurl>192876.jpg</picurl>
+        </tag>
+        <tag id="5835" parentid="2856" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2019-07-28">
+            <name>Gainax bounce</name>
+            <description>A term that has come to describe often exaggerated, very jiggly, fluid, and painstakingly detailed animation of female characters` bouncing breasts. 
+The term has its roots in http://anidb.net/a185 [Top o Nerae!] — Gunbuster, Gainax`s first OVA (1988), in which the Gainax bounce is found unabated in the three female characters of Noriko, Kazumi, and Jung.</description>
+            <picurl>166074.jpg</picurl>
+        </tag>
+        <tag id="5889" parentid="2094" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2010-03-05">
+            <name>magic weapons</name>
+            <description>The characters in this anime wield magic weapons.</description>
+        </tag>
+        <tag id="5948" parentid="6233" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2009-04-18">
+            <name>visible aura</name>
+            <description>Characters are surrounded by a visible energy field usually representing inner strength, but not restricted to only that.</description>
+        </tag>
+        <tag id="6070" parentid="2611" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2010-03-15">
+            <name>mystery</name>
+            <description>The mystery film is a sub-genre of the more general category of crime film. It focuses on the efforts of the detective, private investigator or amateur sleuth to solve the mysterious circumstances of a crime by means of clues, investigation, and clever deduction. (Source: Wikipedia)</description>
+        </tag>
+        <tag id="6073" parentid="2858" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2013-11-23">
+            <name>age difference romance</name>
+            <description>A romance between individuals of significantly different ages is featured. Depending on how big the age gap is and on the society featured, that may be considered taboo.
+While the terms "lolicon" and "shotacon", often used in relation to anime and its fandom, are limited to a physical or erotic attraction to sexually precocious girls or boys respectively, this tag expands into platonic romances and other age ranges.</description>
+        </tag>
+        <tag id="6083" parentid="2611" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-10-21">
+            <name>master-servant relationship</name>
+            <description>To some genres, this would suggest a genuine pairing where one person exists to serve another person, such as in some action/dramas where the pair becomes united by destiny as partners — fighting or battles between different pairs/partners will usually be a dominant part of the story.
+In other genres, this suggests a relationship where one person may be occupied as or even forcefully treated as a servant or slave to the other who designates themself the master — these services usually apply anywhere from tsundere/romantic-comedies to ecchi or to the more extreme in hentai.</description>
+        </tag>
+        <tag id="6097" parentid="4064" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2017-10-19">
+            <name>3D CG animation</name>
+            <description>Abbreviation for "three-dimensional computer generated animation" or "computer graphics" (CGI). The traditional 2D art is enhanced by 3D imagery developed through computer modeling software. Done in the right way, this union of 3D in a 2D animated world can be a very beautiful relationship.
+The difference lies in what lacks the traditional 2D animation all together and may give term to something produced entirely with 3D graphics (such as the 2006 remake of "Appleseed" , 2007`s "Vexille", the 2008 addition to the "Biohazard" series and the more well known "Final Fantasy: The Spirits Within" and "Advent Children").</description>
+            <picurl>208569.jpg</picurl>
+        </tag>
+        <tag id="6151" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-09-10">
+            <name>technical aspects</name>
+            <description>It may sometimes be useful to know about technical aspects of a show, such as information about its broadcasting or censorship. Such information can be found here.</description>
+        </tag>
+        <tag id="6173" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-09-24">
+            <name>origin</name>
+        </tag>
+        <tag id="6230" parentid="2605" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-10-20">
+            <name>cast</name>
+        </tag>
+        <tag id="6232" parentid="2931" weight="0" localspoiler="false" globalspoiler="false" verified="false" update="2014-10-21">
+            <name>character related tags which need deleting or merging</name>
+        </tag>
+        <tag id="6233" parentid="2611" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2015-08-11">
+            <name>tropes</name>
+            <description>A trope is a commonly recurring literary and rhetorical devices, motifs or clichés in creative works. This use is a broader redefining of a literary trope, the use of figurative language, via word, phrase, or even an image, for artistic effect, such as using a figure of speech.
+Source: Wikipedia</description>
+        </tag>
+        <tag id="6249" parentid="2607" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-10-31">
+            <name>family life</name>
+        </tag>
+        <tag id="6252" parentid="2607" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2016-10-18">
+            <name>feud</name>
+            <description>A feud, referred to in more extreme cases as a blood feud, vendetta, faida, beef, clan war, gang war, or private war, is a long-running argument or fight, often between social groups of people, especially families or clans. Feuds begin because one party (correctly or incorrectly) perceives itself to have been attacked, insulted or wronged by another. Intense feelings of resentment trigger the initial retribution, which causes the other party to feel equally aggrieved and vengeful. The dispute is subsequently fuelled by a long-running cycle of retaliatory violence. This continual cycle of provocation and retaliation makes it extremely difficult to end the feud peacefully. Feuds frequently involve the original parties` family members and/or associates, can last for generations, and may result in extreme acts of violence. They can be interpreted as an extreme outgrowth of social relations based in family honour.
+Source: Wikipedia</description>
+        </tag>
+        <tag id="6900" parentid="2849" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2017-07-23">
+            <name>gaslamp fantasy</name>
+            <description>Gaslamp fantasy is a subgenre of both fantasy and historical fiction, similar to but distinct from http://anidb.net/t2870 [steampunk], to which it is loosely related. While steampunk focuses on fantastic Industrial Revolution technology and as such is a genre of science fiction, gaslamp fantasy focuses more on supernatural elements and frequently includes magic and supernatural creatures.</description>
+        </tag>
+        <tag id="7050" parentid="2611" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2019-04-18">
+            <name>speculative fiction</name>
+            <description>Speculative fiction is an umbrella genre encompassing fiction with certain elements that do not exist in the real world, often in the context of supernatural, futuristic or other imaginative themes. This includes, but is not limited to, science fiction, fantasy, superhero fiction, horror, utopian and dystopian fiction, fairytale fantasy, supernatural fiction, as well as combinations thereof.
+Source: Wikipedia</description>
+        </tag>
+        <tag id="7402" parentid="2607" weight="200" localspoiler="false" globalspoiler="false" verified="true" update="2019-08-13">
+            <name>corrupt nobility</name>
+            <description>The nobility is characterized by decadence, sadism, and contempt towards the baseborn.</description>
+        </tag>
+        <tag id="7885" parentid="6173" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2021-11-07">
+            <name>Japanese production</name>
+        </tag>
+    </tags>
+    <characters>
+        <character id="103631" type="secondary cast in" update="2019-08-15">
+            <rating votes="10">4.49</rating>
+            <name>Elise Angel</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>237342.jpg</picture>
+            <seiyuu id="443" picture="276855.jpg">Ishikawa Yui</seiyuu>
+        </character>
+        <character id="103632" type="main character in" update="2019-08-15">
+            <rating votes="5">3.14</rating>
+            <name>Kufa Vampir</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>237340.jpg</picture>
+            <seiyuu id="3155" picture="11044.jpeg">Ono Yuuki</seiyuu>
+        </character>
+        <character id="103633" type="main character in" update="2019-08-15">
+            <rating votes="13">3.74</rating>
+            <name>Melida Angel</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>237341.jpg</picture>
+            <seiyuu id="51124" picture="293103.jpg">Kusunoki Tomori</seiyuu>
+        </character>
+        <character id="103634" type="secondary cast in" update="2019-08-15">
+            <rating votes="14">7.43</rating>
+            <name>Rosetti Pricket</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>237343.jpg</picture>
+            <seiyuu id="36640" picture="223260.jpg">Yabuuchi Marina</seiyuu>
+        </character>
+        <character id="105037" type="secondary cast in" update="2019-08-15">
+            <rating votes="5">2.75</rating>
+            <name>Nerva Martillo</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>237344.jpg</picture>
+            <seiyuu id="20762" picture="269510.jpg">Sakura Ayane</seiyuu>
+        </character>
+        <character id="105038" type="secondary cast in" update="2019-08-15">
+            <rating votes="6">3.10</rating>
+            <name>Mule La Mor</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>237345.jpg</picture>
+            <seiyuu id="22366" picture="272800.jpg">Uchida Maaya</seiyuu>
+        </character>
+        <character id="105039" type="secondary cast in" update="2019-08-15">
+            <rating votes="7">3.68</rating>
+            <name>Salacha Shicksal</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>237346.jpg</picture>
+            <seiyuu id="42471" picture="295383.jpg">Waki Azumi</seiyuu>
+        </character>
+        <character id="105040" type="secondary cast in" update="2019-08-15">
+            <rating votes="2">4.59</rating>
+            <name>Williams Gin</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>237347.jpg</picture>
+            <seiyuu id="644" picture="205640.jpg">Suzuki Tatsuhisa</seiyuu>
+        </character>
+        <character id="105041" type="secondary cast in" update="2019-08-15">
+            <rating votes="4">4.26</rating>
+            <name>Oyaji</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>237348.jpg</picture>
+            <seiyuu id="341" picture="11566.jpeg">Morikawa Toshiyuki</seiyuu>
+        </character>
+        <character id="106099" type="secondary cast in" update="2019-10-10">
+            <rating votes="8">4.33</rating>
+            <name>Black Madia</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>239501.jpg</picture>
+            <seiyuu id="21805" picture="169875.jpg">Tokui Sora</seiyuu>
+        </character>
+        <character id="106100" type="secondary cast in" update="2019-10-10">
+            <rating votes="2">4.12</rating>
+            <name>Shenfa Zwitoque</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>239502.jpg</picture>
+            <seiyuu id="21733" picture="264575.jpg">Seto Asami</seiyuu>
+        </character>
+        <character id="106833" type="secondary cast in" update="2019-11-09">
+            <rating votes="4">2.79</rating>
+            <name>Keira Espada</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>240980.jpg</picture>
+            <seiyuu id="27357" picture="75009.jpg">Yasuno Kiyono</seiyuu>
+        </character>
+        <character id="109000" type="appears in" update="2020-04-01">
+            <name>Kuro Neko</name>
+            <gender>unknown</gender>
+            <charactertype id="1">Character</charactertype>
+            <description>The cat, who Ku helped.</description>
+            <picture>68730.png</picture>
+        </character>
+        <character id="112495" type="appears in" update="2020-09-05">
+            <name>Aimee</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>251959.jpg</picture>
+            <seiyuu id="20497" picture="252298.jpg">Kayano Ai</seiyuu>
+        </character>
+        <character id="112496" type="appears in" update="2020-09-05">
+            <name>Fergus Angel</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>251960.jpg</picture>
+            <seiyuu id="464" picture="11019.jpeg">Sugou Takayuki</seiyuu>
+        </character>
+        <character id="113007" type="appears in" update="2020-10-06">
+            <name>Grace</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>252815.jpg</picture>
+            <seiyuu id="52105" picture="273692.jpg">Hayashi Koko</seiyuu>
+        </character>
+        <character id="113008" type="appears in" update="2020-10-06">
+            <name>Nietzsche</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>252816.jpg</picture>
+            <seiyuu id="52106" picture="216552.jpg">Atsugi Nanami</seiyuu>
+        </character>
+        <character id="113009" type="appears in" update="2020-10-06">
+            <name>Myra</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>252817.jpg</picture>
+            <seiyuu id="52107" picture="228904.jpg">Morishima Yuuka</seiyuu>
+        </character>
+        <character id="113014" type="appears in" update="2020-10-06">
+            <name>Mordrew</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>252820.jpg</picture>
+        </character>
+        <character id="113016" type="appears in" update="2020-10-06">
+            <name>Yuffi</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>252821.jpg</picture>
+            <seiyuu id="49536" picture="271295.jpg">Iwami Manaka</seiyuu>
+        </character>
+        <character id="113018" type="appears in" update="2020-10-06">
+            <rating votes="1">5.73</rating>
+            <name>Mrs. Othello</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>252828.jpg</picture>
+            <seiyuu id="2069" picture="246996.jpg">Yamaguchi Mayumi</seiyuu>
+        </character>
+        <character id="113020" type="appears in" update="2020-10-06">
+            <name>Christa Shanson</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>252826.jpg</picture>
+            <seiyuu id="38294" picture="267788.jpg">Okuno Kaya</seiyuu>
+        </character>
+        <character id="113021" type="appears in" update="2020-10-06">
+            <name>Charlotte Blancmange</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>252827.jpg</picture>
+            <seiyuu id="17286" picture="297832.jpg">Katou Saori</seiyuu>
+        </character>
+        <character id="113022" type="appears in" update="2020-10-06">
+            <name>Priss</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>252830.jpg</picture>
+            <seiyuu id="52106" picture="216552.jpg">Atsugi Nanami</seiyuu>
+        </character>
+        <character id="113023" type="appears in" update="2020-10-06">
+            <name>Daisy</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>252831.jpg</picture>
+            <seiyuu id="52107" picture="228904.jpg">Morishima Yuuka</seiyuu>
+        </character>
+        <character id="113041" type="appears in" update="2020-10-07">
+            <name>Stachie</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>252863.jpg</picture>
+            <seiyuu id="17169" picture="223504.jpg">Suzuki Noriko</seiyuu>
+        </character>
+        <character id="113042" type="appears in" update="2020-10-07">
+            <name>Dick</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>252864.jpg</picture>
+            <seiyuu id="351" picture="10973.jpeg">Okiayu Ryoutarou</seiyuu>
+        </character>
+        <character id="113043" type="appears in" update="2020-10-07">
+            <name>Blossom Pricket</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>252865.jpg</picture>
+            <seiyuu id="297" picture="233915.jpg">Ootsuka Houchuu</seiyuu>
+        </character>
+        <character id="113044" type="appears in" update="2020-10-07">
+            <name>Nakua</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>252867.jpg</picture>
+            <seiyuu id="12637" picture="130507.jpg">Takahashi Hidenori</seiyuu>
+        </character>
+        <character id="113077" type="appears in" update="2020-10-08">
+            <name>Serge Shicksal</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>252939.jpg</picture>
+            <seiyuu id="3709" picture="264972.jpg">Hosoya Yoshimasa</seiyuu>
+        </character>
+        <character id="113078" type="appears in" update="2020-10-08">
+            <name>Bijou</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>252940.jpg</picture>
+            <seiyuu id="29" picture="11043.jpeg">Hatano Wataru</seiyuu>
+        </character>
+        <character id="113079" type="appears in" update="2020-10-08">
+            <name>Crodoll</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>252941.jpg</picture>
+            <seiyuu id="282" picture="266829.jpg">Houki Katsuhisa</seiyuu>
+        </character>
+    </characters>
+    <episodes>
+        <episode id="218893" update="2019-07-20">
+            <epno type="4">T1</epno>
+            <length>2</length>
+            <airdate>2019-07-19</airdate>
+            <rating votes="1">8.07</rating>
+            <title xml:lang="ja">TVアニメ アサシンズプライド　特報映像</title>
+            <title xml:lang="en">PV 1 (1:04)</title>
+            <title xml:lang="x-jat">TV Anime Assassins Pride Tokuhou Eizou</title>
+        </episode>
+        <episode id="220956" update="2019-09-06">
+            <epno type="4">T2</epno>
+            <length>2</length>
+            <airdate>2019-09-05</airdate>
+            <rating votes="1">4.97</rating>
+            <title xml:lang="ja">第二弾PV</title>
+            <title xml:lang="en">PV 02 (2:00)</title>
+            <title xml:lang="x-jat">Dai Ni Dan PV</title>
+        </episode>
+        <episode id="221683" update="2019-11-08">
+            <epno type="1">1</epno>
+            <length>25</length>
+            <airdate>2019-10-10</airdate>
+            <rating votes="8">5.94</rating>
+            <title xml:lang="ja">暗殺者の慈悲</title>
+            <title xml:lang="en">Mercy of an Assassin</title>
+            <title xml:lang="fr">La clémence de l`assassin</title>
+            <title xml:lang="ar">رحمة قاتل</title>
+            <title xml:lang="x-jat">Ansatsusha no Jihi</title>
+            <summary>Kufa is sent to assess the abilities of the House of Angel’s heir, whose lack of mana calls her lineage into question — but Melida is nothing like Kufa expected her to be.
+Source: crunchyroll</summary>
+            <resources>
+                <resource type="28">
+                    <externalentity>
+                        <identifier>G679308MY</identifier>
+                    </externalentity>
+                </resource>
+            </resources>
+        </episode>
+        <episode id="221684" update="2019-11-08">
+            <epno type="1">2</epno>
+            <length>25</length>
+            <airdate>2019-10-17</airdate>
+            <rating votes="7">5.10</rating>
+            <title xml:lang="ja">少女の世界が変わるとき</title>
+            <title xml:lang="en">When the Girl`s World Changes</title>
+            <title xml:lang="fr">Quand la jeune fille voit son monde changer</title>
+            <title xml:lang="ar">عندما يتغير عالم الفتاة</title>
+            <title xml:lang="x-jat">Shoujo no Sekai ga Kawaru Toki</title>
+            <summary>Kufa plays a dangerous game by casting his lot with Melida. As for his young pupil? The school tournament is coming up, and Melida knows something her opponents don’t.
+Source: crunchyroll</summary>
+            <resources>
+                <resource type="28">
+                    <externalentity>
+                        <identifier>GYNVG9EZR</identifier>
+                    </externalentity>
+                </resource>
+            </resources>
+        </episode>
+        <episode id="221685" update="2019-11-08">
+            <epno type="1">3</epno>
+            <length>25</length>
+            <airdate>2019-10-24</airdate>
+            <rating votes="6">7.62</rating>
+            <title xml:lang="ja">臨界点の彼方に</title>
+            <title xml:lang="en">Going Beyond the Limit</title>
+            <title xml:lang="fr">Au-delà du point critique</title>
+            <title xml:lang="ar">تجاوز الحدود</title>
+            <title xml:lang="x-jat">Rinkaiten no Kanata ni</title>
+            <summary>Melida and Elise look forward to the Circlet Night festival, but a kidnapping interrupts their celebration. Now Melida must undergo a trial by fire and prove herself.
+Source: crunchyroll</summary>
+            <resources>
+                <resource type="28">
+                    <externalentity>
+                        <identifier>GR1X1MZER</identifier>
+                    </externalentity>
+                </resource>
+            </resources>
+        </episode>
+        <episode id="221686" update="2019-11-08">
+            <epno type="1">4</epno>
+            <length>25</length>
+            <airdate>2019-10-31</airdate>
+            <rating votes="5">4.42</rating>
+            <title xml:lang="ja">鎖城に集う, 乙女と乙女</title>
+            <title xml:lang="en">Two Young Ladies Assemble at the Chained Castle</title>
+            <title xml:lang="fr">Les jeunes filles enfermées dans le palais</title>
+            <title xml:lang="ar">سيدتان صغيرتان تجتمعان في القلعة المصفدة</title>
+            <title xml:lang="x-jat">Kusari Shiro ni Tsudou, Otome to Otome</title>
+            <summary>The Luna Lumiere Selection Tournament is poised to begin, but the students of St. Friedeswiede are in for a shock when this year’s unexpected Cadets are revealed.
+Source: crunchyroll</summary>
+            <resources>
+                <resource type="28">
+                    <externalentity>
+                        <identifier>G6QWDJDQ6</identifier>
+                    </externalentity>
+                </resource>
+            </resources>
+        </episode>
+        <episode id="223523" update="2019-11-09">
+            <epno type="1">5</epno>
+            <length>25</length>
+            <airdate>2019-11-07</airdate>
+            <rating votes="5">4.68</rating>
+            <title xml:lang="ja">黄金の姫と, 白銀の姫</title>
+            <title xml:lang="en">The Golden Princess and the Silver Princess</title>
+            <title xml:lang="fr">La princesse d`or et la princesse d`argent</title>
+            <title xml:lang="ar">الأميرة الذهبية والأميرة الفضية</title>
+            <title xml:lang="x-jat">Ougon no Hime to, Shirogane no Hime</title>
+            <summary>The tournament will proceed despite the danger posed by Black Madia. As the Cadets prepare for their inevitable battle, Melida can’t help but dwell on Elise’s troubled words.
+Source: crunchyroll</summary>
+            <resources>
+                <resource type="28">
+                    <externalentity>
+                        <identifier>G6P5M5XM6</identifier>
+                    </externalentity>
+                </resource>
+            </resources>
+        </episode>
+        <episode id="223524" update="2019-12-11">
+            <epno type="1">6</epno>
+            <length>25</length>
+            <airdate>2019-11-14</airdate>
+            <rating votes="4">3.48</rating>
+            <title xml:lang="ja">灰色の魔女</title>
+            <title xml:lang="en">The Gray Witch</title>
+            <title xml:lang="fr">La sorcière grise</title>
+            <title xml:lang="ar">الساحرة الرمادية</title>
+            <title xml:lang="x-jat">Haiiro no Majo</title>
+            <summary>When the students gather for a secret party, Melida and her friends spend their time making merry and telling ghost stories, unaware that some tales are very real.
+Source: crunchyroll</summary>
+            <resources>
+                <resource type="28">
+                    <externalentity>
+                        <identifier>GYXJGMWK6</identifier>
+                    </externalentity>
+                </resource>
+            </resources>
+        </episode>
+        <episode id="223525" update="2019-12-11">
+            <epno type="1">7</epno>
+            <length>25</length>
+            <airdate>2019-11-21</airdate>
+            <rating votes="4">2.81</rating>
+            <title xml:lang="ja">上も下も標はなく</title>
+            <title xml:lang="en">No Guidance Above nor Below</title>
+            <title xml:lang="fr">Sans aucun repère</title>
+            <title xml:lang="ar">لا إرشاد في الأعلى أو الأسفل</title>
+            <title xml:lang="x-jat">Ue mo Shita mo Shirushi wa Naku</title>
+            <summary>Melida sees green when Rosetti seeks Kufa as her lover to ward off an arranged marriage. Rosetti’s father claims Kufa bears an uncanny resemblance to a boy in the past.
+Source: crunchyroll</summary>
+            <resources>
+                <resource type="28">
+                    <externalentity>
+                        <identifier>G63K07K96</identifier>
+                    </externalentity>
+                </resource>
+            </resources>
+        </episode>
+        <episode id="223526" update="2019-12-11">
+            <epno type="1">8</epno>
+            <length>25</length>
+            <airdate>2019-11-28</airdate>
+            <rating votes="3">2.83</rating>
+            <title xml:lang="ja">ある骸骨の遺言</title>
+            <title xml:lang="en">The Last Testament of a Certain Skeleton</title>
+            <title xml:lang="fr">Les dernières volontés d`un squelette</title>
+            <title xml:lang="ar">العهد الأخير لهيكل عظمي ما</title>
+            <title xml:lang="x-jat">Aru Gaikotsu no Yuigon</title>
+            <summary>Suspicion falls on Kufa as the attacks continue. To clear his name, Melida teams up with an unlikely ally, but their findings are far more gruesome than they dared imagine.
+Source: crunchyroll</summary>
+            <resources>
+                <resource type="28">
+                    <externalentity>
+                        <identifier>GRZJEDEV6</identifier>
+                    </externalentity>
+                </resource>
+            </resources>
+        </episode>
+        <episode id="224498" update="2019-12-11">
+            <epno type="1">9</epno>
+            <length>25</length>
+            <airdate>2019-12-05</airdate>
+            <rating votes="3">2.78</rating>
+            <title xml:lang="ja">悠久の契約</title>
+            <title xml:lang="en">An Eternal Pact</title>
+            <title xml:lang="fr">Un pacte éternel</title>
+            <title xml:lang="ar">عهد أبدي</title>
+            <title xml:lang="x-jat">Yuukyuu no Keiyaku</title>
+            <summary>Kufa confides his past to Melida. Now armed with forbidden knowledge, Melida must decide her next move, especially where Rossetti is concerned.
+Source: crunchyroll</summary>
+            <resources>
+                <resource type="28">
+                    <externalentity>
+                        <identifier>GY8D4JKGY</identifier>
+                    </externalentity>
+                </resource>
+            </resources>
+        </episode>
+        <episode id="224499" update="2019-12-23">
+            <epno type="1">10</epno>
+            <length>25</length>
+            <airdate>2019-12-12</airdate>
+            <rating votes="3">4.62</rating>
+            <title xml:lang="ja">迷宮図書館</title>
+            <title xml:lang="en">Labyrinth Library</title>
+            <title xml:lang="fr">La Bibliothèque-labyrinthe</title>
+            <title xml:lang="ar">مكتبة المتاهة</title>
+            <title xml:lang="x-jat">Meikyuu Toshokan</title>
+            <summary>The suspicion regarding Melida’s mana reaches critical mass. Worried how the scandal could stain their prestige, Flandore’s nobles vow to take matters into their own hands.
+Source: crunchyroll</summary>
+            <resources>
+                <resource type="28">
+                    <externalentity>
+                        <identifier>GYKE4MDGY</identifier>
+                    </externalentity>
+                </resource>
+            </resources>
+        </episode>
+        <episode id="224500" update="2019-12-23">
+            <epno type="1">11</epno>
+            <length>25</length>
+            <airdate>2019-12-19</airdate>
+            <rating votes="3">5.28</rating>
+            <title xml:lang="ja">死神の使いたち</title>
+            <title xml:lang="en">Messengers of Death</title>
+            <title xml:lang="fr">Les messagers de la mort</title>
+            <title xml:lang="ar">رسل الموت</title>
+            <title xml:lang="x-jat">Shinigami no Tsukai-tachi</title>
+            <summary>Mule and Salacha join forces with Melida and Elise for the exam. But the two cousins don’t realize their friends are hiding something from them.
+Source: crunchyroll</summary>
+            <resources>
+                <resource type="28">
+                    <externalentity>
+                        <identifier>GR8D4GW1R</identifier>
+                    </externalentity>
+                </resource>
+            </resources>
+        </episode>
+        <episode id="224501" update="2020-05-31">
+            <epno type="1">12</epno>
+            <length>25</length>
+            <airdate>2019-12-26</airdate>
+            <rating votes="3">5.07</rating>
+            <title xml:lang="ja">暗殺教師の矜持</title>
+            <title xml:lang="en">Pride of an Assassin-Instructor</title>
+            <title xml:lang="fr">La fierté du professeur assassin</title>
+            <title xml:lang="ar">فخر معلم قاتل</title>
+            <title xml:lang="x-jat">Ansatsu Kyoushi no Kinji</title>
+            <summary>Melida doesn’t answer to the prejudiced nobles who have put her on trial. She will show the world once and for all that she is the rightful heir of the House of Angel.
+Source: crunchyroll</summary>
+            <resources>
+                <resource type="28">
+                    <externalentity>
+                        <identifier>G6VD5ZWW6</identifier>
+                    </externalentity>
+                </resource>
+            </resources>
+        </episode>
+        <episode id="234790" update="2020-11-25">
+            <epno type="3">C1</epno>
+            <length>2</length>
+            <airdate>2019-10-17</airdate>
+            <title xml:lang="en">Opening</title>
+        </episode>
+        <episode id="234791" update="2020-11-25">
+            <epno type="3">C2</epno>
+            <length>2</length>
+            <airdate>2019-10-17</airdate>
+            <title xml:lang="en">Ending</title>
+        </episode>
+        <episode id="234834" update="2020-11-26">
+            <epno type="4">T3</epno>
+            <length>1</length>
+            <title xml:lang="en">Episode 2 Preview</title>
+        </episode>
+        <episode id="234835" update="2020-11-26">
+            <epno type="4">T4</epno>
+            <length>1</length>
+            <title xml:lang="en">Episode 3 Preview</title>
+        </episode>
+        <episode id="234836" update="2020-11-26">
+            <epno type="4">T5</epno>
+            <length>1</length>
+            <title xml:lang="en">Episode 4 Preview</title>
+        </episode>
+        <episode id="234837" update="2020-11-26">
+            <epno type="4">T6</epno>
+            <length>1</length>
+            <title xml:lang="en">Episode 5 Preview</title>
+        </episode>
+        <episode id="234838" update="2020-11-26">
+            <epno type="4">T7</epno>
+            <length>1</length>
+            <title xml:lang="en">Episode 6 Preview</title>
+        </episode>
+        <episode id="234839" update="2020-11-26">
+            <epno type="4">T8</epno>
+            <length>1</length>
+            <title xml:lang="en">Episode 7 Preview</title>
+        </episode>
+        <episode id="234840" update="2020-11-26">
+            <epno type="4">T9</epno>
+            <length>1</length>
+            <title xml:lang="en">Episode 8 Preview</title>
+        </episode>
+        <episode id="234841" update="2020-11-26">
+            <epno type="4">T10</epno>
+            <length>1</length>
+            <title xml:lang="en">Episode 9 Preview</title>
+        </episode>
+        <episode id="234842" update="2020-11-26">
+            <epno type="4">T11</epno>
+            <length>1</length>
+            <title xml:lang="en">Episode 10 Preview</title>
+        </episode>
+        <episode id="234843" update="2020-11-26">
+            <epno type="4">T12</epno>
+            <length>1</length>
+            <title xml:lang="en">Episode 11 Preview</title>
+        </episode>
+        <episode id="234844" update="2020-11-26">
+            <epno type="4">T13</epno>
+            <length>2</length>
+            <title xml:lang="en">Episode 12 Preview</title>
+        </episode>
+        <episode id="255996" update="2022-06-10">
+            <epno type="2">S1</epno>
+            <length>2</length>
+            <title xml:lang="en">Actor`s Promo: Kusunoki Tomori &amp; Ono Yuuki</title>
+        </episode>
+    </episodes>
+</anime>

@@ -1,0 +1,649 @@
+<?xml version="1.0" encoding="UTF-8"?><anime id="8857" restricted="false">
+    <type>Movie</type>
+    <episodecount>1</episodecount>
+    <startdate>2013-06-13</startdate>
+    <enddate>2013-06-13</enddate>
+    <titles>
+        <title xml:lang="x-jat" type="main">Sakasama no Patema</title>
+        <title xml:lang="ru" type="synonym">Патэма вверх дном</title>
+        <title xml:lang="pl" type="synonym">Odwrócona Patema</title>
+        <title xml:lang="pt" type="synonym">Patema Invertida</title>
+        <title xml:lang="cs" type="synonym">Patema nohama vzhůru</title>
+        <title xml:lang="lt" type="synonym">Patema aukštyn kojom</title>
+        <title xml:lang="uk" type="synonym">Патема догори дриґом</title>
+        <title xml:lang="zh-Hans" type="synonym">颠倒的帕特玛</title>
+        <title xml:lang="x-jat" type="short">sakama</title>
+        <title xml:lang="x-jat" type="short">patema</title>
+        <title xml:lang="ja" type="official">サカサマのパテマ</title>
+        <title xml:lang="en" type="official">Patema Inverted</title>
+        <title xml:lang="de" type="official">Patema Inverted</title>
+        <title xml:lang="fr" type="official">Patéma et le monde inversé</title>
+        <title xml:lang="it" type="official">Patema Sottosopra</title>
+        <title xml:lang="es" type="official">Patema: Dos mundos opuestos</title>
+        <title xml:lang="ru" type="official">Патэма наоборот</title>
+        <title xml:lang="ko" type="official">거꾸로 된 파테마</title>
+        <title xml:lang="sv" type="official">Patema upp och ner</title>
+        <title xml:lang="bg" type="official">Патема от преобърнатия свят</title>
+        <title xml:lang="zh-Hant" type="official">帕蒂瑪的顛倒世界</title>
+        <title xml:lang="fa" type="official">پاتم معکوس</title>
+    </titles>
+    <similaranime>
+        <anime id="4158" approval="7" total="9">Pale Cocoon</anime>
+    </similaranime>
+    <recommendations total="13">
+        <recommendation type="Recommended" uid="389161">While some suggests there are holes in the plot; I never had this feeling. You had to think once in a while because of the camera work done with the angle shots. The art was great and the theme was very interesting.</recommendation>
+        <recommendation type="Recommended" uid="298465">Interesting anime. Recommended.</recommendation>
+        <recommendation type="Recommended" uid="352217">Just watched it at Annecy (not the premiere session though). It was ... above average of anime that I have watched before. Flaws are detectable though. Sometimes, the story feels forced at certain points. 100 min was a bit too short to convey the story`s full message, I guess.
+Anyway, the plot is great, the art is magnificient, and the "upside-down"(Sakasama) dilemna is quite an interesting philosophical subject to debate.</recommendation>
+        <recommendation type="Recommended" uid="150048">They took the absurd theory of hollow planet Earth that reemerged lately in nazi ideology(hence the nazi like dictatorship system in the story) and weave it into a simple but enthralling adventure that gives you the impression you are in space, since you have to often calculate setting`s way up and way down.</recommendation>
+        <recommendation type="Must See" uid="540609">Seriously, I simply loved this anime. First time I`m leaving a recommendation so...a truly must see!!!!</recommendation>
+        <recommendation type="Must See" uid="306510">A true masterpiece.
+Absolute must-watch.
+Great story, nice character, awesome setting and nice subtle romance on the side.</recommendation>
+        <recommendation type="Must See" uid="20037">The track record of the director is flawless, and this is another smart sci-fi story.</recommendation>
+        <recommendation type="Must See" uid="398648">Yoshiura had a great idea and made the movie simple but very good. It`s is wonderful how the perceptive of the inverted worlds is showed to us in the eyes of both caracters.
+
+Put the laws of physics aside and enjoy this great movie :)</recommendation>
+        <recommendation type="Must See" uid="162486">To fully grasp the movie, rotate your monitor 180 degrees and watch it again. Not a joke.</recommendation>
+        <recommendation type="Must See" uid="786076">Not normally a fan of movies, in an hour or so I cannot get hooked into it enough to really care. This movie totally blew my mind!!! You have to see it to believe it.  Never seen any other show, movie, or anime with this concept. WOW</recommendation>
+        <recommendation type="Must See" uid="197959">Very Interesting  - Somehow I didn`t see the physics behind it in the begining -- then again anything is possible. I Enjoyed it  - Nice story and very melancholy.</recommendation>
+    </recommendations>
+    <url>https://www.asmik-ace.co.jp/lineup/1022</url>
+    <creators>
+        <name id="1265" type="Original Work">Yoshiura Yasuhiro</name>
+        <name id="1265" type="Direction">Yoshiura Yasuhiro</name>
+        <name id="36685" type="Animation Work">Asmik Ace</name>
+        <name id="3694" type="Animation Work">Studio Rikka</name>
+        <name id="6179" type="Character Design">Mataga Daisuke</name>
+        <name id="21908" type="Animation Work">Purple Cow Studios Japan</name>
+        <name id="3626" type="Music">Ooshima Michiru</name>
+    </creators>
+    <description>A world, forever beyond your expectations. In a dark, cramped, underground world of endless tunnels and shafts, people wear protective suits and live out their modest yet happy lives. The princess of the underground community, http://anidb.net/ch43776 [Patema], goes out exploring as always, inspired by her curiosity of the unknown depths of the world. Her favourite spot is the danger zone, an area forbidden by the rule of the community. Despite being frequently chastised by her caretaker http://anidb.net/ch58634 [Jii], she cannot hold back her curiosity for the reason behind the rule, because no one would tell her what the danger was. When she approaches the hidden secret, the story begins.
+Note: The film hosted its world premiere at France`s Annecy, the world`s largest animation festival. Screening at Japan started on 9th of November.</description>
+    <ratings>
+        <permanent count="3087">7.87</permanent>
+        <temporary count="3097">7.78</temporary>
+        <review count="3">5.50</review>
+    </ratings>
+    <picture>228310.jpg</picture>
+    <resources>
+        <resource type="1">
+            <externalentity>
+                <identifier>13906</identifier>
+            </externalentity>
+            <externalentity>
+                <identifier>14890</identifier>
+            </externalentity>
+        </resource>
+        <resource type="2">
+            <externalentity>
+                <identifier>13429</identifier>
+            </externalentity>
+            <externalentity>
+                <identifier>12477</identifier>
+            </externalentity>
+        </resource>
+        <resource type="4">
+            <externalentity>
+                <url>https://www.asmik-ace.co.jp/lineup/1022</url>
+            </externalentity>
+            <externalentity>
+                <url>http://studio-rikka.com/patema/</url>
+            </externalentity>
+        </resource>
+        <resource type="5">
+            <externalentity>
+                <url>http://web.archive.org/web/20130613144515/http://www.annecy.org/annecy-2013/festival/official-selection/film-index:f20132446</url>
+            </externalentity>
+        </resource>
+        <resource type="6">
+            <externalentity>
+                <identifier>Patema_Inverted</identifier>
+            </externalentity>
+        </resource>
+        <resource type="7">
+            <externalentity>
+                <identifier>サカサマのパテマ</identifier>
+            </externalentity>
+        </resource>
+        <resource type="8">
+            <externalentity>
+                <identifier>3499</identifier>
+            </externalentity>
+        </resource>
+        <resource type="9">
+            <externalentity>
+                <identifier>345039</identifier>
+            </externalentity>
+        </resource>
+        <resource type="10">
+            <externalentity>
+                <identifier>16632</identifier>
+            </externalentity>
+        </resource>
+        <resource type="11">
+            <externalentity>
+                <identifier>mediadb/media/4738</identifier>
+            </externalentity>
+        </resource>
+        <resource type="20">
+            <externalentity>
+                <identifier>顛倒的帕特瑪</identifier>
+            </externalentity>
+        </resource>
+        <resource type="23">
+            <externalentity>
+                <identifier>Patema_Sakasama</identifier>
+            </externalentity>
+        </resource>
+        <resource type="26">
+            <externalentity>
+                <identifier>watch?v=gFUuGpSyJMg</identifier>
+            </externalentity>
+            <externalentity>
+                <identifier>watch?v=C2NgRe7KVRM</identifier>
+            </externalentity>
+            <externalentity>
+                <identifier>watch?v=vbBctWCoBf0</identifier>
+            </externalentity>
+        </resource>
+        <resource type="28">
+            <externalentity>
+                <identifier>G4PH0W3ZZ</identifier>
+            </externalentity>
+        </resource>
+        <resource type="31">
+            <externalentity>
+                <identifier>18020</identifier>
+            </externalentity>
+        </resource>
+        <resource type="32">
+            <externalentity>
+                <identifier>B00OPJSUZY</identifier>
+            </externalentity>
+        </resource>
+        <resource type="43">
+            <externalentity>
+                <identifier>tt2981768</identifier>
+            </externalentity>
+        </resource>
+        <resource type="44">
+            <externalentity>
+                <identifier>212167</identifier>
+                <identifier>movie</identifier>
+            </externalentity>
+        </resource>
+    </resources>
+    <tags>
+        <tag id="30" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-09-10">
+            <name>maintenance tags</name>
+            <description>These tags are used for maintenance.</description>
+        </tag>
+        <tag id="1802" parentid="2606" infobox="true" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2016-01-24">
+            <name>seinen</name>
+            <description>Seinen, literally "young man", is one of the main demographic classifications applied to manga, and, by extension, to anime, especially manga-based ones. As the name implies, seinen works are marketed primarily to an audience of young men; the age range commonly understood to be the target of such works goes roughly from 17 to somewhere in the 40s.</description>
+            <picurl>181651.jpg</picurl>
+        </tag>
+        <tag id="1994" parentid="6149" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2020-08-07">
+            <name>flying</name>
+            <description>This character has wings, natural or artificial, which enable the character to take flight. Or is in command of some form of levitation (e.g. a witch using a broom to fly).
+Not to be confused with "flying planes" or "flying helicopters".</description>
+            <picurl>10823.jpeg</picurl>
+        </tag>
+        <tag id="2604" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2018-11-08">
+            <name>content indicators</name>
+            <description>The content indicators branch is intended to be a less geographically specific tool than the `age rating` used by convention, for warning about things that might cause offence. Obviously there is still a degree of subjectivity involved, but hopefully it will prove useful for parents with delicate children, or children with delicate parents.
+Note: Refer to further guidance on http://wiki.anidb.net/w/Categories:Content_Indicators [the Wiki page] for how to apply tag weights for content indicators.</description>
+        </tag>
+        <tag id="2605" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-09-28">
+            <name>dynamic</name>
+            <description>Some of the central structural elements in anime are: 
+Plot Continuity 
+How does the plot or several plots unfold. Are they a strictly linear retelling of one big continuing story, a serial, possibly with several side stories, or is the content chopped into a set of unconnected episodes, only sharing the same setting and characters?
+Stereotype Characters
+Then there is the question of the character set presentation. Is it completely original, or is it your usual stereotypical character cast. Both choices have their merit, for example it would not really make much sense to reinvent the wheel for a harem anime. Fans of that genre come to expect their favourite stereotype protagonists.
+Plot Twists
+Finally there is the question of how complex the plot / the story unfolds. Are there side-plots that merge into the main plot leading to unexpected plot twists, or is the anime quite predictable? The latter would not be appropriate for detective stories. In harem anime on the other hand a foreseeable outcome is actually something the fans will come to expect.</description>
+        </tag>
+        <tag id="2606" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2018-11-05">
+            <name>target audience</name>
+            <description>Anime, like everything else in the modern world, is targeted towards specific audiences, both implicitly by the creators and overtly by the marketing. While categories are associated with specific sex and age groups, this is not a bar on the anime being enjoyed by people who don`t fit into that band; not only do crossover titles exist, but the categories also have a considerable following outside their main demographic, and a person might as well enjoy anime from all categories. Still, does not invalidate the usefulness of marking a title as one of the categories; the same themes will likely be treated differently in anime geared for different audiences. Only one should not jump the gun and assume that a title will be more or less serious or present content in this or that way due to its target audience, or conversely assume the target audience on the content and its presentation alone. As such, the audience categories help form a broad impression of how a title might work with the announced themes, but offer little to no in-depth information about specific content or its treatment.
+The audience categories originate from manga magazines, which group titles of a same intended audience into a magazine that is advertised as belonging to that category, and so manga-based anime will have the category from their parent work. As for anime based on other works, the audience is often debatable, but comparing information such as time slot to the manga-based anime generally helps figure out the most likely possibility.
+If the parent material was classified under multiple audiences over time (for example, it was originally shounen, but then as the plot changed and became more mature, it was reclassified as seinen), and the anime adapts parent material time periods covering multiple audiences, we tag all audiences covered by the anime adaptation.</description>
+        </tag>
+        <tag id="2607" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2009-04-29">
+            <name>themes</name>
+            <description>Themes describe the very central elements important to the anime stories. They set the backdrop against which the protagonists must face their challenges. Be it School Life, present Daily Life, Military action, Cyberpunk, Law and Order detective work, Sports, or the Underworld. These are only but a few of the more typical backgrounds for anime plots. Add to that a Conspiracy setting with a possible tragic outcome, the Themes span most of the imaginable subject matter relevant to anime.</description>
+        </tag>
+        <tag id="2609" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2018-09-01">
+            <name>original work</name>
+            <description>What the anime is based on! This is given as the original work credit in the OP. Mostly of academic interest, but a useful bit of info, hinting at the possible depth of story.</description>
+        </tag>
+        <tag id="2610" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2009-04-22">
+            <name>setting</name>
+            <description>The setting describes in what time and place an anime takes place. To a certain extent it describes what you can expect from the world in the anime.</description>
+        </tag>
+        <tag id="2611" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-09-08">
+            <name>elements</name>
+            <description>Next to Themes setting the backdrop for the protagonists in anime, there are the more detailed plot Elements that centre on character interactions: "What do characters do to each other or what is done to them?". Is it violent Action, an awe-inspiring Adventure in a foreign place, the gripping life of a Detective, a slapstick Comedy, an Ecchi Harem anime, a SciFi epic, or some Fantasy travelling adventure?</description>
+        </tag>
+        <tag id="2612" parentid="2610" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2016-09-04">
+            <name>time</name>
+            <description>This placeholder lists different epochs in human history and more vague but important timelines such as the future, the present and the past.</description>
+        </tag>
+        <tag id="2613" parentid="2610" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2016-09-04">
+            <name>place</name>
+            <description>The places the anime can take place in. Includes more specific places such as a country on Earth, as well as more general places such as a dystopia or a mirror world.</description>
+        </tag>
+        <tag id="2619" parentid="2841" weight="100" localspoiler="false" globalspoiler="false" verified="true" update="2017-12-26">
+            <name>gunfights</name>
+            <description>Fights where two or more parties are firing guns at one another.</description>
+            <picurl>211280.jpg</picurl>
+        </tag>
+        <tag id="2626" parentid="2612" weight="600" localspoiler="false" globalspoiler="false" verified="true" update="2009-05-15">
+            <name>future</name>
+            <description>Anime that fall under the future category are the ones that have a society that could have originated from ours. In most cases it should go hand to hand with sci-fi since we expect the future to consist of advanced technology, however, in the case where it`s explicitly stated in the story that the anime takes place "x years into the future", the state of technology doesn`t matter as long as it`s long into the future. The anime can be set in an alternative universe not tied with our own, as long as it has a futuristic feel to it.
+This category sports quite a lot of anime, mostly stemming from SciFi, but not necessarily only from there.</description>
+        </tag>
+        <tag id="2630" parentid="2613" weight="600" localspoiler="false" globalspoiler="false" verified="true" update="2012-10-13">
+            <name>Earth</name>
+            <description>The Earth is the third planet from the Sun, and the densest and fifth-largest of the eight planets in the Solar System. It is in effect a ball of hot mud, but on the surface it`s cold enough, so most of us live on it (or are supposed to). It is circa 4.5 billion years old, and, unless we humans succeed in destroying it over the next couple of centuries, it is expected to last for quite another while, though the changes in the Sun`s emissions due to its aging will likely cause the extinction of everything; the species of earthlings are guaranteed to die, even if we fail to kill them -- unless, of course, we find ourselves another planet and figure out a way to take everything there. Our little planet on a corner of this galaxy may mean nothing in the grand scheme of things, but to its inhabitants it is their home, so, as a species, we cherish it dearly, to the point many cultures even to this day deify it. Being the home to the human civilizations, the Earth is the main setting of most fiction, be it anime or otherwise, but not only are many titles set in other places, such as unrelated fantasy worlds, in a considerable number of fictional titles the Earth is actually destroyed by aggressive alien invaders.</description>
+            <picurl>126792.jpg</picurl>
+        </tag>
+        <tag id="2750" parentid="2604" weight="300" localspoiler="false" globalspoiler="false" verified="true" update="2018-11-08">
+            <name>violence</name>
+            <description>Violence is the use of physical force against oneself or another entity, compelling action against one`s will on pain of being hurt.
+Note: Refer to further guidance on http://wiki.anidb.net/w/Categories:Content_Indicators [the Wiki page] for how to apply tag weights for content indicators.</description>
+        </tag>
+        <tag id="2786" parentid="2858" weight="100" localspoiler="false" globalspoiler="false" verified="true" update="2018-01-21">
+            <name>love polygon</name>
+            <description>A love polygon refers to a romantic relationship involving n people. Although a love triangle is not limited to just heterosexual relationships, in anime, it usually deals with two females liking one male and vice versa.</description>
+            <picurl>10989.gif</picurl>
+        </tag>
+        <tag id="2790" parentid="2605" weight="400" localspoiler="false" globalspoiler="false" verified="true" update="2010-01-17">
+            <name>plot continuity</name>
+            <description>Consistency of the characteristics of persons, plot, objects, places and events seen by the viewer.
+A single linear focused plot is highly continuous.
+A truly random plot is highly discontinuous.</description>
+        </tag>
+        <tag id="2797" parentid="2609" infobox="true" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2009-05-18">
+            <name>new</name>
+            <description>Not based on anything, the story is a new work, usually made up by the people involved in creating the anime. Generally if an original work (原作) credit is given, it will be to the studio, or director, or other members of the production team.</description>
+        </tag>
+        <tag id="2841" parentid="2611" weight="200" localspoiler="false" globalspoiler="false" verified="true" update="2017-12-26">
+            <name>action</name>
+            <description>Action anime usually involve a fairly straightforward story of good guys versus bad guys, where most disputes are resolved by using physical force. It often contains a lot of shooting, explosions and fighting.</description>
+            <picurl>211261.jpg</picurl>
+        </tag>
+        <tag id="2846" parentid="7050" infobox="true" weight="400" localspoiler="false" globalspoiler="false" verified="true" update="2018-10-04">
+            <name>science fiction</name>
+            <description>Science fiction stories usually focus on how situations could be different in the future when we are more technologically advanced; due to either our own achievements or having met with other civilizations whom we have learned from.</description>
+            <picurl>212180.jpg</picurl>
+        </tag>
+        <tag id="2850" parentid="2611" infobox="true" weight="400" localspoiler="false" globalspoiler="false" verified="true" update="2015-10-25">
+            <name>adventure</name>
+            <description>Adventures are exciting stories, with new experiences or exotic locales. Adventures are designed to provide an action-filled, energetic experience for the viewer. Rather than the predominant emphasis on violence and fighting that is found in pure action anime, however, the viewer of adventures can live vicariously through the travels, conquests, explorations, creation of empires, struggles and situations that confront the main characters, actual historical figures or protagonists. Under the category of adventures, we can include traditional swashbucklers, serialized films, and historical spectacles, searches or expeditions for lost continents, "jungle" and "desert" epics, treasure hunts and quests, disaster films, and heroic journeys or searches for the unknown. Adventure films are often, but not always, set in an historical period, and may include adapted stories of historical or literary adventure heroes, kings, battles, rebellion, or piracy.</description>
+            <picurl>178879.jpg</picurl>
+        </tag>
+        <tag id="2853" parentid="2611" weight="100" localspoiler="false" globalspoiler="false" verified="true" update="2017-02-13">
+            <name>comedy</name>
+            <description>Anime whose central struggle causes hilarious results. These stories are built upon funny characters, situations and events. A comedy anime is laced with humour and sets out to provoke laughter from the audience.
+Japanese humour can be a bit strange to westerners, so if you`re new to this type of humour, just bear with it; it`ll most likely grow on you if you`re a fan of other kinds of comedy.</description>
+            <picurl>198104.jpg</picurl>
+        </tag>
+        <tag id="2858" parentid="2611" weight="300" localspoiler="false" globalspoiler="false" verified="true" update="2017-12-01">
+            <name>romance</name>
+            <description>Romance describes a story that deals with love between two or more characters typically also having an optimistic ending. Romance is also a difficulty encountered when creating a harem.</description>
+            <picurl>210061.jpg</picurl>
+        </tag>
+        <tag id="2862" parentid="2607" weight="400" localspoiler="false" globalspoiler="false" verified="true" update="2018-01-21">
+            <name>friendship</name>
+            <description>The feeling of trust, kindness, and friendship between a group of high school students for example, is a central theme of this anime.</description>
+            <picurl>65691.png</picurl>
+        </tag>
+        <tag id="2868" parentid="2607" weight="300" localspoiler="false" globalspoiler="false" verified="true" update="2020-08-29">
+            <name>racism</name>
+            <description>Racism is prejudice, discrimination, or antagonism directed against someone of an ethnically different background based on the pseudo-scientific belief that biological differences between peoples form so-called "races" and that one`s own "race" is superior to another, possibly also holding that members of different "races" should be treated differently. Some definitions include only consciously malignant forms of discrimination, and some views include discriminatory behaviors and beliefs based on cultural, national, ethnic, caste, or religious stereotypes. In works of fiction, this may also include similar actions against other sentient species, including non-biological species such as robots.
+Source: Wikipedia</description>
+        </tag>
+        <tag id="2874" parentid="2607" weight="600" localspoiler="false" globalspoiler="false" verified="true" update="2018-05-07">
+            <name>disaster</name>
+            <description>A disaster is a large-scale situation that causes great loss of or damage or threat to life, health, property, society, or the environment, irrespective of its source or cause. Disasters have substantial, long-lasting negative repercussions, and great effort must be spent in order to undo or mitigate their effects.</description>
+        </tag>
+        <tag id="2876" parentid="2607" weight="200" localspoiler="false" globalspoiler="false" verified="true" update="2012-10-08">
+            <name>religion</name>
+            <description>Religion is a collection of belief systems, cultural systems, and worldviews that relate humanity to spirituality and, sometimes, to moral values. Many religions have narratives, symbols, traditions and sacred histories that are intended to give meaning to life or to explain the origin of life or the universe. They tend to derive morality, ethics, religious laws or a preferred lifestyle from their ideas about the cosmos and human nature.</description>
+        </tag>
+        <tag id="2882" parentid="2952" infobox="true" weight="400" localspoiler="false" globalspoiler="false" verified="true" update="2012-12-17">
+            <name>dystopia</name>
+            <description>A dystopia (from Ancient Greek: δυσ-, "bad, ill", and Ancient Greek: τόπος, "place, landscape"; alternatively cacotopia, or anti-utopia) is, in literature, an often futuristic society that has degraded into a repressive and controlled state, often under the guise of being utopian. Dystopian literature has underlying cautionary tones, warning society that if we continue to live how we do, this will be the consequence. A dystopia, thus, is regarded as a sort of negative utopia and is often characterized by an authoritarian or totalitarian form of government. Dystopias usually feature different kinds of repressive social control systems, a lack or total absence of individual freedoms and expressions and constant states of warfare or violence. Dystopias often explore the concept of humans abusing technology and how humans individually and collectively cope with technology that has evolved too quickly such as the car, the flamethrower or the microwave. A dystopian society is also often characterized by widespread poverty and brutal political controls such as a large military-like police.</description>
+            <picurl>69879.jpg</picurl>
+        </tag>
+        <tag id="2885" parentid="2607" weight="200" localspoiler="false" globalspoiler="false" verified="true" update="2019-09-21">
+            <name>law and order</name>
+            <description>Where there is "wealth", there are criminals. It is up to the civil law enforcement, i.e. detectives, Police or Special Squads, to keep the lawless activities in the real world or in cyberspace under control.
+Note: Do not confuse this with Military presence.</description>
+            <picurl>238616.jpg</picurl>
+        </tag>
+        <tag id="2923" parentid="2874" infobox="true" weight="600" localspoiler="false" globalspoiler="false" verified="true" update="2014-06-25">
+            <name>post-apocalyptic</name>
+            <description>An anime that takes place on future Earth (or it could be an alternative universe) after a major cataclysm has occurred. World War III, an alien invasion, plague, global warming or some other general disaster are common themes to build a post-apocalyptic world upon, where the effects were severe enough that mankind barely survived.
+The time frame may be immediately after the catastrophe, focusing on the travails or psychology of survivors, or considerably later, often including the theme that the existence of pre-catastrophe civilization has been forgotten (or mythologised). Post-apocalyptic stories often take place in an agrarian, non-technological future world, or a world where only scattered elements of technology remain. There is a considerable degree of blurring between post-apocalyptic fiction and that which deals with false utopias or dystopian societies.</description>
+            <picurl>42081.jpg</picurl>
+        </tag>
+        <tag id="2931" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2016-12-04">
+            <name>unsorted</name>
+            <description>a bunch of tags that still need to be either deleted or moved into proper places.</description>
+        </tag>
+        <tag id="2952" parentid="2607" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2015-12-06">
+            <name>rotten world</name>
+            <description>A rotten world is a setting or situation where the jaded notion that "anything that can go wrong will go horribly wrong" almost always applies. Oppression, perpetual warfare, lawlessness, despair or other forms of mental instability, and other highly undesirable factors tend to be rampant.</description>
+        </tag>
+        <tag id="3276" parentid="2605" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2008-06-02">
+            <name>plot twists</name>
+            <description>The plot and story of this anime may seem to be going along a quite predictable path, when suddenly there is a jarring unexpected twist in the plot, taking the viewer by surprise.</description>
+        </tag>
+        <tag id="3589" parentid="4251" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2018-11-04">
+            <name>multiple protagonists - TO BE MOVED TO PARENT OR DELETED</name>
+            <description>This tag is to be moved into its parent tag http://anidb.net/t4251 [ensemble cast], or removed entirely. If the tagged entry meets the updated definition of ensemble cast, tag ensemble cast and delete multiple protagonist. If it does not meet the ensemble cast definition, delete this tag and take no further action.</description>
+        </tag>
+        <tag id="3822" parentid="6230" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2010-03-15">
+            <name>strong male lead</name>
+            <description>The lead male protagonist in this anime shows backbone, is competent, and does not shy away from seemingly insurmountable objectives.</description>
+        </tag>
+        <tag id="4022" parentid="6230" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2010-11-29">
+            <name>strong female lead</name>
+            <description>The lead female character has a strong personality and plays a part that is not the typical damsel-in-distress role. 
+This is the exact opposite of the “damsel in distress” tag.</description>
+        </tag>
+        <tag id="4251" parentid="6230" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2018-11-20">
+            <name>ensemble cast</name>
+            <description>A show with an ensemble cast focuses on a larger group of main characters in a single plot narrative; anime containing several segmented plot narratives (such as episodic or arc-based plots) are excluded. As such, it doesn`t really have a "main" or "lead" character; instead, every member of the central main character group plays an important part in the show`s grander scheme; no single character is more important or prominent than the others (equality of importance). Further, subplots (if any) lead by each character in the ensemble have equal weighting in importance (or lack of weight).
+
+* In a show where no single main character is more important or prominent than the others, 4+ main characters is almost always an ensemble cast.
+* A show with 3 main characters of equal importance is likely also an ensemble cast; equality of importance must be considered carefully.
+* A show with 2 main characters of equal importance is generally not an ensemble cast situation; however, on an exception basis where neither main character is considered an antagonist, a 2-main-character anime may be considered an ensemble (e.g. http://anidb.net/a11829 [Kimi no Na wa.]).
+
+Pictured: http://anidb.net/a9043 [K (anime)]</description>
+            <picurl>94914.jpg</picurl>
+        </tag>
+        <tag id="4271" parentid="2876" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2011-04-29">
+            <name>corrupt church</name>
+            <description>An official religion (not cult or sect) has become evil or was evil to begin with, and tends to be highly influential with political leaders, to strengthen / enforce the church`s power over the people.</description>
+        </tag>
+        <tag id="4278" parentid="6151" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2018-01-15">
+            <name>stand-alone movie</name>
+            <description>You can watch this movie without having to watch something else first. This tag should not used for sequels, side stories, or summary movies, but may be used if the movie is either the first anime in a franchise or a remake.
+The movie must be feature-length. For shorts, use the `short movie` tag. In general, a "show-in-show" would not qualify as standalone. For example, an anime has a cartoon show within it. If the show within was released as an OVA or movie, it would not be considered standalone.</description>
+        </tag>
+        <tag id="4316" parentid="6242" weight="200" localspoiler="false" globalspoiler="false" verified="true" update="2018-11-11">
+            <name>murder</name>
+            <description>To murder means to bring about someone else`s death, by a voluntary act. Whether it comes from the killer`s own hand or by exposing the victim to life-threatening circumstances, the result is foreseeable and sought by the perpetrator. Someone who murders as their profession/job is an http://anidb.net/t2399 [assassin or hitman].</description>
+        </tag>
+        <tag id="4440" parentid="2858" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2010-02-01">
+            <name>boy meets girl</name>
+            <description>A classical type of plot in story writing, where the story begins with a boy meeting a girl leading to romantic development between the two. More often than not the boy loses the girl later on and has to find her again.</description>
+        </tag>
+        <tag id="4665" parentid="2607" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2015-02-26">
+            <name>propaganda</name>
+            <description>Propaganda is communication aimed at influencing the attitude of a community toward some cause or position. As opposed to impartially providing information, propaganda in its most basic sense, presents information primarily to influence an audience. Propaganda often presents facts selectively (thus lying by omission) to encourage a particular synthesis, or uses loaded messages to produce an emotional rather than rational response to the information presented. The desired result is a change of the attitude toward the subject in the target audience to further a political agenda.</description>
+        </tag>
+        <tag id="5417" parentid="2931" weight="0" localspoiler="false" globalspoiler="false" verified="false" update="2009-05-22">
+            <name>mind fuck</name>
+            <description>A `mind fuck` is a slang term which describes a work that uses literary devices such as nonlinear storytelling and plot twists in order to present convoluted, yet not conflicting, themes.
+A creation is usually considered a mind fuck when a casual observer is not able to discern the true meaning of a work without making a serious attempt to unravel the themes presented or when the plot is incredibly difficult to follow.
+Special examples of mind fucks involve a single plot twist which completely changes the viewer`s understanding of the events in a film or novel as well as the ideas it presents.</description>
+        </tag>
+        <tag id="5609" parentid="2846" weight="200" localspoiler="false" globalspoiler="false" verified="true" update="2018-01-27">
+            <name>dieselpunk</name>
+            <description>Dieselpunk is a genre that combines the aesthetics of the diesel-based technology of the interwar period through to the 1950s with retro-futuristic technology and postmodern sensibilities.
+Source: Wikipedia</description>
+        </tag>
+        <tag id="6019" parentid="2611" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2021-03-19">
+            <name>brainwashing</name>
+            <description>Brainwashing, the application of coercive techniques to change the values and beliefs, perceptions and judgements, and subsequent mindsets and behaviours of one or more people, usually for political, financial, personal, or religious purposes. The victim is left http://anidb.net/t91 [brainwashed]. Often featured in dark anime or pornography.</description>
+            <picurl>258585.jpg</picurl>
+        </tag>
+        <tag id="6149" parentid="30" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-09-10">
+            <name>TO BE MOVED TO CHARACTER</name>
+            <description>Tags under this parent tag are going to be moved to character tags and removed from the anime they`re currently assigned to. They will be blocked from the anime system once that move is complete. Please help with that job if you know what characters they should be assigned to.</description>
+        </tag>
+        <tag id="6151" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-09-10">
+            <name>technical aspects</name>
+            <description>It may sometimes be useful to know about technical aspects of a show, such as information about its broadcasting or censorship. Such information can be found here.</description>
+        </tag>
+        <tag id="6173" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-09-24">
+            <name>origin</name>
+        </tag>
+        <tag id="6230" parentid="2605" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-10-20">
+            <name>cast</name>
+        </tag>
+        <tag id="6242" parentid="2607" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2019-07-24">
+            <name>death</name>
+            <description>Death is the state of no longer being alive or the process of ceasing to be alive.</description>
+        </tag>
+        <tag id="6730" parentid="2611" weight="100" localspoiler="false" globalspoiler="false" verified="true" update="2016-09-11">
+            <name>torture</name>
+            <description>Torture involves the deliberate act of inflicting pain, to either fulfill a desire of the torturer, or apply coercion to compel action from the victim. Torture, by definition, is a knowing and intentional act; deeds which unknowingly or negligently inflict pain without a specific intent to do so are not typically considered torture.
+This is distinct from http://anidb.net/t2905 [erotic torture], which is generally for the purpose of using (almost) any form of physical or excessive psychological abuse to inflict physical and/or mental pain, with the goal of inducing sexual pleasure.</description>
+        </tag>
+        <tag id="6901" parentid="2613" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2017-07-23">
+            <name>underground</name>
+            <description>Some or all of the action occurs underground, in caves, mines, sewers, subways or underground cities.</description>
+        </tag>
+        <tag id="6985" parentid="7050" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2017-11-26">
+            <name>inverted gravity</name>
+            <description>The world has more to offer than your usual type of gravity you are used to from your daily life on earth. In this world there are actually two worlds, with opposite gravities. Alternatively, gravity only works the opposite way, sending things away from large masses.</description>
+            <picurl>209937.jpg</picurl>
+        </tag>
+        <tag id="7050" parentid="2611" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2019-04-18">
+            <name>speculative fiction</name>
+            <description>Speculative fiction is an umbrella genre encompassing fiction with certain elements that do not exist in the real world, often in the context of supernatural, futuristic or other imaginative themes. This includes, but is not limited to, science fiction, fantasy, superhero fiction, horror, utopian and dystopian fiction, fairytale fantasy, supernatural fiction, as well as combinations thereof.
+Source: Wikipedia</description>
+        </tag>
+        <tag id="7885" parentid="6173" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2021-11-07">
+            <name>Japanese production</name>
+        </tag>
+    </tags>
+    <characters>
+        <character id="43776" type="main character in" update="2021-08-28">
+            <rating votes="22">7.09</rating>
+            <name>Patema</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>86461.jpg</picture>
+            <seiyuu id="12783" picture="11275.jpeg">Fujii Yukiyo</seiyuu>
+        </character>
+        <character id="43777" type="secondary cast in" update="2014-03-01">
+            <rating votes="7">4.53</rating>
+            <name>Porta</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>86462.jpg</picture>
+            <seiyuu id="2071" picture="74324.jpg">Oohata Shintarou</seiyuu>
+        </character>
+        <character id="48155" type="main character in" update="2021-05-30">
+            <rating votes="13">3.87</rating>
+            <name>Age</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>92929.jpg</picture>
+            <seiyuu id="390" picture="33609.jpg">Okamoto Nobuhiko</seiyuu>
+        </character>
+        <character id="58632" type="secondary cast in" update="2014-03-01">
+            <rating votes="9">2.56</rating>
+            <name>Izamura</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>150936.jpg</picture>
+            <seiyuu id="614" picture="18136.jpg">Hashi Takaya</seiyuu>
+        </character>
+        <character id="58633" type="secondary cast in" update="2014-03-19">
+            <rating votes="3">4.78</rating>
+            <name>Kaho</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>151865.jpg</picture>
+            <seiyuu id="22366" picture="272800.jpg">Uchida Maaya</seiyuu>
+        </character>
+        <character id="58634" type="secondary cast in" update="2014-03-01">
+            <rating votes="6">4.50</rating>
+            <name>Jii</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>150930.jpg</picture>
+            <seiyuu id="4742" picture="54426.jpg">Fukumatsu Shin`ya</seiyuu>
+        </character>
+        <character id="58635" type="secondary cast in" update="2014-03-01">
+            <rating votes="7">3.65</rating>
+            <name>Jack</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>150934.jpg</picture>
+            <seiyuu id="64" picture="266120.jpg">Yasumoto Hiroki</seiyuu>
+        </character>
+        <character id="58636" type="secondary cast in" update="2014-03-01">
+            <rating votes="4">4.48</rating>
+            <name>Lagos</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>150933.jpg</picture>
+            <seiyuu id="2281" picture="249025.jpg">Katou Masayuki</seiyuu>
+        </character>
+        <character id="65751" type="secondary cast in" update="2014-03-19">
+            <rating votes="4">4.85</rating>
+            <name>Eiichi</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>151866.jpg</picture>
+        </character>
+    </characters>
+    <episodes>
+        <episode id="137385" update="2012-02-27">
+            <epno type="2">S1</epno>
+            <length>6</length>
+            <airdate>2012-02-26</airdate>
+            <rating votes="8">5.63</rating>
+            <title xml:lang="ja">Beginning of the Day 第1回</title>
+            <title xml:lang="en">Beginning of the Day, Part 1</title>
+            <title xml:lang="x-jat">Beginning of the Day Dai 1 Kai</title>
+        </episode>
+        <episode id="137386" update="2012-02-27">
+            <epno type="4">T1</epno>
+            <length>1</length>
+            <airdate>2012-02-24</airdate>
+            <title xml:lang="en">Beginning of the Day PV</title>
+        </episode>
+        <episode id="138144" update="2012-03-24">
+            <epno type="2">S2</epno>
+            <length>6</length>
+            <airdate>2012-03-24</airdate>
+            <rating votes="8">7.95</rating>
+            <title xml:lang="en">Beginning of the Day, Part 2</title>
+        </episode>
+        <episode id="139853" update="2012-05-27">
+            <epno type="4">T2</epno>
+            <length>1</length>
+            <airdate>2012-05-25</airdate>
+            <title xml:lang="en">Beginning of the Day PV 2nd Version</title>
+        </episode>
+        <episode id="140385" update="2012-06-25">
+            <epno type="2">S3</epno>
+            <length>6</length>
+            <airdate>2012-06-25</airdate>
+            <rating votes="8">7.93</rating>
+            <title xml:lang="en">Beginning of the Day, Part 3</title>
+        </episode>
+        <episode id="141218" update="2012-08-24">
+            <epno type="2">S4</epno>
+            <length>9</length>
+            <airdate>2012-08-25</airdate>
+            <rating votes="8">7.30</rating>
+            <title xml:lang="en">Beginning of the Day, Part 4</title>
+        </episode>
+        <episode id="150795" update="2018-05-24">
+            <epno type="1">1</epno>
+            <length>100</length>
+            <airdate>2013-06-13</airdate>
+            <rating votes="10">8.09</rating>
+            <title xml:lang="en">Complete Movie</title>
+            <summary>From the director of Time of Eve comes a perspective-twisting anime adventure about two people separated by opposite gravities.  Together they set out to discover the secret that keeps their worlds apart.
+Source: crunchyroll</summary>
+            <resources>
+                <resource type="28">
+                    <externalentity>
+                        <identifier>GMKUXK7KJ</identifier>
+                    </externalentity>
+                    <externalentity>
+                        <identifier>GK9U31019</identifier>
+                    </externalentity>
+                </resource>
+            </resources>
+        </episode>
+        <episode id="152395" update="2013-08-07">
+            <epno type="4">T6</epno>
+            <length>2</length>
+            <airdate>2013-08-06</airdate>
+            <title xml:lang="ja">予告編</title>
+            <title xml:lang="en">Trailer</title>
+            <title xml:lang="x-jat">Yokokuhen</title>
+        </episode>
+        <episode id="152396" update="2017-08-22">
+            <epno type="4">T5</epno>
+            <length>1</length>
+            <airdate>2013-06-13</airdate>
+            <title xml:lang="ja">特報_11月9日(土)全国劇場公開!</title>
+            <title xml:lang="en">Teaser_9.11.(Sat) Nationwide Theatrical Release!</title>
+            <title xml:lang="x-jat">Tokuhou 11-gatsu Kokonoka (Do) Zenkoku Gekijou Koukai!</title>
+        </episode>
+        <episode id="152397" update="2013-08-07">
+            <epno type="4">T4</epno>
+            <length>1</length>
+            <airdate>2013-04-30</airdate>
+            <title xml:lang="en">Beginning of the Day PV 2nd Version</title>
+        </episode>
+        <episode id="152398" update="2013-08-07">
+            <epno type="4">T3</epno>
+            <length>1</length>
+            <airdate>2013-04-30</airdate>
+            <title xml:lang="en">Beginning of the Day PV 1st Version</title>
+        </episode>
+        <episode id="155850" update="2013-11-06">
+            <epno type="4">T7</epno>
+            <length>1</length>
+            <airdate>2013-11-05</airdate>
+            <title xml:lang="ja">主題歌のPV</title>
+            <title xml:lang="en">Theme Song PV</title>
+            <title xml:lang="x-jat">Shudaika no PV</title>
+        </episode>
+        <episode id="227514" update="2020-03-23">
+            <epno type="2">S5</epno>
+            <length>30</length>
+            <airdate>2014-04-25</airdate>
+            <title xml:lang="ja">サカサマな「サカサマのパテマ」</title>
+            <title xml:lang="en">Inverted "Patema Inverted"</title>
+            <title xml:lang="x-jat">Sakasama na "Sakasama no Patema"</title>
+        </episode>
+        <episode id="279733" update="2024-04-06">
+            <epno type="4">T8</epno>
+            <length>1</length>
+            <airdate>2013-11-07</airdate>
+            <title xml:lang="en">15 Seconds SPOT</title>
+        </episode>
+        <episode id="279734" update="2024-04-06">
+            <epno type="2">S6</epno>
+            <length>6</length>
+            <title xml:lang="en">Interview with Cast Fujii Yukiyo and Okamoto Nobuhiko</title>
+        </episode>
+        <episode id="279735" update="2024-04-06">
+            <epno type="2">S7</epno>
+            <length>6</length>
+            <title xml:lang="en">Interview with Director Yoshiura Yasuhiro</title>
+        </episode>
+        <episode id="279736" update="2024-04-06">
+            <epno type="2">S8</epno>
+            <length>15</length>
+            <title xml:lang="en">Tokyo International Film Festival Greetings from the Stage</title>
+        </episode>
+    </episodes>
+</anime>

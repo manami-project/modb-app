@@ -1,0 +1,533 @@
+<?xml version="1.0" encoding="UTF-8"?><anime id="9987" restricted="false">
+    <type>Movie</type>
+    <episodecount>3</episodecount>
+    <startdate>2014-08-23</startdate>
+    <enddate>2016-02-06</enddate>
+    <titles>
+        <title xml:lang="x-jat" type="main">Shin Gekijouban Initial D</title>
+        <title xml:lang="en" type="synonym">Initial D the New Movie</title>
+        <title xml:lang="x-jat" type="short">ID movie</title>
+        <title xml:lang="ja" type="official">新劇場版 頭文字D</title>
+        <title xml:lang="en" type="official">Initial D: Legend</title>
+        <title xml:lang="zh-Hans" type="official">头文字D 新剧场版</title>
+    </titles>
+    <relatedanime>
+        <anime id="135" type="Alternative Setting">Initial D</anime>
+    </relatedanime>
+    <similaranime>
+        <anime id="17065" approval="1" total="4">Rurouni Kenshin: Meiji Kenkaku Romantan (2023)</anime>
+    </similaranime>
+    <url>http://initiald-movie.com/</url>
+    <creators>
+        <name id="5146" type="Animation Work">Sanzigen</name>
+        <name id="35233" type="Animation Work">Liden Films</name>
+        <name id="6396" type="Original Work">Shigeno Shuuichi</name>
+        <name id="1642" type="Direction">Hidaka Masamitsu</name>
+        <name id="17984" type="Direction">Naka Toshihito</name>
+        <name id="1642" type="Chief Direction">Hidaka Masamitsu</name>
+        <name id="11871" type="Chief Animation Direction">Haneda Kouji</name>
+        <name id="11871" type="Character Design">Haneda Kouji</name>
+        <name id="2494" type="Music">Dobashi Akio</name>
+    </creators>
+    <description>High school student http://anidb.net/ch9199 [Fujiwara Takumi] works as a gas station attendant during the day and a delivery boy for his father`s tofu shop during late nights. Little does he know that his precise driving skills and his father`s modified Toyota Sprinter AE86 Trueno make him the best amateur road racer on Mt. Akina`s highway. Because of this, racing groups from all over the Gunma prefecture issue challenges to Takumi to see if he really has what it takes to be a road legend.
+Source: ANN</description>
+    <ratings>
+        <permanent count="439">6.91</permanent>
+        <temporary count="442">7.10</temporary>
+        <review count="1">5.83</review>
+    </ratings>
+    <picture>320277.jpg</picture>
+    <resources>
+        <resource type="1">
+            <externalentity>
+                <identifier>16821</identifier>
+            </externalentity>
+            <externalentity>
+                <identifier>17511</identifier>
+            </externalentity>
+            <externalentity>
+                <identifier>15711</identifier>
+            </externalentity>
+        </resource>
+        <resource type="2">
+            <externalentity>
+                <identifier>50846</identifier>
+            </externalentity>
+            <externalentity>
+                <identifier>28881</identifier>
+            </externalentity>
+            <externalentity>
+                <identifier>19613</identifier>
+            </externalentity>
+            <externalentity>
+                <identifier>30952</identifier>
+            </externalentity>
+        </resource>
+        <resource type="4">
+            <externalentity>
+                <url>http://initiald-movie.com/</url>
+            </externalentity>
+        </resource>
+        <resource type="6">
+            <externalentity>
+                <identifier>New_Initial_D_the_Movie</identifier>
+            </externalentity>
+        </resource>
+        <resource type="7">
+            <externalentity>
+                <identifier>頭文字D</identifier>
+            </externalentity>
+        </resource>
+        <resource type="8">
+            <externalentity>
+                <identifier>6782</identifier>
+            </externalentity>
+        </resource>
+        <resource type="9">
+            <externalentity>
+                <identifier>353229</identifier>
+            </externalentity>
+            <externalentity>
+                <identifier>350751</identifier>
+            </externalentity>
+            <externalentity>
+                <identifier>348587</identifier>
+            </externalentity>
+        </resource>
+        <resource type="10">
+            <externalentity>
+                <identifier>17532</identifier>
+            </externalentity>
+        </resource>
+        <resource type="43">
+            <externalentity>
+                <identifier>tt3971764</identifier>
+            </externalentity>
+            <externalentity>
+                <identifier>tt5463088</identifier>
+            </externalentity>
+            <externalentity>
+                <identifier>tt4971484</identifier>
+            </externalentity>
+        </resource>
+    </resources>
+    <tags>
+        <tag id="1802" parentid="2606" infobox="true" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2016-01-24">
+            <name>seinen</name>
+            <description>Seinen, literally "young man", is one of the main demographic classifications applied to manga, and, by extension, to anime, especially manga-based ones. As the name implies, seinen works are marketed primarily to an audience of young men; the age range commonly understood to be the target of such works goes roughly from 17 to somewhere in the 40s.</description>
+            <picurl>181651.jpg</picurl>
+        </tag>
+        <tag id="2605" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-09-28">
+            <name>dynamic</name>
+            <description>Some of the central structural elements in anime are: 
+Plot Continuity 
+How does the plot or several plots unfold. Are they a strictly linear retelling of one big continuing story, a serial, possibly with several side stories, or is the content chopped into a set of unconnected episodes, only sharing the same setting and characters?
+Stereotype Characters
+Then there is the question of the character set presentation. Is it completely original, or is it your usual stereotypical character cast. Both choices have their merit, for example it would not really make much sense to reinvent the wheel for a harem anime. Fans of that genre come to expect their favourite stereotype protagonists.
+Plot Twists
+Finally there is the question of how complex the plot / the story unfolds. Are there side-plots that merge into the main plot leading to unexpected plot twists, or is the anime quite predictable? The latter would not be appropriate for detective stories. In harem anime on the other hand a foreseeable outcome is actually something the fans will come to expect.</description>
+        </tag>
+        <tag id="2606" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2018-11-05">
+            <name>target audience</name>
+            <description>Anime, like everything else in the modern world, is targeted towards specific audiences, both implicitly by the creators and overtly by the marketing. While categories are associated with specific sex and age groups, this is not a bar on the anime being enjoyed by people who don`t fit into that band; not only do crossover titles exist, but the categories also have a considerable following outside their main demographic, and a person might as well enjoy anime from all categories. Still, does not invalidate the usefulness of marking a title as one of the categories; the same themes will likely be treated differently in anime geared for different audiences. Only one should not jump the gun and assume that a title will be more or less serious or present content in this or that way due to its target audience, or conversely assume the target audience on the content and its presentation alone. As such, the audience categories help form a broad impression of how a title might work with the announced themes, but offer little to no in-depth information about specific content or its treatment.
+The audience categories originate from manga magazines, which group titles of a same intended audience into a magazine that is advertised as belonging to that category, and so manga-based anime will have the category from their parent work. As for anime based on other works, the audience is often debatable, but comparing information such as time slot to the manga-based anime generally helps figure out the most likely possibility.
+If the parent material was classified under multiple audiences over time (for example, it was originally shounen, but then as the plot changed and became more mature, it was reclassified as seinen), and the anime adapts parent material time periods covering multiple audiences, we tag all audiences covered by the anime adaptation.</description>
+        </tag>
+        <tag id="2607" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2009-04-29">
+            <name>themes</name>
+            <description>Themes describe the very central elements important to the anime stories. They set the backdrop against which the protagonists must face their challenges. Be it School Life, present Daily Life, Military action, Cyberpunk, Law and Order detective work, Sports, or the Underworld. These are only but a few of the more typical backgrounds for anime plots. Add to that a Conspiracy setting with a possible tragic outcome, the Themes span most of the imaginable subject matter relevant to anime.</description>
+        </tag>
+        <tag id="2609" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2018-09-01">
+            <name>original work</name>
+            <description>What the anime is based on! This is given as the original work credit in the OP. Mostly of academic interest, but a useful bit of info, hinting at the possible depth of story.</description>
+        </tag>
+        <tag id="2610" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2009-04-22">
+            <name>setting</name>
+            <description>The setting describes in what time and place an anime takes place. To a certain extent it describes what you can expect from the world in the anime.</description>
+        </tag>
+        <tag id="2611" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-09-08">
+            <name>elements</name>
+            <description>Next to Themes setting the backdrop for the protagonists in anime, there are the more detailed plot Elements that centre on character interactions: "What do characters do to each other or what is done to them?". Is it violent Action, an awe-inspiring Adventure in a foreign place, the gripping life of a Detective, a slapstick Comedy, an Ecchi Harem anime, a SciFi epic, or some Fantasy travelling adventure?</description>
+        </tag>
+        <tag id="2612" parentid="2610" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2016-09-04">
+            <name>time</name>
+            <description>This placeholder lists different epochs in human history and more vague but important timelines such as the future, the present and the past.</description>
+        </tag>
+        <tag id="2613" parentid="2610" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2016-09-04">
+            <name>place</name>
+            <description>The places the anime can take place in. Includes more specific places such as a country on Earth, as well as more general places such as a dystopia or a mirror world.</description>
+        </tag>
+        <tag id="2624" parentid="2612" weight="600" localspoiler="false" globalspoiler="false" verified="true" update="2017-02-20">
+            <name>present</name>
+            <description>Somewhere between past and future.</description>
+        </tag>
+        <tag id="2630" parentid="2613" weight="600" localspoiler="false" globalspoiler="false" verified="true" update="2012-10-13">
+            <name>Earth</name>
+            <description>The Earth is the third planet from the Sun, and the densest and fifth-largest of the eight planets in the Solar System. It is in effect a ball of hot mud, but on the surface it`s cold enough, so most of us live on it (or are supposed to). It is circa 4.5 billion years old, and, unless we humans succeed in destroying it over the next couple of centuries, it is expected to last for quite another while, though the changes in the Sun`s emissions due to its aging will likely cause the extinction of everything; the species of earthlings are guaranteed to die, even if we fail to kill them -- unless, of course, we find ourselves another planet and figure out a way to take everything there. Our little planet on a corner of this galaxy may mean nothing in the grand scheme of things, but to its inhabitants it is their home, so, as a species, we cherish it dearly, to the point many cultures even to this day deify it. Being the home to the human civilizations, the Earth is the main setting of most fiction, be it anime or otherwise, but not only are many titles set in other places, such as unrelated fantasy worlds, in a considerable number of fictional titles the Earth is actually destroyed by aggressive alien invaders.</description>
+            <picurl>126792.jpg</picurl>
+        </tag>
+        <tag id="2672" parentid="2834" weight="600" localspoiler="false" globalspoiler="false" verified="true" update="2018-03-05">
+            <name>Japan</name>
+            <description>Japan is a sovereign island nation in East Asia. Located in the Pacific Ocean, it lies off the eastern coast of the Asian mainland and stretches from the Sea of Okhotsk in the north to the East China Sea and China in the southwest.
+Source: Wikipedia</description>
+            <picurl>65689.png</picurl>
+        </tag>
+        <tag id="2759" parentid="2881" infobox="true" weight="600" localspoiler="false" globalspoiler="false" verified="true" update="2012-10-06">
+            <name>motorsport</name>
+            <description>Driving involves driving in a competitive manner. Note that just driving to get groceries does not suffice, unless one does it like Takumi Fujiwara in Initial D.</description>
+        </tag>
+        <tag id="2766" parentid="2759" weight="600" localspoiler="false" globalspoiler="false" verified="true" update="2012-10-08">
+            <name>street racing</name>
+            <description>Seen The Fast and The Furious or played Need for Speed Underground series? This is it: people racing in illegal races on the streets with their own modified cars and maybe seeing the police chasing them.</description>
+        </tag>
+        <tag id="2798" parentid="2609" infobox="true" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2019-02-14">
+            <name>manga</name>
+            <description>Manga is the lifeblood that drives the anime industry. Everything and its mother is based on manga. However! There are exceptions where the manga was not the basis for the anime.
+It`s common practice to make manga adaptations of many popular anime, there`s a manga based on Evangelion, and two (one shounen and one shoujo) based on each of Escaflowne and Mahou Tsukai Tai. Also it`s quite common to release manga and anime versions of a story in parallel, for instance Nadesico and Shoujo Kakumei Utena. There are also cases where an anime continues in a manga, as in the case of Angel Beats! and Angel Beats: Heaven`s Door, or reverse.
+See also http://anidb.net/t6493 [manhua] and http://anidb.net/t5010 [manhwa].</description>
+            <picurl>215593.jpg</picurl>
+        </tag>
+        <tag id="2826" parentid="2856" weight="100" localspoiler="false" globalspoiler="false" verified="true" update="2010-01-27">
+            <name>pantsu</name>
+            <description>"Panties" in Japanese. Upskirt views in various positions are typical, however all forms of partial or fully exposed panties are accepted. Exposure is usually accidental, but may also be deliberate. Pantsu views may be exclusive to the viewer without impacting any characters. Bikinis are not pantsu.</description>
+            <picurl>5721.jpg</picurl>
+        </tag>
+        <tag id="2834" parentid="2630" weight="600" localspoiler="false" globalspoiler="false" verified="true" update="2016-10-04">
+            <name>Asia</name>
+            <description>Asia is Earth`s largest and most populous continent, located primarily in the eastern and northern hemispheres and sharing the continental landmass of Eurasia with the continent of Europe. Asia covers an area of 44,579,000 square kilometers, about 30% of Earth`s total land area and 8.7% of the Earth`s total surface area. The continent, which has long been home to the majority of the human population, was the site of many of the first civilizations. Asia is notable for not only its overall large size and population, but also dense and large settlements as well as vast barely populated regions within the continent of 4.4 billion people.
+Source: Wikipedia</description>
+            <picurl>192245.jpg</picurl>
+        </tag>
+        <tag id="2856" parentid="2611" weight="100" localspoiler="false" globalspoiler="false" verified="true" update="2014-09-05">
+            <name>ecchi</name>
+            <description>Fan service is found in many anime, in many forms. When the service has a distinctly sexual slant to it, and it appears to be a major focus of the show, then it`s safe to assume you`re watching ecchi.
+The word "ecchi" is used by English-speaking anime fans to refer to refer to soft-core pornographic or sexually suggestive anime and manga. This is a western invention; in Japanese, it is a catch-all term for all things anyhow sexual in nature, not being limited to porn, but also not really considered a "milder" term, as it may also refer to sexual intercourse itself. The term "ecchi" in Japanese comes from the pronunciation of the letter "H" in English, which is rendered into Japanese syllabary as エッチ, which in turn is transliterated in the English alphabet as "ecchi" or "etchi". It is not, as many believe, short for "hentai" -- that, too, seems to be a western invention. It is, however, nearly as misunderstood and misapplied a term as "hentai".
+The line between ecchi and hentai, from the western perspective over these terms, can be hard to draw at times; one good rule of thumb is: if it was aired on Japanese public TV at all, it probably wasn`t hentai. Ecchi usually features all the specifics to human anatomy that can only be found in anime, and generally avoids full nudity, instead abusing of panty shots. Hentai, on the other hand, will usually show full frontal nudity in some explicit form, including genitalia, and full, intimate sex scenes. At its mildest, ecchi is composed of double entendres, big misunderstandings, and sexual farce; at its most explicit, it is still in the realm of softcore pornography, with full breast shots, full back nudity and similar content, but no display of genitalia. Another good way to distinguish the two is looking for animated sex scenes; if one is found, you have generally left the genre entirely, though a few borderline exceptions apply here. For AniDB`s purposes, the distinction between explicit ecchi and actual hentai is simple: if it was sold with a 18+ restriction in its country of origin, it is hentai; if it was sold without it, it is ecchi.
+Source: TV Tropes</description>
+            <picurl>32416.jpg</picurl>
+        </tag>
+        <tag id="2881" parentid="2607" infobox="true" weight="600" localspoiler="false" globalspoiler="false" verified="true" update="2018-01-21">
+            <name>sports</name>
+            <description>Sports anime revolves around a recreational physical activity or skill. In addition they often adhere to certain genre conventions, the emphasis on training and practice in preparation for competition, characters desire for self improvement, and pursuit of a specific goal.</description>
+            <picurl>212185.jpg</picurl>
+        </tag>
+        <tag id="2931" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2016-12-04">
+            <name>unsorted</name>
+            <description>a bunch of tags that still need to be either deleted or moved into proper places.</description>
+        </tag>
+        <tag id="3322" parentid="6173" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2009-06-04">
+            <name>remake</name>
+            <description>This anime is a remake of a previously released story, anime, or movie.</description>
+        </tag>
+        <tag id="4064" parentid="6151" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2018-08-13">
+            <name>CGI</name>
+            <description>Computer-generated imagery (CGI) or computer animation is the art of creating moving images via the use of computers. It is a subfield of computer graphics and animation. Increasingly it is created by means of 3D computer graphics, though 2D computer graphics are still widely used for stylistic, low bandwidth, and faster real-time rendering needs. Sometimes the target of the animation is the computer itself, but sometimes the target is another medium, such as film.</description>
+            <picurl>222249.jpg</picurl>
+        </tag>
+        <tag id="4258" parentid="2759" weight="600" localspoiler="false" globalspoiler="false" verified="true" update="2014-10-20">
+            <name>drifting</name>
+            <description>Drifting is a driving technique where the driver intentionally oversteers, causing loss of traction in the rear wheels, while maintaining control from entry to exit of a corner. A car is drifting when the rear slip angle is greater than the front slip angle, to such an extent that often the front wheels are pointing in the opposite direction to the turn (e.g. car is turning left, wheels are pointed right or vice versa).</description>
+        </tag>
+        <tag id="5823" parentid="6230" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2010-09-01">
+            <name>predominantly male cast</name>
+            <description>The anime features a mostly male cast, i.e. female characters are rare.
+Example: Reverse harem setting with a plethora of bishounen.</description>
+        </tag>
+        <tag id="5947" parentid="2931" weight="0" localspoiler="false" globalspoiler="false" verified="false" update="2013-04-09">
+            <name>tuning</name>
+            <description>Pimp your ride to get better performance where it matters, slick paint jobs, or stupid things like TV displays in your exhaust pipe.
+Placing a "PRO GT-R PERFORMANCE" bumper sticker in your ride is NOT tuning!</description>
+        </tag>
+        <tag id="5948" parentid="6233" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2009-04-18">
+            <name>visible aura</name>
+            <description>Characters are surrounded by a visible energy field usually representing inner strength, but not restricted to only that.</description>
+        </tag>
+        <tag id="5965" parentid="6247" weight="0" localspoiler="false" globalspoiler="true" verified="false" update="2015-02-10">
+            <name>incomplete story</name>
+            <description>The show does not cover all of the original work (if present) or was cancelled prematurely, leaving plot lines unresolved or aborting character development. Sometimes the show runs through all its initially slotted episodes and adapts all of the original work (if applicable) but fails to present a proper ending, leaving viewers wondering whether they`re missing the final episodes.
+In some cases, this may overlap with the studio forging an anime-original ending. Such an ending normally manages to allow the show to "finish", but may still suffer from incomplete story issues.
+An incomplete storyline is not to be confused with the sequel bait, which is when the story presented by the show is finished but leaves enough room for a sequel to be produced. Sometimes this goes as far as to present a new potential problem in the last few minutes; that is usual for after-credits footage in movies.</description>
+        </tag>
+        <tag id="6151" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-09-10">
+            <name>technical aspects</name>
+            <description>It may sometimes be useful to know about technical aspects of a show, such as information about its broadcasting or censorship. Such information can be found here.</description>
+        </tag>
+        <tag id="6173" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-09-24">
+            <name>origin</name>
+        </tag>
+        <tag id="6230" parentid="2605" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-10-20">
+            <name>cast</name>
+        </tag>
+        <tag id="6233" parentid="2611" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2015-08-11">
+            <name>tropes</name>
+            <description>A trope is a commonly recurring literary and rhetorical devices, motifs or clichés in creative works. This use is a broader redefining of a literary trope, the use of figurative language, via word, phrase, or even an image, for artistic effect, such as using a figure of speech.
+Source: Wikipedia</description>
+        </tag>
+        <tag id="6247" parentid="2931" weight="0" localspoiler="false" globalspoiler="false" verified="false" update="2019-06-02">
+            <name>ending tags that need merging</name>
+            <description>See also: http://anidb.net/post426253 [http://anidb.net/post426253] and http://anidb.net/c6774745 [http://anidb.net/c6774745]</description>
+        </tag>
+        <tag id="7885" parentid="6173" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2021-11-07">
+            <name>Japanese production</name>
+        </tag>
+    </tags>
+    <characters>
+        <character id="9199" type="main character in" update="2019-10-04">
+            <rating votes="197">8.85</rating>
+            <name>Fujiwara Takumi</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <description>Fujiwara Takumi is the main character in Initial D. Takumi has been driving up and down Akina mountain using a panda coloured Toyota Corolla Sprinter Trueno (AE86) since the age of 12, doing deliveries for his father`s tofu shop. Because of this, he has became a very skilled driver and after overtaking http://anidb.net/ch9257 [Takahashi Keisuke] he is thrown into the world of mountain pass racing.</description>
+            <picture>174502.jpg</picture>
+            <seiyuu id="255" picture="11273.jpeg">Miyano Mamoru</seiyuu>
+        </character>
+        <character id="9257" type="main character in" update="2015-06-10">
+            <rating votes="77">8.05</rating>
+            <name>Takahashi Keisuke</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <description>Takahashi Keisuke is the number two driver for the Red Suns. Keisuke drives a Mazda FD3S RX-7 and is a skilled driver, second only to his brother http://anidb.net/ch9258 [Ryousuke].
+Keisuke is a rather hot-headed young man and does not like losing. Keisuke is also known to drive with his emotions, for example if he realises that he cannot win his driving suffers and if he is in the lead he is carefree and much relaxed.
+Before Ryousuke got Keisuke involved in street racing he was the leader of a Bosozoku gang. He joins his brother`s new team and has a rivalry with http://anidb.net/ch9199 [Takumi]. Keisuke races the uphill (hillclimb) on most races, while Takumi races the downhill.</description>
+            <picture>174503.jpg</picture>
+            <seiyuu id="345" picture="264508.jpg">Nakamura Yuuichi</seiyuu>
+        </character>
+        <character id="9258" type="main character in" update="2015-06-10">
+            <rating votes="134">8.62</rating>
+            <name>Takahashi Ryousuke</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <description>Takahashi Ryousuke is one of the most skilled drivers in the series (he is the Red Suns` fastest member as well as their leader); he and his younger brother http://anidb.net/ch9257 [Keisuke] (the Takahashi Brothers, also known as the Rotary Brothers because they both drive RX-7 versions) have been featured in racing magazines and are regarded highly by other drivers. Ryousuke drives a Mazda FC3S RX-7 and was previously undefeated until he met http://anidb.net/ch9199 [Fujiwara Takumi].
+Ryousuke is very serious about racing; he pours over technical data just like any professional driver and he is one of the few drivers with skills as a mechanic to match those he possesses as a driver. He can usually be found in his room going over data on his laptop. He is known to be able to tell what kind of modifications have been made to a car just by hearing it, and what a driver is capable of just by watching the car drift. Ryousuke`s fame is so wide spread throughout Japan that he has been given the moniker, "Akagi`s White Comet".
+Note: Takahashi Ryousuke is modeled after the "Drift King" Keiichi Tsuchiya`s mentor and retired race car driver, Takahashi Kunimitsu.</description>
+            <picture>174504.jpg</picture>
+            <seiyuu id="250" picture="11257.jpeg">Ono Daisuke</seiyuu>
+        </character>
+        <character id="9259" type="secondary cast in" update="2015-06-10">
+            <rating votes="149">2.70</rating>
+            <name>Takeuchi Itsuki</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <description>Itsuki Takeuchi is http://anidb.net/ch9259 [Takumi]`s best friend; he provides the comic relief in the series, and is generally quite loud and obnoxious. Itsuki works part-time at a gas station with Takumi and http://anidb.net/ch9273 [Iketani]; Itsuki plans to use the money he earns to buy an AE86 Corolla Levin (to complement Takumi`s AE86 Trueno) but mistakenly buys an inferior (less power, poor brakes, less chassis breaking, and worse suspension) AE85.</description>
+            <picture>160190.jpg</picture>
+            <seiyuu id="434" picture="11461.jpeg">Shiraishi Minoru</seiyuu>
+        </character>
+        <character id="9273" type="secondary cast in" update="2014-08-27">
+            <rating votes="62">4.37</rating>
+            <name>Iketani Kouichirou</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <description>Iketani Kouichirou, one of http://anidb.net/ch9199 [Takumi]`s friends, works at a local gas station with both Takumi and http://anidb.net/ch9259 [Itsuki]. Itsuki admires him, as Iketani is leader of the local racing team, the Akina Speed Stars. Iketani drives a Nissan S13 Silvia. At first, Iketani thinks that the Speed Stars are the best drivers in Akina but later his boss Yuuichi tells Iketani of the mysterious driver of an AE86 who was the fastest driver in his time, and that he suspects that the driver is the owner of the local tofu shop.</description>
+            <picture>160189.jpg</picture>
+            <seiyuu id="2585" picture="248105.jpg">Tsuchida Hiroshi</seiyuu>
+        </character>
+        <character id="32347" type="secondary cast in" update="2015-06-10">
+            <rating votes="115">8.71</rating>
+            <name>Fujiwara Bunta</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <description>Fujiwara Bunta is the owner of a tofu shop in Akina, and the father of http://anidb.net/ch9199 [Takumi]. He used to be the No.1 downhill racer in Mt. Akina years ago, but he no longer races, preferring to guide Takumi`s racing development. He is the original driver of the mysterious "white ghost of Akina" AE86 Sprinter Trueno that holds the record of the fastest downhill time at Akina.</description>
+            <picture>160188.jpg</picture>
+            <seiyuu id="323" picture="211661.jpg">Hirata Hiroaki</seiyuu>
+        </character>
+        <character id="32348" type="appears in" update="2024-11-30">
+            <rating votes="40">3.95</rating>
+            <name>Nakamura Kenta</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>71835.jpg</picture>
+            <seiyuu id="10744" picture="247987.jpg">Naruke Yoshiya</seiyuu>
+        </character>
+        <character id="32349" type="appears in" update="2011-05-27">
+            <rating votes="13">3.55</rating>
+            <name>Fumihiro</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>72366.jpg</picture>
+            <seiyuu id="37719" picture="138626.jpg">Fukuda Kenji</seiyuu>
+        </character>
+        <character id="32350" type="appears in" update="2014-09-06">
+            <name>Matsumoto Shuuichi</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <description>Matsumoto Shuuichi is the personal mechanic for Takumi`s AE86 and the chief mechanic for Project D.</description>
+            <picture>160512.jpg</picture>
+        </character>
+        <character id="32352" type="secondary cast in" update="2024-02-19">
+            <rating votes="35">7.50</rating>
+            <name>Kenji</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>300087.jpg</picture>
+            <seiyuu id="2002" picture="249026.jpg">Katsu Anri</seiyuu>
+        </character>
+        <character id="32365" type="secondary cast in" update="2015-06-10">
+            <rating votes="136">3.10</rating>
+            <name>Mogi Natsuki</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <description>Mogi Natsuki is a schoolmate of http://anidb.net/ch9199 [Takumi] who takes an interest in him as a friend and potential love interest. She engages in enjou kousai (subsidized dating) with a middle-aged man nicknamed Papa, who drives a white Mercedes.</description>
+            <picture>160191.jpg</picture>
+            <seiyuu id="22366" picture="272800.jpg">Uchida Maaya</seiyuu>
+        </character>
+        <character id="32366" type="secondary cast in" update="2024-02-19">
+            <rating votes="35">7.20</rating>
+            <name>Tachibana Yuuichi</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>300088.jpg</picture>
+            <seiyuu id="78" picture="249042.jpg">Shimura Tomoyuki</seiyuu>
+        </character>
+        <character id="32389" type="secondary cast in" update="2015-06-10">
+            <rating votes="18">8.93</rating>
+            <name>Nakazato Takeshi</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <description>Nakazato Takeshi, also known as the Black Lightning, is the leader of the Myogi NightKids. He made his first appearance at the race in Akina where http://anidb.net/ch9257 [Takahashi Keisuke] of the RedSuns is to race against http://anidb.net/ch9199 [Takumi]. Surprised that Takumi could defeat Keisuke, Takeshi decides that he is going to be the one to challenge and defeat the "Akina downhill specialist", and that the RedSuns are next on his list.
+He drives black Nissan Skyline GT-R V-Spec II (BNR32).</description>
+            <picture>160192.jpg</picture>
+            <seiyuu id="200" picture="17015.jpg">Suwabe Jun`ichi</seiyuu>
+        </character>
+        <character id="32410" type="secondary cast in" update="2015-06-10">
+            <rating votes="10">4.61</rating>
+            <name>Shouji Shingo</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>174505.jpg</picture>
+            <seiyuu id="3156" picture="76983.jpg">Sakaguchi Shuuhei</seiyuu>
+        </character>
+        <character id="32411" type="appears in" update="2011-05-18">
+            <name>Shouichi</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>71775.jpg</picture>
+            <seiyuu id="43504" picture="176120.jpg">Irikura Keisuke</seiyuu>
+        </character>
+        <character id="32412" type="appears in" update="2011-05-18">
+            <name>Akio</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>71773.jpg</picture>
+            <seiyuu id="48299" picture="196632.jpg">Taira Osamu</seiyuu>
+        </character>
+        <character id="32413" type="appears in" update="2011-05-18">
+            <name>Hiromichi</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>71774.jpg</picture>
+            <seiyuu id="35831" picture="223778.jpg">Fujimaki Daigo</seiyuu>
+        </character>
+        <character id="32426" type="appears in" update="2014-09-06">
+            <rating votes="42">7.32</rating>
+            <name>Satou Mako</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <description>Satou Mako is the driver of the Usui combination which she forms with her co-driver http://anidb.net/ch32427 [Sayuki]. She drives blue Nissan Sileighty (RPS13).</description>
+            <picture>160509.jpg</picture>
+            <seiyuu id="23483" picture="10971.jpeg">Hara Yumi</seiyuu>
+        </character>
+        <character id="32427" type="appears in" update="2014-09-06">
+            <rating votes="41">5.60</rating>
+            <name>Sayuki</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <description>Sayuki is the co-driver of the Usui combination which she forms with the driver http://anidb.net/ch32426 [Satou Mako].</description>
+            <picture>160510.jpg</picture>
+            <seiyuu id="38294" picture="267788.jpg">Okuno Kaya</seiyuu>
+        </character>
+    </characters>
+    <episodes>
+        <episode id="155851" update="2013-11-06">
+            <epno type="4">T1</epno>
+            <length>1</length>
+            <airdate>2013-11-05</airdate>
+            <title xml:lang="ja">パイロット版 映像</title>
+            <title xml:lang="en">Pilot Video</title>
+            <title xml:lang="x-jat">Pilot Ban Eizou</title>
+        </episode>
+        <episode id="157862" update="2014-02-04">
+            <epno type="4">T2</epno>
+            <length>1</length>
+            <airdate>2014-02-03</airdate>
+            <title xml:lang="ja">特報</title>
+            <title xml:lang="en">News Flash</title>
+            <title xml:lang="x-jat">Tokuhou</title>
+        </episode>
+        <episode id="157863" update="2014-10-10">
+            <epno type="1">1</epno>
+            <length>65</length>
+            <airdate>2014-08-23</airdate>
+            <rating votes="6">6.27</rating>
+            <title xml:lang="ja">覚醒</title>
+            <title xml:lang="en">Awakening</title>
+            <title xml:lang="x-jat">Kakusei</title>
+        </episode>
+        <episode id="159872" update="2014-05-15">
+            <epno type="4">T3</epno>
+            <length>2</length>
+            <airdate>2014-05-14</airdate>
+            <title xml:lang="en">Official Trailer</title>
+        </episode>
+        <episode id="161791" update="2014-08-06">
+            <epno type="4">T4</epno>
+            <length>2</length>
+            <airdate>2014-08-05</airdate>
+            <title xml:lang="en">Trailer 2</title>
+        </episode>
+        <episode id="164253" update="2015-05-19">
+            <epno type="1">2</epno>
+            <length>65</length>
+            <airdate>2015-05-23</airdate>
+            <rating votes="5">6.44</rating>
+            <title xml:lang="ja">闘走</title>
+            <title xml:lang="en">Racer</title>
+            <title xml:lang="x-jat">Tousou</title>
+        </episode>
+        <episode id="167937" update="2015-04-17">
+            <epno type="4">T5</epno>
+            <length>1</length>
+            <airdate>2015-04-17</airdate>
+            <title xml:lang="en">Movie 2 PV</title>
+        </episode>
+        <episode id="170458" update="2016-02-02">
+            <epno type="1">3</epno>
+            <length>65</length>
+            <airdate>2016-02-06</airdate>
+            <rating votes="2">6.59</rating>
+            <title xml:lang="ja">夢現</title>
+            <title xml:lang="en">Dream</title>
+            <title xml:lang="x-jat">Mugen</title>
+        </episode>
+        <episode id="172827" update="2015-10-23">
+            <epno type="4">T6</epno>
+            <length>1</length>
+            <airdate>2015-10-23</airdate>
+            <title xml:lang="ja">特報</title>
+            <title xml:lang="en">News Flash 3</title>
+            <title xml:lang="x-jat">Tokuhou</title>
+        </episode>
+        <episode id="172828" update="2015-10-23">
+            <epno type="4">T7</epno>
+            <length>1</length>
+            <airdate>2015-02-26</airdate>
+            <title xml:lang="ja">特報</title>
+            <title xml:lang="en">News Flash 2</title>
+            <title xml:lang="x-jat">Tokuhou</title>
+        </episode>
+        <episode id="251796" recap="true" update="2022-11-17">
+            <epno type="2">S1</epno>
+            <length>50</length>
+            <airdate>2022-01-07</airdate>
+            <title xml:lang="ja">新劇場版 頭文字[イニシャル]D BATTLE DIGEST</title>
+            <title xml:lang="en">Episode S1</title>
+            <title xml:lang="x-jat">Shin Gekijouban Initial D Battle Digest</title>
+            <summary>A compilation of the movies that features the battle scenes with a new soundtrack.</summary>
+        </episode>
+        <episode id="268027" update="2023-06-13">
+            <epno type="2">S2</epno>
+            <length>40</length>
+            <title xml:lang="ja">メイキング</title>
+            <title xml:lang="en">Making-of</title>
+        </episode>
+    </episodes>
+</anime>

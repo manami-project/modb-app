@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="UTF-8"?><anime id="9600" restricted="false">
+    <type>OVA</type>
+    <episodecount>1</episodecount>
+    <startdate>2013-07-24</startdate>
+    <enddate>2013-07-24</enddate>
+    <titles>
+        <title xml:lang="x-jat" type="main">Sukitte Ii na yo. Dareka ga</title>
+        <title xml:lang="en" type="synonym">Say I Love You OVA</title>
+        <title xml:lang="x-jat" type="synonym">Sukitte Ii na yo. OVA</title>
+        <title xml:lang="x-jat" type="synonym">Sukinayo OVA</title>
+        <title xml:lang="ja" type="official">好きっていいなよ. 誰かが</title>
+    </titles>
+    <relatedanime>
+        <anime id="9236" type="Parent Story">Sukitte Ii na yo.</anime>
+    </relatedanime>
+    <recommendations total="2">
+        <recommendation type="For Fans" uid="432184">I tagged it "for fans" not because it`s bad but because it obviously for those who know the whole story. It is a rather nice, tho sadly short comeback of this great, heartwarming series!
+
+A must see for those who liked the parent story!</recommendation>
+        <recommendation type="For Fans" uid="463724">In this one OVA we get some explanation regarding Yamato`s and Kai`s past, why they did what they did, and I personally finally understood why Yamato got interested in Mei in the first place. There was also a short Megu-tan and Kai moment which slightly alluded to something possibly growing between them, which was nice. For fans of the anime, and those (like me) who were interested in some more backstory and character development. It was nice, but too bad there`s only one OVA episode.</recommendation>
+    </recommendations>
+    <url>http://kc.kodansha.co.jp/suki/</url>
+    <creators>
+        <name id="788" type="Animation Work">Zexcs</name>
+        <name id="9376" type="Character Design">Okuda Yoshiko</name>
+        <name id="11235" type="Direction">Kuroyanagi Toshimasa</name>
+        <name id="3557" type="Series Composition">Satou Takuya</name>
+        <name id="3557" type="Direction">Satou Takuya</name>
+    </creators>
+    <description>Mei, Aiko, Asami, and Nagi are making cookies at Mei`s house. Meanwhile, Yamato and Kai remember their childhood. Parallel to this, Momo suggests that Megumi likes Kai.
+Note: Was bundled with the limited edition of the 11th manga volume.</description>
+    <ratings>
+        <permanent count="785">5.15</permanent>
+        <temporary count="787">6.68</temporary>
+    </ratings>
+    <picture>276548.jpg</picture>
+    <resources>
+        <resource type="2">
+            <externalentity>
+                <identifier>16868</identifier>
+            </externalentity>
+        </resource>
+        <resource type="4">
+            <externalentity>
+                <url>http://kc.kodansha.co.jp/suki/</url>
+            </externalentity>
+        </resource>
+    </resources>
+    <tags>
+        <tag id="30" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-09-10">
+            <name>maintenance tags</name>
+            <description>These tags are used for maintenance.</description>
+        </tag>
+        <tag id="1973" parentid="2607" infobox="true" weight="400" localspoiler="false" globalspoiler="false" verified="true" update="2018-03-22">
+            <name>cooking</name>
+            <description>Cooking is the process of preparing food by using heat.</description>
+        </tag>
+        <tag id="2605" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-09-28">
+            <name>dynamic</name>
+            <description>Some of the central structural elements in anime are: 
+Plot Continuity 
+How does the plot or several plots unfold. Are they a strictly linear retelling of one big continuing story, a serial, possibly with several side stories, or is the content chopped into a set of unconnected episodes, only sharing the same setting and characters?
+Stereotype Characters
+Then there is the question of the character set presentation. Is it completely original, or is it your usual stereotypical character cast. Both choices have their merit, for example it would not really make much sense to reinvent the wheel for a harem anime. Fans of that genre come to expect their favourite stereotype protagonists.
+Plot Twists
+Finally there is the question of how complex the plot / the story unfolds. Are there side-plots that merge into the main plot leading to unexpected plot twists, or is the anime quite predictable? The latter would not be appropriate for detective stories. In harem anime on the other hand a foreseeable outcome is actually something the fans will come to expect.</description>
+        </tag>
+        <tag id="2607" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2009-04-29">
+            <name>themes</name>
+            <description>Themes describe the very central elements important to the anime stories. They set the backdrop against which the protagonists must face their challenges. Be it School Life, present Daily Life, Military action, Cyberpunk, Law and Order detective work, Sports, or the Underworld. These are only but a few of the more typical backgrounds for anime plots. Add to that a Conspiracy setting with a possible tragic outcome, the Themes span most of the imaginable subject matter relevant to anime.</description>
+        </tag>
+        <tag id="2609" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2018-09-01">
+            <name>original work</name>
+            <description>What the anime is based on! This is given as the original work credit in the OP. Mostly of academic interest, but a useful bit of info, hinting at the possible depth of story.</description>
+        </tag>
+        <tag id="2610" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2009-04-22">
+            <name>setting</name>
+            <description>The setting describes in what time and place an anime takes place. To a certain extent it describes what you can expect from the world in the anime.</description>
+        </tag>
+        <tag id="2611" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-09-08">
+            <name>elements</name>
+            <description>Next to Themes setting the backdrop for the protagonists in anime, there are the more detailed plot Elements that centre on character interactions: "What do characters do to each other or what is done to them?". Is it violent Action, an awe-inspiring Adventure in a foreign place, the gripping life of a Detective, a slapstick Comedy, an Ecchi Harem anime, a SciFi epic, or some Fantasy travelling adventure?</description>
+        </tag>
+        <tag id="2612" parentid="2610" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2016-09-04">
+            <name>time</name>
+            <description>This placeholder lists different epochs in human history and more vague but important timelines such as the future, the present and the past.</description>
+        </tag>
+        <tag id="2613" parentid="2610" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2016-09-04">
+            <name>place</name>
+            <description>The places the anime can take place in. Includes more specific places such as a country on Earth, as well as more general places such as a dystopia or a mirror world.</description>
+        </tag>
+        <tag id="2624" parentid="2612" weight="600" localspoiler="false" globalspoiler="false" verified="true" update="2017-02-20">
+            <name>present</name>
+            <description>Somewhere between past and future.</description>
+        </tag>
+        <tag id="2630" parentid="2613" weight="600" localspoiler="false" globalspoiler="false" verified="true" update="2012-10-13">
+            <name>Earth</name>
+            <description>The Earth is the third planet from the Sun, and the densest and fifth-largest of the eight planets in the Solar System. It is in effect a ball of hot mud, but on the surface it`s cold enough, so most of us live on it (or are supposed to). It is circa 4.5 billion years old, and, unless we humans succeed in destroying it over the next couple of centuries, it is expected to last for quite another while, though the changes in the Sun`s emissions due to its aging will likely cause the extinction of everything; the species of earthlings are guaranteed to die, even if we fail to kill them -- unless, of course, we find ourselves another planet and figure out a way to take everything there. Our little planet on a corner of this galaxy may mean nothing in the grand scheme of things, but to its inhabitants it is their home, so, as a species, we cherish it dearly, to the point many cultures even to this day deify it. Being the home to the human civilizations, the Earth is the main setting of most fiction, be it anime or otherwise, but not only are many titles set in other places, such as unrelated fantasy worlds, in a considerable number of fictional titles the Earth is actually destroyed by aggressive alien invaders.</description>
+            <picurl>126792.jpg</picurl>
+        </tag>
+        <tag id="2672" parentid="2834" weight="600" localspoiler="false" globalspoiler="false" verified="true" update="2018-03-05">
+            <name>Japan</name>
+            <description>Japan is a sovereign island nation in East Asia. Located in the Pacific Ocean, it lies off the eastern coast of the Asian mainland and stretches from the Sea of Okhotsk in the north to the East China Sea and China in the southwest.
+Source: Wikipedia</description>
+            <picurl>65689.png</picurl>
+        </tag>
+        <tag id="2778" parentid="2858" weight="200" localspoiler="false" globalspoiler="false" verified="true" update="2012-11-09">
+            <name>slow when it comes to love</name>
+            <description>The main protagonists in this anime have a very hard time trying to express their feelings to each other. They simply will not finally confess their love.
+In some cases this romance element is based on unrequited love, or an absurd amount of shyness.</description>
+        </tag>
+        <tag id="2786" parentid="2858" weight="100" localspoiler="false" globalspoiler="false" verified="true" update="2018-01-21">
+            <name>love polygon</name>
+            <description>A love polygon refers to a romantic relationship involving n people. Although a love triangle is not limited to just heterosexual relationships, in anime, it usually deals with two females liking one male and vice versa.</description>
+            <picurl>10989.gif</picurl>
+        </tag>
+        <tag id="2790" parentid="2605" weight="300" localspoiler="false" globalspoiler="false" verified="true" update="2010-01-17">
+            <name>plot continuity</name>
+            <description>Consistency of the characteristics of persons, plot, objects, places and events seen by the viewer.
+A single linear focused plot is highly continuous.
+A truly random plot is highly discontinuous.</description>
+        </tag>
+        <tag id="2795" parentid="1973" weight="400" localspoiler="false" globalspoiler="false" verified="true" update="2012-10-08">
+            <name>baking</name>
+            <description>The art of making bread, cakes, pastries, pies, tarts, quiches, cookies and similar food in the oven.
+Mmmm.... smells nice.</description>
+        </tag>
+        <tag id="2798" parentid="2609" infobox="true" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2019-02-14">
+            <name>manga</name>
+            <description>Manga is the lifeblood that drives the anime industry. Everything and its mother is based on manga. However! There are exceptions where the manga was not the basis for the anime.
+It`s common practice to make manga adaptations of many popular anime, there`s a manga based on Evangelion, and two (one shounen and one shoujo) based on each of Escaflowne and Mahou Tsukai Tai. Also it`s quite common to release manga and anime versions of a story in parallel, for instance Nadesico and Shoujo Kakumei Utena. There are also cases where an anime continues in a manga, as in the case of Angel Beats! and Angel Beats: Heaven`s Door, or reverse.
+See also http://anidb.net/t6493 [manhua] and http://anidb.net/t5010 [manhwa].</description>
+            <picurl>215593.jpg</picurl>
+        </tag>
+        <tag id="2834" parentid="2630" weight="600" localspoiler="false" globalspoiler="false" verified="true" update="2016-10-04">
+            <name>Asia</name>
+            <description>Asia is Earth`s largest and most populous continent, located primarily in the eastern and northern hemispheres and sharing the continental landmass of Eurasia with the continent of Europe. Asia covers an area of 44,579,000 square kilometers, about 30% of Earth`s total land area and 8.7% of the Earth`s total surface area. The continent, which has long been home to the majority of the human population, was the site of many of the first civilizations. Asia is notable for not only its overall large size and population, but also dense and large settlements as well as vast barely populated regions within the continent of 4.4 billion people.
+Source: Wikipedia</description>
+            <picurl>192245.jpg</picurl>
+        </tag>
+        <tag id="2853" parentid="2611" weight="100" localspoiler="false" globalspoiler="false" verified="true" update="2017-02-13">
+            <name>comedy</name>
+            <description>Anime whose central struggle causes hilarious results. These stories are built upon funny characters, situations and events. A comedy anime is laced with humour and sets out to provoke laughter from the audience.
+Japanese humour can be a bit strange to westerners, so if you`re new to this type of humour, just bear with it; it`ll most likely grow on you if you`re a fan of other kinds of comedy.</description>
+            <picurl>198104.jpg</picurl>
+        </tag>
+        <tag id="2858" parentid="2611" infobox="true" weight="400" localspoiler="false" globalspoiler="false" verified="true" update="2017-12-01">
+            <name>romance</name>
+            <description>Romance describes a story that deals with love between two or more characters typically also having an optimistic ending. Romance is also a difficulty encountered when creating a harem.</description>
+            <picurl>210061.jpg</picurl>
+        </tag>
+        <tag id="2862" parentid="2607" weight="400" localspoiler="false" globalspoiler="false" verified="true" update="2018-01-21">
+            <name>friendship</name>
+            <description>The feeling of trust, kindness, and friendship between a group of high school students for example, is a central theme of this anime.</description>
+            <picurl>65691.png</picurl>
+        </tag>
+        <tag id="2864" parentid="2607" weight="200" localspoiler="false" globalspoiler="false" verified="true" update="2017-12-01">
+            <name>daily life</name>
+            <description>The antics of the protagonists do not take place in some exotic setting or time, but in everyday life. When not "at the job" this means getting up in the morning, making meals, house cleaning, going shopping or out to eat, visiting the bath house or spa, leisure activities in the spare time, etc. The time "on the job" for students is School Life, for others working in their profession. Daily Life is basically a synonym for everything normal, repetitive, and trivial happening to your average person.</description>
+            <picurl>210069.jpg</picurl>
+        </tag>
+        <tag id="2931" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2016-12-04">
+            <name>unsorted</name>
+            <description>a bunch of tags that still need to be either deleted or moved into proper places.</description>
+        </tag>
+        <tag id="4150" parentid="2931" weight="0" localspoiler="false" globalspoiler="false" verified="false" update="2010-02-01">
+            <name>everybody is nice</name>
+            <description>All characters are nice in their own way; nobody has ill intentions to others. Even if a secondary character appears to be bad at the beginning, they will redeem themselves or become tamed/pacified/neutralized swiftly.</description>
+        </tag>
+        <tag id="5881" parentid="6148" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2009-06-07">
+            <name>childhood memory</name>
+            <description>The childhood memory of one of the protagonists plays an important part as plot device in this anime.</description>
+        </tag>
+        <tag id="6148" parentid="30" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-09-10">
+            <name>TO BE MOVED TO EPISODE</name>
+            <description>Tags under this parent tag are going to be moved to episode tags and removed from the anime they`re currently assigned to. They will be blocked from the anime system once that move is complete. Please help with that job if you know what episodes they should be assigned to.</description>
+        </tag>
+        <tag id="6173" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-09-24">
+            <name>origin</name>
+        </tag>
+        <tag id="7885" parentid="6173" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2021-11-07">
+            <name>Japanese production</name>
+        </tag>
+    </tags>
+    <characters>
+        <character id="45110" type="main character in" update="2014-04-21">
+            <rating votes="44">6.27</rating>
+            <name>Tachibana Mei</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>93947.jpg</picture>
+            <seiyuu id="20497" picture="252298.jpg">Kayano Ai</seiyuu>
+        </character>
+        <character id="45111" type="main character in" update="2012-09-12">
+            <rating votes="30">3.46</rating>
+            <name>Kurosawa Yamato</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>93948.jpg</picture>
+            <seiyuu id="225" picture="259982.jpg">Sakurai Takahiro</seiyuu>
+        </character>
+        <character id="45112" type="secondary cast in" update="2012-09-12">
+            <rating votes="26">6.97</rating>
+            <name>Oikawa Asami</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>93950.jpg</picture>
+            <seiyuu id="32750" picture="264969.jpg">Taneda Risa</seiyuu>
+        </character>
+        <character id="45114" type="secondary cast in" update="2012-09-12">
+            <rating votes="25">6.28</rating>
+            <name>Mutou Aiko</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>93949.jpg</picture>
+            <seiyuu id="23686" picture="224554.jpg">Uchiyama Yumi</seiyuu>
+        </character>
+        <character id="46285" type="secondary cast in" update="2012-11-14">
+            <rating votes="28">2.23</rating>
+            <name>Kitagawa Megumi</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <description>Kitagawa Megumi is an amateur model and transfer student who was placed in Yamato`s class. She acts sweet but in reality is aiming for Yamato.
+Source: wiki</description>
+            <picture>128058.jpg</picture>
+            <seiyuu id="1798" picture="11147.jpeg">Kotobuki Minako</seiyuu>
+        </character>
+        <character id="46286" type="secondary cast in" update="2012-11-29">
+            <rating votes="16">5.90</rating>
+            <name>Takemura Kai</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>128759.jpg</picture>
+            <seiyuu id="612" picture="266826.jpg">Maeno Tomoaki</seiyuu>
+        </character>
+        <character id="49725" type="secondary cast in" update="2012-10-15">
+            <rating votes="9">6.21</rating>
+            <name>Mei no Haha</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <description>Mei`s mother.</description>
+            <picture>126914.jpg</picture>
+            <seiyuu id="79" picture="228519.jpg">Kobayashi Yuu</seiyuu>
+        </character>
+        <character id="49893" type="secondary cast in" update="2012-12-04">
+            <rating votes="6">4.83</rating>
+            <name>Sasano Momoko</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <description>Sasano Momoko is Megumi`s friend. They`ve known each other since childhood.</description>
+            <picture>129087.jpg</picture>
+            <seiyuu id="1961" picture="222838.jpg">Yonezawa Madoka</seiyuu>
+        </character>
+        <character id="50361" type="secondary cast in" update="2012-11-05">
+            <rating votes="15">6.88</rating>
+            <name>Kurosawa Nagi</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <description>Kurosawa Nagi is Yamato`s younger sister. She is good at cooking sweets and making things mainly plushies.</description>
+            <picture>127734.jpg</picture>
+            <seiyuu id="101" picture="263543.jpg">Ise Mariya</seiyuu>
+        </character>
+        <character id="121386" type="appears in" update="2021-12-28">
+            <name>Marshmallow</name>
+            <gender>unknown</gender>
+            <charactertype id="1">Character</charactertype>
+            <description>Mei`s Cat.</description>
+            <picture>268153.jpg</picture>
+        </character>
+        <character id="121387" type="appears in" update="2021-12-28">
+            <name>Kuro</name>
+            <gender>unknown</gender>
+            <charactertype id="1">Character</charactertype>
+            <description>Cat adopted by Yamato.</description>
+            <picture>268154.jpg</picture>
+        </character>
+    </characters>
+    <episodes>
+        <episode id="146151" update="2013-08-12">
+            <epno type="1">1</epno>
+            <length>25</length>
+            <airdate>2013-07-24</airdate>
+            <rating votes="2">4.12</rating>
+            <title xml:lang="en">OAD</title>
+        </episode>
+    </episodes>
+</anime>

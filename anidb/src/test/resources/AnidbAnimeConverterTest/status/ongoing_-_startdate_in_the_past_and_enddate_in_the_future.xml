@@ -1,0 +1,472 @@
+<?xml version="1.0" encoding="UTF-8"?><anime id="19206" restricted="false">
+    <type>TV Series</type>
+    <episodecount>12</episodecount>
+    <startdate>2026-04-11</startdate>
+    <enddate>2026-06-27</enddate>
+    <titles>
+        <title xml:lang="x-jat" type="main">Kamiina Botan, Yoeru Sugata wa Yuri no Hana</title>
+        <title xml:lang="ja" type="short">上伊那ぼたん</title>
+        <title xml:lang="x-jat" type="short">kamiina botan</title>
+        <title xml:lang="ja" type="official">上伊那ぼたん, 酔へる姿は百合の花</title>
+        <title xml:lang="en" type="official">Botan Kamiina Fully Blossoms When Drunk</title>
+        <title xml:lang="zh-Hans" type="official">上伊那牡丹，酒醉身姿似百合花般</title>
+    </titles>
+    <similaranime>
+        <anime id="13376" approval="5" total="6">Takunomi.</anime>
+    </similaranime>
+    <url>https://kamiina-botan.com/</url>
+    <creators>
+        <name id="466" type="Character Design">Yoshinari Kou</name>
+        <name id="55421" type="Series Composition">Yonaiyama Youko</name>
+        <name id="75785" type="Work">Soigne</name>
+        <name id="48935" type="Direction">Sakuma Takashi</name>
+        <name id="58495" type="Music">Hashiguchi Kana</name>
+        <name id="80426" type="Original Work">Hei</name>
+    </creators>
+    <ratings>
+        <permanent count="50">6.08</permanent>
+        <temporary count="51">6.50</temporary>
+    </ratings>
+    <picture>325088.jpg</picture>
+    <resources>
+        <resource type="1">
+            <externalentity>
+                <identifier>35118</identifier>
+            </externalentity>
+        </resource>
+        <resource type="2">
+            <externalentity>
+                <identifier>61186</identifier>
+            </externalentity>
+        </resource>
+        <resource type="4">
+            <externalentity>
+                <url>https://kamiina-botan.com/</url>
+            </externalentity>
+        </resource>
+        <resource type="6">
+            <externalentity>
+                <identifier>Botan_Kamiina_Fully_Blossoms_When_Drunk</identifier>
+            </externalentity>
+        </resource>
+        <resource type="7">
+            <externalentity>
+                <identifier>上伊那ぼたん、酔へる姿は百合の花</identifier>
+            </externalentity>
+        </resource>
+        <resource type="8">
+            <externalentity>
+                <identifier>7747</identifier>
+            </externalentity>
+        </resource>
+        <resource type="9">
+            <externalentity>
+                <identifier>402375</identifier>
+            </externalentity>
+        </resource>
+        <resource type="10">
+            <externalentity>
+                <identifier>26410</identifier>
+            </externalentity>
+        </resource>
+        <resource type="23">
+            <externalentity>
+                <identifier>kamiina_anime</identifier>
+            </externalentity>
+        </resource>
+        <resource type="26">
+            <externalentity>
+                <identifier>watch?v=HS20CJaO9z0</identifier>
+            </externalentity>
+        </resource>
+        <resource type="28">
+            <externalentity>
+                <identifier>GT00371890</identifier>
+            </externalentity>
+        </resource>
+    </resources>
+    <tags>
+        <tag id="2605" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-09-28">
+            <name>dynamic</name>
+            <description>Some of the central structural elements in anime are:
+                Plot Continuity
+                How does the plot or several plots unfold. Are they a strictly linear retelling of one big continuing story, a serial, possibly with several side stories, or is the content chopped into a set of unconnected episodes, only sharing the same setting and characters?
+                Stereotype Characters
+                Then there is the question of the character set presentation. Is it completely original, or is it your usual stereotypical character cast. Both choices have their merit, for example it would not really make much sense to reinvent the wheel for a harem anime. Fans of that genre come to expect their favourite stereotype protagonists.
+                Plot Twists
+                Finally there is the question of how complex the plot / the story unfolds. Are there side-plots that merge into the main plot leading to unexpected plot twists, or is the anime quite predictable? The latter would not be appropriate for detective stories. In harem anime on the other hand a foreseeable outcome is actually something the fans will come to expect.</description>
+        </tag>
+        <tag id="2607" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2009-04-29">
+            <name>themes</name>
+            <description>Themes describe the very central elements important to the anime stories. They set the backdrop against which the protagonists must face their challenges. Be it School Life, present Daily Life, Military action, Cyberpunk, Law and Order detective work, Sports, or the Underworld. These are only but a few of the more typical backgrounds for anime plots. Add to that a Conspiracy setting with a possible tragic outcome, the Themes span most of the imaginable subject matter relevant to anime.</description>
+        </tag>
+        <tag id="2609" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2018-09-01">
+            <name>original work</name>
+            <description>What the anime is based on! This is given as the original work credit in the OP. Mostly of academic interest, but a useful bit of info, hinting at the possible depth of story.</description>
+        </tag>
+        <tag id="2610" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2009-04-22">
+            <name>setting</name>
+            <description>The setting describes in what time and place an anime takes place. To a certain extent it describes what you can expect from the world in the anime.</description>
+        </tag>
+        <tag id="2611" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-09-08">
+            <name>elements</name>
+            <description>Next to Themes setting the backdrop for the protagonists in anime, there are the more detailed plot Elements that centre on character interactions: "What do characters do to each other or what is done to them?". Is it violent Action, an awe-inspiring Adventure in a foreign place, the gripping life of a Detective, a slapstick Comedy, an Ecchi Harem anime, a SciFi epic, or some Fantasy travelling adventure?</description>
+        </tag>
+        <tag id="2613" parentid="2610" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2016-09-04">
+            <name>place</name>
+            <description>The places the anime can take place in. Includes more specific places such as a country on Earth, as well as more general places such as a dystopia or a mirror world.</description>
+        </tag>
+        <tag id="2630" parentid="2613" weight="100" localspoiler="false" globalspoiler="false" verified="true" update="2012-10-13">
+            <name>Earth</name>
+            <description>The Earth is the third planet from the Sun, and the densest and fifth-largest of the eight planets in the Solar System. It is in effect a ball of hot mud, but on the surface it`s cold enough, so most of us live on it (or are supposed to). It is circa 4.5 billion years old, and, unless we humans succeed in destroying it over the next couple of centuries, it is expected to last for quite another while, though the changes in the Sun`s emissions due to its aging will likely cause the extinction of everything; the species of earthlings are guaranteed to die, even if we fail to kill them -- unless, of course, we find ourselves another planet and figure out a way to take everything there. Our little planet on a corner of this galaxy may mean nothing in the grand scheme of things, but to its inhabitants it is their home, so, as a species, we cherish it dearly, to the point many cultures even to this day deify it. Being the home to the human civilizations, the Earth is the main setting of most fiction, be it anime or otherwise, but not only are many titles set in other places, such as unrelated fantasy worlds, in a considerable number of fictional titles the Earth is actually destroyed by aggressive alien invaders.</description>
+            <picurl>126792.jpg</picurl>
+        </tag>
+        <tag id="2667" parentid="2869" weight="100" localspoiler="false" globalspoiler="false" verified="true" update="2018-12-29">
+            <name>university</name>
+            <description>Since college/university students are typically at least eighteen years old, with stories covering mature everyday life topics, you will find the college setting quite often in seinen and josei anime.
+                Topics that can now be covered - as compared to High School settings - are higher education (i.e. coping with higher intellectual stress), the more adult party life (i.e. alcohol, smoking, sex), the issues of daily life vs. studying - especially when having to work to pay for bills, and finally the possible friction between those in and out of college.</description>
+        </tag>
+        <tag id="2671" parentid="2869" weight="100" localspoiler="false" globalspoiler="false" verified="true" update="2018-09-03">
+            <name>school dormitory</name>
+            <description>A school dormitory or residence hall is the student living quarters at an elite academy, boarding school, or military school. The main characters may live or work at the dormitory, and it often becomes the backdrop for a reoccurring part of the story.</description>
+            <picurl>223167.jpg</picurl>
+        </tag>
+        <tag id="2672" parentid="2834" weight="100" localspoiler="false" globalspoiler="false" verified="true" update="2018-03-05">
+            <name>Japan</name>
+            <description>Japan is a sovereign island nation in East Asia. Located in the Pacific Ocean, it lies off the eastern coast of the Asian mainland and stretches from the Sea of Okhotsk in the north to the East China Sea and China in the southwest.
+                Source: Wikipedia</description>
+            <picurl>65689.png</picurl>
+        </tag>
+        <tag id="2779" parentid="2858" weight="100" localspoiler="false" globalspoiler="false" verified="true" update="2014-02-27">
+            <name>multiple couples</name>
+            <description>More than one couple is developed in the anime.</description>
+        </tag>
+        <tag id="2782" parentid="2858" weight="100" localspoiler="false" globalspoiler="false" verified="true" update="2018-09-03">
+            <name>shoujo ai</name>
+            <description>Shoujo Ai means girls love, and thus explores what happens when two girls (or women) fall in love. This is not to be mistaken for http://anidb.net/t2695 [Yuri] which is (or, at least, how this term is often used by the western audience) used in adult works. This is not; that means there is no graphic sex.
+                The male version is http://anidb.net/t2783 [Shounen Ai].
+                http://anidb.net/t7146 [Cute girls doing cute things (CGDCT)] is often mistaken as low level Yuri or Shoujo Ai. If there is no Yuri or Shoujo Ai subtext, i.e. if there is no romantic subtext, only tag CGDCT. Please note: CGDCT and yuri/shoujo ai are not mutually exclusive; it is possible to have an anime tagged both.</description>
+            <picurl>210060.jpg</picurl>
+        </tag>
+        <tag id="2785" parentid="2858" weight="100" localspoiler="false" globalspoiler="false" verified="true" update="2014-02-27">
+            <name>unrequited love</name>
+            <description>At least one character has a romantic interest in another one, but the feelings are not returned.
+                This is the cornerstone of all love triangles or love polygons.</description>
+        </tag>
+        <tag id="2786" parentid="2858" weight="100" localspoiler="false" globalspoiler="false" verified="true" update="2018-01-21">
+            <name>love polygon</name>
+            <description>A love polygon refers to a romantic relationship involving n people. Although a love triangle is not limited to just heterosexual relationships, in anime, it usually deals with two females liking one male and vice versa.</description>
+            <picurl>10989.gif</picurl>
+        </tag>
+        <tag id="2798" parentid="2609" infobox="true" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2019-02-14">
+            <name>manga</name>
+            <description>Manga is the lifeblood that drives the anime industry. Everything and its mother is based on manga. However! There are exceptions where the manga was not the basis for the anime.
+                It`s common practice to make manga adaptations of many popular anime, there`s a manga based on Evangelion, and two (one shounen and one shoujo) based on each of Escaflowne and Mahou Tsukai Tai. Also it`s quite common to release manga and anime versions of a story in parallel, for instance Nadesico and Shoujo Kakumei Utena. There are also cases where an anime continues in a manga, as in the case of Angel Beats! and Angel Beats: Heaven`s Door, or reverse.
+                See also http://anidb.net/t6493 [manhua] and http://anidb.net/t5010 [manhwa].</description>
+            <picurl>215593.jpg</picurl>
+        </tag>
+        <tag id="2834" parentid="2630" weight="100" localspoiler="false" globalspoiler="false" verified="true" update="2016-10-04">
+            <name>Asia</name>
+            <description>Asia is Earth`s largest and most populous continent, located primarily in the eastern and northern hemispheres and sharing the continental landmass of Eurasia with the continent of Europe. Asia covers an area of 44,579,000 square kilometers, about 30% of Earth`s total land area and 8.7% of the Earth`s total surface area. The continent, which has long been home to the majority of the human population, was the site of many of the first civilizations. Asia is notable for not only its overall large size and population, but also dense and large settlements as well as vast barely populated regions within the continent of 4.4 billion people.
+                Source: Wikipedia</description>
+            <picurl>192245.jpg</picurl>
+        </tag>
+        <tag id="2858" parentid="2611" weight="100" localspoiler="false" globalspoiler="false" verified="true" update="2017-12-01">
+            <name>romance</name>
+            <description>Romance describes a story that deals with love between two or more characters typically also having an optimistic ending. Romance is also a difficulty encountered when creating a harem.</description>
+            <picurl>210061.jpg</picurl>
+        </tag>
+        <tag id="2862" parentid="2607" weight="100" localspoiler="false" globalspoiler="false" verified="true" update="2018-01-21">
+            <name>friendship</name>
+            <description>The feeling of trust, kindness, and friendship between a group of high school students for example, is a central theme of this anime.</description>
+            <picurl>65691.png</picurl>
+        </tag>
+        <tag id="2864" parentid="2607" weight="100" localspoiler="false" globalspoiler="false" verified="true" update="2017-12-01">
+            <name>daily life</name>
+            <description>The antics of the protagonists do not take place in some exotic setting or time, but in everyday life. When not "at the job" this means getting up in the morning, making meals, house cleaning, going shopping or out to eat, visiting the bath house or spa, leisure activities in the spare time, etc. The time "on the job" for students is School Life, for others working in their profession. Daily Life is basically a synonym for everything normal, repetitive, and trivial happening to your average person.</description>
+            <picurl>210069.jpg</picurl>
+        </tag>
+        <tag id="2869" parentid="2607" weight="100" localspoiler="false" globalspoiler="false" verified="true" update="2017-12-01">
+            <name>school life</name>
+            <description>Since a large part of the anime audience still takes part in school life or is visiting college, it is only natural to choose a setting the audience can identify with, be it elementary, middle, or high school. For the older viewers a college setting with more mature real-life problems is appropriate. And since clubs take up so much time in the lives of students, these are obviously also important.</description>
+            <picurl>210062.jpg</picurl>
+        </tag>
+        <tag id="2879" parentid="2607" weight="500" localspoiler="false" globalspoiler="false" verified="true" update="2014-02-27">
+            <name>alcohol</name>
+            <description>Alcohol (or more scientifically, ethanol), is one of the world`s oldest psychoactive substances. It is traditionally found in the form of a beverage such as beer, wine, or liquor, although in some contexts it can be inhaled to produce similar or intoxication, and some people prefer another way of consuming beverage-form alcohol.
+                Alcoholic beverages are many and varied, due to production methods (fermentation or distillation), source materials (grains, fruits, vegetables, other plants), added substances such as flavorings, and many more ways of defining different forms of alcoholic beverages.
+                Alcoholic beverages are divided into three general classes: beers, wines, and spirits. They are legally consumed in most countries, and over 100 countries have laws regulating their production, sale, and consumption. In particular, such laws specify the minimum age at which a person may legally buy or drink them. This minimum age varies between 16 and 25 years, depending upon the country and the type of drink. Most nations set it at 18 years of age.</description>
+            <picurl>70749.jpg</picurl>
+        </tag>
+        <tag id="3546" parentid="6151" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2013-01-08">
+            <name>experimental animation</name>
+            <description>This anime uses distinct, alternative animation — much unlike other contemporary anime — either throughout or in individual episodes/sequences.</description>
+        </tag>
+        <tag id="3809" parentid="2605" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2012-05-24">
+            <name>character driven</name>
+            <description>The main appeal of the show is the way the characters are portrayed and interact, focusing on dialogue, spending time together or getting to know each other. These anime are not "story-less" but story is secondary to character development and the characters themselves and what they experience.</description>
+        </tag>
+        <tag id="5227" parentid="6151" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-04-26">
+            <name>alternating animation style</name>
+            <description>The animation style in this show may change between scenes, usually making the anime experimental in a way. This may be a form of artistic visualisation.</description>
+        </tag>
+        <tag id="5851" parentid="6230" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2018-11-01">
+            <name>female protagonist</name>
+            <description>The anime has a female protagonist.</description>
+        </tag>
+        <tag id="5875" parentid="2607" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-10-18">
+            <name>jealousy</name>
+            <description>A character is jealous of another character either due to love, or power, or wealth.</description>
+        </tag>
+        <tag id="6088" parentid="2785" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-01-29">
+            <name>unrequited shoujo ai</name>
+            <description>At least one female character has a romantic or sexual interest in another female character, but the feelings are not returned.
+                This can be because the recipient is oblivious, straight, or simply not interested.</description>
+        </tag>
+        <tag id="6151" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-09-10">
+            <name>technical aspects</name>
+            <description>It may sometimes be useful to know about technical aspects of a show, such as information about its broadcasting or censorship. Such information can be found here.</description>
+        </tag>
+        <tag id="6173" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-09-24">
+            <name>origin</name>
+        </tag>
+        <tag id="6230" parentid="2605" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-10-20">
+            <name>cast</name>
+        </tag>
+        <tag id="7146" parentid="2607" weight="100" localspoiler="false" globalspoiler="false" verified="true" update="2018-09-14">
+            <name>cute girls doing cute things</name>
+            <description>Cute girls doing cute things with each other (CGDCT): when girls are super friendly with each other and do all sorts of http://anidb.net/t798 [cute/moe] things with each other, but there is no yuri or shoujo ai subtext -- more specifically, there is no romantic subtext.
+
+                * CGDCT applies where the main focus is on moe/cute girls and their interactions with each other. Good examples include http://anidb.net/a9722 [Non Non Biyori] (600 weight / 3.0 stars) and http://anidb.net/a9579 [Kin`iro Mosaic] (600 weight / 3.0 stars).
+                * Generally, CGDCT is applicable only if the anime is also tagged predominantly female cast or all female cast.
+                * CGDCT does not apply if girls doing cute things is incidental to a larger motive/theme/meta. For example, in http://anidb.net/a8168 [Nichijou] the focus is comedy, using cute girls; the tag would not apply.
+
+                CGDCT is often mistaken as low level yuri or shoujo ai. If there is also actual romantic subtext, use the http://anidb.net/t2695 [yuri (18+)] and http://anidb.net/t2782 [shoujo ai] tags as well. Please note: CGDCT and yuri/shoujo ai are not mutually exclusive; it is possible to have an anime tagged both.</description>
+            <picurl>223153.jpg</picurl>
+        </tag>
+        <tag id="7885" parentid="6173" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2021-11-07">
+            <name>Japanese production</name>
+        </tag>
+    </tags>
+    <characters>
+        <character id="150947" type="main character in" update="2026-05-01">
+            <rating votes="1">8.45</rating>
+            <name>Kamiina Botan</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>326274.jpg</picture>
+            <seiyuu id="55692" picture="224737.jpg">Suzushiro Sayumi</seiyuu>
+        </character>
+        <character id="151101" type="main character in" update="2026-05-01">
+            <rating votes="1">4.74</rating>
+            <name>Tonami Ibuki</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>326275.jpg</picture>
+            <seiyuu id="38296" picture="228671.jpg">Aoyama Yoshino</seiyuu>
+        </character>
+        <character id="154396" type="secondary cast in" update="2026-04-13">
+            <rating votes="1">7.30</rating>
+            <name>Gujou Kanade</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>78172.png</picture>
+            <seiyuu id="1798" picture="11147.jpeg">Kotobuki Minako</seiyuu>
+        </character>
+        <character id="154397" type="secondary cast in" update="2026-04-13">
+            <name>Yusa Akane</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>78173.png</picture>
+            <seiyuu id="52675" picture="209744.jpg">Amami Yurina</seiyuu>
+        </character>
+        <character id="154398" type="secondary cast in" update="2026-04-13">
+            <name>Kitamori Yaeka</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>78174.png</picture>
+            <seiyuu id="43492" picture="232251.jpg">Tomita Miyu</seiyuu>
+        </character>
+        <character id="154399" type="secondary cast in" update="2026-05-16">
+            <rating votes="2">7.75</rating>
+            <name>Chang Chin-lan</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>78175.png</picture>
+            <seiyuu id="43438" picture="11259.jpeg">Kawase Maki</seiyuu>
+        </character>
+    </characters>
+    <episodes>
+        <episode id="306443" update="2025-12-28">
+            <epno type="4">T1</epno>
+            <length>1</length>
+            <airdate>2025-12-26</airdate>
+            <title xml:lang="ja">プロダクションムービー</title>
+            <title xml:lang="en">PV 1 (0:27)</title>
+            <title xml:lang="x-jat">Production Movie</title>
+        </episode>
+        <episode id="309992" update="2026-04-12">
+            <epno type="1">1</epno>
+            <length>25</length>
+            <airdate>2026-04-11</airdate>
+            <rating votes="4">8.92</rating>
+            <title xml:lang="en">Episode 1</title>
+            <summary>At a festival with her housemates, Botan runs off to find Ibuki, who is enjoying a highball on a bench alone.
+                Source: Crunchyroll</summary>
+            <resources>
+                <resource type="28">
+                    <externalentity>
+                        <identifier>GE00376523JAJP</identifier>
+                    </externalentity>
+                </resource>
+            </resources>
+        </episode>
+        <episode id="309993" update="2026-04-22">
+            <epno type="1">2</epno>
+            <length>25</length>
+            <airdate>2026-04-18</airdate>
+            <rating votes="4">8.52</rating>
+            <title xml:lang="en">Episode 2</title>
+            <summary>Botan tries shochu for the first time with Kanade. Ibuki takes Botan to a boutique that serves alcohol.
+                Source: Crunchyroll</summary>
+            <resources>
+                <resource type="28">
+                    <externalentity>
+                        <identifier>GE00376524JAJP</identifier>
+                    </externalentity>
+                </resource>
+            </resources>
+        </episode>
+        <episode id="309994" update="2026-03-29">
+            <epno type="1">3</epno>
+            <length>25</length>
+            <airdate>2026-04-25</airdate>
+            <rating votes="4">8.80</rating>
+            <title xml:lang="en">Episode 3</title>
+            <resources>
+                <resource type="28">
+                    <externalentity>
+                        <identifier>GE00376525JAJP</identifier>
+                    </externalentity>
+                </resource>
+            </resources>
+        </episode>
+        <episode id="309995" update="2026-03-29">
+            <epno type="1">4</epno>
+            <length>25</length>
+            <airdate>2026-05-02</airdate>
+            <rating votes="4">10.00</rating>
+            <title xml:lang="en">Episode 4</title>
+            <resources>
+                <resource type="28">
+                    <externalentity>
+                        <identifier>GE00376526JAJP</identifier>
+                    </externalentity>
+                </resource>
+            </resources>
+        </episode>
+        <episode id="310501" update="2026-04-12">
+            <epno type="3">C1</epno>
+            <length>2</length>
+            <airdate>2026-04-11</airdate>
+            <rating votes="3">9.13</rating>
+            <title xml:lang="en">Opening</title>
+        </episode>
+        <episode id="311540" update="2026-05-08">
+            <epno type="1">5</epno>
+            <length>25</length>
+            <airdate>2026-05-08</airdate>
+            <rating votes="4">9.94</rating>
+            <title xml:lang="en">Episode 5</title>
+            <resources>
+                <resource type="28">
+                    <externalentity>
+                        <identifier>GE00376527JAJP</identifier>
+                    </externalentity>
+                </resource>
+            </resources>
+        </episode>
+        <episode id="311543" update="2026-05-11">
+            <epno type="1">8</epno>
+            <length>25</length>
+            <airdate>2026-05-30</airdate>
+            <rating votes="2">9.98</rating>
+            <title xml:lang="en">Episode 8</title>
+            <resources>
+                <resource type="28">
+                    <externalentity>
+                        <identifier>GE00376530JAJP</identifier>
+                    </externalentity>
+                </resource>
+            </resources>
+        </episode>
+        <episode id="311610" update="2026-05-11">
+            <epno type="1">6</epno>
+            <length>25</length>
+            <airdate>2026-05-16</airdate>
+            <rating votes="4">8.13</rating>
+            <title xml:lang="en">Episode 6</title>
+            <resources>
+                <resource type="28">
+                    <externalentity>
+                        <identifier>GE00376528JAJP</identifier>
+                    </externalentity>
+                </resource>
+            </resources>
+        </episode>
+        <episode id="311611" update="2026-05-11">
+            <epno type="1">7</epno>
+            <length>25</length>
+            <airdate>2026-05-23</airdate>
+            <rating votes="4">9.25</rating>
+            <title xml:lang="en">Episode 7</title>
+            <resources>
+                <resource type="28">
+                    <externalentity>
+                        <identifier>GE00376529JAJP</identifier>
+                    </externalentity>
+                </resource>
+            </resources>
+        </episode>
+        <episode id="311983" update="2026-05-22">
+            <epno type="1">9</epno>
+            <length>25</length>
+            <airdate>2026-06-06</airdate>
+            <rating votes="2">10.00</rating>
+            <title xml:lang="en">Episode 9</title>
+            <resources>
+                <resource type="28">
+                    <externalentity>
+                        <identifier>GE00376531JAJP</identifier>
+                    </externalentity>
+                </resource>
+            </resources>
+        </episode>
+        <episode id="311984" update="2026-05-22">
+            <epno type="1">10</epno>
+            <length>25</length>
+            <airdate>2026-06-13</airdate>
+            <rating votes="1">6.74</rating>
+            <title xml:lang="en">Episode 10</title>
+            <resources>
+                <resource type="28">
+                    <externalentity>
+                        <identifier>GE00376532JAJP</identifier>
+                    </externalentity>
+                </resource>
+            </resources>
+        </episode>
+        <episode id="311985" update="2026-05-22">
+            <epno type="1">11</epno>
+            <length>25</length>
+            <airdate>2026-06-20</airdate>
+            <title xml:lang="en">Episode 11</title>
+        </episode>
+        <episode id="311986" update="2026-05-22">
+            <epno type="1">12</epno>
+            <length>25</length>
+            <airdate>2026-06-27</airdate>
+            <title xml:lang="en">Episode 12</title>
+        </episode>
+    </episodes>
+</anime>

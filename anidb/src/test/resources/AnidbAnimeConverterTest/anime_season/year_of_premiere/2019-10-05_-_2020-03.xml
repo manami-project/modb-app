@@ -1,0 +1,1328 @@
+<?xml version="1.0" encoding="UTF-8"?><anime id="14238" restricted="false">
+    <type>TV Series</type>
+    <episodecount>21</episodecount>
+    <startdate>2019-10-05</startdate>
+    <enddate>2020-03-21</enddate>
+    <titles>
+        <title xml:lang="x-jat" type="main">Fate/Grand Order: Zettai Majuu Sensen Babylonia</title>
+        <title xml:lang="x-unk" type="synonym">FGO 7th Singularity</title>
+        <title xml:lang="x-jat" type="synonym">Fate: Fate/Grand Order: Zettai Majuu Sensen Babylonia</title>
+        <title xml:lang="en" type="short">FGO7</title>
+        <title xml:lang="ja" type="official">Fate/Grand Order -絶対魔獣戦線バビロニア-</title>
+        <title xml:lang="en" type="official">Fate/Grand Order Absolute Demonic Front: Babylonia</title>
+        <title xml:lang="zh-Hans" type="official">Fate/Grand Order 绝对魔兽战线 巴比伦尼亚</title>
+    </titles>
+    <relatedanime>
+        <anime id="15461" type="Sequel">Fate/Grand Order: Shuukyoku Tokuiten - Kan`i Jikan Shinden Solomon</anime>
+        <anime id="14239" type="Prequel">Gekijouban Fate/Grand Order: Shinsei Entaku Ryouiki Camelot</anime>
+        <anime id="18092" type="Summary">Fate/Grand Order: Zettai Majuu Sensen Babylonia Soushuuhen</anime>
+    </relatedanime>
+    <recommendations total="2">
+        <recommendation type="For Fans" uid="678374">Type-moon opens the floodgates of their budget and pours it onto this anime. If you`re looking for an eye-candy action-packed show with a side dish of waifus this show does not disappoint. It`s based on a gacha game but surprisingly has something of a plot to tie it together. It managed to flesh out most of the characters and resolves all the major details in its run time despite the scale of the story and the largeness of the cast though I`m not going to deny it had some pretty ass pulley moments. But if you`re looking for something more, another reason to watch this is Gilgamesh as we get to see what he`s like not as a servant but as a king ruling over Babylonia along with other characters in his legend like Enkidu.</recommendation>
+    </recommendations>
+    <url>https://anime.fate-go.jp/ep7-tv/</url>
+    <creators>
+        <name id="9087" type="Chief Animation Direction">Oka Yuuichi</name>
+        <name id="17461" type="Character Design">Takase Tomoaki</name>
+        <name id="54910" type="Work">Clover Works</name>
+        <name id="927" type="Original Work">Type-Moon</name>
+        <name id="2174" type="Original Work">Nasu Kinoko</name>
+        <name id="9248" type="Direction">Akai Toshifumi</name>
+        <name id="44574" type="Music">Kawasaki Ryou</name>
+        <name id="2173" type="Main Character Design">Takeuchi Takashi</name>
+        <name id="16213" type="Chief Animation Direction">Kouno Megumi</name>
+        <name id="13486" type="Chief Animation Direction">Iwasaki Shouta</name>
+        <name id="25992" type="Chief Animation Direction">Shimada Kazuaki</name>
+        <name id="17461" type="Chief Animation Direction">Takase Tomoaki</name>
+        <name id="22485" type="Music">Haga Keita</name>
+    </creators>
+    <description>* Based on the Babylonia Singularity of Fate/Grand Order, the Japanese smartphone role-playing game created by http://anidb.net/cr58840 [Delight Works] based on the Fate series by http://anidb.net/cr927 [Type-Moon].
+2017 A.D. The last era in which Magecraft still existed. Society was created by human hands, but Mages grasped the truth of the world. Magecraft is comprised of techniques from past humans that cannot be explained by science, while science encompasses the techniques of future humans that Magecraft cannot achieve. Researchers and scholars of both Magecraft and science have been gathered to maintain human civilization under the Chaldea Security Organization. But calculations then proved the extinction of humanity in 2019.
+The cause of this is "realms that cannot be observed" that suddenly appeared in various eras of history, called "Singularities". http://anidb.net/ch85954 [Fujimaru Ritsuka], the one Master remaining in Chaldea, has been intervening within these Singularites, alongside the Demi-Servant http://anidb.net/ch93492 [Mash Kyrielight]. He has been attending to the forbidden rituals to resolve or destroy the Singularities: the "Grand Order".
+A seventh Singularity has been discovered—in ancient Mesopotamia in the year 2655 B.C. The land of Uruk, governed by the wise King http://anidb.net/ch104839 [Gilgamesh] after his return from a journey seeking immortality, was grand and prosperous until three goddesses and countless Demonic Beasts appeared. These enemies have brought Uruk to the brink of destruction. With a "Rayshift"—a method of time travel to the past—Fujimaru and Mash arrive in the lands of Uruk to encounter the fortress city of Uruk and the Absolute Demonic Front, fighting back the fearsome attack of the Demonic Beasts. There, the people who live their lives to the fullest despite facing a major threat, continue to fight for their future. Deities and Demonic Beasts make their assault, and mankind stands up against it... It is the destined era where humans and gods part ways.
+Fujimaru and Mash, the pair who have raced through six previous Singularites, embark on their final battle.
+Source: Official website
+Note: The first two episodes received an early screening in Stuttgart, Germany on Sep 29</description>
+    <ratings>
+        <permanent count="1043">6.57</permanent>
+        <temporary count="1050">7.13</temporary>
+    </ratings>
+    <picture>238051.jpg</picture>
+    <resources>
+        <resource type="1">
+            <externalentity>
+                <identifier>21240</identifier>
+            </externalentity>
+            <externalentity>
+                <identifier>23547</identifier>
+            </externalentity>
+        </resource>
+        <resource type="2">
+            <externalentity>
+                <identifier>40206</identifier>
+            </externalentity>
+            <externalentity>
+                <identifier>40761</identifier>
+            </externalentity>
+            <externalentity>
+                <identifier>38084</identifier>
+            </externalentity>
+        </resource>
+        <resource type="4">
+            <externalentity>
+                <url>https://anime.fate-go.jp/ep7-tv/</url>
+            </externalentity>
+        </resource>
+        <resource type="5">
+            <externalentity>
+                <url>https://anime.fate-go.us/ep7-tv/tv/</url>
+            </externalentity>
+        </resource>
+        <resource type="6">
+            <externalentity>
+                <identifier>Fate/Grand_Order_-_Absolute_Demonic_Front:_Babylonia</identifier>
+            </externalentity>
+        </resource>
+        <resource type="7">
+            <externalentity>
+                <identifier>Fate/Grand_Order_(アニメ)</identifier>
+            </externalentity>
+        </resource>
+        <resource type="8">
+            <externalentity>
+                <identifier>5435</identifier>
+            </externalentity>
+        </resource>
+        <resource type="9">
+            <externalentity>
+                <identifier>365060</identifier>
+            </externalentity>
+        </resource>
+        <resource type="10">
+            <externalentity>
+                <identifier>22189</identifier>
+            </externalentity>
+        </resource>
+        <resource type="23">
+            <externalentity>
+                <identifier>FGOAP_ep7</identifier>
+            </externalentity>
+        </resource>
+        <resource type="26">
+            <externalentity>
+                <identifier>watch?v=V1n4h0CInr0</identifier>
+            </externalentity>
+        </resource>
+        <resource type="28">
+            <externalentity>
+                <identifier>GR24JZ886</identifier>
+            </externalentity>
+        </resource>
+        <resource type="43">
+            <externalentity>
+                <identifier>tt9525238</identifier>
+            </externalentity>
+        </resource>
+    </resources>
+    <tags>
+        <tag id="922" parentid="2606" infobox="true" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2015-02-04">
+            <name>shounen</name>
+            <description>In the context of manga and associated media, shounen, literally meaning "youth" and often also specifically "boy", refers to a male audience roughly between the ages of 10 and 18.
+Source: Wikipedia</description>
+        </tag>
+        <tag id="2094" parentid="2849" infobox="true" weight="600" localspoiler="false" globalspoiler="false" verified="true" update="2015-10-25">
+            <name>magic</name>
+            <description>Magic is the art of purportedly manipulating aspects of reality either by supernatural means or through knowledge of unknown occult laws.</description>
+            <picurl>178878.jpg</picurl>
+        </tag>
+        <tag id="2604" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2018-11-08">
+            <name>content indicators</name>
+            <description>The content indicators branch is intended to be a less geographically specific tool than the `age rating` used by convention, for warning about things that might cause offence. Obviously there is still a degree of subjectivity involved, but hopefully it will prove useful for parents with delicate children, or children with delicate parents.
+Note: Refer to further guidance on http://wiki.anidb.net/w/Categories:Content_Indicators [the Wiki page] for how to apply tag weights for content indicators.</description>
+        </tag>
+        <tag id="2606" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2018-11-05">
+            <name>target audience</name>
+            <description>Anime, like everything else in the modern world, is targeted towards specific audiences, both implicitly by the creators and overtly by the marketing. While categories are associated with specific sex and age groups, this is not a bar on the anime being enjoyed by people who don`t fit into that band; not only do crossover titles exist, but the categories also have a considerable following outside their main demographic, and a person might as well enjoy anime from all categories. Still, does not invalidate the usefulness of marking a title as one of the categories; the same themes will likely be treated differently in anime geared for different audiences. Only one should not jump the gun and assume that a title will be more or less serious or present content in this or that way due to its target audience, or conversely assume the target audience on the content and its presentation alone. As such, the audience categories help form a broad impression of how a title might work with the announced themes, but offer little to no in-depth information about specific content or its treatment.
+The audience categories originate from manga magazines, which group titles of a same intended audience into a magazine that is advertised as belonging to that category, and so manga-based anime will have the category from their parent work. As for anime based on other works, the audience is often debatable, but comparing information such as time slot to the manga-based anime generally helps figure out the most likely possibility.
+If the parent material was classified under multiple audiences over time (for example, it was originally shounen, but then as the plot changed and became more mature, it was reclassified as seinen), and the anime adapts parent material time periods covering multiple audiences, we tag all audiences covered by the anime adaptation.</description>
+        </tag>
+        <tag id="2609" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2018-09-01">
+            <name>original work</name>
+            <description>What the anime is based on! This is given as the original work credit in the OP. Mostly of academic interest, but a useful bit of info, hinting at the possible depth of story.</description>
+        </tag>
+        <tag id="2610" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2009-04-22">
+            <name>setting</name>
+            <description>The setting describes in what time and place an anime takes place. To a certain extent it describes what you can expect from the world in the anime.</description>
+        </tag>
+        <tag id="2611" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-09-08">
+            <name>elements</name>
+            <description>Next to Themes setting the backdrop for the protagonists in anime, there are the more detailed plot Elements that centre on character interactions: "What do characters do to each other or what is done to them?". Is it violent Action, an awe-inspiring Adventure in a foreign place, the gripping life of a Detective, a slapstick Comedy, an Ecchi Harem anime, a SciFi epic, or some Fantasy travelling adventure?</description>
+        </tag>
+        <tag id="2612" parentid="2610" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2016-09-04">
+            <name>time</name>
+            <description>This placeholder lists different epochs in human history and more vague but important timelines such as the future, the present and the past.</description>
+        </tag>
+        <tag id="2625" parentid="2612" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2009-05-15">
+            <name>past</name>
+            <description>Anime that takes place in the past or clearly seems to take place in the past in case of an alternative universe. This category should almost always go together with one of its sub-categories, because the past can either be a depiction of a historical event(s) or not, in which case it would be alternative past.</description>
+        </tag>
+        <tag id="2637" parentid="7050" weight="300" localspoiler="false" globalspoiler="false" verified="true" update="2017-12-01">
+            <name>time travel</name>
+            <description>In time travel anime characters are transported through time either figuratively or literally to find themselves either in the past or the future</description>
+            <picurl>210068.jpg</picurl>
+        </tag>
+        <tag id="2640" parentid="2625" weight="200" localspoiler="false" globalspoiler="false" verified="true" update="2018-06-02">
+            <name>alternative past</name>
+            <description>An anime that takes place in an alternative past is an anime that clearly does not belong to the future or the present, and isn`t tied particularly closely to our history, or has ties to our history but only as a premise: there are too many things that don`t make sense for the time-period. In some cases there is futuristic technology present, but the overall setting still feels that of the past. However the setting must still take place on Earth, since we can not know if the history of a fantasy world is an alternate one or not.</description>
+        </tag>
+        <tag id="2648" parentid="2849" infobox="true" weight="600" localspoiler="false" globalspoiler="false" verified="true" update="2014-11-04">
+            <name>contemporary fantasy</name>
+            <description>Contemporary fantasy, also known as modern fantasy or indigenous fantasy, is a sub-genre of fantasy, set in the present day. It is perhaps most popular for its sub-genre, urban fantasy.
+These terms are used to describe stories set in the putative real world (often referred to as consensus reality) in contemporary times, in which magic and magical creatures exist, either living in the interstices of our world or leaking over from alternate worlds. It thus has much in common with, and sometimes overlaps with secret history; a work of fantasy in which the magic could not remain secret or does not have any known relationship to known history would not fit into this subgenre. Occasionally certain contemporary fantasy novels will make reference to pop culture.
+Novels in which modern characters travel into alternate worlds, and all the magical action takes place there (except for the portal required to transport them), are not considered contemporary fantasy. Thus, C.S. Lewis`s The Lion, the Witch and the Wardrobe, where all fantasy events take place in the land of Narnia which is reached via a magic wardrobe, would not count as contemporary fantasy; on the other hand, the part of The Magician`s Nephew, where the Empress Jadis gets to London, tries to take over the Earth and clashes with police and a crowd of cockneys, would qualify as such.
+Contemporary fantasy is also to be distinguished from horror fiction, which also often has contemporary settings. When encountering magical events and creatures, the protagonist of a horror novel is horrified, while the protagonist of a fantasy novel (contemporary or otherwise) is filled with a sense of joy and wonder. Horrifying events may happen, but the fundamental distinction is vital.
+In his preface to That Hideous Strength, one of the earlier works falling within this sub-genre, C.S. Lewis explained why, when writing a tale about "magicians, devils, pantomime animals and planetary angels", he chose to start it with a detailed depiction of narrow-minded academic politics at a provincial English university and the schemes of crooked real estate developers: "I am following the traditional fairy-tale. We do not always notice its method, because the cottages, castles, woodcutters and petty kings with which a fairy tale opens have become for us as remote as the witches and ogres to which it proceeds. But they were not remote at all to the men who first made and enjoyed the tales". The same is true for many of the later works in the genre, which often begin with a seemingly normal scene of modern daily life to then disclose supernatural and magical beings and events hidden behind the scenes.
+Source: wiki</description>
+        </tag>
+        <tag id="2750" parentid="2604" infobox="true" weight="400" localspoiler="false" globalspoiler="false" verified="true" update="2018-11-08">
+            <name>violence</name>
+            <description>Violence is the use of physical force against oneself or another entity, compelling action against one`s will on pain of being hurt.
+Note: Refer to further guidance on http://wiki.anidb.net/w/Categories:Content_Indicators [the Wiki page] for how to apply tag weights for content indicators.</description>
+        </tag>
+        <tag id="2800" parentid="2609" infobox="true" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2009-04-20">
+            <name>game</name>
+            <description>Based on an interactive (even if minimally so) form of entertainment software, generally available for PCs, consoles or arcade machines.</description>
+        </tag>
+        <tag id="2801" parentid="2800" infobox="true" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-09-07">
+            <name>RPG</name>
+            <description>Any anime that is based on a role-playing game aka RPG. A role-playing video game is a video game which includes elements of non-electronic role-playing games. The player assumes control of one or several fictional characters (a party) who have joined forces in order to perform quests and overcome a great number of challenges and enemies, usually monsters inspired by fantasy, and, to a lesser extent, science fiction and classic mythology. During the course of the game the characters, or avatars, which are generally defined by quantized characteristics, evolve and improve in that their various attributes increase, as well as by gaining more powerful artefacts.</description>
+        </tag>
+        <tag id="2841" parentid="2611" infobox="true" weight="400" localspoiler="false" globalspoiler="false" verified="true" update="2017-12-26">
+            <name>action</name>
+            <description>Action anime usually involve a fairly straightforward story of good guys versus bad guys, where most disputes are resolved by using physical force. It often contains a lot of shooting, explosions and fighting.</description>
+            <picurl>211261.jpg</picurl>
+        </tag>
+        <tag id="2849" parentid="7050" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2005-05-07">
+            <name>fantasy</name>
+            <description>Fantasy is a genre of fiction that uses magic and other supernatural phenomena as a primary element of plot, theme, or setting. Many works within the genre take place in fictional worlds where magic is common. Fantasy is generally distinguished from science fiction and horror by the expectation that it steers clear of (pseudo-)scientific and macabre themes, respectively, though there is a great deal of overlap between the three (which are subgenres of speculative fiction).
+In popular culture, the genre of fantasy is dominated by its medievalist form, especially since the worldwide success of The Lord of the Rings books by J. R. R. Tolkien. In its broadest sense however, fantasy comprises works by many writers, artists, filmmakers, and musicians, from ancient myths and legends to many recent works embraced by a wide audience today.
+Fantasy is a vibrant area of academic study in a number of disciplines (English, cultural studies, comparative literature, history, medieval studies). Work in this area ranges widely, from the structuralist theory of Tzvetan Todorov, which emphasizes the fantastic as a liminal space, to work on the connections (political, historical, literary) between medievalism and popular culture
+Source: Wiki</description>
+            <picurl>68768.jpg</picurl>
+        </tag>
+        <tag id="6173" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-09-24">
+            <name>origin</name>
+        </tag>
+        <tag id="7050" parentid="2611" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2019-04-18">
+            <name>speculative fiction</name>
+            <description>Speculative fiction is an umbrella genre encompassing fiction with certain elements that do not exist in the real world, often in the context of supernatural, futuristic or other imaginative themes. This includes, but is not limited to, science fiction, fantasy, superhero fiction, horror, utopian and dystopian fiction, fairytale fantasy, supernatural fiction, as well as combinations thereof.
+Source: Wikipedia</description>
+        </tag>
+        <tag id="7463" weight="0" localspoiler="false" globalspoiler="false" verified="false" update="2019-11-02">
+            <name>Sumeria</name>
+        </tag>
+        <tag id="7885" parentid="6173" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2021-11-07">
+            <name>Japanese production</name>
+        </tag>
+        <tag id="7935" weight="0" localspoiler="false" globalspoiler="false" verified="false" update="2022-05-23">
+            <name>Historical characters assemble</name>
+        </tag>
+    </tags>
+    <characters>
+        <character id="85946" type="appears in" update="2016-12-15">
+            <rating votes="67">5.12</rating>
+            <name>Olgamally Animusphere</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>195897.jpg</picture>
+            <seiyuu id="1961" picture="222838.jpg">Yonezawa Madoka</seiyuu>
+        </character>
+        <character id="85947" type="secondary cast in" update="2016-11-02">
+            <rating votes="21">4.56</rating>
+            <name>Fou</name>
+            <gender>unknown</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>193980.jpg</picture>
+            <seiyuu id="12" picture="263458.jpg">Kawasumi Ayako</seiyuu>
+        </character>
+        <character id="85948" type="main character in" update="2016-11-02">
+            <rating votes="120">7.54</rating>
+            <name>Mash Kyrielight</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>193951.jpg</picture>
+            <seiyuu id="38380" picture="224406.jpg">Takahashi Rie</seiyuu>
+        </character>
+        <character id="85952" type="appears in" update="2016-12-15">
+            <rating votes="22">2.18</rating>
+            <name>Lev Lainur</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>195895.jpg</picture>
+            <seiyuu id="45" picture="11007.jpeg">Sugita Tomokazu</seiyuu>
+        </character>
+        <character id="85953" type="secondary cast in" update="2016-12-15">
+            <rating votes="26">3.74</rating>
+            <name>Romani Archaman</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>195896.jpg</picture>
+            <seiyuu id="191" picture="11086.jpeg">Suzumura Ken`ichi</seiyuu>
+        </character>
+        <character id="85954" type="main character in" update="2021-01-02">
+            <rating votes="60">3.17</rating>
+            <name>Fujimaru Ritsuka</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <description>This Ritsuka is the male counterpart for the http://anidb.net/ch114423 [female player character] in the http://anidb.net/a12519 [Fate/Grand Order] mobile game.</description>
+            <picture>193981.jpg</picture>
+            <seiyuu id="10776" picture="254687.jpg">Shimazaki Nobunaga</seiyuu>
+        </character>
+        <character id="86701" type="appears in" update="2021-06-07">
+            <rating votes="19">7.29</rating>
+            <name>Cu Chulainn</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <description>Cu Chulainn is Caster-class Servant. He uses fire and earth magic, along with various runes, when fighting other Servants. Caster`s Noble Phantasm is Wicker Man and Ochd Deug Odin. He appears in Fuyuki Singularity, and assists http://anidb.net/ch85954 [Fujimaru] and http://anidb.net/ch85948 [Mashu] as they fight against Lancer.
+Cu Chulainn is a hero from the Ulster Cycle of Irish mythology. He was a demigod, the offspring of a mortal woman, Deichtine, the younger sister of King Conchobar mac Nessa, and the deity, Lugh, the god who governed over the sun and a member of the Danann divine family in Celtic Mythology.
+Source: TYPE-MOON Wiki, edited.</description>
+            <picture>196363.jpg</picture>
+        </character>
+        <character id="86961" type="appears in" update="2017-01-01">
+            <rating votes="8">4.28</rating>
+            <name>Archer</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <description>He is an Archer-class Servant, altered after being consumed and blackened by the mud from the Shadow.</description>
+            <picture>196366.jpg</picture>
+        </character>
+        <character id="93492" type="main character in" update="2024-01-28">
+            <rating votes="21">7.62</rating>
+            <name>Mash Kyrielight</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <description>Shielder`s True Name is http://anidb.net/ch85948 [Mash Kyrielight], a Demi-Servant human fused with an unknown Servant.
+It is later revealed in the original Fate/Grand Order material that Mash had fused with Galahad.</description>
+            <picture>299138.jpg</picture>
+            <seiyuu id="38380" picture="224406.jpg">Takahashi Rie</seiyuu>
+        </character>
+        <character id="100296" type="appears in" update="2022-03-01">
+            <rating votes="9">5.30</rating>
+            <name>Kiyohime</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>270367.jpg</picture>
+        </character>
+        <character id="100346" type="appears in" update="2022-03-01">
+            <rating votes="6">3.86</rating>
+            <name>Elizabeth Bathory</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>270368.jpg</picture>
+        </character>
+        <character id="104836" type="secondary cast in" update="2020-06-20">
+            <rating votes="14">6.71</rating>
+            <name>Ana</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>236927.jpg</picture>
+            <seiyuu id="82" picture="216596.jpg">Asakawa Yuu</seiyuu>
+        </character>
+        <character id="104837" type="secondary cast in" update="2019-08-04">
+            <rating votes="28">8.33</rating>
+            <name>Ishtar</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>236928.jpg</picture>
+            <seiyuu id="210" picture="263457.jpg">Ueda Kana</seiyuu>
+        </character>
+        <character id="104838" type="secondary cast in" update="2019-08-05">
+            <rating votes="10">4.95</rating>
+            <name>Enkidu</name>
+            <gender>none/does not apply</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>236926.jpg</picture>
+            <seiyuu id="79" picture="228519.jpg">Kobayashi Yuu</seiyuu>
+        </character>
+        <character id="104839" type="secondary cast in" update="2019-09-08">
+            <rating votes="13">8.56</rating>
+            <name>Gilgamesh</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>236925.jpg</picture>
+            <seiyuu id="236" picture="265564.jpg">Seki Tomokazu</seiyuu>
+        </character>
+        <character id="104840" type="secondary cast in" update="2019-08-04">
+            <rating votes="39">5.39</rating>
+            <name>Leonardo da Vinci</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>236923.jpg</picture>
+            <seiyuu id="227" picture="205854.jpg">Sakamoto Maaya</seiyuu>
+        </character>
+        <character id="104841" type="secondary cast in" update="2019-08-04">
+            <rating votes="7">3.92</rating>
+            <name>Leonidas I</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>236931.jpg</picture>
+            <seiyuu id="233" picture="228661.jpg">Miki Shin`ichirou</seiyuu>
+        </character>
+        <character id="104842" type="secondary cast in" update="2019-08-04">
+            <rating votes="5">3.79</rating>
+            <name>Musashibou Benkei</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>236930.jpg</picture>
+            <seiyuu id="1616" picture="264192.jpg">Inada Tetsu</seiyuu>
+        </character>
+        <character id="104843" type="secondary cast in" update="2019-08-04">
+            <rating votes="12">8.88</rating>
+            <name>Ushiwakamaru</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>236929.jpg</picture>
+            <seiyuu id="2296" picture="189623.jpg">Hayami Saori</seiyuu>
+        </character>
+        <character id="105860" type="secondary cast in" update="2019-10-05">
+            <rating votes="6">5.94</rating>
+            <name>Siduri</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>239217.jpg</picture>
+            <seiyuu id="23686" picture="224554.jpg">Uchiyama Yumi</seiyuu>
+        </character>
+        <character id="108602" type="secondary cast in" update="2020-03-07">
+            <rating votes="11">7.84</rating>
+            <name>Quetzalcoatl</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>244836.jpg</picture>
+            <seiyuu id="424" picture="224027.jpg">Endou Aya</seiyuu>
+        </character>
+        <character id="108603" type="secondary cast in" update="2020-03-07">
+            <rating votes="6">6.37</rating>
+            <name>Jaguar Man</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>68630.png</picture>
+            <seiyuu id="229" picture="152363.jpg">Itou Miki</seiyuu>
+        </character>
+        <character id="108604" type="secondary cast in" update="2020-03-07">
+            <rating votes="13">7.47</rating>
+            <name>Ereshkigal</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>68631.png</picture>
+            <seiyuu id="210" picture="263457.jpg">Ueda Kana</seiyuu>
+        </character>
+        <character id="108605" type="secondary cast in" update="2020-06-20">
+            <rating votes="10">5.21</rating>
+            <name>Gorgon</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>244838.jpg</picture>
+            <seiyuu id="82" picture="216596.jpg">Asakawa Yuu</seiyuu>
+        </character>
+        <character id="108789" type="appears in" update="2020-06-02">
+            <rating votes="10">4.21</rating>
+            <name>Arash</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>247960.jpg</picture>
+        </character>
+        <character id="108797" type="appears in" update="2020-06-02">
+            <rating votes="13">8.46</rating>
+            <name>Xuanzang Sanzang</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>247954.jpg</picture>
+            <seiyuu id="16085" picture="178446.jpg">Komatsu Mikako</seiyuu>
+        </character>
+        <character id="108798" type="appears in" update="2020-06-02">
+            <rating votes="17">7.97</rating>
+            <name>Seihitsu no Hassan</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>247956.jpg</picture>
+        </character>
+        <character id="110397" type="appears in" update="2020-06-02">
+            <rating votes="4">5.12</rating>
+            <name>Wolfgang Amadeus Mozart</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>247970.jpg</picture>
+            <seiyuu id="236" picture="265564.jpg">Seki Tomokazu</seiyuu>
+        </character>
+        <character id="110398" type="appears in" update="2022-03-01">
+            <rating votes="3">5.67</rating>
+            <name>Nightingale</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>270364.jpg</picture>
+            <seiyuu id="38" picture="11310.jpeg">Sawashiro Miyuki</seiyuu>
+        </character>
+        <character id="110399" type="appears in" update="2020-06-02">
+            <name>Marisbury Animusphere</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <description>Marisbury Animusphere is the former head of the Animusphere family and Chaldea Security Organization, later taken over by his daughter Olga Marie Animusphere after his death.
+Source: Type-Moon Wiki</description>
+            <picture>247972.jpg</picture>
+            <seiyuu id="196" picture="11301.jpeg">Nojima Kenji</seiyuu>
+        </character>
+        <character id="110402" type="appears in" update="2021-06-07">
+            <rating votes="2">4.43</rating>
+            <name>Majutsu Ou</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>247984.jpg</picture>
+            <seiyuu id="45" picture="11007.jpeg">Sugita Tomokazu</seiyuu>
+        </character>
+        <character id="110407" type="appears in" update="2020-06-20">
+            <name>Ziusu-dra</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>247992.jpg</picture>
+            <seiyuu id="226" picture="10969.jpeg">Nakata Jouji</seiyuu>
+        </character>
+        <character id="110576" type="appears in" update="2020-06-11">
+            <rating votes="2">7.21</rating>
+            <name>Sherlock Holmes</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>248250.jpg</picture>
+            <seiyuu id="326" picture="264573.jpg">Mizushima Takahiro</seiyuu>
+        </character>
+        <character id="110765" type="appears in" update="2020-06-19">
+            <rating votes="2">5.00</rating>
+            <name>Ushiwakamaru</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <description>Ushiwakamaru corrupted by Tiamat`s mud.</description>
+            <picture>248536.jpg</picture>
+            <seiyuu id="2296" picture="189623.jpg">Hayami Saori</seiyuu>
+        </character>
+        <character id="110766" type="appears in" update="2020-06-19">
+            <rating votes="2">5.09</rating>
+            <name>Tiamat</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>248546.jpg</picture>
+            <seiyuu id="1625" picture="11249.jpeg">Yuuki Aoi</seiyuu>
+        </character>
+        <character id="110776" type="appears in" update="2020-06-19">
+            <name>Tiamat</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>248547.jpg</picture>
+            <seiyuu id="1625" picture="11249.jpeg">Yuuki Aoi</seiyuu>
+        </character>
+        <character id="110813" type="appears in" update="2020-06-20">
+            <name>Silvia</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <description>Operator from Chaldea.</description>
+            <picture>248587.jpg</picture>
+            <seiyuu id="59037" picture="240213.jpg">Hokaze Chiharu</seiyuu>
+        </character>
+        <character id="110814" type="appears in" update="2020-06-25">
+            <rating votes="3">8.73</rating>
+            <name>Yama no Okina</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <description>Old Man of the Mountain alias the First Hassan-i Sabbah.</description>
+            <picture>248835.jpg</picture>
+            <seiyuu id="226" picture="10969.jpeg">Nakata Jouji</seiyuu>
+        </character>
+        <character id="110815" type="appears in" update="2020-06-20">
+            <name>Tiamat</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>248592.jpg</picture>
+            <seiyuu id="1625" picture="11249.jpeg">Yuuki Aoi</seiyuu>
+        </character>
+        <character id="110947" type="appears in" update="2020-06-25">
+            <name>Muniel</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <description>Chaldea staff.</description>
+            <picture>248839.jpg</picture>
+            <seiyuu id="43497" picture="248123.jpg">Jizoudou Takehiro</seiyuu>
+        </character>
+        <character id="117652" type="appears in" update="2021-06-07">
+            <rating votes="10">7.87</rating>
+            <name>Jeanne d`Arc</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>207612.jpg</picture>
+        </character>
+        <character id="117653" type="appears in" update="2021-06-07">
+            <rating votes="12">8.62</rating>
+            <name>Francis Drake</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>210944.jpg</picture>
+            <seiyuu id="685" picture="24841.jpg">Takano Urara</seiyuu>
+        </character>
+        <character id="117655" type="appears in" update="2021-06-07">
+            <rating votes="20">4.35</rating>
+            <name>Nero Claudius</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>211468.jpg</picture>
+            <seiyuu id="483" picture="27541.jpg">Tange Sakura</seiyuu>
+        </character>
+        <character id="117662" type="appears in" update="2021-06-07">
+            <rating votes="13">5.38</rating>
+            <name>Gawain</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>210945.jpg</picture>
+        </character>
+        <character id="117664" type="appears in" update="2021-06-07">
+            <rating votes="15">7.91</rating>
+            <name>Mordred</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>209552.jpg</picture>
+        </character>
+        <character id="117665" type="appears in" update="2024-01-28">
+            <rating votes="6">4.91</rating>
+            <name>Noroi Ude no Hassan</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>299139.jpg</picture>
+        </character>
+        <character id="117666" type="secondary cast in" update="2021-06-07">
+            <rating votes="4">4.43</rating>
+            <name>Merlin</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>244835.jpg</picture>
+            <seiyuu id="225" picture="259982.jpg">Sakurai Takahiro</seiyuu>
+        </character>
+        <character id="117667" type="appears in" update="2021-06-07">
+            <name>Vlad III</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>209564.jpg</picture>
+        </character>
+        <character id="117668" type="appears in" update="2021-06-07">
+            <name>Siegfried</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>209566.jpg</picture>
+        </character>
+        <character id="117669" type="appears in" update="2021-06-07">
+            <name>Spartacus</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>212418.jpg</picture>
+        </character>
+        <character id="117670" type="appears in" update="2021-06-07">
+            <rating votes="3">4.31</rating>
+            <name>Atalanta</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>209553.jpg</picture>
+        </character>
+        <character id="117671" type="appears in" update="2021-06-07">
+            <rating votes="5">6.00</rating>
+            <name>Karna</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>212419.jpg</picture>
+        </character>
+        <character id="117672" type="appears in" update="2021-06-07">
+            <name>Robin Hood</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>210942.jpg</picture>
+        </character>
+        <character id="117673" type="appears in" update="2021-06-07">
+            <rating votes="2">4.94</rating>
+            <name>Gilgamesh</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>44105.jpg</picture>
+            <seiyuu id="236" picture="265564.jpg">Seki Tomokazu</seiyuu>
+        </character>
+        <character id="134937" type="appears in" update="2023-09-01">
+            <name>Duston</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>293970.jpg</picture>
+            <seiyuu id="46408" picture="248095.jpg">Fujii Hayato</seiyuu>
+        </character>
+    </characters>
+    <episodes>
+        <episode id="214572" update="2019-04-01">
+            <epno type="4">T1</epno>
+            <length>2</length>
+            <airdate>2019-03-23</airdate>
+            <title xml:lang="ja">TVアニメ「Fate/Grand Order -絶対魔獣戦線バビロニア-」第1弾PV</title>
+            <title xml:lang="en">PV 01: TV Anime "Fate/Grand Order Absolute Beast Front Line Babylonia" 1st PV (1:23)</title>
+            <title xml:lang="x-jat">TV Anime "Fate/Grand Order - Zettai Majuusensen Babylonia-" Dai 1 Dan PV</title>
+        </episode>
+        <episode id="219164" update="2019-09-09">
+            <epno type="2">S1</epno>
+            <length>30</length>
+            <airdate>2019-08-04</airdate>
+            <rating votes="10">4.49</rating>
+            <title xml:lang="ja">Initium Iter</title>
+            <title xml:lang="en">Initium Iter</title>
+            <title xml:lang="x-jat">Initium Iter</title>
+            <summary>The year 2010 AD. Romani Archaman has been posted to Chaldea. There, he becomes the primary doctor for a young girl. Mash Kyrielight, Chaldea`s second successful summoning experiment, is interested in the word "Senpai." The interaction between the two gives Mash a reason to hope. That hope becomes a wave and starts to spread. That is your story, the story of a normal "somebody." The story at the beginning of a journey that weaves the future.
+Source: crunchyroll</summary>
+            <resources>
+                <resource type="28">
+                    <externalentity>
+                        <identifier>GRZJVPN36</identifier>
+                    </externalentity>
+                </resource>
+            </resources>
+        </episode>
+        <episode id="219439" update="2019-11-05">
+            <epno type="1">1</epno>
+            <length>25</length>
+            <airdate>2019-10-05</airdate>
+            <rating votes="4">7.96</rating>
+            <title xml:lang="ja">絶対魔獣戦線バビロニア</title>
+            <title xml:lang="en">Absolute Demonic Front: Babylonia</title>
+            <title xml:lang="x-jat">Zettai Majuu Sensen Babylonia</title>
+            <summary>At Chaldea Security Organization, the final Master of humanity Ritsuka Fujimaru and his Servant Mash Kyrielight have journeyed through six regions of differing eras in order to retrieve their future lost due to the "incineration of humanity" caused by the Mage King. And now, to repair the final Singularity, the pair head forth into ancient Mesopotamia. As soon as they land in those lands where the gods exist on an everyday basis, they are assaulted by an overwhelming number of Demonic Beasts. And just as suddenly, a beautiful girl descends down from the sky.
+Source: crunchyroll</summary>
+            <resources>
+                <resource type="28">
+                    <externalentity>
+                        <identifier>GR79X5E36</identifier>
+                    </externalentity>
+                </resource>
+            </resources>
+        </episode>
+        <episode id="221384" update="2019-11-12">
+            <epno type="1">2</epno>
+            <length>25</length>
+            <airdate>2019-10-12</airdate>
+            <rating votes="3">8.20</rating>
+            <title xml:lang="ja">城塞都市ウルク</title>
+            <title xml:lang="en">Fortress City: Uruk</title>
+            <title xml:lang="x-jat">Jousai Toshi Uruk</title>
+            <summary>Fujimaru and Mash head for Uruk, led by a young man named Enkidu who has volunteered to be their guide. However, within the deep forest, Mash feels an ominous feeling in the air as Enkidu walks down a path different from the direction of their destination. Before them, an aloof couple – a man and a girl – appear before them. And with one phrase from the man, the hidden secrets of Enkidu come into light...
+Source: crunchyroll</summary>
+            <resources>
+                <resource type="28">
+                    <externalentity>
+                        <identifier>GR9V1X096</identifier>
+                    </externalentity>
+                </resource>
+            </resources>
+        </episode>
+        <episode id="221385" update="2019-11-19">
+            <epno type="1">3</epno>
+            <length>25</length>
+            <airdate>2019-10-19</airdate>
+            <rating votes="3">7.05</rating>
+            <title xml:lang="ja">王と民</title>
+            <title xml:lang="en">The King and His People</title>
+            <title xml:lang="x-jat">Ou to Tami</title>
+            <summary>Fujimaru`s entourage successfully has an audience with the wise king Gilgamesh ruling over Uruk. Fujimaru suggests to Gilgamesh that he wants to receive the Holy Grail that is causing this Singularity in return for defeating the Three Goddess Alliance that is putting all of Mesopotamia into a panic. However, Gilgamesh declares that he will not need the assistance of Chaldea for Uruk to face its perils. The situation turns extremely delicate, but then, Ishtar, the patron deity of Uruk, suddenly intrudes upon them, and they all end up in battle.
+Source: crunchyroll</summary>
+            <resources>
+                <resource type="28">
+                    <externalentity>
+                        <identifier>GYEXG1JP6</identifier>
+                    </externalentity>
+                </resource>
+            </resources>
+        </episode>
+        <episode id="221386" update="2020-01-12">
+            <epno type="1">4</epno>
+            <length>25</length>
+            <airdate>2019-10-26</airdate>
+            <rating votes="3">4.03</rating>
+            <title xml:lang="ja">密林の呼び声</title>
+            <title xml:lang="en">Welcome to the Jungle</title>
+            <title xml:lang="x-jat">Mitsurin no Yobigoe</title>
+            <summary>Fujimaru recalls his journeys in the other Singularities, particularly the regret he feels for those he could not save, who then suffered at the hands of the King of Mages. Even still, Fujimaru finds himself questioning his own decisions. Meanwhile, Gilgamesh dispatches him to investigate the city of Ur under royal orders. While traveling to their destination, the group comes under attack by a creature striking out of the blisteringly hot depths of the jungle! Though nearly led astray by their attacker and the constant battles, Fujimaru and company arrive safely in Ur. There, they are astonished to find that, contrary to what they had been led to believe, the citizens of Ur lead quiet lives. However, that peace hides a secret... Ultimately, Fujimaru is forced to make a difficult choice.
+Source: crunchyroll</summary>
+            <resources>
+                <resource type="28">
+                    <externalentity>
+                        <identifier>G6ZJEDGMY</identifier>
+                    </externalentity>
+                </resource>
+            </resources>
+        </episode>
+        <episode id="222738" update="2020-01-12">
+            <epno type="1">5</epno>
+            <length>25</length>
+            <airdate>2019-11-02</airdate>
+            <rating votes="3">7.05</rating>
+            <title xml:lang="ja">ギルガメッシュ紀行</title>
+            <title xml:lang="en">Gilgamesh`s Journey</title>
+            <title xml:lang="x-jat">Gilgamesh Kikou</title>
+            <summary>Fujimaru and company are dumbfounded by Gilgamesh`s sudden visitation of the Chaldean Embassy. There, they are given a new request from the king which is to investigate the Persian Gulf. Merlin and Ana cannot join as they have no travel permits. In other words, this will be Fujimaru`s first journey alone with Mash in a while. But there sat the noble king, reciting a poem and cocking his head in contemplation. Having fun with tales of the past, Fujimaru and company`s journey will finally become a lively one.
+Source: crunchyroll</summary>
+            <resources>
+                <resource type="28">
+                    <externalentity>
+                        <identifier>GREXGPDPY</identifier>
+                    </externalentity>
+                </resource>
+            </resources>
+        </episode>
+        <episode id="222739" update="2020-01-12">
+            <epno type="1">6</epno>
+            <length>25</length>
+            <airdate>2019-11-09</airdate>
+            <rating votes="3">6.97</rating>
+            <title xml:lang="ja">天命の粘土板</title>
+            <title xml:lang="en">The Tablet of Destinies</title>
+            <title xml:lang="x-jat">Tenmei no Nendo Ita</title>
+            <summary>Finishing up the investigation at the Persian Gulf, Fujimaru and company are given a new order from the king. The new order is to retrieve a clay tablet that Gilgamesh had previously lost in the city of Kutha. Kutha was a city that suddenly disappeared after the emergence of the three goddesses, where every citizen had passed away. In such a quiet town, the entourage decides to split up in search of the tablet. Fujimaru suddenly wanders into a very frigid world. It is what people call "the underworld," a space separate from the physical world.
+Source: crunchyroll</summary>
+            <resources>
+                <resource type="28">
+                    <externalentity>
+                        <identifier>GYNVNM50R</identifier>
+                    </externalentity>
+                </resource>
+            </resources>
+        </episode>
+        <episode id="222740" update="2020-01-12">
+            <epno type="1">7</epno>
+            <length>25</length>
+            <airdate>2019-11-16</airdate>
+            <rating votes="3">5.48</rating>
+            <title xml:lang="ja">陽動作戦</title>
+            <title xml:lang="en">Diversionary Operation</title>
+            <title xml:lang="x-jat">Youdousakusen</title>
+            <summary>Fujimaru successfully retrieves Gilgamesh`s clay tablet, and within a deep slumber, he remembers his encounter with the King of Mages in London, the Fourth Singularity, which renews his understanding of the importance of the final Holy Grail. Meanwhile, Merlin suspects that the Demonic Beasts at the Northern Wall are planning a large-scale attack, and takes Fujimaru and company to the Northern Wall. There, they see a squad commanded by Leonidas I putting up a struggle. Once there, Fujimaru and company hear from Ushiwakamaru that communication with the fortress city of Nippur to the north has been severed, and they head out towards Nippur.
+Source: crunchyroll</summary>
+            <resources>
+                <resource type="28">
+                    <externalentity>
+                        <identifier>G6W4WQE8R</identifier>
+                    </externalentity>
+                </resource>
+            </resources>
+        </episode>
+        <episode id="222741" update="2020-01-12">
+            <epno type="1">8</epno>
+            <length>25</length>
+            <airdate>2019-11-23</airdate>
+            <rating votes="5">10.00</rating>
+            <title xml:lang="ja">魔獣母神</title>
+            <title xml:lang="en">The Mother of Demonic Beasts</title>
+            <title xml:lang="x-jat">Majuu Oyagami</title>
+            <summary>Fujimaru and entourage, in order to rescue the people left behind in the fortress city of Nippur after communications were severed, begin their battle against the fake Enkidu who had been awaiting them. With Fou`s help, they were somehow managing to keep things even, but in the midst of battle, the Goddess of the Demonic Beasts finally appears. Even Merlin is at his wit`s end facing her overwhelming power. Meanwhile, Ushiwakamaru and Leonidas I engage in a spectacular battle, standing up defiant against the Goddess of the Demonic Beasts. In order to break through the situation where it is hard to deliver a wounding blow, the two Servants unleash their Noble Phantasms with desperate resolve.
+Source: crunchyroll</summary>
+            <resources>
+                <resource type="28">
+                    <externalentity>
+                        <identifier>GYZJEZJ8R</identifier>
+                    </externalentity>
+                </resource>
+            </resources>
+        </episode>
+        <episode id="224361" update="2020-01-12">
+            <epno type="1">9</epno>
+            <length>25</length>
+            <airdate>2019-11-30</airdate>
+            <rating votes="3">7.05</rating>
+            <title xml:lang="ja">おはよう, 金星の女神</title>
+            <title xml:lang="en">Good Morning, Goddess of Venus</title>
+            <title xml:lang="x-jat">Ohayou, Kinsei no Megami</title>
+            <summary>Fujimaru and entourage have lost Ushiwakamaru and Leonidas I. Upon receiving the report from the group that returned to the ziggurat, Gilgamesh decides it is necessary to conquer the three goddesses in certain order to fight against Gorgon, and orders Fujimaru to first turn Ishtar into an ally. With a "secret plan" given by Gilgamesh in hand, Fujimaru and company head over to Ishtar`s temple.
+Source: crunchyroll</summary>
+            <resources>
+                <resource type="28">
+                    <externalentity>
+                        <identifier>G6P5MQJ56</identifier>
+                    </externalentity>
+                </resource>
+            </resources>
+        </episode>
+        <episode id="224362" update="2020-01-12">
+            <epno type="1">10</epno>
+            <length>25</length>
+            <airdate>2019-12-07</airdate>
+            <rating votes="3">2.06</rating>
+            <title xml:lang="ja">こんにちは, 太陽の女神</title>
+            <title xml:lang="en">Hello, Goddess of the Sun</title>
+            <title xml:lang="x-jat">Konnichiwa, Taiyou no Megami</title>
+            <summary>Fujimaru and company greet Ishtar to their ranks without hitches, and gain information from Gilgamesh about the key for defeating Gorgon, "the Axe of Marduk" stowed away in Eridu within the southern jungle. Furthermore, Ishtar discloses the True Name of the Goddess of the Jungle who took a foothold in Eridu, just as the Goddess of the Jungle makes a surprise attack against Uruk. Against the Goddess of the Jungle who smiles as she attacks one human after another, Fujimaru and entourage brace for battle once they reach her, but the goddess starts speaking of "certain circumstances".
+Source: crunchyroll</summary>
+            <resources>
+                <resource type="28">
+                    <externalentity>
+                        <identifier>GR5P7MX5R</identifier>
+                    </externalentity>
+                </resource>
+            </resources>
+        </episode>
+        <episode id="224363" update="2020-01-14">
+            <epno type="1">11</epno>
+            <length>25</length>
+            <airdate>2019-12-14</airdate>
+            <rating votes="3">8.20</rating>
+            <title xml:lang="ja">太陽の神殿</title>
+            <title xml:lang="en">Temple of the Sun</title>
+            <title xml:lang="x-jat">Taiyou no Shinden</title>
+            <summary>Fujimaru and company ever so easily have Jaguar Warrior join their ranks, and are reunited with the soldiers of Uruk, thought to be all dead, outside Eridu. Learning of their safety, the group sees a way to defeat Quetzalcoatl. They finally arrive at Eridu`s Temple of the Sun, and they challenge Quetzalcoatl, one of the deities of the Three Goddess Alliance, to a battle. While in a fierce battle in an attempt to destroy the Altar of the Sun, Fujimaru seeks assistance from Ishtar`s powers and challenges Quetzalcoatl to a head-on battle of the soul.
+Source: crunchyroll</summary>
+            <resources>
+                <resource type="28">
+                    <externalentity>
+                        <identifier>GRMEJJQWY</identifier>
+                    </externalentity>
+                </resource>
+            </resources>
+        </episode>
+        <episode id="224364" update="2020-02-27">
+            <epno type="1">12</epno>
+            <length>25</length>
+            <airdate>2020-01-04</airdate>
+            <rating votes="3">6.27</rating>
+            <title xml:lang="ja">王の死</title>
+            <title xml:lang="en">Death of the King</title>
+            <title xml:lang="x-jat">Ou no Shi</title>
+            <summary>Due to overwork, Gilgamesh finds himself in the arms of eternal sleep. Fujimaru and the others are shocked by the news. They also hear from Siduri that there have been many reports of deaths from weakness within Uruk. Thinking that a member of the Three Goddess Alliance is the cause of it all, they head to the underworld with Ishtar to defeat the goddess of the land of the dead and liberate Gilgamesh’s soul.
+Source: crunchyroll</summary>
+            <resources>
+                <resource type="28">
+                    <externalentity>
+                        <identifier>GYEX2VX06</identifier>
+                    </externalentity>
+                </resource>
+            </resources>
+        </episode>
+        <episode id="224511" update="2020-02-07">
+            <epno type="3">C1</epno>
+            <length>2</length>
+            <airdate>2019-10-12</airdate>
+            <rating votes="2">3.96</rating>
+            <title xml:lang="en">Opening 1a</title>
+        </episode>
+        <episode id="224857" recap="true" update="2020-01-21">
+            <epno type="2">S2</epno>
+            <length>25</length>
+            <airdate>2019-12-21</airdate>
+            <title xml:lang="ja">総集編I 旅の始まり</title>
+            <title xml:lang="en">Recap I: The Beginning of the Journey</title>
+            <title xml:lang="x-jat">Soushuuhen I: Tabi no Hajimari</title>
+        </episode>
+        <episode id="224858" recap="true" update="2020-01-21">
+            <epno type="2">S3</epno>
+            <length>25</length>
+            <airdate>2019-12-28</airdate>
+            <title xml:lang="ja">総集編II 魂の闘い</title>
+            <title xml:lang="en">Recap II: Battle of the Souls</title>
+            <title xml:lang="x-jat">Soushuuhen II: Tamashii no Tatakai</title>
+        </episode>
+        <episode id="225754" update="2020-02-27">
+            <epno type="1">13</epno>
+            <length>25</length>
+            <airdate>2020-01-11</airdate>
+            <rating votes="4">8.64</rating>
+            <title xml:lang="ja">さよなら, 冥界の女神</title>
+            <title xml:lang="en">Goodbye, Goddess of the Underworld</title>
+            <title xml:lang="x-jat">Sayonara, Meikai no Megami</title>
+            <summary>Fujimaru and entourage finally face Ereshkigal, the great goddess of the underworld. They ask her to save Uruk with them, but she refuses and attacks them instead. With Gilgamesh and Ishtar`s assistance, Fujimaru attempts to communicate with Ereshkigal`s heart, but... The fate of an intense battle is in the hands of Mash`s Noble Phantasm, "Lord Camelot."
+Source: crunchyroll</summary>
+            <resources>
+                <resource type="28">
+                    <externalentity>
+                        <identifier>G6J0G0W3R</identifier>
+                    </externalentity>
+                </resource>
+            </resources>
+        </episode>
+        <episode id="225755" update="2020-02-27">
+            <epno type="1">14</epno>
+            <length>25</length>
+            <airdate>2020-01-18</airdate>
+            <rating votes="3">5.72</rating>
+            <title xml:lang="ja">決戦</title>
+            <title xml:lang="en">Decisive Battle</title>
+            <title xml:lang="x-jat">Kessen</title>
+            <summary>After making peace with Ereshkigal, the goddess of the underworld, Fujimaru and the others return to Uruk to find Gilgamesh who has returned to the land of the living. As the final battle with Gorgon approaches, Gilgamesh proposes a strategy that may give them a chance at victory. His plan calls for a preemptive strike on Gorgon’s stronghold, the Blood Fort, before she can begin her next attack on humanity. Before the battle to decide Uruk`s fate, Fujimaru speaks with Merlin and Ana as they travel to the Northern wall.
+Source: crunchyroll</summary>
+            <resources>
+                <resource type="28">
+                    <externalentity>
+                        <identifier>GR1X2Q20R</identifier>
+                    </externalentity>
+                </resource>
+            </resources>
+        </episode>
+        <episode id="225756" update="2020-02-27">
+            <epno type="1">15</epno>
+            <length>25</length>
+            <airdate>2020-01-25</airdate>
+            <rating votes="3">6.18</rating>
+            <title xml:lang="ja">新しいヒトのカタチ</title>
+            <title xml:lang="en">The New Humanity</title>
+            <title xml:lang="x-jat">Atarashii Hito no Katachi</title>
+            <summary>With the Axe of Marduk, Fujimaru`s party manages to weaken Gorgon by lowering her Divinity. Having opened a path for themselves, they finally reach the Blood Fort`s depths. There, Gorgon says that she will gain her revenge by destroying humanity. Ana unleashes her own Divinity, which had been suppressed until now, against Gorgon. Using her own Mystic Eyes, Ana neutralizes Gorgon`s, and her scythe is the only weapon able to combat the immortal goddess. Can Ana`s blade defeat a goddess capable of resurrecting herself after any attack?
+Source: crunchyroll</summary>
+            <resources>
+                <resource type="28">
+                    <externalentity>
+                        <identifier>GYW432P26</identifier>
+                    </externalentity>
+                </resource>
+            </resources>
+        </episode>
+        <episode id="225757" update="2020-03-11">
+            <epno type="1">16</epno>
+            <length>25</length>
+            <airdate>2020-02-08</airdate>
+            <rating votes="2">8.14</rating>
+            <title xml:lang="ja">目覚め</title>
+            <title xml:lang="en">Awakening</title>
+            <title xml:lang="x-jat">Mezame</title>
+            <summary>The Laḫmu attack Kingu and steal the Holy Grail from his body! After being robbed of the Grail, Kingu makes a desperate escape into the forest. However, the Laḫmu discover him there, and so he prepares to meet his fate. But at that moment, Kingu witnesses something beyond comprehension... At the same time, Fujimaru and company pursue the Laḫmu now in possession of the Grail, but a Servant long thought dead appears to block their path...
+Source: crunchyroll</summary>
+            <resources>
+                <resource type="28">
+                    <externalentity>
+                        <identifier>G61X2V5K6</identifier>
+                    </externalentity>
+                </resource>
+            </resources>
+        </episode>
+        <episode id="226160" recap="true" update="2020-01-21">
+            <epno type="2">S4</epno>
+            <length>25</length>
+            <airdate>2020-02-01</airdate>
+            <title xml:lang="ja">総集編III 決戦</title>
+            <title xml:lang="en">Recap III: Final Battle</title>
+            <title xml:lang="x-jat">Soushuuhen III: Kessen</title>
+        </episode>
+        <episode id="226343" update="2020-01-25">
+            <epno type="2">S5</epno>
+            <length>25</length>
+            <airdate>2020-02-29</airdate>
+            <title xml:lang="ja">Fate Project 2020 イギリス英霊紀行 ~特別編~</title>
+            <title xml:lang="en">Episode S5</title>
+            <title xml:lang="x-jat">Fate Project 2020: Igirisu Eirei Kikou - Tokubetsu Hen</title>
+        </episode>
+        <episode id="226406" update="2020-03-17">
+            <epno type="1">17</epno>
+            <length>25</length>
+            <airdate>2020-02-15</airdate>
+            <rating votes="2">3.00</rating>
+            <title xml:lang="ja">会議は踊る</title>
+            <title xml:lang="en">The Congress Dances</title>
+            <title xml:lang="x-jat">Kaigi wa Odoru</title>
+            <summary>The power of the Grail, now in the hands of the Laḫmu, has transformed the Persian Gulf into the Chaos Tide. Any living thing that touches this sea is instantly mutated into a Demonic Beast. As the Chaos Tide advances toward Uruk, Fujimaru and company form a desperate plan to destroy Tiamat as a last-ditch effort to save the city. Fighting with Ishtar at his side, Fujimaru uses a Command Spell to empower an attack against Tiamat who resides at the heart of the Persian Gulf. However...
+Source: crunchyroll</summary>
+            <resources>
+                <resource type="28">
+                    <externalentity>
+                        <identifier>GR248NEP6</identifier>
+                    </externalentity>
+                </resource>
+            </resources>
+        </episode>
+        <episode id="226407" update="2020-03-23">
+            <epno type="1">18</epno>
+            <length>25</length>
+            <airdate>2020-02-22</airdate>
+            <rating votes="2">5.05</rating>
+            <title xml:lang="ja">原初の星, 見上げる空</title>
+            <title xml:lang="en">Star of the Beginning, We Look Up at the Sky</title>
+            <title xml:lang="x-jat">Gensho no Hoshi, Miageru Sora</title>
+            <summary>Fujimaru, Mash and the goddesses enjoy one last moment of peace on the eve of the final battle. That same night, Kingu reaches the peak of the ziggurat. So badly injured that he can no longer stand, he looks up to see a figure looming over him... As morning dawns, King Gilgamesh gives Fujimaru and his companions some final words of encouragement. Their attack on Tiamat begins now!
+Source: crunchyroll</summary>
+            <resources>
+                <resource type="28">
+                    <externalentity>
+                        <identifier>GRJ0G3G3Y</identifier>
+                    </externalentity>
+                </resource>
+            </resources>
+        </episode>
+        <episode id="226408" update="2020-04-07">
+            <epno type="1">19</epno>
+            <length>25</length>
+            <airdate>2020-03-07</airdate>
+            <rating votes="3">7.63</rating>
+            <title xml:lang="ja">絶対魔獣戦線メソポタミア I</title>
+            <title xml:lang="en">Absolute Demonic Front Mesopotamia I</title>
+            <title xml:lang="x-jat">Zettai Majuu Sensen Mesopotamia I</title>
+            <summary>When Tiamat refuses to be defeated even after Quetzalcoatl’s desperate attack, Gorgon makes her appearance. The newcomer unleashes her devastating Noble Phantasm to destroy Tiamat’s wings but is unable to halt her advance toward Uruk. Fujimaru and company return to the ziggurat to join forces with Gilgamesh and prepare for their own battle with Tiamat. Together, they unleash Gilgamesh’s Noble Phantasm, the Dingir, which had been set up in Uruk. Finally, they succeed in wounding Tiamat, but Gilgamesh is caught off his guard and sustains a wound, as well.
+Source: crunchyroll</summary>
+            <resources>
+                <resource type="28">
+                    <externalentity>
+                        <identifier>GRG5Q704R</identifier>
+                    </externalentity>
+                </resource>
+            </resources>
+        </episode>
+        <episode id="226409" update="2020-04-13">
+            <epno type="1">20</epno>
+            <length>25</length>
+            <airdate>2020-03-14</airdate>
+            <rating votes="3">8.12</rating>
+            <title xml:lang="ja">絶対魔獣戦線メソポタミア II</title>
+            <title xml:lang="en">Absolute Demonic Front Mesopotamia II</title>
+            <title xml:lang="x-jat">Zettai Majuu Sensen Mesopotamia II</title>
+            <summary>Tiamat falls into the underworld, but there, she transforms into one of the Evils of Humanity: Beast II. Hassan-i Sabbah, the first Old Man of the Mountain, intervenes, using his power as Grand Assassin to deprive Beast II of her immortality. Seeing their chance to finally destroy Tiamat, Fujimaru and his companions attack. However, Beast II manages to evade them and begins to climb out of the underworld! Her ascent, though, is thwarted...
+Source: crunchyroll</summary>
+            <resources>
+                <resource type="28">
+                    <externalentity>
+                        <identifier>GREX20WPY</identifier>
+                    </externalentity>
+                </resource>
+            </resources>
+        </episode>
+        <episode id="226773" update="2020-02-07">
+            <epno type="3">C2</epno>
+            <length>2</length>
+            <airdate>2020-01-04</airdate>
+            <rating votes="1">8.07</rating>
+            <title xml:lang="en">Opening 1b</title>
+        </episode>
+        <episode id="226774" update="2020-02-07">
+            <epno type="3">C3</epno>
+            <length>2</length>
+            <airdate>2019-10-12</airdate>
+            <title xml:lang="en">Ending 1a</title>
+        </episode>
+        <episode id="226775" update="2020-02-07">
+            <epno type="3">C4</epno>
+            <length>2</length>
+            <airdate>2019-11-30</airdate>
+            <title xml:lang="en">Ending 1b</title>
+        </episode>
+        <episode id="226776" update="2020-02-07">
+            <epno type="3">C5</epno>
+            <length>2</length>
+            <airdate>2020-01-04</airdate>
+            <rating votes="1">8.07</rating>
+            <title xml:lang="en">Ending 2</title>
+        </episode>
+        <episode id="227002" update="2020-04-20">
+            <epno type="1">21</epno>
+            <length>25</length>
+            <airdate>2020-03-21</airdate>
+            <rating votes="2">3.27</rating>
+            <title xml:lang="ja">Grand Order</title>
+            <title xml:lang="en">Grand Order</title>
+            <title xml:lang="x-jat">Grand Order</title>
+            <summary>Fujimaru and company finally succeed in defeating Beast II, though this victory was won with many sacrifices. The entire group is wounded and battle-weary, and as they take stock of the aftermath, they see that Uruk itself is on the verge of collapse. What will the end of their journey bring them?
+Source: crunchyroll</summary>
+            <resources>
+                <resource type="28">
+                    <externalentity>
+                        <identifier>G69V79N0Y</identifier>
+                    </externalentity>
+                </resource>
+            </resources>
+        </episode>
+        <episode id="229998" update="2020-06-19">
+            <epno type="3">C6</epno>
+            <length>2</length>
+            <airdate>2020-02-08</airdate>
+            <title xml:lang="en">Ending 3</title>
+        </episode>
+        <episode id="247703" update="2021-09-29">
+            <epno type="4">T2</epno>
+            <length>2</length>
+            <title xml:lang="en">PV 02 (1:02)</title>
+        </episode>
+        <episode id="247704" update="2021-09-29">
+            <epno type="4">T3</epno>
+            <length>2</length>
+            <title xml:lang="en">PV 03 (1:02)</title>
+        </episode>
+        <episode id="247705" update="2021-09-29">
+            <epno type="4">T4</epno>
+            <length>2</length>
+            <title xml:lang="en">Teaser PV (1:18)</title>
+        </episode>
+        <episode id="247706" update="2021-09-29">
+            <epno type="4">T5</epno>
+            <length>2</length>
+            <title xml:lang="en">Episode 0 Initium Iter PV (1:13)</title>
+        </episode>
+        <episode id="247707" update="2021-09-29">
+            <epno type="4">T6</epno>
+            <length>1</length>
+            <title xml:lang="en">Episode 5 Special PV (0:34)</title>
+        </episode>
+        <episode id="247708" update="2021-09-29">
+            <epno type="4">T7</epno>
+            <length>1</length>
+            <title xml:lang="en">CM 01 (0:17)</title>
+        </episode>
+        <episode id="247709" update="2021-09-29">
+            <epno type="4">T8</epno>
+            <length>1</length>
+            <title xml:lang="en">CM 02 (0:17)</title>
+        </episode>
+        <episode id="247710" update="2021-09-29">
+            <epno type="4">T9</epno>
+            <length>1</length>
+            <title xml:lang="en">CM 03 (0:32)</title>
+        </episode>
+        <episode id="247711" update="2021-09-29">
+            <epno type="4">T10</epno>
+            <length>1</length>
+            <title xml:lang="en">CM 04 (0:32)</title>
+        </episode>
+        <episode id="247712" update="2021-09-29">
+            <epno type="4">T11</epno>
+            <length>1</length>
+            <title xml:lang="en">CM 05 (0:32)</title>
+        </episode>
+        <episode id="247713" update="2021-09-29">
+            <epno type="4">T12</epno>
+            <length>1</length>
+            <title xml:lang="en">CM 06 (0:32)</title>
+        </episode>
+        <episode id="247714" update="2021-09-29">
+            <epno type="4">T13</epno>
+            <length>2</length>
+            <title xml:lang="en">Episode 16 Ending Song "Tell Me" Special PV (1:33)</title>
+        </episode>
+        <episode id="247715" update="2021-09-29">
+            <epno type="4">T14</epno>
+            <length>4</length>
+            <title xml:lang="en">Animation Project Announcement Video (3:28)</title>
+        </episode>
+        <episode id="247716" update="2021-09-29">
+            <epno type="4">T15</epno>
+            <length>1</length>
+            <title xml:lang="en">Fate Project TV Special 2018 Announcement Video (0:47)</title>
+            <summary>Most of the trailer has lines being carved into something, and eventually the lines become images of Gilgamesh and Enkidu.</summary>
+        </episode>
+        <episode id="247717" update="2021-09-29">
+            <epno type="4">T16</epno>
+            <length>1</length>
+            <title xml:lang="en">Anime Japan 2019 Visual Announcement Video (0:32)</title>
+            <summary>Introductory screens, with text, of Gilgamesh, Enkidu, Mash, Ishtar, Merlin, Ana, Romani, da Vinci and Fujimaru.</summary>
+        </episode>
+        <episode id="247718" update="2021-09-29">
+            <epno type="4">T17</epno>
+            <length>1</length>
+            <title xml:lang="en">Episode 1 Preview (0:55)</title>
+        </episode>
+        <episode id="247719" update="2021-09-29">
+            <epno type="4">T18</epno>
+            <length>1</length>
+            <title xml:lang="en">Episode 2 Preview (0:54)</title>
+        </episode>
+        <episode id="247720" update="2021-09-29">
+            <epno type="4">T19</epno>
+            <length>1</length>
+            <title xml:lang="en">Episode 3 Preview (0:57)</title>
+        </episode>
+        <episode id="247721" update="2021-09-29">
+            <epno type="4">T20</epno>
+            <length>1</length>
+            <title xml:lang="en">Episode 4 Preview (0:59)</title>
+        </episode>
+        <episode id="247722" update="2021-09-29">
+            <epno type="4">T21</epno>
+            <length>2</length>
+            <title xml:lang="en">Episode 5 Preview (1:07)</title>
+        </episode>
+        <episode id="247723" update="2021-09-29">
+            <epno type="4">T22</epno>
+            <length>2</length>
+            <title xml:lang="en">Episode 6 Preview (1:02)</title>
+        </episode>
+        <episode id="247724" update="2021-09-29">
+            <epno type="4">T23</epno>
+            <length>1</length>
+            <title xml:lang="en">Episode 7 Preview (0:58)</title>
+        </episode>
+        <episode id="247725" update="2021-09-29">
+            <epno type="4">T24</epno>
+            <length>2</length>
+            <title xml:lang="en">Episode 8 Preview (1:06)</title>
+        </episode>
+        <episode id="247726" update="2021-09-29">
+            <epno type="4">T25</epno>
+            <length>1</length>
+            <title xml:lang="en">Episode 9 Preview (0:52)</title>
+        </episode>
+        <episode id="247727" update="2021-09-29">
+            <epno type="4">T26</epno>
+            <length>2</length>
+            <title xml:lang="en">Episode 10 Preview (1:07)</title>
+        </episode>
+        <episode id="247728" update="2021-09-29">
+            <epno type="4">T27</epno>
+            <length>1</length>
+            <title xml:lang="en">Episode 11 Preview (0:55)</title>
+        </episode>
+        <episode id="247729" update="2021-09-29">
+            <epno type="4">T28</epno>
+            <length>1</length>
+            <title xml:lang="en">Episode 12 Preview (0:58)</title>
+        </episode>
+        <episode id="247730" update="2021-09-29">
+            <epno type="4">T29</epno>
+            <length>1</length>
+            <title xml:lang="en">Episode 13 Preview (0:57)</title>
+        </episode>
+        <episode id="247731" update="2021-09-29">
+            <epno type="4">T30</epno>
+            <length>1</length>
+            <title xml:lang="en">Episode 14 Preview (0:52)</title>
+        </episode>
+        <episode id="247732" update="2021-09-29">
+            <epno type="4">T31</epno>
+            <length>1</length>
+            <title xml:lang="en">Episode 15 Preview (0:50)</title>
+        </episode>
+        <episode id="247733" update="2021-09-29">
+            <epno type="4">T32</epno>
+            <length>1</length>
+            <title xml:lang="en">Episode 16 Preview (0:49)</title>
+        </episode>
+        <episode id="247734" update="2021-09-29">
+            <epno type="4">T33</epno>
+            <length>2</length>
+            <title xml:lang="en">Episode 17 Preview (1:01)</title>
+        </episode>
+        <episode id="247735" update="2021-09-29">
+            <epno type="4">T34</epno>
+            <length>1</length>
+            <title xml:lang="en">Episode 18 Preview (0:42)</title>
+        </episode>
+        <episode id="247736" update="2021-09-29">
+            <epno type="4">T35</epno>
+            <length>1</length>
+            <title xml:lang="en">Episode 19 Preview (0:52)</title>
+        </episode>
+        <episode id="247737" update="2021-09-29">
+            <epno type="4">T36</epno>
+            <length>1</length>
+            <title xml:lang="en">Episode 20 Preview (0:38)</title>
+        </episode>
+        <episode id="247738" update="2021-09-29">
+            <epno type="4">T37</epno>
+            <length>1</length>
+            <title xml:lang="en">Episode 21 Preview (0:21)</title>
+        </episode>
+        <episode id="247739" update="2021-09-29">
+            <epno type="4">T38</epno>
+            <length>1</length>
+            <title xml:lang="en">Making Announcement Video (1:00)</title>
+        </episode>
+        <episode id="247740" update="2021-09-29">
+            <epno type="4">T39</epno>
+            <length>2</length>
+            <title xml:lang="en">English PV (1:16)</title>
+        </episode>
+    </episodes>
+</anime>
