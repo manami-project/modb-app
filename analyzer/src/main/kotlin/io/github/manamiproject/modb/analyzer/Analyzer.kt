@@ -59,7 +59,6 @@ object Analyzer {
         [${ADD_TO_EXISTING_MERGE_LOCK.value}] Add a URL to an existing merge lock
         ------------------------------------
         [${REPROCESS_MERGING.value}] Reprocess merging
-        [${SAVE.value}] Save
         ------------------------------------
         [${QUIT.value}] quit
         ------------------------------------
@@ -78,8 +77,7 @@ object Analyzer {
             LOAD_ENTRY -> loadAnime()
             CREATE_NEW_MERGE_LOCK -> createMergeLock()
             ADD_TO_EXISTING_MERGE_LOCK -> extendExistingMergeLock()
-            REPROCESS_MERGING -> reprocessMerging(save = false)
-            SAVE -> reprocessMerging(save = true)
+            REPROCESS_MERGING -> reprocessMerging()
             QUIT -> exitProcess(0)
             else -> {
                 println("\nInvalid selection.\n")
@@ -143,7 +141,7 @@ object Analyzer {
             }
         }
         println("Done checking merge locks. Currently reprocessing merging.")
-        reprocessMerging(save = false)
+        reprocessMerging()
     }
 
     private suspend fun markAsDeadEntry() {
@@ -279,8 +277,8 @@ object Analyzer {
         }
     }
 
-    private suspend fun reprocessMerging(save: Boolean) {
-        Reprocessor.reprocess(save)
+    private suspend fun reprocessMerging() {
+        Reprocessor.reprocess()
         datasetEntries.clear()
         populateInMemoryDataset()
     }

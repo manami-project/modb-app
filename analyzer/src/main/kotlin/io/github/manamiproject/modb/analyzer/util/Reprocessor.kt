@@ -11,23 +11,17 @@ import io.github.manamiproject.modb.core.coverage.KoverIgnore
 @KoverIgnore
 internal object Reprocessor {
 
-    suspend fun reprocess(save: Boolean) {
+    suspend fun reprocess() {
         DefaultDownloadControlStateAccessor.instance.allAnime()
             .alertDeletedAnimeByTitle()
             .mergeAnime()
             .removeUnknownEntriesFromRelatedAnime()
             .addAnimeCountdown()
             .transformToDatasetEntries()
-            .also {
-                if (save) {
-                    it.saveToDataset()
-                }
-            }
+            .saveToDataset()
             .updateStatistics()
 
-        if (save) {
-            ZstandardFilesForDeadEntriesCreatorPostProcessor.instance.process()
-        }
+        ZstandardFilesForDeadEntriesCreatorPostProcessor.instance.process()
 
         listOf(
             NoLockFilesLeftValidationPostProcessor.instance,
