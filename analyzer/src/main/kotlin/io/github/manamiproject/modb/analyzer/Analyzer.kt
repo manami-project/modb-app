@@ -11,6 +11,7 @@ import io.github.manamiproject.modb.animeplanet.AnimePlanetConfig
 import io.github.manamiproject.modb.anisearch.AnisearchConfig
 import io.github.manamiproject.modb.app.config.AppConfig
 import io.github.manamiproject.modb.app.dataset.DefaultDatasetFileAccessor
+import io.github.manamiproject.modb.app.downloadcontrolstate.DefaultDownloadControlStateAccessor
 import io.github.manamiproject.modb.app.merging.DefaultReviewedIsolatedEntriesAccessor
 import io.github.manamiproject.modb.app.merging.lock.DefaultMergeLockAccessor
 import io.github.manamiproject.modb.core.coroutines.CoroutineManager.runCoroutine
@@ -18,14 +19,17 @@ import io.github.manamiproject.modb.core.coverage.KoverIgnore
 import io.github.manamiproject.modb.core.extensions.EMPTY
 import io.github.manamiproject.modb.core.json.Json
 import io.github.manamiproject.modb.core.anime.Anime
+import io.github.manamiproject.modb.core.anime.AnimeRaw
 import io.github.manamiproject.modb.core.extensions.neitherNullNorBlank
 import io.github.manamiproject.modb.core.extensions.remove
+import io.github.manamiproject.modb.core.logging.LoggerDelegate
 import io.github.manamiproject.modb.kitsu.KitsuConfig
 import io.github.manamiproject.modb.livechart.LivechartConfig
 import io.github.manamiproject.modb.myanimelist.MyanimelistConfig
 import io.github.manamiproject.modb.simkl.SimklConfig
 import java.awt.Desktop
 import java.net.URI
+import kotlin.collections.filter
 import kotlin.system.exitProcess
 
 @KoverIgnore
@@ -37,6 +41,8 @@ fun main() = runCoroutine {
 object Analyzer {
 
     private val datasetEntries = mutableListOf<Anime>()
+
+    private val log by LoggerDelegate()
 
     suspend fun start() {
         populateInMemoryDataset()
@@ -166,6 +172,25 @@ object Analyzer {
         }
     }
 
+    private suspend fun diffTableEntries(currentEntry: Pair<Anime, Set<URI>>): List<AnimeRaw> {
+        val currentEntryUris = currentEntry.second.sorted().toMutableList()
+        val entriesBeingPartOfMergeLock = currentEntryUris.filter { DefaultMergeLockAccessor.instance.isPartOfMergeLock(it) }.toSet()
+        val animeToShowInTable = if (entriesBeingPartOfMergeLock.isNotEmpty()) {
+            val malLink = entriesBeingPartOfMergeLock.find { it.toString().contains(MyanimelistConfig.hostname()) } ?: entriesBeingPartOfMergeLock.first()
+            currentEntryUris - entriesBeingPartOfMergeLock + malLink
+        } else {
+            currentEntryUris
+        }.reversed()
+
+        return animeToShowInTable
+            .map {
+                val metaDataProviderConfig = AppConfig.instance.findMetaDataProviderConfig(it.host)
+                val id = metaDataProviderConfig.extractAnimeId(it)
+                DefaultDownloadControlStateAccessor.instance.dcsEntry(metaDataProviderConfig, id)
+            }
+            .map { it.anime }
+    }
+
     private suspend fun mergeLockCreation(currentEntry: Pair<Anime, Set<URI>>, openUrls: Boolean = true): Set<URI> {
         val currentEntryUris = currentEntry.second.sorted().toMutableList()
         val urisToOpenInBrowser = OpenInBrowserHelper.determineUrisToOpenInBrowser(currentEntry)
@@ -173,6 +198,8 @@ object Analyzer {
         if (openUrls) {
             openUrls(urisToOpenInBrowser)
         }
+
+        AnsiTable.instance.printTable(diffTableEntries(currentEntry))
 
         print("\nOption: ")
         val input = waitForUserInput()
@@ -300,7 +327,13 @@ object Analyzer {
 
     private fun waitForUserInput() = readlnOrNull()?.trim() ?: throw IllegalStateException("Invalid input")
 
-    private fun openUrls(sources: Collection<URI>) = sources.forEach { Desktop.getDesktop().browse(it) }
+    private fun openUrls(sources: Collection<URI>) = sources.forEach {
+        when {
+            Desktop.isDesktopSupported() -> Desktop.getDesktop().browse(it)
+            System.getProperty("os.name").lowercase().startsWith("mac") -> openUri(it)
+            else -> log.warn { "Unable to open URLs, because the system doesn't support this operation." }
+        }
+    }
 
     private fun toCleanedUpUrl(value: String): Pair<String, URI?> {
         return when {
@@ -366,7 +399,6 @@ object Analyzer {
         ADD_TO_EXISTING_MERGE_LOCK("a"),
         // ----------
         REPROCESS_MERGING("r"),
-        SAVE("s"),
         // ----------
         QUIT("q");
 
