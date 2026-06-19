@@ -29,6 +29,7 @@ repositories {
 dependencies {
     implementation(libs.kotlin.stdlib)
     implementation(project(":lib"))
+    implementation(libs.kommand)
     implementation(libs.logback.classic)
 
     testImplementation(project(":test"))
