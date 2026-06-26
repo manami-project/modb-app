@@ -1124,6 +1124,227 @@ internal class DefaultDeadEntriesAccessorTest {
     }
 
     @Nested
+    inner class ContainsDeadEntryTests {
+
+        @ParameterizedTest
+        @ValueSource(classes = [
+            AnimePlanetConfig::class,
+            AnisearchConfig::class,
+            LivechartConfig::class,
+            SimklConfig::class,
+        ])
+        fun `throws exception for unsupported metadata provider`(configClass: Class<*>) {
+            tempDirectory {
+                // given
+                val testMetaDataProviderConfig = configClass.kotlin.objectInstance as MetaDataProviderConfig
+
+                val testAppConfig = object: Config by TestAppConfig {
+                    override fun metaDataProviderConfigurations(): Set<MetaDataProviderConfig> = setOf(testMetaDataProviderConfig)
+                    override fun outputDirectory(): Directory = tempDir
+                }
+
+                val deadEntriesAccessor = DefaultDeadEntriesAccessor(
+                    jsonDeserializer = TestDeserializer(),
+                    appConfig = testAppConfig,
+                    downloadControlStateAccessor = TestDownloadControlStateAccessor,
+                    jsonSerializer = TestJsonSerializer(),
+                )
+
+                // when
+                val result = assertThrows<IllegalArgumentException> {
+                    deadEntriesAccessor.containsEntry("123", testMetaDataProviderConfig)
+                }
+
+                // then
+                assertThat(result).hasMessage("Metadata provider [${testMetaDataProviderConfig.hostname()}] is not supported.")
+            }
+        }
+
+        @ParameterizedTest
+        @ValueSource(classes = [
+            AnidbConfig::class,
+            AnilistConfig::class,
+            AnimenewsnetworkConfig::class,
+            KitsuConfig::class,
+            MyanimelistConfig::class,
+        ])
+        fun `correctly parse file and return true for a known dead entry`(configClass: Class<*>) {
+            tempDirectory {
+                // given
+                val entry1 = "11"
+                val entry2 = "12"
+                val testMetaDataProviderConfig = configClass.kotlin.objectInstance as MetaDataProviderConfig
+
+                val deadEntriesFile = tempDir.resolve("dead-entries").createDirectory().resolve("${testMetaDataProviderConfig.hostname().substringBefore('.')}-minified.json")
+                DeadEntriesJsonSerializer.instance.serialize(listOf(
+                    entry1,
+                    entry2,
+                )).writeToFile(deadEntriesFile)
+
+                val testAppConfig = object: Config by TestAppConfig {
+                    override fun outputDirectory(): Directory = tempDir
+                    override fun metaDataProviderConfigurations(): Set<MetaDataProviderConfig> = setOf(testMetaDataProviderConfig)
+                }
+
+                val deadEntriesAccessor = DefaultDeadEntriesAccessor(
+                    appConfig = testAppConfig,
+                    downloadControlStateAccessor = TestDownloadControlStateAccessor,
+                    jsonSerializer = TestJsonSerializer(),
+                )
+
+                // when
+                val result = deadEntriesAccessor.containsEntry(entry1, testMetaDataProviderConfig)
+
+                // then
+                assertThat(result).isTrue()
+            }
+        }
+
+        @ParameterizedTest
+        @ValueSource(classes = [
+            AnidbConfig::class,
+            AnilistConfig::class,
+            AnimenewsnetworkConfig::class,
+            KitsuConfig::class,
+            MyanimelistConfig::class,
+        ])
+        fun `correctly parse file and returns false for an entry which is not in the dead entries list`(configClass: Class<*>) {
+            tempDirectory {
+                // given
+                val entry1 = "11"
+                val entry2 = "12"
+                val testMetaDataProviderConfig = configClass.kotlin.objectInstance as MetaDataProviderConfig
+
+                val deadEntriesFile = tempDir.resolve("dead-entries").createDirectory().resolve("${testMetaDataProviderConfig.hostname().substringBefore('.')}-minified.json")
+                DeadEntriesJsonSerializer.instance.serialize(listOf(
+                    entry1,
+                    entry2,
+                )).writeToFile(deadEntriesFile)
+
+                val testAppConfig = object: Config by TestAppConfig {
+                    override fun outputDirectory(): Directory = tempDir
+                    override fun metaDataProviderConfigurations(): Set<MetaDataProviderConfig> = setOf(testMetaDataProviderConfig)
+                }
+
+                val deadEntriesAccessor = DefaultDeadEntriesAccessor(
+                    appConfig = testAppConfig,
+                    downloadControlStateAccessor = TestDownloadControlStateAccessor,
+                    jsonSerializer = TestJsonSerializer(),
+                )
+
+                // when
+                val result = deadEntriesAccessor.containsEntry("123", testMetaDataProviderConfig)
+
+                // then
+                assertThat(result).isFalse()
+            }
+        }
+
+        @ParameterizedTest
+        @ValueSource(classes = [
+            AnidbConfig::class,
+            AnilistConfig::class,
+            AnimenewsnetworkConfig::class,
+            KitsuConfig::class,
+            MyanimelistConfig::class,
+        ])
+        fun `triggers initialization if necessary`(configClass: Class<*>) {
+            tempDirectory {
+                // given
+                val testMetaDataProviderConfig = configClass.kotlin.objectInstance as MetaDataProviderConfig
+
+                var initHasBeenInvoked = false
+                val testAppConfig = object: Config by TestAppConfig {
+                    override fun outputDirectory(): Directory = tempDir
+                    override fun metaDataProviderConfigurations(): Set<MetaDataProviderConfig> {
+                        check(!initHasBeenInvoked)
+                        initHasBeenInvoked = true
+                        return setOf(testMetaDataProviderConfig)
+                    }
+                }
+
+                val testDownloadControlStateAccessor = object: DownloadControlStateAccessor by TestDownloadControlStateAccessor {
+                    override suspend fun removeDeadEntry(metaDataProviderConfig: MetaDataProviderConfig, animeId: AnimeId) { }
+                }
+
+                val testDeserializer = object: Deserializer<RegularFile, DeadEntries> by TestDeserializer() {
+                    override suspend fun deserialize(source: RegularFile): DeadEntries = DeadEntries(
+                        `$schema` = URI("https://raw.githubusercontent.com/manami-project/anime-offline-database/refs/heads/master/dead-entries/dead-entries.schema.json"),
+                        lastUpdate = "2024-08-01",
+                        deadEntries = emptyList(),
+                    )
+                }
+
+                val deadEntriesAccessor = DefaultDeadEntriesAccessor(
+                    appConfig = testAppConfig,
+                    jsonDeserializer = testDeserializer,
+                    downloadControlStateAccessor = testDownloadControlStateAccessor,
+                    jsonSerializer = TestJsonSerializer(),
+                )
+
+                // when
+                deadEntriesAccessor.containsEntry("123", testMetaDataProviderConfig)
+
+                // then
+                assertThat(initHasBeenInvoked).isTrue()
+            }
+        }
+
+        @ParameterizedTest
+        @ValueSource(classes = [
+            AnidbConfig::class,
+            AnilistConfig::class,
+            AnimenewsnetworkConfig::class,
+            KitsuConfig::class,
+            MyanimelistConfig::class,
+        ])
+        fun `doesn't trigger init if it has already been triggered`(configClass: Class<*>) {
+            tempDirectory {
+                // given
+                val testMetaDataProviderConfig = configClass.kotlin.objectInstance as MetaDataProviderConfig
+
+                var initHasBeenInvoked = 0
+                val testAppConfig = object: Config by TestAppConfig {
+                    override fun outputDirectory(): Directory = tempDir
+                    override fun metaDataProviderConfigurations(): Set<MetaDataProviderConfig> {
+                        initHasBeenInvoked++
+                        return setOf(testMetaDataProviderConfig)
+                    }
+                }
+
+                val testDownloadControlStateAccessor = object: DownloadControlStateAccessor by TestDownloadControlStateAccessor {
+                    override suspend fun removeDeadEntry(metaDataProviderConfig: MetaDataProviderConfig, animeId: AnimeId) { }
+                }
+
+                val testDeserializer = object: Deserializer<RegularFile, DeadEntries> by TestDeserializer() {
+                    override suspend fun deserialize(source: RegularFile): DeadEntries = DeadEntries(
+                        `$schema` = URI("https://raw.githubusercontent.com/manami-project/anime-offline-database/refs/heads/master/dead-entries/dead-entries.schema.json"),
+                        lastUpdate = "2024-08-01",
+                        deadEntries = emptyList(),
+                    )
+                }
+
+                val deadEntriesAccessor = DefaultDeadEntriesAccessor(
+                    appConfig = testAppConfig,
+                    jsonDeserializer = testDeserializer,
+                    downloadControlStateAccessor = testDownloadControlStateAccessor,
+                    jsonSerializer = TestJsonSerializer(),
+                )
+
+                deadEntriesAccessor.fetchDeadEntries(testMetaDataProviderConfig)
+                val valueBefore = initHasBeenInvoked
+
+                // when
+                deadEntriesAccessor.containsEntry("123", testMetaDataProviderConfig)
+
+                // then
+                assertThat(valueBefore).isOne()
+                assertThat(initHasBeenInvoked).isOne()
+            }
+        }
+    }
+
+    @Nested
     inner class CompanionObjectTests {
 
         @Test

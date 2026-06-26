@@ -2,7 +2,6 @@ package io.github.manamiproject.modb.anidb
 
 import com.github.tomakehurst.wiremock.WireMockServer
 import com.github.tomakehurst.wiremock.client.WireMock.*
-import io.github.manamiproject.modb.anidb.AnidbDownloader.Companion.ANIDB_PENDING_FILE_INDICATOR
 import io.github.manamiproject.modb.core.config.AnimeId
 import io.github.manamiproject.modb.core.config.FileSuffix
 import io.github.manamiproject.modb.core.config.Hostname
@@ -34,12 +33,14 @@ internal class AnidbDownloaderTest : MockServerTestCase<WireMockServer> by WireM
                     override fun fileSuffix(): FileSuffix = AnidbConfig.fileSuffix()
                 }
 
+                val response = loadTestResource<String>("AnidbDownloaderTest/exists.xml")
+
                 serverInstance.stubFor(
                     get(urlPathEqualTo("/anime/$id")).willReturn(
                         aResponse()
                             .withHeader("Content-Type", "text/html")
                             .withStatus(200)
-                            .withBody("<html></html>")
+                            .withBody(response)
                     )
                 )
 
@@ -51,76 +52,8 @@ internal class AnidbDownloaderTest : MockServerTestCase<WireMockServer> by WireM
                 }
 
                 // then
-                assertThat(result).isEqualTo("<html></html>")
+                assertThat(result).isEqualTo(response)
             }
-        }
-
-        @Test
-        fun `crawler is detected during download of anime and shows anti leech page`() {
-            // given
-            val id  = "11376"
-
-            val testConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
-                override fun hostname(): Hostname = "localhost"
-                override fun buildAnimeLink(id: AnimeId): URI = AnidbConfig.buildAnimeLink(id)
-                override fun buildDataDownloadLink(id: String): URI = URI("http://${hostname()}:$port/anime/$id")
-                override fun fileSuffix(): FileSuffix = AnidbConfig.fileSuffix()
-            }
-
-            val responseBodyAntiLeech = loadTestResource<String>("AnidbDownloaderTest/anti-leech_page.html")
-
-            serverInstance.stubFor(
-                get(urlPathEqualTo("/anime/$id")).willReturn(
-                    aResponse()
-                        .withHeader("Content-Type", "text/html")
-                        .withStatus(200)
-                        .withBody(responseBodyAntiLeech)
-                )
-            )
-
-            val downloader = AnidbDownloader(testConfig)
-
-            // when
-            val result = exceptionExpected<RuntimeException> {
-                downloader.download(id) { shouldNotBeInvoked() }
-            }
-
-            // then
-            assertThat(result).hasMessage("Crawler has been detected")
-        }
-
-        @Test
-        fun `crawler is detected during download of anime and shows nginx error page`() {
-            // given
-            val id  = "11376"
-
-            val testConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
-                override fun hostname(): Hostname = "localhost"
-                override fun buildAnimeLink(id: AnimeId): URI = AnidbConfig.buildAnimeLink(id)
-                override fun buildDataDownloadLink(id: String): URI = URI("http://${hostname()}:$port/anime/$id")
-                override fun fileSuffix(): FileSuffix = AnidbConfig.fileSuffix()
-            }
-
-            val responseBodyAntiLeech = loadTestResource<String>("AnidbDownloaderTest/nginx_error_page.html")
-
-            serverInstance.stubFor(
-                get(urlPathEqualTo("/anime/$id")).willReturn(
-                    aResponse()
-                        .withHeader("Content-Type", "text/html")
-                        .withStatus(200)
-                        .withBody(responseBodyAntiLeech)
-                )
-            )
-
-            val downloader = AnidbDownloader(testConfig)
-
-            // when
-            val result = exceptionExpected<RuntimeException> {
-                downloader.download(id) { shouldNotBeInvoked() }
-            }
-
-            // then
-            assertThat(result).hasMessage("Crawler has been detected")
         }
 
         @Test
@@ -156,6 +89,38 @@ internal class AnidbDownloaderTest : MockServerTestCase<WireMockServer> by WireM
         }
 
         @Test
+        fun `throws an exception if the response body is empty`() {
+            // given
+            val id = 1535
+
+            val testAnidbConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
+                override fun hostname(): Hostname = "localhost"
+                override fun buildAnimeLink(id: AnimeId): URI = AnidbConfig.buildAnimeLink(id)
+                override fun buildDataDownloadLink(id: String): URI = URI("http://${hostname()}:$port/anime/$id")
+                override fun fileSuffix(): FileSuffix = AnidbConfig.fileSuffix()
+            }
+
+            serverInstance.stubFor(
+                get(urlPathEqualTo("/anime/$id")).willReturn(
+                    aResponse()
+                        .withHeader("Content-Type", "text/html")
+                        .withStatus(200)
+                        .withBody(EMPTY)
+                )
+            )
+
+            val downloader = AnidbDownloader(testAnidbConfig)
+
+            // when
+            val result = exceptionExpected<IllegalStateException> {
+                downloader.download(id.toAnimeId()) { shouldNotBeInvoked() }
+            }
+
+            // then
+            assertThat(result).hasMessage("Response body was blank for [anidbId=1535] with response code [200]")
+        }
+
+        @Test
         fun `invoke onDeadEntry if the response body indicates a hentai`() {
             runTest {
                 // given
@@ -166,7 +131,7 @@ internal class AnidbDownloaderTest : MockServerTestCase<WireMockServer> by WireM
                     override fun hostname(): Hostname = "localhost"
                     override fun buildAnimeLink(id: AnimeId): URI = AnidbConfig.buildAnimeLink(id)
                     override fun buildDataDownloadLink(id: String): URI = URI("http://${hostname()}:$port/anime/$id")
-                    override fun fileSuffix(): FileSuffix = AnidbConfig.fileSuffix()
+                    override fun fileSuffix(): FileSuffix = AnidbWebViewConfig.fileSuffix()
                 }
 
                 val responseBody = loadTestResource<String>("AnidbDownloaderTest/hentai.html")
@@ -204,7 +169,7 @@ internal class AnidbDownloaderTest : MockServerTestCase<WireMockServer> by WireM
                     override fun hostname(): Hostname = "localhost"
                     override fun buildAnimeLink(id: AnimeId): URI = AnidbConfig.buildAnimeLink(id)
                     override fun buildDataDownloadLink(id: String): URI = URI("http://${hostname()}:$port/anime/$id")
-                    override fun fileSuffix(): FileSuffix = AnidbConfig.fileSuffix()
+                    override fun fileSuffix(): FileSuffix = AnidbWebViewConfig.fileSuffix()
                 }
 
                 val responseBody = loadTestResource<String>("AnidbDownloaderTest/deleted_entry.html")
@@ -232,7 +197,41 @@ internal class AnidbDownloaderTest : MockServerTestCase<WireMockServer> by WireM
         }
 
         @Test
-        fun `won't invoke onDeadEntry and returns a static string if the response body indicates that the addition of the anime is pending`() {
+        fun `throws an exception if something doesn't match`() {
+            runTest {
+                // given
+                val id = "11376"
+
+                val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = "localhost"
+                    override fun buildAnimeLink(id: AnimeId): URI = AnidbConfig.buildAnimeLink(id)
+                    override fun buildDataDownloadLink(id: String): URI = URI("http://${hostname()}:$port/anime/$id")
+                    override fun fileSuffix(): FileSuffix = AnidbWebViewConfig.fileSuffix()
+                }
+
+                serverInstance.stubFor(
+                    get(urlPathEqualTo("/anime/$id")).willReturn(
+                        aResponse()
+                            .withHeader("Content-Type", "text/html")
+                            .withStatus(200)
+                            .withBody("<html></html>")
+                    )
+                )
+
+                val downloader = AnidbDownloader(testConfig)
+
+                // when
+                val result = exceptionExpected<IllegalStateException> {
+                    downloader.download(id) { shouldNotBeInvoked() }
+                }
+
+                // then
+                assertThat(result).hasMessage("Response type UNKNOWN for [anidbId=$id] and file suffix [${testConfig.fileSuffix()}]")
+            }
+        }
+
+        @Test
+        fun `returns NOT_FOUND as-is`() {
             runTest {
                 // given
                 val id = "11376"
@@ -242,6 +241,42 @@ internal class AnidbDownloaderTest : MockServerTestCase<WireMockServer> by WireM
                     override fun buildAnimeLink(id: AnimeId): URI = AnidbConfig.buildAnimeLink(id)
                     override fun buildDataDownloadLink(id: String): URI = URI("http://${hostname()}:$port/anime/$id")
                     override fun fileSuffix(): FileSuffix = AnidbConfig.fileSuffix()
+                }
+
+                val responseBody = loadTestResource<String>("AnidbDownloaderTest/not_found.xml")
+
+                serverInstance.stubFor(
+                    get(urlPathEqualTo("/anime/$id")).willReturn(
+                        aResponse()
+                            .withHeader("Content-Type", "text/html")
+                            .withStatus(200)
+                            .withBody(responseBody)
+                    )
+                )
+
+                val downloader = AnidbDownloader(testConfig)
+
+                // when
+                val result = downloader.download(id) {
+                    shouldNotBeInvoked()
+                }
+
+                // then
+                assertThat(result).isEqualTo(responseBody)
+            }
+        }
+
+        @Test
+        fun `returns ADDITION_PENDING as-is`() {
+            runTest {
+                // given
+                val id = "11376"
+
+                val testConfig = object : MetaDataProviderConfig by TestMetaDataProviderConfig {
+                    override fun hostname(): Hostname = "localhost"
+                    override fun buildAnimeLink(id: AnimeId): URI = AnidbConfig.buildAnimeLink(id)
+                    override fun buildDataDownloadLink(id: String): URI = URI("http://${hostname()}:$port/anime/$id")
+                    override fun fileSuffix(): FileSuffix = AnidbWebViewConfig.fileSuffix()
                 }
 
                 val responseBody = loadTestResource<String>("AnidbDownloaderTest/addition_pending.html")
@@ -263,40 +298,8 @@ internal class AnidbDownloaderTest : MockServerTestCase<WireMockServer> by WireM
                 }
 
                 // then
-                assertThat(result).isEqualTo(ANIDB_PENDING_FILE_INDICATOR)
+                assertThat(result).isEqualTo(responseBody)
             }
-        }
-
-        @Test
-        fun `throws an exception if the response body is empty`() {
-            // given
-            val id = 1535
-
-            val testAnidbConfig = object: MetaDataProviderConfig by TestMetaDataProviderConfig {
-                override fun hostname(): Hostname = "localhost"
-                override fun buildAnimeLink(id: AnimeId): URI = AnidbConfig.buildAnimeLink(id)
-                override fun buildDataDownloadLink(id: String): URI = URI("http://${hostname()}:$port/anime/$id")
-                override fun fileSuffix(): FileSuffix = AnidbConfig.fileSuffix()
-            }
-
-            serverInstance.stubFor(
-                get(urlPathEqualTo("/anime/$id")).willReturn(
-                    aResponse()
-                        .withHeader("Content-Type", "text/html")
-                        .withStatus(200)
-                        .withBody(EMPTY)
-                )
-            )
-
-            val downloader = AnidbDownloader(testAnidbConfig)
-
-            // when
-            val result = exceptionExpected<IllegalStateException> {
-                downloader.download(id.toAnimeId()) { shouldNotBeInvoked() }
-            }
-
-            // then
-            assertThat(result).hasMessage("Response body was blank for [anidbId=1535] with response code [200]")
         }
     }
 

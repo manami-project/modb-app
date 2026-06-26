@@ -1,30 +1,30 @@
 package io.github.manamiproject.modb.app.crawlers.anidb
 
 import io.github.manamiproject.modb.anidb.AnidbConfig
-import io.github.manamiproject.modb.anidb.AnidbDownloader.Companion.ANIDB_PENDING_FILE_INDICATOR
-import io.github.manamiproject.modb.anidb.CrawlerDetectedException
+import io.github.manamiproject.modb.anidb.AnidbWebViewConfig
 import io.github.manamiproject.modb.app.*
 import io.github.manamiproject.modb.app.config.Config
 import io.github.manamiproject.modb.app.crawlers.IdRangeSelector
+import io.github.manamiproject.modb.app.crawlers.anidb.AnidbCrawler.Companion.ANIDB_PENDING_FILE_INDICATOR
 import io.github.manamiproject.modb.app.crawlers.anidb.AnidbCrawler.Companion.ANIDB_PENDING_FILE_SUFFIX
 import io.github.manamiproject.modb.app.dataset.DeadEntriesAccessor
+import io.github.manamiproject.modb.app.downloadcontrolstate.DownloadControlStateAccessor
 import io.github.manamiproject.modb.app.network.NetworkController
 import io.github.manamiproject.modb.core.config.AnimeId
 import io.github.manamiproject.modb.core.config.MetaDataProviderConfig
-import io.github.manamiproject.modb.core.coroutines.ModbDispatchers.LIMITED_CPU
 import io.github.manamiproject.modb.core.downloader.Downloader
 import io.github.manamiproject.modb.core.extensions.*
 import io.github.manamiproject.modb.core.httpclient.HttpClient
 import io.github.manamiproject.modb.core.httpclient.RetryCase
 import io.github.manamiproject.modb.core.httpclient.ThrowableRetryCase
 import io.github.manamiproject.modb.test.exceptionExpected
+import io.github.manamiproject.modb.test.loadTestResource
 import io.github.manamiproject.modb.test.shouldNotBeInvoked
 import io.github.manamiproject.modb.test.tempDirectory
 import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.async
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.test.runTest
-import kotlinx.coroutines.withContext
 import org.assertj.core.api.Assertions.assertThat
 import org.assertj.core.api.Assertions.assertThatNoException
 import org.junit.jupiter.api.Nested
@@ -66,7 +66,7 @@ internal class AnidbCrawlerTest {
                     deadEntriesAccess = TestDeadEntriesAccessor,
                     idRangeSelector = TestIdRangeSelectorInt,
                     httpClient = testHttpClient,
-                    downloader = TestDownloader,
+                    apiDownloader = TestDownloader,
                     networkController = testNetworkController,
                 )
 
@@ -103,9 +103,11 @@ internal class AnidbCrawlerTest {
 
             val crawler = AnidbCrawler(
                 appConfig = TestAppConfig,
-                downloader = TestDownloader,
                 deadEntriesAccess = TestDeadEntriesAccessor,
+                downloadControlStateAccessor = TestDownloadControlStateAccessor,
                 idRangeSelector = testIdRangeSelector,
+                apiDownloader = TestDownloader,
+                webViewDownloader = TestDownloader,
                 networkController = TestNetworkController,
             )
 
@@ -134,16 +136,18 @@ internal class AnidbCrawlerTest {
                 val successfulEntry = "successfully loaded content for"
                 val testAnimeDownloader = object: Downloader by TestDownloader {
                     override suspend fun download(id: AnimeId, onDeadEntry: suspend (AnimeId) -> Unit): String {
-                        return "$successfulEntry $id"
+                        return "<anime>$successfulEntry $id</anime>"
                     }
                 }
 
                 val crawler = AnidbCrawler(
                     appConfig = testAppConfig,
                     metaDataProviderConfig = testMetaDataProviderConfig,
-                    downloader = testAnimeDownloader,
                     deadEntriesAccess = TestDeadEntriesAccessor,
+                    downloadControlStateAccessor = TestDownloadControlStateAccessor,
                     idRangeSelector = testIdRangeSelector,
+                    apiDownloader = testAnimeDownloader,
+                    webViewDownloader = TestDownloader,
                     networkController = TestNetworkController,
                 )
 
@@ -152,8 +156,8 @@ internal class AnidbCrawlerTest {
 
                 // then
                 testIdRangeSelector.idDownloadList().forEach { id ->
-                    val result = tempDir.resolve("$id.html").readFile()
-                    assertThat(result).isEqualTo("$successfulEntry $id")
+                    val result = tempDir.resolve("$id.xml").readFile()
+                    assertThat(result).isEqualTo("<anime>$successfulEntry $id</anime>")
                 }
             }
         }
@@ -179,7 +183,7 @@ internal class AnidbCrawlerTest {
                     override suspend fun download(id: AnimeId, onDeadEntry: suspend (AnimeId) -> Unit): String {
                         return when(id) {
                             "1254" -> shouldNotBeInvoked()
-                            else -> "$successfulEntry $id"
+                            else -> "<anime>$successfulEntry $id</anime>"
                         }
                     }
                 }
@@ -189,7 +193,7 @@ internal class AnidbCrawlerTest {
                 val crawler = AnidbCrawler(
                     appConfig = testAppConfig,
                     metaDataProviderConfig = testMetaDataProviderConfig,
-                    downloader = testAnimeDownloader,
+                    apiDownloader = testAnimeDownloader,
                     deadEntriesAccess = TestDeadEntriesAccessor,
                     idRangeSelector = testIdRangeSelector,
                     networkController = TestNetworkController,
@@ -199,101 +203,10 @@ internal class AnidbCrawlerTest {
                 crawler.start()
 
                 // then
-                assertThat(tempDir).isDirectoryContaining { it.fileName() == "1535.html" }
-                assertThat(tempDir).isDirectoryContaining { it.fileName() == "23.html" }
-                assertThat(tempDir).isDirectoryContaining { it.fileName() == "424.html" }
-                assertThat(tempDir).isDirectoryNotContaining { it.fileName() == "1254.html" }
-            }
-        }
-
-        @Test
-        fun `passes the animeId to the dead entries accessor if the downloader triggers a dead entry`() {
-            tempDirectory {
-                // given
-                val testMetaDataProviderConfig = object: MetaDataProviderConfig by AnidbConfig {
-                    override fun isTestContext(): Boolean = true
-                }
-
-                val testAppConfig = object : Config by TestAppConfig {
-                    override fun workingDir(metaDataProviderConfig: MetaDataProviderConfig): Directory = tempDir
-                }
-
-                val testIdRangeSelector = object: IdRangeSelector<Int> {
-                    override suspend fun idDownloadList(): List<Int> = listOf(1000)
-                }
-
-                val testAnimeDownloader = object: Downloader by TestDownloader {
-                    override suspend fun download(id: AnimeId, onDeadEntry: suspend (AnimeId) -> Unit): String {
-                        onDeadEntry.invoke(id)
-                        return EMPTY
-                    }
-                }
-
-                val invocations = mutableListOf<AnimeId>()
-                val testDeadEntriesAccessor = object: DeadEntriesAccessor by TestDeadEntriesAccessor {
-                    override suspend fun addDeadEntry(animeId: AnimeId, metaDataProviderConfig: MetaDataProviderConfig) {
-                        invocations.add(animeId)
-                    }
-                }
-
-                val crawler = AnidbCrawler(
-                    appConfig = testAppConfig,
-                    metaDataProviderConfig = testMetaDataProviderConfig,
-                    downloader = testAnimeDownloader,
-                    deadEntriesAccess = testDeadEntriesAccessor,
-                    idRangeSelector = testIdRangeSelector,
-                    networkController = TestNetworkController,
-                )
-
-                // when
-                crawler.start()
-
-                // then
-                assertThat(tempDir.listDirectoryEntries()).isEmpty()
-                assertThat(invocations).containsExactlyInAnyOrder(
-                    "1000",
-                )
-            }
-        }
-
-        @Test
-        fun `directly throws an exception if it's not one of the cases that restart the network controller`() {
-            tempDirectory {
-                // given
-                val testMetaDataProviderConfig = object: MetaDataProviderConfig by AnidbConfig {
-                    override fun isTestContext(): Boolean = true
-                }
-
-                val testAppConfig = object : Config by TestAppConfig {
-                    override fun workingDir(metaDataProviderConfig: MetaDataProviderConfig): Directory = tempDir
-                }
-
-                val testIdRangeSelector = object: IdRangeSelector<Int> {
-                    override suspend fun idDownloadList(): List<Int> = listOf(1535, 23, 1254, 424)
-                }
-
-                val testAnimeDownloader = object: Downloader by TestDownloader {
-                    override suspend fun download(id: AnimeId, onDeadEntry: suspend (AnimeId) -> Unit): String {
-                        throw NullPointerException("junit test")
-                    }
-                }
-
-                val crawler = AnidbCrawler(
-                    appConfig = testAppConfig,
-                    metaDataProviderConfig = testMetaDataProviderConfig,
-                    downloader = testAnimeDownloader,
-                    deadEntriesAccess = TestDeadEntriesAccessor,
-                    idRangeSelector = testIdRangeSelector,
-                    networkController = TestNetworkController,
-                )
-
-                // when
-                val result = exceptionExpected<NullPointerException> {
-                    crawler.start()
-                }
-
-                // then
-                assertThat(result).hasMessage("junit test")
+                assertThat(tempDir).isDirectoryContaining { it.fileName() == "1535.xml" }
+                assertThat(tempDir).isDirectoryContaining { it.fileName() == "23.xml" }
+                assertThat(tempDir).isDirectoryContaining { it.fileName() == "424.xml" }
+                assertThat(tempDir).isDirectoryNotContaining { it.fileName() == "1254.xml" }
             }
         }
 
@@ -320,7 +233,7 @@ internal class AnidbCrawlerTest {
                 val crawler = AnidbCrawler(
                     appConfig = testAppConfig,
                     metaDataProviderConfig = testMetaDataProviderConfig,
-                    downloader = testAnimeDownloader,
+                    apiDownloader = testAnimeDownloader,
                     deadEntriesAccess = TestDeadEntriesAccessor,
                     idRangeSelector = testIdRangeSelector,
                     networkController = TestNetworkController,
@@ -335,10 +248,10 @@ internal class AnidbCrawlerTest {
         }
 
         @Test
-        fun `creates a file which indicates that the respective anime is pending addition and won't require another download`() {
+        fun `throws exception if dead entry function is invoked on an API call, because that is not possible`() {
             tempDirectory {
                 // given
-                val testMetaDataProviderConfig = object: MetaDataProviderConfig by AnidbConfig {
+                val testMetaDataProviderConfig = object: MetaDataProviderConfig by AnidbWebViewConfig {
                     override fun isTestContext(): Boolean = true
                 }
 
@@ -347,131 +260,39 @@ internal class AnidbCrawlerTest {
                 }
 
                 val testIdRangeSelector = object: IdRangeSelector<Int> {
-                    override suspend fun idDownloadList(): List<Int> = listOf(1000)
-                }
-
-                val testAnimeDownloader = object: Downloader by TestDownloader {
-                    override suspend fun download(id: AnimeId, onDeadEntry: suspend (AnimeId) -> Unit): String = ANIDB_PENDING_FILE_INDICATOR
-                }
-
-                val crawler = AnidbCrawler(
-                    appConfig = testAppConfig,
-                    metaDataProviderConfig = testMetaDataProviderConfig,
-                    downloader = testAnimeDownloader,
-                    deadEntriesAccess = TestDeadEntriesAccessor,
-                    idRangeSelector = testIdRangeSelector,
-                    networkController = TestNetworkController,
-                )
-
-                // when
-                crawler.start()
-
-                // then
-                assertThat(tempDir).isDirectoryContaining { file ->
-                    file.fileName() == "1000.pending"
-                }
-            }
-        }
-
-        @Test
-        fun `initiates a restart of the network controller if a CrawlerDetectedException is thrown`() {
-            tempDirectory {
-                // given
-                val testMetaDataProviderConfig = object: MetaDataProviderConfig by AnidbConfig {
-                    override fun isTestContext(): Boolean = true
-                }
-
-                val testAppConfig = object : Config by TestAppConfig {
-                    override fun workingDir(metaDataProviderConfig: MetaDataProviderConfig): Directory = tempDir
-                }
-
-                val testIdRangeSelector = object: IdRangeSelector<Int> {
-                    override suspend fun idDownloadList(): List<Int> = listOf(1535, 23, 1254, 424)
-                }
-
-                var hasBeenInvoked = false
-                val testNetworkController = object: NetworkController by TestNetworkController {
-                    override suspend fun restartAsync(): Deferred<Boolean> = withContext(LIMITED_CPU) {
-                        hasBeenInvoked = true
-                        return@withContext async { true }
-                    }
-                }
-
-                val successfulEntry = "successfully loaded content for"
-                val testAnimeDownloader = object: Downloader by TestDownloader {
-                    override suspend fun download(id: AnimeId, onDeadEntry: suspend (AnimeId) -> Unit): String {
-                        return if (hasBeenInvoked) {
-                            "$successfulEntry $id"
-                        } else {
-                            throw CrawlerDetectedException
-                        }
-                    }
-                }
-
-                val crawler = AnidbCrawler(
-                    appConfig = testAppConfig,
-                    metaDataProviderConfig = testMetaDataProviderConfig,
-                    downloader = testAnimeDownloader,
-                    deadEntriesAccess = TestDeadEntriesAccessor,
-                    idRangeSelector = testIdRangeSelector,
-                    networkController = testNetworkController,
-                )
-
-                // when
-                crawler.start()
-
-                // then
-                assertThat(hasBeenInvoked).isTrue()
-                testIdRangeSelector.idDownloadList().forEach { id ->
-                    val result = tempDir.resolve("$id.html").readFile()
-                    assertThat(result).isEqualTo("$successfulEntry $id")
-                }
-            }
-        }
-
-        @Test
-        fun `throws an exception if a restart of the network controller didn't help`() {
-            tempDirectory {
-                // given
-                val testMetaDataProviderConfig = object: MetaDataProviderConfig by AnidbConfig {
-                    override fun isTestContext(): Boolean = true
-                }
-
-                val testAppConfig = object : Config by TestAppConfig {
-                    override fun workingDir(metaDataProviderConfig: MetaDataProviderConfig): Directory = tempDir
-                }
-
-                val testIdRangeSelector = object: IdRangeSelector<Int> {
-                    override suspend fun idDownloadList(): List<Int> = listOf(1535, 23, 1254, 424)
+                    override suspend fun idDownloadList(): List<Int> = listOf(1535)
                 }
 
                 val testAnimeDownloader = object: Downloader by TestDownloader {
                     override suspend fun download(id: AnimeId, onDeadEntry: suspend (AnimeId) -> Unit): String {
-                        throw NoRouteToHostException("junit test")
+                        onDeadEntry.invoke(id)
+                        return EMPTY
                     }
                 }
 
                 val crawler = AnidbCrawler(
                     appConfig = testAppConfig,
                     metaDataProviderConfig = testMetaDataProviderConfig,
-                    downloader = testAnimeDownloader,
                     deadEntriesAccess = TestDeadEntriesAccessor,
+                    downloadControlStateAccessor = TestDownloadControlStateAccessor,
                     idRangeSelector = testIdRangeSelector,
+                    apiDownloader = testAnimeDownloader,
+                    webViewDownloader = TestDownloader,
                     networkController = TestNetworkController,
                 )
 
                 // when
-                val result = exceptionExpected<NoRouteToHostException> {
+                val result = exceptionExpected<IllegalStateException> {
                     crawler.start()
                 }
 
                 // then
-                assertThat(result).hasMessage("junit test")
+                assertThat(result).hasMessage("Should not happen [anidbId=1535].")
             }
         }
 
         @Test
-        fun `passes the animeId to the dead entries accessor if the downloader triggers a dead entry in case a retry was necessary first`() {
+        fun `an entry which exists in DCS has been deleted`() {
             tempDirectory {
                 // given
                 val testMetaDataProviderConfig = object: MetaDataProviderConfig by AnidbConfig {
@@ -483,42 +304,35 @@ internal class AnidbCrawlerTest {
                 }
 
                 val testIdRangeSelector = object: IdRangeSelector<Int> {
-                    override suspend fun idDownloadList(): List<Int> = listOf(1000)
+                    override suspend fun idDownloadList(): List<Int> = listOf(1535)
+                }
+
+                val testDownloadControlStateAccessor = object: DownloadControlStateAccessor by TestDownloadControlStateAccessor {
+                    override suspend fun dcsEntryExists(metaDataProviderConfig: MetaDataProviderConfig, animeId: AnimeId): Boolean = true
+                }
+
+                val testApiAnimeDownloader = object: Downloader by TestDownloader {
+                    override suspend fun download(id: AnimeId, onDeadEntry: suspend (AnimeId) -> Unit): String {
+                        return loadTestResource("crawler/anidb.AnidbCrawlerTest/not_found.xml")
+                    }
                 }
 
                 var hasBeenInvoked = false
-                val testNetworkController = object: NetworkController by TestNetworkController {
-                    override suspend fun restartAsync(): Deferred<Boolean> = withContext(LIMITED_CPU) {
-                        hasBeenInvoked = true
-                        return@withContext async { true }
-                    }
-                }
-
-                val testAnimeDownloader = object: Downloader by TestDownloader {
-                    override suspend fun download(id: AnimeId, onDeadEntry: suspend (AnimeId) -> Unit): String {
-                        return if (hasBeenInvoked) {
-                            onDeadEntry(id)
-                            EMPTY
-                        } else {
-                            throw CrawlerDetectedException
-                        }
-                    }
-                }
-
-                val invocations = mutableListOf<AnimeId>()
                 val testDeadEntriesAccessor = object: DeadEntriesAccessor by TestDeadEntriesAccessor {
                     override suspend fun addDeadEntry(animeId: AnimeId, metaDataProviderConfig: MetaDataProviderConfig) {
-                        invocations.add(animeId)
+                        hasBeenInvoked = true
                     }
                 }
 
                 val crawler = AnidbCrawler(
                     appConfig = testAppConfig,
                     metaDataProviderConfig = testMetaDataProviderConfig,
-                    downloader = testAnimeDownloader,
                     deadEntriesAccess = testDeadEntriesAccessor,
+                    downloadControlStateAccessor = testDownloadControlStateAccessor,
                     idRangeSelector = testIdRangeSelector,
-                    networkController = testNetworkController,
+                    apiDownloader = testApiAnimeDownloader,
+                    webViewDownloader = TestDownloader,
+                    networkController = TestNetworkController,
                 )
 
                 // when
@@ -526,10 +340,167 @@ internal class AnidbCrawlerTest {
 
                 // then
                 assertThat(hasBeenInvoked).isTrue()
-                assertThat(tempDir.listDirectoryEntries()).isEmpty()
-                assertThat(invocations).containsExactlyInAnyOrder(
-                    "1000",
+            }
+        }
+
+        @Test
+        fun `an entry which doesn't exist in DCS is a deleted entry`() {
+            tempDirectory {
+                // given
+                val testMetaDataProviderConfig = object: MetaDataProviderConfig by AnidbConfig {
+                    override fun isTestContext(): Boolean = true
+                }
+
+                val testAppConfig = object : Config by TestAppConfig {
+                    override fun workingDir(metaDataProviderConfig: MetaDataProviderConfig): Directory = tempDir
+                }
+
+                val testIdRangeSelector = object: IdRangeSelector<Int> {
+                    override suspend fun idDownloadList(): List<Int> = listOf(1535)
+                }
+
+                val testDownloadControlStateAccessor = object: DownloadControlStateAccessor by TestDownloadControlStateAccessor {
+                    override suspend fun dcsEntryExists(metaDataProviderConfig: MetaDataProviderConfig, animeId: AnimeId): Boolean = false
+                }
+
+                val testApiAnimeDownloader = object: Downloader by TestDownloader {
+                    override suspend fun download(id: AnimeId, onDeadEntry: suspend (AnimeId) -> Unit): String {
+                        return loadTestResource("crawler/anidb.AnidbCrawlerTest/not_found.xml")
+                    }
+                }
+
+                val testWebViewAnimeDownloader = object: Downloader by TestDownloader {
+                    override suspend fun download(id: AnimeId, onDeadEntry: suspend (AnimeId) -> Unit): String {
+                        onDeadEntry.invoke(id)
+                        return EMPTY
+                    }
+                }
+
+                var hasBeenInvoked = false
+                val testDeadEntriesAccessor = object: DeadEntriesAccessor by TestDeadEntriesAccessor {
+                    override suspend fun addDeadEntry(animeId: AnimeId, metaDataProviderConfig: MetaDataProviderConfig) {
+                        hasBeenInvoked = true
+                    }
+                }
+
+                val crawler = AnidbCrawler(
+                    appConfig = testAppConfig,
+                    metaDataProviderConfig = testMetaDataProviderConfig,
+                    deadEntriesAccess = testDeadEntriesAccessor,
+                    downloadControlStateAccessor = testDownloadControlStateAccessor,
+                    idRangeSelector = testIdRangeSelector,
+                    apiDownloader = testApiAnimeDownloader,
+                    webViewDownloader = testWebViewAnimeDownloader,
+                    networkController = TestNetworkController,
                 )
+
+                // when
+                crawler.start()
+
+                // then
+                assertThat(hasBeenInvoked).isTrue()
+            }
+        }
+
+        @Test
+        fun `creates a static file indicating to prevent recurring downloads if the entry is in status PENDING_ADDITION`() {
+            tempDirectory {
+                // given
+                val testMetaDataProviderConfig = object: MetaDataProviderConfig by AnidbConfig {
+                    override fun isTestContext(): Boolean = true
+                }
+
+                val testAppConfig = object : Config by TestAppConfig {
+                    override fun workingDir(metaDataProviderConfig: MetaDataProviderConfig): Directory = tempDir
+                }
+
+                val testIdRangeSelector = object: IdRangeSelector<Int> {
+                    override suspend fun idDownloadList(): List<Int> = listOf(1535)
+                }
+
+                val testDownloadControlStateAccessor = object: DownloadControlStateAccessor by TestDownloadControlStateAccessor {
+                    override suspend fun dcsEntryExists(metaDataProviderConfig: MetaDataProviderConfig, animeId: AnimeId): Boolean = false
+                }
+
+                val testApiAnimeDownloader = object: Downloader by TestDownloader {
+                    override suspend fun download(id: AnimeId, onDeadEntry: suspend (AnimeId) -> Unit): String {
+                        return loadTestResource("crawler/anidb.AnidbCrawlerTest/not_found.xml")
+                    }
+                }
+
+                val testWebViewAnimeDownloader = object: Downloader by TestDownloader {
+                    override suspend fun download(id: AnimeId, onDeadEntry: suspend (AnimeId) -> Unit): String = loadTestResource("crawler/anidb.AnidbCrawlerTest/addition_pending.html")
+                }
+
+                val crawler = AnidbCrawler(
+                    appConfig = testAppConfig,
+                    metaDataProviderConfig = testMetaDataProviderConfig,
+                    deadEntriesAccess = TestDeadEntriesAccessor,
+                    downloadControlStateAccessor = testDownloadControlStateAccessor,
+                    idRangeSelector = testIdRangeSelector,
+                    apiDownloader = testApiAnimeDownloader,
+                    webViewDownloader = testWebViewAnimeDownloader,
+                    networkController = TestNetworkController,
+                )
+
+                // when
+                crawler.start()
+
+                // then
+                assertThat(tempDir.resolve("1535.${ANIDB_PENDING_FILE_SUFFIX}")).exists()
+            }
+        }
+
+        @Test
+        fun `throws an exception if the web ui response is of an unexpected type`() {
+            tempDirectory {
+                // given
+                val testMetaDataProviderConfig = object: MetaDataProviderConfig by AnidbConfig {
+                    override fun isTestContext(): Boolean = true
+                }
+
+                val testAppConfig = object : Config by TestAppConfig {
+                    override fun workingDir(metaDataProviderConfig: MetaDataProviderConfig): Directory = tempDir
+                }
+
+                val testIdRangeSelector = object: IdRangeSelector<Int> {
+                    override suspend fun idDownloadList(): List<Int> = listOf(1535)
+                }
+
+                val testDownloadControlStateAccessor = object: DownloadControlStateAccessor by TestDownloadControlStateAccessor {
+                    override suspend fun dcsEntryExists(metaDataProviderConfig: MetaDataProviderConfig, animeId: AnimeId): Boolean = false
+                }
+
+                val testApiAnimeDownloader = object: Downloader by TestDownloader {
+                    override suspend fun download(id: AnimeId, onDeadEntry: suspend (AnimeId) -> Unit): String {
+                        return loadTestResource("crawler/anidb.AnidbCrawlerTest/not_found.xml")
+                    }
+                }
+
+                val testWebViewAnimeDownloader = object: Downloader by TestDownloader {
+                    override suspend fun download(id: AnimeId, onDeadEntry: suspend (AnimeId) -> Unit): String {
+                        return "<anime>unexpected existing entry</anime>"
+                    }
+                }
+
+                val crawler = AnidbCrawler(
+                    appConfig = testAppConfig,
+                    metaDataProviderConfig = testMetaDataProviderConfig,
+                    deadEntriesAccess = TestDeadEntriesAccessor,
+                    downloadControlStateAccessor = testDownloadControlStateAccessor,
+                    idRangeSelector = testIdRangeSelector,
+                    apiDownloader = testApiAnimeDownloader,
+                    webViewDownloader = testWebViewAnimeDownloader,
+                    networkController = TestNetworkController,
+                )
+
+                // when
+                val result = exceptionExpected < IllegalStateException> {
+                    crawler.start()
+                }
+
+                // then
+                assertThat(result).hasMessage("Type result [UNKNOWN] after web view download for id [anidbId=1535].")
             }
         }
     }

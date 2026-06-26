@@ -1,0 +1,671 @@
+<?xml version="1.0" encoding="UTF-8"?><anime id="11221" restricted="false">
+    <type>TV Series</type>
+    <episodecount>11</episodecount>
+    <startdate>2017-04-14</startdate>
+    <enddate>2017-06-23</enddate>
+    <titles>
+        <title xml:lang="x-jat" type="main">Saenai Heroine no Sodatekata Flat</title>
+        <title xml:lang="x-jat" type="synonym">Saenai Kanojo no Sodatekata Flat</title>
+        <title xml:lang="en" type="short">Saekano S2</title>
+        <title xml:lang="x-jat" type="short">saekanoflat</title>
+        <title xml:lang="ja" type="official">冴えない彼女の育てかた♭</title>
+        <title xml:lang="en" type="official">Saekano: How to Raise a Boring Girlfriend Flat</title>
+        <title xml:lang="ko" type="official">시원찮은 그녀를 위한 육성방법♭</title>
+        <title xml:lang="zh-Hant" type="official">不起眼女主角培育法♭</title>
+        <title xml:lang="zh-Hans" type="official">路人女主的养成方法 ♭</title>
+        <title xml:lang="hi" type="official">साएकानो ♭ हाऊ टू रेज़ ए बोरिंग गर्लफ्रेंड.फ्लैट</title>
+        <title xml:lang="te" type="official">సేకనొబ్ హౌ టు రైస్ ఏ బోరింగ్ గర్ల్ ఫ్రెండ్.ఫ్లాట్</title>
+        <title xml:lang="ja" type="kanareading">さえないヒロインのそだてかた フラット</title>
+        <title xml:lang="ja" type="titlecard">冴えない彼女[ヒロイン]の育てかた♭</title>
+    </titles>
+    <relatedanime>
+        <anime id="13626" type="Sequel">Saenai Heroine no Sodatekata Fine</anime>
+        <anime id="10538" type="Prequel">Saenai Heroine no Sodatekata</anime>
+    </relatedanime>
+    <similaranime>
+        <anime id="14571" approval="1" total="10">Miru Tights</anime>
+    </similaranime>
+    <recommendations total="2">
+        <recommendation type="For Fans" uid="1060713">I only can recommend to NOT watch the 2nd season!
+
+Spoiler: First the MC got pushed away from the "bullshit heroin" and is forced to run behind her like a dog and then he got betrayed by the two other female characters brutally. The MC has absolutely no sense of self-esteem and I can`t stand such stories at all.
+Just think about it the MC inspired the one girl to draw (and got betrayed first time), the second one was a writer who was about to fail at her first book and he moastly solo saved it and the third girl was so invisible that no one recognized her. And all of these throw him away like an old rag without hesitation and he acts like thats normal? WTF!</recommendation>
+        <recommendation type="Recommended" uid="579554">Very good Anime for Harem fans. Especially for those who got a little bored of archtypes being allways the same with different hairstyle. Characters are still a bit archtypish, but the approach of how they express themself is totally different. Animation is top notch and the story setup is somewhat realistic and works just fine. The idolization of the otaku lifestyle is probably the strongest weakpoint. Still 8 out of 10 for me.
+
+P.S.: Don`t watch it all at once. It`s charme fades with overdozing.</recommendation>
+    </recommendations>
+    <url>http://www.saenai.tv/</url>
+    <creators>
+        <name id="17461" type="Character Design">Takase Tomoaki</name>
+        <name id="36578" type="Series Composition">Maruto Fumiaki</name>
+        <name id="1303" type="Work">A-1 Pictures</name>
+        <name id="36578" type="Original Work">Maruto Fumiaki</name>
+        <name id="2886" type="Direction">Kamei Kanta</name>
+        <name id="2424" type="Music">Hyakkoku Hajime</name>
+        <name id="17461" type="Chief Animation Direction">Takase Tomoaki</name>
+        <name id="16345" type="Chief Animation Direction">Kurihara Yuu</name>
+        <name id="15700" type="Chief Animation Direction">Fukuchi Yuuki</name>
+    </creators>
+    <description>* Based on light novel series by http://anidb.net/cr36578 [Maruto Fumiaki], with illustrations by http://anidb.net/cr28368 [Misaki Kurehito].
+Geeky high school student http://anidb.net/ch67521 [Aki Tomoya] meets http://anidb.net/ch70129 [Katou Megumi] one day in spring and becomes consumed with the idea of turning this normal girl into the main heroine of his visual novel game. He forms the development team Blessing Software with friends and they manage to get one route finished. With the upcoming Winter Comiket in two months, will they be able to finish the game in time?!
+Source: Amazon</description>
+    <ratings>
+        <permanent count="1956">6.70</permanent>
+        <temporary count="1966">7.30</temporary>
+    </ratings>
+    <picture>221837.jpg</picture>
+    <resources>
+        <resource type="1">
+            <externalentity>
+                <identifier>18917</identifier>
+            </externalentity>
+        </resource>
+        <resource type="2">
+            <externalentity>
+                <identifier>30727</identifier>
+            </externalentity>
+            <externalentity>
+                <identifier>35338</identifier>
+            </externalentity>
+        </resource>
+        <resource type="4">
+            <externalentity>
+                <url>http://www.saenai.tv/</url>
+            </externalentity>
+        </resource>
+        <resource type="6">
+            <externalentity>
+                <identifier>Saekano:_How_to_Raise_a_Boring_Girlfriend</identifier>
+            </externalentity>
+        </resource>
+        <resource type="7">
+            <externalentity>
+                <identifier>冴えない彼女の育てかた_(アニメ)</identifier>
+            </externalentity>
+        </resource>
+        <resource type="8">
+            <externalentity>
+                <identifier>4488</identifier>
+            </externalentity>
+        </resource>
+        <resource type="9">
+            <externalentity>
+                <identifier>356032</identifier>
+            </externalentity>
+        </resource>
+        <resource type="10">
+            <externalentity>
+                <identifier>20050</identifier>
+            </externalentity>
+        </resource>
+        <resource type="23">
+            <externalentity>
+                <identifier>saenai_heroine</identifier>
+            </externalentity>
+        </resource>
+        <resource type="32">
+            <externalentity>
+                <identifier>B06Y1X4HL1</identifier>
+            </externalentity>
+        </resource>
+        <resource type="48">
+            <externalentity>
+                <identifier>0OB9U29Z6EEPZDSKM558LAVFLD</identifier>
+            </externalentity>
+        </resource>
+    </resources>
+    <tags>
+        <tag id="165" parentid="2883" weight="300" localspoiler="false" globalspoiler="false" verified="true" update="2014-10-07">
+            <name>painting</name>
+            <description>Painting is the practice of applying paint, pigment, color or other medium[1] to a surface (support base). The medium is commonly applied to the base with a brush but other implements, such as knives, sponges, and airbrushes, can be used.
+In art, the term painting describes both the act and the result of the action. Paintings may have for their support such surfaces as walls, paper, canvas, wood, glass, lacquer, clay, leaf, copper or concrete, and may incorporate multiple other materials including sand, clay, paper, gold leaf as well as objects.</description>
+        </tag>
+        <tag id="2605" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-09-28">
+            <name>dynamic</name>
+            <description>Some of the central structural elements in anime are: 
+Plot Continuity 
+How does the plot or several plots unfold. Are they a strictly linear retelling of one big continuing story, a serial, possibly with several side stories, or is the content chopped into a set of unconnected episodes, only sharing the same setting and characters?
+Stereotype Characters
+Then there is the question of the character set presentation. Is it completely original, or is it your usual stereotypical character cast. Both choices have their merit, for example it would not really make much sense to reinvent the wheel for a harem anime. Fans of that genre come to expect their favourite stereotype protagonists.
+Plot Twists
+Finally there is the question of how complex the plot / the story unfolds. Are there side-plots that merge into the main plot leading to unexpected plot twists, or is the anime quite predictable? The latter would not be appropriate for detective stories. In harem anime on the other hand a foreseeable outcome is actually something the fans will come to expect.</description>
+        </tag>
+        <tag id="2607" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2009-04-29">
+            <name>themes</name>
+            <description>Themes describe the very central elements important to the anime stories. They set the backdrop against which the protagonists must face their challenges. Be it School Life, present Daily Life, Military action, Cyberpunk, Law and Order detective work, Sports, or the Underworld. These are only but a few of the more typical backgrounds for anime plots. Add to that a Conspiracy setting with a possible tragic outcome, the Themes span most of the imaginable subject matter relevant to anime.</description>
+        </tag>
+        <tag id="2609" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2018-09-01">
+            <name>original work</name>
+            <description>What the anime is based on! This is given as the original work credit in the OP. Mostly of academic interest, but a useful bit of info, hinting at the possible depth of story.</description>
+        </tag>
+        <tag id="2611" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-09-08">
+            <name>elements</name>
+            <description>Next to Themes setting the backdrop for the protagonists in anime, there are the more detailed plot Elements that centre on character interactions: "What do characters do to each other or what is done to them?". Is it violent Action, an awe-inspiring Adventure in a foreign place, the gripping life of a Detective, a slapstick Comedy, an Ecchi Harem anime, a SciFi epic, or some Fantasy travelling adventure?</description>
+        </tag>
+        <tag id="2653" parentid="2853" weight="100" localspoiler="false" globalspoiler="false" verified="true" update="2009-05-04">
+            <name>slapstick</name>
+            <description>Slapstick humour is generally recognized by lots of physical abuse, horseplay and practical jokes. Also often seen are impossible situations, using sounds to illustrate impossible stunts that aren`t shown on-screen and to create tension for audience anticipation.</description>
+        </tag>
+        <tag id="2654" parentid="2853" weight="200" localspoiler="false" globalspoiler="false" verified="true" update="2017-06-13">
+            <name>medium awareness</name>
+            <description>Medium awareness is the situational and generally temporary awareness characters in works of fiction have and display of the very fact that they are characters in works of fiction. For example, they may comment about the background music, quip about the script or narration, complain about the roles given to them by the writer or their lack of screen time, see the subtitles that appear on screen, inform the audience about the arrival of the commercial break, and even use medium effects as tools. The most common form of medium awareness is known as breaking the fourth wall, in which characters speak directly to the audience, either to it as a whole or to specific members of it. The "fourth wall" is the imaginary "wall" at the front of the stage of a proscenium theatre through which the audience sees the play; it is a metaphor for the boundary between what happens inside the work, to the characters, and outside it, to the audience.</description>
+        </tag>
+        <tag id="2669" parentid="2869" infobox="true" weight="400" localspoiler="false" globalspoiler="false" verified="true" update="2017-12-01">
+            <name>school clubs</name>
+            <description>Even though school clubs in Japan are not mandatory, there is some pressure from the social grid (e.g. fellow students, teachers) to participate in some kind of after-school activity, be it in sports or arts. Colleges also have clubs.
+As a comedy element in anime, some students have joined too many clubs, and are thus constantly stressed out. There is also the element of social commentary, making it clear that you have to join a club, if you want to be part of the class. Since self-founded clubs need at least 3 members, the desperate search and advertising for new members can be cause for hilarity in anime.</description>
+            <picurl>210065.jpg</picurl>
+        </tag>
+        <tag id="2799" parentid="2609" infobox="true" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2019-08-13">
+            <name>novel</name>
+            <description>A novel is a relatively long work of narrative fiction, normally written in prose form, and which is typically published as a book. Manga, comics, or visual novels do not fit this description and are not considered novels; including a small number of illustrations, however, is still permissible, which means that light novels are considered novels.</description>
+        </tag>
+        <tag id="2853" parentid="2611" infobox="true" weight="400" localspoiler="false" globalspoiler="false" verified="true" update="2017-02-13">
+            <name>comedy</name>
+            <description>Anime whose central struggle causes hilarious results. These stories are built upon funny characters, situations and events. A comedy anime is laced with humour and sets out to provoke laughter from the audience.
+Japanese humour can be a bit strange to westerners, so if you`re new to this type of humour, just bear with it; it`ll most likely grow on you if you`re a fan of other kinds of comedy.</description>
+            <picurl>198104.jpg</picurl>
+        </tag>
+        <tag id="2858" parentid="2611" weight="300" localspoiler="false" globalspoiler="false" verified="true" update="2017-12-01">
+            <name>romance</name>
+            <description>Romance describes a story that deals with love between two or more characters typically also having an optimistic ending. Romance is also a difficulty encountered when creating a harem.</description>
+            <picurl>210061.jpg</picurl>
+        </tag>
+        <tag id="2859" parentid="2611" weight="300" localspoiler="false" globalspoiler="false" verified="true" update="2016-09-04">
+            <name>harem</name>
+            <description>Harem is an entertainment-related trope which is characterized by three or more characters, normally female, who for some reason are in the presence and under the influence of one character, generally male, according to a few genre-defining guidelines; here it will be assumed, for simplicity of language, that the harem lead is a male character and the members are female characters. Though that is the rule, there are exceptions; a story in which there is one female character and several male characters is normally called a "http://anidb.net/t2792 [reverse harem]", or sometimes also "male harem". Aside from the swapping of the characters` genders, the trope`s details are mostly the same, with the majority of the changes relating to the differences in behavior between men and women of the characters` age range. It is also possible to create harems with homosexual relationships, again with very few changes to the main antics themselves. The harem may not have more than only one lead, as that would be a love polygon, or less than three members, as one would form a couple and two would make a love triangle.
+As a defining rule of harem, the interactions between the lead and each of the individual members are filled with romantically or sexually loaded content, either implicitly, through innuendo or subtext, or explicitly, through text or actions, and those actions are a key plot element. Generally, the female characters` looks and personalities will vary a lot among the ones present in one single series, but quite rarely will they actually differ from the common stock archetypes, which are known, well-defined, and easy to copy; for this reason, the genre as a whole is often considered repetitive. Usually, the characters involved directly in this trope are in the late teenager to young adult age range, but that is not mandatory. Sexually charged behavior on the lead`s part pretty much can`t be avoided, and it`s typical to see him stamped as a pervert by some or all of the members, regardless of whether he is one; the sexual tones also applies to the depiction of the harem members, often leading the genre to labeled sexist. The lead will often suffer very violent retribution for his behavior, which has attracted criticism of gratuitous violence as well.
+Most of the harem members will be romantically or sometimes sexually interested in the one male character, and in him alone; that, however, is not an absolute rule, and indeed sometimes none of the female characters are really interested at first, so the protagonist has to build relationships with them from scratch. That idea comes in large part from visual novels; it is quite common for visual novels to revolve around controlling the male lead and have him build relationships with either as many female characters as possible or with one of them, the latter being more common for visual novels with branched story paths; a large portion of those visual novels also feature erotic content, which may be hard to adapt to TV series. It may be also possible that the harem is only a support to the existing or predictable relationship between the lead and the most important member; additionally, the lead may end up in relationships with most or all of the harem members, with the agreement of all, in a setting normally called "harem ending".</description>
+            <picurl>94602.jpg</picurl>
+        </tag>
+        <tag id="2869" parentid="2607" infobox="true" weight="400" localspoiler="false" globalspoiler="false" verified="true" update="2017-12-01">
+            <name>school life</name>
+            <description>Since a large part of the anime audience still takes part in school life or is visiting college, it is only natural to choose a setting the audience can identify with, be it elementary, middle, or high school. For the older viewers a college setting with more mature real-life problems is appropriate. And since clubs take up so much time in the lives of students, these are obviously also important.</description>
+            <picurl>210062.jpg</picurl>
+        </tag>
+        <tag id="2883" parentid="2607" weight="300" localspoiler="false" globalspoiler="false" verified="true" update="2014-10-07">
+            <name>the arts</name>
+            <description>The arts represent an outlet of human expression, usually influenced by culture, and driven by human creative impulse. Major constituents of the arts include literature – including poetry, novels and short stories, and epics; performing arts – among them music, dance, and theatre; culinary arts such as baking, chocolatiering, and winemaking; media arts like photography and film, and visual arts – including drawing, painting, and sculpting. Some art forms combine a visual element with performance (e.g. film) and the written word (e.g. comics).
+From prehistoric cave paintings to modern day films, art serves as a vessel for storytelling and conveying mankind`s relationship with its environment.
+Source: Wiki</description>
+        </tag>
+        <tag id="3023" parentid="2853" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2012-02-19">
+            <name>funny expressions</name>
+            <description>The facial expressions of the characters may change so quickly or unexpectedly distort that hilarity will ensue.</description>
+        </tag>
+        <tag id="3040" parentid="6230" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2018-11-01">
+            <name>male protagonist</name>
+            <description>This anime has a male protagonist.</description>
+        </tag>
+        <tag id="3395" parentid="2607" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2015-02-18">
+            <name>promise</name>
+            <description>A dramatically-made promise that serves as foreshadowing. The promise will eventually be called in and action will be required.
+Whether they succeed, fail or refuse to keep their promise depends almost entirely on the idealism-level of the story. Other factors, such as whether they were told what they had to do, or if it was a Leonine Contract, may come into play. Even Releasing from the Promise is usually a scene of high drama.
+Source: TVTropes</description>
+        </tag>
+        <tag id="3684" parentid="2883" weight="100" localspoiler="false" globalspoiler="false" verified="true" update="2014-04-28">
+            <name>literature</name>
+            <description>Works of literature are featured. Likely, a prominent character in this anime likes to read books, or the books themselves play a role. They might be specific, named works of literature or books in general.</description>
+        </tag>
+        <tag id="3865" parentid="6153" infobox="true" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2025-12-05">
+            <name>noitaminA</name>
+            <description>noitaminA (ノイタミナ) – Animation written backwards – is a http://anidb.net/cr741 [Fuji TV] programming block, devoted to anime, broadcast each Thursday night from 00:45 to 1:15. It was launched with the intention of expanding the target audience beyond the typical young male demographic.
+The timeslot was expanded from half an hour to a full hour in 2010, and now airs Thursday nights from 00:45 to 1:45.
+noitaminA aired its first non-anime series in 2010, with the premiere of the live-action adaptation of Moyashimon. On April 15, 2010, Fuji TV and FUNimation announced an agreement that allows FUNimation to simulcast series from the noitaminA block in North America within an hour of their airing in Japan.</description>
+            <picurl>36897.jpg</picurl>
+        </tag>
+        <tag id="4207" parentid="2883" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2015-02-26">
+            <name>doujin</name>
+            <description>Doujin is a general Japanese term for a group of people or friends who share an interest, activity, hobbies, or achievement. The word is sometimes translated into English as clique, coterie, society, or circle (e.g., a "sewing circle").
+In Japan the term is used to refer to amateur self-published works, including but not limited to manga, novels, fan guides, art collections, music and video games. Some professional artists participate as a way to publish material outside the regular publishing industry.
+Source: Wikipedia</description>
+            <picurl>68439.jpg</picurl>
+        </tag>
+        <tag id="4246" parentid="3395" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2011-04-01">
+            <name>childhood promise</name>
+            <description>Sweet childhood promises... who remembers them other than the Japanese anime characters?
+It keeps the main characters obsessed with promises that they made when they were children, mostly related to love, with lines like "I will always protect you" or "I will marry you when we grow up".</description>
+        </tag>
+        <tag id="4663" parentid="2605" weight="100" localspoiler="false" globalspoiler="false" verified="true" update="2015-01-31">
+            <name>tone changes</name>
+            <description>The anime switches quickly, often rather drastically between different moods or tones, sometimes even on the same scene.</description>
+        </tag>
+        <tag id="5604" parentid="2607" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-09-04">
+            <name>following one`s dream</name>
+            <description>No matter what the hardships may be, at least one of the protagonists in this anime is following her/his dream.
+Examples: To become a professional athlete, a musician, a painter or the ruler of this world!</description>
+        </tag>
+        <tag id="5640" parentid="2607" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-03-16">
+            <name>video game development</name>
+            <description>Part of the anime`s story relates to creating video games.</description>
+        </tag>
+        <tag id="5826" parentid="2607" weight="100" localspoiler="false" globalspoiler="false" verified="true" update="2011-04-12">
+            <name>rivalry</name>
+            <description>Quite broadly used term describing a conflict, contest, struggle, or opposition of some sort.
+Typical examples: The mostly comedic rivalry for the love of a protagonist in a harem anime (love polygon), the more "mindless" battles between wannabe delinquents in a school fighting anime, or the struggle between good &amp; evil in an epic conflict for world domination.</description>
+        </tag>
+        <tag id="6151" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-09-10">
+            <name>technical aspects</name>
+            <description>It may sometimes be useful to know about technical aspects of a show, such as information about its broadcasting or censorship. Such information can be found here.</description>
+        </tag>
+        <tag id="6153" parentid="6151" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-09-10">
+            <name>multi-anime projects</name>
+            <description>Many anime are created as part of larger projects encompassing many shows without direct relation to one another. Normally, there is a specific idea in mind: for example, the http://anidb.net/t4859 [Young Animator Training Project] aims to stimulate the on-the-job training of next-generation professionals of the anime industry, whereas the http://anidb.net/t3763 [World Masterpiece Theatre] aims to animate classical stories from all over the world.</description>
+        </tag>
+        <tag id="6173" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-09-24">
+            <name>origin</name>
+        </tag>
+        <tag id="6230" parentid="2605" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-10-20">
+            <name>cast</name>
+        </tag>
+        <tag id="7885" parentid="6173" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2021-11-07">
+            <name>Japanese production</name>
+        </tag>
+    </tags>
+    <characters>
+        <character id="24746" type="cameo appearance in" update="2010-11-04">
+            <rating votes="249">5.25</rating>
+            <name>Kaname Madoka</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>58514.jpg</picture>
+        </character>
+        <character id="25642" type="cameo appearance in" update="2010-12-10">
+            <rating votes="158">7.03</rating>
+            <name>Tomoe Mami</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>60590.jpg</picture>
+        </character>
+        <character id="37272" type="cameo appearance in" update="2022-02-09">
+            <rating votes="797">7.02</rating>
+            <name>Asuna</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <description>A friend of Kirito and is a sub-leader of the guild Knights of Blood (KoB), a medium-sized guild of about thirty player, also called the strongest guild in Aincrad. Being one of the few many girls that play SAO, and even more so that she`s extremely pretty, she receives many invitations and proposals. She is a skilled player earning the Title "Flash" for her extraordinary sword skill. The KoB has assigned her two bodyguards, one of whom despises Kirito. Her game alias is the same as her Real World name. She later on falls in love with Kirito, eventually leading to them being married.</description>
+            <picture>83185.jpg</picture>
+        </character>
+        <character id="62713" type="cameo appearance in" update="2018-10-07">
+            <rating votes="96">7.50</rating>
+            <name>Sinon</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>156409.jpg</picture>
+        </character>
+        <character id="65790" type="main character in" update="2014-11-20">
+            <rating votes="140">5.82</rating>
+            <name>Sawamura Spencer Eriri</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>164362.jpg</picture>
+            <seiyuu id="34449" picture="10864.jpeg">Oonishi Saori</seiyuu>
+        </character>
+        <character id="65791" type="main character in" update="2014-11-20">
+            <rating votes="228">7.30</rating>
+            <name>Kasumigaoka Utaha</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>164363.jpg</picture>
+            <seiyuu id="20497" picture="252298.jpg">Kayano Ai</seiyuu>
+        </character>
+        <character id="67521" type="main character in" update="2014-11-20">
+            <rating votes="76">3.08</rating>
+            <name>Aki Tomoya</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>164366.jpg</picture>
+            <seiyuu id="20249" picture="186289.jpg">Matsuoka Yoshitsugu</seiyuu>
+        </character>
+        <character id="67522" type="main character in" update="2014-11-20">
+            <rating votes="85">6.50</rating>
+            <name>Hyoudou Michiru</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>164361.jpg</picture>
+            <seiyuu id="89" picture="148709.jpg">Yahagi Sayuri</seiyuu>
+        </character>
+        <character id="67570" type="cameo appearance in" update="2014-12-14">
+            <rating votes="48">8.36</rating>
+            <name>Akemi Homura</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <description>At the end of Rebellion arc, Homura transforms into a new form, growing a pair of black wings. She is no longer a magical girl or a witch. Instead, she calls herself a demon.</description>
+            <picture>155824.jpg</picture>
+        </character>
+        <character id="68693" type="secondary cast in" update="2015-03-29">
+            <rating votes="14">2.87</rating>
+            <name>Hashima Iori</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>171069.jpg</picture>
+            <seiyuu id="174" picture="265540.jpg">Kakihara Tetsuya</seiyuu>
+        </character>
+        <character id="68694" type="secondary cast in" update="2014-11-20">
+            <rating votes="51">5.71</rating>
+            <name>Hashima Izumi</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>164365.jpg</picture>
+            <seiyuu id="18198" picture="228672.jpg">Akasaki Chinatsu</seiyuu>
+        </character>
+        <character id="70129" type="main character in" update="2014-11-20">
+            <rating votes="333">8.27</rating>
+            <name>Katou Megumi</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>164364.jpg</picture>
+            <seiyuu id="27357" picture="75009.jpg">Yasuno Kiyono</seiyuu>
+        </character>
+        <character id="73125" type="appears in" update="2015-02-07">
+            <rating votes="2">3.11</rating>
+            <name>Kamisato Yoshihiko</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>168479.jpg</picture>
+            <seiyuu id="38579" picture="303417.jpg">Uchida Yuuma</seiyuu>
+        </character>
+        <character id="73126" type="appears in" update="2015-02-07">
+            <rating votes="6">4.39</rating>
+            <name>Ishimaki Motoko</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>168478.jpg</picture>
+            <seiyuu id="34504" picture="200900.jpg">Taichi You</seiyuu>
+        </character>
+        <character id="73127" type="appears in" update="2015-02-07">
+            <rating votes="3">4.01</rating>
+            <name>Satomi Azusa</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>168480.jpg</picture>
+            <seiyuu id="38294" picture="267788.jpg">Okuno Kaya</seiyuu>
+        </character>
+        <character id="74204" type="appears in" update="2021-05-15">
+            <rating votes="4">3.52</rating>
+            <name>Machida Sonoko</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>70646.png</picture>
+            <seiyuu id="166" picture="267044.jpg">Kuwashima Houko</seiyuu>
+        </character>
+        <character id="74206" type="appears in" update="2015-03-29">
+            <rating votes="5">3.98</rating>
+            <name>Himekawa Tokino</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>171071.jpg</picture>
+            <seiyuu id="37089" picture="11506.jpeg">Suzuki Eri</seiyuu>
+        </character>
+        <character id="74207" type="appears in" update="2015-03-29">
+            <rating votes="7">4.09</rating>
+            <name>Morioka Ranko</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>171072.jpg</picture>
+            <seiyuu id="34504" picture="200900.jpg">Taichi You</seiyuu>
+        </character>
+        <character id="74208" type="appears in" update="2015-03-29">
+            <rating votes="4">3.52</rating>
+            <name>Mizuhara Echika</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>171070.jpg</picture>
+            <seiyuu id="38109" picture="155778.jpg">Tanabe Rui</seiyuu>
+        </character>
+        <character id="90870" type="appears in" update="2017-08-10">
+            <rating votes="4">2.34</rating>
+            <name>Kousaka Akane</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>205992.jpg</picture>
+            <seiyuu id="55" picture="264187.jpg">Nabatame Hitomi</seiyuu>
+        </character>
+        <character id="93492" type="cameo appearance in" update="2024-01-28">
+            <rating votes="21">7.62</rating>
+            <name>Mash Kyrielight</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <description>Shielder`s True Name is http://anidb.net/ch85948 [Mash Kyrielight], a Demi-Servant human fused with an unknown Servant.
+It is later revealed in the original Fate/Grand Order material that Mash had fused with Galahad.</description>
+            <picture>299138.jpg</picture>
+        </character>
+        <character id="117652" type="cameo appearance in" update="2021-06-07">
+            <rating votes="10">7.87</rating>
+            <name>Jeanne d`Arc</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>207612.jpg</picture>
+        </character>
+    </characters>
+    <episodes>
+        <episode id="186576" update="2021-07-10">
+            <epno type="1">4</epno>
+            <length>25</length>
+            <airdate>2017-05-05</airdate>
+            <rating votes="11">8.81</rating>
+            <title xml:lang="ja">二泊三日の新ルート</title>
+            <title xml:lang="en">New Route of Two Nights and Three Days</title>
+            <title xml:lang="x-jat">Nihaku Mikka no Shin Route</title>
+            <summary>Tomoya has noticed a fatal flaw in the script Utaha had written. While her script reads amazingly as a novel, it does not hold up very well as a game script. As the director, Tomoya decides the script needs to be rewritten and begins revising it. Fortunately, Utaha comes in to help as well after composing herself, and the two of them work together to improve the writing as a game script.
+Source: Amazon</summary>
+        </episode>
+        <episode id="186577" update="2021-07-10">
+            <epno type="1">3</epno>
+            <length>25</length>
+            <airdate>2017-04-28</airdate>
+            <rating votes="8">5.97</rating>
+            <title xml:lang="ja">初稿と二稿と大長考</title>
+            <title xml:lang="en">First Draft, Second Draft and Great Long Thinking</title>
+            <title xml:lang="x-jat">Shokou to Nikou to Daichoukou</title>
+            <summary>Tomoya and the others arrive to meet Izumi, but to their surprise, Iori is there waiting as well. Iori reveals that his Dōjin Team rouge en rouge is making a new game that is in the same genre as the game blessing software is working on, and that Izumi will be in charge of its art. Tomoya believes in his team members, but Iori tells him that he is confident his game`s story will be better.
+Source: Amazon</summary>
+        </episode>
+        <episode id="186578" update="2021-07-10">
+            <epno type="1">2</epno>
+            <length>25</length>
+            <airdate>2017-04-21</airdate>
+            <rating votes="8">6.46</rating>
+            <title xml:lang="ja">本気で本当な分岐点</title>
+            <title xml:lang="en">Turning Point of Earnest and Real</title>
+            <title xml:lang="x-jat">Honki de Hontou na Bunkiten</title>
+            <summary>Utaha and Tomoya go out on a date in Ikebukuro to celebrate the completion of the script. After going around to a book store and movie theater, they have dinner at a restaurant. That`s when Utaha asks Tomoya whether she should attend a nearby university or one located in Kansai for college. Tomoya gives her his answer at the end of the date. Hearing it, Utaha decides to take a certain action.
+Source: Amazon</summary>
+        </episode>
+        <episode id="186579" update="2021-07-10">
+            <epno type="1">1</epno>
+            <length>25</length>
+            <airdate>2017-04-14</airdate>
+            <rating votes="8">7.59</rating>
+            <title xml:lang="ja">冴えない竜虎の相見えかた</title>
+            <title xml:lang="en">The Way of Two Boring Rivals` Encounter</title>
+            <title xml:lang="x-jat">Saenai Ryuuko no Aimamiekata</title>
+            <summary>One and a half years ago at Toyogasaki Academy. Utaha confirms that the library is carrying the light novel she wrote “Metronome in Love”. She leaves and gets stopped along the way by Eriri Spencer Sawamura. We finally get to see how Eriri and Utaha meet. What exactly happened between them?!
+Source: Amazon</summary>
+        </episode>
+        <episode id="186719" update="2021-07-10">
+            <epno type="2">S1</epno>
+            <length>25</length>
+            <airdate>2017-04-06</airdate>
+            <rating votes="11">7.05</rating>
+            <title xml:lang="ja">恋と純情のサービス回</title>
+            <title xml:lang="en">Fan Service of Love and Pure Heart</title>
+            <title xml:lang="x-jat">Koi to Junjou no Service Kai</title>
+            <summary>The team has come to the pool of a luxury hotel to do research for a swimsuit event for their game. As always, Utaha and Eriri are fighting, Michiru is doing her own thing, and of course Megumi is being aloof. Episode zero is here to bring you the swimsuit episode fans have been waiting for!
+Source: Amazon</summary>
+        </episode>
+        <episode id="186982" update="2017-11-12">
+            <epno type="3">C2</epno>
+            <length>2</length>
+            <airdate>2017-04-14</airdate>
+            <title xml:lang="en">Opening 1b</title>
+        </episode>
+        <episode id="186983" update="2017-11-12">
+            <epno type="3">C1</epno>
+            <length>2</length>
+            <airdate>2017-04-06</airdate>
+            <title xml:lang="en">Opening 1a</title>
+        </episode>
+        <episode id="187221" update="2017-11-12">
+            <epno type="3">C6</epno>
+            <length>2</length>
+            <airdate>2017-04-21</airdate>
+            <title xml:lang="en">Ending 1b</title>
+        </episode>
+        <episode id="187434" update="2021-07-10">
+            <epno type="1">8</epno>
+            <length>25</length>
+            <airdate>2017-06-02</airdate>
+            <rating votes="13">8.47</rating>
+            <title xml:lang="ja">フラグを折らなかった彼女</title>
+            <title xml:lang="en">The Girl Who Didn`t Break the Flag</title>
+            <title xml:lang="x-jat">Flag o Oranakatta Kanojo</title>
+            <summary>Replaying “cherry blessing”, Tomoya notices details that makes him realize how dedicated Megumi had been to the game`s development. The next day, he awkwardly pulls Megumi into the AV room and begins passionately talking about blessing software`s next project. Then he finally apologizes to her for not talking to her when Eriri collapsed, and thanks her for caring about blessing software so much.
+Source: Amazon</summary>
+        </episode>
+        <episode id="187435" update="2021-07-10">
+            <epno type="1">7</epno>
+            <length>25</length>
+            <airdate>2017-05-26</airdate>
+            <rating votes="8">4.89</rating>
+            <title xml:lang="ja">リベンジまみれの新企画</title>
+            <title xml:lang="en">The New Plan of Revenge</title>
+            <title xml:lang="x-jat">Revenge Mamire no Shin Kikaku</title>
+            <summary>The game Tomoya and his colleagues completed “cherry blessing” gained a lot of popularity on the Internet because of Eriri`s art and Utaha`s script, leading them to sell out all their copies at their booth, and receive a massive amount of additional orders. Tomoya is happy about the game`s success, but he hasn`t been able to make up with Megumi yet.
+Source: Amazon</summary>
+        </episode>
+        <episode id="187436" update="2021-07-10">
+            <epno type="1">6</epno>
+            <length>25</length>
+            <airdate>2017-05-19</airdate>
+            <rating votes="8">5.95</rating>
+            <title xml:lang="ja">雪に埋もれたマスターアップ</title>
+            <title xml:lang="en">The Deadline Buried in Snow</title>
+            <title xml:lang="x-jat">Yuki ni Uzumoreta Master Up</title>
+            <summary>Eriri finally finishes the artwork, but she collapses with a fever as she tells Tomoya she`s done. Noticing something wrong with Eriri, Tomoya chooses to rush to help her rather than work on completing the master copy to submit to press. Tomoya arrives at the villa in Nasu Kogen with Iori`s help and nurses Eriri back to health. But what will happen to the game?
+Source: Amazon</summary>
+        </episode>
+        <episode id="187437" update="2021-07-10">
+            <epno type="1">5</epno>
+            <length>25</length>
+            <airdate>2017-05-12</airdate>
+            <rating votes="9">4.62</rating>
+            <title xml:lang="ja">締め切りが先か, 覚醒が先か</title>
+            <title xml:lang="en">Deadline or Awakening</title>
+            <title xml:lang="x-jat">Shimekiri ga Saki ka, Kakusei ga Saki ka</title>
+            <summary>With the script rewrites and additional character route, game production has been significantly delayed, and it`s becoming apparent that Eriri is running behind with the art. Utaha points out the quality doesn`t reflect the time she`s putting in. Even so, Tomoya trusts that Eriri will deliver in the end. So Eriri withdraws herself to her secluded family villa in Nasu Kogen to focus on her work...
+Source: Amazon</summary>
+        </episode>
+        <episode id="187972" update="2021-07-10">
+            <epno type="1">11</epno>
+            <length>25</length>
+            <airdate>2017-06-23</airdate>
+            <rating votes="8">5.78</rating>
+            <title xml:lang="ja">再起と新規のゲームスタート</title>
+            <title xml:lang="en">Resume and Start the Game</title>
+            <title xml:lang="x-jat">Saiki to Shinki no Game Start</title>
+            <summary>Tomoya is heartbroken by Utaha and Eriri`s departure from the Dōjin Team, but Megumi takes the opportunity to ask Tomoya out on a date again. Back at Rokutenba Mall, the two of them go around the different stores reliving their previous date here. They visit a hat store last, and Tomoya buys her a certain hat to thank her for cheering him up and to repay her for the glasses she gifted him earlier.
+Source: Amazon</summary>
+        </episode>
+        <episode id="187973" update="2021-07-10">
+            <epno type="1">10</epno>
+            <length>25</length>
+            <airdate>2017-06-16</airdate>
+            <rating votes="8">5.09</rating>
+            <title xml:lang="ja">そして竜虎は神に挑まん</title>
+            <title xml:lang="en">And the Rivals Will Challenge God</title>
+            <title xml:lang="x-jat">Soshite Ryuuko wa Kami ni Idoman</title>
+            <summary>Akane Kosaka asks Eriri and Utaha if they would want to work on the next edition of “Fields Chronicle”, a popular RPG series with 20 years of history. At the meeting, Eriri is told that her recent trouble drawing wasn`t because she was in a slump, but because she was bad, and Utaha is treated like an extra to Eriri. They`re both upset, but can`t help but be enticed by such a desirable project.
+Source: Amazon</summary>
+        </episode>
+        <episode id="187974" update="2021-07-10">
+            <epno type="1">9</epno>
+            <length>25</length>
+            <airdate>2017-06-09</airdate>
+            <rating votes="7">5.15</rating>
+            <title xml:lang="ja">卒業式と超展開</title>
+            <title xml:lang="en">Graduation with a Twist</title>
+            <title xml:lang="x-jat">Sotsugyoushiki to Chou Tenkai</title>
+            <summary>Tomoya celebrates Utaha`s graduation from Toyogasaki Academy, and tells her that he would like to continue making games with the current members of the team. Thinking that he`ll have to come up with a project everyone would want to participate in, Tomoya shows Utaha his project proposal. While she gives it the high mark of 75, she tells him she won`t be able to participate.
+Source: Amazon</summary>
+        </episode>
+        <episode id="192391" update="2017-11-12">
+            <epno type="3">C3</epno>
+            <length>2</length>
+            <airdate>2017-05-12</airdate>
+            <title xml:lang="en">Opening 1c</title>
+        </episode>
+        <episode id="192806" update="2017-11-12">
+            <epno type="3">C5</epno>
+            <length>2</length>
+            <airdate>2017-04-06</airdate>
+            <title xml:lang="en">Ending 1a</title>
+        </episode>
+        <episode id="192807" update="2017-11-12">
+            <epno type="3">C7</epno>
+            <length>2</length>
+            <airdate>2017-06-23</airdate>
+            <title xml:lang="en">Ending 2</title>
+        </episode>
+        <episode id="192808" update="2017-11-12">
+            <epno type="3">C4</epno>
+            <length>2</length>
+            <airdate>2017-06-23</airdate>
+            <title xml:lang="en">Opening 1d</title>
+        </episode>
+        <episode id="233443" update="2020-10-10">
+            <epno type="4">T1</epno>
+            <length>2</length>
+            <title xml:lang="en">Episode 1 Preview</title>
+        </episode>
+        <episode id="233444" update="2020-10-10">
+            <epno type="4">T2</epno>
+            <length>2</length>
+            <title xml:lang="en">Episode 2 Preview</title>
+        </episode>
+        <episode id="233445" update="2020-10-10">
+            <epno type="4">T3</epno>
+            <length>2</length>
+            <title xml:lang="en">Episode 3 Preview</title>
+        </episode>
+        <episode id="233446" update="2020-10-10">
+            <epno type="4">T4</epno>
+            <length>2</length>
+            <title xml:lang="en">Episode 4 Preview</title>
+        </episode>
+        <episode id="233447" update="2020-10-10">
+            <epno type="4">T5</epno>
+            <length>2</length>
+            <title xml:lang="en">Episode 5 Preview</title>
+        </episode>
+        <episode id="233448" update="2020-10-10">
+            <epno type="4">T6</epno>
+            <length>2</length>
+            <title xml:lang="en">Episode 6 Preview</title>
+        </episode>
+        <episode id="233449" update="2020-10-10">
+            <epno type="4">T7</epno>
+            <length>2</length>
+            <title xml:lang="en">Episode 7 Preview</title>
+        </episode>
+        <episode id="233450" update="2020-10-10">
+            <epno type="4">T8</epno>
+            <length>2</length>
+            <title xml:lang="en">Episode 8 Preview</title>
+        </episode>
+        <episode id="233451" update="2020-10-10">
+            <epno type="4">T9</epno>
+            <length>2</length>
+            <title xml:lang="en">Episode 9 Preview</title>
+        </episode>
+        <episode id="233452" update="2020-10-10">
+            <epno type="4">T10</epno>
+            <length>2</length>
+            <title xml:lang="en">Episode 10 Preview</title>
+        </episode>
+        <episode id="233453" update="2020-10-10">
+            <epno type="4">T11</epno>
+            <length>3</length>
+            <title xml:lang="en">Episode 11 Preview</title>
+        </episode>
+    </episodes>
+</anime>
