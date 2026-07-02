@@ -4,6 +4,7 @@ import io.github.manamiproject.modb.anidb.AnidbResponseChecker
 import io.github.manamiproject.modb.anidb.CrawlerDetectedException
 import io.github.manamiproject.modb.app.crawlers.HighestIdDetector
 import io.github.manamiproject.modb.app.extensions.checkedBody
+import io.github.manamiproject.modb.app.network.FlaresolverrHttpClient
 import io.github.manamiproject.modb.app.network.LinuxNetworkController
 import io.github.manamiproject.modb.app.network.NetworkController
 import io.github.manamiproject.modb.app.network.SuspendableHttpClient
@@ -28,7 +29,7 @@ import java.net.UnknownHostException
  */
 class AnidbHighestIdDetector(
     private val metaDataProviderConfig: MetaDataProviderConfig = AnidbHighestIdDetectorConfig,
-    private val httpClient: HttpClient = SuspendableHttpClient(),
+    private val httpClient: HttpClient = SuspendableHttpClient(httpClient = FlaresolverrHttpClient()),
     private val extractor: DataExtractor = XmlDataExtractor,
     private val networkController: NetworkController = LinuxNetworkController.instance,
 ): HighestIdDetector {

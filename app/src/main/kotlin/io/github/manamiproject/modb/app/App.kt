@@ -17,6 +17,8 @@ import io.github.manamiproject.modb.app.downloadcontrolstate.DefaultDownloadCont
 import io.github.manamiproject.modb.app.extensions.alertDeletedAnimeByTitle
 import io.github.manamiproject.modb.app.fluentapi.*
 import io.github.manamiproject.modb.app.network.LinuxNetworkController
+import io.github.manamiproject.modb.app.network.startFlaresolverr
+import io.github.manamiproject.modb.app.network.stopFlaresolverr
 import io.github.manamiproject.modb.app.postprocessors.*
 import io.github.manamiproject.modb.core.coroutines.CoroutineManager.runCoroutine
 import io.github.manamiproject.modb.core.coroutines.ModbDispatchers.LIMITED_NETWORK
@@ -32,6 +34,7 @@ import kotlin.system.exitProcess
 @KoverIgnore
 fun main() = runCoroutine {
     LinuxNetworkController.instance.sudoPasswordValue = passwordPrompt()
+    val flaresolverrContainerId = startFlaresolverr()
 
     val rawFileConversionService = DefaultRawFileConversionService.instance
     rawFileConversionService.start()
@@ -51,6 +54,8 @@ fun main() = runCoroutine {
 
     rawFileConversionService.waitForAllRawFilesToBeConverted()
     rawFileConversionService.shutdown()
+
+    stopFlaresolverr(flaresolverrContainerId)
 
     DefaultDownloadControlStateUpdater.instance.updateAll()
     DefaultDownloadControlStateAccessor.instance.allAnime()

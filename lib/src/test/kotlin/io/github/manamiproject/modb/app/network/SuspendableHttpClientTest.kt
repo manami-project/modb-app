@@ -6,7 +6,10 @@ import io.github.manamiproject.modb.app.config.Config
 import io.github.manamiproject.modb.core.extensions.EMPTY
 import io.github.manamiproject.modb.core.httpclient.HttpClient
 import io.github.manamiproject.modb.core.httpclient.HttpResponse
+import io.github.manamiproject.modb.core.httpclient.HttpResponseRetryCase
 import io.github.manamiproject.modb.core.httpclient.RequestBody
+import io.github.manamiproject.modb.core.httpclient.RetryCase
+import io.github.manamiproject.modb.core.httpclient.ThrowableRetryCase
 import io.github.manamiproject.modb.test.shouldNotBeInvoked
 import io.github.manamiproject.modb.test.tempDirectory
 import kotlinx.coroutines.Deferred
@@ -111,6 +114,32 @@ internal class SuspendableHttpClientTest {
                 assertThat(delegationInvoked).isTrue()
                 assertThat(isNetworkActiveInvocations).isEqualTo(4)
             }
+        }
+    }
+
+    @Nested
+    inner class AddRetryCasesTests {
+
+        @Test
+        fun `adding a retry cases just delegates it to the internal HttpClient`() {
+            // given
+            val invocations = mutableListOf<RetryCase>()
+            val testHttpClient = object : HttpClient by TestHttpClient {
+                override fun addRetryCases(vararg retryCases: RetryCase): HttpClient {
+                    invocations.addAll(retryCases)
+                    return this
+                }
+            }
+            val suspendableHttpClient = SuspendableHttpClient(httpClient = testHttpClient)
+
+            val r1 = HttpResponseRetryCase { true }
+            val r2 = ThrowableRetryCase { true }
+
+            // when
+            suspendableHttpClient.addRetryCases(r1, r2)
+
+            // then
+            assertThat(invocations).containsExactlyInAnyOrder(r1, r2)
         }
     }
 

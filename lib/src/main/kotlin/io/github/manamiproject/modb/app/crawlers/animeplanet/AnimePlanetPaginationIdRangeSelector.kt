@@ -6,6 +6,7 @@ import io.github.manamiproject.modb.app.crawlers.PaginationIdRangeSelector
 import io.github.manamiproject.modb.app.downloadcontrolstate.DefaultDownloadControlStateScheduler
 import io.github.manamiproject.modb.app.downloadcontrolstate.DownloadControlStateScheduler
 import io.github.manamiproject.modb.app.extensions.checkedBody
+import io.github.manamiproject.modb.app.network.FlaresolverrHttpClient
 import io.github.manamiproject.modb.app.network.SuspendableHttpClient
 import io.github.manamiproject.modb.core.config.AnimeId
 import io.github.manamiproject.modb.core.config.MetaDataProviderConfig
@@ -36,7 +37,7 @@ import kotlin.time.toDuration
  */
 class AnimePlanetPaginationIdRangeSelector(
     private val metaDataProviderConfig: MetaDataProviderConfig = AnimePlanetPaginationIdRangeSelectorConfig,
-    private val httpClient: HttpClient = SuspendableHttpClient(),
+    private val httpClient: HttpClient = SuspendableHttpClient(httpClient = FlaresolverrHttpClient()),
     private val extractor: DataExtractor = XmlDataExtractor,
     private val downloadControlStateScheduler: DownloadControlStateScheduler = DefaultDownloadControlStateScheduler.instance,
     private val alreadyDownloadedIdsFinder: AlreadyDownloadedIdsFinder = DefaultAlreadyDownloadedIdsFinder.instance,
