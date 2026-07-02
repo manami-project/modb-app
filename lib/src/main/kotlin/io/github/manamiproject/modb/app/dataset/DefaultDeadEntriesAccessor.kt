@@ -128,6 +128,24 @@ class DefaultDeadEntriesAccessor(
         }.toSet()
     }
 
+    override suspend fun containsEntry(
+        animeId: AnimeId,
+        metaDataProviderConfig: MetaDataProviderConfig,
+    ): Boolean {
+        if (!isInitialized) {
+            init()
+        }
+
+        return when (metaDataProviderConfig.hostname()) {
+            AnidbConfig.hostname() -> deadEntries.anidb.contains(animeId)
+            AnilistConfig.hostname() -> deadEntries.anilist.contains(animeId)
+            AnimenewsnetworkConfig.hostname() -> deadEntries.animenewsnetwork.contains(animeId)
+            KitsuConfig.hostname() -> deadEntries.kitsu.contains(animeId)
+            MyanimelistConfig.hostname() -> deadEntries.myanimelist.contains(animeId)
+            else -> throw IllegalArgumentException("Metadata provider [${metaDataProviderConfig.hostname()}] is not supported.")
+        }
+    }
+
     private suspend fun init() {
         initializationMutex.withLock {
             if (!isInitialized) {

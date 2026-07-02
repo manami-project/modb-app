@@ -1,5 +1,6 @@
 package io.github.manamiproject.modb.anidb
 
+import io.github.manamiproject.modb.anidb.AnidbEntryStatus.*
 import io.github.manamiproject.modb.core.config.AnimeId
 import io.github.manamiproject.modb.core.config.MetaDataProviderConfig
 import io.github.manamiproject.modb.core.coroutines.ModbDispatchers.LIMITED_NETWORK
@@ -30,21 +31,21 @@ public class AnidbDownloader(
         val response = httpClient.get(metaDataProviderConfig.buildDataDownloadLink(id).toURL())
         val responseBody = response.bodyAsString()
 
+        check(response.isOk() || response.code == 404) { "Unexpected response code [anidbId=$id], [responseCode=${response.code}]" }
         check(responseBody.neitherNullNorBlank()) { "Response body was blank for [anidbId=$id] with response code [${response.code}]" }
 
-        val responseChecker = AnidbResponseChecker(responseBody).apply {
-            checkIfCrawlerIsDetected()
-        }
+        val responseCheckerResult = AnidbResponseStatusChecker(
+            responseBody = responseBody,
+            metaDataProviderConfig = metaDataProviderConfig,
+        ).checkStatus()
 
-        check(response.isOk() || response.code == 404) { "Unexpected response code [anidbId=$id], [responseCode=${response.code}]" }
-
-        return@withContext when {
-            responseChecker.isHentai() || responseChecker.isRemovedFromAnidb() -> {
+        return@withContext when (responseCheckerResult) {
+            DELETED, HENTAI -> {
                 log.info { "Adding [anidbId=$id] to dead-entries list" }
                 onDeadEntry.invoke(id)
                 EMPTY
             }
-            responseChecker.isAdditionPending() -> ANIDB_PENDING_FILE_INDICATOR
+            UNKNOWN -> throw IllegalStateException("Response type UNKNOWN for [anidbId=$id] and file suffix [${metaDataProviderConfig.fileSuffix()}]")
             else -> responseBody
         }
     }
@@ -58,10 +59,6 @@ public class AnidbDownloader(
          */
         public val instance: AnidbDownloader by lazy { AnidbDownloader() }
 
-        /**
-         * Indicator for pending files which have been downloaded, but cannot be converted.
-         * @since 7.0.0
-         */
-        public const val ANIDB_PENDING_FILE_INDICATOR: String = ">pending<"
+
     }
 }

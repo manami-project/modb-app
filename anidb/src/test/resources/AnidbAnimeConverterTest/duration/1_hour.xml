@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?><anime id="10150" restricted="false">
+    <type>Movie</type>
+    <episodecount>1</episodecount>
+    <startdate>2014-03-14</startdate>
+    <enddate>2014-03-14</enddate>
+    <titles>
+        <title xml:lang="x-jat" type="main">Shimajirou to Kujira no Uta</title>
+        <title xml:lang="ja" type="official">しまじろうとくじらのうた</title>
+    </titles>
+    <relatedanime>
+        <anime id="9131" type="Parent Story">Shimajirou no Wow!</anime>
+    </relatedanime>
+    <url>http://kodomo.benesse.ne.jp/ap/movie/2014-kujira/</url>
+    <creators>
+        <name id="26069" type="Direction">Kawamata Hiroshi</name>
+    </creators>
+    <ratings>
+        <permanent count="3">2.64</permanent>
+        <temporary count="3">2.33</temporary>
+    </ratings>
+    <picture>143739.jpg</picture>
+    <resources>
+        <resource type="1">
+            <externalentity>
+                <identifier>23112</identifier>
+            </externalentity>
+        </resource>
+        <resource type="2">
+            <externalentity>
+                <identifier>20963</identifier>
+            </externalentity>
+        </resource>
+        <resource type="4">
+            <externalentity>
+                <url>http://kodomo.benesse.ne.jp/ap/movie/2014-kujira/</url>
+            </externalentity>
+        </resource>
+        <resource type="9">
+            <externalentity>
+                <identifier>347762</identifier>
+            </externalentity>
+        </resource>
+        <resource type="10">
+            <externalentity>
+                <identifier>17033</identifier>
+            </externalentity>
+        </resource>
+        <resource type="43">
+            <externalentity>
+                <identifier>tt3912854</identifier>
+            </externalentity>
+        </resource>
+    </resources>
+    <tags>
+        <tag id="30" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-09-10">
+            <name>maintenance tags</name>
+            <description>These tags are used for maintenance.</description>
+        </tag>
+        <tag id="1846" parentid="2606" infobox="true" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2015-02-03">
+            <name>kodomo</name>
+            <description>In the context of manga and associated media, the word kodomo refers to a children`s audience roughly for the ages 12 and younger. In Japanese, the word means simply "child", and has no anime/manga-related connotations at all. It does not comprise a style or a genre per se, but rather indicates the publisher`s intended target demographic.</description>
+        </tag>
+        <tag id="2606" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2018-11-05">
+            <name>target audience</name>
+            <description>Anime, like everything else in the modern world, is targeted towards specific audiences, both implicitly by the creators and overtly by the marketing. While categories are associated with specific sex and age groups, this is not a bar on the anime being enjoyed by people who don`t fit into that band; not only do crossover titles exist, but the categories also have a considerable following outside their main demographic, and a person might as well enjoy anime from all categories. Still, does not invalidate the usefulness of marking a title as one of the categories; the same themes will likely be treated differently in anime geared for different audiences. Only one should not jump the gun and assume that a title will be more or less serious or present content in this or that way due to its target audience, or conversely assume the target audience on the content and its presentation alone. As such, the audience categories help form a broad impression of how a title might work with the announced themes, but offer little to no in-depth information about specific content or its treatment.
+The audience categories originate from manga magazines, which group titles of a same intended audience into a magazine that is advertised as belonging to that category, and so manga-based anime will have the category from their parent work. As for anime based on other works, the audience is often debatable, but comparing information such as time slot to the manga-based anime generally helps figure out the most likely possibility.
+If the parent material was classified under multiple audiences over time (for example, it was originally shounen, but then as the plot changed and became more mature, it was reclassified as seinen), and the anime adapts parent material time periods covering multiple audiences, we tag all audiences covered by the anime adaptation.</description>
+        </tag>
+        <tag id="2609" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2018-09-01">
+            <name>original work</name>
+            <description>What the anime is based on! This is given as the original work credit in the OP. Mostly of academic interest, but a useful bit of info, hinting at the possible depth of story.</description>
+        </tag>
+        <tag id="2797" parentid="2609" infobox="true" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2009-05-18">
+            <name>new</name>
+            <description>Not based on anything, the story is a new work, usually made up by the people involved in creating the anime. Generally if an original work (原作) credit is given, it will be to the studio, or director, or other members of the production team.</description>
+        </tag>
+        <tag id="3955" parentid="30" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-09-08">
+            <name>DESCRIPTION MISSING</name>
+            <description>The description for this entry is missing. e.g plot, biography...
+Please help by adding it, and remove this tag afterwards. Thank you.</description>
+        </tag>
+        <tag id="5939" parentid="30" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2013-09-09">
+            <name>CAST MISSING</name>
+            <description>Important characters are missing, either in-part or entirely. This includes basic entry info (name, gender, picture), appear episode range, seiyuu and/or tags.</description>
+        </tag>
+        <tag id="6173" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-09-24">
+            <name>origin</name>
+        </tag>
+        <tag id="7885" parentid="6173" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2021-11-07">
+            <name>Japanese production</name>
+        </tag>
+    </tags>
+    <episodes>
+        <episode id="156606" update="2014-11-07">
+            <epno type="1">1</epno>
+            <length>60</length>
+            <airdate>2014-03-14</airdate>
+            <title xml:lang="en">Complete Movie</title>
+        </episode>
+    </episodes>
+</anime>

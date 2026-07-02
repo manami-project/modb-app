@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?><anime id="7608" restricted="false">
+    <type>unknown</type>
+    <episodecount>0</episodecount>
+    <startdate>1970-01-01</startdate>
+    <titles>
+        <title xml:lang="x-jat" type="main">Wish Angel: Tsubasa wa Chiisai Keredo</title>
+        <title xml:lang="ja" type="official">ウィッシュエンジェル -翼は小さいけれど-</title>
+    </titles>
+    <url>http://www.wishangel.jp/</url>
+    <creators>
+        <name id="115" type="Character Design">Watanabe Hajime</name>
+        <name id="1790" type="Story Composition">Yoshida Reiko</name>
+        <name id="3611" type="Original Work">Satou Jun`ichi</name>
+        <name id="19117" type="Original Work">Encourage Films</name>
+    </creators>
+    <description>* An original anime project by http://anidb.net/cr3611 [Satou Jun`ichi] and http://anidb.net/cr19117 [Encourage Films].
+The production company Encourage Films announced on August 12, 2012 that Wish Angel has been put on hold for now (ANN).</description>
+    <picture>49893.jpg</picture>
+    <resources>
+        <resource type="4">
+            <externalentity>
+                <url>http://www.wishangel.jp/</url>
+            </externalentity>
+        </resource>
+    </resources>
+    <tags>
+        <tag id="30" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-09-10">
+            <name>maintenance tags</name>
+            <description>These tags are used for maintenance.</description>
+        </tag>
+        <tag id="2609" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2018-09-01">
+            <name>original work</name>
+            <description>What the anime is based on! This is given as the original work credit in the OP. Mostly of academic interest, but a useful bit of info, hinting at the possible depth of story.</description>
+        </tag>
+        <tag id="2797" parentid="2609" infobox="true" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2009-05-18">
+            <name>new</name>
+            <description>Not based on anything, the story is a new work, usually made up by the people involved in creating the anime. Generally if an original work (原作) credit is given, it will be to the studio, or director, or other members of the production team.</description>
+        </tag>
+        <tag id="3955" parentid="30" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-09-08">
+            <name>DESCRIPTION MISSING</name>
+            <description>The description for this entry is missing. e.g plot, biography...
+Please help by adding it, and remove this tag afterwards. Thank you.</description>
+        </tag>
+        <tag id="6004" parentid="6173" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-09-10">
+            <name>development hell</name>
+            <description>Due to unforeseen circumstances, the production or release of this anime has been pushed back, stalled, or cancelled one or more times from when it was first announced.
+While some of them have eventually been completed, others might have only had a trailer released or have been changed into another format (e.g. a TV series turned into an OVA).
+Common reasons for a work to become stuck in development hell include creative differences, legal issues, financial problems, scheduling conflicts or the death of an involved creator.</description>
+        </tag>
+        <tag id="6173" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-09-24">
+            <name>origin</name>
+        </tag>
+        <tag id="7885" parentid="6173" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2021-11-07">
+            <name>Japanese production</name>
+        </tag>
+    </tags>
+    <characters>
+        <character id="20067" type="main character in" update="2010-07-26">
+            <name>Amanozuka Tsubasa</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>52004.jpg</picture>
+        </character>
+        <character id="20070" type="main character in" update="2010-07-26">
+            <name>Nekotenshi</name>
+            <gender>unknown</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>52005.jpg</picture>
+        </character>
+    </characters>
+</anime>

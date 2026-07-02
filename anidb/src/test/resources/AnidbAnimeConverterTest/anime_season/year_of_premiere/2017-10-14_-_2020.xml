@@ -1,0 +1,900 @@
+<?xml version="1.0" encoding="UTF-8"?><anime id="10755" restricted="false">
+    <type>Movie</type>
+    <episodecount>3</episodecount>
+    <startdate>2017-10-14</startdate>
+    <enddate>2020-08-15</enddate>
+    <titles>
+        <title xml:lang="x-jat" type="main">Gekijouban Fate/Stay Night: Heaven`s Feel</title>
+        <title xml:lang="ko" type="synonym">Fate/stay night [Heaven`s Feel]</title>
+        <title xml:lang="ko" type="synonym">극장판 : Fate/Stay Night: Heaven`s Feel</title>
+        <title xml:lang="x-jat" type="synonym">Fate: Gekijouban Fate/Stay Night: Heaven`s Feel</title>
+        <title xml:lang="ja" type="short">FSN HF</title>
+        <title xml:lang="x-jat" type="short">F/SN HF</title>
+        <title xml:lang="ja" type="official">劇場版 Fate/stay night [Heaven`s Feel]</title>
+        <title xml:lang="zh" type="official">Fate/stay night [Heaven`s Feel]</title>
+        <title xml:lang="en" type="official">Fate/stay night [Heaven`s Feel]</title>
+        <title xml:lang="fr" type="official">Fate/Stay Night: Heaven`s Feel</title>
+        <title xml:lang="zh-Hant" type="official">Fate stay night [Heaven`s Feel]</title>
+        <title xml:lang="zh-Hans" type="official">剧场版 Fate/stay night [Heaven`s Feel]</title>
+    </titles>
+    <relatedanime>
+        <anime id="3348" type="Alternative Setting">Fate/Stay Night</anime>
+    </relatedanime>
+    <recommendations total="6">
+        <recommendation type="For Fans" uid="367685">Sadly this does not work as a standalone story, nor as an alternate sequel to Fate Zero. It seems the creators assume you have Unlimited Blade Works fresh in memory, as important moments from the beginning of the war (Shirous first encounter with Lancer, the summoning of Saber etc.) are just skipped entirely. Some characters feel completely wasted and plotlines left unresolved.
+I would strongly recommend you watch Fate Zero and UBW first, and if you´re left wanting more after that, give this one a try. Heaven´s Feel does provide an interesting "what if" scenario and some additional lore to those familiar with its predecessors. Also, the animation quality is pretty amazing.</recommendation>
+        <recommendation type="Recommended" uid="136978">This one is definitely the darkest of the three Fate/stay night routes.
+The story is very good (it`s Type-Moon after all), and the pacing is pretty adequate. There wasn`t a single moment when I thought that the story was developing too slow. On the contrary, the beginning is too quick, and skips some part of the story. That`s why I recommend watching either the original series, or Unlimited Blade Works before this one.
+The voice acting is as great as usual, when it comes to Fate/stay night.
+The music was composed by Kajiura Yuki, so it was bound be great.
+Definitely "must see", if you are a Fate/stay night fan. If you enjoyed watching the original series, or Unlimited Blade Works, there is a good chance you will enjoy this one too. Or at least you will watch an alternative turn of events.</recommendation>
+        <recommendation type="Must See" uid="325333">I got into Nasuverse in 2006, saw all the anime so far and I like almost all of them, but this one is on a completely new level of its own!
+-The best(!) fights ever presented in anime, so many of them
+-Understandable and coherent story with a definite end
+-Dark and brutal, but never really depressing
+-Unequivocal romance with everything included
+-Seems to have no limits on what they can show in it
+-All of the characters seems to be their best selves, including villains
+-We learn some of the absolute Nasuverse basics never explained in previous anime
+-etc etc etc
+
+You should watch the 2 other routes + Zero before this, but trust me, it`s more than worth it!</recommendation>
+    </recommendations>
+    <url>http://www.fate-sn.com/hf/</url>
+    <creators>
+        <name id="1117" type="Animation Work">Ufotable</name>
+        <name id="927" type="Original Work">Type-Moon</name>
+        <name id="2174" type="Original Work">Nasu Kinoko</name>
+        <name id="5850" type="Direction">Sudou Tomonori</name>
+        <name id="704" type="Music">Kajiura Yuki</name>
+        <name id="28638" type="Character Design">Ikariya Atsushi</name>
+        <name id="5850" type="Character Design">Sudou Tomonori</name>
+        <name id="6257" type="Character Design">Tabata Hisayuki</name>
+        <name id="5850" type="Chief Animation Direction">Sudou Tomonori</name>
+    </creators>
+    <description>* Based on the third route of the Fate/Stay Night erotic visual novel by http://anidb.net/cr927 [Type-Moon].
+High school junior student http://anidb.net/ch1904 [Emiya Shirou] is twice an orphan. Once, a great fire that destroyed more than a hundred homes took the lives of his biological parents. He was then adopted by http://anidb.net/ch1919 [the man who saved him from that inferno], a man who called himself a magus; however, after a few years, that man, too, died. Shirou was left with a home, the dream to become a superhero, and some extremely limited knowledge of magecraft, the art practised in secret by magi all over the world. Now, unbeknownst to him, the city he lives in, Fuyuki City, is to become the place where a great war will be fought in secret by magi like the man who adopted him.
+For this great war, seven magi shall gather together in Fuyuki. Each magus becomes a Master, and each Master summons a Servant, a spirit of a mighty hero of the past that, due to their almost almighty powers in life and to the faith people have put in them through the times, ascend to a higher level of existence, outside of time. Together, Master and Servant fight against the other teams for the possession of the Holy Grail, a relic said to be almighty and grant any wish, no matter how great. However, in order to allow the winning Master and Servant to be granted one wish each, all other teams must be defeated, and the enemy Servants annihilated. That war is thus called the Holy Grail War. The Holy Grail War has happened four times so far, and the fifth one is about to take place.
+The hero each Servant was in life has fame, and as such their lives are well-known. By knowing the true name of a Servant, one clearly also knows its strengths and weaknesses; thus, it is the custom for each team to hide the identity of their Servant and try to find out those of the other ones. To better hide the identity, the Servants are usually referred to by their classes, http://anidb.net/ch38 [Saber], http://anidb.net/ch1906 [Archer], http://anidb.net/ch1908 [Lancer], http://anidb.net/ch1909 [Rider], http://anidb.net/ch1907 [Berserker], http://anidb.net/ch1910 [Caster], and http://anidb.net/ch1911 [Assassin].
+One night, Shirou witnesses a fight between two servants, Archer and Lancer. To preserve the secrecy of the War, Lancer mortally wounds him. However, a girl who up until now was just a classmate of his and the school idol, http://anidb.net/ch241 [Toosaka Rin], saves his life by pouring all the magical energy from a pendant into fixing his heart. However, he gets attacked by Lancer again, and this time Rin will not be able to save him. Just as he`s about to die for good, he unwittingly summons Saber, who promptly drives Lancer off. The powerful sword user turns to Shirou and asks whether he is her Master, much to his bewilderment. In spite of being just a rank amateur, he now has to fight a war between powerful and experienced magi, and has people he knows turned into enemies.
+— written by Hinoe</description>
+    <ratings>
+        <permanent count="1800">8.41</permanent>
+        <temporary count="1812">7.96</temporary>
+    </ratings>
+    <picture>223741.jpg</picture>
+    <resources>
+        <resource type="1">
+            <externalentity>
+                <identifier>16166</identifier>
+            </externalentity>
+            <externalentity>
+                <identifier>22382</identifier>
+            </externalentity>
+            <externalentity>
+                <identifier>20899</identifier>
+            </externalentity>
+        </resource>
+        <resource type="2">
+            <externalentity>
+                <identifier>33049</identifier>
+            </externalentity>
+            <externalentity>
+                <identifier>33050</identifier>
+            </externalentity>
+            <externalentity>
+                <identifier>25537</identifier>
+            </externalentity>
+        </resource>
+        <resource type="4">
+            <externalentity>
+                <url>http://www.fate-sn.com/hf/</url>
+            </externalentity>
+        </resource>
+        <resource type="6">
+            <externalentity>
+                <identifier>Fate/stay_night:_Heaven's_Feel</identifier>
+            </externalentity>
+        </resource>
+        <resource type="7">
+            <externalentity>
+                <identifier>Fate/stay_night_(アニメ)</identifier>
+            </externalentity>
+        </resource>
+        <resource type="8">
+            <externalentity>
+                <identifier>4698</identifier>
+            </externalentity>
+        </resource>
+        <resource type="9">
+            <externalentity>
+                <identifier>366859</identifier>
+            </externalentity>
+            <externalentity>
+                <identifier>356166</identifier>
+            </externalentity>
+            <externalentity>
+                <identifier>365064</identifier>
+            </externalentity>
+        </resource>
+        <resource type="10">
+            <externalentity>
+                <identifier>20629</identifier>
+            </externalentity>
+        </resource>
+        <resource type="14">
+            <externalentity>
+                <identifier>11</identifier>
+                <identifier>v</identifier>
+            </externalentity>
+        </resource>
+        <resource type="23">
+            <externalentity>
+                <identifier>fate_sn_anime</identifier>
+            </externalentity>
+        </resource>
+        <resource type="26">
+            <externalentity>
+                <identifier>watch?v=3X7JEFF9mvs</identifier>
+            </externalentity>
+            <externalentity>
+                <identifier>watch?v=SnkDLYf8mro</identifier>
+            </externalentity>
+            <externalentity>
+                <identifier>watch?v=3DLix5OKD9w</identifier>
+            </externalentity>
+            <externalentity>
+                <identifier>watch?v=Fqq7oaOYr28</identifier>
+            </externalentity>
+            <externalentity>
+                <identifier>watch?v=r_sf0-o9tS0</identifier>
+            </externalentity>
+            <externalentity>
+                <identifier>watch?v=lK-7S3V9azM</identifier>
+            </externalentity>
+            <externalentity>
+                <identifier>watch?v=SI5NcSypohw</identifier>
+            </externalentity>
+            <externalentity>
+                <identifier>watch?v=AsdsOWs9nWw</identifier>
+            </externalentity>
+        </resource>
+        <resource type="28">
+            <externalentity>
+                <identifier>GXJHM39V0</identifier>
+            </externalentity>
+        </resource>
+        <resource type="43">
+            <externalentity>
+                <identifier>tt8092118</identifier>
+            </externalentity>
+            <externalentity>
+                <identifier>tt4054952</identifier>
+            </externalentity>
+            <externalentity>
+                <identifier>tt8091892</identifier>
+            </externalentity>
+        </resource>
+        <resource type="44">
+            <externalentity>
+                <identifier>283984</identifier>
+                <identifier>movie</identifier>
+            </externalentity>
+            <externalentity>
+                <identifier>390635</identifier>
+                <identifier>movie</identifier>
+            </externalentity>
+            <externalentity>
+                <identifier>390634</identifier>
+                <identifier>movie</identifier>
+            </externalentity>
+        </resource>
+    </resources>
+    <tags>
+        <tag id="55" parentid="6151" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-08-11">
+            <name>awards</name>
+        </tag>
+        <tag id="1802" parentid="2606" infobox="true" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2016-01-24">
+            <name>seinen</name>
+            <description>Seinen, literally "young man", is one of the main demographic classifications applied to manga, and, by extension, to anime, especially manga-based ones. As the name implies, seinen works are marketed primarily to an audience of young men; the age range commonly understood to be the target of such works goes roughly from 17 to somewhere in the 40s.</description>
+            <picurl>181651.jpg</picurl>
+        </tag>
+        <tag id="2094" parentid="2849" infobox="true" weight="500" localspoiler="false" globalspoiler="false" verified="true" update="2015-10-25">
+            <name>magic</name>
+            <description>Magic is the art of purportedly manipulating aspects of reality either by supernatural means or through knowledge of unknown occult laws.</description>
+            <picurl>178878.jpg</picurl>
+        </tag>
+        <tag id="2606" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2018-11-05">
+            <name>target audience</name>
+            <description>Anime, like everything else in the modern world, is targeted towards specific audiences, both implicitly by the creators and overtly by the marketing. While categories are associated with specific sex and age groups, this is not a bar on the anime being enjoyed by people who don`t fit into that band; not only do crossover titles exist, but the categories also have a considerable following outside their main demographic, and a person might as well enjoy anime from all categories. Still, does not invalidate the usefulness of marking a title as one of the categories; the same themes will likely be treated differently in anime geared for different audiences. Only one should not jump the gun and assume that a title will be more or less serious or present content in this or that way due to its target audience, or conversely assume the target audience on the content and its presentation alone. As such, the audience categories help form a broad impression of how a title might work with the announced themes, but offer little to no in-depth information about specific content or its treatment.
+The audience categories originate from manga magazines, which group titles of a same intended audience into a magazine that is advertised as belonging to that category, and so manga-based anime will have the category from their parent work. As for anime based on other works, the audience is often debatable, but comparing information such as time slot to the manga-based anime generally helps figure out the most likely possibility.
+If the parent material was classified under multiple audiences over time (for example, it was originally shounen, but then as the plot changed and became more mature, it was reclassified as seinen), and the anime adapts parent material time periods covering multiple audiences, we tag all audiences covered by the anime adaptation.</description>
+        </tag>
+        <tag id="2607" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2009-04-29">
+            <name>themes</name>
+            <description>Themes describe the very central elements important to the anime stories. They set the backdrop against which the protagonists must face their challenges. Be it School Life, present Daily Life, Military action, Cyberpunk, Law and Order detective work, Sports, or the Underworld. These are only but a few of the more typical backgrounds for anime plots. Add to that a Conspiracy setting with a possible tragic outcome, the Themes span most of the imaginable subject matter relevant to anime.</description>
+        </tag>
+        <tag id="2609" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2018-09-01">
+            <name>original work</name>
+            <description>What the anime is based on! This is given as the original work credit in the OP. Mostly of academic interest, but a useful bit of info, hinting at the possible depth of story.</description>
+        </tag>
+        <tag id="2611" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-09-08">
+            <name>elements</name>
+            <description>Next to Themes setting the backdrop for the protagonists in anime, there are the more detailed plot Elements that centre on character interactions: "What do characters do to each other or what is done to them?". Is it violent Action, an awe-inspiring Adventure in a foreign place, the gripping life of a Detective, a slapstick Comedy, an Ecchi Harem anime, a SciFi epic, or some Fantasy travelling adventure?</description>
+        </tag>
+        <tag id="2617" parentid="2841" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2013-10-15">
+            <name>calling your attacks</name>
+            <description>"GIGAAAAAA DRIIIIIILLL BREAKEEEEEERRR"
+If you can do something more impressive than just throw a punch, your attack(s) must have an equally impressive name. More than that, you have to call it out as you launch the attack. It doesn`t matter if it`s a martial arts move, a magical spell or your secret superweapon, if you can`t say its name, it just isn`t nearly as cool or effective.
+Having a special attack is always a must, but not impressive enough. Every special attack needs a name. A really awesome and outstanding name which is easy to remember and even easier and impressive to yell. Because it just is not enough to name your attack. No, to unleash the full power of your attack, you have to call its name in your most MANLY and LOUDEST voice.
+It does not matter whether it is a martial arts move, a magical spell or flying drills from your mecha, if you can`t call its name, it just isn`t nearly as cool or effective. Not a requirement but wearing shades while calling your attack makes it at least twice as cool, moreover giving your mecha or magical companion shades too results in an immeasurable level of awesomeness, bringing down every enemy just through the POWER OF YOUR VOICE.
+A standard feature of practically every mecha, mahou shoujo, high fantasy, or martial arts anime.
+[Source: TV Tropes]</description>
+            <picurl>144260.jpg</picurl>
+        </tag>
+        <tag id="2620" parentid="2841" weight="600" localspoiler="false" globalspoiler="false" verified="true" update="2012-10-21">
+            <name>battle royale</name>
+            <description>Many characters are removed from their normal lives or lifestyles and thrown into a game where they are forced to battle each other until one survivor remains. Much like the famous film `Battle Royale`.</description>
+        </tag>
+        <tag id="2648" parentid="2849" infobox="true" weight="600" localspoiler="false" globalspoiler="false" verified="true" update="2014-11-04">
+            <name>contemporary fantasy</name>
+            <description>Contemporary fantasy, also known as modern fantasy or indigenous fantasy, is a sub-genre of fantasy, set in the present day. It is perhaps most popular for its sub-genre, urban fantasy.
+These terms are used to describe stories set in the putative real world (often referred to as consensus reality) in contemporary times, in which magic and magical creatures exist, either living in the interstices of our world or leaking over from alternate worlds. It thus has much in common with, and sometimes overlaps with secret history; a work of fantasy in which the magic could not remain secret or does not have any known relationship to known history would not fit into this subgenre. Occasionally certain contemporary fantasy novels will make reference to pop culture.
+Novels in which modern characters travel into alternate worlds, and all the magical action takes place there (except for the portal required to transport them), are not considered contemporary fantasy. Thus, C.S. Lewis`s The Lion, the Witch and the Wardrobe, where all fantasy events take place in the land of Narnia which is reached via a magic wardrobe, would not count as contemporary fantasy; on the other hand, the part of The Magician`s Nephew, where the Empress Jadis gets to London, tries to take over the Earth and clashes with police and a crowd of cockneys, would qualify as such.
+Contemporary fantasy is also to be distinguished from horror fiction, which also often has contemporary settings. When encountering magical events and creatures, the protagonist of a horror novel is horrified, while the protagonist of a fantasy novel (contemporary or otherwise) is filled with a sense of joy and wonder. Horrifying events may happen, but the fundamental distinction is vital.
+In his preface to That Hideous Strength, one of the earlier works falling within this sub-genre, C.S. Lewis explained why, when writing a tale about "magicians, devils, pantomime animals and planetary angels", he chose to start it with a detailed depiction of narrow-minded academic politics at a provincial English university and the schemes of crooked real estate developers: "I am following the traditional fairy-tale. We do not always notice its method, because the cottages, castles, woodcutters and petty kings with which a fairy tale opens have become for us as remote as the witches and ogres to which it proceeds. But they were not remote at all to the men who first made and enjoyed the tales". The same is true for many of the later works in the genre, which often begin with a seemingly normal scene of modern daily life to then disclose supernatural and magical beings and events hidden behind the scenes.
+Source: wiki</description>
+        </tag>
+        <tag id="2715" parentid="7220" infobox="true" weight="600" localspoiler="true" globalspoiler="false" verified="true" update="2019-01-11">
+            <name>rape</name>
+            <description>Rape means to force someone to engage in sexual interaction without their consent. If the rape is not successfully executed (both fellatio and penetration did not occur), tag with http://anidb.net/t7238 [attempted rape] instead.</description>
+            <picurl>212186.jpg</picurl>
+        </tag>
+        <tag id="2800" parentid="2609" infobox="true" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2009-04-20">
+            <name>game</name>
+            <description>Based on an interactive (even if minimally so) form of entertainment software, generally available for PCs, consoles or arcade machines.</description>
+        </tag>
+        <tag id="2803" parentid="2800" infobox="true" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-09-07">
+            <name>erotic game</name>
+            <description>An erotic game (eroge) is a Japanese video or computer game that features erotic content, usually in the form of anime-style artwork. In English, eroge are often called hentai games in keeping with the English slang definition of hentai. This is sometimes shortened to H games. In Japan, eroge are also referred to as 18+ games. Most erotic games are visual novels or dating sims but are not limited to them.
+Any anime adaptation of a game that contains (or had a version that contains) adult content (generally sex scenes), regardless of how some fanboys blabber on how "the story in that visual novel was too good to be labelled as porn!", should definitely get this category added under them. This should make it pretty clear as to what is an erotic game and what is not.</description>
+        </tag>
+        <tag id="2804" parentid="2800" infobox="true" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-09-07">
+            <name>visual novel</name>
+            <description>The two terms are similar yet different, however, the fact that they look and `feel` the same outweighs the technical differences. For clarification, visual novels are considered a sub-genre of adventure games and the term does not cover simulations. While the two genres often share a common visual presentation, dating sims are sometimes considered to be more statistically based than the "choose your own adventure" style of visual novels; basically, the choices you make might change something else than just the story arc (or your next porn pic). Dating sims can involve several technical elements such as a time limit, several statistics such as looks and charm which can be boosted through exercise, or an "attraction meter" which can increase or decrease depending on one`s decisions.</description>
+        </tag>
+        <tag id="2841" parentid="2611" infobox="true" weight="600" localspoiler="false" globalspoiler="false" verified="true" update="2017-12-26">
+            <name>action</name>
+            <description>Action anime usually involve a fairly straightforward story of good guys versus bad guys, where most disputes are resolved by using physical force. It often contains a lot of shooting, explosions and fighting.</description>
+            <picurl>211261.jpg</picurl>
+        </tag>
+        <tag id="2843" parentid="7220" infobox="true" weight="600" localspoiler="true" globalspoiler="false" verified="true" update="2021-01-02">
+            <name>sexual abuse -- TO BE SPLIT AND DELETED</name>
+            <description>This tag is to be split into the following new tags under the http://anidb.net/t7220 [sexual abuse] category. Afterwards, delete this tag.
+
+* http://anidb.net/t7222 [groping / molestation]
+* http://anidb.net/t1306 [chikan] (child tag of groping)
+* http://anidb.net/t7221 [psychological sexual abuse]
+* http://anidb.net/t2715 [rape]
+* http://anidb.net/t7238 [attempted rape]
+</description>
+        </tag>
+        <tag id="2849" parentid="7050" infobox="true" weight="600" localspoiler="false" globalspoiler="false" verified="true" update="2005-05-07">
+            <name>fantasy</name>
+            <description>Fantasy is a genre of fiction that uses magic and other supernatural phenomena as a primary element of plot, theme, or setting. Many works within the genre take place in fictional worlds where magic is common. Fantasy is generally distinguished from science fiction and horror by the expectation that it steers clear of (pseudo-)scientific and macabre themes, respectively, though there is a great deal of overlap between the three (which are subgenres of speculative fiction).
+In popular culture, the genre of fantasy is dominated by its medievalist form, especially since the worldwide success of The Lord of the Rings books by J. R. R. Tolkien. In its broadest sense however, fantasy comprises works by many writers, artists, filmmakers, and musicians, from ancient myths and legends to many recent works embraced by a wide audience today.
+Fantasy is a vibrant area of academic study in a number of disciplines (English, cultural studies, comparative literature, history, medieval studies). Work in this area ranges widely, from the structuralist theory of Tzvetan Todorov, which emphasizes the fantastic as a liminal space, to work on the connections (political, historical, literary) between medievalism and popular culture
+Source: Wiki</description>
+            <picurl>68768.jpg</picurl>
+        </tag>
+        <tag id="3013" parentid="55" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2011-12-10">
+            <name>Newtype Anime Award</name>
+            <description>This anime has won 1 or more Newtype Anime Award(s)</description>
+        </tag>
+        <tag id="3411" parentid="2841" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2017-12-26">
+            <name>fighting</name>
+            <description>For some reason or other one faction has to take it out on some opponent via fight or battle. Typical examples of this are all the anime with "endless pointless fighting" tag.</description>
+            <picurl>211266.jpg</picurl>
+        </tag>
+        <tag id="3597" parentid="2607" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2013-02-26">
+            <name>mythology</name>
+            <description>The anime gets inspirations from many forms of mythologies (either Greek, Egyptian, Nord, etc.) to form its story and setting.</description>
+        </tag>
+        <tag id="6151" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-09-10">
+            <name>technical aspects</name>
+            <description>It may sometimes be useful to know about technical aspects of a show, such as information about its broadcasting or censorship. Such information can be found here.</description>
+        </tag>
+        <tag id="6173" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-09-24">
+            <name>origin</name>
+        </tag>
+        <tag id="7050" parentid="2611" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2019-04-18">
+            <name>speculative fiction</name>
+            <description>Speculative fiction is an umbrella genre encompassing fiction with certain elements that do not exist in the real world, often in the context of supernatural, futuristic or other imaginative themes. This includes, but is not limited to, science fiction, fantasy, superhero fiction, horror, utopian and dystopian fiction, fairytale fantasy, supernatural fiction, as well as combinations thereof.
+Source: Wikipedia</description>
+        </tag>
+        <tag id="7220" parentid="2611" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2018-12-29">
+            <name>sexual abuse</name>
+            <description>Sexual abuse is the act of one person forcing sexual activities upon another. Sexual abuse includes not only physical coercion and sexual assault, especially rape, but also psychological abuse, such as verbal sexual behaviour or stalking, including emotional manipulation.</description>
+        </tag>
+        <tag id="7238" parentid="7220" weight="100" localspoiler="true" globalspoiler="false" verified="true" update="2019-01-11">
+            <name>attempted rape</name>
+            <description>Attempted rape is an unsuccessful attempt at http://anidb.net/t2715 [rape]. For AniDB purposes, generally an "unsuccessful" attempt is where both fellatio and penetration did not occur. Discretion should be applied on a case-by-case basis.</description>
+        </tag>
+        <tag id="7478" parentid="3597" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2019-11-22">
+            <name>Matter of Britain</name>
+            <description>The Matter of Britain is the body of medieval literature and legendary material associated with Great Britain and Brittany, and the legendary kings and heroes associated with it, particularly King Arthur. It was one of the three great story cycles recalled repeatedly in medieval literature, together with the Matter of France, which concerned the legends of Charlemagne, and the Matter of Rome, which included material derived from or inspired by classical mythology.
+Source: Wikipedia</description>
+            <picurl>241408.jpg</picurl>
+        </tag>
+        <tag id="7706" weight="0" localspoiler="false" globalspoiler="false" verified="false" update="2020-09-20">
+            <name>death game</name>
+        </tag>
+        <tag id="7885" parentid="6173" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2021-11-07">
+            <name>Japanese production</name>
+        </tag>
+    </tags>
+    <characters>
+        <character id="38" type="main character in" update="2017-11-12">
+            <rating votes="2959">8.40</rating>
+            <name>Saber</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <description>Saber, an agile and powerful warrior. Known as the King of Knights, she maintains a high code of honour. Saber is loyal, independent, and reserved; she appears cold, but is actually suppressing her emotions to focus on her goals. Her class is considered the "Most Outstanding", with excellent ratings in all categories.
+In Fate/Zero, though she and Emiya Kiritsugu are Servant and Master seeking the same ultimate goal of peace, their differing ideological perspectives result in a strained relationship where Kiritsugu does not directly acknowledge Saber. After Kiritsugu summoned Saber, he made Irisviel hide Avalon - which had served as a catalyst to the summoning - inside her body so to serve as insurance while she performed her act of fake Master. Irisviel`s and Saber`s role at the time was to openly take action and serve as a decoy in order to lure out enemies, while Kiritsugu worked in the shadows with his assistant, Hisau Maiya. Because Saber could not dematerialise her spiritual body, she disguised herself as a man while staying at Irisviel`s side.
+In the Fate route, because her master Emiya Shirou cannot effectively provide her with Mana, she minimises her activity to preserve what she has. Saber is bewildered by Shirou`s "protective" tendencies, and believes his erratic and reckless behaviour jeopardise her chances of winning the Holy Grail War.</description>
+            <picture>209482.jpg</picture>
+            <seiyuu id="12" picture="263458.jpg">Kawasumi Ayako</seiyuu>
+        </character>
+        <character id="241" type="main character in" update="2015-04-20">
+            <rating votes="3464">8.36</rating>
+            <name>Toosaka Rin</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <description>Toosaka Rin is a model student and idol of Shirou`s school, Rin is secretly a sorceress and Master in the Holy Grail War. She is descended from a long line of sorcerers, and though lacking a formal magic education, is extremely powerful in her own right. Her father was killed in the 4th Holy Grail War, and she has trained since his death to succeed him. She is perceptive, resourceful and avidly competitive. Although she tried to summon a Saber-class Servant, she accidentally called Archer instead.
+Rin excels in transformation of energy, which includes storage of Mana in objects. She stores all of her mana in jewels that she charges daily to bypass her body`s natural limitations on releasing energy. She can detonate her jewels on contact with an object, resulting in a release of energy equivalent to an attack rank of "A". Her most common offensive spell is "Gandr", which fires concentrated mana in the form of a black orb from her finger. On contact, the spell amplifies physical conditions -- a person who is already sick, for example, becomes far sicker upon being hit. Rin is also proficient with reinforcement sorcery, which she uses on her legs to give herself more speed.
+Source: Wiki</description>
+            <picture>172322.jpg</picture>
+            <seiyuu id="210" picture="263457.jpg">Ueda Kana</seiyuu>
+        </character>
+        <character id="1887" type="cameo appearance in" update="2012-01-12">
+            <rating votes="299">8.76</rating>
+            <name>Aozaki Touko</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <description>Aozaki Touko is a very powerful magus who specializes in puppet making and runs a business called Garan no Dou, literally meaning Hall of Monastery. The business is de jure a design agency that sells its work (mostly architectural work) to whoever is interested, but the agency`s good taste is debatable and http://anidb.net/ch1889 [Kokutou Mikiya] believes that Touko is simply forcing what she wants to make onto the customers. As the design company officially only consists of herself and Mikiya, she is the sole designer while Mikiya takes the job of her secretary. However, the design work is partly a cover to its de facto job, which is something more akin to a detective agency for supernatural cases. For those jobs, Mikiya isn`t really a secretary, but an actual investigator, and Touko hired him for his ability as one, seeing he managed to trace her to Garan no Dou even though it`s surrounded by bounded fields and nearly impossible to find. Garan no Dou`s job is so good even the Mage`s Association hires it through Touko`s connection, despite the fact Touko is actually on the run from them. She is on the run because the Mage`s Association has placed a Sealing Designation on her, which means that her skill and knowledge about a unique subject, which can`t be acquired through study (in her case, puppet making), are too strong and useful to be allowed to be lost; due to various reasons, the Designation effectively means doom for a magus. Indeed, she is so skilled that even before the Designation was placed she had already been dubbed Orange; receiving a color is one of the highest recognitions of skill in the Association. She is the sister of Tsukihime`s http://anidb.net/ch1945 [Aozaki Aoko], with whom she does not share a particularly good relationship, for reasons such as Aoko having inherited family head status and having been dubbed Blue, a more powerful color which Touko wanted, and Touko using her name to get money from the Association. She also has a role in the Heaven`s Feel route of the Fate/Stay Night game, in which
+she appears as the unnamed maker of http://anidb.net/ch1904 [Emiya Shirou]`s new body, which is actually a puppet, in the True End`s epilogue, after his original body was destroyed.</description>
+            <picture>79802.jpg</picture>
+        </character>
+        <character id="1904" type="main character in" update="2015-04-20">
+            <rating votes="1469">2.87</rating>
+            <name>Emiya Shirou</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <description>Emiya Shirou is the main character of http://anidb.net/a3348 [Fate/Stay Night], a serious and honest teenager as well as a hard worker who enjoys helping others. He is in his second year of High School, and his hobbies include fixing a variety of broken things, from VCRs to stoves, as well as cooking and cleaning. He has some slight proficiency with reinforcement sorcery, though his foster father http://anidb.net/ch1919 [Emiya Kiritsugu] did not encourage him to improve it. Initially, he is confused about the Holy Grail War and irrationally attempts to shield others, even his own servant Saber, from danger.</description>
+            <picture>172321.jpg</picture>
+            <seiyuu id="221" picture="263540.jpg">Sugiyama Noriaki</seiyuu>
+        </character>
+        <character id="1905" type="main character in" update="2015-04-20">
+            <rating votes="852">7.48</rating>
+            <name>Matou Sakura</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <description>A student in her first year of high school, Sakura is the sister of Shinji Matou. After Shirou`s father Kiritsugu died, Sakura often visited Shirou`s home to help him with his daily chores. She is outwardly shy and timid, but possesses great inner strength. Sakura has a long standing and obvious crush on Shirou Emiya.</description>
+            <picture>172326.jpg</picture>
+            <seiyuu id="232" picture="148706.jpg">Shitaya Noriko</seiyuu>
+        </character>
+        <character id="1906" type="secondary cast in" update="2015-04-20">
+            <rating votes="726">7.93</rating>
+            <name>Archer</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <description>He is the Servant of one of the series` main heroines, Toosaka Rin. Archer is sarcastic and cynical - but under his hardened exterior lies a complex and dark personality that unfolds throughout the story. Though skilled with ranged weapons, he can hold his own in melee combat. Archer considers Shirou Emiya`s idealism to be weak and delusional, recognising Shirou`s mentality of "wanting to save everyone" as naïve and impossible.
+Archer is actually an older version of Emiya Shirou, who actually became a heroic spirit in his own right in the future. Embittered and betrayed by his ideals, he participates in the Holy Grail War in an opportunity to kill his past self and in the ensuing paradox free himself from the path which led to his betrayal.</description>
+            <picture>172323.jpg</picture>
+            <seiyuu id="200" picture="17015.jpg">Suwabe Jun`ichi</seiyuu>
+        </character>
+        <character id="1907" type="secondary cast in" update="2017-11-12">
+            <rating votes="202">4.97</rating>
+            <name>Berserker</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <description>The Servant of Illya, he is a swarthy giant with adamantine skin and immense strength. He wields a colossal stone Axe-Club, and is capable of causing massive destruction with the mere backlash of his swings. As a Berserker, he was stripped of his sanity and reason, acting feral and animalistic in combat. Berserkers are praised as members of the "Strongest" class, though they are difficult to control. Illya, however, appears to have little trouble managing Berserker.</description>
+            <picture>172330.jpg</picture>
+        </character>
+        <character id="1908" type="secondary cast in" update="2015-04-20">
+            <rating votes="306">7.68</rating>
+            <name>Lancer</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <description>The first hostile Servant to appear in this story, Lancer is a fierce but balanced warrior who enjoys combating a worthy opponent. He has a blunt, playful attitude and takes a very carefree approach to life, but is quick to work himself into a frenzy during a heated battle. While he follows the cruel orders of his Master out of his duty as a Servant, Lancer has more than once ignored and gone against those orders to follow his own beliefs. Lancers are hailed as the "Most Agile" of Servant classes.</description>
+            <picture>172324.jpg</picture>
+            <seiyuu id="211" picture="17028.jpg">Kanna Nobutoshi</seiyuu>
+        </character>
+        <character id="1909" type="secondary cast in" update="2015-04-20">
+            <rating votes="503">7.39</rating>
+            <name>Rider</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <description>She is the Servant of Shinji, first seen scouting around Homurabara Gakuen. Rider is silent, sultry, and vigilant, never hesitating to shield her Master from harm. With Shinji incapable of lending any Mana to her, she is forced to seek alternative means to augment her abilities. To compensate for this weakened state, Rider employs covert battle tactics and takes full advantage of any territory around her. Her weapon of choice is a pair of long iron nails fastened to opposite ends a single chain, which she effectively thrusts from distances.</description>
+            <picture>172331.jpg</picture>
+            <seiyuu id="82" picture="216596.jpg">Asakawa Yuu</seiyuu>
+        </character>
+        <character id="1910" type="secondary cast in" update="2015-04-20">
+            <rating votes="268">5.98</rating>
+            <name>Caster</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <description>An honoured guest of the Ryudou family, permitted to live at their temple until the preparations for her marriage have been finalised. A gorgeous and talented yet mysterious woman of high stature, her presence has attracted the attention of many trainee monks.</description>
+            <picture>172332.jpg</picture>
+            <seiyuu id="222" picture="11000.jpeg">Tanaka Atsuko</seiyuu>
+        </character>
+        <character id="1911" type="secondary cast in" update="2015-04-20">
+            <rating votes="203">5.49</rating>
+            <name>Assassin</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <description>He was summoned by Caster as a guardian and watchmen for the front gate of the Ryuudou Temple. As an improper servant, Assassin is entirely dependent on Caster for mana and cannot move freely beyond the grounds of Ryuudouji. Furthermore, he lacks most of the usual parameters and abilities granted to his class. Because of his limited status, Assassin cares little for the Holy Grail, and outside of his duties to Caster, he only seeks to enjoy a decent sword fight.</description>
+            <picture>172334.jpg</picture>
+            <seiyuu id="233" picture="228661.jpg">Miki Shin`ichirou</seiyuu>
+        </character>
+        <character id="1912" type="secondary cast in" update="2015-04-26">
+            <rating votes="403">6.36</rating>
+            <name>Gilgamesh</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <description>An arrogant, selfish, and enigmatic Archer-class Servant. He appears familiar with Fuyuki City and claims to have a past relationship with Saber. Typically clad in an ornate golden armour, he possesses an immense number of Noble Phantasms, though none are representative of his true identity.</description>
+            <picture>62797.png</picture>
+            <seiyuu id="236" picture="265564.jpg">Seki Tomokazu</seiyuu>
+        </character>
+        <character id="1913" type="secondary cast in" update="2015-06-22">
+            <rating votes="646">7.76</rating>
+            <name>Illyasviel von Einzbern</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <description>A young German aristocrat, she travelled to Japan to participate in the Holy Grail War as a Master. Illyasviel has an angelic appearance and unsurpassed potential as a Master. She lives in a castle on the outskirts of Fuyuki City, accompanied only by her Servant and two maids. Illyasviel asks those she feels comfortable around to call her "Ilya". Her mother, Irisviel von Einzbern, fought alongside Saber and Emiya Kiritsugu during the previous Holy Grail war.</description>
+            <picture>172329.jpg</picture>
+            <seiyuu id="15655" picture="44791.jpg">Kadowaki Mai</seiyuu>
+        </character>
+        <character id="1914" type="secondary cast in" update="2015-04-20">
+            <rating votes="444">1.98</rating>
+            <name>Matou Shinji</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <description>The older brother of Sakura, and an old friend of Shirou. The son of Byakuya Matou. Although chauvinistic and narcissistic, Shinji is very popular as Vice-Captain of the Archery Dojo. Like Rin, he is of a distinguished lineage of sorcerers, though the Matou blood has thinned and no longer produces heirs naturally capable of sorcery. Shinji feels uncomfortable with his sister`s daily visits to Shirou`s home. He has an open crush on Rin, but she does not return his favours.</description>
+            <picture>172327.jpg</picture>
+            <seiyuu id="224" picture="264190.jpg">Kamiya Hiroshi</seiyuu>
+        </character>
+        <character id="1916" type="secondary cast in" update="2015-04-20">
+            <rating votes="950">6.72</rating>
+            <name>Kotomine Kirei</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <description>Through an agreement between the Mages` Association and the Church, the Holy Grail Wars are moderated by a priest. Kirei`s father was the mediator for the 4th Holy Grail War, and when he died, Kirei felt obligated to replace him. His selection as mediator is unusual, for Kirei is a member of both the Church and Mages` Association, organisations on hostile terms with one another. Since the death of Rin`s father, he has also acted as an indirect caretaker for Rin. Although ranked lower in the Church hierarchy than Ciel (from Tsukihime), Kirei employs many of the same techniques and weapons she does.</description>
+            <picture>172328.jpg</picture>
+            <seiyuu id="226" picture="10969.jpeg">Nakata Jouji</seiyuu>
+        </character>
+        <character id="1917" type="appears in" update="2015-04-20">
+            <rating votes="95">2.75</rating>
+            <name>Kuzuki Souichirou</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <description>A well-built man with angular glasses, Kuzuki is the strict homeroom instructor of Rin`s class. He primarily lectures on World History, though he also holds classes in Ethics. Kuzuki is well respected among staff and students, but he is widely regarded as austere and impersonal.</description>
+            <picture>172333.jpg</picture>
+            <seiyuu id="3185" picture="171529.jpg">Terasoma Masaki</seiyuu>
+        </character>
+        <character id="1919" type="appears in" update="2021-05-16">
+            <rating votes="1069">7.91</rating>
+            <name>Emiya Kiritsugu</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <description>Emiya Kiritsugu is a professional assassin and hitman. He dedicated most of his life to becoming a "hero of justice", a defender of humankind, through killing people who tended to bring catastrophe or war. He eventually noticed that he would never be able to do that with human abilities alone, and sought the miracle of the Holy Grail to stop conflict. In the aftermath of the 4th Holy Grail War, he saved the life of http://anidb.net/ch1904 [Emiya Shirou], later becoming the boy`s foster father and finally giving up on his quest. He is also a magus, but he never made any serious attempts to train the unskilled Shirou in his craft, in spite of the latter`s insistent requests. He dies in the years between the 4th and 5th Holy Grail Wars.</description>
+            <picture>163084.jpg</picture>
+            <seiyuu id="244" picture="11288.jpeg">Koyama Rikiya</seiyuu>
+        </character>
+        <character id="1921" type="secondary cast in" update="2015-04-20">
+            <rating votes="477">5.79</rating>
+            <name>Fujimura Taiga</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <description>Taiga is an English teacher at Shirou`s school, homeroom instructor of Shirou`s class and the supervising teacher for the Archery Dojo. She is widely called "Tiger", a nickname she dislikes ("Taiga" and "Tiger" sound similar in Japanese), though Shirou refers to her as "Fuji-nee" (older sister Fuji). After Kiritsugu died, Taiga became Shirou`s guardian and has been living with him for several years. Taiga and Shirou are very close, and she regards him as a younger brother.
+Taiga is largely a comic relief character; she is irresponsible, clumsy, and prone to sporadic bouts of extreme lethargy or zest. She lives with Shirou under the pretences of being his caretaker, although she cannot cook and lacks many other domestic skills, relying on Shirou to maintain her welfare. Shirou, however, appreciates Taiga`s company, and is more than happy to care for her. When Shirou is in any need of advice, Taiga can be depended on to be a confidante for his worries.</description>
+            <picture>172325.jpg</picture>
+            <seiyuu id="229" picture="152363.jpg">Itou Miki</seiyuu>
+        </character>
+        <character id="1922" type="appears in" update="2011-04-09">
+            <rating votes="70">4.62</rating>
+            <name>Mitsuzuri Ayako</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <description>A stellar athlete, and captain of the archery dojo. Ayako and Rin are actively competing to see who will be the first to snag a boyfriend. Ayako often asks Shirou to come to the archery dojo and watch them practice.
+Ayako is seen with Shinji after her disappearance, although Shinji denies it when asked by Shirou. After she is attacked, Ayako is not seen again.</description>
+            <picture>16641.jpg</picture>
+            <seiyuu id="238" picture="49561.jpg">Mizusawa Fumie</seiyuu>
+        </character>
+        <character id="1924" type="appears in" update="2011-04-09">
+            <rating votes="73">3.23</rating>
+            <name>Ryuudou Issei</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <description>Issei is the Student Body President of Shirou`s school, and another close friend of Shirou. Issei often asks Shirou to fix broken equipment for the Student Body to try and reduce save money on the school`s bill. Issei and Shirou often have lunch together in the Student Body`s office where they talk about what ever comes to mind. His father is the head priest of Ryuudouji Temple, and his brother was a classmate of Taiga and Neko-san. He dislikes Rin and seems to have some sort of fear of females, although he seems to be unusually at ease around Saber.
+Issei unknowingly tells Shirou that Caster is at the Temple.</description>
+            <picture>49451.jpg</picture>
+            <seiyuu id="231" picture="23486.jpg">Madono Mitsuaki</seiyuu>
+        </character>
+        <character id="1934" type="appears in" update="2013-05-23">
+            <rating votes="82">3.99</rating>
+            <name>Sella</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <description>Sella and Leysritt are Ilya`s maids, but they act as her caretakers and instruct her in the secrets of sorcery. Like Ilya, they both have silky blonde hair and deep crimson eyes. Sella is rather fickle and insecure (especially regarding her body), and is very suspicious of Emiya Shirou.</description>
+            <picture>137030.jpg</picture>
+            <seiyuu id="40833" picture="198636.jpg">Nanao Haruhi</seiyuu>
+        </character>
+        <character id="1939" type="appears in" update="2013-05-23">
+            <rating votes="114">5.72</rating>
+            <name>Leysritt</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <description>Sella and Leysritt are Ilya`s maids, but they act as her caretakers and instruct her in the secrets of sorcery. Like Ilya, they both have silky blonde hair and deep crimson eyes. Leysritt is casual, and has affection for Shirou because his presence makes Ilya happy. Leysritt is skilled in combat, particularly with halberds.</description>
+            <picture>137031.jpg</picture>
+            <seiyuu id="249" picture="46910.jpg">Miyagawa Miho</seiyuu>
+        </character>
+        <character id="37277" type="secondary cast in" update="2012-05-27">
+            <rating votes="99">2.70</rating>
+            <name>Matou Zouken</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <description>Matou Zouken is the head of the Matou family and a specialist in worm and insect magecraft. He was originally known as Makiri Zolgen, but he first changed his name to Zouken, and eventually also his family name to Matou. He is quite ancient, being actually some centuries old, having much prolonged his lifespan by means similar to those of vampirism. His goal is to obtain eternal life, and, under his direction, the Matou family fights for the Holy Grail with that objective in mind.</description>
+            <picture>62482.jpg</picture>
+            <seiyuu id="2080" picture="303384.jpg">Tsukayama Masane</seiyuu>
+        </character>
+        <character id="37943" type="secondary cast in" update="2024-01-28">
+            <rating votes="12">2.56</rating>
+            <name>Assassin</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>299139.jpg</picture>
+            <seiyuu id="1616" picture="264192.jpg">Inada Tetsu</seiyuu>
+        </character>
+        <character id="37946" type="secondary cast in" update="2018-02-11">
+            <rating votes="95">8.28</rating>
+            <name>Saber Alter</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <description>Saber Alter is what becomes of http://anidb.net/ch38 [Saber] after being consumed by evil. This version of Saber appears in the Heaven`s Feel route of the Fate/Stay Night visual novel.
+Saber becomes Saber Alter after being consumed and regurgitated by http://anidb.net/ch39799 [Dark Sakura]. In that situation, Saber has a much stronger offensive ability when compared to how she was as http://anidb.net/ch1904 [Emiya Shirou]`s servant, but the evil in her decreases other abilities, like her magical resistance. She doesn`t lose her mind, but her personality is twisted, and her inherent character alignment changes from Lawful Good to Lawful Evil. Her ties with her original objectives and the people she cared for are severed, and her choices spin around Dark Sakura`s goals instead.</description>
+            <picture>65526.png</picture>
+            <seiyuu id="12" picture="263458.jpg">Kawasumi Ayako</seiyuu>
+        </character>
+        <character id="39799" type="main character in" update="2020-06-01">
+            <rating votes="54">7.11</rating>
+            <name>Kuro Sakura</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <description>Kuro Sakura, more often called Dark Sakura, is a version of http://anidb.net/ch1905 [Matou Sakura] after being consumed by evil. Any further details are spoilers to the Heaven`s Feel route of the Fate/Stay Night visual novel and http://anidb.net/a10755 [its anime adaptation].
+In Heaven`s Feel, it is revealed that Sakura is not biologically a member of the Matou family; as the Matou no longer had heirs capable of magecraft, http://anidb.net/ch37277 [Matou Zouken] took her for adoption. This is also referred to in http://anidb.net/a8160 [Fate/Zero].
+To make Sakura compatible with his family`s magecraft, Zouken implants worms in her. To increase their efficiency, he regularly has her abused in several ways. Along with the worms he implanted in Sakura, he also placed fragments of the Holy Grail from the 4th Holy Grail War in her, in order to turn her into a version of the Holy Grail for his own use. In doing that, he places a link between her and the evils that reside in the Grail.
+Throughout the course of the 5th Holy Grail War, Zouken uses Sakura and http://anidb.net/ch37943 [his own Servant] to crush the enemy camps. Sakura absorbs not only several Servants but even innocent people; in the process, she also regurgitates the previously-absorbed http://anidb.net/ch38 [Saber] as http://anidb.net/ch37946 [Saber Alter]. As the story progresses, she quickly falls into despair, and eventually gives in to the evil in her. Upon doing so, she becomes Dark Sakura, a rage-driven version of Sakura that is only interested in bringing the evils in the world to life through the activation of the Holy Grail.</description>
+            <picture>247924.jpg</picture>
+            <seiyuu id="232" picture="148706.jpg">Shitaya Noriko</seiyuu>
+        </character>
+        <character id="40592" type="appears in" update="2015-08-30">
+            <rating votes="12">2.60</rating>
+            <name>Kischur Zelretch Schweinorg</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <description>Kischur Zelretch Schweinorg is one of five living magicians capable of true magic beyond modern science or magecraft. He has control over the Second Magic, "Kaleidoscope", which allows for the "Operation of Parallel Worlds." He fought and defeated Brunestud of the Crimson Moon, the king of vampires, but was bitten in the process and became a Dead Apostle Ancestor, a vampire, thus attaining immortality.
+He is one of the few characters who appear in more than one of the stories of the Nasuverse, appearing in http://anidb.net/a1015 [Tsukihime] manga and Prologue in the Plus Period artbook, and the Heaven`s Feel scenario of http://anidb.net/a3348 [Fate/stay night].
+He supervised the creation of the Holy Grail War ritual, and was a master to the heads of Makiri, Toosaka and Einzbern families at the time.
+Source: typemoon.wikia.com</description>
+            <picture>80028.jpg</picture>
+            <seiyuu id="3096" picture="186182.jpg">Sawaki Ikuya</seiyuu>
+        </character>
+        <character id="46265" type="appears in" update="2012-06-24">
+            <rating votes="48">3.36</rating>
+            <name>Emiya Shirou</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>90048.jpg</picture>
+            <seiyuu id="140" picture="170306.jpg">Noda Junko</seiyuu>
+        </character>
+        <character id="94437" type="appears in" update="2018-03-10">
+            <rating votes="2">5.80</rating>
+            <name>Justeaze Lizrich von Einzbern</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <description>Justeaze Lizrich von Einzbern is the head of the Einzbern family at the founding of the Holy Grail War.
+Source: TYPE-MOON Wiki</description>
+            <picture>214615.jpg</picture>
+            <seiyuu id="74" picture="84835.jpg">Oohara Sayaka</seiyuu>
+        </character>
+    </characters>
+    <episodes>
+        <episode id="161606" update="2014-07-27">
+            <epno type="4">T1</epno>
+            <length>3</length>
+            <airdate>2014-07-27</airdate>
+            <title xml:lang="ja">Heaven`s Feel PV01</title>
+            <title xml:lang="en">PV 1 (2:25)</title>
+            <title xml:lang="x-jat">Heaven`s Feel PV01</title>
+        </episode>
+        <episode id="170348" update="2015-07-29">
+            <epno type="4">T2</epno>
+            <length>1</length>
+            <airdate>2015-06-29</airdate>
+            <title xml:lang="ja">Heaven`s Feel CM01</title>
+            <title xml:lang="en">CM 01 (15 sec)</title>
+            <title xml:lang="x-jat">Heaven`s Feel CM01</title>
+        </episode>
+        <episode id="176379" update="2016-04-03">
+            <epno type="4">T3</epno>
+            <length>1</length>
+            <airdate>2016-03-27</airdate>
+            <title xml:lang="ja">Heaven`s Feel / PV</title>
+            <title xml:lang="en">PV 02 - AnimeJapan 2016 (49 sec)</title>
+            <title xml:lang="x-jat">Heaven`s Feel / PV</title>
+        </episode>
+        <episode id="183372" update="2021-09-01">
+            <epno type="4">T4</epno>
+            <length>2</length>
+            <airdate>2016-12-31</airdate>
+            <title xml:lang="ja">第一章/予告編第一弾</title>
+            <title xml:lang="en">1st Movie PV 01 (1:12)</title>
+            <title xml:lang="x-jat">Daiisshou / Yokokuhen Daiichidan</title>
+        </episode>
+        <episode id="184791" update="2017-10-11">
+            <epno type="1">1</epno>
+            <length>120</length>
+            <airdate>2017-10-14</airdate>
+            <rating votes="24">7.97</rating>
+            <title xml:lang="ja">presage flower</title>
+            <title xml:lang="en">Presage Flower</title>
+            <title xml:lang="x-jat">Presage Flower</title>
+            <resources>
+                <resource type="28">
+                    <externalentity>
+                        <identifier>G9DUE1331</identifier>
+                    </externalentity>
+                </resource>
+            </resources>
+        </episode>
+        <episode id="189575" update="2017-07-30">
+            <epno type="4">T6</epno>
+            <length>1</length>
+            <airdate>2017-07-27</airdate>
+            <title xml:lang="ja">劇場版「Fate/stay night[Heaven`s Feel]」 第3弾キービジュアル紹介映像</title>
+            <title xml:lang="en">1st Movie PV 03 (0:30)</title>
+            <title xml:lang="x-jat">Gekijouban "Fate/stay Night [Heaven`s Feel]" Dai 3 Dan Key Visual Shoukai Eizou</title>
+        </episode>
+        <episode id="189576" update="2017-07-30">
+            <epno type="4">T5</epno>
+            <length>2</length>
+            <airdate>2017-07-01</airdate>
+            <title xml:lang="ja">劇場版「Fate/stay night[Heaven`s Feel]」第一章/予告編第二弾 | 2017年10月14日公開</title>
+            <title xml:lang="en">1st Movie PV 02 (1:30)</title>
+            <title xml:lang="x-jat">Gekijouban Fate/stay night[Heaven`s Feel] Daiisshou | 2017-nen 10-gatsu Juuyokka Koukai</title>
+        </episode>
+        <episode id="190544" update="2017-08-28">
+            <epno type="4">T7</epno>
+            <length>2</length>
+            <airdate>2017-08-26</airdate>
+            <title xml:lang="ja">Fate/stay night [Heaven`s Feel] I. presage flower Theatrical Trailer</title>
+            <title xml:lang="en">1st Movie PV 04 (1:35): Fate/stay night [Heaven`s Feel] I. presage flower Theatrical Trailer</title>
+            <title xml:lang="x-jat">Fate/stay night [Heaven`s Feel] I. presage flower Theatrical Trailer</title>
+            <summary>AniplexUS official trailer #1 for Heaven`s Feel I. presage flower.</summary>
+        </episode>
+        <episode id="191425" update="2017-10-04">
+            <epno type="4">T8</epno>
+            <length>2</length>
+            <airdate>2017-09-30</airdate>
+            <title xml:lang="ja">Fate/stay night: Heaven`s Feel I. presage flower (2017) Trailer 3</title>
+            <title xml:lang="en">1st Movie PV 05 (1:37): Fate/stay night: Heaven`s Feel I. presage flower (2017) Trailer 3</title>
+            <title xml:lang="x-jat">Fate/stay night: Heaven`s Feel I. presage flower (2017) Trailer 3</title>
+        </episode>
+        <episode id="191662" update="2019-01-10">
+            <epno type="1">2</epno>
+            <length>120</length>
+            <airdate>2019-01-12</airdate>
+            <rating votes="19">8.84</rating>
+            <title xml:lang="ja">lost butterfly</title>
+            <title xml:lang="en">Lost Butterfly</title>
+            <title xml:lang="x-jat">Lost Butterfly</title>
+            <resources>
+                <resource type="28">
+                    <externalentity>
+                        <identifier>GX9UQP00G</identifier>
+                    </externalentity>
+                </resource>
+            </resources>
+        </episode>
+        <episode id="200979" update="2019-01-01">
+            <epno type="4">T9</epno>
+            <length>1</length>
+            <airdate>2018-05-09</airdate>
+            <title xml:lang="ja">劇場版「Fate/stay night [Heaven`s Feel]」 Ⅱ.lost butterfly ティザートレーラー│2018年公開予定</title>
+            <title xml:lang="en">2nd Movie PV 01 (0:30): Fate/stay night: Heaven`s Feel II. lost butterfly Teaser Trailer 2018 Coming Soon</title>
+            <title xml:lang="x-jat">Gekijouban Fate/stay Night [Heaven`s Feel] II. Lost Butterfly Teaser Trailer | 2018-nen Koukai Yotei</title>
+        </episode>
+        <episode id="210986" update="2018-12-16">
+            <epno type="4">T10</epno>
+            <length>2</length>
+            <airdate>2018-12-15</airdate>
+            <title xml:lang="ja">劇場版「Fate stay night Heaven`s Feel」 Ⅱ lost butterfly 正式預告 2019年1月12日日本全國公開</title>
+            <title xml:lang="en">2nd Movie PV 01 (0:30): Fate/stay night: Heaven`s Feel II. lost butterfly 2019-01-12 Japan Nationwide Release</title>
+            <title xml:lang="x-jat">Gekijouban Fate/stay Night [Heaven`s Feel] II. Lost Butterfly 2019-nen 1-gatsu 12-nichi Nipponzenkoku Koukai</title>
+        </episode>
+        <episode id="211842" update="2020-06-27">
+            <epno type="1">3</epno>
+            <length>125</length>
+            <airdate>2020-08-15</airdate>
+            <rating votes="10">9.57</rating>
+            <title xml:lang="ja">spring song</title>
+            <title xml:lang="en">Spring Song</title>
+            <title xml:lang="x-jat">Spring Song</title>
+            <resources>
+                <resource type="28">
+                    <externalentity>
+                        <identifier>G4VUQE229</identifier>
+                    </externalentity>
+                </resource>
+            </resources>
+        </episode>
+        <episode id="220011" update="2019-08-31">
+            <epno type="4">T11</epno>
+            <length>2</length>
+            <title xml:lang="en">2nd Movie PV 02 (1:29): Fate/stay night: Heaven`s Feel II. lost butterfly Teaser Trailer 2019/1/12</title>
+            <summary>castle in forest, fast forward on castle wall, white women, type-mono x ufotable ...</summary>
+        </episode>
+        <episode id="220012" update="2019-08-31">
+            <epno type="4">T12</epno>
+            <length>1</length>
+            <title xml:lang="en">2nd Movie PV 01 (0:32): Fate/stay night: Heaven`s Feel II. lost butterfly Teaser</title>
+            <summary>women on  snowing street with umbrella, flashing images (red, women, couple on bench, lancer, berserk, rider, death, saber) hand in water, red head men...</summary>
+        </episode>
+        <episode id="220013" update="2019-08-31">
+            <epno type="4">T13</epno>
+            <length>2</length>
+            <title xml:lang="en">2nd Movie PV 01 (1:33): Fate/stay night: Heaven`s Feel II. lost butterfly Preview</title>
+            <summary>type-moon x ufotable, decaying lower pedal, title showing up, some crystals, green stuff, fire particles, green emeralds, something glowing red, 7 statues are light up with some light from the top...</summary>
+        </episode>
+        <episode id="220014" update="2019-08-31">
+            <epno type="4">T14</epno>
+            <length>1</length>
+            <title xml:lang="en">2nd Movie CM 01 (0:17)</title>
+            <summary>title, women, old man, archer...</summary>
+        </episode>
+        <episode id="220015" update="2019-08-31">
+            <epno type="4">T15</epno>
+            <length>1</length>
+            <title xml:lang="en">2nd Movie CM 02 (0:17)</title>
+            <summary>title, something dark, train, red background with The Holy Grail War...</summary>
+        </episode>
+        <episode id="220016" update="2019-08-31">
+            <epno type="4">T16</epno>
+            <length>1</length>
+            <title xml:lang="en">2nd Movie CM 03 (0:17)</title>
+            <summary>title, something dark, train, city panorama with red/purple colors and words, women opening eyes...</summary>
+        </episode>
+        <episode id="243789" update="2021-08-31">
+            <epno type="4">T17</epno>
+            <length>1</length>
+            <title xml:lang="en">1st Movie PV 01 (0:59)</title>
+        </episode>
+        <episode id="243972" update="2021-09-01">
+            <epno type="2">S1</epno>
+            <length>10</length>
+            <title xml:lang="en">Making of Fate/stay night the Movie Heaven`s Feel I. presage flower English Dub</title>
+        </episode>
+        <episode id="243973" update="2021-09-01">
+            <epno type="4">T18</epno>
+            <length>2</length>
+            <title xml:lang="en">1st Movie PV 06 (1:33)</title>
+        </episode>
+        <episode id="243974" update="2021-09-01">
+            <epno type="4">T19</epno>
+            <length>1</length>
+            <title xml:lang="en">1st Movie CM 02 (0:17)</title>
+        </episode>
+        <episode id="243975" update="2021-09-01">
+            <epno type="4">T20</epno>
+            <length>1</length>
+            <title xml:lang="en">1st Movie PV 07 (0:32)</title>
+        </episode>
+        <episode id="243976" update="2021-09-01">
+            <epno type="4">T21</epno>
+            <length>2</length>
+            <title xml:lang="en">3rd Movie PV 01 (1:48)</title>
+        </episode>
+        <episode id="243977" update="2021-09-01">
+            <epno type="4">T22</epno>
+            <length>2</length>
+            <title xml:lang="en">3rd Movie PV 02 (1:35)</title>
+        </episode>
+        <episode id="243978" update="2021-09-01">
+            <epno type="4">T23</epno>
+            <length>1</length>
+            <title xml:lang="en">3rd Movie CM 01 (0:17)</title>
+        </episode>
+        <episode id="243979" update="2021-09-01">
+            <epno type="4">T24</epno>
+            <length>1</length>
+            <title xml:lang="en">3rd Movie CM 02 (0:17)</title>
+        </episode>
+        <episode id="243980" update="2021-09-01">
+            <epno type="4">T25</epno>
+            <length>2</length>
+            <title xml:lang="en">3rd Movie PV 03 (1:02)</title>
+        </episode>
+        <episode id="243981" update="2021-09-01">
+            <epno type="4">T26</epno>
+            <length>2</length>
+            <title xml:lang="en">3rd Movie PV 04 (1:22)</title>
+        </episode>
+        <episode id="243982" update="2021-09-01">
+            <epno type="4">T27</epno>
+            <length>1</length>
+            <title xml:lang="en">3rd Movie CM 03 (0:17)</title>
+        </episode>
+        <episode id="268093" update="2023-06-17">
+            <epno type="2">S2</epno>
+            <length>25</length>
+            <title xml:lang="en">Pressage Flower: Special Program Before Showing in Theater</title>
+        </episode>
+        <episode id="268094" update="2023-06-17">
+            <epno type="2">S3</epno>
+            <length>40</length>
+            <title xml:lang="en">Pressage Flower: Premiere Event &amp; Theater Greeting</title>
+        </episode>
+        <episode id="268095" update="2023-06-17">
+            <epno type="2">S4</epno>
+            <length>40</length>
+            <title xml:lang="en">Pressage Flower: Matou Family Theater Greeting</title>
+        </episode>
+        <episode id="268096" update="2023-06-17">
+            <epno type="2">S5</epno>
+            <length>25</length>
+            <title xml:lang="en">Pressage Flower: Shitaya Noriko Interview</title>
+        </episode>
+        <episode id="268097" update="2023-06-17">
+            <epno type="2">S6</epno>
+            <length>30</length>
+            <title xml:lang="en">Lost Butterfly: First Day Stage Greeting with Premier Event - Before Screening</title>
+        </episode>
+        <episode id="268098" update="2023-06-17">
+            <epno type="2">S7</epno>
+            <length>30</length>
+            <title xml:lang="en">Lost Butterfly: First Day Stage Greeting with Premier Event - After Screening</title>
+        </episode>
+        <episode id="268099" update="2023-06-17">
+            <epno type="2">S8</epno>
+            <length>25</length>
+            <title xml:lang="en">Lost Butterfly: Kobe Stage Greeting</title>
+        </episode>
+        <episode id="268100" update="2023-06-17">
+            <epno type="2">S9</epno>
+            <length>30</length>
+            <title xml:lang="en">Lost Butterfly: Special Performance - Three factions Stage Greeting</title>
+        </episode>
+        <episode id="268101" update="2023-06-17">
+            <epno type="2">S10</epno>
+            <length>45</length>
+            <title xml:lang="en">Spring Song: First Day Stage Greeting</title>
+        </episode>
+        <episode id="268102" update="2023-06-17">
+            <epno type="2">S11</epno>
+            <length>50</length>
+            <title xml:lang="en">Spring Song: Big Hit Gratitude Stage Greeting</title>
+        </episode>
+        <episode id="268103" update="2023-06-17">
+            <epno type="2">S12</epno>
+            <length>55</length>
+            <title xml:lang="en">Spring Song: Release Commemoration Special Program</title>
+        </episode>
+        <episode id="298565" update="2025-07-09">
+            <epno type="2">S13</epno>
+            <length>95</length>
+            <airdate>2025-03-19</airdate>
+            <title xml:lang="en">Fate/stay night 20th Anniversary "Fate/stay night [Heaven`s Feel]" Concert</title>
+        </episode>
+    </episodes>
+</anime>

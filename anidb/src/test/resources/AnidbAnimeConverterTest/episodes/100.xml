@@ -1,0 +1,1284 @@
+<?xml version="1.0" encoding="UTF-8"?><anime id="5049" restricted="false">
+    <type>TV Series</type>
+    <episodecount>100</episodecount>
+    <startdate>2007-04-01</startdate>
+    <enddate>2009-03-29</enddate>
+    <titles>
+        <title xml:lang="x-jat" type="main">Gegege no Kitarou (2007)</title>
+        <title xml:lang="en" type="synonym">Spooky Kitaro 5</title>
+        <title xml:lang="zh-Hans" type="synonym">鬼太郎</title>
+        <title xml:lang="ja" type="official">ゲゲゲの鬼太郎 (2007)</title>
+        <title xml:lang="ko" type="official">요괴인간 타요마</title>
+        <title xml:lang="zh-Hans" type="official">鬼太郎第五季</title>
+    </titles>
+    <relatedanime>
+        <anime id="1451" type="Alternative Setting">Gegege no Kitarou</anime>
+        <anime id="1455" type="Alternative Setting">Gegege no Kitarou (1996)</anime>
+        <anime id="7163" type="Side Story">Gekijouban Gegege no Kitarou: Nippon Bakuretsu!!</anime>
+        <anime id="11267" type="Side Story">Gegege no Kitarou: Youkai Japan Rally 3D</anime>
+        <anime id="12577" type="Other">Eiga Youkai Watch: Shadow Side - Oni Ou no Fukkatsu</anime>
+    </relatedanime>
+    <url>http://www.toei-anim.co.jp/tv/kitaro/</url>
+    <creators>
+        <name id="741" type="Work">Fuji TV</name>
+        <name id="733" type="Work">Yomiko Advertising</name>
+        <name id="1834" type="Work">Toei Animation</name>
+        <name id="5334" type="Series Composition">Sanjou Riku</name>
+        <name id="4341" type="Original Work">Mizuki Shigeru</name>
+        <name id="5452" type="Chief Animation Direction">Ueno Ken</name>
+        <name id="4449" type="Direction">Kaizawa Yukio</name>
+        <name id="5452" type="Character Design">Ueno Ken</name>
+        <name id="4779" type="Music">Horii Katsumi</name>
+        <name id="9083" type="Series Composition">Hasegawa Keiichi</name>
+    </creators>
+    <description>The classic tale of Gegege no Kitaro told yet again. The story is the usual in the Gegege no Kitaro series. Kitaro is a boy living in the Gegege Forest/Cemetery (lands where many Yokai roam) with his mostly dead father (who survives only in his eye), Sunakake Babaa, NekoMusume, and Konaki Jiji. One difference between this Kitaro and all of the others that came before him, is that this one has brown hair instead of the standard grayish silver.</description>
+    <ratings>
+        <permanent count="82">5.47</permanent>
+        <temporary count="83">6.28</temporary>
+    </ratings>
+    <picture>258210.jpg</picture>
+    <resources>
+        <resource type="1">
+            <externalentity>
+                <identifier>7616</identifier>
+            </externalentity>
+        </resource>
+        <resource type="2">
+            <externalentity>
+                <identifier>2165</identifier>
+            </externalentity>
+        </resource>
+        <resource type="3">
+            <externalentity>
+                <identifier>3983</identifier>
+                <identifier>zaeyfp</identifier>
+            </externalentity>
+        </resource>
+        <resource type="4">
+            <externalentity>
+                <url>http://www.toei-anim.co.jp/tv/kitaro/</url>
+            </externalentity>
+        </resource>
+        <resource type="6">
+            <externalentity>
+                <identifier>GeGeGe_no_Kitarō</identifier>
+            </externalentity>
+        </resource>
+        <resource type="7">
+            <externalentity>
+                <identifier>ゲゲゲの鬼太郎_(テレビアニメ第5シリーズ)</identifier>
+            </externalentity>
+        </resource>
+        <resource type="8">
+            <externalentity>
+                <identifier>1159</identifier>
+            </externalentity>
+        </resource>
+        <resource type="9">
+            <externalentity>
+                <identifier>327126</identifier>
+            </externalentity>
+        </resource>
+        <resource type="10">
+            <externalentity>
+                <identifier>8836</identifier>
+            </externalentity>
+        </resource>
+    </resources>
+    <tags>
+        <tag id="922" parentid="2606" infobox="true" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2015-02-04">
+            <name>shounen</name>
+            <description>In the context of manga and associated media, shounen, literally meaning "youth" and often also specifically "boy", refers to a male audience roughly between the ages of 10 and 18.
+Source: Wikipedia</description>
+        </tag>
+        <tag id="2605" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-09-28">
+            <name>dynamic</name>
+            <description>Some of the central structural elements in anime are: 
+Plot Continuity 
+How does the plot or several plots unfold. Are they a strictly linear retelling of one big continuing story, a serial, possibly with several side stories, or is the content chopped into a set of unconnected episodes, only sharing the same setting and characters?
+Stereotype Characters
+Then there is the question of the character set presentation. Is it completely original, or is it your usual stereotypical character cast. Both choices have their merit, for example it would not really make much sense to reinvent the wheel for a harem anime. Fans of that genre come to expect their favourite stereotype protagonists.
+Plot Twists
+Finally there is the question of how complex the plot / the story unfolds. Are there side-plots that merge into the main plot leading to unexpected plot twists, or is the anime quite predictable? The latter would not be appropriate for detective stories. In harem anime on the other hand a foreseeable outcome is actually something the fans will come to expect.</description>
+        </tag>
+        <tag id="2606" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2018-11-05">
+            <name>target audience</name>
+            <description>Anime, like everything else in the modern world, is targeted towards specific audiences, both implicitly by the creators and overtly by the marketing. While categories are associated with specific sex and age groups, this is not a bar on the anime being enjoyed by people who don`t fit into that band; not only do crossover titles exist, but the categories also have a considerable following outside their main demographic, and a person might as well enjoy anime from all categories. Still, does not invalidate the usefulness of marking a title as one of the categories; the same themes will likely be treated differently in anime geared for different audiences. Only one should not jump the gun and assume that a title will be more or less serious or present content in this or that way due to its target audience, or conversely assume the target audience on the content and its presentation alone. As such, the audience categories help form a broad impression of how a title might work with the announced themes, but offer little to no in-depth information about specific content or its treatment.
+The audience categories originate from manga magazines, which group titles of a same intended audience into a magazine that is advertised as belonging to that category, and so manga-based anime will have the category from their parent work. As for anime based on other works, the audience is often debatable, but comparing information such as time slot to the manga-based anime generally helps figure out the most likely possibility.
+If the parent material was classified under multiple audiences over time (for example, it was originally shounen, but then as the plot changed and became more mature, it was reclassified as seinen), and the anime adapts parent material time periods covering multiple audiences, we tag all audiences covered by the anime adaptation.</description>
+        </tag>
+        <tag id="2607" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2009-04-29">
+            <name>themes</name>
+            <description>Themes describe the very central elements important to the anime stories. They set the backdrop against which the protagonists must face their challenges. Be it School Life, present Daily Life, Military action, Cyberpunk, Law and Order detective work, Sports, or the Underworld. These are only but a few of the more typical backgrounds for anime plots. Add to that a Conspiracy setting with a possible tragic outcome, the Themes span most of the imaginable subject matter relevant to anime.</description>
+        </tag>
+        <tag id="2611" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-09-08">
+            <name>elements</name>
+            <description>Next to Themes setting the backdrop for the protagonists in anime, there are the more detailed plot Elements that centre on character interactions: "What do characters do to each other or what is done to them?". Is it violent Action, an awe-inspiring Adventure in a foreign place, the gripping life of a Detective, a slapstick Comedy, an Ecchi Harem anime, a SciFi epic, or some Fantasy travelling adventure?</description>
+        </tag>
+        <tag id="2617" parentid="2841" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2013-10-15">
+            <name>calling your attacks</name>
+            <description>"GIGAAAAAA DRIIIIIILLL BREAKEEEEEERRR"
+If you can do something more impressive than just throw a punch, your attack(s) must have an equally impressive name. More than that, you have to call it out as you launch the attack. It doesn`t matter if it`s a martial arts move, a magical spell or your secret superweapon, if you can`t say its name, it just isn`t nearly as cool or effective.
+Having a special attack is always a must, but not impressive enough. Every special attack needs a name. A really awesome and outstanding name which is easy to remember and even easier and impressive to yell. Because it just is not enough to name your attack. No, to unleash the full power of your attack, you have to call its name in your most MANLY and LOUDEST voice.
+It does not matter whether it is a martial arts move, a magical spell or flying drills from your mecha, if you can`t call its name, it just isn`t nearly as cool or effective. Not a requirement but wearing shades while calling your attack makes it at least twice as cool, moreover giving your mecha or magical companion shades too results in an immeasurable level of awesomeness, bringing down every enemy just through the POWER OF YOUR VOICE.
+A standard feature of practically every mecha, mahou shoujo, high fantasy, or martial arts anime.
+[Source: TV Tropes]</description>
+            <picurl>144260.jpg</picurl>
+        </tag>
+        <tag id="2646" parentid="2849" infobox="true" weight="600" localspoiler="false" globalspoiler="false" verified="true" update="2014-09-24">
+            <name>demon</name>
+            <description>In Western lore, demons are often described as minions from Hell, generally known to attack humans and feast on their flesh or possess the bodies of those with weak souls. In Eastern lore, on the other hand, they are generally supernatural, often but not always malevolent beings who can be more mischievous than actually evil, or simply supernatural spirits of no specific alignment.</description>
+        </tag>
+        <tag id="2648" parentid="2849" infobox="true" weight="600" localspoiler="false" globalspoiler="false" verified="true" update="2014-11-04">
+            <name>contemporary fantasy</name>
+            <description>Contemporary fantasy, also known as modern fantasy or indigenous fantasy, is a sub-genre of fantasy, set in the present day. It is perhaps most popular for its sub-genre, urban fantasy.
+These terms are used to describe stories set in the putative real world (often referred to as consensus reality) in contemporary times, in which magic and magical creatures exist, either living in the interstices of our world or leaking over from alternate worlds. It thus has much in common with, and sometimes overlaps with secret history; a work of fantasy in which the magic could not remain secret or does not have any known relationship to known history would not fit into this subgenre. Occasionally certain contemporary fantasy novels will make reference to pop culture.
+Novels in which modern characters travel into alternate worlds, and all the magical action takes place there (except for the portal required to transport them), are not considered contemporary fantasy. Thus, C.S. Lewis`s The Lion, the Witch and the Wardrobe, where all fantasy events take place in the land of Narnia which is reached via a magic wardrobe, would not count as contemporary fantasy; on the other hand, the part of The Magician`s Nephew, where the Empress Jadis gets to London, tries to take over the Earth and clashes with police and a crowd of cockneys, would qualify as such.
+Contemporary fantasy is also to be distinguished from horror fiction, which also often has contemporary settings. When encountering magical events and creatures, the protagonist of a horror novel is horrified, while the protagonist of a fantasy novel (contemporary or otherwise) is filled with a sense of joy and wonder. Horrifying events may happen, but the fundamental distinction is vital.
+In his preface to That Hideous Strength, one of the earlier works falling within this sub-genre, C.S. Lewis explained why, when writing a tale about "magicians, devils, pantomime animals and planetary angels", he chose to start it with a detailed depiction of narrow-minded academic politics at a provincial English university and the schemes of crooked real estate developers: "I am following the traditional fairy-tale. We do not always notice its method, because the cottages, castles, woodcutters and petty kings with which a fairy tale opens have become for us as remote as the witches and ogres to which it proceeds. But they were not remote at all to the men who first made and enjoyed the tales". The same is true for many of the later works in the genre, which often begin with a seemingly normal scene of modern daily life to then disclose supernatural and magical beings and events hidden behind the scenes.
+Source: wiki</description>
+        </tag>
+        <tag id="2841" parentid="2611" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2017-12-26">
+            <name>action</name>
+            <description>Action anime usually involve a fairly straightforward story of good guys versus bad guys, where most disputes are resolved by using physical force. It often contains a lot of shooting, explosions and fighting.</description>
+            <picurl>211261.jpg</picurl>
+        </tag>
+        <tag id="2849" parentid="7050" infobox="true" weight="600" localspoiler="false" globalspoiler="false" verified="true" update="2005-05-07">
+            <name>fantasy</name>
+            <description>Fantasy is a genre of fiction that uses magic and other supernatural phenomena as a primary element of plot, theme, or setting. Many works within the genre take place in fictional worlds where magic is common. Fantasy is generally distinguished from science fiction and horror by the expectation that it steers clear of (pseudo-)scientific and macabre themes, respectively, though there is a great deal of overlap between the three (which are subgenres of speculative fiction).
+In popular culture, the genre of fantasy is dominated by its medievalist form, especially since the worldwide success of The Lord of the Rings books by J. R. R. Tolkien. In its broadest sense however, fantasy comprises works by many writers, artists, filmmakers, and musicians, from ancient myths and legends to many recent works embraced by a wide audience today.
+Fantasy is a vibrant area of academic study in a number of disciplines (English, cultural studies, comparative literature, history, medieval studies). Work in this area ranges widely, from the structuralist theory of Tzvetan Todorov, which emphasizes the fantastic as a liminal space, to work on the connections (political, historical, literary) between medievalism and popular culture
+Source: Wiki</description>
+            <picurl>68768.jpg</picurl>
+        </tag>
+        <tag id="2850" parentid="2611" infobox="true" weight="400" localspoiler="false" globalspoiler="false" verified="true" update="2015-10-25">
+            <name>adventure</name>
+            <description>Adventures are exciting stories, with new experiences or exotic locales. Adventures are designed to provide an action-filled, energetic experience for the viewer. Rather than the predominant emphasis on violence and fighting that is found in pure action anime, however, the viewer of adventures can live vicariously through the travels, conquests, explorations, creation of empires, struggles and situations that confront the main characters, actual historical figures or protagonists. Under the category of adventures, we can include traditional swashbucklers, serialized films, and historical spectacles, searches or expeditions for lost continents, "jungle" and "desert" epics, treasure hunts and quests, disaster films, and heroic journeys or searches for the unknown. Adventure films are often, but not always, set in an historical period, and may include adapted stories of historical or literary adventure heroes, kings, battles, rebellion, or piracy.</description>
+            <picurl>178879.jpg</picurl>
+        </tag>
+        <tag id="2851" parentid="7050" weight="100" localspoiler="false" globalspoiler="false" verified="true" update="2018-03-11">
+            <name>horror</name>
+            <description>The horror cinematic genre is characterized by the attempt to make the viewer experience dread, fear, terror, or horror. Often their plots involve the intrusion of an evil force, event or personage, sometimes of supernatural origin, on the mundane world and the consequences thereof.</description>
+            <picurl>214682.jpg</picurl>
+        </tag>
+        <tag id="2853" parentid="2611" infobox="true" weight="400" localspoiler="false" globalspoiler="false" verified="true" update="2017-02-13">
+            <name>comedy</name>
+            <description>Anime whose central struggle causes hilarious results. These stories are built upon funny characters, situations and events. A comedy anime is laced with humour and sets out to provoke laughter from the audience.
+Japanese humour can be a bit strange to westerners, so if you`re new to this type of humour, just bear with it; it`ll most likely grow on you if you`re a fan of other kinds of comedy.</description>
+            <picurl>198104.jpg</picurl>
+        </tag>
+        <tag id="2931" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2016-12-04">
+            <name>unsorted</name>
+            <description>a bunch of tags that still need to be either deleted or moved into proper places.</description>
+        </tag>
+        <tag id="3040" parentid="6230" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2018-11-01">
+            <name>male protagonist</name>
+            <description>This anime has a male protagonist.</description>
+        </tag>
+        <tag id="3322" parentid="6173" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2009-06-04">
+            <name>remake</name>
+            <description>This anime is a remake of a previously released story, anime, or movie.</description>
+        </tag>
+        <tag id="3597" parentid="2607" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2013-02-26">
+            <name>mythology</name>
+            <description>The anime gets inspirations from many forms of mythologies (either Greek, Egyptian, Nord, etc.) to form its story and setting.</description>
+        </tag>
+        <tag id="4048" parentid="3597" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-09-17">
+            <name>Japanese mythology</name>
+            <description>Japanese mythology is a system of beliefs that embraces Shinto and Buddhist traditions as well as agriculture-based folk religion. The Shinto pantheon alone consists of an uncountable number of kami (Japanese for "gods" or "spirits").
+(Source: Wikipedia)</description>
+        </tag>
+        <tag id="4564" parentid="2931" weight="0" localspoiler="false" globalspoiler="false" verified="false" update="2011-06-01">
+            <name>spirits</name>
+            <description>Spirits will appear throughout this anime. These will often be depicted as small orbs of glowing light, or transparent images of the deceased.
+Not to be mistaken with "I see dead people", these spirits will usually appear at the location of their departure when the characters have gotten close to the truth surrounding their death. Or as plot element, when a spirit will often stay close to a character as a sort of "Guardian Angel". Although they are never actually seen, their presence is sometimes felt.</description>
+        </tag>
+        <tag id="4611" parentid="6230" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-10-22">
+            <name>nearly almighty protagonist</name>
+            <description>Man 1: "Hey man, did you see me take down that guy over there, there`s no way he could have survived that!"
+Man 2: "Yeah I know what you mean, it would take the strength of 1 million men to be able to ..... HE`S GETTING BACK UP!!?!?"
+*synonymous jaws dropping*
+This anime`s main character is comparable to the gods themselves in terms of resistibility, strength and/or downright bad-assery. Whenever they seem as if the fire inside has burnt out, they rise from the ashes with enough tenacity and ferocity to vanquish any foe that dare stand against them.</description>
+        </tag>
+        <tag id="6151" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-09-10">
+            <name>technical aspects</name>
+            <description>It may sometimes be useful to know about technical aspects of a show, such as information about its broadcasting or censorship. Such information can be found here.</description>
+        </tag>
+        <tag id="6173" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-09-24">
+            <name>origin</name>
+        </tag>
+        <tag id="6230" parentid="2605" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-10-20">
+            <name>cast</name>
+        </tag>
+        <tag id="7050" parentid="2611" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2019-04-18">
+            <name>speculative fiction</name>
+            <description>Speculative fiction is an umbrella genre encompassing fiction with certain elements that do not exist in the real world, often in the context of supernatural, futuristic or other imaginative themes. This includes, but is not limited to, science fiction, fantasy, superhero fiction, horror, utopian and dystopian fiction, fairytale fantasy, supernatural fiction, as well as combinations thereof.
+Source: Wikipedia</description>
+        </tag>
+        <tag id="7075" parentid="7242" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2019-05-07">
+            <name>adapted into Japanese movie</name>
+            <description>This anime is a http://anidb.net/t2797 [new original work], and it has been adapted into a Japanese movie.
+In exceedingly rare instances, a specific episode of a new original work anime can also be adapted.</description>
+        </tag>
+        <tag id="7242" parentid="6151" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2019-03-03">
+            <name>adapted into other media</name>
+            <description>This anime is a http://anidb.net/t2797 [new original work], and it has been adapted into other media formats.
+In exceedingly rare instances, a specific episode of a new original work anime can also be adapted.</description>
+        </tag>
+        <tag id="7885" parentid="6173" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2021-11-07">
+            <name>Japanese production</name>
+        </tag>
+    </tags>
+    <characters>
+        <character id="7811" type="main character in" update="2010-04-12">
+            <rating votes="95">9.17</rating>
+            <name>Kitarou</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <description>Kitarou is a youkai boy born in a cemetery, and aside from his mostly-decayed father, the last living member of the Ghost Tribe (幽霊族, yuurei zoku). He is missing his left eye, but his hair usually covers the empty socket. He fights for peace between humans and youkai, which generally involves protecting the former from the wiles of the latter. When questioned in the 2007 movie, Kitarou responds that he is three hundred and fifty years old.
+Kitarou has an assortment of strange weapons at his disposal, including:
+* * remote-controlled geta sandals
+
+* * a detachable hand, also remote-controlled
+
+* * a magic chanchanko vest which can protect its wearer from danger; it occasionally seems to act of its own accord, wrapping around enemies or aiding friends, even when Kitaro is not available to command it
+
+* * spiny hairs which can be shot like arrows
+
+* * another hair which can serve as an antenna for detecting spirit activity
+
+* * a magical ocarina (usually used for calling Ittan Momen), which contains a baton, a whip and occasionally music which has the power to damage certain ghosts.
+
+* * the power of electrocution, usually employed when an enemy has pinned or restrained him and he can no longer kick or use other weapons
+
+</description>
+            <picture>26842.jpg</picture>
+            <seiyuu id="393" picture="46104.jpg">Takayama Minami</seiyuu>
+        </character>
+        <character id="7812" type="secondary cast in" update="2010-04-12">
+            <rating votes="2">6.91</rating>
+            <name>Medama-oyaji</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <description>Medama-oyaji is Kitarou`s father. Once a fully-formed adult ghost, he perished of a disease, only to be reborn out of his decayed body as an anthropomorphic version of his own eyeball. He looks small and fragile, but has a strong spirit and a great love for his son. He is also extremely knowledgeable about ghosts and monsters. He enjoys staying clean, and is often seen bathing in a small bowl. He has a great love for sake.</description>
+            <picture>26843.jpg</picture>
+            <seiyuu id="2942" picture="23713.jpg">Tanonaka Isamu</seiyuu>
+        </character>
+        <character id="7813" type="secondary cast in" update="2010-04-12">
+            <rating votes="55">2.52</rating>
+            <name>Nezumi Otoko</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <description>Nezumi Otoko is a rodent-like youkai-human halfbreed. He has been alive for three hundred and sixty years, and in that time has almost never taken a bath, rendering him filthy, foul-smelling, and covered in welts and sores. While he is usually Kitarou`s friend, Nezumi Otoko will waste no time cooking up vile schemes or betraying his companions if he thinks there`s money to be had or a powerful enemy to side with. He claims to be a college graduate of the University of the Bizarre (怪奇大学, Kaiki Daigaku).
+Nezumi-Otoko first appears in the story The Lodging House (Rental manga version) as Dracula IV`s minion.</description>
+            <picture>26844.jpg</picture>
+            <seiyuu id="335" picture="64826.jpg">Takagi Wataru</seiyuu>
+        </character>
+        <character id="11363" type="secondary cast in" update="2011-04-09">
+            <rating votes="93">7.08</rating>
+            <name>Nekomusume</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <description>Neko Musume is a normally-quiet youkai girl, who transforms into a frightening cat monster with fangs and feline eyes when she is angry or hungry for fish. Predictably, she does not get along well with Nezumi Otoko. She seems to harbor a slight crush on Kitaro, who sees her only as a friend. She bears some resemblance to the bakeneko of Japanese folklore.
+Neko-Musume first appears in the story Neko-Musume and Nezumi-Otoko (Weekly Shounen Magazine version), however another cat-girl named Neko (寝子) appears in the earlier stories The Vampire Tree and the Neko-Musume and A Walk to Hell (Rental version).</description>
+            <picture>33849.jpg</picture>
+            <seiyuu id="1429" picture="18686.jpg">Konno Hiromi</seiyuu>
+        </character>
+        <character id="25238" type="appears in" update="2013-02-14">
+            <rating votes="30">3.82</rating>
+            <name>Sunakake Baba</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <description>Sunakake Babaa is an old youkai woman who carries sand which she throws into the eyes of enemies to blind them. She serves as an advisor to Kitarou and his companions, and manages a youkai apartment building. The original sunakake-baba is an invisible sand-throwing spirit from the folklore of Nara Prefecture.
+Sunakake-babaa first appears in a cameo as one of many youkai attending a sukiyaki party in the story A Walk to Hell (Rental version) before making a more prominent appearance in The Great Youkai War (Shounen Magazine version).</description>
+            <picture>66561.jpg</picture>
+            <seiyuu id="3645" picture="25834.jpg">Yamamoto Keiko</seiyuu>
+        </character>
+        <character id="25239" type="appears in" update="2013-02-14">
+            <rating votes="9">3.07</rating>
+            <name>Konaki Jijii</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <description>Konaki Jijii is a comic, absent-minded old youkai man who attacks enemies by clinging to them and turning himself to stone, increasing his weight and mass immensely and pinning them down. He and Sunakake Babaa often work as a team. The original konaki jijii is a ghost which is said to appear in the woods of Tokushima Prefecture in the form of a crying infant. When it is picked up by some hapless traveller, it increases its weight until it crushes him.
+Konaki-jijii first appears in a cameo as one of many youkai attending a sukiyaki party in the story A Walk to Hell (Rental version) before making a more prominent appearance in The Great Youkai War (Shounen Magazine version).</description>
+            <picture>66558.jpg</picture>
+            <seiyuu id="368" picture="25838.jpg">Tatsuta Naoki</seiyuu>
+        </character>
+        <character id="25240" type="appears in" update="2013-02-14">
+            <rating votes="38">2.20</rating>
+            <name>Ittan Momen</name>
+            <gender>unknown</gender>
+            <charactertype id="1">Character</charactertype>
+            <description>Ittan Momen is a flying youkai resembling a strip of white cloth. Kitarou and friends often ride on him when traveling. The original ittan-momen is a spirit from Kagoshima Prefecture myth which wraps itself around the faces of humans in an attempt to smother them.
+Ittan Momen first appears in the story The Great Youkai War (Shounen Magazine version).</description>
+            <picture>66566.jpg</picture>
+            <seiyuu id="3241" picture="24745.jpg">Yanami Jouji</seiyuu>
+        </character>
+        <character id="25241" type="appears in" update="2013-02-14">
+            <rating votes="6">3.07</rating>
+            <name>Nurikabe</name>
+            <gender>unknown</gender>
+            <charactertype id="1">Character</charactertype>
+            <description>Nurikabe is a large, sleepy-eyed wall-shaped youkai, who uses his massive size to protect Kitarou and his friends. The original Nurikabe is a spirit which blocks the passage of people walking at night.
+Nurikabe first appears in a cameo as one of many youkai attending a sukiyaki party in the story A Walk to Hell (Rental version) before making a more prominent appearance in The Great Youkai War (Shounen Magazine version).</description>
+            <picture>66562.jpg</picture>
+            <seiyuu id="368" picture="25838.jpg">Tatsuta Naoki</seiyuu>
+        </character>
+        <character id="25242" type="appears in" update="2011-02-27">
+            <name>Rokurokubi</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>66575.jpg</picture>
+            <seiyuu id="3834" picture="25805.jpg">Toyoshima Machiko</seiyuu>
+        </character>
+        <character id="25243" type="appears in" update="2011-02-27">
+            <rating votes="4">3.07</rating>
+            <name>Kawauso</name>
+            <gender>unknown</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>66574.jpg</picture>
+            <seiyuu id="16398" picture="279181.jpg">Maruyama Yuuko</seiyuu>
+        </character>
+        <character id="25244" type="appears in" update="2011-02-26">
+            <rating votes="4">6.23</rating>
+            <name>Amabie</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>66523.jpg</picture>
+            <seiyuu id="394" picture="11118.jpeg">Ikezawa Haruna</seiyuu>
+        </character>
+        <character id="25246" type="appears in" update="2010-11-20">
+            <name>Owagurobettari</name>
+            <gender>unknown</gender>
+            <charactertype id="1">Character</charactertype>
+            <seiyuu id="4002" picture="77706.jpg">Naka Tomoko</seiyuu>
+        </character>
+        <character id="25247" type="appears in" update="2010-11-20">
+            <name>Byakko</name>
+            <gender>unknown</gender>
+            <charactertype id="1">Character</charactertype>
+            <seiyuu id="3969" picture="48838.jpg">Oomoto Makiko</seiyuu>
+        </character>
+        <character id="29204" type="appears in" update="2011-02-27">
+            <rating votes="7">3.07</rating>
+            <name>Nurarihyon</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>66556.jpg</picture>
+            <seiyuu id="28" picture="23184.jpg">Aono Takeshi</seiyuu>
+        </character>
+    </characters>
+    <episodes>
+        <episode id="70464" update="2010-12-24">
+            <epno type="1">1</epno>
+            <length>25</length>
+            <airdate>2007-04-01</airdate>
+            <rating votes="1">2.18</rating>
+            <title xml:lang="ja">妖怪の棲む街</title>
+            <title xml:lang="en">The Streets Where Monsters Dwell</title>
+            <title xml:lang="x-jat">Youkai no Sumu Machi</title>
+        </episode>
+        <episode id="71839" update="2010-12-24">
+            <epno type="1">2</epno>
+            <length>25</length>
+            <airdate>2007-04-08</airdate>
+            <title xml:lang="ja">ビビビ!! ねずみ男!</title>
+            <title xml:lang="en">BI BI BI!!! The Rat Man!</title>
+            <title xml:lang="x-jat">Bibibi!! Nezumi Otoko!</title>
+        </episode>
+        <episode id="71965" update="2010-12-24">
+            <epno type="1">3</epno>
+            <length>25</length>
+            <airdate>2007-04-15</airdate>
+            <rating votes="1">4.92</rating>
+            <title xml:lang="ja">妖しき旋律! 夜叉</title>
+            <title xml:lang="en">The Mysterious Melody! Yasha</title>
+            <title xml:lang="x-jat">Ayashiki Senritsu! Yasha</title>
+        </episode>
+        <episode id="71966" update="2010-12-24">
+            <epno type="1">4</epno>
+            <length>25</length>
+            <airdate>2007-04-22</airdate>
+            <rating votes="1">1.01</rating>
+            <title xml:lang="ja">男! 一反もめん</title>
+            <title xml:lang="en">Man! Ittan Momen</title>
+            <title xml:lang="x-jat">Otoko! Ittan Momen</title>
+        </episode>
+        <episode id="73056" update="2010-12-24">
+            <epno type="1">5</epno>
+            <length>25</length>
+            <airdate>2007-04-29</airdate>
+            <rating votes="1">1.18</rating>
+            <title xml:lang="ja">呪われた映画</title>
+            <title xml:lang="en">The Cursed Movie</title>
+            <title xml:lang="x-jat">Norowareta Eiga</title>
+        </episode>
+        <episode id="73057" update="2010-12-24">
+            <epno type="1">6</epno>
+            <length>25</length>
+            <airdate>2007-05-06</airdate>
+            <title xml:lang="ja">大パニック! 妖怪横丁</title>
+            <title xml:lang="en">Big Panic! The Monster Alley</title>
+            <title xml:lang="x-jat">Dai Panic! Youkai Yokochou</title>
+        </episode>
+        <episode id="76412" update="2010-12-24">
+            <epno type="1">8</epno>
+            <length>25</length>
+            <airdate>2007-05-20</airdate>
+            <title xml:lang="ja">宿敵! ぬらりひょん</title>
+            <title xml:lang="en">An Old Adversary! Nurarihyon</title>
+            <title xml:lang="x-jat">Shukuteki! Nurarihyon</title>
+        </episode>
+        <episode id="76413" update="2010-12-24">
+            <epno type="1">7</epno>
+            <length>25</length>
+            <airdate>2007-05-13</airdate>
+            <title xml:lang="ja">燃えろ! 目玉おやじ</title>
+            <title xml:lang="en">Flame On! Uncle Eyeball</title>
+            <title xml:lang="x-jat">Moero! Medama Oyaji</title>
+        </episode>
+        <episode id="78545" update="2010-12-24">
+            <epno type="1">13</epno>
+            <length>25</length>
+            <airdate>2007-06-24</airdate>
+            <rating votes="1">7.47</rating>
+            <title xml:lang="ja">奮闘! ぬりかべ用心棒</title>
+            <title xml:lang="en">Struggle! The Bodyguard</title>
+            <title xml:lang="x-jat">Funtou! Nurikabe Youjinbou</title>
+        </episode>
+        <episode id="78546" update="2010-12-24">
+            <epno type="1">12</epno>
+            <length>25</length>
+            <airdate>2007-06-17</airdate>
+            <rating votes="1">7.47</rating>
+            <title xml:lang="ja">霊界からの着信音</title>
+            <title xml:lang="en">Ringtone from the Spiritual World</title>
+            <title xml:lang="x-jat">Reikai kara no Chakushin`on</title>
+        </episode>
+        <episode id="78547" update="2010-12-24">
+            <epno type="1">11</epno>
+            <length>25</length>
+            <airdate>2007-06-10</airdate>
+            <title xml:lang="ja">おばけ漫才</title>
+            <title xml:lang="en">Spiritual Comic Dialogue</title>
+            <title xml:lang="x-jat">Obake Manzai</title>
+        </episode>
+        <episode id="78548" update="2010-12-24">
+            <epno type="1">10</epno>
+            <length>25</length>
+            <airdate>2007-06-03</airdate>
+            <title xml:lang="ja">荒ぶる神! 雷獣</title>
+            <title xml:lang="en">The Almighty God! The Thunder Beast</title>
+            <title xml:lang="x-jat">Araburu Kami! Raijuu</title>
+        </episode>
+        <episode id="78549" update="2010-12-24">
+            <epno type="1">9</epno>
+            <length>25</length>
+            <airdate>2007-05-27</airdate>
+            <title xml:lang="ja">ゆうれい電車 あの世行き</title>
+            <title xml:lang="en">Spirit Train, That Netherworld Divide</title>
+            <title xml:lang="x-jat">Yuurei Densha Ano Yoiki</title>
+        </episode>
+        <episode id="81427" update="2010-12-24">
+            <epno type="1">14</epno>
+            <length>25</length>
+            <airdate>2007-07-01</airdate>
+            <title xml:lang="ja">鬼太郎死す!? 牛鬼復活</title>
+            <title xml:lang="en">Kitaro Dies!? Cow Demon Revives</title>
+            <title xml:lang="x-jat">Kitarou Shisu!? Gyuuki Fukkatsu</title>
+        </episode>
+        <episode id="81428" update="2010-12-24">
+            <epno type="1">15</epno>
+            <length>25</length>
+            <airdate>2007-07-08</airdate>
+            <title xml:lang="ja">働く! 目玉おやじ</title>
+            <title xml:lang="en">Work! Eyeball Oyaji</title>
+            <title xml:lang="x-jat">Hataraku! Medama Oyaji</title>
+        </episode>
+        <episode id="81429" update="2010-12-24">
+            <epno type="1">16</epno>
+            <length>25</length>
+            <airdate>2007-07-15</airdate>
+            <title xml:lang="ja">妖怪はゲームの達人?!</title>
+            <title xml:lang="en">Monsters are Game Masters?!</title>
+            <title xml:lang="x-jat">Youkai wa Game no Tatsujin?!</title>
+        </episode>
+        <episode id="81430" update="2010-12-24">
+            <epno type="1">17</epno>
+            <length>25</length>
+            <airdate>2007-07-22</airdate>
+            <title xml:lang="ja">さすらいの蒼坊主</title>
+            <title xml:lang="en">Wandering Priest</title>
+            <title xml:lang="x-jat">Sasurai no Ao Bouzu</title>
+        </episode>
+        <episode id="81431" update="2010-12-24">
+            <epno type="1">18</epno>
+            <length>25</length>
+            <airdate>2007-08-05</airdate>
+            <title xml:lang="ja">古城に光る黒い眼</title>
+            <title xml:lang="en">Black Eyes that Glow in the Old Castle</title>
+            <title xml:lang="x-jat">Kojou ni Hikaru Kuroi Me</title>
+        </episode>
+        <episode id="81432" update="2010-12-24">
+            <epno type="1">19</epno>
+            <length>25</length>
+            <airdate>2007-08-12</airdate>
+            <title xml:lang="ja">河童池の相撲大会</title>
+            <title xml:lang="en">Sumo Wrestling Rally in the Kappa Pond</title>
+            <title xml:lang="x-jat">Kappa Ike no Sumou Taikai</title>
+        </episode>
+        <episode id="81433" update="2010-12-24">
+            <epno type="1">20</epno>
+            <length>25</length>
+            <airdate>2007-08-19</airdate>
+            <title xml:lang="ja">闇からの声! 幽霊スポット</title>
+            <title xml:lang="en">Voice From the Dark! Ghost Spot</title>
+            <title xml:lang="x-jat">Yami kara no Koe! Yuurei Spot</title>
+        </episode>
+        <episode id="84207" update="2010-12-24">
+            <epno type="1">21</epno>
+            <length>25</length>
+            <airdate>2007-08-26</airdate>
+            <title xml:lang="ja">首ったけ? 妖怪恋物語</title>
+            <title xml:lang="en">Only the Neck? Monsters` Love Story</title>
+            <title xml:lang="x-jat">Kubittake? Youkai Koi Monogatari</title>
+        </episode>
+        <episode id="84208" update="2010-12-24">
+            <epno type="1">22</epno>
+            <length>25</length>
+            <airdate>2007-09-02</airdate>
+            <title xml:lang="ja">ニセ鬼太郎現る!!</title>
+            <title xml:lang="en">Fake Kitaro Appears!!</title>
+            <title xml:lang="x-jat">Nise Kitarou Arawaru!!</title>
+        </episode>
+        <episode id="84209" update="2010-12-24">
+            <epno type="1">23</epno>
+            <length>25</length>
+            <airdate>2007-09-09</airdate>
+            <title xml:lang="ja">美食家!? さざえ鬼</title>
+            <title xml:lang="en">Epicure!? Sazaeki</title>
+            <title xml:lang="x-jat">Bishokuka!? Sazaeki</title>
+        </episode>
+        <episode id="84210" update="2010-12-24">
+            <epno type="1">24</epno>
+            <length>25</length>
+            <airdate>2007-09-16</airdate>
+            <title xml:lang="ja">夢の中の決闘! 枕返し</title>
+            <title xml:lang="en">Battle in the Dreams! Pillow Return</title>
+            <title xml:lang="x-jat">Yume no Naka no Kettou! Makuragaeshi</title>
+        </episode>
+        <episode id="84211" update="2010-12-24">
+            <epno type="1">25</epno>
+            <length>25</length>
+            <airdate>2007-09-23</airdate>
+            <title xml:lang="ja">妖怪大運動会</title>
+            <title xml:lang="en">Monsters` Sports Meet</title>
+            <title xml:lang="x-jat">Youkai Daiundoukai</title>
+        </episode>
+        <episode id="84212" update="2010-12-24">
+            <epno type="1">26</epno>
+            <length>25</length>
+            <airdate>2007-09-30</airdate>
+            <title xml:lang="ja">妖怪アイドル!? アマビエ</title>
+            <title xml:lang="en">Monsters Idol!?</title>
+            <title xml:lang="x-jat">Youkai Idol!? Amabie</title>
+        </episode>
+        <episode id="84213" update="2010-12-24">
+            <epno type="1">27</epno>
+            <length>25</length>
+            <airdate>2007-10-07</airdate>
+            <title xml:lang="ja">地獄の掟! 走れねずみ男</title>
+            <title xml:lang="en">Episode 27</title>
+            <title xml:lang="x-jat">Jigoku no Okite! Hashire Nezumi Otoko</title>
+        </episode>
+        <episode id="84681" update="2010-12-24">
+            <epno type="1">31</epno>
+            <length>25</length>
+            <airdate>2007-11-04</airdate>
+            <title xml:lang="ja">妖怪コマ回し勝負!</title>
+            <title xml:lang="en">Episode 31</title>
+            <title xml:lang="x-jat">Youkai Koma Mawashi Shoubu!</title>
+        </episode>
+        <episode id="84682" update="2010-12-24">
+            <epno type="1">30</epno>
+            <length>25</length>
+            <airdate>2007-10-28</airdate>
+            <title xml:lang="ja">鬼太郎抹殺作戦</title>
+            <title xml:lang="en">Episode 30</title>
+            <title xml:lang="x-jat">Kitarou Massatsu Sakusen</title>
+        </episode>
+        <episode id="84683" update="2010-12-24">
+            <epno type="1">29</epno>
+            <length>25</length>
+            <airdate>2007-10-21</airdate>
+            <title xml:lang="ja">ネコ娘の妖怪バスツアー</title>
+            <title xml:lang="en">Episode 29</title>
+            <title xml:lang="x-jat">Neko Musume no Youkai Bus Tour</title>
+        </episode>
+        <episode id="84684" update="2010-12-24">
+            <epno type="1">28</epno>
+            <length>25</length>
+            <airdate>2007-10-14</airdate>
+            <title xml:lang="ja">鬼太郎恐竜 現る!</title>
+            <title xml:lang="en">Episode 28</title>
+            <title xml:lang="x-jat">Kitarou Kyouryuu Genru!</title>
+        </episode>
+        <episode id="85292" update="2010-12-24">
+            <epno type="1">36</epno>
+            <length>25</length>
+            <airdate>2007-12-09</airdate>
+            <title xml:lang="ja">レスキュー目玉おやじ</title>
+            <title xml:lang="en">Daddy Eyeball to the Rescue</title>
+            <title xml:lang="x-jat">Rescue Medama Oyaji</title>
+        </episode>
+        <episode id="85293" update="2010-12-24">
+            <epno type="1">35</epno>
+            <length>25</length>
+            <airdate>2007-12-02</airdate>
+            <title xml:lang="ja">死神の極楽ツアー</title>
+            <title xml:lang="en">Episode 35</title>
+            <title xml:lang="x-jat">Shinigami no Gokuraku Tour</title>
+        </episode>
+        <episode id="85294" update="2010-12-24">
+            <epno type="1">34</epno>
+            <length>25</length>
+            <airdate>2007-11-25</airdate>
+            <title xml:lang="ja">妖怪横丁の地獄流し</title>
+            <title xml:lang="en">Episode 34</title>
+            <title xml:lang="x-jat">Youkai Yokochou no Jigoku Nagashi</title>
+        </episode>
+        <episode id="85295" update="2010-12-24">
+            <epno type="1">33</epno>
+            <length>25</length>
+            <airdate>2007-11-18</airdate>
+            <title xml:lang="ja">大逆襲! 日本妖怪</title>
+            <title xml:lang="en">The Powerful Japanese Spirits</title>
+            <title xml:lang="x-jat">Daigyakushuu! Nihon Youkai</title>
+        </episode>
+        <episode id="85296" update="2010-12-24">
+            <epno type="1">32</epno>
+            <length>25</length>
+            <airdate>2007-11-11</airdate>
+            <title xml:lang="ja">上陸! 脅威の西洋妖怪</title>
+            <title xml:lang="en">The Dreadful Western Monsters</title>
+            <title xml:lang="x-jat">Jouriku! Kyoui no Seiyou Youkai</title>
+        </episode>
+        <episode id="85861" update="2010-12-24">
+            <epno type="1">39</epno>
+            <length>25</length>
+            <airdate>2008-01-06</airdate>
+            <title xml:lang="ja">ぬらりひょん最期の日</title>
+            <title xml:lang="en">Nurarihyon`s Final Day</title>
+            <title xml:lang="x-jat">Nurarihyon Saigo no Hi</title>
+        </episode>
+        <episode id="85862" update="2010-12-24">
+            <epno type="1">38</epno>
+            <length>25</length>
+            <airdate>2007-12-23</airdate>
+            <title xml:lang="ja">パパになったねずみ男</title>
+            <title xml:lang="en">Nezumi Otoko Becomes a Father</title>
+            <title xml:lang="x-jat">Papa ni Natta Nezumi Otoko</title>
+        </episode>
+        <episode id="85863" update="2010-12-24">
+            <epno type="1">37</epno>
+            <length>25</length>
+            <airdate>2007-12-16</airdate>
+            <title xml:lang="ja">鬼太郎敗北! 怨念の鬼髪</title>
+            <title xml:lang="en">Episode 37</title>
+            <title xml:lang="x-jat">Kitarou Haiboku! Onnen no Onigami</title>
+        </episode>
+        <episode id="86876" update="2010-12-24">
+            <epno type="1">41</epno>
+            <length>25</length>
+            <airdate>2008-01-20</airdate>
+            <title xml:lang="ja">打倒鬼太郎! ねずみ男大逆襲</title>
+            <title xml:lang="en">Overthrow! Nezumi Otoko`s Counter Attack</title>
+            <title xml:lang="x-jat">Datou Onitarou! Nezumi Otoko Daigyakushuu</title>
+        </episode>
+        <episode id="86877" update="2010-12-24">
+            <epno type="1">40</epno>
+            <length>25</length>
+            <airdate>2008-01-13</airdate>
+            <title xml:lang="ja">大フィーバー! 鬼太郎グッズ</title>
+            <title xml:lang="en">Town Fever! Kitaro`s Goodies</title>
+            <title xml:lang="x-jat">Dai Fever! Kitarou Goods</title>
+        </episode>
+        <episode id="87881" update="2010-12-24">
+            <epno type="1">43</epno>
+            <length>25</length>
+            <airdate>2008-02-03</airdate>
+            <title xml:lang="ja">妖怪ミステリー列車!</title>
+            <title xml:lang="en">The Mystery Train!</title>
+            <title xml:lang="x-jat">Youkai Mystery Ressha!</title>
+        </episode>
+        <episode id="87882" update="2010-12-24">
+            <epno type="1">42</epno>
+            <length>25</length>
+            <airdate>2008-01-27</airdate>
+            <title xml:lang="ja">オベベ沼の妖怪かわうそ!</title>
+            <title xml:lang="en">Ghost Kawauso over the OBebe Pond</title>
+            <title xml:lang="x-jat">Obebe Numa no Youkai Kawauso!</title>
+        </episode>
+        <episode id="88338" update="2010-12-24">
+            <epno type="1">46</epno>
+            <length>25</length>
+            <airdate>2008-02-24</airdate>
+            <title xml:lang="ja">ヘビ女ゴーゴンの晩餐会</title>
+            <title xml:lang="en">The Snake Lady Gargoyle`s Last Supper</title>
+            <title xml:lang="x-jat">Hebi Onna Gorgon no Bansan Kai</title>
+        </episode>
+        <episode id="88339" update="2010-12-24">
+            <epno type="1">45</epno>
+            <length>25</length>
+            <airdate>2008-02-17</airdate>
+            <title xml:lang="ja">ネコ娘騒然!? 妖怪メイド喫茶</title>
+            <title xml:lang="en">Noisy Neko Musume and the Ghost Maid Cafe</title>
+            <title xml:lang="x-jat">Neko Musume Souzen!? Youkai Maid Kissa</title>
+        </episode>
+        <episode id="88340" update="2010-12-24">
+            <epno type="1">44</epno>
+            <length>25</length>
+            <airdate>2008-02-10</airdate>
+            <title xml:lang="ja">チョイ悪! 目玉おやじ</title>
+            <title xml:lang="en">The Bad Boy Medama Oyaji</title>
+            <title xml:lang="x-jat">Choi Aku! Medama Oyaji</title>
+        </episode>
+        <episode id="90105" update="2010-12-24">
+            <epno type="1">54</epno>
+            <length>25</length>
+            <airdate>2008-04-20</airdate>
+            <title xml:lang="ja">吸血鬼エリート</title>
+            <title xml:lang="en">Episode 54</title>
+            <title xml:lang="x-jat">Kyuuketsuki Elite</title>
+        </episode>
+        <episode id="90106" update="2010-12-24">
+            <epno type="1">53</epno>
+            <length>25</length>
+            <airdate>2008-04-13</airdate>
+            <title xml:lang="ja">白山坊 ビバ! お化け屋敷</title>
+            <title xml:lang="en">Episode 53</title>
+            <title xml:lang="x-jat">Hakusanbou Viva! Obakeyashi</title>
+        </episode>
+        <episode id="90107" update="2010-12-24">
+            <epno type="1">52</epno>
+            <length>25</length>
+            <airdate>2008-04-06</airdate>
+            <title xml:lang="ja">恐怖! 夜道怪</title>
+            <title xml:lang="en">Episode 52</title>
+            <title xml:lang="x-jat">Kyoufu! Yadoukai</title>
+        </episode>
+        <episode id="90108" update="2010-12-24">
+            <epno type="1">51</epno>
+            <length>25</length>
+            <airdate>2008-03-30</airdate>
+            <title xml:lang="ja">ネコ娘の東京妖怪見物</title>
+            <title xml:lang="en">Episode 51</title>
+            <title xml:lang="x-jat">Neko Musume no Tokyo Youkai Kenbutsu</title>
+        </episode>
+        <episode id="90109" update="2010-12-24">
+            <epno type="1">50</epno>
+            <length>25</length>
+            <airdate>2008-03-23</airdate>
+            <title xml:lang="ja">呪いの花嫁! 陰摩羅鬼</title>
+            <title xml:lang="en">Episode 50</title>
+            <title xml:lang="x-jat">Noroi no Hanayome! Inmara Oni</title>
+        </episode>
+        <episode id="90110" update="2010-12-24">
+            <epno type="1">49</epno>
+            <length>25</length>
+            <airdate>2008-03-16</airdate>
+            <title xml:lang="ja">あの世の七人ミサキ</title>
+            <title xml:lang="en">The Seven Misaki from Another World</title>
+            <title xml:lang="x-jat">Anoyo no Shichinin Misaki</title>
+        </episode>
+        <episode id="90111" update="2010-12-24">
+            <epno type="1">48</epno>
+            <length>25</length>
+            <airdate>2008-03-09</airdate>
+            <title xml:lang="ja">戦う! ゲゲゲハウス</title>
+            <title xml:lang="en">Spooky House Fight!</title>
+            <title xml:lang="x-jat">Tatakau! Gegege House</title>
+        </episode>
+        <episode id="90112" update="2010-12-24">
+            <epno type="1">47</epno>
+            <length>25</length>
+            <airdate>2008-03-02</airdate>
+            <title xml:lang="ja">妖怪大裁判</title>
+            <title xml:lang="en">Monster Trial Court</title>
+            <title xml:lang="x-jat">Youkai Daisaiban</title>
+        </episode>
+        <episode id="91101" update="2010-12-24">
+            <epno type="1">55</epno>
+            <length>25</length>
+            <airdate>2008-04-27</airdate>
+            <title xml:lang="ja">百目の呪い</title>
+            <title xml:lang="en">Episode 55</title>
+            <title xml:lang="x-jat">Hyakume no Noroi</title>
+        </episode>
+        <episode id="91394" update="2010-12-24">
+            <epno type="1">56</epno>
+            <length>25</length>
+            <airdate>2008-05-04</airdate>
+            <title xml:lang="ja">禁じられた岬! 磯女</title>
+            <title xml:lang="en">Episode 56</title>
+            <title xml:lang="x-jat">Kinjirareta Misaki! Isome</title>
+        </episode>
+        <episode id="91395" update="2010-12-24">
+            <epno type="1">57</epno>
+            <length>25</length>
+            <airdate>2008-05-11</airdate>
+            <title xml:lang="ja">伝説の大妖怪 鵺!!</title>
+            <title xml:lang="en">Episode 57</title>
+            <title xml:lang="x-jat">Densetsu no Daiyoukai Nue!!</title>
+        </episode>
+        <episode id="91396" update="2010-12-24">
+            <epno type="1">58</epno>
+            <length>25</length>
+            <airdate>2008-05-18</airdate>
+            <title xml:lang="ja">ペット妖怪! 白うねり</title>
+            <title xml:lang="en">Episode 58</title>
+            <title xml:lang="x-jat">Pet Youkai! Shiro Uneri</title>
+        </episode>
+        <episode id="91397" update="2010-12-24">
+            <epno type="1">59</epno>
+            <length>25</length>
+            <airdate>2008-05-25</airdate>
+            <title xml:lang="ja">グレムリン東京上陸!!</title>
+            <title xml:lang="en">Episode 59</title>
+            <title xml:lang="x-jat">Gremlin Tokyo Jouriku!!</title>
+        </episode>
+        <episode id="91398" update="2010-12-24">
+            <epno type="1">60</epno>
+            <length>25</length>
+            <airdate>2008-06-01</airdate>
+            <title xml:lang="ja">働け!! 妖怪バリバリ</title>
+            <title xml:lang="en">Episode 60</title>
+            <title xml:lang="x-jat">Hatarake!! Youkai Baribari</title>
+        </episode>
+        <episode id="91399" update="2010-12-24">
+            <epno type="1">61</epno>
+            <length>25</length>
+            <airdate>2008-06-08</airdate>
+            <title xml:lang="ja">妖怪城のたんたん坊</title>
+            <title xml:lang="en">Episode 61</title>
+            <title xml:lang="x-jat">Youkai-jou no Tantanbou</title>
+        </episode>
+        <episode id="91997" update="2010-12-24">
+            <epno type="1">67</epno>
+            <length>25</length>
+            <airdate>2008-07-20</airdate>
+            <title xml:lang="ja">歩く吸血樹! 樹木子</title>
+            <title xml:lang="en">Episode 67</title>
+            <title xml:lang="x-jat">Aruku Kyuuketsuki! Jubokko</title>
+        </episode>
+        <episode id="91998" update="2010-12-24">
+            <epno type="1">66</epno>
+            <length>25</length>
+            <airdate>2008-07-13</airdate>
+            <title xml:lang="ja">さら小僧! 妖怪ヒットチャート</title>
+            <title xml:lang="en">Episode 66</title>
+            <title xml:lang="x-jat">Sarakozou! Youkai Hit Chart</title>
+        </episode>
+        <episode id="91999" update="2010-12-24">
+            <epno type="1">65</epno>
+            <length>25</length>
+            <airdate>2008-07-06</airdate>
+            <title xml:lang="ja">呪いの鳥! うぶめが舞う</title>
+            <title xml:lang="en">Episode 65</title>
+            <title xml:lang="x-jat">Noroi no Tori! Ubume ga Mau</title>
+        </episode>
+        <episode id="92000" update="2010-12-24">
+            <epno type="1">64</epno>
+            <length>25</length>
+            <airdate>2008-06-29</airdate>
+            <title xml:lang="ja">もうりょうの夜</title>
+            <title xml:lang="en">Episode 64</title>
+            <title xml:lang="x-jat">Mouryou no Yoru</title>
+        </episode>
+        <episode id="92001" update="2010-12-24">
+            <epno type="1">63</epno>
+            <length>25</length>
+            <airdate>2008-06-22</airdate>
+            <title xml:lang="ja">日本妖怪全滅!? 妖怪反物!!</title>
+            <title xml:lang="en">Episode 63</title>
+            <title xml:lang="x-jat">Nihon Youkai Zenmetsu!? Youkai Tanmono!!</title>
+        </episode>
+        <episode id="92002" update="2010-12-24">
+            <epno type="1">62</epno>
+            <length>25</length>
+            <airdate>2008-06-15</airdate>
+            <title xml:lang="ja">くびれ鬼が死をまねく</title>
+            <title xml:lang="en">Episode 62</title>
+            <title xml:lang="x-jat">Kubire Oni ga Shi o Maneku</title>
+        </episode>
+        <episode id="94683" update="2010-12-24">
+            <epno type="1">82</epno>
+            <length>25</length>
+            <airdate>2008-11-09</airdate>
+            <title xml:lang="ja">命カラカラ! 赤舌温泉</title>
+            <title xml:lang="en">Episode 82</title>
+            <title xml:lang="x-jat">Inochi Karakara! Akajita Onsen</title>
+        </episode>
+        <episode id="94684" update="2010-12-24">
+            <epno type="1">81</epno>
+            <length>25</length>
+            <airdate>2008-11-02</airdate>
+            <title xml:lang="ja">決闘! 妖怪ハンター対針女</title>
+            <title xml:lang="en">Episode 81</title>
+            <title xml:lang="x-jat">Kettou! Youkai Hunter Hari Onna</title>
+        </episode>
+        <episode id="94685" update="2010-12-24">
+            <epno type="1">80</epno>
+            <length>25</length>
+            <airdate>2008-10-26</airdate>
+            <title xml:lang="ja">美女と寝太り! 連続妖怪事件</title>
+            <title xml:lang="en">Episode 80</title>
+            <title xml:lang="x-jat">Bijo to Nebutori! Renzoku Youkai Jiken</title>
+        </episode>
+        <episode id="94686" update="2010-12-24">
+            <epno type="1">79</epno>
+            <length>25</length>
+            <airdate>2008-10-19</airdate>
+            <title xml:lang="ja">執念の妖蛇! 槌の子!!</title>
+            <title xml:lang="en">Episode 79</title>
+            <title xml:lang="x-jat">Shuunen no Youja! Tsuchi no Ko!!</title>
+        </episode>
+        <episode id="94687" update="2010-12-24">
+            <epno type="1">78</epno>
+            <length>25</length>
+            <airdate>2008-10-12</airdate>
+            <title xml:lang="ja">怒れる亡者たち! ヒダル神</title>
+            <title xml:lang="en">Episode 78</title>
+            <title xml:lang="x-jat">Okoreru Mouja-tachi! Hidarugami</title>
+        </episode>
+        <episode id="94688" update="2010-12-24">
+            <epno type="1">77</epno>
+            <length>25</length>
+            <airdate>2008-10-05</airdate>
+            <title xml:lang="ja">雪女! 美しき復讐鬼</title>
+            <title xml:lang="en">Episode 77</title>
+            <title xml:lang="x-jat">Yukionna! Utsukushiki Fukushuu Oni</title>
+        </episode>
+        <episode id="94689" update="2010-12-24">
+            <epno type="1">76</epno>
+            <length>25</length>
+            <airdate>2008-09-28</airdate>
+            <title xml:lang="ja">最強タッグ!! 南方&amp;中国妖怪</title>
+            <title xml:lang="en">Episode 76</title>
+            <title xml:lang="x-jat">Saikyou Tag!! Nanpou &amp; Chuugoku Youkai</title>
+        </episode>
+        <episode id="94690" update="2010-12-24">
+            <epno type="1">75</epno>
+            <length>25</length>
+            <airdate>2008-09-21</airdate>
+            <title xml:lang="ja">見上げ入道の妖怪学校</title>
+            <title xml:lang="en">Episode 75</title>
+            <title xml:lang="x-jat">Miagenyuudou no Youkai Gakkou</title>
+        </episode>
+        <episode id="94691" update="2010-12-24">
+            <epno type="1">74</epno>
+            <length>25</length>
+            <airdate>2008-09-14</airdate>
+            <title xml:lang="ja">一反もめん! 鹿児島決戦!!</title>
+            <title xml:lang="en">Episode 74</title>
+            <title xml:lang="x-jat">Ittan mo Men! Kagoshima Kessen!!</title>
+        </episode>
+        <episode id="94692" update="2010-12-24">
+            <epno type="1">73</epno>
+            <length>25</length>
+            <airdate>2008-09-07</airdate>
+            <title xml:lang="ja">妖怪四十七士の謎</title>
+            <title xml:lang="en">Episode 73</title>
+            <title xml:lang="x-jat">Youkai Shijuu Shichishi no Nazo</title>
+        </episode>
+        <episode id="94693" update="2010-12-24">
+            <epno type="1">72</epno>
+            <length>25</length>
+            <airdate>2008-08-31</airdate>
+            <title xml:lang="ja">妖怪城始動! 朱の盤奮戦記</title>
+            <title xml:lang="en">Episode 72</title>
+            <title xml:lang="x-jat">Youkai-jou Shidou! Shu no Ban Funsenki</title>
+        </episode>
+        <episode id="94694" update="2010-12-24">
+            <epno type="1">71</epno>
+            <length>25</length>
+            <airdate>2008-08-24</airdate>
+            <title xml:lang="ja">南方妖怪日本上陸!!</title>
+            <title xml:lang="en">Episode 71</title>
+            <title xml:lang="x-jat">Nanpou Youkai Nihon Jouriku!!</title>
+        </episode>
+        <episode id="94695" update="2010-12-24">
+            <epno type="1">70</epno>
+            <length>25</length>
+            <airdate>2008-08-17</airdate>
+            <title xml:lang="ja">退治不可能!? 泥田坊</title>
+            <title xml:lang="en">Episode 70</title>
+            <title xml:lang="x-jat">Taiji Fukanou!? Dorotabou</title>
+        </episode>
+        <episode id="94696" update="2010-12-24">
+            <epno type="1">69</epno>
+            <length>25</length>
+            <airdate>2008-08-10</airdate>
+            <title xml:lang="ja">鬼太郎大異変! 穴ぐら入道</title>
+            <title xml:lang="en">Episode 69</title>
+            <title xml:lang="x-jat">Kitarou Daiihen! Anagura Nyuudou</title>
+        </episode>
+        <episode id="94697" update="2010-12-24">
+            <epno type="1">68</epno>
+            <length>25</length>
+            <airdate>2008-08-03</airdate>
+            <title xml:lang="ja">地獄超決戦! 西洋妖怪総登場!</title>
+            <title xml:lang="en">Episode 68</title>
+            <title xml:lang="x-jat">Jigoku Chou Kessen! Seiyou Youkai Sou Toujou!</title>
+        </episode>
+        <episode id="95761" update="2010-12-24">
+            <epno type="1">89</epno>
+            <length>25</length>
+            <airdate>2009-01-04</airdate>
+            <title xml:lang="ja">師走の奇跡! 鬼太郎大いそがし!!</title>
+            <title xml:lang="en">Episode 89</title>
+            <title xml:lang="x-jat">Shiwasu no Kiseki! Kitarou Daiisogashi!!</title>
+        </episode>
+        <episode id="95762" update="2010-12-24">
+            <epno type="1">88</epno>
+            <length>25</length>
+            <airdate>2008-12-21</airdate>
+            <title xml:lang="ja">妖怪決死!! 地獄横断クイズ</title>
+            <title xml:lang="en">Episode 88</title>
+            <title xml:lang="x-jat">Youkai Kesshi! Jigoku Oudan Quiz</title>
+        </episode>
+        <episode id="95763" update="2010-12-24">
+            <epno type="1">87</epno>
+            <length>25</length>
+            <airdate>2008-12-14</airdate>
+            <title xml:lang="ja">巨人!ゴーレムの涙</title>
+            <title xml:lang="en">Episode 87</title>
+            <title xml:lang="x-jat">Kyojin! Gouremu no Namida</title>
+        </episode>
+        <episode id="95764" update="2010-12-24">
+            <epno type="1">86</epno>
+            <length>25</length>
+            <airdate>2008-12-07</airdate>
+            <title xml:lang="ja">背後に迫る恐怖! 後神</title>
+            <title xml:lang="en">Episode 86</title>
+            <title xml:lang="x-jat">Haigo ni Semaru Kyoufu! Gokou</title>
+        </episode>
+        <episode id="95765" update="2010-12-24">
+            <epno type="1">85</epno>
+            <length>25</length>
+            <airdate>2008-11-30</airdate>
+            <title xml:lang="ja">鬼太郎絶叫! 妖怪城の切り札!!</title>
+            <title xml:lang="en">Episode 85</title>
+            <title xml:lang="x-jat">Kitarou Zekkyou! Youkai-jou no Kirifuda!!</title>
+        </episode>
+        <episode id="95766" update="2010-12-24">
+            <epno type="1">84</epno>
+            <length>25</length>
+            <airdate>2008-11-23</airdate>
+            <title xml:lang="ja">野寺坊! 夜の闇に響く鐘</title>
+            <title xml:lang="en">Episode 84</title>
+            <title xml:lang="x-jat">Noderabou! Yoru no Yami ni Hibiku Kane</title>
+        </episode>
+        <episode id="95767" update="2010-12-24">
+            <epno type="1">83</epno>
+            <length>25</length>
+            <airdate>2008-11-16</airdate>
+            <title xml:lang="ja">燃えろ! 小豆連合</title>
+            <title xml:lang="en">Episode 83</title>
+            <title xml:lang="x-jat">Moero! Azuki Rengou</title>
+        </episode>
+        <episode id="95989" update="2010-12-24">
+            <epno type="1">90</epno>
+            <length>25</length>
+            <airdate>2009-01-11</airdate>
+            <title xml:lang="ja">新年大暴走! 鬼太郎火車</title>
+            <title xml:lang="en">Episode 90</title>
+            <title xml:lang="x-jat">Shinnen Daibousou! Kitarou Higuruma</title>
+        </episode>
+        <episode id="97278" update="2009-03-06">
+            <epno type="1">98</epno>
+            <length>25</length>
+            <airdate>2009-03-08</airdate>
+            <title xml:lang="ja">おやじ大充血! 勇者鬼太郎!!</title>
+            <title xml:lang="en">Episode 98</title>
+            <title xml:lang="x-jat">Oyaji Daijuuketsu! Yuusha Onitarou!!</title>
+        </episode>
+        <episode id="97279" update="2009-03-06">
+            <epno type="1">97</epno>
+            <length>25</length>
+            <airdate>2009-03-01</airdate>
+            <title xml:lang="ja">衝撃!! 鬼太郎猫になる!</title>
+            <title xml:lang="en">Episode 97</title>
+            <title xml:lang="x-jat">Shougeki!! Kitarou Neko ni Naru!</title>
+        </episode>
+        <episode id="97280" update="2009-03-06">
+            <epno type="1">96</epno>
+            <length>25</length>
+            <airdate>2009-02-22</airdate>
+            <title xml:lang="ja">怪奇ロマン! 妖花の誘い</title>
+            <title xml:lang="en">Episode 96</title>
+            <title xml:lang="x-jat">Kaiki Roman! Youka no Sasoi</title>
+        </episode>
+        <episode id="97281" update="2009-03-06">
+            <epno type="1">95</epno>
+            <length>25</length>
+            <airdate>2009-02-15</airdate>
+            <title xml:lang="ja">妖怪スイーツ! バレンタイン作戦</title>
+            <title xml:lang="en">Episode 95</title>
+            <title xml:lang="x-jat">Youkai Suites! Valentine Sakusen</title>
+        </episode>
+        <episode id="97282" update="2009-03-06">
+            <epno type="1">94</epno>
+            <length>25</length>
+            <airdate>2009-02-08</airdate>
+            <title xml:lang="ja">沖縄の守り神シーサーの正体!</title>
+            <title xml:lang="en">Episode 94</title>
+            <title xml:lang="x-jat">Okinawa no Mamorigami Shiisaa no Shoutai!</title>
+        </episode>
+        <episode id="97283" update="2009-03-06">
+            <epno type="1">93</epno>
+            <length>25</length>
+            <airdate>2009-02-01</airdate>
+            <title xml:lang="ja">おばけビルの妖怪紳士!</title>
+            <title xml:lang="en">Episode 93</title>
+            <title xml:lang="x-jat">Obake Biru no Youkai Shinshi!</title>
+        </episode>
+        <episode id="97284" update="2009-03-06">
+            <epno type="1">92</epno>
+            <length>25</length>
+            <airdate>2009-01-25</airdate>
+            <title xml:lang="ja">猛烈! 妖怪水車!! がんばれ浪小僧</title>
+            <title xml:lang="en">Episode 92</title>
+            <title xml:lang="x-jat">Mouretsu! Youkai Suisha!! Ganbare Namikozou</title>
+        </episode>
+        <episode id="97285" update="2009-03-06">
+            <epno type="1">91</epno>
+            <length>25</length>
+            <airdate>2009-01-18</airdate>
+            <title xml:lang="ja">妖怪筆師! 一つ目小僧</title>
+            <title xml:lang="en">Episode 91</title>
+            <title xml:lang="x-jat">Youkai Fudeshi! Hitotsume Kozou</title>
+        </episode>
+        <episode id="97552" update="2010-12-24">
+            <epno type="1">99</epno>
+            <length>25</length>
+            <airdate>2009-03-15</airdate>
+            <title xml:lang="ja">都会の天守閣! 妖怪亀姫</title>
+            <title xml:lang="en">Episode 99</title>
+            <title xml:lang="x-jat">Tokai no Tenshukaku! Youkai Kamehime</title>
+        </episode>
+        <episode id="98420" update="2009-03-30">
+            <epno type="1">100</epno>
+            <length>25</length>
+            <airdate>2009-03-29</airdate>
+            <title xml:lang="ja">さらば父よ! 脅威の天狗王</title>
+            <title xml:lang="en">Episode 100</title>
+            <title xml:lang="x-jat">Saraba Chichi yo! Kyoui no Tengu-ou</title>
+        </episode>
+        <episode id="169744" update="2015-07-11">
+            <epno type="2">S2</epno>
+            <length>25</length>
+            <title xml:lang="en">BONUS II</title>
+        </episode>
+        <episode id="169745" update="2015-07-11">
+            <epno type="2">S1</epno>
+            <length>30</length>
+            <title xml:lang="en">BONUS</title>
+        </episode>
+        <episode id="197706" update="2018-04-03">
+            <epno type="3">C1</epno>
+            <length>1</length>
+            <title xml:lang="en">Opening 1</title>
+        </episode>
+        <episode id="197707" update="2018-04-03">
+            <epno type="3">C2</epno>
+            <length>1</length>
+            <title xml:lang="en">Opening 2a</title>
+        </episode>
+        <episode id="197708" update="2018-04-03">
+            <epno type="3">C3</epno>
+            <length>1</length>
+            <title xml:lang="en">Opening 2b</title>
+        </episode>
+        <episode id="197709" update="2018-04-03">
+            <epno type="3">C4</epno>
+            <length>1</length>
+            <title xml:lang="en">Opening 2c</title>
+        </episode>
+        <episode id="197710" update="2018-04-03">
+            <epno type="3">C5</epno>
+            <length>1</length>
+            <title xml:lang="en">Ending 1</title>
+        </episode>
+        <episode id="197711" update="2018-04-03">
+            <epno type="3">C6</epno>
+            <length>1</length>
+            <title xml:lang="en">Ending 2a</title>
+        </episode>
+        <episode id="197712" update="2018-04-03">
+            <epno type="3">C7</epno>
+            <length>1</length>
+            <title xml:lang="en">Ending 2b</title>
+        </episode>
+        <episode id="197713" update="2018-04-03">
+            <epno type="3">C8</epno>
+            <length>1</length>
+            <title xml:lang="en">Ending 2c</title>
+        </episode>
+        <episode id="197714" update="2018-04-03">
+            <epno type="3">C9</epno>
+            <length>1</length>
+            <title xml:lang="en">Ending 2d</title>
+        </episode>
+        <episode id="197715" update="2018-04-03">
+            <epno type="3">C10</epno>
+            <length>1</length>
+            <title xml:lang="en">Ending 2e</title>
+        </episode>
+        <episode id="197716" update="2018-04-03">
+            <epno type="3">C11</epno>
+            <length>1</length>
+            <title xml:lang="en">Ending 2f</title>
+        </episode>
+        <episode id="197717" update="2018-04-03">
+            <epno type="3">C12</epno>
+            <length>1</length>
+            <title xml:lang="en">Ending 2g</title>
+        </episode>
+        <episode id="197718" update="2018-04-03">
+            <epno type="3">C13</epno>
+            <length>1</length>
+            <title xml:lang="en">Ending 2h</title>
+        </episode>
+        <episode id="197719" update="2018-04-03">
+            <epno type="3">C14</epno>
+            <length>1</length>
+            <title xml:lang="en">Ending 2i</title>
+        </episode>
+        <episode id="197720" update="2018-04-03">
+            <epno type="3">C15</epno>
+            <length>1</length>
+            <title xml:lang="en">Ending 3</title>
+        </episode>
+        <episode id="197721" update="2018-04-03">
+            <epno type="3">C16</epno>
+            <length>1</length>
+            <title xml:lang="en">Ending 4</title>
+        </episode>
+        <episode id="197722" update="2018-04-03">
+            <epno type="3">C17</epno>
+            <length>1</length>
+            <title xml:lang="en">Ending 5</title>
+        </episode>
+        <episode id="197723" update="2018-04-03">
+            <epno type="3">C18</epno>
+            <length>1</length>
+            <title xml:lang="en">Ending 6a</title>
+        </episode>
+        <episode id="197724" update="2018-04-03">
+            <epno type="3">C19</epno>
+            <length>1</length>
+            <title xml:lang="en">Ending 6b</title>
+        </episode>
+    </episodes>
+</anime>

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?><anime id="9907" restricted="false">
+    <type>Other</type>
+    <episodecount>2</episodecount>
+    <startdate>2013-07-13</startdate>
+    <enddate>2016-03-19</enddate>
+    <titles>
+        <title xml:lang="x-jat" type="main">Fate/Zero Cafe</title>
+        <title xml:lang="x-jat" type="synonym">Fate: Fate/Zero Cafe</title>
+        <title xml:lang="en" type="short">FZ Cafe</title>
+        <title xml:lang="ja" type="official">Fate/ゼロカフェ</title>
+    </titles>
+    <relatedanime>
+        <anime id="8160" type="Alternative Setting">Fate/Zero</anime>
+    </relatedanime>
+    <url>http://www.ufotable.com/f_zerocafe/</url>
+    <description>* Based on a 4-koma manga, serialised http://anidb.net/cr29049 [Monthly Newtype] since August 2012.
+Re-imagines the cast of the http://anidb.net/a8160 [Fate/Zero] light novel and anime as cute super-deformed characters who open a cafe, led by http://anidb.net/ch38 [Saber] as the manager.
+Note: Screened together with stereoscopic 3D conversion of http://anidb.net/e90862 [Fukan Fuukei], the first film from http://anidb.net/a4932 [Gekijouban Kara no Kyoukai: The Garden of Sinners], at the ufotable Dining restaurant in Tokyo`s Shinjuku ward.</description>
+    <ratings>
+        <permanent count="152">3.02</permanent>
+        <temporary count="155">5.03</temporary>
+    </ratings>
+    <picture>139843.jpg</picture>
+    <resources>
+        <resource type="1">
+            <externalentity>
+                <identifier>17615</identifier>
+            </externalentity>
+        </resource>
+        <resource type="2">
+            <externalentity>
+                <identifier>19165</identifier>
+            </externalentity>
+        </resource>
+        <resource type="4">
+            <externalentity>
+                <url>http://www.ufotable.com/f_zerocafe/</url>
+            </externalentity>
+        </resource>
+        <resource type="7">
+            <externalentity>
+                <identifier>Fate/Zero</identifier>
+            </externalentity>
+        </resource>
+    </resources>
+    <tags>
+        <tag id="30" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-09-10">
+            <name>maintenance tags</name>
+            <description>These tags are used for maintenance.</description>
+        </tag>
+        <tag id="2609" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2018-09-01">
+            <name>original work</name>
+            <description>What the anime is based on! This is given as the original work credit in the OP. Mostly of academic interest, but a useful bit of info, hinting at the possible depth of story.</description>
+        </tag>
+        <tag id="2798" parentid="2609" infobox="true" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2019-02-14">
+            <name>manga</name>
+            <description>Manga is the lifeblood that drives the anime industry. Everything and its mother is based on manga. However! There are exceptions where the manga was not the basis for the anime.
+It`s common practice to make manga adaptations of many popular anime, there`s a manga based on Evangelion, and two (one shounen and one shoujo) based on each of Escaflowne and Mahou Tsukai Tai. Also it`s quite common to release manga and anime versions of a story in parallel, for instance Nadesico and Shoujo Kakumei Utena. There are also cases where an anime continues in a manga, as in the case of Angel Beats! and Angel Beats: Heaven`s Door, or reverse.
+See also http://anidb.net/t6493 [manhua] and http://anidb.net/t5010 [manhwa].</description>
+            <picurl>215593.jpg</picurl>
+        </tag>
+        <tag id="2805" parentid="2798" infobox="true" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2012-10-07">
+            <name>4-koma manga</name>
+            <description>Yonkoma manga (4コマ漫画, four cell manga, or 4-koma for short), a comic-strip format, generally consists of gag comic strips within four panels of equal size ordered from top to bottom. (They also sometimes run right-to-left horizontally or use a hybrid 2x2 style, depending on the layout requirements of the publication in which they appear.) Though the word yonkoma comes from the Japanese, the style also exists outside of Japan in other Asian countries as well as in the English-speaking market.</description>
+            <picurl>70558.jpg</picurl>
+        </tag>
+        <tag id="5939" parentid="30" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2013-09-09">
+            <name>CAST MISSING</name>
+            <description>Important characters are missing, either in-part or entirely. This includes basic entry info (name, gender, picture), appear episode range, seiyuu and/or tags.</description>
+        </tag>
+        <tag id="6173" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-09-24">
+            <name>origin</name>
+        </tag>
+        <tag id="7885" parentid="6173" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2021-11-07">
+            <name>Japanese production</name>
+        </tag>
+    </tags>
+    <episodes>
+        <episode id="151645" update="2020-01-23">
+            <epno type="1">1</epno>
+            <length>10</length>
+            <airdate>2013-07-13</airdate>
+            <rating votes="2">2.44</rating>
+            <title xml:lang="en">Episode 1</title>
+        </episode>
+        <episode id="151670" update="2013-07-06">
+            <epno type="4">T1</epno>
+            <length>1</length>
+            <airdate>2013-07-05</airdate>
+            <rating votes="2">2.45</rating>
+            <title xml:lang="ja">Fate/ゼロカフェ PV#1</title>
+            <title xml:lang="en">PV 01 (34 sec)</title>
+            <title xml:lang="x-jat">Fate / Zero Cafe PV #1</title>
+        </episode>
+        <episode id="203628" update="2018-07-30">
+            <epno type="3">C1</epno>
+            <length>2</length>
+            <title xml:lang="en">Opening</title>
+        </episode>
+        <episode id="238003" update="2021-03-03">
+            <epno type="1">2</epno>
+            <length>0</length>
+            <airdate>2016-03-19</airdate>
+            <title xml:lang="en">Episode 2</title>
+        </episode>
+    </episodes>
+</anime>

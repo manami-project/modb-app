@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="UTF-8"?><anime id="13248" restricted="false">
+    <type>OVA</type>
+    <episodecount>1</episodecount>
+    <startdate>2017-12-26</startdate>
+    <enddate>2017-12-26</enddate>
+    <titles>
+        <title xml:lang="x-jat" type="main">Hajimete no Gal: Hajimete no Bunkasai</title>
+        <title xml:lang="en" type="synonym">Hajimete no Gal: My First School Festival</title>
+        <title xml:lang="ru" type="synonym">Моя первая гяру OVA</title>
+        <title xml:lang="x-jat" type="short">Hajigal ova</title>
+        <title xml:lang="ja" type="official">はじめてのギャル はじめての文化祭</title>
+        <title xml:lang="zh-Hans" type="official">第一次的Gal OAD</title>
+    </titles>
+    <relatedanime>
+        <anime id="12554" type="Parent Story">Hajimete no Gal</anime>
+    </relatedanime>
+    <similaranime>
+        <anime id="11756" approval="1" total="4">Oshiete! Galko-chan</anime>
+        <anime id="12350" approval="1" total="4">Oshiete! Galko-chan: Natsuyasumitte Hontou Desuka?</anime>
+    </similaranime>
+    <creators>
+        <name id="12155" type="Chief Animation Direction">Furukawa Hiroyuki</name>
+        <name id="11766" type="Chief Animation Direction">Terao Kenji</name>
+        <name id="15243" type="Chief Animation Direction">Ootsuka Yae</name>
+    </creators>
+    <description>Note: Bundled with the limited edition of the fifth compiled manga volume.</description>
+    <ratings>
+        <permanent count="645">3.19</permanent>
+        <temporary count="652">5.76</temporary>
+    </ratings>
+    <picture>198785.jpg</picture>
+    <resources>
+        <resource type="1">
+            <externalentity>
+                <identifier>19891</identifier>
+            </externalentity>
+        </resource>
+        <resource type="2">
+            <externalentity>
+                <identifier>35237</identifier>
+            </externalentity>
+        </resource>
+        <resource type="6">
+            <externalentity>
+                <identifier>My_First_Girlfriend_Is_a_Gal</identifier>
+            </externalentity>
+        </resource>
+        <resource type="7">
+            <externalentity>
+                <identifier>はじめてのギャル</identifier>
+            </externalentity>
+        </resource>
+    </resources>
+    <tags>
+        <tag id="922" parentid="2606" infobox="true" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2015-02-04">
+            <name>shounen</name>
+            <description>In the context of manga and associated media, shounen, literally meaning "youth" and often also specifically "boy", refers to a male audience roughly between the ages of 10 and 18.
+Source: Wikipedia</description>
+        </tag>
+        <tag id="1363" parentid="2856" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2019-09-21">
+            <name>breast fondling</name>
+            <description>Breast fondling is the act of touching, groping, or fondling the breasts of a person, typically female.</description>
+            <picurl>238325.jpg</picurl>
+        </tag>
+        <tag id="2043" parentid="2869" weight="300" localspoiler="false" globalspoiler="false" verified="true" update="2017-12-01">
+            <name>high school</name>
+            <description>A secondary school that usually contains grades 10 through 12 in Japan, or 9 through 12 in America.</description>
+            <picurl>210064.jpg</picurl>
+        </tag>
+        <tag id="2604" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2018-11-08">
+            <name>content indicators</name>
+            <description>The content indicators branch is intended to be a less geographically specific tool than the `age rating` used by convention, for warning about things that might cause offence. Obviously there is still a degree of subjectivity involved, but hopefully it will prove useful for parents with delicate children, or children with delicate parents.
+Note: Refer to further guidance on http://wiki.anidb.net/w/Categories:Content_Indicators [the Wiki page] for how to apply tag weights for content indicators.</description>
+        </tag>
+        <tag id="2606" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2018-11-05">
+            <name>target audience</name>
+            <description>Anime, like everything else in the modern world, is targeted towards specific audiences, both implicitly by the creators and overtly by the marketing. While categories are associated with specific sex and age groups, this is not a bar on the anime being enjoyed by people who don`t fit into that band; not only do crossover titles exist, but the categories also have a considerable following outside their main demographic, and a person might as well enjoy anime from all categories. Still, does not invalidate the usefulness of marking a title as one of the categories; the same themes will likely be treated differently in anime geared for different audiences. Only one should not jump the gun and assume that a title will be more or less serious or present content in this or that way due to its target audience, or conversely assume the target audience on the content and its presentation alone. As such, the audience categories help form a broad impression of how a title might work with the announced themes, but offer little to no in-depth information about specific content or its treatment.
+The audience categories originate from manga magazines, which group titles of a same intended audience into a magazine that is advertised as belonging to that category, and so manga-based anime will have the category from their parent work. As for anime based on other works, the audience is often debatable, but comparing information such as time slot to the manga-based anime generally helps figure out the most likely possibility.
+If the parent material was classified under multiple audiences over time (for example, it was originally shounen, but then as the plot changed and became more mature, it was reclassified as seinen), and the anime adapts parent material time periods covering multiple audiences, we tag all audiences covered by the anime adaptation.</description>
+        </tag>
+        <tag id="2607" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2009-04-29">
+            <name>themes</name>
+            <description>Themes describe the very central elements important to the anime stories. They set the backdrop against which the protagonists must face their challenges. Be it School Life, present Daily Life, Military action, Cyberpunk, Law and Order detective work, Sports, or the Underworld. These are only but a few of the more typical backgrounds for anime plots. Add to that a Conspiracy setting with a possible tragic outcome, the Themes span most of the imaginable subject matter relevant to anime.</description>
+        </tag>
+        <tag id="2609" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2018-09-01">
+            <name>original work</name>
+            <description>What the anime is based on! This is given as the original work credit in the OP. Mostly of academic interest, but a useful bit of info, hinting at the possible depth of story.</description>
+        </tag>
+        <tag id="2611" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-09-08">
+            <name>elements</name>
+            <description>Next to Themes setting the backdrop for the protagonists in anime, there are the more detailed plot Elements that centre on character interactions: "What do characters do to each other or what is done to them?". Is it violent Action, an awe-inspiring Adventure in a foreign place, the gripping life of a Detective, a slapstick Comedy, an Ecchi Harem anime, a SciFi epic, or some Fantasy travelling adventure?</description>
+        </tag>
+        <tag id="2749" parentid="2604" weight="100" localspoiler="false" globalspoiler="false" verified="true" update="2021-04-12">
+            <name>nudity</name>
+            <description>Nudity is the state of wearing no clothing. The wearing of clothing is exclusively a human characteristic. The amount of clothing worn depends on functional considerations (such as a need for warmth or protection from the elements) and social considerations. In some situations the minimum amount of clothing (i.e. covering of a person`s genitals) may be socially acceptable, while in others much more clothing is expected.
+Note: Refer to further guidance on http://wiki.anidb.net/w/Categories:Content_Indicators [the Wiki page] for how to apply tag weights for content indicators. No frontal (visible genitals) = 1.5 stars or less.
+People, as individuals and in groups, have varying attitudes towards their own nudity. Some people are relaxed about appearing less than fully clothed in front of others, while others are uncomfortable or inhibited in that regard. People are nude in a variety of situations, and whether they are prepared to disrobe in front of others depends on the social context in which the issue arises. For example, people need to bathe without clothing, some people also sleep in the nude, some prefer to sunbathe in the nude or at least topless, while others are nude in other situations. Some people adopt naturism as a lifestyle.
+Though the wearing of clothes is the social norm in most cultures, some cultures, groups and individuals are more relaxed about nudity, though attitudes often depend on context. On the other hand, some people feel uncomfortable in the presence of any nudity, and the presence of a nude person in a public place can give rise to controversy, irrespective of the attitude of the person who is nude. Besides meeting social disapproval, in some places public nudity may constitute a crime of indecent exposure. Many people have strong views on nudity, which to them can involve issues and standards of modesty, decency and morality. Some people have an psychological aversion to nudity, called gymnophobia. Many people regard nudity to be inherently sexual and erotic.
+Nudity is to be found in a multitude of media, including art, photography, film and on the Internet. It is a factor in adult entertainment of various types.
+Especially gratuitous fanservice anime shows tend to show their (usually female) characters frequently without any clothes, though often hiding genitals through the means of additions like steam.
+Source: wiki</description>
+            <picurl>60576.jpg</picurl>
+        </tag>
+        <tag id="2798" parentid="2609" infobox="true" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2019-02-14">
+            <name>manga</name>
+            <description>Manga is the lifeblood that drives the anime industry. Everything and its mother is based on manga. However! There are exceptions where the manga was not the basis for the anime.
+It`s common practice to make manga adaptations of many popular anime, there`s a manga based on Evangelion, and two (one shounen and one shoujo) based on each of Escaflowne and Mahou Tsukai Tai. Also it`s quite common to release manga and anime versions of a story in parallel, for instance Nadesico and Shoujo Kakumei Utena. There are also cases where an anime continues in a manga, as in the case of Angel Beats! and Angel Beats: Heaven`s Door, or reverse.
+See also http://anidb.net/t6493 [manhua] and http://anidb.net/t5010 [manhwa].</description>
+            <picurl>215593.jpg</picurl>
+        </tag>
+        <tag id="2826" parentid="2856" weight="100" localspoiler="false" globalspoiler="false" verified="true" update="2010-01-27">
+            <name>pantsu</name>
+            <description>"Panties" in Japanese. Upskirt views in various positions are typical, however all forms of partial or fully exposed panties are accepted. Exposure is usually accidental, but may also be deliberate. Pantsu views may be exclusive to the viewer without impacting any characters. Bikinis are not pantsu.</description>
+            <picurl>5721.jpg</picurl>
+        </tag>
+        <tag id="2853" parentid="2611" weight="300" localspoiler="false" globalspoiler="false" verified="true" update="2017-02-13">
+            <name>comedy</name>
+            <description>Anime whose central struggle causes hilarious results. These stories are built upon funny characters, situations and events. A comedy anime is laced with humour and sets out to provoke laughter from the audience.
+Japanese humour can be a bit strange to westerners, so if you`re new to this type of humour, just bear with it; it`ll most likely grow on you if you`re a fan of other kinds of comedy.</description>
+            <picurl>198104.jpg</picurl>
+        </tag>
+        <tag id="2856" parentid="2611" weight="300" localspoiler="false" globalspoiler="false" verified="true" update="2014-09-05">
+            <name>ecchi</name>
+            <description>Fan service is found in many anime, in many forms. When the service has a distinctly sexual slant to it, and it appears to be a major focus of the show, then it`s safe to assume you`re watching ecchi.
+The word "ecchi" is used by English-speaking anime fans to refer to refer to soft-core pornographic or sexually suggestive anime and manga. This is a western invention; in Japanese, it is a catch-all term for all things anyhow sexual in nature, not being limited to porn, but also not really considered a "milder" term, as it may also refer to sexual intercourse itself. The term "ecchi" in Japanese comes from the pronunciation of the letter "H" in English, which is rendered into Japanese syllabary as エッチ, which in turn is transliterated in the English alphabet as "ecchi" or "etchi". It is not, as many believe, short for "hentai" -- that, too, seems to be a western invention. It is, however, nearly as misunderstood and misapplied a term as "hentai".
+The line between ecchi and hentai, from the western perspective over these terms, can be hard to draw at times; one good rule of thumb is: if it was aired on Japanese public TV at all, it probably wasn`t hentai. Ecchi usually features all the specifics to human anatomy that can only be found in anime, and generally avoids full nudity, instead abusing of panty shots. Hentai, on the other hand, will usually show full frontal nudity in some explicit form, including genitalia, and full, intimate sex scenes. At its mildest, ecchi is composed of double entendres, big misunderstandings, and sexual farce; at its most explicit, it is still in the realm of softcore pornography, with full breast shots, full back nudity and similar content, but no display of genitalia. Another good way to distinguish the two is looking for animated sex scenes; if one is found, you have generally left the genre entirely, though a few borderline exceptions apply here. For AniDB`s purposes, the distinction between explicit ecchi and actual hentai is simple: if it was sold with a 18+ restriction in its country of origin, it is hentai; if it was sold without it, it is ecchi.
+Source: TV Tropes</description>
+            <picurl>32416.jpg</picurl>
+        </tag>
+        <tag id="2859" parentid="2611" weight="100" localspoiler="false" globalspoiler="false" verified="true" update="2016-09-04">
+            <name>harem</name>
+            <description>Harem is an entertainment-related trope which is characterized by three or more characters, normally female, who for some reason are in the presence and under the influence of one character, generally male, according to a few genre-defining guidelines; here it will be assumed, for simplicity of language, that the harem lead is a male character and the members are female characters. Though that is the rule, there are exceptions; a story in which there is one female character and several male characters is normally called a "http://anidb.net/t2792 [reverse harem]", or sometimes also "male harem". Aside from the swapping of the characters` genders, the trope`s details are mostly the same, with the majority of the changes relating to the differences in behavior between men and women of the characters` age range. It is also possible to create harems with homosexual relationships, again with very few changes to the main antics themselves. The harem may not have more than only one lead, as that would be a love polygon, or less than three members, as one would form a couple and two would make a love triangle.
+As a defining rule of harem, the interactions between the lead and each of the individual members are filled with romantically or sexually loaded content, either implicitly, through innuendo or subtext, or explicitly, through text or actions, and those actions are a key plot element. Generally, the female characters` looks and personalities will vary a lot among the ones present in one single series, but quite rarely will they actually differ from the common stock archetypes, which are known, well-defined, and easy to copy; for this reason, the genre as a whole is often considered repetitive. Usually, the characters involved directly in this trope are in the late teenager to young adult age range, but that is not mandatory. Sexually charged behavior on the lead`s part pretty much can`t be avoided, and it`s typical to see him stamped as a pervert by some or all of the members, regardless of whether he is one; the sexual tones also applies to the depiction of the harem members, often leading the genre to labeled sexist. The lead will often suffer very violent retribution for his behavior, which has attracted criticism of gratuitous violence as well.
+Most of the harem members will be romantically or sometimes sexually interested in the one male character, and in him alone; that, however, is not an absolute rule, and indeed sometimes none of the female characters are really interested at first, so the protagonist has to build relationships with them from scratch. That idea comes in large part from visual novels; it is quite common for visual novels to revolve around controlling the male lead and have him build relationships with either as many female characters as possible or with one of them, the latter being more common for visual novels with branched story paths; a large portion of those visual novels also feature erotic content, which may be hard to adapt to TV series. It may be also possible that the harem is only a support to the existing or predictable relationship between the lead and the most important member; additionally, the lead may end up in relationships with most or all of the harem members, with the agreement of all, in a setting normally called "harem ending".</description>
+            <picurl>94602.jpg</picurl>
+        </tag>
+        <tag id="2869" parentid="2607" weight="300" localspoiler="false" globalspoiler="false" verified="true" update="2017-12-01">
+            <name>school life</name>
+            <description>Since a large part of the anime audience still takes part in school life or is visiting college, it is only natural to choose a setting the audience can identify with, be it elementary, middle, or high school. For the older viewers a college setting with more mature real-life problems is appropriate. And since clubs take up so much time in the lives of students, these are obviously also important.</description>
+            <picurl>210062.jpg</picurl>
+        </tag>
+        <tag id="6173" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-09-24">
+            <name>origin</name>
+        </tag>
+        <tag id="7885" parentid="6173" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2021-11-07">
+            <name>Japanese production</name>
+        </tag>
+    </tags>
+    <characters>
+        <character id="88289" type="main character in" update="2017-05-31">
+            <rating votes="61">8.04</rating>
+            <name>Yame Yukana</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>199732.jpg</picture>
+            <seiyuu id="41761" picture="196454.jpg">Nagaku Yuki</seiyuu>
+        </character>
+        <character id="88290" type="secondary cast in" update="2017-05-31">
+            <rating votes="53">6.23</rating>
+            <name>Honjou Ranko</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>199733.jpg</picture>
+            <seiyuu id="401" picture="264368.jpg">Kitamura Eri</seiyuu>
+        </character>
+        <character id="88291" type="main character in" update="2017-05-31">
+            <rating votes="31">2.16</rating>
+            <name>Hashiba Jun`ichi</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>199736.jpg</picture>
+            <seiyuu id="567" picture="80605.jpg">Asanuma Shintarou</seiyuu>
+        </character>
+        <character id="88292" type="secondary cast in" update="2017-05-31">
+            <rating votes="65">5.75</rating>
+            <name>Fujinoki Nene</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>199735.jpg</picture>
+            <seiyuu id="16794" picture="11149.jpeg">Ogura Yui</seiyuu>
+        </character>
+        <character id="88293" type="secondary cast in" update="2018-09-25">
+            <rating votes="42">6.34</rating>
+            <name>Kashii Yui</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>203268.jpg</picture>
+            <seiyuu id="590" picture="269819.jpg">Taketatsu Ayana</seiyuu>
+        </character>
+        <character id="89668" type="secondary cast in" update="2017-05-31">
+            <rating votes="17">2.36</rating>
+            <name>Sakamoto Shinpei</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>203264.jpg</picture>
+            <seiyuu id="303" picture="266692.jpg">Toyonaga Toshiyuki</seiyuu>
+        </character>
+        <character id="89669" type="secondary cast in" update="2017-05-31">
+            <rating votes="14">2.46</rating>
+            <name>Ishida Keigo</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>203265.jpg</picture>
+            <seiyuu id="2487" picture="11115.jpeg">Akabane Kenji</seiyuu>
+        </character>
+        <character id="89670" type="secondary cast in" update="2017-05-31">
+            <rating votes="35">2.11</rating>
+            <name>Kobayakawa Minoru</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>203266.jpg</picture>
+            <seiyuu id="434" picture="11461.jpeg">Shiraishi Minoru</seiyuu>
+        </character>
+        <character id="90068" type="secondary cast in" update="2017-07-15">
+            <rating votes="16">3.52</rating>
+            <name>Uesaka Ayumi</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>205173.jpg</picture>
+            <seiyuu id="10080" picture="235712.jpg">Aranami Kazusa</seiyuu>
+        </character>
+        <character id="90069" type="secondary cast in" update="2017-07-15">
+            <rating votes="13">3.06</rating>
+            <name>Shiina Kokoro</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>205172.jpg</picture>
+            <seiyuu id="43627" picture="11513.jpeg">Hara Natsuko</seiyuu>
+        </character>
+    </characters>
+    <episodes>
+        <episode id="188699" update="2025-02-22">
+            <epno type="1">1</epno>
+            <length>25</length>
+            <airdate>2017-12-26</airdate>
+            <rating votes="3">2.28</rating>
+            <title xml:lang="en">OAD</title>
+        </episode>
+    </episodes>
+</anime>

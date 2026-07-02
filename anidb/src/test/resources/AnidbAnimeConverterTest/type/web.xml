@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?><anime id="11788" restricted="false">
+    <type>Web</type>
+    <episodecount>1</episodecount>
+    <startdate>2015-03-16</startdate>
+    <enddate>2015-03-16</enddate>
+    <titles>
+        <title xml:lang="x-jat" type="main">Turnover</title>
+        <title xml:lang="ja" type="official">ターンオーバー</title>
+    </titles>
+    <url>http://kou.benesse.co.jp/anime/turnover/</url>
+    <creators>
+        <name id="738" type="Animation Work">Studio 4C</name>
+        <name id="22322" type="Direction">Sakamoto Takuma</name>
+        <name id="15411" type="Character Design">Akita Manabu</name>
+        <name id="288" type="Series Composition">Tanaka Eiko</name>
+    </creators>
+    <description>The story centers around Chizuru, a student who moved from Yamaguchi to Tokyo and cannot keep up with the pace of her studies. Losing sight of her dream because of discouraging marks in practice exams, she talks to her former classmate Shouta, and slowly begins to change the way she studies.
+Source: ANN</description>
+    <ratings>
+        <permanent count="277">4.55</permanent>
+        <temporary count="278">5.96</temporary>
+    </ratings>
+    <picture>179759.jpg</picture>
+    <resources>
+        <resource type="2">
+            <externalentity>
+                <identifier>30358</identifier>
+            </externalentity>
+        </resource>
+        <resource type="4">
+            <externalentity>
+                <url>http://kou.benesse.co.jp/anime/turnover/</url>
+            </externalentity>
+        </resource>
+        <resource type="26">
+            <externalentity>
+                <identifier>watch?v=LtG7Iwa-xN0</identifier>
+            </externalentity>
+        </resource>
+    </resources>
+    <tags>
+        <tag id="2607" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2009-04-29">
+            <name>themes</name>
+            <description>Themes describe the very central elements important to the anime stories. They set the backdrop against which the protagonists must face their challenges. Be it School Life, present Daily Life, Military action, Cyberpunk, Law and Order detective work, Sports, or the Underworld. These are only but a few of the more typical backgrounds for anime plots. Add to that a Conspiracy setting with a possible tragic outcome, the Themes span most of the imaginable subject matter relevant to anime.</description>
+        </tag>
+        <tag id="2610" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2009-04-22">
+            <name>setting</name>
+            <description>The setting describes in what time and place an anime takes place. To a certain extent it describes what you can expect from the world in the anime.</description>
+        </tag>
+        <tag id="2612" parentid="2610" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2016-09-04">
+            <name>time</name>
+            <description>This placeholder lists different epochs in human history and more vague but important timelines such as the future, the present and the past.</description>
+        </tag>
+        <tag id="2613" parentid="2610" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2016-09-04">
+            <name>place</name>
+            <description>The places the anime can take place in. Includes more specific places such as a country on Earth, as well as more general places such as a dystopia or a mirror world.</description>
+        </tag>
+        <tag id="2624" parentid="2612" weight="600" localspoiler="false" globalspoiler="false" verified="true" update="2017-02-20">
+            <name>present</name>
+            <description>Somewhere between past and future.</description>
+        </tag>
+        <tag id="2630" parentid="2613" weight="600" localspoiler="false" globalspoiler="false" verified="true" update="2012-10-13">
+            <name>Earth</name>
+            <description>The Earth is the third planet from the Sun, and the densest and fifth-largest of the eight planets in the Solar System. It is in effect a ball of hot mud, but on the surface it`s cold enough, so most of us live on it (or are supposed to). It is circa 4.5 billion years old, and, unless we humans succeed in destroying it over the next couple of centuries, it is expected to last for quite another while, though the changes in the Sun`s emissions due to its aging will likely cause the extinction of everything; the species of earthlings are guaranteed to die, even if we fail to kill them -- unless, of course, we find ourselves another planet and figure out a way to take everything there. Our little planet on a corner of this galaxy may mean nothing in the grand scheme of things, but to its inhabitants it is their home, so, as a species, we cherish it dearly, to the point many cultures even to this day deify it. Being the home to the human civilizations, the Earth is the main setting of most fiction, be it anime or otherwise, but not only are many titles set in other places, such as unrelated fantasy worlds, in a considerable number of fictional titles the Earth is actually destroyed by aggressive alien invaders.</description>
+            <picurl>126792.jpg</picurl>
+        </tag>
+        <tag id="2672" parentid="2834" weight="600" localspoiler="false" globalspoiler="false" verified="true" update="2018-03-05">
+            <name>Japan</name>
+            <description>Japan is a sovereign island nation in East Asia. Located in the Pacific Ocean, it lies off the eastern coast of the Asian mainland and stretches from the Sea of Okhotsk in the north to the East China Sea and China in the southwest.
+Source: Wikipedia</description>
+            <picurl>65689.png</picurl>
+        </tag>
+        <tag id="2676" parentid="2672" weight="200" localspoiler="false" globalspoiler="false" verified="true" update="2018-03-06">
+            <name>Tokyo</name>
+            <description>Tokyo, officially Tokyo Metropolis, is the capital city of Japan and one of its 47 prefectures. The Greater Tokyo Area is the most populous metropolitan area in the world. It is the seat of the Emperor of Japan and the Japanese government. Tokyo is in the Kantou region on the southeastern side of the main island Honshu and includes the Izu Islands and Ogasawara Islands.
+Source: Wikipedia</description>
+            <picurl>214311.jpg</picurl>
+        </tag>
+        <tag id="2760" parentid="2881" weight="100" localspoiler="false" globalspoiler="false" verified="true" update="2009-04-29">
+            <name>basketball</name>
+            <description>Basketball is Netball for men, the real game that encourages dribbling and other such uncouth behaviour that was sanitised out of the ladies` version. However, it is itself woozy compared to Ulama, as the losing side are seldom publicly sacrificed.</description>
+        </tag>
+        <tag id="2834" parentid="2630" weight="600" localspoiler="false" globalspoiler="false" verified="true" update="2016-10-04">
+            <name>Asia</name>
+            <description>Asia is Earth`s largest and most populous continent, located primarily in the eastern and northern hemispheres and sharing the continental landmass of Eurasia with the continent of Europe. Asia covers an area of 44,579,000 square kilometers, about 30% of Earth`s total land area and 8.7% of the Earth`s total surface area. The continent, which has long been home to the majority of the human population, was the site of many of the first civilizations. Asia is notable for not only its overall large size and population, but also dense and large settlements as well as vast barely populated regions within the continent of 4.4 billion people.
+Source: Wikipedia</description>
+            <picurl>192245.jpg</picurl>
+        </tag>
+        <tag id="2869" parentid="2607" infobox="true" weight="400" localspoiler="false" globalspoiler="false" verified="true" update="2017-12-01">
+            <name>school life</name>
+            <description>Since a large part of the anime audience still takes part in school life or is visiting college, it is only natural to choose a setting the audience can identify with, be it elementary, middle, or high school. For the older viewers a college setting with more mature real-life problems is appropriate. And since clubs take up so much time in the lives of students, these are obviously also important.</description>
+            <picurl>210062.jpg</picurl>
+        </tag>
+        <tag id="2881" parentid="2607" weight="100" localspoiler="false" globalspoiler="false" verified="true" update="2018-01-21">
+            <name>sports</name>
+            <description>Sports anime revolves around a recreational physical activity or skill. In addition they often adhere to certain genre conventions, the emphasis on training and practice in preparation for competition, characters desire for self improvement, and pursuit of a specific goal.</description>
+            <picurl>212185.jpg</picurl>
+        </tag>
+        <tag id="2888" parentid="2607" weight="200" localspoiler="false" globalspoiler="false" verified="true" update="2009-05-16">
+            <name>coming of age</name>
+            <description>In the strict sense the Coming of age describes a young person`s transition from adolescence to adulthood. In anime the term is used in a more general sense where the protagonists have to face a challenge, make an important decision in their life, take on responsibility, or learn a lesson, and by overcoming these obstacles they reach a higher level of maturity.</description>
+        </tag>
+        <tag id="4610" parentid="6151" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-03-22">
+            <name>commercial</name>
+            <description>This title is used to sell and/or promote a real-life product or service. Not to be confused with "product placement" or "subliminal advertising" — this features *direct* promotion for such element.
+Depending on the setting, some could even be considered as "animated infomercials".</description>
+        </tag>
+        <tag id="6151" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-09-10">
+            <name>technical aspects</name>
+            <description>It may sometimes be useful to know about technical aspects of a show, such as information about its broadcasting or censorship. Such information can be found here.</description>
+        </tag>
+        <tag id="6173" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-09-24">
+            <name>origin</name>
+        </tag>
+        <tag id="7885" parentid="6173" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2021-11-07">
+            <name>Japanese production</name>
+        </tag>
+    </tags>
+    <characters>
+        <character id="105161" type="main character in" update="2019-08-23">
+            <name>Chizuru</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>237621.jpg</picture>
+            <seiyuu id="176" picture="275593.jpg">Hanazawa Kana</seiyuu>
+        </character>
+        <character id="105162" type="secondary cast in" update="2019-08-23">
+            <name>Shouta</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>237622.jpg</picture>
+            <seiyuu id="39791" picture="153557.jpg">Kagura Hiroyuki</seiyuu>
+        </character>
+        <character id="105163" type="secondary cast in" update="2019-08-23">
+            <name>Ai</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>237623.jpg</picture>
+            <seiyuu id="38108" picture="11160.jpeg">Senbongi Sayaka</seiyuu>
+        </character>
+        <character id="105164" type="secondary cast in" update="2019-08-23">
+            <name>Sakurai-sensei</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>237624.jpg</picture>
+            <seiyuu id="249" picture="46910.jpg">Miyagawa Miho</seiyuu>
+        </character>
+    </characters>
+    <episodes>
+        <episode id="173636" update="2015-12-31">
+            <epno type="1">1</epno>
+            <length>3</length>
+            <airdate>2015-03-16</airdate>
+            <rating votes="3">2.24</rating>
+            <title xml:lang="en">Web</title>
+        </episode>
+    </episodes>
+</anime>

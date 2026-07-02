@@ -1,0 +1,1262 @@
+<?xml version="1.0" encoding="UTF-8"?><anime id="10008" restricted="false">
+    <type>Movie</type>
+    <episodecount>1</episodecount>
+    <startdate>2015-11-21</startdate>
+    <enddate>2015-11-21</enddate>
+    <titles>
+        <title xml:lang="x-jat" type="main">Girls und Panzer Gekijouban</title>
+        <title xml:lang="en" type="synonym">GuP Movie</title>
+        <title xml:lang="pt" type="synonym">Meninas e Tanques: O Filme</title>
+        <title xml:lang="x-jat" type="short">Gekijouban GuP</title>
+        <title xml:lang="ja" type="official">ガールズ&amp;パンツァー 劇場版</title>
+        <title xml:lang="en" type="official">Girls und Panzer der Film</title>
+        <title xml:lang="de" type="official">Girls und Panzer der Film</title>
+        <title xml:lang="zh-Hant" type="official">少女與戰車 劇場版</title>
+        <title xml:lang="zh-Hans" type="official">少女与战车 剧场版</title>
+    </titles>
+    <relatedanime>
+        <anime id="12361" type="Sequel">Girls und Panzer Saishuushou</anime>
+        <anime id="9227" type="Prequel">Girls und Panzer</anime>
+    </relatedanime>
+    <recommendations total="3">
+        <recommendation type="For Fans" uid="330647">I was really looking forward to watching this movie after how much I enjoyed Girls und Panzer, and I wasn`t disappointed. It keeps the feeling of the original series and many old characters return to the big screen, along with many new ones, each with their interesting quirks and personalities. Fans of the TV series will definitely enjoy this, but newcomers should take a look at the series first.</recommendation>
+        <recommendation type="Recommended" uid="1108922">very enjoyable. i guess they use all the available female seiyou :D</recommendation>
+        <recommendation type="Must See" uid="118349">This movie is a very nicely done sequel of the series "Girls und Panzer", and the special, "Arisu War!", is a (short) sequel of the movie! Highly recommended!</recommendation>
+    </recommendations>
+    <url>http://girls-und-panzer.jp/</url>
+    <creators>
+        <name id="1038" type="Animation Work">Actas</name>
+        <name id="3672" type="Character Design">Sugimoto Isao</name>
+        <name id="1508" type="Direction">Mizushima Tsutomu</name>
+        <name id="3672" type="Chief Animation Direction">Sugimoto Isao</name>
+        <name id="2019" type="Music">Hamaguchi Shirou</name>
+    </creators>
+    <description>Despite winning the 63rd annual high school Sensha-do tournament, the http://anidb.net/ch92057 [Japanese Ministry of Education] decides to move forward with its plan to decommission http://anidb.net/ch51571 [Ooarai Girls High School]. In order to keep the school open, Miho and her team must win an elimination match against http://anidb.net/ch82620 [Japan`s university Sensha-do team].
+How will Ooarai be able to face such an opponent? For this difficult battle, all of the other high school teams, both Miho`s former competitors and new friends http://anidb.net/ch77988 [Chihatan Academy] and http://anidb.net/ch77987 [Keizoku High School], join forces with Miho to help save Ooarai from closure.
+— written by CDB-Man</description>
+    <ratings>
+        <permanent count="1257">8.44</permanent>
+        <temporary count="1265">7.97</temporary>
+    </ratings>
+    <picture>239897.jpg</picture>
+    <resources>
+        <resource type="1">
+            <externalentity>
+                <identifier>16864</identifier>
+            </externalentity>
+        </resource>
+        <resource type="2">
+            <externalentity>
+                <identifier>18617</identifier>
+            </externalentity>
+            <externalentity>
+                <identifier>32740</identifier>
+            </externalentity>
+            <externalentity>
+                <identifier>33720</identifier>
+            </externalentity>
+        </resource>
+        <resource type="4">
+            <externalentity>
+                <url>http://girls-und-panzer.jp/</url>
+            </externalentity>
+        </resource>
+        <resource type="6">
+            <externalentity>
+                <identifier>Girls_und_Panzer_der_Film</identifier>
+            </externalentity>
+        </resource>
+        <resource type="7">
+            <externalentity>
+                <identifier>ガールズ&amp;パンツァー#.E5.8A.87.E5.A0.B4.E7.89.88_2</identifier>
+            </externalentity>
+        </resource>
+        <resource type="8">
+            <externalentity>
+                <identifier>4304</identifier>
+            </externalentity>
+        </resource>
+        <resource type="9">
+            <externalentity>
+                <identifier>351822</identifier>
+            </externalentity>
+        </resource>
+        <resource type="10">
+            <externalentity>
+                <identifier>18724</identifier>
+            </externalentity>
+        </resource>
+        <resource type="42">
+            <externalentity>
+                <identifier>movies/girls-und-panzer-der-film</identifier>
+            </externalentity>
+        </resource>
+        <resource type="43">
+            <externalentity>
+                <identifier>tt5284414</identifier>
+            </externalentity>
+        </resource>
+        <resource type="44">
+            <externalentity>
+                <identifier>357405</identifier>
+                <identifier>movie</identifier>
+            </externalentity>
+        </resource>
+    </resources>
+    <tags>
+        <tag id="36" parentid="2607" infobox="true" weight="600" localspoiler="false" globalspoiler="false" verified="true" update="2018-01-21">
+            <name>military</name>
+            <description>The military, also known as the armed forces, are forces authorized and legally entitled to use deadly force so as to support the interests of the state and its citizens. The task of the military is usually defined as defence of the state and its citizens and the prosecution of war against foreign powers. The military may also have additional functions within a society, including construction, emergency services, social ceremonies, and guarding critical areas.
+Source: Wikipedia</description>
+            <picurl>212184.jpg</picurl>
+        </tag>
+        <tag id="55" parentid="6151" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-08-11">
+            <name>awards</name>
+        </tag>
+        <tag id="2605" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-09-28">
+            <name>dynamic</name>
+            <description>Some of the central structural elements in anime are: 
+Plot Continuity 
+How does the plot or several plots unfold. Are they a strictly linear retelling of one big continuing story, a serial, possibly with several side stories, or is the content chopped into a set of unconnected episodes, only sharing the same setting and characters?
+Stereotype Characters
+Then there is the question of the character set presentation. Is it completely original, or is it your usual stereotypical character cast. Both choices have their merit, for example it would not really make much sense to reinvent the wheel for a harem anime. Fans of that genre come to expect their favourite stereotype protagonists.
+Plot Twists
+Finally there is the question of how complex the plot / the story unfolds. Are there side-plots that merge into the main plot leading to unexpected plot twists, or is the anime quite predictable? The latter would not be appropriate for detective stories. In harem anime on the other hand a foreseeable outcome is actually something the fans will come to expect.</description>
+        </tag>
+        <tag id="2607" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2009-04-29">
+            <name>themes</name>
+            <description>Themes describe the very central elements important to the anime stories. They set the backdrop against which the protagonists must face their challenges. Be it School Life, present Daily Life, Military action, Cyberpunk, Law and Order detective work, Sports, or the Underworld. These are only but a few of the more typical backgrounds for anime plots. Add to that a Conspiracy setting with a possible tragic outcome, the Themes span most of the imaginable subject matter relevant to anime.</description>
+        </tag>
+        <tag id="2609" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2018-09-01">
+            <name>original work</name>
+            <description>What the anime is based on! This is given as the original work credit in the OP. Mostly of academic interest, but a useful bit of info, hinting at the possible depth of story.</description>
+        </tag>
+        <tag id="2610" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2009-04-22">
+            <name>setting</name>
+            <description>The setting describes in what time and place an anime takes place. To a certain extent it describes what you can expect from the world in the anime.</description>
+        </tag>
+        <tag id="2611" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-09-08">
+            <name>elements</name>
+            <description>Next to Themes setting the backdrop for the protagonists in anime, there are the more detailed plot Elements that centre on character interactions: "What do characters do to each other or what is done to them?". Is it violent Action, an awe-inspiring Adventure in a foreign place, the gripping life of a Detective, a slapstick Comedy, an Ecchi Harem anime, a SciFi epic, or some Fantasy travelling adventure?</description>
+        </tag>
+        <tag id="2612" parentid="2610" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2016-09-04">
+            <name>time</name>
+            <description>This placeholder lists different epochs in human history and more vague but important timelines such as the future, the present and the past.</description>
+        </tag>
+        <tag id="2613" parentid="2610" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2016-09-04">
+            <name>place</name>
+            <description>The places the anime can take place in. Includes more specific places such as a country on Earth, as well as more general places such as a dystopia or a mirror world.</description>
+        </tag>
+        <tag id="2624" parentid="2612" weight="400" localspoiler="false" globalspoiler="false" verified="true" update="2017-02-20">
+            <name>present</name>
+            <description>Somewhere between past and future.</description>
+        </tag>
+        <tag id="2630" parentid="2613" weight="600" localspoiler="false" globalspoiler="false" verified="true" update="2012-10-13">
+            <name>Earth</name>
+            <description>The Earth is the third planet from the Sun, and the densest and fifth-largest of the eight planets in the Solar System. It is in effect a ball of hot mud, but on the surface it`s cold enough, so most of us live on it (or are supposed to). It is circa 4.5 billion years old, and, unless we humans succeed in destroying it over the next couple of centuries, it is expected to last for quite another while, though the changes in the Sun`s emissions due to its aging will likely cause the extinction of everything; the species of earthlings are guaranteed to die, even if we fail to kill them -- unless, of course, we find ourselves another planet and figure out a way to take everything there. Our little planet on a corner of this galaxy may mean nothing in the grand scheme of things, but to its inhabitants it is their home, so, as a species, we cherish it dearly, to the point many cultures even to this day deify it. Being the home to the human civilizations, the Earth is the main setting of most fiction, be it anime or otherwise, but not only are many titles set in other places, such as unrelated fantasy worlds, in a considerable number of fictional titles the Earth is actually destroyed by aggressive alien invaders.</description>
+            <picurl>126792.jpg</picurl>
+        </tag>
+        <tag id="2642" parentid="2624" weight="400" localspoiler="false" globalspoiler="false" verified="true" update="2009-09-28">
+            <name>alternative present</name>
+            <description>Anime that fit in the alternative present category usually have technology and society that is very similar to ours, but with differences in both, history and culture, which sometimes are blatantly obvious, but sometimes harder to place; this one can at times be very subjective.</description>
+        </tag>
+        <tag id="2653" parentid="2853" weight="100" localspoiler="false" globalspoiler="false" verified="true" update="2009-05-04">
+            <name>slapstick</name>
+            <description>Slapstick humour is generally recognized by lots of physical abuse, horseplay and practical jokes. Also often seen are impossible situations, using sounds to illustrate impossible stunts that aren`t shown on-screen and to create tension for audience anticipation.</description>
+        </tag>
+        <tag id="2669" parentid="2869" infobox="true" weight="600" localspoiler="false" globalspoiler="false" verified="true" update="2017-12-01">
+            <name>school clubs</name>
+            <description>Even though school clubs in Japan are not mandatory, there is some pressure from the social grid (e.g. fellow students, teachers) to participate in some kind of after-school activity, be it in sports or arts. Colleges also have clubs.
+As a comedy element in anime, some students have joined too many clubs, and are thus constantly stressed out. There is also the element of social commentary, making it clear that you have to join a club, if you want to be part of the class. Since self-founded clubs need at least 3 members, the desperate search and advertising for new members can be cause for hilarity in anime.</description>
+            <picurl>210065.jpg</picurl>
+        </tag>
+        <tag id="2751" parentid="2881" weight="300" localspoiler="false" globalspoiler="false" verified="true" update="2015-02-27">
+            <name>combat</name>
+            <description>Combat involves a violent conflict with the goal to establish dominance over an opponent.</description>
+        </tag>
+        <tag id="2797" parentid="2609" infobox="true" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2009-05-18">
+            <name>new</name>
+            <description>Not based on anything, the story is a new work, usually made up by the people involved in creating the anime. Generally if an original work (原作) credit is given, it will be to the studio, or director, or other members of the production team.</description>
+        </tag>
+        <tag id="2841" parentid="2611" infobox="true" weight="400" localspoiler="false" globalspoiler="false" verified="true" update="2017-12-26">
+            <name>action</name>
+            <description>Action anime usually involve a fairly straightforward story of good guys versus bad guys, where most disputes are resolved by using physical force. It often contains a lot of shooting, explosions and fighting.</description>
+            <picurl>211261.jpg</picurl>
+        </tag>
+        <tag id="2853" parentid="2611" weight="100" localspoiler="false" globalspoiler="false" verified="true" update="2017-02-13">
+            <name>comedy</name>
+            <description>Anime whose central struggle causes hilarious results. These stories are built upon funny characters, situations and events. A comedy anime is laced with humour and sets out to provoke laughter from the audience.
+Japanese humour can be a bit strange to westerners, so if you`re new to this type of humour, just bear with it; it`ll most likely grow on you if you`re a fan of other kinds of comedy.</description>
+            <picurl>198104.jpg</picurl>
+        </tag>
+        <tag id="2862" parentid="2607" weight="400" localspoiler="false" globalspoiler="false" verified="true" update="2018-01-21">
+            <name>friendship</name>
+            <description>The feeling of trust, kindness, and friendship between a group of high school students for example, is a central theme of this anime.</description>
+            <picurl>65691.png</picurl>
+        </tag>
+        <tag id="2869" parentid="2607" infobox="true" weight="600" localspoiler="false" globalspoiler="false" verified="true" update="2017-12-01">
+            <name>school life</name>
+            <description>Since a large part of the anime audience still takes part in school life or is visiting college, it is only natural to choose a setting the audience can identify with, be it elementary, middle, or high school. For the older viewers a college setting with more mature real-life problems is appropriate. And since clubs take up so much time in the lives of students, these are obviously also important.</description>
+            <picurl>210062.jpg</picurl>
+        </tag>
+        <tag id="2881" parentid="2607" weight="300" localspoiler="false" globalspoiler="false" verified="true" update="2018-01-21">
+            <name>sports</name>
+            <description>Sports anime revolves around a recreational physical activity or skill. In addition they often adhere to certain genre conventions, the emphasis on training and practice in preparation for competition, characters desire for self improvement, and pursuit of a specific goal.</description>
+            <picurl>212185.jpg</picurl>
+        </tag>
+        <tag id="3013" parentid="55" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2011-12-10">
+            <name>Newtype Anime Award</name>
+            <description>This anime has won 1 or more Newtype Anime Award(s)</description>
+        </tag>
+        <tag id="4064" parentid="6151" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2018-08-13">
+            <name>CGI</name>
+            <description>Computer-generated imagery (CGI) or computer animation is the art of creating moving images via the use of computers. It is a subfield of computer graphics and animation. Increasingly it is created by means of 3D computer graphics, though 2D computer graphics are still widely used for stylistic, low bandwidth, and faster real-time rendering needs. Sometimes the target of the animation is the computer itself, but sometimes the target is another medium, such as film.</description>
+            <picurl>222249.jpg</picurl>
+        </tag>
+        <tag id="4333" parentid="6230" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2015-07-06">
+            <name>predominantly female cast</name>
+            <description>A show with a predominantly female cast has mostly females as main and secondary cast members while few if any male characters have major roles. This also applies when a male lead is surrounded by females of lesser individual plot relevance, such as in a harem setting.</description>
+            <picurl>70752.jpg</picurl>
+        </tag>
+        <tag id="5851" parentid="6230" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2018-11-01">
+            <name>female protagonist</name>
+            <description>The anime has a female protagonist.</description>
+        </tag>
+        <tag id="6097" parentid="4064" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2017-10-19">
+            <name>3D CG animation</name>
+            <description>Abbreviation for "three-dimensional computer generated animation" or "computer graphics" (CGI). The traditional 2D art is enhanced by 3D imagery developed through computer modeling software. Done in the right way, this union of 3D in a 2D animated world can be a very beautiful relationship.
+The difference lies in what lacks the traditional 2D animation all together and may give term to something produced entirely with 3D graphics (such as the 2006 remake of "Appleseed" , 2007`s "Vexille", the 2008 addition to the "Biohazard" series and the more well known "Final Fantasy: The Spirits Within" and "Advent Children").</description>
+            <picurl>208569.jpg</picurl>
+        </tag>
+        <tag id="6151" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-09-10">
+            <name>technical aspects</name>
+            <description>It may sometimes be useful to know about technical aspects of a show, such as information about its broadcasting or censorship. Such information can be found here.</description>
+        </tag>
+        <tag id="6173" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-09-24">
+            <name>origin</name>
+        </tag>
+        <tag id="6230" parentid="2605" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-10-20">
+            <name>cast</name>
+        </tag>
+        <tag id="6623" parentid="36" weight="600" localspoiler="false" globalspoiler="false" verified="true" update="2016-04-02">
+            <name>tank warfare</name>
+        </tag>
+        <tag id="7146" parentid="2607" weight="300" localspoiler="false" globalspoiler="false" verified="true" update="2018-09-14">
+            <name>cute girls doing cute things</name>
+            <description>Cute girls doing cute things with each other (CGDCT): when girls are super friendly with each other and do all sorts of http://anidb.net/t798 [cute/moe] things with each other, but there is no yuri or shoujo ai subtext -- more specifically, there is no romantic subtext.
+
+* CGDCT applies where the main focus is on moe/cute girls and their interactions with each other. Good examples include http://anidb.net/a9722 [Non Non Biyori] (600 weight / 3.0 stars) and http://anidb.net/a9579 [Kin`iro Mosaic] (600 weight / 3.0 stars).
+* Generally, CGDCT is applicable only if the anime is also tagged predominantly female cast or all female cast.
+* CGDCT does not apply if girls doing cute things is incidental to a larger motive/theme/meta. For example, in http://anidb.net/a8168 [Nichijou] the focus is comedy, using cute girls; the tag would not apply.
+
+CGDCT is often mistaken as low level yuri or shoujo ai. If there is also actual romantic subtext, use the http://anidb.net/t2695 [yuri (18+)] and http://anidb.net/t2782 [shoujo ai] tags as well. Please note: CGDCT and yuri/shoujo ai are not mutually exclusive; it is possible to have an anime tagged both.</description>
+            <picurl>223153.jpg</picurl>
+        </tag>
+        <tag id="7885" parentid="6173" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2021-11-07">
+            <name>Japanese production</name>
+        </tag>
+    </tags>
+    <characters>
+        <character id="44855" type="main character in" update="2012-11-10">
+            <rating votes="105">7.81</rating>
+            <name>Reizei Mako</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>87966.jpg</picture>
+            <seiyuu id="516" picture="264577.jpg">Iguchi Yuka</seiyuu>
+        </character>
+        <character id="44856" type="main character in" update="2012-11-10">
+            <rating votes="151">8.01</rating>
+            <name>Akiyama Yukari</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>87965.jpg</picture>
+            <seiyuu id="11003" picture="126729.jpg">Nakagami Ikumi</seiyuu>
+        </character>
+        <character id="44857" type="main character in" update="2012-11-10">
+            <rating votes="84">6.99</rating>
+            <name>Isuzu Hana</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>87964.jpg</picture>
+            <seiyuu id="32675" picture="286055.jpg">Ozaki Mami</seiyuu>
+        </character>
+        <character id="44858" type="main character in" update="2012-11-10">
+            <rating votes="84">6.05</rating>
+            <name>Takebe Saori</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>87963.jpg</picture>
+            <seiyuu id="20497" picture="252298.jpg">Kayano Ai</seiyuu>
+        </character>
+        <character id="44859" type="main character in" update="2013-07-25">
+            <rating votes="85">6.07</rating>
+            <name>Nishizumi Miho</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>87962.jpg</picture>
+            <seiyuu id="10333" picture="170916.jpg">Fuchigami Mai</seiyuu>
+        </character>
+        <character id="44866" type="appears in" update="2014-05-17">
+            <name>Hachikyuu Shiki Chuu Sensha Kougata</name>
+            <gender>unknown</gender>
+            <charactertype id="4">Vessel</charactertype>
+            <picture>87971.jpg</picture>
+        </character>
+        <character id="44867" type="appears in" update="2014-05-17">
+            <rating votes="5">6.15</rating>
+            <name>III Gou Totsugeki Hou F-gata</name>
+            <gender>unknown</gender>
+            <charactertype id="4">Vessel</charactertype>
+            <picture>87970.jpg</picture>
+        </character>
+        <character id="44868" type="appears in" update="2014-05-17">
+            <name>38(t) Sensha B/C-gata</name>
+            <gender>unknown</gender>
+            <charactertype id="4">Vessel</charactertype>
+            <picture>87969.jpg</picture>
+        </character>
+        <character id="44869" type="appears in" update="2014-05-17">
+            <rating votes="7">8.33</rating>
+            <name>M3 Chuu Sensha Lee</name>
+            <gender>unknown</gender>
+            <charactertype id="4">Vessel</charactertype>
+            <picture>87968.jpg</picture>
+        </character>
+        <character id="46572" type="appears in" update="2017-05-05">
+            <rating votes="38">4.52</rating>
+            <name>Kawashima Momo</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>90342.jpg</picture>
+            <seiyuu id="210" picture="263457.jpg">Ueda Kana</seiyuu>
+        </character>
+        <character id="46573" type="appears in" update="2012-11-10">
+            <rating votes="24">4.60</rating>
+            <name>Koyama Yuzu</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>90341.jpg</picture>
+            <seiyuu id="216" picture="171983.jpg">Takahashi Mikako</seiyuu>
+        </character>
+        <character id="46574" type="appears in" update="2012-11-10">
+            <rating votes="47">7.88</rating>
+            <name>Kadotani Anzu</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>90339.jpg</picture>
+            <seiyuu id="304" picture="264970.jpg">Fukuen Misato</seiyuu>
+        </character>
+        <character id="47645" type="appears in" update="2012-11-10">
+            <rating votes="18">5.22</rating>
+            <name>Isobe Noriko</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>92168.jpg</picture>
+            <seiyuu id="426" picture="270605.jpg">Kikuchi Mika</seiyuu>
+        </character>
+        <character id="47646" type="appears in" update="2012-11-10">
+            <rating votes="27">5.75</rating>
+            <name>Kondou Taeko</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>92170.jpg</picture>
+            <seiyuu id="20576" picture="223363.jpg">Yoshioka Maya</seiyuu>
+        </character>
+        <character id="47647" type="appears in" update="2012-11-10">
+            <rating votes="13">4.36</rating>
+            <name>Kawanishi Shinobu</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>92169.jpg</picture>
+            <seiyuu id="33646" picture="293566.jpg">Kirimura Mari</seiyuu>
+        </character>
+        <character id="47648" type="appears in" update="2012-11-10">
+            <rating votes="28">5.40</rating>
+            <name>Sasaki Akebi</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>92176.jpg</picture>
+            <seiyuu id="29850" picture="262463.jpg">Nakamura Sakura</seiyuu>
+        </character>
+        <character id="47649" type="appears in" update="2012-11-10">
+            <rating votes="26">5.82</rating>
+            <name>Caesar</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>92166.jpg</picture>
+            <seiyuu id="1932" picture="65403.jpg">Sendai Eri</seiyuu>
+        </character>
+        <character id="47650" type="appears in" update="2012-11-10">
+            <rating votes="52">7.75</rating>
+            <name>Erwin</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>92167.jpg</picture>
+            <seiyuu id="7789" picture="258388.jpg">Moriya Satomi</seiyuu>
+        </character>
+        <character id="47651" type="appears in" update="2012-11-10">
+            <rating votes="22">6.19</rating>
+            <name>Saemonza</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>92173.jpg</picture>
+            <seiyuu id="33647" picture="92150.jpg">Inoue Yuka</seiyuu>
+        </character>
+        <character id="47652" type="appears in" update="2012-11-10">
+            <rating votes="20">6.77</rating>
+            <name>Oryou</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>92174.jpg</picture>
+            <seiyuu id="3622" picture="214935.jpg">Oohashi Ayuru</seiyuu>
+        </character>
+        <character id="47653" type="appears in" update="2012-11-10">
+            <rating votes="12">5.47</rating>
+            <name>Sawa Azusa</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>92178.jpg</picture>
+            <seiyuu id="33649" picture="185816.jpg">Takeuchi Hitomi</seiyuu>
+        </character>
+        <character id="47654" type="appears in" update="2012-11-10">
+            <rating votes="16">6.24</rating>
+            <name>Yamagou Ayumi</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>92179.jpg</picture>
+            <seiyuu id="32397" picture="285393.jpg">Nakazato Nozomi</seiyuu>
+        </character>
+        <character id="47655" type="appears in" update="2012-11-10">
+            <rating votes="19">6.90</rating>
+            <name>Maruyama Saki</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>92171.jpg</picture>
+            <seiyuu id="16085" picture="178446.jpg">Komatsu Mikako</seiyuu>
+        </character>
+        <character id="47656" type="appears in" update="2012-11-10">
+            <rating votes="15">5.90</rating>
+            <name>Sakaguchi Karina</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>92175.jpg</picture>
+            <seiyuu id="33648" picture="212610.jpg">Tada Konomi</seiyuu>
+        </character>
+        <character id="47657" type="appears in" update="2012-11-10">
+            <rating votes="12">5.78</rating>
+            <name>Utsugi Yuuki</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>92177.jpg</picture>
+            <seiyuu id="9405" picture="228517.jpg">Yamaoka Yuri</seiyuu>
+        </character>
+        <character id="47658" type="appears in" update="2012-11-10">
+            <rating votes="17">7.12</rating>
+            <name>Oono Aya</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>92172.jpg</picture>
+            <seiyuu id="41210" picture="163461.jpg">Akina</seiyuu>
+        </character>
+        <character id="47659" type="appears in" update="2012-11-10">
+            <rating votes="4">5.88</rating>
+            <name>Usagi-san Team</name>
+            <gender>unknown</gender>
+            <charactertype id="3">Organization</charactertype>
+            <picture>127930.jpg</picture>
+        </character>
+        <character id="47660" type="appears in" update="2012-11-10">
+            <rating votes="4">5.66</rating>
+            <name>Kaba-san Team</name>
+            <gender>unknown</gender>
+            <charactertype id="3">Organization</charactertype>
+            <picture>127928.jpg</picture>
+        </character>
+        <character id="47661" type="appears in" update="2012-11-10">
+            <name>Ahiru-san Team</name>
+            <gender>unknown</gender>
+            <charactertype id="3">Organization</charactertype>
+            <picture>127926.jpg</picture>
+        </character>
+        <character id="47662" type="appears in" update="2012-11-10">
+            <rating votes="1">7.79</rating>
+            <name>Kame-san Team</name>
+            <gender>unknown</gender>
+            <charactertype id="3">Organization</charactertype>
+            <picture>127929.jpg</picture>
+        </character>
+        <character id="47663" type="appears in" update="2012-11-10">
+            <rating votes="4">5.66</rating>
+            <name>Ankou Team</name>
+            <gender>unknown</gender>
+            <charactertype id="3">Organization</charactertype>
+            <picture>127927.jpg</picture>
+        </character>
+        <character id="48060" type="appears in" update="2012-08-23">
+            <rating votes="19">4.70</rating>
+            <name>Chouno Ami</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>92862.jpg</picture>
+            <seiyuu id="2142" picture="170565.jpg">Shiina Hekiru</seiyuu>
+        </character>
+        <character id="48537" type="appears in" update="2012-09-08">
+            <rating votes="14">6.40</rating>
+            <name>Orange Pekoe</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>93731.jpg</picture>
+            <seiyuu id="34195" picture="293620.jpg">Ishihara Mai</seiyuu>
+        </character>
+        <character id="48538" type="appears in" update="2012-09-08">
+            <rating votes="14">6.45</rating>
+            <name>Assam</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>93732.jpg</picture>
+            <seiyuu id="1511" picture="287114.jpg">Akesaka Satomi</seiyuu>
+        </character>
+        <character id="48539" type="secondary cast in" update="2012-09-08">
+            <rating votes="54">7.89</rating>
+            <name>Darjeeling</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>93733.jpg</picture>
+            <seiyuu id="401" picture="264368.jpg">Kitamura Eri</seiyuu>
+        </character>
+        <character id="49275" type="appears in" update="2014-05-17">
+            <rating votes="1">7.46</rating>
+            <name>Churchill Hohei Sensha Mk.VII</name>
+            <gender>unknown</gender>
+            <charactertype id="4">Vessel</charactertype>
+            <picture>94814.jpg</picture>
+        </character>
+        <character id="49276" type="appears in" update="2014-05-17">
+            <rating votes="1">9.08</rating>
+            <name>Matilda II Hohei Sensha Mk.III/IV</name>
+            <gender>unknown</gender>
+            <charactertype id="4">Vessel</charactertype>
+            <picture>94815.jpg</picture>
+        </character>
+        <character id="49299" type="appears in" update="2012-09-24">
+            <rating votes="56">8.29</rating>
+            <name>Kay</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>94874.jpg</picture>
+            <seiyuu id="12" picture="263458.jpg">Kawasumi Ayako</seiyuu>
+        </character>
+        <character id="49300" type="appears in" update="2012-09-24">
+            <rating votes="16">6.03</rating>
+            <name>Naomi</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>94876.jpg</picture>
+            <seiyuu id="101" picture="263543.jpg">Ise Mariya</seiyuu>
+        </character>
+        <character id="49301" type="appears in" update="2012-09-24">
+            <rating votes="19">6.10</rating>
+            <name>Alisa</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>94869.jpg</picture>
+            <seiyuu id="4" picture="177060.jpg">Hirano Aya</seiyuu>
+        </character>
+        <character id="49302" type="appears in" update="2012-09-24">
+            <rating votes="54">7.76</rating>
+            <name>Anchovy</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>94870.jpg</picture>
+            <seiyuu id="20576" picture="223363.jpg">Yoshioka Maya</seiyuu>
+        </character>
+        <character id="49303" type="secondary cast in" update="2012-09-24">
+            <rating votes="54">8.00</rating>
+            <name>Katyusha</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>94875.jpg</picture>
+            <seiyuu id="12266" picture="284421.jpg">Kanemoto Hisako</seiyuu>
+        </character>
+        <character id="49304" type="secondary cast in" update="2012-09-24">
+            <rating votes="40">8.24</rating>
+            <name>Nonna</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>94878.jpg</picture>
+            <seiyuu id="28602" picture="11089.jpeg">Uesaka Sumire</seiyuu>
+        </character>
+        <character id="49305" type="appears in" update="2014-02-28">
+            <rating votes="34">7.80</rating>
+            <name>Nishizumi Maho</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>94877.jpg</picture>
+            <seiyuu id="135" picture="324254.jpg">Tanaka Rie</seiyuu>
+        </character>
+        <character id="49306" type="appears in" update="2014-03-03">
+            <rating votes="23">5.28</rating>
+            <name>Itsumi Erika</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>94873.jpg</picture>
+            <seiyuu id="55" picture="264187.jpg">Nabatame Hitomi</seiyuu>
+        </character>
+        <character id="49307" type="appears in" update="2012-09-24">
+            <rating votes="6">5.82</rating>
+            <name>Takashima Remi</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>94871.jpg</picture>
+            <seiyuu id="33511" picture="185820.jpg">Akina</seiyuu>
+        </character>
+        <character id="50109" type="appears in" update="2012-10-26">
+            <rating votes="4">4.35</rating>
+            <name>Isuzu Yuri</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>127258.jpg</picture>
+            <seiyuu id="634" picture="311589.jpg">Kurata Masayo</seiyuu>
+        </character>
+        <character id="50468" type="appears in" update="2014-07-04">
+            <rating votes="20">6.20</rating>
+            <name>Sono Midoriko</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>157557.jpg</picture>
+            <seiyuu id="10410" picture="223211.jpg">Izawa Shiori</seiyuu>
+        </character>
+        <character id="50469" type="appears in" update="2012-11-09">
+            <rating votes="2">3.87</rating>
+            <name>Shinzaburou</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>127864.jpg</picture>
+            <seiyuu id="19" picture="11314.jpeg">Imaruoka Atsushi</seiyuu>
+        </character>
+        <character id="50591" type="appears in" update="2012-11-13">
+            <rating votes="7">4.88</rating>
+            <name>Akiyama Jungorou</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>128016.jpg</picture>
+            <seiyuu id="5040" picture="88977.jpg">Kawahara Yoshihisa</seiyuu>
+        </character>
+        <character id="50808" type="appears in" update="2012-11-23">
+            <rating votes="29">6.08</rating>
+            <name>Nishizumi Shiho</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>128482.jpg</picture>
+            <seiyuu id="1446" picture="19314.jpg">Touma Yumi</seiyuu>
+        </character>
+        <character id="51121" type="appears in" update="2012-12-06">
+            <rating votes="12">4.94</rating>
+            <name>Konparu Nozomi</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>129136.jpg</picture>
+            <seiyuu id="10410" picture="223211.jpg">Izawa Shiori</seiyuu>
+        </character>
+        <character id="51122" type="appears in" update="2012-12-06">
+            <rating votes="12">5.25</rating>
+            <name>Gotou Moyoko</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>129135.jpg</picture>
+            <seiyuu id="10410" picture="223211.jpg">Izawa Shiori</seiyuu>
+        </character>
+        <character id="51164" type="appears in" update="2014-02-17">
+            <name>Kamo-san Team</name>
+            <gender>unknown</gender>
+            <charactertype id="3">Organization</charactertype>
+            <picture>150367.jpg</picture>
+        </character>
+        <character id="51237" type="appears in" update="2012-12-20">
+            <rating votes="16">5.16</rating>
+            <name>Nakajima Satoko</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>129736.jpg</picture>
+            <seiyuu id="25804" picture="71817.jpg">Yamamoto Nozomi</seiyuu>
+        </character>
+        <character id="51528" type="appears in" update="2012-12-20">
+            <rating votes="8">4.94</rating>
+            <name>Suzuki</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>129737.jpg</picture>
+            <seiyuu id="34195" picture="293620.jpg">Ishihara Mai</seiyuu>
+        </character>
+        <character id="51529" type="appears in" update="2012-12-20">
+            <rating votes="18">6.84</rating>
+            <name>Hoshino</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>129738.jpg</picture>
+            <seiyuu id="12266" picture="284421.jpg">Kanemoto Hisako</seiyuu>
+        </character>
+        <character id="51530" type="appears in" update="2012-12-20">
+            <rating votes="8">5.04</rating>
+            <name>Tsuchiya</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>129739.jpg</picture>
+            <seiyuu id="401" picture="264368.jpg">Kitamura Eri</seiyuu>
+        </character>
+        <character id="51531" type="appears in" update="2014-02-17">
+            <rating votes="3">8.08</rating>
+            <name>Leopon Team</name>
+            <gender>unknown</gender>
+            <charactertype id="3">Organization</charactertype>
+            <picture>150366.jpg</picture>
+        </character>
+        <character id="51532" type="appears in" update="2012-12-20">
+            <rating votes="22">4.20</rating>
+            <name>Nekonyaa</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>129741.jpg</picture>
+            <seiyuu id="9124" picture="186845.jpg">Hayama Ikumi</seiyuu>
+        </character>
+        <character id="51533" type="appears in" update="2012-12-20">
+            <rating votes="15">4.80</rating>
+            <name>Momogaa</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>129742.jpg</picture>
+            <seiyuu id="634" picture="311589.jpg">Kurata Masayo</seiyuu>
+        </character>
+        <character id="51534" type="appears in" update="2012-12-20">
+            <rating votes="20">6.70</rating>
+            <name>Piyotan</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>129745.jpg</picture>
+            <seiyuu id="28602" picture="11089.jpeg">Uesaka Sumire</seiyuu>
+        </character>
+        <character id="51571" type="appears in" update="2014-02-17">
+            <name>Kenritsu Ooarai Joshi Gakuen</name>
+            <gender>unknown</gender>
+            <charactertype id="3">Organization</charactertype>
+            <picture>150371.jpg</picture>
+        </character>
+        <character id="51573" type="appears in" update="2014-02-17">
+            <rating votes="3">6.02</rating>
+            <name>St. Gloriana Jogakuin</name>
+            <gender>unknown</gender>
+            <charactertype id="3">Organization</charactertype>
+            <picture>150374.jpg</picture>
+        </character>
+        <character id="51576" type="appears in" update="2014-02-17">
+            <rating votes="3">8.63</rating>
+            <name>Pravda Koukou</name>
+            <gender>unknown</gender>
+            <charactertype id="3">Organization</charactertype>
+            <picture>150369.jpg</picture>
+        </character>
+        <character id="52058" type="appears in" update="2014-05-17">
+            <name>B1bis</name>
+            <gender>unknown</gender>
+            <charactertype id="4">Vessel</charactertype>
+            <picture>130652.jpg</picture>
+        </character>
+        <character id="52059" type="appears in" update="2014-05-17">
+            <rating votes="3">2.86</rating>
+            <name>T-34/76</name>
+            <gender>unknown</gender>
+            <charactertype id="4">Vessel</charactertype>
+            <picture>130653.jpg</picture>
+        </character>
+        <character id="52060" type="appears in" update="2014-05-17">
+            <rating votes="8">8.06</rating>
+            <name>T-34/85</name>
+            <gender>unknown</gender>
+            <charactertype id="4">Vessel</charactertype>
+            <picture>130654.jpg</picture>
+        </character>
+        <character id="52061" type="appears in" update="2014-05-17">
+            <rating votes="3">5.16</rating>
+            <name>KV-2</name>
+            <gender>unknown</gender>
+            <charactertype id="4">Vessel</charactertype>
+            <picture>130655.jpg</picture>
+        </character>
+        <character id="52210" type="appears in" update="2014-05-17">
+            <rating votes="5">8.39</rating>
+            <name>IS-2</name>
+            <gender>unknown</gender>
+            <charactertype id="4">Vessel</charactertype>
+            <picture>130966.jpg</picture>
+        </character>
+        <character id="52211" type="appears in" update="2013-01-19">
+            <rating votes="9">4.61</rating>
+            <name>Akiyama Yoshiko</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>130965.jpg</picture>
+            <seiyuu id="1932" picture="65403.jpg">Sendai Eri</seiyuu>
+        </character>
+        <character id="54473" type="appears in" update="2014-02-17">
+            <name>Arikui-san Team</name>
+            <gender>unknown</gender>
+            <charactertype id="3">Organization</charactertype>
+            <picture>150368.jpg</picture>
+        </character>
+        <character id="63896" type="appears in" update="2014-02-08">
+            <rating votes="14">6.57</rating>
+            <name>Pepperoni</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>149835.jpg</picture>
+            <seiyuu id="34504" picture="200900.jpg">Taichi You</seiyuu>
+        </character>
+        <character id="63897" type="appears in" update="2014-02-08">
+            <rating votes="12">7.12</rating>
+            <name>Carpaccio</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>149834.jpg</picture>
+            <seiyuu id="2296" picture="189623.jpg">Hayami Saori</seiyuu>
+        </character>
+        <character id="64529" type="appears in" update="2014-05-17">
+            <rating votes="4">8.08</rating>
+            <name>3 Shiki Chuu Sensha Chi-Nu</name>
+            <gender>unknown</gender>
+            <charactertype id="4">Vessel</charactertype>
+            <picture>150903.jpg</picture>
+        </character>
+        <character id="64530" type="appears in" update="2014-05-17">
+            <rating votes="3">8.63</rating>
+            <name>Porsche Tiger VK4501(P)</name>
+            <gender>unknown</gender>
+            <charactertype id="4">Vessel</charactertype>
+            <picture>150904.jpg</picture>
+        </character>
+        <character id="67961" type="appears in" update="2014-06-15">
+            <rating votes="2">4.94</rating>
+            <name>IV Gou Sensha D-gata Kai (H-gata Shiyou)</name>
+            <gender>unknown</gender>
+            <charactertype id="4">Vessel</charactertype>
+            <picture>156721.jpg</picture>
+        </character>
+        <character id="67962" type="appears in" update="2014-06-15">
+            <name>38(t) Kai (Hetzer Shiyou)</name>
+            <gender>unknown</gender>
+            <charactertype id="4">Vessel</charactertype>
+            <picture>156722.jpg</picture>
+        </character>
+        <character id="75806" type="secondary cast in" update="2015-06-09">
+            <rating votes="16">5.47</rating>
+            <name>Nishi Kinuyo</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>174483.jpg</picture>
+            <seiyuu id="21733" picture="264575.jpg">Seto Asami</seiyuu>
+        </character>
+        <character id="77955" type="secondary cast in" update="2015-10-24">
+            <rating votes="8">7.13</rating>
+            <name>Aki</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>178785.jpg</picture>
+            <seiyuu id="38508" picture="11246.jpeg">Shimoji Shino</seiyuu>
+        </character>
+        <character id="77956" type="secondary cast in" update="2015-10-24">
+            <rating votes="12">6.06</rating>
+            <name>Azumi</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>178789.jpg</picture>
+            <seiyuu id="34544" picture="266115.jpg">Iida Yuuko</seiyuu>
+        </character>
+        <character id="77957" type="secondary cast in" update="2015-10-24">
+            <rating votes="14">7.91</rating>
+            <name>Clara</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>178783.jpg</picture>
+            <seiyuu id="10799" picture="40773.jpg">Jenya</seiyuu>
+        </character>
+        <character id="77958" type="secondary cast in" update="2015-10-24">
+            <rating votes="16">6.91</rating>
+            <name>Mika</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>178784.jpg</picture>
+            <seiyuu id="10" picture="226529.jpg">Noto Mamiko</seiyuu>
+        </character>
+        <character id="77959" type="secondary cast in" update="2015-10-24">
+            <rating votes="7">6.52</rating>
+            <name>Mikko</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>178786.jpg</picture>
+            <seiyuu id="44122" picture="208036.jpg">Ishigami Miho</seiyuu>
+        </character>
+        <character id="77960" type="secondary cast in" update="2015-10-24">
+            <rating votes="8">4.89</rating>
+            <name>Megumi</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>178788.jpg</picture>
+            <seiyuu id="441" picture="249013.jpg">Fujimura Ayumi</seiyuu>
+        </character>
+        <character id="77961" type="secondary cast in" update="2015-10-24">
+            <rating votes="6">5.46</rating>
+            <name>Rumi</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>178790.jpg</picture>
+            <seiyuu id="6" picture="171987.jpg">Nakahara Mai</seiyuu>
+        </character>
+        <character id="77962" type="appears in" update="2015-10-24">
+            <rating votes="11">7.90</rating>
+            <name>Rosehip</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>178782.jpg</picture>
+            <seiyuu id="23312" picture="271641.jpg">Takamori Natsumi</seiyuu>
+        </character>
+        <character id="77963" type="secondary cast in" update="2017-07-16">
+            <rating votes="16">6.06</rating>
+            <name>Shimada Arisu</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <description>Shimada Arisu is the commander of the http://anidb.net/ch82620 [Daigaku Senbatsu Team]. She`s a young prodigy who skipped grades to reach university despite her young age. She is the daughter of http://anidb.net/ch87665 [Shimada Chiyo], the master of the Shimada style, a rival to the Nishizumi house. She`s also a fan of Boko, like http://anidb.net/ch44859 [Nishizumi Miho], and accepts to fight against http://anidb.net/ch51571 [Ooarai] if her mother, in the case of a win, becomes the sponsor of the Boko Museum, which is about to close because of lack of funding.
+Source: Wikia</description>
+            <picture>178787.jpg</picture>
+            <seiyuu id="590" picture="269819.jpg">Taketatsu Ayana</seiyuu>
+        </character>
+        <character id="77964" type="appears in" update="2015-10-24">
+            <rating votes="4">4.78</rating>
+            <name>Tamada</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>178780.jpg</picture>
+            <seiyuu id="1961" picture="222838.jpg">Yonezawa Madoka</seiyuu>
+        </character>
+        <character id="77965" type="secondary cast in" update="2015-10-24">
+            <rating votes="10">4.34</rating>
+            <name>Fukuda</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>178781.jpg</picture>
+            <seiyuu id="37280" picture="266874.jpg">Oozora Naomi</seiyuu>
+        </character>
+        <character id="77966" type="appears in" update="2015-10-24">
+            <name>Crusader Mk.III</name>
+            <gender>unknown</gender>
+            <charactertype id="4">Vessel</charactertype>
+            <picture>178794.jpg</picture>
+        </character>
+        <character id="77967" type="appears in" update="2015-10-24">
+            <name>Kyuunana Shiki Chuu Sensha (Shin Houtou)</name>
+            <gender>unknown</gender>
+            <charactertype id="4">Vessel</charactertype>
+            <picture>178792.jpg</picture>
+        </character>
+        <character id="77968" type="appears in" update="2015-10-24">
+            <name>Kyuunana Shiki Chuu Sensha (Kyuu Houtou)</name>
+            <gender>unknown</gender>
+            <charactertype id="4">Vessel</charactertype>
+            <picture>178791.jpg</picture>
+        </character>
+        <character id="77969" type="appears in" update="2015-10-24">
+            <name>Kyuugo Shiki Kei Sensha</name>
+            <gender>unknown</gender>
+            <charactertype id="4">Vessel</charactertype>
+            <picture>178793.jpg</picture>
+        </character>
+        <character id="77987" type="appears in" update="2015-10-24">
+            <name>Keizoku Koukou</name>
+            <gender>unknown</gender>
+            <charactertype id="3">Organization</charactertype>
+            <picture>178778.jpg</picture>
+        </character>
+        <character id="77988" type="appears in" update="2015-10-24">
+            <name>Chihatan Gakuen</name>
+            <gender>unknown</gender>
+            <charactertype id="3">Organization</charactertype>
+            <picture>178779.jpg</picture>
+        </character>
+        <character id="82618" type="appears in" update="2016-06-21">
+            <rating votes="4">4.78</rating>
+            <name>Hosomi</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>187775.jpg</picture>
+            <seiyuu id="23867" picture="157190.jpg">Nanase Ami</seiyuu>
+        </character>
+        <character id="82619" type="appears in" update="2016-06-21">
+            <rating votes="2">6.19</rating>
+            <name>Teramoto</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>187776.jpg</picture>
+            <seiyuu id="9124" picture="186845.jpg">Hayama Ikumi</seiyuu>
+        </character>
+        <character id="82620" type="appears in" update="2016-06-21">
+            <name>Daigaku Senbatsu Team</name>
+            <gender>unknown</gender>
+            <charactertype id="3">Organization</charactertype>
+            <picture>187777.jpg</picture>
+        </character>
+        <character id="87659" type="appears in" update="2017-11-01">
+            <rating votes="3">6.94</rating>
+            <name>Alina</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>209089.jpg</picture>
+            <seiyuu id="24015" picture="67329.jpg">Satou Kanami</seiyuu>
+        </character>
+        <character id="87660" type="appears in" update="2017-02-12">
+            <rating votes="4">5.33</rating>
+            <name>Nina</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>198092.jpg</picture>
+            <seiyuu id="27898" picture="171568.jpg">Ogasawara Saki</seiyuu>
+        </character>
+        <character id="87661" type="appears in" update="2017-02-12">
+            <name>Boko</name>
+            <gender>unknown</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>198096.jpg</picture>
+            <seiyuu id="441" picture="249013.jpg">Fujimura Ayumi</seiyuu>
+        </character>
+        <character id="87662" type="appears in" update="2017-02-12">
+            <rating votes="2">2.60</rating>
+            <name>Rukuriri</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>198097.jpg</picture>
+            <seiyuu id="634" picture="311589.jpg">Kurata Masayo</seiyuu>
+        </character>
+        <character id="87664" type="appears in" update="2017-02-12">
+            <rating votes="1">3.87</rating>
+            <name>Nagura</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>198087.jpg</picture>
+            <seiyuu id="44122" picture="208036.jpg">Ishigami Miho</seiyuu>
+        </character>
+        <character id="87665" type="appears in" update="2017-11-13">
+            <rating votes="3">8.03</rating>
+            <name>Shimada Chiyo</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>65533.png</picture>
+            <seiyuu id="43275" picture="291778.jpg">Yukino Satsuki</seiyuu>
+        </character>
+        <character id="87666" type="appears in" update="2017-02-12">
+            <rating votes="1">3.87</rating>
+            <name>Ikeda</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>198089.jpg</picture>
+            <seiyuu id="33648" picture="212610.jpg">Tada Konomi</seiyuu>
+        </character>
+        <character id="87667" type="appears in" update="2017-02-12">
+            <rating votes="1">3.87</rating>
+            <name>Hamada</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>198088.jpg</picture>
+            <seiyuu id="33647" picture="92150.jpg">Inoue Yuka</seiyuu>
+        </character>
+        <character id="87668" type="appears in" update="2017-02-12">
+            <rating votes="1">3.87</rating>
+            <name>Shinogawa Kanon</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>198090.jpg</picture>
+            <seiyuu id="9405" picture="228517.jpg">Yamaoka Yuri</seiyuu>
+        </character>
+        <character id="92056" type="appears in" update="2017-10-31">
+            <rating votes="1">3.87</rating>
+            <name>Kodama Shichirou</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>209058.jpg</picture>
+            <seiyuu id="190" picture="186145.jpg">Tobita Nobuo</seiyuu>
+        </character>
+        <character id="92057" type="appears in" update="2017-10-31">
+            <rating votes="1">3.19</rating>
+            <name>Tsuji Renta</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>209059.jpg</picture>
+            <seiyuu id="8357" picture="174120.jpg">Kageura Daisuke</seiyuu>
+        </character>
+    </characters>
+    <episodes>
+        <episode id="162051" update="2014-08-15">
+            <epno type="4">T1</epno>
+            <length>1</length>
+            <airdate>2014-07-25</airdate>
+            <title xml:lang="ja">「ガールズ &amp; パンツァー 劇場版」特報</title>
+            <title xml:lang="en">PV 1 (30 sec)</title>
+            <title xml:lang="x-jat">"Girls &amp; Panzer Gekijouban" Tokuhou</title>
+        </episode>
+        <episode id="166956" update="2015-11-17">
+            <epno type="1">1</epno>
+            <length>120</length>
+            <airdate>2015-11-21</airdate>
+            <rating votes="5">9.79</rating>
+            <title xml:lang="en">Complete Movie</title>
+        </episode>
+        <episode id="167248" update="2015-03-25">
+            <epno type="4">T2</epno>
+            <length>2</length>
+            <airdate>2015-03-15</airdate>
+            <title xml:lang="ja">「ガールズ &amp; パンツァー 劇場版」予習PV</title>
+            <title xml:lang="en">PV 2 (1 min 29 sec)</title>
+            <title xml:lang="x-jat">"Girls &amp; Panzer Gekijouban" Yoshuu PV</title>
+        </episode>
+        <episode id="174289" recap="true" update="2016-07-19">
+            <epno type="4">T4</epno>
+            <length>55</length>
+            <airdate>2015-12-06</airdate>
+            <title xml:lang="ja">大ヒット! 記念特番</title>
+            <title xml:lang="en">Big Hit! TV Special</title>
+            <title xml:lang="x-jat">Dai Hit! Kinen Tokuban</title>
+            <summary>A hour long TV special to promote the Girls und Panzer Movie.
+Akiyama Yukari introduces the characters and the plot of the series. Next, the complete Anzio OVA is reaired. Finally, the broadcast finishes with 9 minutes of exclusive footage from the upcoming movie.</summary>
+        </episode>
+        <episode id="177768" update="2016-07-19">
+            <epno type="4">T5</epno>
+            <length>1</length>
+            <airdate>2016-02-25</airdate>
+            <title xml:lang="ja">ガールズ&amp;パンツァー 劇場版 Blu-ray&amp;DVD 5.27発売告知CM</title>
+            <title xml:lang="en">CM 1 (15 sec)</title>
+            <title xml:lang="x-jat">Girls und Panzer Gekijouban Blu-ray &amp; DVD May 27 Hatsubai Kokuchi CM</title>
+        </episode>
+        <episode id="177769" update="2016-05-23">
+            <epno type="4">T3</epno>
+            <length>2</length>
+            <airdate>2015-10-28</airdate>
+            <title xml:lang="ja">ガールズ &amp; パンツァー 劇場本予告</title>
+            <title xml:lang="en">PV 3 (1 min 29 sec)</title>
+            <title xml:lang="x-jat">Girls und Panzer Gekijou Hon Yokoku</title>
+        </episode>
+        <episode id="177795" update="2016-07-19">
+            <epno type="2">S2</epno>
+            <length>20</length>
+            <airdate>2016-05-27</airdate>
+            <rating votes="6">5.52</rating>
+            <title xml:lang="ja">愛里寿・ウォー!</title>
+            <title xml:lang="en">Arisu War!</title>
+            <title xml:lang="x-jat">Arisu War!</title>
+        </episode>
+        <episode id="178815" update="2016-07-19">
+            <epno type="2">S3</epno>
+            <length>15</length>
+            <airdate>2016-05-27</airdate>
+            <rating votes="2">7.50</rating>
+            <title xml:lang="ja">不肖・秋山優花里の戦車講座</title>
+            <title xml:lang="en">The Humble Akiyama Yukari`s Tank Course</title>
+            <title xml:lang="x-jat">Fushou Akiyama Yukari no Sensha Course</title>
+        </episode>
+        <episode id="179005" update="2017-08-27">
+            <epno type="2">S4</epno>
+            <length>20</length>
+            <airdate>2016-05-27</airdate>
+            <rating votes="2">5.63</rating>
+            <title xml:lang="ja">不肖・秋山優花里の戦車講座</title>
+            <title xml:lang="en">The Humble Akiyama Yukari`s Tank Course #2</title>
+            <title xml:lang="x-jat">Fushou Akiyama Yukari no Sensha Course</title>
+        </episode>
+        <episode id="179014" recap="true" update="2016-07-19">
+            <epno type="2">S1</epno>
+            <length>4</length>
+            <airdate>2015-11-21</airdate>
+            <rating votes="4">4.16</rating>
+            <title xml:lang="ja">3分ちょっとでわかる!! ガールズ&amp;パンツァー</title>
+            <title xml:lang="en">Understanding Girls und Panzer in 3 Minutes!!</title>
+            <title xml:lang="x-jat">Sanpun Chotto de Wakaru!! Girls und Panzer</title>
+            <summary>A 3 minute intro screened in theatres at the start of the movie. It recaps the TV series to give viewers some context before watching the film.</summary>
+        </episode>
+        <episode id="179018" update="2016-07-19">
+            <epno type="3">C2</epno>
+            <length>5</length>
+            <airdate>2015-11-21</airdate>
+            <title xml:lang="en">Ending</title>
+        </episode>
+        <episode id="179019" update="2016-07-19">
+            <epno type="3">C1</epno>
+            <length>2</length>
+            <airdate>2015-11-21</airdate>
+            <title xml:lang="en">Opening</title>
+        </episode>
+        <episode id="229997" update="2020-06-19">
+            <epno type="2">S5</epno>
+            <length>170</length>
+            <airdate>2017-12-22</airdate>
+            <title xml:lang="ja">ガールズ＆パンツァー 劇場版 シネマティック・コンサート</title>
+            <title xml:lang="en">Girls und Panzer der Film Cinematic Concert</title>
+        </episode>
+        <episode id="233007" update="2020-10-01">
+            <epno type="2">S6</epno>
+            <length>35</length>
+            <airdate>2017-12-22</airdate>
+            <title xml:lang="ja">「ガールズ&amp;パンツァー 劇場版 シネマティック・コンサート」メイキング映像</title>
+            <title xml:lang="en">Girls und Panzer der Film Cinematic Concert - Making Video</title>
+        </episode>
+        <episode id="233008" update="2020-10-01">
+            <epno type="2">S7</epno>
+            <length>35</length>
+            <airdate>2017-12-22</airdate>
+            <title xml:lang="ja">ガールズ&amp;パンツァー 劇場版』大洗凱旋・特上爆音上映会</title>
+            <title xml:lang="en">Special Detonation Screening</title>
+            <title xml:lang="x-jat">Gekijou-ban Ooarai Gaisen Tokujou Bakuon Jooei-kai</title>
+        </episode>
+        <episode id="233009" update="2020-10-01">
+            <epno type="2">S8</epno>
+            <length>15</length>
+            <airdate>2017-12-22</airdate>
+            <title xml:lang="ja">不肖・秋山優花里の戦車講座</title>
+            <title xml:lang="en">The Humble Akiyama Yukari`s Tank Course</title>
+            <title xml:lang="x-jat">Fushou Akiyama Yukari no Sensha Kouza</title>
+        </episode>
+        <episode id="233010" update="2020-10-01">
+            <epno type="2">S9</epno>
+            <length>35</length>
+            <airdate>2017-12-22</airdate>
+            <title xml:lang="en">Maho &amp; Erika`s Orchestra Introduction</title>
+        </episode>
+        <episode id="233011" update="2020-10-01">
+            <epno type="2">S10</epno>
+            <length>25</length>
+            <airdate>2017-12-22</airdate>
+            <title xml:lang="ja">第20回 大洗あんこう祭</title>
+            <title xml:lang="en">The 20th Orai Ankou Festival</title>
+        </episode>
+        <episode id="233012" update="2020-10-01">
+            <epno type="2">S11</epno>
+            <length>25</length>
+            <airdate>2017-12-22</airdate>
+            <title xml:lang="ja">大洗春祭り海楽フェスタ</title>
+            <title xml:lang="en">Oarai Spring Festival Kairaku Festa</title>
+        </episode>
+        <episode id="233013" update="2020-10-01">
+            <epno type="2">S12</epno>
+            <length>20</length>
+            <airdate>2017-12-22</airdate>
+            <title xml:lang="ja">D1 GRAND PRIX SERIES Rd.3 TSUKUBA DRIFT応援ツアー</title>
+            <title xml:lang="en">Grand Prix Series D1 Rd.3 Tsukuba Drift Support Tour</title>
+        </episode>
+        <episode id="234562" update="2020-11-19">
+            <epno type="2">S13</epno>
+            <length>125</length>
+            <title xml:lang="en">Orchestra Version</title>
+        </episode>
+        <episode id="239502" update="2021-04-18">
+            <epno type="3">C3</epno>
+            <length>2</length>
+            <airdate>2016-05-27</airdate>
+            <title xml:lang="en">Ending 2</title>
+        </episode>
+    </episodes>
+</anime>

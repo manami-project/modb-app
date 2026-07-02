@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?><anime id="12676" restricted="false">
+    <type>Music Video</type>
+    <episodecount>1</episodecount>
+    <startdate>1986-06</startdate>
+    <enddate>1986-06</enddate>
+    <titles>
+        <title xml:lang="x-jat" type="main">Henna ABC</title>
+        <title xml:lang="ja" type="official">ヘンなABC</title>
+    </titles>
+    <url>http://www2.nhk.or.jp/minna/search/index.cgi?id=MIN198606_03</url>
+    <description>A music video for the song "Henna ABC" by Miyuki Ichijou, and NHK Tokyo Children`s Choir. Aired as part of NHK`s Minna no Uta program.</description>
+    <ratings>
+        <permanent count="29">3.61</permanent>
+        <temporary count="30">4.46</temporary>
+    </ratings>
+    <picture>196033.jpg</picture>
+    <resources>
+        <resource type="2">
+            <externalentity>
+                <identifier>28355</identifier>
+            </externalentity>
+        </resource>
+        <resource type="4">
+            <externalentity>
+                <url>http://www2.nhk.or.jp/minna/search/index.cgi?id=MIN198606_03</url>
+            </externalentity>
+        </resource>
+    </resources>
+    <tags>
+        <tag id="6151" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-09-10">
+            <name>technical aspects</name>
+            <description>It may sometimes be useful to know about technical aspects of a show, such as information about its broadcasting or censorship. Such information can be found here.</description>
+        </tag>
+        <tag id="6153" parentid="6151" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-09-10">
+            <name>multi-anime projects</name>
+            <description>Many anime are created as part of larger projects encompassing many shows without direct relation to one another. Normally, there is a specific idea in mind: for example, the http://anidb.net/t4859 [Young Animator Training Project] aims to stimulate the on-the-job training of next-generation professionals of the anime industry, whereas the http://anidb.net/t3763 [World Masterpiece Theatre] aims to animate classical stories from all over the world.</description>
+        </tag>
+        <tag id="6173" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-09-24">
+            <name>origin</name>
+        </tag>
+        <tag id="6423" parentid="6153" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2015-06-11">
+            <name>Minna no Uta</name>
+            <description>Minna no Uta is a five-minute music programme broadcast several times daily on NHK TV and radio since 1961. It is used to introduce new songs from popular and new singers, as well as to highlight the talents of various animators and directors.
+Source: Wikipedia</description>
+            <picurl>174524.jpg</picurl>
+        </tag>
+        <tag id="7885" parentid="6173" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2021-11-07">
+            <name>Japanese production</name>
+        </tag>
+    </tags>
+    <episodes>
+        <episode id="183055" update="2016-12-22">
+            <epno type="1">1</epno>
+            <length>3</length>
+            <title xml:lang="en">Music Video</title>
+        </episode>
+    </episodes>
+</anime>

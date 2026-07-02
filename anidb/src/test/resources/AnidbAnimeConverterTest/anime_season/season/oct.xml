@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?><anime id="13933" restricted="false">
+    <type>Web</type>
+    <episodecount>1</episodecount>
+    <startdate>2015-10-26</startdate>
+    <enddate>2015-10-26</enddate>
+    <titles>
+        <title xml:lang="x-jat" type="main">Zonmi-chan: Halloween Special Movie!</title>
+        <title xml:lang="ja" type="official">【ゾンミちゃん】ハロウィン☆スペシャルムービー!</title>
+    </titles>
+    <relatedanime>
+        <anime id="11989" type="Parent Story">Zonmi-chan</anime>
+    </relatedanime>
+    <description>A Halloween special starring Zonmi-chan. A soldier is being chased by several Zonmi-chan zombies. He shoots at them but is ultimately caught.
+Source: MAL</description>
+    <ratings>
+        <permanent count="198">2.56</permanent>
+        <temporary count="198">4.56</temporary>
+    </ratings>
+    <picture>215010.jpg</picture>
+    <resources>
+        <resource type="2">
+            <externalentity>
+                <identifier>33042</identifier>
+            </externalentity>
+        </resource>
+        <resource type="26">
+            <externalentity>
+                <identifier>watch?v=CgYbkWhiYws</identifier>
+            </externalentity>
+        </resource>
+    </resources>
+    <tags>
+        <tag id="6173" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-09-24">
+            <name>origin</name>
+        </tag>
+        <tag id="7885" parentid="6173" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2021-11-07">
+            <name>Japanese production</name>
+        </tag>
+    </tags>
+    <characters>
+        <character id="80951" type="main character in" update="2016-04-23">
+            <rating votes="3">5.57</rating>
+            <name>Zonmi-chan</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>186035.jpg</picture>
+        </character>
+        <character id="80953" type="main character in" update="2016-04-23">
+            <name>Dai-kun</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>186038.jpg</picture>
+        </character>
+    </characters>
+    <episodes>
+        <episode id="204560" update="2018-08-24">
+            <epno type="1">1</epno>
+            <length>1</length>
+            <airdate>2015-10-26</airdate>
+            <rating votes="1">1.02</rating>
+            <title xml:lang="en">Short Movie</title>
+        </episode>
+    </episodes>
+</anime>

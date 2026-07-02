@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8"?><anime id="7167" restricted="false">
+    <type>Movie</type>
+    <episodecount>1</episodecount>
+    <startdate>2009-09-19</startdate>
+    <enddate>2009-09-19</enddate>
+    <titles>
+        <title xml:lang="x-jat" type="main">Gekijouban Duel Masters: Lunatic God Saga</title>
+        <title xml:lang="x-jat" type="synonym">Gekijouban Duel Masters 2: Lunatic God Saga - Kokugatsu no Shintei</title>
+        <title xml:lang="ja" type="official">劇場版デュエル・マスターズ 黒月の神帝(ルナティック・ゴッド・サーガ)</title>
+        <title xml:lang="ja" type="kanareading">げきじょうばん デュエル・マスターズ ルナティック・ゴッド・サーガ</title>
+    </titles>
+    <relatedanime>
+        <anime id="5905" type="Parent Story">Duel Masters Cross</anime>
+    </relatedanime>
+    <url>http://corocoro.tv/duepen-movie/</url>
+    <creators>
+        <name id="5681" type="Chief Direction">Suzuki Warurou</name>
+        <name id="45294" type="Direction">Hattori Keita</name>
+        <name id="1082" type="Original Work">Shogakukan</name>
+        <name id="50654" type="Original Work">Mitsui Bussan</name>
+        <name id="2842" type="Animation Work">Shogakukan Music &amp; Digital Entertainment</name>
+        <name id="6042" type="Character Design">Hiraoka Masayuki</name>
+        <name id="2841" type="Work">Shogakukan-Shueisha Productions</name>
+        <name id="13452" type="Music">Igarashi Jun`ichi</name>
+        <name id="81835" type="Original Work">Wizards of the Coast</name>
+    </creators>
+    <ratings>
+        <permanent count="15">4.21</permanent>
+        <temporary count="15">5.06</temporary>
+    </ratings>
+    <picture>38118.jpg</picture>
+    <resources>
+        <resource type="1">
+            <externalentity>
+                <identifier>11488</identifier>
+            </externalentity>
+        </resource>
+        <resource type="2">
+            <externalentity>
+                <identifier>6062</identifier>
+            </externalentity>
+        </resource>
+        <resource type="4">
+            <externalentity>
+                <url>http://corocoro.tv/duepen-movie/</url>
+            </externalentity>
+        </resource>
+        <resource type="7">
+            <externalentity>
+                <identifier>デュエル・マスターズ_(漫画)#.E3.83.87.E3.83.A5.E3.82.A8.E3.83.AB.E3.83.BB.E3.83.9E.E3.82.B9.E3.82.BF.E3.83.BC.E3.82.BA_.E9.BB.92.E6.9C.88.E3.81.AE.E7.A5.9E.E5.B8.9D</identifier>
+            </externalentity>
+        </resource>
+        <resource type="9">
+            <externalentity>
+                <identifier>334330</identifier>
+            </externalentity>
+        </resource>
+        <resource type="10">
+            <externalentity>
+                <identifier>11861</identifier>
+            </externalentity>
+        </resource>
+    </resources>
+    <tags>
+        <tag id="30" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-09-10">
+            <name>maintenance tags</name>
+            <description>These tags are used for maintenance.</description>
+        </tag>
+        <tag id="922" parentid="2606" infobox="true" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2015-02-04">
+            <name>shounen</name>
+            <description>In the context of manga and associated media, shounen, literally meaning "youth" and often also specifically "boy", refers to a male audience roughly between the ages of 10 and 18.
+Source: Wikipedia</description>
+        </tag>
+        <tag id="2606" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2018-11-05">
+            <name>target audience</name>
+            <description>Anime, like everything else in the modern world, is targeted towards specific audiences, both implicitly by the creators and overtly by the marketing. While categories are associated with specific sex and age groups, this is not a bar on the anime being enjoyed by people who don`t fit into that band; not only do crossover titles exist, but the categories also have a considerable following outside their main demographic, and a person might as well enjoy anime from all categories. Still, does not invalidate the usefulness of marking a title as one of the categories; the same themes will likely be treated differently in anime geared for different audiences. Only one should not jump the gun and assume that a title will be more or less serious or present content in this or that way due to its target audience, or conversely assume the target audience on the content and its presentation alone. As such, the audience categories help form a broad impression of how a title might work with the announced themes, but offer little to no in-depth information about specific content or its treatment.
+The audience categories originate from manga magazines, which group titles of a same intended audience into a magazine that is advertised as belonging to that category, and so manga-based anime will have the category from their parent work. As for anime based on other works, the audience is often debatable, but comparing information such as time slot to the manga-based anime generally helps figure out the most likely possibility.
+If the parent material was classified under multiple audiences over time (for example, it was originally shounen, but then as the plot changed and became more mature, it was reclassified as seinen), and the anime adapts parent material time periods covering multiple audiences, we tag all audiences covered by the anime adaptation.</description>
+        </tag>
+        <tag id="2607" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2009-04-29">
+            <name>themes</name>
+            <description>Themes describe the very central elements important to the anime stories. They set the backdrop against which the protagonists must face their challenges. Be it School Life, present Daily Life, Military action, Cyberpunk, Law and Order detective work, Sports, or the Underworld. These are only but a few of the more typical backgrounds for anime plots. Add to that a Conspiracy setting with a possible tragic outcome, the Themes span most of the imaginable subject matter relevant to anime.</description>
+        </tag>
+        <tag id="2609" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2018-09-01">
+            <name>original work</name>
+            <description>What the anime is based on! This is given as the original work credit in the OP. Mostly of academic interest, but a useful bit of info, hinting at the possible depth of story.</description>
+        </tag>
+        <tag id="2611" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-09-08">
+            <name>elements</name>
+            <description>Next to Themes setting the backdrop for the protagonists in anime, there are the more detailed plot Elements that centre on character interactions: "What do characters do to each other or what is done to them?". Is it violent Action, an awe-inspiring Adventure in a foreign place, the gripping life of a Detective, a slapstick Comedy, an Ecchi Harem anime, a SciFi epic, or some Fantasy travelling adventure?</description>
+        </tag>
+        <tag id="2798" parentid="2609" infobox="true" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2019-02-14">
+            <name>manga</name>
+            <description>Manga is the lifeblood that drives the anime industry. Everything and its mother is based on manga. However! There are exceptions where the manga was not the basis for the anime.
+It`s common practice to make manga adaptations of many popular anime, there`s a manga based on Evangelion, and two (one shounen and one shoujo) based on each of Escaflowne and Mahou Tsukai Tai. Also it`s quite common to release manga and anime versions of a story in parallel, for instance Nadesico and Shoujo Kakumei Utena. There are also cases where an anime continues in a manga, as in the case of Angel Beats! and Angel Beats: Heaven`s Door, or reverse.
+See also http://anidb.net/t6493 [manhua] and http://anidb.net/t5010 [manhwa].</description>
+            <picurl>215593.jpg</picurl>
+        </tag>
+        <tag id="2841" parentid="2611" infobox="true" weight="400" localspoiler="false" globalspoiler="false" verified="true" update="2017-12-26">
+            <name>action</name>
+            <description>Action anime usually involve a fairly straightforward story of good guys versus bad guys, where most disputes are resolved by using physical force. It often contains a lot of shooting, explosions and fighting.</description>
+            <picurl>211261.jpg</picurl>
+        </tag>
+        <tag id="2850" parentid="2611" infobox="true" weight="400" localspoiler="false" globalspoiler="false" verified="true" update="2015-10-25">
+            <name>adventure</name>
+            <description>Adventures are exciting stories, with new experiences or exotic locales. Adventures are designed to provide an action-filled, energetic experience for the viewer. Rather than the predominant emphasis on violence and fighting that is found in pure action anime, however, the viewer of adventures can live vicariously through the travels, conquests, explorations, creation of empires, struggles and situations that confront the main characters, actual historical figures or protagonists. Under the category of adventures, we can include traditional swashbucklers, serialized films, and historical spectacles, searches or expeditions for lost continents, "jungle" and "desert" epics, treasure hunts and quests, disaster films, and heroic journeys or searches for the unknown. Adventure films are often, but not always, set in an historical period, and may include adapted stories of historical or literary adventure heroes, kings, battles, rebellion, or piracy.</description>
+            <picurl>178879.jpg</picurl>
+        </tag>
+        <tag id="2853" parentid="2611" infobox="true" weight="400" localspoiler="false" globalspoiler="false" verified="true" update="2017-02-13">
+            <name>comedy</name>
+            <description>Anime whose central struggle causes hilarious results. These stories are built upon funny characters, situations and events. A comedy anime is laced with humour and sets out to provoke laughter from the audience.
+Japanese humour can be a bit strange to westerners, so if you`re new to this type of humour, just bear with it; it`ll most likely grow on you if you`re a fan of other kinds of comedy.</description>
+            <picurl>198104.jpg</picurl>
+        </tag>
+        <tag id="2863" parentid="2607" infobox="true" weight="600" localspoiler="false" globalspoiler="false" verified="true" update="2009-05-18">
+            <name>proxy battles</name>
+            <description>In our terms, a proxy battle is a battle where humans use creatures/robots to do the fighting for them, either by commanding those creatures/robots or by simply evolving them/changing them into battle mode. Often the training aspect is also involved, or in some cases the proxies are nothing more than holographic representatives of some other variation of competition (like for example a card game). While many popular shounen anime fit under this category, it`s not limited to shounen anime.</description>
+        </tag>
+        <tag id="2881" parentid="2607" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2018-01-21">
+            <name>sports</name>
+            <description>Sports anime revolves around a recreational physical activity or skill. In addition they often adhere to certain genre conventions, the emphasis on training and practice in preparation for competition, characters desire for self improvement, and pursuit of a specific goal.</description>
+            <picurl>212185.jpg</picurl>
+        </tag>
+        <tag id="3955" parentid="30" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-09-08">
+            <name>DESCRIPTION MISSING</name>
+            <description>The description for this entry is missing. e.g plot, biography...
+Please help by adding it, and remove this tag afterwards. Thank you.</description>
+        </tag>
+        <tag id="4064" parentid="6151" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2018-08-13">
+            <name>CGI</name>
+            <description>Computer-generated imagery (CGI) or computer animation is the art of creating moving images via the use of computers. It is a subfield of computer graphics and animation. Increasingly it is created by means of 3D computer graphics, though 2D computer graphics are still widely used for stylistic, low bandwidth, and faster real-time rendering needs. Sometimes the target of the animation is the computer itself, but sometimes the target is another medium, such as film.</description>
+            <picurl>222249.jpg</picurl>
+        </tag>
+        <tag id="6097" parentid="4064" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2017-10-19">
+            <name>3D CG animation</name>
+            <description>Abbreviation for "three-dimensional computer generated animation" or "computer graphics" (CGI). The traditional 2D art is enhanced by 3D imagery developed through computer modeling software. Done in the right way, this union of 3D in a 2D animated world can be a very beautiful relationship.
+The difference lies in what lacks the traditional 2D animation all together and may give term to something produced entirely with 3D graphics (such as the 2006 remake of "Appleseed" , 2007`s "Vexille", the 2008 addition to the "Biohazard" series and the more well known "Final Fantasy: The Spirits Within" and "Advent Children").</description>
+            <picurl>208569.jpg</picurl>
+        </tag>
+        <tag id="6151" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-09-10">
+            <name>technical aspects</name>
+            <description>It may sometimes be useful to know about technical aspects of a show, such as information about its broadcasting or censorship. Such information can be found here.</description>
+        </tag>
+        <tag id="6173" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-09-24">
+            <name>origin</name>
+        </tag>
+        <tag id="6191" parentid="2881" weight="600" localspoiler="false" globalspoiler="false" verified="true" update="2014-10-05">
+            <name>card games</name>
+            <description>A card game is any game using playing cards as the primary device with which the game is played, be they traditional or game-specific. Countless card games exist, including families of related games (such as poker). A small number of card games played with traditional decks have formally standardized rules, but most are folk games whose rules vary by region, culture, and person.
+Many games that are not generally placed in the family of card games do in fact use cards for some aspect of their gameplay. Similarly, some games that are placed in the card game genre involve a board. The distinction is that the gameplay of a card game primarily depends on the use of the cards by players (the board is simply a guide for scorekeeping or for card placement), while board games (the principal non-card game genre to use cards) generally focus on the players` positions on the board, and use the cards for some secondary purpose.</description>
+        </tag>
+        <tag id="7885" parentid="6173" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2021-11-07">
+            <name>Japanese production</name>
+        </tag>
+    </tags>
+    <characters>
+        <character id="37975" type="main character in" update="2011-10-23">
+            <rating votes="18">3.46</rating>
+            <name>Kirifuda Shoubu</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>72347.jpg</picture>
+            <seiyuu id="320" picture="11092.jpeg">Kobayashi Yumiko</seiyuu>
+        </character>
+        <character id="37976" type="main character in" update="2011-10-23">
+            <rating votes="40">7.23</rating>
+            <name>Tasogare Mimi</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>1488.gif</picture>
+            <seiyuu id="215" picture="151687.jpg">Nakajima Saki</seiyuu>
+        </character>
+        <character id="37977" type="main character in" update="2011-10-23">
+            <rating votes="18">3.45</rating>
+            <name>Kadoko Rekuta</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>72382.jpg</picture>
+            <seiyuu id="362" picture="74735.jpg">Imai Yuka</seiyuu>
+        </character>
+        <character id="37979" type="secondary cast in" update="2011-10-23">
+            <name>Hakuou</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>72391.jpg</picture>
+            <seiyuu id="570" picture="151691.jpg">Minagawa Junko</seiyuu>
+        </character>
+        <character id="37989" type="secondary cast in" update="2011-10-23">
+            <rating votes="12">3.45</rating>
+            <name>George Kamamoto</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>1904.png</picture>
+            <seiyuu id="2" picture="265617.jpg">Wakamoto Norio</seiyuu>
+        </character>
+        <character id="37995" type="secondary cast in" update="2011-10-23">
+            <name>Dr. Root</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>72497.jpg</picture>
+            <seiyuu id="688" picture="248106.jpg">Tanaka Kan</seiyuu>
+        </character>
+        <character id="37997" type="secondary cast in" update="2011-10-23">
+            <name>Amachi Ryouga</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>72548.jpg</picture>
+            <seiyuu id="236" picture="265564.jpg">Seki Tomokazu</seiyuu>
+        </character>
+        <character id="37998" type="secondary cast in" update="2011-10-23">
+            <rating votes="1">6.07</rating>
+            <name>Kamizuki Luna</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>72533.jpg</picture>
+            <seiyuu id="4" picture="177060.jpg">Hirano Aya</seiyuu>
+        </character>
+        <character id="37999" type="secondary cast in" update="2011-10-23">
+            <name>Kamizuki Mikado</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>72528.jpg</picture>
+            <seiyuu id="225" picture="259982.jpg">Sakurai Takahiro</seiyuu>
+        </character>
+    </characters>
+    <episodes>
+        <episode id="111052" update="2011-10-20">
+            <epno type="1">1</epno>
+            <length>75</length>
+            <airdate>2009-09-19</airdate>
+            <rating votes="1">3.17</rating>
+            <title xml:lang="en">Complete Movie</title>
+        </episode>
+        <episode id="116202" update="2010-02-04">
+            <epno type="4">T1</epno>
+            <length>1</length>
+            <title xml:lang="en">Trailer</title>
+        </episode>
+        <episode id="224634" update="2019-11-27">
+            <epno type="4">T2</epno>
+            <length>2</length>
+            <title xml:lang="en">Gekijouban Duel Masters - Lunatic God Saga &amp; Gekijouban Penguin no Mondai - Shiawase no Aoi Tori de Go-Pen-nasai combo PV</title>
+        </episode>
+        <episode id="310145" update="2026-04-04">
+            <epno type="4">T3</epno>
+            <length>1</length>
+            <rating votes="1">3.17</rating>
+            <title xml:lang="en">DVD Card Bonus CM (0:10)</title>
+        </episode>
+    </episodes>
+</anime>

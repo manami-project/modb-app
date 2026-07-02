@@ -1,0 +1,388 @@
+<?xml version="1.0" encoding="UTF-8"?><anime id="1560" restricted="false">
+    <type>OVA</type>
+    <episodecount>10</episodecount>
+    <startdate>1993-04-01</startdate>
+    <enddate>1997-12-21</enddate>
+    <titles>
+        <title xml:lang="x-jat" type="main">Kyou kara Ore wa!!</title>
+        <title xml:lang="en" type="synonym">Today, It`s My Turn!!</title>
+        <title xml:lang="en" type="synonym">Starting Today, I`ll!!</title>
+        <title xml:lang="en" type="synonym">From Today I`ll</title>
+        <title xml:lang="ru" type="synonym">Сегодня и начну!</title>
+        <title xml:lang="x-jat" type="short">kkow</title>
+        <title xml:lang="ja" type="official">今日から俺は!!</title>
+        <title xml:lang="it" type="official">Due come noi</title>
+        <title xml:lang="zh-Hans" type="official">我是大哥大</title>
+    </titles>
+    <similaranime>
+        <anime id="355" approval="16" total="27">Golden Boy</anime>
+        <anime id="4841" approval="14" total="16">Shounan Jun`ai-gumi!</anime>
+        <anime id="191" approval="12" total="13">GTO</anime>
+        <anime id="4235" approval="10" total="12">Be-Bop High School</anime>
+        <anime id="2779" approval="8" total="11">Chameleon</anime>
+        <anime id="1099" approval="6" total="8">Sakigake!! Cromartie Koukou</anime>
+        <anime id="590" approval="5" total="7">Slam Dunk</anime>
+        <anime id="13734" approval="4" total="5">Grand Blue</anime>
+        <anime id="9345" approval="4" total="4">Crows</anime>
+    </similaranime>
+    <recommendations total="4">
+        <recommendation type="For Fans" uid="537559">It starts of really similar to Be-Bob High school. The setting, the storylines are even near copies. As the show continues it focuses way more on comedy than BB HS. Sadly the comedy is mostly lacklustre, let`s say mildly amusing, with only a few good exceptions. Still an enjoyable show for fans of this genre.</recommendation>
+        <recommendation type="Recommended" uid="384413">Not anything for everyone, but if you want to watch something classic and not-so-well-known for some reason, or you are in the mood for some delinquent comedy, then KKOW is definitely something you should check out.
+
+Hilarious characters and hilarious jokes. Recommended.</recommendation>
+        <recommendation type="Must See" uid="615956">This is one of a hell show. Everyone should watch this. It`s hilarious and it is a good way to spend your time. Highly recommended.</recommendation>
+    </recommendations>
+    <creators>
+        <name id="6428" type="Character Design">Oonishi Masaya</name>
+        <name id="760" type="Work">Toho</name>
+        <name id="724" type="Work">Studio Pierrot</name>
+        <name id="3052" type="Direction">Mori Takeshi</name>
+        <name id="5759" type="Direction">Annou Masami</name>
+        <name id="24665" type="Music">Nomura Kimio</name>
+        <name id="7032" type="Original Work">Nishimori Hiroyuki</name>
+    </creators>
+    <description>* Based on the shounen manga by http://anidb.net/cr7032 [Nishimori Hiroyuki], serialised in http://anidb.net/cr23232 [Shounen Sunday].
+Two boys, http://anidb.net/ch6000 [Mitsuhashi Takashi] and http://anidb.net/ch6001 [Itou Shinji], meet each other at a salon. It turns out both of them are transferring to a new school and decide to take the opportunity to reinvent themselves. No longer will they be run of the mill high school students, they will become the biggest delinquents Japan has ever seen!</description>
+    <ratings>
+        <permanent count="639">8.20</permanent>
+        <temporary count="646">7.73</temporary>
+    </ratings>
+    <picture>160934.jpg</picture>
+    <resources>
+        <resource type="1">
+            <externalentity>
+                <identifier>2995</identifier>
+            </externalentity>
+        </resource>
+        <resource type="2">
+            <externalentity>
+                <identifier>851</identifier>
+            </externalentity>
+        </resource>
+        <resource type="3">
+            <externalentity>
+                <identifier>2684</identifier>
+                <identifier>wzpjfn</identifier>
+            </externalentity>
+        </resource>
+        <resource type="6">
+            <externalentity>
+                <identifier>Kyō_Kara_Ore_Wa!!</identifier>
+            </externalentity>
+        </resource>
+        <resource type="7">
+            <externalentity>
+                <identifier>今日から俺は!!#OVA.E7.89.88</identifier>
+            </externalentity>
+        </resource>
+        <resource type="9">
+            <externalentity>
+                <identifier>88355</identifier>
+            </externalentity>
+        </resource>
+        <resource type="10">
+            <externalentity>
+                <identifier>1922</identifier>
+            </externalentity>
+        </resource>
+    </resources>
+    <tags>
+        <tag id="30" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-09-10">
+            <name>maintenance tags</name>
+            <description>These tags are used for maintenance.</description>
+        </tag>
+        <tag id="922" parentid="2606" infobox="true" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2015-02-04">
+            <name>shounen</name>
+            <description>In the context of manga and associated media, shounen, literally meaning "youth" and often also specifically "boy", refers to a male audience roughly between the ages of 10 and 18.
+Source: Wikipedia</description>
+        </tag>
+        <tag id="2069" parentid="2869" weight="600" localspoiler="false" globalspoiler="false" verified="true" update="2020-01-15">
+            <name>delinquent</name>
+            <description>Delinquents - Every school has them, but not all anime with school setting make delinquents a central topic. There are several versions of these delinquents, though some are grounded on a misunderstanding:
+* The student with a really bad image and attitude, based on his real criminal actions outside of the school and is even feared by teachers.
+* The primitive "class bully" that pushes around ("clobbers") his classmates for no apparent reason, possibly extorting lunch money.
+* The student with an sinister complexion or "evil eye", but is actually a "good" student (unfoundedly feared character).
+* The rebellious student, who does not care for studying, but is otherwise docile. Called a "delinquent" as a joke.</description>
+            <picurl>243713.jpg</picurl>
+        </tag>
+        <tag id="2604" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2018-11-08">
+            <name>content indicators</name>
+            <description>The content indicators branch is intended to be a less geographically specific tool than the `age rating` used by convention, for warning about things that might cause offence. Obviously there is still a degree of subjectivity involved, but hopefully it will prove useful for parents with delicate children, or children with delicate parents.
+Note: Refer to further guidance on http://wiki.anidb.net/w/Categories:Content_Indicators [the Wiki page] for how to apply tag weights for content indicators.</description>
+        </tag>
+        <tag id="2605" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-09-28">
+            <name>dynamic</name>
+            <description>Some of the central structural elements in anime are: 
+Plot Continuity 
+How does the plot or several plots unfold. Are they a strictly linear retelling of one big continuing story, a serial, possibly with several side stories, or is the content chopped into a set of unconnected episodes, only sharing the same setting and characters?
+Stereotype Characters
+Then there is the question of the character set presentation. Is it completely original, or is it your usual stereotypical character cast. Both choices have their merit, for example it would not really make much sense to reinvent the wheel for a harem anime. Fans of that genre come to expect their favourite stereotype protagonists.
+Plot Twists
+Finally there is the question of how complex the plot / the story unfolds. Are there side-plots that merge into the main plot leading to unexpected plot twists, or is the anime quite predictable? The latter would not be appropriate for detective stories. In harem anime on the other hand a foreseeable outcome is actually something the fans will come to expect.</description>
+        </tag>
+        <tag id="2606" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2018-11-05">
+            <name>target audience</name>
+            <description>Anime, like everything else in the modern world, is targeted towards specific audiences, both implicitly by the creators and overtly by the marketing. While categories are associated with specific sex and age groups, this is not a bar on the anime being enjoyed by people who don`t fit into that band; not only do crossover titles exist, but the categories also have a considerable following outside their main demographic, and a person might as well enjoy anime from all categories. Still, does not invalidate the usefulness of marking a title as one of the categories; the same themes will likely be treated differently in anime geared for different audiences. Only one should not jump the gun and assume that a title will be more or less serious or present content in this or that way due to its target audience, or conversely assume the target audience on the content and its presentation alone. As such, the audience categories help form a broad impression of how a title might work with the announced themes, but offer little to no in-depth information about specific content or its treatment.
+The audience categories originate from manga magazines, which group titles of a same intended audience into a magazine that is advertised as belonging to that category, and so manga-based anime will have the category from their parent work. As for anime based on other works, the audience is often debatable, but comparing information such as time slot to the manga-based anime generally helps figure out the most likely possibility.
+If the parent material was classified under multiple audiences over time (for example, it was originally shounen, but then as the plot changed and became more mature, it was reclassified as seinen), and the anime adapts parent material time periods covering multiple audiences, we tag all audiences covered by the anime adaptation.</description>
+        </tag>
+        <tag id="2607" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2009-04-29">
+            <name>themes</name>
+            <description>Themes describe the very central elements important to the anime stories. They set the backdrop against which the protagonists must face their challenges. Be it School Life, present Daily Life, Military action, Cyberpunk, Law and Order detective work, Sports, or the Underworld. These are only but a few of the more typical backgrounds for anime plots. Add to that a Conspiracy setting with a possible tragic outcome, the Themes span most of the imaginable subject matter relevant to anime.</description>
+        </tag>
+        <tag id="2609" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2018-09-01">
+            <name>original work</name>
+            <description>What the anime is based on! This is given as the original work credit in the OP. Mostly of academic interest, but a useful bit of info, hinting at the possible depth of story.</description>
+        </tag>
+        <tag id="2611" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-09-08">
+            <name>elements</name>
+            <description>Next to Themes setting the backdrop for the protagonists in anime, there are the more detailed plot Elements that centre on character interactions: "What do characters do to each other or what is done to them?". Is it violent Action, an awe-inspiring Adventure in a foreign place, the gripping life of a Detective, a slapstick Comedy, an Ecchi Harem anime, a SciFi epic, or some Fantasy travelling adventure?</description>
+        </tag>
+        <tag id="2654" parentid="2853" weight="100" localspoiler="false" globalspoiler="false" verified="true" update="2017-06-13">
+            <name>medium awareness</name>
+            <description>Medium awareness is the situational and generally temporary awareness characters in works of fiction have and display of the very fact that they are characters in works of fiction. For example, they may comment about the background music, quip about the script or narration, complain about the roles given to them by the writer or their lack of screen time, see the subtitles that appear on screen, inform the audience about the arrival of the commercial break, and even use medium effects as tools. The most common form of medium awareness is known as breaking the fourth wall, in which characters speak directly to the audience, either to it as a whole or to specific members of it. The "fourth wall" is the imaginary "wall" at the front of the stage of a proscenium theatre through which the audience sees the play; it is a metaphor for the boundary between what happens inside the work, to the characters, and outside it, to the audience.</description>
+        </tag>
+        <tag id="2750" parentid="2604" infobox="true" weight="500" localspoiler="false" globalspoiler="false" verified="true" update="2018-11-08">
+            <name>violence</name>
+            <description>Violence is the use of physical force against oneself or another entity, compelling action against one`s will on pain of being hurt.
+Note: Refer to further guidance on http://wiki.anidb.net/w/Categories:Content_Indicators [the Wiki page] for how to apply tag weights for content indicators.</description>
+        </tag>
+        <tag id="2798" parentid="2609" infobox="true" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2019-02-14">
+            <name>manga</name>
+            <description>Manga is the lifeblood that drives the anime industry. Everything and its mother is based on manga. However! There are exceptions where the manga was not the basis for the anime.
+It`s common practice to make manga adaptations of many popular anime, there`s a manga based on Evangelion, and two (one shounen and one shoujo) based on each of Escaflowne and Mahou Tsukai Tai. Also it`s quite common to release manga and anime versions of a story in parallel, for instance Nadesico and Shoujo Kakumei Utena. There are also cases where an anime continues in a manga, as in the case of Angel Beats! and Angel Beats: Heaven`s Door, or reverse.
+See also http://anidb.net/t6493 [manhua] and http://anidb.net/t5010 [manhwa].</description>
+            <picurl>215593.jpg</picurl>
+        </tag>
+        <tag id="2841" parentid="2611" weight="300" localspoiler="false" globalspoiler="false" verified="true" update="2017-12-26">
+            <name>action</name>
+            <description>Action anime usually involve a fairly straightforward story of good guys versus bad guys, where most disputes are resolved by using physical force. It often contains a lot of shooting, explosions and fighting.</description>
+            <picurl>211261.jpg</picurl>
+        </tag>
+        <tag id="2853" parentid="2611" infobox="true" weight="600" localspoiler="false" globalspoiler="false" verified="true" update="2017-02-13">
+            <name>comedy</name>
+            <description>Anime whose central struggle causes hilarious results. These stories are built upon funny characters, situations and events. A comedy anime is laced with humour and sets out to provoke laughter from the audience.
+Japanese humour can be a bit strange to westerners, so if you`re new to this type of humour, just bear with it; it`ll most likely grow on you if you`re a fan of other kinds of comedy.</description>
+            <picurl>198104.jpg</picurl>
+        </tag>
+        <tag id="2869" parentid="2607" infobox="true" weight="600" localspoiler="false" globalspoiler="false" verified="true" update="2017-12-01">
+            <name>school life</name>
+            <description>Since a large part of the anime audience still takes part in school life or is visiting college, it is only natural to choose a setting the audience can identify with, be it elementary, middle, or high school. For the older viewers a college setting with more mature real-life problems is appropriate. And since clubs take up so much time in the lives of students, these are obviously also important.</description>
+            <picurl>210062.jpg</picurl>
+        </tag>
+        <tag id="2931" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2016-12-04">
+            <name>unsorted</name>
+            <description>a bunch of tags that still need to be either deleted or moved into proper places.</description>
+        </tag>
+        <tag id="4224" parentid="7242" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2019-03-03">
+            <name>adapted into JDrama</name>
+            <description>This anime is a http://anidb.net/t2797 [new original work], and it has been adapted into a JDrama.
+A JDrama (Japanese drama), also called "terebi dorama" ("television drama") or "dorama" for short, is a Japanese live action television series.
+Japan produces many drama series every year, from a huge variety of genres. Like anime, they generally air in three-month seasons or multiples thereof, with new shows airing every season. Some kinds of drama, especially the morning or afternoon ones, tend to be broadcast daily, while evening ones tend to be broadcast weekly, also like anime.
+In exceedingly rare instances, a specific episode of a new original work anime can also be adapted.</description>
+        </tag>
+        <tag id="4538" parentid="6151" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2025-07-14">
+            <name>long episodes</name>
+            <description>Long episodes are regular episodes that are much longer than the standard 25-30 minutes, usually 45-60 minutes. 
+Not to be used if a show has occasional 45-60 minute specials. Also not to be confused with an OVA or music video with multiple (otherwise unrelated) full-length http://anidb.net/t6093 [bundled episodes] consolidated into a single episode video track.</description>
+        </tag>
+        <tag id="4611" parentid="6230" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-10-22">
+            <name>nearly almighty protagonist</name>
+            <description>Man 1: "Hey man, did you see me take down that guy over there, there`s no way he could have survived that!"
+Man 2: "Yeah I know what you mean, it would take the strength of 1 million men to be able to ..... HE`S GETTING BACK UP!!?!?"
+*synonymous jaws dropping*
+This anime`s main character is comparable to the gods themselves in terms of resistibility, strength and/or downright bad-assery. Whenever they seem as if the fire inside has burnt out, they rise from the ashes with enough tenacity and ferocity to vanquish any foe that dare stand against them.</description>
+        </tag>
+        <tag id="5823" parentid="6230" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2010-09-01">
+            <name>predominantly male cast</name>
+            <description>The anime features a mostly male cast, i.e. female characters are rare.
+Example: Reverse harem setting with a plethora of bishounen.</description>
+        </tag>
+        <tag id="5965" parentid="6247" weight="0" localspoiler="false" globalspoiler="true" verified="false" update="2015-02-10">
+            <name>incomplete story</name>
+            <description>The show does not cover all of the original work (if present) or was cancelled prematurely, leaving plot lines unresolved or aborting character development. Sometimes the show runs through all its initially slotted episodes and adapts all of the original work (if applicable) but fails to present a proper ending, leaving viewers wondering whether they`re missing the final episodes.
+In some cases, this may overlap with the studio forging an anime-original ending. Such an ending normally manages to allow the show to "finish", but may still suffer from incomplete story issues.
+An incomplete storyline is not to be confused with the sequel bait, which is when the story presented by the show is finished but leaves enough room for a sequel to be produced. Sometimes this goes as far as to present a new potential problem in the last few minutes; that is usual for after-credits footage in movies.</description>
+        </tag>
+        <tag id="6151" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-09-10">
+            <name>technical aspects</name>
+            <description>It may sometimes be useful to know about technical aspects of a show, such as information about its broadcasting or censorship. Such information can be found here.</description>
+        </tag>
+        <tag id="6173" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-09-24">
+            <name>origin</name>
+        </tag>
+        <tag id="6230" parentid="2605" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-10-20">
+            <name>cast</name>
+        </tag>
+        <tag id="6247" parentid="2931" weight="0" localspoiler="false" globalspoiler="false" verified="false" update="2019-06-02">
+            <name>ending tags that need merging</name>
+            <description>See also: http://anidb.net/post426253 [http://anidb.net/post426253] and http://anidb.net/c6774745 [http://anidb.net/c6774745]</description>
+        </tag>
+        <tag id="6850" parentid="30" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2020-03-13">
+            <name>STAFF MISSING</name>
+            <description>This anime is missing staff credits. If you can, please assign staff credits to the anime accordingly and then remove the tag.
+If the tag is set on an anime level, please assign preferably all credits and then remove it from the anime. If that is not feasible, please assign, at a minimum, credits for all the major/key staff and then transfer it to all relevant episodes (broadly speaking, regular episodes and S-type episodes containing animation). If the tag is already set on an episode level, please assign all credits, including minor staff, to the episode and then remove the tag from it.
+Likewise, this tag should either be applied on an anime level, when it is missing key staff (in full or in part), or to all relevant episodes, when key staff is present but at least some episodes don`t have full staff.
+For further information on assigning staff credits, please see http://wiki.anidb.net/Content:Staff_Credits [the AniDB Wiki article on them].</description>
+        </tag>
+        <tag id="7242" parentid="6151" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2019-03-03">
+            <name>adapted into other media</name>
+            <description>This anime is a http://anidb.net/t2797 [new original work], and it has been adapted into other media formats.
+In exceedingly rare instances, a specific episode of a new original work anime can also be adapted.</description>
+        </tag>
+        <tag id="7885" parentid="6173" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2021-11-07">
+            <name>Japanese production</name>
+        </tag>
+    </tags>
+    <characters>
+        <character id="6000" type="main character in" update="2009-04-10">
+            <rating votes="18">8.89</rating>
+            <name>Mitsuhashi Takashi</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>23107.jpg</picture>
+            <seiyuu id="455" picture="11315.jpeg">Matsumoto Yasunori</seiyuu>
+        </character>
+        <character id="6001" type="main character in" update="2009-04-10">
+            <rating votes="11">9.22</rating>
+            <name>Itou Shinji</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>23109.jpg</picture>
+            <seiyuu id="417" picture="264973.jpg">Hori Hideyuki</seiyuu>
+        </character>
+        <character id="67524" type="appears in" update="2014-05-17">
+            <rating votes="2">5.87</rating>
+            <name>Misako Takenaka</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>155706.jpg</picture>
+            <seiyuu id="240" picture="265340.jpg">Inoue Kikuko</seiyuu>
+        </character>
+        <character id="111709" type="secondary cast in" update="2020-07-27">
+            <rating votes="2">6.77</rating>
+            <name>Hayakawa Kyouko</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>250581.jpg</picture>
+            <seiyuu id="588" picture="11309.jpeg">Orikasa Ai</seiyuu>
+        </character>
+        <character id="111710" type="secondary cast in" update="2020-07-27">
+            <rating votes="5">7.72</rating>
+            <name>Akasaka Riko</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>250583.jpg</picture>
+            <seiyuu id="6093" picture="3167.png">Kusachi Fumie</seiyuu>
+        </character>
+        <character id="111711" type="secondary cast in" update="2020-07-27">
+            <name>Imai Katsutoshi</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>250585.jpg</picture>
+            <seiyuu id="2026" picture="320815.jpg">Yara Yuusaku</seiyuu>
+        </character>
+    </characters>
+    <episodes>
+        <episode id="48782" update="2011-10-20">
+            <epno type="1">1</epno>
+            <length>65</length>
+            <airdate>1993-04-01</airdate>
+            <rating votes="3">6.84</rating>
+            <title xml:lang="ja">今日から俺は!!</title>
+            <title xml:lang="en">The new beginning!!</title>
+            <title xml:lang="it">Da oggi si ricomincia!!</title>
+            <title xml:lang="x-jat">Kyou kara Ore wa!!</title>
+        </episode>
+        <episode id="80244" update="2011-10-20">
+            <epno type="1">10</epno>
+            <length>40</length>
+            <airdate>1997-12-21</airdate>
+            <rating votes="1">6.30</rating>
+            <title xml:lang="ja">極道のつまはじき達</title>
+            <title xml:lang="en">On the Run from the Yakuza</title>
+            <title xml:lang="it">Il biondo, il truzzo, il porcospino</title>
+            <title xml:lang="x-jat">Gokudou no Tsuma wa Jiki-tachi</title>
+        </episode>
+        <episode id="80245" update="2011-10-20">
+            <epno type="1">9</epno>
+            <length>40</length>
+            <airdate>1997-12-21</airdate>
+            <rating votes="1">8.10</rating>
+            <title xml:lang="ja">ワンス・アポン・ア・タイム・イン千葉</title>
+            <title xml:lang="en">Once Upon a Time in Chiba</title>
+            <title xml:lang="it">C`era una volta in Chiba</title>
+            <title xml:lang="x-jat">Once Upon a Time in Chiba</title>
+        </episode>
+        <episode id="80246" update="2011-10-20">
+            <epno type="1">8</epno>
+            <length>40</length>
+            <airdate>1996-12-21</airdate>
+            <rating votes="2">4.27</rating>
+            <title xml:lang="ja">道場やぶりをぶっ飛ばせ!!</title>
+            <title xml:lang="en">Bombing on a Dojo Challenge!!</title>
+            <title xml:lang="it">Furia bionda!!</title>
+            <title xml:lang="x-jat">Doujouyaburi o Buttobase!!</title>
+        </episode>
+        <episode id="80247" update="2011-10-20">
+            <epno type="1">7</epno>
+            <length>40</length>
+            <airdate>1996-08-01</airdate>
+            <rating votes="2">2.76</rating>
+            <title xml:lang="ja">マブダチ作戦 Go! Go! Go!</title>
+            <title xml:lang="en">Operation: Best Buds - Go! Go! Go!</title>
+            <title xml:lang="it">Operazione cercamici Go! Go! Go!</title>
+            <title xml:lang="x-jat">Mabudachi Sakusen Go! Go! Go!</title>
+        </episode>
+        <episode id="80248" update="2011-10-20">
+            <epno type="1">6</epno>
+            <length>40</length>
+            <airdate>1996-02-01</airdate>
+            <rating votes="2">4.27</rating>
+            <title xml:lang="ja">逆襲・暴徒たちのララバイ</title>
+            <title xml:lang="en">Counterstrike: Lullaby</title>
+            <title xml:lang="it">Tiricomprolamoto (forse)</title>
+            <title xml:lang="x-jat">Gyakushuu: Boutotachi no Lullaby</title>
+        </episode>
+        <episode id="80249" update="2013-11-09">
+            <epno type="1">5</epno>
+            <length>40</length>
+            <airdate>1995-11-01</airdate>
+            <rating votes="2">3.45</rating>
+            <title xml:lang="ja">名も泣く貧しくズルッこく</title>
+            <title xml:lang="en">Unknown, Broke and Underhanded</title>
+            <title xml:lang="it">Tofusolamoto</title>
+            <title xml:lang="x-jat">Namonaku Mazushiku Zurukkoku</title>
+        </episode>
+        <episode id="80250" update="2011-10-20">
+            <epno type="1">4</epno>
+            <length>60</length>
+            <airdate>1995-05-01</airdate>
+            <rating votes="2">4.27</rating>
+            <title xml:lang="ja">なのに, あなたは京都へ行くの!</title>
+            <title xml:lang="en">And Yet, You`re Going to Kyoto</title>
+            <title xml:lang="it">Teste di Kyoto!</title>
+            <title xml:lang="x-jat">Nanoni, Anata wa Kyouto e Iku no!</title>
+        </episode>
+        <episode id="80251" update="2011-10-20">
+            <epno type="1">3</epno>
+            <length>50</length>
+            <airdate>1994-08-01</airdate>
+            <rating votes="3">5.58</rating>
+            <title xml:lang="ja">日本一のワガママ男</title>
+            <title xml:lang="en">The Most Selfish Man in Japan</title>
+            <title xml:lang="it">L`egoistone del Giappone</title>
+            <title xml:lang="x-jat">Nipponichi no Wagamama Otoko</title>
+        </episode>
+        <episode id="80252" update="2011-10-20">
+            <epno type="1">2</epno>
+            <length>50</length>
+            <airdate>1994-05-01</airdate>
+            <rating votes="3">5.89</rating>
+            <title xml:lang="ja">夕陽に赤いヒキョー者</title>
+            <title xml:lang="en">The Crimson Coward Against the Sunset</title>
+            <title xml:lang="it">Anche i randa arrossiscono al tramonto</title>
+            <title xml:lang="x-jat">Yuuhi ni Akai Hikyoumono</title>
+        </episode>
+    </episodes>
+</anime>

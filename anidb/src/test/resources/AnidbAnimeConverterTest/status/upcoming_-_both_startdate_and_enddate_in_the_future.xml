@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?><anime id="18325" restricted="false">
+    <type>Web</type>
+    <episodecount>7</episodecount>
+    <startdate>2027-02</startdate>
+    <enddate>2027-02</enddate>
+    <titles>
+        <title xml:lang="x-jat" type="main">The One Piece</title>
+        <title xml:lang="ja" type="official">THE ONE PIECE</title>
+        <title xml:lang="en" type="official">The One Piece</title>
+    </titles>
+    <relatedanime>
+        <anime id="69" type="Alternative Setting">One Piece</anime>
+    </relatedanime>
+    <url>https://one-piece.com/index.html</url>
+    <creators>
+        <name id="34645" type="Animation Work">Wit Studio</name>
+        <name id="4013" type="Original Work">Oda Eiichirou</name>
+        <name id="6969" type="Direction">Koizuka Masashi</name>
+        <name id="29579" type="Character Design">Honda Takatoshi</name>
+        <name id="6331" type="Character Design">Asano Kyouji</name>
+        <name id="29579" type="Chief Animation Direction">Honda Takatoshi</name>
+        <name id="6331" type="Chief Animation Direction">Asano Kyouji</name>
+        <name id="27981" type="Series Composition">Kishimoto Taku</name>
+    </creators>
+    <description>As a child, http://anidb.net/ch77935 [Monkey D. Luffy] was inspired to become a pirate by listening to the tales of the buccaneer "Red-Haired" http://anidb.net/ch685 [Shanks]. But Luffy`s life changed when he accidentally ate the Gum-Gum Devil Fruit and gained the power to stretch like rubber...at the cost of never being able to swim again! Years later, still vowing to become the king of the pirates, http://anidb.net/ch474 [Luffy] sets out on his adventure...one guy alone in a rowboat, in search of the legendary "One Piece," said to be the greatest treasure in the world...
+        Source: Manga Plus
+        Note: "THE ONE PIECE" anime will recreate the story of the original "ONE PIECE" manga, starting from the East Blue arc.</description>
+    <picture>326335.jpg</picture>
+    <resources>
+        <resource type="1">
+            <externalentity>
+                <identifier>31073</identifier>
+            </externalentity>
+        </resource>
+        <resource type="2">
+            <externalentity>
+                <identifier>57557</identifier>
+            </externalentity>
+        </resource>
+        <resource type="4">
+            <externalentity>
+                <url>https://one-piece.com/index.html</url>
+            </externalentity>
+        </resource>
+        <resource type="6">
+            <externalentity>
+                <identifier>One_Piece</identifier>
+            </externalentity>
+        </resource>
+        <resource type="7">
+            <externalentity>
+                <identifier>ONE_PIECE</identifier>
+            </externalentity>
+        </resource>
+        <resource type="26">
+            <externalentity>
+                <identifier>watch?v=aJKPk1MriFo</identifier>
+            </externalentity>
+        </resource>
+    </resources>
+    <tags>
+        <tag id="922" parentid="2606" infobox="true" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2015-02-04">
+            <name>shounen</name>
+            <description>In the context of manga and associated media, shounen, literally meaning "youth" and often also specifically "boy", refers to a male audience roughly between the ages of 10 and 18.
+                Source: Wikipedia</description>
+        </tag>
+        <tag id="2606" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2018-11-05">
+            <name>target audience</name>
+            <description>Anime, like everything else in the modern world, is targeted towards specific audiences, both implicitly by the creators and overtly by the marketing. While categories are associated with specific sex and age groups, this is not a bar on the anime being enjoyed by people who don`t fit into that band; not only do crossover titles exist, but the categories also have a considerable following outside their main demographic, and a person might as well enjoy anime from all categories. Still, does not invalidate the usefulness of marking a title as one of the categories; the same themes will likely be treated differently in anime geared for different audiences. Only one should not jump the gun and assume that a title will be more or less serious or present content in this or that way due to its target audience, or conversely assume the target audience on the content and its presentation alone. As such, the audience categories help form a broad impression of how a title might work with the announced themes, but offer little to no in-depth information about specific content or its treatment.
+                The audience categories originate from manga magazines, which group titles of a same intended audience into a magazine that is advertised as belonging to that category, and so manga-based anime will have the category from their parent work. As for anime based on other works, the audience is often debatable, but comparing information such as time slot to the manga-based anime generally helps figure out the most likely possibility.
+                If the parent material was classified under multiple audiences over time (for example, it was originally shounen, but then as the plot changed and became more mature, it was reclassified as seinen), and the anime adapts parent material time periods covering multiple audiences, we tag all audiences covered by the anime adaptation.</description>
+        </tag>
+        <tag id="2611" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-09-08">
+            <name>elements</name>
+            <description>Next to Themes setting the backdrop for the protagonists in anime, there are the more detailed plot Elements that centre on character interactions: "What do characters do to each other or what is done to them?". Is it violent Action, an awe-inspiring Adventure in a foreign place, the gripping life of a Detective, a slapstick Comedy, an Ecchi Harem anime, a SciFi epic, or some Fantasy travelling adventure?</description>
+        </tag>
+        <tag id="2623" parentid="2611" weight="100" localspoiler="false" globalspoiler="false" verified="true" update="2018-01-21">
+            <name>super power</name>
+            <description>Be it an ancient Greek Heracles, a cybernetic muscle-man, or a fourteen year-old girl in a mini-skirted sailor suit. As long as they have super powers, they`re in the show.</description>
+            <picurl>212182.jpg</picurl>
+        </tag>
+        <tag id="3322" parentid="6173" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2009-06-04">
+            <name>remake</name>
+            <description>This anime is a remake of a previously released story, anime, or movie.</description>
+        </tag>
+        <tag id="6173" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-09-24">
+            <name>origin</name>
+        </tag>
+        <tag id="7885" parentid="6173" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2021-11-07">
+            <name>Japanese production</name>
+        </tag>
+    </tags>
+    <episodes>
+        <episode id="274003" update="2023-12-17">
+            <epno type="4">T1</epno>
+            <length>2</length>
+            <airdate>2023-12-17</airdate>
+            <rating votes="1">8.83</rating>
+            <title xml:lang="en">Special Announcement</title>
+        </episode>
+    </episodes>
+</anime>

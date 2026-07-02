@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="UTF-8"?><anime id="15911" restricted="false">
+    <type>Web</type>
+    <episodecount>12</episodecount>
+    <startdate>2021-08-18</startdate>
+    <enddate>2024-04-24</enddate>
+    <titles>
+        <title xml:lang="x-jat" type="main">Idol Land PriPara</title>
+        <title xml:lang="x-jat" type="short">pripara (2021)</title>
+        <title xml:lang="ja" type="official">アイドルランドプリパラ</title>
+    </titles>
+    <relatedanime>
+        <anime id="12737" type="Prequel">Idol Time PriPara</anime>
+        <anime id="10515" type="Other">PriPara</anime>
+    </relatedanime>
+    <url>https://pripara.jp/idolland/</url>
+    <creators>
+        <name id="830" type="Animation Work">Tatsunoko Production</name>
+        <name id="7016" type="Character Design">Hara Shouji</name>
+        <name id="36834" type="Music">Ishizuka Rei</name>
+        <name id="2847" type="Series Composition">Tsuchiya Michihiro</name>
+        <name id="830" type="Work">Tatsunoko Production</name>
+        <name id="30409" type="Original Work">Takara Tomy A.R.T.S</name>
+        <name id="25476" type="Original Work">Syn Sophia</name>
+        <name id="4496" type="Direction">Moriwaki Makoto</name>
+        <name id="12772" type="Chief Animation Direction">Saitou Rie</name>
+        <name id="55740" type="Chief Animation Direction">Nabana Yoshinori</name>
+        <name id="7916" type="Chief Animation Direction">Kawashima Hisashi</name>
+        <name id="7016" type="Chief Animation Direction">Hara Shouji</name>
+    </creators>
+    <description>Note: The first episode received an advance release on August 18th, 2021 and the second episode received an advance release on January 12, 2022. The regular release began in spring 2022.</description>
+    <ratings>
+        <permanent count="16">7.70</permanent>
+        <temporary count="18">7.44</temporary>
+    </ratings>
+    <picture>254759.jpg</picture>
+    <resources>
+        <resource type="1">
+            <externalentity>
+                <identifier>24049</identifier>
+            </externalentity>
+        </resource>
+        <resource type="2">
+            <externalentity>
+                <identifier>44376</identifier>
+            </externalentity>
+        </resource>
+        <resource type="4">
+            <externalentity>
+                <url>https://pripara.jp/idolland/</url>
+            </externalentity>
+        </resource>
+        <resource type="7">
+            <externalentity>
+                <identifier>アイドルランドプリパラ</identifier>
+            </externalentity>
+        </resource>
+        <resource type="9">
+            <externalentity>
+                <identifier>374990</identifier>
+            </externalentity>
+        </resource>
+        <resource type="10">
+            <externalentity>
+                <identifier>23797</identifier>
+            </externalentity>
+        </resource>
+        <resource type="23">
+            <externalentity>
+                <identifier>idolland_arts</identifier>
+            </externalentity>
+        </resource>
+        <resource type="26">
+            <externalentity>
+                <identifier>watch?v=Psa5j3rQKwM</identifier>
+            </externalentity>
+            <externalentity>
+                <identifier>watch?v=9PmPcxN7aO0</identifier>
+            </externalentity>
+            <externalentity>
+                <identifier>watch?v=WWSL9uWKfhA</identifier>
+            </externalentity>
+            <externalentity>
+                <identifier>channel/UC1Ppa00_hJaE1w6Gpb8UEkw</identifier>
+            </externalentity>
+            <externalentity>
+                <identifier>watch?v=sCzQ7zf73ZA</identifier>
+            </externalentity>
+            <externalentity>
+                <identifier>watch?v=z7ngjiGlJBg</identifier>
+            </externalentity>
+            <externalentity>
+                <identifier>watch?v=lBdoVBVHeXs</identifier>
+            </externalentity>
+        </resource>
+    </resources>
+    <tags>
+        <tag id="2438" parentid="2794" infobox="true" weight="400" localspoiler="false" globalspoiler="false" verified="true" update="2020-12-05">
+            <name>idol</name>
+            <description>In Japanese culture, idols (アイドル) are media personalities in their teens and early twenties who are considered particularly cute and cuddly and who will, for a period ranging from several months to a few years, regularly appear in the mass media, e.g. as singers for J-pop groups, bit-part actors, TV personalities, models in photo spreads published in magazines, advertisements, etc.
+http://anidb.net/t860 [Virtual idols] are animated characters created as idols. They are often also http://anidb.net/t7774 [vTubers] and/or http://anidb.net/t7250 [vloggers].
+Source: wiki</description>
+            <picurl>63097.jpg</picurl>
+        </tag>
+        <tag id="2607" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2009-04-29">
+            <name>themes</name>
+            <description>Themes describe the very central elements important to the anime stories. They set the backdrop against which the protagonists must face their challenges. Be it School Life, present Daily Life, Military action, Cyberpunk, Law and Order detective work, Sports, or the Underworld. These are only but a few of the more typical backgrounds for anime plots. Add to that a Conspiracy setting with a possible tragic outcome, the Themes span most of the imaginable subject matter relevant to anime.</description>
+        </tag>
+        <tag id="2611" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-09-08">
+            <name>elements</name>
+            <description>Next to Themes setting the backdrop for the protagonists in anime, there are the more detailed plot Elements that centre on character interactions: "What do characters do to each other or what is done to them?". Is it violent Action, an awe-inspiring Adventure in a foreign place, the gripping life of a Detective, a slapstick Comedy, an Ecchi Harem anime, a SciFi epic, or some Fantasy travelling adventure?</description>
+        </tag>
+        <tag id="2794" parentid="2883" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2015-02-23">
+            <name>music</name>
+            <description>Music anime generally revolves around people concerned with music in their everyday lives. In addition they often adhere to certain genre conventions, the emphasis on training and practice in preparation for competitions, characters desire for self improvement, and pursuit of a specific goal. This is not unlike the Sports category.</description>
+            <picurl>169131.jpg</picurl>
+        </tag>
+        <tag id="2854" parentid="2611" weight="200" localspoiler="false" globalspoiler="false" verified="true" update="2012-10-08">
+            <name>henshin</name>
+            <description>Japanese for "transformation" (metamorphosis or disguise).
+A "henshin anime" is any anime, where the characters or their costumes transform, such as Sailor Moon. The henshin switches on the character`s special powers, and is frequently accompanied by a costume change. Often the change of clothing is the only outward indicator that the character has changed and yet nobody seems to notice the hero`s true self.
+Most henshin heroes have a special item which they use to change into their heroic form. These items are usually activated by a command phrase (which is often in Engrish, for some reason), triggering a transformation sequence.</description>
+        </tag>
+        <tag id="2883" parentid="2607" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-10-07">
+            <name>the arts</name>
+            <description>The arts represent an outlet of human expression, usually influenced by culture, and driven by human creative impulse. Major constituents of the arts include literature – including poetry, novels and short stories, and epics; performing arts – among them music, dance, and theatre; culinary arts such as baking, chocolatiering, and winemaking; media arts like photography and film, and visual arts – including drawing, painting, and sculpting. Some art forms combine a visual element with performance (e.g. film) and the written word (e.g. comics).
+From prehistoric cave paintings to modern day films, art serves as a vessel for storytelling and conveying mankind`s relationship with its environment.
+Source: Wiki</description>
+        </tag>
+        <tag id="6173" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-09-24">
+            <name>origin</name>
+        </tag>
+        <tag id="7885" parentid="6173" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2021-11-07">
+            <name>Japanese production</name>
+        </tag>
+    </tags>
+    <characters>
+        <character id="66293" type="main character in" update="2021-08-14">
+            <rating votes="49">5.39</rating>
+            <name>Manaka Laala</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>156594.jpg</picture>
+            <seiyuu id="38966" picture="11515.jpeg">Akaneya Himika</seiyuu>
+        </character>
+        <character id="103204" type="appears in" update="2019-06-04">
+            <name>EVER GOLD</name>
+            <gender>unknown</gender>
+            <charactertype id="3">Organization</charactertype>
+            <description>Three idol units by Shuuka, Gaarara and Mimiko. It was formed as a team to counter MY ☆ DREAM in Episode 51. The team`s name was attached with the meaning of "to be a friend who will shine like gold forever".</description>
+            <picture>234260.jpg</picture>
+        </character>
+        <character id="121876" type="main character in" update="2022-03-16">
+            <name>Katasumi Amari</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>71958.png</picture>
+            <seiyuu id="22171" picture="173757.jpg">Iida Riho</seiyuu>
+        </character>
+    </characters>
+    <episodes>
+        <episode id="239714" update="2022-01-18">
+            <epno type="4">T1</epno>
+            <length>3</length>
+            <airdate>2021-04-08</airdate>
+            <title xml:lang="ja">チョー催促してチョー最速のアイドルランドプリパラ先行カット超公開</title>
+            <title xml:lang="en">A Super-Duper Critical, Super-Duper Urgent Idol Land PriPara Super Special Preview</title>
+            <title xml:lang="x-jat">Chou Saisoku Shite Chou Saisoku no Idol Land PriPara Senkou Cut Chou Koukai</title>
+        </episode>
+        <episode id="243115" update="2021-09-01">
+            <epno type="1">1</epno>
+            <length>25</length>
+            <airdate>2021-08-18</airdate>
+            <title xml:lang="ja">アイドルあまりました!</title>
+            <title xml:lang="en">I Became a Left-out Idol!</title>
+            <title xml:lang="x-jat">Idol Amarimashita!</title>
+        </episode>
+        <episode id="243116" update="2021-09-15">
+            <epno type="2">S1</epno>
+            <length>25</length>
+            <airdate>2021-09-01</airdate>
+            <title xml:lang="ja">アイドルランド始めちゃいました!</title>
+            <title xml:lang="en">PriPara Became Idol Land!</title>
+            <title xml:lang="x-jat">Idol Land Hajimechaimashita!</title>
+        </episode>
+        <episode id="251569" update="2022-01-18">
+            <epno type="1">2</epno>
+            <length>25</length>
+            <airdate>2022-01-12</airdate>
+            <title xml:lang="ja">あまりにもプロミス!</title>
+            <title xml:lang="en">Amari`s Overwhelming Promise!</title>
+            <title xml:lang="x-jat">Amari ni mo Promise!</title>
+        </episode>
+        <episode id="255150" update="2022-05-13">
+            <epno type="1">3</epno>
+            <length>25</length>
+            <airdate>2022-05-31</airdate>
+            <title xml:lang="ja">サブタイトル? どーでもいいぜ!</title>
+            <title xml:lang="en">Episode 3</title>
+            <title xml:lang="x-jat">Subtitle? Dou Demo Ii ze!</title>
+        </episode>
+        <episode id="257218" update="2023-11-23">
+            <epno type="1">4</epno>
+            <length>25</length>
+            <airdate>2023-08-18</airdate>
+            <title xml:lang="ja">アイドルだらけのビーチファイト! あまりもいるよ!</title>
+            <title xml:lang="en">Episode 4</title>
+            <title xml:lang="x-jat">Idol Darake no Beach Fight! Amari mo Iru yo!</title>
+        </episode>
+        <episode id="273346" update="2023-11-23">
+            <epno type="1">5</epno>
+            <length>25</length>
+            <airdate>2023-08-30</airdate>
+            <title xml:lang="ja">ひびきVSマリオ! 男プリ美化計画!</title>
+            <title xml:lang="en">Hibiki vs Mario! Danpri Beautification Plan!</title>
+            <title xml:lang="x-jat">Hibiki vs Mario! Dan Pri Bika Keikaku!</title>
+        </episode>
+        <episode id="273347" update="2023-11-23">
+            <epno type="1">6</epno>
+            <length>25</length>
+            <airdate>2023-09-27</airdate>
+            <title xml:lang="ja">黒ヤギさんと泣き虫さんが呪いの森で...</title>
+            <title xml:lang="en">Mr. Black Goat and Mr. Crybaby Are in the Cursed Forest...</title>
+            <title xml:lang="x-jat">Kuro Yagi-san to Nakimushi-san ga Noroi no Mori de...</title>
+        </episode>
+        <episode id="273348" update="2023-11-23">
+            <epno type="1">7</epno>
+            <length>25</length>
+            <airdate>2023-10-25</airdate>
+            <title xml:lang="ja">どーでもよくないノンシュガー</title>
+            <title xml:lang="en">Episode 7</title>
+            <title xml:lang="x-jat">Dou Demo Yokunai Non Sugar</title>
+        </episode>
+        <episode id="273349" update="2023-11-23">
+            <epno type="1">8</epno>
+            <length>25</length>
+            <airdate>2023-11-22</airdate>
+            <title xml:lang="ja">しゅうかを収穫するがいや!</title>
+            <title xml:lang="en">Episode 8</title>
+            <title xml:lang="x-jat">Shuuka o Shuukaku Suru ga Iya!</title>
+        </episode>
+        <episode id="273992" update="2023-12-16">
+            <epno type="1">9</epno>
+            <length>25</length>
+            <airdate>2023-12-13</airdate>
+            <title xml:lang="ja">超大型新人爆誕! はずかちー!</title>
+            <title xml:lang="en">Episode 9</title>
+            <title xml:lang="x-jat">Chou Oogata Shinjin Bakutan! Hazukachii!</title>
+        </episode>
+        <episode id="277282" update="2024-03-07">
+            <epno type="1">10</epno>
+            <length>25</length>
+            <airdate>2024-02-15</airdate>
+            <title xml:lang="ja">イガイガ・ウォー</title>
+            <title xml:lang="en">Episode 10</title>
+            <title xml:lang="x-jat">Igaiga War</title>
+        </episode>
+        <episode id="278278" update="2024-03-07">
+            <epno type="1">11</epno>
+            <length>25</length>
+            <airdate>2024-03-27</airdate>
+            <title xml:lang="ja">勢いあまってダイッキライブ!</title>
+            <title xml:lang="en">Episode 11</title>
+            <title xml:lang="x-jat">Ikioi Amatte Daikki Live!</title>
+        </episode>
+        <episode id="278279" update="2024-06-20">
+            <epno type="1">12</epno>
+            <length>25</length>
+            <airdate>2024-04-24</airdate>
+            <title xml:lang="ja">あまりあまらない! み~んなのマイドリーム!</title>
+            <title xml:lang="en">Episode 12</title>
+            <title xml:lang="x-jat">Amari Amaranai! Miinna no My Dream!</title>
+        </episode>
+        <episode id="291678" update="2025-01-16">
+            <epno type="3">C1</epno>
+            <length>2</length>
+            <airdate>2022-01-12</airdate>
+            <title xml:lang="en">Opening</title>
+        </episode>
+    </episodes>
+</anime>

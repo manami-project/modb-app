@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?><anime id="7075" restricted="false">
+    <type>Movie</type>
+    <episodecount>1</episodecount>
+    <startdate>1980-03-15</startdate>
+    <enddate>1980-03-15</enddate>
+    <titles>
+        <title xml:lang="x-jat" type="main">Ie Naki Ko (1980)</title>
+        <title xml:lang="en" type="synonym">Remi (1980)</title>
+        <title xml:lang="ja" type="official">家なき子 (1980)</title>
+    </titles>
+    <relatedanime>
+        <anime id="1829" type="Full Story">Ie Naki Ko</anime>
+    </relatedanime>
+    <url>http://www.tms-e.com/library/tokushu/ienakiko/index.html</url>
+    <creators>
+        <name id="145" type="Direction">Dezaki Osamu</name>
+        <name id="3637" type="Music">Watanabe Takeo</name>
+        <name id="9700" type="Original Work">Hector-Henri Malot</name>
+    </creators>
+    <description>* Based on the novel Sans Famille (Eng: Nobody`s Boy) by http://anidb.net/cr9700 [Hector-Henri Malot].
+Remi is a boy living happily with his mother in the French countryside. But everything changes when his estranged father comes home and, in desperate need of money, reveals that Remi is adopted, and sells him. Heartbroken, Remi ends up with Vitalis, a traveling musician, and his troupe of animal entertainers. Together, they travel the country in search for Remi`s real parents, along the way learning the harsh lessons of life. A deeply moving story about friendship, loss and the pursuit of happiness.</description>
+    <ratings>
+        <permanent count="35">6.99</permanent>
+        <temporary count="35">6.48</temporary>
+    </ratings>
+    <picture>53488.jpg</picture>
+    <resources>
+        <resource type="1">
+            <externalentity>
+                <identifier>4166</identifier>
+            </externalentity>
+        </resource>
+        <resource type="2">
+            <externalentity>
+                <identifier>2831</identifier>
+            </externalentity>
+        </resource>
+        <resource type="3">
+            <externalentity>
+                <identifier>3160</identifier>
+                <identifier>gapuxo</identifier>
+            </externalentity>
+        </resource>
+        <resource type="4">
+            <externalentity>
+                <url>https://www.tms-e.co.jp/alltitles/1980s/025301.html</url>
+            </externalentity>
+        </resource>
+        <resource type="6">
+            <externalentity>
+                <identifier>Nobody's_Boy:_Remi</identifier>
+            </externalentity>
+        </resource>
+        <resource type="7">
+            <externalentity>
+                <identifier>家なき子_(アニメ)</identifier>
+            </externalentity>
+        </resource>
+        <resource type="9">
+            <externalentity>
+                <identifier>147109</identifier>
+            </externalentity>
+        </resource>
+        <resource type="10">
+            <externalentity>
+                <identifier>1866</identifier>
+            </externalentity>
+        </resource>
+    </resources>
+    <tags>
+        <tag id="6173" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-09-24">
+            <name>origin</name>
+        </tag>
+        <tag id="7885" parentid="6173" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2021-11-07">
+            <name>Japanese production</name>
+        </tag>
+    </tags>
+    <episodes>
+        <episode id="108794" update="2011-10-20">
+            <epno type="1">1</epno>
+            <length>100</length>
+            <airdate>1980-03-15</airdate>
+            <title xml:lang="en">Complete Movie</title>
+        </episode>
+    </episodes>
+</anime>

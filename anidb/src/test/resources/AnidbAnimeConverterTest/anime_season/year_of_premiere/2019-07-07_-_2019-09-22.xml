@@ -1,0 +1,815 @@
+<?xml version="1.0" encoding="UTF-8"?><anime id="14591" restricted="false">
+    <type>TV Series</type>
+    <episodecount>12</episodecount>
+    <startdate>2019-07-07</startdate>
+    <enddate>2019-09-22</enddate>
+    <titles>
+        <title xml:lang="x-jat" type="main">Karakai Jouzu no Takagi-san 2</title>
+        <title xml:lang="ja" type="synonym">からかい上手の高木さん②</title>
+        <title xml:lang="en" type="synonym">Teasing Master Takagi-san S2</title>
+        <title xml:lang="en" type="synonym">takagi-san s2</title>
+        <title xml:lang="en" type="synonym">Karakai Jouzu no Takagi-san (2019)</title>
+        <title xml:lang="x-jat" type="short">takagi s2</title>
+        <title xml:lang="ja" type="official">からかい上手の高木さん2</title>
+        <title xml:lang="en" type="official">Teasing Master Takagi-san: Season 2</title>
+        <title xml:lang="he" type="official">טאקאגי-סאן אלופת ההקנטות עונה 2</title>
+        <title xml:lang="zh-Hans" type="official">擅长捉弄的高木同学2</title>
+    </titles>
+    <relatedanime>
+        <anime id="16559" type="Sequel">Karakai Jouzu no Takagi-san 3</anime>
+        <anime id="13270" type="Prequel">Karakai Jouzu no Takagi-san</anime>
+    </relatedanime>
+    <recommendations total="1">
+        <recommendation type="Must See" uid="80989">Just amazing 10 of 10.</recommendation>
+    </recommendations>
+    <url>https://takagi3.me/2nd/</url>
+    <creators>
+        <name id="22043" type="Character Design">Takano Aya</name>
+        <name id="1284" type="Animation Work">Shin-Ei Animation</name>
+        <name id="48065" type="Chief Animation Direction">Suwa Soudai</name>
+        <name id="22043" type="Chief Animation Direction">Takano Aya</name>
+        <name id="20876" type="Music">Tsutsumi Hiroaki</name>
+        <name id="22733" type="Direction">Akagi Hiroaki</name>
+        <name id="15720" type="Chief Animation Direction">Mogi Takuji</name>
+        <name id="8408" type="Chief Animation Direction">Kondou Natsuko</name>
+        <name id="50830" type="Original Work">Yamamoto Souichirou</name>
+    </creators>
+    <description>* Based on http://anidb.net/cr50830 [Yamamoto Souichirou]`s slice of life comedy shounen manga.
+Even after spending a considerable amount of time with http://anidb.net/ch91671 [Takagi], http://anidb.net/ch91670 [Nishikata] is still struggling to find a perfect plan to defeat the expert teaser. A battle of wits, a contest of physical prowess, a test of courage—any strategy he employs to expose her weaknesses is to no avail. On the contrary, Nishikata`s pitiful attempts only reveal more of his own flaws, which Takagi takes advantage of to become increasingly daring in her teasing attempts. To make things worse for Nishikata, rumors about him and Takagi may have spread in class due to the frequent interactions between them.
+However, the optimistic Nishikata believes that wisdom comes with age and that as the days go by, his experience with her constant teasing will eventually bear fruit, leading him to the awaited moment of victory. Thus, Nishikata continues to strive for the seemingly impossible—to outsmart Takagi and make her blush with embarrassment.
+Source: MAL</description>
+    <ratings>
+        <permanent count="1332">7.73</permanent>
+        <temporary count="1336">7.74</temporary>
+    </ratings>
+    <picture>235604.jpg</picture>
+    <resources>
+        <resource type="1">
+            <externalentity>
+                <identifier>22274</identifier>
+            </externalentity>
+        </resource>
+        <resource type="2">
+            <externalentity>
+                <identifier>38993</identifier>
+            </externalentity>
+        </resource>
+        <resource type="4">
+            <externalentity>
+                <url>https://takagi3.me/2nd/</url>
+            </externalentity>
+        </resource>
+        <resource type="6">
+            <externalentity>
+                <identifier>Teasing_Master_Takagi-san</identifier>
+            </externalentity>
+        </resource>
+        <resource type="7">
+            <externalentity>
+                <identifier>からかい上手の高木さん</identifier>
+            </externalentity>
+        </resource>
+        <resource type="8">
+            <externalentity>
+                <identifier>5347</identifier>
+            </externalentity>
+        </resource>
+        <resource type="9">
+            <externalentity>
+                <identifier>366822</identifier>
+            </externalentity>
+        </resource>
+        <resource type="10">
+            <externalentity>
+                <identifier>22106</identifier>
+            </externalentity>
+        </resource>
+        <resource type="23">
+            <externalentity>
+                <identifier>takagi3_anime</identifier>
+            </externalentity>
+        </resource>
+        <resource type="41">
+            <externalentity>
+                <identifier>80228274</identifier>
+            </externalentity>
+        </resource>
+        <resource type="47">
+            <externalentity>
+                <identifier>bangumi/media/md28221403</identifier>
+            </externalentity>
+        </resource>
+    </resources>
+    <tags>
+        <tag id="922" parentid="2606" infobox="true" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2015-02-04">
+            <name>shounen</name>
+            <description>In the context of manga and associated media, shounen, literally meaning "youth" and often also specifically "boy", refers to a male audience roughly between the ages of 10 and 18.
+Source: Wikipedia</description>
+        </tag>
+        <tag id="1018" parentid="2869" infobox="true" weight="600" localspoiler="false" globalspoiler="false" verified="true" update="2010-05-25">
+            <name>middle school</name>
+        </tag>
+        <tag id="2605" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-09-28">
+            <name>dynamic</name>
+            <description>Some of the central structural elements in anime are: 
+Plot Continuity 
+How does the plot or several plots unfold. Are they a strictly linear retelling of one big continuing story, a serial, possibly with several side stories, or is the content chopped into a set of unconnected episodes, only sharing the same setting and characters?
+Stereotype Characters
+Then there is the question of the character set presentation. Is it completely original, or is it your usual stereotypical character cast. Both choices have their merit, for example it would not really make much sense to reinvent the wheel for a harem anime. Fans of that genre come to expect their favourite stereotype protagonists.
+Plot Twists
+Finally there is the question of how complex the plot / the story unfolds. Are there side-plots that merge into the main plot leading to unexpected plot twists, or is the anime quite predictable? The latter would not be appropriate for detective stories. In harem anime on the other hand a foreseeable outcome is actually something the fans will come to expect.</description>
+        </tag>
+        <tag id="2606" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2018-11-05">
+            <name>target audience</name>
+            <description>Anime, like everything else in the modern world, is targeted towards specific audiences, both implicitly by the creators and overtly by the marketing. While categories are associated with specific sex and age groups, this is not a bar on the anime being enjoyed by people who don`t fit into that band; not only do crossover titles exist, but the categories also have a considerable following outside their main demographic, and a person might as well enjoy anime from all categories. Still, does not invalidate the usefulness of marking a title as one of the categories; the same themes will likely be treated differently in anime geared for different audiences. Only one should not jump the gun and assume that a title will be more or less serious or present content in this or that way due to its target audience, or conversely assume the target audience on the content and its presentation alone. As such, the audience categories help form a broad impression of how a title might work with the announced themes, but offer little to no in-depth information about specific content or its treatment.
+The audience categories originate from manga magazines, which group titles of a same intended audience into a magazine that is advertised as belonging to that category, and so manga-based anime will have the category from their parent work. As for anime based on other works, the audience is often debatable, but comparing information such as time slot to the manga-based anime generally helps figure out the most likely possibility.
+If the parent material was classified under multiple audiences over time (for example, it was originally shounen, but then as the plot changed and became more mature, it was reclassified as seinen), and the anime adapts parent material time periods covering multiple audiences, we tag all audiences covered by the anime adaptation.</description>
+        </tag>
+        <tag id="2607" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2009-04-29">
+            <name>themes</name>
+            <description>Themes describe the very central elements important to the anime stories. They set the backdrop against which the protagonists must face their challenges. Be it School Life, present Daily Life, Military action, Cyberpunk, Law and Order detective work, Sports, or the Underworld. These are only but a few of the more typical backgrounds for anime plots. Add to that a Conspiracy setting with a possible tragic outcome, the Themes span most of the imaginable subject matter relevant to anime.</description>
+        </tag>
+        <tag id="2609" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2018-09-01">
+            <name>original work</name>
+            <description>What the anime is based on! This is given as the original work credit in the OP. Mostly of academic interest, but a useful bit of info, hinting at the possible depth of story.</description>
+        </tag>
+        <tag id="2610" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2009-04-22">
+            <name>setting</name>
+            <description>The setting describes in what time and place an anime takes place. To a certain extent it describes what you can expect from the world in the anime.</description>
+        </tag>
+        <tag id="2611" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-09-08">
+            <name>elements</name>
+            <description>Next to Themes setting the backdrop for the protagonists in anime, there are the more detailed plot Elements that centre on character interactions: "What do characters do to each other or what is done to them?". Is it violent Action, an awe-inspiring Adventure in a foreign place, the gripping life of a Detective, a slapstick Comedy, an Ecchi Harem anime, a SciFi epic, or some Fantasy travelling adventure?</description>
+        </tag>
+        <tag id="2612" parentid="2610" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2016-09-04">
+            <name>time</name>
+            <description>This placeholder lists different epochs in human history and more vague but important timelines such as the future, the present and the past.</description>
+        </tag>
+        <tag id="2613" parentid="2610" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2016-09-04">
+            <name>place</name>
+            <description>The places the anime can take place in. Includes more specific places such as a country on Earth, as well as more general places such as a dystopia or a mirror world.</description>
+        </tag>
+        <tag id="2624" parentid="2612" weight="600" localspoiler="false" globalspoiler="false" verified="true" update="2017-02-20">
+            <name>present</name>
+            <description>Somewhere between past and future.</description>
+        </tag>
+        <tag id="2628" parentid="2613" weight="600" localspoiler="false" globalspoiler="false" verified="true" update="2018-08-31">
+            <name>fictional location</name>
+            <description>A fictional location is a place or world which is run by different set of rules than our common and ordinary world. This may include completely fictional worlds with no semblance of Earth, computer-generated worlds, fantasy worlds, magical worlds, parallel worlds accessible through portals, and so on. Or it may be fictional places like floating islands, dungeons or planets, which can co-exist with ordinary Earth, but are otherwise separate from it.
+A world that generally shares the characteristics of, and/or is generally indistinguishable from the real world (bar research on a "more than cursory" level), would NOT be considered a fictional world. A good example is http://anidb.net/a4521 [Code Geass]. It contains several real world nationalities, such as http://anidb.net/a4521 [China], http://anidb.net/t2672 [Japan] (now Area 11), http://anidb.net/t5091 [India], etc, along with fictional nationalities such as http://anidb.net/t2361 [Britannia]. China, Japan, and India are easily identified with a cursory look. The location is unmistakably the planet Earth, even though national borders have been redrawn.
+The fictional world should only be tagged if it plays a materially important role in the plot and setting; generally, an episodic occurrence of a fictional world should not be tagged.
+A fantasy world is a type of fictional world, part of a fictional universe. Typical worlds involve, but are not limited to: magic or magical abilities, and/or a medieval theme. Some examples include: a parallel world tenuously connected to Earth via magical portals or items; a fictional Earth-like planet in the remote past or future; or an entirely independent world set in another universe. Many fantasy worlds draw heavily on real world history, geography, and sociology, and also on folklore.</description>
+        </tag>
+        <tag id="2630" parentid="2613" weight="600" localspoiler="false" globalspoiler="false" verified="true" update="2012-10-13">
+            <name>Earth</name>
+            <description>The Earth is the third planet from the Sun, and the densest and fifth-largest of the eight planets in the Solar System. It is in effect a ball of hot mud, but on the surface it`s cold enough, so most of us live on it (or are supposed to). It is circa 4.5 billion years old, and, unless we humans succeed in destroying it over the next couple of centuries, it is expected to last for quite another while, though the changes in the Sun`s emissions due to its aging will likely cause the extinction of everything; the species of earthlings are guaranteed to die, even if we fail to kill them -- unless, of course, we find ourselves another planet and figure out a way to take everything there. Our little planet on a corner of this galaxy may mean nothing in the grand scheme of things, but to its inhabitants it is their home, so, as a species, we cherish it dearly, to the point many cultures even to this day deify it. Being the home to the human civilizations, the Earth is the main setting of most fiction, be it anime or otherwise, but not only are many titles set in other places, such as unrelated fantasy worlds, in a considerable number of fictional titles the Earth is actually destroyed by aggressive alien invaders.</description>
+            <picurl>126792.jpg</picurl>
+        </tag>
+        <tag id="2631" parentid="2613" weight="600" localspoiler="false" globalspoiler="false" verified="true" update="2018-02-11">
+            <name>island</name>
+            <description>Part of this anime takes place on an island, a small landmass that is surrounded by the sea. Generally, an island setting involves interaction with "island" elements. Such elements could include (but is not limited towards): riding on a boat, fishing, foraging/hunting, beach scene, "peaceful island life", being "shipwrecked", island fever, lamenting isolation from the mainland, etc.
+An island or isle is any piece of sub-continental land that is surrounded by water. Very small islands such as emergent land features on atolls can be called islets, cays or keys. An island in a river or lake may be called an eyot (also ait), or holm. A grouping of geographically or geologically related islands is called an archipelago.
+(Source: Wikipedia)</description>
+        </tag>
+        <tag id="2634" parentid="2613" weight="300" localspoiler="false" globalspoiler="false" verified="true" update="2014-02-27">
+            <name>countryside</name>
+            <description>The anime takes place far from the any densely populated areas like cities, i.e. out in the suburbs, in the countryside with many fields and forests.</description>
+        </tag>
+        <tag id="2672" parentid="2834" weight="600" localspoiler="false" globalspoiler="false" verified="true" update="2018-03-05">
+            <name>Japan</name>
+            <description>Japan is a sovereign island nation in East Asia. Located in the Pacific Ocean, it lies off the eastern coast of the Asian mainland and stretches from the Sea of Okhotsk in the north to the East China Sea and China in the southwest.
+Source: Wikipedia</description>
+            <picurl>65689.png</picurl>
+        </tag>
+        <tag id="2778" parentid="2858" weight="200" localspoiler="false" globalspoiler="false" verified="true" update="2012-11-09">
+            <name>slow when it comes to love</name>
+            <description>The main protagonists in this anime have a very hard time trying to express their feelings to each other. They simply will not finally confess their love.
+In some cases this romance element is based on unrequited love, or an absurd amount of shyness.</description>
+        </tag>
+        <tag id="2798" parentid="2609" infobox="true" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2019-02-14">
+            <name>manga</name>
+            <description>Manga is the lifeblood that drives the anime industry. Everything and its mother is based on manga. However! There are exceptions where the manga was not the basis for the anime.
+It`s common practice to make manga adaptations of many popular anime, there`s a manga based on Evangelion, and two (one shounen and one shoujo) based on each of Escaflowne and Mahou Tsukai Tai. Also it`s quite common to release manga and anime versions of a story in parallel, for instance Nadesico and Shoujo Kakumei Utena. There are also cases where an anime continues in a manga, as in the case of Angel Beats! and Angel Beats: Heaven`s Door, or reverse.
+See also http://anidb.net/t6493 [manhua] and http://anidb.net/t5010 [manhwa].</description>
+            <picurl>215593.jpg</picurl>
+        </tag>
+        <tag id="2834" parentid="2630" weight="600" localspoiler="false" globalspoiler="false" verified="true" update="2016-10-04">
+            <name>Asia</name>
+            <description>Asia is Earth`s largest and most populous continent, located primarily in the eastern and northern hemispheres and sharing the continental landmass of Eurasia with the continent of Europe. Asia covers an area of 44,579,000 square kilometers, about 30% of Earth`s total land area and 8.7% of the Earth`s total surface area. The continent, which has long been home to the majority of the human population, was the site of many of the first civilizations. Asia is notable for not only its overall large size and population, but also dense and large settlements as well as vast barely populated regions within the continent of 4.4 billion people.
+Source: Wikipedia</description>
+            <picurl>192245.jpg</picurl>
+        </tag>
+        <tag id="2853" parentid="2611" infobox="true" weight="600" localspoiler="false" globalspoiler="false" verified="true" update="2017-02-13">
+            <name>comedy</name>
+            <description>Anime whose central struggle causes hilarious results. These stories are built upon funny characters, situations and events. A comedy anime is laced with humour and sets out to provoke laughter from the audience.
+Japanese humour can be a bit strange to westerners, so if you`re new to this type of humour, just bear with it; it`ll most likely grow on you if you`re a fan of other kinds of comedy.</description>
+            <picurl>198104.jpg</picurl>
+        </tag>
+        <tag id="2858" parentid="2611" weight="300" localspoiler="false" globalspoiler="false" verified="true" update="2017-12-01">
+            <name>romance</name>
+            <description>Romance describes a story that deals with love between two or more characters typically also having an optimistic ending. Romance is also a difficulty encountered when creating a harem.</description>
+            <picurl>210061.jpg</picurl>
+        </tag>
+        <tag id="2864" parentid="2607" weight="200" localspoiler="false" globalspoiler="false" verified="true" update="2017-12-01">
+            <name>daily life</name>
+            <description>The antics of the protagonists do not take place in some exotic setting or time, but in everyday life. When not "at the job" this means getting up in the morning, making meals, house cleaning, going shopping or out to eat, visiting the bath house or spa, leisure activities in the spare time, etc. The time "on the job" for students is School Life, for others working in their profession. Daily Life is basically a synonym for everything normal, repetitive, and trivial happening to your average person.</description>
+            <picurl>210069.jpg</picurl>
+        </tag>
+        <tag id="2869" parentid="2607" infobox="true" weight="400" localspoiler="false" globalspoiler="false" verified="true" update="2017-12-01">
+            <name>school life</name>
+            <description>Since a large part of the anime audience still takes part in school life or is visiting college, it is only natural to choose a setting the audience can identify with, be it elementary, middle, or high school. For the older viewers a college setting with more mature real-life problems is appropriate. And since clubs take up so much time in the lives of students, these are obviously also important.</description>
+            <picurl>210062.jpg</picurl>
+        </tag>
+        <tag id="2931" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2016-12-04">
+            <name>unsorted</name>
+            <description>a bunch of tags that still need to be either deleted or moved into proper places.</description>
+        </tag>
+        <tag id="3023" parentid="2853" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2012-02-19">
+            <name>funny expressions</name>
+            <description>The facial expressions of the characters may change so quickly or unexpectedly distort that hilarity will ensue.</description>
+        </tag>
+        <tag id="3040" parentid="6230" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2018-11-01">
+            <name>male protagonist</name>
+            <description>This anime has a male protagonist.</description>
+        </tag>
+        <tag id="3185" parentid="2853" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2011-04-27">
+            <name>wordplay</name>
+            <description>The characters play with words. 
+E.g. purposely or accidentally use similar-sounding but wrongly applied words in the Japanese original, leading to supposedly funny misunderstandings and confusion.</description>
+        </tag>
+        <tag id="3278" parentid="2931" weight="0" localspoiler="false" globalspoiler="false" verified="false">
+            <name>deception</name>
+        </tag>
+        <tag id="3683" parentid="2605" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-09-28">
+            <name>storytelling</name>
+        </tag>
+        <tag id="3977" parentid="3683" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2008-12-29">
+            <name>dialogue driven</name>
+            <description>A dialogue driven show has its story advanced by dialogue, with action being of much lower priority, and relies heavily on conversations between characters.</description>
+        </tag>
+        <tag id="4022" parentid="6230" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2010-11-29">
+            <name>strong female lead</name>
+            <description>The lead female character has a strong personality and plays a part that is not the typical damsel-in-distress role. 
+This is the exact opposite of the “damsel in distress” tag.</description>
+        </tag>
+        <tag id="4131" parentid="2931" weight="0" localspoiler="false" globalspoiler="false" verified="false" update="2010-05-11">
+            <name>cultural references</name>
+            <description>The plot of this anime shows signs of cultural references, these are often jokes that make reference to a certain custom, habit or history that is specifically attributed to that culture. Knowledge of the culture itself is needed in order to properly understand these jokes.</description>
+        </tag>
+        <tag id="4498" parentid="2607" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2010-03-20">
+            <name>heart-warming</name>
+            <description>The story and its characters give off good vibes — includes elevated feelings of affection such as tenderness, sympathy and love, all in one package.
+The kind of anime which leaves you with a warm feeling inside and you can not stop smiling while watching it.</description>
+        </tag>
+        <tag id="4560" parentid="2931" weight="0" localspoiler="false" globalspoiler="false" verified="false" update="2012-02-23">
+            <name>psychological manipulation</name>
+            <description>Psychological manipulation is a type of social influence that aims to change the perception or behaviour of others through underhanded, deceptive, or even abusive tactics. By advancing the interests of the manipulator, often at the other`s expense, such methods could be considered exploitative, abusive, devious, and deceptive. 
+Social influence is not necessarily negative. For example, doctors can try to persuade patients to change unhealthy habits. Social influence is generally perceived to be harmless when it respects the right of the influenced to accept or reject it, and is not unduly coercive. Depending on the context and motivations, social influence may constitute underhanded manipulation.
+(Source: Wikipedia)</description>
+        </tag>
+        <tag id="4570" parentid="6151" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2020-08-10">
+            <name>watercolour style</name>
+            <description>A watercolour or aquarelle is a painting method in which the paints are made of pigments suspended in a water-based solution. Some anime are created in the style of watercolour paintings, the watercolour style, usually with faded pastels that often give the show a warm and friendly visual presentation. In modern anime, this is generally achieved via computer effects that create an imitation of watercolour, rather than by creating real-life watercolour art. While the watercolour style is more commonly used for backgrounds, it is possible to create the entire anime in such a style.</description>
+            <picurl>251159.jpg</picurl>
+        </tag>
+        <tag id="4907" parentid="2931" weight="0" localspoiler="false" globalspoiler="false" verified="false" update="2009-05-23">
+            <name>small town</name>
+        </tag>
+        <tag id="5834" parentid="6233" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2009-05-25">
+            <name>show within a show</name>
+            <description>A fictional TV (or radio, or stage) show that takes place within an actual TV show; or, occasionally, a fictional instalment or incarnation of an actual show. Many comedies have short one-off gags where they parody existing shows.
+Example: A large part of Martian Successor Nadesico is centred around the fictional popular anime Gekigangar III, which is being watched by several characters of the Nadesico crew.</description>
+        </tag>
+        <tag id="5948" parentid="6233" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2009-04-18">
+            <name>visible aura</name>
+            <description>Characters are surrounded by a visible energy field usually representing inner strength, but not restricted to only that.</description>
+        </tag>
+        <tag id="6005" parentid="2607" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2011-10-17">
+            <name>battle of wits</name>
+            <description>There is some intellectual battle between the characters. They each might attempt to discern what the other knows and/or could be planning. Then, rather than simply relying on the use of raw power, try to deduce an effective strategy to foil their opponent(s). The battle of wits can be in the center of the intrigue or just a side story.
+Examples: Death Note, Code Geass</description>
+        </tag>
+        <tag id="6072" parentid="6233" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2017-12-25">
+            <name>just as planned</name>
+            <description>A term usually used to describe a situation, where a seemingly smart and cunning villain sets up a plan that seems grand and impressive, but is actually long winding, ridiculous, and convoluted. And all of that just to trick his opponent(s), like the hero or anybody else, into doing things exactly as he planned. Suffice to say that the villain could have reached his goal by much shorter and easier means, it just wouldn`t seem as awesome anymore.
+The phrase is also known as the original Japanese "keikaku doori" where keikaku stands translated for "plan" or "schedule", and doori for "in accordance with ..." or "following ...".
+The phrase is a reference to http://anidb.net/ch301 [Yagami Light] from http://anidb.net/a4563 [Death Note], and his love for plans.</description>
+            <picurl>211219.jpg</picurl>
+        </tag>
+        <tag id="6151" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-09-10">
+            <name>technical aspects</name>
+            <description>It may sometimes be useful to know about technical aspects of a show, such as information about its broadcasting or censorship. Such information can be found here.</description>
+        </tag>
+        <tag id="6173" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-09-24">
+            <name>origin</name>
+        </tag>
+        <tag id="6230" parentid="2605" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-10-20">
+            <name>cast</name>
+        </tag>
+        <tag id="6233" parentid="2611" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2015-08-11">
+            <name>tropes</name>
+            <description>A trope is a commonly recurring literary and rhetorical devices, motifs or clichés in creative works. This use is a broader redefining of a literary trope, the use of figurative language, via word, phrase, or even an image, for artistic effect, such as using a figure of speech.
+Source: Wikipedia</description>
+        </tag>
+        <tag id="6349" parentid="6151" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2025-07-14">
+            <name>multi-segment episodes</name>
+            <description>Multi-segment episodes are split into several short segments (parts), usually with separate titles and independent storylines, where each storyline is related to each other as they are all part of the same overall work.
+Not to be confused with http://anidb.net/t5852 [short episodes], which are regular episodes that are much shorter than the standard length (up to and including 10 minutes).
+Also not to be confused with an OVA or music video with multiple (otherwise unrelated) full-length http://anidb.net/t6093 [bundled episodes] consolidated into a single episode video track.</description>
+        </tag>
+        <tag id="7885" parentid="6173" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2021-11-07">
+            <name>Japanese production</name>
+        </tag>
+    </tags>
+    <characters>
+        <character id="91670" type="main character in" update="2020-02-12">
+            <rating votes="43">3.92</rating>
+            <name>Nishikata</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>222726.jpg</picture>
+            <seiyuu id="1678" picture="266694.jpg">Kaji Yuuki</seiyuu>
+        </character>
+        <character id="91671" type="main character in" update="2018-08-25">
+            <rating votes="181">8.47</rating>
+            <name>Takagi-san</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>222727.jpg</picture>
+            <seiyuu id="38380" picture="224406.jpg">Takahashi Rie</seiyuu>
+        </character>
+        <character id="93161" type="secondary cast in" update="2018-01-09">
+            <rating votes="33">4.63</rating>
+            <name>Tsukimoto Sanae</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>211787.jpg</picture>
+            <seiyuu id="16794" picture="11149.jpeg">Ogura Yui</seiyuu>
+        </character>
+        <character id="93162" type="secondary cast in" update="2018-01-09">
+            <rating votes="62">4.40</rating>
+            <name>Hibino Mina</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>211785.jpg</picture>
+            <seiyuu id="48852" picture="274668.jpg">Kohara Konomi</seiyuu>
+        </character>
+        <character id="93163" type="secondary cast in" update="2018-01-09">
+            <rating votes="27">4.91</rating>
+            <name>Tenkawa Yukari</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>211786.jpg</picture>
+            <seiyuu id="36368" picture="224755.jpg">Mao</seiyuu>
+        </character>
+        <character id="93164" type="secondary cast in" update="2018-01-09">
+            <rating votes="23">4.73</rating>
+            <name>Nakai</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>211788.jpg</picture>
+            <seiyuu id="38579" picture="303417.jpg">Uchida Yuuma</seiyuu>
+        </character>
+        <character id="93165" type="secondary cast in" update="2018-01-09">
+            <rating votes="18">2.52</rating>
+            <name>Kimura</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>211791.jpg</picture>
+            <seiyuu id="44099" picture="266260.jpg">Ochiai Fukushi</seiyuu>
+        </character>
+        <character id="93166" type="secondary cast in" update="2018-01-09">
+            <rating votes="11">3.97</rating>
+            <name>Tanabe-sensei</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>211792.jpg</picture>
+            <seiyuu id="43359" picture="226056.jpg">Tadokoro Hinata</seiyuu>
+        </character>
+        <character id="93167" type="secondary cast in" update="2018-01-09">
+            <rating votes="47">4.23</rating>
+            <name>Mano</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>211789.jpg</picture>
+            <seiyuu id="32588" picture="295377.jpg">Koiwai Kotori</seiyuu>
+        </character>
+        <character id="93168" type="secondary cast in" update="2018-01-09">
+            <rating votes="18">2.02</rating>
+            <name>Takao</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>211790.jpg</picture>
+            <seiyuu id="390" picture="33609.jpg">Okamoto Nobuhiko</seiyuu>
+        </character>
+        <character id="94867" type="appears in" update="2018-03-31">
+            <rating votes="2">3.18</rating>
+            <name>Kokugo no Sensei</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>215670.jpg</picture>
+            <seiyuu id="36770" picture="151722.jpg">Nose Ikuji</seiyuu>
+        </character>
+        <character id="94963" type="appears in" update="2018-04-08">
+            <rating votes="1">3.87</rating>
+            <name>Bob Cut no Ko</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>215995.jpg</picture>
+        </character>
+        <character id="94964" type="appears in" update="2018-04-08">
+            <rating votes="2">3.18</rating>
+            <name>Sakurai</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>215996.jpg</picture>
+        </character>
+        <character id="94965" type="appears in" update="2018-04-08">
+            <rating votes="1">3.87</rating>
+            <name>Kyoutou Sensei</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>216000.jpg</picture>
+        </character>
+        <character id="94966" type="appears in" update="2020-04-18">
+            <rating votes="4">4.05</rating>
+            <name>Takagawa Sumire</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>246361.jpg</picture>
+            <seiyuu id="44228" picture="222798.jpg">Asahina Madoka</seiyuu>
+        </character>
+        <character id="103378" type="secondary cast in" update="2019-06-09">
+            <rating votes="12">7.73</rating>
+            <name>Houjou</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>234531.jpg</picture>
+            <seiyuu id="1625" picture="11249.jpeg">Yuuki Aoi</seiyuu>
+        </character>
+        <character id="103379" type="secondary cast in" update="2019-06-09">
+            <rating votes="3">2.35</rating>
+            <name>Hamaguchi</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>234532.jpg</picture>
+            <seiyuu id="2588" picture="264505.jpg">Uchiyama Kouki</seiyuu>
+        </character>
+        <character id="109370" type="appears in" update="2020-04-12">
+            <name>Yoshida</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>246128.jpg</picture>
+            <seiyuu id="13802" picture="65373.jpg">Hasu Takehiro</seiyuu>
+        </character>
+        <character id="109371" type="appears in" update="2020-04-12">
+            <name>Saiminjutsushi</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>246129.jpg</picture>
+            <seiyuu id="40504" picture="158574.jpg">Watanuki Ryuunosuke</seiyuu>
+        </character>
+        <character id="109517" type="appears in" update="2020-04-18">
+            <rating votes="2">7.75</rating>
+            <name>Kyunko</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>246362.jpg</picture>
+            <seiyuu id="38380" picture="224406.jpg">Takahashi Rie</seiyuu>
+        </character>
+        <character id="109518" type="appears in" update="2020-04-18">
+            <rating votes="1">2.50</rating>
+            <name>Dagashiya no Ojisan</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>246363.jpg</picture>
+            <seiyuu id="272" picture="233512.jpg">Naitou Ryou</seiyuu>
+        </character>
+        <character id="109519" type="appears in" update="2020-04-18">
+            <rating votes="1">2.50</rating>
+            <name>Dandy</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>246364.jpg</picture>
+            <seiyuu id="343" picture="11234.jpeg">Genda Tesshou</seiyuu>
+        </character>
+        <character id="109520" type="appears in" update="2020-04-18">
+            <rating votes="3">5.43</rating>
+            <name>Nishikata Haha</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>246365.jpg</picture>
+            <seiyuu id="268" picture="267814.jpg">Hidaka Noriko</seiyuu>
+        </character>
+        <character id="122595" type="appears in" update="2022-03-05">
+            <rating votes="1">2.50</rating>
+            <name>Ikeo</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>270491.jpg</picture>
+            <seiyuu id="1678" picture="266694.jpg">Kaji Yuuki</seiyuu>
+        </character>
+        <character id="130042" type="appears in" update="2023-01-28">
+            <rating votes="6">8.76</rating>
+            <name>Takagi</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>284529.jpg</picture>
+            <seiyuu id="38380" picture="224406.jpg">Takahashi Rie</seiyuu>
+        </character>
+        <character id="146117" type="appears in" update="2025-01-22">
+            <rating votes="4">6.19</rating>
+            <name>Taiiku no Sensei</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>312252.jpg</picture>
+            <seiyuu id="1918" picture="225099.jpg">Sakurai Harumi</seiyuu>
+        </character>
+    </characters>
+    <episodes>
+        <episode id="217959" update="2019-06-11">
+            <epno type="1">1</epno>
+            <length>25</length>
+            <airdate>2019-07-07</airdate>
+            <rating votes="7">8.51</rating>
+            <title xml:lang="ja">教科書 / 催眠術 / 寝起き / 水切り</title>
+            <title xml:lang="en">Textbook / Hypnotism / Waking Up / Skipping Stones</title>
+            <title xml:lang="fr">Le manuel / Hypnose / Le réveil / Les ricochets</title>
+            <title xml:lang="x-jat">Kyoukasho / Saiminjutsu / Neoki / Mizukiri</title>
+        </episode>
+        <episode id="217960" update="2019-06-11">
+            <epno type="1">2</epno>
+            <length>25</length>
+            <airdate>2019-07-14</airdate>
+            <rating votes="7">6.54</rating>
+            <title xml:lang="ja">氷 / 外見 / 前髪 / バレンタインデー</title>
+            <title xml:lang="en">Ice / Appearance / Bangs / Valentine`s Day</title>
+            <title xml:lang="fr">Givré / Jeu d`apparence / La frange / C`est la Saint-Valentin</title>
+            <title xml:lang="x-jat">Koori / Gaiken / Maegami / Valentine Day</title>
+        </episode>
+        <episode id="217961" update="2019-06-11">
+            <epno type="1">3</epno>
+            <length>25</length>
+            <airdate>2019-07-21</airdate>
+            <rating votes="7">8.36</rating>
+            <title xml:lang="ja">エイプリルフール / お花見 / 呼び方 / 進級</title>
+            <title xml:lang="en">April Fools Day / Blossom Watching / Forms of Address / New School Year</title>
+            <title xml:lang="fr">Poisson d`avril / La floraison / Formules de politesse / C`est la rentrée</title>
+            <title xml:lang="x-jat">April Fool / Ohanami / Yobikata / Shinkyuu</title>
+        </episode>
+        <episode id="217962" update="2019-06-11">
+            <epno type="1">4</epno>
+            <length>25</length>
+            <airdate>2019-07-28</airdate>
+            <rating votes="7">5.73</rating>
+            <title xml:lang="ja">腕ずもう / 大人っぽく / にがみ / 自転車</title>
+            <title xml:lang="en">Arm Wrestling / Grown-Up / Bitter Taste / Bicycle</title>
+            <title xml:lang="fr">Bras de fer / Être adulte / Un goût amer / Le vélo</title>
+            <title xml:lang="x-jat">Udezumou / Otonappoko / Nigami / Jitensha</title>
+        </episode>
+        <episode id="218750" update="2019-09-22">
+            <epno type="3">C1</epno>
+            <length>2</length>
+            <airdate>2019-07-07</airdate>
+            <rating votes="1">10.00</rating>
+            <title xml:lang="en">Opening 1a</title>
+        </episode>
+        <episode id="218751" update="2019-09-25">
+            <epno type="3">C3</epno>
+            <length>2</length>
+            <airdate>2019-07-07</airdate>
+            <title xml:lang="en">Ending 1</title>
+        </episode>
+        <episode id="218816" update="2019-07-17">
+            <epno type="1">5</epno>
+            <length>25</length>
+            <airdate>2019-08-04</airdate>
+            <rating votes="7">7.36</rating>
+            <title xml:lang="ja">質問 / まゆ毛 / 放課後 / ハッピーバースデー / くしゃみ</title>
+            <title xml:lang="en">Questions / Eyebrows / After School / Happy Birthday / Sneeze</title>
+            <title xml:lang="fr">Les questions / Les sourcils / Après l`école / Joyeux anniversaire / À tes souhaits</title>
+            <title xml:lang="x-jat">Shitsumon / Mayuge / Houkago / Happy Birthday / Kushami</title>
+        </episode>
+        <episode id="218817" update="2019-07-17">
+            <epno type="1">6</epno>
+            <length>25</length>
+            <airdate>2019-08-11</airdate>
+            <rating votes="8">6.92</rating>
+            <title xml:lang="ja">リベンジ / ドッジボール / 買い食い / デート</title>
+            <title xml:lang="en">Revenge / Dodgeball / Buy and Eat / Date</title>
+            <title xml:lang="fr">Revanche / La balle au prisonnier / Argent et nourriture / Rencard</title>
+            <title xml:lang="x-jat">Revenge / Dodge Ball / Kaigui / Date</title>
+        </episode>
+        <episode id="218818" update="2019-07-17">
+            <epno type="1">7</epno>
+            <length>25</length>
+            <airdate>2019-08-18</airdate>
+            <rating votes="8">8.59</rating>
+            <title xml:lang="ja">林間学校</title>
+            <title xml:lang="en">Camping Trip</title>
+            <title xml:lang="fr">La sortie camping</title>
+            <title xml:lang="x-jat">Rinkangakkou</title>
+        </episode>
+        <episode id="218819" update="2019-07-17">
+            <epno type="1">8</epno>
+            <length>25</length>
+            <airdate>2019-08-25</airdate>
+            <rating votes="8">6.66</rating>
+            <title xml:lang="ja">体育倉庫 / 保健室 / 宝くじ</title>
+            <title xml:lang="en">Storage Closet / Nurse`s Office / Lottery</title>
+            <title xml:lang="fr">Le local / L`infirmerie / La loterie</title>
+            <title xml:lang="x-jat">Taiiku Souko / Hokenshitsu / Takarakuji</title>
+        </episode>
+        <episode id="219472" update="2019-08-18">
+            <epno type="1">9</epno>
+            <length>25</length>
+            <airdate>2019-09-01</airdate>
+            <rating votes="9">9.56</rating>
+            <title xml:lang="ja">あっちむいてほい / 特技 / お悩み / メール</title>
+            <title xml:lang="en">Acchi Muite Hoi / Talents / Worries / Messages</title>
+            <title xml:lang="fr">Regarde par ici / Talents / Des soucis / Messages</title>
+            <title xml:lang="x-jat">Acchi Muite Hoi / Tokugi / Onayami / Mail</title>
+        </episode>
+        <episode id="219473" update="2019-08-18">
+            <epno type="1">10</epno>
+            <length>25</length>
+            <airdate>2019-09-08</airdate>
+            <rating votes="8">8.46</rating>
+            <title xml:lang="ja">目薬 / スクープ / かくれんぼ / 宝探し</title>
+            <title xml:lang="en">Eye Drops / Scoop / Hide and Seek / Treasure Hunting</title>
+            <title xml:lang="fr">Les gouttes pour les yeux / Scoop / Cache-cache / Chasse au trésor</title>
+            <title xml:lang="x-jat">Megusuri / Scoop / Kakurenbo / Takarasagashi</title>
+        </episode>
+        <episode id="219474" update="2019-08-18">
+            <epno type="1">11</epno>
+            <length>25</length>
+            <airdate>2019-09-15</airdate>
+            <rating votes="11">9.24</rating>
+            <title xml:lang="ja">歩数 / 花火 / お土産 / 約束</title>
+            <title xml:lang="en">Steps / Fireworks / Souvenirs / Promises</title>
+            <title xml:lang="fr">Les pas / Le feu d`artifice / Souvenirs / Promesses</title>
+            <title xml:lang="x-jat">Hosuu / Hanabi / Omiyage / Yakusoku</title>
+        </episode>
+        <episode id="219475" update="2019-08-18">
+            <epno type="1">12</epno>
+            <length>25</length>
+            <airdate>2019-09-22</airdate>
+            <rating votes="7">7.95</rating>
+            <title xml:lang="ja">夏祭り</title>
+            <title xml:lang="en">Summer Festival</title>
+            <title xml:lang="fr">La foire estivale</title>
+            <title xml:lang="x-jat">Natsumatsuri</title>
+        </episode>
+        <episode id="221545" update="2019-09-25">
+            <epno type="3">C2</epno>
+            <length>2</length>
+            <airdate>2019-08-04</airdate>
+            <rating votes="1">10.00</rating>
+            <title xml:lang="en">Opening 1b</title>
+        </episode>
+        <episode id="221546" update="2019-09-22">
+            <epno type="3">C4</epno>
+            <length>2</length>
+            <airdate>2019-07-14</airdate>
+            <title xml:lang="en">Ending 2</title>
+        </episode>
+        <episode id="221547" update="2019-09-22">
+            <epno type="3">C5</epno>
+            <length>2</length>
+            <airdate>2019-07-21</airdate>
+            <title xml:lang="en">Ending 3</title>
+        </episode>
+        <episode id="221548" update="2019-09-22">
+            <epno type="3">C6</epno>
+            <length>2</length>
+            <airdate>2019-08-04</airdate>
+            <title xml:lang="en">Ending 4</title>
+        </episode>
+        <episode id="221549" update="2019-09-22">
+            <epno type="3">C7</epno>
+            <length>2</length>
+            <airdate>2019-08-18</airdate>
+            <title xml:lang="en">Ending 5</title>
+        </episode>
+        <episode id="221550" update="2019-09-22">
+            <epno type="3">C8</epno>
+            <length>2</length>
+            <airdate>2019-08-25</airdate>
+            <title xml:lang="en">Ending 6</title>
+        </episode>
+        <episode id="221551" update="2019-09-22">
+            <epno type="3">C9</epno>
+            <length>2</length>
+            <airdate>2019-09-15</airdate>
+            <title xml:lang="en">Ending 7</title>
+        </episode>
+        <episode id="221552" update="2019-09-22">
+            <epno type="3">C10</epno>
+            <length>2</length>
+            <airdate>2019-09-22</airdate>
+            <title xml:lang="en">Ending 8</title>
+        </episode>
+        <episode id="233098" update="2020-10-03">
+            <epno type="2">S1</epno>
+            <length>5</length>
+            <airdate>2019-09-18</airdate>
+            <title xml:lang="ja">セレクトエピソード: 「外見」</title>
+            <title xml:lang="en">Select Episode: Appearance (Binaural Audio Ver.)</title>
+            <title xml:lang="x-jat">Select Episode: Gaiken</title>
+        </episode>
+        <episode id="233099" update="2020-10-03">
+            <epno type="2">S2</epno>
+            <length>7</length>
+            <airdate>2019-10-16</airdate>
+            <title xml:lang="ja">セレクトエピソード: 「進級」</title>
+            <title xml:lang="en">Select Episode: New School Year (Binaural Audio Ver.)</title>
+            <title xml:lang="x-jat">Select Episode: Shinkyuu</title>
+        </episode>
+        <episode id="233100" update="2020-10-03">
+            <epno type="2">S3</epno>
+            <length>6</length>
+            <airdate>2019-11-20</airdate>
+            <title xml:lang="ja">セレクトエピソード: 「デート」</title>
+            <title xml:lang="en">Select Episode: Date (Binaural Audio Ver.)</title>
+            <title xml:lang="x-jat">Select Episode: Date</title>
+        </episode>
+        <episode id="233101" update="2020-10-03">
+            <epno type="2">S4</epno>
+            <length>4</length>
+            <airdate>2019-12-18</airdate>
+            <title xml:lang="ja">セレクトエピソード: 「林間学校」</title>
+            <title xml:lang="en">Select Episode: Camping Trip (Binaural Audio Ver.)</title>
+            <title xml:lang="x-jat">Select Episode: Rinkangakkou</title>
+        </episode>
+        <episode id="233102" update="2020-10-03">
+            <epno type="2">S5</epno>
+            <length>8</length>
+            <airdate>2020-01-22</airdate>
+            <title xml:lang="ja">セレクトエピソード: 「メール」</title>
+            <title xml:lang="en">Select Episode: Messages (Binaural Audio Ver.)</title>
+            <title xml:lang="x-jat">Select Episode: Mail</title>
+        </episode>
+        <episode id="233103" update="2020-10-03">
+            <epno type="2">S6</epno>
+            <length>7</length>
+            <airdate>2020-02-19</airdate>
+            <title xml:lang="ja">セレクトエピソード: 「約束」</title>
+            <title xml:lang="en">Select Episode: Promises (Binaural Audio Ver.)</title>
+            <title xml:lang="x-jat">Select Episode: Yakusoku</title>
+        </episode>
+        <episode id="233104" update="2020-10-03">
+            <epno type="2">S7</epno>
+            <length>8</length>
+            <airdate>2019-09-18</airdate>
+            <title xml:lang="ja">高橋李依 オーディオコメンタリー: 「水切り」</title>
+            <title xml:lang="en">Takahashi Rie`s Audio Commentary: Skipping Stones</title>
+            <title xml:lang="x-jat">Takahashi Rie Audio Commentary: Mizukiri</title>
+        </episode>
+        <episode id="233105" update="2020-10-03">
+            <epno type="2">S8</epno>
+            <length>9</length>
+            <airdate>2019-10-16</airdate>
+            <title xml:lang="ja">高橋李依 オーディオコメンタリー: 「エイプリルフール」</title>
+            <title xml:lang="en">Takahashi Rie`s Audio Commentary: April Fools Day</title>
+            <title xml:lang="x-jat">Takahashi Rie Audio Commentary: April Fool</title>
+        </episode>
+        <episode id="233106" update="2020-10-03">
+            <epno type="2">S9</epno>
+            <length>7</length>
+            <airdate>2019-11-20</airdate>
+            <title xml:lang="ja">高橋李依 オーディオコメンタリー: 「くしゃみ」</title>
+            <title xml:lang="en">Takahashi Rie`s Audio Commentary: Sneeze</title>
+            <title xml:lang="x-jat">Takahashi Rie Audio Commentary: Kushami</title>
+        </episode>
+        <episode id="233107" update="2020-10-03">
+            <epno type="2">S10</epno>
+            <length>5</length>
+            <airdate>2019-12-18</airdate>
+            <title xml:lang="ja">高橋李依 オーディオコメンタリー: 「林間学校」</title>
+            <title xml:lang="en">Takahashi Rie`s Audio Commentary: Camping Trip</title>
+            <title xml:lang="x-jat">Takahashi Rie Audio Commentary: Rinkangakkou</title>
+        </episode>
+        <episode id="233108" update="2020-10-03">
+            <epno type="2">S11</epno>
+            <length>9</length>
+            <airdate>2020-01-22</airdate>
+            <title xml:lang="ja">高橋李依 オーディオコメンタリー: 「宝探し」</title>
+            <title xml:lang="en">Takahashi Rie`s Audio Commentary: Treasure Hunting</title>
+            <title xml:lang="x-jat">Takahashi Rie Audio Commentary: Takarasagashi</title>
+        </episode>
+        <episode id="233109" update="2020-10-03">
+            <epno type="2">S12</epno>
+            <length>15</length>
+            <airdate>2020-02-19</airdate>
+            <title xml:lang="ja">高橋李依 オーディオコメンタリー: 「夏祭り」</title>
+            <title xml:lang="en">Takahashi Rie`s Audio Commentary: Summer Festival</title>
+            <title xml:lang="x-jat">Takahashi Rie Audio Commentary: Natsumatsuri</title>
+        </episode>
+        <episode id="261473" update="2022-11-28">
+            <epno type="2">S13</epno>
+            <length>2</length>
+            <airdate>2019-09-08</airdate>
+            <title xml:lang="en">Episode 10 Ending</title>
+        </episode>
+    </episodes>
+</anime>

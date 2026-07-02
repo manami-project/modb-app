@@ -43,4 +43,13 @@ interface DeadEntriesAccessor {
      * @return All dead entries for a specific metadata provider.
      */
     suspend fun fetchDeadEntries(metaDataProviderConfig: MetaDataProviderConfig): Set<AnimeId>
+
+    /**
+     * Checks if a specific ID has been reported as a dead entry.
+     * @since 1.13.0
+     * @param animeId ID of the anime as defined by the metadata provider.
+     * @param metaDataProviderConfig Configuration for a specific metadata provider.
+     * @return `true` if the id is known as a dead entry.
+     */
+    suspend fun containsEntry(animeId: AnimeId, metaDataProviderConfig: MetaDataProviderConfig): Boolean
 }

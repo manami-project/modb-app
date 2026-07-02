@@ -1,0 +1,608 @@
+<?xml version="1.0" encoding="UTF-8"?><anime id="12519" restricted="false">
+    <type>TV Special</type>
+    <episodecount>1</episodecount>
+    <startdate>2016-12-31</startdate>
+    <enddate>2016-12-31</enddate>
+    <titles>
+        <title xml:lang="x-jat" type="main">Fate/Grand Order: First Order</title>
+        <title xml:lang="x-jat" type="synonym">Fate: Fate/Grand Order: First Order</title>
+        <title xml:lang="en" type="short">FGOFO</title>
+        <title xml:lang="x-jat" type="short">fgo special</title>
+        <title xml:lang="ja" type="official">Fate/Grand Order -First Order-</title>
+        <title xml:lang="en" type="official">Fate/Grand Order: First Order</title>
+        <title xml:lang="he" type="official">פייט/המסדר העליון: הפקודה הראשונה</title>
+        <title xml:lang="zh-Hans" type="official">命运/冠位指定:序章</title>
+    </titles>
+    <relatedanime>
+        <anime id="14239" type="Sequel">Gekijouban Fate/Grand Order: Shinsei Entaku Ryouiki Camelot</anime>
+        <anime id="3348" type="Same Setting">Fate/Stay Night</anime>
+        <anime id="15899" type="Alternative Setting">Fate/Grand Carnival</anime>
+        <anime id="14579" type="Side Story">Manga de Wakaru! Fate/Grand Order</anime>
+        <anime id="13644" type="Side Story">Fate/Grand Order x Himuro no Tenchi: 7-nin no Saikyou Ijin Hen</anime>
+        <anime id="17804" type="Side Story">Fate/Grand Order: Fujimaru Ritsuka wa Wakaranai</anime>
+        <anime id="18160" type="Other">"Fate/Grand Order" Memorial Movie 2023</anime>
+    </relatedanime>
+    <url>https://anime.fate-go.jp/FirstOrder/</url>
+    <creators>
+        <name id="21425" type="Character Design">Gotou Keisuke</name>
+        <name id="42709" type="Work">Lay-duce</name>
+        <name id="927" type="Original Work">Type-Moon</name>
+        <name id="5732" type="Direction">Nanba Hitoshi</name>
+        <name id="44574" type="Music">Kawasaki Ryou</name>
+        <name id="21425" type="Chief Animation Direction">Gotou Keisuke</name>
+    </creators>
+    <description>* Based on the Fuyuki Singularity of Fate/Grand Order, the Japanese smartphone role-playing game created by http://anidb.net/cr58840 [Delight Works] based on the Fate series by http://anidb.net/cr927 [Type-Moon].
+The story is set in the year 2015, during the final era over which magic still held sway. The humanity survival and security organization Chaldea was established to observe the world that can only be seen by magic and the world that can only be measured by science - as well as to prevent the final extinction of mankind.
+Thanks to the efforts of many researchers, the path of human history has been ensured for 100 years into the future. However, without warning, the realm of the future that was under constant observation by Chaldea vanished. The extinction of humanity in 2017 was observed - no, confirmed.
+The apparent cause of the extinction was in the Japanese city of Fuyuki in 2004. In that city, there was an unobservable realm which had never existed until now.
+Chaldea issued the Grand Order for a Holy Grail Expedition, to investigate, uncover, and possibly destroy the singularity that apparently will cause the extinction of humanity.
+Source: ANN</description>
+    <ratings>
+        <permanent count="1724">4.32</permanent>
+        <temporary count="1730">6.28</temporary>
+    </ratings>
+    <picture>278029.jpg</picture>
+    <resources>
+        <resource type="1">
+            <externalentity>
+                <identifier>18870</identifier>
+            </externalentity>
+        </resource>
+        <resource type="2">
+            <externalentity>
+                <identifier>40469</identifier>
+            </externalentity>
+            <externalentity>
+                <identifier>34321</identifier>
+            </externalentity>
+        </resource>
+        <resource type="4">
+            <externalentity>
+                <url>https://anime.fate-go.jp/FirstOrder/</url>
+            </externalentity>
+        </resource>
+        <resource type="6">
+            <externalentity>
+                <identifier>Fate/Grand_Order#Other_media</identifier>
+            </externalentity>
+        </resource>
+        <resource type="7">
+            <externalentity>
+                <identifier>Fate/Grand_Order_(アニメ)</identifier>
+            </externalentity>
+        </resource>
+        <resource type="8">
+            <externalentity>
+                <identifier>4402</identifier>
+            </externalentity>
+        </resource>
+        <resource type="9">
+            <externalentity>
+                <identifier>358714</identifier>
+            </externalentity>
+        </resource>
+        <resource type="10">
+            <externalentity>
+                <identifier>19905</identifier>
+            </externalentity>
+        </resource>
+        <resource type="28">
+            <externalentity>
+                <identifier>GYNQ3N8ZY</identifier>
+            </externalentity>
+        </resource>
+        <resource type="41">
+            <externalentity>
+                <identifier>80213886</identifier>
+            </externalentity>
+        </resource>
+        <resource type="43">
+            <externalentity>
+                <identifier>tt15820348</identifier>
+            </externalentity>
+            <externalentity>
+                <identifier>tt6213810</identifier>
+            </externalentity>
+        </resource>
+    </resources>
+    <tags>
+        <tag id="30" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-09-10">
+            <name>maintenance tags</name>
+            <description>These tags are used for maintenance.</description>
+        </tag>
+        <tag id="922" parentid="2606" infobox="true" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2015-02-04">
+            <name>shounen</name>
+            <description>In the context of manga and associated media, shounen, literally meaning "youth" and often also specifically "boy", refers to a male audience roughly between the ages of 10 and 18.
+Source: Wikipedia</description>
+        </tag>
+        <tag id="1244" parentid="2094" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2009-06-01">
+            <name>summoning</name>
+            <description>Ability to call/materialize some kind of creature.</description>
+        </tag>
+        <tag id="2094" parentid="2849" infobox="true" weight="400" localspoiler="false" globalspoiler="false" verified="true" update="2015-10-25">
+            <name>magic</name>
+            <description>Magic is the art of purportedly manipulating aspects of reality either by supernatural means or through knowledge of unknown occult laws.</description>
+            <picurl>178878.jpg</picurl>
+        </tag>
+        <tag id="2604" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2018-11-08">
+            <name>content indicators</name>
+            <description>The content indicators branch is intended to be a less geographically specific tool than the `age rating` used by convention, for warning about things that might cause offence. Obviously there is still a degree of subjectivity involved, but hopefully it will prove useful for parents with delicate children, or children with delicate parents.
+Note: Refer to further guidance on http://wiki.anidb.net/w/Categories:Content_Indicators [the Wiki page] for how to apply tag weights for content indicators.</description>
+        </tag>
+        <tag id="2605" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-09-28">
+            <name>dynamic</name>
+            <description>Some of the central structural elements in anime are: 
+Plot Continuity 
+How does the plot or several plots unfold. Are they a strictly linear retelling of one big continuing story, a serial, possibly with several side stories, or is the content chopped into a set of unconnected episodes, only sharing the same setting and characters?
+Stereotype Characters
+Then there is the question of the character set presentation. Is it completely original, or is it your usual stereotypical character cast. Both choices have their merit, for example it would not really make much sense to reinvent the wheel for a harem anime. Fans of that genre come to expect their favourite stereotype protagonists.
+Plot Twists
+Finally there is the question of how complex the plot / the story unfolds. Are there side-plots that merge into the main plot leading to unexpected plot twists, or is the anime quite predictable? The latter would not be appropriate for detective stories. In harem anime on the other hand a foreseeable outcome is actually something the fans will come to expect.</description>
+        </tag>
+        <tag id="2606" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2018-11-05">
+            <name>target audience</name>
+            <description>Anime, like everything else in the modern world, is targeted towards specific audiences, both implicitly by the creators and overtly by the marketing. While categories are associated with specific sex and age groups, this is not a bar on the anime being enjoyed by people who don`t fit into that band; not only do crossover titles exist, but the categories also have a considerable following outside their main demographic, and a person might as well enjoy anime from all categories. Still, does not invalidate the usefulness of marking a title as one of the categories; the same themes will likely be treated differently in anime geared for different audiences. Only one should not jump the gun and assume that a title will be more or less serious or present content in this or that way due to its target audience, or conversely assume the target audience on the content and its presentation alone. As such, the audience categories help form a broad impression of how a title might work with the announced themes, but offer little to no in-depth information about specific content or its treatment.
+The audience categories originate from manga magazines, which group titles of a same intended audience into a magazine that is advertised as belonging to that category, and so manga-based anime will have the category from their parent work. As for anime based on other works, the audience is often debatable, but comparing information such as time slot to the manga-based anime generally helps figure out the most likely possibility.
+If the parent material was classified under multiple audiences over time (for example, it was originally shounen, but then as the plot changed and became more mature, it was reclassified as seinen), and the anime adapts parent material time periods covering multiple audiences, we tag all audiences covered by the anime adaptation.</description>
+        </tag>
+        <tag id="2607" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2009-04-29">
+            <name>themes</name>
+            <description>Themes describe the very central elements important to the anime stories. They set the backdrop against which the protagonists must face their challenges. Be it School Life, present Daily Life, Military action, Cyberpunk, Law and Order detective work, Sports, or the Underworld. These are only but a few of the more typical backgrounds for anime plots. Add to that a Conspiracy setting with a possible tragic outcome, the Themes span most of the imaginable subject matter relevant to anime.</description>
+        </tag>
+        <tag id="2609" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2018-09-01">
+            <name>original work</name>
+            <description>What the anime is based on! This is given as the original work credit in the OP. Mostly of academic interest, but a useful bit of info, hinting at the possible depth of story.</description>
+        </tag>
+        <tag id="2610" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2009-04-22">
+            <name>setting</name>
+            <description>The setting describes in what time and place an anime takes place. To a certain extent it describes what you can expect from the world in the anime.</description>
+        </tag>
+        <tag id="2611" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-09-08">
+            <name>elements</name>
+            <description>Next to Themes setting the backdrop for the protagonists in anime, there are the more detailed plot Elements that centre on character interactions: "What do characters do to each other or what is done to them?". Is it violent Action, an awe-inspiring Adventure in a foreign place, the gripping life of a Detective, a slapstick Comedy, an Ecchi Harem anime, a SciFi epic, or some Fantasy travelling adventure?</description>
+        </tag>
+        <tag id="2612" parentid="2610" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2016-09-04">
+            <name>time</name>
+            <description>This placeholder lists different epochs in human history and more vague but important timelines such as the future, the present and the past.</description>
+        </tag>
+        <tag id="2613" parentid="2610" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2016-09-04">
+            <name>place</name>
+            <description>The places the anime can take place in. Includes more specific places such as a country on Earth, as well as more general places such as a dystopia or a mirror world.</description>
+        </tag>
+        <tag id="2622" parentid="2841" infobox="true" weight="400" localspoiler="false" globalspoiler="false" verified="true" update="2017-12-26">
+            <name>swordplay</name>
+            <description>The act or art of using a sword or similar weapon skillfully.</description>
+            <picurl>211286.jpg</picurl>
+        </tag>
+        <tag id="2623" parentid="2611" infobox="true" weight="400" localspoiler="false" globalspoiler="false" verified="true" update="2018-01-21">
+            <name>super power</name>
+            <description>Be it an ancient Greek Heracles, a cybernetic muscle-man, or a fourteen year-old girl in a mini-skirted sailor suit. As long as they have super powers, they`re in the show.</description>
+            <picurl>212182.jpg</picurl>
+        </tag>
+        <tag id="2624" parentid="2612" weight="600" localspoiler="false" globalspoiler="false" verified="true" update="2017-02-20">
+            <name>present</name>
+            <description>Somewhere between past and future.</description>
+        </tag>
+        <tag id="2630" parentid="2613" weight="600" localspoiler="false" globalspoiler="false" verified="true" update="2012-10-13">
+            <name>Earth</name>
+            <description>The Earth is the third planet from the Sun, and the densest and fifth-largest of the eight planets in the Solar System. It is in effect a ball of hot mud, but on the surface it`s cold enough, so most of us live on it (or are supposed to). It is circa 4.5 billion years old, and, unless we humans succeed in destroying it over the next couple of centuries, it is expected to last for quite another while, though the changes in the Sun`s emissions due to its aging will likely cause the extinction of everything; the species of earthlings are guaranteed to die, even if we fail to kill them -- unless, of course, we find ourselves another planet and figure out a way to take everything there. Our little planet on a corner of this galaxy may mean nothing in the grand scheme of things, but to its inhabitants it is their home, so, as a species, we cherish it dearly, to the point many cultures even to this day deify it. Being the home to the human civilizations, the Earth is the main setting of most fiction, be it anime or otherwise, but not only are many titles set in other places, such as unrelated fantasy worlds, in a considerable number of fictional titles the Earth is actually destroyed by aggressive alien invaders.</description>
+            <picurl>126792.jpg</picurl>
+        </tag>
+        <tag id="2637" parentid="7050" weight="300" localspoiler="false" globalspoiler="false" verified="true" update="2017-12-01">
+            <name>time travel</name>
+            <description>In time travel anime characters are transported through time either figuratively or literally to find themselves either in the past or the future</description>
+            <picurl>210068.jpg</picurl>
+        </tag>
+        <tag id="2642" parentid="2624" weight="600" localspoiler="false" globalspoiler="false" verified="true" update="2009-09-28">
+            <name>alternative present</name>
+            <description>Anime that fit in the alternative present category usually have technology and society that is very similar to ours, but with differences in both, history and culture, which sometimes are blatantly obvious, but sometimes harder to place; this one can at times be very subjective.</description>
+        </tag>
+        <tag id="2648" parentid="2849" infobox="true" weight="600" localspoiler="false" globalspoiler="false" verified="true" update="2014-11-04">
+            <name>contemporary fantasy</name>
+            <description>Contemporary fantasy, also known as modern fantasy or indigenous fantasy, is a sub-genre of fantasy, set in the present day. It is perhaps most popular for its sub-genre, urban fantasy.
+These terms are used to describe stories set in the putative real world (often referred to as consensus reality) in contemporary times, in which magic and magical creatures exist, either living in the interstices of our world or leaking over from alternate worlds. It thus has much in common with, and sometimes overlaps with secret history; a work of fantasy in which the magic could not remain secret or does not have any known relationship to known history would not fit into this subgenre. Occasionally certain contemporary fantasy novels will make reference to pop culture.
+Novels in which modern characters travel into alternate worlds, and all the magical action takes place there (except for the portal required to transport them), are not considered contemporary fantasy. Thus, C.S. Lewis`s The Lion, the Witch and the Wardrobe, where all fantasy events take place in the land of Narnia which is reached via a magic wardrobe, would not count as contemporary fantasy; on the other hand, the part of The Magician`s Nephew, where the Empress Jadis gets to London, tries to take over the Earth and clashes with police and a crowd of cockneys, would qualify as such.
+Contemporary fantasy is also to be distinguished from horror fiction, which also often has contemporary settings. When encountering magical events and creatures, the protagonist of a horror novel is horrified, while the protagonist of a fantasy novel (contemporary or otherwise) is filled with a sense of joy and wonder. Horrifying events may happen, but the fundamental distinction is vital.
+In his preface to That Hideous Strength, one of the earlier works falling within this sub-genre, C.S. Lewis explained why, when writing a tale about "magicians, devils, pantomime animals and planetary angels", he chose to start it with a detailed depiction of narrow-minded academic politics at a provincial English university and the schemes of crooked real estate developers: "I am following the traditional fairy-tale. We do not always notice its method, because the cottages, castles, woodcutters and petty kings with which a fairy tale opens have become for us as remote as the witches and ogres to which it proceeds. But they were not remote at all to the men who first made and enjoyed the tales". The same is true for many of the later works in the genre, which often begin with a seemingly normal scene of modern daily life to then disclose supernatural and magical beings and events hidden behind the scenes.
+Source: wiki</description>
+        </tag>
+        <tag id="2672" parentid="2834" weight="600" localspoiler="false" globalspoiler="false" verified="true" update="2018-03-05">
+            <name>Japan</name>
+            <description>Japan is a sovereign island nation in East Asia. Located in the Pacific Ocean, it lies off the eastern coast of the Asian mainland and stretches from the Sea of Okhotsk in the north to the East China Sea and China in the southwest.
+Source: Wikipedia</description>
+            <picurl>65689.png</picurl>
+        </tag>
+        <tag id="2750" parentid="2604" infobox="true" weight="400" localspoiler="false" globalspoiler="false" verified="true" update="2018-11-08">
+            <name>violence</name>
+            <description>Violence is the use of physical force against oneself or another entity, compelling action against one`s will on pain of being hurt.
+Note: Refer to further guidance on http://wiki.anidb.net/w/Categories:Content_Indicators [the Wiki page] for how to apply tag weights for content indicators.</description>
+        </tag>
+        <tag id="2773" parentid="2094" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2015-01-18">
+            <name>magic circles</name>
+            <description>A magic circle is circle or sphere of space marked out by practitioners of many branches of ritual magic. It may be marked physically, drawn in salt or chalk, for example, or merely visualised.
+Traditionally, circles have been used by ritual magicians to form a protective barrier between themselves and what they summoned. Nowadays, circles often have the more benign function of containing and concentrating the energy raised during a ritual. Circles can also be used as barriers for non-magical work such as meditation.
+Generally, as with most magical practices, an incantation is recited stating the purpose and nature of the circle, often repeating an assortment of divine and angelic names.
+Source: wiki</description>
+            <picurl>32800.jpg</picurl>
+        </tag>
+        <tag id="2790" parentid="2605" weight="400" localspoiler="false" globalspoiler="false" verified="true" update="2010-01-17">
+            <name>plot continuity</name>
+            <description>Consistency of the characteristics of persons, plot, objects, places and events seen by the viewer.
+A single linear focused plot is highly continuous.
+A truly random plot is highly discontinuous.</description>
+        </tag>
+        <tag id="2800" parentid="2609" infobox="true" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2009-04-20">
+            <name>game</name>
+            <description>Based on an interactive (even if minimally so) form of entertainment software, generally available for PCs, consoles or arcade machines.</description>
+        </tag>
+        <tag id="2801" parentid="2800" infobox="true" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-09-07">
+            <name>RPG</name>
+            <description>Any anime that is based on a role-playing game aka RPG. A role-playing video game is a video game which includes elements of non-electronic role-playing games. The player assumes control of one or several fictional characters (a party) who have joined forces in order to perform quests and overcome a great number of challenges and enemies, usually monsters inspired by fantasy, and, to a lesser extent, science fiction and classic mythology. During the course of the game the characters, or avatars, which are generally defined by quantized characteristics, evolve and improve in that their various attributes increase, as well as by gaining more powerful artefacts.</description>
+        </tag>
+        <tag id="2834" parentid="2630" weight="600" localspoiler="false" globalspoiler="false" verified="true" update="2016-10-04">
+            <name>Asia</name>
+            <description>Asia is Earth`s largest and most populous continent, located primarily in the eastern and northern hemispheres and sharing the continental landmass of Eurasia with the continent of Europe. Asia covers an area of 44,579,000 square kilometers, about 30% of Earth`s total land area and 8.7% of the Earth`s total surface area. The continent, which has long been home to the majority of the human population, was the site of many of the first civilizations. Asia is notable for not only its overall large size and population, but also dense and large settlements as well as vast barely populated regions within the continent of 4.4 billion people.
+Source: Wikipedia</description>
+            <picurl>192245.jpg</picurl>
+        </tag>
+        <tag id="2841" parentid="2611" infobox="true" weight="400" localspoiler="false" globalspoiler="false" verified="true" update="2017-12-26">
+            <name>action</name>
+            <description>Action anime usually involve a fairly straightforward story of good guys versus bad guys, where most disputes are resolved by using physical force. It often contains a lot of shooting, explosions and fighting.</description>
+            <picurl>211261.jpg</picurl>
+        </tag>
+        <tag id="2846" parentid="7050" weight="300" localspoiler="false" globalspoiler="false" verified="true" update="2018-10-04">
+            <name>science fiction</name>
+            <description>Science fiction stories usually focus on how situations could be different in the future when we are more technologically advanced; due to either our own achievements or having met with other civilizations whom we have learned from.</description>
+            <picurl>212180.jpg</picurl>
+        </tag>
+        <tag id="2849" parentid="7050" infobox="true" weight="600" localspoiler="false" globalspoiler="false" verified="true" update="2005-05-07">
+            <name>fantasy</name>
+            <description>Fantasy is a genre of fiction that uses magic and other supernatural phenomena as a primary element of plot, theme, or setting. Many works within the genre take place in fictional worlds where magic is common. Fantasy is generally distinguished from science fiction and horror by the expectation that it steers clear of (pseudo-)scientific and macabre themes, respectively, though there is a great deal of overlap between the three (which are subgenres of speculative fiction).
+In popular culture, the genre of fantasy is dominated by its medievalist form, especially since the worldwide success of The Lord of the Rings books by J. R. R. Tolkien. In its broadest sense however, fantasy comprises works by many writers, artists, filmmakers, and musicians, from ancient myths and legends to many recent works embraced by a wide audience today.
+Fantasy is a vibrant area of academic study in a number of disciplines (English, cultural studies, comparative literature, history, medieval studies). Work in this area ranges widely, from the structuralist theory of Tzvetan Todorov, which emphasizes the fantastic as a liminal space, to work on the connections (political, historical, literary) between medievalism and popular culture
+Source: Wiki</description>
+            <picurl>68768.jpg</picurl>
+        </tag>
+        <tag id="2887" parentid="2611" infobox="true" weight="400" localspoiler="false" globalspoiler="false" verified="true" update="2009-05-16">
+            <name>tragedy</name>
+            <description>Tragedy is a form of drama characterized by seriousness and dignity, usually involving a conflict between a character and some higher power, such as the law, the gods, fate, or society.</description>
+        </tag>
+        <tag id="3135" parentid="6149" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2019-03-16">
+            <name>hero complex</name>
+            <description>A hero complex is a state of mind in which an individual believes they need to save or assist others, uphold morals, serve justice, or perform other such supposedly hero-like acts, often at any cost. That is a common trait among vigilantes. Those with a hero complex may feel personally accountable for any failure at those self-assigned duties. Their main concern is performing their supposedly heroic deeds; any questions others might raise about such actions are all secondary concerns at best. Such questions can include, but are not limited to: who is to be saved; what are they to be saved from; why are they being saved; whether or not the other person needs or wants to be saved at all; whether or not others share in the sense of morals and justice being upheld; how people feel about the so-called heroic actions; whether people feel like those actions are being forced down their throats; what negative effects can arise from such actions.</description>
+        </tag>
+        <tag id="3411" parentid="2841" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2017-12-26">
+            <name>fighting</name>
+            <description>For some reason or other one faction has to take it out on some opponent via fight or battle. Typical examples of this are all the anime with "endless pointless fighting" tag.</description>
+            <picurl>211266.jpg</picurl>
+        </tag>
+        <tag id="3597" parentid="2607" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2013-02-26">
+            <name>mythology</name>
+            <description>The anime gets inspirations from many forms of mythologies (either Greek, Egyptian, Nord, etc.) to form its story and setting.</description>
+        </tag>
+        <tag id="3833" parentid="6233" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-11-04">
+            <name>there can be only one</name>
+            <description>The long-term plot of the program revolves around a group of characters whose numbers are being slowly whittled away by one means or another, usually by killing each other. In the case of some reality shows, this is a process of elimination intended to result in a single winner. In other shows, this is a dramatic device, designed to generate tension and conflict with which to drive the overall plot of an episode or Story Arc (if any); in these cases it is sometimes combined with Anyone Can Die to especially heighten the resulting excitement, even when the apparent main character may be protected by Contractual Immortality. Compare Gotta Kill Them All.
+Named for one of the catchphrases that came out of the Highlander franchise.
+Source: TVTrope</description>
+        </tag>
+        <tag id="4064" parentid="6151" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2018-08-13">
+            <name>CGI</name>
+            <description>Computer-generated imagery (CGI) or computer animation is the art of creating moving images via the use of computers. It is a subfield of computer graphics and animation. Increasingly it is created by means of 3D computer graphics, though 2D computer graphics are still widely used for stylistic, low bandwidth, and faster real-time rendering needs. Sometimes the target of the animation is the computer itself, but sometimes the target is another medium, such as film.</description>
+            <picurl>222249.jpg</picurl>
+        </tag>
+        <tag id="4128" parentid="6233" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2008-07-29">
+            <name>zero to hero</name>
+            <description>With his first appearance, this character is getting his ass kicked by nearly everyone, but as the plot continues, through training (mental or physical) or instant power-up, he changes into a killing/fighting/winning machine.
+The best example: Makunouchi Ippo from Hajime no Ippo series.</description>
+        </tag>
+        <tag id="4481" parentid="6149" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2016-09-04">
+            <name>protection complex</name>
+            <description>A character has a protection complex if the character is overly protective of other characters, beyond what would be considered a "normal" or "expected" duty of care.
+The magnitude of overprotection can vary. It can be as low as constantly nagging someone to "stay safe". It can be as extreme as the protector making it their mission in life to protect the other character.</description>
+        </tag>
+        <tag id="5571" parentid="3597" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2012-08-27">
+            <name>Greek mythology</name>
+            <description>The anime is derived or draws elements from the Greek mythology, and as such features some mythological characteristics of Ancient Greece. Those may be creatures, such as the Centaur or Hydra, tales, such as that of the Trojan War, or even the Gods themselves, like Zeus or Poseidon. More subtle references also count, such as the careful usage of names of places or people that hold significance in the myths.</description>
+        </tag>
+        <tag id="5954" parentid="6233" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2009-02-17">
+            <name>call my name</name>
+            <description>"TETSUOOOOOO!!" "KANEDAAAAAA!!"
+"TAMAHOMEEEE!!" "MIAKAAAA!!"
+Feelings of any kind towards other characters are best shown by calling each other`s name, loud, REALLY LOUD. For better effect at least twice or thrice. For lover`s couples and mortal enemies it is a requirement to run towards each other while calling each other`s name, unaware of the surroundings.</description>
+        </tag>
+        <tag id="6083" parentid="2611" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-10-21">
+            <name>master-servant relationship</name>
+            <description>To some genres, this would suggest a genuine pairing where one person exists to serve another person, such as in some action/dramas where the pair becomes united by destiny as partners — fighting or battles between different pairs/partners will usually be a dominant part of the story.
+In other genres, this suggests a relationship where one person may be occupied as or even forcefully treated as a servant or slave to the other who designates themself the master — these services usually apply anywhere from tsundere/romantic-comedies to ecchi or to the more extreme in hentai.</description>
+        </tag>
+        <tag id="6149" parentid="30" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-09-10">
+            <name>TO BE MOVED TO CHARACTER</name>
+            <description>Tags under this parent tag are going to be moved to character tags and removed from the anime they`re currently assigned to. They will be blocked from the anime system once that move is complete. Please help with that job if you know what characters they should be assigned to.</description>
+        </tag>
+        <tag id="6151" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-09-10">
+            <name>technical aspects</name>
+            <description>It may sometimes be useful to know about technical aspects of a show, such as information about its broadcasting or censorship. Such information can be found here.</description>
+        </tag>
+        <tag id="6173" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-09-24">
+            <name>origin</name>
+        </tag>
+        <tag id="6233" parentid="2611" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2015-08-11">
+            <name>tropes</name>
+            <description>A trope is a commonly recurring literary and rhetorical devices, motifs or clichés in creative works. This use is a broader redefining of a literary trope, the use of figurative language, via word, phrase, or even an image, for artistic effect, such as using a figure of speech.
+Source: Wikipedia</description>
+        </tag>
+        <tag id="7050" parentid="2611" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2019-04-18">
+            <name>speculative fiction</name>
+            <description>Speculative fiction is an umbrella genre encompassing fiction with certain elements that do not exist in the real world, often in the context of supernatural, futuristic or other imaginative themes. This includes, but is not limited to, science fiction, fantasy, superhero fiction, horror, utopian and dystopian fiction, fairytale fantasy, supernatural fiction, as well as combinations thereof.
+Source: Wikipedia</description>
+        </tag>
+        <tag id="7885" parentid="6173" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2021-11-07">
+            <name>Japanese production</name>
+        </tag>
+        <tag id="7935" weight="0" localspoiler="false" globalspoiler="false" verified="false" update="2022-05-23">
+            <name>Historical characters assemble</name>
+        </tag>
+    </tags>
+    <characters>
+        <character id="1914" type="cameo appearance in" update="2015-04-20">
+            <rating votes="444">1.98</rating>
+            <name>Matou Shinji</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <description>The older brother of Sakura, and an old friend of Shirou. The son of Byakuya Matou. Although chauvinistic and narcissistic, Shinji is very popular as Vice-Captain of the Archery Dojo. Like Rin, he is of a distinguished lineage of sorcerers, though the Matou blood has thinned and no longer produces heirs naturally capable of sorcery. Shinji feels uncomfortable with his sister`s daily visits to Shirou`s home. He has an open crush on Rin, but she does not return his favours.</description>
+            <picture>172327.jpg</picture>
+        </character>
+        <character id="85946" type="secondary cast in" update="2016-12-15">
+            <rating votes="67">5.12</rating>
+            <name>Olgamally Animusphere</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>195897.jpg</picture>
+            <seiyuu id="1961" picture="222838.jpg">Yonezawa Madoka</seiyuu>
+        </character>
+        <character id="85947" type="secondary cast in" update="2016-11-02">
+            <rating votes="21">4.56</rating>
+            <name>Fou</name>
+            <gender>unknown</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>193980.jpg</picture>
+            <seiyuu id="12" picture="263458.jpg">Kawasumi Ayako</seiyuu>
+        </character>
+        <character id="85948" type="main character in" update="2016-11-02">
+            <rating votes="120">7.54</rating>
+            <name>Mash Kyrielight</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>193951.jpg</picture>
+            <seiyuu id="38380" picture="224406.jpg">Takahashi Rie</seiyuu>
+        </character>
+        <character id="85952" type="secondary cast in" update="2016-12-15">
+            <rating votes="22">2.18</rating>
+            <name>Lev Lainur</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>195895.jpg</picture>
+            <seiyuu id="45" picture="11007.jpeg">Sugita Tomokazu</seiyuu>
+        </character>
+        <character id="85953" type="secondary cast in" update="2016-12-15">
+            <rating votes="26">3.74</rating>
+            <name>Romani Archaman</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>195896.jpg</picture>
+            <seiyuu id="191" picture="11086.jpeg">Suzumura Ken`ichi</seiyuu>
+        </character>
+        <character id="85954" type="main character in" update="2021-01-02">
+            <rating votes="60">3.17</rating>
+            <name>Fujimaru Ritsuka</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <description>This Ritsuka is the male counterpart for the http://anidb.net/ch114423 [female player character] in the http://anidb.net/a12519 [Fate/Grand Order] mobile game.</description>
+            <picture>193981.jpg</picture>
+            <seiyuu id="10776" picture="254687.jpg">Shimazaki Nobunaga</seiyuu>
+        </character>
+        <character id="86701" type="secondary cast in" update="2021-06-07">
+            <rating votes="19">7.29</rating>
+            <name>Cu Chulainn</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <description>Cu Chulainn is Caster-class Servant. He uses fire and earth magic, along with various runes, when fighting other Servants. Caster`s Noble Phantasm is Wicker Man and Ochd Deug Odin. He appears in Fuyuki Singularity, and assists http://anidb.net/ch85954 [Fujimaru] and http://anidb.net/ch85948 [Mashu] as they fight against Lancer.
+Cu Chulainn is a hero from the Ulster Cycle of Irish mythology. He was a demigod, the offspring of a mortal woman, Deichtine, the younger sister of King Conchobar mac Nessa, and the deity, Lugh, the god who governed over the sun and a member of the Danann divine family in Celtic Mythology.
+Source: TYPE-MOON Wiki, edited.</description>
+            <picture>196363.jpg</picture>
+            <seiyuu id="211" picture="17028.jpg">Kanna Nobutoshi</seiyuu>
+        </character>
+        <character id="86961" type="secondary cast in" update="2017-01-01">
+            <rating votes="8">4.28</rating>
+            <name>Archer</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <description>He is an Archer-class Servant, altered after being consumed and blackened by the mud from the Shadow.</description>
+            <picture>196366.jpg</picture>
+            <seiyuu id="200" picture="17015.jpg">Suwabe Jun`ichi</seiyuu>
+        </character>
+        <character id="86962" type="secondary cast in" update="2017-01-01">
+            <rating votes="13">5.83</rating>
+            <name>Lancer</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <description>She is a Lancer-class Servant who appears in the Fuyuki Singularity. She uses her hair that turns into chains to petrify her enemies, as well as Lance of Immortal Killing, which causes wounds that can not be healed by any means.
+Rider`s true identity is Medusa, the Gorgon from Greek mythology.</description>
+            <picture>196367.jpg</picture>
+            <seiyuu id="82" picture="216596.jpg">Asakawa Yuu</seiyuu>
+        </character>
+        <character id="92746" type="secondary cast in" update="2021-06-08">
+            <rating votes="20">8.26</rating>
+            <name>Saber Alter</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <description>Saber Alter is what becomes of http://anidb.net/ch117685 [Artoria Pendragon] after being consumed by evil. This version of Saber appears in the Fate/Grand Order video game.</description>
+            <picture>210615.jpg</picture>
+            <seiyuu id="12" picture="263458.jpg">Kawasumi Ayako</seiyuu>
+        </character>
+        <character id="93492" type="main character in" update="2024-01-28">
+            <rating votes="21">7.62</rating>
+            <name>Mash Kyrielight</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <description>Shielder`s True Name is http://anidb.net/ch85948 [Mash Kyrielight], a Demi-Servant human fused with an unknown Servant.
+It is later revealed in the original Fate/Grand Order material that Mash had fused with Galahad.</description>
+            <picture>299138.jpg</picture>
+            <seiyuu id="38380" picture="224406.jpg">Takahashi Rie</seiyuu>
+        </character>
+        <character id="117652" type="cameo appearance in" update="2021-06-07">
+            <rating votes="10">7.87</rating>
+            <name>Jeanne d`Arc</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>207612.jpg</picture>
+        </character>
+        <character id="117653" type="cameo appearance in" update="2021-06-07">
+            <rating votes="12">8.62</rating>
+            <name>Francis Drake</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>210944.jpg</picture>
+        </character>
+        <character id="117654" type="cameo appearance in" update="2021-06-07">
+            <rating votes="18">8.55</rating>
+            <name>Artoria Pendragon</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>209482.jpg</picture>
+        </character>
+        <character id="117655" type="cameo appearance in" update="2021-06-07">
+            <rating votes="20">4.35</rating>
+            <name>Nero Claudius</name>
+            <gender>female</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>211468.jpg</picture>
+        </character>
+        <character id="117656" type="cameo appearance in" update="2021-06-07">
+            <name>Hyakubou no Hasan</name>
+            <gender>none/does not apply</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>61344.jpg</picture>
+        </character>
+        <character id="117657" type="cameo appearance in" update="2021-06-07">
+            <name>Heracles</name>
+            <gender>male</gender>
+            <charactertype id="1">Character</charactertype>
+            <picture>172330.jpg</picture>
+        </character>
+    </characters>
+    <episodes>
+        <episode id="182800" update="2017-01-01">
+            <epno type="1">1</epno>
+            <length>75</length>
+            <airdate>2016-12-31</airdate>
+            <rating votes="12">3.99</rating>
+            <title xml:lang="en">TV Special</title>
+            <summary>The cause seems to be related to Fuyuki, a provincial town in Japan, in the year 2004 CE. There, an “unobservable region” that had not existed before appears. On the assumption that this Singularity is the cause of humanity’s extinction, Chaldea investigates and possibly issues the Grand Order, a quest for the Holy Grails… a mission with the objective to destroy.
+Source: crunchyroll</summary>
+            <resources>
+                <resource type="28">
+                    <externalentity>
+                        <identifier>G6MG3JV56</identifier>
+                    </externalentity>
+                </resource>
+            </resources>
+        </episode>
+        <episode id="182801" update="2016-12-06">
+            <epno type="4">T1</epno>
+            <length>2</length>
+            <airdate>2016-12-06</airdate>
+            <title xml:lang="ja">PV</title>
+            <title xml:lang="en">PV (1:20)</title>
+            <title xml:lang="x-jat">PV</title>
+        </episode>
+        <episode id="183377" update="2017-01-01">
+            <epno type="4">T2</epno>
+            <length>0</length>
+            <airdate>2016-12-31</airdate>
+            <title xml:lang="ja">発売告知CM</title>
+            <title xml:lang="en">BD Release Announcement CM (0:30)</title>
+            <title xml:lang="x-jat">Hatsubai Kokuchi CM</title>
+        </episode>
+        <episode id="183752" update="2017-03-16">
+            <epno type="2">S1</epno>
+            <length>35</length>
+            <airdate>2016-12-31</airdate>
+            <title xml:lang="ja">Fate Project 大晦日TVスペシャル: First &amp; Next Order</title>
+            <title xml:lang="en">Fate Project New Year`s Eve Special: First &amp; Next Order</title>
+            <title xml:lang="x-jat">Fate Project Oomisoka TV Special: First &amp; Next Order</title>
+            <summary>Consists of: original animated scenes showing super-deformed versions of Rider, Saber, Sakura, and Saber Red commenting on past and upcoming Fate projects; preexisting (reused) animated scenes from various games and previous Fate anime; and the premiere of trailers for http://anidb.net/a10755 [Fate/stay night: Heaven`s Feel], http://anidb.net/a12046 [Fate/Extra: Last Encore], and http://anidb.net/a12704 [Fate/Apocrypha], which would later be added to their respective official websites.</summary>
+        </episode>
+        <episode id="192157" update="2017-10-22">
+            <epno type="4">T13</epno>
+            <length>3</length>
+            <title xml:lang="en">Game Trailer (3:10)</title>
+        </episode>
+        <episode id="192158" update="2017-10-22">
+            <epno type="4">T12</epno>
+            <length>2</length>
+            <title xml:lang="en">Game Opening (1:30)</title>
+        </episode>
+        <episode id="192159" update="2017-10-22">
+            <epno type="4">T11</epno>
+            <length>0</length>
+            <title xml:lang="en">Saber Trailer (0:17)</title>
+        </episode>
+        <episode id="192160" update="2017-10-22">
+            <epno type="4">T10</epno>
+            <length>0</length>
+            <title xml:lang="en">Rider Trailer (0:17)</title>
+        </episode>
+        <episode id="192161" update="2017-10-22">
+            <epno type="4">T9</epno>
+            <length>0</length>
+            <title xml:lang="en">Lancer Trailer (0:17)</title>
+        </episode>
+        <episode id="192162" update="2017-10-22">
+            <epno type="4">T8</epno>
+            <length>0</length>
+            <title xml:lang="en">Caster Trailer (0:17)</title>
+        </episode>
+        <episode id="192163" update="2017-10-22">
+            <epno type="4">T7</epno>
+            <length>0</length>
+            <title xml:lang="en">Berserker Trailer (0:17)</title>
+        </episode>
+        <episode id="192164" update="2017-10-22">
+            <epno type="4">T6</epno>
+            <length>0</length>
+            <title xml:lang="en">Assassin Trailer (0:17)</title>
+        </episode>
+        <episode id="192165" update="2017-10-22">
+            <epno type="4">T5</epno>
+            <length>0</length>
+            <title xml:lang="en">Archer Trailer (0:17)</title>
+        </episode>
+        <episode id="192166" update="2017-10-22">
+            <epno type="4">T4</epno>
+            <length>2</length>
+            <title xml:lang="en">Dub Trailer (1:20)</title>
+        </episode>
+        <episode id="192167" update="2017-10-22">
+            <epno type="4">T3</epno>
+            <length>2</length>
+            <title xml:lang="en">Announcement Trailer (2:00)</title>
+        </episode>
+        <episode id="231592" update="2020-08-13">
+            <epno type="2">S2</epno>
+            <length>6</length>
+            <airdate>2016-12-31</airdate>
+            <rating votes="1">7.91</rating>
+            <title xml:lang="ja">フェイト/ぐだぐだオーダー</title>
+            <title xml:lang="en">Fate/Gudaguda Order</title>
+            <title xml:lang="x-jat">Fate/Gudaguda Order</title>
+            <summary>Special included with the 2016 FATE Project TV Special, featuring characters from Koha-Ace.</summary>
+        </episode>
+        <episode id="253389" update="2022-03-27">
+            <epno type="4">T14</epno>
+            <length>1</length>
+            <title xml:lang="en">Blu-ray &amp; DVD - Now on Sale (0:17)</title>
+        </episode>
+    </episodes>
+</anime>

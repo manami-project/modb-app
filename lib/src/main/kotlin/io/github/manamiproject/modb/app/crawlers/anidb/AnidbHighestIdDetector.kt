@@ -1,7 +1,5 @@
 package io.github.manamiproject.modb.app.crawlers.anidb
 
-import io.github.manamiproject.modb.anidb.AnidbResponseChecker
-import io.github.manamiproject.modb.anidb.CrawlerDetectedException
 import io.github.manamiproject.modb.app.crawlers.HighestIdDetector
 import io.github.manamiproject.modb.app.extensions.checkedBody
 import io.github.manamiproject.modb.app.network.LinuxNetworkController
@@ -43,21 +41,7 @@ class AnidbHighestIdDetector(
     override suspend fun detectHighestId(): Int {
         log.info { "Fetching highest id for [${metaDataProviderConfig.hostname()}]." }
 
-        val response = try {
-            val response = httpClient.get(metaDataProviderConfig.buildDataDownloadLink().toURL()).checkedBody(this::class)
-            AnidbResponseChecker(response).checkIfCrawlerIsDetected()
-            response
-        } catch (e: Throwable) {
-            when(e) {
-                is CrawlerDetectedException -> {
-                    networkController.restartAsync().await()
-                    val response = httpClient.get(metaDataProviderConfig.buildDataDownloadLink().toURL()).checkedBody(this::class)
-                    AnidbResponseChecker(response).checkIfCrawlerIsDetected()
-                    response
-                }
-                else -> throw e
-            }
-        }
+        val response = httpClient.get(metaDataProviderConfig.buildDataDownloadLink().toURL()).checkedBody(this::class)
 
         val data = extractor.extract(response, mapOf(
             "highestId" to "//div[contains(@class, 'latest_anime')]//table[@class='animelist']//td[contains(@class, 'name')]//a/@href",
