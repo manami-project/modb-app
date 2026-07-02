@@ -46,6 +46,7 @@ _[modb](https://github.com/manami-project?tab=repositories&q=modb&type=source)_ 
   * `gh`
   * `git`
   * `ifconfig`
+  * `docker`
 * ipv6 based internet connection with SLAAC enabled
 
 ## Getting started
@@ -87,3 +88,5 @@ For more configuration options see the `README.md` files of the respective modul
 | `modb.app.downloadControlStateDirectory` | `String` | -                                                                           | Root directory of download control state files.                                                                                                                                                           |
 | `modb.app.logFileDirectory`              | `String` | A directory called `logs` within the working directory of the current week. | Defines the directory in which the logs saved.                                                                                                                                                            |
 | `modb.app.keepDownloadDirectories`       | `Long`   | `1`                                                                         | Number of download directories to keep. Download directories contain both raw data and conv files (intermediate format). Default is `1` which means that only the most recent download directory is kept. |
+| `modb.app.flaresolverr.port`             | `Int`    | `8191`                                                                      | Port on which flaresolverr is running.                                                                                                                                                                    |
+| `modb.app.flaresolverr.logLevel`         | `String` | `info`                                                                      | Log level for the flaresolverr container.                                                                                                                                                                 |

@@ -11,6 +11,7 @@ import io.github.manamiproject.modb.app.downloadcontrolstate.DefaultDownloadCont
 import io.github.manamiproject.modb.app.downloadcontrolstate.DefaultDownloadControlStateScheduler
 import io.github.manamiproject.modb.app.downloadcontrolstate.DownloadControlStateAccessor
 import io.github.manamiproject.modb.app.downloadcontrolstate.DownloadControlStateScheduler
+import io.github.manamiproject.modb.app.network.FlaresolverrHttpClient
 import io.github.manamiproject.modb.app.network.SuspendableHttpClient
 import io.github.manamiproject.modb.core.config.MetaDataProviderConfig
 import io.github.manamiproject.modb.core.coverage.KoverIgnore
@@ -50,7 +51,7 @@ class AnimePlanetCrawler(
     private val lastPageDetector: HighestIdDetector = AnimePlanetLastPageDetector.instance,
     private val paginationIdRangeSelector: PaginationIdRangeSelector<Int> = AnimePlanetPaginationIdRangeSelector.instance,
     private val alreadyDownloadedIdsFinder: AlreadyDownloadedIdsFinder = DefaultAlreadyDownloadedIdsFinder.instance,
-    private val downloader: Downloader = AnimePlanetDownloader(httpClient = SuspendableHttpClient()),
+    private val downloader: Downloader = AnimePlanetDownloader(httpClient = SuspendableHttpClient(httpClient = FlaresolverrHttpClient())),
 ): Crawler {
 
     override suspend fun start() {
