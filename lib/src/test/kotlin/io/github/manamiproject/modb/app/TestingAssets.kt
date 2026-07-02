@@ -160,6 +160,7 @@ internal object TestDeadEntriesAccessor: DeadEntriesAccessor {
     override suspend fun addDeadEntry(animeId: AnimeId, metaDataProviderConfig: MetaDataProviderConfig) = shouldNotBeInvoked()
     override suspend fun determineDeadEntries(sources: Collection<URI>): Set<URI> = shouldNotBeInvoked()
     override suspend fun fetchDeadEntries(metaDataProviderConfig: MetaDataProviderConfig): Set<AnimeId> = shouldNotBeInvoked()
+    override suspend fun containsEntry( animeId: AnimeId, metaDataProviderConfig: MetaDataProviderConfig): Boolean = shouldNotBeInvoked()
 }
 
 internal object TestReviewedIsolatedEntriesAccessor: ReviewedIsolatedEntriesAccessor {
